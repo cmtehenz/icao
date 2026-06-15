@@ -4,6 +4,7 @@ import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "rea
 import ConnectorsBank from "@/components/ConnectorsBank";
 import Part1Simulator from "@/components/Part1Simulator";
 import PilotProfileModal from "@/components/PilotProfileModal";
+import QuickPhrasesMenu from "@/components/QuickPhrasesMenu";
 import { CATEGORIES, CHECKLIST_ITEMS, type Category } from "@/lib/categories";
 import { CARDS } from "@/lib/cards";
 import {
@@ -19,6 +20,7 @@ import {
   essentialLabelFor,
 } from "@/lib/essential";
 import { personalizeCard } from "@/lib/personalize";
+import { getSimplePhrases, getSimplePhrasesText } from "@/lib/simplePhrases";
 import { DEFAULT_PROFILE, formatFlightHours, loadProfile, type PilotProfile } from "@/lib/profile";
 import type { AppVersion, Card, Difficulty, StudyMode } from "@/lib/types";
 import { isSpeaking, speakText, stopSpeaking } from "@/lib/tts";
@@ -90,6 +92,7 @@ export default function FlashcardApp() {
   const [connectorSet, setConnectorSet] = useState<ConnectorSetId>("classic");
   const [profileOpen, setProfileOpen] = useState(false);
   const [connectorsOpen, setConnectorsOpen] = useState(false);
+  const [phrasesOpen, setPhrasesOpen] = useState(false);
   const [simulatorActive, setSimulatorActive] = useState(false);
   const [speaking, setSpeaking] = useState(false);
   const [search, setSearch] = useState("");
@@ -154,6 +157,15 @@ export default function FlashcardApp() {
   const answerWords = card.targetWords ?? wordCount(card.answer);
   const checklistDone = checklist.filter(Boolean).length;
   const poolDone = pool.filter((c) => done.includes(c.num)).length;
+  const simplePhrases = useMemo(() => getSimplePhrases(card), [card]);
+
+  const copyPhrase = useCallback(async (text: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch {
+      /* ignore */
+    }
+  }, []);
 
   const stopTimer = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current);
@@ -415,6 +427,15 @@ export default function FlashcardApp() {
         onSave={setProfile}
       />
       <ConnectorsBank open={connectorsOpen} onClose={() => setConnectorsOpen(false)} />
+      <QuickPhrasesMenu
+        open={phrasesOpen}
+        essentialOnly={isEssential}
+        profile={profile}
+        connectorSet={connectorSet}
+        currentNum={card.num}
+        onClose={() => setPhrasesOpen(false)}
+        onSelect={selectCard}
+      />
 
       <div className="header">
         <div className="wrap topbar">
@@ -475,6 +496,9 @@ export default function FlashcardApp() {
               onClick={toggleDone}
             >
               {markDoneLabel}
+            </button>
+            <button type="button" className="btn blue" onClick={() => setPhrasesOpen(true)}>
+              4 frases
             </button>
             {!isEssential && (
               <button type="button" className="btn secondary" onClick={() => setToolsOpen((o) => !o)}>
@@ -558,9 +582,14 @@ export default function FlashcardApp() {
                 {poolDone} / {pool.length} concluídas
               </span>
             </div>
-            <button type="button" className="btn secondary essential-sim-btn" onClick={() => setSimulatorActive(true)}>
-              Simulador rápido
-            </button>
+            <div className="essential-actions">
+              <button type="button" className="btn secondary" onClick={() => setPhrasesOpen(true)}>
+                Menu 4 frases
+              </button>
+              <button type="button" className="btn secondary" onClick={() => setSimulatorActive(true)}>
+                Simulador rápido
+              </button>
+            </div>
           </>
         ) : (
           <>
@@ -706,6 +735,41 @@ export default function FlashcardApp() {
               {!isExam && !isEssential && structureBlocks}
 
               {!isExam && isEssential && showStructure && structureBlocks}
+
+              {!isExam && (
+                <div className="phrases-inline">
+                  <div className="phrases-inline-head">
+                    <h3>4 frases simples</h3>
+                    <button type="button" className="btn secondary btn-sm" onClick={() => setPhrasesOpen(true)}>
+                      Ver todas
+                    </button>
+                  </div>
+                  <ol className="phrases-four phrases-four-inline">
+                    {simplePhrases.map((phrase, i) => (
+                      <li key={phrase.label}>
+                        <button
+                          type="button"
+                          className="phrase-line"
+                          onClick={() => copyPhrase(phrase.text)}
+                          title="Copiar frase"
+                        >
+                          <span className="phrase-label">
+                            {i + 1}. {phrase.label}
+                          </span>
+                          <span className="phrase-text">{phrase.text}</span>
+                        </button>
+                      </li>
+                    ))}
+                  </ol>
+                  <button
+                    type="button"
+                    className="btn secondary btn-sm phrases-copy-all"
+                    onClick={() => copyPhrase(getSimplePhrasesText(card))}
+                  >
+                    Copiar as 4 frases
+                  </button>
+                </div>
+              )}
 
               {!isExam && isEssential && (
                 <button
