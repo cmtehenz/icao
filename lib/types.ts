@@ -1,9 +1,14 @@
+import type { Category } from "./categories";
+
 export type Difficulty = "Easy" | "Medium" | "Hard";
+
+export type StudyMode = "study" | "exam";
 
 export type Card = {
   num: string;
   question: string;
   memory: string;
+  memoryLabels: string[];
   opener: string;
   ideas: string[];
   example: string;
@@ -12,4 +17,7 @@ export type Card = {
   vocab: string[];
   answer: string;
   difficulty: Difficulty;
+  category: Category;
+  tags: string[];
+  targetWords: number;
 };

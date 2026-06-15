@@ -1,24 +1,33 @@
 "use client";
 
 import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { CATEGORIES, CHECKLIST_ITEMS, type Category } from "@/lib/categories";
 import { CARDS } from "@/lib/cards";
-import type { Card, Difficulty } from "@/lib/types";
-import { formatIdea, parseMemoryFlow } from "@/lib/utils";
+import type { Card, Difficulty, StudyMode } from "@/lib/types";
+import { formatIdea, parseMemoryFlow, wordCount } from "@/lib/utils";
 
 type FilteredCard = Card & { idx: number };
 
 const TIMER_SECONDS = 45;
 const DONE_KEY = "icao_done_v2";
 const THEME_KEY = "icao_theme";
+const MODE_KEY = "icao_mode_v1";
 
-function MemoryFlow({ memory }: { memory: string }) {
+function MemoryFlow({ memory, memoryLabels, expanded }: { memory: string; memoryLabels: string[]; expanded: boolean }) {
   const parts = parseMemoryFlow(memory);
   return (
     <div className="memory-flow">
       {parts.map((part, i) => (
-        <Fragment key={part + i}>
+        <Fragment key={`${part}-${i}`}>
           {i > 0 && <span className="arrow">→</span>}
-          <span className="pill">{part}</span>
+          {expanded ? (
+            <span className="pill-stack">
+              <span className="pill pill-short">{part}</span>
+              {memoryLabels[i] && <span className="pill-label">{memoryLabels[i]}</span>}
+            </span>
+          ) : (
+            <span className="pill">{part}</span>
+          )}
         </Fragment>
       ))}
     </div>
@@ -36,15 +45,26 @@ function IdeaLine({ text }: { text: string }) {
   );
 }
 
+function categoryDoneCount(category: Category, done: string[]) {
+  return CARDS.filter((c) => c.category === category && done.includes(c.num)).length;
+}
+
+function categoryTotal(category: Category) {
+  return CARDS.filter((c) => c.category === category).length;
+}
+
 export default function FlashcardApp() {
   const [current, setCurrent] = useState(0);
   const [done, setDone] = useState<string[]>([]);
   const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [mode, setMode] = useState<StudyMode>("study");
   const [search, setSearch] = useState("");
   const [difficulty, setDifficulty] = useState<Difficulty | "All">("All");
+  const [category, setCategory] = useState<Category | "All">("All");
   const [showAnswer, setShowAnswer] = useState(false);
   const [elapsed, setElapsed] = useState(0);
   const [timerRunning, setTimerRunning] = useState(false);
+  const [checklist, setChecklist] = useState<boolean[]>(() => CHECKLIST_ITEMS.map(() => false));
   const [hydrated, setHydrated] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -57,20 +77,31 @@ export default function FlashcardApp() {
         c.opener,
         c.example,
         c.conclusion,
+        c.category,
+        CATEGORIES[c.category],
+        ...c.memoryLabels,
         ...c.ideas,
         ...c.verbs,
         ...c.vocab,
+        ...c.tags,
       ]
         .join(" ")
         .toLowerCase();
-      return (!q || blob.includes(q)) && (difficulty === "All" || c.difficulty === difficulty);
+      return (
+        (!q || blob.includes(q)) &&
+        (difficulty === "All" || c.difficulty === difficulty) &&
+        (category === "All" || c.category === category)
+      );
     });
-  }, [search, difficulty]);
+  }, [search, difficulty, category]);
 
   const filteredIndices = useMemo(() => filtered.map((c) => c.idx), [filtered]);
   const card = CARDS[current];
   const isCardDone = done.includes(card.num);
   const markDoneLabel = isCardDone ? "↩️ Undo done" : "✅ Mark done";
+  const isExam = mode === "exam";
+  const answerWords = card.targetWords ?? wordCount(card.answer);
+  const checklistDone = checklist.filter(Boolean).length;
 
   const stopTimer = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current);
@@ -89,14 +120,19 @@ export default function FlashcardApp() {
     setTimerRunning(true);
   }, [stopTimer]);
 
+  const resetChecklist = useCallback(() => {
+    setChecklist(CHECKLIST_ITEMS.map(() => false));
+  }, []);
+
   const selectCard = useCallback(
     (idx: number) => {
       setCurrent(idx);
       setShowAnswer(false);
       resetTimer();
+      resetChecklist();
       window.scrollTo({ top: 0, behavior: "smooth" });
     },
-    [resetTimer],
+    [resetTimer, resetChecklist],
   );
 
   const navigateFiltered = useCallback(
@@ -126,9 +162,20 @@ export default function FlashcardApp() {
     selectCard(filteredIndices[Math.floor(Math.random() * filteredIndices.length)]);
   }, [filteredIndices, selectCard]);
 
+  const setStudyMode = useCallback(
+    (next: StudyMode) => {
+      setMode(next);
+      setShowAnswer(false);
+      resetChecklist();
+    },
+    [resetChecklist],
+  );
+
   useEffect(() => {
     const storedTheme = localStorage.getItem(THEME_KEY);
     if (storedTheme === "dark" || storedTheme === "light") setTheme(storedTheme);
+    const storedMode = localStorage.getItem(MODE_KEY);
+    if (storedMode === "study" || storedMode === "exam") setMode(storedMode);
     try {
       setDone(JSON.parse(localStorage.getItem(DONE_KEY) || "[]"));
     } catch {
@@ -145,6 +192,11 @@ export default function FlashcardApp() {
 
   useEffect(() => {
     if (!hydrated) return;
+    localStorage.setItem(MODE_KEY, mode);
+  }, [mode, hydrated]);
+
+  useEffect(() => {
+    if (!hydrated) return;
     localStorage.setItem(DONE_KEY, JSON.stringify(done));
   }, [done, hydrated]);
 
@@ -153,8 +205,9 @@ export default function FlashcardApp() {
       setCurrent(filtered[0].idx);
       setShowAnswer(false);
       resetTimer();
+      resetChecklist();
     }
-  }, [filtered, current, resetTimer]);
+  }, [filtered, current, resetTimer, resetChecklist]);
 
   useEffect(() => {
     if (!timerRunning) return;
@@ -199,6 +252,22 @@ export default function FlashcardApp() {
       <div className="header">
         <div className="wrap controls">
           <div className="left-controls">
+            <div className="mode-toggle">
+              <button
+                type="button"
+                className={`mode-btn ${mode === "study" ? "active" : ""}`}
+                onClick={() => setStudyMode("study")}
+              >
+                📚 Study
+              </button>
+              <button
+                type="button"
+                className={`mode-btn ${mode === "exam" ? "active" : ""}`}
+                onClick={() => setStudyMode("exam")}
+              >
+                🎤 Exam
+              </button>
+            </div>
             <button
               type="button"
               className="btn secondary"
@@ -213,6 +282,18 @@ export default function FlashcardApp() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
+            <select
+              className="select"
+              value={category}
+              onChange={(e) => setCategory(e.target.value as Category | "All")}
+            >
+              <option value="All">All categories</option>
+              {(Object.entries(CATEGORIES) as [Category, string][]).map(([key, label]) => (
+                <option key={key} value={key}>
+                  {label}
+                </option>
+              ))}
+            </select>
             <select
               className="select"
               value={difficulty}
@@ -246,8 +327,9 @@ export default function FlashcardApp() {
         <span className="badge">✈️ ICAO PART 1 MASTER · FLASHCARD APP</span>
         <h1>42 Questions with ICAO 5 Answers</h1>
         <p className="sub">
-          Study like this: read the question, start the 45-second timer, answer using the colored
-          structure, then reveal the ICAO 5 model answer.
+          {isExam
+            ? "Exam mode: answer out loud with only the question visible, use the checklist, then reveal the model answer."
+            : "Study mode: read the structure, memory flow, vocabulary, then practice with the 45-second timer."}
         </p>
         <div className="stats">
           <div className="stat">
@@ -257,22 +339,35 @@ export default function FlashcardApp() {
             <span>cards completed</span>
           </div>
           <div className="stat">
-            <strong>45s</strong>
-            <span>ideal answer time</span>
+            <strong>{isExam ? "Exam" : "Study"}</strong>
+            <span>current mode</span>
           </div>
           <div className="stat">
-            <strong>5 parts</strong>
-            <span>opener · ideas · example · conclusion</span>
+            <strong>{answerWords}w</strong>
+            <span>target answer length</span>
           </div>
           <div className="stat">
-            <strong>ICAO 5</strong>
-            <span>target structure</span>
+            <strong>{CATEGORIES[card.category]}</strong>
+            <span>current category</span>
           </div>
         </div>
       </section>
 
       <main className="main">
         <aside className="sidebar">
+          <div className="sidebar-head">
+            <h4>Progress by category</h4>
+            <div className="category-progress">
+              {(Object.entries(CATEGORIES) as [Category, string][]).map(([key, label]) => (
+                <div key={key} className="category-row">
+                  <span>{label}</span>
+                  <strong>
+                    {categoryDoneCount(key, done)} / {categoryTotal(key)}
+                  </strong>
+                </div>
+              ))}
+            </div>
+          </div>
           {filtered.length === 0 ? (
             <p>No cards found.</p>
           ) : (
@@ -288,7 +383,10 @@ export default function FlashcardApp() {
                   {c.num}. {c.question}
                 </b>
                 <small>Memory Flow: {c.memory}</small>
-                <span className={`diff ${c.difficulty}`}>{c.difficulty}</span>
+                <div className="list-meta">
+                  <span className="list-tag">{CATEGORIES[c.category]}</span>
+                  <span className={`diff ${c.difficulty}`}>{c.difficulty}</span>
+                </div>
               </button>
             ))
           )}
@@ -302,12 +400,24 @@ export default function FlashcardApp() {
                 <span className={`diff ${card.difficulty}`} style={{ marginLeft: 8 }}>
                   {card.difficulty}
                 </span>
+                <span className="category-badge">{CATEGORIES[card.category]}</span>
               </div>
               <h2 className="question">{card.question}</h2>
-              <div className="memory">
-                🧠 MEMORY FLOW
-                <MemoryFlow memory={card.memory} />
-              </div>
+
+              {!isExam && (
+                <div className="memory">
+                  🧠 MEMORY FLOW
+                  <MemoryFlow memory={card.memory} memoryLabels={card.memoryLabels} expanded />
+                </div>
+              )}
+
+              {isExam && (
+                <div className="exam-banner">
+                  Exam mode active — no hints. Start the timer, answer out loud, mark the checklist,
+                  then reveal the model answer.
+                </div>
+              )}
+
               <div className="timer">
                 <button type="button" className="btn green" onClick={startTimer}>
                   ▶ Start 45s
@@ -324,52 +434,77 @@ export default function FlashcardApp() {
                 </div>
               </div>
               <p className="practice-note">
-                Try to answer before opening the model answer. Your goal is 35–60 seconds. Shortcuts:
-                ← → navigate, Space reveal answer.
+                Target: 35–60 seconds and about {answerWords} words. Shortcuts: ← → navigate, Space
+                reveal answer.
               </p>
             </div>
 
             <div className="card-body">
-              <div className="block blue-b">
-                <h3>🔵 Opener</h3>
-                <p>{card.opener}</p>
-              </div>
-              <div className="block orange-b">
-                <h3>🟠 Numbered Ideas</h3>
-                {card.ideas.map((idea) => (
-                  <IdeaLine key={idea} text={idea} />
+              {!isExam && (
+                <>
+                  <div className="block blue-b">
+                    <h3>🔵 Opener</h3>
+                    <p>{card.opener}</p>
+                  </div>
+                  <div className="block orange-b">
+                    <h3>🟠 Numbered Ideas</h3>
+                    {card.ideas.map((idea) => (
+                      <IdeaLine key={idea} text={idea} />
+                    ))}
+                  </div>
+                  <div className="block purple-b">
+                    <h3>🟣 Example / Contrast</h3>
+                    <p>{card.example}</p>
+                  </div>
+                  <div className="block green-b">
+                    <h3>🟢 Conclusion</h3>
+                    <p>{card.conclusion}</p>
+                  </div>
+                  <div className="two">
+                    <div className="block">
+                      <h3>⭐ Power Verbs</h3>
+                      <div className="chips">
+                        {card.verbs.map((v) => (
+                          <span key={v} className="chip">
+                            {v}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="block">
+                      <h3>⭐ Power Vocabulary</h3>
+                      <div className="chips">
+                        {card.vocab.map((v) => (
+                          <span key={v} className="chip">
+                            {v}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
+
+              <div className="checklist">
+                <h3>✅ Self-check — ICAO 5 structure</h3>
+                {CHECKLIST_ITEMS.map((item, i) => (
+                  <label key={item.id} className={`checklist-item ${checklist[i] ? "checked" : ""}`}>
+                    <input
+                      type="checkbox"
+                      checked={checklist[i]}
+                      onChange={() =>
+                        setChecklist((prev) => prev.map((v, idx) => (idx === i ? !v : v)))
+                      }
+                    />
+                    <span>{item.label}</span>
+                  </label>
                 ))}
-              </div>
-              <div className="block purple-b">
-                <h3>🟣 Example / Contrast</h3>
-                <p>{card.example}</p>
-              </div>
-              <div className="block green-b">
-                <h3>🟢 Conclusion</h3>
-                <p>{card.conclusion}</p>
-              </div>
-              <div className="two">
-                <div className="block">
-                  <h3>⭐ Power Verbs</h3>
-                  <div className="chips">
-                    {card.verbs.map((v) => (
-                      <span key={v} className="chip">
-                        {v}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div className="block">
-                  <h3>⭐ Power Vocabulary</h3>
-                  <div className="chips">
-                    {card.vocab.map((v) => (
-                      <span key={v} className="chip">
-                        {v}
-                      </span>
-                    ))}
-                  </div>
+                <div className="checklist-score">
+                  Structure score: {checklistDone} / {CHECKLIST_ITEMS.length}
+                  {checklistDone === CHECKLIST_ITEMS.length ? " — full ICAO 5!" : ""}
                 </div>
               </div>
+
               <button
                 type="button"
                 className="btn purple"
@@ -379,6 +514,11 @@ export default function FlashcardApp() {
               </button>
               <div className={`answer ${showAnswer ? "show" : ""}`}>
                 <h3>🎤 ICAO 5 MODEL ANSWER</h3>
+                <div className="word-meta">
+                  <span>{answerWords} words</span>
+                  <span>Target: 35–60 seconds</span>
+                  <span>{card.targetWords >= 80 && card.targetWords <= 120 ? "Ideal length" : "Reference length"}</span>
+                </div>
                 <p className="answer-text">{card.answer}</p>
               </div>
               <div className="nav-row">

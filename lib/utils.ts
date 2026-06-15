@@ -10,3 +10,7 @@ export function formatIdea(text: string): { label: string; rest: string } | null
   if (!match) return null;
   return { label: match[1], rest: match[2] };
 }
+
+export function wordCount(text: string): number {
+  return text.trim().split(/\s+/).filter(Boolean).length;
+}
