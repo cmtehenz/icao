@@ -1,9 +1,15 @@
 "use client";
 
 import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import ConnectorsBank from "@/components/ConnectorsBank";
+import Part1Simulator from "@/components/Part1Simulator";
+import PilotProfileModal from "@/components/PilotProfileModal";
 import { CATEGORIES, CHECKLIST_ITEMS, type Category } from "@/lib/categories";
 import { CARDS } from "@/lib/cards";
+import { personalizeCard } from "@/lib/personalize";
+import { DEFAULT_PROFILE, formatFlightHours, loadProfile, type PilotProfile } from "@/lib/profile";
 import type { Card, Difficulty, StudyMode } from "@/lib/types";
+import { isSpeaking, speakText, stopSpeaking } from "@/lib/tts";
 import { formatIdea, parseMemoryFlow, wordCount } from "@/lib/utils";
 
 type FilteredCard = Card & { idx: number };
@@ -13,7 +19,15 @@ const DONE_KEY = "icao_done_v2";
 const THEME_KEY = "icao_theme";
 const MODE_KEY = "icao_mode_v1";
 
-function MemoryFlow({ memory, memoryLabels, expanded }: { memory: string; memoryLabels: string[]; expanded: boolean }) {
+function MemoryFlow({
+  memory,
+  memoryLabels,
+  expanded,
+}: {
+  memory: string;
+  memoryLabels: string[];
+  expanded: boolean;
+}) {
   const parts = parseMemoryFlow(memory);
   return (
     <div className="memory-flow">
@@ -58,6 +72,11 @@ export default function FlashcardApp() {
   const [done, setDone] = useState<string[]>([]);
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const [mode, setMode] = useState<StudyMode>("study");
+  const [profile, setProfile] = useState<PilotProfile>(DEFAULT_PROFILE);
+  const [profileOpen, setProfileOpen] = useState(false);
+  const [connectorsOpen, setConnectorsOpen] = useState(false);
+  const [simulatorActive, setSimulatorActive] = useState(false);
+  const [speaking, setSpeaking] = useState(false);
   const [search, setSearch] = useState("");
   const [difficulty, setDifficulty] = useState<Difficulty | "All">("All");
   const [category, setCategory] = useState<Category | "All">("All");
@@ -96,7 +115,7 @@ export default function FlashcardApp() {
   }, [search, difficulty, category]);
 
   const filteredIndices = useMemo(() => filtered.map((c) => c.idx), [filtered]);
-  const card = CARDS[current];
+  const card = useMemo(() => personalizeCard(CARDS[current], profile), [current, profile]);
   const isCardDone = done.includes(card.num);
   const markDoneLabel = isCardDone ? "↩️ Undo done" : "✅ Mark done";
   const isExam = mode === "exam";
@@ -126,6 +145,8 @@ export default function FlashcardApp() {
 
   const selectCard = useCallback(
     (idx: number) => {
+      stopSpeaking();
+      setSpeaking(false);
       setCurrent(idx);
       setShowAnswer(false);
       resetTimer();
@@ -171,11 +192,22 @@ export default function FlashcardApp() {
     [resetChecklist],
   );
 
+  const toggleSpeak = useCallback(() => {
+    if (speaking || isSpeaking()) {
+      stopSpeaking();
+      setSpeaking(false);
+      return;
+    }
+    const ok = speakText(card.answer, () => setSpeaking(false));
+    if (ok) setSpeaking(true);
+  }, [card.answer, speaking]);
+
   useEffect(() => {
     const storedTheme = localStorage.getItem(THEME_KEY);
     if (storedTheme === "dark" || storedTheme === "light") setTheme(storedTheme);
     const storedMode = localStorage.getItem(MODE_KEY);
     if (storedMode === "study" || storedMode === "exam") setMode(storedMode);
+    setProfile(loadProfile());
     try {
       setDone(JSON.parse(localStorage.getItem(DONE_KEY) || "[]"));
     } catch {
@@ -228,6 +260,7 @@ export default function FlashcardApp() {
 
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
+      if (simulatorActive) return;
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLSelectElement) return;
       if (e.key === "ArrowLeft") {
         e.preventDefault();
@@ -242,13 +275,37 @@ export default function FlashcardApp() {
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [navigateFiltered]);
+  }, [navigateFiltered, simulatorActive]);
 
   const clock = `${String(Math.floor(elapsed / 60)).padStart(2, "0")}:${String(elapsed % 60).padStart(2, "0")}`;
   const progress = Math.min(100, (elapsed / TIMER_SECONDS) * 100);
 
+  if (simulatorActive) {
+    return (
+      <>
+        <div className="header">
+          <div className="wrap controls">
+            <span className="badge">🎯 PART 1 SIMULATOR</span>
+            <button type="button" className="btn secondary" onClick={() => setSimulatorActive(false)}>
+              Exit simulator
+            </button>
+          </div>
+        </div>
+        <Part1Simulator profile={profile} onExit={() => setSimulatorActive(false)} />
+      </>
+    );
+  }
+
   return (
     <>
+      <PilotProfileModal
+        open={profileOpen}
+        profile={profile}
+        onClose={() => setProfileOpen(false)}
+        onSave={setProfile}
+      />
+      <ConnectorsBank open={connectorsOpen} onClose={() => setConnectorsOpen(false)} />
+
       <div className="header">
         <div className="wrap controls">
           <div className="left-controls">
@@ -306,6 +363,15 @@ export default function FlashcardApp() {
             </select>
           </div>
           <div className="right-controls">
+            <button type="button" className="btn secondary" onClick={() => setProfileOpen(true)}>
+              👤 Profile
+            </button>
+            <button type="button" className="btn secondary" onClick={() => setConnectorsOpen(true)}>
+              🔗 Connectors
+            </button>
+            <button type="button" className="btn purple" onClick={() => setSimulatorActive(true)}>
+              🎯 Simulator
+            </button>
             <button type="button" className="btn blue" onClick={randomCard}>
               🎲 Random
             </button>
@@ -331,6 +397,15 @@ export default function FlashcardApp() {
             ? "Exam mode: answer out loud with only the question visible, use the checklist, then reveal the model answer."
             : "Study mode: read the structure, memory flow, vocabulary, then practice with the 45-second timer."}
         </p>
+        <div className="profile-banner">
+          <span>
+            Profile: <strong>{profile.role}</strong> · {profile.aircraft} ·{" "}
+            {formatFlightHours(profile.hours)} hours
+          </span>
+          <button type="button" className="btn secondary" onClick={() => setProfileOpen(true)}>
+            Edit profile
+          </button>
+        </div>
         <div className="stats">
           <div className="stat">
             <strong>
@@ -347,8 +422,8 @@ export default function FlashcardApp() {
             <span>target answer length</span>
           </div>
           <div className="stat">
-            <strong>{CATEGORIES[card.category]}</strong>
-            <span>current category</span>
+            <strong>6Q</strong>
+            <span>simulator session</span>
           </div>
         </div>
       </section>
@@ -505,19 +580,28 @@ export default function FlashcardApp() {
                 </div>
               </div>
 
-              <button
-                type="button"
-                className="btn purple"
-                onClick={() => setShowAnswer((prev) => !prev)}
-              >
-                {showAnswer ? "🎤 Hide ICAO 5 Answer" : "🎤 Show ICAO 5 Answer"}
-              </button>
+              <div className="nav-row">
+                <button
+                  type="button"
+                  className="btn purple"
+                  onClick={() => setShowAnswer((prev) => !prev)}
+                >
+                  {showAnswer ? "🎤 Hide ICAO 5 Answer" : "🎤 Show ICAO 5 Answer"}
+                </button>
+                <button type="button" className="btn secondary" onClick={toggleSpeak}>
+                  {speaking ? "⏹ Stop audio" : "🔊 Listen to answer"}
+                </button>
+              </div>
               <div className={`answer ${showAnswer ? "show" : ""}`}>
                 <h3>🎤 ICAO 5 MODEL ANSWER</h3>
                 <div className="word-meta">
                   <span>{answerWords} words</span>
                   <span>Target: 35–60 seconds</span>
-                  <span>{card.targetWords >= 80 && card.targetWords <= 120 ? "Ideal length" : "Reference length"}</span>
+                  <span>
+                    {card.targetWords >= 80 && card.targetWords <= 120
+                      ? "Ideal length"
+                      : "Reference length"}
+                  </span>
                 </div>
                 <p className="answer-text">{card.answer}</p>
               </div>
