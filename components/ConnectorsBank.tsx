@@ -23,7 +23,8 @@ export default function ConnectorsBank({ open, onClose }: Props) {
       <div className="modal modal-wide" onClick={(e) => e.stopPropagation()}>
         <h2>🔗 Connector Bank</h2>
         <p className="modal-sub">
-          Tap a phrase to copy it. Use these connectors to build natural ICAO 5 answers.
+          Tap a phrase to copy it. Choose a connector style in the header to vary idea 1, 2 and 3
+          across answers.
         </p>
         <div className="connector-grid">
           {CONNECTOR_GROUPS.map((group) => (

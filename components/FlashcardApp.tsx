@@ -6,6 +6,13 @@ import Part1Simulator from "@/components/Part1Simulator";
 import PilotProfileModal from "@/components/PilotProfileModal";
 import { CATEGORIES, CHECKLIST_ITEMS, type Category } from "@/lib/categories";
 import { CARDS } from "@/lib/cards";
+import {
+  CONNECTOR_SETS,
+  loadConnectorSet,
+  resolveConnectorSet,
+  saveConnectorSet,
+  type ConnectorSetId,
+} from "@/lib/connectors";
 import { personalizeCard } from "@/lib/personalize";
 import { DEFAULT_PROFILE, formatFlightHours, loadProfile, type PilotProfile } from "@/lib/profile";
 import type { Card, Difficulty, StudyMode } from "@/lib/types";
@@ -73,6 +80,7 @@ export default function FlashcardApp() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const [mode, setMode] = useState<StudyMode>("study");
   const [profile, setProfile] = useState<PilotProfile>(DEFAULT_PROFILE);
+  const [connectorSet, setConnectorSet] = useState<ConnectorSetId>("classic");
   const [profileOpen, setProfileOpen] = useState(false);
   const [connectorsOpen, setConnectorsOpen] = useState(false);
   const [simulatorActive, setSimulatorActive] = useState(false);
@@ -115,7 +123,11 @@ export default function FlashcardApp() {
   }, [search, difficulty, category]);
 
   const filteredIndices = useMemo(() => filtered.map((c) => c.idx), [filtered]);
-  const card = useMemo(() => personalizeCard(CARDS[current], profile), [current, profile]);
+  const card = useMemo(
+    () => personalizeCard(CARDS[current], profile, connectorSet),
+    [current, profile, connectorSet],
+  );
+  const activeConnectors = resolveConnectorSet(connectorSet, Number.parseInt(card.num, 10) || 0);
   const isCardDone = done.includes(card.num);
   const markDoneLabel = isCardDone ? "↩️ Undo done" : "✅ Mark done";
   const isExam = mode === "exam";
@@ -208,6 +220,7 @@ export default function FlashcardApp() {
     const storedMode = localStorage.getItem(MODE_KEY);
     if (storedMode === "study" || storedMode === "exam") setMode(storedMode);
     setProfile(loadProfile());
+    setConnectorSet(loadConnectorSet());
     try {
       setDone(JSON.parse(localStorage.getItem(DONE_KEY) || "[]"));
     } catch {
@@ -231,6 +244,11 @@ export default function FlashcardApp() {
     if (!hydrated) return;
     localStorage.setItem(DONE_KEY, JSON.stringify(done));
   }, [done, hydrated]);
+
+  useEffect(() => {
+    if (!hydrated) return;
+    saveConnectorSet(connectorSet);
+  }, [connectorSet, hydrated]);
 
   useEffect(() => {
     if (filtered.length && !filtered.some((c) => c.idx === current)) {
@@ -341,6 +359,20 @@ export default function FlashcardApp() {
             />
             <select
               className="select"
+              value={connectorSet}
+              onChange={(e) => setConnectorSet(e.target.value as ConnectorSetId)}
+              title="Vary idea connectors in answers"
+            >
+              <option value="classic">Connectors: Classic</option>
+              {CONNECTOR_SETS.filter((set) => set.id !== "classic").map((set) => (
+                <option key={set.id} value={set.id}>
+                  Connectors: {set.label}
+                </option>
+              ))}
+              <option value="random">Connectors: Random mix</option>
+            </select>
+            <select
+              className="select"
               value={category}
               onChange={(e) => setCategory(e.target.value as Category | "All")}
             >
@@ -391,7 +423,7 @@ export default function FlashcardApp() {
 
       <section className="hero">
         <span className="badge">✈️ ICAO PART 1 MASTER · FLASHCARD APP</span>
-        <h1>42 Questions with ICAO 5 Answers</h1>
+        <h1>{CARDS.length} Questions with ICAO 5 Answers</h1>
         <p className="sub">
           {isExam
             ? "Exam mode: answer out loud with only the question visible, use the checklist, then reveal the model answer."
@@ -476,7 +508,18 @@ export default function FlashcardApp() {
                   {card.difficulty}
                 </span>
                 <span className="category-badge">{CATEGORIES[card.category]}</span>
+                {connectorSet !== "classic" && (
+                  <span className="category-badge" style={{ background: "var(--orange-bg)", color: "var(--orange)" }}>
+                    {activeConnectors.label} connectors
+                  </span>
+                )}
               </div>
+              {connectorSet !== "classic" && (
+                <p className="practice-note" style={{ marginTop: 12 }}>
+                  Ideas use: <strong>{activeConnectors.idea1}</strong> ·{" "}
+                  <strong>{activeConnectors.idea2}</strong> · <strong>{activeConnectors.idea3}</strong>
+                </p>
+              )}
               <h2 className="question">{card.question}</h2>
 
               {!isExam && (

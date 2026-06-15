@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { CHECKLIST_ITEMS } from "@/lib/categories";
 import { CARDS } from "@/lib/cards";
+import { loadConnectorSet } from "@/lib/connectors";
 import { personalizeCard } from "@/lib/personalize";
 import type { PilotProfile } from "@/lib/profile";
 import { isSpeaking, speakText, stopSpeaking } from "@/lib/tts";
@@ -44,9 +45,10 @@ export default function Part1Simulator({ profile, onExit }: Props) {
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const cardIdx = queue[step];
+  const connectorSet = loadConnectorSet();
   const card = useMemo(
-    () => personalizeCard(CARDS[cardIdx], profile),
-    [cardIdx, profile],
+    () => personalizeCard(CARDS[cardIdx], profile, connectorSet),
+    [cardIdx, profile, connectorSet],
   );
   const checklistDone = checklist.filter(Boolean).length;
 

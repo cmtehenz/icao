@@ -1,4 +1,5 @@
 export const CATEGORIES = {
+  helicopter: "Helicopter",
   personal: "Personal",
   safety_crm: "Safety & CRM",
   procedures: "Procedures",
@@ -7,6 +8,10 @@ export const CATEGORIES = {
   future: "Future",
   general: "General",
 } as const;
+
+export const HELICOPTER_CARD_NUMS = [
+  "03", "11", "31", "32", "33", "34", "35", "36", "37", "38", "43",
+] as const;
 
 export type Category = keyof typeof CATEGORIES;
 

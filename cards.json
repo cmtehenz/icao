@@ -83,16 +83,16 @@
   },
   {
     "num": "03",
-    "question": "Why is it important for pilots to perform regular health checks?",
+    "question": "Why do pilots need to take medical exams?",
     "memory": "H-M-S",
-    "opener": "In my opinion, performing regular health checks is extremely important for pilots.",
+    "opener": "In my opinion, medical exams are extremely important for helicopter pilots.",
     "ideas": [
-      "1 - PHYSICAL HEALTH: First of all, health checks help identify medical conditions at an early stage and prevent incidents.",
-      "2 - MENTAL HEALTH: Additionally, they help monitor stress, fatigue and mental well-being.",
-      "3 - FLIGHT SAFETY: Finally, they ensure pilots are fit to fly and able to perform their duties safely."
+      "1 - PHYSICAL HEALTH: First of all, they help identify medical conditions early and keep pilots fit for demanding helicopter operations.",
+      "2 - MENTAL HEALTH: Additionally, they help monitor stress, fatigue and concentration, which are critical in single-pilot helicopter flights.",
+      "3 - FLIGHT SAFETY: Finally, they ensure the pilot is medically fit to manage hover, low-level flying and high workload safely."
     ],
-    "example": "For example, a pilot suffering from fatigue may have slower reactions and poorer decision making.",
-    "conclusion": "Overall, regular health checks improve performance, reduce risks and enhance flight safety.",
+    "example": "For example, a pilot with undetected fatigue or balance problems may have slower reactions during approach and landing to a confined helipad.",
+    "conclusion": "Overall, regular medical exams protect the pilot, passengers and flight safety in helicopter operations.",
     "verbs": [
       "perform",
       "identify",
@@ -101,25 +101,26 @@
       "ensure"
     ],
     "vocab": [
-      "health checks",
+      "medical exams",
       "fatigue",
-      "stress",
-      "medical conditions",
-      "fit to fly"
+      "fit to fly",
+      "helicopter operations",
+      "flight safety"
     ],
-    "answer": "In my opinion, performing regular health checks is extremely important for pilots. 1 - PHYSICAL HEALTH: First of all, health checks help identify medical conditions at an early stage and prevent incidents. 2 - MENTAL HEALTH: Additionally, they help monitor stress, fatigue and mental well-being. 3 - FLIGHT SAFETY: Finally, they ensure pilots are fit to fly and able to perform their duties safely. For example, a pilot suffering from fatigue may have slower reactions and poorer decision making. Overall, regular health checks improve performance, reduce risks and enhance flight safety.",
+    "answer": "In my opinion, medical exams are extremely important for helicopter pilots. 1 - PHYSICAL HEALTH: First of all, they help identify medical conditions early and keep pilots fit for demanding helicopter operations. 2 - MENTAL HEALTH: Additionally, they help monitor stress, fatigue and concentration, which are critical in single-pilot helicopter flights. 3 - FLIGHT SAFETY: Finally, they ensure the pilot is medically fit to manage hover, low-level flying and high workload safely. For example, a pilot with undetected fatigue or balance problems may have slower reactions during approach and landing to a confined helipad. Overall, regular medical exams protect the pilot, passengers and flight safety in helicopter operations.",
     "difficulty": "Easy",
-    "category": "safety_crm",
+    "category": "helicopter",
     "tags": [
-      "safety crm",
-      "easy"
+      "helicopter",
+      "easy",
+      "helicopter"
     ],
     "memoryLabels": [
       "PHYSICAL HEALTH",
       "MENTAL HEALTH",
       "FLIGHT SAFETY"
     ],
-    "targetWords": 91
+    "targetWords": 108
   },
   {
     "num": "04",
@@ -408,43 +409,44 @@
   },
   {
     "num": "11",
-    "question": "How did you become interested in flying?",
+    "question": "How did you become interested in aviation?",
     "memory": "C-I-P",
-    "opener": "I became interested in flying because aviation has always caught my attention.",
+    "opener": "I became interested in aviation because helicopters and aircraft have always caught my attention.",
     "ideas": [
-      "1 - CHILDHOOD: First of all, when I was younger, I used to admire aircraft and the way pilots operated them.",
-      "2 - INSPIRATION: Additionally, I was fascinated by the discipline, technology and responsibility involved in flying.",
-      "3 - PROFESSION: Finally, over time, that interest became a real professional goal."
+      "1 - CHILDHOOD: First of all, when I was younger, I used to admire helicopters and the way pilots operated them with precision.",
+      "2 - INSPIRATION: Additionally, I was fascinated by the responsibility, technology and freedom involved in rotary-wing flying.",
+      "3 - PROFESSION: Finally, over time, that interest became a real goal to become a professional helicopter pilot."
     ],
-    "example": "For example, every time I saw an aircraft taking off, I wanted to understand how pilots managed the flight.",
-    "conclusion": "Overall, my interest in flying started as curiosity and became a lifelong career.",
+    "example": "For example, every time I saw a helicopter taking off vertically, I wanted to understand how pilots managed control, power and situational awareness.",
+    "conclusion": "Overall, my interest in aviation started as curiosity and became a lifelong helicopter career.",
     "verbs": [
       "become",
-      "watch",
+      "admire",
       "learn",
       "develop",
       "choose"
     ],
     "vocab": [
-      "interest",
       "aviation",
-      "aircraft",
-      "airport",
+      "helicopters",
+      "rotary-wing",
+      "interest",
       "career"
     ],
-    "answer": "I became interested in flying because aviation has always caught my attention. 1 - CHILDHOOD: First of all, when I was younger, I used to admire aircraft and the way pilots operated them. 2 - INSPIRATION: Additionally, I was fascinated by the discipline, technology and responsibility involved in flying. 3 - PROFESSION: Finally, over time, that interest became a real professional goal. For example, every time I saw an aircraft taking off, I wanted to understand how pilots managed the flight. Overall, my interest in flying started as curiosity and became a lifelong career.",
+    "answer": "I became interested in aviation because helicopters and aircraft have always caught my attention. 1 - CHILDHOOD: First of all, when I was younger, I used to admire helicopters and the way pilots operated them with precision. 2 - INSPIRATION: Additionally, I was fascinated by the responsibility, technology and freedom involved in rotary-wing flying. 3 - PROFESSION: Finally, over time, that interest became a real goal to become a professional helicopter pilot. For example, every time I saw a helicopter taking off vertically, I wanted to understand how pilots managed control, power and situational awareness. Overall, my interest in aviation started as curiosity and became a lifelong helicopter career.",
     "difficulty": "Easy",
-    "category": "personal",
+    "category": "helicopter",
     "tags": [
-      "personal",
-      "easy"
+      "helicopter",
+      "easy",
+      "helicopter"
     ],
     "memoryLabels": [
       "CHILDHOOD",
       "INSPIRATION",
       "PROFESSION"
     ],
-    "targetWords": 94
+    "targetWords": 109
   },
   {
     "num": "12",
@@ -1218,14 +1220,14 @@
     "num": "31",
     "question": "In your opinion, what makes a briefing effective?",
     "memory": "Information → Risk Awareness → Team Coordination",
-    "opener": "In my opinion, an effective briefing is clear, complete and focused on safety.",
+    "opener": "In my opinion, an effective helicopter briefing is clear, complete and focused on safety.",
     "ideas": [
-      "1 - INFORMATION: First of all, it must include all relevant information, such as weather, aircraft status, route, passengers and operational limitations.",
-      "2 - RISK AWARENESS: Additionally, it should anticipate risks and discuss abnormal or emergency procedures before the flight.",
-      "3 - TEAM COORDINATION: Finally, it aligns the crew and gives everyone the opportunity to clarify doubts."
+      "1 - INFORMATION: First of all, it must include weather, wind, landing site conditions, aircraft status, fuel, passengers and route limitations.",
+      "2 - RISK AWARENESS: Additionally, it should discuss power margins, obstacles, emergency landing areas and abnormal procedures before departure.",
+      "3 - TEAM COORDINATION: Finally, it aligns the crew and gives everyone the chance to clarify doubts before helicopter operations."
     ],
-    "example": "For example, if bad weather is expected, the crew should discuss alternates, decision points and communication before departure.",
-    "conclusion": "Overall, an effective briefing improves coordination, reduces uncertainty and enhances flight safety.",
+    "example": "For example, if wind or visibility may affect the landing site, the crew should discuss alternate options and decision points before takeoff.",
+    "conclusion": "Overall, an effective briefing improves coordination, reduces uncertainty and enhances helicopter flight safety.",
     "verbs": [
       "brief",
       "clarify",
@@ -1235,39 +1237,38 @@
     ],
     "vocab": [
       "briefing",
+      "landing site",
       "weather",
-      "aircraft status",
-      "risks",
-      "crew coordination"
+      "power margin",
+      "helicopter"
     ],
-    "answer": "In my opinion, an effective briefing is clear, complete and focused on safety. 1 - INFORMATION: First of all, it must include all relevant information, such as weather, aircraft status, route, passengers and operational limitations. 2 - RISK AWARENESS: Additionally, it should anticipate risks and discuss abnormal or emergency procedures before the flight. 3 - TEAM COORDINATION: Finally, it aligns the crew and gives everyone the opportunity to clarify doubts. For example, if bad weather is expected, the crew should discuss alternates, decision points and communication before departure. Overall, an effective briefing improves coordination, reduces uncertainty and enhances flight safety.",
+    "answer": "In my opinion, an effective helicopter briefing is clear, complete and focused on safety. 1 - INFORMATION: First of all, it must include weather, wind, landing site conditions, aircraft status, fuel, passengers and route limitations. 2 - RISK AWARENESS: Additionally, it should discuss power margins, obstacles, emergency landing areas and abnormal procedures before departure. 3 - TEAM COORDINATION: Finally, it aligns the crew and gives everyone the chance to clarify doubts before helicopter operations. For example, if wind or visibility may affect the landing site, the crew should discuss alternate options and decision points before takeoff. Overall, an effective briefing improves coordination, reduces uncertainty and enhances helicopter flight safety.",
     "difficulty": "Easy",
-    "category": "personal",
+    "category": "helicopter",
     "tags": [
-      "personal",
+      "helicopter",
       "easy",
-      "weather",
-      "communication"
+      "helicopter"
     ],
     "memoryLabels": [
       "Information",
       "Risk Awareness",
       "Team Coordination"
     ],
-    "targetWords": 100
+    "targetWords": 109
   },
   {
     "num": "32",
     "question": "What was the most difficult situation you have had in a flight?",
     "memory": "Situation → Actions → Lesson",
-    "opener": "One of the most difficult situations I have had in flight was related to weather deterioration.",
+    "opener": "One of the most difficult situations I have had in helicopter flight was related to weather and visibility near the landing site.",
     "ideas": [
-      "1 - SITUATION: First of all, the visibility started to decrease and the workload increased very quickly.",
-      "2 - ACTIONS: Additionally, I had to stay calm, communicate clearly, monitor the aircraft and choose the safest option.",
-      "3 - LESSON: Finally, that experience taught me the importance of preparation, discipline and conservative decision making."
+      "1 - SITUATION: First of all, the visibility started to decrease and the workload increased quickly during the final phase of flight.",
+      "2 - ACTIONS: Additionally, I had to stay calm, monitor power and wind, communicate clearly and choose the safest option.",
+      "3 - LESSON: Finally, that experience reinforced the importance of preparation, conservative decisions and knowing when to divert."
     ],
-    "example": "For example, instead of trying to continue under pressure, a pilot should always be ready to delay, divert or return if safety is affected.",
-    "conclusion": "Overall, difficult situations are challenging, but they help pilots become more professional and safety-oriented.",
+    "example": "For example, instead of forcing a landing in deteriorating conditions, a helicopter pilot should be ready to delay, divert or return to a safer area.",
+    "conclusion": "Overall, difficult situations are challenging, but they help helicopter pilots become more disciplined and safety-oriented.",
     "verbs": [
       "face",
       "manage",
@@ -1277,38 +1278,38 @@
     ],
     "vocab": [
       "difficult situation",
-      "weather",
+      "visibility",
+      "landing site",
       "workload",
-      "decision making",
-      "lesson learned"
+      "divert"
     ],
-    "answer": "One of the most difficult situations I have had in flight was related to weather deterioration. 1 - SITUATION: First of all, the visibility started to decrease and the workload increased very quickly. 2 - ACTIONS: Additionally, I had to stay calm, communicate clearly, monitor the aircraft and choose the safest option. 3 - LESSON: Finally, that experience taught me the importance of preparation, discipline and conservative decision making. For example, instead of trying to continue under pressure, a pilot should always be ready to delay, divert or return if safety is affected. Overall, difficult situations are challenging, but they help pilots become more professional and safety-oriented.",
+    "answer": "One of the most difficult situations I have had in helicopter flight was related to weather and visibility near the landing site. 1 - SITUATION: First of all, the visibility started to decrease and the workload increased quickly during the final phase of flight. 2 - ACTIONS: Additionally, I had to stay calm, monitor power and wind, communicate clearly and choose the safest option. 3 - LESSON: Finally, that experience reinforced the importance of preparation, conservative decisions and knowing when to divert. For example, instead of forcing a landing in deteriorating conditions, a helicopter pilot should be ready to delay, divert or return to a safer area. Overall, difficult situations are challenging, but they help helicopter pilots become more disciplined and safety-oriented.",
     "difficulty": "Hard",
-    "category": "personal",
+    "category": "helicopter",
     "tags": [
-      "personal",
+      "helicopter",
       "hard",
-      "weather"
+      "helicopter"
     ],
     "memoryLabels": [
       "Situation",
       "Actions",
       "Lesson"
     ],
-    "targetWords": 107
+    "targetWords": 122
   },
   {
     "num": "33",
     "question": "What advice did your instructor give you before your first check ride?",
     "memory": "Preparation → Calmness → Safety",
-    "opener": "Before my first check ride, my instructor gave me advice that I still remember today.",
+    "opener": "Before my first helicopter check ride, my instructor gave me advice that I still remember today.",
     "ideas": [
-      "1 - PREPARATION: First of all, he told me to prepare well, review the procedures and know the aircraft limitations.",
-      "2 - CALMNESS: Additionally, he advised me to stay calm and trust the training I had already received.",
-      "3 - SAFETY: Finally, he said that safety and good judgment were more important than trying to be perfect."
+      "1 - PREPARATION: First of all, he told me to review procedures, performance limits and emergency actions for the helicopter.",
+      "2 - CALMNESS: Additionally, he advised me to stay calm during hover, transitions and maneuvering under evaluation.",
+      "3 - SAFETY: Finally, he said that safety and good judgment were more important than trying to look perfect."
     ],
-    "example": "For example, if something did not go exactly as planned, I should communicate, correct the situation and keep flying safely.",
-    "conclusion": "Overall, his advice helped me understand that a good pilot is prepared, calm and focused on safety.",
+    "example": "For example, if a maneuver did not go exactly as planned, I should correct it calmly, communicate and keep flying safely.",
+    "conclusion": "Overall, his advice helped me understand that a good helicopter pilot is prepared, calm and focused on safety.",
     "verbs": [
       "prepare",
       "trust",
@@ -1319,36 +1320,37 @@
     "vocab": [
       "check ride",
       "instructor",
-      "confidence",
+      "hover",
       "procedures",
       "safety"
     ],
-    "answer": "Before my first check ride, my instructor gave me advice that I still remember today. 1 - PREPARATION: First of all, he told me to prepare well, review the procedures and know the aircraft limitations. 2 - CALMNESS: Additionally, he advised me to stay calm and trust the training I had already received. 3 - SAFETY: Finally, he said that safety and good judgment were more important than trying to be perfect. For example, if something did not go exactly as planned, I should communicate, correct the situation and keep flying safely. Overall, his advice helped me understand that a good pilot is prepared, calm and focused on safety.",
+    "answer": "Before my first helicopter check ride, my instructor gave me advice that I still remember today. 1 - PREPARATION: First of all, he told me to review procedures, performance limits and emergency actions for the helicopter. 2 - CALMNESS: Additionally, he advised me to stay calm during hover, transitions and maneuvering under evaluation. 3 - SAFETY: Finally, he said that safety and good judgment were more important than trying to look perfect. For example, if a maneuver did not go exactly as planned, I should correct it calmly, communicate and keep flying safely. Overall, his advice helped me understand that a good helicopter pilot is prepared, calm and focused on safety.",
     "difficulty": "Easy",
-    "category": "personal",
+    "category": "helicopter",
     "tags": [
-      "personal",
-      "easy"
+      "helicopter",
+      "easy",
+      "helicopter"
     ],
     "memoryLabels": [
       "Preparation",
       "Calmness",
       "Safety"
     ],
-    "targetWords": 109
+    "targetWords": 111
   },
   {
     "num": "34",
     "question": "What will communications between pilots and ATC be like in ten years?",
     "memory": "Technology → Clarity → Safety",
-    "opener": "In my opinion, communication between pilots and ATC will become more technological in the next ten years.",
+    "opener": "In my opinion, communication between helicopter pilots and ATC will become more technological in the next ten years.",
     "ideas": [
-      "1 - TECHNOLOGY: First of all, digital communication systems may become more common and reduce radio congestion.",
+      "1 - TECHNOLOGY: First of all, digital systems and better surveillance may improve coordination for helicopters and helipad operations.",
       "2 - CLARITY: Additionally, standard phraseology will still be essential because pilots and controllers need clear and fast communication.",
-      "3 - SAFETY: Finally, technology may help reduce misunderstandings and improve situational awareness."
+      "3 - SAFETY: Finally, technology may reduce misunderstandings during busy airspace and low-level helicopter operations."
     ],
-    "example": "For example, some clearances may be sent digitally, but pilots will still need to confirm, understand and act correctly.",
-    "conclusion": "Overall, ATC communication will probably become more advanced, but clarity and discipline will remain essential.",
+    "example": "For example, digital clearances and better helipad information may help, but pilots will still need to read back and confirm instructions correctly.",
+    "conclusion": "Overall, ATC communication will become more advanced, but clarity and discipline will remain essential for helicopter pilots.",
     "verbs": [
       "change",
       "support",
@@ -1358,38 +1360,38 @@
     ],
     "vocab": [
       "ATC",
-      "communication",
-      "technology",
+      "helicopter",
       "phraseology",
-      "safety"
-    ],
-    "answer": "In my opinion, communication between pilots and ATC will become more technological in the next ten years. 1 - TECHNOLOGY: First of all, digital communication systems may become more common and reduce radio congestion. 2 - CLARITY: Additionally, standard phraseology will still be essential because pilots and controllers need clear and fast communication. 3 - SAFETY: Finally, technology may help reduce misunderstandings and improve situational awareness. For example, some clearances may be sent digitally, but pilots will still need to confirm, understand and act correctly. Overall, ATC communication will probably become more advanced, but clarity and discipline will remain essential.",
-    "difficulty": "Medium",
-    "category": "future",
-    "tags": [
-      "future",
-      "medium",
+      "helipad",
       "communication"
+    ],
+    "answer": "In my opinion, communication between helicopter pilots and ATC will become more technological in the next ten years. 1 - TECHNOLOGY: First of all, digital systems and better surveillance may improve coordination for helicopters and helipad operations. 2 - CLARITY: Additionally, standard phraseology will still be essential because pilots and controllers need clear and fast communication. 3 - SAFETY: Finally, technology may reduce misunderstandings during busy airspace and low-level helicopter operations. For example, digital clearances and better helipad information may help, but pilots will still need to read back and confirm instructions correctly. Overall, ATC communication will become more advanced, but clarity and discipline will remain essential for helicopter pilots.",
+    "difficulty": "Medium",
+    "category": "helicopter",
+    "tags": [
+      "helicopter",
+      "medium",
+      "helicopter"
     ],
     "memoryLabels": [
       "Technology",
       "Clarity",
       "Safety"
     ],
-    "targetWords": 100
+    "targetWords": 110
   },
   {
     "num": "35",
     "question": "Why is the use of ICAO phraseology important?",
     "memory": "Standardization → Communication → Safety",
-    "opener": "In my opinion, ICAO phraseology is essential because aviation is an international environment.",
+    "opener": "In my opinion, ICAO phraseology is essential because helicopter operations also depend on clear communication.",
     "ideas": [
       "1 - STANDARDIZATION: First of all, it creates a standard language that pilots and controllers can understand worldwide.",
-      "2 - COMMUNICATION: Additionally, it makes communication shorter, clearer and more objective, especially during high workload.",
-      "3 - SAFETY: Finally, it reduces misunderstandings and helps prevent incidents and accidents."
+      "2 - COMMUNICATION: Additionally, it makes radio calls shorter, clearer and more objective, especially during high workload in the cockpit.",
+      "3 - SAFETY: Finally, it reduces misunderstandings during hover, departure, approach and emergency situations."
     ],
-    "example": "For example, during an emergency, there is no time for long explanations, so standard phraseology helps everyone understand the situation quickly.",
-    "conclusion": "Overall, ICAO phraseology improves communication, reduces confusion and plays a crucial role in flight safety.",
+    "example": "For example, during an emergency in a busy area, standard phraseology helps ATC understand the helicopter position and intention quickly.",
+    "conclusion": "Overall, ICAO phraseology improves communication, reduces confusion and plays a crucial role in helicopter flight safety.",
     "verbs": [
       "standardize",
       "clarify",
@@ -1399,78 +1401,79 @@
     ],
     "vocab": [
       "ICAO phraseology",
-      "standardization",
-      "misunderstanding",
       "ATC",
+      "helicopter",
+      "communication",
       "flight safety"
     ],
-    "answer": "In my opinion, ICAO phraseology is essential because aviation is an international environment. 1 - STANDARDIZATION: First of all, it creates a standard language that pilots and controllers can understand worldwide. 2 - COMMUNICATION: Additionally, it makes communication shorter, clearer and more objective, especially during high workload. 3 - SAFETY: Finally, it reduces misunderstandings and helps prevent incidents and accidents. For example, during an emergency, there is no time for long explanations, so standard phraseology helps everyone understand the situation quickly. Overall, ICAO phraseology improves communication, reduces confusion and plays a crucial role in flight safety.",
+    "answer": "In my opinion, ICAO phraseology is essential because helicopter operations also depend on clear communication. 1 - STANDARDIZATION: First of all, it creates a standard language that pilots and controllers can understand worldwide. 2 - COMMUNICATION: Additionally, it makes radio calls shorter, clearer and more objective, especially during high workload in the cockpit. 3 - SAFETY: Finally, it reduces misunderstandings during hover, departure, approach and emergency situations. For example, during an emergency in a busy area, standard phraseology helps ATC understand the helicopter position and intention quickly. Overall, ICAO phraseology improves communication, reduces confusion and plays a crucial role in helicopter flight safety.",
     "difficulty": "Medium",
-    "category": "safety_crm",
+    "category": "helicopter",
     "tags": [
-      "safety crm",
+      "helicopter",
       "medium",
-      "communication"
+      "helicopter"
     ],
     "memoryLabels": [
       "Standardization",
       "Communication",
       "Safety"
     ],
-    "targetWords": 96
+    "targetWords": 103
   },
   {
     "num": "36",
     "question": "When should a pilot perform a missed approach procedure?",
     "memory": "Unstable → Weather → Safety",
-    "opener": "A pilot should perform a missed approach whenever the landing cannot be continued safely.",
+    "opener": "In helicopter operations, a pilot should discontinue the approach whenever the landing cannot be continued safely.",
     "ideas": [
-      "1 - UNSTABLE APPROACH: First of all, if the aircraft is not stabilized on final, the safest decision is to go around.",
-      "2 - WEATHER: Additionally, poor visibility, windshear or runway obstruction may require a missed approach.",
-      "3 - SAFETY: Finally, pilots should never force a landing just because they are close to the runway."
+      "1 - UNSTABLE APPROACH: First of all, if the approach is unstable, speed, alignment or power are not correct, the safest decision is to go around.",
+      "2 - WEATHER: Additionally, poor visibility, strong wind or an obscured landing site may require a missed approach.",
+      "3 - SAFETY: Finally, pilots should never force a landing just because they are close to the landing area."
     ],
-    "example": "For example, if the approach speed is too high or the aircraft is not correctly aligned, the pilot should discontinue the approach.",
-    "conclusion": "Overall, a missed approach is not a failure; it is a safe and professional decision.",
+    "example": "For example, if the landing site is blocked, power margin is insufficient or the approach becomes unstable, the pilot should climb away and reassess.",
+    "conclusion": "Overall, a missed approach is not a failure; it is a safe and professional decision in helicopter operations.",
     "verbs": [
       "perform",
       "continue",
       "go around",
       "assess",
-      "stabilize"
+      "discontinue"
     ],
     "vocab": [
       "missed approach",
-      "unstable approach",
-      "weather",
-      "runway",
+      "landing site",
+      "power margin",
+      "visibility",
       "safety"
     ],
-    "answer": "A pilot should perform a missed approach whenever the landing cannot be continued safely. 1 - UNSTABLE APPROACH: First of all, if the aircraft is not stabilized on final, the safest decision is to go around. 2 - WEATHER: Additionally, poor visibility, windshear or runway obstruction may require a missed approach. 3 - SAFETY: Finally, pilots should never force a landing just because they are close to the runway. For example, if the approach speed is too high or the aircraft is not correctly aligned, the pilot should discontinue the approach. Overall, a missed approach is not a failure; it is a safe and professional decision.",
+    "answer": "In helicopter operations, a pilot should discontinue the approach whenever the landing cannot be continued safely. 1 - UNSTABLE APPROACH: First of all, if the approach is unstable, speed, alignment or power are not correct, the safest decision is to go around. 2 - WEATHER: Additionally, poor visibility, strong wind or an obscured landing site may require a missed approach. 3 - SAFETY: Finally, pilots should never force a landing just because they are close to the landing area. For example, if the landing site is blocked, power margin is insufficient or the approach becomes unstable, the pilot should climb away and reassess. Overall, a missed approach is not a failure; it is a safe and professional decision in helicopter operations.",
     "difficulty": "Hard",
-    "category": "procedures",
+    "category": "helicopter",
     "tags": [
-      "procedures",
-      "hard"
+      "helicopter",
+      "hard",
+      "helicopter"
     ],
     "memoryLabels": [
       "Unstable",
       "Weather",
       "Safety"
     ],
-    "targetWords": 106
+    "targetWords": 121
   },
   {
     "num": "37",
     "question": "How does a flight simulator help a pilot train for emergencies?",
     "memory": "Practice → Emergency → Decision Making",
-    "opener": "In my opinion, a flight simulator is one of the best tools for emergency training.",
+    "opener": "In my opinion, a helicopter flight simulator is one of the best tools for emergency training.",
     "ideas": [
       "1 - PRACTICE: First of all, it allows pilots to practice abnormal situations without putting anyone at risk.",
-      "2 - EMERGENCY: Additionally, pilots can train engine failures, bad weather, system malfunctions and emergency procedures.",
+      "2 - EMERGENCY: Additionally, pilots can train engine failure, hydraulics off, bad weather and emergency landing procedures.",
       "3 - DECISION MAKING: Finally, simulators improve reaction time, confidence and decision making under pressure."
     ],
-    "example": "For example, a pilot can practice an engine failure after takeoff several times until the correct response becomes more natural.",
-    "conclusion": "Overall, simulator training improves preparation, reduces stress and enhances flight safety.",
+    "example": "For example, a pilot can practice autorotation and engine failure after takeoff several times until the correct response becomes more natural.",
+    "conclusion": "Overall, helicopter simulator training improves preparation, reduces stress and enhances flight safety.",
     "verbs": [
       "train",
       "practice",
@@ -1480,65 +1483,66 @@
     ],
     "vocab": [
       "flight simulator",
-      "emergency training",
+      "autorotation",
       "engine failure",
-      "decision making",
-      "confidence"
+      "emergency training",
+      "decision making"
     ],
-    "answer": "In my opinion, a flight simulator is one of the best tools for emergency training. 1 - PRACTICE: First of all, it allows pilots to practice abnormal situations without putting anyone at risk. 2 - EMERGENCY: Additionally, pilots can train engine failures, bad weather, system malfunctions and emergency procedures. 3 - DECISION MAKING: Finally, simulators improve reaction time, confidence and decision making under pressure. For example, a pilot can practice an engine failure after takeoff several times until the correct response becomes more natural. Overall, simulator training improves preparation, reduces stress and enhances flight safety.",
+    "answer": "In my opinion, a helicopter flight simulator is one of the best tools for emergency training. 1 - PRACTICE: First of all, it allows pilots to practice abnormal situations without putting anyone at risk. 2 - EMERGENCY: Additionally, pilots can train engine failure, hydraulics off, bad weather and emergency landing procedures. 3 - DECISION MAKING: Finally, simulators improve reaction time, confidence and decision making under pressure. For example, a pilot can practice autorotation and engine failure after takeoff several times until the correct response becomes more natural. Overall, helicopter simulator training improves preparation, reduces stress and enhances flight safety.",
     "difficulty": "Hard",
-    "category": "safety_crm",
+    "category": "helicopter",
     "tags": [
-      "safety crm",
+      "helicopter",
       "hard",
-      "weather"
+      "helicopter"
     ],
     "memoryLabels": [
       "Practice",
       "Emergency",
       "Decision Making"
     ],
-    "targetWords": 95
+    "targetWords": 99
   },
   {
     "num": "38",
     "question": "How do you think Brazilian aviation will change in the near future?",
     "memory": "Technology → Growth → Safety",
-    "opener": "From my point of view, Brazilian aviation will continue to grow and modernize in the near future.",
+    "opener": "From my point of view, Brazilian aviation, especially helicopter operations, will continue to grow and modernize.",
     "ideas": [
-      "1 - TECHNOLOGY: First of all, aircraft, airports and navigation systems will become more technological.",
-      "2 - GROWTH: Additionally, regional aviation may expand because Brazil is a large country and air transportation is very important.",
-      "3 - SAFETY: Finally, training, regulation and safety culture will probably continue to improve."
+      "1 - TECHNOLOGY: First of all, helicopters, helipads and navigation systems will become more technological and connected.",
+      "2 - GROWTH: Additionally, regional and offshore helicopter operations may expand because Brazil is a large country with diverse missions.",
+      "3 - SAFETY: Finally, training, regulation and safety culture in rotary-wing aviation will probably continue to improve."
     ],
-    "example": "For example, better infrastructure and more efficient aircraft can connect smaller cities and reduce travel time.",
-    "conclusion": "Overall, I believe Brazilian aviation has a strong future, especially if technology and safety keep improving together.",
+    "example": "For example, better helipad infrastructure and more modern helicopters can support offshore, HEMS and executive operations more safely.",
+    "conclusion": "Overall, I believe Brazilian helicopter aviation has a strong future if technology and safety continue improving together.",
     "verbs": [
       "grow",
       "modernize",
       "improve",
-      "connect",
+      "expand",
       "develop"
     ],
     "vocab": [
       "Brazilian aviation",
-      "technology",
-      "growth",
-      "regional aviation",
-      "safety"
+      "helicopter",
+      "offshore",
+      "HEMS",
+      "helipad"
     ],
-    "answer": "From my point of view, Brazilian aviation will continue to grow and modernize in the near future. 1 - TECHNOLOGY: First of all, aircraft, airports and navigation systems will become more technological. 2 - GROWTH: Additionally, regional aviation may expand because Brazil is a large country and air transportation is very important. 3 - SAFETY: Finally, training, regulation and safety culture will probably continue to improve. For example, better infrastructure and more efficient aircraft can connect smaller cities and reduce travel time. Overall, I believe Brazilian aviation has a strong future, especially if technology and safety keep improving together.",
+    "answer": "From my point of view, Brazilian aviation, especially helicopter operations, will continue to grow and modernize. 1 - TECHNOLOGY: First of all, helicopters, helipads and navigation systems will become more technological and connected. 2 - GROWTH: Additionally, regional and offshore helicopter operations may expand because Brazil is a large country with diverse missions. 3 - SAFETY: Finally, training, regulation and safety culture in rotary-wing aviation will probably continue to improve. For example, better helipad infrastructure and more modern helicopters can support offshore, HEMS and executive operations more safely. Overall, I believe Brazilian helicopter aviation has a strong future if technology and safety continue improving together.",
     "difficulty": "Medium",
-    "category": "personal",
+    "category": "helicopter",
     "tags": [
-      "personal",
-      "medium"
+      "helicopter",
+      "medium",
+      "helicopter"
     ],
     "memoryLabels": [
       "Technology",
       "Growth",
       "Safety"
     ],
-    "targetWords": 99
+    "targetWords": 105
   },
   {
     "num": "39",
@@ -1702,5 +1706,45 @@
       "Safety"
     ],
     "targetWords": 90
+  },
+  {
+    "num": "43",
+    "question": "What were the best pieces of advice your instructor gave you?",
+    "memory": "Discipline → Limits → Safety",
+    "opener": "During my helicopter training, my instructor gave me several pieces of advice that I still follow today.",
+    "ideas": [
+      "1 - DISCIPLINE: First of all, he told me to respect procedures, checklists and standard calls in every phase of flight.",
+      "2 - LIMITS: Additionally, he advised me to know the aircraft limits, especially power, weight and weather limitations.",
+      "3 - SAFETY: Finally, he said that safety and good judgment are always more important than speed or ego."
+    ],
+    "example": "For example, he always told me not to rush a hover or landing just because someone was waiting on the ground.",
+    "conclusion": "Overall, the best advice was to stay disciplined, know my limits and make conservative decisions as a helicopter pilot.",
+    "verbs": [
+      "respect",
+      "know",
+      "follow",
+      "decide",
+      "learn"
+    ],
+    "vocab": [
+      "instructor",
+      "discipline",
+      "limits",
+      "hover",
+      "safety"
+    ],
+    "difficulty": "Easy",
+    "answer": "During my helicopter training, my instructor gave me several pieces of advice that I still follow today. 1 - DISCIPLINE: First of all, he told me to respect procedures, checklists and standard calls in every phase of flight. 2 - LIMITS: Additionally, he advised me to know the aircraft limits, especially power, weight and weather limitations. 3 - SAFETY: Finally, he said that safety and good judgment are always more important than speed or ego. For example, he always told me not to rush a hover or landing just because someone was waiting on the ground. Overall, the best advice was to stay disciplined, know my limits and make conservative decisions as a helicopter pilot.",
+    "targetWords": 115,
+    "category": "helicopter",
+    "tags": [
+      "helicopter",
+      "easy"
+    ],
+    "memoryLabels": [
+      "Discipline",
+      "Limits",
+      "Safety"
+    ]
   }
 ]

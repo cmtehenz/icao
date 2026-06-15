@@ -1,17 +1,27 @@
+import { applyConnectorSet, type ConnectorSetId } from "./connectors";
 import type { Card } from "./types";
 import { applyProfile, type PilotProfile } from "./profile";
 import { wordCount } from "./utils";
 
-export function personalizeCard(card: Card, profile: PilotProfile): Card {
-  const answer = applyProfile(card.answer, profile);
-  return {
+export function personalizeCard(
+  card: Card,
+  profile: PilotProfile,
+  connectorSet: ConnectorSetId = "classic",
+): Card {
+  const withProfile: Card = {
     ...card,
     opener: applyProfile(card.opener, profile),
     ideas: card.ideas.map((i) => applyProfile(i, profile)),
     example: applyProfile(card.example, profile),
     conclusion: applyProfile(card.conclusion, profile),
-    answer,
+    answer: applyProfile(card.answer, profile),
     vocab: card.vocab.map((v) => applyProfile(v, profile)),
-    targetWords: wordCount(answer),
+  };
+
+  const seed = Number.parseInt(card.num, 10) || 0;
+  const withConnectors = applyConnectorSet(withProfile, connectorSet, seed);
+  return {
+    ...withConnectors,
+    targetWords: wordCount(withConnectors.answer),
   };
 }
