@@ -219,16 +219,53 @@ const card43 = rebuild({
   difficulty: "Easy",
 });
 
-if (cards.some((c) => c.num === "43")) {
-  cards.splice(
-    cards.findIndex((c) => c.num === "43"),
-    1,
-    card43,
-  );
-} else {
-  cards.push(card43);
+const card44 = rebuild({
+  num: "44",
+  question: "Why is CRM important in offshore helicopter operations?",
+  memory: "Communication → Teamwork → Safety",
+  opener:
+    "In my opinion, CRM is essential in offshore helicopter operations because the environment is demanding and the crew must work as one team.",
+  ideas: [
+    "1 - COMMUNICATION: First of all, pilots, co-pilots and cabin crew must share information clearly about weather, deck conditions and passenger status.",
+    "2 - TEAMWORK: Additionally, everyone must understand their roles during normal operations and emergencies, especially near oil platforms.",
+    "3 - SAFETY: Finally, good CRM helps the crew challenge unsafe decisions and support each other under high workload.",
+  ],
+  example:
+    "For example, during a deck approach in strong wind, clear callouts and mutual cross-checks help the crew detect unstable conditions early.",
+  conclusion:
+    "Overall, CRM improves coordination, reduces human error and enhances safety in offshore helicopter operations.",
+  verbs: ["communicate", "coordinate", "support", "challenge", "improve"],
+  vocab: ["CRM", "offshore", "oil platform", "deck approach", "teamwork"],
+  difficulty: "Medium",
+});
+
+const card45 = rebuild({
+  num: "45",
+  question: "What is autorotation and why is it important for helicopter pilots?",
+  memory: "Concept → Technique → Safety",
+  opener: "In my opinion, autorotation is one of the most important emergency procedures every helicopter pilot must understand.",
+  ideas: [
+    "1 - CONCEPT: First of all, autorotation is a controlled descent using rotor momentum when engine power is lost.",
+    "2 - TECHNIQUE: Additionally, the pilot must manage airspeed, rotor RPM and the timing of the flare to land safely with little or no power.",
+    "3 - SAFETY: Finally, regular autorotation training prepares pilots to react quickly and correctly during real engine failures.",
+  ],
+  example:
+    "For example, after takeoff, if the engine fails, a trained pilot uses autorotation to reach a suitable landing area instead of panicking.",
+  conclusion:
+    "Overall, autorotation is a core helicopter skill that can save lives when power is lost unexpectedly.",
+  verbs: ["descend", "manage", "train", "react", "land"],
+  vocab: ["autorotation", "rotor RPM", "engine failure", "flare", "emergency landing"],
+  difficulty: "Hard",
+});
+
+function upsertCard(card) {
+  const idx = cards.findIndex((c) => c.num === card.num);
+  if (idx === -1) cards.push(card);
+  else cards[idx] = card;
 }
 
+for (const card of [card43, card44, card45]) upsertCard(card);
+
 fs.writeFileSync(path, JSON.stringify(cards, null, 2) + "\n");
-console.log("Updated helicopter cards:", Object.keys(updates).concat("43").join(", "));
+console.log("Updated helicopter cards:", Object.keys(updates).concat("43", "44", "45").join(", "));
 console.log("Total cards:", cards.length);
