@@ -1885,3 +1885,355 @@ input {
     min-width: 140px;
   }
 }
+
+/* ── SDEA Part 2 Trainer ── */
+.part2-main {
+  padding-bottom: 48px;
+}
+
+.part2-dashboard {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.part2-mode-nav {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.part2-mode-btn {
+  border: 1px solid var(--line);
+  background: var(--card);
+  border-radius: 16px;
+  padding: 14px 12px;
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: all 0.15s ease;
+}
+
+.part2-mode-btn strong {
+  font-size: 14px;
+}
+
+.part2-mode-btn span {
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 650;
+  line-height: 1.3;
+}
+
+.part2-mode-btn.active {
+  border-color: var(--blue);
+  background: var(--blue-bg);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.2);
+}
+
+.part2-mode-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.part2-counter {
+  margin-left: auto;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--muted);
+}
+
+.part2-card .question {
+  font-size: 24px;
+}
+
+.part2-prompt-label,
+.part2-examiner-q {
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 0 0 8px;
+}
+
+.part2-atc-message {
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: 700;
+  margin: 0;
+  padding: 16px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  border-left: 4px solid var(--blue);
+}
+
+.part2-situation {
+  font-size: 17px;
+  line-height: 1.45;
+  margin: 12px 0 0;
+}
+
+.part2-hint {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.45;
+  margin: 0 0 14px;
+}
+
+.part2-meta-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.part2-tag {
+  font-size: 12px;
+  font-weight: 800;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--card);
+  border: 1px solid var(--line);
+}
+
+.part2-tag.urgency-mayday {
+  background: #fee2e2;
+  color: var(--red);
+  border-color: var(--red);
+}
+
+.part2-tag.urgency-pan-pan {
+  background: var(--orange-bg);
+  color: var(--orange);
+}
+
+.part2-timer {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.part2-timer-phase {
+  padding: 16px;
+  border-radius: 16px;
+  background: var(--card);
+  border: 1px solid var(--line);
+}
+
+.part2-timer-phase.prep {
+  border-color: var(--purple);
+  background: var(--purple-bg);
+}
+
+.part2-timer-phase.speak {
+  border-color: var(--green);
+  background: var(--green-bg);
+}
+
+.part2-timer-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.part2-timer-clock {
+  font-size: 36px;
+  font-weight: 950;
+  font-variant-numeric: tabular-nums;
+}
+
+.chunk-tags {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.chunk-tag {
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+}
+
+.chunk-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+}
+
+.chunk-callsign .chunk-label { color: var(--blue); }
+.chunk-altitude .chunk-label { color: var(--purple); }
+.chunk-heading .chunk-label { color: var(--orange); }
+.chunk-frequency .chunk-label { color: var(--green); }
+.chunk-runway .chunk-label { color: var(--red); }
+.chunk-route .chunk-label { color: var(--yellow); }
+.chunk-clearance .chunk-label { color: #0f172a; }
+
+.chunk-text {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.part2-model-answer {
+  padding: 18px;
+  border-radius: 16px;
+  background: var(--green-bg);
+  border: 1px solid var(--green);
+  margin-bottom: 14px;
+}
+
+.part2-model-answer h3 {
+  margin: 0 0 10px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--green);
+}
+
+.part2-model-answer p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.5;
+  font-weight: 650;
+}
+
+.part2-helper-blocks {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.part2-helper h4 {
+  margin: 0 0 6px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.part2-helper-example {
+  margin-top: 8px !important;
+  font-weight: 700 !important;
+}
+
+.part2-template-chip {
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: var(--purple-bg);
+  border: 1px solid var(--purple);
+  margin-bottom: 14px;
+  font-size: 15px;
+}
+
+.vocab-card {
+  overflow: hidden;
+}
+
+.vocab-flip-area {
+  width: 100%;
+  border: 0;
+  background: linear-gradient(135deg, var(--blue-bg), var(--purple-bg));
+  padding: 40px 24px;
+  min-height: 200px;
+  cursor: pointer;
+  text-align: center;
+  color: var(--text);
+}
+
+.vocab-term {
+  font-size: 32px;
+  margin: 0 0 12px;
+  text-transform: capitalize;
+}
+
+.vocab-back h3 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin: 0 0 8px;
+}
+
+.vocab-example {
+  font-style: italic;
+  color: var(--muted);
+}
+
+.vocab-known-badge {
+  text-align: center;
+  color: var(--green);
+  font-weight: 800;
+  margin: 0;
+}
+
+.part2-sim-progress {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  justify-content: center;
+}
+
+.part2-sim-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 900;
+  background: var(--line);
+  color: var(--muted);
+}
+
+.part2-sim-dot.active {
+  background: var(--blue-bg);
+  color: var(--blue);
+  border: 1px solid var(--blue);
+}
+
+.part2-sim-dot.current {
+  background: var(--blue);
+  color: white;
+}
+
+.part2-sim-review {
+  display: grid;
+  gap: 12px;
+}
+
+@media (max-width: 900px) {
+  .part2-mode-nav {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .part2-mode-nav button:last-child {
+    grid-column: span 2;
+  }
+
+  .part2-dashboard {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .app-nav-inner {
+    flex-wrap: wrap;
+  }
+
+  .app-nav-link {
+    font-size: 13px;
+    padding: 10px 8px;
+  }
+}
