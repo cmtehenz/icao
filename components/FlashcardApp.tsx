@@ -224,7 +224,7 @@ export default function FlashcardApp() {
         onSelect={selectCard}
       />
 
-      <header className="delta-header">
+      <header className="header delta-header">
         <div className="wrap delta-topbar">
           <div className="delta-brand">
             <span className="delta-logo">✈</span>
@@ -260,19 +260,21 @@ export default function FlashcardApp() {
         </div>
       </header>
 
-      <section className="hero hero-delta wrap">
-        <h1>Train ICAO answers daily</h1>
-        <p className="sub">
-          Keywords first, speak out loud, 35–60 seconds. Built for helicopter pilots — no script memorization.
-        </p>
-        <StudyDashboard progress={progress} total={CARDS.length} />
-        <FilterBar
-          filter={filter}
-          favoriteCount={favorites.length}
-          coreCount={HELICOPTER_CORE_NUMS.length}
-          total={CARDS.length}
-          onChange={setFilter}
-        />
+      <section className="hero hero-compact hero-delta">
+        <div className="wrap hero-delta-inner">
+          <h1>Train ICAO answers daily</h1>
+          <p className="sub">
+            Keywords first, speak out loud, 35–60 seconds. Built for helicopter pilots — no script memorization.
+          </p>
+          <StudyDashboard progress={progress} total={CARDS.length} />
+          <FilterBar
+            filter={filter}
+            favoriteCount={favorites.length}
+            coreCount={HELICOPTER_CORE_NUMS.length}
+            total={CARDS.length}
+            onChange={setFilter}
+          />
+        </div>
       </section>
 
       <div className="wrap topic-pills topic-pills-delta">
@@ -293,8 +295,9 @@ export default function FlashcardApp() {
         })}
       </div>
 
-      <main className="main main-study wrap">
-        <article className="card card-study">
+      <main className="main main-essential">
+        <section>
+          <article className="card card-essential">
           <div className="card-top">
             <div className="card-meta">
               <span className="card-num">#{card.num}</span>
@@ -326,7 +329,7 @@ export default function FlashcardApp() {
               </div>
             )}
 
-            <div className="timer timer-study">
+            <div className="timer timer-compact">
               <button type="button" className="btn green" onClick={timer.start}>
                 ▶ {ANSWER_SECONDS}s
               </button>
@@ -453,7 +456,8 @@ export default function FlashcardApp() {
               </button>
             </div>
           </div>
-        </article>
+          </article>
+        </section>
       </main>
     </>
   );

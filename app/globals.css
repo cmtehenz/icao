@@ -37,7 +37,10 @@
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-  background: radial-gradient(circle at top left, #dbeafe, transparent 32%), var(--bg);
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(37, 99, 235, 0.12), transparent),
+    radial-gradient(circle at top left, #dbeafe, transparent 32%),
+    var(--bg);
   color: var(--text);
 }
 
@@ -1153,7 +1156,8 @@ input {
   border-color: var(--blue);
 }
 
-.app-nav + .header {
+.app-nav + .header,
+.app-nav + .delta-header {
   top: 53px;
 }
 
@@ -1525,25 +1529,6 @@ input {
 }
 
 /* ── ICAO Delta — training UI ── */
-body {
-  background:
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(37, 99, 235, 0.15), transparent),
-    radial-gradient(circle at 100% 0%, rgba(124, 58, 237, 0.08), transparent 40%),
-    var(--bg);
-}
-
-.delta-header {
-  position: sticky;
-  top: 53px;
-  z-index: 45;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--line);
-}
-
-[data-theme="dark"] .delta-header {
-  background: rgba(7, 11, 24, 0.9);
-}
 
 .delta-topbar {
   display: flex;
@@ -1593,8 +1578,9 @@ body {
   flex-wrap: wrap;
 }
 
-.hero-delta {
-  padding-top: 28px;
+.hero-delta-inner {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .hero-delta h1 {
@@ -1676,28 +1662,14 @@ body {
   color: #eab308;
 }
 
+.main-study,
+.main.main-essential {
+  grid-template-columns: 1fr;
+  max-width: 760px;
+}
+
 .main-study {
   padding-bottom: 48px;
-}
-
-.card-study {
-  border-radius: 28px;
-  padding: 28px;
-  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.1);
-  border: 1px solid var(--line);
-  background: var(--card);
-}
-
-.timer-study {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: 16px;
-  padding: 16px;
-  background: var(--bg);
-  border-radius: 16px;
-  border: 1px solid var(--line);
 }
 
 .keywords-panel {
@@ -1902,10 +1874,6 @@ body {
 
   .hero-delta h1 {
     font-size: 28px;
-  }
-
-  .card-study {
-    padding: 20px;
   }
 
   .study-toolbar .btn-large {
