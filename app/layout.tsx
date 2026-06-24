@@ -3,9 +3,9 @@ import ServiceWorkerRegister from "@/components/ServiceWorkerRegister";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "ICAO Part 1 Master – 42 Flashcards",
+  title: "ICAO Delta — Helicopter Part 1 Trainer",
   description:
-    "Study ICAO Part 1 with 42 flashcards using the ICAO 5 answer structure.",
+    "Train ICAO Part 1 answers daily. Keywords, exam mode, and ICAO 4/5 structures for helicopter pilots.",
   appleWebApp: {
     capable: true,
     title: "ICAO Part 1",

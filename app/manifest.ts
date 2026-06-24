@@ -2,9 +2,9 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "ICAO Part 1 Master",
-    short_name: "ICAO Part 1",
-    description: "Study ICAO Part 1 with flashcards, exam mode, and simulator.",
+    name: "ICAO Delta",
+    short_name: "ICAO Delta",
+    description: "Helicopter ICAO Part 1 trainer — keywords, exam mode, daily practice.",
     start_url: "/",
     display: "standalone",
     background_color: "#f7f8ff",

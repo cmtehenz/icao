@@ -4,13 +4,12 @@ export type Difficulty = "Easy" | "Medium" | "Hard";
 
 export type StudyMode = "study" | "exam";
 
-export type AppVersion = "essential" | "full";
-
 export type Card = {
   num: string;
   question: string;
   memory: string;
   memoryLabels: string[];
+  keywords?: string[];
   opener: string;
   ideas: string[];
   example: string;

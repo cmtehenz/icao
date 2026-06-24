@@ -3,13 +3,11 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { CHECKLIST_ITEMS } from "@/lib/categories";
 import { CARDS } from "@/lib/cards";
-import { ESSENTIAL_CARD_NUMS } from "@/lib/essential";
 import { loadConnectorSet } from "@/lib/connectors";
 import { personalizeCard } from "@/lib/personalize";
 import type { PilotProfile } from "@/lib/profile";
 import { isSpeaking, speakText, stopSpeaking } from "@/lib/tts";
 
-const SIM_QUESTIONS = 6;
 const TIMER_SECONDS = 45;
 
 type SimResult = {
@@ -21,7 +19,6 @@ type SimResult = {
 
 type Props = {
   profile: PilotProfile;
-  essentialOnly?: boolean;
   onExit: () => void;
 };
 
@@ -34,12 +31,10 @@ function shuffleIndices(pool: number[], count: number): number[] {
   return indices.slice(0, Math.min(count, indices.length));
 }
 
-export default function Part1Simulator({ profile, essentialOnly = false, onExit }: Props) {
+export default function Part1Simulator({ profile, onExit }: Props) {
   const [queue] = useState(() => {
-    const pool = essentialOnly
-      ? ESSENTIAL_CARD_NUMS.map((num) => CARDS.findIndex((c) => c.num === num)).filter((i) => i >= 0)
-      : CARDS.map((_, i) => i);
-    return shuffleIndices(pool, essentialOnly ? pool.length : SIM_QUESTIONS);
+    const pool = CARDS.map((_, i) => i);
+    return shuffleIndices(pool, pool.length);
   });
   const [step, setStep] = useState(0);
   const [finished, setFinished] = useState(false);

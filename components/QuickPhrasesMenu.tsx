@@ -3,7 +3,6 @@
 import { useMemo, useState } from "react";
 import { CATEGORIES } from "@/lib/categories";
 import { CARDS } from "@/lib/cards";
-import { ESSENTIAL_CARD_NUMS } from "@/lib/essential";
 import type { ConnectorSetId } from "@/lib/connectors";
 import { personalizeCard } from "@/lib/personalize";
 import type { PilotProfile } from "@/lib/profile";
@@ -11,7 +10,6 @@ import { getSimplePhrases, getSimplePhrasesText } from "@/lib/simplePhrases";
 
 type Props = {
   open: boolean;
-  essentialOnly?: boolean;
   profile: PilotProfile;
   connectorSet: ConnectorSetId;
   currentNum?: string;
@@ -29,7 +27,6 @@ async function copyText(text: string) {
 
 export default function QuickPhrasesMenu({
   open,
-  essentialOnly = false,
   profile,
   connectorSet,
   currentNum,
@@ -40,12 +37,8 @@ export default function QuickPhrasesMenu({
   const [expanded, setExpanded] = useState<string | null>(currentNum ?? null);
 
   const items = useMemo(() => {
-    const pool = essentialOnly
-      ? ESSENTIAL_CARD_NUMS.map((num) => CARDS.find((c) => c.num === num)!).filter(Boolean)
-      : CARDS;
-
     const q = search.toLowerCase().trim();
-    return pool
+    return CARDS
       .map((card) => {
         const personalized = personalizeCard(card, profile, connectorSet);
         const phrases = getSimplePhrases(personalized);
@@ -67,7 +60,7 @@ export default function QuickPhrasesMenu({
           .toLowerCase();
         return blob.includes(q);
       });
-  }, [essentialOnly, profile, connectorSet, search]);
+  }, [profile, connectorSet, search]);
 
   if (!open) return null;
 
