@@ -4,7 +4,6 @@ import { useMemo, useState } from "react";
 import ExamAudioPlayer from "@/components/ExamAudioPlayer";
 import ExamVersionPicker from "@/components/ExamVersionPicker";
 import VoiceCoachPanel from "@/components/VoiceCoachPanel";
-import Part2TimerBar from "@/components/Part2Trainer/Part2TimerBar";
 import ProgressBadge from "@/components/study/ProgressBadge";
 import { ALL_EXAM_SITUATIONS, getSituationsByExam } from "@/data/exams/part2Data";
 import { examAudioUrl, examAudioLabel } from "@/lib/exams/audio";
@@ -73,7 +72,6 @@ export default function ReportedSpeechMode({ progress, onProgressChange }: Props
             label={examAudioLabel(scenario.examVersion, scenario.atcFollowUp.audioTrack)}
           />
           <p className="part2-atc-message">{scenario.atcFollowUp.atcMessage}</p>
-          <Part2TimerBar onSpeakDone={() => setShowAnswer(true)} />
         </div>
         <div className="card-body">
           <div className="part2-template-chip">

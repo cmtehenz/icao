@@ -8,6 +8,11 @@ import type { EvaluateType } from "@/lib/evaluate/types";
 
 type Segment = AzurePronunciationResult;
 
+export type AzureStopResult = {
+  assessment: AzurePronunciationResult | null;
+  audioBlob: Blob | null;
+};
+
 function avg(nums: number[]): number {
   if (!nums.length) return 0;
   return Math.round(nums.reduce((a, b) => a + b, 0) / nums.length);
@@ -48,6 +53,14 @@ function parseWordScores(json: {
   });
 }
 
+function preferredRecorderMime(): string {
+  if (typeof MediaRecorder === "undefined") return "audio/webm";
+  if (MediaRecorder.isTypeSupported("audio/webm;codecs=opus")) return "audio/webm;codecs=opus";
+  if (MediaRecorder.isTypeSupported("audio/webm")) return "audio/webm";
+  if (MediaRecorder.isTypeSupported("audio/mp4")) return "audio/mp4";
+  return "audio/webm";
+}
+
 export function useAzurePronunciation() {
   const [configured, setConfigured] = useState(false);
   const [assessing, setAssessing] = useState(false);
@@ -55,6 +68,9 @@ export function useAzurePronunciation() {
   const [result, setResult] = useState<AzurePronunciationResult | null>(null);
   const recognizerRef = useRef<{ close: () => void } | null>(null);
   const segmentsRef = useRef<Segment[]>([]);
+  const streamRef = useRef<MediaStream | null>(null);
+  const recorderRef = useRef<MediaRecorder | null>(null);
+  const chunksRef = useRef<Blob[]>([]);
 
   useEffect(() => {
     fetch("/api/azure-speech-token")
@@ -63,39 +79,86 @@ export function useAzurePronunciation() {
       .catch(() => setConfigured(false));
   }, []);
 
-  const stop = useCallback((): Promise<AzurePronunciationResult | null> => {
+  const stopMicCapture = useCallback((): Promise<Blob | null> => {
+    return new Promise((resolve) => {
+      const recorder = recorderRef.current;
+      if (!recorder || recorder.state === "inactive") {
+        streamRef.current?.getTracks().forEach((t) => t.stop());
+        streamRef.current = null;
+        resolve(null);
+        return;
+      }
+
+      recorder.onstop = () => {
+        const mimeType = recorder.mimeType || "audio/webm";
+        const blob =
+          chunksRef.current.length > 0 ? new Blob(chunksRef.current, { type: mimeType }) : null;
+        streamRef.current?.getTracks().forEach((t) => t.stop());
+        streamRef.current = null;
+        recorderRef.current = null;
+        chunksRef.current = [];
+        resolve(blob && blob.size > 0 ? blob : null);
+      };
+
+      recorder.stop();
+    });
+  }, []);
+
+  const startMicCapture = useCallback(async () => {
+    if (typeof MediaRecorder === "undefined" || !navigator.mediaDevices?.getUserMedia) return;
+
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      streamRef.current = stream;
+      const mimeType = preferredRecorderMime();
+      const recorder = new MediaRecorder(stream, { mimeType });
+      chunksRef.current = [];
+      recorder.ondataavailable = (e) => {
+        if (e.data.size > 0) chunksRef.current.push(e.data);
+      };
+      recorder.start(1000);
+      recorderRef.current = recorder;
+    } catch {
+      /* mic capture optional — Azure may still work */
+    }
+  }, []);
+
+  const stop = useCallback((): Promise<AzureStopResult> => {
     return new Promise((resolve) => {
       const rec = recognizerRef.current as {
         stopContinuousRecognitionAsync?: (ok?: () => void, err?: (e: string) => void) => void;
         close: () => void;
       } | null;
 
-      if (!rec) {
+      const finish = async () => {
+        setAssessing(false);
         const merged = mergeSegments(segmentsRef.current);
         setResult(merged);
-        setAssessing(false);
-        resolve(merged);
+        const audioBlob = await stopMicCapture();
+        resolve({ assessment: merged, audioBlob });
+      };
+
+      if (!rec) {
+        void finish();
         return;
       }
 
-      const finish = () => {
-        setAssessing(false);
-        const merged = mergeSegments(segmentsRef.current);
-        setResult(merged);
+      const done = () => {
         rec.close();
         recognizerRef.current = null;
-        resolve(merged);
+        void finish();
       };
 
-      rec.stopContinuousRecognitionAsync?.(finish, finish);
+      rec.stopContinuousRecognitionAsync?.(done, done);
     });
-  }, []);
+  }, [stopMicCapture]);
 
   const start = useCallback(
     async (modelAnswer: string, evaluateType: EvaluateType) => {
       setError(null);
       setResult(null);
       segmentsRef.current = [];
+      await stopMicCapture();
 
       let tokenData: { configured?: boolean; token?: string; region?: string; error?: string };
       try {
@@ -122,7 +185,6 @@ export function useAzurePronunciation() {
         const audioConfig = sdk.AudioConfig.fromDefaultMicrophoneInput();
         const recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
 
-        const scripted = isScriptedAssessment(evaluateType);
         const reference = azureReferenceText(modelAnswer, evaluateType);
 
         const pronunciationConfig = new sdk.PronunciationAssessmentConfig(
@@ -162,36 +224,36 @@ export function useAzurePronunciation() {
             setError(e.errorDetails || "Erro no reconhecimento Azure.");
           }
           setAssessing(false);
+          void stopMicCapture();
           recognizer.close();
           recognizerRef.current = null;
         };
 
         recognizerRef.current = recognizer;
         setAssessing(true);
+        await startMicCapture();
 
         recognizer.startContinuousRecognitionAsync(
           () => {},
           (err) => {
             setError(err);
             setAssessing(false);
+            void stopMicCapture();
             recognizer.close();
             recognizerRef.current = null;
           },
         );
-
-        if (!scripted) {
-          // Unscripted mode hint stored via no reference text
-        }
       } catch (e) {
         setError(e instanceof Error ? e.message : "Erro ao iniciar Azure Speech.");
         setAssessing(false);
+        await stopMicCapture();
       }
     },
-    [],
+    [startMicCapture, stopMicCapture],
   );
 
   const clear = useCallback(() => {
-    stop();
+    void stop();
     setResult(null);
     setError(null);
     segmentsRef.current = [];

@@ -1,6 +1,7 @@
 import { localEvaluate } from "@/lib/evaluate/localEvaluate";
 import { estimateIcaoLevel } from "@/lib/evaluate/icaoLevel";
 import type { EvaluateFeedback, EvaluateRequest } from "@/lib/evaluate/types";
+import { requireUser } from "@/lib/auth/requireUser";
 
 const SYSTEM_PROMPT = `You are an ICAO English exam coach for helicopter pilots (SDEA/ANAC).
 Evaluate the candidate's spoken answer (provided as transcript from speech recognition).
@@ -23,6 +24,9 @@ Rules:
 - Remember: official ICAO rating uses 6 criteria and overall level = LOWEST criterion (Operational = Level 4 minimum for pilots).`;
 
 export async function POST(request: Request) {
+  const auth = await requireUser();
+  if (auth.response) return auth.response;
+
   let body: EvaluateRequest;
   try {
     body = await request.json();

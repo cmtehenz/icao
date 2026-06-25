@@ -1,6 +1,11 @@
 import type { AzurePronunciationResult } from "@/lib/azure/pronunciation";
 
+import { requireUser } from "@/lib/auth/requireUser";
+
 export async function GET() {
+  const auth = await requireUser();
+  if (auth.response) return auth.response;
+
   const key = process.env.AZURE_SPEECH_KEY;
   const region = process.env.AZURE_SPEECH_REGION;
 

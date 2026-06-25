@@ -5,3 +5,11 @@ out
 .env*.local
 next-env.d.ts
 .DS_Store
+lib/generated
+prisma/dev.db
+*.db
+*.db-journal
+
+data/recordings
+
+/lib/generated/prisma

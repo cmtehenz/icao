@@ -3,7 +3,6 @@
 import { useMemo, useState } from "react";
 import ExamVersionPicker from "@/components/ExamVersionPicker";
 import VoiceCoachPanel from "@/components/VoiceCoachPanel";
-import Part2TimerBar from "@/components/Part2Trainer/Part2TimerBar";
 import ProgressBadge from "@/components/study/ProgressBadge";
 import { ALL_EXAM_SITUATIONS, getSituationsByExam } from "@/data/exams/part2Data";
 import type { ExamVersion } from "@/lib/exams/types";
@@ -71,7 +70,6 @@ export default function InteractionMode({ progress, onProgressChange }: Props) {
           </div>
           <p className="part2-situation">{scenario.context}</p>
           <p className="part2-atc-message part2-interaction-prompt">{scenario.interaction.prompt}</p>
-          <Part2TimerBar />
         </div>
         <div className="card-body">
           <p className="part2-hint">

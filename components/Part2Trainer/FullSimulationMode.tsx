@@ -1,13 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import ExamAudioPlayer from "@/components/ExamAudioPlayer";
 import ExamVersionPicker from "@/components/ExamVersionPicker";
-import Part2TimerBar from "@/components/Part2Trainer/Part2TimerBar";
+import Part2SimulationRecord from "@/components/Part2Trainer/Part2SimulationRecord";
+import SimulationResultsPanel from "@/components/Part2Trainer/SimulationResultsPanel";
 import { getSituationsByExam } from "@/data/exams/part2Data";
 import { examAudioUrl, examAudioLabel, SOUND_CHECK_TRACK } from "@/lib/exams/audio";
 import { EXAM_LABELS, EXAM_VERSIONS, type ExamVersion } from "@/lib/exams/types";
+import type { EvaluateFeedback } from "@/lib/evaluate/types";
+import {
+  aggregateSimulationResults,
+  type SimulationStepResult,
+} from "@/lib/part2/aggregateSimulation";
 import { setPart2ItemStatus, type Part2ProgressStore } from "@/lib/part2/progress";
+import {
+  getSpeakStepConfig,
+  isSimulationSpeakStep,
+  simulationRecordingKey,
+} from "@/lib/part2/simulationEvaluate";
+import { saveEvaluationRecord } from "@/lib/evaluate/saveEvaluation";
 
 const STEPS = [
   { id: 1, title: "Ouvir clearance ATC", type: "listen" as const },
@@ -35,42 +47,124 @@ export default function FullSimulationMode({ progress, onProgressChange }: Props
   const [activeVersion, setActiveVersion] = useState<ExamVersion | null>(null);
   const [situationIdx, setSituationIdx] = useState(0);
   const [step, setStep] = useState(-1);
-  const [showAnswer, setShowAnswer] = useState(false);
+  const [recordings, setRecordings] = useState<Record<string, EvaluateFeedback>>({});
+  const [stepResults, setStepResults] = useState<SimulationStepResult[]>([]);
+  const [showResults, setShowResults] = useState(false);
 
   const situations = activeVersion ? getSituationsByExam(activeVersion) : [];
   const scenario = situations[situationIdx];
   const current = step >= 0 ? STEPS[step] : null;
   const simId = scenario ? `${scenario.id}-sim` : "sim-pending";
+  const recordingKey = scenario && isSimulationSpeakStep(step) ? simulationRecordingKey(scenario.id, step) : null;
+  const currentRecording = recordingKey ? recordings[recordingKey] : null;
+  const speakConfig =
+    scenario && isSimulationSpeakStep(step) ? getSpeakStepConfig(scenario, step) : null;
+
+  const aggregated = useMemo(
+    () => (stepResults.length ? aggregateSimulationResults(stepResults) : null),
+    [stepResults],
+  );
+
+  const resetSimulation = () => {
+    setActiveVersion(null);
+    setSituationIdx(0);
+    setStep(-1);
+    setRecordings({});
+    setStepResults([]);
+    setShowResults(false);
+  };
 
   const startSituation = () => {
     const version = examVersion !== "all" ? examVersion : pickRandomVersion();
     setActiveVersion(version);
     setSituationIdx(0);
     setStep(-2);
-    setShowAnswer(false);
+    setRecordings({});
+    setStepResults([]);
+    setShowResults(false);
   };
 
+  const saveRecording = async (feedback: EvaluateFeedback, audioBlob: Blob | null) => {
+    if (!recordingKey || !scenario || !speakConfig) return;
+    setRecordings((prev) => ({ ...prev, [recordingKey]: feedback }));
+
+    const evaluationId = await saveEvaluationRecord({
+      type: speakConfig.evaluateType,
+      question: speakConfig.question,
+      transcript: feedback.transcript,
+      scores: feedback.scores,
+      icaoLevel: feedback.icaoLevel?.overall,
+      icaoCriteria: feedback.icaoLevel?.criteria,
+      summary: `[Simulação ${scenario.examVersion} Sit.${scenario.situationNumber}] ${feedback.summary}`,
+      audioBlob,
+    });
+
+    const entry: SimulationStepResult = {
+      situationId: scenario.id,
+      situationNumber: scenario.situationNumber,
+      examVersion: scenario.examVersion,
+      step,
+      stepLabel: speakConfig.label,
+      feedback,
+      evaluationId: evaluationId ?? undefined,
+    };
+
+    setStepResults((prev) => {
+      const idx = prev.findIndex((r) => r.situationId === scenario.id && r.step === step);
+      if (idx >= 0) {
+        const next = [...prev];
+        next[idx] = entry;
+        return next;
+      }
+      return [...prev, entry];
+    });
+  };
+
+  const clearRecording = () => {
+    if (!recordingKey || !scenario) return;
+    setRecordings((prev) => {
+      const next = { ...prev };
+      delete next[recordingKey];
+      return next;
+    });
+    setStepResults((prev) => prev.filter((r) => !(r.situationId === scenario.id && r.step === step)));
+  };
+
+  const canAdvance = !isSimulationSpeakStep(step) || !!currentRecording;
+
   const next = () => {
-    setShowAnswer(false);
+    if (!canAdvance) return;
     if (step < STEPS.length - 1) {
       setStep((s) => s + 1);
     }
   };
 
-  const nextSituation = () => {
+  const finishSituation = () => {
     if (situationIdx < situations.length - 1) {
       setSituationIdx((i) => i + 1);
       setStep(0);
-      setShowAnswer(false);
-    } else {
-      setStep(-1);
+      return;
     }
+
+    const finalResult = aggregateSimulationResults(stepResults);
+    if (scenario) {
+      const status = finalResult.rating.overall >= 4 ? ("mastered" as const) : ("difficult" as const);
+      onProgressChange(setPart2ItemStatus(progress, simId, status));
+    }
+    setShowResults(true);
   };
 
-  const finish = (status: "difficult" | "mastered") => {
-    if (scenario) onProgressChange(setPart2ItemStatus(progress, simId, status));
-    nextSituation();
-  };
+  if (showResults && aggregated && activeVersion) {
+    return (
+      <div className="part2-mode">
+        <SimulationResultsPanel
+          result={aggregated}
+          examVersion={activeVersion}
+          onRestart={resetSimulation}
+        />
+      </div>
+    );
+  }
 
   if (step === -1) {
     return (
@@ -80,8 +174,8 @@ export default function FullSimulationMode({ progress, onProgressChange }: Props
           <h2>Simulação completa — Part 2</h2>
           <p className="sub">
             {examVersion !== "all"
-              ? `${EXAM_LABELS[examVersion]} — áudio original da prova, 5 situações`
-              : "Sorteia uma prova (23C–26C) com os MP3 originais de provas/"}
+              ? `${EXAM_LABELS[examVersion]} — áudio original, 5 situações, avaliação Azure`
+              : "Sorteia uma prova (23C–26C). Grave cada resposta com Azure; no final você vê o nível ICAO (2–6) e todos os erros."}
           </p>
           <button type="button" className="btn green btn-large" onClick={startSituation}>
             Iniciar simulação
@@ -125,6 +219,8 @@ export default function FullSimulationMode({ progress, onProgressChange }: Props
 
   const readbackAudio = examAudioUrl(scenario.examVersion, scenario.readback.audioTrack);
   const followUpAudio = examAudioUrl(scenario.examVersion, scenario.atcFollowUp.audioTrack);
+  const recordingsDone = stepResults.length;
+  const recordingsTotal = situations.length * 4;
 
   return (
     <div className="part2-mode">
@@ -133,7 +229,7 @@ export default function FullSimulationMode({ progress, onProgressChange }: Props
           {EXAM_LABELS[scenario.examVersion]} — Situação {scenario.situationNumber}/5
         </span>
         <span className="part2-counter">
-          Passo {step + 1} / {STEPS.length}
+          Passo {step + 1} / {STEPS.length} · {recordingsDone}/{recordingsTotal} gravações
         </span>
       </header>
 
@@ -148,7 +244,6 @@ export default function FullSimulationMode({ progress, onProgressChange }: Props
       <article className="card card-essential part2-card">
         <div className="card-top">
           <h2 className="question">{current.title}</h2>
-          {(current.type === "speak" || current.type === "question") && <Part2TimerBar />}
         </div>
         <div className="card-body">
           {step === 0 && (
@@ -162,13 +257,39 @@ export default function FullSimulationMode({ progress, onProgressChange }: Props
             </>
           )}
           {step === 1 && (
-            <p className="part2-hint">Faça o readback em voz alta, depois revele o modelo.</p>
+            <>
+              <p className="part2-hint">Faça o readback em voz alta — grave com Azure antes de avançar.</p>
+              {speakConfig && (
+                <Part2SimulationRecord
+                  key={recordingKey!}
+                  question={speakConfig.question}
+                  modelAnswer={speakConfig.modelAnswer}
+                  evaluateType={speakConfig.evaluateType}
+                  completed={currentRecording}
+                  onComplete={saveRecording}
+                  onRetry={clearRecording}
+                />
+              )}
+            </>
           )}
           {step === 2 && (
             <p className="part2-atc-message">{scenario.interaction.prompt}</p>
           )}
           {step === 3 && (
-            <p className="part2-hint">Reporte: facility + ANAC 123 + problema + intenção + pedido.</p>
+            <>
+              <p className="part2-hint">Reporte: facility + ANAC 123 + problema + intenção + pedido.</p>
+              {speakConfig && (
+                <Part2SimulationRecord
+                  key={recordingKey!}
+                  question={speakConfig.question}
+                  modelAnswer={speakConfig.modelAnswer}
+                  evaluateType={speakConfig.evaluateType}
+                  completed={currentRecording}
+                  onComplete={saveRecording}
+                  onRetry={clearRecording}
+                />
+              )}
+            </>
           )}
           {step === 4 && (
             <>
@@ -180,18 +301,45 @@ export default function FullSimulationMode({ progress, onProgressChange }: Props
             </>
           )}
           {step === 5 && (
-            <p className="part2-hint">
-              Corrija o mal-entendido do ATC com {scenario.atcFollowUp.correctionType}.
-            </p>
+            <>
+              <p className="part2-hint">
+                Corrija o mal-entendido do ATC com {scenario.atcFollowUp.correctionType}.
+              </p>
+              {speakConfig && (
+                <Part2SimulationRecord
+                  key={recordingKey!}
+                  question={speakConfig.question}
+                  modelAnswer={speakConfig.modelAnswer}
+                  evaluateType={speakConfig.evaluateType}
+                  completed={currentRecording}
+                  onComplete={saveRecording}
+                  onRetry={clearRecording}
+                />
+              )}
+            </>
           )}
           {step === 6 && (
             <p className="part2-examiner-q">What did the controller say?</p>
           )}
           {step === 7 && (
-            <p className="part2-hint">Responda em reported speech para o examinador.</p>
+            <>
+              <p className="part2-hint">Responda em reported speech para o examinador.</p>
+              {speakConfig && (
+                <Part2SimulationRecord
+                  key={recordingKey!}
+                  question={speakConfig.question}
+                  modelAnswer={speakConfig.modelAnswer}
+                  evaluateType={speakConfig.evaluateType}
+                  completed={currentRecording}
+                  onComplete={saveRecording}
+                  onRetry={clearRecording}
+                />
+              )}
+            </>
           )}
           {step === 8 && (
             <div className="part2-sim-review">
+              <p className="part2-hint">Revise os modelos desta situação antes de seguir.</p>
               <div className="part2-model-answer">
                 <h3>Readback</h3>
                 <p>{scenario.readback.modelReadback}</p>
@@ -211,47 +359,23 @@ export default function FullSimulationMode({ progress, onProgressChange }: Props
             </div>
           )}
 
-          {step === 1 && showAnswer && (
-            <div className="part2-model-answer">
-              <h3>Readback modelo</h3>
-              <p>{scenario.readback.modelReadback}</p>
-            </div>
-          )}
-          {(step === 3 || step === 5) && showAnswer && (
-            <div className="part2-model-answer">
-              <h3>Modelo</h3>
-              <p>{step === 5 ? scenario.atcFollowUp.modelCorrection : scenario.interaction.modelReport}</p>
-            </div>
-          )}
-          {step === 7 && showAnswer && (
-            <div className="part2-model-answer">
-              <h3>Reported speech</h3>
-              <p>{scenario.reportedSpeech.modelAnswer}</p>
-            </div>
-          )}
-
           <div className="study-toolbar">
             {step < 8 && (
               <>
-                {[1, 3, 5, 7].includes(step) && (
-                  <button type="button" className="btn purple" onClick={() => setShowAnswer((s) => !s)}>
-                    {showAnswer ? "Esconder" : "Mostrar resposta"}
-                  </button>
+                {!canAdvance && isSimulationSpeakStep(step) && (
+                  <p className="part2-sim-advance-hint">Grave e envie sua resposta com Azure para continuar.</p>
                 )}
-                <button type="button" className="btn blue" onClick={next}>
+                <button type="button" className="btn blue" onClick={next} disabled={!canAdvance}>
                   Próximo passo →
                 </button>
               </>
             )}
             {step === 8 && (
-              <>
-                <button type="button" className="btn green" onClick={() => finish("mastered")}>
-                  Dominado — próxima situação
-                </button>
-                <button type="button" className="btn orange" onClick={() => finish("difficult")}>
-                  Difícil — próxima situação
-                </button>
-              </>
+              <button type="button" className="btn green btn-large" onClick={finishSituation}>
+                {situationIdx < situations.length - 1
+                  ? `Situação ${scenario.situationNumber} ok — próxima →`
+                  : "Finalizar simulação e ver nota ICAO →"}
+              </button>
             )}
           </div>
         </div>

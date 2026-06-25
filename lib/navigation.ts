@@ -20,6 +20,13 @@ export const NAV_ITEMS = [
     icon: "🎤",
     description: "Palavras com erro para treinar",
   },
+  {
+    href: "/conta",
+    label: "Conta",
+    shortLabel: "Conta",
+    icon: "👤",
+    description: "Perfil e histórico de notas",
+  },
 ] as const;
 
 export const PRONUNCIATION_HREF = "/pronunciation";

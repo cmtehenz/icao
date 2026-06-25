@@ -48,10 +48,10 @@ export default function PronunciationWordsMode() {
 
   const finishPractice = async () => {
     if (!activeWord) return;
-    const result = await azure.stop();
-    const score = result?.accuracyScore ?? 0;
+    const { assessment } = await azure.stop();
+    const score = assessment?.accuracyScore ?? 0;
     setLastPracticeScore(score);
-    setLastResult(result);
+    setLastResult(assessment);
     recordWordPractice(activeWord.word, score);
     refresh();
     if (score >= 85) {

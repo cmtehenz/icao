@@ -1,16 +1,38 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useAuth } from "@/components/AuthProvider";
 import PronunciationVaultBadge from "@/components/PronunciationVaultBadge";
 import { usePronunciationVault } from "@/hooks/usePronunciationVault";
 import { isNavActive, NAV_ITEMS } from "@/lib/navigation";
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const router = useRouter();
   const vault = usePronunciationVault();
+  const { user, loading, logout } = useAuth();
 
+  const isLoginPage = pathname === "/login";
   const showVaultBadge = (href: string) => href === "/pronunciation";
+
+  if (isLoginPage) {
+    return <div className="auth-shell">{children}</div>;
+  }
+
+  if (loading) {
+    return (
+      <div className="auth-shell auth-loading">
+        <p>Carregando…</p>
+      </div>
+    );
+  }
+
+  const handleLogout = async () => {
+    await logout();
+    router.push("/login");
+    router.refresh();
+  };
 
   return (
     <div className="app-shell">
@@ -45,6 +67,17 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             );
           })}
         </nav>
+        {user && (
+          <div className="app-sidebar-account">
+            <Link href="/conta" className="app-sidebar-user">
+              <span>👤</span>
+              <span>{user.name || user.email.split("@")[0]}</span>
+            </Link>
+            <button type="button" className="app-sidebar-logout" onClick={handleLogout}>
+              Sair
+            </button>
+          </div>
+        )}
         <p className="app-sidebar-foot">PWA · Study daily</p>
       </aside>
 

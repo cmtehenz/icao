@@ -4,7 +4,6 @@ import { useMemo, useState } from "react";
 import ExamAudioPlayer from "@/components/ExamAudioPlayer";
 import ExamVersionPicker from "@/components/ExamVersionPicker";
 import VoiceCoachPanel from "@/components/VoiceCoachPanel";
-import Part2TimerBar from "@/components/Part2Trainer/Part2TimerBar";
 import ProgressBadge from "@/components/study/ProgressBadge";
 import { ALL_EXAM_SITUATIONS, getSituationsByExam } from "@/data/exams/part2Data";
 import { examAudioUrl, examAudioLabel } from "@/lib/exams/audio";
@@ -74,7 +73,6 @@ export default function ReadbackMode({ progress, onProgressChange }: Props) {
         label={examAudioLabel(scenario.examVersion, scenario.readback.audioTrack)}
       />
           <p className="part2-atc-message">{scenario.readback.atcMessage}</p>
-          <Part2TimerBar />
         </div>
         <div className="card-body">
           <p className="part2-hint">Repita o readback em voz alta. Você pode pedir &quot;say again&quot; uma vez na prova.</p>

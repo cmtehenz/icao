@@ -7,9 +7,11 @@ import { errorTypeLabel, getMispronouncedWords, isScriptedAssessment } from "@/l
 import type { AzurePronunciationResult } from "@/lib/azure/pronunciation";
 import type { EvaluateFeedback, EvaluateType } from "@/lib/evaluate/types";
 import { estimateIcaoLevel } from "@/lib/evaluate/icaoLevel";
+import { saveEvaluationRecord } from "@/lib/evaluate/saveEvaluation";
 import { addWordsToVault } from "@/lib/pronunciationVault";
 import IcaoLevelPanel from "@/components/IcaoLevelPanel";
 import YouGlishLink from "@/components/YouGlishLink";
+import { useAuth } from "@/components/AuthProvider";
 
 type Props = {
   question: string;
@@ -43,12 +45,17 @@ export default function VoiceCoachPanel({
 }: Props) {
   const speech = useSpeechRecognition("en-US");
   const azure = useAzurePronunciation();
+  const { user } = useAuth();
   const [loading, setLoading] = useState(false);
   const [feedback, setFeedback] = useState<EvaluateFeedback | null>(null);
   const [vaultSaved, setVaultSaved] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
 
-  const runContentEvaluation = async (transcript: string, azureResult?: AzurePronunciationResult) => {
+  const runContentEvaluation = async (
+    transcript: string,
+    azureResult?: AzurePronunciationResult,
+    audioBlob?: Blob | null,
+  ) => {
     setLoading(true);
     setFeedback(null);
     setVaultSaved(null);
@@ -91,6 +98,19 @@ export default function VoiceCoachPanel({
       }
 
       setFeedback(data);
+
+      if (user) {
+        void saveEvaluationRecord({
+          type: evaluateType,
+          question,
+          transcript,
+          scores: data.scores,
+          icaoLevel: data.icaoLevel?.overall,
+          icaoCriteria: data.icaoLevel?.criteria,
+          summary: data.summary,
+          audioBlob: azureResult ? audioBlob : undefined,
+        });
+      }
 
       if (azureResult && data.azurePronunciation?.mispronouncedWords.length) {
         const { added, updated, total } = addWordsToVault(
@@ -138,8 +158,8 @@ export default function VoiceCoachPanel({
   };
 
   const finishAzure = async () => {
-    const azureResult = await azure.stop();
-    const text = azureResult?.recognizedText ?? "";
+    const { assessment, audioBlob } = await azure.stop();
+    const text = assessment?.recognizedText ?? "";
     if (!text.trim()) {
       setFeedback({
         scores: { overall: 0, structure: 0, content: 0, phraseology: 0, pronunciation: 0 },
@@ -152,7 +172,7 @@ export default function VoiceCoachPanel({
       });
       return;
     }
-    await runContentEvaluation(text, azureResult ?? undefined);
+    await runContentEvaluation(text, assessment ?? undefined, audioBlob);
   };
 
   if (!open) {
