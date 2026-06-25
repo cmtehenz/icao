@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/components/AuthProvider";
 import EvaluationAudioPlayer from "@/components/EvaluationAudioPlayer";
+import DailyStudyGoal from "@/components/study/DailyStudyGoal";
 
 type EvaluationRow = {
   id: string;
@@ -59,6 +60,8 @@ export default function AccountPage() {
           Sair
         </button>
       </header>
+
+      <DailyStudyGoal compact />
 
       <section className="account-section">
         <h2>Atalhos</h2>

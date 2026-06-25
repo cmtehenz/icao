@@ -4,6 +4,8 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "@/components/AuthProvider";
 import PronunciationVaultBadge from "@/components/PronunciationVaultBadge";
+import { StudyGoalBar } from "@/components/study/StudyGoalBar";
+import { useStudyTimeTracker } from "@/hooks/useStudyTimeTracker";
 import { usePronunciationVault } from "@/hooks/usePronunciationVault";
 import { isNavActive, NAV_ITEMS } from "@/lib/navigation";
 
@@ -12,6 +14,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const vault = usePronunciationVault();
   const { user, loading, logout } = useAuth();
+  useStudyTimeTracker(pathname);
 
   const isLoginPage = pathname === "/login";
   const showVaultBadge = (href: string) => href === "/pronunciation";
@@ -84,6 +87,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       <div className="app-main">
         <div className="app-content">{children}</div>
       </div>
+
+      <StudyGoalBar />
 
       <nav className="app-bottom-nav" aria-label="Mobile navigation">
         {NAV_ITEMS.map((item) => {

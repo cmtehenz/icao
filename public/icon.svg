@@ -1,4 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="96" fill="#2563eb"/>
-  <text x="256" y="290" font-size="220" text-anchor="middle" fill="white"></text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="ICAO Delta">
+  <defs>
+    <linearGradient id="sky" x1="64" y1="48" x2="448" y2="464" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1e3a8a"/>
+      <stop offset="1" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="256" y1="96" x2="256" y2="416" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#sky)"/>
+  <circle cx="256" cy="256" r="188" fill="url(#glow)"/>
+  <path fill="#ffffff" d="M156 286c0-8 6-14 14-14h44l18-34h48l18 34h44c8 0 14 6 14 14v18c0 8-6 14-14 14H170c-8 0-14-6-14-14v-18z"/>
+  <ellipse cx="256" cy="214" rx="118" ry="18" fill="#ffffff" opacity="0.95"/>
+  <rect x="248" y="198" width="16" height="42" rx="8" fill="#ffffff"/>
+  <path fill="#bfdbfe" d="M352 292h44l10 18h-64l10-18z"/>
+  <circle cx="396" cy="304" r="16" fill="#ffffff"/>
+  <circle cx="396" cy="304" r="6" fill="#2563eb"/>
+  <path fill="#93c5fd" d="M256 118 302 196H210Z"/>
+  <path fill="#ffffff" d="M256 136 284 188H228Z"/>
 </svg>

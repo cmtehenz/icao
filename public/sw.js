@@ -1,16 +1,25 @@
-const CACHE = "icao-pwa-v2";
+const CACHE = "icao-pwa-v3";
 
 /** Never cache Next.js chunks — hashes change on every dev/build. */
 function shouldCache(url) {
   const path = new URL(url).pathname;
   if (path.startsWith("/_next/")) return false;
   if (path.startsWith("/api/")) return false;
-  return path === "/" || path === "/icon.svg" || path === "/manifest.webmanifest";
+  return (
+    path === "/" ||
+    path === "/icon.svg" ||
+    path === "/icon-192.png" ||
+    path === "/icon-512.png" ||
+    path === "/apple-touch-icon.png" ||
+    path === "/manifest.webmanifest"
+  );
 }
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE).then((cache) => cache.addAll(["/", "/icon.svg"])),
+    caches.open(CACHE).then((cache) =>
+      cache.addAll(["/", "/icon.svg", "/icon-192.png", "/icon-512.png", "/apple-touch-icon.png"]),
+    ),
   );
   self.skipWaiting();
 });
