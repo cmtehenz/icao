@@ -53,12 +53,18 @@ function parseWordScores(json: {
   });
 }
 
-function preferredRecorderMime(): string {
-  if (typeof MediaRecorder === "undefined") return "audio/webm";
-  if (MediaRecorder.isTypeSupported("audio/webm;codecs=opus")) return "audio/webm;codecs=opus";
-  if (MediaRecorder.isTypeSupported("audio/webm")) return "audio/webm";
-  if (MediaRecorder.isTypeSupported("audio/mp4")) return "audio/mp4";
-  return "audio/webm";
+function preferredRecorderMime(): string | undefined {
+  const candidates = [
+    "audio/webm;codecs=opus",
+    "audio/webm",
+    "video/webm;codecs=opus",
+    "video/webm",
+    "audio/mp4",
+  ];
+  for (const mime of candidates) {
+    if (MediaRecorder.isTypeSupported(mime)) return mime;
+  }
+  return undefined;
 }
 
 export function useAzurePronunciation() {
@@ -111,15 +117,17 @@ export function useAzurePronunciation() {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       streamRef.current = stream;
       const mimeType = preferredRecorderMime();
-      const recorder = new MediaRecorder(stream, { mimeType });
+      const recorder = mimeType
+        ? new MediaRecorder(stream, { mimeType })
+        : new MediaRecorder(stream);
       chunksRef.current = [];
       recorder.ondataavailable = (e) => {
         if (e.data.size > 0) chunksRef.current.push(e.data);
       };
       recorder.start(1000);
       recorderRef.current = recorder;
-    } catch {
-      /* mic capture optional — Azure may still work */
+    } catch (e) {
+      console.warn("[mic] MediaRecorder failed — Azure transcript will save without audio", e);
     }
   }, []);
 
@@ -159,6 +167,8 @@ export function useAzurePronunciation() {
       setResult(null);
       segmentsRef.current = [];
       await stopMicCapture();
+
+      await startMicCapture();
 
       let tokenData: { configured?: boolean; token?: string; region?: string; error?: string };
       try {
@@ -231,7 +241,6 @@ export function useAzurePronunciation() {
 
         recognizerRef.current = recognizer;
         setAssessing(true);
-        await startMicCapture();
 
         recognizer.startContinuousRecognitionAsync(
           () => {},

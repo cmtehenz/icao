@@ -1,3 +1,7 @@
+import {
+  filenameForAudioBlob,
+  normalizeClientAudioBlob,
+} from "@/lib/recordings/mime";
 import type { EvaluateScores, EvaluateType } from "@/lib/evaluate/types";
 
 export type SaveEvaluationInput = {
@@ -11,37 +15,71 @@ export type SaveEvaluationInput = {
   audioBlob?: Blob | null;
 };
 
-export async function saveEvaluationRecord(input: SaveEvaluationInput): Promise<string | null> {
+export type SaveEvaluationResult = {
+  id: string;
+  audioSaved: boolean;
+  audioError?: string;
+};
+
+export async function saveEvaluationRecord(
+  input: SaveEvaluationInput,
+): Promise<SaveEvaluationResult | null> {
+  const payload = {
+    type: input.type,
+    question: input.question,
+    transcript: input.transcript,
+    scores: input.scores,
+    icaoLevel: input.icaoLevel,
+    icaoCriteria: input.icaoCriteria,
+    summary: input.summary,
+  };
+
   try {
+    if (input.audioBlob && input.audioBlob.size > 0) {
+      const blob = normalizeClientAudioBlob(input.audioBlob);
+      const form = new FormData();
+      form.append("data", JSON.stringify(payload));
+      form.append("audio", blob, filenameForAudioBlob(blob));
+
+      const res = await fetch("/api/evaluations", {
+        method: "POST",
+        body: form,
+      });
+
+      const data = (await res.json()) as {
+        id?: string;
+        audioSaved?: boolean;
+        audioError?: string;
+        error?: string;
+      };
+
+      if (!res.ok) {
+        console.error("[saveEvaluation] multipart failed", res.status, data.error);
+        return null;
+      }
+
+      if (!data.id) return null;
+
+      return {
+        id: data.id,
+        audioSaved: !!data.audioSaved,
+        audioError: data.audioSaved ? undefined : (data.audioError ?? "Áudio não foi salvo no servidor."),
+      };
+    }
+
     const res = await fetch("/api/evaluations", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        type: input.type,
-        question: input.question,
-        transcript: input.transcript,
-        scores: input.scores,
-        icaoLevel: input.icaoLevel,
-        icaoCriteria: input.icaoCriteria,
-        summary: input.summary,
-      }),
+      body: JSON.stringify(payload),
     });
 
     if (!res.ok) return null;
     const data = (await res.json()) as { id?: string };
     if (!data.id) return null;
 
-    if (input.audioBlob && input.audioBlob.size > 0) {
-      const form = new FormData();
-      form.append("audio", input.audioBlob, `recording.${input.audioBlob.type.includes("ogg") ? "ogg" : "webm"}`);
-      await fetch(`/api/evaluations/${data.id}/audio`, {
-        method: "POST",
-        body: form,
-      });
-    }
-
-    return data.id;
-  } catch {
+    return { id: data.id, audioSaved: false };
+  } catch (e) {
+    console.error("[saveEvaluation] error", e);
     return null;
   }
 }

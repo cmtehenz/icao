@@ -88,7 +88,7 @@ export default function FullSimulationMode({ progress, onProgressChange }: Props
     if (!recordingKey || !scenario || !speakConfig) return;
     setRecordings((prev) => ({ ...prev, [recordingKey]: feedback }));
 
-    const evaluationId = await saveEvaluationRecord({
+    const saved = await saveEvaluationRecord({
       type: speakConfig.evaluateType,
       question: speakConfig.question,
       transcript: feedback.transcript,
@@ -106,7 +106,7 @@ export default function FullSimulationMode({ progress, onProgressChange }: Props
       step,
       stepLabel: speakConfig.label,
       feedback,
-      evaluationId: evaluationId ?? undefined,
+      evaluationId: saved?.id,
     };
 
     setStepResults((prev) => {

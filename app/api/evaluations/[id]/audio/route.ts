@@ -1,7 +1,10 @@
 import { NextResponse } from "next/server";
 import { getCurrentUser } from "@/lib/auth/user";
 import { prisma } from "@/lib/db";
-import { readRecording, saveRecording } from "@/lib/recordings/storage";
+import { isAllowedRecordingMime, normalizeRecordingMime } from "@/lib/recordings/mime";
+import { isBlobStorageEnabled, readRecording, recordingStorageMode, saveRecording } from "@/lib/recordings/storage";
+
+export const runtime = "nodejs";
 
 type RouteContext = { params: Promise<{ id: string }> };
 
@@ -65,14 +68,24 @@ export async function POST(request: Request, context: RouteContext) {
       return NextResponse.json({ error: "Arquivo de áudio obrigatório." }, { status: 400 });
     }
     if (file.size > MAX_AUDIO_BYTES) {
-      return NextResponse.json({ error: "Áudio muito grande (máx. 8 MB)." }, { status: 413 });
+      const maxMb = Math.round(MAX_AUDIO_BYTES / (1024 * 1024));
+      return NextResponse.json({ error: `Áudio muito grande (máx. ${maxMb} MB).` }, { status: 413 });
     }
 
-    const mimeType = file.type || "audio/webm";
-    if (!mimeType.startsWith("audio/")) {
-      return NextResponse.json({ error: "Tipo de arquivo inválido." }, { status: 400 });
+    const filename = file.name || "recording.webm";
+    const rawMime = file.type || "audio/webm";
+    if (!isAllowedRecordingMime(rawMime, filename)) {
+      return NextResponse.json({ error: `Tipo de arquivo inválido: ${rawMime || "desconhecido"}.` }, { status: 400 });
     }
 
+    if (process.env.VERCEL === "1" && !isBlobStorageEnabled()) {
+      return NextResponse.json(
+        { error: "Armazenamento de áudio não configurado (BLOB_READ_WRITE_TOKEN)." },
+        { status: 503 },
+      );
+    }
+
+    const mimeType = normalizeRecordingMime(rawMime, filename);
     const buffer = Buffer.from(await file.arrayBuffer());
     const audioKey = await saveRecording(user.id, id, buffer, mimeType);
 
@@ -83,7 +96,7 @@ export async function POST(request: Request, context: RouteContext) {
 
     return NextResponse.json({ ok: true, audioKey });
   } catch (e) {
-    console.error(e);
+    console.error("[audio] upload failed", { storage: recordingStorageMode(), error: e });
     return NextResponse.json({ error: "Erro ao salvar áudio." }, { status: 500 });
   }
 }

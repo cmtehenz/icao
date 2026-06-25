@@ -56,6 +56,7 @@ async function saveRecordingToBlob(
     contentType: mimeType,
     addRandomSuffix: false,
     allowOverwrite: true,
+    token: process.env.BLOB_READ_WRITE_TOKEN,
   });
   return result.url;
 }
@@ -91,7 +92,10 @@ export type RecordingBody =
   | { kind: "buffer"; buffer: Buffer; mimeType: string };
 
 async function readRecordingFromBlob(audioKey: string): Promise<RecordingBody | null> {
-  const result = await get(audioKey, { access: "private" });
+  const result = await get(audioKey, {
+    access: "private",
+    token: process.env.BLOB_READ_WRITE_TOKEN,
+  });
   if (!result || result.statusCode !== 200 || !result.stream) {
     return null;
   }

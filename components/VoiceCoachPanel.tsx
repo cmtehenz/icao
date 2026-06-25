@@ -49,6 +49,7 @@ export default function VoiceCoachPanel({
   const [loading, setLoading] = useState(false);
   const [feedback, setFeedback] = useState<EvaluateFeedback | null>(null);
   const [vaultSaved, setVaultSaved] = useState<string | null>(null);
+  const [audioSaveNote, setAudioSaveNote] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
 
   const runContentEvaluation = async (
@@ -59,6 +60,7 @@ export default function VoiceCoachPanel({
     setLoading(true);
     setFeedback(null);
     setVaultSaved(null);
+    setAudioSaveNote(null);
     try {
       const res = await fetch("/api/evaluate", {
         method: "POST",
@@ -100,7 +102,7 @@ export default function VoiceCoachPanel({
       setFeedback(data);
 
       if (user) {
-        void saveEvaluationRecord({
+        const saved = await saveEvaluationRecord({
           type: evaluateType,
           question,
           transcript,
@@ -110,6 +112,16 @@ export default function VoiceCoachPanel({
           summary: data.summary,
           audioBlob: azureResult ? audioBlob : undefined,
         });
+        if (azureResult && audioBlob && saved && !saved.audioSaved) {
+          setAudioSaveNote(
+            saved.audioError ??
+              "Nota salva, mas o áudio não foi armazenado. Verifique BLOB_READ_WRITE_TOKEN na Vercel.",
+          );
+        } else if (azureResult && !audioBlob) {
+          setAudioSaveNote(
+            "Nota salva, mas a gravação de áudio não foi capturada neste dispositivo.",
+          );
+        }
       }
 
       if (azureResult && data.azurePronunciation?.mispronouncedWords.length) {
@@ -322,6 +334,8 @@ export default function VoiceCoachPanel({
           )}
 
           <p className="voice-coach-summary">{feedback.summary}</p>
+
+          {audioSaveNote && <p className="voice-coach-warn">{audioSaveNote}</p>}
 
           {feedback.strengths.length > 0 && (
             <div className="voice-coach-list good">
