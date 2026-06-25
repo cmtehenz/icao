@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import AppNav from "@/components/AppNav";
 import AnswerPanel from "@/components/study/AnswerPanel";
 import KeywordsPanel from "@/components/study/KeywordsPanel";
 import { CARDS } from "@/lib/cards";
@@ -98,8 +97,7 @@ export default function ExamSession({
   if (!poolIndices.length) {
     return (
       <>
-        <AppNav />
-        <div className="exam-session wrap">
+      <div className="exam-session wrap">
           <p>No questions in this filter. Add favorites or switch filter.</p>
           <button type="button" className="btn secondary" onClick={onExit}>
             Back
@@ -111,7 +109,6 @@ export default function ExamSession({
 
   return (
     <>
-      <AppNav />
       <div className="exam-session wrap">
         <header className="exam-session-head">
           <div>

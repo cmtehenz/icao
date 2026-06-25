@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import AppNav from "@/components/AppNav";
 import FullSimulationMode from "@/components/Part2Trainer/FullSimulationMode";
 import InteractionMode from "@/components/Part2Trainer/InteractionMode";
 import ReadbackMode from "@/components/Part2Trainer/ReadbackMode";
@@ -38,7 +37,6 @@ export default function Part2TrainerApp() {
 
   return (
     <>
-      <AppNav />
       <header className="header delta-header">
         <div className="wrap delta-topbar">
           <div className="delta-brand">

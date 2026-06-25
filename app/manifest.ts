@@ -7,6 +7,7 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "Helicopter ICAO Part 1 trainer — keywords, exam mode, daily practice.",
     start_url: "/",
     display: "standalone",
+    orientation: "portrait",
     background_color: "#f7f8ff",
     theme_color: "#2563eb",
     icons: [

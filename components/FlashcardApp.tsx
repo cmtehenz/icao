@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import AppNav from "@/components/AppNav";
 import ConnectorsBank from "@/components/ConnectorsBank";
 import PilotProfileModal from "@/components/PilotProfileModal";
 import QuickPhrasesMenu from "@/components/QuickPhrasesMenu";
@@ -207,7 +206,6 @@ export default function FlashcardApp() {
 
   return (
     <>
-      <AppNav />
       <PilotProfileModal
         open={profileOpen}
         profile={profile}

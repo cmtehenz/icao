@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import AppNav from "@/components/AppNav";
 import IcaoFormulaBanner from "@/components/IcaoFormulaBanner";
 import { CATEGORIES } from "@/lib/categories";
 import { CARDS } from "@/lib/cards";
@@ -57,7 +56,6 @@ export default function IcaoStructureApp() {
 
   return (
     <>
-      <AppNav />
       <IcaoFormulaBanner />
 
       <div className="structure-wrap">

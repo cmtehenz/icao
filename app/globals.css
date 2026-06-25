@@ -1122,49 +1122,240 @@ input {
   margin-top: 4px;
 }
 
-/* App navigation */
-.app-nav {
-  position: sticky;
-  top: 0;
-  z-index: 60;
-  background: var(--card);
-  border-bottom: 1px solid var(--line);
+/* App shell — sidebar (web) + bottom nav (mobile PWA) */
+:root {
+  --sidebar-width: 260px;
+  --bottom-nav-height: 62px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 
-.app-nav-inner {
+.app-shell {
+  min-height: 100dvh;
+  min-height: 100vh;
+}
+
+.app-main {
+  min-height: 100dvh;
+  min-height: 100vh;
+}
+
+.app-content {
+  min-height: 100%;
+  padding-top: var(--safe-top);
+  padding-bottom: calc(var(--bottom-nav-height) + var(--safe-bottom) + 8px);
+}
+
+/* Mobile bottom navigation */
+.app-bottom-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 80;
   display: flex;
-  gap: 8px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  align-items: stretch;
+  gap: 4px;
+  padding: 8px 12px calc(8px + var(--safe-bottom));
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--line);
+  box-shadow: 0 -8px 32px rgba(15, 23, 42, 0.08);
 }
 
-.app-nav-link {
+[data-theme="dark"] .app-bottom-nav {
+  background: rgba(7, 11, 24, 0.94);
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.35);
+}
+
+.app-bottom-link {
   flex: 1;
-  text-align: center;
-  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 6px 4px;
   border-radius: 14px;
-  font-weight: 900;
   text-decoration: none;
   color: var(--muted);
-  border: 1px solid var(--line);
-  background: var(--bg);
+  font-weight: 800;
+  font-size: 11px;
+  min-height: 52px;
+  transition: background 0.15s ease, color 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
-.app-nav-link.active {
-  background: var(--blue);
-  color: white;
-  border-color: var(--blue);
+.app-bottom-link.active {
+  color: var(--blue);
+  background: var(--blue-bg);
 }
 
-.app-nav + .header,
-.app-nav + .delta-header {
-  top: 53px;
+.app-bottom-icon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.app-bottom-label {
+  letter-spacing: 0.02em;
+}
+
+/* Desktop sidebar — hidden on mobile */
+.app-sidebar {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .app-bottom-nav {
+    display: none;
+  }
+
+  .app-content {
+    padding-bottom: 0;
+  }
+
+  .app-sidebar {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: var(--sidebar-width);
+    z-index: 70;
+    padding: calc(20px + var(--safe-top)) 16px 20px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-right: 1px solid var(--line);
+    box-shadow: 4px 0 24px rgba(15, 23, 42, 0.04);
+  }
+
+  [data-theme="dark"] .app-sidebar {
+    background: rgba(7, 11, 24, 0.98);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.25);
+  }
+
+  .app-main {
+    margin-left: var(--sidebar-width);
+  }
+
+  .app-sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 8px 24px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .app-sidebar-logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
+  }
+
+  .app-sidebar-brand strong {
+    display: block;
+    font-size: 17px;
+    letter-spacing: -0.02em;
+  }
+
+  .app-sidebar-brand span {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 650;
+  }
+
+  .app-sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+  }
+
+  .app-sidebar-link {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 12px;
+    border-radius: 16px;
+    text-decoration: none;
+    color: var(--text);
+    border: 1px solid transparent;
+    transition: all 0.15s ease;
+  }
+
+  .app-sidebar-link:hover {
+    background: var(--bg);
+    border-color: var(--line);
+  }
+
+  .app-sidebar-link.active {
+    background: var(--blue-bg);
+    border-color: var(--blue);
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.15);
+  }
+
+  .app-sidebar-link.active strong {
+    color: var(--blue);
+  }
+
+  .app-nav-icon {
+    font-size: 20px;
+    line-height: 1.2;
+    flex-shrink: 0;
+  }
+
+  .app-sidebar-link-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  .app-sidebar-link-text strong {
+    font-size: 14px;
+  }
+
+  .app-sidebar-link-text small {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.35;
+    font-weight: 650;
+  }
+
+  .app-sidebar-foot {
+    margin: 16px 8px 0;
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+}
+
+/* Legacy — remove top offset from old top nav */
+.header,
+.delta-header {
+  position: sticky;
+  top: 0;
+  z-index: 45;
 }
 
 /* ICAO 4 page */
 .icao-formula-banner {
   position: sticky;
-  top: 53px;
+  top: 0;
   z-index: 40;
   background: linear-gradient(135deg, #0f172a, #1e3a8a);
   color: white;
@@ -1499,8 +1690,8 @@ input {
 }
 
 @media print {
-  .app-nav,
-  .icao-formula-banner,
+  .app-sidebar,
+  .app-bottom-nav,
   .header,
   .sidebar,
   .timer,
@@ -2226,14 +2417,5 @@ input {
 
   .part2-dashboard {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .app-nav-inner {
-    flex-wrap: wrap;
-  }
-
-  .app-nav-link {
-    font-size: 13px;
-    padding: 10px 8px;
   }
 }
