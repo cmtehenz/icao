@@ -5,6 +5,7 @@ import { loadSpeechSdk } from "@/lib/azure/loadSpeechSdk";
 import type { AzurePronunciationResult, AzureWordScore } from "@/lib/azure/pronunciation";
 import { azureReferenceText, isScriptedAssessment } from "@/lib/azure/pronunciation";
 import type { EvaluateType } from "@/lib/evaluate/types";
+import { preferredRecorderMime } from "@/lib/recordings/platform";
 
 type Segment = AzurePronunciationResult;
 
@@ -51,20 +52,6 @@ function parseWordScores(json: {
       errorType: pa?.ErrorType ?? "None",
     };
   });
-}
-
-function preferredRecorderMime(): string | undefined {
-  const candidates = [
-    "audio/webm;codecs=opus",
-    "audio/webm",
-    "video/webm;codecs=opus",
-    "video/webm",
-    "audio/mp4",
-  ];
-  for (const mime of candidates) {
-    if (MediaRecorder.isTypeSupported(mime)) return mime;
-  }
-  return undefined;
 }
 
 export function useAzurePronunciation() {

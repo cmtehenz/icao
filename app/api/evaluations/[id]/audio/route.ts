@@ -1,8 +1,17 @@
 import { NextResponse } from "next/server";
 import { getCurrentUser } from "@/lib/auth/user";
 import { prisma } from "@/lib/db";
-import { isAllowedRecordingMime, normalizeRecordingMime } from "@/lib/recordings/mime";
-import { isBlobStorageEnabled, readRecording, recordingStorageMode, saveRecording } from "@/lib/recordings/storage";
+import {
+  isAllowedRecordingMime,
+  normalizeRecordingMime,
+  playbackContentType,
+} from "@/lib/recordings/mime";
+import {
+  isBlobStorageEnabled,
+  readRecordingBuffer,
+  recordingStorageMode,
+  saveRecording,
+} from "@/lib/recordings/storage";
 
 export const runtime = "nodejs";
 
@@ -11,7 +20,51 @@ type RouteContext = { params: Promise<{ id: string }> };
 const MAX_AUDIO_BYTES =
   process.env.VERCEL === "1" ? 4 * 1024 * 1024 : 8 * 1024 * 1024;
 
-export async function GET(_request: Request, context: RouteContext) {
+function audioResponse(
+  buffer: Buffer,
+  mimeType: string,
+  request: Request,
+): NextResponse {
+  const size = buffer.length;
+  const headers = {
+    "Content-Type": mimeType,
+    "Accept-Ranges": "bytes",
+    "Cache-Control": "private, max-age=3600",
+  };
+
+  const rangeHeader = request.headers.get("range");
+  if (rangeHeader) {
+    const match = /^bytes=(\d+)-(\d*)$/i.exec(rangeHeader);
+    if (match) {
+      const start = Number(match[1]);
+      const end = match[2] ? Number(match[2]) : size - 1;
+      if (start >= size || start > end) {
+        return new NextResponse(null, {
+          status: 416,
+          headers: { "Content-Range": `bytes */${size}` },
+        });
+      }
+      const slice = buffer.subarray(start, end + 1);
+      return new NextResponse(new Uint8Array(slice), {
+        status: 206,
+        headers: {
+          ...headers,
+          "Content-Length": String(slice.length),
+          "Content-Range": `bytes ${start}-${end}/${size}`,
+        },
+      });
+    }
+  }
+
+  return new NextResponse(new Uint8Array(buffer), {
+    headers: {
+      ...headers,
+      "Content-Length": String(size),
+    },
+  });
+}
+
+export async function GET(request: Request, context: RouteContext) {
   const user = await getCurrentUser();
   if (!user) return NextResponse.json({ error: "Não autenticado." }, { status: 401 });
 
@@ -25,26 +78,13 @@ export async function GET(_request: Request, context: RouteContext) {
     return NextResponse.json({ error: "Áudio não encontrado." }, { status: 404 });
   }
 
-  const body = await readRecording(row.audioKey);
-  if (!body) {
+  const recording = await readRecordingBuffer(row.audioKey);
+  if (!recording) {
     return NextResponse.json({ error: "Arquivo de áudio ausente." }, { status: 404 });
   }
 
-  if (body.kind === "stream") {
-    return new NextResponse(body.stream, {
-      headers: {
-        "Content-Type": body.mimeType,
-        "Cache-Control": "private, max-age=3600",
-      },
-    });
-  }
-
-  return new NextResponse(new Uint8Array(body.buffer), {
-    headers: {
-      "Content-Type": body.mimeType,
-      "Cache-Control": "private, max-age=3600",
-    },
-  });
+  const mimeType = playbackContentType(recording.mimeType, row.audioKey);
+  return audioResponse(recording.buffer, mimeType, request);
 }
 
 export async function POST(request: Request, context: RouteContext) {

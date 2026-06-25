@@ -5,6 +5,7 @@ import YouGlishLink from "@/components/YouGlishLink";
 import { ICAO_CRITERION_LABELS, ICAO_LEVEL_LABELS } from "@/lib/evaluate/icaoLevel";
 import type { AggregatedSimulationResult } from "@/lib/part2/aggregateSimulation";
 import { EXAM_LABELS } from "@/lib/exams/types";
+import EvaluationAudioPlayer from "@/components/EvaluationAudioPlayer";
 
 type Props = {
   result: AggregatedSimulationResult;
@@ -109,11 +110,9 @@ export default function SimulationResultsPanel({ result, examVersion, onRestart 
               </header>
               <p className="part2-sim-step-transcript">{r.feedback.transcript || "—"}</p>
               {r.evaluationId && (
-                <audio
+                <EvaluationAudioPlayer
+                  evaluationId={r.evaluationId}
                   className="exam-audio part2-sim-step-audio"
-                  controls
-                  preload="none"
-                  src={`/api/evaluations/${r.evaluationId}/audio`}
                 />
               )}
               <p className="part2-sim-step-summary">{r.feedback.summary}</p>

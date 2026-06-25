@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/components/AuthProvider";
+import EvaluationAudioPlayer from "@/components/EvaluationAudioPlayer";
 
 type EvaluationRow = {
   id: string;
@@ -96,11 +97,9 @@ export default function AccountPage() {
                   </p>
                 )}
                 {ev.hasAudio && (
-                  <audio
+                  <EvaluationAudioPlayer
+                    evaluationId={ev.id}
                     className="exam-audio evaluation-audio"
-                    controls
-                    preload="none"
-                    src={`/api/evaluations/${ev.id}/audio`}
                   />
                 )}
                 <p className="evaluation-meta">
