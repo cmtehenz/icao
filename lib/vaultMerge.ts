@@ -1,13 +1,26 @@
 import type { VaultWord } from "@/lib/pronunciationVault";
+import { normalizeVaultCount, sanitizeVaultWord, vaultCountLooksCorrupt } from "@/lib/pronunciationVault";
 
 function pickLatest(a: string, b: string): string {
   return new Date(a) >= new Date(b) ? a : b;
 }
 
+function mergeCount(a: unknown, b: unknown, fallback = 0): number {
+  const leftCorrupt = vaultCountLooksCorrupt(a);
+  const rightCorrupt = vaultCountLooksCorrupt(b);
+  const left = normalizeVaultCount(a, fallback);
+  const right = normalizeVaultCount(b, fallback);
+
+  if (leftCorrupt && rightCorrupt) return fallback || 1;
+  if (leftCorrupt) return right;
+  if (rightCorrupt) return left;
+  return Math.max(left, right);
+}
+
 export function mergeVaultWords(local: VaultWord[], remote: VaultWord[]): VaultWord[] {
   const map = new Map<string, VaultWord>();
 
-  for (const item of [...remote, ...local]) {
+  for (const item of [...remote, ...local].map(sanitizeVaultWord)) {
     const key = item.word.toLowerCase();
     const existing = map.get(key);
     if (!existing) {
@@ -15,7 +28,7 @@ export function mergeVaultWords(local: VaultWord[], remote: VaultWord[]): VaultW
       continue;
     }
 
-    map.set(key, {
+    map.set(key, sanitizeVaultWord({
       word: existing.word || item.word,
       lowestAccuracy: Math.min(existing.lowestAccuracy, item.lowestAccuracy),
       lastAccuracy:
@@ -34,14 +47,14 @@ export function mergeVaultWords(local: VaultWord[], remote: VaultWord[]): VaultW
         new Date(existing.lastSeenAt) >= new Date(item.lastSeenAt)
           ? existing.context || item.context
           : item.context || existing.context,
-      timesSeen: existing.timesSeen + item.timesSeen,
-      practiceCount: existing.practiceCount + item.practiceCount,
+      timesSeen: mergeCount(existing.timesSeen, item.timesSeen, 1),
+      practiceCount: mergeCount(existing.practiceCount, item.practiceCount, 0),
       lastSeenAt: pickLatest(existing.lastSeenAt, item.lastSeenAt),
       lastPracticedAt:
         existing.lastPracticedAt && item.lastPracticedAt
           ? pickLatest(existing.lastPracticedAt, item.lastPracticedAt)
           : existing.lastPracticedAt ?? item.lastPracticedAt,
-    });
+    }));
   }
 
   return [...map.values()].sort((a, b) => a.lowestAccuracy - b.lowestAccuracy);
@@ -75,7 +88,7 @@ export function dbWordToVault(row: {
   lastSeenAt: Date;
   lastPracticedAt: Date | null;
 }): VaultWord {
-  return {
+  return sanitizeVaultWord({
     word: row.word,
     lowestAccuracy: row.lowestAccuracy,
     lastAccuracy: row.lastAccuracy,
@@ -86,5 +99,5 @@ export function dbWordToVault(row: {
     practiceCount: row.practiceCount,
     lastSeenAt: row.lastSeenAt.toISOString(),
     lastPracticedAt: row.lastPracticedAt?.toISOString(),
-  };
+  });
 }

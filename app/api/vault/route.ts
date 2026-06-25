@@ -2,7 +2,12 @@ import { NextResponse } from "next/server";
 import { getCurrentUser } from "@/lib/auth/user";
 import { prisma } from "@/lib/db";
 import { dbWordToVault, mergeVaultWords, vaultWordToDb } from "@/lib/vaultMerge";
-import type { VaultWord } from "@/lib/pronunciationVault";
+import {
+  resetVaultWordCounts,
+  sanitizeVaultWord,
+  vaultCountLooksCorrupt,
+  type VaultWord,
+} from "@/lib/pronunciationVault";
 
 export async function GET() {
   const user = await getCurrentUser();
@@ -13,7 +18,21 @@ export async function GET() {
     orderBy: { lowestAccuracy: "asc" },
   });
 
-  return NextResponse.json({ words: rows.map(dbWordToVault) });
+  const needsDbRepair = rows.some(
+    (row) => vaultCountLooksCorrupt(row.timesSeen) || vaultCountLooksCorrupt(row.practiceCount),
+  );
+
+  if (needsDbRepair && rows.length) {
+    await prisma.vaultWord.updateMany({
+      where: { userId: user.id },
+      data: { timesSeen: 1, practiceCount: 1 },
+    });
+    return NextResponse.json({
+      words: rows.map((row) => resetVaultWordCounts(dbWordToVault(row))),
+    });
+  }
+
+  return NextResponse.json({ words: rows.map(dbWordToVault).map(sanitizeVaultWord) });
 }
 
 export async function PUT(request: Request) {
@@ -22,7 +41,7 @@ export async function PUT(request: Request) {
 
   try {
     const body = await request.json();
-    const incoming = (body.words ?? []) as VaultWord[];
+    const incoming = ((body.words ?? []) as VaultWord[]).map(sanitizeVaultWord);
     if (!Array.isArray(incoming)) {
       return NextResponse.json({ error: "Formato inválido." }, { status: 400 });
     }

@@ -14,6 +14,58 @@ export type VaultWord = {
 };
 
 const STORAGE_KEY = "icao_pronunciation_vault_v1";
+const VAULT_COUNT_RESET_KEY = "icao_vault_counts_reset_v2";
+const MAX_VAULT_COUNT = 99;
+const CORRUPT_COUNT_THRESHOLD = 10;
+
+/** Evita concatenação de strings e valores inflados por sync duplicado. */
+export function normalizeVaultCount(value: unknown, fallback = 0): number {
+  if (typeof value === "number" && Number.isFinite(value)) {
+    return Math.min(Math.max(0, Math.floor(value)), MAX_VAULT_COUNT);
+  }
+  if (typeof value === "string" && value.trim()) {
+    const parsed = Number.parseInt(value, 10);
+    if (Number.isFinite(parsed)) {
+      return Math.min(Math.max(0, parsed), MAX_VAULT_COUNT);
+    }
+  }
+  return Math.min(Math.max(0, fallback), MAX_VAULT_COUNT);
+}
+
+export function vaultCountLooksCorrupt(value: unknown): boolean {
+  const raw =
+    typeof value === "string" && value.trim() ? Number.parseInt(value, 10) : Number(value);
+  return !Number.isFinite(raw) || raw > CORRUPT_COUNT_THRESHOLD || raw < 0;
+}
+
+function normalizeTimesSeen(value: unknown): number {
+  if (vaultCountLooksCorrupt(value)) return 1;
+  return normalizeVaultCount(value, 1) || 1;
+}
+
+function normalizePracticeCount(value: unknown): number {
+  if (vaultCountLooksCorrupt(value)) return 1;
+  const n = normalizeVaultCount(value, 0);
+  return n === 0 ? 0 : n;
+}
+
+export function resetVaultWordCounts(word: VaultWord): VaultWord {
+  return {
+    ...sanitizeVaultWord(word),
+    timesSeen: 1,
+    practiceCount: 1,
+  };
+}
+
+export function sanitizeVaultWord(word: VaultWord): VaultWord {
+  return {
+    ...word,
+    lowestAccuracy: normalizeVaultCount(word.lowestAccuracy, 0),
+    lastAccuracy: normalizeVaultCount(word.lastAccuracy, 0),
+    timesSeen: normalizeTimesSeen(word.timesSeen),
+    practiceCount: normalizePracticeCount(word.practiceCount),
+  };
+}
 
 export function loadVault(): VaultWord[] {
   if (typeof window === "undefined") return [];
@@ -21,7 +73,16 @@ export function loadVault(): VaultWord[] {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return [];
     const parsed = JSON.parse(raw) as VaultWord[];
-    return Array.isArray(parsed) ? parsed : [];
+    if (!Array.isArray(parsed)) return [];
+
+    let words = parsed.map(sanitizeVaultWord);
+    if (!localStorage.getItem(VAULT_COUNT_RESET_KEY)) {
+      words = words.map(resetVaultWordCounts);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(words));
+      localStorage.setItem(VAULT_COUNT_RESET_KEY, "1");
+      notifyVaultChange();
+    }
+    return words;
   } catch {
     return [];
   }
@@ -29,7 +90,7 @@ export function loadVault(): VaultWord[] {
 
 export function saveVault(words: VaultWord[]): void {
   if (typeof window === "undefined") return;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(words));
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(words.map(sanitizeVaultWord)));
   notifyVaultChange();
 }
 
@@ -63,7 +124,7 @@ export function addWordsToVault(
     const key = item.word.toLowerCase();
     const existing = map.get(key);
     if (existing) {
-      existing.timesSeen += 1;
+      existing.timesSeen = normalizeVaultCount(existing.timesSeen, 1) + 1;
       existing.lastSeenAt = now;
       existing.lastAccuracy = item.accuracyScore;
       existing.lowestAccuracy = Math.min(existing.lowestAccuracy, item.accuracyScore);
@@ -102,7 +163,7 @@ export function recordWordPractice(word: string, accuracy: number): void {
   const vault = loadVault();
   const item = vault.find((w) => w.word.toLowerCase() === key);
   if (!item) return;
-  item.practiceCount += 1;
+  item.practiceCount = normalizeVaultCount(item.practiceCount, 0) + 1;
   item.lastPracticedAt = new Date().toISOString();
   item.lastAccuracy = accuracy;
   if (accuracy >= 85) {
