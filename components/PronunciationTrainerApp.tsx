@@ -25,7 +25,7 @@ export default function PronunciationTrainerApp() {
         </div>
       </header>
 
-      <section className="hero hero-compact hero-delta">
+      <section className="hero hero-compact hero-delta hero-pronunciation">
         <div className="wrap hero-delta-inner">
           <h1>Pronúncia</h1>
           <p className="sub">
@@ -48,7 +48,7 @@ export default function PronunciationTrainerApp() {
         </div>
       </section>
 
-      <main className="main main-essential part2-main">
+      <main className="main main-essential part2-main pronunciation-main">
         <section className="wrap">
           <PronunciationWordsMode />
         </section>

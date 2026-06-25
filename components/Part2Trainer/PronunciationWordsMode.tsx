@@ -99,7 +99,10 @@ export default function PronunciationWordsMode() {
           <div className="card-top">
             <h2 className="question">Praticar: {activeWord.word}</h2>
             <p className="part2-hint vault-practice-steps">
-              1. Ouça no YouGlish · 2. Grave a palavra · 3. Veja a nota Azure · 4. Repita até 85%+
+              <span className="vault-step">1. Ouça no YouGlish</span>
+              <span className="vault-step">2. Grave a palavra</span>
+              <span className="vault-step">3. Veja a nota Azure</span>
+              <span className="vault-step">4. Repita até 85%+</span>
             </p>
             <div className="vault-youglish-row">
               <YouGlishLink word={activeWord.word} />
@@ -180,14 +183,21 @@ export default function PronunciationWordsMode() {
         <ul className="vault-word-list">
           {words.map((item) => (
             <li key={item.word} className={`vault-word-item ${item.lowestAccuracy < 60 ? "bad" : "warn"}`}>
-              <div className="vault-word-main">
-                <strong>{item.word}</strong>
-                <span className="vault-word-scores">
-                  pior {item.lowestAccuracy}% · visto {item.timesSeen}x
-                  {item.practiceCount > 0 && ` · treinos ${item.practiceCount}`}
-                </span>
-                <span className="vault-word-error">{item.errorLabel}</span>
-                {item.context && <span className="vault-word-context">{item.context}</span>}
+              <div className="vault-word-top">
+                <div className="vault-word-headline">
+                  <strong className="vault-word-title">{item.word}</strong>
+                  <span className={`vault-word-pct ${item.lowestAccuracy < 60 ? "bad" : "warn"}`}>
+                    {item.lowestAccuracy}%
+                  </span>
+                </div>
+                <div className="vault-word-meta">
+                  <span className="vault-word-scores">
+                    visto {item.timesSeen}x
+                    {item.practiceCount > 0 && ` · ${item.practiceCount} treino${item.practiceCount > 1 ? "s" : ""}`}
+                  </span>
+                  <span className="vault-word-error">{item.errorLabel}</span>
+                  {item.context && <span className="vault-word-context">{item.context}</span>}
+                </div>
               </div>
               <div className="vault-word-actions">
                 <YouGlishLink word={item.word} compact />
