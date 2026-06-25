@@ -5,6 +5,7 @@ import {
   formatStudyClock,
   STUDY_GOAL_SECONDS,
   studyProgressPercent,
+  studyStreak,
 } from "@/lib/studyTime";
 
 type Props = {
@@ -49,6 +50,7 @@ export default function DailyStudyGoal({ highlight = "both", compact = false }: 
   const part1Done = part1 >= STUDY_GOAL_SECONDS;
   const part2Done = part2 >= STUDY_GOAL_SECONDS;
   const totalDone = total >= totalGoal;
+  const streak = studyStreak();
 
   return (
     <section
@@ -61,9 +63,14 @@ export default function DailyStudyGoal({ highlight = "both", compact = false }: 
             <strong>Meta de hoje</strong>
             <span>1h Part 1 + 1h Part 2</span>
           </div>
-          <span className={`daily-study-total ${totalDone ? "done" : ""}`}>
-            {formatStudyClock(total)} / {formatStudyClock(totalGoal)}
-          </span>
+          <div className="daily-study-head-side">
+            {streak > 0 && (
+              <span className="daily-study-streak">{streak} dia{streak > 1 ? "s" : ""} seguidos ✓</span>
+            )}
+            <span className={`daily-study-total ${totalDone ? "done" : ""}`}>
+              {formatStudyClock(total)} / {formatStudyClock(totalGoal)}
+            </span>
+          </div>
         </header>
       )}
 

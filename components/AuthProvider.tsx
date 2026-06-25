@@ -11,6 +11,9 @@ import {
 } from "react";
 import { loadVault, saveVault, VAULT_CHANGE_EVENT } from "@/lib/pronunciationVault";
 import type { VaultWord } from "@/lib/pronunciationVault";
+import { loadStudyDays, saveStudyDays, STUDY_TIME_CHANGE_EVENT } from "@/lib/studyTime";
+import type { StudyDaysMap } from "@/lib/studyTimeMerge";
+import { mergeStudyDays } from "@/lib/studyTimeMerge";
 import { mergeVaultWords } from "@/lib/vaultMerge";
 
 export type AuthUser = {
@@ -27,6 +30,7 @@ type AuthContextValue = {
   register: (email: string, password: string, name?: string) => Promise<string | null>;
   logout: () => Promise<void>;
   syncVault: () => Promise<void>;
+  syncStudyTime: () => Promise<void>;
 };
 
 const AuthContext = createContext<AuthContextValue | null>(null);
@@ -49,6 +53,24 @@ async function pushVaultToServer(words: VaultWord[]): Promise<VaultWord[] | null
   return data.words as VaultWord[];
 }
 
+async function pullStudyTimeFromServer(): Promise<StudyDaysMap | null> {
+  const res = await fetch("/api/study-time");
+  if (!res.ok) return null;
+  const data = await res.json();
+  return data.days as StudyDaysMap;
+}
+
+async function pushStudyTimeToServer(days: StudyDaysMap): Promise<StudyDaysMap | null> {
+  const res = await fetch("/api/study-time", {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ days }),
+  });
+  if (!res.ok) return null;
+  const data = await res.json();
+  return data.days as StudyDaysMap;
+}
+
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [loading, setLoading] = useState(true);
@@ -58,6 +80,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const merged = await pushVaultToServer(local);
     if (merged) saveVault(merged);
   }, []);
+
+  const syncStudyTime = useCallback(async () => {
+    const local = loadStudyDays();
+    const merged = await pushStudyTimeToServer(local);
+    if (merged) saveStudyDays(merged);
+  }, []);
+
+  const syncAll = useCallback(async () => {
+    await Promise.all([syncVault(), syncStudyTime()]);
+  }, [syncVault, syncStudyTime]);
 
   const refreshUser = useCallback(async () => {
     try {
@@ -75,6 +107,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             const pushed = await pushVaultToServer(merged);
             if (pushed) saveVault(pushed);
           }
+        }
+
+        const remoteStudy = await pullStudyTimeFromServer();
+        if (remoteStudy) {
+          const localStudy = loadStudyDays();
+          const mergedStudy = mergeStudyDays(localStudy, remoteStudy);
+          saveStudyDays(mergedStudy);
+          const pushedStudy = await pushStudyTimeToServer(mergedStudy);
+          if (pushedStudy) saveStudyDays(pushedStudy);
         }
       }
     } catch {
@@ -106,6 +147,24 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     };
   }, [user, syncVault]);
 
+  useEffect(() => {
+    if (!user) return;
+
+    let timer: ReturnType<typeof setTimeout> | null = null;
+    const onStudyTimeChange = () => {
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(() => {
+        void syncStudyTime();
+      }, 1200);
+    };
+
+    window.addEventListener(STUDY_TIME_CHANGE_EVENT, onStudyTimeChange);
+    return () => {
+      if (timer) clearTimeout(timer);
+      window.removeEventListener(STUDY_TIME_CHANGE_EVENT, onStudyTimeChange);
+    };
+  }, [user, syncStudyTime]);
+
   const login = useCallback(async (email: string, password: string) => {
     const res = await fetch("/api/auth/login", {
       method: "POST",
@@ -115,9 +174,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const data = await res.json();
     if (!res.ok) return data.error ?? "Erro ao entrar.";
     setUser(data.user);
-    await syncVault();
+    await syncAll();
     return null;
-  }, [syncVault]);
+  }, [syncAll]);
 
   const register = useCallback(async (email: string, password: string, name?: string) => {
     const res = await fetch("/api/auth/register", {
@@ -128,9 +187,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const data = await res.json();
     if (!res.ok) return data.error ?? "Erro ao criar conta.";
     setUser(data.user);
-    await syncVault();
+    await syncAll();
     return null;
-  }, [syncVault]);
+  }, [syncAll]);
 
   const logout = useCallback(async () => {
     await fetch("/api/auth/logout", { method: "POST" });
@@ -138,8 +197,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const value = useMemo(
-    () => ({ user, loading, login, register, logout, syncVault }),
-    [user, loading, login, register, logout, syncVault],
+    () => ({ user, loading, login, register, logout, syncVault, syncStudyTime }),
+    [user, loading, login, register, logout, syncVault, syncStudyTime],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

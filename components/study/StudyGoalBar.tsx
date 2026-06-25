@@ -7,9 +7,12 @@ import {
   formatStudyClock,
   STUDY_GOAL_SECONDS,
   studyProgressPercent,
+  studyStreak,
 } from "@/lib/studyTime";
 
 export default function StudyGoalSheet({ onClose }: { onClose: () => void }) {
+  const streak = studyStreak();
+
   useEffect(() => {
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -35,6 +38,11 @@ export default function StudyGoalSheet({ onClose }: { onClose: () => void }) {
           </button>
         </header>
         <DailyStudyGoal highlight="both" compact />
+        {streak > 0 && (
+          <p className="study-goal-sheet-streak">
+            Sequência: {streak} dia{streak > 1 ? "s" : ""} com meta completa
+          </p>
+        )}
       </div>
     </div>
   );

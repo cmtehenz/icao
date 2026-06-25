@@ -16,6 +16,7 @@ model User {
   updatedAt    DateTime @updatedAt
   vaultWords   VaultWord[]
   evaluations  Evaluation[]
+  studyDays    StudyDay[]
 }
 
 model VaultWord {
@@ -58,4 +59,18 @@ model Evaluation {
   createdAt          DateTime @default(now())
 
   @@index([userId, createdAt])
+}
+
+model StudyDay {
+  id           String   @id @default(cuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  date         DateTime @db.Date
+  part1Seconds Int      @default(0)
+  part2Seconds Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@unique([userId, date])
+  @@index([userId, date])
 }

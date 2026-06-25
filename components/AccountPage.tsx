@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/components/AuthProvider";
 import EvaluationAudioPlayer from "@/components/EvaluationAudioPlayer";
 import DailyStudyGoal from "@/components/study/DailyStudyGoal";
+import StudyCalendar from "@/components/study/StudyCalendar";
 
 type EvaluationRow = {
   id: string;
@@ -62,6 +63,8 @@ export default function AccountPage() {
       </header>
 
       <DailyStudyGoal compact />
+
+      <StudyCalendar />
 
       <section className="account-section">
         <h2>Atalhos</h2>
