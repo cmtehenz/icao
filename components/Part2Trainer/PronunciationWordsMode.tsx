@@ -1,0 +1,152 @@
+"use client";
+
+import { useCallback, useEffect, useState } from "react";
+import { useAzurePronunciation } from "@/hooks/useAzurePronunciation";
+import {
+  clearVault,
+  loadVault,
+  recordWordPractice,
+  removeVaultWord,
+  vaultStats,
+  type VaultWord,
+} from "@/lib/pronunciationVault";
+
+export default function PronunciationWordsMode() {
+  const [words, setWords] = useState<VaultWord[]>([]);
+  const [activeWord, setActiveWord] = useState<VaultWord | null>(null);
+  const [lastPracticeScore, setLastPracticeScore] = useState<number | null>(null);
+  const azure = useAzurePronunciation();
+
+  const refresh = useCallback(() => setWords(loadVault()), []);
+
+  useEffect(() => {
+    refresh();
+  }, [refresh]);
+
+  const stats = vaultStats(words);
+
+  const selectWord = (item: VaultWord) => {
+    setActiveWord(item);
+    setLastPracticeScore(null);
+    azure.clear();
+  };
+
+  const startRecording = async () => {
+    if (!activeWord) return;
+    await azure.start(activeWord.word, "part2-readback");
+  };
+
+  const finishPractice = async () => {
+    if (!activeWord) return;
+    const result = await azure.stop();
+    const score = result?.accuracyScore ?? 0;
+    setLastPracticeScore(score);
+    recordWordPractice(activeWord.word, score);
+    refresh();
+    if (score >= 85) setActiveWord(null);
+  };
+
+  if (!words.length) {
+    return (
+      <div className="part2-mode">
+        <div className="exam-pick-card">
+          <h2>Palavras para treinar</h2>
+          <p className="sub">
+            Ainda não há palavras salvas. Use <strong>Falar e corrigir</strong> com Azure — as
+            palavras com pronúncia fraca são salvas automaticamente aqui.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="part2-mode">
+      <header className="part2-mode-head">
+        <span className="badge">Pronúncia — banco de palavras</span>
+        <span className="part2-counter">{stats.total} palavras</span>
+      </header>
+
+      <div className="vault-stats-row">
+        <span className="vault-stat critical">{stats.critical} críticas (&lt;60%)</span>
+        <span className="vault-stat warn">{stats.needsPractice} para treinar (&lt;80%)</span>
+        <button type="button" className="btn secondary btn-sm" onClick={() => { clearVault(); refresh(); setActiveWord(null); }}>
+          Limpar tudo
+        </button>
+      </div>
+
+      {activeWord ? (
+        <article className="card card-essential part2-card vault-practice-card">
+          <div className="card-top">
+            <h2 className="question">Praticar: {activeWord.word}</h2>
+            <p className="part2-hint">
+              Fale só esta palavra em inglês, com clareza. Meta: <strong>85%+</strong> para remover da lista.
+            </p>
+            <p className="part2-situation">Contexto: {activeWord.context || "—"}</p>
+            <p className="part2-meta-row">
+              <span className="part2-tag">Última nota: {activeWord.lastAccuracy}%</span>
+              <span className="part2-tag">Pior nota: {activeWord.lowestAccuracy}%</span>
+              <span className="part2-tag">{activeWord.errorLabel}</span>
+            </p>
+          </div>
+          <div className="card-body">
+            <div className="voice-coach-actions">
+              {!azure.assessing ? (
+                <button type="button" className="btn green" onClick={startRecording}>
+                  ● Gravar palavra
+                </button>
+              ) : (
+                <button type="button" className="btn orange" onClick={finishPractice}>
+                  ⏹ Parar e avaliar
+                </button>
+              )}
+              <button type="button" className="btn secondary" onClick={() => { setActiveWord(null); azure.clear(); }}>
+                Voltar à lista
+              </button>
+            </div>
+            {azure.error && <p className="voice-coach-error">{azure.error}</p>}
+            {lastPracticeScore !== null && (
+              <p className={`vault-practice-result ${lastPracticeScore >= 85 ? "good" : "bad"}`}>
+                {lastPracticeScore >= 85
+                  ? `Excelente — ${lastPracticeScore}%! Palavra removida da lista.`
+                  : `${lastPracticeScore}% — continue praticando "${activeWord.word}".`}
+              </p>
+            )}
+            {azure.result && !lastPracticeScore && (
+              <div className="voice-coach-azure-scores">
+                <div className="voice-score">
+                  <strong>{azure.result.accuracyScore}</strong>
+                  <span>accuracy</span>
+                </div>
+              </div>
+            )}
+          </div>
+        </article>
+      ) : (
+        <ul className="vault-word-list">
+          {words.map((item) => (
+            <li key={item.word} className={`vault-word-item ${item.lowestAccuracy < 60 ? "bad" : "warn"}`}>
+              <div className="vault-word-main">
+                <strong>{item.word}</strong>
+                <span className="vault-word-scores">
+                  pior {item.lowestAccuracy}% · visto {item.timesSeen}x
+                  {item.practiceCount > 0 && ` · treinos ${item.practiceCount}`}
+                </span>
+                <span className="vault-word-error">{item.errorLabel}</span>
+                {item.context && <span className="vault-word-context">{item.context}</span>}
+              </div>
+              <div className="vault-word-actions">
+                <button type="button" className="btn green btn-sm" onClick={() => selectWord(item)}>
+                  Praticar
+                </button>
+                <button type="button" className="btn secondary btn-sm" onClick={() => { removeVaultWord(item.word); refresh(); }}>
+                  Remover
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}

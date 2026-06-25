@@ -1,15 +1,19 @@
 "use client";
 
-import { useState } from "react";
-import ChunkTags from "@/components/Part2Trainer/ChunkTags";
+import { useMemo, useState } from "react";
+import ExamAudioPlayer from "@/components/ExamAudioPlayer";
+import ExamVersionPicker from "@/components/ExamVersionPicker";
+import VoiceCoachPanel from "@/components/VoiceCoachPanel";
 import Part2TimerBar from "@/components/Part2Trainer/Part2TimerBar";
-import { READBACK_SCENARIOS } from "@/data/part2Readback";
+import ProgressBadge from "@/components/study/ProgressBadge";
+import { ALL_EXAM_SITUATIONS, getSituationsByExam } from "@/data/exams/part2Data";
+import { examAudioUrl, examAudioLabel } from "@/lib/exams/audio";
+import type { ExamVersion } from "@/lib/exams/types";
 import {
   getPart2ItemProgress,
   setPart2ItemStatus,
   type Part2ProgressStore,
 } from "@/lib/part2/progress";
-import ProgressBadge from "@/components/study/ProgressBadge";
 import type { CardProgressStatus } from "@/lib/progress";
 
 type Props = {
@@ -18,66 +22,94 @@ type Props = {
 };
 
 export default function ReadbackMode({ progress, onProgressChange }: Props) {
+  const [examVersion, setExamVersion] = useState<ExamVersion | "all">("all");
   const [index, setIndex] = useState(0);
+
+  const scenarios = useMemo(() => {
+    if (examVersion === "all") return ALL_EXAM_SITUATIONS;
+    return getSituationsByExam(examVersion);
+  }, [examVersion]);
+
   const [showAnswer, setShowAnswer] = useState(false);
-  const scenario = READBACK_SCENARIOS[index];
-  const itemProgress = getPart2ItemProgress(progress, scenario.id);
+  const scenario = scenarios[index];
+  const itemProgress = getPart2ItemProgress(progress, `${scenario.id}-rb`);
 
   const go = (delta: number) => {
-    setIndex((i) => (i + delta + READBACK_SCENARIOS.length) % READBACK_SCENARIOS.length);
+    setIndex((i) => (i + delta + scenarios.length) % scenarios.length);
     setShowAnswer(false);
   };
 
   const mark = (status: "difficult" | "mastered") => {
-    onProgressChange(setPart2ItemStatus(progress, scenario.id, status));
+    onProgressChange(setPart2ItemStatus(progress, `${scenario.id}-rb`, status));
   };
+
+  const audioSrc = examAudioUrl(scenario.examVersion, scenario.readback.audioTrack);
 
   return (
     <div className="part2-mode">
+      <ExamVersionPicker
+        value={examVersion}
+        onChange={(v) => {
+          setExamVersion(v);
+          setIndex(0);
+          setShowAnswer(false);
+        }}
+      />
+
       <header className="part2-mode-head">
-        <span className="badge">Readback Mode</span>
+        <span className="badge">Readback — {scenario.examVersion} Sit. {scenario.situationNumber}</span>
         <ProgressBadge status={itemProgress.status as CardProgressStatus} />
         <span className="part2-counter">
-          {index + 1} / {READBACK_SCENARIOS.length}
+          {index + 1} / {scenarios.length}
         </span>
       </header>
 
       <article className="card card-essential part2-card">
         <div className="card-top">
           <h2 className="question">{scenario.title}</h2>
-          <p className="part2-prompt-label">ATC Instruction</p>
-          <p className="part2-atc-message">{scenario.instruction}</p>
+          <p className="part2-situation">{scenario.context}</p>
+          <p className="part2-prompt-label">{scenario.readback.atcFacility}</p>
+          <ExamAudioPlayer
+        src={audioSrc}
+        label={examAudioLabel(scenario.examVersion, scenario.readback.audioTrack)}
+      />
+          <p className="part2-atc-message">{scenario.readback.atcMessage}</p>
           <Part2TimerBar />
         </div>
         <div className="card-body">
-          <p className="part2-hint">Repeat the clearance out loud, then check the chunks and model readback.</p>
-          <ChunkTags chunks={scenario.chunks} />
+          <p className="part2-hint">Repita o readback em voz alta. Você pode pedir &quot;say again&quot; uma vez na prova.</p>
+
+          <VoiceCoachPanel
+            question={scenario.context}
+            modelAnswer={scenario.readback.modelReadback}
+            evaluateType="part2-readback"
+          />
 
           <div className="study-toolbar">
             <button type="button" className="btn purple btn-large" onClick={() => setShowAnswer((s) => !s)}>
-              {showAnswer ? "Hide Answer" : "Show Answer"}
+              {showAnswer ? "Esconder" : "Mostrar readback"}
             </button>
             <button type="button" className="btn secondary" onClick={() => go(1)}>
-              Next →
+              Próximo →
             </button>
           </div>
 
           {showAnswer && (
             <div className="part2-model-answer">
-              <h3>Correct readback</h3>
-              <p>{scenario.modelReadback}</p>
+              <h3>Readback modelo</h3>
+              <p>{scenario.readback.modelReadback}</p>
             </div>
           )}
 
           <div className="study-toolbar study-toolbar-secondary">
             <button type="button" className="btn orange" onClick={() => mark("difficult")}>
-              Mark difficult
+              Difícil
             </button>
             <button type="button" className="btn green" onClick={() => mark("mastered")}>
-              Mark mastered
+              Dominado
             </button>
             <button type="button" className="btn secondary" onClick={() => go(-1)}>
-              ← Previous
+              ← Anterior
             </button>
           </div>
         </div>

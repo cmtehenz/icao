@@ -1,10 +1,10 @@
 export const NAV_ITEMS = [
   {
     href: "/",
-    label: "ICAO 5",
+    label: "Part 1",
     shortLabel: "Part 1",
     icon: "✈",
-    description: "PEEL answers & exam training",
+    description: "Aviation Topics — provas 23C–26C",
   },
   {
     href: "/structure",
@@ -15,10 +15,10 @@ export const NAV_ITEMS = [
   },
   {
     href: "/part2",
-    label: "SDEA Part 2",
+    label: "Part 2",
     shortLabel: "Part 2",
     icon: "📡",
-    description: "Pilot interaction & readback",
+    description: "Pilot interaction — provas reais",
   },
 ] as const;
 

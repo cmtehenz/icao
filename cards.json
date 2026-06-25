@@ -525,5 +525,53 @@
       "Helipad infrastructure",
       "Safety culture"
     ]
+  },
+  {
+    "num": "12",
+    "question": "Could you describe the airport you operate at the most?",
+    "memory": "Location → Operations → Experience",
+    "opener": "The airport I operate at the most is one where I have built solid experience as a helicopter pilot.",
+    "ideas": [
+      "1 - LOCATION: First of all, it is located in a region where I frequently conduct helicopter operations, with specific weather patterns and terrain features.",
+      "2 - OPERATIONS: Additionally, it has particular procedures, runways or helipads, traffic patterns and restrictions that I know very well.",
+      "3 - EXPERIENCE: Finally, my regular operations there have helped me understand local ATC, common delays and the safest approaches."
+    ],
+    "example": "For example, because I operate there often, I know the typical wind direction, the busiest periods and the best alternate options if weather deteriorates.",
+    "conclusion": "Overall, operating regularly at the same airport improves familiarity, confidence and safety in helicopter operations.",
+    "verbs": [
+      "operate",
+      "describe",
+      "know",
+      "manage",
+      "adapt"
+    ],
+    "vocab": [
+      "airport",
+      "helicopter operations",
+      "traffic pattern",
+      "ATC",
+      "familiarity"
+    ],
+    "answer": "The airport I operate at the most is one where I have built solid experience as a helicopter pilot. 1 - LOCATION: First of all, it is located in a region where I frequently conduct helicopter operations, with specific weather patterns and terrain features. 2 - OPERATIONS: Additionally, it has particular procedures, runways or helipads, traffic patterns and restrictions that I know very well. 3 - EXPERIENCE: Finally, my regular operations there have helped me understand local ATC, common delays and the safest approaches. For example, because I operate there often, I know the typical wind direction, the busiest periods and the best alternate options if weather deteriorates. Overall, operating regularly at the same airport improves familiarity, confidence and safety in helicopter operations.",
+    "difficulty": "Medium",
+    "category": "helicopter",
+    "tags": [
+      "helicopter",
+      "medium",
+      "helicopter"
+    ],
+    "memoryLabels": [
+      "Location",
+      "Operations",
+      "Experience"
+    ],
+    "targetWords": 108,
+    "keywords": [
+      "Location",
+      "Procedures",
+      "ATC familiarity",
+      "Weather patterns",
+      "Regular operations"
+    ]
   }
 ]

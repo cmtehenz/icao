@@ -2088,7 +2088,7 @@ input {
 
 .part2-mode-nav {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   margin-bottom: 18px;
 }
@@ -2417,5 +2417,374 @@ input {
 
   .part2-dashboard {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.exam-version-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+}
+
+.exam-version-picker .exam-chip.active {
+  background: var(--accent-purple, #7c3aed);
+  border-color: var(--accent-purple, #7c3aed);
+  color: #fff;
+}
+
+.exam-version-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  background: rgba(124, 58, 237, 0.15);
+  color: var(--accent-purple, #7c3aed);
+}
+
+.exam-audio-player {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin: 0.75rem 0;
+}
+
+.exam-audio {
+  width: 100%;
+  max-width: 420px;
+}
+
+.exam-audio-label {
+  font-size: 0.8rem;
+  color: var(--text-muted, #64748b);
+}
+
+.part2-interaction-prompt {
+  font-style: italic;
+  border-left: 3px solid var(--accent-orange, #f59e0b);
+  padding-left: 0.75rem;
+}
+
+.exam-audio-missing {
+  font-size: 0.85rem;
+  color: var(--accent-orange, #f59e0b);
+  margin: 0.5rem 0;
+}
+
+.exam-audio-missing code {
+  font-size: 0.8rem;
+}
+
+.voice-coach-toggle {
+  width: 100%;
+  margin: 0.75rem 0;
+}
+
+.voice-coach-panel {
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--border, rgba(0, 0, 0, 0.1));
+  background: var(--surface-2, rgba(0, 0, 0, 0.03));
+}
+
+.voice-coach-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.voice-coach-head h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.voice-coach-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.voice-coach-warn,
+.voice-coach-error {
+  font-size: 0.85rem;
+  color: var(--accent-orange, #f59e0b);
+  margin: 0.5rem 0;
+}
+
+.voice-coach-transcript {
+  margin: 0.75rem 0;
+  padding: 0.75rem;
+  border-radius: 8px;
+  background: var(--card-bg, #fff);
+  font-size: 0.9rem;
+}
+
+.voice-coach-transcript p {
+  margin: 0.35rem 0 0;
+  font-style: italic;
+}
+
+.voice-coach-scores {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.voice-score {
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 8px;
+  background: var(--card-bg, #fff);
+}
+
+.voice-score.overall {
+  background: rgba(124, 58, 237, 0.12);
+}
+
+.voice-score strong {
+  display: block;
+  font-size: 1.25rem;
+}
+
+.voice-score span {
+  font-size: 0.7rem;
+  color: var(--text-muted, #64748b);
+}
+
+.voice-coach-summary {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.voice-coach-hint {
+  color: var(--text-muted, #64748b);
+  font-size: 0.8rem;
+}
+
+.voice-coach-list {
+  margin: 0.5rem 0;
+  font-size: 0.85rem;
+}
+
+.voice-coach-list.good ul {
+  color: var(--accent-green, #16a34a);
+}
+
+.voice-coach-list ul {
+  margin: 0.25rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.voice-coach-footnote {
+  font-size: 0.75rem;
+  color: var(--text-muted, #64748b);
+  margin-top: 0.75rem;
+}
+
+.voice-coach-azure-badge {
+  font-size: 0.85rem;
+  color: var(--accent-green, #16a34a);
+  margin: 0.5rem 0;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  background: rgba(22, 163, 74, 0.1);
+}
+
+.voice-coach-azure-scores {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+}
+
+.voice-coach-azure-detail {
+  margin: 0.75rem 0;
+  padding: 0.75rem;
+  border-radius: 8px;
+  background: rgba(0, 120, 212, 0.08);
+  font-size: 0.85rem;
+}
+
+.voice-coach-azure-detail p {
+  margin: 0.35rem 0 0;
+}
+
+.voice-coach-mispronounced {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 2px solid rgba(239, 68, 68, 0.25);
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.voice-coach-mispronounced h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+}
+
+.mispronounced-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mispronounced-item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  background: var(--card-bg, #fff);
+  font-size: 0.9rem;
+}
+
+.mispronounced-item.bad {
+  border-left: 3px solid #ef4444;
+}
+
+.mispronounced-item.warn {
+  border-left: 3px solid #f59e0b;
+}
+
+.mispronounced-word {
+  font-weight: 700;
+}
+
+.mispronounced-score {
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted, #64748b);
+}
+
+.mispronounced-error {
+  font-size: 0.8rem;
+  color: #ef4444;
+}
+
+.mispronounced-none {
+  margin: 0;
+  color: var(--accent-green, #16a34a);
+  font-size: 0.9rem;
+}
+
+.vault-saved-banner {
+  margin: 0.75rem 0 0;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  background: rgba(22, 163, 74, 0.12);
+  color: var(--accent-green, #16a34a);
+  font-size: 0.85rem;
+}
+
+.vault-stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.vault-stat {
+  font-size: 0.8rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+}
+
+.vault-stat.critical {
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+}
+
+.vault-stat.warn {
+  background: rgba(245, 158, 11, 0.12);
+  color: #d97706;
+}
+
+.vault-word-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.vault-word-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  background: var(--card-bg, #fff);
+  border: 1px solid var(--line, rgba(0, 0, 0, 0.08));
+}
+
+.vault-word-item.bad {
+  border-left: 3px solid #ef4444;
+}
+
+.vault-word-item.warn {
+  border-left: 3px solid #f59e0b;
+}
+
+.vault-word-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.vault-word-main strong {
+  font-size: 1.1rem;
+}
+
+.vault-word-scores,
+.vault-word-error,
+.vault-word-context {
+  font-size: 0.8rem;
+  color: var(--text-muted, #64748b);
+}
+
+.vault-word-error {
+  color: #ef4444;
+}
+
+.vault-word-actions {
+  display: flex;
+  flex-shrink: 0;
+  gap: 0.35rem;
+}
+
+.vault-practice-result {
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.vault-practice-result.good {
+  background: rgba(22, 163, 74, 0.12);
+  color: var(--accent-green, #16a34a);
+}
+
+.vault-practice-result.bad {
+  background: rgba(245, 158, 11, 0.12);
+  color: #d97706;
+}
+
+@media (max-width: 600px) {
+  .voice-coach-scores {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .voice-score.overall {
+    grid-column: span 3;
   }
 }

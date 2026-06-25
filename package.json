@@ -6,9 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "setup:audio": "node scripts/setup-exam-audio.mjs"
   },
   "dependencies": {
+    "microsoft-cognitiveservices-speech-sdk": "^1.50.0",
     "next": "^15.3.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

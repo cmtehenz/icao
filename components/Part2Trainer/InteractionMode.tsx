@@ -1,15 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import ExamVersionPicker from "@/components/ExamVersionPicker";
+import VoiceCoachPanel from "@/components/VoiceCoachPanel";
 import Part2TimerBar from "@/components/Part2Trainer/Part2TimerBar";
-import { INTERACTION_SCENARIOS } from "@/data/part2Interactions";
-import { INTERACTION_HELPERS } from "@/lib/part2/types";
+import ProgressBadge from "@/components/study/ProgressBadge";
+import { ALL_EXAM_SITUATIONS, getSituationsByExam } from "@/data/exams/part2Data";
+import type { ExamVersion } from "@/lib/exams/types";
 import {
   getPart2ItemProgress,
   setPart2ItemStatus,
   type Part2ProgressStore,
 } from "@/lib/part2/progress";
-import ProgressBadge from "@/components/study/ProgressBadge";
 import type { CardProgressStatus } from "@/lib/progress";
 
 type Props = {
@@ -18,29 +20,43 @@ type Props = {
 };
 
 export default function InteractionMode({ progress, onProgressChange }: Props) {
+  const [examVersion, setExamVersion] = useState<ExamVersion | "all">("all");
   const [index, setIndex] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
-  const [showTemplate, setShowTemplate] = useState(false);
-  const scenario = INTERACTION_SCENARIOS[index];
-  const itemProgress = getPart2ItemProgress(progress, scenario.id);
+
+  const scenarios = useMemo(() => {
+    if (examVersion === "all") return ALL_EXAM_SITUATIONS;
+    return getSituationsByExam(examVersion);
+  }, [examVersion]);
+
+  const scenario = scenarios[index];
+  const itemProgress = getPart2ItemProgress(progress, `${scenario.id}-int`);
 
   const go = (delta: number) => {
-    setIndex((i) => (i + delta + INTERACTION_SCENARIOS.length) % INTERACTION_SCENARIOS.length);
+    setIndex((i) => (i + delta + scenarios.length) % scenarios.length);
     setShowAnswer(false);
-    setShowTemplate(false);
   };
 
   const mark = (status: "difficult" | "mastered") => {
-    onProgressChange(setPart2ItemStatus(progress, scenario.id, status));
+    onProgressChange(setPart2ItemStatus(progress, `${scenario.id}-int`, status));
   };
 
   return (
     <div className="part2-mode">
+      <ExamVersionPicker
+        value={examVersion}
+        onChange={(v) => {
+          setExamVersion(v);
+          setIndex(0);
+          setShowAnswer(false);
+        }}
+      />
+
       <header className="part2-mode-head">
-        <span className="badge">Interaction Mode</span>
+        <span className="badge">Interaction — {scenario.examVersion} Sit. {scenario.situationNumber}</span>
         <ProgressBadge status={itemProgress.status as CardProgressStatus} />
         <span className="part2-counter">
-          {index + 1} / {INTERACTION_SCENARIOS.length}
+          {index + 1} / {scenarios.length}
         </span>
       </header>
 
@@ -48,64 +64,55 @@ export default function InteractionMode({ progress, onProgressChange }: Props) {
         <div className="card-top">
           <h2 className="question">{scenario.title}</h2>
           <div className="part2-meta-row">
-            <span className="part2-tag">Phase: {scenario.flightPhase}</span>
-            <span className={`part2-tag urgency-${scenario.urgency.toLowerCase()}`}>
-              {scenario.urgency}
+            <span className="part2-tag">Callsign: ANAC 123</span>
+            <span className={`part2-tag urgency-${scenario.interaction.urgency.toLowerCase()}`}>
+              {scenario.interaction.urgency}
             </span>
           </div>
-          <p className="part2-situation">{scenario.situation}</p>
+          <p className="part2-situation">{scenario.context}</p>
+          <p className="part2-atc-message part2-interaction-prompt">{scenario.interaction.prompt}</p>
           <Part2TimerBar />
         </div>
         <div className="card-body">
           <p className="part2-hint">
-            Report to ATC using: <strong>{scenario.atcName}</strong> + <strong>{scenario.callsign}</strong> + urgency + problem + intention + request.
+            Ligue para o ATC: facility + ANAC 123 + urgência (se necessário) + problema + intenção + pedido.
           </p>
 
-          {showTemplate && (
-            <div className="part2-helper-blocks">
-              <div className="part2-helper block orange-b">
-                <h4>Problem</h4>
-                <p>{INTERACTION_HELPERS.problem}</p>
-                <p className="part2-helper-example">{scenario.problem}</p>
-              </div>
-              <div className="part2-helper block purple-b">
-                <h4>Intention</h4>
-                <p>{INTERACTION_HELPERS.intention}</p>
-                <p className="part2-helper-example">{scenario.intention}</p>
-              </div>
-              <div className="part2-helper block green-b">
-                <h4>Request</h4>
-                <p>{INTERACTION_HELPERS.request}</p>
-                <p className="part2-helper-example">{scenario.request}</p>
-              </div>
-            </div>
-          )}
+          <VoiceCoachPanel
+            question={scenario.interaction.prompt}
+            modelAnswer={scenario.interaction.modelReport}
+            evaluateType="part2-interaction"
+          />
 
           <div className="study-toolbar">
-            <button type="button" className="btn secondary" onClick={() => setShowTemplate((s) => !s)}>
-              {showTemplate ? "Hide Template" : "Show Template"}
-            </button>
             <button type="button" className="btn purple btn-large" onClick={() => setShowAnswer((s) => !s)}>
-              {showAnswer ? "Hide Answer" : "Show Answer"}
+              {showAnswer ? "Esconder" : "Mostrar resposta"}
             </button>
             <button type="button" className="btn secondary" onClick={() => go(1)}>
-              Next →
+              Próximo →
             </button>
           </div>
 
           {showAnswer && (
-            <div className="part2-model-answer">
-              <h3>Model report</h3>
-              <p>{scenario.modelReport}</p>
-            </div>
+            <>
+              <div className="part2-model-answer">
+                <h3>Seu reporte (modelo)</h3>
+                <p>{scenario.interaction.modelReport}</p>
+              </div>
+              <div className="part2-model-answer">
+                <h3>Correção ao ATC ({scenario.atcFollowUp.correctionType})</h3>
+                <p className="part2-atc-message">{scenario.atcFollowUp.atcMessage}</p>
+                <p>{scenario.atcFollowUp.modelCorrection}</p>
+              </div>
+            </>
           )}
 
           <div className="study-toolbar study-toolbar-secondary">
             <button type="button" className="btn orange" onClick={() => mark("difficult")}>
-              Mark difficult
+              Difícil
             </button>
             <button type="button" className="btn green" onClick={() => mark("mastered")}>
-              Mark mastered
+              Dominado
             </button>
           </div>
         </div>

@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "ICAO Delta",
     short_name: "ICAO Delta",
-    description: "Helicopter ICAO Part 1 trainer — keywords, exam mode, daily practice.",
+    description: "SDEA helicopter exam trainer — real exams 23C–26C, Part 1 & Part 2.",
     start_url: "/",
     display: "standalone",
     orientation: "portrait",

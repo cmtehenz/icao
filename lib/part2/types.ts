@@ -3,7 +3,8 @@ export type Part2Mode =
   | "interaction"
   | "reported"
   | "vocabulary"
-  | "simulation";
+  | "simulation"
+  | "words";
 
 export type ReadbackChunkType =
   | "callsign"

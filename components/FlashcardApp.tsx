@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import ConnectorsBank from "@/components/ConnectorsBank";
+import ExamVersionPicker from "@/components/ExamVersionPicker";
 import PilotProfileModal from "@/components/PilotProfileModal";
 import QuickPhrasesMenu from "@/components/QuickPhrasesMenu";
 import AnswerPanel from "@/components/study/AnswerPanel";
@@ -12,13 +13,15 @@ import MemoryFlow from "@/components/study/MemoryFlow";
 import ProgressBadge from "@/components/study/ProgressBadge";
 import StructureBlocks from "@/components/study/StructureBlocks";
 import StudyDashboard from "@/components/study/StudyDashboard";
-import { HELICOPTER_CORE_NUMS, isCoreQuestion } from "@/data/coreQuestions";
+import VoiceCoachPanel from "@/components/VoiceCoachPanel";
+import { PART1_BY_EXAM } from "@/data/exams/part1";
 import { useTheme } from "@/hooks/useTheme";
 import { useTimer } from "@/hooks/useTimer";
 import { CATEGORIES } from "@/lib/categories";
 import { CARDS } from "@/lib/cards";
 import { loadConnectorSet, saveConnectorSet, type ConnectorSetId } from "@/lib/connectors";
 import { isFavorite, loadFavorites, toggleFavorite } from "@/lib/favorites";
+import { getExamForCard } from "@/data/exams/part1";
 import { getKeywords } from "@/lib/icaoStructure";
 import { personalizeCard } from "@/lib/personalize";
 import { getSimplePhrases } from "@/lib/simplePhrases";
@@ -31,6 +34,7 @@ import {
 } from "@/lib/progress";
 import { DEFAULT_PROFILE, loadProfile, type PilotProfile } from "@/lib/profile";
 import type { StudyMode } from "@/lib/types";
+import { EXAM_LABELS, type ExamVersion } from "@/lib/exams/types";
 import { isSpeaking, speakText, stopSpeaking } from "@/lib/tts";
 import { wordCount } from "@/lib/utils";
 
@@ -45,6 +49,7 @@ export default function FlashcardApp() {
   const [mode, setMode] = useState<StudyMode>("study");
   const [view, setView] = useState<"study" | "exam">("study");
   const [filter, setFilter] = useState<CardFilter>("all");
+  const [examVersion, setExamVersion] = useState<ExamVersion | "all">("all");
   const [favorites, setFavorites] = useState<string[]>([]);
   const [progress, setProgress] = useState<ProgressStore>({ cards: {}, dailyCount: {} });
   const [profile, setProfile] = useState<PilotProfile>(DEFAULT_PROFILE);
@@ -63,16 +68,20 @@ export default function FlashcardApp() {
   const filtered = useMemo((): FilteredCard[] => {
     return CARDS.map((card, idx) => ({ card, idx })).filter(({ card }) => {
       if (filter === "favorites") return favorites.includes(card.num);
-      if (filter === "core") return isCoreQuestion(card.num);
+      if (examVersion !== "all") {
+        const nums = PART1_BY_EXAM[examVersion];
+        if (!nums.includes(card.num)) return false;
+      }
       return true;
     });
-  }, [filter, favorites]);
+  }, [filter, favorites, examVersion]);
 
   const card = useMemo(
     () => personalizeCard(CARDS[current], profile, connectorSet),
     [current, profile, connectorSet],
   );
 
+  const cardExam = getExamForCard(card.num);
   const keywords = getKeywords(card);
   const cardProgress = getCardProgress(progress, card.num);
   const favorite = isFavorite(favorites, card.num);
@@ -192,9 +201,7 @@ export default function FlashcardApp() {
     return (
       <ExamSession
         profile={profile}
-        filter={filter}
-        favorites={favorites}
-        coreNums={HELICOPTER_CORE_NUMS}
+        examVersion={examVersion}
         progress={progress}
         onProgressChange={setProgress}
         onExit={() => setView("study")}
@@ -227,8 +234,8 @@ export default function FlashcardApp() {
           <div className="delta-brand">
             <span className="delta-logo">✈</span>
             <div>
-              <strong>ICAO Delta</strong>
-              <span>Helicopter Part 1 Trainer</span>
+              <strong>SDEA Part 1</strong>
+              <span>Provas reais 23C–26C</span>
             </div>
           </div>
           <div className="delta-topbar-actions">
@@ -238,21 +245,21 @@ export default function FlashcardApp() {
                 className={`mode-btn ${mode === "study" ? "active" : ""}`}
                 onClick={() => setMode("study")}
               >
-                Study
+                Estudo
               </button>
               <button
                 type="button"
                 className={`mode-btn ${mode === "exam" ? "active" : ""}`}
                 onClick={() => setMode("exam")}
               >
-                Quick Exam
+                Timer
               </button>
             </div>
             <button type="button" className="btn icon-btn secondary" onClick={toggleTheme} aria-label="Theme">
               {theme === "dark" ? "☀️" : "🌙"}
             </button>
             <button type="button" className="btn purple" onClick={() => setView("exam")}>
-              Exam Mode
+              Simular prova
             </button>
           </div>
         </div>
@@ -260,16 +267,16 @@ export default function FlashcardApp() {
 
       <section className="hero hero-compact hero-delta">
         <div className="wrap hero-delta-inner">
-          <h1>Train ICAO answers daily</h1>
+          <h1>Part 1 — Aviation Topics</h1>
           <p className="sub">
-            Keywords first, speak out loud, 35–60 seconds. Built for helicopter pilots — no script memorization.
+            12 perguntas das 4 provas reais de helicóptero. Na prova caem 3 — treine por versão ou simule o sorteio.
           </p>
           <StudyDashboard progress={progress} total={CARDS.length} />
+          <ExamVersionPicker value={examVersion} onChange={setExamVersion} />
           <FilterBar
             filter={filter}
             favoriteCount={favorites.length}
-            coreCount={HELICOPTER_CORE_NUMS.length}
-            total={CARDS.length}
+            total={filtered.length}
             onChange={setFilter}
           />
         </div>
@@ -278,6 +285,7 @@ export default function FlashcardApp() {
       <div className="wrap topic-pills topic-pills-delta">
         {filtered.map(({ card: c, idx }) => {
           const st = getCardProgress(progress, c.num);
+          const exam = getExamForCard(c.num);
           return (
             <button
               key={c.num}
@@ -286,7 +294,7 @@ export default function FlashcardApp() {
               onClick={() => selectCard(idx)}
               title={c.question}
             >
-              <span className="topic-pill-label">#{c.num}</span>
+              <span className="topic-pill-label">{exam ?? `#${c.num}`}</span>
               {favorites.includes(c.num) && <span className="pill-star">★</span>}
             </button>
           );
@@ -298,6 +306,7 @@ export default function FlashcardApp() {
           <article className="card card-essential">
           <div className="card-top">
             <div className="card-meta">
+              {cardExam && <span className="exam-version-badge">{EXAM_LABELS[cardExam]}</span>}
               <span className="card-num">#{card.num}</span>
               <span className="category-badge">{CATEGORIES[card.category]}</span>
               <span className={`diff ${card.difficulty}`}>{card.difficulty}</span>
@@ -323,7 +332,7 @@ export default function FlashcardApp() {
 
             {isExamStudy && (
               <div className="exam-banner">
-                Quick exam — hide the script, use keywords, start the 45s timer and speak.
+                Modo timer — esconda o script, use keywords, 45s para falar.
               </div>
             )}
 
@@ -344,9 +353,18 @@ export default function FlashcardApp() {
           <div className="card-body">
             <KeywordsPanel keywords={keywords} hidden={!showKeywords && !keywordsOnly} />
 
+            {!keywordsOnly && (
+              <VoiceCoachPanel
+                question={card.question}
+                modelAnswer={card.answer}
+                evaluateType="part1"
+                keywords={keywords}
+              />
+            )}
+
             {keywordsOnly && !showAnswer && (
               <div className="keywords-only-banner">
-                <p>Keywords only — try answering out loud before revealing the model.</p>
+                <p>Só keywords — tente responder em voz alta antes de revelar.</p>
               </div>
             )}
 
@@ -389,18 +407,18 @@ export default function FlashcardApp() {
                   if (!keywordsOnly) setShowAnswer(false);
                 }}
               >
-                {keywordsOnly ? "Exit keywords only" : "Keywords only"}
+                {keywordsOnly ? "Sair keywords" : "Só keywords"}
               </button>
               <button
                 type="button"
                 className="btn secondary"
                 onClick={() => setShowKeywords((s) => !s)}
               >
-                {showKeywords ? "Hide keywords" : "Show keywords"}
+                {showKeywords ? "Esconder keywords" : "Mostrar keywords"}
               </button>
               {!keywordsOnly && (
                 <button type="button" className="btn secondary" onClick={() => setShowStructure((s) => !s)}>
-                  {showStructure ? "Hide structure" : "Show structure"}
+                  {showStructure ? "Esconder estrutura" : "Mostrar estrutura"}
                 </button>
               )}
               <button
@@ -408,10 +426,10 @@ export default function FlashcardApp() {
                 className="btn purple btn-large"
                 onClick={() => setShowAnswer((p) => !p)}
               >
-                {showAnswer ? "Hide answer" : "Show answer"}
+                {showAnswer ? "Esconder resposta" : "Mostrar resposta"}
               </button>
               <button type="button" className="btn secondary" onClick={toggleSpeak}>
-                {speaking ? "Stop" : "Listen"}
+                {speaking ? "Parar" : "Ouvir"}
               </button>
             </div>
 
@@ -419,16 +437,16 @@ export default function FlashcardApp() {
 
             <div className="study-toolbar study-toolbar-secondary">
               <button type="button" className="btn secondary" onClick={practiceAgain}>
-                Practice again
+                Praticar de novo
               </button>
               <button type="button" className="btn orange" onClick={() => markStatus("difficult")}>
-                Mark difficult
+                Difícil
               </button>
               <button type="button" className="btn green" onClick={() => markStatus("mastered")}>
-                Mark mastered
+                Dominada
               </button>
               <button type="button" className="btn blue" onClick={() => navigateFiltered(1)}>
-                Next question →
+                Próxima →
               </button>
             </div>
 
@@ -441,7 +459,7 @@ export default function FlashcardApp() {
 
             <div className="nav-row">
               <button type="button" className="btn secondary" onClick={() => navigateFiltered(-1)}>
-                ← Previous
+                ← Anterior
               </button>
               <button type="button" className="btn secondary" onClick={() => setProfileOpen(true)}>
                 Profile

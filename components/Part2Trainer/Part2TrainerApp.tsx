@@ -5,23 +5,28 @@ import FullSimulationMode from "@/components/Part2Trainer/FullSimulationMode";
 import InteractionMode from "@/components/Part2Trainer/InteractionMode";
 import ReadbackMode from "@/components/Part2Trainer/ReadbackMode";
 import ReportedSpeechMode from "@/components/Part2Trainer/ReportedSpeechMode";
+import PronunciationWordsMode from "@/components/Part2Trainer/PronunciationWordsMode";
 import VocabularyDrill from "@/components/Part2Trainer/VocabularyDrill";
 import { VOCABULARY_TERMS } from "@/data/part2Vocabulary";
 import { useTheme } from "@/hooks/useTheme";
+import { ALL_EXAM_SITUATIONS } from "@/data/exams/part2Data";
 import { loadPart2Progress, part2Stats, type Part2ProgressStore } from "@/lib/part2/progress";
+import { loadVault, vaultStats } from "@/lib/pronunciationVault";
 import type { Part2Mode } from "@/lib/part2/types";
 
 const MODES: { id: Part2Mode; label: string; desc: string }[] = [
-  { id: "readback", label: "Readback", desc: "Repeat ATC clearances" },
-  { id: "interaction", label: "Interaction", desc: "Report abnormal situations" },
-  { id: "reported", label: "Reported Speech", desc: "Tell the examiner what ATC said" },
-  { id: "vocabulary", label: "Vocabulary", desc: "Part 2 aviation terms" },
-  { id: "simulation", label: "Full Simulation", desc: "Complete Part 2 flow" },
+  { id: "readback", label: "Readback", desc: "20 clearances reais com áudio" },
+  { id: "interaction", label: "Interaction", desc: "Reportar problemas — 20 cenários" },
+  { id: "reported", label: "Reported Speech", desc: "What did the controller say?" },
+  { id: "vocabulary", label: "Vocabulário", desc: "Termos das 4 provas" },
+  { id: "words", label: "Pronúncia", desc: "Palavras salvas para treinar" },
+  { id: "simulation", label: "Simulação", desc: "5 situações × prova completa" },
 ];
 
 export default function Part2TrainerApp() {
   const { theme, toggle: toggleTheme, hydrated } = useTheme();
   const [mode, setMode] = useState<Part2Mode>("readback");
+  const [vaultCount, setVaultCount] = useState(0);
   const [progress, setProgress] = useState<Part2ProgressStore>({
     items: {},
     vocabularyKnown: [],
@@ -31,7 +36,14 @@ export default function Part2TrainerApp() {
   useEffect(() => {
     if (!hydrated) return;
     setProgress(loadPart2Progress());
+    setVaultCount(vaultStats(loadVault()).total);
   }, [hydrated]);
+
+  useEffect(() => {
+    if (mode === "words" && hydrated) {
+      setVaultCount(vaultStats(loadVault()).total);
+    }
+  }, [mode, hydrated]);
 
   const stats = part2Stats(progress, VOCABULARY_TERMS.length);
 
@@ -42,8 +54,8 @@ export default function Part2TrainerApp() {
           <div className="delta-brand">
             <span className="delta-logo">📡</span>
             <div>
-              <strong>SDEA Part 2 Trainer</strong>
-              <span>Interacting as a Pilot</span>
+              <strong>SDEA Part 2</strong>
+              <span>Provas reais 23C–26C — {ALL_EXAM_SITUATIONS.length} situações</span>
             </div>
           </div>
           <button type="button" className="btn icon-btn secondary" onClick={toggleTheme} aria-label="Theme">
@@ -54,26 +66,26 @@ export default function Part2TrainerApp() {
 
       <section className="hero hero-compact hero-delta">
         <div className="wrap hero-delta-inner">
-          <h1>Part 2 — Pilot Interaction</h1>
+          <h1>Part 2 — Interacting as a Pilot</h1>
           <p className="sub">
-            Train readbacks, abnormal reports, reported speech, vocabulary, and full exam simulation.
+            Treine as 5 situações de cada prova real: readback com áudio, reporte de emergência, AFFIRM/NEGATIVE e reported speech.
           </p>
           <div className="delta-dashboard part2-dashboard">
             <div className="delta-stat mastered">
               <strong>{stats.mastered}</strong>
-              <span>mastered</span>
+              <span>dominados</span>
             </div>
             <div className="delta-stat difficult">
               <strong>{stats.difficult}</strong>
-              <span>difficult</span>
+              <span>difíceis</span>
             </div>
             <div className="delta-stat learning">
               <strong>{stats.vocabKnown}</strong>
-              <span>vocab known</span>
+              <span>vocabulário</span>
             </div>
             <div className="delta-stat daily">
-              <strong>{stats.daily}</strong>
-              <span>today</span>
+              <strong>{vaultCount}</strong>
+              <span>pronúncia</span>
             </div>
           </div>
         </div>
@@ -110,6 +122,7 @@ export default function Part2TrainerApp() {
           {mode === "simulation" && (
             <FullSimulationMode progress={progress} onProgressChange={setProgress} />
           )}
+          {mode === "words" && <PronunciationWordsMode />}
         </section>
       </main>
     </>
