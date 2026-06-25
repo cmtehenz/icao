@@ -1,4 +1,5 @@
 import { localEvaluate } from "@/lib/evaluate/localEvaluate";
+import { estimateIcaoLevel } from "@/lib/evaluate/icaoLevel";
 import type { EvaluateFeedback, EvaluateRequest } from "@/lib/evaluate/types";
 
 const SYSTEM_PROMPT = `You are an ICAO English exam coach for helicopter pilots (SDEA/ANAC).
@@ -18,7 +19,8 @@ Rules:
 - For part2-interaction: check problem, intention, request, MAYDAY/PAN if needed.
 - For part2-reported: check reported speech grammar (past tense, third person).
 - For part1: check PEEL structure (opener, 3 ideas, example, conclusion), ~80-120 words ideal.
-- pronunciation score: infer from likely misheard words in transcript vs expected aviation terms; note you only have text not audio.`;
+- pronunciation score: infer from likely misheard words in transcript vs expected aviation terms; note you only have text not audio.
+- Remember: official ICAO rating uses 6 criteria and overall level = LOWEST criterion (Operational = Level 4 minimum for pilots).`;
 
 export async function POST(request: Request) {
   let body: EvaluateRequest;
@@ -86,6 +88,7 @@ export async function POST(request: Request) {
       improvements: parsed.improvements ?? local.improvements,
       missingKeywords: parsed.missingKeywords ?? local.missingKeywords,
       suggestedAnswer: parsed.suggestedAnswer,
+      icaoLevel: estimateIcaoLevel(parsed.scores ?? local.scores, type),
     };
 
     return Response.json(feedback);

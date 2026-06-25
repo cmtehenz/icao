@@ -6,7 +6,10 @@ import { useSpeechRecognition } from "@/hooks/useSpeechRecognition";
 import { errorTypeLabel, getMispronouncedWords, isScriptedAssessment } from "@/lib/azure/pronunciation";
 import type { AzurePronunciationResult } from "@/lib/azure/pronunciation";
 import type { EvaluateFeedback, EvaluateType } from "@/lib/evaluate/types";
+import { estimateIcaoLevel } from "@/lib/evaluate/icaoLevel";
 import { addWordsToVault } from "@/lib/pronunciationVault";
+import IcaoLevelPanel from "@/components/IcaoLevelPanel";
+import YouGlishLink from "@/components/YouGlishLink";
 
 type Props = {
   question: string;
@@ -80,6 +83,11 @@ export default function VoiceCoachPanel({
             ...data.improvements,
           ];
         }
+        data.icaoLevel = estimateIcaoLevel(data.scores, evaluateType, {
+          accuracyScore: azureResult.accuracyScore,
+          fluencyScore: azureResult.fluencyScore,
+          completenessScore: azureResult.completenessScore,
+        });
       }
 
       setFeedback(data);
@@ -92,7 +100,7 @@ export default function VoiceCoachPanel({
         const n = added + updated;
         if (n > 0) {
           setVaultSaved(
-            `${n} palavra${n > 1 ? "s" : ""} salva${n > 1 ? "s" : ""} — total ${total} no banco (Part 2 → Pronúncia)`,
+            `${n} palavra${n > 1 ? "s" : ""} salva${n > 1 ? "s" : ""} — total ${total} no banco (menu Pronúncia)`,
           );
         }
       }
@@ -253,6 +261,8 @@ export default function VoiceCoachPanel({
 
       {feedback && (
         <div className="voice-coach-feedback">
+          {feedback.icaoLevel && <IcaoLevelPanel rating={feedback.icaoLevel} />}
+
           <div className="voice-coach-scores">
             <div className="voice-score overall">
               <strong>{feedback.scores.overall}</strong>
@@ -333,6 +343,7 @@ export default function VoiceCoachPanel({
                       <span className="mispronounced-word">{w.word}</span>
                       <span className="mispronounced-score">{w.accuracyScore}%</span>
                       <span className="mispronounced-error">{w.errorLabel}</span>
+                      <YouGlishLink word={w.word} compact />
                     </li>
                   ))}
                 </ul>

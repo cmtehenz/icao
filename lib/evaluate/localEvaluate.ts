@@ -1,4 +1,5 @@
 import type { EvaluateFeedback, EvaluateRequest, EvaluateScores } from "./types";
+import { estimateIcaoLevel } from "./icaoLevel";
 
 const PEEL_MARKERS = [
   "first of all",
@@ -151,5 +152,6 @@ export function localEvaluate(req: EvaluateRequest): EvaluateFeedback {
     improvements,
     missingKeywords,
     source: "local",
+    icaoLevel: estimateIcaoLevel(scores, type),
   };
 }

@@ -30,6 +30,14 @@ export function loadVault(): VaultWord[] {
 export function saveVault(words: VaultWord[]): void {
   if (typeof window === "undefined") return;
   localStorage.setItem(STORAGE_KEY, JSON.stringify(words));
+  notifyVaultChange();
+}
+
+export const VAULT_CHANGE_EVENT = "icao-pronunciation-vault-change";
+
+function notifyVaultChange(): void {
+  if (typeof window === "undefined") return;
+  window.dispatchEvent(new Event(VAULT_CHANGE_EVENT));
 }
 
 export type WordToSave = {
@@ -108,6 +116,7 @@ export function recordWordPractice(word: string, accuracy: number): void {
 export function clearVault(): void {
   if (typeof window === "undefined") return;
   localStorage.removeItem(STORAGE_KEY);
+  notifyVaultChange();
 }
 
 export function vaultStats(words: VaultWord[]) {

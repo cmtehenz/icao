@@ -13,10 +13,10 @@ import MemoryFlow from "@/components/study/MemoryFlow";
 import ProgressBadge from "@/components/study/ProgressBadge";
 import StructureBlocks from "@/components/study/StructureBlocks";
 import StudyDashboard from "@/components/study/StudyDashboard";
+import PronunciationVaultCard from "@/components/PronunciationVaultCard";
 import VoiceCoachPanel from "@/components/VoiceCoachPanel";
 import { PART1_BY_EXAM } from "@/data/exams/part1";
 import { useTheme } from "@/hooks/useTheme";
-import { useTimer } from "@/hooks/useTimer";
 import { CATEGORIES } from "@/lib/categories";
 import { CARDS } from "@/lib/cards";
 import { loadConnectorSet, saveConnectorSet, type ConnectorSetId } from "@/lib/connectors";
@@ -33,20 +33,15 @@ import {
   type ProgressStore,
 } from "@/lib/progress";
 import { DEFAULT_PROFILE, loadProfile, type PilotProfile } from "@/lib/profile";
-import type { StudyMode } from "@/lib/types";
 import { EXAM_LABELS, type ExamVersion } from "@/lib/exams/types";
 import { isSpeaking, speakText, stopSpeaking } from "@/lib/tts";
 import { wordCount } from "@/lib/utils";
-
-const ANSWER_SECONDS = 45;
-const MODE_KEY = "icao_mode_v1";
 
 type FilteredCard = { card: (typeof CARDS)[number]; idx: number };
 
 export default function FlashcardApp() {
   const { theme, toggle: toggleTheme, hydrated } = useTheme();
   const [current, setCurrent] = useState(0);
-  const [mode, setMode] = useState<StudyMode>("study");
   const [view, setView] = useState<"study" | "exam">("study");
   const [filter, setFilter] = useState<CardFilter>("all");
   const [examVersion, setExamVersion] = useState<ExamVersion | "all">("all");
@@ -62,8 +57,6 @@ export default function FlashcardApp() {
   const [showKeywords, setShowKeywords] = useState(true);
   const [keywordsOnly, setKeywordsOnly] = useState(false);
   const [showStructure, setShowStructure] = useState(false);
-
-  const timer = useTimer(ANSWER_SECONDS);
 
   const filtered = useMemo((): FilteredCard[] => {
     return CARDS.map((card, idx) => ({ card, idx })).filter(({ card }) => {
@@ -87,7 +80,6 @@ export default function FlashcardApp() {
   const favorite = isFavorite(favorites, card.num);
   const simplePhrases = useMemo(() => getSimplePhrases(card), [card]);
   const answerWords = card.targetWords ?? wordCount(card.answer);
-  const isExamStudy = mode === "exam";
 
   const selectCard = useCallback(
     (idx: number) => {
@@ -97,10 +89,9 @@ export default function FlashcardApp() {
       setShowAnswer(false);
       setShowStructure(false);
       setKeywordsOnly(false);
-      timer.reset();
       window.scrollTo({ top: 0, behavior: "smooth" });
     },
-    [timer],
+    [],
   );
 
   const navigateFiltered = useCallback(
@@ -116,10 +107,9 @@ export default function FlashcardApp() {
   const practiceAgain = useCallback(() => {
     setShowAnswer(false);
     setKeywordsOnly(true);
-    timer.reset();
     const next = recordPractice(progress, card.num);
     setProgress(next);
-  }, [card.num, progress, timer]);
+  }, [card.num, progress]);
 
   const markStatus = useCallback(
     (status: "difficult" | "mastered") => {
@@ -157,14 +147,7 @@ export default function FlashcardApp() {
     setConnectorSet(loadConnectorSet());
     setFavorites(loadFavorites());
     setProgress(loadProgress());
-    const storedMode = localStorage.getItem(MODE_KEY);
-    if (storedMode === "study" || storedMode === "exam") setMode(storedMode);
   }, [hydrated]);
-
-  useEffect(() => {
-    if (!hydrated) return;
-    localStorage.setItem(MODE_KEY, mode);
-  }, [mode, hydrated]);
 
   useEffect(() => {
     if (!hydrated) return;
@@ -239,22 +222,6 @@ export default function FlashcardApp() {
             </div>
           </div>
           <div className="delta-topbar-actions">
-            <div className="mode-toggle">
-              <button
-                type="button"
-                className={`mode-btn ${mode === "study" ? "active" : ""}`}
-                onClick={() => setMode("study")}
-              >
-                Estudo
-              </button>
-              <button
-                type="button"
-                className={`mode-btn ${mode === "exam" ? "active" : ""}`}
-                onClick={() => setMode("exam")}
-              >
-                Timer
-              </button>
-            </div>
             <button type="button" className="btn icon-btn secondary" onClick={toggleTheme} aria-label="Theme">
               {theme === "dark" ? "☀️" : "🌙"}
             </button>
@@ -272,6 +239,7 @@ export default function FlashcardApp() {
             12 perguntas das 4 provas reais de helicóptero. Na prova caem 3 — treine por versão ou simule o sorteio.
           </p>
           <StudyDashboard progress={progress} total={CARDS.length} />
+          <PronunciationVaultCard />
           <ExamVersionPicker value={examVersion} onChange={setExamVersion} />
           <FilterBar
             filter={filter}
@@ -323,30 +291,9 @@ export default function FlashcardApp() {
 
             <h2 className="question">{card.question}</h2>
 
-            {!isExamStudy && (
-              <div className="memory">
-                Memory flow
-                <MemoryFlow memory={card.memory} memoryLabels={card.memoryLabels} />
-              </div>
-            )}
-
-            {isExamStudy && (
-              <div className="exam-banner">
-                Modo timer — esconda o script, use keywords, 45s para falar.
-              </div>
-            )}
-
-            <div className="timer timer-compact">
-              <button type="button" className="btn green" onClick={timer.start}>
-                ▶ {ANSWER_SECONDS}s
-              </button>
-              <button type="button" className="btn secondary btn-sm" onClick={timer.reset}>
-                Reset
-              </button>
-              <div className="clock">{timer.clock}</div>
-              <div className="progress-bar">
-                <div className="progress-fill" style={{ width: `${timer.progress}%` }} />
-              </div>
+            <div className="memory">
+              Memory flow
+              <MemoryFlow memory={card.memory} memoryLabels={card.memoryLabels} />
             </div>
           </div>
 
@@ -368,9 +315,9 @@ export default function FlashcardApp() {
               </div>
             )}
 
-            {!isExamStudy && <StructureBlocks card={card} show={showStructure && !keywordsOnly} />}
+            <StructureBlocks card={card} show={showStructure && !keywordsOnly} />
 
-            {!isExamStudy && !keywordsOnly && (
+            {!keywordsOnly && (
               <div className="phrases-inline">
                 <div className="phrases-inline-head">
                   <h3>4 quick phrases</h3>

@@ -2,10 +2,15 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import PronunciationVaultBadge from "@/components/PronunciationVaultBadge";
+import { usePronunciationVault } from "@/hooks/usePronunciationVault";
 import { isNavActive, NAV_ITEMS } from "@/lib/navigation";
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const vault = usePronunciationVault();
+
+  const showVaultBadge = (href: string) => href === "/pronunciation";
 
   return (
     <div className="app-shell">
@@ -28,6 +33,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               >
                 <span className="app-nav-icon" aria-hidden>
                   {item.icon}
+                  {showVaultBadge(item.href) && (
+                    <PronunciationVaultBadge count={vault.total} />
+                  )}
                 </span>
                 <span className="app-sidebar-link-text">
                   <strong>{item.label}</strong>
@@ -55,6 +63,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             >
               <span className="app-bottom-icon" aria-hidden>
                 {item.icon}
+                {showVaultBadge(item.href) && (
+                  <PronunciationVaultBadge count={vault.total} />
+                )}
               </span>
               <span className="app-bottom-label">{item.shortLabel}</span>
             </Link>

@@ -1196,6 +1196,74 @@ input {
 .app-bottom-icon {
   font-size: 22px;
   line-height: 1;
+  position: relative;
+  display: inline-flex;
+}
+
+.app-nav-badge {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: #ef4444;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 18px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(239, 68, 68, 0.45);
+}
+
+.pronunciation-vault-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 14px 0 4px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(22, 163, 74, 0.08));
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.pronunciation-vault-card:hover {
+  border-color: var(--blue);
+  transform: translateY(-1px);
+}
+
+.pronunciation-vault-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.pronunciation-vault-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.pronunciation-vault-body strong {
+  font-size: 0.9rem;
+}
+
+.pronunciation-vault-body span {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 650;
+}
+
+.pronunciation-vault-cta {
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--blue);
 }
 
 .app-bottom-label {
@@ -1314,6 +1382,8 @@ input {
     font-size: 20px;
     line-height: 1.2;
     flex-shrink: 0;
+    position: relative;
+    display: inline-flex;
   }
 
   .app-sidebar-link-text {
@@ -2093,6 +2163,11 @@ input {
   margin-bottom: 18px;
 }
 
+.pronunciation-dashboard {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 420px;
+}
+
 .part2-mode-btn {
   border: 1px solid var(--line);
   background: var(--card);
@@ -2475,6 +2550,106 @@ input {
   font-size: 0.8rem;
 }
 
+.icao-level-panel {
+  margin-bottom: 1rem;
+}
+
+.icao-level-badge {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 2px solid var(--line);
+}
+
+.icao-level-num {
+  font-size: 2.5rem;
+  font-weight: 900;
+  line-height: 1;
+  min-width: 2.5rem;
+  text-align: center;
+}
+
+.icao-level-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.icao-level-meta strong {
+  font-size: 1.05rem;
+}
+
+.icao-level-meta span {
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-weight: 650;
+}
+
+.icao-level-note {
+  margin: 0.6rem 0 0.75rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.icao-criteria-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.icao-criterion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 6px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+}
+
+.icao-criterion-level {
+  font-size: 1.25rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.icao-criterion-label {
+  font-size: 0.65rem;
+  text-align: center;
+  color: var(--muted);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.icao-l6,
+.icao-l5 { border-color: #16a34a; background: rgba(22, 163, 74, 0.08); }
+.icao-l6 .icao-level-num,
+.icao-l6 .icao-criterion-level,
+.icao-l5 .icao-level-num,
+.icao-l5 .icao-criterion-level { color: #16a34a; }
+
+.icao-l4 { border-color: #2563eb; background: rgba(37, 99, 235, 0.08); }
+.icao-l4 .icao-level-num,
+.icao-l4 .icao-criterion-level { color: #2563eb; }
+
+.icao-l3 { border-color: #d97706; background: rgba(217, 119, 6, 0.08); }
+.icao-l3 .icao-level-num,
+.icao-l3 .icao-criterion-level { color: #d97706; }
+
+.icao-l2,
+.icao-l1 { border-color: #ef4444; background: rgba(239, 68, 68, 0.08); }
+.icao-l2 .icao-level-num,
+.icao-l2 .icao-criterion-level,
+.icao-l1 .icao-level-num,
+.icao-l1 .icao-criterion-level { color: #ef4444; }
+
 .voice-coach-toggle {
   width: 100%;
   margin: 0.75rem 0;
@@ -2637,8 +2812,8 @@ input {
 
 .mispronounced-item {
   display: grid;
-  grid-template-columns: 1fr auto auto;
-  gap: 0.75rem;
+  grid-template-columns: 1fr auto auto auto;
+  gap: 0.5rem 0.75rem;
   align-items: center;
   padding: 0.5rem 0.75rem;
   border-radius: 8px;
@@ -2760,7 +2935,9 @@ input {
 .vault-word-actions {
   display: flex;
   flex-shrink: 0;
+  flex-wrap: wrap;
   gap: 0.35rem;
+  justify-content: flex-end;
 }
 
 .vault-practice-result {
@@ -2780,7 +2957,59 @@ input {
   color: #d97706;
 }
 
+.vault-practice-steps {
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.vault-youglish-row {
+  margin: 0.5rem 0 0.75rem;
+}
+
+.youglish-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.45rem 0.85rem;
+  border-radius: 8px;
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--blue, #2563eb);
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-decoration: none;
+  border: 1px solid rgba(37, 99, 235, 0.25);
+  transition: background 0.15s ease;
+}
+
+.youglish-link:hover {
+  background: rgba(37, 99, 235, 0.18);
+}
+
+.youglish-link-compact {
+  padding: 0.3rem 0.55rem;
+  font-size: 0.72rem;
+}
+
+.vault-azure-scores {
+  margin-top: 0.75rem;
+}
+
+.vault-recognized {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+}
+
+.vault-word-azure-detail {
+  margin: 0.35rem 0 0;
+  font-size: 0.8rem;
+  color: #ef4444;
+}
+
 @media (max-width: 600px) {
+  .icao-criteria-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .voice-coach-scores {
     grid-template-columns: repeat(3, 1fr);
   }

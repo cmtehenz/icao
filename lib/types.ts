@@ -2,8 +2,6 @@ import type { Category } from "./categories";
 
 export type Difficulty = "Easy" | "Medium" | "Hard";
 
-export type StudyMode = "study" | "exam";
-
 export type Card = {
   num: string;
   question: string;

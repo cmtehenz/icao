@@ -5,13 +5,11 @@ import FullSimulationMode from "@/components/Part2Trainer/FullSimulationMode";
 import InteractionMode from "@/components/Part2Trainer/InteractionMode";
 import ReadbackMode from "@/components/Part2Trainer/ReadbackMode";
 import ReportedSpeechMode from "@/components/Part2Trainer/ReportedSpeechMode";
-import PronunciationWordsMode from "@/components/Part2Trainer/PronunciationWordsMode";
 import VocabularyDrill from "@/components/Part2Trainer/VocabularyDrill";
 import { VOCABULARY_TERMS } from "@/data/part2Vocabulary";
 import { useTheme } from "@/hooks/useTheme";
 import { ALL_EXAM_SITUATIONS } from "@/data/exams/part2Data";
 import { loadPart2Progress, part2Stats, type Part2ProgressStore } from "@/lib/part2/progress";
-import { loadVault, vaultStats } from "@/lib/pronunciationVault";
 import type { Part2Mode } from "@/lib/part2/types";
 
 const MODES: { id: Part2Mode; label: string; desc: string }[] = [
@@ -19,14 +17,12 @@ const MODES: { id: Part2Mode; label: string; desc: string }[] = [
   { id: "interaction", label: "Interaction", desc: "Reportar problemas — 20 cenários" },
   { id: "reported", label: "Reported Speech", desc: "What did the controller say?" },
   { id: "vocabulary", label: "Vocabulário", desc: "Termos das 4 provas" },
-  { id: "words", label: "Pronúncia", desc: "Palavras salvas para treinar" },
   { id: "simulation", label: "Simulação", desc: "5 situações × prova completa" },
 ];
 
 export default function Part2TrainerApp() {
   const { theme, toggle: toggleTheme, hydrated } = useTheme();
   const [mode, setMode] = useState<Part2Mode>("readback");
-  const [vaultCount, setVaultCount] = useState(0);
   const [progress, setProgress] = useState<Part2ProgressStore>({
     items: {},
     vocabularyKnown: [],
@@ -36,14 +32,7 @@ export default function Part2TrainerApp() {
   useEffect(() => {
     if (!hydrated) return;
     setProgress(loadPart2Progress());
-    setVaultCount(vaultStats(loadVault()).total);
   }, [hydrated]);
-
-  useEffect(() => {
-    if (mode === "words" && hydrated) {
-      setVaultCount(vaultStats(loadVault()).total);
-    }
-  }, [mode, hydrated]);
 
   const stats = part2Stats(progress, VOCABULARY_TERMS.length);
 
@@ -83,10 +72,6 @@ export default function Part2TrainerApp() {
               <strong>{stats.vocabKnown}</strong>
               <span>vocabulário</span>
             </div>
-            <div className="delta-stat daily">
-              <strong>{vaultCount}</strong>
-              <span>pronúncia</span>
-            </div>
           </div>
         </div>
       </section>
@@ -122,7 +107,6 @@ export default function Part2TrainerApp() {
           {mode === "simulation" && (
             <FullSimulationMode progress={progress} onProgressChange={setProgress} />
           )}
-          {mode === "words" && <PronunciationWordsMode />}
         </section>
       </main>
     </>

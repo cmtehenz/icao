@@ -1,5 +1,5 @@
-import IcaoStructureApp from "@/components/IcaoStructureApp";
+import { redirect } from "next/navigation";
 
 export default function StructurePage() {
-  return <IcaoStructureApp />;
+  redirect("/");
 }

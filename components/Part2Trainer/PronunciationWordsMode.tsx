@@ -1,12 +1,16 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import YouGlishLink from "@/components/YouGlishLink";
 import { useAzurePronunciation } from "@/hooks/useAzurePronunciation";
+import type { AzurePronunciationResult } from "@/lib/azure/pronunciation";
+import { errorTypeLabel } from "@/lib/azure/pronunciation";
 import {
   clearVault,
   loadVault,
   recordWordPractice,
   removeVaultWord,
+  VAULT_CHANGE_EVENT,
   vaultStats,
   type VaultWord,
 } from "@/lib/pronunciationVault";
@@ -15,12 +19,15 @@ export default function PronunciationWordsMode() {
   const [words, setWords] = useState<VaultWord[]>([]);
   const [activeWord, setActiveWord] = useState<VaultWord | null>(null);
   const [lastPracticeScore, setLastPracticeScore] = useState<number | null>(null);
+  const [lastResult, setLastResult] = useState<AzurePronunciationResult | null>(null);
   const azure = useAzurePronunciation();
 
   const refresh = useCallback(() => setWords(loadVault()), []);
 
   useEffect(() => {
     refresh();
+    window.addEventListener(VAULT_CHANGE_EVENT, refresh);
+    return () => window.removeEventListener(VAULT_CHANGE_EVENT, refresh);
   }, [refresh]);
 
   const stats = vaultStats(words);
@@ -28,11 +35,14 @@ export default function PronunciationWordsMode() {
   const selectWord = (item: VaultWord) => {
     setActiveWord(item);
     setLastPracticeScore(null);
+    setLastResult(null);
     azure.clear();
   };
 
   const startRecording = async () => {
     if (!activeWord) return;
+    setLastPracticeScore(null);
+    setLastResult(null);
     await azure.start(activeWord.word, "part2-readback");
   };
 
@@ -41,9 +51,18 @@ export default function PronunciationWordsMode() {
     const result = await azure.stop();
     const score = result?.accuracyScore ?? 0;
     setLastPracticeScore(score);
+    setLastResult(result);
     recordWordPractice(activeWord.word, score);
     refresh();
-    if (score >= 85) setActiveWord(null);
+    if (score >= 85) {
+      setTimeout(() => setActiveWord(null), 2500);
+    }
+  };
+
+  const resetForRetry = () => {
+    setLastPracticeScore(null);
+    setLastResult(null);
+    azure.clear();
   };
 
   if (!words.length) {
@@ -79,9 +98,12 @@ export default function PronunciationWordsMode() {
         <article className="card card-essential part2-card vault-practice-card">
           <div className="card-top">
             <h2 className="question">Praticar: {activeWord.word}</h2>
-            <p className="part2-hint">
-              Fale só esta palavra em inglês, com clareza. Meta: <strong>85%+</strong> para remover da lista.
+            <p className="part2-hint vault-practice-steps">
+              1. Ouça no YouGlish · 2. Grave a palavra · 3. Veja a nota Azure · 4. Repita até 85%+
             </p>
+            <div className="vault-youglish-row">
+              <YouGlishLink word={activeWord.word} />
+            </div>
             <p className="part2-situation">Contexto: {activeWord.context || "—"}</p>
             <p className="part2-meta-row">
               <span className="part2-tag">Última nota: {activeWord.lastAccuracy}%</span>
@@ -93,11 +115,16 @@ export default function PronunciationWordsMode() {
             <div className="voice-coach-actions">
               {!azure.assessing ? (
                 <button type="button" className="btn green" onClick={startRecording}>
-                  ● Gravar palavra
+                  ● {lastPracticeScore !== null ? "Gravar novamente" : "Gravar palavra"}
                 </button>
               ) : (
                 <button type="button" className="btn orange" onClick={finishPractice}>
-                  ⏹ Parar e avaliar
+                  ⏹ Parar e avaliar (Azure)
+                </button>
+              )}
+              {lastPracticeScore !== null && !azure.assessing && (
+                <button type="button" className="btn secondary" onClick={resetForRetry}>
+                  Limpar resultado
                 </button>
               )}
               <button type="button" className="btn secondary" onClick={() => { setActiveWord(null); azure.clear(); }}>
@@ -105,21 +132,48 @@ export default function PronunciationWordsMode() {
               </button>
             </div>
             {azure.error && <p className="voice-coach-error">{azure.error}</p>}
+            {!azure.configured && (
+              <p className="voice-coach-warn">Configure AZURE_SPEECH_KEY no .env para avaliar pronúncia.</p>
+            )}
             {lastPracticeScore !== null && (
               <p className={`vault-practice-result ${lastPracticeScore >= 85 ? "good" : "bad"}`}>
                 {lastPracticeScore >= 85
                   ? `Excelente — ${lastPracticeScore}%! Palavra removida da lista.`
-                  : `${lastPracticeScore}% — continue praticando "${activeWord.word}".`}
+                  : `${lastPracticeScore}% — ouça no YouGlish e grave novamente.`}
               </p>
             )}
-            {azure.result && !lastPracticeScore && (
-              <div className="voice-coach-azure-scores">
+            {(lastResult || (azure.result && !lastResult)) && (
+              <div className="voice-coach-azure-scores vault-azure-scores">
                 <div className="voice-score">
-                  <strong>{azure.result.accuracyScore}</strong>
+                  <strong>{(lastResult ?? azure.result)!.accuracyScore}</strong>
                   <span>accuracy</span>
+                </div>
+                <div className="voice-score">
+                  <strong>{(lastResult ?? azure.result)!.fluencyScore}</strong>
+                  <span>fluency</span>
+                </div>
+                <div className="voice-score">
+                  <strong>{(lastResult ?? azure.result)!.completenessScore}</strong>
+                  <span>completeness</span>
+                </div>
+                <div className="voice-score">
+                  <strong>{(lastResult ?? azure.result)!.prosodyScore}</strong>
+                  <span>prosody</span>
                 </div>
               </div>
             )}
+            {lastResult?.recognizedText && (
+              <p className="voice-coach-transcript vault-recognized">
+                Azure ouviu: <em>{lastResult.recognizedText}</em>
+              </p>
+            )}
+            {lastResult?.words
+              .filter((w) => w.errorType && w.errorType !== "None")
+              .map((w) => (
+                <p key={w.word} className="vault-word-azure-detail">
+                  {w.word}: {w.accuracyScore}% — {errorTypeLabel(w.errorType)}
+                </p>
+              ))}
           </div>
         </article>
       ) : (
@@ -136,6 +190,7 @@ export default function PronunciationWordsMode() {
                 {item.context && <span className="vault-word-context">{item.context}</span>}
               </div>
               <div className="vault-word-actions">
+                <YouGlishLink word={item.word} compact />
                 <button type="button" className="btn green btn-sm" onClick={() => selectWord(item)}>
                   Praticar
                 </button>

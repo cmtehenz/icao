@@ -1,3 +1,5 @@
+import type { IcaoLevelRating } from "./icaoLevel";
+
 export type EvaluateType =
   | "part1"
   | "part2-readback"
@@ -21,6 +23,7 @@ export type EvaluateFeedback = {
   missingKeywords: string[];
   suggestedAnswer?: string;
   source: "local" | "openai";
+  icaoLevel?: IcaoLevelRating;
   azurePronunciation?: {
     accuracyScore: number;
     fluencyScore: number;
