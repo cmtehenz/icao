@@ -7,7 +7,7 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "SDEA helicopter exam trainer — real exams 23C–26C, Part 1 & Part 2.",
     start_url: "/",
     display: "standalone",
-    orientation: "portrait",
+    orientation: "portrait-primary",
     background_color: "#f7f8ff",
     theme_color: "#2563eb",
     icons: [

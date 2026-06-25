@@ -195,7 +195,7 @@ export default function FlashcardApp() {
   const posInFilter = filtered.findIndex((f) => f.idx === current);
 
   return (
-    <>
+    <div className="part1-page">
       <PilotProfileModal
         open={profileOpen}
         profile={profile}
@@ -250,28 +250,27 @@ export default function FlashcardApp() {
         </div>
       </section>
 
-      <div className="wrap topic-pills topic-pills-delta">
-        {filtered.map(({ card: c, idx }) => {
-          const st = getCardProgress(progress, c.num);
-          const exam = getExamForCard(c.num);
-          return (
-            <button
-              key={c.num}
-              type="button"
-              className={`topic-pill ${current === idx ? "active" : ""} status-${st.status}`}
-              onClick={() => selectCard(idx)}
-              title={c.question}
-            >
-              <span className="topic-pill-label">{exam ?? `#${c.num}`}</span>
-              {favorites.includes(c.num) && <span className="pill-star">★</span>}
-            </button>
-          );
-        })}
-      </div>
+      <main className="part1-study wrap">
+        <div className="topic-pills topic-pills-delta">
+          {filtered.map(({ card: c, idx }) => {
+            const st = getCardProgress(progress, c.num);
+            const exam = getExamForCard(c.num);
+            return (
+              <button
+                key={c.num}
+                type="button"
+                className={`topic-pill ${current === idx ? "active" : ""} status-${st.status}`}
+                onClick={() => selectCard(idx)}
+                title={c.question}
+              >
+                <span className="topic-pill-label">{exam ?? `#${c.num}`}</span>
+                {favorites.includes(c.num) && <span className="pill-star">★</span>}
+              </button>
+            );
+          })}
+        </div>
 
-      <main className="main main-essential">
-        <section>
-          <article className="card card-essential">
+        <article className="card card-essential part1-card">
           <div className="card-top">
             <div className="card-meta">
               {cardExam && <span className="exam-version-badge">{EXAM_LABELS[cardExam]}</span>}
@@ -419,9 +418,8 @@ export default function FlashcardApp() {
               </button>
             </div>
           </div>
-          </article>
-        </section>
+        </article>
       </main>
-    </>
+    </div>
   );
 }

@@ -21,7 +21,10 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     title: "ICAO Delta",
-    statusBarStyle: "default",
+    statusBarStyle: "black-translucent",
+  },
+  icons: {
+    apple: "/icon.svg",
   },
 };
 
