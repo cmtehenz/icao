@@ -4,7 +4,8 @@ export type EvaluateType =
   | "part1"
   | "part2-readback"
   | "part2-interaction"
-  | "part2-reported";
+  | "part2-reported"
+  | "vocabulary";
 
 export type EvaluateScores = {
   overall: number;

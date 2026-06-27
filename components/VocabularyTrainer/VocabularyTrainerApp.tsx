@@ -36,7 +36,7 @@ export default function VocabularyTrainerApp() {
         <div className="wrap hero-delta-inner">
           <h1>ICAO Vocabulary</h1>
           <p className="sub">
-            {ICAO_CORE_VOCABULARY.length} core SDEA expressions + extended library. Four training levels, shadowing, and spaced repetition.
+            {ICAO_CORE_VOCABULARY.length} core SDEA expressions + extended library. Four training levels, shadowing, saved recordings.
           </p>
           <ProgressDashboard mission={mission} total={total} mastered={masteredCount} />
         </div>

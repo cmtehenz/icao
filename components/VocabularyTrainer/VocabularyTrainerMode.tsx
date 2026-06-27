@@ -150,9 +150,16 @@ export default function VocabularyTrainerMode() {
             referenceText={referenceText}
             termLabel={activeItem.term}
             progress={activeProgress}
-            onResult={(score, assessment) => {
-              recordAttempt(activeItem.id, assessment, level, activeItem.term);
-            }}
+            onResult={async (_score, assessment, audioBlob) =>
+              recordAttempt(
+                activeItem.id,
+                assessment,
+                level,
+                activeItem.term,
+                referenceText,
+                audioBlob,
+              )
+            }
             onMarkDifficult={() => markDifficult(activeItem.id)}
             onMarkMastered={() => markMastered(activeItem.id)}
             onNext={goNext}

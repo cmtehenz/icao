@@ -166,7 +166,10 @@ export function useAzureSpeech() {
     [stopSpeaking],
   );
 
-  const stopRecording = useCallback((): Promise<AzurePronunciationResult | null> => {
+  const stopRecording = useCallback((): Promise<{
+    assessment: AzurePronunciationResult | null;
+    audioBlob: Blob | null;
+  }> => {
     return new Promise((resolve) => {
       const rec = recognizerRef.current as {
         stopContinuousRecognitionAsync?: (ok?: () => void, err?: (e: string) => void) => void;
@@ -177,8 +180,8 @@ export function useAzureSpeech() {
         setRecording(false);
         const merged = mergeSegments(segmentsRef.current);
         setResult(merged);
-        await stopMicCapture();
-        resolve(merged);
+        const audioBlob = await stopMicCapture();
+        resolve({ assessment: merged, audioBlob });
       };
 
       if (!rec) {

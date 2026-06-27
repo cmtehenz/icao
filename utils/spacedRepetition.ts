@@ -1,5 +1,12 @@
 export type VocabStatus = "new" | "learning" | "review" | "mastered";
 
+export type VocabSavedRecording = {
+  evaluationId: string;
+  score: number;
+  level: 1 | 2 | 3 | 4;
+  recordedAt: string;
+};
+
 export type VocabItemProgress = {
   attempts: number;
   bestScore: number;
@@ -14,10 +21,12 @@ export type VocabItemProgress = {
   currentLevel: 1 | 2 | 3 | 4;
   markedDifficult: boolean;
   manuallyMastered: boolean;
+  recordings: VocabSavedRecording[];
 };
 
 export const VOCAB_PROGRESS_EVENT = "icao-vocabulary-progress-change";
 const STORAGE_KEY = "icao_vocabulary_progress_v1";
+const MAX_RECORDINGS_PER_TERM = 20;
 
 export function todayKey(): string {
   return new Date().toISOString().slice(0, 10);
@@ -36,6 +45,17 @@ function defaultProgress(): VocabItemProgress {
     currentLevel: 1,
     markedDifficult: false,
     manuallyMastered: false,
+    recordings: [],
+  };
+}
+
+function normalizeProgress(raw: Partial<VocabItemProgress> | undefined): VocabItemProgress {
+  const base = defaultProgress();
+  if (!raw) return base;
+  return {
+    ...base,
+    ...raw,
+    recordings: Array.isArray(raw.recordings) ? raw.recordings : [],
   };
 }
 
@@ -135,7 +155,7 @@ export function saveVocabProgressStore(store: VocabProgressStore): void {
 }
 
 export function getItemProgress(store: VocabProgressStore, id: string): VocabItemProgress {
-  return store.items[id] ?? defaultProgress();
+  return normalizeProgress(store.items[id]);
 }
 
 function updateStreak(store: VocabProgressStore, date: string): number {
@@ -153,6 +173,7 @@ export function recordVocabAttempt(
   id: string,
   score: number,
   level: 1 | 2 | 3 | 4,
+  recording?: VocabSavedRecording,
 ): VocabItemProgress {
   const existing = getItemProgress(store, id);
   const date = todayKey();
@@ -177,6 +198,9 @@ export function recordVocabAttempt(
     nextReviewDate: nextReviewDate(score),
     currentLevel: level,
     manuallyMastered: existing.manuallyMastered,
+    recordings: recording
+      ? [recording, ...existing.recordings].slice(0, MAX_RECORDINGS_PER_TERM)
+      : existing.recordings,
   };
   next.masteryLevel = computeMasteryLevel(next);
   next.status = computeStatus(next);

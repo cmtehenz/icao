@@ -1,5 +1,10 @@
 import type { VaultWord } from "@/lib/pronunciationVault";
-import { normalizeVaultCount, sanitizeVaultWord, vaultCountLooksCorrupt } from "@/lib/pronunciationVault";
+import {
+  loadRemovedVaultKeys,
+  normalizeVaultCount,
+  sanitizeVaultWord,
+  vaultCountLooksCorrupt,
+} from "@/lib/pronunciationVault";
 
 function pickLatest(a: string, b: string): string {
   return new Date(a) >= new Date(b) ? a : b;
@@ -18,10 +23,12 @@ function mergeCount(a: unknown, b: unknown, fallback = 0): number {
 }
 
 export function mergeVaultWords(local: VaultWord[], remote: VaultWord[]): VaultWord[] {
+  const removed = loadRemovedVaultKeys();
   const map = new Map<string, VaultWord>();
 
   for (const item of [...remote, ...local].map(sanitizeVaultWord)) {
     const key = item.word.toLowerCase();
+    if (removed.has(key)) continue;
     const existing = map.get(key);
     if (!existing) {
       map.set(key, { ...item });

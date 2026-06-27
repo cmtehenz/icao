@@ -16,6 +16,7 @@ export type VaultWord = {
 };
 
 const STORAGE_KEY = "icao_pronunciation_vault_v1";
+const REMOVED_STORAGE_KEY = "icao_vault_removed_v1";
 const VAULT_COUNT_RESET_KEY = "icao_vault_counts_reset_v2";
 const MAX_VAULT_COUNT = 99;
 const CORRUPT_COUNT_THRESHOLD = 10;
@@ -107,6 +108,36 @@ function notifyVaultChange(): void {
   window.dispatchEvent(new Event(VAULT_CHANGE_EVENT));
 }
 
+export function loadRemovedVaultKeys(): Set<string> {
+  if (typeof window === "undefined") return new Set();
+  try {
+    const raw = localStorage.getItem(REMOVED_STORAGE_KEY);
+    if (!raw) return new Set();
+    const parsed = JSON.parse(raw) as string[];
+    if (!Array.isArray(parsed)) return new Set();
+    return new Set(parsed.map((k) => k.toLowerCase()));
+  } catch {
+    return new Set();
+  }
+}
+
+function saveRemovedVaultKeys(keys: Set<string>): void {
+  if (typeof window === "undefined") return;
+  localStorage.setItem(REMOVED_STORAGE_KEY, JSON.stringify([...keys]));
+}
+
+export function markVaultWordRemoved(word: string): void {
+  const keys = loadRemovedVaultKeys();
+  keys.add(word.toLowerCase());
+  saveRemovedVaultKeys(keys);
+}
+
+export function clearVaultWordRemoved(word: string): void {
+  const keys = loadRemovedVaultKeys();
+  keys.delete(word.toLowerCase());
+  saveRemovedVaultKeys(keys);
+}
+
 export type WordToSave = {
   word: string;
   accuracyScore: number;
@@ -128,6 +159,7 @@ export function addWordsToVault(
 
   for (const item of incoming) {
     const key = item.word.toLowerCase();
+    clearVaultWordRemoved(key);
     const existing = map.get(key);
     if (existing) {
       existing.timesSeen = normalizeVaultCount(existing.timesSeen, 1) + 1;
@@ -162,6 +194,7 @@ export function addWordsToVault(
 
 export function removeVaultWord(word: string): void {
   const key = word.toLowerCase();
+  markVaultWordRemoved(key);
   saveVault(loadVault().filter((w) => w.word.toLowerCase() !== key));
 }
 
@@ -183,6 +216,7 @@ export function recordWordPractice(word: string, accuracy: number): VaultPractic
   if (accuracy >= VAULT_PASS_SCORE) {
     item.passCount = normalizeVaultCount(item.passCount, 0) + 1;
     if (item.passCount >= VAULT_PASSES_TO_GRADUATE) {
+      markVaultWordRemoved(key);
       saveVault(vault.filter((w) => w.word.toLowerCase() !== key));
       return { removed: true, passCount: item.passCount };
     }
@@ -198,6 +232,7 @@ export function recordWordPractice(word: string, accuracy: number): VaultPractic
 export function clearVault(): void {
   if (typeof window === "undefined") return;
   localStorage.removeItem(STORAGE_KEY);
+  localStorage.removeItem(REMOVED_STORAGE_KEY);
   notifyVaultChange();
 }
 

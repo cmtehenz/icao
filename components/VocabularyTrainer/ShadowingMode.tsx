@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import VocabRecordingsList from "@/components/VocabularyTrainer/VocabRecordingsList";
 import VocabularyCard from "@/components/VocabularyTrainer/VocabularyCard";
 import { ICAO_VOCABULARY, getLevelText, type IcaoVocabularyItem } from "@/data/icaoVocabulary";
 import { useAzureSpeech } from "@/hooks/useAzureSpeech";
@@ -14,6 +15,7 @@ export default function ShadowingMode() {
   const [level, setLevel] = useState<1 | 2 | 3 | 4>(1);
   const [phase, setPhase] = useState<"idle" | "listening" | "waiting" | "recording" | "result">("idle");
   const [lastScore, setLastScore] = useState<number | null>(null);
+  const [audioNote, setAudioNote] = useState<string | null>(null);
 
   const dueList = useMemo(
     () => ICAO_VOCABULARY.filter((item) => isDueForReview(getProgress(item.id))),
@@ -23,6 +25,7 @@ export default function ShadowingMode() {
   const startShadowing = async (item: IcaoVocabularyItem) => {
     setActiveItem(item);
     setLastScore(null);
+    setAudioNote(null);
     azure.clear();
     const text = getLevelText(item, level);
     setPhase("listening");
@@ -39,7 +42,8 @@ export default function ShadowingMode() {
 
   const stopShadowing = async () => {
     if (!activeItem || phase !== "recording") return;
-    const assessment = await azure.stopRecording();
+    const referenceText = getLevelText(activeItem, level);
+    const { assessment, audioBlob } = await azure.stopRecording();
     const score = assessment
       ? pronunciationScore(
           assessment.accuracyScore,
@@ -48,7 +52,19 @@ export default function ShadowingMode() {
         )
       : 0;
     setLastScore(score);
-    recordAttempt(activeItem.id, assessment, level, activeItem.term);
+    const outcome = await recordAttempt(
+      activeItem.id,
+      assessment,
+      level,
+      activeItem.term,
+      referenceText,
+      audioBlob,
+    );
+    if (outcome.audioSaved) {
+      setAudioNote("Gravação salva — ouça abaixo.");
+    } else if (outcome.audioError) {
+      setAudioNote(outcome.audioError);
+    }
     setPhase("result");
   };
 
@@ -83,6 +99,7 @@ export default function ShadowingMode() {
             {phase === "recording" && "● Repeat now — tap Stop when done"}
             {phase === "result" && lastScore !== null && `Result: ${lastScore} points`}
           </p>
+          {audioNote && <p className="voice-coach-warn">{audioNote}</p>}
           {phase === "recording" && (
             <button type="button" className="btn orange" onClick={stopShadowing}>
               ⏹ Stop & evaluate
@@ -106,6 +123,7 @@ export default function ShadowingMode() {
               </button>
             </div>
           )}
+          <VocabRecordingsList recordings={progress.recordings} />
         </article>
       ) : (
         <ul className="vault-word-list vocab-term-list">

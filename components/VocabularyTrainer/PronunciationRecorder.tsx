@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import YouGlishLink from "@/components/YouGlishLink";
+import VocabRecordingsList from "@/components/VocabularyTrainer/VocabRecordingsList";
 import { useAzureSpeech } from "@/hooks/useAzureSpeech";
 import type { AzurePronunciationResult } from "@/lib/azure/pronunciation";
 import { errorTypeLabel } from "@/lib/azure/pronunciation";
@@ -12,7 +13,11 @@ type Props = {
   referenceText: string;
   termLabel: string;
   progress: VocabItemProgress;
-  onResult: (score: number, assessment: AzurePronunciationResult | null) => void;
+  onResult: (
+    score: number,
+    assessment: AzurePronunciationResult | null,
+    audioBlob: Blob | null,
+  ) => Promise<{ audioSaved: boolean; audioError?: string } | void>;
   onMarkDifficult: () => void;
   onMarkMastered: () => void;
   onNext?: () => void;
@@ -30,6 +35,33 @@ export default function PronunciationRecorder({
   const azure = useAzureSpeech();
   const [lastScore, setLastScore] = useState<number | null>(null);
   const [lastAssessment, setLastAssessment] = useState<AzurePronunciationResult | null>(null);
+  const [saving, setSaving] = useState(false);
+  const [audioNote, setAudioNote] = useState<string | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const previewRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (previewRef.current) {
+        URL.revokeObjectURL(previewRef.current);
+        previewRef.current = null;
+      }
+    };
+  }, []);
+
+  const setPreview = (blob: Blob | null) => {
+    if (previewRef.current) {
+      URL.revokeObjectURL(previewRef.current);
+      previewRef.current = null;
+    }
+    if (!blob) {
+      setPreviewUrl(null);
+      return;
+    }
+    const url = URL.createObjectURL(blob);
+    previewRef.current = url;
+    setPreviewUrl(url);
+  };
 
   const handleListen = async () => {
     try {
@@ -41,7 +73,9 @@ export default function PronunciationRecorder({
 
   const handleRecord = async () => {
     if (azure.recording) {
-      const assessment = await azure.stopRecording();
+      setSaving(true);
+      setAudioNote(null);
+      const { assessment, audioBlob } = await azure.stopRecording();
       const score = assessment
         ? pronunciationScore(
             assessment.accuracyScore,
@@ -51,17 +85,33 @@ export default function PronunciationRecorder({
         : 0;
       setLastScore(score);
       setLastAssessment(assessment);
-      onResult(score, assessment);
+      setPreview(audioBlob);
+      try {
+        const outcome = await onResult(score, assessment, audioBlob);
+        if (outcome?.audioSaved) {
+          setAudioNote("Gravação salva — ouça abaixo quando quiser.");
+        } else if (outcome?.audioError) {
+          setAudioNote(outcome.audioError);
+        } else if (audioBlob) {
+          setAudioNote("Ouça a prévia abaixo. A gravação será salva na sua conta.");
+        }
+      } finally {
+        setSaving(false);
+      }
       return;
     }
     setLastScore(null);
     setLastAssessment(null);
+    setAudioNote(null);
+    setPreview(null);
     await azure.startRecording(referenceText);
   };
 
   const handleTryAgain = () => {
     setLastScore(null);
     setLastAssessment(null);
+    setAudioNote(null);
+    setPreview(null);
     azure.clear();
   };
 
@@ -89,7 +139,7 @@ export default function PronunciationRecorder({
           type="button"
           className="btn secondary"
           onClick={handleListen}
-          disabled={azure.speaking || azure.recording}
+          disabled={azure.speaking || azure.recording || saving}
         >
           {azure.speaking ? "🔊 Playing…" : "🔊 Listen"}
         </button>
@@ -97,16 +147,20 @@ export default function PronunciationRecorder({
           type="button"
           className={`btn ${azure.recording ? "orange" : "green"}`}
           onClick={handleRecord}
-          disabled={azure.speaking || !azure.configured}
+          disabled={azure.speaking || !azure.configured || saving}
         >
-          {azure.recording ? "⏹ Stop & evaluate" : "● Record"}
+          {saving
+            ? "Salvando…"
+            : azure.recording
+              ? "⏹ Stop & evaluate"
+              : "● Record"}
         </button>
-        {displayScore !== null && !azure.recording && (
+        {displayScore !== null && !azure.recording && !saving && (
           <button type="button" className="btn secondary" onClick={handleTryAgain}>
             Try again
           </button>
         )}
-        {onNext && displayScore !== null && !azure.recording && (
+        {onNext && displayScore !== null && !azure.recording && !saving && (
           <button type="button" className="btn secondary" onClick={onNext}>
             Next →
           </button>
@@ -121,6 +175,14 @@ export default function PronunciationRecorder({
         <p className="voice-coach-warn">Configure AZURE_SPEECH_KEY e AZURE_SPEECH_REGION no servidor.</p>
       )}
       {azure.error && <p className="voice-coach-error">{azure.error}</p>}
+      {audioNote && <p className="voice-coach-warn">{audioNote}</p>}
+
+      {previewUrl && (
+        <div className="vocab-preview-audio">
+          <p className="vocab-preview-label">Prévia desta gravação</p>
+          <audio className="exam-audio evaluation-audio" controls preload="metadata" src={previewUrl} />
+        </div>
+      )}
 
       <div className="vocab-recorder-stats">
         <span>Best: <strong>{progress.bestScore}</strong></span>
@@ -163,6 +225,8 @@ export default function PronunciationRecorder({
             {w.word}: {w.accuracyScore}% — {errorTypeLabel(w.errorType)}
           </p>
         ))}
+
+      <VocabRecordingsList recordings={progress.recordings} />
 
       <div className="vocab-recorder-extra">
         <button type="button" className="btn secondary btn-sm" onClick={onMarkDifficult}>

@@ -2,9 +2,8 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { ICAO_VOCABULARY } from "@/data/icaoVocabulary";
-import { addWordsToVault } from "@/lib/pronunciationVault";
+import { saveVocabAttempt } from "@/lib/vocabRecordings";
 import type { AzurePronunciationResult } from "@/lib/azure/pronunciation";
-import { errorTypeLabel } from "@/lib/azure/pronunciation";
 import {
   dailyMissionStats,
   getItemProgress,
@@ -13,35 +12,11 @@ import {
   loadVocabProgressStore,
   markVocabDifficult,
   markVocabMastered,
-  pronunciationScore,
-  recordVocabAttempt,
   type DailyMissionStats,
   type VocabItemProgress,
   type VocabProgressStore,
   VOCAB_PROGRESS_EVENT,
 } from "@/utils/spacedRepetition";
-
-function mispronouncedFromAssessment(assessment: AzurePronunciationResult) {
-  const bad = assessment.words.filter(
-    (w) => (w.errorType && w.errorType !== "None") || w.accuracyScore < 80,
-  );
-  if (bad.length) {
-    return bad.map((w) => ({
-      word: w.word,
-      accuracyScore: w.accuracyScore,
-      errorType: w.errorType ?? "Mispronunciation",
-      errorLabel: errorTypeLabel(w.errorType ?? "Mispronunciation"),
-    }));
-  }
-  return [
-    {
-      word: assessment.recognizedText.trim() || "term",
-      accuracyScore: assessment.accuracyScore,
-      errorType: "Mispronunciation",
-      errorLabel: "Pronúncia fraca",
-    },
-  ];
-}
 
 export function useVocabularyProgress() {
   const [store, setStore] = useState<VocabProgressStore>(() => loadVocabProgressStore());
@@ -66,40 +41,24 @@ export function useVocabularyProgress() {
   );
 
   const recordAttempt = useCallback(
-    (
+    async (
       id: string,
       assessment: AzurePronunciationResult | null,
       level: 1 | 2 | 3 | 4,
       termLabel: string,
-    ): VocabItemProgress => {
-      const current = loadVocabProgressStore();
-      const score = assessment
-        ? pronunciationScore(
-            assessment.accuracyScore,
-            assessment.fluencyScore,
-            assessment.completenessScore,
-          )
-        : 0;
-      const next = recordVocabAttempt(current, id, score, level);
+      referenceText: string,
+      audioBlob: Blob | null,
+    ) => {
+      const result = await saveVocabAttempt({
+        id,
+        assessment,
+        level,
+        termLabel,
+        referenceText,
+        audioBlob,
+      });
       setStore(loadVocabProgressStore());
-
-      if (score < 75 && assessment) {
-        addWordsToVault(mispronouncedFromAssessment(assessment), `Vocabulary: ${termLabel}`);
-      } else if (score < 75) {
-        addWordsToVault(
-          [
-            {
-              word: termLabel,
-              accuracyScore: score,
-              errorType: "Mispronunciation",
-              errorLabel: "Pronúncia fraca",
-            },
-          ],
-          `Vocabulary: ${termLabel}`,
-        );
-      }
-
-      return next;
+      return result;
     },
     [],
   );

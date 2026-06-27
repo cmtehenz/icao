@@ -239,7 +239,14 @@ export default function PronunciationWordsMode() {
                 <button type="button" className="btn green btn-sm" onClick={() => selectWord(item)}>
                   Praticar
                 </button>
-                <button type="button" className="btn secondary btn-sm" onClick={() => { removeVaultWord(item.word); refresh(); }}>
+                <button
+                  type="button"
+                  className="btn secondary btn-sm"
+                  onClick={() => {
+                    removeVaultWord(item.word);
+                    refresh();
+                  }}
+                >
                   Remover
                 </button>
               </div>

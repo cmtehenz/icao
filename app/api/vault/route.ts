@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getCurrentUser } from "@/lib/auth/user";
 import { prisma } from "@/lib/db";
-import { dbWordToVault, mergeVaultWords, vaultWordToDb } from "@/lib/vaultMerge";
+import { dbWordToVault, vaultWordToDb } from "@/lib/vaultMerge";
 import {
   resetVaultWordCounts,
   sanitizeVaultWord,
@@ -46,11 +46,11 @@ export async function PUT(request: Request) {
       return NextResponse.json({ error: "Formato inválido." }, { status: 400 });
     }
 
-    const remote = (
-      await prisma.vaultWord.findMany({ where: { userId: user.id } })
-    ).map(dbWordToVault);
-
-    const merged = mergeVaultWords(incoming, remote);
+    const deduped = new Map<string, VaultWord>();
+    for (const word of incoming) {
+      deduped.set(word.word.toLowerCase(), word);
+    }
+    const merged = [...deduped.values()].sort((a, b) => a.lowestAccuracy - b.lowestAccuracy);
 
     await prisma.$transaction(async (tx) => {
       await tx.vaultWord.deleteMany({ where: { userId: user.id } });
