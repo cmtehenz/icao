@@ -14,6 +14,13 @@ export const NAV_ITEMS = [
     description: "Pilot interaction — provas reais",
   },
   {
+    href: "/vocabulario",
+    label: "Vocabulary",
+    shortLabel: "Vocab",
+    icon: "📚",
+    description: "ICAO vocabulary — Azure TTS & SRS",
+  },
+  {
     href: "/pronunciation",
     label: "Pronúncia",
     shortLabel: "Pronúncia",

@@ -53,11 +53,26 @@ export type ReportedSpeechScenario = {
   modelAnswer: string;
 };
 
+export type VocabCategoryId =
+  | "atc"
+  | "emergencies"
+  | "landing-gear"
+  | "weather"
+  | "navigation"
+  | "passengers"
+  | "score-phrases"
+  | "reported-speech";
+
 export type VocabularyTerm = {
   id: string;
   term: string;
+  /** Portuguese meaning */
+  meaning: string;
   definition: string;
   example: string;
+  category: VocabCategoryId;
+  /** 3–5 star importance for Part 2 */
+  importance: 3 | 4 | 5;
 };
 
 export type Part2ProgressStatus = "new" | "learning" | "difficult" | "mastered";

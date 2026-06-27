@@ -5,7 +5,7 @@ import { addStudySeconds, type StudySection } from "@/lib/studyTime";
 
 function sectionFromPath(pathname: string): StudySection | null {
   if (pathname === "/") return "part1";
-  if (pathname.startsWith("/part2")) return "part2";
+  if (pathname.startsWith("/part2") || pathname.startsWith("/vocabulario")) return "part2";
   return null;
 }
 

@@ -2895,6 +2895,373 @@ input {
   margin: 0;
 }
 
+.vocab-trainer .vocab-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.vocab-category-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.vocab-cat-chip {
+  font-size: 0.78rem;
+}
+
+.vocab-grouped-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.vocab-category-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.vocab-category-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+.vocab-category-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+.vocab-stars {
+  font-size: 0.72rem;
+  color: #f59e0b;
+  letter-spacing: -1px;
+}
+
+.vocab-category-desc {
+  margin: 4px 0 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.vocab-category-count {
+  flex-shrink: 0;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--muted);
+  background: var(--bg);
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+
+.vocab-meaning {
+  margin: 6px 0 4px;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.vocab-meaning-inline {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+.vocab-definition {
+  margin: 8px 0;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.vocab-example-inline {
+  margin: 0 0 12px;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  font-style: italic;
+}
+
+.vocab-recording-progress {
+  margin: 12px 0;
+}
+
+.vocab-recording-progress-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.vocab-term-item.done {
+  border-left-color: var(--green);
+}
+
+.vault-word-pct.good {
+  background: rgba(22, 163, 74, 0.12);
+  color: var(--green);
+}
+
+.vocab-mastered-label {
+  font-size: 0.78rem;
+  color: var(--green);
+  font-weight: 800;
+}
+
+.vocab-part2-link {
+  margin-top: 12px;
+}
+
+.hero-vocab .sub {
+  max-width: 36rem;
+}
+
+.vocab-trainer-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.vocab-mission-dashboard {
+  margin-top: 12px;
+}
+
+.vocab-mission-title {
+  margin: 0 0 10px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.vocab-mission-grid {
+  margin-top: 0;
+}
+
+.vocab-level-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.vocab-card {
+  border-radius: 14px;
+  padding: 14px 16px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+
+.vocab-card-full {
+  margin-bottom: 14px;
+}
+
+.vocab-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.vocab-card-category {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.vocab-card-term {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.vocab-card-meaning {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.vocab-card-example {
+  margin: 0 0 10px;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.vocab-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.vocab-card-tag {
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+.vocab-card-mastery-block {
+  text-align: right;
+}
+
+.vocab-card-mastery-score {
+  display: block;
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.vocab-card-mastery-label {
+  font-size: 0.7rem;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.vocab-card-mastery {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--green);
+}
+
+.vocab-card-progress {
+  margin: 10px 0;
+}
+
+.vocab-card-progress-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.vocab-card-scores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.vocab-score-pill {
+  flex: 1;
+  min-width: 5rem;
+  text-align: center;
+  padding: 8px;
+  border-radius: 10px;
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+.vocab-score-pill strong {
+  display: block;
+  font-size: 1.1rem;
+}
+
+.vocab-score-pill span {
+  font-size: 0.68rem;
+  color: var(--muted);
+}
+
+.vocab-recorder {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.vocab-recorder-ref {
+  margin: 0 0 12px;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.vocab-recorder-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.vocab-recorder-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin: 10px 0;
+}
+
+.vocab-recorder-extra {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.vocab-result-banner {
+  padding: 12px 14px;
+  border-radius: 12px;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.vocab-result-banner.tier-excellent {
+  background: rgba(22, 163, 74, 0.12);
+  border: 1px solid rgba(22, 163, 74, 0.35);
+  color: var(--green);
+}
+
+.vocab-result-banner.tier-good {
+  background: rgba(234, 179, 8, 0.12);
+  border: 1px solid rgba(234, 179, 8, 0.35);
+  color: #ca8a04;
+}
+
+.vocab-result-banner.tier-retry {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: var(--red);
+}
+
+.vocab-shadowing-phase {
+  margin: 12px 0;
+  font-weight: 800;
+  text-align: center;
+}
+
+.vocab-term-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vocab-card-compact {
+  flex: 1;
+}
+
 .part2-sim-progress {
   display: flex;
   gap: 8px;
@@ -4505,8 +4872,8 @@ input {
   }
 
   .app-bottom-label {
-    font-size: 10px;
-    max-width: 4.5rem;
+    font-size: 9px;
+    max-width: 3.4rem;
   }
 }
 

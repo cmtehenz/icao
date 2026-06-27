@@ -75,6 +75,9 @@ export default function AccountPage() {
           <Link href="/" className="btn secondary">
             Part 1
           </Link>
+          <Link href="/vocabulario" className="btn secondary">
+            Vocabulary Trainer
+          </Link>
           <Link href="/part2" className="btn secondary">
             Part 2
           </Link>
