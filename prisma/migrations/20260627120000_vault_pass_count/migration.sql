@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "VaultWord" ADD COLUMN "passCount" INTEGER NOT NULL DEFAULT 0;

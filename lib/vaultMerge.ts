@@ -49,6 +49,7 @@ export function mergeVaultWords(local: VaultWord[], remote: VaultWord[]): VaultW
           : item.context || existing.context,
       timesSeen: mergeCount(existing.timesSeen, item.timesSeen, 1),
       practiceCount: mergeCount(existing.practiceCount, item.practiceCount, 0),
+      passCount: mergeCount(existing.passCount, item.passCount, 0),
       lastSeenAt: pickLatest(existing.lastSeenAt, item.lastSeenAt),
       lastPracticedAt:
         existing.lastPracticedAt && item.lastPracticedAt
@@ -71,6 +72,7 @@ export function vaultWordToDb(word: VaultWord, userId: string) {
     context: word.context,
     timesSeen: word.timesSeen,
     practiceCount: word.practiceCount,
+    passCount: word.passCount,
     lastSeenAt: new Date(word.lastSeenAt),
     lastPracticedAt: word.lastPracticedAt ? new Date(word.lastPracticedAt) : null,
   };
@@ -85,6 +87,7 @@ export function dbWordToVault(row: {
   context: string;
   timesSeen: number;
   practiceCount: number;
+  passCount: number;
   lastSeenAt: Date;
   lastPracticedAt: Date | null;
 }): VaultWord {
@@ -97,6 +100,7 @@ export function dbWordToVault(row: {
     context: row.context,
     timesSeen: row.timesSeen,
     practiceCount: row.practiceCount,
+    passCount: row.passCount,
     lastSeenAt: row.lastSeenAt.toISOString(),
     lastPracticedAt: row.lastPracticedAt?.toISOString(),
   });

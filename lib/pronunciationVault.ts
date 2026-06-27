@@ -9,6 +9,8 @@ export type VaultWord = {
   context: string;
   timesSeen: number;
   practiceCount: number;
+  /** Approved practices with accuracy above VAULT_PASS_SCORE */
+  passCount: number;
   lastSeenAt: string;
   lastPracticedAt?: string;
 };
@@ -17,6 +19,9 @@ const STORAGE_KEY = "icao_pronunciation_vault_v1";
 const VAULT_COUNT_RESET_KEY = "icao_vault_counts_reset_v2";
 const MAX_VAULT_COUNT = 99;
 const CORRUPT_COUNT_THRESHOLD = 10;
+
+export const VAULT_PASS_SCORE = 80;
+export const VAULT_PASSES_TO_GRADUATE = 5;
 
 /** Evita concatenação de strings e valores inflados por sync duplicado. */
 export function normalizeVaultCount(value: unknown, fallback = 0): number {
@@ -64,6 +69,7 @@ export function sanitizeVaultWord(word: VaultWord): VaultWord {
     lastAccuracy: normalizeVaultCount(word.lastAccuracy, 0),
     timesSeen: normalizeTimesSeen(word.timesSeen),
     practiceCount: normalizePracticeCount(word.practiceCount),
+    passCount: normalizeVaultCount(word.passCount, 0),
   };
 }
 
@@ -142,6 +148,7 @@ export function addWordsToVault(
         context,
         timesSeen: 1,
         practiceCount: 0,
+        passCount: 0,
         lastSeenAt: now,
       });
       added += 1;
@@ -158,20 +165,34 @@ export function removeVaultWord(word: string): void {
   saveVault(loadVault().filter((w) => w.word.toLowerCase() !== key));
 }
 
-export function recordWordPractice(word: string, accuracy: number): void {
+export type VaultPracticeResult = {
+  removed: boolean;
+  passCount: number;
+};
+
+export function recordWordPractice(word: string, accuracy: number): VaultPracticeResult {
   const key = word.toLowerCase();
   const vault = loadVault();
   const item = vault.find((w) => w.word.toLowerCase() === key);
-  if (!item) return;
+  if (!item) return { removed: false, passCount: 0 };
+
   item.practiceCount = normalizeVaultCount(item.practiceCount, 0) + 1;
   item.lastPracticedAt = new Date().toISOString();
   item.lastAccuracy = accuracy;
-  if (accuracy >= 85) {
-    saveVault(vault.filter((w) => w.word.toLowerCase() !== key));
-    return;
+
+  if (accuracy >= VAULT_PASS_SCORE) {
+    item.passCount = normalizeVaultCount(item.passCount, 0) + 1;
+    if (item.passCount >= VAULT_PASSES_TO_GRADUATE) {
+      saveVault(vault.filter((w) => w.word.toLowerCase() !== key));
+      return { removed: true, passCount: item.passCount };
+    }
+    saveVault(vault);
+    return { removed: false, passCount: item.passCount };
   }
+
   item.lowestAccuracy = Math.min(item.lowestAccuracy, accuracy);
   saveVault(vault);
+  return { removed: false, passCount: item.passCount };
 }
 
 export function clearVault(): void {

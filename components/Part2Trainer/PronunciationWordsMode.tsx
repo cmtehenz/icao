@@ -11,6 +11,8 @@ import {
   recordWordPractice,
   removeVaultWord,
   VAULT_CHANGE_EVENT,
+  VAULT_PASS_SCORE,
+  VAULT_PASSES_TO_GRADUATE,
   vaultStats,
   type VaultWord,
 } from "@/lib/pronunciationVault";
@@ -19,6 +21,7 @@ export default function PronunciationWordsMode() {
   const [words, setWords] = useState<VaultWord[]>([]);
   const [activeWord, setActiveWord] = useState<VaultWord | null>(null);
   const [lastPracticeScore, setLastPracticeScore] = useState<number | null>(null);
+  const [lastPassCount, setLastPassCount] = useState<number | null>(null);
   const [lastResult, setLastResult] = useState<AzurePronunciationResult | null>(null);
   const azure = useAzurePronunciation();
 
@@ -35,6 +38,7 @@ export default function PronunciationWordsMode() {
   const selectWord = (item: VaultWord) => {
     setActiveWord(item);
     setLastPracticeScore(null);
+    setLastPassCount(null);
     setLastResult(null);
     azure.clear();
   };
@@ -42,6 +46,7 @@ export default function PronunciationWordsMode() {
   const startRecording = async () => {
     if (!activeWord) return;
     setLastPracticeScore(null);
+    setLastPassCount(null);
     setLastResult(null);
     await azure.start(activeWord.word, "part2-readback");
   };
@@ -52,15 +57,17 @@ export default function PronunciationWordsMode() {
     const score = assessment?.accuracyScore ?? 0;
     setLastPracticeScore(score);
     setLastResult(assessment);
-    recordWordPractice(activeWord.word, score);
+    const outcome = recordWordPractice(activeWord.word, score);
+    setLastPassCount(outcome.passCount);
     refresh();
-    if (score >= 85) {
+    if (outcome.removed) {
       setTimeout(() => setActiveWord(null), 2500);
     }
   };
 
   const resetForRetry = () => {
     setLastPracticeScore(null);
+    setLastPassCount(null);
     setLastResult(null);
     azure.clear();
   };
@@ -102,8 +109,29 @@ export default function PronunciationWordsMode() {
               <span className="vault-step">1. Ouça no YouGlish</span>
               <span className="vault-step">2. Grave a palavra</span>
               <span className="vault-step">3. Veja a nota Azure</span>
-              <span className="vault-step">4. Repita até 85%+</span>
+              <span className="vault-step">4. Repita até 5× acima de {VAULT_PASS_SCORE}%</span>
             </p>
+            <div className="vocab-recording-progress">
+              <div className="vocab-recording-progress-head">
+                <span>Progresso</span>
+                <strong>
+                  {(lastPassCount ?? activeWord.passCount)}/{VAULT_PASSES_TO_GRADUATE} aprovadas
+                </strong>
+              </div>
+              <div className="daily-study-bar" aria-hidden>
+                <div
+                  className="daily-study-bar-fill"
+                  style={{
+                    width: `${Math.min(
+                      100,
+                      Math.round(
+                        ((lastPassCount ?? activeWord.passCount) / VAULT_PASSES_TO_GRADUATE) * 100,
+                      ),
+                    )}%`,
+                  }}
+                />
+              </div>
+            </div>
             <div className="vault-youglish-row">
               <YouGlishLink word={activeWord.word} />
             </div>
@@ -139,9 +167,15 @@ export default function PronunciationWordsMode() {
               <p className="voice-coach-warn">Configure AZURE_SPEECH_KEY no .env para avaliar pronúncia.</p>
             )}
             {lastPracticeScore !== null && (
-              <p className={`vault-practice-result ${lastPracticeScore >= 85 ? "good" : "bad"}`}>
-                {lastPracticeScore >= 85
-                  ? `Excelente — ${lastPracticeScore}%! Palavra removida da lista.`
+              <p
+                className={`vault-practice-result ${
+                  lastPracticeScore >= VAULT_PASS_SCORE ? "good" : "bad"
+                }`}
+              >
+                {lastPracticeScore >= VAULT_PASS_SCORE
+                  ? lastPassCount !== null && lastPassCount >= VAULT_PASSES_TO_GRADUATE
+                    ? `Excelente — ${lastPracticeScore}%! ${VAULT_PASSES_TO_GRADUATE}/${VAULT_PASSES_TO_GRADUATE} — palavra removida da lista.`
+                    : `Bom — ${lastPracticeScore}%! ${lastPassCount ?? activeWord.passCount}/${VAULT_PASSES_TO_GRADUATE} aprovadas. Continue treinando.`
                   : `${lastPracticeScore}% — ouça no YouGlish e grave novamente.`}
               </p>
             )}
@@ -194,6 +228,7 @@ export default function PronunciationWordsMode() {
                   <span className="vault-word-scores">
                     visto {item.timesSeen}x
                     {item.practiceCount > 0 && ` · ${item.practiceCount} treino${item.practiceCount > 1 ? "s" : ""}`}
+                    {` · ${item.passCount}/${VAULT_PASSES_TO_GRADUATE} aprovadas`}
                   </span>
                   <span className="vault-word-error">{item.errorLabel}</span>
                   {item.context && <span className="vault-word-context">{item.context}</span>}

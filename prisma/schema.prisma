@@ -31,6 +31,7 @@ model VaultWord {
   context         String    @default("")
   timesSeen       Int       @default(1)
   practiceCount   Int       @default(0)
+  passCount       Int       @default(0)
   lastSeenAt      DateTime
   lastPracticedAt DateTime?
   createdAt       DateTime  @default(now())
