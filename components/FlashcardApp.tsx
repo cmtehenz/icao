@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import ConnectorsBank from "@/components/ConnectorsBank";
 import ExamVersionPicker from "@/components/ExamVersionPicker";
 import PilotProfileModal from "@/components/PilotProfileModal";
@@ -40,6 +41,7 @@ import { wordCount } from "@/lib/utils";
 type FilteredCard = { card: (typeof CARDS)[number]; idx: number };
 
 export default function FlashcardApp() {
+  const searchParams = useSearchParams();
   const { theme, toggle: toggleTheme, hydrated } = useTheme();
   const [current, setCurrent] = useState(0);
   const [view, setView] = useState<"study" | "exam">("study");
@@ -137,6 +139,10 @@ export default function FlashcardApp() {
     setFavorites(loadFavorites());
     setProgress(loadProgress());
   }, [hydrated]);
+
+  useEffect(() => {
+    if (searchParams.get("view") === "exam") setView("exam");
+  }, [searchParams]);
 
   useEffect(() => {
     if (!hydrated) return;

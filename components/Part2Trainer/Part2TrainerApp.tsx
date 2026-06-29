@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import FullSimulationMode from "@/components/Part2Trainer/FullSimulationMode";
 import InteractionMode from "@/components/Part2Trainer/InteractionMode";
 import ReadbackMode from "@/components/Part2Trainer/ReadbackMode";
@@ -20,6 +21,7 @@ const MODES: { id: Part2Mode; label: string; desc: string }[] = [
 ];
 
 export default function Part2TrainerApp() {
+  const searchParams = useSearchParams();
   const { theme, toggle: toggleTheme, hydrated } = useTheme();
   const [mode, setMode] = useState<Part2Mode>("readback");
   const [progress, setProgress] = useState<Part2ProgressStore>({
@@ -32,6 +34,13 @@ export default function Part2TrainerApp() {
     if (!hydrated) return;
     setProgress(loadPart2Progress());
   }, [hydrated]);
+
+  useEffect(() => {
+    const requested = searchParams.get("mode");
+    if (requested === "simulation" || requested === "readback" || requested === "interaction" || requested === "reported") {
+      setMode(requested);
+    }
+  }, [searchParams]);
 
   const stats = part2Stats(progress, ICAO_VOCABULARY.length);
 

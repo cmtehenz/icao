@@ -7,6 +7,7 @@ import { useAuth } from "@/components/AuthProvider";
 import EvaluationAudioPlayer from "@/components/EvaluationAudioPlayer";
 import PronunciationVaultClearButton from "@/components/PronunciationVaultClearButton";
 import DailyStudyGoal from "@/components/study/DailyStudyGoal";
+import StudyAgenda from "@/components/study/StudyAgenda";
 import StudyCalendar from "@/components/study/StudyCalendar";
 import { usePronunciationVault } from "@/hooks/usePronunciationVault";
 
@@ -64,6 +65,8 @@ export default function AccountPage() {
           Sair
         </button>
       </header>
+
+      <StudyAgenda />
 
       <DailyStudyGoal compact />
 

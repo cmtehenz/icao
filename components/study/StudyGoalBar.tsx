@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import DailyStudyGoal from "@/components/study/DailyStudyGoal";
+import StudyAgenda from "@/components/study/StudyAgenda";
 import { useDailyStudyTime } from "@/hooks/useDailyStudyTime";
 import {
   STUDY_ACTIVITY_ORDER,
@@ -42,6 +43,7 @@ export default function StudyGoalSheet({ onClose }: { onClose: () => void }) {
           </button>
         </header>
         <DailyStudyGoal highlight="all" compact />
+        <StudyAgenda compact showWeek={false} />
         {streak > 0 && (
           <p className="study-goal-sheet-streak">
             Sequência: {streak} dia{streak > 1 ? "s" : ""} com meta completa
