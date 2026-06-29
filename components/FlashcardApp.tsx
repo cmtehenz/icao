@@ -11,7 +11,6 @@ import FilterBar, { type CardFilter } from "@/components/study/FilterBar";
 import KeywordsPanel from "@/components/study/KeywordsPanel";
 import MemoryFlow from "@/components/study/MemoryFlow";
 import ProgressBadge from "@/components/study/ProgressBadge";
-import StructureBlocks from "@/components/study/StructureBlocks";
 import StudyDashboard from "@/components/study/StudyDashboard";
 import PronunciationVaultCard from "@/components/PronunciationVaultCard";
 import VoiceCoachPanel from "@/components/VoiceCoachPanel";
@@ -24,7 +23,6 @@ import { isFavorite, loadFavorites, toggleFavorite } from "@/lib/favorites";
 import { getExamForCard } from "@/data/exams/part1";
 import { getKeywords } from "@/lib/icaoStructure";
 import { personalizeCard } from "@/lib/personalize";
-import { getSimplePhrases } from "@/lib/simplePhrases";
 import {
   getCardProgress,
   loadProgress,
@@ -56,7 +54,6 @@ export default function FlashcardApp() {
   const [showAnswer, setShowAnswer] = useState(false);
   const [showKeywords, setShowKeywords] = useState(true);
   const [keywordsOnly, setKeywordsOnly] = useState(false);
-  const [showStructure, setShowStructure] = useState(false);
 
   const filtered = useMemo((): FilteredCard[] => {
     return CARDS.map((card, idx) => ({ card, idx })).filter(({ card }) => {
@@ -78,7 +75,6 @@ export default function FlashcardApp() {
   const keywords = getKeywords(card);
   const cardProgress = getCardProgress(progress, card.num);
   const favorite = isFavorite(favorites, card.num);
-  const simplePhrases = useMemo(() => getSimplePhrases(card), [card]);
   const answerWords = card.targetWords ?? wordCount(card.answer);
 
   const selectCard = useCallback(
@@ -87,7 +83,6 @@ export default function FlashcardApp() {
       setSpeaking(false);
       setCurrent(idx);
       setShowAnswer(false);
-      setShowStructure(false);
       setKeywordsOnly(false);
       window.scrollTo({ top: 0, behavior: "smooth" });
     },
@@ -122,14 +117,6 @@ export default function FlashcardApp() {
   const toggleStar = useCallback(() => {
     setFavorites((prev) => toggleFavorite(prev, card.num));
   }, [card.num]);
-
-  const copyPhrase = useCallback(async (text: string) => {
-    try {
-      await navigator.clipboard.writeText(text);
-    } catch {
-      /* ignore */
-    }
-  }, []);
 
   const toggleSpeak = useCallback(() => {
     if (speaking || isSpeaking()) {
@@ -314,36 +301,6 @@ export default function FlashcardApp() {
               </div>
             )}
 
-            <StructureBlocks card={card} show={showStructure && !keywordsOnly} />
-
-            {!keywordsOnly && (
-              <div className="phrases-inline">
-                <div className="phrases-inline-head">
-                  <h3>4 quick phrases</h3>
-                  <button type="button" className="btn secondary btn-sm" onClick={() => setPhrasesOpen(true)}>
-                    All questions
-                  </button>
-                </div>
-                <ol className="phrases-four phrases-four-inline">
-                  {simplePhrases.map((phrase, i) => (
-                    <li key={phrase.label}>
-                      <button
-                        type="button"
-                        className="phrase-line"
-                        onClick={() => copyPhrase(phrase.text)}
-                        title="Copy"
-                      >
-                        <span className="phrase-label">
-                          {i + 1}. {phrase.label}
-                        </span>
-                        <span className="phrase-text">{phrase.text}</span>
-                      </button>
-                    </li>
-                  ))}
-                </ol>
-              </div>
-            )}
-
             <div className="study-toolbar">
               <button
                 type="button"
@@ -362,21 +319,18 @@ export default function FlashcardApp() {
               >
                 {showKeywords ? "Esconder keywords" : "Mostrar keywords"}
               </button>
-              {!keywordsOnly && (
-                <button type="button" className="btn secondary" onClick={() => setShowStructure((s) => !s)}>
-                  {showStructure ? "Esconder estrutura" : "Mostrar estrutura"}
-                </button>
-              )}
               <button
                 type="button"
                 className="btn purple btn-large"
                 onClick={() => setShowAnswer((p) => !p)}
               >
-                {showAnswer ? "Esconder resposta" : "Mostrar resposta"}
+                {showAnswer ? "Esconder resposta" : "Mostrar resposta PEEL"}
               </button>
-              <button type="button" className="btn secondary" onClick={toggleSpeak}>
-                {speaking ? "Parar" : "Ouvir"}
-              </button>
+              {showAnswer && (
+                <button type="button" className="btn secondary" onClick={toggleSpeak}>
+                  {speaking ? "Parar" : "Ouvir"}
+                </button>
+              )}
             </div>
 
             <AnswerPanel card={card} show={showAnswer} />
@@ -414,7 +368,7 @@ export default function FlashcardApp() {
                 Connectors
               </button>
               <button type="button" className="btn secondary" onClick={() => setPhrasesOpen(true)}>
-                4 phrases
+                Resumo oral
               </button>
             </div>
           </div>

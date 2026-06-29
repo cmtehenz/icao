@@ -67,10 +67,9 @@ export default function QuickPhrasesMenu({
   return (
     <div className="modal-backdrop" onClick={onClose}>
       <div className="modal modal-wide phrases-modal" onClick={(e) => e.stopPropagation()}>
-        <h2>4 frases por pergunta</h2>
+        <h2>Resumo oral — PEEL</h2>
         <p className="modal-sub">
-          Resumo oral rápido: abertura, dois pontos e fechamento. Toque numa frase para copiar ou
-          abra a pergunta para praticar.
+          Uma linha por bloco PEEL. Toque para copiar ou abra a pergunta para praticar.
         </p>
 
         <input
@@ -121,7 +120,7 @@ export default function QuickPhrasesMenu({
                           className="btn secondary"
                           onClick={() => copyText(getSimplePhrasesText(card))}
                         >
-                          Copiar as 4
+                          Copiar resumo
                         </button>
                         {onSelect && (
                           <button

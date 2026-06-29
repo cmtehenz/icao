@@ -1,14 +1,6 @@
 import type { EvaluateFeedback, EvaluateRequest, EvaluateScores } from "./types";
 import { estimateIcaoLevel } from "./icaoLevel";
-
-const PEEL_MARKERS = [
-  "first of all",
-  "additionally",
-  "finally",
-  "for example",
-  "overall",
-  "in my opinion",
-];
+import { peelMissingConnectors, peelStructureFeedbackPt, peelStructureScore } from "./peel";
 
 const PART2_MARKERS = [
   "anac 123",
@@ -78,7 +70,7 @@ export function localEvaluate(req: EvaluateRequest): EvaluateFeedback {
   const content = overlapScore(trimmed, modelAnswer);
   const structure =
     type === "part1"
-      ? markerScore(trimmed, PEEL_MARKERS)
+      ? peelStructureScore(trimmed)
       : markerScore(trimmed, PART2_MARKERS);
   const phraseology =
     type.startsWith("part2") ? markerScore(trimmed, PART2_MARKERS) : structure;
@@ -128,7 +120,8 @@ export function localEvaluate(req: EvaluateRequest): EvaluateFeedback {
 
   if (scores.content < 60) improvements.push("Inclua mais ideias da resposta modelo e keywords.");
   if (scores.structure < 50 && type === "part1") {
-    improvements.push("Use conectores PEEL: First of all, Additionally, Finally, For example, Overall.");
+    const missing = peelMissingConnectors(trimmed);
+    improvements.push(...peelStructureFeedbackPt(missing));
   }
   if (missingKeywords.length) {
     improvements.push(`Keywords faltando: ${missingKeywords.slice(0, 5).join(", ")}.`);
@@ -153,5 +146,6 @@ export function localEvaluate(req: EvaluateRequest): EvaluateFeedback {
     missingKeywords,
     source: "local",
     icaoLevel: estimateIcaoLevel(scores, type),
+    suggestedAnswer: type === "part1" ? modelAnswer : undefined,
   };
 }

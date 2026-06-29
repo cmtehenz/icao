@@ -1,4 +1,5 @@
 import { localEvaluate } from "@/lib/evaluate/localEvaluate";
+import { ensurePart1SuggestedAnswer } from "@/lib/evaluate/peel";
 import { estimateIcaoLevel } from "@/lib/evaluate/icaoLevel";
 import type { EvaluateFeedback, EvaluateRequest } from "@/lib/evaluate/types";
 import { requireUser } from "@/lib/auth/requireUser";
@@ -12,14 +13,15 @@ Return ONLY valid JSON with this shape:
   "strengths": ["..."],
   "improvements": ["..."],
   "missingKeywords": ["..."],
-  "suggestedAnswer": "optional improved short answer in English"
+  "suggestedAnswer": "improved answer in English — REQUIRED for part1"
 }
 Rules:
 - Compare against the model answer and question.
 - For part2-readback: check clearance elements, numbers, callsign ANAC 123.
 - For part2-interaction: check problem, intention, request, MAYDAY/PAN if needed.
 - For part2-reported: check reported speech grammar (past tense, third person).
-- For part1: check PEEL structure (opener, 3 ideas, example, conclusion), ~80-120 words ideal.
+- For part1: check PEEL structure — opener, three ideas with First of all / Additionally / Finally, For example, Overall (~80-120 words ideal). Do NOT suggest First/Second/Third only; always include For example and Overall.
+- For part1 suggestedAnswer: base it on modelAnswer; keep the same ideas and aviation vocabulary; fix grammar only; must include all five PEEL connectors.
 - pronunciation score: infer from likely misheard words in transcript vs expected aviation terms; note you only have text not audio.
 - Remember: official ICAO rating uses 6 criteria and overall level = LOWEST criterion (Operational = Level 4 minimum for pilots).`;
 
@@ -91,7 +93,10 @@ export async function POST(request: Request) {
       strengths: parsed.strengths ?? local.strengths,
       improvements: parsed.improvements ?? local.improvements,
       missingKeywords: parsed.missingKeywords ?? local.missingKeywords,
-      suggestedAnswer: parsed.suggestedAnswer,
+      suggestedAnswer:
+        type === "part1"
+          ? ensurePart1SuggestedAnswer(modelAnswer, parsed.suggestedAnswer)
+          : parsed.suggestedAnswer,
       icaoLevel: estimateIcaoLevel(parsed.scores ?? local.scores, type),
     };
 

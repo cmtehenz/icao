@@ -11,17 +11,15 @@ function ideaText(idea: string): string {
   return parsed ? parsed.rest.trim() : idea.trim();
 }
 
-/** Four short phrases to answer orally: opener, two ideas, closing (idea 3 + conclusion). */
+/** Short oral summary — one line per PEEL block (for the quick-phrases menu). */
 export function getSimplePhrases(card: Card): SimplePhrase[] {
-  const closing = [card.ideas[2] ? ideaText(card.ideas[2]) : "", card.conclusion.trim()]
-    .filter(Boolean)
-    .join(" ");
-
   return [
     { label: "Abertura", text: card.opener.trim() },
-    { label: "Ponto 1", text: ideaText(card.ideas[0] ?? "") },
-    { label: "Ponto 2", text: ideaText(card.ideas[1] ?? "") },
-    { label: "Fechamento", text: closing },
+    { label: "Ideia 1", text: ideaText(card.ideas[0] ?? "") },
+    { label: "Ideia 2", text: ideaText(card.ideas[1] ?? "") },
+    { label: "Ideia 3", text: ideaText(card.ideas[2] ?? "") },
+    { label: "Exemplo", text: card.example.trim() },
+    { label: "Conclusão", text: card.conclusion.trim() },
   ].filter((p) => p.text);
 }
 

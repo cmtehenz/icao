@@ -28,7 +28,7 @@ export default function AnswerPanel({ card, show }: Props) {
   if (!show) return null;
   return (
     <div className="answer show answer-panel">
-      <h3>Model answer — ICAO 5</h3>
+      <h3>Resposta modelo — PEEL</h3>
       <div className="answer-blocks">
         <div className="block blue-b">
           <h4>Opener</h4>
