@@ -6,6 +6,16 @@ import {
   vaultCountLooksCorrupt,
 } from "@/lib/pronunciationVault";
 
+function safeDate(value: string | undefined, fallback = new Date()): Date {
+  if (!value) return fallback;
+  const d = new Date(value);
+  return Number.isNaN(d.getTime()) ? fallback : d;
+}
+
+function normalizeVaultWordKey(word: string): string {
+  return word.trim().toLowerCase().replace(/\s+/g, " ").slice(0, 120);
+}
+
 function pickLatest(a: string, b: string): string {
   return new Date(a) >= new Date(b) ? a : b;
 }
@@ -69,19 +79,25 @@ export function mergeVaultWords(local: VaultWord[], remote: VaultWord[]): VaultW
 }
 
 export function vaultWordToDb(word: VaultWord, userId: string) {
+  const w = sanitizeVaultWord(word);
+  const normalizedWord = normalizeVaultWordKey(w.word);
+  if (normalizedWord.length < 2) {
+    throw new Error(`Invalid vault word: "${w.word}"`);
+  }
+
   return {
     userId,
-    word: word.word.toLowerCase(),
-    lowestAccuracy: word.lowestAccuracy,
-    lastAccuracy: word.lastAccuracy,
-    errorType: word.errorType,
-    errorLabel: word.errorLabel,
-    context: word.context,
-    timesSeen: word.timesSeen,
-    practiceCount: word.practiceCount,
-    passCount: word.passCount,
-    lastSeenAt: new Date(word.lastSeenAt),
-    lastPracticedAt: word.lastPracticedAt ? new Date(word.lastPracticedAt) : null,
+    word: normalizedWord,
+    lowestAccuracy: w.lowestAccuracy,
+    lastAccuracy: w.lastAccuracy,
+    errorType: w.errorType || "Manual",
+    errorLabel: w.errorLabel || "adicionada manualmente",
+    context: (w.context || "").slice(0, 500),
+    timesSeen: w.timesSeen,
+    practiceCount: w.practiceCount,
+    passCount: w.passCount,
+    lastSeenAt: safeDate(w.lastSeenAt),
+    lastPracticedAt: w.lastPracticedAt ? safeDate(w.lastPracticedAt) : null,
   };
 }
 

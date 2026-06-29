@@ -37,7 +37,11 @@ const AuthContext = createContext<AuthContextValue | null>(null);
 
 async function pullVaultFromServer(): Promise<VaultWord[] | null> {
   const res = await fetch("/api/vault");
-  if (!res.ok) return null;
+  if (res.status === 401) return null;
+  if (!res.ok) {
+    console.warn("[vault] pull failed", res.status);
+    return null;
+  }
   const data = await res.json();
   return data.words as VaultWord[];
 }
@@ -48,7 +52,11 @@ async function pushVaultToServer(words: VaultWord[]): Promise<VaultWord[] | null
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ words }),
   });
-  if (!res.ok) return null;
+  if (res.status === 401) return null;
+  if (!res.ok) {
+    console.warn("[vault] push failed", res.status);
+    return null;
+  }
   const data = await res.json();
   return data.words as VaultWord[];
 }
@@ -85,7 +93,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     saveVault(reconciled);
 
     if (JSON.stringify(reconciled) !== JSON.stringify(pushed)) {
-      await pushVaultToServer(reconciled);
+      const repushed = await pushVaultToServer(reconciled);
+      if (!repushed) return;
     }
   }, []);
 
