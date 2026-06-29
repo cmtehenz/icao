@@ -20,7 +20,7 @@ export default function PronunciationVaultCard() {
             {needsPractice > critical ? ` · ${needsPractice - critical} para revisar` : ""}
           </span>
         ) : (
-          <span>Grave no Voice Coach — palavras com erro são salvas automaticamente</span>
+          <span>Grave no Voice Coach ou adicione palavras manualmente no banco de pronúncia</span>
         )}
       </div>
       <span className="pronunciation-vault-cta">{total > 0 ? "Treinar →" : "Ver →"}</span>

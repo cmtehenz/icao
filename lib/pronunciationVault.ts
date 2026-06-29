@@ -192,6 +192,48 @@ export function addWordsToVault(
   return { added, updated, total: next.length };
 }
 
+const MANUAL_VAULT_CONTEXT = "Adicionada manualmente";
+
+/** Parse one or more words from a text field (comma, semicolon, or newline separated). */
+export function parseManualVaultInput(input: string): string[] {
+  const parts = input.split(/[,;\n]+/).map((s) => s.trim()).filter(Boolean);
+  const seen = new Set<string>();
+  const result: string[] = [];
+
+  for (const part of parts) {
+    const key = part.toLowerCase();
+    if (key.length < 2 || key.length > 60) continue;
+    if (!/[a-z]/i.test(part)) continue;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    result.push(part);
+  }
+
+  return result;
+}
+
+export function addManualWordsToVault(
+  input: string,
+  context = MANUAL_VAULT_CONTEXT,
+): { added: number; updated: number; skipped: number; total: number } {
+  const words = parseManualVaultInput(input);
+  if (!words.length) {
+    return { added: 0, updated: 0, skipped: 0, total: loadVault().length };
+  }
+
+  const { added, updated, total } = addWordsToVault(
+    words.map((word) => ({
+      word,
+      accuracyScore: 0,
+      errorType: "Manual",
+      errorLabel: "adicionada manualmente",
+    })),
+    context.trim() || MANUAL_VAULT_CONTEXT,
+  );
+
+  return { added, updated, skipped: 0, total };
+}
+
 export function removeVaultWord(word: string): void {
   const key = word.toLowerCase();
   markVaultWordRemoved(key);

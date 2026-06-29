@@ -3896,6 +3896,33 @@ input {
   margin-bottom: 1rem;
 }
 
+.vault-add-form {
+  margin-bottom: 1.25rem;
+  padding: 1rem 1.1rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.vault-add-form h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+}
+
+.vault-add-form .sub {
+  margin: 0 0 0.85rem;
+}
+
+.vault-add-actions {
+  margin-top: 0.5rem;
+}
+
+.vault-add-message {
+  margin: 0.75rem 0 0;
+  font-size: 0.9rem;
+  color: var(--green);
+}
+
 .vault-stat {
   font-size: 0.8rem;
   padding: 0.25rem 0.5rem;

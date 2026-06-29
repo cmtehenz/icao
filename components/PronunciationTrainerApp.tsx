@@ -29,7 +29,7 @@ export default function PronunciationTrainerApp() {
         <div className="wrap hero-delta-inner">
           <h1>Pronúncia</h1>
           <p className="sub">
-            Ouça no YouGlish, grave com Azure e repita até 5× acima de 80%. Palavras salvas do Part 1 e Part 2.
+            Ouça no YouGlish, grave com Azure e repita até 5× acima de 80%. Adicione palavras manualmente ou salve do Voice Coach.
           </p>
           <div className="delta-dashboard part2-dashboard pronunciation-dashboard">
             <div className="delta-stat daily">

@@ -1,13 +1,15 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, type FormEvent } from "react";
 import YouGlishLink from "@/components/YouGlishLink";
 import { useAzurePronunciation } from "@/hooks/useAzurePronunciation";
 import type { AzurePronunciationResult } from "@/lib/azure/pronunciation";
 import { errorTypeLabel } from "@/lib/azure/pronunciation";
 import {
+  addManualWordsToVault,
   clearVault,
   loadVault,
+  parseManualVaultInput,
   recordWordPractice,
   removeVaultWord,
   VAULT_CHANGE_EVENT,
@@ -16,6 +18,73 @@ import {
   vaultStats,
   type VaultWord,
 } from "@/lib/pronunciationVault";
+
+function VaultAddWordsForm({ onAdded }: { onAdded: () => void }) {
+  const [input, setInput] = useState("");
+  const [context, setContext] = useState("");
+  const [message, setMessage] = useState<string | null>(null);
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    const parsed = parseManualVaultInput(input);
+    if (!parsed.length) {
+      setMessage("Digite ao menos uma palavra em inglês (separe várias com vírgula).");
+      return;
+    }
+
+    const { added, updated, total } = addManualWordsToVault(input, context);
+    setInput("");
+    setContext("");
+    onAdded();
+
+    if (added > 0) {
+      setMessage(
+        `${added} palavra${added > 1 ? "s" : ""} adicionada${added > 1 ? "s" : ""}` +
+          (updated > 0 ? ` · ${updated} atualizada${updated > 1 ? "s" : ""}` : "") +
+          ` · ${total} no banco.`,
+      );
+    } else if (updated > 0) {
+      setMessage(`${updated} palavra${updated > 1 ? "s" : ""} já estava${updated > 1 ? "m" : ""} no banco — contexto atualizado.`);
+    }
+  };
+
+  return (
+    <form className="vault-add-form" onSubmit={handleSubmit}>
+      <h2>Adicionar palavras</h2>
+      <p className="sub">
+        Digite termos de aviação para treinar. Separe várias com vírgula — ex.:{" "}
+        <em>helicopter, autorotation, phraseology</em>
+      </p>
+      <label className="field">
+        <span>Palavra(s)</span>
+        <input
+          value={input}
+          onChange={(e) => {
+            setInput(e.target.value);
+            setMessage(null);
+          }}
+          placeholder="helicopter, hover, check ride"
+          autoComplete="off"
+        />
+      </label>
+      <label className="field">
+        <span>Contexto (opcional)</span>
+        <input
+          value={context}
+          onChange={(e) => setContext(e.target.value)}
+          placeholder="Part 1 — check ride"
+          autoComplete="off"
+        />
+      </label>
+      <div className="vault-add-actions">
+        <button type="submit" className="btn green" disabled={!input.trim()}>
+          Adicionar ao banco
+        </button>
+      </div>
+      {message && <p className="vault-add-message">{message}</p>}
+    </form>
+  );
+}
 
 export default function PronunciationWordsMode() {
   const [words, setWords] = useState<VaultWord[]>([]);
@@ -75,11 +144,13 @@ export default function PronunciationWordsMode() {
   if (!words.length) {
     return (
       <div className="part2-mode">
+        <VaultAddWordsForm onAdded={refresh} />
         <div className="exam-pick-card">
           <h2>Palavras para treinar</h2>
           <p className="sub">
-            Ainda não há palavras salvas. Use <strong>Falar e corrigir</strong> com Azure — as
-            palavras com pronúncia fraca são salvas automaticamente aqui.
+            Ainda não há palavras salvas. Adicione manualmente acima ou use{" "}
+            <strong>Falar e corrigir</strong> no Part 1/Part 2 — palavras com pronúncia fraca são
+            salvas automaticamente.
           </p>
         </div>
       </div>
@@ -88,6 +159,7 @@ export default function PronunciationWordsMode() {
 
   return (
     <div className="part2-mode">
+      <VaultAddWordsForm onAdded={refresh} />
       <header className="part2-mode-head">
         <span className="badge">Pronúncia — banco de palavras</span>
         <span className="part2-counter">{stats.total} palavras</span>
