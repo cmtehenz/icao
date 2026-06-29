@@ -49,3 +49,67 @@ export function getMispronouncedWords(words: AzureWordScore[]): AzureWordScore[]
     })
     .sort((a, b) => a.accuracyScore - b.accuracyScore);
 }
+
+const STOP_WORDS = new Set([
+  "the", "a", "an", "and", "or", "to", "of", "in", "on", "at", "for", "is", "are", "was",
+  "were", "i", "we", "you", "it", "that", "this", "with", "as", "be", "have", "has", "had",
+  "my", "our", "your", "but", "so", "if", "when", "can", "will", "would", "could", "should",
+]);
+
+export function extractPracticeWordsFromTranscript(text: string, max = 6): string[] {
+  const tokens = text
+    .toLowerCase()
+    .replace(/[^a-z'\s-]/g, " ")
+    .split(/\s+/)
+    .filter((w) => w.length > 3 && !STOP_WORDS.has(w));
+  return [...new Set(tokens)].slice(0, max);
+}
+
+export type VaultWordCandidate = {
+  word: string;
+  accuracyScore: number;
+  errorType: string;
+  errorLabel: string;
+};
+
+/**
+ * Words to save in the pronunciation vault.
+ * Part 1 uses unscripted Azure mode — when word-level scores are missing,
+ * fall back to transcript tokens when overall accuracy is weak.
+ */
+export function collectVaultWordCandidates(
+  azureResult: AzurePronunciationResult,
+): VaultWordCandidate[] {
+  const flagged = getMispronouncedWords(azureResult.words);
+  if (flagged.length) {
+    return flagged.map((w) => ({
+      word: w.word,
+      accuracyScore: w.accuracyScore,
+      errorType: w.errorType ?? "Mispronunciation",
+      errorLabel: errorTypeLabel(w.errorType),
+    }));
+  }
+
+  if (azureResult.accuracyScore >= 80) return [];
+
+  const practiceWords = extractPracticeWordsFromTranscript(azureResult.recognizedText);
+  if (!practiceWords.length) {
+    const snippet = azureResult.recognizedText.trim().slice(0, 48);
+    if (!snippet) return [];
+    return [
+      {
+        word: snippet,
+        accuracyScore: azureResult.accuracyScore,
+        errorType: "Mispronunciation",
+        errorLabel: "Pronúncia fraca",
+      },
+    ];
+  }
+
+  return practiceWords.map((word) => ({
+    word,
+    accuracyScore: azureResult.accuracyScore,
+    errorType: "Mispronunciation",
+    errorLabel: "Pronúncia fraca",
+  }));
+}

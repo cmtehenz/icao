@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useAzurePronunciation } from "@/hooks/useAzurePronunciation";
 import { useSpeechRecognition } from "@/hooks/useSpeechRecognition";
-import { errorTypeLabel, getMispronouncedWords, isScriptedAssessment } from "@/lib/azure/pronunciation";
+import { errorTypeLabel, collectVaultWordCandidates, isScriptedAssessment } from "@/lib/azure/pronunciation";
 import type { AzurePronunciationResult } from "@/lib/azure/pronunciation";
 import type { EvaluateFeedback, EvaluateType } from "@/lib/evaluate/types";
 import { estimateIcaoLevel } from "@/lib/evaluate/icaoLevel";
@@ -21,19 +21,14 @@ type Props = {
 };
 
 function buildAzureExtras(azureResult: AzurePronunciationResult) {
-  const mispronounced = getMispronouncedWords(azureResult.words);
+  const mispronounced = collectVaultWordCandidates(azureResult);
   return {
     accuracyScore: azureResult.accuracyScore,
     fluencyScore: azureResult.fluencyScore,
     completenessScore: azureResult.completenessScore,
     prosodyScore: azureResult.prosodyScore,
     weakWords: mispronounced.map((w) => w.word),
-    mispronouncedWords: mispronounced.map((w) => ({
-      word: w.word,
-      accuracyScore: w.accuracyScore,
-      errorType: w.errorType ?? "None",
-      errorLabel: errorTypeLabel(w.errorType),
-    })),
+    mispronouncedWords: mispronounced,
   };
 }
 

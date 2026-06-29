@@ -76,9 +76,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   const syncVault = useCallback(async () => {
-    const local = loadVault();
-    const merged = await pushVaultToServer(local);
-    if (merged) saveVault(merged);
+    const snapshot = loadVault();
+    const pushed = await pushVaultToServer(snapshot);
+    if (!pushed) return;
+
+    const current = loadVault();
+    const reconciled = mergeVaultWords(current, pushed);
+    saveVault(reconciled);
+
+    if (JSON.stringify(reconciled) !== JSON.stringify(pushed)) {
+      await pushVaultToServer(reconciled);
+    }
   }, []);
 
   const syncStudyTime = useCallback(async () => {
@@ -103,9 +111,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           const local = loadVault();
           const merged = mergeVaultWords(local, remote);
           saveVault(merged);
-          if (local.length > 0 || merged.length !== remote.length) {
-            const pushed = await pushVaultToServer(merged);
-            if (pushed) saveVault(pushed);
+          const pushed = await pushVaultToServer(merged);
+          if (pushed) {
+            const reconciled = mergeVaultWords(loadVault(), pushed);
+            saveVault(reconciled);
           }
         }
 

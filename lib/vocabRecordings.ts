@@ -1,5 +1,5 @@
+import { collectVaultWordCandidates } from "@/lib/azure/pronunciation";
 import type { AzurePronunciationResult } from "@/lib/azure/pronunciation";
-import { errorTypeLabel } from "@/lib/azure/pronunciation";
 import { addWordsToVault } from "@/lib/pronunciationVault";
 import { saveEvaluationRecord } from "@/lib/evaluate/saveEvaluation";
 import {
@@ -11,25 +11,7 @@ import {
 } from "@/utils/spacedRepetition";
 
 function mispronouncedFromAssessment(assessment: AzurePronunciationResult) {
-  const bad = assessment.words.filter(
-    (w) => (w.errorType && w.errorType !== "None") || w.accuracyScore < 80,
-  );
-  if (bad.length) {
-    return bad.map((w) => ({
-      word: w.word,
-      accuracyScore: w.accuracyScore,
-      errorType: w.errorType ?? "Mispronunciation",
-      errorLabel: errorTypeLabel(w.errorType ?? "Mispronunciation"),
-    }));
-  }
-  return [
-    {
-      word: assessment.recognizedText.trim() || "term",
-      accuracyScore: assessment.accuracyScore,
-      errorType: "Mispronunciation",
-      errorLabel: "Pronúncia fraca",
-    },
-  ];
+  return collectVaultWordCandidates(assessment);
 }
 
 export type SaveVocabAttemptResult = {
