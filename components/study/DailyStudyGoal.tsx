@@ -2,38 +2,47 @@
 
 import { useDailyStudyTime } from "@/hooks/useDailyStudyTime";
 import {
-  formatStudyClock,
-  STUDY_GOAL_SECONDS,
+  STUDY_ACTIVITY_LABELS,
+  STUDY_ACTIVITY_ORDER,
+  STUDY_ACTIVITY_POINTS,
+  STUDY_DAILY_GOAL_POINTS,
+  studyActivityPoints,
+  studyDayGoalMet,
+  studyDayPoints,
   studyProgressPercent,
   studyStreak,
+  type StudyActivity,
 } from "@/lib/studyTime";
 
 type Props = {
-  highlight?: "part1" | "part2" | "both";
+  highlight?: StudyActivity | "all";
   compact?: boolean;
 };
 
 function GoalRow({
   label,
-  elapsed,
-  goal,
-  done,
+  count,
+  points,
+  weight,
   highlight,
 }: {
   label: string;
-  elapsed: number;
-  goal: number;
-  done: boolean;
+  count: number;
+  points: number;
+  weight: number;
   highlight: boolean;
 }) {
-  const pct = studyProgressPercent(elapsed, goal);
+  const pct = studyProgressPercent(points, STUDY_DAILY_GOAL_POINTS);
+  const countLabel = count === 1 ? "1 feito" : `${count} feitos`;
   return (
-    <div className={`daily-study-row ${highlight ? "highlight" : ""} ${done ? "done" : ""}`}>
+    <div className={`daily-study-row ${highlight ? "highlight" : ""} ${points > 0 ? "has-points" : ""}`}>
       <div className="daily-study-row-head">
-        <span className="daily-study-label">{label}</span>
+        <span className="daily-study-label">
+          {label}
+          <small className="daily-study-weight">×{weight} pt{weight > 1 ? "s" : ""}</small>
+        </span>
         <span className="daily-study-clock">
-          {formatStudyClock(elapsed)} / {formatStudyClock(goal)}
-          {done && <span className="daily-study-check" aria-hidden> ✓</span>}
+          {countLabel} · <strong>{points} pts</strong>
         </span>
       </div>
       <div className="daily-study-bar" aria-hidden>
@@ -43,13 +52,10 @@ function GoalRow({
   );
 }
 
-export default function DailyStudyGoal({ highlight = "both", compact = false }: Props) {
-  const { part1, part2 } = useDailyStudyTime();
-  const total = part1 + part2;
-  const totalGoal = STUDY_GOAL_SECONDS * 2;
-  const part1Done = part1 >= STUDY_GOAL_SECONDS;
-  const part2Done = part2 >= STUDY_GOAL_SECONDS;
-  const totalDone = total >= totalGoal;
+export default function DailyStudyGoal({ highlight = "all", compact = false }: Props) {
+  const today = useDailyStudyTime();
+  const totalPoints = studyDayPoints(today);
+  const allDone = studyDayGoalMet(today);
   const streak = studyStreak();
 
   return (
@@ -61,14 +67,14 @@ export default function DailyStudyGoal({ highlight = "both", compact = false }: 
         <header className="daily-study-head">
           <div>
             <strong>Meta de hoje</strong>
-            <span>1h Part 1 + 1h Part 2</span>
+            <span>Pontos por atividade — meta ~30 min/dia</span>
           </div>
           <div className="daily-study-head-side">
             {streak > 0 && (
               <span className="daily-study-streak">{streak} dia{streak > 1 ? "s" : ""} seguidos ✓</span>
             )}
-            <span className={`daily-study-total ${totalDone ? "done" : ""}`}>
-              {formatStudyClock(total)} / {formatStudyClock(totalGoal)}
+            <span className={`daily-study-total ${allDone ? "done" : ""}`}>
+              {totalPoints} / {STUDY_DAILY_GOAL_POINTS} pts
             </span>
           </div>
         </header>
@@ -76,29 +82,26 @@ export default function DailyStudyGoal({ highlight = "both", compact = false }: 
 
       {compact && (
         <p className="daily-study-sheet-total">
-          Total: <strong className={totalDone ? "done" : ""}>{formatStudyClock(total)}</strong>
-          <span> / {formatStudyClock(totalGoal)}</span>
+          Total: <strong className={allDone ? "done" : ""}>{totalPoints}</strong>
+          <span> / {STUDY_DAILY_GOAL_POINTS} pts</span>
         </p>
       )}
 
-      <GoalRow
-        label="Part 1"
-        elapsed={part1}
-        goal={STUDY_GOAL_SECONDS}
-        done={part1Done}
-        highlight={highlight === "part1" || highlight === "both"}
-      />
-      <GoalRow
-        label="Part 2"
-        elapsed={part2}
-        goal={STUDY_GOAL_SECONDS}
-        done={part2Done}
-        highlight={highlight === "part2" || highlight === "both"}
-      />
+      {STUDY_ACTIVITY_ORDER.map((activity) => (
+        <GoalRow
+          key={activity}
+          label={STUDY_ACTIVITY_LABELS[activity]}
+          count={today[activity]}
+          points={studyActivityPoints(activity, today[activity])}
+          weight={STUDY_ACTIVITY_POINTS[activity]}
+          highlight={highlight === "all" || highlight === activity}
+        />
+      ))}
 
       {!compact && (
         <p className="daily-study-hint">
-          O tempo conta automaticamente enquanto você estuda nesta página com o app aberto.
+          <strong>Dia leve (12 pts):</strong> 1 pergunta Part 1 + 4 blocos shadow + 1 pronúncia + 2
+          vocabulário. <strong>Part 2 completo</strong> também fecha a meta (12 pts).
         </p>
       )}
     </section>

@@ -18,6 +18,7 @@ import {
   vaultStats,
   type VaultWord,
 } from "@/lib/pronunciationVault";
+import { recordStudyActivity } from "@/lib/studyTime";
 
 function VaultAddWordsForm({ onAdded }: { onAdded: () => void }) {
   const [input, setInput] = useState("");
@@ -129,6 +130,7 @@ export default function PronunciationWordsMode() {
     const outcome = recordWordPractice(activeWord.word, score);
     setLastPassCount(outcome.passCount);
     refresh();
+    recordStudyActivity("pronunciation");
     if (outcome.removed) {
       setTimeout(() => setActiveWord(null), 2500);
     }

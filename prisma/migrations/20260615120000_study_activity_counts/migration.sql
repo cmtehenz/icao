@@ -1,0 +1,7 @@
+-- AlterTable
+ALTER TABLE "StudyDay" DROP COLUMN "part1Seconds",
+DROP COLUMN "part2Seconds",
+ADD COLUMN "shadowCount" INTEGER NOT NULL DEFAULT 0,
+ADD COLUMN "simulateCount" INTEGER NOT NULL DEFAULT 0,
+ADD COLUMN "pronunciationCount" INTEGER NOT NULL DEFAULT 0,
+ADD COLUMN "vocabularyCount" INTEGER NOT NULL DEFAULT 0;

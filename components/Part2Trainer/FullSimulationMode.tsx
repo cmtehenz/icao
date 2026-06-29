@@ -14,6 +14,7 @@ import {
   type SimulationStepResult,
 } from "@/lib/part2/aggregateSimulation";
 import { setPart2ItemStatus, type Part2ProgressStore } from "@/lib/part2/progress";
+import { recordStudyActivity, SIMULATE_PART2_UNITS } from "@/lib/studyTime";
 import {
   getSpeakStepConfig,
   isSimulationSpeakStep,
@@ -151,6 +152,7 @@ export default function FullSimulationMode({ progress, onProgressChange }: Props
       const status = finalResult.rating.overall >= 4 ? ("mastered" as const) : ("difficult" as const);
       onProgressChange(setPart2ItemStatus(progress, simId, status));
     }
+    recordStudyActivity("simulate", SIMULATE_PART2_UNITS);
     setShowResults(true);
   };
 

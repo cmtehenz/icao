@@ -66,9 +66,11 @@ model StudyDay {
   id           String   @id @default(cuid())
   userId       String
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  date         DateTime @db.Date
-  part1Seconds Int      @default(0)
-  part2Seconds Int      @default(0)
+  date               DateTime @db.Date
+  shadowCount        Int      @default(0)
+  simulateCount      Int      @default(0)
+  pronunciationCount Int      @default(0)
+  vocabularyCount    Int      @default(0)
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 

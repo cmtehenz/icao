@@ -4,8 +4,12 @@ import { useEffect, useState } from "react";
 import DailyStudyGoal from "@/components/study/DailyStudyGoal";
 import { useDailyStudyTime } from "@/hooks/useDailyStudyTime";
 import {
-  formatStudyClock,
-  STUDY_GOAL_SECONDS,
+  STUDY_ACTIVITY_ORDER,
+  STUDY_DAILY_GOAL_POINTS,
+  studyActivityPoints,
+  studyDayGoalMet,
+  studyDayPoints,
+  studyDayRemaining,
   studyProgressPercent,
   studyStreak,
 } from "@/lib/studyTime";
@@ -37,7 +41,7 @@ export default function StudyGoalSheet({ onClose }: { onClose: () => void }) {
             ✕
           </button>
         </header>
-        <DailyStudyGoal highlight="both" compact />
+        <DailyStudyGoal highlight="all" compact />
         {streak > 0 && (
           <p className="study-goal-sheet-streak">
             Sequência: {streak} dia{streak > 1 ? "s" : ""} com meta completa
@@ -50,12 +54,10 @@ export default function StudyGoalSheet({ onClose }: { onClose: () => void }) {
 
 export function StudyGoalBar() {
   const [open, setOpen] = useState(false);
-  const { part1, part2 } = useDailyStudyTime();
-  const total = part1 + part2;
-  const part1Pct = studyProgressPercent(part1);
-  const part2Pct = studyProgressPercent(part2);
-  const part1Done = part1 >= STUDY_GOAL_SECONDS;
-  const part2Done = part2 >= STUDY_GOAL_SECONDS;
+  const today = useDailyStudyTime();
+  const totalPoints = studyDayPoints(today);
+  const remaining = studyDayRemaining(today);
+  const allDone = studyDayGoalMet(today);
 
   return (
     <>
@@ -63,19 +65,31 @@ export function StudyGoalBar() {
         type="button"
         className="study-goal-bar"
         onClick={() => setOpen(true)}
-        aria-label={`Meta de estudo hoje: ${formatStudyClock(total)} de 2 horas`}
+        aria-label={
+          allDone
+            ? `Meta de hoje completa: ${totalPoints} pontos`
+            : `Meta de estudo hoje: ${totalPoints} de ${STUDY_DAILY_GOAL_POINTS} pontos, faltam ${remaining}`
+        }
       >
         <span className="study-goal-bar-label">Hoje</span>
-        <div className="study-goal-bar-split" aria-hidden>
-          <div className={`study-goal-half ${part1Done ? "done" : ""}`}>
-            <div className="study-goal-half-fill" style={{ width: `${part1Pct}%` }} />
-          </div>
-          <div className={`study-goal-half ${part2Done ? "done" : ""}`}>
-            <div className="study-goal-half-fill" style={{ width: `${part2Pct}%` }} />
-          </div>
+        <div className="study-goal-bar-split study-goal-bar-split-4" aria-hidden>
+          {STUDY_ACTIVITY_ORDER.map((activity) => {
+            const points = studyActivityPoints(activity, today[activity]);
+            const pct = studyProgressPercent(points, STUDY_DAILY_GOAL_POINTS);
+            return (
+              <div
+                key={activity}
+                className={`study-goal-segment study-goal-${activity} ${points > 0 ? "has-points" : ""}`}
+              >
+                <div className="study-goal-segment-fill" style={{ width: `${pct}%` }} />
+              </div>
+            );
+          })}
         </div>
         <span className="study-goal-bar-meta">
-          <span className="study-goal-bar-time">{formatStudyClock(total)}</span>
+          <span className={`study-goal-bar-time ${allDone ? "done" : ""}`}>
+            {allDone ? `${totalPoints}✓` : `${totalPoints}/${STUDY_DAILY_GOAL_POINTS}`}
+          </span>
           <span className="study-goal-bar-chevron" aria-hidden>›</span>
         </span>
       </button>

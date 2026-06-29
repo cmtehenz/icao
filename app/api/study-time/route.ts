@@ -6,6 +6,7 @@ import {
   mergeStudyDays,
   normalizeStudyDay,
   studyDaysToMap,
+  studyDayToDbFields,
   type StudyDaysMap,
 } from "@/lib/studyTimeMerge";
 
@@ -57,8 +58,9 @@ export async function PUT(request: Request) {
     const merged = mergeStudyDays(incoming, studyDaysToMap(remoteRows));
 
     await prisma.$transaction(
-      Object.entries(merged).map(([dateStr, day]) =>
-        prisma.studyDay.upsert({
+      Object.entries(merged).map(([dateStr, day]) => {
+        const fields = studyDayToDbFields(day);
+        return prisma.studyDay.upsert({
           where: {
             userId_date: {
               userId: user.id,
@@ -68,20 +70,16 @@ export async function PUT(request: Request) {
           create: {
             userId: user.id,
             date: new Date(`${dateStr}T12:00:00`),
-            part1Seconds: day.part1,
-            part2Seconds: day.part2,
+            ...fields,
           },
-          update: {
-            part1Seconds: day.part1,
-            part2Seconds: day.part2,
-          },
-        }),
-      ),
+          update: fields,
+        });
+      }),
     );
 
     return NextResponse.json({ days: merged });
   } catch (e) {
     console.error("[study-time] save failed", e);
-    return NextResponse.json({ error: "Erro ao salvar tempo de estudo." }, { status: 500 });
+    return NextResponse.json({ error: "Erro ao salvar atividades de estudo." }, { status: 500 });
   }
 }

@@ -3,9 +3,13 @@
 import { useEffect, useMemo, useState } from "react";
 import {
   buildStudyCalendar,
-  formatStudyClock,
-  STUDY_GOAL_SECONDS,
+  STUDY_ACTIVITY_LABELS,
+  STUDY_ACTIVITY_ORDER,
+  STUDY_ACTIVITY_POINTS,
+  STUDY_DAILY_GOAL_POINTS,
   STUDY_TIME_CHANGE_EVENT,
+  studyActivityPoints,
+  studyDayPoints,
   studyDaysThisMonth,
   studyStreak,
   type StudyCalendarCell,
@@ -30,6 +34,15 @@ function chunkWeeks(cells: StudyCalendarCell[]): StudyCalendarCell[][] {
   return weeks;
 }
 
+function dayAriaLabel(day: StudyCalendarCell): string {
+  const parts = STUDY_ACTIVITY_ORDER.filter((key) => day[key] > 0).map(
+    (key) =>
+      `${STUDY_ACTIVITY_LABELS[key]} ${day[key]} (${studyActivityPoints(key, day[key])} pts)`,
+  );
+  const total = studyDayPoints(day);
+  return `${formatDateLabel(day.date)}: ${parts.length ? parts.join(", ") : "nada"} — ${total}/${STUDY_DAILY_GOAL_POINTS} pts`;
+}
+
 export default function StudyCalendar() {
   const [cells, setCells] = useState<StudyCalendarCell[]>(() => buildStudyCalendar(26));
   const [active, setActive] = useState<StudyCalendarCell | null>(null);
@@ -50,7 +63,7 @@ export default function StudyCalendar() {
         <div>
           <h2>Histórico de estudo</h2>
           <p className="study-calendar-sub">
-            Estilo GitHub — verde = mais tempo. Meta: 1h Part 1 + 1h Part 2 por dia.
+            Estilo GitHub — verde = mais pontos. Meta: {STUDY_DAILY_GOAL_POINTS} pts/dia (~30 min).
           </p>
         </div>
         <div className="study-calendar-stats">
@@ -81,7 +94,7 @@ export default function StudyCalendar() {
                 key={day.date}
                 type="button"
                 className={`study-cal-cell level-${day.level}${day.goalMet ? " goal-met" : ""}`}
-                aria-label={`${formatDateLabel(day.date)}: Part 1 ${formatStudyClock(day.part1)}, Part 2 ${formatStudyClock(day.part2)}`}
+                aria-label={dayAriaLabel(day)}
                 onClick={() => setActive(day)}
               />
             )),
@@ -102,12 +115,17 @@ export default function StudyCalendar() {
       {active && (
         <div className="study-calendar-detail">
           <strong>{formatDateLabel(active.date)}</strong>
-          <span>
-            Part 1: {formatStudyClock(active.part1)} / {formatStudyClock(STUDY_GOAL_SECONDS)}
+          <span className="study-calendar-detail-total">
+            {studyDayPoints(active)} / {STUDY_DAILY_GOAL_POINTS} pts
           </span>
-          <span>
-            Part 2: {formatStudyClock(active.part2)} / {formatStudyClock(STUDY_GOAL_SECONDS)}
-          </span>
+          {STUDY_ACTIVITY_ORDER.map((key) =>
+            active[key] > 0 ? (
+              <span key={key}>
+                {STUDY_ACTIVITY_LABELS[key]}: {active[key]}×{STUDY_ACTIVITY_POINTS[key]} ={" "}
+                {studyActivityPoints(key, active[key])} pts
+              </span>
+            ) : null,
+          )}
           <span className={active.goalMet ? "study-cal-met" : "study-cal-pending"}>
             {active.goalMet ? "Meta do dia completa ✓" : "Meta do dia incompleta"}
           </span>

@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import YouGlishLink from "@/components/YouGlishLink";
 import { useAzureSpeech } from "@/hooks/useAzureSpeech";
+import { recordStudyActivity } from "@/lib/studyTime";
 import { collectVaultWordCandidates } from "@/lib/azure/pronunciation";
 import { getPeelBlocks, type PeelBlock, type PeelBlockId } from "@/lib/peelBlocks";
 import { addWordsToVault, VAULT_PASS_SCORE } from "@/lib/pronunciationVault";
@@ -107,7 +108,10 @@ export default function PeelShadowingPanel({ card, question }: Props) {
         heard: assessment?.recognizedText,
       },
     }));
-    if (assessment) saveWeakWords(activeBlock, assessment, accuracy);
+    if (assessment) {
+      saveWeakWords(activeBlock, assessment, accuracy);
+      recordStudyActivity("shadow");
+    }
     setPhase("result");
   };
 

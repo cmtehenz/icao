@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { ICAO_VOCABULARY } from "@/data/icaoVocabulary";
 import { saveVocabAttempt } from "@/lib/vocabRecordings";
+import { recordStudyActivity } from "@/lib/studyTime";
 import type { AzurePronunciationResult } from "@/lib/azure/pronunciation";
 import {
   dailyMissionStats,
@@ -57,6 +58,7 @@ export function useVocabularyProgress() {
         referenceText,
         audioBlob,
       });
+      if (assessment) recordStudyActivity("vocabulary");
       setStore(loadVocabProgressStore());
       return result;
     },

@@ -12,6 +12,7 @@ import { loadConnectorSet } from "@/lib/connectors";
 import type { PilotProfile } from "@/lib/profile";
 import type { ProgressStore } from "@/lib/progress";
 import { setCardStatus } from "@/lib/progress";
+import { recordStudyActivity } from "@/lib/studyTime";
 import { useTimer } from "@/hooks/useTimer";
 
 const PREP_SECONDS = 5;
@@ -92,6 +93,7 @@ export default function ExamSession({
   }, [phase, speak.finished]);
 
   const handleReview = (mastered: boolean) => {
+    recordStudyActivity("simulate");
     const next = setCardStatus(progress, card.num, mastered ? "mastered" : "difficult");
     onProgressChange(next);
 
