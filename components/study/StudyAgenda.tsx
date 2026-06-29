@@ -7,8 +7,8 @@ import {
   agendaTaskProgress,
   type StudyAgendaTask,
 } from "@/lib/studyAgenda";
-import { studyActivityPoints } from "@/lib/studyTime";
-import type { StudyDayRecord } from "@/lib/studyTime";
+import { studyActivityPoints, type StudyDayRecord } from "@/lib/studyTime";
+import { resolveAgendaLink } from "@/lib/studyAgendaLinks";
 
 type Props = {
   compact?: boolean;
@@ -47,7 +47,7 @@ function TaskRow({
         </div>
         {!compact && <p className="study-agenda-task-hint">{task.hint}</p>}
         {!complete && (
-          <Link href={task.href} className="study-agenda-task-link">
+          <Link href={resolveAgendaLink(task.linkTarget)} className="study-agenda-task-link">
             Ir fazer →
           </Link>
         )}

@@ -111,7 +111,11 @@ export default function Part2TrainerApp() {
       <main className="main main-essential part2-main">
         <section>
           {mode === "readback" && (
-            <ReadbackMode progress={progress} onProgressChange={setProgress} />
+            <ReadbackMode
+              progress={progress}
+              onProgressChange={setProgress}
+              openShadow={searchParams.get("shadow") === "1"}
+            />
           )}
           {mode === "interaction" && (
             <InteractionMode progress={progress} onProgressChange={setProgress} />

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState, type FormEvent } from "react";
+import { useSearchParams } from "next/navigation";
 import YouGlishLink from "@/components/YouGlishLink";
 import PronunciationVaultClearButton from "@/components/PronunciationVaultClearButton";
 import { useAzurePronunciation } from "@/hooks/useAzurePronunciation";
@@ -18,7 +18,11 @@ import {
   vaultStats,
   type VaultWord,
 } from "@/lib/pronunciationVault";
-import { recordStudyActivity } from "@/lib/studyTime";
+import { useCallback, useEffect, useState, type FormEvent } from "react";
+import {
+  studyActivityRejectReason,
+  tryRecordStudyActivity,
+} from "@/lib/studyActivityRecord";
 
 function VaultAddWordsForm({ onAdded }: { onAdded: () => void }) {
   const [input, setInput] = useState("");
@@ -88,11 +92,13 @@ function VaultAddWordsForm({ onAdded }: { onAdded: () => void }) {
 }
 
 export default function PronunciationWordsMode() {
+  const searchParams = useSearchParams();
   const [words, setWords] = useState<VaultWord[]>([]);
   const [activeWord, setActiveWord] = useState<VaultWord | null>(null);
   const [lastPracticeScore, setLastPracticeScore] = useState<number | null>(null);
   const [lastPassCount, setLastPassCount] = useState<number | null>(null);
   const [lastResult, setLastResult] = useState<AzurePronunciationResult | null>(null);
+  const [activityNote, setActivityNote] = useState<string | null>(null);
   const azure = useAzurePronunciation();
 
   const refresh = useCallback(() => setWords(loadVault()), []);
@@ -102,6 +108,13 @@ export default function PronunciationWordsMode() {
     window.addEventListener(VAULT_CHANGE_EVENT, refresh);
     return () => window.removeEventListener(VAULT_CHANGE_EVENT, refresh);
   }, [refresh]);
+
+  useEffect(() => {
+    const requested = searchParams.get("word")?.trim().toLowerCase();
+    if (!requested || !words.length) return;
+    const match = words.find((w) => w.word.toLowerCase() === requested);
+    if (match) setActiveWord(match);
+  }, [searchParams, words]);
 
   const stats = vaultStats(words);
 
@@ -130,7 +143,12 @@ export default function PronunciationWordsMode() {
     const outcome = recordWordPractice(activeWord.word, score);
     setLastPassCount(outcome.passCount);
     refresh();
-    recordStudyActivity("pronunciation");
+    const ctx = {
+      accuracy: score,
+      recognizedText: assessment?.recognizedText,
+    };
+    const counted = tryRecordStudyActivity("pronunciation", ctx);
+    setActivityNote(counted ? null : studyActivityRejectReason("pronunciation", ctx));
     if (outcome.removed) {
       setTimeout(() => setActiveWord(null), 2500);
     }
@@ -140,6 +158,7 @@ export default function PronunciationWordsMode() {
     setLastPracticeScore(null);
     setLastPassCount(null);
     setLastResult(null);
+    setActivityNote(null);
     azure.clear();
   };
 
@@ -255,6 +274,10 @@ export default function PronunciationWordsMode() {
                     : `Bom — ${lastPracticeScore}%! ${lastPassCount ?? activeWord.passCount}/${VAULT_PASSES_TO_GRADUATE} aprovadas. Continue treinando.`
                   : `${lastPracticeScore}% — ouça no YouGlish e grave novamente.`}
               </p>
+            )}
+            {activityNote && <p className="voice-coach-warn">{activityNote}</p>}
+            {lastPracticeScore !== null && lastPracticeScore >= VAULT_PASS_SCORE && !activityNote && (
+              <p className="study-activity-counted">✓ Contou na meta de hoje</p>
             )}
             {(lastResult || (azure.result && !lastResult)) && (
               <div className="voice-coach-azure-scores vault-azure-scores">

@@ -8,7 +8,7 @@ import type { AzurePronunciationResult } from "@/lib/azure/pronunciation";
 import type { EvaluateFeedback, EvaluateType } from "@/lib/evaluate/types";
 import { estimateIcaoLevel } from "@/lib/evaluate/icaoLevel";
 import { saveEvaluationRecord } from "@/lib/evaluate/saveEvaluation";
-import { recordStudyActivity } from "@/lib/studyTime";
+import { tryRecordStudyActivity } from "@/lib/studyActivityRecord";
 import { addWordsToVault } from "@/lib/pronunciationVault";
 import AnswerComparePanel from "@/components/AnswerComparePanel";
 import IcaoLevelPanel from "@/components/IcaoLevelPanel";
@@ -99,7 +99,10 @@ export default function VoiceCoachPanel({
       setFeedback(data);
 
       if (azureResult && evaluateType.startsWith("part2")) {
-        recordStudyActivity("shadowPart2");
+        tryRecordStudyActivity("shadowPart2", {
+          accuracy: azureResult.accuracyScore,
+          recognizedText: azureResult.recognizedText,
+        });
       }
 
       if (user) {

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import PronunciationRecorder from "@/components/VocabularyTrainer/PronunciationRecorder";
 import VocabularyCard from "@/components/VocabularyTrainer/VocabularyCard";
 import {
@@ -24,12 +24,21 @@ const FILTERS: { id: Filter; label: string }[] = [
   { id: "mastered", label: "Mastered" },
 ];
 
-export default function VocabularyTrainerMode() {
+export default function VocabularyTrainerMode({ initialTermId }: { initialTermId?: string }) {
   const { getProgress, recordAttempt, markDifficult, markMastered } = useVocabularyProgress();
   const [filter, setFilter] = useState<Filter>("due");
   const [category, setCategory] = useState<IcaoVocabCategoryId | "all">("all");
   const [activeItem, setActiveItem] = useState<IcaoVocabularyItem | null>(null);
   const [level, setLevel] = useState<1 | 2 | 3 | 4>(1);
+
+  useEffect(() => {
+    if (!initialTermId) return;
+    const item = ICAO_VOCABULARY.find((t) => t.id === initialTermId);
+    if (item) {
+      setActiveItem(item);
+      setFilter("all");
+    }
+  }, [initialTermId]);
 
   const filtered = useMemo(() => {
     return ICAO_VOCABULARY.filter((item) => {

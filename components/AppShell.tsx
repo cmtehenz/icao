@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "@/components/AuthProvider";
 import PronunciationVaultBadge from "@/components/PronunciationVaultBadge";
+import StudyActivityToast from "@/components/study/StudyActivityToast";
 import { StudyGoalBar } from "@/components/study/StudyGoalBar";
 import { usePronunciationVault } from "@/hooks/usePronunciationVault";
 import { isNavActive, NAV_ITEMS } from "@/lib/navigation";
@@ -87,6 +88,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       </div>
 
       <StudyGoalBar />
+      <StudyActivityToast />
 
       <nav className="app-bottom-nav" aria-label="Mobile navigation">
         {NAV_ITEMS.map((item) => {

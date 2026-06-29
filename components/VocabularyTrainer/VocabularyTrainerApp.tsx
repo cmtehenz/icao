@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import ProgressDashboard from "@/components/VocabularyTrainer/ProgressDashboard";
 import ShadowingMode from "@/components/VocabularyTrainer/ShadowingMode";
 import VocabularyTrainerMode from "@/components/VocabularyTrainer/VocabularyTrainerMode";
@@ -11,9 +12,11 @@ import { useTheme } from "@/hooks/useTheme";
 type TrainerTab = "practice" | "shadowing";
 
 export default function VocabularyTrainerApp() {
+  const searchParams = useSearchParams();
   const { theme, toggle: toggleTheme } = useTheme();
   const { total, mission, masteredCount } = useVocabularyProgress();
   const [tab, setTab] = useState<TrainerTab>("practice");
+  const initialTermId = searchParams.get("term") ?? undefined;
 
   return (
     <>
@@ -60,7 +63,11 @@ export default function VocabularyTrainerApp() {
               Shadowing
             </button>
           </div>
-          {tab === "practice" ? <VocabularyTrainerMode /> : <ShadowingMode />}
+          {tab === "practice" ? (
+            <VocabularyTrainerMode initialTermId={initialTermId} />
+          ) : (
+            <ShadowingMode />
+          )}
         </section>
       </main>
     </>

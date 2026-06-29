@@ -13,6 +13,7 @@ import FilterBar, { type CardFilter } from "@/components/study/FilterBar";
 import KeywordsPanel from "@/components/study/KeywordsPanel";
 import MemoryFlow from "@/components/study/MemoryFlow";
 import ProgressBadge from "@/components/study/ProgressBadge";
+import StudyAgendaSummary from "@/components/study/StudyAgendaSummary";
 import StudyDashboard from "@/components/study/StudyDashboard";
 import PronunciationVaultCard from "@/components/PronunciationVaultCard";
 import VoiceCoachPanel from "@/components/VoiceCoachPanel";
@@ -146,6 +147,14 @@ export default function FlashcardApp() {
 
   useEffect(() => {
     if (!hydrated) return;
+    const cardNum = searchParams.get("card");
+    if (!cardNum) return;
+    const idx = CARDS.findIndex((c) => c.num === cardNum);
+    if (idx >= 0) selectCard(idx);
+  }, [hydrated, searchParams, selectCard]);
+
+  useEffect(() => {
+    if (!hydrated) return;
     saveConnectorSet(connectorSet);
   }, [connectorSet, hydrated]);
 
@@ -246,6 +255,7 @@ export default function FlashcardApp() {
       </section>
 
       <main className="part1-study wrap">
+        <StudyAgendaSummary />
         <div className="topic-pills topic-pills-delta">
           {filtered.map(({ card: c, idx }) => {
             const st = getCardProgress(progress, c.num);
@@ -296,7 +306,11 @@ export default function FlashcardApp() {
 
             {!keywordsOnly && (
               <>
-                <PeelShadowingPanel card={card} question={card.question} />
+                <PeelShadowingPanel
+                  card={card}
+                  question={card.question}
+                  initialOpen={searchParams.get("shadow") === "1"}
+                />
                 <VoiceCoachPanel
                   question={card.question}
                   modelAnswer={card.answer}

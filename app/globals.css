@@ -2380,6 +2380,106 @@ input {
   line-height: 1.45;
 }
 
+.study-agenda-summary-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--blue) 28%, transparent);
+  background: color-mix(in srgb, var(--blue) 8%, var(--card));
+}
+
+.study-agenda-summary-banner.done {
+  border-color: color-mix(in srgb, var(--green) 35%, transparent);
+  background: color-mix(in srgb, var(--green) 10%, var(--card));
+}
+
+.study-agenda-summary-banner strong {
+  display: block;
+  font-size: 0.92rem;
+}
+
+.study-agenda-summary-banner span {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.study-agenda-summary-link {
+  flex-shrink: 0;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--blue);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.study-activity-toasts {
+  position: fixed;
+  top: calc(var(--safe-top) + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 120;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  pointer-events: none;
+  width: min(92vw, 360px);
+}
+
+.study-activity-toast {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.65rem 0.9rem;
+  border-radius: 999px;
+  background: var(--card);
+  border: 1px solid color-mix(in srgb, var(--green) 40%, transparent);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.18);
+  animation: study-toast-in 0.25s ease;
+}
+
+.study-activity-toast strong {
+  color: var(--green);
+  font-size: 0.88rem;
+}
+
+.study-activity-toast span {
+  font-size: 0.8rem;
+  color: var(--text);
+}
+
+.study-activity-counted {
+  margin: 0.35rem 0 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--green);
+}
+
+.part2-readback-shadow-model {
+  margin: 0.5rem 0 0.75rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--purple) 10%, var(--card));
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+@keyframes study-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .study-goal-sheet-backdrop {
   position: fixed;
   inset: 0;

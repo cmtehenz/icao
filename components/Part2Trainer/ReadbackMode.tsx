@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import ExamAudioPlayer from "@/components/ExamAudioPlayer";
 import ExamVersionPicker from "@/components/ExamVersionPicker";
+import Part2ReadbackShadowPanel from "@/components/Part2Trainer/Part2ReadbackShadowPanel";
 import VoiceCoachPanel from "@/components/VoiceCoachPanel";
 import ProgressBadge from "@/components/study/ProgressBadge";
 import { ALL_EXAM_SITUATIONS, getSituationsByExam } from "@/data/exams/part2Data";
@@ -18,9 +19,10 @@ import type { CardProgressStatus } from "@/lib/progress";
 type Props = {
   progress: Part2ProgressStore;
   onProgressChange: (store: Part2ProgressStore) => void;
+  openShadow?: boolean;
 };
 
-export default function ReadbackMode({ progress, onProgressChange }: Props) {
+export default function ReadbackMode({ progress, onProgressChange, openShadow = false }: Props) {
   const [examVersion, setExamVersion] = useState<ExamVersion | "all">("all");
   const [index, setIndex] = useState(0);
 
@@ -76,6 +78,14 @@ export default function ReadbackMode({ progress, onProgressChange }: Props) {
         </div>
         <div className="card-body">
           <p className="part2-hint">Repita o readback em voz alta. Você pode pedir &quot;say again&quot; uma vez na prova.</p>
+
+          <Part2ReadbackShadowPanel
+            audioSrc={audioSrc}
+            audioLabel={examAudioLabel(scenario.examVersion, scenario.readback.audioTrack)}
+            modelReadback={scenario.readback.modelReadback}
+            context={scenario.context}
+            initialOpen={openShadow}
+          />
 
           <VoiceCoachPanel
             question={scenario.context}

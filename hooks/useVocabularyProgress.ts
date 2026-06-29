@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { ICAO_VOCABULARY } from "@/data/icaoVocabulary";
 import { saveVocabAttempt } from "@/lib/vocabRecordings";
-import { recordStudyActivity } from "@/lib/studyTime";
+import { tryRecordStudyActivity } from "@/lib/studyActivityRecord";
 import type { AzurePronunciationResult } from "@/lib/azure/pronunciation";
 import {
   dailyMissionStats,
@@ -58,7 +58,12 @@ export function useVocabularyProgress() {
         referenceText,
         audioBlob,
       });
-      if (assessment) recordStudyActivity("vocabulary");
+      if (assessment) {
+        tryRecordStudyActivity("vocabulary", {
+          accuracy: assessment.accuracyScore,
+          recognizedText: assessment.recognizedText,
+        });
+      }
       setStore(loadVocabProgressStore());
       return result;
     },

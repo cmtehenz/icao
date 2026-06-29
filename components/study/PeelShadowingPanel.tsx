@@ -3,7 +3,11 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import YouGlishLink from "@/components/YouGlishLink";
 import { useAzureSpeech } from "@/hooks/useAzureSpeech";
-import { recordStudyActivity } from "@/lib/studyTime";
+import {
+  SHADOW_PEEL_PASS_SCORE,
+  studyActivityRejectReason,
+  tryRecordStudyActivity,
+} from "@/lib/studyActivityRecord";
 import { collectVaultWordCandidates } from "@/lib/azure/pronunciation";
 import { getPeelBlocks, type PeelBlock, type PeelBlockId } from "@/lib/peelBlocks";
 import { addWordsToVault, VAULT_PASS_SCORE } from "@/lib/pronunciationVault";
@@ -22,19 +26,25 @@ type BlockScore = {
 type Props = {
   card: Card;
   question: string;
+  initialOpen?: boolean;
 };
 
 const WAIT_MS = 1000;
 
-export default function PeelShadowingPanel({ card, question }: Props) {
+export default function PeelShadowingPanel({ card, question, initialOpen = false }: Props) {
   const blocks = useMemo(() => getPeelBlocks(card), [card]);
   const azure = useAzureSpeech();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(initialOpen);
   const [activeId, setActiveId] = useState<PeelBlockId | null>(null);
   const [phase, setPhase] = useState<Phase>("idle");
   const [scores, setScores] = useState<Partial<Record<PeelBlockId, BlockScore>>>({});
   const [vaultNote, setVaultNote] = useState<string | null>(null);
+  const [activityNote, setActivityNote] = useState<string | null>(null);
   const [runAllIndex, setRunAllIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (initialOpen) setOpen(true);
+  }, [initialOpen]);
 
   const activeBlock = blocks.find((b) => b.id === activeId) ?? null;
   const activeScore = activeId ? scores[activeId] : undefined;
@@ -44,6 +54,7 @@ export default function PeelShadowingPanel({ card, question }: Props) {
     setActiveId(null);
     setPhase("idle");
     setVaultNote(null);
+    setActivityNote(null);
     setRunAllIndex(null);
   }, [azure]);
 
@@ -52,6 +63,7 @@ export default function PeelShadowingPanel({ card, question }: Props) {
     setActiveId(null);
     setPhase("idle");
     setVaultNote(null);
+    setActivityNote(null);
     setRunAllIndex(null);
     setScores({});
     // eslint-disable-next-line react-hooks/exhaustive-deps -- reset only when card changes
@@ -79,6 +91,7 @@ export default function PeelShadowingPanel({ card, question }: Props) {
 
   const startBlock = async (block: PeelBlock, indexForRunAll: number | null = null) => {
     setVaultNote(null);
+    setActivityNote(null);
     setActiveId(block.id);
     setRunAllIndex(indexForRunAll);
     azure.clear();
@@ -110,7 +123,14 @@ export default function PeelShadowingPanel({ card, question }: Props) {
     }));
     if (assessment) {
       saveWeakWords(activeBlock, assessment, accuracy);
-      recordStudyActivity("shadow");
+      const ctx = {
+        accuracy,
+        recognizedText: assessment.recognizedText,
+      };
+      const counted = tryRecordStudyActivity("shadow", ctx);
+      if (!counted) {
+        setActivityNote(studyActivityRejectReason("shadow", ctx));
+      }
     }
     setPhase("result");
   };
@@ -268,6 +288,10 @@ export default function PeelShadowingPanel({ card, question }: Props) {
                 </p>
               )}
               {vaultNote && <p className="vault-saved-banner">{vaultNote}</p>}
+              {activityNote && <p className="voice-coach-warn">{activityNote}</p>}
+              {activeScore.accuracy >= SHADOW_PEEL_PASS_SCORE && (
+                <p className="study-activity-counted">✓ Contou na meta de hoje</p>
+              )}
               <div className="voice-coach-actions">
                 <button
                   type="button"
