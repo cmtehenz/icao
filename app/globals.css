@@ -3300,6 +3300,143 @@ input {
   text-align: center;
 }
 
+.peel-shadowing-toggle {
+  width: 100%;
+  margin-bottom: 0.75rem;
+}
+
+.peel-shadowing-panel {
+  margin: 0 0 1rem;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.peel-shadowing-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.peel-shadowing-head h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.peel-shadowing-sub {
+  margin: 0 0 0.75rem;
+  font-size: 0.88rem;
+  color: var(--text-muted, #64748b);
+}
+
+.peel-shadowing-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.peel-shadowing-avg {
+  font-size: 0.85rem;
+  color: var(--text-muted, #64748b);
+}
+
+.peel-shadowing-blocks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.peel-shadowing-block {
+  padding: 0.75rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+
+.peel-shadowing-block.active {
+  outline: 2px solid var(--purple, #7c3aed);
+  outline-offset: 1px;
+}
+
+.peel-shadowing-block.good {
+  border-color: rgba(22, 163, 74, 0.45);
+}
+
+.peel-shadowing-block.warn {
+  border-color: rgba(245, 158, 11, 0.5);
+}
+
+.peel-shadowing-block-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.peel-shadowing-block-label {
+  font-weight: 800;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.peel-shadowing-block-score {
+  font-weight: 800;
+  font-size: 0.85rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 6px;
+}
+
+.peel-shadowing-block-score.good {
+  background: rgba(22, 163, 74, 0.15);
+  color: #16a34a;
+}
+
+.peel-shadowing-block-score.warn {
+  background: rgba(245, 158, 11, 0.15);
+  color: #d97706;
+}
+
+.peel-shadowing-block-text {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.peel-shadowing-active {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border);
+}
+
+.peel-shadowing-phase {
+  margin: 0 0 0.75rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.peel-shadowing-scores {
+  margin-bottom: 0.5rem;
+}
+
+.peel-shadowing-tip {
+  margin: 0.5rem 0;
+  font-size: 0.88rem;
+  color: var(--text-muted, #64748b);
+}
+
+.peel-shadowing-youglish {
+  margin-top: 0.5rem;
+}
+
 .vocab-term-item {
   display: flex;
   flex-direction: column;

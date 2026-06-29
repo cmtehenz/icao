@@ -6,6 +6,7 @@ import ExamVersionPicker from "@/components/ExamVersionPicker";
 import PilotProfileModal from "@/components/PilotProfileModal";
 import QuickPhrasesMenu from "@/components/QuickPhrasesMenu";
 import AnswerPanel from "@/components/study/AnswerPanel";
+import PeelShadowingPanel from "@/components/study/PeelShadowingPanel";
 import ExamSession from "@/components/study/ExamSession";
 import FilterBar, { type CardFilter } from "@/components/study/FilterBar";
 import KeywordsPanel from "@/components/study/KeywordsPanel";
@@ -33,6 +34,7 @@ import {
 import { DEFAULT_PROFILE, loadProfile, type PilotProfile } from "@/lib/profile";
 import { EXAM_LABELS, type ExamVersion } from "@/lib/exams/types";
 import { isSpeaking, speakText, stopSpeaking } from "@/lib/tts";
+import { buildSpokenAnswer } from "@/lib/spokenAnswer";
 import { wordCount } from "@/lib/utils";
 
 type FilteredCard = { card: (typeof CARDS)[number]; idx: number };
@@ -124,7 +126,7 @@ export default function FlashcardApp() {
       setSpeaking(false);
       return;
     }
-    const ok = speakText(card.answer, () => setSpeaking(false));
+    const ok = speakText(buildSpokenAnswer(card.answer), () => setSpeaking(false));
     if (ok) setSpeaking(true);
   }, [card.answer, speaking]);
 
@@ -287,12 +289,15 @@ export default function FlashcardApp() {
             <KeywordsPanel keywords={keywords} hidden={!showKeywords && !keywordsOnly} />
 
             {!keywordsOnly && (
-              <VoiceCoachPanel
-                question={card.question}
-                modelAnswer={card.answer}
-                evaluateType="part1"
-                keywords={keywords}
-              />
+              <>
+                <PeelShadowingPanel card={card} question={card.question} />
+                <VoiceCoachPanel
+                  question={card.question}
+                  modelAnswer={card.answer}
+                  evaluateType="part1"
+                  keywords={keywords}
+                />
+              </>
             )}
 
             {keywordsOnly && !showAnswer && (
