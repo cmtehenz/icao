@@ -10,7 +10,7 @@
     "setup:audio": "node scripts/setup-exam-audio.mjs",
     "postinstall": "prisma generate",
     "db:migrate": "prisma migrate dev",
-    "db:migrate:deploy": "prisma migrate deploy",
+    "db:migrate:deploy": "node scripts/migrate-deploy.mjs",
     "db:push": "prisma db push"
   },
   "dependencies": {
