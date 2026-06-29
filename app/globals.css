@@ -3818,6 +3818,120 @@ input {
   margin: 0.35rem 0 0;
 }
 
+.answer-compare-panel {
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.answer-compare-panel h3 {
+  margin: 0 0 0.65rem;
+  font-size: 1rem;
+}
+
+.answer-compare-warn {
+  margin: 0 0 0.75rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 8px;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.answer-compare-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  font-size: 0.85rem;
+  margin-bottom: 0.85rem;
+  color: var(--text-muted, #64748b);
+}
+
+.answer-compare-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.answer-compare-col {
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.answer-compare-col.model {
+  background: rgba(59, 130, 246, 0.06);
+}
+
+.answer-compare-col.heard {
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.answer-compare-col h4 {
+  margin: 0 0 0.5rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-muted, #64748b);
+}
+
+.answer-compare-text {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.answer-compare-heard {
+  font-style: italic;
+}
+
+.answer-compare-words {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.answer-compare-word-group {
+  padding: 0.5rem 0.65rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
+.answer-compare-word-group strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.answer-compare-word-group p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.answer-compare-word-group.missing {
+  background: rgba(59, 130, 246, 0.08);
+}
+
+.answer-compare-word-group.extra {
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.answer-compare-word-group.matched {
+  background: rgba(22, 163, 74, 0.08);
+}
+
+@media (max-width: 640px) {
+  .answer-compare-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
 .voice-coach-mispronounced {
   margin-top: 1rem;
   padding: 1rem;

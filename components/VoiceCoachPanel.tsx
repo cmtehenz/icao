@@ -9,6 +9,7 @@ import type { EvaluateFeedback, EvaluateType } from "@/lib/evaluate/types";
 import { estimateIcaoLevel } from "@/lib/evaluate/icaoLevel";
 import { saveEvaluationRecord } from "@/lib/evaluate/saveEvaluation";
 import { addWordsToVault } from "@/lib/pronunciationVault";
+import AnswerComparePanel from "@/components/AnswerComparePanel";
 import IcaoLevelPanel from "@/components/IcaoLevelPanel";
 import YouGlishLink from "@/components/YouGlishLink";
 import { useAuth } from "@/components/AuthProvider";
@@ -204,7 +205,7 @@ export default function VoiceCoachPanel({
       {azure.configured ? (
         <p className="voice-coach-azure-badge">
           ✓ Azure Speech ativo — pronúncia real por áudio
-          {scripted ? " (modo scripted: compare com o modelo)" : " (modo livre para Part 1)"}
+          {scripted ? " (compara com a resposta modelo)" : ""}
         </p>
       ) : (
         <p className="voice-coach-warn">
@@ -329,6 +330,14 @@ export default function VoiceCoachPanel({
           )}
 
           <p className="voice-coach-summary">{feedback.summary}</p>
+
+          {evaluateType === "part1" && feedback.transcript && (
+            <AnswerComparePanel
+              transcript={feedback.transcript}
+              modelAnswer={modelAnswer}
+              azureAccuracy={feedback.azurePronunciation?.accuracyScore}
+            />
+          )}
 
           {audioSaveNote && <p className="voice-coach-warn">{audioSaveNote}</p>}
 

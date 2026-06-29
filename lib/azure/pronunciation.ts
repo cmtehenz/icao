@@ -1,3 +1,5 @@
+import { buildSpokenAnswer } from "@/lib/spokenAnswer";
+
 export type AzureWordScore = {
   word: string;
   accuracyScore: number;
@@ -14,11 +16,14 @@ export type AzurePronunciationResult = {
 };
 
 export function isScriptedAssessment(type: string): boolean {
-  return type === "part2-readback" || type === "part2-reported";
+  return type === "part1" || type === "part2-readback" || type === "part2-reported";
 }
 
-/** Reference text for scripted Azure assessment (shorter = more reliable). */
+/** Reference text for Azure pronunciation assessment. */
 export function azureReferenceText(modelAnswer: string, type: string): string {
+  if (type === "part1") {
+    return buildSpokenAnswer(modelAnswer).slice(0, 500);
+  }
   if (!isScriptedAssessment(type)) return "";
   return modelAnswer.slice(0, 500);
 }

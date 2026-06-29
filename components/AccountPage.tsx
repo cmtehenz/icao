@@ -5,8 +5,10 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/components/AuthProvider";
 import EvaluationAudioPlayer from "@/components/EvaluationAudioPlayer";
+import PronunciationVaultClearButton from "@/components/PronunciationVaultClearButton";
 import DailyStudyGoal from "@/components/study/DailyStudyGoal";
 import StudyCalendar from "@/components/study/StudyCalendar";
+import { usePronunciationVault } from "@/hooks/usePronunciationVault";
 
 type EvaluationRow = {
   id: string;
@@ -23,6 +25,7 @@ type EvaluationRow = {
 
 export default function AccountPage() {
   const { user, loading, logout } = useAuth();
+  const { total: vaultTotal } = usePronunciationVault();
   const router = useRouter();
   const [evaluations, setEvaluations] = useState<EvaluationRow[]>([]);
 
@@ -67,9 +70,24 @@ export default function AccountPage() {
       <StudyCalendar />
 
       <section className="account-section">
-        <h2>Atalhos</h2>
+        <h2>Banco de pronúncia</h2>
+        <p className="sub">
+          {vaultTotal > 0
+            ? `${vaultTotal} palavra${vaultTotal > 1 ? "s" : ""} salva${vaultTotal > 1 ? "s" : ""} para treinar.`
+            : "Nenhuma palavra no banco."}
+        </p>
         <div className="account-links">
           <Link href="/pronunciation" className="btn green">
+            Abrir pronúncia
+          </Link>
+          <PronunciationVaultClearButton className="btn orange" />
+        </div>
+      </section>
+
+      <section className="account-section">
+        <h2>Atalhos</h2>
+        <div className="account-links">
+          <Link href="/pronunciation" className="btn secondary">
             Banco de pronúncia
           </Link>
           <Link href="/" className="btn secondary">

@@ -1,6 +1,8 @@
 import type { EvaluateFeedback, EvaluateRequest, EvaluateScores } from "./types";
+import { compareTranscriptToModel } from "./compareAnswer";
 import { estimateIcaoLevel } from "./icaoLevel";
 import { peelMissingConnectors, peelStructureFeedbackPt, peelStructureScore } from "./peel";
+import { buildSpokenAnswer } from "@/lib/spokenAnswer";
 
 const PART2_MARKERS = [
   "anac 123",
@@ -67,7 +69,8 @@ export function localEvaluate(req: EvaluateRequest): EvaluateFeedback {
   }
 
   const words = trimmed.split(/\s+/).length;
-  const content = overlapScore(trimmed, modelAnswer);
+  const referenceAnswer = type === "part1" ? buildSpokenAnswer(modelAnswer) : modelAnswer;
+  const content = overlapScore(trimmed, referenceAnswer);
   const structure =
     type === "part1"
       ? peelStructureScore(trimmed)
@@ -133,6 +136,15 @@ export function localEvaluate(req: EvaluateRequest): EvaluateFeedback {
     improvements.push("Resposta curta demais — na prova você tem ~45 segundos para falar.");
   }
 
+  if (type === "part1") {
+    const compare = compareTranscriptToModel(trimmed, modelAnswer);
+    if (compare.unreliableTranscript) {
+      improvements.unshift(
+        "A transcrição saiu muito diferente do modelo — provável pronúncia. Use a comparação abaixo e treine as palavras estranhas no banco de pronúncia.",
+      );
+    }
+  }
+
   improvements.push(
     "Pronúncia: correção fonética precisa de áudio (Azure Speech ou IA com áudio). Aqui avaliamos pelo texto transcrito.",
   );
@@ -146,6 +158,6 @@ export function localEvaluate(req: EvaluateRequest): EvaluateFeedback {
     missingKeywords,
     source: "local",
     icaoLevel: estimateIcaoLevel(scores, type),
-    suggestedAnswer: type === "part1" ? modelAnswer : undefined,
+    suggestedAnswer: type === "part1" ? referenceAnswer : undefined,
   };
 }

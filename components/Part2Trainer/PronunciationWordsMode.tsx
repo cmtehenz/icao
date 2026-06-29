@@ -2,12 +2,12 @@
 
 import { useCallback, useEffect, useState, type FormEvent } from "react";
 import YouGlishLink from "@/components/YouGlishLink";
+import PronunciationVaultClearButton from "@/components/PronunciationVaultClearButton";
 import { useAzurePronunciation } from "@/hooks/useAzurePronunciation";
 import type { AzurePronunciationResult } from "@/lib/azure/pronunciation";
 import { errorTypeLabel } from "@/lib/azure/pronunciation";
 import {
   addManualWordsToVault,
-  clearVault,
   loadVault,
   parseManualVaultInput,
   recordWordPractice,
@@ -168,9 +168,12 @@ export default function PronunciationWordsMode() {
       <div className="vault-stats-row">
         <span className="vault-stat critical">{stats.critical} críticas (&lt;60%)</span>
         <span className="vault-stat warn">{stats.needsPractice} para treinar (&lt;80%)</span>
-        <button type="button" className="btn secondary btn-sm" onClick={() => { clearVault(); refresh(); setActiveWord(null); }}>
-          Limpar tudo
-        </button>
+        <PronunciationVaultClearButton
+          onCleared={() => {
+            refresh();
+            setActiveWord(null);
+          }}
+        />
       </div>
 
       {activeWord ? (
