@@ -4,19 +4,30 @@ import { useEffect, useState } from "react";
 import DailyStudyGoal from "@/components/study/DailyStudyGoal";
 import StudyAgenda from "@/components/study/StudyAgenda";
 import { useDailyStudyTime } from "@/hooks/useDailyStudyTime";
+import { loadStudyPlanMode, STUDY_PLAN_CHANGE_EVENT } from "@/lib/studyAgenda";
 import {
   STUDY_ACTIVITY_ORDER,
-  STUDY_DAILY_GOAL_POINTS,
   studyActivityPoints,
   studyDayGoalMet,
+  studyDayGoalPoints,
   studyDayPoints,
-  studyDayRemaining,
+  studyDayRemainingPoints,
   studyProgressPercent,
   studyStreak,
+  STUDY_TIME_CHANGE_EVENT,
 } from "@/lib/studyTime";
 
+const BAR_ACTIVITIES = STUDY_ACTIVITY_ORDER.filter((a) => a !== "simulate");
+
 export default function StudyGoalSheet({ onClose }: { onClose: () => void }) {
-  const streak = studyStreak();
+  const [mode, setMode] = useState(loadStudyPlanMode);
+  const streak = studyStreak(undefined, mode);
+
+  useEffect(() => {
+    const refresh = () => setMode(loadStudyPlanMode());
+    window.addEventListener(STUDY_PLAN_CHANGE_EVENT, refresh);
+    return () => window.removeEventListener(STUDY_PLAN_CHANGE_EVENT, refresh);
+  }, []);
 
   useEffect(() => {
     const prev = document.body.style.overflow;
@@ -42,8 +53,8 @@ export default function StudyGoalSheet({ onClose }: { onClose: () => void }) {
             ✕
           </button>
         </header>
-        <DailyStudyGoal highlight="all" compact />
         <StudyAgenda compact showWeek={false} />
+        <DailyStudyGoal highlight="all" compact />
         {streak > 0 && (
           <p className="study-goal-sheet-streak">
             Sequência: {streak} dia{streak > 1 ? "s" : ""} com meta completa
@@ -56,10 +67,22 @@ export default function StudyGoalSheet({ onClose }: { onClose: () => void }) {
 
 export function StudyGoalBar() {
   const [open, setOpen] = useState(false);
+  const [mode, setMode] = useState(loadStudyPlanMode);
   const today = useDailyStudyTime();
+  const goalPoints = studyDayGoalPoints(mode);
   const totalPoints = studyDayPoints(today);
-  const remaining = studyDayRemaining(today);
-  const allDone = studyDayGoalMet(today);
+  const remaining = studyDayRemainingPoints(today, mode);
+  const allDone = studyDayGoalMet(today, mode);
+
+  useEffect(() => {
+    const refresh = () => setMode(loadStudyPlanMode());
+    window.addEventListener(STUDY_TIME_CHANGE_EVENT, refresh);
+    window.addEventListener(STUDY_PLAN_CHANGE_EVENT, refresh);
+    return () => {
+      window.removeEventListener(STUDY_TIME_CHANGE_EVENT, refresh);
+      window.removeEventListener(STUDY_PLAN_CHANGE_EVENT, refresh);
+    };
+  }, []);
 
   return (
     <>
@@ -70,14 +93,14 @@ export function StudyGoalBar() {
         aria-label={
           allDone
             ? `Meta de hoje completa: ${totalPoints} pontos`
-            : `Meta de estudo hoje: ${totalPoints} de ${STUDY_DAILY_GOAL_POINTS} pontos, faltam ${remaining}`
+            : `Estudo hoje: ${totalPoints} de ${goalPoints} pontos, faltam ${remaining}`
         }
       >
         <span className="study-goal-bar-label">Hoje</span>
         <div className="study-goal-bar-split study-goal-bar-split-4" aria-hidden>
-          {STUDY_ACTIVITY_ORDER.map((activity) => {
+          {BAR_ACTIVITIES.map((activity) => {
             const points = studyActivityPoints(activity, today[activity]);
-            const pct = studyProgressPercent(points, STUDY_DAILY_GOAL_POINTS);
+            const pct = studyProgressPercent(points, goalPoints);
             return (
               <div
                 key={activity}
@@ -90,7 +113,7 @@ export function StudyGoalBar() {
         </div>
         <span className="study-goal-bar-meta">
           <span className={`study-goal-bar-time ${allDone ? "done" : ""}`}>
-            {allDone ? `${totalPoints}✓` : `${totalPoints}/${STUDY_DAILY_GOAL_POINTS}`}
+            {allDone ? `${totalPoints}✓` : `${totalPoints}/${goalPoints}`}
           </span>
           <span className="study-goal-bar-chevron" aria-hidden>›</span>
         </span>

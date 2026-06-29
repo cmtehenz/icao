@@ -68,6 +68,7 @@ model StudyDay {
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   date               DateTime @db.Date
   shadowCount        Int      @default(0)
+  shadowPart2Count   Int      @default(0)
   simulateCount      Int      @default(0)
   pronunciationCount Int      @default(0)
   vocabularyCount    Int      @default(0)

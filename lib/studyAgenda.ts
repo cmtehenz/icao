@@ -1,15 +1,21 @@
 import {
-  SIMULATE_PART2_UNITS,
   STUDY_ACTIVITY_POINTS,
   STUDY_DAILY_GOAL_POINTS,
+  STUDY_INTENSE_DAY_POINTS,
   studyActivityPoints,
   studyDayPoints,
   todayKey,
   type StudyActivity,
   type StudyDayRecord,
+  type StudyPlanMode,
+  loadStudyPlanMode,
+  saveStudyPlanMode,
+  studyPlanGoalPoints,
+  STUDY_PLAN_CHANGE_EVENT,
 } from "@/lib/studyTime";
 
-export type StudyPlanMode = "standard" | "light";
+export type { StudyPlanMode };
+export { STUDY_PLAN_CHANGE_EVENT, loadStudyPlanMode, saveStudyPlanMode };
 
 export type StudyAgendaTask = {
   id: string;
@@ -18,7 +24,7 @@ export type StudyAgendaTask = {
   title: string;
   hint: string;
   href: string;
-  minutes: number;
+  points: number;
 };
 
 export type StudyAgendaDay = {
@@ -28,13 +34,9 @@ export type StudyAgendaDay = {
   subtitle: string;
   tasks: StudyAgendaTask[];
   goalPoints: number;
-  estimatedMinutes: number;
+  estimatedPoints: number;
   mode: StudyPlanMode;
 };
-
-export const STUDY_PLAN_CHANGE_EVENT = "icao-study-plan-change";
-
-const PLAN_MODE_KEY = "icao_study_plan_mode_v1";
 
 const WEEKDAY_NAMES = [
   "Domingo",
@@ -46,6 +48,8 @@ const WEEKDAY_NAMES = [
   "Sábado",
 ];
 
+const INTENSE_RATIO = STUDY_INTENSE_DAY_POINTS / STUDY_DAILY_GOAL_POINTS;
+
 function task(
   id: string,
   activity: StudyActivity,
@@ -53,140 +57,130 @@ function task(
   title: string,
   hint: string,
   href: string,
-  minutes: number,
 ): StudyAgendaTask {
-  return { id, activity, targetCount, title, hint, href, minutes };
+  return {
+    id,
+    activity,
+    targetCount,
+    title,
+    hint,
+    href,
+    points: studyActivityPoints(activity, targetCount),
+  };
 }
 
-const LIGHT_TASKS: StudyAgendaTask[] = [
-  task(
-    "light-sim",
-    "simulate",
-    1,
-    "1 pergunta no simulado Part 1",
-    "Toque em Simulado na página Part 1",
-    "/?view=exam",
-    8,
-  ),
-  task(
-    "light-shadow",
-    "shadow",
-    2,
-    "2 blocos Shadow PEEL",
-    "Abra uma pergunta e treine bloco a bloco",
-    "/",
-    6,
-  ),
-  task(
-    "light-pron",
-    "pronunciation",
-    1,
-    "1 palavra no banco de pronúncia",
-    "Grave e corrija com Azure",
-    "/pronunciation",
-    5,
-  ),
-];
-
-const WEEKDAY_PLANS: Record<number, Omit<StudyAgendaDay, "date" | "weekday" | "mode">> = {
+const WEEKDAY_PLANS: Record<number, Omit<StudyAgendaDay, "date" | "weekday" | "mode" | "goalPoints">> = {
   0: {
-    title: "Domingo — revisão leve",
-    subtitle: "Só o essencial para manter o ritmo (~20 min)",
-    tasks: LIGHT_TASKS,
-    goalPoints: agendaGoalFromTasks(LIGHT_TASKS),
-    estimatedMinutes: 20,
+    title: "Domingo — shadow e revisão",
+    subtitle: "Sem simulado — shadow, vocabulário e pronúncia",
+    tasks: [
+      task("sun-p1", "shadow", 6, "6 blocos Shadow PEEL (Part 1)", "Abra perguntas e treine bloco a bloco", "/"),
+      task("sun-p2", "shadowPart2", 3, "3 situações Part 2", "Readback com áudio ATC", "/part2?mode=readback"),
+      task("sun-vocab", "vocabulary", 3, "3 termos de vocabulário", "Trainer ou shadowing de termos", "/vocabulario"),
+      task("sun-pron", "pronunciation", 2, "2 palavras no banco", "Corrija pronúncia fraca", "/pronunciation"),
+    ],
+    estimatedPoints: 20,
   },
   1: {
-    title: "Segunda — Part 1 + pronúncia",
-    subtitle: "Simulado curto e shadow PEEL nas perguntas",
+    title: "Segunda — Part 1 + readback",
+    subtitle: "PEEL, Part 2 e pronúncia",
     tasks: [
-      task("mon-sim", "simulate", 1, "1 pergunta no simulado Part 1", "Prep 5s → fale 45s → revise", "/?view=exam", 8),
-      task("mon-shadow", "shadow", 4, "4 blocos Shadow PEEL", "Ouça e repita cada bloco da resposta", "/", 10),
-      task("mon-pron", "pronunciation", 1, "1 palavra no banco", "Foque nas palavras que mais erra", "/pronunciation", 5),
-      task("mon-vocab", "vocabulary", 2, "2 termos de vocabulário", "Trainer ou shadowing de termos", "/vocabulario", 6),
+      task("mon-p1", "shadow", 8, "8 blocos Shadow PEEL (Part 1)", "Priorize perguntas difíceis", "/"),
+      task("mon-p2", "shadowPart2", 3, "3 readbacks Part 2", "Grave com Azure no coach", "/part2?mode=readback"),
+      task("mon-pron", "pronunciation", 2, "2 palavras no banco", "Palavras que mais erram", "/pronunciation"),
     ],
-    goalPoints: 12,
-    estimatedMinutes: 30,
+    estimatedPoints: 20,
   },
   2: {
-    title: "Terça — vocabulário ICAO",
-    subtitle: "Dia para termos técnicos e frases curtas",
+    title: "Terça — vocabulário + shadow",
+    subtitle: "Termos ICAO + PEEL + Part 2",
     tasks: [
-      task("tue-vocab", "vocabulary", 5, "5 termos de vocabulário", "Priorize os que estão vencidos no SRS", "/vocabulario", 12),
-      task("tue-shadow", "shadow", 3, "3 blocos Shadow PEEL", "Mantenha o Part 1 ativo", "/", 8),
-      task("tue-pron", "pronunciation", 1, "1 palavra no banco", "Reforce pronúncia fraca", "/pronunciation", 5),
+      task("tue-vocab", "vocabulary", 4, "4 termos de vocabulário", "Priorize os vencidos no SRS", "/vocabulario"),
+      task("tue-p1", "shadow", 6, "6 blocos Shadow PEEL", "Conectores e entonação", "/"),
+      task("tue-p2", "shadowPart2", 2, "2 situações Part 2", "Interaction ou readback", "/part2?mode=interaction"),
+      task("tue-pron", "pronunciation", 2, "2 palavras no banco", "Repetir até melhorar", "/pronunciation"),
     ],
-    goalPoints: 12,
-    estimatedMinutes: 28,
+    estimatedPoints: 20,
   },
   3: {
-    title: "Quarta — simulação Part 2",
-    subtitle: "Um bloco focado na prova de interação",
+    title: "Quarta — Part 2 intenso",
+    subtitle: "Interaction, reported speech e PEEL",
     tasks: [
-      task(
-        "wed-part2",
-        "simulate",
-        SIMULATE_PART2_UNITS,
-        "Simulação completa Part 2",
-        "Modo Simulação — grave cada situação com Azure",
-        "/part2?mode=simulation",
-        35,
-      ),
+      task("wed-p2", "shadowPart2", 5, "5 situações Part 2", "Coach de voz em cada situação", "/part2?mode=interaction"),
+      task("wed-p1", "shadow", 6, "6 blocos Shadow PEEL", "Manter Part 1 ativo", "/"),
+      task("wed-pron", "pronunciation", 2, "2 palavras no banco", "Antes de gravar no Part 2", "/pronunciation"),
     ],
-    goalPoints: 12,
-    estimatedMinutes: 35,
+    estimatedPoints: 22,
   },
   4: {
-    title: "Quinta — pronúncia + revisão",
-    subtitle: "Corrigir palavras fracas e revisar PEEL",
+    title: "Quinta — PEEL profundo",
+    subtitle: "Muitos blocos Part 1 + Part 2",
     tasks: [
-      task("thu-pron", "pronunciation", 1, "1 palavra no banco", "Repita até passar no vault", "/pronunciation", 5),
-      task("thu-shadow", "shadow", 4, "4 blocos Shadow PEEL", "Conectores e entonação", "/", 10),
-      task("thu-vocab", "vocabulary", 2, "2 termos de vocabulário", "Revisão espaçada", "/vocabulario", 6),
-      task("thu-sim", "simulate", 1, "1 pergunta no simulado Part 1", "Feche o dia com uma pergunta", "/?view=exam", 8),
+      task("thu-p1", "shadow", 10, "10 blocos Shadow PEEL", "Uma ou duas perguntas completas", "/"),
+      task("thu-p2", "shadowPart2", 3, "3 situações Part 2", "Readback com áudio original", "/part2?mode=readback"),
+      task("thu-vocab", "vocabulary", 2, "2 termos de vocabulário", "Revisão espaçada", "/vocabulario"),
     ],
-    goalPoints: 12,
-    estimatedMinutes: 30,
+    estimatedPoints: 20,
   },
   5: {
-    title: "Sexta — misto Part 1",
-    subtitle: "Equilíbrio antes do fim de semana",
+    title: "Sexta — misto da semana",
+    subtitle: "Revisar o que mais custou",
     tasks: [
-      task("fri-sim", "simulate", 1, "1 pergunta no simulado Part 1", "Simule condição de prova", "/?view=exam", 8),
-      task("fri-shadow", "shadow", 3, "3 blocos Shadow PEEL", "Blocos que ainda falham", "/", 8),
-      task("fri-vocab", "vocabulary", 2, "2 termos de vocabulário", "Termos da sua prova alvo", "/vocabulario", 6),
-      task("fri-pron", "pronunciation", 1, "1 palavra no banco", "Última rodada da semana", "/pronunciation", 5),
+      task("fri-vocab", "vocabulary", 4, "4 termos de vocabulário", "SRS — termos da sua prova", "/vocabulario"),
+      task("fri-p1", "shadow", 6, "6 blocos Shadow PEEL", "Blocos que ainda falham", "/"),
+      task("fri-p2", "shadowPart2", 2, "2 situações Part 2", "Qualquer modo exceto simulação", "/part2"),
+      task("fri-pron", "pronunciation", 2, "2 palavras no banco", "Fechar a semana", "/pronunciation"),
     ],
-    goalPoints: 12,
-    estimatedMinutes: 28,
+    estimatedPoints: 20,
   },
   6: {
-    title: "Sábado — dia leve",
-    subtitle: "Recuperação ou compensação da semana",
-    tasks: LIGHT_TASKS,
-    goalPoints: agendaGoalFromTasks(LIGHT_TASKS),
-    estimatedMinutes: 20,
+    title: "Sábado — shadow leve",
+    subtitle: "Recuperação sem simulado",
+    tasks: [
+      task("sat-p1", "shadow", 6, "6 blocos Shadow PEEL", "Só shadow — sem simulado", "/"),
+      task("sat-p2", "shadowPart2", 3, "3 situações Part 2", "Readback devagar", "/part2?mode=readback"),
+      task("sat-vocab", "vocabulary", 2, "2 termos de vocabulário", "Shadowing relaxado", "/vocabulario"),
+      task("sat-pron", "pronunciation", 1, "1 palavra no banco", "Uma palavra bem feita", "/pronunciation"),
+    ],
+    estimatedPoints: 19,
   },
 };
 
-function agendaGoalFromTasks(tasks: StudyAgendaTask[]): number {
-  return tasks.reduce((sum, t) => sum + studyActivityPoints(t.activity, t.targetCount), 0);
+function scaleTasksForMode(tasks: StudyAgendaTask[], mode: StudyPlanMode): StudyAgendaTask[] {
+  if (mode === "standard") return tasks;
+  return tasks.map((t) => {
+    const targetCount = Math.max(t.targetCount, Math.ceil(t.targetCount * INTENSE_RATIO));
+    return {
+      ...t,
+      targetCount,
+      points: studyActivityPoints(t.activity, targetCount),
+    };
+  });
 }
 
-export function loadStudyPlanMode(): StudyPlanMode {
-  if (typeof window === "undefined") return "standard";
-  try {
-    const raw = localStorage.getItem(PLAN_MODE_KEY);
-    return raw === "light" ? "light" : "standard";
-  } catch {
-    return "standard";
-  }
+function agendaPointsFromTasks(tasks: StudyAgendaTask[]): number {
+  return tasks.reduce((sum, t) => sum + t.points, 0);
 }
 
-export function saveStudyPlanMode(mode: StudyPlanMode): void {
-  if (typeof window === "undefined") return;
-  localStorage.setItem(PLAN_MODE_KEY, mode);
-  window.dispatchEvent(new Event(STUDY_PLAN_CHANGE_EVENT));
+export function buildStudyAgenda(date = todayKey(), mode = loadStudyPlanMode()): StudyAgendaDay {
+  const weekday = weekdayFromKey(date);
+  const plan = WEEKDAY_PLANS[weekday];
+  const tasks = scaleTasksForMode(plan.tasks, mode);
+  const goalPoints = studyPlanGoalPoints(mode);
+
+  return {
+    date,
+    weekday,
+    mode,
+    title: mode === "intense" ? `${plan.title} — dia bom` : plan.title,
+    subtitle:
+      mode === "intense"
+        ? `Meta ${STUDY_INTENSE_DAY_POINTS} pts — mais repetições`
+        : plan.subtitle,
+    tasks,
+    goalPoints,
+    estimatedPoints: agendaPointsFromTasks(tasks),
+  };
 }
 
 export function dateFromKey(key: string): Date {
@@ -195,41 +189,6 @@ export function dateFromKey(key: string): Date {
 
 export function weekdayFromKey(key: string): number {
   return dateFromKey(key).getDay();
-}
-
-export function isWeekend(weekday: number): boolean {
-  return weekday === 0 || weekday === 6;
-}
-
-function lightAgendaDay(date: string, weekday: number): StudyAgendaDay {
-  const goalPoints = agendaGoalFromTasks(LIGHT_TASKS);
-  return {
-    date,
-    weekday,
-    mode: "light",
-    title: "Plano leve — meta alcançável",
-    subtitle: `~${goalPoints} pts em ~20 min`,
-    tasks: LIGHT_TASKS,
-    goalPoints,
-    estimatedMinutes: 20,
-  };
-}
-
-export function buildStudyAgenda(date = todayKey(), mode = loadStudyPlanMode()): StudyAgendaDay {
-  const weekday = weekdayFromKey(date);
-
-  if (mode === "light") {
-    return lightAgendaDay(date, weekday);
-  }
-
-  const plan = WEEKDAY_PLANS[weekday];
-  return {
-    date,
-    weekday,
-    mode: "standard",
-    ...plan,
-    goalPoints: agendaGoalFromTasks(plan.tasks),
-  };
 }
 
 export function isAgendaTaskDone(task: StudyAgendaTask, day: StudyDayRecord): boolean {
@@ -258,8 +217,8 @@ export type StudyAgendaProgress = {
   globalGoal: number;
   globalGoalMet: boolean;
   agendaComplete: boolean;
-  estimatedMinutes: number;
-  remainingMinutes: number;
+  estimatedPoints: number;
+  remainingPoints: number;
 };
 
 export function getAgendaProgress(
@@ -268,13 +227,14 @@ export function getAgendaProgress(
 ): StudyAgendaProgress {
   const tasksDone = agenda.tasks.filter((t) => isAgendaTaskDone(t, day)).length;
   const pointsEarned = agenda.tasks.reduce(
-    (sum, t) => sum + studyActivityPoints(t.activity, Math.min(day[t.activity], t.targetCount)),
+    (sum, t) =>
+      sum + studyActivityPoints(t.activity, Math.min(day[t.activity], t.targetCount)),
     0,
   );
   const globalPoints = studyDayPoints(day);
-  const doneMinutes = agenda.tasks
+  const donePoints = agenda.tasks
     .filter((t) => isAgendaTaskDone(t, day))
-    .reduce((sum, t) => sum + t.minutes, 0);
+    .reduce((sum, t) => sum + t.points, 0);
 
   return {
     tasksDone,
@@ -282,11 +242,11 @@ export function getAgendaProgress(
     pointsEarned,
     goalPoints: agenda.goalPoints,
     globalPoints,
-    globalGoal: STUDY_DAILY_GOAL_POINTS,
-    globalGoalMet: globalPoints >= STUDY_DAILY_GOAL_POINTS,
+    globalGoal: agenda.goalPoints,
+    globalGoalMet: globalPoints >= agenda.goalPoints,
     agendaComplete: tasksDone === agenda.tasks.length,
-    estimatedMinutes: agenda.estimatedMinutes,
-    remainingMinutes: Math.max(0, agenda.estimatedMinutes - doneMinutes),
+    estimatedPoints: agenda.estimatedPoints,
+    remainingPoints: Math.max(0, agenda.estimatedPoints - donePoints),
   };
 }
 

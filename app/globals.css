@@ -4932,6 +4932,10 @@ input {
     background: linear-gradient(90deg, #059669, #34d399);
   }
 
+  .study-goal-shadowPart2 .study-goal-segment-fill {
+    background: linear-gradient(90deg, #0d9488, #2dd4bf);
+  }
+
   .study-goal-simulate .study-goal-segment-fill {
     background: linear-gradient(90deg, var(--blue), #60a5fa);
   }

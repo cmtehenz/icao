@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "StudyDay" ADD COLUMN "shadowPart2Count" INTEGER NOT NULL DEFAULT 0;

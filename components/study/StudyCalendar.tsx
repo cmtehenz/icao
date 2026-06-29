@@ -1,21 +1,24 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { loadStudyPlanMode, STUDY_PLAN_CHANGE_EVENT } from "@/lib/studyAgenda";
 import {
   buildStudyCalendar,
   STUDY_ACTIVITY_LABELS,
-  STUDY_ACTIVITY_ORDER,
   STUDY_ACTIVITY_POINTS,
+  STUDY_ACTIVITY_ORDER,
   STUDY_DAILY_GOAL_POINTS,
   STUDY_TIME_CHANGE_EVENT,
   studyActivityPoints,
-  studyDayPoints,
+  studyDayGoalPoints,
   studyDaysThisMonth,
   studyStreak,
   type StudyCalendarCell,
 } from "@/lib/studyTime";
 
 const WEEKDAY_LABELS = ["D", "S", "T", "Q", "Q", "S", "S"];
+
+const DISPLAY_ACTIVITIES = STUDY_ACTIVITY_ORDER.filter((key) => key !== "simulate");
 
 function formatDateLabel(date: string): string {
   const parsed = new Date(`${date}T12:00:00`);
@@ -34,27 +37,37 @@ function chunkWeeks(cells: StudyCalendarCell[]): StudyCalendarCell[][] {
   return weeks;
 }
 
-function dayAriaLabel(day: StudyCalendarCell): string {
-  const parts = STUDY_ACTIVITY_ORDER.filter((key) => day[key] > 0).map(
-    (key) =>
-      `${STUDY_ACTIVITY_LABELS[key]} ${day[key]} (${studyActivityPoints(key, day[key])} pts)`,
+function dayAriaLabel(day: StudyCalendarCell, goalPoints: number): string {
+  const parts = DISPLAY_ACTIVITIES.filter((key) => day[key] > 0).map(
+    (key) => `${STUDY_ACTIVITY_LABELS[key]} ${day[key]}`,
   );
-  const total = studyDayPoints(day);
-  return `${formatDateLabel(day.date)}: ${parts.length ? parts.join(", ") : "nada"} — ${total}/${STUDY_DAILY_GOAL_POINTS} pts`;
+  return `${formatDateLabel(day.date)}: ${parts.length ? parts.join(", ") : "nada"} — ${day.points}/${goalPoints} pts`;
 }
 
 export default function StudyCalendar() {
-  const [cells, setCells] = useState<StudyCalendarCell[]>(() => buildStudyCalendar(26));
+  const [mode, setMode] = useState(loadStudyPlanMode);
+  const [cells, setCells] = useState<StudyCalendarCell[]>(() => buildStudyCalendar(26, mode));
   const [active, setActive] = useState<StudyCalendarCell | null>(null);
+  const goalPoints = studyDayGoalPoints(mode);
+
+  const refresh = () => {
+    const currentMode = loadStudyPlanMode();
+    setMode(currentMode);
+    setCells(buildStudyCalendar(26, currentMode));
+  };
 
   useEffect(() => {
-    const refresh = () => setCells(buildStudyCalendar(26));
+    refresh();
     window.addEventListener(STUDY_TIME_CHANGE_EVENT, refresh);
-    return () => window.removeEventListener(STUDY_TIME_CHANGE_EVENT, refresh);
+    window.addEventListener(STUDY_PLAN_CHANGE_EVENT, refresh);
+    return () => {
+      window.removeEventListener(STUDY_TIME_CHANGE_EVENT, refresh);
+      window.removeEventListener(STUDY_PLAN_CHANGE_EVENT, refresh);
+    };
   }, []);
 
   const weeks = useMemo(() => chunkWeeks(cells), [cells]);
-  const streak = studyStreak();
+  const streak = studyStreak(undefined, mode);
   const studiedDays = studyDaysThisMonth();
 
   return (
@@ -63,7 +76,8 @@ export default function StudyCalendar() {
         <div>
           <h2>Histórico de estudo</h2>
           <p className="study-calendar-sub">
-            Estilo GitHub — verde = mais pontos. Meta: {STUDY_DAILY_GOAL_POINTS} pts/dia (~30 min).
+            Estilo GitHub — verde = mais pontos. Meta padrão: {STUDY_DAILY_GOAL_POINTS} pts/dia (dia bom:
+            45 pts).
           </p>
         </div>
         <div className="study-calendar-stats">
@@ -94,7 +108,7 @@ export default function StudyCalendar() {
                 key={day.date}
                 type="button"
                 className={`study-cal-cell level-${day.level}${day.goalMet ? " goal-met" : ""}`}
-                aria-label={dayAriaLabel(day)}
+                aria-label={dayAriaLabel(day, goalPoints)}
                 onClick={() => setActive(day)}
               />
             )),
@@ -116,9 +130,9 @@ export default function StudyCalendar() {
         <div className="study-calendar-detail">
           <strong>{formatDateLabel(active.date)}</strong>
           <span className="study-calendar-detail-total">
-            {studyDayPoints(active)} / {STUDY_DAILY_GOAL_POINTS} pts
+            {active.points} / {goalPoints} pts
           </span>
-          {STUDY_ACTIVITY_ORDER.map((key) =>
+          {DISPLAY_ACTIVITIES.map((key) =>
             active[key] > 0 ? (
               <span key={key}>
                 {STUDY_ACTIVITY_LABELS[key]}: {active[key]}×{STUDY_ACTIVITY_POINTS[key]} ={" "}

@@ -1,20 +1,68 @@
-export type StudyActivity = "shadow" | "simulate" | "pronunciation" | "vocabulary";
+export type StudyPlanMode = "standard" | "intense";
+
+export const STUDY_PLAN_CHANGE_EVENT = "icao-study-plan-change";
+
+const PLAN_MODE_KEY = "icao_study_plan_mode_v1";
+
+export function loadStudyPlanMode(): StudyPlanMode {
+  if (typeof window === "undefined") return "standard";
+  try {
+    const raw = localStorage.getItem(PLAN_MODE_KEY);
+    return raw === "intense" ? "intense" : "standard";
+  } catch {
+    return "standard";
+  }
+}
+
+export function saveStudyPlanMode(mode: StudyPlanMode): void {
+  if (typeof window === "undefined") return;
+  localStorage.setItem(PLAN_MODE_KEY, mode);
+  window.dispatchEvent(new Event(STUDY_PLAN_CHANGE_EVENT));
+}
+
+export function studyPlanGoalPoints(mode: StudyPlanMode): number {
+  return mode === "intense" ? STUDY_INTENSE_DAY_POINTS : STUDY_DAILY_GOAL_POINTS;
+}
+
+export type StudyActivity =
+  | "shadow"
+  | "shadowPart2"
+  | "simulate"
+  | "pronunciation"
+  | "vocabulary";
+
+/** Minutos estimados por repetição concluída. */
+export const STUDY_ACTIVITY_MINUTES: Record<StudyActivity, number> = {
+  shadow: 2,
+  shadowPart2: 5,
+  simulate: 10,
+  pronunciation: 5,
+  vocabulary: 4,
+};
 
 export const STUDY_ACTIVITY_POINTS: Record<StudyActivity, number> = {
   shadow: 1,
+  shadowPart2: 2,
   simulate: 4,
   pronunciation: 2,
   vocabulary: 1,
 };
 
-/** Meta diária — ~30 min de estudo focado. */
-export const STUDY_DAILY_GOAL_POINTS = 12;
+/** Meta diária padrão em pontos. */
+export const STUDY_DAILY_GOAL_POINTS = 20;
 
-/** Simulação Part 2 completa equivale a 3 perguntas Part 1 em esforço. */
+/** Dia bom — mais repetições. */
+export const STUDY_INTENSE_DAY_POINTS = 45;
+
+/** Referência de tempo (só dica na agenda, meta é em pontos). */
+export const STUDY_DAILY_GOAL_MINUTES = 40;
+export const STUDY_INTENSE_DAY_MINUTES = 90;
+
 export const SIMULATE_PART2_UNITS = 3;
 
 export const STUDY_ACTIVITY_LABELS: Record<StudyActivity, string> = {
-  shadow: "Shadowing PEEL",
+  shadow: "Shadow PEEL (Part 1)",
+  shadowPart2: "Shadow Part 2",
   simulate: "Simulado",
   pronunciation: "Pronúncia",
   vocabulary: "Vocabulário",
@@ -22,9 +70,10 @@ export const STUDY_ACTIVITY_LABELS: Record<StudyActivity, string> = {
 
 export const STUDY_ACTIVITY_ORDER: StudyActivity[] = [
   "shadow",
-  "simulate",
+  "shadowPart2",
   "pronunciation",
   "vocabulary",
+  "simulate",
 ];
 
 export const STUDY_TIME_CHANGE_EVENT = "icao-study-time-change";
@@ -38,7 +87,7 @@ export type StudyDaysMap = Record<string, StudyDayRecord>;
 type StudyActivityStore = { days: StudyDaysMap };
 
 export function emptyStudyDay(): StudyDayRecord {
-  return { shadow: 0, simulate: 0, pronunciation: 0, vocabulary: 0 };
+  return { shadow: 0, shadowPart2: 0, simulate: 0, pronunciation: 0, vocabulary: 0 };
 }
 
 export function todayKey(): string {
@@ -47,10 +96,6 @@ export function todayKey(): string {
   const m = String(d.getMonth() + 1).padStart(2, "0");
   const day = String(d.getDate()).padStart(2, "0");
   return `${y}-${m}-${day}`;
-}
-
-function emptyStore(): StudyActivityStore {
-  return { days: {} };
 }
 
 export function loadStudyDays(): StudyDaysMap {
@@ -115,6 +160,17 @@ export function studyActivityPoints(activity: StudyActivity, count: number): num
   return count * STUDY_ACTIVITY_POINTS[activity];
 }
 
+export function studyActivityMinutes(activity: StudyActivity, count: number): number {
+  return count * STUDY_ACTIVITY_MINUTES[activity];
+}
+
+export function studyDayMinutes(day: StudyDayRecord): number {
+  return STUDY_ACTIVITY_ORDER.reduce(
+    (sum, key) => sum + studyActivityMinutes(key, day[key]),
+    0,
+  );
+}
+
 export function studyDayPoints(day: StudyDayRecord): number {
   return STUDY_ACTIVITY_ORDER.reduce(
     (sum, key) => sum + studyActivityPoints(key, day[key]),
@@ -122,12 +178,45 @@ export function studyDayPoints(day: StudyDayRecord): number {
   );
 }
 
-export function studyDayRemaining(day: StudyDayRecord): number {
-  return Math.max(0, STUDY_DAILY_GOAL_POINTS - studyDayPoints(day));
+export function studyDayGoalPoints(mode: StudyPlanMode = "standard"): number {
+  return studyPlanGoalPoints(mode);
 }
 
-export function studyDayMaxGoal(): number {
-  return STUDY_DAILY_GOAL_POINTS;
+export function studyDayRemainingPoints(
+  day: StudyDayRecord,
+  mode: StudyPlanMode = "standard",
+): number {
+  return Math.max(0, studyDayGoalPoints(mode) - studyDayPoints(day));
+}
+
+export function studyDayMaxGoal(mode: StudyPlanMode = "standard"): number {
+  return studyDayGoalPoints(mode);
+}
+
+export function studyDayRemaining(day: StudyDayRecord, mode: StudyPlanMode = "standard"): number {
+  return studyDayRemainingPoints(day, mode);
+}
+
+/** @deprecated meta em pontos — use studyDayGoalPoints */
+export function studyDayGoalMinutes(mode: StudyPlanMode = "standard"): number {
+  return studyDayGoalPoints(mode);
+}
+
+/** @deprecated */
+export function studyDayRemainingMinutes(
+  day: StudyDayRecord,
+  mode: StudyPlanMode = "standard",
+): number {
+  return studyDayRemainingPoints(day, mode);
+}
+
+export function formatStudyMinutes(total: number): string {
+  const m = Math.max(0, Math.floor(total));
+  const h = Math.floor(m / 60);
+  const min = m % 60;
+  if (h > 0 && min > 0) return `${h}h${min}m`;
+  if (h > 0) return `${h}h`;
+  return `${min} min`;
 }
 
 export function studyProgressPercent(elapsed: number, goal: number): number {
@@ -146,9 +235,9 @@ export function getStudyHistory(days = 7): Array<StudyDayRecord & { date: string
 
 export type StudyHeatLevel = 0 | 1 | 2 | 3 | 4;
 
-export function studyDayLevel(day: StudyDayRecord): StudyHeatLevel {
+export function studyDayLevel(day: StudyDayRecord, mode: StudyPlanMode = "standard"): StudyHeatLevel {
   const total = studyDayPoints(day);
-  const max = STUDY_DAILY_GOAL_POINTS;
+  const max = studyDayGoalPoints(mode);
   if (total <= 0) return 0;
   if (total >= max) return 4;
   if (total >= max * 0.75) return 3;
@@ -156,17 +245,18 @@ export function studyDayLevel(day: StudyDayRecord): StudyHeatLevel {
   return 1;
 }
 
-export function studyDayGoalMet(day: StudyDayRecord): boolean {
-  return studyDayPoints(day) >= STUDY_DAILY_GOAL_POINTS;
+export function studyDayGoalMet(day: StudyDayRecord, mode: StudyPlanMode = "standard"): boolean {
+  return studyDayPoints(day) >= studyDayGoalPoints(mode);
 }
 
 export type StudyCalendarCell = StudyDayRecord & {
   date: string;
   level: StudyHeatLevel;
   goalMet: boolean;
+  points: number;
 };
 
-export function buildStudyCalendar(weeks = 26): StudyCalendarCell[] {
+export function buildStudyCalendar(weeks = 26, mode: StudyPlanMode = "standard"): StudyCalendarCell[] {
   const store = loadStudyDays();
   const today = new Date();
   today.setHours(0, 0, 0, 0);
@@ -187,8 +277,9 @@ export function buildStudyCalendar(weeks = 26): StudyCalendarCell[] {
     cells.push({
       date: key,
       ...day,
-      level: studyDayLevel(day),
-      goalMet: studyDayGoalMet(day),
+      points: studyDayPoints(day),
+      level: studyDayLevel(day, mode),
+      goalMet: studyDayGoalMet(day, mode),
     });
     cursor.setDate(cursor.getDate() + 1);
   }
@@ -196,7 +287,10 @@ export function buildStudyCalendar(weeks = 26): StudyCalendarCell[] {
   return cells;
 }
 
-export function studyStreak(days: StudyDaysMap = loadStudyDays()): number {
+export function studyStreak(
+  days: StudyDaysMap = loadStudyDays(),
+  mode: StudyPlanMode = "standard",
+): number {
   const cursor = new Date();
   cursor.setHours(0, 0, 0, 0);
   let streak = 0;
@@ -204,7 +298,7 @@ export function studyStreak(days: StudyDaysMap = loadStudyDays()): number {
   while (true) {
     const key = `${cursor.getFullYear()}-${String(cursor.getMonth() + 1).padStart(2, "0")}-${String(cursor.getDate()).padStart(2, "0")}`;
     const day = days[key];
-    if (!day || !studyDayGoalMet(normalizeDay(day))) break;
+    if (!day || !studyDayGoalMet(normalizeDay(day), mode)) break;
     streak += 1;
     cursor.setDate(cursor.getDate() - 1);
   }
@@ -222,7 +316,8 @@ export function studyDaysThisMonth(days: StudyDaysMap = loadStudyDays()): number
 
 export function formatStudyDaySummary(day: StudyDayRecord): string {
   const parts = STUDY_ACTIVITY_ORDER.filter((key) => day[key] > 0).map(
-    (key) => `${STUDY_ACTIVITY_LABELS[key]} ${day[key]} (${studyActivityPoints(key, day[key])} pts)`,
+    (key) =>
+      `${STUDY_ACTIVITY_LABELS[key]} ${day[key]} (${studyActivityPoints(key, day[key])} pts)`,
   );
   const total = studyDayPoints(day);
   return parts.length ? `${parts.join(", ")} — ${total} pts` : "Nenhuma atividade";

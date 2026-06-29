@@ -45,6 +45,7 @@ export function studyDaysToMap(
   rows: Array<{
     date: Date;
     shadowCount: number;
+    shadowPart2Count: number;
     simulateCount: number;
     pronunciationCount: number;
     vocabularyCount: number;
@@ -55,6 +56,7 @@ export function studyDaysToMap(
     const key = row.date.toISOString().slice(0, 10);
     map[key] = normalizeStudyDay({
       shadow: row.shadowCount,
+      shadowPart2: row.shadowPart2Count,
       simulate: row.simulateCount,
       pronunciation: row.pronunciationCount,
       vocabulary: row.vocabularyCount,
@@ -66,6 +68,7 @@ export function studyDaysToMap(
 export function studyDayToDbFields(day: StudyDayRecord) {
   return {
     shadowCount: day.shadow,
+    shadowPart2Count: day.shadowPart2,
     simulateCount: day.simulate,
     pronunciationCount: day.pronunciation,
     vocabularyCount: day.vocabulary,

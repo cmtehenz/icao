@@ -43,7 +43,6 @@ function TaskRow({
                 {done}/{target} · {points} pts
               </span>
             )}
-            {!compact && <span className="study-agenda-task-time">~{task.minutes} min</span>}
           </span>
         </div>
         {!compact && <p className="study-agenda-task-hint">{task.hint}</p>}
@@ -71,24 +70,24 @@ export default function StudyAgenda({ compact = false, showWeek = true }: Props)
           <span className={`study-agenda-progress-pill ${progress.agendaComplete ? "done" : ""}`}>
             {progress.tasksDone}/{progress.tasksTotal} tarefas
           </span>
-          <span className="study-agenda-time-pill">~{agenda.estimatedMinutes} min</span>
+          <span className="study-agenda-time-pill">{agenda.estimatedPoints} pts</span>
         </div>
       </header>
 
       <div className="study-agenda-mode" role="group" aria-label="Intensidade do plano">
         <button
           type="button"
-          className={`study-agenda-mode-btn ${mode === "light" ? "active" : ""}`}
-          onClick={() => setMode("light")}
-        >
-          Leve · 8 pts
-        </button>
-        <button
-          type="button"
           className={`study-agenda-mode-btn ${mode === "standard" ? "active" : ""}`}
           onClick={() => setMode("standard")}
         >
-          Semanal · 12 pts
+          Padrão · 20 pts
+        </button>
+        <button
+          type="button"
+          className={`study-agenda-mode-btn ${mode === "intense" ? "active" : ""}`}
+          onClick={() => setMode("intense")}
+        >
+          Dia bom · 45 pts
         </button>
       </div>
 
@@ -112,23 +111,22 @@ export default function StudyAgenda({ compact = false, showWeek = true }: Props)
           <div
             className="study-agenda-summary-fill"
             style={{
-              width: `${progress.goalPoints > 0 ? Math.round((progress.pointsEarned / progress.goalPoints) * 100) : 0}%`,
+              width: `${progress.goalPoints > 0 ? Math.round((progress.globalPoints / progress.goalPoints) * 100) : 0}%`,
             }}
           />
         </div>
         <p className="study-agenda-summary-text">
-          {progress.agendaComplete ? (
-            <strong className="study-agenda-done">Agenda de hoje completa ✓</strong>
+          {progress.globalGoalMet ? (
+            <strong className="study-agenda-done">
+              {progress.agendaComplete ? "Agenda completa ✓" : "Meta de pontos atingida ✓"}
+            </strong>
           ) : (
             <>
-              <strong>{progress.pointsEarned}</strong> / {progress.goalPoints} pts da agenda
-              {progress.remainingMinutes > 0 && (
-                <span> · faltam ~{progress.remainingMinutes} min</span>
+              <strong>{progress.globalPoints}</strong> / {progress.goalPoints} pts
+              {progress.remainingPoints > 0 && (
+                <span> · faltam {progress.remainingPoints} pts na agenda</span>
               )}
             </>
-          )}
-          {!compact && progress.globalGoalMet && !progress.agendaComplete && (
-            <span className="study-agenda-bonus"> Meta global também atingida.</span>
           )}
         </p>
       </div>
@@ -141,9 +139,9 @@ export default function StudyAgenda({ compact = false, showWeek = true }: Props)
 
       {!compact && (
         <p className="study-agenda-foot">
-          Cada tarefa marca automaticamente quando você conclui a prática. Pesos: shadow{" "}
-          {activityPointLabel("shadow")}, simulado {activityPointLabel("simulate")}, pronúncia{" "}
-          {activityPointLabel("pronunciation")}, vocabulário {activityPointLabel("vocabulary")}.
+          Sem simulado por enquanto. Pesos: shadow PEEL {activityPointLabel("shadow")}, Part 2{" "}
+          {activityPointLabel("shadowPart2")}, pronúncia {activityPointLabel("pronunciation")}, vocabulário{" "}
+          {activityPointLabel("vocabulary")}.
         </p>
       )}
     </section>
