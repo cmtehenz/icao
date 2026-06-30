@@ -18,7 +18,7 @@ type Props = {
 export default function CallsignDrillPanel({ initialOpen = true }: Props) {
   const steps = useMemo(() => callsignDrillSteps(EXAM_CALLSIGN), []);
   const [open, setOpen] = useState(initialOpen);
-  const [stepId, setStepId] = useState<CallsignDrillStep["id"]>("letters");
+  const [stepId, setStepId] = useState<CallsignDrillStep["id"]>("full");
   const [lastScore, setLastScore] = useState<number | null>(null);
   const [heard, setHeard] = useState<string | null>(null);
   const azure = useAzurePronunciation();
@@ -78,8 +78,8 @@ export default function CallsignDrillPanel({ initialOpen = true }: Props) {
           <span className="badge">Callsign SDEA</span>
           <h2 className="question">Como falar {EXAM_CALLSIGN}</h2>
           <p className="sub">
-            Na prova não se lê “anác cento e vinte e três”. Soletre as letras e fale cada dígito
-            separado.
+            Na SDEA fala-se <strong>ANAC 123</strong> junto — bloco “ANAC” + dígitos separados (wun too
+            tree). Não é alfabeto fonético letra a letra.
           </p>
         </div>
         <button type="button" className="btn secondary btn-sm" onClick={() => setOpen(false)}>

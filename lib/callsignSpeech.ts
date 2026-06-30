@@ -1,5 +1,3 @@
-import { icaoSpellOut } from "@/lib/aviationSpeechTerms";
-
 /** Callsign padrão SDEA / simulados deste app. */
 export const EXAM_CALLSIGN = "ANAC 123";
 
@@ -25,27 +23,26 @@ export function icaoNumberSpeech(digits: string): string {
   return [...digits].map(icaoDigitSpeech).join(" ");
 }
 
-export function icaoLetterSpeech(letters: string): string {
-  return icaoSpellOut(letters) ?? letters.split("").join(" ");
-}
-
 export function parseCallsign(raw: string): { letters: string; digits: string } | null {
   const match = raw.trim().match(/^([A-Za-z]+)\s*(\d+)?$/);
   if (!match) return null;
   return { letters: match[1].toUpperCase(), digits: match[2] ?? "" };
 }
 
-/** Texto que o Azure deve ouvir (não o callsign escrito). */
+/**
+ * Forma falada no simulado SDEA: bloco ANAC + dígitos ICAO.
+ * Não usa alfabeto fonético (Alpha November…) — fala-se “ANAC” junto.
+ */
 export function buildCallsignSpeech(callsign = EXAM_CALLSIGN): string {
   const parsed = parseCallsign(callsign);
   if (!parsed) return callsign.trim();
-  const parts = [icaoLetterSpeech(parsed.letters)];
+  const parts = [parsed.letters];
   if (parsed.digits) parts.push(icaoNumberSpeech(parsed.digits));
   return parts.join(" ");
 }
 
 export type CallsignDrillStep = {
-  id: "letters" | "numbers" | "full";
+  id: "block" | "numbers" | "full";
   label: string;
   hint: string;
   referenceText: string;
@@ -56,16 +53,15 @@ export function callsignDrillSteps(callsign = EXAM_CALLSIGN): CallsignDrillStep[
   const parsed = parseCallsign(callsign);
   if (!parsed) return [];
 
-  const letterSpeech = icaoLetterSpeech(parsed.letters);
   const numberSpeech = parsed.digits ? icaoNumberSpeech(parsed.digits) : "";
   const fullSpeech = buildCallsignSpeech(callsign);
 
   const steps: CallsignDrillStep[] = [
     {
-      id: "letters",
-      label: "Letras A–N–A–C",
-      hint: "Não diga “anác” como palavra. Quatro nomes ICAO, ritmo curto e claro.",
-      referenceText: letterSpeech,
+      id: "block",
+      label: "Bloco ANAC",
+      hint: "Fale “ANAC” junto, em ritmo natural — como no simulador. Não use Alpha November Alpha Charlie.",
+      referenceText: parsed.letters,
       display: parsed.letters,
     },
   ];
@@ -83,7 +79,7 @@ export function callsignDrillSteps(callsign = EXAM_CALLSIGN): CallsignDrillStep[
   steps.push({
     id: "full",
     label: "Callsign completo",
-    hint: "Letras + pausa curta + dígitos. É assim no Part 2 e no readback.",
+    hint: "ANAC + pausa curta + wun too tree. É assim no readback e no reporte ao ATC.",
     referenceText: fullSpeech,
     display: callsign.trim(),
   });
