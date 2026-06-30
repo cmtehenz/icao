@@ -70,7 +70,9 @@ function VocabTermList({
                     className="vocab-term-select"
                     onClick={() => onSelect(item)}
                   >
-                    <VocabularyCard item={item} progress={p} compact />
+                    <span className="vocab-term-select-inner">
+                      <VocabularyCard item={item} progress={p} compact />
+                    </span>
                   </button>
                 </li>
               );

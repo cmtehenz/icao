@@ -4559,6 +4559,11 @@ input {
   font: inherit;
 }
 
+.vocab-term-select-inner {
+  display: block;
+  pointer-events: none;
+}
+
 .vocab-term-select:hover {
   background: color-mix(in srgb, var(--blue-bg) 55%, transparent);
 }

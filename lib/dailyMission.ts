@@ -14,7 +14,6 @@ import {
   getOrCreateVocabDailyMission,
   vocabMissionLink,
 } from "@/lib/vocabDailyMission";
-import { syncDailyMissionLog } from "@/lib/dailyMissionLog";
 
 export type DailyMissionNextAction = {
   href: string;
@@ -40,8 +39,6 @@ export function getDailyMissionSummary(): DailyMissionSummary {
   const completedSections = sections.filter(Boolean).length;
   const complete = completedSections === sections.length;
 
-  if (complete) syncDailyMissionLog();
-
   return {
     part1,
     part2,
@@ -53,7 +50,10 @@ export function getDailyMissionSummary(): DailyMissionSummary {
 }
 
 export function isDailyMissionComplete(): boolean {
-  return getDailyMissionSummary().complete;
+  const part1 = part1DailyMissionProgress(getOrCreatePart1DailyMission());
+  const part2 = part2DailyMissionProgress(getOrCreatePart2DailyMission());
+  const vocabulary = vocabDailyMissionProgress(getOrCreateVocabDailyMission());
+  return part1.complete && part2.complete && vocabulary.complete;
 }
 
 /** Próximo passo concreto da missão (para CTA na home). */
