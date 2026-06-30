@@ -11,6 +11,7 @@ import {
 } from "@/lib/studyActivityRecord";
 import { collectVaultWordCandidates } from "@/lib/azure/pronunciation";
 import { getPeelBlocks, type PeelBlock, type PeelBlockId } from "@/lib/peelBlocks";
+import { peelBlockActivityKey } from "@/lib/shadowPeelDedup";
 import { getPeelBlockHistory, recordPeelBlockAttempt } from "@/lib/peelBlockHistory";
 import { addWordsToVault, VAULT_PASS_SCORE } from "@/lib/pronunciationVault";
 import type { Card } from "@/lib/types";
@@ -121,7 +122,7 @@ export default function PeelShadowingPanel({
     setActivityNote(null);
     setActiveId(block.id);
     setRunAllIndex(indexForRunAll);
-    azure.clear();
+    await azure.clear();
     setPhase("listening");
     try {
       await azure.speak(block.text);
@@ -155,11 +156,16 @@ export default function PeelShadowingPanel({
       const ctx = {
         accuracy,
         recognizedText: assessment.recognizedText,
+        peelBlockKey: peelBlockActivityKey(card.num, activeBlock.id),
       };
       const counted = tryRecordStudyActivity("shadow", ctx);
       if (!counted) {
         setActivityNote(studyActivityRejectReason("shadow", ctx));
+      } else {
+        setActivityNote(null);
       }
+    } else {
+      setActivityNote("Azure não avaliou este bloco — grave de novo com o microfone mais perto.");
     }
     setPhase("result");
   };
@@ -218,7 +224,8 @@ export default function PeelShadowingPanel({
         </p>
       ) : (
         <p className="peel-shadowing-sub">
-          Ouça o bloco (Azure) → espere 1s → repita em voz alta → veja a nota de pronúncia.
+          Ouça o bloco (Azure) → espere 1s → repita em voz alta → veja a nota de pronúncia. Cada
+          bloco com ≥{SHADOW_PEEL_PASS_SCORE}% conta +1 pt na meta (máx. 1× por bloco/dia).
         </p>
       )}
 

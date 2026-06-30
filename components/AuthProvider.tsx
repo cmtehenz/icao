@@ -101,7 +101,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const syncStudyTime = useCallback(async () => {
     const local = loadStudyDays();
     const merged = await pushStudyTimeToServer(local);
-    if (merged) saveStudyDays(merged);
+    if (merged) {
+      const latest = loadStudyDays();
+      saveStudyDays(mergeStudyDays(latest, merged));
+    }
   }, []);
 
   const syncAll = useCallback(async () => {
@@ -133,7 +136,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           const mergedStudy = mergeStudyDays(localStudy, remoteStudy);
           saveStudyDays(mergedStudy);
           const pushedStudy = await pushStudyTimeToServer(mergedStudy);
-          if (pushedStudy) saveStudyDays(pushedStudy);
+          if (pushedStudy) {
+            const latestStudy = loadStudyDays();
+            saveStudyDays(mergeStudyDays(latestStudy, pushedStudy));
+          }
         }
       }
     } catch {

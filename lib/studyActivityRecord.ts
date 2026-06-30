@@ -1,5 +1,9 @@
 import { VAULT_PASS_SCORE } from "@/lib/pronunciationVault";
 import {
+  hasShadowPeelScoredToday,
+  markShadowPeelScored,
+} from "@/lib/shadowPeelDedup";
+import {
   hasShadowPart2ScoredToday,
   markShadowPart2Scored,
 } from "@/lib/shadowPart2Dedup";
@@ -27,6 +31,8 @@ export type StudyActivityRecordContext = {
   recognizedText?: string;
   /** Part 2 situation id — evita ponto duplo na mesma situação/dia. */
   situationId?: string;
+  /** Part 1 PEEL block key (`cardNum:blockId`) — um ponto por bloco/dia. */
+  peelBlockKey?: string;
 };
 
 export type StudyActivityRecordedDetail = {
@@ -54,6 +60,9 @@ export function canRecordStudyActivity(
   if (activity === "shadowPart2" && ctx.situationId && hasShadowPart2ScoredToday(ctx.situationId)) {
     return false;
   }
+  if (activity === "shadow" && ctx.peelBlockKey && hasShadowPeelScoredToday(ctx.peelBlockKey)) {
+    return false;
+  }
 
   switch (activity) {
     case "shadow":
@@ -79,6 +88,9 @@ export function studyActivityRejectReason(
 
   if (activity === "shadowPart2" && ctx.situationId && hasShadowPart2ScoredToday(ctx.situationId)) {
     return "Já contou ponto nesta situação hoje — use outra ou treine sem meta.";
+  }
+  if (activity === "shadow" && ctx.peelBlockKey && hasShadowPeelScoredToday(ctx.peelBlockKey)) {
+    return "Este bloco PEEL já contou na meta de hoje.";
   }
 
   switch (activity) {
@@ -154,6 +166,9 @@ export function tryRecordStudyActivity(
   }
 
   recordStudyActivity(activity, count);
+  if (activity === "shadow" && ctx.peelBlockKey) {
+    markShadowPeelScored(ctx.peelBlockKey);
+  }
   if (activity === "shadowPart2" && ctx.situationId) {
     markShadowPart2Scored(ctx.situationId);
   }

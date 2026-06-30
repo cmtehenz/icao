@@ -285,8 +285,8 @@ export function useAzureSpeech() {
     [startMicCapture, stopMicCapture, stopRecording],
   );
 
-  const clear = useCallback(() => {
-    void stopRecording();
+  const clear = useCallback(async () => {
+    await stopRecording();
     stopSpeaking();
     setResult(null);
     setError(null);
