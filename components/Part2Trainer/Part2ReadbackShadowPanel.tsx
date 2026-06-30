@@ -108,6 +108,7 @@ export default function Part2ReadbackShadowPanel({
         accuracy,
         recognizedText: assessment.recognizedText,
         situationId,
+        part2MissionKind: "readback" as const,
       };
       const ok = tryRecordStudyActivity("shadowPart2", ctx);
       setCounted(ok);

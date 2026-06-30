@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import WordPhoneticHint from "@/components/WordPhoneticHint";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   loadVault,
@@ -51,7 +52,10 @@ export default function VaultWeakWordsPanel({ limit = DEFAULT_TOP_N }: Props) {
           <li key={w.word} className={`vault-weak-top-item ${w.lastAccuracy < 60 ? "bad" : "warn"}`}>
             <span className="vault-weak-rank">{i + 1}</span>
             <div className="vault-weak-body">
-              <Link href={`/pronunciation?word=${encodeURIComponent(w.word)}`}>{w.word}</Link>
+              <Link href={`/pronunciation?word=${encodeURIComponent(w.word)}`}>
+                {w.word}
+                <WordPhoneticHint word={w.word} className="vault-word-phonetic" />
+              </Link>
               <span className="vault-weak-scores">
                 última {w.lastAccuracy}% · pior {w.lowestAccuracy}%
               </span>

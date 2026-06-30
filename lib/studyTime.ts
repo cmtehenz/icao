@@ -249,10 +249,47 @@ export function studyDayGoalMet(day: StudyDayRecord, mode: StudyPlanMode = "stan
   return studyDayPoints(day) >= studyDayGoalPoints(mode);
 }
 
+const DAILY_MISSION_LOG_KEY = "icao_daily_mission_log_v1";
+
+function readMissionLog(): Record<string, boolean> {
+  if (typeof window === "undefined") return {};
+  try {
+    const raw = localStorage.getItem(DAILY_MISSION_LOG_KEY);
+    if (!raw) return {};
+    const parsed = JSON.parse(raw) as Record<string, boolean>;
+    return parsed && typeof parsed === "object" ? parsed : {};
+  } catch {
+    return {};
+  }
+}
+
+/** Missão diária concluída nesta data (evita import circular com dailyMission). */
+export function studyDayMissionMet(date: string): boolean {
+  if (typeof window === "undefined") return false;
+  if (readMissionLog()[date]) return true;
+  if (date !== todayKey()) return false;
+  try {
+    const mod = require("@/lib/dailyMission") as typeof import("@/lib/dailyMission");
+    return mod.isDailyMissionComplete();
+  } catch {
+    return false;
+  }
+}
+
+/** Dia conta para streak/semana: missão diária OU meta de pontos. */
+export function studyDaySuccess(
+  date: string,
+  day: StudyDayRecord,
+  mode: StudyPlanMode = "standard",
+): boolean {
+  return studyDayMissionMet(date) || studyDayGoalMet(day, mode);
+}
+
 export type StudyCalendarCell = StudyDayRecord & {
   date: string;
   level: StudyHeatLevel;
   goalMet: boolean;
+  missionMet: boolean;
   points: number;
 };
 
@@ -279,7 +316,8 @@ export function buildStudyCalendar(weeks = 26, mode: StudyPlanMode = "standard")
       ...day,
       points: studyDayPoints(day),
       level: studyDayLevel(day, mode),
-      goalMet: studyDayGoalMet(day, mode),
+      goalMet: studyDaySuccess(key, day, mode),
+      missionMet: studyDayMissionMet(key),
     });
     cursor.setDate(cursor.getDate() + 1);
   }
@@ -298,7 +336,7 @@ export function studyStreak(
   while (true) {
     const key = `${cursor.getFullYear()}-${String(cursor.getMonth() + 1).padStart(2, "0")}-${String(cursor.getDate()).padStart(2, "0")}`;
     const day = days[key];
-    if (!day || !studyDayGoalMet(normalizeDay(day), mode)) break;
+    if (!day || !studyDaySuccess(key, normalizeDay(day), mode)) break;
     streak += 1;
     cursor.setDate(cursor.getDate() - 1);
   }
@@ -333,7 +371,7 @@ export function studyWeekGoodDays(
     if (cursor > today) break;
     const key = `${cursor.getFullYear()}-${String(cursor.getMonth() + 1).padStart(2, "0")}-${String(cursor.getDate()).padStart(2, "0")}`;
     const day = normalizeDay(days[key]);
-    if (studyDayGoalMet(day, mode)) good += 1;
+    if (studyDaySuccess(key, day, mode)) good += 1;
   }
 
   return { good, target: STUDY_WEEKLY_GOAL_DAYS };

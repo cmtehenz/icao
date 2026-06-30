@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import CallsignDrillPanel from "@/components/Part2Trainer/CallsignDrillPanel";
 import YouGlishLink from "@/components/YouGlishLink";
+import WordPhoneticHint from "@/components/WordPhoneticHint";
 import { useAzurePronunciation } from "@/hooks/useAzurePronunciation";
 import type { AzurePronunciationResult } from "@/lib/azure/pronunciation";
 import { errorTypeLabel } from "@/lib/azure/pronunciation";
@@ -204,7 +205,10 @@ export default function PronunciationWordsMode() {
       {activeWord ? (
         <article className="card card-essential part2-card vault-practice-card">
           <div className="card-top">
-            <h2 className="question">Praticar: {activeWord.word}</h2>
+            <h2 className="question">
+              Praticar: {activeWord.word}
+              <WordPhoneticHint word={activeWord.word} />
+            </h2>
             <p className="part2-hint vault-practice-steps">
               <span className="vault-step">1. Ouça no YouGlish</span>
               <span className="vault-step">2. Grave a palavra</span>
@@ -240,6 +244,9 @@ export default function PronunciationWordsMode() {
               <span className="part2-tag">Última nota: {activeWord.lastAccuracy}%</span>
               <span className="part2-tag">Pior nota: {activeWord.lowestAccuracy}%</span>
               <span className="part2-tag">{activeWord.errorLabel}</span>
+              {activeWord.returnCount > 0 && (
+                <span className="part2-tag vault-return-tag">voltou {activeWord.returnCount}×</span>
+              )}
             </p>
           </div>
           <div className="card-body">
@@ -323,7 +330,10 @@ export default function PronunciationWordsMode() {
             <li key={item.word} className={`vault-word-item ${item.lowestAccuracy < 60 ? "bad" : "warn"}`}>
               <div className="vault-word-top">
                 <div className="vault-word-headline">
-                  <strong className="vault-word-title">{item.word}</strong>
+                  <strong className="vault-word-title">
+                    {item.word}
+                    <WordPhoneticHint word={item.word} className="vault-word-phonetic" />
+                  </strong>
                   <span className={`vault-word-pct ${item.lowestAccuracy < 60 ? "bad" : "warn"}`}>
                     {item.lowestAccuracy}%
                   </span>
@@ -331,6 +341,7 @@ export default function PronunciationWordsMode() {
                 <div className="vault-word-meta">
                   <span className="vault-word-scores">
                     visto {item.timesSeen}x
+                    {item.returnCount > 0 && ` · voltou ${item.returnCount}×`}
                     {item.practiceCount > 0 && ` · ${item.practiceCount} treino${item.practiceCount > 1 ? "s" : ""}`}
                     {` · ${item.passCount}/${VAULT_PASSES_TO_GRADUATE} aprovadas`}
                   </span>

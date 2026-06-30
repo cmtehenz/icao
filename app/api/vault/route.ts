@@ -103,6 +103,7 @@ export async function PUT(request: Request) {
         timesSeen: row.timesSeen,
         practiceCount: row.practiceCount,
         passCount: row.passCount,
+        returnCount: 0,
         lastSeenAt: row.lastSeenAt.toISOString(),
         lastPracticedAt: row.lastPracticedAt?.toISOString(),
       }),

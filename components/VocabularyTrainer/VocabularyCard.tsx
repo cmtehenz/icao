@@ -1,6 +1,7 @@
 "use client";
 
 import type { IcaoVocabularyItem } from "@/data/icaoVocabulary";
+import WordPhoneticHint from "@/components/WordPhoneticHint";
 import { difficultyLabel } from "@/data/icaoVocabulary";
 import type { VocabItemProgress } from "@/utils/spacedRepetition";
 import { countLevelsPassed, masteryNextStep, scoreTierLabel } from "@/utils/spacedRepetition";
@@ -21,7 +22,10 @@ export default function VocabularyCard({ item, progress, trainingLevel, compact 
     return (
       <article className="vocab-card vocab-card-compact">
         <div className="vocab-card-head">
-          <h3 className="vocab-card-term">{item.term}</h3>
+          <h3 className="vocab-card-term">
+            {item.term}
+            <WordPhoneticHint word={item.term} className="vault-word-phonetic" />
+          </h3>
           <span className="vocab-card-mastery" title="Mastery level">
             {progress.masteryLevel}/5
           </span>
@@ -41,7 +45,10 @@ export default function VocabularyCard({ item, progress, trainingLevel, compact 
       <header className="vocab-card-head">
         <div>
           <span className="vocab-card-category">{item.category}</span>
-          <h2 className="vocab-card-term">{item.term}</h2>
+          <h2 className="vocab-card-term">
+            {item.term}
+            <WordPhoneticHint word={item.term} className="vault-word-phonetic" />
+          </h2>
         </div>
         <div className="vocab-card-mastery-block">
           <strong className="vocab-card-mastery-score">{progress.masteryLevel}/5</strong>

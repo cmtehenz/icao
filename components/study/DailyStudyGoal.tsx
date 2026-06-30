@@ -11,8 +11,10 @@ import {
   studyDayPoints,
   studyProgressPercent,
   studyStreak,
+  todayKey,
   type StudyActivity,
 } from "@/lib/studyTime";
+import { isDailyMissionComplete } from "@/lib/dailyMission";
 
 const DISPLAY_ACTIVITIES: StudyActivity[] = [
   "shadow",
@@ -67,6 +69,7 @@ export default function DailyStudyGoal({ highlight = "all", compact = false }: P
   const goalPoints = studyDayGoalPoints(mode);
   const totalPoints = studyDayPoints(today);
   const allDone = studyDayGoalMet(today, mode);
+  const missionDone = isDailyMissionComplete();
   const streak = studyStreak(undefined, mode);
 
   return (
@@ -86,7 +89,12 @@ export default function DailyStudyGoal({ highlight = "all", compact = false }: P
           </div>
           <div className="daily-study-head-side">
             {streak > 0 && (
-              <span className="daily-study-streak">{streak} dia{streak > 1 ? "s" : ""} seguidos ✓</span>
+              <span className="daily-study-streak" title="Missão diária ou meta de pontos">
+                {streak} dia{streak > 1 ? "s" : ""} seguidos ✓
+              </span>
+            )}
+            {missionDone && (
+              <span className="daily-study-mission-done">Missão ✓</span>
             )}
             <span className={`daily-study-total ${allDone ? "done" : ""}`}>
               {totalPoints} / {goalPoints} pts

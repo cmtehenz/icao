@@ -12,6 +12,8 @@ export type VaultWord = {
   practiceCount: number;
   /** Approved practices with accuracy above VAULT_PASS_SCORE */
   passCount: number;
+  /** How often the word came back to training (failed practice or re-added after graduation). */
+  returnCount: number;
   lastSeenAt: string;
   lastPracticedAt?: string;
 };
@@ -72,6 +74,7 @@ export function sanitizeVaultWord(word: VaultWord): VaultWord {
     timesSeen: normalizeTimesSeen(word.timesSeen),
     practiceCount: normalizePracticeCount(word.practiceCount),
     passCount: normalizeVaultCount(word.passCount, 0),
+    returnCount: normalizeVaultCount(word.returnCount, 0),
   };
 }
 
@@ -165,6 +168,7 @@ export function addWordsToVault(
   for (const item of incoming) {
     if (shouldSkipPronunciationVaultWord(item.word)) continue;
     const key = item.word.toLowerCase();
+    const wasRemoved = loadRemovedVaultKeys().has(key);
     clearVaultWordRemoved(key);
     const existing = map.get(key);
     if (existing) {
@@ -187,6 +191,7 @@ export function addWordsToVault(
         timesSeen: 1,
         practiceCount: 0,
         passCount: 0,
+        returnCount: wasRemoved ? 1 : 0,
         lastSeenAt: now,
       });
       added += 1;
@@ -273,6 +278,7 @@ export function recordWordPractice(word: string, accuracy: number): VaultPractic
   }
 
   item.lowestAccuracy = Math.min(item.lowestAccuracy, accuracy);
+  item.returnCount = normalizeVaultCount(item.returnCount, 0) + 1;
   saveVault(vault);
   return { removed: false, passCount: item.passCount };
 }
@@ -294,13 +300,10 @@ export function vaultStats(words: VaultWord[]) {
 
 /** Palavras críticas para warm-up antes de gravar no Part 2. */
 export function pickWarmupWords(words: VaultWord[] = loadVault(), limit = 3): VaultWord[] {
-  const critical = [...words]
-    .filter((w) => w.lastAccuracy < 60)
-    .sort((a, b) => a.lastAccuracy - b.lastAccuracy);
-  if (critical.length >= limit) return critical.slice(0, limit);
-
-  const extra = [...words]
-    .filter((w) => w.lastAccuracy >= 60 && w.lastAccuracy < VAULT_PASS_SCORE)
-    .sort((a, b) => a.lastAccuracy - b.lastAccuracy);
-  return [...critical, ...extra].slice(0, limit);
+  const ranked = [...words].sort((a, b) => {
+    const aWeight = a.returnCount * 10 + (100 - a.lastAccuracy);
+    const bWeight = b.returnCount * 10 + (100 - b.lastAccuracy);
+    return bWeight - aWeight;
+  });
+  return ranked.slice(0, limit);
 }

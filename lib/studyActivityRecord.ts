@@ -7,6 +7,15 @@ import {
   hasShadowPart2ScoredToday,
   markShadowPart2Scored,
 } from "@/lib/shadowPart2Dedup";
+import { markPart1ShadowDone, isPart1CardInTodayMission, tryMarkPart1ShadowComplete } from "@/lib/part1DailyMission";
+import {
+  getOrCreatePart2DailyMission,
+  markPart2DailyComplete,
+  markPart2DailyCompleteByScenario,
+  type Part2MissionKind,
+} from "@/lib/part2DailyMission";
+import { markVocabDailyComplete, isVocabTermInTodayMission } from "@/lib/vocabDailyMission";
+import { syncDailyMissionLog } from "@/lib/dailyMissionLog";
 import {
   recordStudyActivity,
   studyActivityPoints,
@@ -33,6 +42,12 @@ export type StudyActivityRecordContext = {
   situationId?: string;
   /** Part 1 PEEL block key (`cardNum:blockId`) — um ponto por bloco/dia. */
   peelBlockKey?: string;
+  /** Part 1 card number — missão diária shadow/coach. */
+  cardNum?: string;
+  /** Vocabulário ICAO term id — missão diária de 20 palavras. */
+  vocabTermId?: string;
+  /** Part 2 mode for daily mission tracking. */
+  part2MissionKind?: Part2MissionKind;
 };
 
 export type StudyActivityRecordedDetail = {
@@ -171,7 +186,21 @@ export function tryRecordStudyActivity(
   }
   if (activity === "shadowPart2" && ctx.situationId) {
     markShadowPart2Scored(ctx.situationId);
+    if (ctx.part2MissionKind) {
+      markPart2DailyCompleteByScenario(ctx.part2MissionKind, ctx.situationId);
+    } else {
+      const mission = getOrCreatePart2DailyMission();
+      const item = mission.items.find((i) => i.scenarioId === ctx.situationId);
+      if (item) markPart2DailyComplete(item.id);
+    }
   }
+  if (activity === "shadow" && ctx.cardNum) {
+    tryMarkPart1ShadowComplete(ctx.cardNum);
+  }
+  if (activity === "vocabulary" && ctx.vocabTermId && isVocabTermInTodayMission(ctx.vocabTermId)) {
+    markVocabDailyComplete(ctx.vocabTermId);
+  }
+  syncDailyMissionLog();
   const points = studyActivityPoints(activity, count);
   const detail: StudyActivityRecordedDetail = {
     activity,

@@ -90,6 +90,7 @@ export default function Part2InteractionShadowPanel({
         accuracy,
         recognizedText: assessment.recognizedText,
         situationId,
+        part2MissionKind: "interaction" as const,
       };
       const ok = tryRecordStudyActivity("shadowPart2", ctx);
       setCounted(ok);

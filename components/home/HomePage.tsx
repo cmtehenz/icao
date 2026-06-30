@@ -5,7 +5,9 @@ import { useMemo } from "react";
 import { useAuth } from "@/components/AuthProvider";
 import VaultWeakWordsPanel from "@/components/account/VaultWeakWordsPanel";
 import StudyAgenda from "@/components/study/StudyAgenda";
+import DailyMissionPanel from "@/components/study/DailyMissionPanel";
 import StudyWeeklyReport from "@/components/study/StudyWeeklyReport";
+import { isDailyMissionComplete } from "@/lib/dailyMission";
 import { useStudyAgenda } from "@/hooks/useStudyAgenda";
 import { isAgendaTaskDone } from "@/lib/studyAgenda";
 import { resolveAgendaLink } from "@/lib/studyAgendaLinks";
@@ -25,6 +27,8 @@ export default function HomePage() {
   const goalPoints = studyDayGoalPoints(mode);
   const totalPoints = studyDayPoints(today);
   const remaining = studyDayRemainingPoints(today, mode);
+
+  const missionComplete = isDailyMissionComplete();
 
   const nextTask = useMemo(
     () => agenda.tasks.find((task) => !isAgendaTaskDone(task, today)),
@@ -60,10 +64,10 @@ export default function HomePage() {
       </header>
 
       <section className="home-continue-card">
-        {progress.globalGoalMet && progress.agendaComplete ? (
+        {progress.globalGoalMet && progress.agendaComplete && missionComplete ? (
           <>
             <strong>Meta de hoje completa ✓</strong>
-            <p>Ótimo trabalho — revise ou avance no Part 1/2.</p>
+            <p>Missão diária e agenda concluídas — ótimo trabalho!</p>
             <Link href="/part1" className="btn purple">
               Abrir Part 1 →
             </Link>
@@ -82,6 +86,8 @@ export default function HomePage() {
           </>
         )}
       </section>
+
+      <DailyMissionPanel />
 
       <StudyAgenda compact showWeek={false} />
 

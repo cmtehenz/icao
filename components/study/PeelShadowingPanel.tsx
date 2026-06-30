@@ -157,6 +157,7 @@ export default function PeelShadowingPanel({
         accuracy,
         recognizedText: assessment.recognizedText,
         peelBlockKey: peelBlockActivityKey(card.num, activeBlock.id),
+        cardNum: card.num,
       };
       const counted = tryRecordStudyActivity("shadow", ctx);
       if (!counted) {

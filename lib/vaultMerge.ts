@@ -69,6 +69,7 @@ export function mergeVaultWords(local: VaultWord[], remote: VaultWord[]): VaultW
       timesSeen: mergeCount(existing.timesSeen, item.timesSeen, 1),
       practiceCount: mergeCount(existing.practiceCount, item.practiceCount, 0),
       passCount: mergeCount(existing.passCount, item.passCount, 0),
+      returnCount: mergeCount(existing.returnCount, item.returnCount, 0),
       lastSeenAt: pickLatest(existing.lastSeenAt, item.lastSeenAt),
       lastPracticedAt:
         existing.lastPracticedAt && item.lastPracticedAt
@@ -126,6 +127,7 @@ export function dbWordToVault(row: {
     timesSeen: row.timesSeen,
     practiceCount: row.practiceCount,
     passCount: row.passCount,
+    returnCount: 0,
     lastSeenAt: row.lastSeenAt.toISOString(),
     lastPracticedAt: row.lastPracticedAt?.toISOString(),
   });

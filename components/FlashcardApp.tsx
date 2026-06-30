@@ -166,6 +166,7 @@ export default function FlashcardApp() {
     const idx = CARDS.findIndex((c) => c.num === cardNum);
     if (idx >= 0) selectCard(idx);
     if (searchParams.get("shadow") === "1") setVoicePracticeOpen(true);
+    if (searchParams.get("coach") === "1") setVoicePracticeOpen(true);
     const block = searchParams.get("block");
     if (block) {
       setPeelBlockId(block as PeelBlockId);
@@ -379,8 +380,14 @@ export default function FlashcardApp() {
 
             {!keywordsOnly && (
               <VoicePracticePanel
-                initialOpen={voicePracticeOpen || searchParams.get("shadow") === "1"}
-                preferredTab={peelBlockId ? "shadow" : undefined}
+                initialOpen={voicePracticeOpen || searchParams.get("shadow") === "1" || searchParams.get("coach") === "1"}
+                preferredTab={
+                  searchParams.get("coach") === "1"
+                    ? "coach"
+                    : peelBlockId || searchParams.get("shadow") === "1"
+                      ? "shadow"
+                      : undefined
+                }
                 beforeTabs={
                   <PeelBlockWeakDetail cardNum={card.num} onTrainBlock={trainPeelBlock} />
                 }
@@ -400,6 +407,7 @@ export default function FlashcardApp() {
                     modelAnswer={card.answer}
                     evaluateType="part1"
                     keywords={keywords}
+                    cardNum={card.num}
                   />
                 }
               />

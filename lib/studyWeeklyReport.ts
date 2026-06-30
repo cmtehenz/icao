@@ -5,7 +5,7 @@ import {
   loadStudyDays,
   loadStudyPlanMode,
   studyActivityPoints,
-  studyDayGoalMet,
+  studyDaySuccess,
   studyDayPoints,
   studyWeekGoodDays,
   type StudyDayRecord,
@@ -82,7 +82,7 @@ export function buildStudyWeeklyReport(
       date,
       label: dayLabel(date),
       points: isFuture ? 0 : studyDayPoints(day),
-      goalMet: isFuture ? false : studyDayGoalMet(day, mode),
+      goalMet: isFuture ? false : studyDaySuccess(date, day, mode),
       shadow: day.shadow,
       shadowPart2: day.shadowPart2,
     };

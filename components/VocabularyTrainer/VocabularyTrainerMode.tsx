@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import PronunciationRecorder from "@/components/VocabularyTrainer/PronunciationRecorder";
+import VocabDailyMissionChecklist from "@/components/VocabularyTrainer/VocabDailyMissionChecklist";
 import VocabularyCard from "@/components/VocabularyTrainer/VocabularyCard";
 import {
   ICAO_VOCAB_CATEGORIES,
@@ -97,6 +98,14 @@ export default function VocabularyTrainerMode({ initialTermId }: { initialTermId
       setFilter("all");
     }
   }, [initialTermId]);
+
+  const selectTermById = (termId: string) => {
+    const item = ICAO_VOCABULARY.find((t) => t.id === termId);
+    if (item) {
+      setActiveItem(item);
+      setFilter("all");
+    }
+  };
 
   const filtered = useMemo(() => {
     return ICAO_VOCABULARY.filter((item) => {
@@ -196,6 +205,8 @@ export default function VocabularyTrainerMode({ initialTermId }: { initialTermId
           Pronunciation bank →
         </Link>
       </div>
+
+      <VocabDailyMissionChecklist onSelectTerm={selectTermById} />
 
       <div className="vocab-trainer-layout">
         <div className="vocab-trainer-list">

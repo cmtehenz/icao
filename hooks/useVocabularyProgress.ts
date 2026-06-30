@@ -62,6 +62,7 @@ export function useVocabularyProgress() {
         tryRecordStudyActivity("vocabulary", {
           accuracy: assessment.accuracyScore,
           recognizedText: assessment.recognizedText,
+          vocabTermId: id,
         });
       }
       setStore(loadVocabProgressStore());

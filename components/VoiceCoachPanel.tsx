@@ -11,8 +11,11 @@ import { saveEvaluationRecord } from "@/lib/evaluate/saveEvaluation";
 import { recordPart2RecordingScore } from "@/lib/part2Warmup";
 import { tryRecordStudyActivity, studyActivityRejectReason } from "@/lib/studyActivityRecord";
 import { addWordsToVault } from "@/lib/pronunciationVault";
+import { markPart1CoachDone, isPart1CardInTodayMission } from "@/lib/part1DailyMission";
+import type { Part2MissionKind } from "@/lib/part2DailyMission";
 import AnswerComparePanel from "@/components/AnswerComparePanel";
 import AudioCompareReplay from "@/components/study/AudioCompareReplay";
+import WordPhoneticHint from "@/components/WordPhoneticHint";
 import IcaoLevelPanel from "@/components/IcaoLevelPanel";
 import YouGlishLink from "@/components/YouGlishLink";
 import { useAuth } from "@/components/AuthProvider";
@@ -23,6 +26,7 @@ type Props = {
   evaluateType: EvaluateType;
   keywords?: string[];
   situationId?: string;
+  cardNum?: string;
   modelAudioUrl?: string;
   recordingBlocked?: boolean;
   recordingBlockedMessage?: string;
@@ -47,6 +51,7 @@ export default function VoiceCoachPanel({
   evaluateType,
   keywords = [],
   situationId,
+  cardNum,
   modelAudioUrl,
   recordingBlocked = false,
   recordingBlockedMessage,
@@ -115,13 +120,30 @@ export default function VoiceCoachPanel({
 
       if (azureResult && evaluateType.startsWith("part2")) {
         recordPart2RecordingScore(azureResult.accuracyScore);
+        const part2MissionKind: Part2MissionKind =
+          evaluateType === "part2-readback"
+            ? "readback"
+            : evaluateType === "part2-interaction"
+              ? "interaction"
+              : "reported";
         const ctx = {
           accuracy: azureResult.accuracyScore,
           recognizedText: azureResult.recognizedText,
           situationId,
+          part2MissionKind,
         };
         const counted = tryRecordStudyActivity("shadowPart2", ctx);
         setActivityNote(counted ? null : studyActivityRejectReason("shadowPart2", ctx));
+      }
+
+      if (
+        azureResult &&
+        evaluateType === "part1" &&
+        cardNum &&
+        isPart1CardInTodayMission(cardNum) &&
+        azureResult.accuracyScore > 0
+      ) {
+        markPart1CoachDone(cardNum);
       }
 
       if (user) {
@@ -435,7 +457,10 @@ export default function VoiceCoachPanel({
                       key={`${w.word}-${w.accuracyScore}`}
                       className={`mispronounced-item ${w.accuracyScore < 60 ? "bad" : "warn"}`}
                     >
-                      <span className="mispronounced-word">{w.word}</span>
+                      <span className="mispronounced-word">
+                        {w.word}
+                        <WordPhoneticHint word={w.word} className="vault-word-phonetic" />
+                      </span>
                       <span className="mispronounced-score">{w.accuracyScore}%</span>
                       <span className="mispronounced-error">{w.errorLabel}</span>
                       <YouGlishLink word={w.word} compact />
