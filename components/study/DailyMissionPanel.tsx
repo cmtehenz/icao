@@ -19,6 +19,12 @@ import {
   PART2_DAILY_MISSION_EVENT,
 } from "@/lib/part2DailyMission";
 import { VOCAB_DAILY_MISSION_EVENT } from "@/lib/vocabDailyMission";
+import { useStudyAgenda } from "@/hooks/useStudyAgenda";
+import {
+  studyDayGoalPoints,
+  studyDayPoints,
+  studyStreak,
+} from "@/lib/studyTime";
 
 function cardLabel(num: string): string {
   const card = CARDS.find((c) => c.num === num);
@@ -28,6 +34,10 @@ function cardLabel(num: string): string {
 
 export default function DailyMissionPanel() {
   const [tick, setTick] = useState(0);
+  const { mode, setMode, today } = useStudyAgenda();
+  const goalPoints = studyDayGoalPoints(mode);
+  const totalPoints = studyDayPoints(today);
+  const streak = studyStreak(undefined, mode);
 
   const refresh = useCallback(() => setTick((n) => n + 1), []);
 
@@ -51,18 +61,48 @@ export default function DailyMissionPanel() {
   const insights = useMemo(() => buildDifficultyInsights(3), [tick]);
 
   return (
-    <section className="daily-mission-panel" aria-label="Missão diária">
+    <section className="daily-mission-panel" aria-label="Plano de estudo de hoje">
       <header className="daily-mission-head">
         <div>
-          <h2>Missão de hoje</h2>
+          <h2>Plano de hoje</h2>
           <p className="sub">
-            Part 1: 4 perguntas (shadow + coach) · Part 2: mix diário · Vocabulário: 20 palavras
+            Part 1 (4 perguntas) · Part 2 (mix) · 20 palavras — rotação diária
           </p>
         </div>
-        <span className={`daily-mission-pill ${summary.complete ? "done" : ""}`}>
-          {summary.completedSections}/{summary.totalSections} blocos
-        </span>
+        <div className="daily-mission-head-side">
+          <span className={`daily-mission-pill ${summary.complete ? "done" : ""}`}>
+            {summary.completedSections}/{summary.totalSections} blocos
+          </span>
+          <span className={`daily-mission-points ${totalPoints >= goalPoints ? "done" : ""}`}>
+            {totalPoints}/{goalPoints} pts
+          </span>
+          {streak > 0 && (
+            <span className="daily-mission-streak" title="Dias seguidos com missão ou meta de pontos">
+              {streak}d ✓
+            </span>
+          )}
+        </div>
       </header>
+
+      <div className="study-agenda-mode daily-mission-mode" role="group" aria-label="Intensidade extra">
+        <button
+          type="button"
+          className={`study-agenda-mode-btn ${mode === "standard" ? "active" : ""}`}
+          onClick={() => setMode("standard")}
+        >
+          Padrão · 20 pts
+        </button>
+        <button
+          type="button"
+          className={`study-agenda-mode-btn ${mode === "intense" ? "active" : ""}`}
+          onClick={() => setMode("intense")}
+        >
+          Dia bom · 45 pts
+        </button>
+      </div>
+      <p className="daily-mission-mode-hint">
+        Missão = rotação fixa do dia. Pontos extras se quiser treinar além disso.
+      </p>
 
       <div className="daily-mission-grid">
         <article className={`daily-mission-card ${summary.part1.complete ? "done" : ""}`}>

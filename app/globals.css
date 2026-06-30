@@ -2161,6 +2161,46 @@ input {
   font-size: 1.1rem;
 }
 
+.daily-mission-head-side {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+.daily-mission-points {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  background: var(--line);
+  color: var(--muted);
+}
+
+.daily-mission-points.done {
+  background: color-mix(in srgb, var(--purple) 18%, transparent);
+  color: var(--purple);
+}
+
+.daily-mission-streak {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--green) 15%, transparent);
+  color: var(--green);
+}
+
+.daily-mission-mode {
+  margin-bottom: 0.35rem;
+}
+
+.daily-mission-mode-hint {
+  margin: 0 0 1rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
 .daily-mission-pill {
   flex-shrink: 0;
   font-size: 0.78rem;

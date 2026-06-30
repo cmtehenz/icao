@@ -1,17 +1,27 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo } from "react";
+import { useMemo, useState, useCallback, useEffect } from "react";
 import { useAuth } from "@/components/AuthProvider";
 import VaultWeakWordsPanel from "@/components/account/VaultWeakWordsPanel";
-import StudyAgenda from "@/components/study/StudyAgenda";
 import DailyMissionPanel from "@/components/study/DailyMissionPanel";
 import StudyWeeklyReport from "@/components/study/StudyWeeklyReport";
-import { isDailyMissionComplete } from "@/lib/dailyMission";
+import {
+  getDailyMissionSummary,
+  getNextMissionAction,
+  isDailyMissionComplete,
+} from "@/lib/dailyMission";
+import { PART1_DAILY_MISSION_EVENT } from "@/lib/part1DailyMission";
+import { PART2_DAILY_MISSION_EVENT } from "@/lib/part2DailyMission";
+import { VOCAB_DAILY_MISSION_EVENT } from "@/lib/vocabDailyMission";
+import { DAILY_MISSION_LOG_EVENT } from "@/lib/dailyMissionLog";
+import { STUDY_ACTIVITY_RECORDED_EVENT } from "@/lib/studyActivityRecord";
 import { useStudyAgenda } from "@/hooks/useStudyAgenda";
-import { isAgendaTaskDone } from "@/lib/studyAgenda";
-import { resolveAgendaLink } from "@/lib/studyAgendaLinks";
-import { studyDayGoalPoints, studyDayPoints, studyDayRemainingPoints } from "@/lib/studyTime";
+import {
+  studyDayGoalPoints,
+  studyDayPoints,
+  studyDayRemainingPoints,
+} from "@/lib/studyTime";
 
 const QUICK_LINKS = [
   { href: "/part1", label: "Part 1", desc: "Aviation topics", icon: "✈" },
@@ -22,20 +32,32 @@ const QUICK_LINKS = [
 
 export default function HomePage() {
   const { user, loading } = useAuth();
-  const { agenda, today, progress, mode } = useStudyAgenda();
+  const { today, mode } = useStudyAgenda();
+  const [tick, setTick] = useState(0);
+
+  const refresh = useCallback(() => setTick((n) => n + 1), []);
+
+  useEffect(() => {
+    const events = [
+      PART1_DAILY_MISSION_EVENT,
+      PART2_DAILY_MISSION_EVENT,
+      VOCAB_DAILY_MISSION_EVENT,
+      DAILY_MISSION_LOG_EVENT,
+      STUDY_ACTIVITY_RECORDED_EVENT,
+    ];
+    for (const ev of events) window.addEventListener(ev, refresh);
+    return () => {
+      for (const ev of events) window.removeEventListener(ev, refresh);
+    };
+  }, [refresh]);
 
   const goalPoints = studyDayGoalPoints(mode);
   const totalPoints = studyDayPoints(today);
   const remaining = studyDayRemainingPoints(today, mode);
-
+  const mission = useMemo(() => getDailyMissionSummary(), [tick]);
   const missionComplete = isDailyMissionComplete();
+  const nextAction = useMemo(() => getNextMissionAction(), [tick]);
 
-  const nextTask = useMemo(
-    () => agenda.tasks.find((task) => !isAgendaTaskDone(task, today)),
-    [agenda.tasks, today],
-  );
-
-  const nextHref = nextTask ? resolveAgendaLink(nextTask.linkTarget) : "/part1";
   const firstName = user?.name?.split(" ")[0] || user?.email?.split("@")[0] || "piloto";
 
   if (loading) {
@@ -51,45 +73,50 @@ export default function HomePage() {
       <header className="home-hero">
         <div>
           <h1>Olá, {firstName}</h1>
-          <p className="sub hero-sub-compact">{agenda.subtitle}</p>
+          <p className="sub hero-sub-compact">
+            {missionComplete
+              ? "Plano de hoje completo — pode revisar ou treinar extra."
+              : "Siga o plano abaixo: 4 perguntas Part 1, Part 2 e 20 palavras."}
+          </p>
         </div>
         <div className="home-hero-stats">
-          <span className={`home-points-pill ${progress.globalGoalMet ? "done" : ""}`}>
-            {totalPoints} / {goalPoints} pts
+          <span className={`home-points-pill ${missionComplete ? "done" : ""}`}>
+            {mission.completedSections}/{mission.totalSections} blocos
           </span>
-          <span className="home-tasks-pill">
-            {progress.tasksDone}/{progress.tasksTotal} tarefas
+          <span className={`home-tasks-pill ${totalPoints >= goalPoints ? "done" : ""}`}>
+            {totalPoints}/{goalPoints} pts
           </span>
         </div>
       </header>
 
       <section className="home-continue-card">
-        {progress.globalGoalMet && progress.agendaComplete && missionComplete ? (
+        {missionComplete ? (
           <>
-            <strong>Meta de hoje completa ✓</strong>
-            <p>Missão diária e agenda concluídas — ótimo trabalho!</p>
+            <strong>Plano de hoje completo ✓</strong>
+            <p>
+              {totalPoints >= goalPoints
+                ? "Missão e meta de pontos feitas — ótimo trabalho!"
+                : `Missão feita! Faltam ${remaining} pts se quiser o dia bom.`}
+            </p>
             <Link href="/part1" className="btn purple">
-              Abrir Part 1 →
+              Treino extra →
             </Link>
           </>
         ) : (
           <>
-            <strong>{nextTask ? nextTask.title : "Agenda de hoje"}</strong>
-            <p>
-              {remaining > 0
-                ? `Faltam ${remaining} pts para a meta${nextTask ? ` · ${nextTask.hint}` : ""}`
-                : "Quase na meta — mais uma sessão curta."}
-            </p>
-            <Link href={nextHref} className="btn purple btn-large">
-              {nextTask ? "Continuar treino →" : "Ir para Part 1 →"}
+            <strong>{nextAction?.title ?? "Plano de hoje"}</strong>
+            <p>{nextAction?.hint ?? "Complete os 3 blocos do plano diário."}</p>
+            <Link
+              href={nextAction?.href ?? "/part1"}
+              className="btn purple btn-large"
+            >
+              Continuar →
             </Link>
           </>
         )}
       </section>
 
       <DailyMissionPanel />
-
-      <StudyAgenda compact showWeek={false} />
 
       <VaultWeakWordsPanel limit={3} />
 
