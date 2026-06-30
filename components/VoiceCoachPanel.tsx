@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useAzurePronunciation } from "@/hooks/useAzurePronunciation";
 import { useSpeechRecognition } from "@/hooks/useSpeechRecognition";
-import { errorTypeLabel, collectVaultWordCandidates, isScriptedAssessment } from "@/lib/azure/pronunciation";
+import { errorTypeLabel, collectVaultWordCandidates, useUnscriptedPronunciation } from "@/lib/azure/pronunciation";
 import type { AzurePronunciationResult } from "@/lib/azure/pronunciation";
 import type { EvaluateFeedback, EvaluateType } from "@/lib/evaluate/types";
 import { estimateIcaoLevel } from "@/lib/evaluate/icaoLevel";
@@ -94,15 +94,25 @@ export default function VoiceCoachPanel({
 
       if (azureResult) {
         const azureExtras = buildAzureExtras(azureResult);
-        data.scores.pronunciation = azureResult.accuracyScore;
+        const unscripted = useUnscriptedPronunciation(evaluateType);
+        const pronunciationScore = unscripted
+          ? Math.round(
+              azureResult.accuracyScore * 0.55 +
+                azureResult.fluencyScore * 0.3 +
+                azureResult.prosodyScore * 0.15,
+            )
+          : azureResult.accuracyScore;
+        data.scores.pronunciation = pronunciationScore;
         data.scores.overall = Math.round(
-          data.scores.content * 0.3 +
+          data.scores.content * 0.35 +
             data.scores.structure * 0.25 +
-            data.scores.phraseology * 0.2 +
-            azureResult.accuracyScore * 0.25,
+            data.scores.phraseology * 0.15 +
+            pronunciationScore * 0.25,
         );
         data.azurePronunciation = azureExtras;
-        data.summary = `Pronúncia Azure: ${azureResult.accuracyScore}/100 (accuracy). ${data.summary}`;
+        data.summary = unscripted
+          ? `Pronúncia Azure (fala livre): ${pronunciationScore}/100. ${data.summary}`
+          : `Pronúncia Azure: ${azureResult.accuracyScore}/100 (accuracy). ${data.summary}`;
         if (azureExtras.weakWords.length) {
           data.improvements = [
             `Pronúncia: pratique — ${azureExtras.weakWords.join(", ")}.`,
@@ -141,7 +151,7 @@ export default function VoiceCoachPanel({
         evaluateType === "part1" &&
         cardNum &&
         isPart1CardInTodayMission(cardNum) &&
-        azureResult.accuracyScore > 0
+        data.scores.overall >= 50
       ) {
         markPart1CoachDone(cardNum);
       }
@@ -246,7 +256,7 @@ export default function VoiceCoachPanel({
     );
   }
 
-  const scripted = isScriptedAssessment(evaluateType);
+  const unscripted = useUnscriptedPronunciation(evaluateType);
 
   return (
     <div className={`voice-coach-panel ${embedded ? "embedded" : ""}`}>
@@ -268,7 +278,9 @@ export default function VoiceCoachPanel({
       {azure.configured ? (
         <p className="voice-coach-azure-badge">
           ✓ Azure Speech ativo — pronúncia real por áudio
-          {scripted ? " (compara com a resposta modelo)" : ""}
+          {unscripted
+            ? " (Part 1: fala livre — avalia ideias e keywords, não texto idêntico)"
+            : " (compara com a resposta modelo)"}
         </p>
       ) : (
         <p className="voice-coach-warn">
@@ -403,6 +415,7 @@ export default function VoiceCoachPanel({
             <AnswerComparePanel
               transcript={feedback.transcript}
               modelAnswer={modelAnswer}
+              keywords={keywords}
               azureAccuracy={feedback.azurePronunciation?.accuracyScore}
             />
           )}

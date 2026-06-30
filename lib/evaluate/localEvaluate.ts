@@ -1,5 +1,6 @@
 import type { EvaluateFeedback, EvaluateRequest, EvaluateScores } from "./types";
 import { compareTranscriptToModel } from "./compareAnswer";
+import { scorePart1Content } from "./contentScore";
 import { estimateIcaoLevel } from "./icaoLevel";
 import { peelMissingConnectors, peelStructureFeedbackPt, peelStructureScore } from "./peel";
 import { buildSpokenAnswer } from "@/lib/spokenAnswer";
@@ -70,7 +71,12 @@ export function localEvaluate(req: EvaluateRequest): EvaluateFeedback {
 
   const words = trimmed.split(/\s+/).length;
   const referenceAnswer = type === "part1" ? buildSpokenAnswer(modelAnswer) : modelAnswer;
-  const content = overlapScore(trimmed, referenceAnswer);
+  const part1Content =
+    type === "part1" ? scorePart1Content(trimmed, modelAnswer, keywords) : null;
+  const content =
+    type === "part1" && part1Content
+      ? part1Content.score
+      : overlapScore(trimmed, referenceAnswer);
   const structure =
     type === "part1"
       ? peelStructureScore(trimmed)
@@ -89,7 +95,7 @@ export function localEvaluate(req: EvaluateRequest): EvaluateFeedback {
   }
 
   const keywordPenalty = keywords.length
-    ? Math.round((missingKeywords.length / keywords.length) * 25)
+    ? Math.round((missingKeywords.length / keywords.length) * 15)
     : 0;
 
   const pronunciation = clamp(
@@ -114,14 +120,23 @@ export function localEvaluate(req: EvaluateRequest): EvaluateFeedback {
   const strengths: string[] = [];
   const improvements: string[] = [];
 
-  if (scores.content >= 70) strengths.push("Boa cobertura do conteúdo esperado.");
+  if (scores.content >= 70) strengths.push("Boa cobertura das ideias e termos esperados.");
+  if (part1Content && part1Content.keywordCoverage >= 70) {
+    strengths.push(`Keywords do card cobertas (${part1Content.keywordCoverage}%).`);
+  }
   if (scores.structure >= 60) strengths.push("Estrutura reconhecível na resposta.");
   if (type.startsWith("part2") && normalize(trimmed).includes("anac 123")) {
     strengths.push("Callsign ANAC 123 presente.");
   }
   if (words >= 80 && type === "part1") strengths.push("Duração de resposta adequada para Part 1.");
 
-  if (scores.content < 60) improvements.push("Inclua mais ideias da resposta modelo e keywords.");
+  if (scores.content < 60) {
+    improvements.push(
+      type === "part1"
+        ? "Inclua as ideias do tema e as keywords do card — não precisa repetir a frase modelo."
+        : "Inclua mais ideias da resposta modelo e keywords.",
+    );
+  }
   if (scores.structure < 50 && type === "part1") {
     const missing = peelMissingConnectors(trimmed);
     improvements.push(...peelStructureFeedbackPt(missing));
@@ -137,10 +152,10 @@ export function localEvaluate(req: EvaluateRequest): EvaluateFeedback {
   }
 
   if (type === "part1") {
-    const compare = compareTranscriptToModel(trimmed, modelAnswer);
+    const compare = compareTranscriptToModel(trimmed, modelAnswer, keywords);
     if (compare.unreliableTranscript) {
       improvements.unshift(
-        "A transcrição saiu muito diferente do modelo — provável pronúncia. Use a comparação abaixo e treine as palavras estranhas no banco de pronúncia.",
+        "A transcrição saiu fraca nas keywords/ideias — pode ser pronúncia ou conteúdo faltando. Revise as keywords abaixo e treine palavras difíceis no banco de pronúncia.",
       );
     }
   }

@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { loadSpeechSdk } from "@/lib/azure/loadSpeechSdk";
 import type { AzurePronunciationResult, AzureWordScore } from "@/lib/azure/pronunciation";
-import { azureReferenceText } from "@/lib/azure/pronunciation";
+import { azureReferenceText, useUnscriptedPronunciation } from "@/lib/azure/pronunciation";
 import type { EvaluateType } from "@/lib/evaluate/types";
 import { preferredRecorderMime } from "@/lib/recordings/platform";
 
@@ -151,10 +151,6 @@ export function useAzurePronunciation() {
   const startWithReference = useCallback(
     async (referenceText: string) => {
       const reference = referenceText.trim().slice(0, 500);
-      if (!reference) {
-        setError("Texto de referência vazio.");
-        return;
-      }
 
       setError(null);
       setResult(null);
@@ -191,7 +187,7 @@ export function useAzurePronunciation() {
           reference,
           sdk.PronunciationAssessmentGradingSystem.HundredMark,
           sdk.PronunciationAssessmentGranularity.Phoneme,
-          true,
+          !!reference,
         );
         pronunciationConfig.enableProsodyAssessment = true;
         pronunciationConfig.applyTo(recognizer);
@@ -253,8 +249,9 @@ export function useAzurePronunciation() {
 
   const start = useCallback(
     async (modelAnswer: string, evaluateType: EvaluateType) => {
+      const unscripted = useUnscriptedPronunciation(evaluateType);
       let reference = azureReferenceText(modelAnswer, evaluateType);
-      if (!reference.trim() && modelAnswer.trim()) {
+      if (!reference.trim() && !unscripted && modelAnswer.trim()) {
         reference = modelAnswer.trim().slice(0, 500);
       }
       await startWithReference(reference);

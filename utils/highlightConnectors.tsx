@@ -1,22 +1,5 @@
 import { Fragment, type ReactNode } from "react";
-
-export const CONNECTOR_PHRASES = [
-  "From my point of view",
-  "From my experience",
-  "In my opinion",
-  "One of the main reasons is",
-  "First of all",
-  "In addition",
-  "Additionally",
-  "For example",
-  "As a result",
-  "Therefore",
-  "Finally",
-  "Overall",
-  "Also",
-] as const;
-
-const SORTED = [...CONNECTOR_PHRASES].sort((a, b) => b.length - a.length);
+import { ALL_CONNECTOR_PHRASES } from "@/lib/connectors";
 
 type Segment = { text: string; connector: boolean };
 
@@ -28,10 +11,11 @@ function splitByConnectors(text: string): Segment[] {
     let matched: { phrase: string; index: number } | null = null;
     const lower = remaining.toLowerCase();
 
-    for (const phrase of SORTED) {
-      const idx = lower.indexOf(phrase.toLowerCase());
+    for (const phrase of ALL_CONNECTOR_PHRASES) {
+      const core = phrase.replace(/[,.\s]+$/, "").trim();
+      const idx = lower.indexOf(core.toLowerCase());
       if (idx !== -1 && (matched === null || idx < matched.index)) {
-        matched = { phrase, index: idx };
+        matched = { phrase: remaining.slice(idx, idx + core.length), index: idx };
       }
     }
 
@@ -44,12 +28,11 @@ function splitByConnectors(text: string): Segment[] {
       segments.push({ text: remaining.slice(0, matched.index), connector: false });
     }
 
-    const len = matched.phrase.length;
     segments.push({
-      text: remaining.slice(matched.index, matched.index + len),
+      text: matched.phrase,
       connector: true,
     });
-    remaining = remaining.slice(matched.index + len);
+    remaining = remaining.slice(matched.index + matched.phrase.length);
   }
 
   return segments;

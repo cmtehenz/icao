@@ -17,11 +17,13 @@ Return ONLY valid JSON with this shape:
 }
 Rules:
 - Compare against the model answer and question.
+- For part1: accept paraphrases — same ideas, aviation keywords, and clear structure matter more than matching the model word-for-word.
+- For part1: accept any connector from the app's connector bank (Openers, Idea 1–3, Example, Conclusion groups) as valid structure.
 - For part2-readback: check clearance elements, numbers, callsign ANAC 123.
 - For part2-interaction: check problem, intention, request, MAYDAY/PAN if needed.
 - For part2-reported: check reported speech grammar (past tense, third person).
-- For part1: check PEEL structure — opener, three ideas with First of all / Additionally / Finally, For example, Overall (~80-120 words ideal). Do NOT suggest First/Second/Third only; always include For example and Overall.
-- For part1 suggestedAnswer: base it on modelAnswer; keep the same ideas and aviation vocabulary; fix grammar only; must include all five PEEL connectors.
+- For part1: check structure — opener, ideas with connectors, For example, conclusion (~80-120 words ideal).
+- For part1 suggestedAnswer: base it on modelAnswer; keep the same ideas and aviation vocabulary; fix grammar only; include example + conclusion connectors.
 - pronunciation score: infer from likely misheard words in transcript vs expected aviation terms; note you only have text not audio.
 - Remember: official ICAO rating uses 6 criteria and overall level = LOWEST criterion (Operational = Level 4 minimum for pilots).`;
 

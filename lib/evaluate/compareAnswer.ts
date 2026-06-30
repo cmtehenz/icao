@@ -1,4 +1,5 @@
 import { buildSpokenAnswer } from "@/lib/spokenAnswer";
+import { keywordCoverage } from "./contentScore";
 
 const STOP_WORDS = new Set([
   "the", "a", "an", "and", "or", "to", "of", "in", "on", "at", "for", "is", "are", "was", "were",
@@ -29,6 +30,9 @@ function uniqueContentWords(words: string[]): string[] {
 export type AnswerCompareResult = {
   spokenModel: string;
   overlapPercent: number;
+  keywordCoveragePercent: number;
+  matchedKeywords: string[];
+  missingKeywords: string[];
   matchedContentWords: string[];
   missingContentWords: string[];
   extraContentWords: string[];
@@ -38,6 +42,7 @@ export type AnswerCompareResult = {
 export function compareTranscriptToModel(
   transcript: string,
   modelAnswer: string,
+  keywords: string[] = [],
 ): AnswerCompareResult {
   const spokenModel = buildSpokenAnswer(modelAnswer);
   const modelTokens = tokens(spokenModel);
@@ -54,6 +59,8 @@ export function compareTranscriptToModel(
     ? Math.round((matched / modelTokens.length) * 100)
     : 0;
 
+  const kw = keywordCoverage(transcript, keywords);
+
   const matchedContentWords = uniqueContentWords(
     modelTokens.filter((w) => transcriptSet.has(w)),
   ).slice(0, 12);
@@ -66,14 +73,20 @@ export function compareTranscriptToModel(
     transcriptTokens.filter((w) => !modelSet.has(w)),
   ).slice(0, 12);
 
+  const hasKeywords = keywords.length > 0;
+  const contentOk = hasKeywords ? kw.percent >= 55 : overlapPercent >= 45;
   const unreliableTranscript =
     transcript.trim().length > 0 &&
-    transcriptTokens.length >= 25 &&
-    overlapPercent < 45;
+    transcriptTokens.length >= 20 &&
+    !contentOk &&
+    overlapPercent < 40;
 
   return {
     spokenModel,
     overlapPercent,
+    keywordCoveragePercent: kw.percent,
+    matchedKeywords: kw.matched.slice(0, 8),
+    missingKeywords: kw.missing.slice(0, 8),
     matchedContentWords,
     missingContentWords,
     extraContentWords,

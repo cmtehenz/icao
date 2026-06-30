@@ -215,3 +215,40 @@ export function loadConnectorSet(): ConnectorSetId {
 export function saveConnectorSet(id: ConnectorSetId) {
   localStorage.setItem(CONNECTOR_SET_KEY, id);
 }
+
+/** All phrases from the connector bank — longest first for highlight matching. */
+export const ALL_CONNECTOR_PHRASES = CONNECTOR_GROUPS.flatMap((g) => [...g.items]).sort(
+  (a, b) => b.length - a.length,
+);
+
+export type ConnectorBankGroup = {
+  title: string;
+  items: readonly string[];
+  patterns: RegExp[];
+};
+
+function connectorPhraseToPattern(phrase: string): RegExp {
+  const core = phrase
+    .toLowerCase()
+    .replace(/[,.\s]+$/, "")
+    .trim();
+  const escaped = core.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return new RegExp(`\\b${escaped.replace(/ /g, "\\s+")}\\b`, "i");
+}
+
+/** Six structure slots from the connector bank (Openers → Conclusion). */
+export function getConnectorBankGroups(): ConnectorBankGroup[] {
+  return CONNECTOR_GROUPS.map((g) => ({
+    title: g.title,
+    items: g.items,
+    patterns: g.items.map(connectorPhraseToPattern),
+  }));
+}
+
+export function transcriptHasConnectorGroup(transcript: string, group: ConnectorBankGroup): boolean {
+  return group.patterns.some((p) => p.test(transcript));
+}
+
+export function connectorBankGroupByTitle(title: string): ConnectorBankGroup | undefined {
+  return getConnectorBankGroups().find((g) => g.title === title);
+}

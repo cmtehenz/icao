@@ -6,38 +6,79 @@ import { highlightConnectors } from "@/utils/highlightConnectors";
 type Props = {
   transcript: string;
   modelAnswer: string;
+  keywords?: string[];
   azureAccuracy?: number;
 };
 
-export default function AnswerComparePanel({ transcript, modelAnswer, azureAccuracy }: Props) {
-  const compare = compareTranscriptToModel(transcript, modelAnswer);
+export default function AnswerComparePanel({
+  transcript,
+  modelAnswer,
+  keywords = [],
+  azureAccuracy,
+}: Props) {
+  const compare = compareTranscriptToModel(transcript, modelAnswer, keywords);
 
   if (!transcript.trim()) return null;
 
   return (
     <div className="answer-compare-panel">
-      <h3>Comparação — modelo vs. o que o Azure ouviu</h3>
+      <h3>Ideias e keywords — não precisa ser palavra por palavra</h3>
+      <p className="answer-compare-hint">
+        O coach avalia se você cobriu o tema e as keywords do card. Reformular com suas palavras é
+        OK — use a resposta modelo só como guia de estrutura.
+      </p>
 
       {compare.unreliableTranscript && (
         <p className="answer-compare-warn">
-          A transcrição diverge muito do modelo ({compare.overlapPercent}% das palavras batem).
-          Isso costuma ser <strong>pronúncia</strong>, não conteúdo errado — o microfone “adivinha”
-          palavras parecidas (<em>wingding</em> em vez de <em>wind</em>, <em>Dobbs</em> em vez de{" "}
-          <em>doubts</em>). Treine as palavras em vermelho no banco de pronúncia e grave de novo
-          olhando a resposta modelo.
+          Poucas keywords/ideias detectadas
+          {keywords.length > 0 && (
+            <>
+              {" "}
+              ({compare.keywordCoveragePercent}% das keywords; {compare.overlapPercent}% de overlap
+              com o modelo)
+            </>
+          )}
+          . Pode ser pronúncia (o microfone “adivinha” palavras parecidas) ou conteúdo faltando —
+          treine termos difíceis no banco de pronúncia e tente incluir as keywords em vermelho.
         </p>
       )}
 
       <div className="answer-compare-stats">
-        <span>Palavras em comum: <strong>{compare.overlapPercent}%</strong></span>
+        {keywords.length > 0 && (
+          <span>
+            Keywords: <strong>{compare.keywordCoveragePercent}%</strong>
+          </span>
+        )}
+        <span>
+          Termos do modelo: <strong>{compare.overlapPercent}%</strong>
+        </span>
         {azureAccuracy !== undefined && (
-          <span>Pronúncia Azure: <strong>{azureAccuracy}%</strong></span>
+          <span>
+            Pronúncia Azure: <strong>{azureAccuracy}%</strong>
+          </span>
         )}
       </div>
 
+      {keywords.length > 0 && (
+        <div className="answer-compare-words">
+          {compare.matchedKeywords.length > 0 && (
+            <div className="answer-compare-word-group matched">
+              <strong>Keywords que você usou</strong>
+              <p>{compare.matchedKeywords.join(", ")}</p>
+            </div>
+          )}
+          {compare.missingKeywords.length > 0 && (
+            <div className="answer-compare-word-group missing">
+              <strong>Keywords para incluir na próxima tentativa</strong>
+              <p>{compare.missingKeywords.join(", ")}</p>
+            </div>
+          )}
+        </div>
+      )}
+
       <div className="answer-compare-columns">
         <div className="answer-compare-col model">
-          <h4>Resposta modelo (fale assim)</h4>
+          <h4>Guia de estrutura (modelo)</h4>
           <p className="answer-compare-text">{highlightConnectors(compare.spokenModel)}</p>
         </div>
         <div className="answer-compare-col heard">
@@ -50,7 +91,7 @@ export default function AnswerComparePanel({ transcript, modelAnswer, azureAccur
         <div className="answer-compare-words">
           {compare.missingContentWords.length > 0 && (
             <div className="answer-compare-word-group missing">
-              <strong>Faltaram no áudio (modelo)</strong>
+              <strong>Termos do modelo que faltaram (opcional)</strong>
               <p>{compare.missingContentWords.join(", ")}</p>
             </div>
           )}
@@ -62,7 +103,7 @@ export default function AnswerComparePanel({ transcript, modelAnswer, azureAccur
           )}
           {compare.matchedContentWords.length > 0 && (
             <div className="answer-compare-word-group matched">
-              <strong>Acertou</strong>
+              <strong>Termos que bateram com o modelo</strong>
               <p>{compare.matchedContentWords.join(", ")}</p>
             </div>
           )}

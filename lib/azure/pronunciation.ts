@@ -1,4 +1,3 @@
-import { buildSpokenAnswer } from "@/lib/spokenAnswer";
 import { shouldSkipPronunciationVaultWord } from "@/lib/aviationSpeechTerms";
 
 export type AzureWordScore = {
@@ -18,20 +17,24 @@ export type AzurePronunciationResult = {
 
 export function isScriptedAssessment(type: string): boolean {
   return (
-    type === "part1" ||
     type === "part2-readback" ||
     type === "part2-reported" ||
     type === "part2-interaction"
   );
 }
 
-/** Reference text for Azure pronunciation assessment. */
+/** Part 1 coach: free speech — Azure scores how you speak, not word-for-word script. */
+export function useUnscriptedPronunciation(type: string): boolean {
+  return type === "part1";
+}
+
+/** Reference text for Azure pronunciation assessment (scripted Part 2 / vocab only). */
 export function azureReferenceText(modelAnswer: string, type: string): string {
   const trimmed = (modelAnswer ?? "").trim();
   if (!trimmed) return "";
 
-  if (type === "part1") {
-    return buildSpokenAnswer(trimmed).slice(0, 500);
+  if (useUnscriptedPronunciation(type)) {
+    return "";
   }
   if (isScriptedAssessment(type)) {
     return trimmed.slice(0, 500);
