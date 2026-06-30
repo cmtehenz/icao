@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import AudioCompareReplay from "@/components/study/AudioCompareReplay";
 import { useAzureSpeech } from "@/hooks/useAzureSpeech";
 import {
   studyActivityRejectReason,
@@ -15,6 +16,7 @@ type Props = {
   prompt: string;
   modelReport: string;
   context: string;
+  situationId: string;
   initialOpen?: boolean;
 };
 
@@ -24,6 +26,7 @@ export default function Part2InteractionShadowPanel({
   prompt,
   modelReport,
   context,
+  situationId,
   initialOpen = false,
 }: Props) {
   const azure = useAzureSpeech();
@@ -37,6 +40,7 @@ export default function Part2InteractionShadowPanel({
   } | null>(null);
   const [note, setNote] = useState<string | null>(null);
   const [counted, setCounted] = useState(false);
+  const [lastAudioBlob, setLastAudioBlob] = useState<Blob | null>(null);
 
   useEffect(() => {
     if (initialOpen) setOpen(true);
@@ -63,7 +67,8 @@ export default function Part2InteractionShadowPanel({
 
   const stopShadow = async () => {
     if (phase !== "recording") return;
-    const { assessment } = await azure.stopRecording();
+    const { assessment, audioBlob } = await azure.stopRecording();
+    setLastAudioBlob(audioBlob);
     const accuracy = assessment?.accuracyScore ?? 0;
     setScore({
       accuracy,
@@ -76,6 +81,7 @@ export default function Part2InteractionShadowPanel({
       const ctx = {
         accuracy,
         recognizedText: assessment.recognizedText,
+        situationId,
       };
       const ok = tryRecordStudyActivity("shadowPart2", ctx);
       setCounted(ok);
@@ -162,6 +168,12 @@ export default function Part2InteractionShadowPanel({
                 <strong>Ouviu:</strong> {score.heard}
               </p>
             )}
+            <AudioCompareReplay
+              modelText={modelReport}
+              userAudioBlob={lastAudioBlob}
+              modelLabel="Modelo"
+              userLabel="Você"
+            />
             <button type="button" className="btn green btn-sm" onClick={() => void startShadow()}>
               Tentar de novo
             </button>

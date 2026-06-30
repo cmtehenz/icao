@@ -2596,6 +2596,35 @@ input {
   font-weight: 800;
 }
 
+.peel-weak-badge {
+  display: inline-block;
+  margin-left: 0.25rem;
+  padding: 0.1rem 0.35rem;
+  border-radius: 999px;
+  font-size: 0.62rem;
+  font-weight: 800;
+  color: var(--orange);
+  background: color-mix(in srgb, var(--orange) 12%, transparent);
+}
+
+.peel-weak-badge.compact {
+  font-size: 0.58rem;
+}
+
+.audio-compare-replay {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0.5rem 0;
+}
+
+.study-goal-bar-week {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--muted);
+  min-width: 2rem;
+}
+
 .study-goal-sheet-backdrop {
   position: fixed;
   inset: 0;

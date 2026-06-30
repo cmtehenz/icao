@@ -7,6 +7,7 @@ import ExamVersionPicker from "@/components/ExamVersionPicker";
 import PilotProfileModal from "@/components/PilotProfileModal";
 import QuickPhrasesMenu from "@/components/QuickPhrasesMenu";
 import AnswerPanel from "@/components/study/AnswerPanel";
+import PeelBlockWeakBadge from "@/components/study/PeelBlockWeakBadge";
 import PeelShadowingPanel from "@/components/study/PeelShadowingPanel";
 import ExamSession from "@/components/study/ExamSession";
 import FilterBar, { type CardFilter } from "@/components/study/FilterBar";
@@ -269,6 +270,7 @@ export default function FlashcardApp() {
                 title={c.question}
               >
                 <span className="topic-pill-label">{exam ?? `#${c.num}`}</span>
+                <PeelBlockWeakBadge cardNum={c.num} compact />
                 {favorites.includes(c.num) && <span className="pill-star">★</span>}
               </button>
             );

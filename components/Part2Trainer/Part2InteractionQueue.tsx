@@ -2,14 +2,14 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { ExamSituation } from "@/lib/exams/types";
-import type { Part2ProgressStore } from "@/lib/part2/progress";
 import {
-  getOrCreateReadbackQueue,
-  markReadbackQueueComplete,
-  readbackQueueProgress,
-  READBACK_QUEUE_CHANGE_EVENT,
-  type ReadbackQueueState,
-} from "@/lib/part2ReadbackQueue";
+  getOrCreateInteractionQueue,
+  interactionQueueProgress,
+  INTERACTION_QUEUE_CHANGE_EVENT,
+  markInteractionQueueComplete,
+  type InteractionQueueState,
+} from "@/lib/part2InteractionQueue";
+import type { Part2ProgressStore } from "@/lib/part2/progress";
 import { STUDY_ACTIVITY_RECORDED_EVENT } from "@/lib/studyActivityRecord";
 
 type Props = {
@@ -19,22 +19,22 @@ type Props = {
   onSelectScenario: (scenarioId: string) => void;
 };
 
-export default function Part2ReadbackQueue({
+export default function Part2InteractionQueue({
   scenarios,
   progress,
   currentScenarioId,
   onSelectScenario,
 }: Props) {
-  const [queue, setQueue] = useState<ReadbackQueueState | null>(null);
+  const [queue, setQueue] = useState<InteractionQueueState | null>(null);
 
   const refresh = useCallback(() => {
-    setQueue(getOrCreateReadbackQueue(progress, scenarios));
+    setQueue(getOrCreateInteractionQueue(progress, scenarios));
   }, [progress, scenarios]);
 
   useEffect(() => {
     refresh();
-    window.addEventListener(READBACK_QUEUE_CHANGE_EVENT, refresh);
-    return () => window.removeEventListener(READBACK_QUEUE_CHANGE_EVENT, refresh);
+    window.addEventListener(INTERACTION_QUEUE_CHANGE_EVENT, refresh);
+    return () => window.removeEventListener(INTERACTION_QUEUE_CHANGE_EVENT, refresh);
   }, [refresh]);
 
   useEffect(() => {
@@ -42,14 +42,14 @@ export default function Part2ReadbackQueue({
       const detail = (event as CustomEvent<{ activity?: string; situationId?: string }>).detail;
       if (detail?.activity !== "shadowPart2") return;
       const id = detail.situationId ?? currentScenarioId;
-      const next = markReadbackQueueComplete(id);
+      const next = markInteractionQueueComplete(id);
       if (next) setQueue(next);
     };
     window.addEventListener(STUDY_ACTIVITY_RECORDED_EVENT, onRecorded);
     return () => window.removeEventListener(STUDY_ACTIVITY_RECORDED_EVENT, onRecorded);
   }, [currentScenarioId]);
 
-  const stats = useMemo(() => (queue ? readbackQueueProgress(queue) : null), [queue]);
+  const stats = useMemo(() => (queue ? interactionQueueProgress(queue) : null), [queue]);
 
   const scenarioLabel = useCallback(
     (id: string) => {
@@ -67,17 +67,17 @@ export default function Part2ReadbackQueue({
   };
 
   return (
-    <section className="part2-readback-queue" aria-label="Fila de readbacks de hoje">
+    <section className="part2-readback-queue part2-interaction-queue" aria-label="Fila de interaction de hoje">
       <div className="part2-readback-queue-head">
         <div>
           <strong>
             {stats.complete
-              ? "Fila de hoje completa ✓"
-              : `Fila de hoje — ${stats.done}/${stats.total}`}
+              ? "Fila interaction completa ✓"
+              : `Fila interaction — ${stats.done}/${stats.total}`}
           </strong>
           <span>
             {stats.complete
-              ? "Readbacks da agenda concluídos"
+              ? "Situações da agenda concluídas"
               : stats.currentId
                 ? `Próxima: ${scenarioLabel(stats.currentId)}`
                 : "Escolha uma situação abaixo"}

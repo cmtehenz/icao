@@ -1,5 +1,9 @@
 import { VAULT_PASS_SCORE } from "@/lib/pronunciationVault";
 import {
+  hasShadowPart2ScoredToday,
+  markShadowPart2Scored,
+} from "@/lib/shadowPart2Dedup";
+import {
   recordStudyActivity,
   studyActivityPoints,
   STUDY_ACTIVITY_LABELS,
@@ -21,6 +25,8 @@ export const VOCABULARY_PASS_SCORE = 50;
 export type StudyActivityRecordContext = {
   accuracy?: number;
   recognizedText?: string;
+  /** Part 2 situation id — evita ponto duplo na mesma situação/dia. */
+  situationId?: string;
 };
 
 export type StudyActivityRecordedDetail = {
@@ -28,6 +34,7 @@ export type StudyActivityRecordedDetail = {
   count: number;
   points: number;
   label: string;
+  situationId?: string;
 };
 
 export type StudyActivityNearMissDetail = {
@@ -43,6 +50,10 @@ export function canRecordStudyActivity(
 ): boolean {
   const accuracy = ctx.accuracy ?? 0;
   const heard = ctx.recognizedText?.trim() ?? "";
+
+  if (activity === "shadowPart2" && ctx.situationId && hasShadowPart2ScoredToday(ctx.situationId)) {
+    return false;
+  }
 
   switch (activity) {
     case "shadow":
@@ -65,6 +76,10 @@ export function studyActivityRejectReason(
   ctx: StudyActivityRecordContext,
 ): string | null {
   if (canRecordStudyActivity(activity, ctx)) return null;
+
+  if (activity === "shadowPart2" && ctx.situationId && hasShadowPart2ScoredToday(ctx.situationId)) {
+    return "Já contou ponto nesta situação hoje — use outra ou treine sem meta.";
+  }
 
   switch (activity) {
     case "shadow":
@@ -139,12 +154,16 @@ export function tryRecordStudyActivity(
   }
 
   recordStudyActivity(activity, count);
+  if (activity === "shadowPart2" && ctx.situationId) {
+    markShadowPart2Scored(ctx.situationId);
+  }
   const points = studyActivityPoints(activity, count);
   const detail: StudyActivityRecordedDetail = {
     activity,
     count,
     points,
     label: STUDY_ACTIVITY_LABELS[activity],
+    situationId: ctx.situationId,
   };
   window.dispatchEvent(new CustomEvent(STUDY_ACTIVITY_RECORDED_EVENT, { detail }));
   return true;

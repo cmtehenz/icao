@@ -115,6 +115,7 @@ export default function ReadbackMode({ progress, onProgressChange, openShadow = 
             audioLabel={examAudioLabel(scenario.examVersion, scenario.readback.audioTrack)}
             modelReadback={scenario.readback.modelReadback}
             context={scenario.context}
+            situationId={scenario.id}
             initialOpen={openShadow}
           />
 
@@ -122,6 +123,8 @@ export default function ReadbackMode({ progress, onProgressChange, openShadow = 
             question={scenario.context}
             modelAnswer={scenario.readback.modelReadback}
             evaluateType="part2-readback"
+            situationId={scenario.id}
+            modelAudioUrl={audioSrc}
           />
 
           <div className="study-toolbar">

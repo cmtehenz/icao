@@ -7,6 +7,7 @@ import {
   studyActivityRejectReason,
   tryRecordStudyActivity,
 } from "@/lib/studyActivityRecord";
+import AudioCompareReplay from "@/components/study/AudioCompareReplay";
 import { addWordsToVault, VAULT_PASS_SCORE } from "@/lib/pronunciationVault";
 import { collectVaultWordCandidates } from "@/lib/azure/pronunciation";
 
@@ -17,6 +18,7 @@ type Props = {
   audioLabel: string;
   modelReadback: string;
   context: string;
+  situationId: string;
   initialOpen?: boolean;
 };
 
@@ -27,6 +29,7 @@ export default function Part2ReadbackShadowPanel({
   audioLabel,
   modelReadback,
   context,
+  situationId,
   initialOpen = false,
 }: Props) {
   const azure = useAzureSpeech();
@@ -41,6 +44,7 @@ export default function Part2ReadbackShadowPanel({
   } | null>(null);
   const [note, setNote] = useState<string | null>(null);
   const [counted, setCounted] = useState(false);
+  const [lastAudioBlob, setLastAudioBlob] = useState<Blob | null>(null);
 
   useEffect(() => {
     if (initialOpen) setOpen(true);
@@ -81,7 +85,8 @@ export default function Part2ReadbackShadowPanel({
 
   const stopShadow = async () => {
     if (phase !== "recording") return;
-    const { assessment } = await azure.stopRecording();
+    const { assessment, audioBlob } = await azure.stopRecording();
+    setLastAudioBlob(audioBlob);
     const accuracy = assessment?.accuracyScore ?? 0;
     setScore({
       accuracy,
@@ -94,6 +99,7 @@ export default function Part2ReadbackShadowPanel({
       const ctx = {
         accuracy,
         recognizedText: assessment.recognizedText,
+        situationId,
       };
       const ok = tryRecordStudyActivity("shadowPart2", ctx);
       setCounted(ok);
@@ -187,6 +193,13 @@ export default function Part2ReadbackShadowPanel({
                 <strong>Ouviu:</strong> {score.heard}
               </p>
             )}
+            <AudioCompareReplay
+              modelAudioUrl={audioSrc}
+              modelText={modelReadback}
+              userAudioBlob={lastAudioBlob}
+              modelLabel="ATC"
+              userLabel="Você"
+            />
             <button type="button" className="btn green btn-sm" onClick={() => void startShadow()}>
               Tentar de novo
             </button>

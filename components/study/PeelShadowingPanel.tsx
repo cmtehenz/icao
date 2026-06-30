@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import YouGlishLink from "@/components/YouGlishLink";
+import AudioCompareReplay from "@/components/study/AudioCompareReplay";
 import { useAzureSpeech } from "@/hooks/useAzureSpeech";
 import {
   SHADOW_PEEL_PASS_SCORE,
@@ -10,6 +11,7 @@ import {
 } from "@/lib/studyActivityRecord";
 import { collectVaultWordCandidates } from "@/lib/azure/pronunciation";
 import { getPeelBlocks, type PeelBlock, type PeelBlockId } from "@/lib/peelBlocks";
+import { getPeelBlockHistory, recordPeelBlockAttempt } from "@/lib/peelBlockHistory";
 import { addWordsToVault, VAULT_PASS_SCORE } from "@/lib/pronunciationVault";
 import type { Card } from "@/lib/types";
 import { highlightConnectors } from "@/utils/highlightConnectors";
@@ -40,6 +42,7 @@ export default function PeelShadowingPanel({ card, question, initialOpen = false
   const [scores, setScores] = useState<Partial<Record<PeelBlockId, BlockScore>>>({});
   const [vaultNote, setVaultNote] = useState<string | null>(null);
   const [activityNote, setActivityNote] = useState<string | null>(null);
+  const [lastAudioBlob, setLastAudioBlob] = useState<Blob | null>(null);
   const [runAllIndex, setRunAllIndex] = useState<number | null>(null);
 
   useEffect(() => {
@@ -66,6 +69,16 @@ export default function PeelShadowingPanel({ card, question, initialOpen = false
     setActivityNote(null);
     setRunAllIndex(null);
     setScores({});
+    const history = getPeelBlockHistory(card.num);
+    const fromHistory: Partial<Record<PeelBlockId, BlockScore>> = {};
+    for (const [id, record] of Object.entries(history)) {
+      fromHistory[id as PeelBlockId] = {
+        accuracy: record.lastAccuracy,
+        fluency: 0,
+        completeness: 0,
+      };
+    }
+    setScores(fromHistory);
     // eslint-disable-next-line react-hooks/exhaustive-deps -- reset only when card changes
   }, [card.num]);
 
@@ -110,7 +123,8 @@ export default function PeelShadowingPanel({ card, question, initialOpen = false
 
   const stopBlock = async () => {
     if (!activeBlock || phase !== "recording") return;
-    const { assessment } = await azure.stopRecording();
+    const { assessment, audioBlob } = await azure.stopRecording();
+    setLastAudioBlob(audioBlob);
     const accuracy = assessment?.accuracyScore ?? 0;
     setScores((prev) => ({
       ...prev,
@@ -122,6 +136,7 @@ export default function PeelShadowingPanel({ card, question, initialOpen = false
       },
     }));
     if (assessment) {
+      recordPeelBlockAttempt(card.num, activeBlock.id, accuracy);
       saveWeakWords(activeBlock, assessment, accuracy);
       const ctx = {
         accuracy,
@@ -292,6 +307,12 @@ export default function PeelShadowingPanel({ card, question, initialOpen = false
               {activeScore.accuracy >= SHADOW_PEEL_PASS_SCORE && (
                 <p className="study-activity-counted">✓ Contou na meta de hoje</p>
               )}
+              <AudioCompareReplay
+                modelText={activeBlock.text}
+                userAudioBlob={lastAudioBlob}
+                modelLabel="Modelo"
+                userLabel="Você"
+              />
               <div className="voice-coach-actions">
                 <button
                   type="button"

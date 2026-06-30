@@ -14,6 +14,7 @@ import {
   studyDayRemainingPoints,
   studyProgressPercent,
   studyStreak,
+  studyWeekGoodDays,
   STUDY_TIME_CHANGE_EVENT,
 } from "@/lib/studyTime";
 
@@ -60,6 +61,14 @@ export default function StudyGoalSheet({ onClose }: { onClose: () => void }) {
             Sequência: {streak} dia{streak > 1 ? "s" : ""} com meta completa
           </p>
         )}
+        {(() => {
+          const week = studyWeekGoodDays(undefined, mode);
+          return (
+            <p className="study-goal-sheet-streak">
+              Semana: {week.good}/{week.target} dias bons
+            </p>
+          );
+        })()}
       </div>
     </div>
   );
@@ -73,6 +82,7 @@ export function StudyGoalBar() {
   const totalPoints = studyDayPoints(today);
   const remaining = studyDayRemainingPoints(today, mode);
   const allDone = studyDayGoalMet(today, mode);
+  const week = studyWeekGoodDays(undefined, mode);
 
   useEffect(() => {
     const refresh = () => setMode(loadStudyPlanMode());
@@ -112,6 +122,9 @@ export function StudyGoalBar() {
           })}
         </div>
         <span className="study-goal-bar-meta">
+          <span className="study-goal-bar-week" title="Dias bons nesta semana">
+            {week.good}/{week.target}
+          </span>
           <span className={`study-goal-bar-time ${allDone ? "done" : ""}`}>
             {allDone ? `${totalPoints}✓` : `${totalPoints}/${goalPoints}`}
           </span>

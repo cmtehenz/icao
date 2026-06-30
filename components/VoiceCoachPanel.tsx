@@ -8,9 +8,10 @@ import type { AzurePronunciationResult } from "@/lib/azure/pronunciation";
 import type { EvaluateFeedback, EvaluateType } from "@/lib/evaluate/types";
 import { estimateIcaoLevel } from "@/lib/evaluate/icaoLevel";
 import { saveEvaluationRecord } from "@/lib/evaluate/saveEvaluation";
-import { tryRecordStudyActivity } from "@/lib/studyActivityRecord";
+import { tryRecordStudyActivity, studyActivityRejectReason } from "@/lib/studyActivityRecord";
 import { addWordsToVault } from "@/lib/pronunciationVault";
 import AnswerComparePanel from "@/components/AnswerComparePanel";
+import AudioCompareReplay from "@/components/study/AudioCompareReplay";
 import IcaoLevelPanel from "@/components/IcaoLevelPanel";
 import YouGlishLink from "@/components/YouGlishLink";
 import { useAuth } from "@/components/AuthProvider";
@@ -20,6 +21,8 @@ type Props = {
   modelAnswer: string;
   evaluateType: EvaluateType;
   keywords?: string[];
+  situationId?: string;
+  modelAudioUrl?: string;
 };
 
 function buildAzureExtras(azureResult: AzurePronunciationResult) {
@@ -39,6 +42,8 @@ export default function VoiceCoachPanel({
   modelAnswer,
   evaluateType,
   keywords = [],
+  situationId,
+  modelAudioUrl,
 }: Props) {
   const speech = useSpeechRecognition("en-US");
   const azure = useAzurePronunciation();
@@ -47,6 +52,8 @@ export default function VoiceCoachPanel({
   const [feedback, setFeedback] = useState<EvaluateFeedback | null>(null);
   const [vaultSaved, setVaultSaved] = useState<string | null>(null);
   const [audioSaveNote, setAudioSaveNote] = useState<string | null>(null);
+  const [activityNote, setActivityNote] = useState<string | null>(null);
+  const [lastAudioBlob, setLastAudioBlob] = useState<Blob | null>(null);
   const [open, setOpen] = useState(false);
 
   const runContentEvaluation = async (
@@ -58,6 +65,7 @@ export default function VoiceCoachPanel({
     setFeedback(null);
     setVaultSaved(null);
     setAudioSaveNote(null);
+    setActivityNote(null);
     try {
       const res = await fetch("/api/evaluate", {
         method: "POST",
@@ -99,10 +107,13 @@ export default function VoiceCoachPanel({
       setFeedback(data);
 
       if (azureResult && evaluateType.startsWith("part2")) {
-        tryRecordStudyActivity("shadowPart2", {
+        const ctx = {
           accuracy: azureResult.accuracyScore,
           recognizedText: azureResult.recognizedText,
-        });
+          situationId,
+        };
+        const counted = tryRecordStudyActivity("shadowPart2", ctx);
+        setActivityNote(counted ? null : studyActivityRejectReason("shadowPart2", ctx));
       }
 
       if (user) {
@@ -189,6 +200,7 @@ export default function VoiceCoachPanel({
       return;
     }
     await runContentEvaluation(text, assessment ?? undefined, audioBlob);
+    setLastAudioBlob(audioBlob);
   };
 
   if (!open) {
@@ -348,6 +360,17 @@ export default function VoiceCoachPanel({
           )}
 
           {audioSaveNote && <p className="voice-coach-warn">{audioSaveNote}</p>}
+          {activityNote && <p className="voice-coach-warn">{activityNote}</p>}
+
+          {evaluateType.startsWith("part2") && lastAudioBlob && (
+            <AudioCompareReplay
+              modelText={modelAnswer}
+              modelAudioUrl={modelAudioUrl}
+              userAudioBlob={lastAudioBlob}
+              modelLabel="Modelo"
+              userLabel="Sua gravação"
+            />
+          )}
 
           {feedback.strengths.length > 0 && (
             <div className="voice-coach-list good">

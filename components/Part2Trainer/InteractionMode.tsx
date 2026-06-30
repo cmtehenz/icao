@@ -1,13 +1,19 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import ExamVersionPicker from "@/components/ExamVersionPicker";
+import Part2InteractionQueue from "@/components/Part2Trainer/Part2InteractionQueue";
 import Part2InteractionShadowPanel from "@/components/Part2Trainer/Part2InteractionShadowPanel";
 import PronunciationWarmupBanner from "@/components/study/PronunciationWarmupBanner";
 import VoiceCoachPanel from "@/components/VoiceCoachPanel";
 import ProgressBadge from "@/components/study/ProgressBadge";
 import { ALL_EXAM_SITUATIONS, getSituationsByExam } from "@/data/exams/part2Data";
 import type { ExamVersion } from "@/lib/exams/types";
+import { findScenarioIndex } from "@/lib/part2ReadbackQueue";
+import {
+  getOrCreateInteractionQueue,
+  interactionQueueProgress,
+} from "@/lib/part2InteractionQueue";
 import {
   getPart2ItemProgress,
   setPart2ItemStatus,
@@ -34,6 +40,18 @@ export default function InteractionMode({ progress, onProgressChange, openShadow
   const scenario = scenarios[index];
   const itemProgress = getPart2ItemProgress(progress, `${scenario.id}-int`);
 
+  const selectScenario = useCallback(
+    (scenarioId: string) => {
+      const nextIndex = findScenarioIndex(scenarios, scenarioId);
+      if (nextIndex >= 0) {
+        setIndex(nextIndex);
+        setShowAnswer(false);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    },
+    [scenarios],
+  );
+
   const go = (delta: number) => {
     setIndex((i) => (i + delta + scenarios.length) % scenarios.length);
     setShowAnswer(false);
@@ -43,8 +61,22 @@ export default function InteractionMode({ progress, onProgressChange, openShadow
     onProgressChange(setPart2ItemStatus(progress, `${scenario.id}-int`, status));
   };
 
+  useEffect(() => {
+    if (!openShadow) return;
+    const queue = getOrCreateInteractionQueue(progress, scenarios);
+    const { currentId } = interactionQueueProgress(queue);
+    if (currentId) selectScenario(currentId);
+  }, [openShadow, progress, scenarios, selectScenario]);
+
   return (
     <div className="part2-mode">
+      <Part2InteractionQueue
+        scenarios={scenarios}
+        progress={progress}
+        currentScenarioId={scenario.id}
+        onSelectScenario={selectScenario}
+      />
+
       <ExamVersionPicker
         value={examVersion}
         onChange={(v) => {
@@ -85,6 +117,7 @@ export default function InteractionMode({ progress, onProgressChange, openShadow
             prompt={scenario.interaction.prompt}
             modelReport={scenario.interaction.modelReport}
             context={scenario.context}
+            situationId={scenario.id}
             initialOpen={openShadow}
           />
 
@@ -92,6 +125,7 @@ export default function InteractionMode({ progress, onProgressChange, openShadow
             question={scenario.interaction.prompt}
             modelAnswer={scenario.interaction.modelReport}
             evaluateType="part2-interaction"
+            situationId={scenario.id}
           />
 
           <div className="study-toolbar">

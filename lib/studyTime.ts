@@ -314,6 +314,31 @@ export function studyDaysThisMonth(days: StudyDaysMap = loadStudyDays()): number
   }).length;
 }
 
+/** Meta de dias bons na semana corrente (domingo a sábado). */
+export const STUDY_WEEKLY_GOAL_DAYS = 4;
+
+export function studyWeekGoodDays(
+  days: StudyDaysMap = loadStudyDays(),
+  mode: StudyPlanMode = "standard",
+): { good: number; target: number } {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const weekStart = new Date(today);
+  weekStart.setDate(today.getDate() - today.getDay());
+
+  let good = 0;
+  for (let i = 0; i < 7; i++) {
+    const cursor = new Date(weekStart);
+    cursor.setDate(weekStart.getDate() + i);
+    if (cursor > today) break;
+    const key = `${cursor.getFullYear()}-${String(cursor.getMonth() + 1).padStart(2, "0")}-${String(cursor.getDate()).padStart(2, "0")}`;
+    const day = normalizeDay(days[key]);
+    if (studyDayGoalMet(day, mode)) good += 1;
+  }
+
+  return { good, target: STUDY_WEEKLY_GOAL_DAYS };
+}
+
 export function formatStudyDaySummary(day: StudyDayRecord): string {
   const parts = STUDY_ACTIVITY_ORDER.filter((key) => day[key] > 0).map(
     (key) =>
