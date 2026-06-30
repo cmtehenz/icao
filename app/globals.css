@@ -2480,6 +2480,122 @@ input {
   }
 }
 
+.study-activity-toast.near-miss {
+  border-color: color-mix(in srgb, var(--orange) 45%, transparent);
+}
+
+.study-activity-toast.near-miss strong {
+  color: var(--orange);
+}
+
+.pronunciation-warmup-banner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin: 0 0 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--orange) 35%, transparent);
+  background: color-mix(in srgb, var(--orange) 8%, var(--card));
+}
+
+.pronunciation-warmup-banner p {
+  margin: 0.35rem 0 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.pronunciation-warmup-words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.75rem;
+  margin: 0.55rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pronunciation-warmup-words li {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+}
+
+.pronunciation-warmup-words a {
+  font-weight: 800;
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.pronunciation-warmup-words span {
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.part2-readback-queue {
+  margin-bottom: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--purple) 30%, transparent);
+  background: color-mix(in srgb, var(--purple) 8%, var(--card));
+}
+
+.part2-readback-queue-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.part2-readback-queue-head strong {
+  display: block;
+  font-size: 0.92rem;
+}
+
+.part2-readback-queue-head span {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.part2-readback-queue-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0.65rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.part2-readback-queue-item button {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.part2-readback-queue-item.current button {
+  border-color: var(--purple);
+  background: color-mix(in srgb, var(--purple) 12%, var(--card));
+}
+
+.part2-readback-queue-item.done button {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.part2-readback-queue-check {
+  font-weight: 800;
+}
+
 .study-goal-sheet-backdrop {
   position: fixed;
   inset: 0;

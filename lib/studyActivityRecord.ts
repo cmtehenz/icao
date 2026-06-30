@@ -7,6 +7,10 @@ import {
 } from "@/lib/studyTime";
 
 export const STUDY_ACTIVITY_RECORDED_EVENT = "icao-study-activity-recorded";
+export const STUDY_ACTIVITY_NEAR_MISS_EVENT = "icao-study-activity-near-miss";
+
+/** Margem para toast "quase passou" (ex.: 68% com meta 70%). */
+export const NEAR_MISS_MARGIN = 10;
 
 /** Mínimo para contar bloco Shadow PEEL. */
 export const SHADOW_PEEL_PASS_SCORE = 70;
@@ -23,6 +27,13 @@ export type StudyActivityRecordedDetail = {
   activity: StudyActivity;
   count: number;
   points: number;
+  label: string;
+};
+
+export type StudyActivityNearMissDetail = {
+  activity: StudyActivity;
+  accuracy: number;
+  threshold: number;
   label: string;
 };
 
@@ -75,13 +86,57 @@ function heardRequired(ctx: StudyActivityRecordContext): boolean {
   return !(ctx.recognizedText?.trim() ?? "");
 }
 
+export function getNearMissDetail(
+  activity: StudyActivity,
+  ctx: StudyActivityRecordContext,
+): StudyActivityNearMissDetail | null {
+  const accuracy = ctx.accuracy ?? 0;
+  const heard = ctx.recognizedText?.trim() ?? "";
+
+  let threshold: number | null = null;
+  switch (activity) {
+    case "shadow":
+      threshold = SHADOW_PEEL_PASS_SCORE;
+      break;
+    case "pronunciation":
+      threshold = VAULT_PASS_SCORE;
+      break;
+    case "vocabulary":
+      threshold = VOCABULARY_PASS_SCORE;
+      break;
+    default:
+      return null;
+  }
+
+  const minNear = threshold - NEAR_MISS_MARGIN;
+  if (accuracy >= minNear && accuracy < threshold) {
+    if (activity === "vocabulary" && !heard) return null;
+    return {
+      activity,
+      accuracy,
+      threshold,
+      label: STUDY_ACTIVITY_LABELS[activity],
+    };
+  }
+  return null;
+}
+
+function notifyNearMiss(activity: StudyActivity, ctx: StudyActivityRecordContext): void {
+  const detail = getNearMissDetail(activity, ctx);
+  if (!detail || typeof window === "undefined") return;
+  window.dispatchEvent(new CustomEvent(STUDY_ACTIVITY_NEAR_MISS_EVENT, { detail }));
+}
+
 export function tryRecordStudyActivity(
   activity: StudyActivity,
   ctx: StudyActivityRecordContext,
   count = 1,
 ): boolean {
   if (typeof window === "undefined" || count <= 0) return false;
-  if (!canRecordStudyActivity(activity, ctx)) return false;
+  if (!canRecordStudyActivity(activity, ctx)) {
+    notifyNearMiss(activity, ctx);
+    return false;
+  }
 
   recordStudyActivity(activity, count);
   const points = studyActivityPoints(activity, count);

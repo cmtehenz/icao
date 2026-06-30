@@ -46,7 +46,7 @@ export function resolveAgendaLink(target: StudyAgendaLinkTarget): string {
     case "part2-readback":
       return "/part2?mode=readback";
     case "part2-interaction":
-      return "/part2?mode=interaction";
+      return "/part2?mode=interaction&shadow=1";
     case "part2-any":
       return "/part2?mode=readback";
     case "pronunciation": {

@@ -285,3 +285,16 @@ export function vaultStats(words: VaultWord[]) {
     needsPractice: words.filter((w) => w.lowestAccuracy < 80).length,
   };
 }
+
+/** Palavras críticas para warm-up antes de gravar no Part 2. */
+export function pickWarmupWords(words: VaultWord[] = loadVault(), limit = 3): VaultWord[] {
+  const critical = [...words]
+    .filter((w) => w.lastAccuracy < 60)
+    .sort((a, b) => a.lastAccuracy - b.lastAccuracy);
+  if (critical.length >= limit) return critical.slice(0, limit);
+
+  const extra = [...words]
+    .filter((w) => w.lastAccuracy >= 60 && w.lastAccuracy < VAULT_PASS_SCORE)
+    .sort((a, b) => a.lastAccuracy - b.lastAccuracy);
+  return [...critical, ...extra].slice(0, limit);
+}

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
+import StudyAgendaSummary from "@/components/study/StudyAgendaSummary";
 import ProgressDashboard from "@/components/VocabularyTrainer/ProgressDashboard";
 import ShadowingMode from "@/components/VocabularyTrainer/ShadowingMode";
 import VocabularyTrainerMode from "@/components/VocabularyTrainer/VocabularyTrainerMode";
@@ -47,6 +48,7 @@ export default function VocabularyTrainerApp() {
 
       <main className="main main-essential part2-main">
         <section className="wrap">
+          <StudyAgendaSummary />
           <div className="vocab-trainer-tabs">
             <button
               type="button"

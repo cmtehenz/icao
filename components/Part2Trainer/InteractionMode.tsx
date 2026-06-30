@@ -2,6 +2,8 @@
 
 import { useMemo, useState } from "react";
 import ExamVersionPicker from "@/components/ExamVersionPicker";
+import Part2InteractionShadowPanel from "@/components/Part2Trainer/Part2InteractionShadowPanel";
+import PronunciationWarmupBanner from "@/components/study/PronunciationWarmupBanner";
 import VoiceCoachPanel from "@/components/VoiceCoachPanel";
 import ProgressBadge from "@/components/study/ProgressBadge";
 import { ALL_EXAM_SITUATIONS, getSituationsByExam } from "@/data/exams/part2Data";
@@ -16,9 +18,10 @@ import type { CardProgressStatus } from "@/lib/progress";
 type Props = {
   progress: Part2ProgressStore;
   onProgressChange: (store: Part2ProgressStore) => void;
+  openShadow?: boolean;
 };
 
-export default function InteractionMode({ progress, onProgressChange }: Props) {
+export default function InteractionMode({ progress, onProgressChange, openShadow = false }: Props) {
   const [examVersion, setExamVersion] = useState<ExamVersion | "all">("all");
   const [index, setIndex] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
@@ -75,6 +78,15 @@ export default function InteractionMode({ progress, onProgressChange }: Props) {
           <p className="part2-hint">
             Ligue para o ATC: facility + ANAC 123 + urgência (se necessário) + problema + intenção + pedido.
           </p>
+
+          <PronunciationWarmupBanner context="interaction" />
+
+          <Part2InteractionShadowPanel
+            prompt={scenario.interaction.prompt}
+            modelReport={scenario.interaction.modelReport}
+            context={scenario.context}
+            initialOpen={openShadow}
+          />
 
           <VoiceCoachPanel
             question={scenario.interaction.prompt}

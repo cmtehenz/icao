@@ -1,14 +1,17 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import ExamAudioPlayer from "@/components/ExamAudioPlayer";
 import ExamVersionPicker from "@/components/ExamVersionPicker";
+import Part2ReadbackQueue from "@/components/Part2Trainer/Part2ReadbackQueue";
 import Part2ReadbackShadowPanel from "@/components/Part2Trainer/Part2ReadbackShadowPanel";
+import PronunciationWarmupBanner from "@/components/study/PronunciationWarmupBanner";
 import VoiceCoachPanel from "@/components/VoiceCoachPanel";
 import ProgressBadge from "@/components/study/ProgressBadge";
 import { ALL_EXAM_SITUATIONS, getSituationsByExam } from "@/data/exams/part2Data";
 import { examAudioUrl, examAudioLabel } from "@/lib/exams/audio";
 import type { ExamVersion } from "@/lib/exams/types";
+import { findScenarioIndex, getOrCreateReadbackQueue, readbackQueueProgress } from "@/lib/part2ReadbackQueue";
 import {
   getPart2ItemProgress,
   setPart2ItemStatus,
@@ -35,6 +38,18 @@ export default function ReadbackMode({ progress, onProgressChange, openShadow = 
   const scenario = scenarios[index];
   const itemProgress = getPart2ItemProgress(progress, `${scenario.id}-rb`);
 
+  const selectScenario = useCallback(
+    (scenarioId: string) => {
+      const nextIndex = findScenarioIndex(scenarios, scenarioId);
+      if (nextIndex >= 0) {
+        setIndex(nextIndex);
+        setShowAnswer(false);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    },
+    [scenarios],
+  );
+
   const go = (delta: number) => {
     setIndex((i) => (i + delta + scenarios.length) % scenarios.length);
     setShowAnswer(false);
@@ -46,8 +61,22 @@ export default function ReadbackMode({ progress, onProgressChange, openShadow = 
 
   const audioSrc = examAudioUrl(scenario.examVersion, scenario.readback.audioTrack);
 
+  useEffect(() => {
+    if (!openShadow) return;
+    const queue = getOrCreateReadbackQueue(progress, scenarios);
+    const { currentId } = readbackQueueProgress(queue);
+    if (currentId) selectScenario(currentId);
+  }, [openShadow, progress, scenarios, selectScenario]);
+
   return (
     <div className="part2-mode">
+      <Part2ReadbackQueue
+        scenarios={scenarios}
+        progress={progress}
+        currentScenarioId={scenario.id}
+        onSelectScenario={selectScenario}
+      />
+
       <ExamVersionPicker
         value={examVersion}
         onChange={(v) => {
@@ -71,13 +100,15 @@ export default function ReadbackMode({ progress, onProgressChange, openShadow = 
           <p className="part2-situation">{scenario.context}</p>
           <p className="part2-prompt-label">{scenario.readback.atcFacility}</p>
           <ExamAudioPlayer
-        src={audioSrc}
-        label={examAudioLabel(scenario.examVersion, scenario.readback.audioTrack)}
-      />
+            src={audioSrc}
+            label={examAudioLabel(scenario.examVersion, scenario.readback.audioTrack)}
+          />
           <p className="part2-atc-message">{scenario.readback.atcMessage}</p>
         </div>
         <div className="card-body">
           <p className="part2-hint">Repita o readback em voz alta. Você pode pedir &quot;say again&quot; uma vez na prova.</p>
+
+          <PronunciationWarmupBanner />
 
           <Part2ReadbackShadowPanel
             audioSrc={audioSrc}
