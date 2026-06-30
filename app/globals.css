@@ -1,33 +1,48 @@
 :root {
-  --bg: #f7f8ff;
-  --text: #0f172a;
-  --muted: #64748b;
+  --bg: #f4f6fa;
+  --bg-subtle: #eceff4;
+  --text: #111827;
+  --muted: #6b7280;
   --card: #ffffff;
-  --line: #e2e8f0;
-  --blue: #2563eb;
-  --blue-bg: #dbeafe;
-  --orange: #f97316;
-  --orange-bg: #ffedd5;
+  --line: #e5e7eb;
+  --border: #e5e7eb;
+  --blue: #3b82f6;
+  --blue-bg: #eff6ff;
+  --orange: #ea580c;
+  --orange-bg: #fff7ed;
   --purple: #7c3aed;
-  --purple-bg: #ede9fe;
+  --purple-bg: #f5f3ff;
   --green: #16a34a;
-  --green-bg: #dcfce7;
+  --green-bg: #f0fdf4;
   --red: #dc2626;
   --yellow: #ca8a04;
-  --shadow: 0 24px 70px rgba(15, 23, 42, 0.12);
+  --accent: #3b82f6;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.07);
+  --shadow-lg: 0 20px 48px rgba(15, 23, 42, 0.1);
+  --shadow: var(--shadow-md);
 }
 
 [data-theme="dark"] {
-  --bg: #070b18;
-  --text: #f8fafc;
-  --muted: #94a3b8;
-  --card: #111827;
-  --line: #334155;
-  --blue-bg: rgba(37, 99, 235, 0.18);
-  --orange-bg: rgba(249, 115, 22, 0.18);
-  --purple-bg: rgba(124, 58, 237, 0.18);
-  --green-bg: rgba(22, 163, 74, 0.18);
-  --shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+  --bg: #0a0e17;
+  --bg-subtle: #121826;
+  --text: #f3f4f6;
+  --muted: #9ca3af;
+  --card: #141b2b;
+  --line: #243044;
+  --border: #243044;
+  --blue-bg: rgba(59, 130, 246, 0.14);
+  --orange-bg: rgba(234, 88, 12, 0.14);
+  --purple-bg: rgba(124, 58, 237, 0.14);
+  --green-bg: rgba(22, 163, 74, 0.14);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.45);
+  --shadow: var(--shadow-md);
 }
 
 * {
@@ -42,15 +57,14 @@ html {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-  background:
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(37, 99, 235, 0.12), transparent),
-    radial-gradient(circle at top left, #dbeafe, transparent 32%),
-    var(--bg);
+  font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif);
+  background: var(--bg);
   color: var(--text);
   min-height: 100dvh;
   min-height: -webkit-fill-available;
   overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 .header {
