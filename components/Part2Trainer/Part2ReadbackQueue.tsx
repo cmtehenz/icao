@@ -26,6 +26,7 @@ export default function Part2ReadbackQueue({
   onSelectScenario,
 }: Props) {
   const [queue, setQueue] = useState<ReadbackQueueState | null>(null);
+  const [queueExpanded, setQueueExpanded] = useState(false);
 
   const refresh = useCallback(() => {
     setQueue(getOrCreateReadbackQueue(progress, scenarios));
@@ -80,33 +81,45 @@ export default function Part2ReadbackQueue({
               ? "Readbacks da agenda concluídos"
               : stats.currentId
                 ? `Próxima: ${scenarioLabel(stats.currentId)}`
-                : "Escolha uma situação abaixo"}
+                : "Abra a fila para escolher uma situação"}
           </span>
         </div>
-        {!stats.complete && stats.currentId && (
-          <button type="button" className="btn purple btn-sm" onClick={goCurrent}>
-            {currentScenarioId === stats.currentId ? "Na fila agora" : "Ir para próxima →"}
+        <div className="part2-queue-actions">
+          {!stats.complete && stats.currentId && (
+            <button type="button" className="btn purple btn-sm" onClick={goCurrent}>
+              {currentScenarioId === stats.currentId ? "Na fila agora" : "Ir para próxima →"}
+            </button>
+          )}
+          <button
+            type="button"
+            className="btn secondary btn-sm"
+            onClick={() => setQueueExpanded((e) => !e)}
+            aria-expanded={queueExpanded}
+          >
+            {queueExpanded ? "Ocultar fila" : "Ver fila"}
           </button>
-        )}
+        </div>
       </div>
 
-      <ol className="part2-readback-queue-list">
-        {queue.scenarioIds.map((id) => {
-          const done = queue.completedIds.includes(id);
-          const current = id === stats.currentId && !done;
-          return (
-            <li
-              key={id}
-              className={`part2-readback-queue-item ${done ? "done" : ""} ${current ? "current" : ""}`}
-            >
-              <button type="button" onClick={() => onSelectScenario(id)} disabled={done}>
-                <span className="part2-readback-queue-check">{done ? "✓" : current ? "→" : "○"}</span>
-                <span>{scenarioLabel(id)}</span>
-              </button>
-            </li>
-          );
-        })}
-      </ol>
+      {queueExpanded && (
+        <ol className="part2-readback-queue-list">
+          {queue.scenarioIds.map((id) => {
+            const done = queue.completedIds.includes(id);
+            const current = id === stats.currentId && !done;
+            return (
+              <li
+                key={id}
+                className={`part2-readback-queue-item ${done ? "done" : ""} ${current ? "current" : ""}`}
+              >
+                <button type="button" onClick={() => onSelectScenario(id)} disabled={done}>
+                  <span className="part2-readback-queue-check">{done ? "✓" : current ? "→" : "○"}</span>
+                  <span>{scenarioLabel(id)}</span>
+                </button>
+              </li>
+            );
+          })}
+        </ol>
+      )}
     </section>
   );
 }

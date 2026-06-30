@@ -10,6 +10,7 @@ import VoiceCoachPanel from "@/components/VoiceCoachPanel";
 import VoicePracticePanel from "@/components/study/VoicePracticePanel";
 import { usePart2WarmupGate } from "@/hooks/usePart2WarmupGate";
 import ProgressBadge from "@/components/study/ProgressBadge";
+import CardStatusActions from "@/components/study/CardStatusActions";
 import { ALL_EXAM_SITUATIONS, getSituationsByExam } from "@/data/exams/part2Data";
 import { examAudioUrl, examAudioLabel } from "@/lib/exams/audio";
 import type { ExamVersion } from "@/lib/exams/types";
@@ -92,6 +93,11 @@ export default function ReadbackMode({ progress, onProgressChange, openShadow = 
       <header className="part2-mode-head">
         <span className="badge">Readback — {scenario.examVersion} Sit. {scenario.situationNumber}</span>
         <ProgressBadge status={itemProgress.status as CardProgressStatus} />
+        <CardStatusActions
+          onDifficult={() => mark("difficult")}
+          onMastered={() => mark("mastered")}
+          masteredLabel="Marcar como dominado"
+        />
         <span className="part2-counter">
           {index + 1} / {scenarios.length}
         </span>
@@ -149,6 +155,9 @@ export default function ReadbackMode({ progress, onProgressChange, openShadow = 
             <button type="button" className="btn secondary" onClick={() => go(1)}>
               Próximo →
             </button>
+            <button type="button" className="btn secondary" onClick={() => go(-1)}>
+              ← Anterior
+            </button>
           </div>
 
           {showAnswer && (
@@ -157,18 +166,6 @@ export default function ReadbackMode({ progress, onProgressChange, openShadow = 
               <p>{scenario.readback.modelReadback}</p>
             </div>
           )}
-
-          <div className="study-toolbar study-toolbar-secondary">
-            <button type="button" className="btn orange" onClick={() => mark("difficult")}>
-              Difícil
-            </button>
-            <button type="button" className="btn green" onClick={() => mark("mastered")}>
-              Dominado
-            </button>
-            <button type="button" className="btn secondary" onClick={() => go(-1)}>
-              ← Anterior
-            </button>
-          </div>
         </div>
       </article>
     </div>

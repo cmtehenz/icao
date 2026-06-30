@@ -6,6 +6,7 @@ import ExamVersionPicker from "@/components/ExamVersionPicker";
 import VoiceCoachPanel from "@/components/VoiceCoachPanel";
 import VoicePracticePanel from "@/components/study/VoicePracticePanel";
 import ProgressBadge from "@/components/study/ProgressBadge";
+import CardStatusActions from "@/components/study/CardStatusActions";
 import { ALL_EXAM_SITUATIONS, getSituationsByExam } from "@/data/exams/part2Data";
 import { examAudioUrl, examAudioLabel } from "@/lib/exams/audio";
 import type { ExamVersion } from "@/lib/exams/types";
@@ -59,6 +60,11 @@ export default function ReportedSpeechMode({ progress, onProgressChange }: Props
       <header className="part2-mode-head">
         <span className="badge">Reported Speech — {scenario.examVersion} Sit. {scenario.situationNumber}</span>
         <ProgressBadge status={itemProgress.status as CardProgressStatus} />
+        <CardStatusActions
+          onDifficult={() => mark("difficult")}
+          onMastered={() => mark("mastered")}
+          masteredLabel="Marcar como dominado"
+        />
         <span className="part2-counter">
           {index + 1} / {scenarios.length}
         </span>
@@ -95,11 +101,14 @@ export default function ReportedSpeechMode({ progress, onProgressChange }: Props
           />
 
           <div className="study-toolbar">
-            <button type="button" className="btn secondary" onClick={() => setShowAnswer((s) => !s)}>
+            <button type="button" className="btn purple btn-large" onClick={() => setShowAnswer((s) => !s)}>
               {showAnswer ? "Esconder" : "Mostrar resposta"}
             </button>
             <button type="button" className="btn secondary" onClick={() => go(1)}>
               Próximo →
+            </button>
+            <button type="button" className="btn secondary" onClick={() => go(-1)}>
+              ← Anterior
             </button>
           </div>
 
@@ -111,15 +120,6 @@ export default function ReportedSpeechMode({ progress, onProgressChange }: Props
               <p>{scenario.atcFollowUp.modelCorrection}</p>
             </div>
           )}
-
-          <div className="study-toolbar study-toolbar-secondary">
-            <button type="button" className="btn orange" onClick={() => mark("difficult")}>
-              Difícil
-            </button>
-            <button type="button" className="btn green" onClick={() => mark("mastered")}>
-              Dominado
-            </button>
-          </div>
         </div>
       </article>
     </div>

@@ -3,22 +3,25 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import ConnectorsBank from "@/components/ConnectorsBank";
-import ExamVersionPicker from "@/components/ExamVersionPicker";
 import PilotProfileModal from "@/components/PilotProfileModal";
 import QuickPhrasesMenu from "@/components/QuickPhrasesMenu";
 import AnswerPanel from "@/components/study/AnswerPanel";
-import PeelBlockWeakBadge from "@/components/study/PeelBlockWeakBadge";
 import PeelBlockWeakDetail from "@/components/study/PeelBlockWeakDetail";
 import PeelShadowingPanel from "@/components/study/PeelShadowingPanel";
 import Part1ToolsMenu from "@/components/study/Part1ToolsMenu";
 import StudyPracticeToolbar, { type PracticePhase } from "@/components/study/StudyPracticeToolbar";
 import VoicePracticePanel from "@/components/study/VoicePracticePanel";
 import ExamSession from "@/components/study/ExamSession";
-import FilterBar, { type CardFilter } from "@/components/study/FilterBar";
+import CardPickerModal from "@/components/study/CardPickerModal";
+import CardSelectorCompact from "@/components/study/CardSelectorCompact";
+import CardStatusActions from "@/components/study/CardStatusActions";
+import type { CardFilter } from "@/components/study/FilterBar";
 import KeywordsPanel from "@/components/study/KeywordsPanel";
 import MemoryFlow from "@/components/study/MemoryFlow";
 import ProgressBadge from "@/components/study/ProgressBadge";
 import StudyDashboard from "@/components/study/StudyDashboard";
+import StudyFilterChip from "@/components/study/StudyFilterChip";
+import StudyFilterSheet from "@/components/study/StudyFilterSheet";
 import PronunciationVaultCard from "@/components/PronunciationVaultCard";
 import VoiceCoachPanel from "@/components/VoiceCoachPanel";
 import { PART1_BY_EXAM } from "@/data/exams/part1";
@@ -61,6 +64,8 @@ export default function FlashcardApp() {
   const [profileOpen, setProfileOpen] = useState(false);
   const [connectorsOpen, setConnectorsOpen] = useState(false);
   const [phrasesOpen, setPhrasesOpen] = useState(false);
+  const [filterOpen, setFilterOpen] = useState(false);
+  const [cardPickerOpen, setCardPickerOpen] = useState(false);
   const [speaking, setSpeaking] = useState(false);
   const [showAnswer, setShowAnswer] = useState(false);
   const [showKeywords, setShowKeywords] = useState(true);
@@ -298,36 +303,46 @@ export default function FlashcardApp() {
           </p>
           <StudyDashboard progress={progress} total={CARDS.length} />
           <PronunciationVaultCard />
-          <ExamVersionPicker value={examVersion} onChange={setExamVersion} />
-          <FilterBar
+          <StudyFilterChip
+            examVersion={examVersion}
             filter={filter}
-            favoriteCount={favorites.length}
             total={filtered.length}
-            onChange={setFilter}
+            onOpen={() => setFilterOpen(true)}
           />
         </div>
       </section>
 
+      <StudyFilterSheet
+        open={filterOpen}
+        onClose={() => setFilterOpen(false)}
+        examVersion={examVersion}
+        onExamVersionChange={setExamVersion}
+        filter={filter}
+        favoriteCount={favorites.length}
+        total={filtered.length}
+        onFilterChange={setFilter}
+      />
+
+      <CardPickerModal
+        open={cardPickerOpen}
+        onClose={() => setCardPickerOpen(false)}
+        filtered={filtered}
+        currentIdx={current}
+        progress={progress}
+        favorites={favorites}
+        onSelect={selectCard}
+      />
+
       <main className="part1-study wrap">
-        <div className="topic-pills topic-pills-delta">
-          {filtered.map(({ card: c, idx }) => {
-            const st = getCardProgress(progress, c.num);
-            const exam = getExamForCard(c.num);
-            return (
-              <button
-                key={c.num}
-                type="button"
-                className={`topic-pill ${current === idx ? "active" : ""} status-${st.status}`}
-                onClick={() => selectCard(idx)}
-                title={c.question}
-              >
-                <span className="topic-pill-label">{exam ?? `#${c.num}`}</span>
-                <PeelBlockWeakBadge cardNum={c.num} compact />
-                {favorites.includes(c.num) && <span className="pill-star">★</span>}
-              </button>
-            );
-          })}
-        </div>
+        <CardSelectorCompact
+          label={cardExam ? `${EXAM_LABELS[cardExam]} · #${card.num}` : `#${card.num}`}
+          subtitle={card.question}
+          position={posInFilter + 1}
+          total={filtered.length}
+          onPrevious={() => navigateFiltered(-1)}
+          onNext={() => navigateFiltered(1)}
+          onOpenPicker={() => setCardPickerOpen(true)}
+        />
 
         <article className="card card-essential part1-card">
           <div className="card-top">
@@ -337,6 +352,10 @@ export default function FlashcardApp() {
               <span className="category-badge">{CATEGORIES[card.category]}</span>
               <span className={`diff ${card.difficulty}`}>{card.difficulty}</span>
               <ProgressBadge status={cardProgress.status} compact />
+              <CardStatusActions
+                onDifficult={() => markStatus("difficult")}
+                onMastered={() => markStatus("mastered")}
+              />
               <button
                 type="button"
                 className={`btn-star ${favorite ? "active" : ""}`}
@@ -404,12 +423,6 @@ export default function FlashcardApp() {
             <AnswerPanel card={card} show={showAnswer} />
 
             <div className="study-toolbar study-toolbar-secondary">
-              <button type="button" className="btn orange btn-sm" onClick={() => markStatus("difficult")}>
-                Difícil
-              </button>
-              <button type="button" className="btn green btn-sm" onClick={() => markStatus("mastered")}>
-                Dominada
-              </button>
               <button type="button" className="btn blue" onClick={() => navigateFiltered(1)}>
                 Próxima →
               </button>

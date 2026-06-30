@@ -756,3 +756,157 @@ h1 {
   padding: 0.4rem 0.65rem;
   font-size: 0.78rem;
 }
+
+/* Phase 2 declutter — filter sheet, card picker, status icons */
+.study-filter-chip {
+  margin-top: 0.5rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.study-filter-section {
+  margin-bottom: 1rem;
+}
+
+.study-filter-section h3 {
+  margin: 0 0 0.5rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.study-filter-apply {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.card-selector-compact {
+  display: flex;
+  align-items: stretch;
+  gap: 0.45rem;
+  margin-bottom: 0.85rem;
+}
+
+.card-selector-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--card);
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+  cursor: pointer;
+}
+
+.card-selector-label {
+  font-weight: 700;
+  font-size: 0.88rem;
+}
+
+.card-selector-sub {
+  font-size: 0.78rem;
+  color: var(--text);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-selector-change {
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.card-picker-list {
+  list-style: none;
+  margin: 0.75rem 0;
+  padding: 0;
+  max-height: 55vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.card-picker-item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--bg-subtle);
+  text-align: left;
+  cursor: pointer;
+}
+
+.card-picker-item.active {
+  border-color: var(--purple);
+  background: color-mix(in srgb, var(--purple-bg) 40%, var(--card));
+}
+
+.card-picker-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.card-picker-question {
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.card-picker-badges {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.card-status-actions {
+  display: inline-flex;
+  gap: 0.2rem;
+  margin-left: 0.15rem;
+}
+
+.card-status-btn {
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-subtle);
+  font-size: 0.85rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.card-status-btn.difficult:hover {
+  border-color: var(--orange);
+  background: var(--orange-bg);
+}
+
+.card-status-btn.mastered:hover {
+  border-color: var(--green);
+  background: var(--green-bg);
+}
+
+.part2-queue-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.part2-mode-head {
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}

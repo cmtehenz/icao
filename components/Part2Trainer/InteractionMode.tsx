@@ -9,6 +9,7 @@ import VoiceCoachPanel from "@/components/VoiceCoachPanel";
 import VoicePracticePanel from "@/components/study/VoicePracticePanel";
 import { usePart2WarmupGate } from "@/hooks/usePart2WarmupGate";
 import ProgressBadge from "@/components/study/ProgressBadge";
+import CardStatusActions from "@/components/study/CardStatusActions";
 import { ALL_EXAM_SITUATIONS, getSituationsByExam } from "@/data/exams/part2Data";
 import type { ExamVersion } from "@/lib/exams/types";
 import { findScenarioIndex } from "@/lib/part2ReadbackQueue";
@@ -92,6 +93,11 @@ export default function InteractionMode({ progress, onProgressChange, openShadow
       <header className="part2-mode-head">
         <span className="badge">Interaction — {scenario.examVersion} Sit. {scenario.situationNumber}</span>
         <ProgressBadge status={itemProgress.status as CardProgressStatus} />
+        <CardStatusActions
+          onDifficult={() => mark("difficult")}
+          onMastered={() => mark("mastered")}
+          masteredLabel="Marcar como dominado"
+        />
         <span className="part2-counter">
           {index + 1} / {scenarios.length}
         </span>
@@ -167,11 +173,11 @@ export default function InteractionMode({ progress, onProgressChange, openShadow
           )}
 
           <div className="study-toolbar study-toolbar-secondary">
-            <button type="button" className="btn orange" onClick={() => mark("difficult")}>
-              Difícil
+            <button type="button" className="btn secondary" onClick={() => go(-1)}>
+              ← Anterior
             </button>
-            <button type="button" className="btn green" onClick={() => mark("mastered")}>
-              Dominado
+            <button type="button" className="btn blue" onClick={() => go(1)}>
+              Próximo →
             </button>
           </div>
         </div>
