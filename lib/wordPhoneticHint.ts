@@ -325,6 +325,8 @@ const WORD_HINTS: Record<string, string> = {
   into: "ÍN-tu",
   after: "ÁF-târ",
   before: "bi-FÓR",
+  begin: "bi-GUIN",
+  beginning: "bi-GÍ-ning",
   during: "DJÚ-ring",
   while: "UÁIL",
   when: "UÉN",

@@ -137,7 +137,11 @@ export default function Part2TrainerApp() {
             />
           )}
           {mode === "reported" && (
-            <ReportedSpeechMode progress={progress} onProgressChange={setProgress} />
+            <ReportedSpeechMode
+              progress={progress}
+              onProgressChange={setProgress}
+              openShadow={searchParams.get("shadow") === "1"}
+            />
           )}
           {mode === "simulation" && simUnlocked && (
             <FullSimulationMode progress={progress} onProgressChange={setProgress} />

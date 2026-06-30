@@ -188,10 +188,7 @@ export function part2DailyMissionProgress(mission = getOrCreatePart2DailyMission
 }
 
 export function part2MissionLink(item: Part2DailyMissionItem): string {
-  const params = new URLSearchParams({ mode: item.kind });
-  if (item.kind === "readback" || item.kind === "interaction") {
-    params.set("shadow", "1");
-  }
+  const params = new URLSearchParams({ mode: item.kind, shadow: "1" });
   params.set("scenario", item.scenarioId);
   return `/part2?${params.toString()}`;
 }

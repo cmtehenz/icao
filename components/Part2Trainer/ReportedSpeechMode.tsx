@@ -1,16 +1,21 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import ExamAudioPlayer from "@/components/ExamAudioPlayer";
 import ExamVersionPicker from "@/components/ExamVersionPicker";
+import Part2ReportedShadowPanel from "@/components/Part2Trainer/Part2ReportedShadowPanel";
+import PronunciationWarmupBanner from "@/components/study/PronunciationWarmupBanner";
 import VoiceCoachPanel from "@/components/VoiceCoachPanel";
 import VoicePracticePanel from "@/components/study/VoicePracticePanel";
 import StudyCardToolbar from "@/components/study/StudyCardToolbar";
 import ProgressBadge from "@/components/study/ProgressBadge";
 import CardStatusActions from "@/components/study/CardStatusActions";
+import { usePart2WarmupGate } from "@/hooks/usePart2WarmupGate";
 import { ALL_EXAM_SITUATIONS, getSituationsByExam } from "@/data/exams/part2Data";
 import { examAudioUrl, examAudioLabel } from "@/lib/exams/audio";
 import type { ExamVersion } from "@/lib/exams/types";
+import { findScenarioIndex } from "@/lib/part2ReadbackQueue";
 import {
   getPart2ItemProgress,
   setPart2ItemStatus,
@@ -21,9 +26,12 @@ import type { CardProgressStatus } from "@/lib/progress";
 type Props = {
   progress: Part2ProgressStore;
   onProgressChange: (store: Part2ProgressStore) => void;
+  openShadow?: boolean;
 };
 
-export default function ReportedSpeechMode({ progress, onProgressChange }: Props) {
+export default function ReportedSpeechMode({ progress, onProgressChange, openShadow = false }: Props) {
+  const searchParams = useSearchParams();
+  const { blocked, message } = usePart2WarmupGate();
   const [examVersion, setExamVersion] = useState<ExamVersion | "all">("all");
   const [index, setIndex] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
@@ -35,6 +43,16 @@ export default function ReportedSpeechMode({ progress, onProgressChange }: Props
 
   const scenario = scenarios[index];
   const itemProgress = getPart2ItemProgress(progress, `${scenario.id}-rep`);
+
+  useEffect(() => {
+    const scenarioId = searchParams.get("scenario");
+    if (!scenarioId) return;
+    const nextIndex = findScenarioIndex(scenarios, scenarioId);
+    if (nextIndex >= 0) {
+      setIndex(nextIndex);
+      setShowAnswer(false);
+    }
+  }, [searchParams, scenarios]);
 
   const go = (delta: number) => {
     setIndex((i) => (i + delta + scenarios.length) % scenarios.length);
@@ -89,14 +107,33 @@ export default function ReportedSpeechMode({ progress, onProgressChange }: Props
             Depois do seu reporte, o examinador pergunta o que o controller disse. Use reported speech.
           </p>
 
+          <PronunciationWarmupBanner />
+
           <VoicePracticePanel
-            coachOnly
+            initialOpen={openShadow}
+            shadow={
+              <Part2ReportedShadowPanel
+                embedded
+                audioSrc={audioSrc}
+                audioLabel={examAudioLabel(scenario.examVersion, scenario.atcFollowUp.audioTrack)}
+                modelReported={scenario.reportedSpeech.modelAnswer}
+                context={scenario.title}
+                situationId={scenario.id}
+                initialOpen
+                recordingBlocked={blocked}
+                recordingBlockedMessage={message}
+              />
+            }
             coach={
               <VoiceCoachPanel
                 embedded
                 question="What did the controller say?"
                 modelAnswer={scenario.reportedSpeech.modelAnswer}
                 evaluateType="part2-reported"
+                situationId={scenario.id}
+                modelAudioUrl={audioSrc}
+                recordingBlocked={blocked}
+                recordingBlockedMessage={message}
               />
             }
           />
