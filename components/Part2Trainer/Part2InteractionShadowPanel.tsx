@@ -7,6 +7,7 @@ import {
   studyActivityRejectReason,
   tryRecordStudyActivity,
 } from "@/lib/studyActivityRecord";
+import { recordPart2RecordingScore } from "@/lib/part2Warmup";
 import { addWordsToVault, VAULT_PASS_SCORE } from "@/lib/pronunciationVault";
 import { collectVaultWordCandidates } from "@/lib/azure/pronunciation";
 
@@ -18,6 +19,8 @@ type Props = {
   context: string;
   situationId: string;
   initialOpen?: boolean;
+  recordingBlocked?: boolean;
+  recordingBlockedMessage?: string;
 };
 
 const WAIT_MS = 1000;
@@ -28,6 +31,8 @@ export default function Part2InteractionShadowPanel({
   context,
   situationId,
   initialOpen = false,
+  recordingBlocked = false,
+  recordingBlockedMessage,
 }: Props) {
   const azure = useAzureSpeech();
   const [open, setOpen] = useState(initialOpen);
@@ -47,7 +52,7 @@ export default function Part2InteractionShadowPanel({
   }, [initialOpen]);
 
   const startShadow = useCallback(async () => {
-    if (!azure.configured) return;
+    if (!azure.configured || recordingBlocked) return;
     setNote(null);
     setScore(null);
     setCounted(false);
@@ -63,13 +68,14 @@ export default function Part2InteractionShadowPanel({
       setPhase("idle");
       setNote("Não foi possível iniciar o shadow. Verifique o Azure Speech.");
     }
-  }, [azure, prompt, modelReport]);
+  }, [azure, prompt, modelReport, recordingBlocked]);
 
   const stopShadow = async () => {
     if (phase !== "recording") return;
     const { assessment, audioBlob } = await azure.stopRecording();
     setLastAudioBlob(audioBlob);
     const accuracy = assessment?.accuracyScore ?? 0;
+    recordPart2RecordingScore(accuracy);
     setScore({
       accuracy,
       fluency: assessment?.fluencyScore ?? 0,
@@ -127,6 +133,12 @@ export default function Part2InteractionShadowPanel({
 
       <p className="part2-readback-shadow-model">{modelReport}</p>
 
+      {recordingBlocked && (
+        <p className="voice-coach-warn voice-coach-blocked">
+          {recordingBlockedMessage ?? "Complete o warm-up de pronúncia antes do shadow."}
+        </p>
+      )}
+
       {note && <p className="voice-coach-warn">{note}</p>}
 
       <div className="peel-shadowing-active">
@@ -142,7 +154,7 @@ export default function Part2InteractionShadowPanel({
           <button
             type="button"
             className="btn purple"
-            disabled={!azure.configured}
+            disabled={!azure.configured || recordingBlocked}
             onClick={() => void startShadow()}
           >
             Iniciar shadow

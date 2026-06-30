@@ -23,6 +23,7 @@ import {
   studyActivityRejectReason,
   tryRecordStudyActivity,
 } from "@/lib/studyActivityRecord";
+import { markWarmupSatisfied } from "@/lib/part2Warmup";
 
 function VaultAddWordsForm({ onAdded }: { onAdded: () => void }) {
   const [input, setInput] = useState("");
@@ -149,6 +150,9 @@ export default function PronunciationWordsMode() {
     };
     const counted = tryRecordStudyActivity("pronunciation", ctx);
     setActivityNote(counted ? null : studyActivityRejectReason("pronunciation", ctx));
+    if (score >= VAULT_PASS_SCORE) {
+      markWarmupSatisfied();
+    }
     if (outcome.removed) {
       setTimeout(() => setActiveWord(null), 2500);
     }

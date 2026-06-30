@@ -8,6 +8,7 @@ import PilotProfileModal from "@/components/PilotProfileModal";
 import QuickPhrasesMenu from "@/components/QuickPhrasesMenu";
 import AnswerPanel from "@/components/study/AnswerPanel";
 import PeelBlockWeakBadge from "@/components/study/PeelBlockWeakBadge";
+import PeelBlockWeakDetail from "@/components/study/PeelBlockWeakDetail";
 import PeelShadowingPanel from "@/components/study/PeelShadowingPanel";
 import ExamSession from "@/components/study/ExamSession";
 import FilterBar, { type CardFilter } from "@/components/study/FilterBar";
@@ -39,6 +40,8 @@ import { EXAM_LABELS, type ExamVersion } from "@/lib/exams/types";
 import { isSpeaking, speakText, stopSpeaking } from "@/lib/tts";
 import { buildSpokenAnswer } from "@/lib/spokenAnswer";
 import { wordCount } from "@/lib/utils";
+import type { PeelBlockId } from "@/lib/peelBlocks";
+import { useSimulationUnlock } from "@/hooks/useSimulationUnlock";
 
 type FilteredCard = { card: (typeof CARDS)[number]; idx: number };
 
@@ -60,6 +63,9 @@ export default function FlashcardApp() {
   const [showAnswer, setShowAnswer] = useState(false);
   const [showKeywords, setShowKeywords] = useState(true);
   const [keywordsOnly, setKeywordsOnly] = useState(false);
+  const [peelOpen, setPeelOpen] = useState(false);
+  const [peelBlockId, setPeelBlockId] = useState<PeelBlockId | null>(null);
+  const { unlocked: simUnlocked, hint: simHint } = useSimulationUnlock();
 
   const filtered = useMemo((): FilteredCard[] => {
     return CARDS.map((card, idx) => ({ card, idx })).filter(({ card }) => {
@@ -90,6 +96,7 @@ export default function FlashcardApp() {
       setCurrent(idx);
       setShowAnswer(false);
       setKeywordsOnly(false);
+      setPeelBlockId(null);
       window.scrollTo({ top: 0, behavior: "smooth" });
     },
     [],
@@ -120,6 +127,12 @@ export default function FlashcardApp() {
     [card.num, progress],
   );
 
+  const trainPeelBlock = useCallback((blockId: PeelBlockId) => {
+    setPeelBlockId(blockId);
+    setPeelOpen(true);
+    window.scrollTo({ top: document.body.scrollHeight * 0.4, behavior: "smooth" });
+  }, []);
+
   const toggleStar = useCallback(() => {
     setFavorites((prev) => toggleFavorite(prev, card.num));
   }, [card.num]);
@@ -143,8 +156,8 @@ export default function FlashcardApp() {
   }, [hydrated]);
 
   useEffect(() => {
-    if (searchParams.get("view") === "exam") setView("exam");
-  }, [searchParams]);
+    if (searchParams.get("view") === "exam" && simUnlocked) setView("exam");
+  }, [searchParams, simUnlocked]);
 
   useEffect(() => {
     if (!hydrated) return;
@@ -152,6 +165,12 @@ export default function FlashcardApp() {
     if (!cardNum) return;
     const idx = CARDS.findIndex((c) => c.num === cardNum);
     if (idx >= 0) selectCard(idx);
+    if (searchParams.get("shadow") === "1") setPeelOpen(true);
+    const block = searchParams.get("block");
+    if (block) {
+      setPeelBlockId(block as PeelBlockId);
+      setPeelOpen(true);
+    }
   }, [hydrated, searchParams, selectCard]);
 
   useEffect(() => {
@@ -230,9 +249,20 @@ export default function FlashcardApp() {
             <button type="button" className="btn icon-btn secondary" onClick={toggleTheme} aria-label="Theme">
               {theme === "dark" ? "☀️" : "🌙"}
             </button>
-            <button type="button" className="btn purple" onClick={() => setView("exam")}>
-              Simular prova
-            </button>
+            {simUnlocked ? (
+              <button type="button" className="btn purple" onClick={() => setView("exam")}>
+                Simular prova
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="btn secondary simulation-locked"
+                disabled
+                title={simHint}
+              >
+                Simulado bloqueado
+              </button>
+            )}
           </div>
         </div>
       </header>
@@ -308,10 +338,12 @@ export default function FlashcardApp() {
 
             {!keywordsOnly && (
               <>
+                <PeelBlockWeakDetail cardNum={card.num} onTrainBlock={trainPeelBlock} />
                 <PeelShadowingPanel
                   card={card}
                   question={card.question}
-                  initialOpen={searchParams.get("shadow") === "1"}
+                  initialOpen={peelOpen || searchParams.get("shadow") === "1"}
+                  initialBlockId={peelBlockId}
                 />
                 <VoiceCoachPanel
                   question={card.question}

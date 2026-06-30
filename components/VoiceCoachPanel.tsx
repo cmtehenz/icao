@@ -8,6 +8,7 @@ import type { AzurePronunciationResult } from "@/lib/azure/pronunciation";
 import type { EvaluateFeedback, EvaluateType } from "@/lib/evaluate/types";
 import { estimateIcaoLevel } from "@/lib/evaluate/icaoLevel";
 import { saveEvaluationRecord } from "@/lib/evaluate/saveEvaluation";
+import { recordPart2RecordingScore } from "@/lib/part2Warmup";
 import { tryRecordStudyActivity, studyActivityRejectReason } from "@/lib/studyActivityRecord";
 import { addWordsToVault } from "@/lib/pronunciationVault";
 import AnswerComparePanel from "@/components/AnswerComparePanel";
@@ -23,6 +24,8 @@ type Props = {
   keywords?: string[];
   situationId?: string;
   modelAudioUrl?: string;
+  recordingBlocked?: boolean;
+  recordingBlockedMessage?: string;
 };
 
 function buildAzureExtras(azureResult: AzurePronunciationResult) {
@@ -44,6 +47,8 @@ export default function VoiceCoachPanel({
   keywords = [],
   situationId,
   modelAudioUrl,
+  recordingBlocked = false,
+  recordingBlockedMessage,
 }: Props) {
   const speech = useSpeechRecognition("en-US");
   const azure = useAzurePronunciation();
@@ -107,6 +112,7 @@ export default function VoiceCoachPanel({
       setFeedback(data);
 
       if (azureResult && evaluateType.startsWith("part2")) {
+        recordPart2RecordingScore(azureResult.accuracyScore);
         const ctx = {
           accuracy: azureResult.accuracyScore,
           recognizedText: azureResult.recognizedText,
@@ -205,7 +211,12 @@ export default function VoiceCoachPanel({
 
   if (!open) {
     return (
-      <button type="button" className="btn purple voice-coach-toggle" onClick={() => setOpen(true)}>
+      <button
+        type="button"
+        className={`btn purple voice-coach-toggle ${recordingBlocked ? "disabled" : ""}`}
+        onClick={() => setOpen(true)}
+        title={recordingBlocked ? recordingBlockedMessage : undefined}
+      >
         🎤 Falar e corrigir
       </button>
     );
@@ -221,6 +232,12 @@ export default function VoiceCoachPanel({
           Fechar
         </button>
       </div>
+
+      {recordingBlocked && (
+        <p className="voice-coach-warn voice-coach-blocked">
+          {recordingBlockedMessage ?? "Complete o warm-up de pronúncia antes de gravar."}
+        </p>
+      )}
 
       {azure.configured ? (
         <p className="voice-coach-azure-badge">
@@ -238,7 +255,12 @@ export default function VoiceCoachPanel({
         {azure.configured ? (
           <>
             {!azure.assessing ? (
-              <button type="button" className="btn green" onClick={evaluateWithAzure}>
+              <button
+                type="button"
+                className="btn green"
+                onClick={evaluateWithAzure}
+                disabled={recordingBlocked}
+              >
                 ● Gravar (Azure)
               </button>
             ) : (
@@ -252,7 +274,7 @@ export default function VoiceCoachPanel({
             type="button"
             className={`btn ${speech.listening ? "orange" : "green"}`}
             onClick={speech.toggle}
-            disabled={!speech.supported}
+            disabled={!speech.supported || recordingBlocked}
           >
             {speech.listening ? "⏹ Parar" : "● Gravar (navegador)"}
           </button>

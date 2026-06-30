@@ -3,55 +3,45 @@
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import {
-  loadVault,
-  pickWarmupWords,
-  VAULT_CHANGE_EVENT,
-  type VaultWord,
-} from "@/lib/pronunciationVault";
+  isWarmupSatisfiedToday,
+  part2WarmupMessage,
+  PART2_WARMUP_CHANGE_EVENT,
+  warmupWords,
+} from "@/lib/part2Warmup";
+import { VAULT_CHANGE_EVENT, VAULT_PASS_SCORE } from "@/lib/pronunciationVault";
 
-const DISMISS_KEY = "icao_part2_warmup_dismissed";
-
-type Props = {
-  context?: string;
-};
-
-export default function PronunciationWarmupBanner({ context = "part2" }: Props) {
-  const [words, setWords] = useState<VaultWord[]>([]);
-  const [dismissed, setDismissed] = useState(false);
+export default function PronunciationWarmupBanner() {
+  const [required, setRequired] = useState(false);
+  const [satisfied, setSatisfied] = useState(true);
+  const [words, setWords] = useState(warmupWords(3));
 
   const refresh = useCallback(() => {
-    setWords(loadVault());
+    const list = warmupWords(3);
+    setWords(list);
+    setSatisfied(isWarmupSatisfiedToday());
+    setRequired(list.length > 0 && !isWarmupSatisfiedToday());
   }, []);
 
   useEffect(() => {
     refresh();
-    window.addEventListener(VAULT_CHANGE_EVENT, refresh);
-    return () => window.removeEventListener(VAULT_CHANGE_EVENT, refresh);
+    const events = [PART2_WARMUP_CHANGE_EVENT, VAULT_CHANGE_EVENT];
+    for (const ev of events) window.addEventListener(ev, refresh);
+    return () => {
+      for (const ev of events) window.removeEventListener(ev, refresh);
+    };
   }, [refresh]);
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    setDismissed(sessionStorage.getItem(DISMISS_KEY) === context);
-  }, [context]);
+  const message = useMemo(() => part2WarmupMessage(), [required, satisfied, words]);
 
-  const warmupWords = useMemo(() => pickWarmupWords(words, 3), [words]);
-
-  if (dismissed || !warmupWords.length) return null;
-
-  const dismiss = () => {
-    sessionStorage.setItem(DISMISS_KEY, context);
-    setDismissed(true);
-  };
+  if (!required || satisfied || !words.length) return null;
 
   return (
-    <section className="pronunciation-warmup-banner" aria-label="Warm-up de pronúncia">
+    <section className="pronunciation-warmup-banner mandatory" aria-label="Warm-up obrigatório">
       <div>
-        <strong>Warm-up — 2 min antes de gravar</strong>
-        <p>
-          Pronúncia fraca distorce o Azure. Treine estas palavras primeiro ({warmupWords.length}):
-        </p>
+        <strong>Warm-up obrigatório antes de gravar</strong>
+        <p>{message || `Treine ao menos uma palavra (≥${VAULT_PASS_SCORE}%) antes de gravar no Part 2.`}</p>
         <ul className="pronunciation-warmup-words">
-          {warmupWords.map((w) => (
+          {words.map((w) => (
             <li key={w.word}>
               <Link href={`/pronunciation?word=${encodeURIComponent(w.word)}`}>
                 {w.word}
@@ -61,9 +51,9 @@ export default function PronunciationWarmupBanner({ context = "part2" }: Props) 
           ))}
         </ul>
       </div>
-      <button type="button" className="btn secondary btn-sm" onClick={dismiss}>
-        Já treinei →
-      </button>
+      <Link href="/pronunciation" className="btn green btn-sm">
+        Ir treinar →
+      </Link>
     </section>
   );
 }

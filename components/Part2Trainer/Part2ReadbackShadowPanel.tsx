@@ -8,6 +8,7 @@ import {
   tryRecordStudyActivity,
 } from "@/lib/studyActivityRecord";
 import AudioCompareReplay from "@/components/study/AudioCompareReplay";
+import { recordPart2RecordingScore } from "@/lib/part2Warmup";
 import { addWordsToVault, VAULT_PASS_SCORE } from "@/lib/pronunciationVault";
 import { collectVaultWordCandidates } from "@/lib/azure/pronunciation";
 
@@ -20,6 +21,8 @@ type Props = {
   context: string;
   situationId: string;
   initialOpen?: boolean;
+  recordingBlocked?: boolean;
+  recordingBlockedMessage?: string;
 };
 
 const WAIT_MS = 1000;
@@ -31,6 +34,8 @@ export default function Part2ReadbackShadowPanel({
   context,
   situationId,
   initialOpen = false,
+  recordingBlocked = false,
+  recordingBlockedMessage,
 }: Props) {
   const azure = useAzureSpeech();
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -65,7 +70,7 @@ export default function Part2ReadbackShadowPanel({
   }, [audioSrc]);
 
   const startShadow = async () => {
-    if (!azure.configured || !audioSrc) return;
+    if (!azure.configured || !audioSrc || recordingBlocked) return;
     setNote(null);
     setScore(null);
     setCounted(false);
@@ -88,6 +93,7 @@ export default function Part2ReadbackShadowPanel({
     const { assessment, audioBlob } = await azure.stopRecording();
     setLastAudioBlob(audioBlob);
     const accuracy = assessment?.accuracyScore ?? 0;
+    recordPart2RecordingScore(accuracy);
     setScore({
       accuracy,
       fluency: assessment?.fluencyScore ?? 0,
@@ -145,6 +151,12 @@ export default function Part2ReadbackShadowPanel({
         </p>
       )}
 
+      {recordingBlocked && (
+        <p className="voice-coach-warn voice-coach-blocked">
+          {recordingBlockedMessage ?? "Complete o warm-up de pronúncia antes do shadow."}
+        </p>
+      )}
+
       <p className="part2-readback-shadow-model">{modelReadback}</p>
 
       {note && <p className="voice-coach-warn">{note}</p>}
@@ -162,7 +174,7 @@ export default function Part2ReadbackShadowPanel({
           <button
             type="button"
             className="btn purple"
-            disabled={!azure.configured || !audioSrc}
+            disabled={!azure.configured || !audioSrc || recordingBlocked}
             onClick={() => void startShadow()}
           >
             Iniciar shadow

@@ -29,11 +29,17 @@ type Props = {
   card: Card;
   question: string;
   initialOpen?: boolean;
+  initialBlockId?: PeelBlockId | null;
 };
 
 const WAIT_MS = 1000;
 
-export default function PeelShadowingPanel({ card, question, initialOpen = false }: Props) {
+export default function PeelShadowingPanel({
+  card,
+  question,
+  initialOpen = false,
+  initialBlockId = null,
+}: Props) {
   const blocks = useMemo(() => getPeelBlocks(card), [card]);
   const azure = useAzureSpeech();
   const [open, setOpen] = useState(initialOpen);
@@ -48,6 +54,12 @@ export default function PeelShadowingPanel({ card, question, initialOpen = false
   useEffect(() => {
     if (initialOpen) setOpen(true);
   }, [initialOpen]);
+
+  useEffect(() => {
+    if (!initialBlockId) return;
+    setOpen(true);
+    setActiveId(initialBlockId);
+  }, [initialBlockId]);
 
   const activeBlock = blocks.find((b) => b.id === activeId) ?? null;
   const activeScore = activeId ? scores[activeId] : undefined;
@@ -230,6 +242,8 @@ export default function PeelShadowingPanel({ card, question, initialOpen = false
             <li
               key={block.id}
               className={`peel-shadowing-block ${block.color}-b ${isActive ? "active" : ""} ${
+                initialBlockId === block.id ? "highlight" : ""
+              } ${
                 blockScore ? (blockScore.accuracy >= VAULT_PASS_SCORE ? "good" : "warn") : ""
               }`}
             >

@@ -9,6 +9,8 @@ import PronunciationVaultClearButton from "@/components/PronunciationVaultClearB
 import DailyStudyGoal from "@/components/study/DailyStudyGoal";
 import StudyAgenda from "@/components/study/StudyAgenda";
 import StudyCalendar from "@/components/study/StudyCalendar";
+import StudyWeeklyReport from "@/components/study/StudyWeeklyReport";
+import VaultWeakWordsPanel from "@/components/account/VaultWeakWordsPanel";
 import { usePronunciationVault } from "@/hooks/usePronunciationVault";
 
 type EvaluationRow = {
@@ -71,6 +73,10 @@ export default function AccountPage() {
       <DailyStudyGoal compact />
 
       <StudyCalendar />
+
+      <StudyWeeklyReport />
+
+      <VaultWeakWordsPanel />
 
       <section className="account-section">
         <h2>Banco de pronúncia</h2>

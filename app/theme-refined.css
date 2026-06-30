@@ -406,3 +406,221 @@ h1 {
 [data-theme="dark"] .study-goal-sheet-backdrop {
   background: rgba(0, 0, 0, 0.55);
 }
+
+/* Sprint 3 — simulation lock, warmup gate, account insights */
+.simulation-locked,
+.part2-mode-btn.locked {
+  opacity: 0.72;
+  cursor: not-allowed;
+}
+
+.part2-mode-btn.locked span {
+  color: var(--orange);
+  font-size: 0.7rem;
+}
+
+.pronunciation-warmup-banner.mandatory {
+  border-left-color: var(--orange);
+  background: color-mix(in srgb, var(--orange-bg) 40%, var(--card));
+}
+
+.voice-coach-blocked {
+  margin-bottom: 0.65rem;
+  font-weight: 600;
+}
+
+.peel-weak-detail {
+  margin: 0.75rem 0 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid color-mix(in srgb, var(--orange) 25%, var(--border));
+  border-left: 3px solid var(--orange);
+  background: color-mix(in srgb, var(--orange-bg) 35%, var(--card));
+}
+
+.peel-weak-detail h4 {
+  margin: 0 0 0.35rem;
+  font-size: 0.9rem;
+}
+
+.peel-weak-detail-sub {
+  margin: 0 0 0.65rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.peel-weak-detail-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.peel-weak-detail-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.45rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.peel-weak-detail-item:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.peel-weak-detail-pct {
+  margin-left: 0.5rem;
+  font-size: 0.78rem;
+  color: var(--orange);
+  font-weight: 700;
+}
+
+.peel-shadowing-block.highlight {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+}
+
+.vault-weak-panel .vault-weak-top-list {
+  list-style: none;
+  margin: 0.75rem 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.vault-weak-top-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--bg-subtle);
+}
+
+.vault-weak-top-item.bad {
+  border-left: 3px solid var(--red);
+}
+
+.vault-weak-top-item.warn {
+  border-left: 3px solid var(--orange);
+}
+
+.vault-weak-rank {
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: var(--muted);
+  min-width: 1.25rem;
+}
+
+.vault-weak-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.vault-weak-body a:first-child {
+  font-weight: 700;
+}
+
+.vault-weak-scores,
+.vault-weak-context {
+  font-size: 0.74rem;
+  color: var(--muted);
+}
+
+.vault-weak-all {
+  margin-top: 0.35rem;
+}
+
+.study-weekly-report .weekly-report-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+}
+
+.weekly-report-stat {
+  padding: 0.65rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--bg-subtle);
+  text-align: center;
+}
+
+.weekly-report-stat strong {
+  display: block;
+  font-size: 1.1rem;
+}
+
+.weekly-report-stat span {
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.weekly-report-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.35rem;
+  height: 5rem;
+  margin: 0.75rem 0 1rem;
+  padding: 0.5rem 0.35rem 0;
+  border-radius: var(--radius-md);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+}
+
+.weekly-report-bar-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-end;
+  gap: 0.25rem;
+}
+
+.weekly-report-bar-fill {
+  width: 100%;
+  max-width: 2rem;
+  min-height: 4px;
+  border-radius: 4px 4px 0 0;
+  background: var(--blue);
+}
+
+.weekly-report-bar-col.good .weekly-report-bar-fill {
+  background: var(--green);
+}
+
+.weekly-report-bar-label {
+  font-size: 0.62rem;
+  color: var(--muted);
+  text-transform: capitalize;
+}
+
+.weekly-report-details {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+@media (max-width: 640px) {
+  .study-weekly-report .weekly-report-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .vault-weak-top-item {
+    flex-wrap: wrap;
+  }
+}

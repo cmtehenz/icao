@@ -10,6 +10,7 @@ import ReadbackMode from "@/components/Part2Trainer/ReadbackMode";
 import ReportedSpeechMode from "@/components/Part2Trainer/ReportedSpeechMode";
 import { ICAO_VOCABULARY, ICAO_CORE_VOCABULARY } from "@/data/icaoVocabulary";
 import { useTheme } from "@/hooks/useTheme";
+import { useSimulationUnlock } from "@/hooks/useSimulationUnlock";
 import { ALL_EXAM_SITUATIONS } from "@/data/exams/part2Data";
 import { loadPart2Progress, part2Stats, type Part2ProgressStore } from "@/lib/part2/progress";
 import type { Part2Mode } from "@/lib/part2/types";
@@ -24,6 +25,7 @@ const MODES: { id: Part2Mode; label: string; desc: string }[] = [
 export default function Part2TrainerApp() {
   const searchParams = useSearchParams();
   const { theme, toggle: toggleTheme, hydrated } = useTheme();
+  const { unlocked: simUnlocked, hint: simHint } = useSimulationUnlock();
   const [mode, setMode] = useState<Part2Mode>("readback");
   const [progress, setProgress] = useState<Part2ProgressStore>({
     items: {},
@@ -38,10 +40,18 @@ export default function Part2TrainerApp() {
 
   useEffect(() => {
     const requested = searchParams.get("mode");
-    if (requested === "simulation" || requested === "readback" || requested === "interaction" || requested === "reported") {
+    if (requested === "readback" || requested === "interaction" || requested === "reported") {
       setMode(requested);
+    } else if (requested === "simulation" && simUnlocked) {
+      setMode("simulation");
     }
-  }, [searchParams]);
+  }, [searchParams, simUnlocked]);
+
+  useEffect(() => {
+    if (mode === "simulation" && !simUnlocked) {
+      setMode("readback");
+    }
+  }, [mode, simUnlocked]);
 
   const stats = part2Stats(progress, ICAO_VOCABULARY.length);
 
@@ -96,17 +106,28 @@ export default function Part2TrainerApp() {
       </section>
 
       <div className="wrap part2-mode-nav">
-        {MODES.map((m) => (
-          <button
-            key={m.id}
-            type="button"
-            className={`part2-mode-btn ${mode === m.id ? "active" : ""}`}
-            onClick={() => setMode(m.id)}
-          >
-            <strong>{m.label}</strong>
-            <span>{m.desc}</span>
-          </button>
-        ))}
+        {MODES.map((m) => {
+          const locked = m.id === "simulation" && !simUnlocked;
+          return (
+            <button
+              key={m.id}
+              type="button"
+              className={`part2-mode-btn ${mode === m.id ? "active" : ""} ${locked ? "locked" : ""}`}
+              onClick={() => {
+                if (locked) return;
+                setMode(m.id);
+              }}
+              disabled={locked}
+              title={locked ? simHint : undefined}
+            >
+              <strong>
+                {m.label}
+                {locked && " 🔒"}
+              </strong>
+              <span>{locked ? simHint : m.desc}</span>
+            </button>
+          );
+        })}
       </div>
 
       <main className="main main-essential part2-main">
@@ -131,7 +152,7 @@ export default function Part2TrainerApp() {
           {mode === "reported" && (
             <ReportedSpeechMode progress={progress} onProgressChange={setProgress} />
           )}
-          {mode === "simulation" && (
+          {mode === "simulation" && simUnlocked && (
             <FullSimulationMode progress={progress} onProgressChange={setProgress} />
           )}
         </section>

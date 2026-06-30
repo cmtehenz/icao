@@ -6,6 +6,7 @@ import Part2InteractionQueue from "@/components/Part2Trainer/Part2InteractionQue
 import Part2InteractionShadowPanel from "@/components/Part2Trainer/Part2InteractionShadowPanel";
 import PronunciationWarmupBanner from "@/components/study/PronunciationWarmupBanner";
 import VoiceCoachPanel from "@/components/VoiceCoachPanel";
+import { usePart2WarmupGate } from "@/hooks/usePart2WarmupGate";
 import ProgressBadge from "@/components/study/ProgressBadge";
 import { ALL_EXAM_SITUATIONS, getSituationsByExam } from "@/data/exams/part2Data";
 import type { ExamVersion } from "@/lib/exams/types";
@@ -28,6 +29,7 @@ type Props = {
 };
 
 export default function InteractionMode({ progress, onProgressChange, openShadow = false }: Props) {
+  const { blocked, message } = usePart2WarmupGate();
   const [examVersion, setExamVersion] = useState<ExamVersion | "all">("all");
   const [index, setIndex] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
@@ -111,7 +113,7 @@ export default function InteractionMode({ progress, onProgressChange, openShadow
             Ligue para o ATC: facility + ANAC 123 + urgência (se necessário) + problema + intenção + pedido.
           </p>
 
-          <PronunciationWarmupBanner context="interaction" />
+          <PronunciationWarmupBanner />
 
           <Part2InteractionShadowPanel
             prompt={scenario.interaction.prompt}
@@ -119,6 +121,8 @@ export default function InteractionMode({ progress, onProgressChange, openShadow
             context={scenario.context}
             situationId={scenario.id}
             initialOpen={openShadow}
+            recordingBlocked={blocked}
+            recordingBlockedMessage={message}
           />
 
           <VoiceCoachPanel
@@ -126,6 +130,8 @@ export default function InteractionMode({ progress, onProgressChange, openShadow
             modelAnswer={scenario.interaction.modelReport}
             evaluateType="part2-interaction"
             situationId={scenario.id}
+            recordingBlocked={blocked}
+            recordingBlockedMessage={message}
           />
 
           <div className="study-toolbar">
