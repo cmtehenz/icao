@@ -94,24 +94,6 @@ export default function AccountPage() {
       </section>
 
       <section className="account-section">
-        <h2>Atalhos</h2>
-        <div className="account-links">
-          <Link href="/pronunciation" className="btn secondary">
-            Banco de pronúncia
-          </Link>
-          <Link href="/" className="btn secondary">
-            Part 1
-          </Link>
-          <Link href="/vocabulario" className="btn secondary">
-            Vocabulary Trainer
-          </Link>
-          <Link href="/part2" className="btn secondary">
-            Part 2
-          </Link>
-        </div>
-      </section>
-
-      <section className="account-section">
         <h2>Últimas notas (Voice Coach)</h2>
         {evaluations.length === 0 ? (
           <p className="sub">Nenhuma avaliação salva ainda. Grave no Voice Coach para salvar suas notas.</p>

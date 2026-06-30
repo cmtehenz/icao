@@ -23,6 +23,7 @@ type Props = {
   initialOpen?: boolean;
   recordingBlocked?: boolean;
   recordingBlockedMessage?: string;
+  embedded?: boolean;
 };
 
 const WAIT_MS = 1000;
@@ -36,10 +37,11 @@ export default function Part2ReadbackShadowPanel({
   initialOpen = false,
   recordingBlocked = false,
   recordingBlockedMessage,
+  embedded = false,
 }: Props) {
   const azure = useAzureSpeech();
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [open, setOpen] = useState(initialOpen);
+  const [open, setOpen] = useState(embedded || initialOpen);
   const [phase, setPhase] = useState<Phase>("idle");
   const [score, setScore] = useState<{
     accuracy: number;
@@ -52,8 +54,8 @@ export default function Part2ReadbackShadowPanel({
   const [lastAudioBlob, setLastAudioBlob] = useState<Blob | null>(null);
 
   useEffect(() => {
-    if (initialOpen) setOpen(true);
-  }, [initialOpen]);
+    if (embedded || initialOpen) setOpen(true);
+  }, [embedded, initialOpen]);
 
   const playAtcAudio = useCallback((): Promise<void> => {
     return new Promise((resolve, reject) => {
@@ -124,7 +126,7 @@ export default function Part2ReadbackShadowPanel({
     setPhase("result");
   };
 
-  if (!open) {
+  if (!open && !embedded) {
     return (
       <button type="button" className="btn green peel-shadowing-toggle" onClick={() => setOpen(true)}>
         🔁 Shadow readback
@@ -133,13 +135,15 @@ export default function Part2ReadbackShadowPanel({
   }
 
   return (
-    <div className="peel-shadowing-panel part2-readback-shadow">
-      <div className="peel-shadowing-head">
-        <h3>Shadow readback — ouvir ATC → repetir</h3>
-        <button type="button" className="btn secondary btn-sm" onClick={() => setOpen(false)}>
-          Fechar
-        </button>
-      </div>
+    <div className={`peel-shadowing-panel part2-readback-shadow ${embedded ? "embedded" : ""}`}>
+      {!embedded && (
+        <div className="peel-shadowing-head">
+          <h3>Shadow readback — ouvir ATC → repetir</h3>
+          <button type="button" className="btn secondary btn-sm" onClick={() => setOpen(false)}>
+            Fechar
+          </button>
+        </div>
+      )}
 
       {!azure.configured ? (
         <p className="voice-coach-warn">

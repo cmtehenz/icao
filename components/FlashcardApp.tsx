@@ -10,12 +10,14 @@ import AnswerPanel from "@/components/study/AnswerPanel";
 import PeelBlockWeakBadge from "@/components/study/PeelBlockWeakBadge";
 import PeelBlockWeakDetail from "@/components/study/PeelBlockWeakDetail";
 import PeelShadowingPanel from "@/components/study/PeelShadowingPanel";
+import Part1ToolsMenu from "@/components/study/Part1ToolsMenu";
+import StudyPracticeToolbar, { type PracticePhase } from "@/components/study/StudyPracticeToolbar";
+import VoicePracticePanel from "@/components/study/VoicePracticePanel";
 import ExamSession from "@/components/study/ExamSession";
 import FilterBar, { type CardFilter } from "@/components/study/FilterBar";
 import KeywordsPanel from "@/components/study/KeywordsPanel";
 import MemoryFlow from "@/components/study/MemoryFlow";
 import ProgressBadge from "@/components/study/ProgressBadge";
-import StudyAgendaSummary from "@/components/study/StudyAgendaSummary";
 import StudyDashboard from "@/components/study/StudyDashboard";
 import PronunciationVaultCard from "@/components/PronunciationVaultCard";
 import VoiceCoachPanel from "@/components/VoiceCoachPanel";
@@ -63,7 +65,7 @@ export default function FlashcardApp() {
   const [showAnswer, setShowAnswer] = useState(false);
   const [showKeywords, setShowKeywords] = useState(true);
   const [keywordsOnly, setKeywordsOnly] = useState(false);
-  const [peelOpen, setPeelOpen] = useState(false);
+  const [voicePracticeOpen, setVoicePracticeOpen] = useState(false);
   const [peelBlockId, setPeelBlockId] = useState<PeelBlockId | null>(null);
   const { unlocked: simUnlocked, hint: simHint } = useSimulationUnlock();
 
@@ -112,13 +114,6 @@ export default function FlashcardApp() {
     [current, filtered, selectCard],
   );
 
-  const practiceAgain = useCallback(() => {
-    setShowAnswer(false);
-    setKeywordsOnly(true);
-    const next = recordPractice(progress, card.num);
-    setProgress(next);
-  }, [card.num, progress]);
-
   const markStatus = useCallback(
     (status: "difficult" | "mastered") => {
       const next = setCardStatus(progress, card.num, status);
@@ -129,7 +124,7 @@ export default function FlashcardApp() {
 
   const trainPeelBlock = useCallback((blockId: PeelBlockId) => {
     setPeelBlockId(blockId);
-    setPeelOpen(true);
+    setVoicePracticeOpen(true);
     window.scrollTo({ top: document.body.scrollHeight * 0.4, behavior: "smooth" });
   }, []);
 
@@ -165,11 +160,11 @@ export default function FlashcardApp() {
     if (!cardNum) return;
     const idx = CARDS.findIndex((c) => c.num === cardNum);
     if (idx >= 0) selectCard(idx);
-    if (searchParams.get("shadow") === "1") setPeelOpen(true);
+    if (searchParams.get("shadow") === "1") setVoicePracticeOpen(true);
     const block = searchParams.get("block");
     if (block) {
       setPeelBlockId(block as PeelBlockId);
-      setPeelOpen(true);
+      setVoicePracticeOpen(true);
     }
   }, [hydrated, searchParams, selectCard]);
 
@@ -203,6 +198,28 @@ export default function FlashcardApp() {
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [navigateFiltered, view, keywordsOnly]);
+
+  const practicePhase: PracticePhase =
+    !keywordsOnly && !showAnswer ? "full" : keywordsOnly && !showAnswer ? "keywords" : "answer";
+
+  const handlePracticePrimary = useCallback(() => {
+    if (practicePhase === "full") {
+      setKeywordsOnly(true);
+      setShowAnswer(false);
+      setProgress(recordPractice(progress, card.num));
+    } else if (practicePhase === "keywords") {
+      setShowAnswer(true);
+    } else {
+      toggleSpeak();
+    }
+  }, [practicePhase, progress, card.num, toggleSpeak]);
+
+  const resetPractice = useCallback(() => {
+    stopSpeaking();
+    setSpeaking(false);
+    setKeywordsOnly(false);
+    setShowAnswer(false);
+  }, []);
 
   if (view === "exam") {
     return (
@@ -246,6 +263,12 @@ export default function FlashcardApp() {
             </div>
           </div>
           <div className="delta-topbar-actions">
+            <Part1ToolsMenu
+              onPrevious={() => navigateFiltered(-1)}
+              onProfile={() => setProfileOpen(true)}
+              onConnectors={() => setConnectorsOpen(true)}
+              onPhrases={() => setPhrasesOpen(true)}
+            />
             <button type="button" className="btn icon-btn secondary" onClick={toggleTheme} aria-label="Theme">
               {theme === "dark" ? "☀️" : "🌙"}
             </button>
@@ -286,7 +309,6 @@ export default function FlashcardApp() {
       </section>
 
       <main className="part1-study wrap">
-        <StudyAgendaSummary />
         <div className="topic-pills topic-pills-delta">
           {filtered.map(({ card: c, idx }) => {
             const st = getCardProgress(progress, c.num);
@@ -337,21 +359,31 @@ export default function FlashcardApp() {
             <KeywordsPanel keywords={keywords} hidden={!showKeywords && !keywordsOnly} />
 
             {!keywordsOnly && (
-              <>
-                <PeelBlockWeakDetail cardNum={card.num} onTrainBlock={trainPeelBlock} />
-                <PeelShadowingPanel
-                  card={card}
-                  question={card.question}
-                  initialOpen={peelOpen || searchParams.get("shadow") === "1"}
-                  initialBlockId={peelBlockId}
-                />
-                <VoiceCoachPanel
-                  question={card.question}
-                  modelAnswer={card.answer}
-                  evaluateType="part1"
-                  keywords={keywords}
-                />
-              </>
+              <VoicePracticePanel
+                initialOpen={voicePracticeOpen || searchParams.get("shadow") === "1"}
+                preferredTab={peelBlockId ? "shadow" : undefined}
+                beforeTabs={
+                  <PeelBlockWeakDetail cardNum={card.num} onTrainBlock={trainPeelBlock} />
+                }
+                shadow={
+                  <PeelShadowingPanel
+                    embedded
+                    card={card}
+                    question={card.question}
+                    initialOpen
+                    initialBlockId={peelBlockId}
+                  />
+                }
+                coach={
+                  <VoiceCoachPanel
+                    embedded
+                    question={card.question}
+                    modelAnswer={card.answer}
+                    evaluateType="part1"
+                    keywords={keywords}
+                  />
+                }
+              />
             )}
 
             {keywordsOnly && !showAnswer && (
@@ -360,48 +392,22 @@ export default function FlashcardApp() {
               </div>
             )}
 
-            <div className="study-toolbar">
-              <button
-                type="button"
-                className={`btn ${keywordsOnly ? "purple" : "secondary"}`}
-                onClick={() => {
-                  setKeywordsOnly((k) => !k);
-                  if (!keywordsOnly) setShowAnswer(false);
-                }}
-              >
-                {keywordsOnly ? "Sair keywords" : "Só keywords"}
-              </button>
-              <button
-                type="button"
-                className="btn secondary"
-                onClick={() => setShowKeywords((s) => !s)}
-              >
-                {showKeywords ? "Esconder keywords" : "Mostrar keywords"}
-              </button>
-              <button
-                type="button"
-                className="btn purple btn-large"
-                onClick={() => setShowAnswer((p) => !p)}
-              >
-                {showAnswer ? "Esconder resposta" : "Mostrar resposta PEEL"}
-              </button>
-              {showAnswer && (
-                <button type="button" className="btn secondary" onClick={toggleSpeak}>
-                  {speaking ? "Parar" : "Ouvir"}
-                </button>
-              )}
-            </div>
+            <StudyPracticeToolbar
+              phase={practicePhase}
+              showKeywords={showKeywords}
+              speaking={speaking}
+              onPrimary={handlePracticePrimary}
+              onToggleKeywordsVisible={() => setShowKeywords((s) => !s)}
+              onResetPractice={resetPractice}
+            />
 
             <AnswerPanel card={card} show={showAnswer} />
 
             <div className="study-toolbar study-toolbar-secondary">
-              <button type="button" className="btn secondary" onClick={practiceAgain}>
-                Praticar de novo
-              </button>
-              <button type="button" className="btn orange" onClick={() => markStatus("difficult")}>
+              <button type="button" className="btn orange btn-sm" onClick={() => markStatus("difficult")}>
                 Difícil
               </button>
-              <button type="button" className="btn green" onClick={() => markStatus("mastered")}>
+              <button type="button" className="btn green btn-sm" onClick={() => markStatus("mastered")}>
                 Dominada
               </button>
               <button type="button" className="btn blue" onClick={() => navigateFiltered(1)}>
@@ -414,21 +420,6 @@ export default function FlashcardApp() {
               <span>
                 {posInFilter + 1} / {filtered.length}
               </span>
-            </div>
-
-            <div className="nav-row">
-              <button type="button" className="btn secondary" onClick={() => navigateFiltered(-1)}>
-                ← Anterior
-              </button>
-              <button type="button" className="btn secondary" onClick={() => setProfileOpen(true)}>
-                Profile
-              </button>
-              <button type="button" className="btn secondary" onClick={() => setConnectorsOpen(true)}>
-                Connectors
-              </button>
-              <button type="button" className="btn secondary" onClick={() => setPhrasesOpen(true)}>
-                Resumo oral
-              </button>
             </div>
           </div>
         </article>

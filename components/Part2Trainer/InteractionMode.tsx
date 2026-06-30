@@ -6,6 +6,7 @@ import Part2InteractionQueue from "@/components/Part2Trainer/Part2InteractionQue
 import Part2InteractionShadowPanel from "@/components/Part2Trainer/Part2InteractionShadowPanel";
 import PronunciationWarmupBanner from "@/components/study/PronunciationWarmupBanner";
 import VoiceCoachPanel from "@/components/VoiceCoachPanel";
+import VoicePracticePanel from "@/components/study/VoicePracticePanel";
 import { usePart2WarmupGate } from "@/hooks/usePart2WarmupGate";
 import ProgressBadge from "@/components/study/ProgressBadge";
 import { ALL_EXAM_SITUATIONS, getSituationsByExam } from "@/data/exams/part2Data";
@@ -115,23 +116,31 @@ export default function InteractionMode({ progress, onProgressChange, openShadow
 
           <PronunciationWarmupBanner />
 
-          <Part2InteractionShadowPanel
-            prompt={scenario.interaction.prompt}
-            modelReport={scenario.interaction.modelReport}
-            context={scenario.context}
-            situationId={scenario.id}
+          <VoicePracticePanel
             initialOpen={openShadow}
-            recordingBlocked={blocked}
-            recordingBlockedMessage={message}
-          />
-
-          <VoiceCoachPanel
-            question={scenario.interaction.prompt}
-            modelAnswer={scenario.interaction.modelReport}
-            evaluateType="part2-interaction"
-            situationId={scenario.id}
-            recordingBlocked={blocked}
-            recordingBlockedMessage={message}
+            shadow={
+              <Part2InteractionShadowPanel
+                embedded
+                prompt={scenario.interaction.prompt}
+                modelReport={scenario.interaction.modelReport}
+                context={scenario.context}
+                situationId={scenario.id}
+                initialOpen
+                recordingBlocked={blocked}
+                recordingBlockedMessage={message}
+              />
+            }
+            coach={
+              <VoiceCoachPanel
+                embedded
+                question={scenario.interaction.prompt}
+                modelAnswer={scenario.interaction.modelReport}
+                evaluateType="part2-interaction"
+                situationId={scenario.id}
+                recordingBlocked={blocked}
+                recordingBlockedMessage={message}
+              />
+            }
           />
 
           <div className="study-toolbar">

@@ -30,6 +30,7 @@ type Props = {
   question: string;
   initialOpen?: boolean;
   initialBlockId?: PeelBlockId | null;
+  embedded?: boolean;
 };
 
 const WAIT_MS = 1000;
@@ -39,10 +40,11 @@ export default function PeelShadowingPanel({
   question,
   initialOpen = false,
   initialBlockId = null,
+  embedded = false,
 }: Props) {
   const blocks = useMemo(() => getPeelBlocks(card), [card]);
   const azure = useAzureSpeech();
-  const [open, setOpen] = useState(initialOpen);
+  const [open, setOpen] = useState(embedded || initialOpen);
   const [activeId, setActiveId] = useState<PeelBlockId | null>(null);
   const [phase, setPhase] = useState<Phase>("idle");
   const [scores, setScores] = useState<Partial<Record<PeelBlockId, BlockScore>>>({});
@@ -52,8 +54,8 @@ export default function PeelShadowingPanel({
   const [runAllIndex, setRunAllIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    if (initialOpen) setOpen(true);
-  }, [initialOpen]);
+    if (embedded || initialOpen) setOpen(true);
+  }, [embedded, initialOpen]);
 
   useEffect(() => {
     if (!initialBlockId) return;
@@ -186,7 +188,7 @@ export default function PeelShadowingPanel({
     return Math.round(values.reduce((sum, s) => sum + s.accuracy, 0) / values.length);
   }, [scores]);
 
-  if (!open) {
+  if (!open && !embedded) {
     return (
       <button
         type="button"
@@ -199,13 +201,15 @@ export default function PeelShadowingPanel({
   }
 
   return (
-    <div className="peel-shadowing-panel">
-      <div className="peel-shadowing-head">
-        <h3>Shadowing PEEL — bloco a bloco</h3>
-        <button type="button" className="btn secondary btn-sm" onClick={() => setOpen(false)}>
-          Fechar
-        </button>
-      </div>
+    <div className={`peel-shadowing-panel ${embedded ? "embedded" : ""}`}>
+      {!embedded && (
+        <div className="peel-shadowing-head">
+          <h3>Shadowing PEEL — bloco a bloco</h3>
+          <button type="button" className="btn secondary btn-sm" onClick={() => setOpen(false)}>
+            Fechar
+          </button>
+        </div>
+      )}
 
       {!azure.configured ? (
         <p className="voice-coach-warn">

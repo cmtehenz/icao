@@ -1,6 +1,5 @@
 "use client";
 
-import StudyAgendaSummary from "@/components/study/StudyAgendaSummary";
 import PronunciationWordsMode from "@/components/Part2Trainer/PronunciationWordsMode";
 import { usePronunciationVault } from "@/hooks/usePronunciationVault";
 import { useTheme } from "@/hooks/useTheme";
@@ -51,7 +50,6 @@ export default function PronunciationTrainerApp() {
 
       <main className="main main-essential part2-main pronunciation-main">
         <section className="wrap">
-          <StudyAgendaSummary />
           <PronunciationWordsMode />
         </section>
       </main>

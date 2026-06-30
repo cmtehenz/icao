@@ -21,6 +21,7 @@ type Props = {
   initialOpen?: boolean;
   recordingBlocked?: boolean;
   recordingBlockedMessage?: string;
+  embedded?: boolean;
 };
 
 const WAIT_MS = 1000;
@@ -33,9 +34,10 @@ export default function Part2InteractionShadowPanel({
   initialOpen = false,
   recordingBlocked = false,
   recordingBlockedMessage,
+  embedded = false,
 }: Props) {
   const azure = useAzureSpeech();
-  const [open, setOpen] = useState(initialOpen);
+  const [open, setOpen] = useState(embedded || initialOpen);
   const [phase, setPhase] = useState<Phase>("idle");
   const [score, setScore] = useState<{
     accuracy: number;
@@ -48,8 +50,8 @@ export default function Part2InteractionShadowPanel({
   const [lastAudioBlob, setLastAudioBlob] = useState<Blob | null>(null);
 
   useEffect(() => {
-    if (initialOpen) setOpen(true);
-  }, [initialOpen]);
+    if (embedded || initialOpen) setOpen(true);
+  }, [embedded, initialOpen]);
 
   const startShadow = useCallback(async () => {
     if (!azure.configured || recordingBlocked) return;
@@ -106,7 +108,7 @@ export default function Part2InteractionShadowPanel({
     setPhase("result");
   };
 
-  if (!open) {
+  if (!open && !embedded) {
     return (
       <button type="button" className="btn green peel-shadowing-toggle" onClick={() => setOpen(true)}>
         🔁 Shadow interaction
@@ -115,13 +117,15 @@ export default function Part2InteractionShadowPanel({
   }
 
   return (
-    <div className="peel-shadowing-panel part2-readback-shadow">
-      <div className="peel-shadowing-head">
-        <h3>Shadow interaction — ouvir cenário → reportar</h3>
-        <button type="button" className="btn secondary btn-sm" onClick={() => setOpen(false)}>
-          Fechar
-        </button>
-      </div>
+    <div className={`peel-shadowing-panel part2-readback-shadow ${embedded ? "embedded" : ""}`}>
+      {!embedded && (
+        <div className="peel-shadowing-head">
+          <h3>Shadow interaction — ouvir cenário → reportar</h3>
+          <button type="button" className="btn secondary btn-sm" onClick={() => setOpen(false)}>
+            Fechar
+          </button>
+        </div>
+      )}
 
       {!azure.configured ? (
         <p className="voice-coach-warn">Configure Azure Speech para avaliar o reporte.</p>

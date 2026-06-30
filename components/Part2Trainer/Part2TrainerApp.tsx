@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import StudyAgendaSummary from "@/components/study/StudyAgendaSummary";
 import FullSimulationMode from "@/components/Part2Trainer/FullSimulationMode";
 import InteractionMode from "@/components/Part2Trainer/InteractionMode";
 import ReadbackMode from "@/components/Part2Trainer/ReadbackMode";
@@ -131,9 +130,6 @@ export default function Part2TrainerApp() {
       </div>
 
       <main className="main main-essential part2-main">
-        <section className="wrap">
-          <StudyAgendaSummary />
-        </section>
         <section>
           {mode === "readback" && (
             <ReadbackMode

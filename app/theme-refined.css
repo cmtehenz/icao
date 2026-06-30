@@ -624,3 +624,135 @@ h1 {
     flex-wrap: wrap;
   }
 }
+
+/* Phase 1 declutter — unified voice panel, practice flow, tools menu */
+.voice-practice-panel {
+  margin: 0.85rem 0;
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--card);
+  box-shadow: var(--shadow-sm);
+}
+
+.voice-practice-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.65rem;
+}
+
+.voice-practice-head h3 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.voice-practice-tabs {
+  display: flex;
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
+  padding: 0.2rem;
+  border-radius: var(--radius-md);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+}
+
+.voice-practice-tab {
+  flex: 1;
+  padding: 0.45rem 0.65rem;
+  border: none;
+  border-radius: calc(var(--radius-md) - 2px);
+  background: transparent;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.voice-practice-tab.active {
+  background: var(--card);
+  color: var(--text);
+  box-shadow: var(--shadow-sm);
+}
+
+.voice-practice-toggle {
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+.peel-shadowing-panel.embedded,
+.voice-coach-panel.embedded {
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+.study-practice-toolbar {
+  display: flex;
+  align-items: stretch;
+  gap: 0.5rem;
+  margin: 0.85rem 0;
+}
+
+.study-practice-primary {
+  flex: 1;
+}
+
+.study-practice-menu-wrap {
+  position: relative;
+}
+
+.study-practice-menu-btn {
+  min-width: 2.75rem;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.study-practice-menu,
+.part1-tools-dropdown {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  right: 0;
+  z-index: 20;
+  min-width: 11rem;
+  padding: 0.35rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--card);
+  box-shadow: var(--shadow-lg);
+}
+
+.study-practice-menu button,
+.part1-tools-dropdown button {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.65rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  text-align: left;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.study-practice-menu button:hover,
+.part1-tools-dropdown button:hover {
+  background: var(--bg-subtle);
+}
+
+.part1-tools-menu {
+  position: relative;
+}
+
+.part1-tools-dropdown {
+  left: 0;
+  right: auto;
+}
+
+.study-toolbar-secondary .btn-sm {
+  padding: 0.4rem 0.65rem;
+  font-size: 0.78rem;
+}

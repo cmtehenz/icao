@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import ExamAudioPlayer from "@/components/ExamAudioPlayer";
 import ExamVersionPicker from "@/components/ExamVersionPicker";
 import VoiceCoachPanel from "@/components/VoiceCoachPanel";
+import VoicePracticePanel from "@/components/study/VoicePracticePanel";
 import ProgressBadge from "@/components/study/ProgressBadge";
 import { ALL_EXAM_SITUATIONS, getSituationsByExam } from "@/data/exams/part2Data";
 import { examAudioUrl, examAudioLabel } from "@/lib/exams/audio";
@@ -81,10 +82,16 @@ export default function ReportedSpeechMode({ progress, onProgressChange }: Props
             Depois do seu reporte, o examinador pergunta o que o controller disse. Use reported speech.
           </p>
 
-          <VoiceCoachPanel
-            question="What did the controller say?"
-            modelAnswer={scenario.reportedSpeech.modelAnswer}
-            evaluateType="part2-reported"
+          <VoicePracticePanel
+            coachOnly
+            coach={
+              <VoiceCoachPanel
+                embedded
+                question="What did the controller say?"
+                modelAnswer={scenario.reportedSpeech.modelAnswer}
+                evaluateType="part2-reported"
+              />
+            }
           />
 
           <div className="study-toolbar">

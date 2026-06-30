@@ -7,6 +7,7 @@ import Part2ReadbackQueue from "@/components/Part2Trainer/Part2ReadbackQueue";
 import Part2ReadbackShadowPanel from "@/components/Part2Trainer/Part2ReadbackShadowPanel";
 import PronunciationWarmupBanner from "@/components/study/PronunciationWarmupBanner";
 import VoiceCoachPanel from "@/components/VoiceCoachPanel";
+import VoicePracticePanel from "@/components/study/VoicePracticePanel";
 import { usePart2WarmupGate } from "@/hooks/usePart2WarmupGate";
 import ProgressBadge from "@/components/study/ProgressBadge";
 import { ALL_EXAM_SITUATIONS, getSituationsByExam } from "@/data/exams/part2Data";
@@ -112,25 +113,33 @@ export default function ReadbackMode({ progress, onProgressChange, openShadow = 
 
           <PronunciationWarmupBanner />
 
-          <Part2ReadbackShadowPanel
-            audioSrc={audioSrc}
-            audioLabel={examAudioLabel(scenario.examVersion, scenario.readback.audioTrack)}
-            modelReadback={scenario.readback.modelReadback}
-            context={scenario.context}
-            situationId={scenario.id}
+          <VoicePracticePanel
             initialOpen={openShadow}
-            recordingBlocked={blocked}
-            recordingBlockedMessage={message}
-          />
-
-          <VoiceCoachPanel
-            question={scenario.context}
-            modelAnswer={scenario.readback.modelReadback}
-            evaluateType="part2-readback"
-            situationId={scenario.id}
-            modelAudioUrl={audioSrc}
-            recordingBlocked={blocked}
-            recordingBlockedMessage={message}
+            shadow={
+              <Part2ReadbackShadowPanel
+                embedded
+                audioSrc={audioSrc}
+                audioLabel={examAudioLabel(scenario.examVersion, scenario.readback.audioTrack)}
+                modelReadback={scenario.readback.modelReadback}
+                context={scenario.context}
+                situationId={scenario.id}
+                initialOpen
+                recordingBlocked={blocked}
+                recordingBlockedMessage={message}
+              />
+            }
+            coach={
+              <VoiceCoachPanel
+                embedded
+                question={scenario.context}
+                modelAnswer={scenario.readback.modelReadback}
+                evaluateType="part2-readback"
+                situationId={scenario.id}
+                modelAudioUrl={audioSrc}
+                recordingBlocked={blocked}
+                recordingBlockedMessage={message}
+              />
+            }
           />
 
           <div className="study-toolbar">

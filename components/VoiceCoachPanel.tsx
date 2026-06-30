@@ -26,6 +26,7 @@ type Props = {
   modelAudioUrl?: string;
   recordingBlocked?: boolean;
   recordingBlockedMessage?: string;
+  embedded?: boolean;
 };
 
 function buildAzureExtras(azureResult: AzurePronunciationResult) {
@@ -49,6 +50,7 @@ export default function VoiceCoachPanel({
   modelAudioUrl,
   recordingBlocked = false,
   recordingBlockedMessage,
+  embedded = false,
 }: Props) {
   const speech = useSpeechRecognition("en-US");
   const azure = useAzurePronunciation();
@@ -59,7 +61,7 @@ export default function VoiceCoachPanel({
   const [audioSaveNote, setAudioSaveNote] = useState<string | null>(null);
   const [activityNote, setActivityNote] = useState<string | null>(null);
   const [lastAudioBlob, setLastAudioBlob] = useState<Blob | null>(null);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(embedded);
 
   const runContentEvaluation = async (
     transcript: string,
@@ -209,7 +211,7 @@ export default function VoiceCoachPanel({
     setLastAudioBlob(audioBlob);
   };
 
-  if (!open) {
+  if (!open && !embedded) {
     return (
       <button
         type="button"
@@ -225,13 +227,15 @@ export default function VoiceCoachPanel({
   const scripted = isScriptedAssessment(evaluateType);
 
   return (
-    <div className="voice-coach-panel">
-      <div className="voice-coach-head">
-        <h3>🎤 Coach de voz</h3>
-        <button type="button" className="btn secondary btn-sm" onClick={() => setOpen(false)}>
-          Fechar
-        </button>
-      </div>
+    <div className={`voice-coach-panel ${embedded ? "embedded" : ""}`}>
+      {!embedded && (
+        <div className="voice-coach-head">
+          <h3>🎤 Coach de voz</h3>
+          <button type="button" className="btn secondary btn-sm" onClick={() => setOpen(false)}>
+            Fechar
+          </button>
+        </div>
+      )}
 
       {recordingBlocked && (
         <p className="voice-coach-warn voice-coach-blocked">
