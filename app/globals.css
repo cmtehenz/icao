@@ -3961,8 +3961,105 @@ input {
 
 .vocab-term-item {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.vocab-term-item.active {
+  border-color: var(--blue);
+  background: var(--blue-bg);
+}
+
+.vocab-term-list .vocab-card-compact {
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+}
+
+.vocab-mastery-hint {
+  margin: 8px 0 0;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.vocab-trainer-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+  width: 100%;
+}
+
+.vocab-trainer-list {
+  min-width: 0;
+}
+
+.vocab-trainer-panel {
+  min-width: 0;
+}
+
+.vocab-trainer-panel-placeholder {
+  display: none;
+}
+
+.vocab-panel-hint,
+.vocab-empty-state {
+  padding: 24px 20px;
+  border-radius: 16px;
+  border: 1px dashed var(--border);
+  background: var(--card);
+  text-align: center;
+}
+
+.vocab-trainer .vocab-practice-card {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+@media (min-width: 901px) {
+  .vocab-trainer-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+    gap: 20px;
+  }
+
+  .vocab-trainer-has-panel .vocab-trainer-panel-placeholder {
+    display: none;
+  }
+
+  .vocab-trainer:not(.vocab-trainer-has-panel) .vocab-trainer-panel-placeholder {
+    display: block;
+  }
+
+  .vocab-trainer:not(.vocab-trainer-has-panel) .vocab-trainer-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 300px);
+  }
+
+  .vocab-trainer-panel {
+    position: sticky;
+    top: 72px;
+  }
+
+  .vocab-trainer .vocab-term-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .vocab-trainer-has-panel .vocab-trainer-list {
+    display: none;
+  }
+
+  .vocab-term-item {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
 
 .vocab-card-compact {

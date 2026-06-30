@@ -7,6 +7,13 @@ export type VocabSavedRecording = {
   recordedAt: string;
 };
 
+export type VocabLevelsPassed = {
+  1?: boolean;
+  2?: boolean;
+  3?: boolean;
+  4?: boolean;
+};
+
 export type VocabItemProgress = {
   attempts: number;
   bestScore: number;
@@ -19,6 +26,8 @@ export type VocabItemProgress = {
   /** ISO dates (YYYY-MM-DD) with score >= 90 */
   highScoreDates: string[];
   currentLevel: 1 | 2 | 3 | 4;
+  /** Levels cleared with score >= 75 (L4 pass implies L1–L3) */
+  levelsPassed: VocabLevelsPassed;
   markedDifficult: boolean;
   manuallyMastered: boolean;
   recordings: VocabSavedRecording[];
@@ -43,20 +52,48 @@ function defaultProgress(): VocabItemProgress {
     status: "new",
     highScoreDates: [],
     currentLevel: 1,
+    levelsPassed: {},
     markedDifficult: false,
     manuallyMastered: false,
     recordings: [],
   };
 }
 
+function applyLevelPass(levelsPassed: VocabLevelsPassed, level: 1 | 2 | 3 | 4): VocabLevelsPassed {
+  const next = { ...levelsPassed };
+  for (let l = 1; l <= level; l++) {
+    next[l as 1 | 2 | 3 | 4] = true;
+  }
+  return next;
+}
+
+function deriveLevelsPassed(raw: Partial<VocabItemProgress>): VocabLevelsPassed {
+  let passed: VocabLevelsPassed = { ...(raw.levelsPassed ?? {}) };
+  for (const rec of raw.recordings ?? []) {
+    if (rec.score >= 75) {
+      passed = applyLevelPass(passed, rec.level);
+    }
+  }
+  return passed;
+}
+
 function normalizeProgress(raw: Partial<VocabItemProgress> | undefined): VocabItemProgress {
   const base = defaultProgress();
   if (!raw) return base;
-  return {
+  const recordings = Array.isArray(raw.recordings) ? raw.recordings : [];
+  const merged: VocabItemProgress = {
     ...base,
     ...raw,
-    recordings: Array.isArray(raw.recordings) ? raw.recordings : [],
+    recordings,
+    levelsPassed: deriveLevelsPassed({ ...raw, recordings }),
   };
+  merged.masteryLevel = computeMasteryLevel(merged);
+  merged.status = computeStatus(merged);
+  return merged;
+}
+
+export function countLevelsPassed(progress: VocabItemProgress): number {
+  return ([1, 2, 3, 4] as const).filter((level) => progress.levelsPassed[level]).length;
 }
 
 export function pronunciationScore(accuracy: number, fluency: number, completeness: number): number {
@@ -90,16 +127,42 @@ export function nextReviewDate(score: number, from = new Date()): string {
 export function isMastered(progress: VocabItemProgress): boolean {
   if (progress.manuallyMastered) return true;
   const uniqueDays = new Set(progress.highScoreDates);
-  return uniqueDays.size >= 3;
+  if (uniqueDays.size >= 3) return true;
+  return countLevelsPassed(progress) >= 4 && progress.bestScore >= 90;
 }
 
 export function computeMasteryLevel(progress: VocabItemProgress): 0 | 1 | 2 | 3 | 4 | 5 {
+  const levels = countLevelsPassed(progress);
+
   if (isMastered(progress)) return 5;
-  if (progress.bestScore >= 90 && progress.highScoreDates.length >= 2) return 4;
-  if (progress.bestScore >= 90) return 3;
-  if (progress.bestScore >= 75) return 2;
+  if (levels >= 4 && progress.bestScore >= 90) return 5;
+  if (levels >= 4) return 4;
+  if (levels >= 3 || (progress.bestScore >= 90 && progress.highScoreDates.length >= 2)) return 4;
+  if (levels >= 2 || progress.bestScore >= 90) return 3;
+  if (levels >= 1 || progress.bestScore >= 75) return 2;
   if (progress.attempts > 0) return 1;
   return 0;
+}
+
+export function masteryNextStep(progress: VocabItemProgress): string | null {
+  if (progress.masteryLevel >= 5) return null;
+
+  const levels = countLevelsPassed(progress);
+  if (levels < 4) {
+    const nextLevel = (levels + 1) as 1 | 2 | 3 | 4;
+    return `Treine até o nível L${nextLevel} com ≥75% (L4 completa todos os níveis)`;
+  }
+  if (progress.bestScore < 90) {
+    return "Atinga ≥90% no melhor score para dominar o termo";
+  }
+
+  const uniqueDays = new Set(progress.highScoreDates).size;
+  if (uniqueDays < 3) {
+    const remaining = 3 - uniqueDays;
+    return `${remaining} dia(s) com ≥90% para fixação de longo prazo`;
+  }
+
+  return null;
 }
 
 export function computeStatus(progress: VocabItemProgress): VocabStatus {
@@ -187,6 +250,11 @@ export function recordVocabAttempt(
     highScoreDates.push(date);
   }
 
+  const levelsPassed =
+    score >= 75
+      ? applyLevelPass(existing.levelsPassed, level)
+      : existing.levelsPassed;
+
   const next: VocabItemProgress = {
     ...existing,
     attempts,
@@ -197,6 +265,7 @@ export function recordVocabAttempt(
     highScoreDates,
     nextReviewDate: nextReviewDate(score),
     currentLevel: level,
+    levelsPassed,
     manuallyMastered: existing.manuallyMastered,
     recordings: recording
       ? [recording, ...existing.recordings].slice(0, MAX_RECORDINGS_PER_TERM)

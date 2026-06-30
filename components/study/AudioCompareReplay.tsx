@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useRef, useState } from "react";
+import { synthesizeAzureSpeech } from "@/lib/azure/synthesizeSpeech";
 import { speakText, stopSpeaking } from "@/lib/tts";
 
 type Props = {
@@ -20,6 +21,7 @@ export default function AudioCompareReplay({
 }: Props) {
   const [playing, setPlaying] = useState(false);
   const [step, setStep] = useState<"idle" | "model" | "user">("idle");
+  const [loadingModel, setLoadingModel] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const stopAll = useCallback(() => {
@@ -29,30 +31,39 @@ export default function AudioCompareReplay({
       audioRef.current = null;
     }
     setPlaying(false);
+    setLoadingModel(false);
     setStep("idle");
   }, []);
+
+  const playBlob = useCallback(
+    (blob: Blob, onDone: () => void) => {
+      const url = URL.createObjectURL(blob);
+      const audio = new Audio(url);
+      audioRef.current = audio;
+      audio.onended = () => {
+        URL.revokeObjectURL(url);
+        audioRef.current = null;
+        onDone();
+      };
+      audio.onerror = () => {
+        URL.revokeObjectURL(url);
+        stopAll();
+      };
+      void audio.play().catch(() => stopAll());
+    },
+    [stopAll],
+  );
 
   const playUser = useCallback(() => {
     if (!userAudioBlob) return;
     setStep("user");
-    const url = URL.createObjectURL(userAudioBlob);
-    const audio = new Audio(url);
-    audioRef.current = audio;
-    audio.onended = () => {
-      URL.revokeObjectURL(url);
-      stopAll();
-    };
-    audio.onerror = () => {
-      URL.revokeObjectURL(url);
-      stopAll();
-    };
-    void audio.play();
-  }, [stopAll, userAudioBlob]);
+    playBlob(userAudioBlob, stopAll);
+  }, [playBlob, stopAll, userAudioBlob]);
 
-  const playModel = useCallback(() => {
-    if (modelAudioUrl) {
+  const playModelFromUrl = useCallback(
+    (url: string) => {
       setStep("model");
-      const audio = new Audio(modelAudioUrl);
+      const audio = new Audio(url);
       audioRef.current = audio;
       audio.onended = () => {
         audioRef.current = null;
@@ -60,6 +71,13 @@ export default function AudioCompareReplay({
       };
       audio.onerror = () => stopAll();
       void audio.play().catch(() => stopAll());
+    },
+    [playUser, stopAll],
+  );
+
+  const playModel = useCallback(async () => {
+    if (modelAudioUrl) {
+      playModelFromUrl(modelAudioUrl);
       return;
     }
 
@@ -68,18 +86,28 @@ export default function AudioCompareReplay({
       return;
     }
 
+    setLoadingModel(true);
+    const azureBlob = await synthesizeAzureSpeech(modelText);
+    setLoadingModel(false);
+
+    if (azureBlob) {
+      setStep("model");
+      playBlob(azureBlob, playUser);
+      return;
+    }
+
     setStep("model");
     const ok = speakText(modelText, () => {
       playUser();
     });
     if (!ok) playUser();
-  }, [modelAudioUrl, modelText, playUser, stopAll]);
+  }, [modelAudioUrl, modelText, playBlob, playModelFromUrl, playUser]);
 
   const startCompare = () => {
-    if (!userAudioBlob || playing) return;
+    if (!userAudioBlob || playing || loadingModel) return;
     if (!modelText?.trim() && !modelAudioUrl) return;
     setPlaying(true);
-    playModel();
+    void playModel();
   };
 
   if (!userAudioBlob) return null;
@@ -89,16 +117,18 @@ export default function AudioCompareReplay({
       <button
         type="button"
         className="btn secondary btn-sm"
-        disabled={playing || (!modelText?.trim() && !modelAudioUrl)}
+        disabled={playing || loadingModel || (!modelText?.trim() && !modelAudioUrl)}
         onClick={startCompare}
       >
-        {playing
-          ? step === "model"
-            ? `▶ ${modelLabel}…`
-            : `▶ ${userLabel}…`
-          : `🔊 Comparar: ${modelLabel} → ${userLabel}`}
+        {loadingModel
+          ? "Preparando modelo…"
+          : playing
+            ? step === "model"
+              ? `▶ ${modelLabel}…`
+              : `▶ ${userLabel}…`
+            : `🔊 Comparar: ${modelLabel} → ${userLabel}`}
       </button>
-      {playing && (
+      {(playing || loadingModel) && (
         <button type="button" className="btn secondary btn-sm" onClick={stopAll}>
           Parar
         </button>

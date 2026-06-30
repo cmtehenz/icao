@@ -3,7 +3,7 @@
 import type { IcaoVocabularyItem } from "@/data/icaoVocabulary";
 import { difficultyLabel } from "@/data/icaoVocabulary";
 import type { VocabItemProgress } from "@/utils/spacedRepetition";
-import { scoreTierLabel } from "@/utils/spacedRepetition";
+import { countLevelsPassed, masteryNextStep, scoreTierLabel } from "@/utils/spacedRepetition";
 
 type Props = {
   item: IcaoVocabularyItem;
@@ -14,6 +14,8 @@ type Props = {
 
 export default function VocabularyCard({ item, progress, trainingLevel, compact = false }: Props) {
   const masteryPct = Math.round((progress.masteryLevel / 5) * 100);
+  const levelsDone = countLevelsPassed(progress);
+  const nextStep = masteryNextStep(progress);
 
   if (compact) {
     return (
@@ -28,6 +30,7 @@ export default function VocabularyCard({ item, progress, trainingLevel, compact 
         <div className="vocab-card-meta">
           <span className="vocab-card-tag">{item.category}</span>
           <span className="vocab-card-tag">{difficultyLabel(item.difficulty)}</span>
+          {levelsDone > 0 && <span className="vocab-card-tag">Níveis {levelsDone}/4</span>}
         </div>
       </article>
     );
@@ -54,6 +57,7 @@ export default function VocabularyCard({ item, progress, trainingLevel, compact 
       <div className="vocab-card-meta">
         <span className="vocab-card-tag">Difficulty {item.difficulty}</span>
         {trainingLevel && <span className="vocab-card-tag">Training L{trainingLevel}</span>}
+        {levelsDone > 0 && <span className="vocab-card-tag">Níveis {levelsDone}/4</span>}
         <span className={`vocab-card-tag status-${progress.status}`}>{progress.status}</span>
       </div>
 
@@ -65,6 +69,7 @@ export default function VocabularyCard({ item, progress, trainingLevel, compact 
         <div className="daily-study-bar" aria-hidden>
           <div className="daily-study-bar-fill" style={{ width: `${masteryPct}%` }} />
         </div>
+        {nextStep && <p className="vocab-mastery-hint">{nextStep}</p>}
       </div>
 
       {progress.attempts > 0 && (

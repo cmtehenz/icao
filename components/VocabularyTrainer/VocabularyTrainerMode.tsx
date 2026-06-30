@@ -24,6 +24,64 @@ const FILTERS: { id: Filter; label: string }[] = [
   { id: "mastered", label: "Mastered" },
 ];
 
+function VocabTermList({
+  grouped,
+  filteredLength,
+  getProgress,
+  activeItemId,
+  onSelect,
+}: {
+  grouped: { id: string; label: string; terms: IcaoVocabularyItem[] }[];
+  filteredLength: number;
+  getProgress: (id: string) => import("@/utils/spacedRepetition").VocabItemProgress;
+  activeItemId?: string;
+  onSelect: (item: IcaoVocabularyItem) => void;
+}) {
+  if (filteredLength === 0) {
+    return (
+      <article className="vocab-empty-state">
+        <p className="sub">No items in this filter.</p>
+      </article>
+    );
+  }
+
+  return (
+    <div className="vocab-grouped-list">
+      {grouped.map((group) => (
+        <section key={group.id} className="vocab-category-section">
+          <header className="vocab-category-head">
+            <h3 className="vocab-category-title">{group.label}</h3>
+            <span className="vocab-category-count">{group.terms.length}</span>
+          </header>
+          <ul className="vault-word-list vocab-term-list">
+            {group.terms.map((item) => {
+              const p = getProgress(item.id);
+              const mastered = isMastered(p);
+              const due = isDueForReview(p);
+              const isActive = item.id === activeItemId;
+              return (
+                <li
+                  key={item.id}
+                  className={`vault-word-item vocab-term-item ${due ? "warn" : mastered ? "done" : ""} ${isActive ? "active" : ""}`}
+                >
+                  <VocabularyCard item={item} progress={p} compact />
+                  <button
+                    type="button"
+                    className={`btn btn-sm ${isActive ? "secondary" : "green"}`}
+                    onClick={() => onSelect(item)}
+                  >
+                    {isActive ? "Training" : "Train"}
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      ))}
+    </div>
+  );
+}
+
 export default function VocabularyTrainerMode({ initialTermId }: { initialTermId?: string }) {
   const { getProgress, recordAttempt, markDifficult, markMastered } = useVocabularyProgress();
   const [filter, setFilter] = useState<Filter>("due");
@@ -85,7 +143,7 @@ export default function VocabularyTrainerMode({ initialTermId }: { initialTermId
   const referenceText = activeItem ? getLevelText(activeItem, level) : "";
 
   return (
-    <div className="part2-mode vocab-trainer">
+    <div className={`part2-mode vocab-trainer ${activeItem ? "vocab-trainer-has-panel" : ""}`}>
       <header className="part2-mode-head">
         <span className="badge">Vocabulary Trainer</span>
         <span className="part2-counter">{filtered.length} items</span>
@@ -139,80 +197,65 @@ export default function VocabularyTrainerMode({ initialTermId }: { initialTermId
         </Link>
       </div>
 
-      {activeItem && activeProgress ? (
-        <article className="card card-essential part2-card vault-practice-card vocab-practice-card">
-          <div className="vocab-level-picker">
-            {([1, 2, 3, 4] as const).map((l) => (
-              <button
-                key={l}
-                type="button"
-                className={`filter-chip ${level === l ? "active" : ""}`}
-                onClick={() => setLevel(l)}
-                title={getLevelText(activeItem, l)}
-              >
-                Level {l}
-              </button>
-            ))}
-          </div>
-          <VocabularyCard item={activeItem} progress={activeProgress} trainingLevel={level} />
-          <PronunciationRecorder
-            referenceText={referenceText}
-            termLabel={activeItem.term}
-            progress={activeProgress}
-            onResult={async (_score, assessment, audioBlob) =>
-              recordAttempt(
-                activeItem.id,
-                assessment,
-                level,
-                activeItem.term,
-                referenceText,
-                audioBlob,
-              )
-            }
-            onMarkDifficult={() => markDifficult(activeItem.id)}
-            onMarkMastered={() => markMastered(activeItem.id)}
-            onNext={goNext}
+      <div className="vocab-trainer-layout">
+        <div className="vocab-trainer-list">
+          <VocabTermList
+            grouped={grouped}
+            filteredLength={filtered.length}
+            getProgress={getProgress}
+            activeItemId={activeItem?.id}
+            onSelect={setActiveItem}
           />
-          <button type="button" className="btn secondary" onClick={() => setActiveItem(null)}>
-            Back to list
-          </button>
-        </article>
-      ) : (
-        <div className="vocab-grouped-list">
-          {filtered.length === 0 ? (
-            <article className="exam-pick-card">
-              <p className="sub">No items in this filter.</p>
-            </article>
-          ) : (
-            grouped.map((group) => (
-              <section key={group.id} className="vocab-category-section">
-                <header className="vocab-category-head">
-                  <h3 className="vocab-category-title">{group.label}</h3>
-                  <span className="vocab-category-count">{group.terms.length}</span>
-                </header>
-                <ul className="vault-word-list vocab-term-list">
-                  {group.terms.map((item) => {
-                    const p = getProgress(item.id);
-                    const mastered = isMastered(p);
-                    const due = isDueForReview(p);
-                    return (
-                      <li
-                        key={item.id}
-                        className={`vault-word-item vocab-term-item ${due ? "warn" : mastered ? "done" : ""}`}
-                      >
-                        <VocabularyCard item={item} progress={p} compact />
-                        <button type="button" className="btn green btn-sm" onClick={() => setActiveItem(item)}>
-                          Train
-                        </button>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </section>
-            ))
-          )}
         </div>
-      )}
+
+        {activeItem && activeProgress ? (
+          <aside className="vocab-trainer-panel">
+            <article className="card card-essential part2-card vault-practice-card vocab-practice-card">
+              <div className="vocab-level-picker">
+                {([1, 2, 3, 4] as const).map((l) => (
+                  <button
+                    key={l}
+                    type="button"
+                    className={`filter-chip ${level === l ? "active" : ""}`}
+                    onClick={() => setLevel(l)}
+                    title={getLevelText(activeItem, l)}
+                  >
+                    Level {l}
+                  </button>
+                ))}
+              </div>
+              <VocabularyCard item={activeItem} progress={activeProgress} trainingLevel={level} />
+              <PronunciationRecorder
+                referenceText={referenceText}
+                termLabel={activeItem.term}
+                progress={activeProgress}
+                onResult={async (_score, assessment, audioBlob) =>
+                  recordAttempt(
+                    activeItem.id,
+                    assessment,
+                    level,
+                    activeItem.term,
+                    referenceText,
+                    audioBlob,
+                  )
+                }
+                onMarkDifficult={() => markDifficult(activeItem.id)}
+                onMarkMastered={() => markMastered(activeItem.id)}
+                onNext={goNext}
+              />
+              <button type="button" className="btn secondary" onClick={() => setActiveItem(null)}>
+                Close panel
+              </button>
+            </article>
+          </aside>
+        ) : (
+          <aside className="vocab-trainer-panel vocab-trainer-panel-placeholder" aria-hidden>
+            <article className="vocab-panel-hint">
+              <p className="sub">Select a term from the list to start training.</p>
+            </article>
+          </aside>
+        )}
+      </div>
     </div>
   );
 }
