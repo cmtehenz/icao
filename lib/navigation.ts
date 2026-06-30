@@ -1,6 +1,13 @@
 export const NAV_ITEMS = [
   {
     href: "/",
+    label: "Início",
+    shortLabel: "Início",
+    icon: "🏠",
+    description: "Meta de hoje e próximo passo",
+  },
+  {
+    href: "/part1",
     label: "Part 1",
     shortLabel: "Part 1",
     icon: "✈",
@@ -27,18 +34,13 @@ export const NAV_ITEMS = [
     icon: "🎤",
     description: "Palavras com erro para treinar",
   },
-  {
-    href: "/conta",
-    label: "Conta",
-    shortLabel: "Conta",
-    icon: "👤",
-    description: "Perfil e histórico de notas",
-  },
 ] as const;
 
 export const PRONUNCIATION_HREF = "/pronunciation";
+export const PART1_HREF = "/part1";
+export const HOME_HREF = "/";
 
 export function isNavActive(pathname: string, href: string): boolean {
   if (href === "/") return pathname === "/";
-  return pathname.startsWith(href);
+  return pathname === href || pathname.startsWith(`${href}/`);
 }

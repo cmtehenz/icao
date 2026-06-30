@@ -39,7 +39,7 @@ export function resolveAgendaLink(target: StudyAgendaLinkTarget): string {
   switch (target) {
     case "part1-shadow": {
       const num = pickPart1CardNum();
-      return `/?card=${num}&shadow=1`;
+      return `/part1?card=${num}&shadow=1`;
     }
     case "part2-readback-shadow":
       return "/part2?mode=readback&shadow=1";
@@ -58,6 +58,6 @@ export function resolveAgendaLink(target: StudyAgendaLinkTarget): string {
       return id ? `/vocabulario?term=${encodeURIComponent(id)}` : "/vocabulario";
     }
     default:
-      return "/";
+      return "/part1";
   }
 }

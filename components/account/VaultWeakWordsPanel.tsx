@@ -10,9 +10,13 @@ import {
   type VaultWord,
 } from "@/lib/pronunciationVault";
 
-const TOP_N = 5;
+const DEFAULT_TOP_N = 5;
 
-export default function VaultWeakWordsPanel() {
+type Props = {
+  limit?: number;
+};
+
+export default function VaultWeakWordsPanel({ limit = DEFAULT_TOP_N }: Props) {
   const [words, setWords] = useState<VaultWord[]>([]);
 
   const refresh = useCallback(() => setWords(loadVault()), []);
@@ -23,7 +27,7 @@ export default function VaultWeakWordsPanel() {
     return () => window.removeEventListener(VAULT_CHANGE_EVENT, refresh);
   }, [refresh]);
 
-  const weak = useMemo(() => pickWarmupWords(words, TOP_N), [words]);
+  const weak = useMemo(() => pickWarmupWords(words, limit), [words, limit]);
 
   if (!weak.length) {
     return (
@@ -38,7 +42,7 @@ export default function VaultWeakWordsPanel() {
 
   return (
     <section className="account-section vault-weak-panel">
-      <h2>Top {weak.length} palavras fracas</h2>
+      <h2>Top {Math.min(weak.length, limit)} palavras fracas</h2>
       <p className="sub">
         Priorize estas antes de gravar no Part 2 (meta ≥{VAULT_PASS_SCORE}% no Azure).
       </p>

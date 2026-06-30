@@ -10,6 +10,19 @@ async function isAuthenticated(request: NextRequest): Promise<boolean> {
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+
+  if (
+    pathname === "/" &&
+    (request.nextUrl.searchParams.has("card") ||
+      request.nextUrl.searchParams.has("shadow") ||
+      request.nextUrl.searchParams.has("block") ||
+      request.nextUrl.searchParams.get("view") === "exam")
+  ) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/part1";
+    return NextResponse.redirect(url);
+  }
+
   const authed = await isAuthenticated(request);
 
   if (isPublicPath(pathname)) {

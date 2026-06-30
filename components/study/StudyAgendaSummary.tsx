@@ -18,7 +18,7 @@ export default function StudyAgendaSummary() {
     [agenda.tasks, today],
   );
 
-  const nextHref = nextTask ? resolveAgendaLink(nextTask.linkTarget) : "/conta";
+  const nextHref = nextTask ? resolveAgendaLink(nextTask.linkTarget) : "/part1";
 
   if (progress.globalGoalMet && progress.agendaComplete) {
     return (
@@ -27,8 +27,8 @@ export default function StudyAgendaSummary() {
           <strong>Meta de hoje completa ✓</strong>
           <span>{totalPoints} / {goalPoints} pts</span>
         </div>
-        <Link href="/conta" className="study-agenda-summary-link">
-          Ver agenda
+        <Link href="/" className="study-agenda-summary-link">
+          Ver início
         </Link>
       </section>
     );

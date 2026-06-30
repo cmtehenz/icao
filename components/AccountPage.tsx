@@ -7,10 +7,7 @@ import { useAuth } from "@/components/AuthProvider";
 import EvaluationAudioPlayer from "@/components/EvaluationAudioPlayer";
 import PronunciationVaultClearButton from "@/components/PronunciationVaultClearButton";
 import DailyStudyGoal from "@/components/study/DailyStudyGoal";
-import StudyAgenda from "@/components/study/StudyAgenda";
 import StudyCalendar from "@/components/study/StudyCalendar";
-import StudyWeeklyReport from "@/components/study/StudyWeeklyReport";
-import VaultWeakWordsPanel from "@/components/account/VaultWeakWordsPanel";
 import { usePronunciationVault } from "@/hooks/usePronunciationVault";
 
 type EvaluationRow = {
@@ -52,8 +49,10 @@ export default function AccountPage() {
     <div className="wrap account-page">
       <header className="account-head">
         <div>
-          <h1>Olá, {user.name || user.email.split("@")[0]}</h1>
-          <p className="sub">{user.email} · dados sincronizados no servidor</p>
+          <h1>Conta</h1>
+          <p className="sub">
+            {user.name || user.email.split("@")[0]} · {user.email}
+          </p>
         </div>
         <button
           type="button"
@@ -68,15 +67,13 @@ export default function AccountPage() {
         </button>
       </header>
 
-      <StudyAgenda />
-
-      <DailyStudyGoal compact />
+      <p className="account-back-home">
+        <Link href="/">← Voltar ao início</Link>
+      </p>
 
       <StudyCalendar />
 
-      <StudyWeeklyReport />
-
-      <VaultWeakWordsPanel />
+      <DailyStudyGoal compact />
 
       <section className="account-section">
         <h2>Banco de pronúncia</h2>

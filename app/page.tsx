@@ -1,10 +1,5 @@
-import { Suspense } from "react";
-import FlashcardApp from "@/components/FlashcardApp";
+import HomePage from "@/components/home/HomePage";
 
 export default function Home() {
-  return (
-    <Suspense fallback={<div className="wrap"><p>Carregando…</p></div>}>
-      <FlashcardApp />
-    </Suspense>
-  );
+  return <HomePage />;
 }
