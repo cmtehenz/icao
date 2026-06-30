@@ -3235,6 +3235,25 @@ input {
   transition: all 0.15s ease;
 }
 
+.connector-style-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin: 0.65rem 0 0.25rem;
+}
+
+.connector-style-label {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-right: 2px;
+}
+
+.connector-style-chip {
+  font-size: 0.72rem;
+  padding: 0.25rem 0.55rem;
+}
+
 .filter-chip.active {
   background: var(--blue);
   color: white;

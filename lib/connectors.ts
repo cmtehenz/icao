@@ -50,7 +50,10 @@ export const CONNECTOR_GROUPS = [
   },
 ] as const;
 
-export type ConnectorSetId = "classic" | "formal" | "dynamic" | "direct" | "random";
+import { toLevel4Card } from "./icaoStructure";
+import type { Card } from "./types";
+
+export type ConnectorSetId = "level4" | "classic" | "formal" | "dynamic" | "direct" | "random";
 
 export type ConnectorSet = {
   id: Exclude<ConnectorSetId, "random">;
@@ -64,6 +67,16 @@ export type ConnectorSet = {
 };
 
 export const CONNECTOR_SETS: ConnectorSet[] = [
+  {
+    id: "level4",
+    label: "ICAO 4",
+    opener: "",
+    idea1: "First,",
+    idea2: "Also,",
+    idea3: "Finally,",
+    example: "For example,",
+    conclusion: "Overall,",
+  },
   {
     id: "classic",
     label: "Classic",
@@ -159,6 +172,7 @@ export function applyConnectorSet<
     answer: string;
   },
 >(card: T, setId: ConnectorSetId, seed = 0): T {
+  if (setId === "level4") return toLevel4Card(card as unknown as Card) as unknown as T;
   if (setId === "classic") return card;
 
   const set = resolveConnectorSet(setId, seed);
@@ -183,9 +197,10 @@ export function applyConnectorSet<
 }
 
 export function loadConnectorSet(): ConnectorSetId {
-  if (typeof window === "undefined") return "classic";
+  if (typeof window === "undefined") return "level4";
   const stored = localStorage.getItem(CONNECTOR_SET_KEY);
   if (
+    stored === "level4" ||
     stored === "classic" ||
     stored === "formal" ||
     stored === "dynamic" ||
@@ -194,7 +209,7 @@ export function loadConnectorSet(): ConnectorSetId {
   ) {
     return stored;
   }
-  return "classic";
+  return "level4";
 }
 
 export function saveConnectorSet(id: ConnectorSetId) {

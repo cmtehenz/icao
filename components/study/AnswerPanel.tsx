@@ -22,13 +22,16 @@ function IdeaLine({ text }: { text: string }) {
 type Props = {
   card: Card;
   show: boolean;
+  connectorSet?: string;
 };
 
-export default function AnswerPanel({ card, show }: Props) {
+export default function AnswerPanel({ card, show, connectorSet }: Props) {
   if (!show) return null;
   return (
     <div className="answer show answer-panel">
-      <h3>Resposta modelo — PEEL</h3>
+      <h3>
+        {connectorSet === "level4" ? "Resposta modelo — ICAO 4 (simples)" : "Resposta modelo — PEEL"}
+      </h3>
       <div className="answer-blocks">
         <div className="block blue-b">
           <h4>Opener</h4>

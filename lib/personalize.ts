@@ -6,7 +6,7 @@ import { wordCount } from "./utils";
 export function personalizeCard(
   card: Card,
   profile: PilotProfile,
-  connectorSet: ConnectorSetId = "classic",
+  connectorSet: ConnectorSetId = "level4",
 ): Card {
   const withProfile: Card = {
     ...card,

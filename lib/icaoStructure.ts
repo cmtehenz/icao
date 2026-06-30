@@ -112,3 +112,53 @@ export function estimateStructureWords(card: Card): number {
     .join(" ")
     .split(/\s+/).filter(Boolean).length;
 }
+
+/** Resposta oral curta — 4 passos, conectores simples (nota ICAO 4). */
+export function buildIcaoLevel4Answer(card: Card): string {
+  const main = simplifyMain(card.opener);
+  const idea1 = ideaBody(card.ideas[0] ?? "");
+  const idea2 = ideaBody(card.ideas[1] ?? "");
+  const ex = simplifyExample(card.example);
+  const endRaw = stripLead(card.conclusion, [/^Overall,?\s*/i, /^In conclusion,?\s*/i]);
+  const conclusion = `Overall, ${endRaw.charAt(0).toLowerCase()}${endRaw.slice(1)}`;
+
+  const parts: string[] = [main];
+  if (idea1) {
+    parts.push(`First, ${idea1.charAt(0).toLowerCase()}${idea1.slice(1)}`);
+  }
+  if (idea2) {
+    parts.push(`Also, ${idea2.charAt(0).toLowerCase()}${idea2.slice(1)}`);
+  }
+  parts.push(ex);
+  parts.push(conclusion);
+  return parts.filter(Boolean).join(" ");
+}
+
+/** Card PEEL simplificado para exibição no modo ICAO 4 (2 ideias, sem jargão). */
+export function toLevel4Card<T extends Card>(card: T): T {
+  const main = simplifyMain(card.opener);
+  const idea1 = ideaBody(card.ideas[0] ?? "");
+  const idea2 = ideaBody(card.ideas[1] ?? "");
+  const ex = simplifyExample(card.example);
+  const endRaw = stripLead(card.conclusion, [/^Overall,?\s*/i, /^In conclusion,?\s*/i]);
+  const conclusion = `Overall, ${endRaw.charAt(0).toLowerCase()}${endRaw.slice(1)}`;
+
+  const ideas: string[] = [];
+  if (idea1) {
+    ideas.push(`1 - SITUATION: First, ${idea1.charAt(0).toLowerCase()}${idea1.slice(1)}`);
+  }
+  if (idea2) {
+    ideas.push(`2 - ACTION: Also, ${idea2.charAt(0).toLowerCase()}${idea2.slice(1)}`);
+  }
+
+  const answer = buildIcaoLevel4Answer(card);
+
+  return {
+    ...card,
+    opener: main,
+    ideas: ideas.length ? ideas : card.ideas.slice(0, 2),
+    example: ex,
+    conclusion,
+    answer,
+  };
+}

@@ -28,7 +28,7 @@ import { PART1_BY_EXAM } from "@/data/exams/part1";
 import { useTheme } from "@/hooks/useTheme";
 import { CATEGORIES } from "@/lib/categories";
 import { CARDS } from "@/lib/cards";
-import { loadConnectorSet, saveConnectorSet, type ConnectorSetId } from "@/lib/connectors";
+import { CONNECTOR_SETS, loadConnectorSet, saveConnectorSet, type ConnectorSetId } from "@/lib/connectors";
 import { isFavorite, loadFavorites, toggleFavorite } from "@/lib/favorites";
 import { getExamForCard } from "@/data/exams/part1";
 import { getKeywords } from "@/lib/icaoStructure";
@@ -60,7 +60,7 @@ export default function FlashcardApp() {
   const [favorites, setFavorites] = useState<string[]>([]);
   const [progress, setProgress] = useState<ProgressStore>({ cards: {}, dailyCount: {} });
   const [profile, setProfile] = useState<PilotProfile>(DEFAULT_PROFILE);
-  const [connectorSet, setConnectorSet] = useState<ConnectorSetId>("classic");
+  const [connectorSet, setConnectorSet] = useState<ConnectorSetId>("level4");
   const [profileOpen, setProfileOpen] = useState(false);
   const [connectorsOpen, setConnectorsOpen] = useState(false);
   const [phrasesOpen, setPhrasesOpen] = useState(false);
@@ -369,6 +369,25 @@ export default function FlashcardApp() {
 
             <h2 className="question">{card.question}</h2>
 
+            <div className="connector-style-bar" role="group" aria-label="Estilo da resposta modelo">
+              <span className="connector-style-label">Modelo:</span>
+              {CONNECTOR_SETS.map((set) => (
+                <button
+                  key={set.id}
+                  type="button"
+                  className={`filter-chip connector-style-chip ${connectorSet === set.id ? "active" : ""}`}
+                  onClick={() => setConnectorSet(set.id)}
+                  title={
+                    set.id === "level4"
+                      ? "Frases curtas — ideal para começar (nota ICAO 4)"
+                      : set.label
+                  }
+                >
+                  {set.label}
+                </button>
+              ))}
+            </div>
+
             <div className="memory">
               Memory flow
               <MemoryFlow memory={card.memory} memoryLabels={card.memoryLabels} />
@@ -428,7 +447,7 @@ export default function FlashcardApp() {
               onResetPractice={resetPractice}
             />
 
-            <AnswerPanel card={card} show={showAnswer} />
+            <AnswerPanel card={card} show={showAnswer} connectorSet={connectorSet} />
 
             <div className="card-footer-meta">
               <span>{answerWords} words</span>
