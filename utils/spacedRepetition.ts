@@ -59,8 +59,11 @@ function defaultProgress(): VocabItemProgress {
   };
 }
 
-function applyLevelPass(levelsPassed: VocabLevelsPassed, level: 1 | 2 | 3 | 4): VocabLevelsPassed {
-  const next = { ...levelsPassed };
+function applyLevelPass(
+  levelsPassed: VocabLevelsPassed | undefined,
+  level: 1 | 2 | 3 | 4,
+): VocabLevelsPassed {
+  const next = { ...(levelsPassed ?? {}) };
   for (let l = 1; l <= level; l++) {
     next[l as 1 | 2 | 3 | 4] = true;
   }
@@ -93,7 +96,8 @@ function normalizeProgress(raw: Partial<VocabItemProgress> | undefined): VocabIt
 }
 
 export function countLevelsPassed(progress: VocabItemProgress): number {
-  return ([1, 2, 3, 4] as const).filter((level) => progress.levelsPassed[level]).length;
+  const levelsPassed = progress.levelsPassed ?? {};
+  return ([1, 2, 3, 4] as const).filter((level) => levelsPassed[level]).length;
 }
 
 export function pronunciationScore(accuracy: number, fluency: number, completeness: number): number {
@@ -190,6 +194,14 @@ export type VocabProgressStore = {
   lastPracticeDate?: string;
 };
 
+function normalizeStoreItems(items: Record<string, Partial<VocabItemProgress> | undefined> = {}) {
+  const normalized: Record<string, VocabItemProgress> = {};
+  for (const [id, item] of Object.entries(items)) {
+    normalized[id] = normalizeProgress(item);
+  }
+  return normalized;
+}
+
 export function loadVocabProgressStore(): VocabProgressStore {
   if (typeof window === "undefined") {
     return { items: {}, dailyAttempts: {}, dailyPhrases: {}, dailyScoreSum: {}, streak: 0 };
@@ -198,14 +210,22 @@ export function loadVocabProgressStore(): VocabProgressStore {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return { items: {}, dailyAttempts: {}, dailyPhrases: {}, dailyScoreSum: {}, streak: 0 };
     const parsed = JSON.parse(raw) as VocabProgressStore;
-    return {
-      items: parsed.items ?? {},
+    const items = normalizeStoreItems(parsed.items ?? {});
+    const store: VocabProgressStore = {
+      items,
       dailyAttempts: parsed.dailyAttempts ?? {},
       dailyPhrases: parsed.dailyPhrases ?? {},
       dailyScoreSum: parsed.dailyScoreSum ?? {},
       streak: parsed.streak ?? 0,
       lastPracticeDate: parsed.lastPracticeDate,
     };
+    const needsMigration = Object.values(parsed.items ?? {}).some(
+      (item) => item != null && item.levelsPassed === undefined,
+    );
+    if (needsMigration) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(store));
+    }
+    return store;
   } catch {
     return { items: {}, dailyAttempts: {}, dailyPhrases: {}, dailyScoreSum: {}, streak: 0 };
   }
@@ -331,7 +351,7 @@ export function dailyMissionStats(
   const scoreSum = store.dailyScoreSum[date] ?? 0;
   const averageScoreToday = wordsToday > 0 ? Math.round(scoreSum / wordsToday) : 0;
   const dueToday = Object.keys(store.items).length
-    ? Object.values(store.items).filter((p) => isDueForReview(p, date)).length
+    ? Object.values(store.items).filter((p) => isDueForReview(normalizeProgress(p), date)).length
     : totalItems;
 
   return {
