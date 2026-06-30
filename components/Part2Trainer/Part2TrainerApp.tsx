@@ -23,6 +23,9 @@ const MODES: { id: Part2Mode; label: string; desc: string }[] = [
 
 export default function Part2TrainerApp() {
   const searchParams = useSearchParams();
+  const scenarioId = searchParams.get("scenario");
+  const openShadow = searchParams.get("shadow") === "1";
+  const openPractice = searchParams.get("practice") === "1";
   const { theme, toggle: toggleTheme, hydrated } = useTheme();
   const { unlocked: simUnlocked, hint: simHint } = useSimulationUnlock();
   const [mode, setMode] = useState<Part2Mode>("readback");
@@ -126,21 +129,27 @@ export default function Part2TrainerApp() {
             <ReadbackMode
               progress={progress}
               onProgressChange={setProgress}
-              openShadow={searchParams.get("shadow") === "1"}
+              openShadow={openShadow}
+              openPractice={openPractice}
+              scenarioId={scenarioId}
             />
           )}
           {mode === "interaction" && (
             <InteractionMode
               progress={progress}
               onProgressChange={setProgress}
-              openShadow={searchParams.get("shadow") === "1"}
+              openShadow={openShadow}
+              openPractice={openPractice}
+              scenarioId={scenarioId}
             />
           )}
           {mode === "reported" && (
             <ReportedSpeechMode
               progress={progress}
               onProgressChange={setProgress}
-              openShadow={searchParams.get("shadow") === "1"}
+              openShadow={openShadow}
+              openPractice={openPractice}
+              scenarioId={scenarioId}
             />
           )}
           {mode === "simulation" && simUnlocked && (

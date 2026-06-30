@@ -15,7 +15,11 @@ import { usePart2WarmupGate } from "@/hooks/usePart2WarmupGate";
 import { ALL_EXAM_SITUATIONS, getSituationsByExam } from "@/data/exams/part2Data";
 import { examAudioUrl, examAudioLabel } from "@/lib/exams/audio";
 import type { ExamVersion } from "@/lib/exams/types";
-import { findScenarioIndex } from "@/lib/part2ReadbackQueue";
+import {
+  remapIndexAfterExamChange,
+  resolvePart2ScenarioNav,
+  scenariosForExamVersion,
+} from "@/lib/part2ScenarioNav";
 import {
   getPart2ItemProgress,
   setPart2ItemStatus,
@@ -27,32 +31,45 @@ type Props = {
   progress: Part2ProgressStore;
   onProgressChange: (store: Part2ProgressStore) => void;
   openShadow?: boolean;
+  openPractice?: boolean;
+  scenarioId?: string | null;
 };
 
-export default function ReportedSpeechMode({ progress, onProgressChange, openShadow = false }: Props) {
+export default function ReportedSpeechMode({
+  progress,
+  onProgressChange,
+  openShadow = false,
+  openPractice = false,
+  scenarioId: scenarioIdProp = null,
+}: Props) {
   const searchParams = useSearchParams();
+  const scenarioIdFromUrl = scenarioIdProp ?? searchParams.get("scenario");
+  const navFromUrl = useMemo(
+    () => resolvePart2ScenarioNav(scenarioIdFromUrl),
+    [scenarioIdFromUrl],
+  );
+
   const { blocked, message } = usePart2WarmupGate();
-  const [examVersion, setExamVersion] = useState<ExamVersion | "all">("all");
-  const [index, setIndex] = useState(0);
+  const [examVersion, setExamVersion] = useState<ExamVersion | "all">(navFromUrl.examVersion);
+  const [index, setIndex] = useState(navFromUrl.index);
   const [showAnswer, setShowAnswer] = useState(false);
 
-  const scenarios = useMemo(() => {
-    if (examVersion === "all") return ALL_EXAM_SITUATIONS;
-    return getSituationsByExam(examVersion);
-  }, [examVersion]);
-
-  const scenario = scenarios[index];
-  const itemProgress = getPart2ItemProgress(progress, `${scenario.id}-rep`);
+  const scenarios = useMemo(
+    () => scenariosForExamVersion(examVersion),
+    [examVersion],
+  );
 
   useEffect(() => {
-    const scenarioId = searchParams.get("scenario");
-    if (!scenarioId) return;
-    const nextIndex = findScenarioIndex(scenarios, scenarioId);
-    if (nextIndex >= 0) {
-      setIndex(nextIndex);
-      setShowAnswer(false);
-    }
-  }, [searchParams, scenarios]);
+    const next = resolvePart2ScenarioNav(scenarioIdFromUrl);
+    setExamVersion(next.examVersion);
+    setIndex(next.index);
+    setShowAnswer(false);
+  }, [scenarioIdFromUrl]);
+
+  const scenario = scenarios[index] ?? scenarios[0];
+  if (!scenario) return null;
+
+  const itemProgress = getPart2ItemProgress(progress, `${scenario.id}-rep`);
 
   const go = (delta: number) => {
     setIndex((i) => (i + delta + scenarios.length) % scenarios.length);
@@ -64,14 +81,17 @@ export default function ReportedSpeechMode({ progress, onProgressChange, openSha
   };
 
   const audioSrc = examAudioUrl(scenario.examVersion, scenario.atcFollowUp.audioTrack);
+  const practiceOpen = openShadow || openPractice;
+  const practiceTab = openShadow ? "shadow" : "coach";
 
   return (
     <div className="part2-mode">
       <ExamVersionPicker
         value={examVersion}
         onChange={(v) => {
+          const currentId = scenarios[index]?.id ?? null;
           setExamVersion(v);
-          setIndex(0);
+          setIndex(remapIndexAfterExamChange(currentId, v));
           setShowAnswer(false);
         }}
       />
@@ -110,7 +130,8 @@ export default function ReportedSpeechMode({ progress, onProgressChange, openSha
           <PronunciationWarmupBanner />
 
           <VoicePracticePanel
-            initialOpen={openShadow}
+            initialOpen={practiceOpen}
+            defaultTab={practiceTab}
             shadow={
               <Part2ReportedShadowPanel
                 embedded

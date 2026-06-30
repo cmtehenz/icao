@@ -10,10 +10,9 @@ import {
 import { markPart1ShadowDone, isPart1CardInTodayMission, tryMarkPart1ShadowComplete } from "@/lib/part1DailyMission";
 import {
   getOrCreatePart2DailyMission,
-  markPart2DailyComplete,
-  markPart2DailyCompleteByScenario,
   type Part2MissionKind,
 } from "@/lib/part2DailyMission";
+import { tryMarkPart2DailyMissionPractice } from "@/lib/part2MissionComplete";
 import { markVocabDailyComplete, isVocabTermInTodayMission } from "@/lib/vocabDailyMission";
 import { syncDailyMissionLog } from "@/lib/dailyMissionLog";
 import {
@@ -72,7 +71,7 @@ export function canRecordStudyActivity(
   const accuracy = ctx.accuracy ?? 0;
   const heard = ctx.recognizedText?.trim() ?? "";
 
-  if (activity === "shadowPart2" && ctx.situationId && hasShadowPart2ScoredToday(ctx.situationId)) {
+  if (activity === "shadowPart2" && ctx.situationId && hasShadowPart2ScoredToday(ctx.situationId, ctx.part2MissionKind ?? "readback")) {
     return false;
   }
   if (activity === "shadow" && ctx.peelBlockKey && hasShadowPeelScoredToday(ctx.peelBlockKey)) {
@@ -101,8 +100,8 @@ export function studyActivityRejectReason(
 ): string | null {
   if (canRecordStudyActivity(activity, ctx)) return null;
 
-  if (activity === "shadowPart2" && ctx.situationId && hasShadowPart2ScoredToday(ctx.situationId)) {
-    return "Já contou ponto nesta situação hoje — use outra ou treine sem meta.";
+  if (activity === "shadowPart2" && ctx.situationId && hasShadowPart2ScoredToday(ctx.situationId, ctx.part2MissionKind ?? "readback")) {
+    return "Já contou ponto neste modo hoje — use outra situação ou treine sem meta.";
   }
   if (activity === "shadow" && ctx.peelBlockKey && hasShadowPeelScoredToday(ctx.peelBlockKey)) {
     return "Este bloco PEEL já contou na meta de hoje.";
@@ -185,13 +184,25 @@ export function tryRecordStudyActivity(
     markShadowPeelScored(ctx.peelBlockKey);
   }
   if (activity === "shadowPart2" && ctx.situationId) {
-    markShadowPart2Scored(ctx.situationId);
+    markShadowPart2Scored(ctx.situationId, ctx.part2MissionKind ?? "readback");
     if (ctx.part2MissionKind) {
-      markPart2DailyCompleteByScenario(ctx.part2MissionKind, ctx.situationId);
+      tryMarkPart2DailyMissionPractice({
+        part2MissionKind: ctx.part2MissionKind,
+        situationId: ctx.situationId,
+        accuracy: ctx.accuracy,
+        recognizedText: ctx.recognizedText,
+      });
     } else {
       const mission = getOrCreatePart2DailyMission();
       const item = mission.items.find((i) => i.scenarioId === ctx.situationId);
-      if (item) markPart2DailyComplete(item.id);
+      if (item) {
+        tryMarkPart2DailyMissionPractice({
+          part2MissionKind: item.kind,
+          situationId: ctx.situationId,
+          accuracy: ctx.accuracy,
+          recognizedText: ctx.recognizedText,
+        });
+      }
     }
   }
   if (activity === "shadow" && ctx.cardNum) {

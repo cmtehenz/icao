@@ -79,7 +79,7 @@ export function buildPart2DailyItems(
       id: `rb-${s.id}`,
       kind: "readback",
       scenarioId: s.id,
-      label: `Readback · ${s.title}`,
+      label: `Readback · ${s.examVersion} · ${s.title}`,
     });
   }
   for (const s of interactions) {
@@ -87,7 +87,7 @@ export function buildPart2DailyItems(
       id: `int-${s.id}`,
       kind: "interaction",
       scenarioId: s.id,
-      label: `Interaction · ${s.title}`,
+      label: `Interaction · ${s.examVersion} · ${s.title}`,
     });
   }
   for (const s of reported) {
@@ -95,7 +95,7 @@ export function buildPart2DailyItems(
       id: `rep-${s.id}`,
       kind: "reported",
       scenarioId: s.id,
-      label: `Reported · ${s.title}`,
+      label: `Reported · ${s.examVersion} · ${s.title}`,
     });
   }
 
@@ -188,7 +188,13 @@ export function part2DailyMissionProgress(mission = getOrCreatePart2DailyMission
 }
 
 export function part2MissionLink(item: Part2DailyMissionItem): string {
-  const params = new URLSearchParams({ mode: item.kind, shadow: "1" });
-  params.set("scenario", item.scenarioId);
+  const params = new URLSearchParams({
+    mode: item.kind,
+    scenario: item.scenarioId,
+    practice: "1",
+  });
+  if (item.kind === "readback" || item.kind === "interaction") {
+    params.set("shadow", "1");
+  }
   return `/part2?${params.toString()}`;
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import ExamAudioPlayer from "@/components/ExamAudioPlayer";
 import ExamVersionPicker from "@/components/ExamVersionPicker";
 import Part2ReadbackQueue from "@/components/Part2Trainer/Part2ReadbackQueue";
@@ -12,10 +13,14 @@ import StudyCardToolbar from "@/components/study/StudyCardToolbar";
 import { usePart2WarmupGate } from "@/hooks/usePart2WarmupGate";
 import ProgressBadge from "@/components/study/ProgressBadge";
 import CardStatusActions from "@/components/study/CardStatusActions";
-import { ALL_EXAM_SITUATIONS, getSituationsByExam } from "@/data/exams/part2Data";
 import { examAudioUrl, examAudioLabel } from "@/lib/exams/audio";
 import type { ExamVersion } from "@/lib/exams/types";
 import { findScenarioIndex, getOrCreateReadbackQueue, readbackQueueProgress } from "@/lib/part2ReadbackQueue";
+import {
+  remapIndexAfterExamChange,
+  resolvePart2ScenarioNav,
+  scenariosForExamVersion,
+} from "@/lib/part2ScenarioNav";
 import {
   getPart2ItemProgress,
   setPart2ItemStatus,
@@ -27,20 +32,33 @@ type Props = {
   progress: Part2ProgressStore;
   onProgressChange: (store: Part2ProgressStore) => void;
   openShadow?: boolean;
+  openPractice?: boolean;
+  scenarioId?: string | null;
 };
 
-export default function ReadbackMode({ progress, onProgressChange, openShadow = false }: Props) {
-  const { blocked, message } = usePart2WarmupGate();
-  const [examVersion, setExamVersion] = useState<ExamVersion | "all">("all");
-  const [index, setIndex] = useState(0);
+export default function ReadbackMode({
+  progress,
+  onProgressChange,
+  openShadow = false,
+  openPractice = false,
+  scenarioId: scenarioIdProp = null,
+}: Props) {
+  const searchParams = useSearchParams();
+  const scenarioIdFromUrl = scenarioIdProp ?? searchParams.get("scenario");
+  const navFromUrl = useMemo(
+    () => resolvePart2ScenarioNav(scenarioIdFromUrl),
+    [scenarioIdFromUrl],
+  );
 
-  const scenarios = useMemo(() => {
-    if (examVersion === "all") return ALL_EXAM_SITUATIONS;
-    return getSituationsByExam(examVersion);
-  }, [examVersion]);
+  const { blocked, message } = usePart2WarmupGate();
+  const [examVersion, setExamVersion] = useState<ExamVersion | "all">(navFromUrl.examVersion);
+  const [index, setIndex] = useState(navFromUrl.index);
+
+  const scenarios = useMemo(() => scenariosForExamVersion(examVersion), [examVersion]);
 
   const [showAnswer, setShowAnswer] = useState(false);
-  const scenario = scenarios[index];
+  const scenario = scenarios[index] ?? scenarios[0];
+  if (!scenario) return null;
   const itemProgress = getPart2ItemProgress(progress, `${scenario.id}-rb`);
 
   const selectScenario = useCallback(
@@ -67,11 +85,18 @@ export default function ReadbackMode({ progress, onProgressChange, openShadow = 
   const audioSrc = examAudioUrl(scenario.examVersion, scenario.readback.audioTrack);
 
   useEffect(() => {
+    if (scenarioIdFromUrl) {
+      const next = resolvePart2ScenarioNav(scenarioIdFromUrl);
+      setExamVersion(next.examVersion);
+      setIndex(next.index);
+      setShowAnswer(false);
+      return;
+    }
     if (!openShadow) return;
     const queue = getOrCreateReadbackQueue(progress, scenarios);
     const { currentId } = readbackQueueProgress(queue);
     if (currentId) selectScenario(currentId);
-  }, [openShadow, progress, scenarios, selectScenario]);
+  }, [scenarioIdFromUrl, openShadow, progress, scenarios, selectScenario]);
 
   return (
     <div className="part2-mode">
@@ -85,8 +110,9 @@ export default function ReadbackMode({ progress, onProgressChange, openShadow = 
       <ExamVersionPicker
         value={examVersion}
         onChange={(v) => {
+          const currentId = scenarios[index]?.id ?? null;
           setExamVersion(v);
-          setIndex(0);
+          setIndex(remapIndexAfterExamChange(currentId, v));
           setShowAnswer(false);
         }}
       />
@@ -121,7 +147,8 @@ export default function ReadbackMode({ progress, onProgressChange, openShadow = 
           <PronunciationWarmupBanner />
 
           <VoicePracticePanel
-            initialOpen={openShadow}
+            initialOpen={openShadow || openPractice}
+            defaultTab="shadow"
             shadow={
               <Part2ReadbackShadowPanel
                 embedded

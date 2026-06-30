@@ -7,6 +7,7 @@ import {
   studyActivityRejectReason,
   tryRecordStudyActivity,
 } from "@/lib/studyActivityRecord";
+import { tryMarkPart2DailyMissionPractice } from "@/lib/part2MissionComplete";
 import AudioCompareReplay from "@/components/study/AudioCompareReplay";
 import { recordPart2RecordingScore } from "@/lib/part2Warmup";
 import { addWordsToVault, VAULT_PASS_SCORE } from "@/lib/pronunciationVault";
@@ -110,6 +111,12 @@ export default function Part2ReadbackShadowPanel({
         situationId,
         part2MissionKind: "readback" as const,
       };
+      tryMarkPart2DailyMissionPractice({
+        part2MissionKind: "readback",
+        situationId,
+        accuracy,
+        recognizedText: assessment.recognizedText,
+      });
       const ok = tryRecordStudyActivity("shadowPart2", ctx);
       setCounted(ok);
       if (!ok) {

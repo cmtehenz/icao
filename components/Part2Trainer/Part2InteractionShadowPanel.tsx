@@ -7,6 +7,7 @@ import {
   studyActivityRejectReason,
   tryRecordStudyActivity,
 } from "@/lib/studyActivityRecord";
+import { tryMarkPart2DailyMissionPractice } from "@/lib/part2MissionComplete";
 import { recordPart2RecordingScore } from "@/lib/part2Warmup";
 import { addWordsToVault, VAULT_PASS_SCORE } from "@/lib/pronunciationVault";
 import { collectVaultWordCandidates } from "@/lib/azure/pronunciation";
@@ -92,6 +93,12 @@ export default function Part2InteractionShadowPanel({
         situationId,
         part2MissionKind: "interaction" as const,
       };
+      tryMarkPart2DailyMissionPractice({
+        part2MissionKind: "interaction",
+        situationId,
+        accuracy,
+        recognizedText: assessment.recognizedText,
+      });
       const ok = tryRecordStudyActivity("shadowPart2", ctx);
       setCounted(ok);
       if (!ok) {

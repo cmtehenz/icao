@@ -13,6 +13,7 @@ import { tryRecordStudyActivity, studyActivityRejectReason } from "@/lib/studyAc
 import { addWordsToVault } from "@/lib/pronunciationVault";
 import { markPart1CoachDone, isPart1CardInTodayMission } from "@/lib/part1DailyMission";
 import type { Part2MissionKind } from "@/lib/part2DailyMission";
+import { tryMarkPart2DailyMissionPractice } from "@/lib/part2MissionComplete";
 import AnswerComparePanel from "@/components/AnswerComparePanel";
 import AudioCompareReplay from "@/components/study/AudioCompareReplay";
 import WordPhoneticHint from "@/components/WordPhoneticHint";
@@ -142,8 +143,16 @@ export default function VoiceCoachPanel({
           situationId,
           part2MissionKind,
         };
+        const missionDone = tryMarkPart2DailyMissionPractice({
+          part2MissionKind,
+          situationId,
+          accuracy: azureResult.accuracyScore,
+          recognizedText: azureResult.recognizedText,
+        });
         const counted = tryRecordStudyActivity("shadowPart2", ctx);
-        setActivityNote(counted ? null : studyActivityRejectReason("shadowPart2", ctx));
+        setActivityNote(
+          missionDone || counted ? null : studyActivityRejectReason("shadowPart2", ctx),
+        );
       }
 
       if (
