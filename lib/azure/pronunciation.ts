@@ -1,4 +1,5 @@
 import { buildSpokenAnswer } from "@/lib/spokenAnswer";
+import { shouldSkipPronunciationVaultWord } from "@/lib/aviationSpeechTerms";
 
 export type AzureWordScore = {
   word: string;
@@ -48,6 +49,7 @@ export function getMispronouncedWords(words: AzureWordScore[]): AzureWordScore[]
   return words
     .filter((w) => {
       if (!w.word?.trim()) return false;
+      if (shouldSkipPronunciationVaultWord(w.word)) return false;
       const err = w.errorType ?? "None";
       if (err !== "None") return true;
       return w.accuracyScore < 80;
@@ -66,7 +68,7 @@ export function extractPracticeWordsFromTranscript(text: string, max = 6): strin
     .toLowerCase()
     .replace(/[^a-z'\s-]/g, " ")
     .split(/\s+/)
-    .filter((w) => w.length > 3 && !STOP_WORDS.has(w));
+    .filter((w) => w.length > 3 && !STOP_WORDS.has(w) && !shouldSkipPronunciationVaultWord(w));
   return [...new Set(tokens)].slice(0, max);
 }
 

@@ -1,4 +1,5 @@
 import type { VaultWord } from "@/lib/pronunciationVault";
+import { shouldSkipPronunciationVaultWord } from "@/lib/aviationSpeechTerms";
 import {
   loadRemovedVaultKeys,
   normalizeVaultCount,
@@ -37,6 +38,7 @@ export function mergeVaultWords(local: VaultWord[], remote: VaultWord[]): VaultW
   const map = new Map<string, VaultWord>();
 
   for (const item of [...remote, ...local].map(sanitizeVaultWord)) {
+    if (shouldSkipPronunciationVaultWord(item.word)) continue;
     const key = item.word.toLowerCase();
     if (removed.has(key)) continue;
     const existing = map.get(key);

@@ -1,4 +1,5 @@
 import { errorTypeLabel } from "@/lib/azure/pronunciation";
+import { shouldSkipPronunciationVaultWord } from "@/lib/aviationSpeechTerms";
 
 export type VaultWord = {
   word: string;
@@ -82,7 +83,11 @@ export function loadVault(): VaultWord[] {
     const parsed = JSON.parse(raw) as VaultWord[];
     if (!Array.isArray(parsed)) return [];
 
-    let words = parsed.map(sanitizeVaultWord);
+    let words = parsed.map(sanitizeVaultWord).filter((w) => !shouldSkipPronunciationVaultWord(w.word));
+    if (words.length !== parsed.length) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(words));
+      notifyVaultChange();
+    }
     if (!localStorage.getItem(VAULT_COUNT_RESET_KEY)) {
       words = words.map(resetVaultWordCounts);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(words));
@@ -158,6 +163,7 @@ export function addWordsToVault(
   const now = new Date().toISOString();
 
   for (const item of incoming) {
+    if (shouldSkipPronunciationVaultWord(item.word)) continue;
     const key = item.word.toLowerCase();
     clearVaultWordRemoved(key);
     const existing = map.get(key);
