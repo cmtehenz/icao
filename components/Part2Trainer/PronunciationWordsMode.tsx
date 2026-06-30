@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import CallsignDrillPanel from "@/components/Part2Trainer/CallsignDrillPanel";
 import YouGlishLink from "@/components/YouGlishLink";
 import { useAzurePronunciation } from "@/hooks/useAzurePronunciation";
 import type { AzurePronunciationResult } from "@/lib/azure/pronunciation";
@@ -169,6 +170,7 @@ export default function PronunciationWordsMode() {
   if (!words.length) {
     return (
       <div className="part2-mode">
+        <CallsignDrillPanel initialOpen={searchParams.get("callsign") !== "0"} />
         <VaultAddWordsForm onAdded={refresh} />
         <div className="exam-pick-card">
           <h2>Palavras para treinar</h2>
@@ -184,6 +186,7 @@ export default function PronunciationWordsMode() {
 
   return (
     <div className="part2-mode">
+      <CallsignDrillPanel initialOpen={searchParams.get("callsign") !== "0"} />
       <VaultAddWordsForm onAdded={refresh} />
       <header className="part2-mode-head">
         <span className="badge">Pronúncia — banco de palavras</span>

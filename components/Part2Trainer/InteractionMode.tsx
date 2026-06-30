@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import ExamVersionPicker from "@/components/ExamVersionPicker";
 import Part2InteractionQueue from "@/components/Part2Trainer/Part2InteractionQueue";
@@ -118,7 +119,8 @@ export default function InteractionMode({ progress, onProgressChange, openShadow
         </div>
         <div className="card-body">
           <p className="part2-hint">
-            Ligue para o ATC: facility + ANAC 123 + urgência (se necessário) + problema + intenção + pedido.
+            Ligue para o ATC: facility + ANAC 123 + urgência (se necessário) + problema + intenção + pedido.{" "}
+            <Link href="/pronunciation?callsign=1">Treinar callsign →</Link>
           </p>
 
           <PronunciationWarmupBanner />

@@ -148,13 +148,18 @@ export function useAzurePronunciation() {
     });
   }, [stopMicCapture]);
 
-  const start = useCallback(
-    async (modelAnswer: string, evaluateType: EvaluateType) => {
+  const startWithReference = useCallback(
+    async (referenceText: string) => {
+      const reference = referenceText.trim().slice(0, 500);
+      if (!reference) {
+        setError("Texto de referência vazio.");
+        return;
+      }
+
       setError(null);
       setResult(null);
       segmentsRef.current = [];
-      await stopMicCapture();
-
+      await stop();
       await startMicCapture();
 
       let tokenData: { configured?: boolean; token?: string; region?: string; error?: string };
@@ -181,8 +186,6 @@ export function useAzurePronunciation() {
 
         const audioConfig = sdk.AudioConfig.fromDefaultMicrophoneInput();
         const recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
-
-        const reference = azureReferenceText(modelAnswer, evaluateType);
 
         const pronunciationConfig = new sdk.PronunciationAssessmentConfig(
           reference,
@@ -245,7 +248,15 @@ export function useAzurePronunciation() {
         await stopMicCapture();
       }
     },
-    [startMicCapture, stopMicCapture],
+    [startMicCapture, stop, stopMicCapture],
+  );
+
+  const start = useCallback(
+    async (modelAnswer: string, evaluateType: EvaluateType) => {
+      const reference = azureReferenceText(modelAnswer, evaluateType);
+      await startWithReference(reference);
+    },
+    [startWithReference],
   );
 
   const clear = useCallback(() => {
@@ -255,5 +266,5 @@ export function useAzurePronunciation() {
     segmentsRef.current = [];
   }, [stop]);
 
-  return { configured, assessing, error, result, start, stop, clear };
+  return { configured, assessing, error, result, start, startWithReference, stop, clear };
 }

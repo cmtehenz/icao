@@ -103,6 +103,8 @@ export function shouldSkipPronunciationVaultWord(word: string): boolean {
   if (!normalized) return true;
 
   if (AVIATION_ACRONYMS.has(normalized)) return true;
+  // Exam callsign letters — practiced as phonetic names, not a navaid designator.
+  if (normalized === "anac") return false;
   if (isIcaoDesignator(trimmed)) return true;
 
   return false;
