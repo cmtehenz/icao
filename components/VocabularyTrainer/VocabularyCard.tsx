@@ -3,8 +3,7 @@
 import type { IcaoVocabularyItem } from "@/data/icaoVocabulary";
 import WordPhoneticHint from "@/components/WordPhoneticHint";
 import { difficultyLabel } from "@/data/icaoVocabulary";
-import type { VocabItemProgress } from "@/utils/spacedRepetition";
-import { countLevelsPassed, masteryNextStep, scoreTierLabel } from "@/utils/spacedRepetition";
+import { countLevelsPassed, isDueForReview, isMastered, masteryNextStep, scoreTierLabel, type VocabItemProgress } from "@/utils/spacedRepetition";
 
 type Props = {
   item: IcaoVocabularyItem;
@@ -17,6 +16,8 @@ export default function VocabularyCard({ item, progress, trainingLevel, compact 
   const masteryPct = Math.round((progress.masteryLevel / 5) * 100);
   const levelsDone = countLevelsPassed(progress);
   const nextStep = masteryNextStep(progress);
+  const mastered = isMastered(progress);
+  const due = isDueForReview(progress);
 
   if (compact) {
     return (
@@ -30,11 +31,13 @@ export default function VocabularyCard({ item, progress, trainingLevel, compact 
             {progress.masteryLevel}/5
           </span>
         </div>
-        <p className="vocab-card-meaning">{item.meaning}</p>
-        <div className="vocab-card-meta">
-          <span className="vocab-card-tag">{item.category}</span>
-          <span className="vocab-card-tag">{difficultyLabel(item.difficulty)}</span>
-          {levelsDone > 0 && <span className="vocab-card-tag">Níveis {levelsDone}/4</span>}
+        <p className="vocab-card-meaning vocab-card-meaning-compact">{item.meaning}</p>
+        <div className="vocab-card-meta vocab-card-meta-compact">
+          {due && <span className="vocab-card-tag vocab-card-tag-due">revisar</span>}
+          {mastered && <span className="vocab-card-tag vocab-card-tag-done">dominado</span>}
+          {levelsDone > 0 && !mastered && (
+            <span className="vocab-card-tag">Níveis {levelsDone}/4</span>
+          )}
         </div>
       </article>
     );

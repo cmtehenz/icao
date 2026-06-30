@@ -65,13 +65,12 @@ function VocabTermList({
                   key={item.id}
                   className={`vault-word-item vocab-term-item ${due ? "warn" : mastered ? "done" : ""} ${isActive ? "active" : ""}`}
                 >
-                  <VocabularyCard item={item} progress={p} compact />
                   <button
                     type="button"
-                    className={`btn btn-sm vocab-term-train-btn ${isActive ? "secondary" : "green"}`}
+                    className="vocab-term-select"
                     onClick={() => onSelect(item)}
                   >
-                    {isActive ? "Ativo" : "Treinar"}
+                    <VocabularyCard item={item} progress={p} compact />
                   </button>
                 </li>
               );
@@ -198,9 +197,10 @@ export default function VocabularyTrainerMode({ initialTermId }: { initialTermId
         </div>
       </div>
 
+      <VocabDailyMissionChecklist onSelectTerm={selectTermById} defaultCollapsed />
+
       <div className="vocab-page-layout">
         <aside className="vocab-sidebar" aria-label="Lista de termos">
-          <VocabDailyMissionChecklist onSelectTerm={selectTermById} defaultCollapsed />
           <VocabTermList
             grouped={grouped}
             filteredLength={filtered.length}
