@@ -7,6 +7,7 @@ import Part2InteractionShadowPanel from "@/components/Part2Trainer/Part2Interact
 import PronunciationWarmupBanner from "@/components/study/PronunciationWarmupBanner";
 import VoiceCoachPanel from "@/components/VoiceCoachPanel";
 import VoicePracticePanel from "@/components/study/VoicePracticePanel";
+import StudyCardToolbar from "@/components/study/StudyCardToolbar";
 import { usePart2WarmupGate } from "@/hooks/usePart2WarmupGate";
 import ProgressBadge from "@/components/study/ProgressBadge";
 import CardStatusActions from "@/components/study/CardStatusActions";
@@ -149,14 +150,11 @@ export default function InteractionMode({ progress, onProgressChange, openShadow
             }
           />
 
-          <div className="study-toolbar">
+          <StudyCardToolbar onPrevious={() => go(-1)} onNext={() => go(1)}>
             <button type="button" className="btn purple btn-large" onClick={() => setShowAnswer((s) => !s)}>
-              {showAnswer ? "Esconder" : "Mostrar resposta"}
+              {showAnswer ? "Esconder resposta" : "Mostrar resposta"}
             </button>
-            <button type="button" className="btn secondary" onClick={() => go(1)}>
-              Próximo →
-            </button>
-          </div>
+          </StudyCardToolbar>
 
           {showAnswer && (
             <>
@@ -172,14 +170,6 @@ export default function InteractionMode({ progress, onProgressChange, openShadow
             </>
           )}
 
-          <div className="study-toolbar study-toolbar-secondary">
-            <button type="button" className="btn secondary" onClick={() => go(-1)}>
-              ← Anterior
-            </button>
-            <button type="button" className="btn blue" onClick={() => go(1)}>
-              Próximo →
-            </button>
-          </div>
         </div>
       </article>
     </div>

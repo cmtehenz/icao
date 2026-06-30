@@ -910,3 +910,131 @@ h1 {
   flex-wrap: wrap;
   gap: 0.35rem;
 }
+
+/* Phase 3 — lean hero, button hierarchy, vault alert */
+.hero-sub-compact {
+  font-size: 0.82rem !important;
+  margin-bottom: 0.35rem !important;
+  max-width: 36rem;
+}
+
+.delta-dashboard-compact {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 14rem;
+  margin: 0.5rem 0 0.65rem;
+}
+
+.delta-dashboard-compact .delta-stat {
+  padding: 0.5rem 0.65rem;
+}
+
+.delta-dashboard-compact .delta-stat strong {
+  font-size: 1.15rem;
+}
+
+.delta-dashboard-compact .delta-stat span {
+  font-size: 0.68rem;
+}
+
+.pronunciation-vault-alert {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.5rem 0 0.65rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: var(--radius-md);
+  border: 1px solid color-mix(in srgb, var(--orange) 30%, var(--border));
+  border-left: 3px solid var(--orange);
+  background: color-mix(in srgb, var(--orange-bg) 35%, var(--card));
+  text-decoration: none;
+  color: inherit;
+  font-size: 0.82rem;
+}
+
+.pronunciation-vault-alert-text {
+  flex: 1;
+  font-weight: 600;
+}
+
+.pronunciation-vault-alert-cta {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--green);
+}
+
+.hero-inline-links {
+  margin: 0.25rem 0 0.5rem;
+}
+
+.hero-inline-link {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.hero-inline-link:hover {
+  text-decoration: underline;
+}
+
+.hero-inline-meta {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.study-card-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin: 0.85rem 0;
+}
+
+.study-card-toolbar-primary {
+  display: flex;
+}
+
+.study-card-toolbar-primary .btn-large {
+  flex: 1;
+}
+
+.study-card-toolbar-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.btn-text {
+  padding: 0.25rem 0.35rem;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-text:hover {
+  color: var(--text);
+  text-decoration: underline;
+}
+
+.vault-stat-hint {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-left: auto;
+}
+
+.vault-stat-hint a {
+  color: var(--blue);
+  font-weight: 600;
+}
+
+.part2-mode .study-toolbar {
+  gap: 0.5rem;
+}
+
+.part2-mode .study-toolbar .btn:not(.btn-large):not(.purple):not(.green) {
+  font-size: 0.78rem;
+  padding: 0.4rem 0.7rem;
+}

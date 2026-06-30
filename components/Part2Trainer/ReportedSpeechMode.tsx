@@ -5,6 +5,7 @@ import ExamAudioPlayer from "@/components/ExamAudioPlayer";
 import ExamVersionPicker from "@/components/ExamVersionPicker";
 import VoiceCoachPanel from "@/components/VoiceCoachPanel";
 import VoicePracticePanel from "@/components/study/VoicePracticePanel";
+import StudyCardToolbar from "@/components/study/StudyCardToolbar";
 import ProgressBadge from "@/components/study/ProgressBadge";
 import CardStatusActions from "@/components/study/CardStatusActions";
 import { ALL_EXAM_SITUATIONS, getSituationsByExam } from "@/data/exams/part2Data";
@@ -100,17 +101,11 @@ export default function ReportedSpeechMode({ progress, onProgressChange }: Props
             }
           />
 
-          <div className="study-toolbar">
+          <StudyCardToolbar onPrevious={() => go(-1)} onNext={() => go(1)}>
             <button type="button" className="btn purple btn-large" onClick={() => setShowAnswer((s) => !s)}>
-              {showAnswer ? "Esconder" : "Mostrar resposta"}
+              {showAnswer ? "Esconder resposta" : "Mostrar resposta"}
             </button>
-            <button type="button" className="btn secondary" onClick={() => go(1)}>
-              Próximo →
-            </button>
-            <button type="button" className="btn secondary" onClick={() => go(-1)}>
-              ← Anterior
-            </button>
-          </div>
+          </StudyCardToolbar>
 
           {showAnswer && (
             <div className="part2-model-answer">

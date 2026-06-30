@@ -22,7 +22,7 @@ import ProgressBadge from "@/components/study/ProgressBadge";
 import StudyDashboard from "@/components/study/StudyDashboard";
 import StudyFilterChip from "@/components/study/StudyFilterChip";
 import StudyFilterSheet from "@/components/study/StudyFilterSheet";
-import PronunciationVaultCard from "@/components/PronunciationVaultCard";
+import PronunciationVaultAlert from "@/components/study/PronunciationVaultAlert";
 import VoiceCoachPanel from "@/components/VoiceCoachPanel";
 import { PART1_BY_EXAM } from "@/data/exams/part1";
 import { useTheme } from "@/hooks/useTheme";
@@ -298,11 +298,11 @@ export default function FlashcardApp() {
       <section className="hero hero-compact hero-delta">
         <div className="wrap hero-delta-inner">
           <h1>Part 1 — Aviation Topics</h1>
-          <p className="sub">
-            12 perguntas das 4 provas reais de helicóptero. Na prova caem 3 — treine por versão ou simule o sorteio.
+          <p className="sub hero-sub-compact">
+            12 perguntas reais — treine por versão ou filtre favoritas.
           </p>
-          <StudyDashboard progress={progress} total={CARDS.length} />
-          <PronunciationVaultCard />
+          <StudyDashboard progress={progress} total={CARDS.length} variant="compact" />
+          <PronunciationVaultAlert />
           <StudyFilterChip
             examVersion={examVersion}
             filter={filter}
@@ -421,12 +421,6 @@ export default function FlashcardApp() {
             />
 
             <AnswerPanel card={card} show={showAnswer} />
-
-            <div className="study-toolbar study-toolbar-secondary">
-              <button type="button" className="btn blue" onClick={() => navigateFiltered(1)}>
-                Próxima →
-              </button>
-            </div>
 
             <div className="card-footer-meta">
               <span>{answerWords} words</span>

@@ -1,8 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import YouGlishLink from "@/components/YouGlishLink";
-import PronunciationVaultClearButton from "@/components/PronunciationVaultClearButton";
 import { useAzurePronunciation } from "@/hooks/useAzurePronunciation";
 import type { AzurePronunciationResult } from "@/lib/azure/pronunciation";
 import { errorTypeLabel } from "@/lib/azure/pronunciation";
@@ -193,12 +193,9 @@ export default function PronunciationWordsMode() {
       <div className="vault-stats-row">
         <span className="vault-stat critical">{stats.critical} críticas (&lt;60%)</span>
         <span className="vault-stat warn">{stats.needsPractice} para treinar (&lt;80%)</span>
-        <PronunciationVaultClearButton
-          onCleared={() => {
-            refresh();
-            setActiveWord(null);
-          }}
-        />
+        <span className="vault-stat vault-stat-hint">
+          Apagar banco em <Link href="/conta">Conta</Link>
+        </span>
       </div>
 
       {activeWord ? (

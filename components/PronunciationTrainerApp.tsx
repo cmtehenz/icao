@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import PronunciationWordsMode from "@/components/Part2Trainer/PronunciationWordsMode";
 import { usePronunciationVault } from "@/hooks/usePronunciationVault";
 import { useTheme } from "@/hooks/useTheme";
@@ -28,14 +29,10 @@ export default function PronunciationTrainerApp() {
       <section className="hero hero-compact hero-delta hero-pronunciation">
         <div className="wrap hero-delta-inner">
           <h1>Pronúncia</h1>
-          <p className="sub">
-            Ouça no YouGlish, grave com Azure e repita até 5× acima de 80%. Adicione palavras manualmente ou salve do Voice Coach.
+          <p className="sub hero-sub-compact">
+            Grave com Azure · meta 5× acima de 80% para graduar cada palavra.
           </p>
-          <div className="delta-dashboard part2-dashboard pronunciation-dashboard">
-            <div className="delta-stat daily">
-              <strong>{vault.total}</strong>
-              <span>salvas</span>
-            </div>
+          <div className="delta-dashboard delta-dashboard-compact pronunciation-dashboard" aria-label="Banco de pronúncia">
             <div className="delta-stat difficult">
               <strong>{vault.critical}</strong>
               <span>críticas</span>
@@ -45,6 +42,15 @@ export default function PronunciationTrainerApp() {
               <span>para treinar</span>
             </div>
           </div>
+          {vault.total > 0 && (
+            <p className="hero-inline-links">
+              <span className="hero-inline-meta">{vault.total} no banco</span>
+              {" · "}
+              <Link href="/conta" className="hero-inline-link">
+                Gerenciar em Conta →
+              </Link>
+            </p>
+          )}
         </div>
       </section>
 

@@ -44,7 +44,7 @@ export default function PeelBlockWeakDetail({ cardNum, onTrainBlock }: Props) {
                 <strong>{peelBlockLabel(id)}</strong>
                 {record && <span className="peel-weak-detail-pct">{record.lastAccuracy}%</span>}
               </div>
-              <button type="button" className="btn orange btn-sm" onClick={() => onTrainBlock(id)}>
+              <button type="button" className="btn secondary btn-sm" onClick={() => onTrainBlock(id)}>
                 Treinar bloco
               </button>
             </li>

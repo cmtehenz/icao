@@ -8,6 +8,7 @@ import Part2ReadbackShadowPanel from "@/components/Part2Trainer/Part2ReadbackSha
 import PronunciationWarmupBanner from "@/components/study/PronunciationWarmupBanner";
 import VoiceCoachPanel from "@/components/VoiceCoachPanel";
 import VoicePracticePanel from "@/components/study/VoicePracticePanel";
+import StudyCardToolbar from "@/components/study/StudyCardToolbar";
 import { usePart2WarmupGate } from "@/hooks/usePart2WarmupGate";
 import ProgressBadge from "@/components/study/ProgressBadge";
 import CardStatusActions from "@/components/study/CardStatusActions";
@@ -148,17 +149,11 @@ export default function ReadbackMode({ progress, onProgressChange, openShadow = 
             }
           />
 
-          <div className="study-toolbar">
+          <StudyCardToolbar onPrevious={() => go(-1)} onNext={() => go(1)}>
             <button type="button" className="btn purple btn-large" onClick={() => setShowAnswer((s) => !s)}>
-              {showAnswer ? "Esconder" : "Mostrar readback"}
+              {showAnswer ? "Esconder readback" : "Mostrar readback"}
             </button>
-            <button type="button" className="btn secondary" onClick={() => go(1)}>
-              Próximo →
-            </button>
-            <button type="button" className="btn secondary" onClick={() => go(-1)}>
-              ← Anterior
-            </button>
-          </div>
+          </StudyCardToolbar>
 
           {showAnswer && (
             <div className="part2-model-answer">

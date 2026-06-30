@@ -74,10 +74,10 @@ export default function Part2TrainerApp() {
       <section className="hero hero-compact hero-delta">
         <div className="wrap hero-delta-inner">
           <h1>Part 2 — Interacting as a Pilot</h1>
-          <p className="sub">
-            Treine as 5 situações de cada prova real: readback com áudio, reporte de emergência, AFFIRM/NEGATIVE e reported speech.
+          <p className="sub hero-sub-compact">
+            Readback, interaction e reported speech das provas 23C–26C.
           </p>
-          <div className="delta-dashboard part2-dashboard">
+          <div className="delta-dashboard delta-dashboard-compact part2-dashboard" aria-label="Progresso Part 2">
             <div className="delta-stat mastered">
               <strong>{stats.mastered}</strong>
               <span>dominados</span>
@@ -86,21 +86,12 @@ export default function Part2TrainerApp() {
               <strong>{stats.difficult}</strong>
               <span>difíceis</span>
             </div>
-            <div className="delta-stat learning">
-              <strong>{ALL_EXAM_SITUATIONS.length}</strong>
-              <span>situações</span>
-            </div>
           </div>
-          <Link href="/vocabulario" className="pronunciation-vault-card vocab-part2-link">
-            <span className="pronunciation-vault-icon" aria-hidden>📚</span>
-            <div className="pronunciation-vault-body">
-              <strong>Vocabulário Part 2</strong>
-              <span>
-                {ICAO_CORE_VOCABULARY.length} core + {ICAO_VOCABULARY.length} total · Azure TTS & shadowing
-              </span>
-            </div>
-            <span className="pronunciation-vault-cta">Treinar →</span>
-          </Link>
+          <p className="hero-inline-links">
+            <Link href="/vocabulario" className="hero-inline-link">
+              Vocabulário Part 2 ({ICAO_CORE_VOCABULARY.length} core) →
+            </Link>
+          </p>
         </div>
       </section>
 
