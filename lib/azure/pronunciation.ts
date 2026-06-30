@@ -17,16 +17,29 @@ export type AzurePronunciationResult = {
 };
 
 export function isScriptedAssessment(type: string): boolean {
-  return type === "part1" || type === "part2-readback" || type === "part2-reported";
+  return (
+    type === "part1" ||
+    type === "part2-readback" ||
+    type === "part2-reported" ||
+    type === "part2-interaction"
+  );
 }
 
 /** Reference text for Azure pronunciation assessment. */
 export function azureReferenceText(modelAnswer: string, type: string): string {
+  const trimmed = (modelAnswer ?? "").trim();
+  if (!trimmed) return "";
+
   if (type === "part1") {
-    return buildSpokenAnswer(modelAnswer).slice(0, 500);
+    return buildSpokenAnswer(trimmed).slice(0, 500);
   }
-  if (!isScriptedAssessment(type)) return "";
-  return modelAnswer.slice(0, 500);
+  if (isScriptedAssessment(type)) {
+    return trimmed.slice(0, 500);
+  }
+  if (type === "vocabulary") {
+    return trimmed.slice(0, 500);
+  }
+  return "";
 }
 
 const ERROR_LABELS: Record<string, string> = {
