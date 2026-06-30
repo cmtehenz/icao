@@ -2383,8 +2383,39 @@ input {
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 14px;
-  padding: 1rem 1.1rem;
-  margin-bottom: 1rem;
+  padding: 0.75rem 0.9rem;
+  margin-bottom: 0.85rem;
+}
+
+.vocab-daily-mission.collapsed {
+  padding-bottom: 0.65rem;
+}
+
+.vocab-daily-mission-toggle {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+}
+
+.vocab-daily-mission-chevron {
+  flex-shrink: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.vocab-daily-mission.collapsed .vocab-daily-mission-bar {
+  margin-bottom: 0;
 }
 
 .vocab-daily-mission-head {
@@ -3880,14 +3911,70 @@ input {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 10px;
+}
+
+.vocab-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+.vocab-toolbar-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.vocab-toolbar-row-secondary {
+  gap: 12px;
+}
+
+.vocab-toolbar-count {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.vocab-category-select-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.vocab-category-select-label {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.vocab-category-select {
+  flex: 1;
+  min-width: 0;
+  max-width: 320px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .vocab-category-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 14px;
+  display: none;
 }
 
 .vocab-cat-chip {
@@ -4009,10 +4096,45 @@ input {
   max-width: 36rem;
 }
 
+.hero-vocab-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px 20px;
+}
+
+.hero-vocab-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.hero-vocab-stats strong {
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.vocab-page-main {
+  padding-top: 0;
+}
+
+.vocab-page-wrap {
+  padding-top: 8px;
+  padding-bottom: 40px;
+}
+
 .vocab-trainer-tabs {
   display: flex;
   gap: 8px;
   margin-bottom: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding: 8px 0 10px;
+  background: var(--bg);
 }
 
 .vocab-mission-dashboard {
@@ -4281,6 +4403,11 @@ input {
   text-align: center;
 }
 
+.vocab-shadowing .vocab-practice-card {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
 .peel-shadowing-toggle {
   width: 100%;
   margin-bottom: 0.75rem;
@@ -4419,11 +4546,15 @@ input {
 }
 
 .vocab-term-item {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  gap: 0.75rem;
+}
+
+.vocab-term-train-btn {
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .vocab-term-item.active {
@@ -4436,6 +4567,7 @@ input {
   border: none;
   padding: 0;
   box-shadow: none;
+  min-width: 0;
 }
 
 .vocab-mastery-hint {
@@ -4445,7 +4577,7 @@ input {
   color: var(--muted);
 }
 
-.vocab-trainer-layout {
+.vocab-page-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 16px;
@@ -4453,16 +4585,34 @@ input {
   width: 100%;
 }
 
-.vocab-trainer-list {
+.vocab-sidebar {
   min-width: 0;
 }
 
-.vocab-trainer-panel {
+.vocab-main {
   min-width: 0;
 }
 
-.vocab-trainer-panel-placeholder {
+.vocab-main-placeholder {
   display: none;
+}
+
+.vocab-practice-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.vocab-mobile-back {
+  display: none;
+}
+
+.vocab-close-panel {
+  margin-top: 12px;
+  width: 100%;
 }
 
 .vocab-panel-hint,
@@ -4474,33 +4624,53 @@ input {
   text-align: center;
 }
 
+.vocab-panel-hint h3 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+}
+
 .vocab-trainer .vocab-practice-card {
   width: 100%;
   max-width: none;
   margin: 0;
 }
 
-@media (min-width: 901px) {
-  .vocab-trainer-layout {
-    grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+.vocab-practice-card {
+  overflow: visible;
+}
+
+@media (min-width: 960px) {
+  .vocab-page-layout {
+    grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
     gap: 20px;
   }
 
-  .vocab-trainer-has-panel .vocab-trainer-panel-placeholder {
-    display: none;
-  }
-
-  .vocab-trainer:not(.vocab-trainer-has-panel) .vocab-trainer-panel-placeholder {
-    display: block;
-  }
-
-  .vocab-trainer:not(.vocab-trainer-has-panel) .vocab-trainer-layout {
-    grid-template-columns: minmax(0, 1fr) minmax(260px, 300px);
-  }
-
-  .vocab-trainer-panel {
+  .vocab-sidebar {
     position: sticky;
-    top: 72px;
+    top: 56px;
+    max-height: calc(100vh - 72px);
+    overflow-y: auto;
+    padding-right: 4px;
+  }
+
+  .vocab-main-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 280px;
+  }
+
+  .vocab-practice-card {
+    position: sticky;
+    top: 56px;
+    max-height: calc(100vh - 72px);
+    overflow-y: auto;
+    padding-right: 4px;
+  }
+
+  .vocab-close-panel {
+    display: none;
   }
 
   .vocab-trainer .vocab-term-list {
@@ -4510,14 +4680,22 @@ input {
   }
 }
 
-@media (max-width: 900px) {
-  .vocab-trainer-has-panel .vocab-trainer-list {
+@media (max-width: 959px) {
+  .vocab-trainer-has-panel .vocab-sidebar {
     display: none;
   }
 
+  .vocab-mobile-back {
+    display: inline-flex;
+  }
+
   .vocab-term-item {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     align-items: stretch;
+  }
+
+  .vocab-term-train-btn {
+    width: 100%;
   }
 }
 

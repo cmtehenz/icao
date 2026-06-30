@@ -68,10 +68,10 @@ function VocabTermList({
                   <VocabularyCard item={item} progress={p} compact />
                   <button
                     type="button"
-                    className={`btn btn-sm ${isActive ? "secondary" : "green"}`}
+                    className={`btn btn-sm vocab-term-train-btn ${isActive ? "secondary" : "green"}`}
                     onClick={() => onSelect(item)}
                   >
-                    {isActive ? "Training" : "Train"}
+                    {isActive ? "Ativo" : "Treinar"}
                   </button>
                 </li>
               );
@@ -152,64 +152,55 @@ export default function VocabularyTrainerMode({ initialTermId }: { initialTermId
   const referenceText = activeItem ? getLevelText(activeItem, level) : "";
 
   return (
-    <div className={`part2-mode vocab-trainer ${activeItem ? "vocab-trainer-has-panel" : ""}`}>
-      <header className="part2-mode-head">
-        <span className="badge">Vocabulary Trainer</span>
-        <span className="part2-counter">{filtered.length} items</span>
-      </header>
+    <div className={`vocab-trainer ${activeItem ? "vocab-trainer-has-panel" : ""}`}>
+      <div className="vocab-toolbar">
+        <div className="vocab-toolbar-row">
+          <div className="vocab-filter-bar">
+            {FILTERS.map((f) => (
+              <button
+                key={f.id}
+                type="button"
+                className={`filter-chip ${filter === f.id ? "active" : ""}`}
+                onClick={() => {
+                  setFilter(f.id);
+                  setActiveItem(null);
+                }}
+              >
+                {f.label}
+              </button>
+            ))}
+          </div>
+          <span className="vocab-toolbar-count">{filtered.length} termos</span>
+        </div>
 
-      <div className="vocab-filter-bar">
-        {FILTERS.map((f) => (
-          <button
-            key={f.id}
-            type="button"
-            className={`filter-chip ${filter === f.id ? "active" : ""}`}
-            onClick={() => {
-              setFilter(f.id);
-              setActiveItem(null);
-            }}
-          >
-            {f.label}
-          </button>
-        ))}
+        <div className="vocab-toolbar-row vocab-toolbar-row-secondary">
+          <label className="vocab-category-select-wrap">
+            <span className="vocab-category-select-label">Categoria</span>
+            <select
+              className="vocab-category-select"
+              value={category}
+              onChange={(e) => {
+                setCategory(e.target.value as IcaoVocabCategoryId | "all");
+                setActiveItem(null);
+              }}
+            >
+              <option value="all">Todas as categorias</option>
+              {ICAO_VOCAB_CATEGORIES.map((cat) => (
+                <option key={cat.id} value={cat.id}>
+                  {cat.label}
+                </option>
+              ))}
+            </select>
+          </label>
+          <Link href="/pronunciation" className="btn secondary btn-sm">
+            Banco de pronúncia →
+          </Link>
+        </div>
       </div>
 
-      <div className="vocab-category-bar">
-        <button
-          type="button"
-          className={`filter-chip vocab-cat-chip ${category === "all" ? "active" : ""}`}
-          onClick={() => {
-            setCategory("all");
-            setActiveItem(null);
-          }}
-        >
-          All categories
-        </button>
-        {ICAO_VOCAB_CATEGORIES.map((cat) => (
-          <button
-            key={cat.id}
-            type="button"
-            className={`filter-chip vocab-cat-chip ${category === cat.id ? "active" : ""}`}
-            onClick={() => {
-              setCategory(cat.id);
-              setActiveItem(null);
-            }}
-          >
-            {cat.label}
-          </button>
-        ))}
-      </div>
-
-      <div className="vault-stats-row">
-        <Link href="/pronunciation" className="btn secondary btn-sm">
-          Pronunciation bank →
-        </Link>
-      </div>
-
-      <VocabDailyMissionChecklist onSelectTerm={selectTermById} />
-
-      <div className="vocab-trainer-layout">
-        <div className="vocab-trainer-list">
+      <div className="vocab-page-layout">
+        <aside className="vocab-sidebar" aria-label="Lista de termos">
+          <VocabDailyMissionChecklist onSelectTerm={selectTermById} defaultCollapsed />
           <VocabTermList
             grouped={grouped}
             filteredLength={filtered.length}
@@ -217,25 +208,36 @@ export default function VocabularyTrainerMode({ initialTermId }: { initialTermId
             activeItemId={activeItem?.id}
             onSelect={setActiveItem}
           />
-        </div>
+        </aside>
 
-        {activeItem && activeProgress ? (
-          <aside className="vocab-trainer-panel">
+        <div className="vocab-main">
+          {activeItem && activeProgress ? (
             <article className="card card-essential part2-card vault-practice-card vocab-practice-card">
-              <div className="vocab-level-picker">
-                {([1, 2, 3, 4] as const).map((l) => (
-                  <button
-                    key={l}
-                    type="button"
-                    className={`filter-chip ${level === l ? "active" : ""}`}
-                    onClick={() => setLevel(l)}
-                    title={getLevelText(activeItem, l)}
-                  >
-                    Level {l}
-                  </button>
-                ))}
+              <div className="vocab-practice-head">
+                <button
+                  type="button"
+                  className="btn secondary btn-sm vocab-mobile-back"
+                  onClick={() => setActiveItem(null)}
+                >
+                  ← Lista
+                </button>
+                <div className="vocab-level-picker">
+                  {([1, 2, 3, 4] as const).map((l) => (
+                    <button
+                      key={l}
+                      type="button"
+                      className={`filter-chip ${level === l ? "active" : ""}`}
+                      onClick={() => setLevel(l)}
+                      title={getLevelText(activeItem, l)}
+                    >
+                      Nível {l}
+                    </button>
+                  ))}
+                </div>
               </div>
+
               <VocabularyCard item={activeItem} progress={activeProgress} trainingLevel={level} />
+
               <PronunciationRecorder
                 referenceText={referenceText}
                 termLabel={activeItem.term}
@@ -254,18 +256,20 @@ export default function VocabularyTrainerMode({ initialTermId }: { initialTermId
                 onMarkMastered={() => markMastered(activeItem.id)}
                 onNext={goNext}
               />
-              <button type="button" className="btn secondary" onClick={() => setActiveItem(null)}>
-                Close panel
+
+              <button type="button" className="btn secondary vocab-close-panel" onClick={() => setActiveItem(null)}>
+                Fechar
               </button>
             </article>
-          </aside>
-        ) : (
-          <aside className="vocab-trainer-panel vocab-trainer-panel-placeholder" aria-hidden>
-            <article className="vocab-panel-hint">
-              <p className="sub">Select a term from the list to start training.</p>
+          ) : (
+            <article className="vocab-panel-hint vocab-main-placeholder">
+              <h3>Selecione um termo</h3>
+              <p className="sub">
+                Escolha um termo na lista à esquerda ou use a missão diária para começar o treino de pronúncia.
+              </p>
             </article>
-          </aside>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );

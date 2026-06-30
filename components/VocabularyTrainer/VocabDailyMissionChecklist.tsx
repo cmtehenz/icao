@@ -18,10 +18,15 @@ function termLabel(id: string): string {
 
 type Props = {
   onSelectTerm?: (termId: string) => void;
+  defaultCollapsed?: boolean;
 };
 
-export default function VocabDailyMissionChecklist({ onSelectTerm }: Props) {
+export default function VocabDailyMissionChecklist({
+  onSelectTerm,
+  defaultCollapsed = true,
+}: Props) {
   const [tick, setTick] = useState(0);
+  const [expanded, setExpanded] = useState(!defaultCollapsed);
 
   const refresh = useCallback(() => setTick((n) => n + 1), []);
 
@@ -34,14 +39,27 @@ export default function VocabDailyMissionChecklist({ onSelectTerm }: Props) {
   const progress = vocabDailyMissionProgress(mission);
 
   return (
-    <section className="vocab-daily-mission" aria-label="Missão diária de vocabulário">
+    <section className={`vocab-daily-mission ${expanded ? "expanded" : "collapsed"}`} aria-label="Missão diária de vocabulário">
       <header className="vocab-daily-mission-head">
-        <div>
-          <h2>Missão de hoje — {VOCAB_DAILY_WORD_COUNT} palavras</h2>
-          <p className="sub">
-            {progress.done}/{progress.total} concluídas · lista nova amanhã
-          </p>
-        </div>
+        <button
+          type="button"
+          className="vocab-daily-mission-toggle"
+          onClick={() => setExpanded((e) => !e)}
+          aria-expanded={expanded}
+        >
+          <div>
+            <h2>Missão de hoje — {VOCAB_DAILY_WORD_COUNT} palavras</h2>
+            <p className="sub">
+              {progress.done}/{progress.total} concluídas
+              {!expanded && progress.total - progress.done > 0
+                ? ` · ${progress.total - progress.done} faltando`
+                : ""}
+            </p>
+          </div>
+          <span className="vocab-daily-mission-chevron" aria-hidden>
+            {expanded ? "▾" : "▸"}
+          </span>
+        </button>
         <span className={`vocab-daily-mission-pill ${progress.complete ? "done" : ""}`}>
           {progress.complete ? "Completa ✓" : `${progress.total - progress.done} faltando`}
         </span>
@@ -54,7 +72,8 @@ export default function VocabDailyMissionChecklist({ onSelectTerm }: Props) {
         />
       </div>
 
-      <ol className="vocab-daily-checklist">
+      {expanded && (
+        <ol className="vocab-daily-checklist">
         {mission.termIds.map((id, index) => {
           const done = mission.completedIds.includes(id);
           const label = termLabel(id);
@@ -81,7 +100,8 @@ export default function VocabDailyMissionChecklist({ onSelectTerm }: Props) {
             </li>
           );
         })}
-      </ol>
+        </ol>
+      )}
     </section>
   );
 }
