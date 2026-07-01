@@ -2,13 +2,12 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import PronunciationRecorder from "@/components/VocabularyTrainer/PronunciationRecorder";
 import VocabDailyMissionChecklist from "@/components/VocabularyTrainer/VocabDailyMissionChecklist";
-import VocabularyCard from "@/components/VocabularyTrainer/VocabularyCard";
+import VocabTermTable from "@/components/VocabularyTrainer/VocabTermTable";
+import VocabTrainingPanel from "@/components/VocabularyTrainer/VocabTrainingPanel";
 import {
   ICAO_VOCAB_CATEGORIES,
   ICAO_VOCABULARY,
-  getCategoryLabel,
   getLevelText,
   type IcaoVocabCategoryId,
   type IcaoVocabularyItem,
@@ -19,75 +18,21 @@ import { isDueForReview, isMastered } from "@/utils/spacedRepetition";
 type Filter = "all" | "due" | "learning" | "mastered";
 
 const FILTERS: { id: Filter; label: string }[] = [
-  { id: "due", label: "Due today" },
-  { id: "all", label: "All" },
-  { id: "learning", label: "Learning" },
-  { id: "mastered", label: "Mastered" },
+  { id: "due", label: "Revisar hoje" },
+  { id: "all", label: "Todos" },
+  { id: "learning", label: "Aprendendo" },
+  { id: "mastered", label: "Dominados" },
 ];
 
-function VocabTermList({
-  grouped,
-  filteredLength,
-  getProgress,
-  activeItemId,
-  onSelect,
-}: {
-  grouped: { id: string; label: string; terms: IcaoVocabularyItem[] }[];
-  filteredLength: number;
-  getProgress: (id: string) => import("@/utils/spacedRepetition").VocabItemProgress;
-  activeItemId?: string;
-  onSelect: (item: IcaoVocabularyItem) => void;
-}) {
-  if (filteredLength === 0) {
-    return (
-      <article className="vocab-empty-state">
-        <p className="sub">No items in this filter.</p>
-      </article>
-    );
-  }
-
-  return (
-    <div className="vocab-grouped-list">
-      {grouped.map((group) => (
-        <section key={group.id} className="vocab-category-section">
-          <header className="vocab-category-head">
-            <h3 className="vocab-category-title">{group.label}</h3>
-            <span className="vocab-category-count">{group.terms.length}</span>
-          </header>
-          <ul className="vault-word-list vocab-term-list">
-            {group.terms.map((item) => {
-              const p = getProgress(item.id);
-              const mastered = isMastered(p);
-              const due = isDueForReview(p);
-              const isActive = item.id === activeItemId;
-              return (
-                <li
-                  key={item.id}
-                  className={`vault-word-item vocab-term-item ${due ? "warn" : mastered ? "done" : ""} ${isActive ? "active" : ""}`}
-                >
-                  <button
-                    type="button"
-                    className="vocab-term-select"
-                    onClick={() => onSelect(item)}
-                  >
-                    <span className="vocab-term-select-inner">
-                      <VocabularyCard item={item} progress={p} compact />
-                    </span>
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
-        </section>
-      ))}
-    </div>
-  );
+function normalizeSearch(text: string): string {
+  return text.toLowerCase().normalize("NFD").replace(/\p{M}/gu, "");
 }
 
 export default function VocabularyTrainerMode({ initialTermId }: { initialTermId?: string }) {
   const { getProgress, recordAttempt, markDifficult, markMastered } = useVocabularyProgress();
   const [filter, setFilter] = useState<Filter>("due");
   const [category, setCategory] = useState<IcaoVocabCategoryId | "all">("all");
+  const [search, setSearch] = useState("");
   const [activeItem, setActiveItem] = useState<IcaoVocabularyItem | null>(null);
   const [level, setLevel] = useState<1 | 2 | 3 | 4>(1);
 
@@ -97,6 +42,7 @@ export default function VocabularyTrainerMode({ initialTermId }: { initialTermId
     if (item) {
       setActiveItem(item);
       setFilter("all");
+      setCategory("all");
     }
   }, [initialTermId]);
 
@@ -105,13 +51,20 @@ export default function VocabularyTrainerMode({ initialTermId }: { initialTermId
     if (item) {
       setActiveItem(item);
       setFilter("all");
+      setCategory("all");
+      setSearch("");
     }
   };
 
   const filtered = useMemo(() => {
+    const q = normalizeSearch(search.trim());
     return ICAO_VOCABULARY.filter((item) => {
       const p = getProgress(item.id);
       if (category !== "all" && item.categoryId !== category) return false;
+      if (q) {
+        const hay = normalizeSearch(`${item.term} ${item.meaning} ${item.example} ${item.category}`);
+        if (!hay.includes(q)) return false;
+      }
       switch (filter) {
         case "due":
           return isDueForReview(p);
@@ -123,24 +76,7 @@ export default function VocabularyTrainerMode({ initialTermId }: { initialTermId
           return true;
       }
     });
-  }, [filter, category, getProgress]);
-
-  const grouped = useMemo(() => {
-    if (category !== "all") {
-      return [
-        {
-          id: category,
-          label: getCategoryLabel(category),
-          terms: filtered,
-        },
-      ];
-    }
-    return ICAO_VOCAB_CATEGORIES.map((cat) => ({
-      id: cat.id,
-      label: cat.label,
-      terms: filtered.filter((t) => t.categoryId === cat.id),
-    })).filter((g) => g.terms.length > 0);
-  }, [filtered, category]);
+  }, [filter, category, search, getProgress]);
 
   const goNext = () => {
     if (!activeItem) return;
@@ -150,129 +86,116 @@ export default function VocabularyTrainerMode({ initialTermId }: { initialTermId
   };
 
   const activeProgress = activeItem ? getProgress(activeItem.id) : null;
-  const referenceText = activeItem ? getLevelText(activeItem, level) : "";
+  const showTraining = activeItem && activeProgress;
 
   return (
-    <div className={`vocab-trainer ${activeItem ? "vocab-trainer-has-panel" : ""}`}>
-      <div className="vocab-toolbar">
-        <div className="vocab-toolbar-row">
-          <div className="vocab-filter-bar">
+    <div className={`vocab-studio ${showTraining ? "has-training" : ""}`}>
+      <aside className="vocab-studio-catalog" aria-label="Catálogo de termos">
+        <VocabDailyMissionChecklist onSelectTerm={selectTermById} defaultCollapsed />
+
+        <div className="vocab-studio-controls">
+          <div className="vocab-studio-search-wrap">
+            <input
+              type="search"
+              className="vocab-studio-search"
+              placeholder="Buscar termo ou significado…"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              aria-label="Buscar vocabulário"
+            />
+          </div>
+
+          <div className="vocab-studio-filters" role="tablist" aria-label="Filtro de status">
             {FILTERS.map((f) => (
               <button
                 key={f.id}
                 type="button"
-                className={`filter-chip ${filter === f.id ? "active" : ""}`}
-                onClick={() => {
-                  setFilter(f.id);
-                  setActiveItem(null);
-                }}
+                role="tab"
+                aria-selected={filter === f.id}
+                className={`vocab-studio-filter ${filter === f.id ? "active" : ""}`}
+                onClick={() => setFilter(f.id)}
               >
                 {f.label}
               </button>
             ))}
           </div>
-          <span className="vocab-toolbar-count">{filtered.length} termos</span>
-        </div>
 
-        <div className="vocab-toolbar-row vocab-toolbar-row-secondary">
-          <label className="vocab-category-select-wrap">
-            <span className="vocab-category-select-label">Categoria</span>
-            <select
-              className="vocab-category-select"
-              value={category}
-              onChange={(e) => {
-                setCategory(e.target.value as IcaoVocabCategoryId | "all");
-                setActiveItem(null);
-              }}
+          <div className="vocab-studio-categories">
+            <button
+              type="button"
+              className={`vocab-studio-cat ${category === "all" ? "active" : ""}`}
+              onClick={() => setCategory("all")}
             >
-              <option value="all">Todas as categorias</option>
-              {ICAO_VOCAB_CATEGORIES.map((cat) => (
-                <option key={cat.id} value={cat.id}>
-                  {cat.label}
-                </option>
-              ))}
-            </select>
-          </label>
-          <Link href="/pronunciation" className="btn secondary btn-sm">
-            Banco de pronúncia →
-          </Link>
-        </div>
-      </div>
-
-      <VocabDailyMissionChecklist onSelectTerm={selectTermById} defaultCollapsed />
-
-      <div className="vocab-page-layout">
-        <aside className="vocab-sidebar" aria-label="Lista de termos">
-          <VocabTermList
-            grouped={grouped}
-            filteredLength={filtered.length}
-            getProgress={getProgress}
-            activeItemId={activeItem?.id}
-            onSelect={setActiveItem}
-          />
-        </aside>
-
-        <div className="vocab-main">
-          {activeItem && activeProgress ? (
-            <article className="card card-essential part2-card vault-practice-card vocab-practice-card">
-              <div className="vocab-practice-head">
-                <button
-                  type="button"
-                  className="btn secondary btn-sm vocab-mobile-back"
-                  onClick={() => setActiveItem(null)}
-                >
-                  ← Lista
-                </button>
-                <div className="vocab-level-picker">
-                  {([1, 2, 3, 4] as const).map((l) => (
-                    <button
-                      key={l}
-                      type="button"
-                      className={`filter-chip ${level === l ? "active" : ""}`}
-                      onClick={() => setLevel(l)}
-                      title={getLevelText(activeItem, l)}
-                    >
-                      Nível {l}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <VocabularyCard item={activeItem} progress={activeProgress} trainingLevel={level} />
-
-              <PronunciationRecorder
-                referenceText={referenceText}
-                termLabel={activeItem.term}
-                progress={activeProgress}
-                onResult={async (_score, assessment, audioBlob) =>
-                  recordAttempt(
-                    activeItem.id,
-                    assessment,
-                    level,
-                    activeItem.term,
-                    referenceText,
-                    audioBlob,
-                  )
-                }
-                onMarkDifficult={() => markDifficult(activeItem.id)}
-                onMarkMastered={() => markMastered(activeItem.id)}
-                onNext={goNext}
-              />
-
-              <button type="button" className="btn secondary vocab-close-panel" onClick={() => setActiveItem(null)}>
-                Fechar
+              Todas
+            </button>
+            {ICAO_VOCAB_CATEGORIES.map((cat) => (
+              <button
+                key={cat.id}
+                type="button"
+                className={`vocab-studio-cat ${category === cat.id ? "active" : ""}`}
+                onClick={() => setCategory(cat.id)}
+              >
+                {cat.label}
               </button>
-            </article>
-          ) : (
-            <article className="vocab-panel-hint vocab-main-placeholder">
-              <h3>Selecione um termo</h3>
-              <p className="sub">
-                Escolha um termo na lista à esquerda ou use a missão diária para começar o treino de pronúncia.
-              </p>
-            </article>
-          )}
+            ))}
+          </div>
+
+          <div className="vocab-studio-catalog-meta">
+            <span>{filtered.length} termos</span>
+            <Link href="/pronunciation" className="vocab-studio-link">
+              Banco de pronúncia →
+            </Link>
+          </div>
         </div>
-      </div>
+
+        <VocabTermTable
+          terms={filtered}
+          getProgress={getProgress}
+          activeId={activeItem?.id}
+          onSelect={setActiveItem}
+        />
+      </aside>
+
+      <section className="vocab-studio-workspace" aria-label="Área de treino">
+        {showTraining ? (
+          <VocabTrainingPanel
+            item={activeItem}
+            progress={activeProgress}
+            level={level}
+            onLevelChange={setLevel}
+            onClose={() => setActiveItem(null)}
+            onNext={goNext}
+            onMarkDifficult={() => markDifficult(activeItem.id)}
+            onMarkMastered={() => markMastered(activeItem.id)}
+            onResult={async (_score, assessment, audioBlob) =>
+              recordAttempt(
+                activeItem.id,
+                assessment,
+                level,
+                activeItem.term,
+                getLevelText(activeItem, level),
+                audioBlob,
+              )
+            }
+          />
+        ) : (
+          <div className="vocab-studio-welcome">
+            <div className="vocab-studio-welcome-icon" aria-hidden>
+              📚
+            </div>
+            <h2>Vocabulary Studio</h2>
+            <p>
+              Selecione um termo na tabela para treinar pronúncia com Azure — 4 níveis de
+              complexidade, do termo isolado à frase completa.
+            </p>
+            <ul className="vocab-studio-welcome-tips">
+              <li>Use <strong>Revisar hoje</strong> para o que o SRS pede</li>
+              <li>Missão diária: 20 palavras rotativas</li>
+              <li>Gravações ficam salvas na sua conta</li>
+            </ul>
+          </div>
+        )}
+      </section>
     </div>
   );
 }

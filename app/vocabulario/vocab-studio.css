@@ -1,0 +1,727 @@
+/* ── Vocabulary Studio — professional layout ── */
+
+.vocab-studio-page {
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+.vocab-studio-header {
+  border-bottom: 1px solid var(--border);
+  background: var(--card);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.vocab-studio-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  flex-wrap: wrap;
+}
+
+.vocab-studio-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.vocab-studio-brand-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.vocab-studio-brand strong {
+  display: block;
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.vocab-studio-brand span {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.vocab-studio-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.vocab-studio-stats {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.vocab-studio-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 3.5rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 8px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+
+.vocab-studio-stat strong {
+  font-size: 0.95rem;
+  line-height: 1.2;
+}
+
+.vocab-studio-stat span {
+  font-size: 0.65rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.vocab-studio-tabs {
+  display: flex;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 10px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+
+.vocab-studio-tab {
+  padding: 0.4rem 0.85rem;
+  border: none;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.vocab-studio-tab:hover {
+  color: var(--text);
+}
+
+.vocab-studio-tab.active {
+  background: var(--card);
+  color: var(--text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.vocab-studio-main {
+  padding-top: 1.25rem;
+  padding-bottom: 2.5rem;
+}
+
+/* ── Two-column studio ── */
+
+.vocab-studio {
+  display: grid;
+  grid-template-columns: minmax(320px, 42%) 1fr;
+  gap: 1.25rem;
+  align-items: start;
+  min-height: calc(100vh - 8rem);
+}
+
+.vocab-studio-catalog {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  min-height: 0;
+  max-height: calc(100vh - 7rem);
+}
+
+.vocab-studio-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 0.85rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--card);
+}
+
+.vocab-studio-search {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.875rem;
+}
+
+.vocab-studio-search:focus {
+  outline: 2px solid var(--accent, #3b82f6);
+  outline-offset: 1px;
+}
+
+.vocab-studio-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.vocab-studio-filter {
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.vocab-studio-filter:hover {
+  color: var(--text);
+  border-color: var(--muted);
+}
+
+.vocab-studio-filter.active {
+  background: var(--text);
+  color: var(--card);
+  border-color: var(--text);
+}
+
+.vocab-studio-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.vocab-studio-cat {
+  padding: 0.25rem 0.55rem;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+
+.vocab-studio-cat:hover {
+  color: var(--text);
+  background: var(--bg);
+}
+
+.vocab-studio-cat.active {
+  color: var(--text);
+  background: var(--bg);
+  font-weight: 600;
+}
+
+.vocab-studio-catalog-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.vocab-studio-link {
+  color: var(--accent, #3b82f6);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.vocab-studio-link:hover {
+  text-decoration: underline;
+}
+
+/* ── Term table ── */
+
+.vocab-studio-table-wrap {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--card);
+}
+
+.vocab-studio-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.vocab-studio-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--card);
+}
+
+.vocab-studio-table th {
+  padding: 0.55rem 0.75rem;
+  text-align: left;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+
+.vocab-studio-row {
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+.vocab-studio-row:hover {
+  background: var(--bg);
+}
+
+.vocab-studio-row.active {
+  background: color-mix(in srgb, var(--accent, #3b82f6) 12%, var(--card));
+}
+
+.vocab-studio-row td {
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+.vocab-studio-cell-term {
+  min-width: 7rem;
+}
+
+.vocab-studio-term-en {
+  display: block;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.vocab-studio-term-cat {
+  display: block;
+  font-size: 0.65rem;
+  color: var(--muted);
+  margin-top: 0.15rem;
+}
+
+.vocab-studio-cell-meaning {
+  color: var(--muted);
+  max-width: 12rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vocab-studio-cell-mastery {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+
+.vocab-studio-mastery-bar {
+  width: 2.5rem;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--border);
+  overflow: hidden;
+}
+
+.vocab-studio-mastery-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: var(--accent, #3b82f6);
+}
+
+.vocab-studio-status {
+  display: inline-block;
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 600;
+}
+
+.vocab-studio-status-due {
+  background: color-mix(in srgb, #f59e0b 18%, transparent);
+  color: #b45309;
+}
+
+.vocab-studio-status-learning {
+  background: color-mix(in srgb, #3b82f6 15%, transparent);
+  color: #1d4ed8;
+}
+
+.vocab-studio-status-mastered {
+  background: color-mix(in srgb, #22c55e 18%, transparent);
+  color: #15803d;
+}
+
+.vocab-studio-status-new {
+  background: var(--bg);
+  color: var(--muted);
+}
+
+.vocab-studio-empty {
+  padding: 2rem 1rem;
+  text-align: center;
+  color: var(--muted);
+}
+
+.vocab-studio-empty .sub {
+  font-size: 0.8rem;
+  margin-top: 0.35rem;
+}
+
+/* ── Workspace / training ── */
+
+.vocab-studio-workspace {
+  position: sticky;
+  top: 5rem;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  min-height: 28rem;
+  overflow: hidden;
+}
+
+.vocab-studio-welcome {
+  padding: 2.5rem 2rem;
+  text-align: center;
+  max-width: 28rem;
+  margin: 0 auto;
+}
+
+.vocab-studio-welcome-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.vocab-studio-welcome h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.vocab-studio-welcome p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  margin-bottom: 1.25rem;
+}
+
+.vocab-studio-welcome-tips {
+  text-align: left;
+  font-size: 0.8rem;
+  color: var(--muted);
+  padding-left: 1.25rem;
+  line-height: 1.7;
+}
+
+.vocab-studio-training {
+  padding: 1.25rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.vocab-studio-training-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.vocab-studio-back {
+  display: none;
+}
+
+.vocab-studio-training-cat {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+
+.vocab-studio-hero {
+  padding: 1rem 1.15rem;
+  border-radius: 10px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+
+.vocab-studio-hero-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.vocab-studio-hero-term {
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.vocab-studio-hero-score {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.vocab-studio-hero-score strong {
+  font-size: 1.35rem;
+  display: block;
+  line-height: 1;
+}
+
+.vocab-studio-hero-score span {
+  font-size: 0.65rem;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.vocab-studio-hero-meaning {
+  font-size: 0.95rem;
+  color: var(--text);
+  margin: 0 0 0.35rem;
+}
+
+.vocab-studio-hero-example {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-style: italic;
+  margin: 0 0 0.75rem;
+  line-height: 1.45;
+}
+
+.vocab-studio-hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.vocab-studio-hero-hint {
+  margin: 0.65rem 0 0;
+  font-size: 0.75rem;
+  color: var(--accent, #3b82f6);
+}
+
+.vocab-studio-levels {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.35rem;
+}
+
+.vocab-studio-level-tab {
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.vocab-studio-level-tab:hover {
+  border-color: var(--muted);
+}
+
+.vocab-studio-level-tab.active {
+  background: var(--text);
+  color: var(--card);
+  border-color: var(--text);
+}
+
+.vocab-studio-practice-box {
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  border: 1px dashed var(--border);
+  background: color-mix(in srgb, var(--accent, #3b82f6) 5%, var(--bg));
+}
+
+.vocab-studio-practice-label {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-bottom: 0.35rem;
+}
+
+.vocab-studio-practice-text {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+/* Recorder inside studio */
+.vocab-studio-training .vocab-recorder {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.vocab-studio-training .vocab-recorder-ref {
+  display: none;
+}
+
+.vocab-studio-training .vocab-recorder-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* ── Daily mission (studio variant) ── */
+
+.vocab-studio .vocab-daily-mission {
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  overflow: hidden;
+}
+
+.vocab-studio .vocab-daily-mission-head {
+  padding: 0.65rem 0.85rem;
+}
+
+.vocab-studio .vocab-daily-mission-toggle h2 {
+  font-size: 0.85rem;
+}
+
+.vocab-studio .vocab-daily-mission-toggle .sub {
+  font-size: 0.72rem;
+}
+
+/* ── Shadowing (studio) ── */
+
+.vocab-studio-shadowing {
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  padding: 1.25rem 1.5rem;
+}
+
+.vocab-studio-shadowing-head {
+  margin-bottom: 1rem;
+}
+
+.vocab-studio-shadowing-head h2 {
+  font-size: 1.1rem;
+  margin: 0 0 0.25rem;
+}
+
+.vocab-studio-shadowing-head p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.vocab-studio-shadowing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.65rem;
+}
+
+.vocab-studio-shadow-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 0.85rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.vocab-studio-shadow-card-term {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.vocab-studio-shadow-card-meaning {
+  font-size: 0.75rem;
+  color: var(--muted);
+  flex: 1;
+}
+
+.vocab-studio-shadow-active {
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+.vocab-studio-shadow-phase {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background: var(--bg);
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* ── Mobile ── */
+
+@media (max-width: 900px) {
+  .vocab-studio {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .vocab-studio-catalog {
+    max-height: none;
+  }
+
+  .vocab-studio-table-wrap {
+    max-height: 50vh;
+  }
+
+  .vocab-studio.has-training .vocab-studio-catalog {
+    display: none;
+  }
+
+  .vocab-studio-workspace {
+    position: fixed;
+    inset: 0;
+    top: 0;
+    z-index: 50;
+    border-radius: 0;
+    border: none;
+    min-height: 100vh;
+    overflow-y: auto;
+  }
+
+  .vocab-studio-back {
+    display: inline-flex;
+  }
+
+  .vocab-studio-header-inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .vocab-studio-header-actions {
+    justify-content: space-between;
+  }
+
+  .vocab-studio-stats {
+    flex: 1;
+    justify-content: space-between;
+  }
+
+  .vocab-studio-cell-meaning {
+    max-width: 8rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .vocab-studio-table th:nth-child(3),
+  .vocab-studio-table td:nth-child(3) {
+    display: none;
+  }
+}

@@ -2,11 +2,11 @@
 
 import { useMemo, useState } from "react";
 import VocabRecordingsList from "@/components/VocabularyTrainer/VocabRecordingsList";
-import VocabularyCard from "@/components/VocabularyTrainer/VocabularyCard";
+import WordPhoneticHint from "@/components/WordPhoneticHint";
 import { ICAO_VOCABULARY, getLevelText, type IcaoVocabularyItem } from "@/data/icaoVocabulary";
 import { useAzureSpeech } from "@/hooks/useAzureSpeech";
 import { useVocabularyProgress } from "@/hooks/useVocabularyProgress";
-import { isDueForReview, pronunciationScore } from "@/utils/spacedRepetition";
+import { isDueForReview, isMastered, pronunciationScore } from "@/utils/spacedRepetition";
 
 export default function ShadowingMode() {
   const { getProgress, recordAttempt } = useVocabularyProgress();
@@ -21,6 +21,8 @@ export default function ShadowingMode() {
     () => ICAO_VOCABULARY.filter((item) => isDueForReview(getProgress(item.id))),
     [getProgress],
   );
+
+  const list = dueList.length ? dueList : ICAO_VOCABULARY.slice(0, 16);
 
   const startShadowing = async (item: IcaoVocabularyItem) => {
     setActiveItem(item);
@@ -71,44 +73,57 @@ export default function ShadowingMode() {
   const progress = activeItem ? getProgress(activeItem.id) : null;
 
   return (
-    <div className="vocab-shadowing">
-      <header className="part2-mode-head">
-        <span className="badge">Shadowing Mode</span>
-        <span className="part2-counter">Listen → wait 1s → repeat → evaluate</span>
+    <div className="vocab-studio-shadowing">
+      <header className="vocab-studio-shadowing-head">
+        <h2>Shadowing</h2>
+        <p>Ouça o Azure, espere 1 segundo e repita — avaliação automática de pronúncia.</p>
       </header>
 
-      <div className="vocab-level-picker">
+      <div className="vocab-studio-levels" role="tablist" aria-label="Nível">
         {([1, 2, 3, 4] as const).map((l) => (
           <button
             key={l}
             type="button"
-            className={`filter-chip ${level === l ? "active" : ""}`}
+            role="tab"
+            aria-selected={level === l}
+            className={`vocab-studio-level-tab ${level === l ? "active" : ""}`}
             onClick={() => setLevel(l)}
           >
-            Level {l}
+            Nível {l}
           </button>
         ))}
       </div>
 
       {activeItem && progress ? (
-        <article className="card card-essential part2-card vocab-practice-card">
-          <VocabularyCard item={activeItem} progress={progress} trainingLevel={level} />
-          <p className="vocab-shadowing-phase">
-            {phase === "listening" && "🔊 Azure is speaking…"}
-            {phase === "waiting" && "⏳ Get ready…"}
-            {phase === "recording" && "● Repeat now — tap Stop when done"}
-            {phase === "result" && lastScore !== null && `Result: ${lastScore} points`}
+        <div className="vocab-studio-shadow-active">
+          <div className="vocab-studio-hero">
+            <h3 className="vocab-studio-hero-term">
+              {activeItem.term}
+              <WordPhoneticHint word={activeItem.term} className="vault-word-phonetic" />
+            </h3>
+            <p className="vocab-studio-hero-meaning">{activeItem.meaning}</p>
+            <p className="vocab-studio-practice-text">{getLevelText(activeItem, level)}</p>
+          </div>
+
+          <p className="vocab-studio-shadow-phase">
+            {phase === "listening" && "🔊 Azure está falando…"}
+            {phase === "waiting" && "⏳ Prepare-se…"}
+            {phase === "recording" && "● Repita agora — toque em Parar quando terminar"}
+            {phase === "result" && lastScore !== null && `Resultado: ${lastScore} pontos`}
           </p>
+
           {audioNote && <p className="voice-coach-warn">{audioNote}</p>}
+
           {phase === "recording" && (
             <button type="button" className="btn orange" onClick={stopShadowing}>
-              ⏹ Stop & evaluate
+              ⏹ Parar e avaliar
             </button>
           )}
+
           {phase === "result" && (
-            <div className="voice-coach-actions">
+            <div className="vocab-recorder-actions">
               <button type="button" className="btn green" onClick={() => startShadowing(activeItem)}>
-                Shadow again
+                Shadow de novo
               </button>
               <button
                 type="button"
@@ -119,23 +134,38 @@ export default function ShadowingMode() {
                   azure.clear();
                 }}
               >
-                Back
+                Voltar à lista
               </button>
             </div>
           )}
+
           <VocabRecordingsList recordings={progress.recordings} />
-        </article>
+        </div>
       ) : (
-        <ul className="vault-word-list vocab-term-list">
-          {(dueList.length ? dueList : ICAO_VOCABULARY.slice(0, 12)).map((item) => (
-            <li key={item.id} className="vault-word-item vocab-term-item">
-              <VocabularyCard item={item} progress={getProgress(item.id)} compact />
-              <button type="button" className="btn green btn-sm" onClick={() => startShadowing(item)}>
-                Start shadowing
-              </button>
-            </li>
-          ))}
-        </ul>
+        <div className="vocab-studio-shadowing-grid">
+          {list.map((item) => {
+            const p = getProgress(item.id);
+            const due = isDueForReview(p);
+            const mastered = isMastered(p);
+            return (
+              <article key={item.id} className="vocab-studio-shadow-card">
+                <span className="vocab-studio-shadow-card-term">
+                  {item.term}
+                  <WordPhoneticHint word={item.term} className="vault-word-phonetic" />
+                </span>
+                <p className="vocab-studio-shadow-card-meaning">{item.meaning}</p>
+                <div className="vocab-studio-hero-stats">
+                  {due && <span>Revisar</span>}
+                  {mastered && <span>Dominado</span>}
+                  <span>{p.masteryLevel}/5</span>
+                </div>
+                <button type="button" className="btn green btn-sm" onClick={() => startShadowing(item)}>
+                  Iniciar shadow
+                </button>
+              </article>
+            );
+          })}
+        </div>
       )}
     </div>
   );
