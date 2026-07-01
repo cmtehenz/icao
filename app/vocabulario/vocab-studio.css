@@ -585,11 +585,22 @@
   border-radius: 12px;
   border: 1px solid var(--border);
   background: var(--card);
-  overflow: hidden;
+  margin-bottom: 0;
 }
 
 .vocab-studio .vocab-daily-mission-head {
   padding: 0.65rem 0.85rem;
+  margin-bottom: 0;
+  flex-wrap: wrap;
+}
+
+.vocab-studio .vocab-daily-mission-bar {
+  margin: 0 0.85rem 0.65rem;
+}
+
+.vocab-studio .vocab-daily-checklist {
+  padding: 0 0.85rem 0.85rem;
+  max-height: min(40vh, 360px);
 }
 
 .vocab-studio .vocab-daily-mission-toggle h2 {

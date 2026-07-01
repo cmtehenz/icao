@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { CARDS } from "@/lib/cards";
+import { ICAO_VOCABULARY } from "@/data/icaoVocabulary";
 import { STUDY_ACTIVITY_RECORDED_EVENT } from "@/lib/studyActivityRecord";
 import { DAILY_MISSION_LOG_EVENT } from "@/lib/dailyMissionLog";
 import { getDailyMissionSummary } from "@/lib/dailyMission";
@@ -18,7 +19,7 @@ import {
   part2MissionLink,
   PART2_DAILY_MISSION_EVENT,
 } from "@/lib/part2DailyMission";
-import { VOCAB_DAILY_MISSION_EVENT } from "@/lib/vocabDailyMission";
+import { VOCAB_DAILY_MISSION_EVENT, vocabDailyMissionProgress, getOrCreateVocabDailyMission, vocabMissionLink } from "@/lib/vocabDailyMission";
 import { PEEL_BLOCK_HISTORY_EVENT } from "@/lib/peelBlockHistory";
 import { PART2_PROGRESS_EVENT } from "@/lib/part2/progress";
 import { useStudyAgenda } from "@/hooks/useStudyAgenda";
@@ -63,6 +64,10 @@ export default function DailyMissionPanel() {
   const part1 = useMemo(() => getOrCreatePart1DailyMission(), [tick]);
   const part2 = useMemo(() => getOrCreatePart2DailyMission(), [tick]);
   const insights = useMemo(() => buildDifficultyInsights(3), [tick]);
+  const vocabProgress = useMemo(() => vocabDailyMissionProgress(getOrCreateVocabDailyMission()), [tick]);
+  const vocabNextLink = vocabProgress.currentId
+    ? vocabMissionLink(vocabProgress.currentId)
+    : "/vocabulario";
 
   return (
     <section className="daily-mission-panel" aria-label="Plano de estudo de hoje">
@@ -181,9 +186,12 @@ export default function DailyMissionPanel() {
           <p className="daily-mission-meta">20 palavras — checklist completo no Vocabulário</p>
           <p className="daily-mission-vocab-progress">
             {summary.vocabulary.done}/{summary.vocabulary.total} concluídas
+            {!summary.vocabulary.complete && vocabProgress.currentId
+              ? ` · falta: ${ICAO_VOCABULARY.find((t) => t.id === vocabProgress.currentId)?.term ?? "1"}`
+              : ""}
           </p>
-          <Link href="/vocabulario" className="btn secondary btn-sm">
-            Abrir checklist de 20 palavras →
+          <Link href={vocabNextLink} className="btn secondary btn-sm">
+            {summary.vocabulary.complete ? "Abrir vocabulário →" : "Treinar palavra que falta →"}
           </Link>
         </article>
       </div>

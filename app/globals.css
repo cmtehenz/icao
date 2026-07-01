@@ -2410,6 +2410,74 @@ input {
   margin-bottom: 1.25rem;
 }
 
+.vocab-daily-mission-toggle-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.vocab-daily-mission-next {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin: 0.65rem 0 0;
+  padding: 0.65rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--green) 35%, var(--line));
+  background: color-mix(in srgb, var(--green) 8%, var(--card));
+}
+
+.vocab-daily-mission-next-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  width: 100%;
+}
+
+.vocab-daily-mission-next-term {
+  flex: 1;
+  min-width: 0;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.vocab-daily-checklist-action {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.vocab-daily-checklist-action:hover .vocab-daily-train-label {
+  color: var(--green);
+}
+
+.vocab-daily-train-label {
+  flex-shrink: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.vocab-daily-checklist-item.next {
+  border-color: color-mix(in srgb, var(--green) 45%, var(--line));
+  background: color-mix(in srgb, var(--green) 6%, var(--card));
+}
+
+.vocab-daily-checklist-item.next .vocab-daily-check {
+  background: color-mix(in srgb, var(--green) 20%, var(--line));
+  color: var(--green);
+}
+
 .vocab-daily-mission.collapsed {
   padding-bottom: 0.65rem;
 }
@@ -2477,14 +2545,19 @@ input {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 6px;
-  grid-template-columns: 1fr;
+  max-height: min(50vh, 420px);
+  overflow-y: auto;
 }
 
-@media (min-width: 700px) {
+@media (min-width: 900px) {
   .vocab-daily-checklist {
-    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    max-height: min(45vh, 380px);
   }
 }
 
@@ -2496,6 +2569,7 @@ input {
   border: 1px solid var(--line);
   border-radius: 8px;
   font-size: 0.82rem;
+  min-width: 0;
 }
 
 .vocab-daily-checklist-item.done {

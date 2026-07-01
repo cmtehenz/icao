@@ -53,6 +53,9 @@ export default function VocabularyTrainerMode({ initialTermId }: { initialTermId
       setFilter("all");
       setCategory("all");
       setSearch("");
+      requestAnimationFrame(() => {
+        document.querySelector(".vocab-studio-workspace")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
     }
   };
 
@@ -91,7 +94,7 @@ export default function VocabularyTrainerMode({ initialTermId }: { initialTermId
   return (
     <div className={`vocab-studio ${showTraining ? "has-training" : ""}`}>
       <aside className="vocab-studio-catalog" aria-label="Catálogo de termos">
-        <VocabDailyMissionChecklist onSelectTerm={selectTermById} defaultCollapsed />
+        <VocabDailyMissionChecklist onSelectTerm={selectTermById} />
 
         <div className="vocab-studio-controls">
           <div className="vocab-studio-search-wrap">
