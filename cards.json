@@ -350,49 +350,59 @@
   {
     "num": "08",
     "question": "When should a pilot perform a missed approach procedure?",
-    "memory": "Unstable → Weather → Safety",
-    "opener": "In helicopter operations, a pilot should discontinue the approach whenever the landing cannot be continued safely.",
+    "memory": "Unsafe → Weather → Runway → Try again",
+    "opener": "A pilot should perform a missed approach when it is not safe to land.",
     "ideas": [
-      "1 - UNSTABLE APPROACH: First of all, if the approach is unstable, speed, alignment or power are not correct, the safest decision is to go around.",
-      "2 - WEATHER: Additionally, poor visibility, strong wind or an obscured landing site may require a missed approach.",
-      "3 - SAFETY: Finally, pilots should never force a landing just because they are close to the landing area."
+      "1 - WEATHER: This may happen because of bad weather, traffic or a runway obstruction.",
+      "2 - PROCEDURE: The pilot follows the published missed approach procedure or ATC instructions.",
+      "3 - ACTION: Then, the pilot can try another approach or divert if necessary."
     ],
-    "example": "For example, if the landing site is blocked, power margin is insufficient or the approach becomes unstable, the pilot should climb away and reassess.",
-    "conclusion": "Overall, a missed approach is not a failure; it is a safe and professional decision in helicopter operations.",
+    "example": "For example, if I can't see the runway at the minimum altitude, I must perform a missed approach and follow the published procedure.",
+    "conclusion": "Overall, a missed approach is a safe decision whenever a landing cannot be completed.",
     "verbs": [
       "perform",
-      "continue",
-      "go around",
-      "assess",
-      "discontinue"
+      "follow",
+      "divert",
+      "land",
+      "continue"
     ],
     "vocab": [
       "missed approach",
-      "landing site",
-      "power margin",
+      "runway",
       "visibility",
-      "safety"
+      "ATC instructions",
+      "divert"
     ],
-    "answer": "In helicopter operations, a pilot should discontinue the approach whenever the landing cannot be continued safely. 1 - UNSTABLE APPROACH: First of all, if the approach is unstable, speed, alignment or power are not correct, the safest decision is to go around. 2 - WEATHER: Additionally, poor visibility, strong wind or an obscured landing site may require a missed approach. 3 - SAFETY: Finally, pilots should never force a landing just because they are close to the landing area. For example, if the landing site is blocked, power margin is insufficient or the approach becomes unstable, the pilot should climb away and reassess. Overall, a missed approach is not a failure; it is a safe and professional decision in helicopter operations.",
-    "difficulty": "Hard",
+    "answer": "A pilot should perform a missed approach when it is not safe to land. 1 - WEATHER: First of all, this may happen because of bad weather, traffic or a runway obstruction. 2 - PROCEDURE: Additionally, the pilot follows the published missed approach procedure or ATC instructions. 3 - ACTION: Finally, the pilot can try another approach or divert to an alternate airport if necessary. For example, if I can't see the runway at the minimum altitude, I must perform a missed approach and follow the published procedure. Overall, a missed approach is a safe decision whenever a landing cannot be completed.",
+    "answerLevel4": "A pilot should perform a missed approach when it is not safe to land. This may happen because of bad weather, traffic or a runway obstruction. The pilot follows the published missed approach procedure or ATC instructions. Then, the pilot can try another approach or divert if necessary.",
+    "answerLevel5": "A pilot should perform a missed approach whenever a safe landing cannot be completed. This may happen because of poor visibility, bad weather, traffic on the runway or an unstable approach. In that situation, the pilot must follow the published missed approach procedure or ATC instructions. After that, the pilot can make another approach or divert to an alternate airport if necessary.",
+    "level4Example": "For example, if I can't see the runway at the minimum altitude, I must perform a missed approach and follow the published procedure.",
+    "level4Steps": [
+      { "label": "Unsafe", "sentence": "A pilot should perform a missed approach when it is not safe to land." },
+      { "label": "Weather", "sentence": "This may happen because of bad weather or poor visibility." },
+      { "label": "Runway", "sentence": "It can also happen because of traffic or a runway obstruction." },
+      { "label": "Try again", "sentence": "Then, the pilot follows the procedure and tries another approach or diverts." }
+    ],
+    "memoryIcons": ["❌🛬", "🌧️", "🚧", "🔄"],
+    "difficulty": "Medium",
     "category": "helicopter",
     "tags": [
       "helicopter",
-      "hard",
-      "helicopter"
+      "medium",
+      "procedures"
     ],
     "memoryLabels": [
-      "Unstable",
+      "Unsafe",
       "Weather",
-      "Safety"
+      "Runway",
+      "Try again"
     ],
-    "targetWords": 121,
+    "targetWords": 95,
     "keywords": [
-      "Unstable approach",
+      "Unsafe",
       "Weather",
-      "Power margin",
-      "Go around",
-      "Landing site"
+      "Runway",
+      "Try again"
     ]
   },
   {

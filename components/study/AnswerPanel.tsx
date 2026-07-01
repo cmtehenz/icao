@@ -54,6 +54,13 @@ export default function AnswerPanel({ card, show, connectorSet }: Props) {
           ))}
         </ol>
 
+        {card.level4Example ? (
+          <div className="answer-level-extra">
+            <h4>Exemplo — vale muitos pontos</h4>
+            <p>{highlightConnectors(card.level4Example)}</p>
+          </div>
+        ) : null}
+
         {card.answerExtra ? (
           <div className="answer-level-extra">
             <h4>Se quiser falar um pouco mais</h4>

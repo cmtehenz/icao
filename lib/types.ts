@@ -26,6 +26,8 @@ export type Card = {
   answerLevel5?: string;
   /** Optional phrase the student can add for a more natural ICAO 4 answer. */
   answerExtra?: string;
+  /** Example sentence highlighted in ICAO 4 study mode. */
+  level4Example?: string;
   /** Four short sentences mapped to keywords — shown in ICAO 4 study mode. */
   level4Steps?: Level4Step[];
   /** Emoji icons aligned with memoryLabels (e.g. 👦 → 🚁 → 🎓 → 👨‍✈️). */
