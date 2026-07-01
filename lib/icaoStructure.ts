@@ -136,6 +136,14 @@ export function buildIcaoLevel4Answer(card: Card): string {
 
 /** Card PEEL simplificado para exibição no modo ICAO 4 (2 ideias, sem jargão). */
 export function toLevel4Card<T extends Card>(card: T): T {
+  if (card.answerLevel4) {
+    return {
+      ...card,
+      answer: card.answerLevel4,
+      ideas: card.ideas.slice(0, 2),
+    };
+  }
+
   const main = simplifyMain(card.opener);
   const idea1 = ideaBody(card.ideas[0] ?? "");
   const idea2 = ideaBody(card.ideas[1] ?? "");

@@ -15,6 +15,8 @@ export type Card = {
   verbs: string[];
   vocab: string[];
   answer: string;
+  /** When set, used as the spoken model in ICAO 4 mode instead of auto-building from PEEL. */
+  answerLevel4?: string;
   difficulty: Difficulty;
   category: Category;
   tags: string[];

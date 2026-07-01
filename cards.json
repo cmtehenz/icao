@@ -194,49 +194,50 @@
   {
     "num": "05",
     "question": "What will communications between pilots and ATC be like in ten years?",
-    "memory": "Technology → Clarity → Safety",
-    "opener": "In my opinion, communication between helicopter pilots and ATC will become more technological in the next ten years.",
+    "memory": "Digital → AI → Human Safety",
+    "opener": "I think communication will become more digital in the future.",
     "ideas": [
-      "1 - TECHNOLOGY: First of all, digital systems and better surveillance may improve coordination for helicopters and helipad operations.",
-      "2 - CLARITY: Additionally, standard phraseology will still be essential because pilots and controllers need clear and fast communication.",
-      "3 - SAFETY: Finally, technology may reduce misunderstandings during busy airspace and low-level helicopter operations."
+      "1 - AI: AI will probably help pilots and controllers with routine tasks.",
+      "2 - RADIO: However, pilots and ATC will still communicate by radio, especially during emergencies.",
+      "3 - SAFETY: In my opinion, human communication will always be essential for flight safety."
     ],
-    "example": "For example, digital clearances and better helipad information may help, but pilots will still need to read back and confirm instructions correctly.",
-    "conclusion": "Overall, ATC communication will become more advanced, but clarity and discipline will remain essential for helicopter pilots.",
+    "example": "For example, AI may support routine clearances, but during an emergency pilots still need direct voice contact with ATC.",
+    "conclusion": "Overall, technology will support communication, but human interaction will always be essential for flight safety.",
     "verbs": [
       "change",
       "support",
       "communicate",
-      "reduce",
-      "improve"
+      "help",
+      "remain"
     ],
     "vocab": [
       "ATC",
-      "helicopter",
-      "phraseology",
-      "helipad",
-      "communication"
+      "digital communication",
+      "AI",
+      "radio",
+      "flight safety"
     ],
-    "answer": "In my opinion, communication between helicopter pilots and ATC will become more technological in the next ten years. 1 - TECHNOLOGY: First of all, digital systems and better surveillance may improve coordination for helicopters and helipad operations. 2 - CLARITY: Additionally, standard phraseology will still be essential because pilots and controllers need clear and fast communication. 3 - SAFETY: Finally, technology may reduce misunderstandings during busy airspace and low-level helicopter operations. For example, digital clearances and better helipad information may help, but pilots will still need to read back and confirm instructions correctly. Overall, ATC communication will become more advanced, but clarity and discipline will remain essential for helicopter pilots.",
+    "answer": "In my opinion, communication between pilots and ATC will become more digital in the next ten years. 1 - AI: First of all, AI will probably help pilots and controllers with routine tasks and reduce workload on standard clearances. 2 - RADIO: Additionally, pilots and ATC will still communicate by radio, especially during emergencies when clear and immediate contact is critical. 3 - SAFETY: Finally, human communication will remain essential because flight safety depends on judgment, confirmation and teamwork. For example, AI may support routine clearances, but during an emergency pilots still need direct voice contact with ATC. Overall, technology will support communication, but human interaction will always be essential for flight safety.",
+    "answerLevel4": "I think communication will become more digital in the future. AI will probably help pilots and controllers with routine tasks. However, pilots and ATC will still communicate by radio, especially during emergencies. In my opinion, human communication will always be essential for flight safety.",
     "difficulty": "Medium",
     "category": "helicopter",
     "tags": [
       "helicopter",
       "medium",
-      "helicopter"
+      "future"
     ],
     "memoryLabels": [
-      "Technology",
-      "Clarity",
-      "Safety"
+      "Digital",
+      "AI",
+      "Human Safety"
     ],
-    "targetWords": 110,
+    "targetWords": 95,
     "keywords": [
-      "Digital systems",
-      "Phraseology",
-      "ATC clarity",
-      "Helipad ops",
-      "Technology"
+      "Digital communication",
+      "AI",
+      "Radio",
+      "Emergencies",
+      "Flight safety"
     ]
   },
   {
