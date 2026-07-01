@@ -440,6 +440,22 @@ export default function VoiceCoachPanel({
             />
           )}
 
+          {evaluateType === "part2-readback" && feedback.readbackElements?.length ? (
+            <div className="readback-elements-panel">
+              <h3>Elementos da clearance</h3>
+              <p className="answer-compare-hint">
+                Readback correto = todos os dados da autorização. Não precisa repetir palavra por palavra.
+              </p>
+              <ul className="readback-elements-list">
+                {feedback.readbackElements.map((el) => (
+                  <li key={el.id} className={el.found ? "found" : "missing"}>
+                    <span aria-hidden>{el.found ? "✓" : "○"}</span> {el.label}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+
           {audioSaveNote && <p className="voice-coach-warn">{audioSaveNote}</p>}
           {activityNote && <p className="voice-coach-warn">{activityNote}</p>}
 

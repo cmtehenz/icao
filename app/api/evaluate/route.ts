@@ -21,7 +21,7 @@ Rules:
 - For part1 level4/level5 (answerMode): short clear sentences are enough — do NOT require PEEL connectors.
 - For part1 peel mode: accept connectors from the connector bank (Openers, Idea 1–3, Example, Conclusion).
 - STT often mishears aviation terms (message→missed approach, wrong way→runway). Score ideas generously when meaning is clear.
-- For part2-readback: check clearance elements, numbers, callsign ANAC 123.
+- For part2-readback: score by clearance ELEMENTS (callsign, altitude, squawk, route/fix, contact, frequency) — digits or spoken numbers are equivalent; callsign at start OR end is OK; proceed + VORTAC counts even without FLL.
 - For part2-interaction: check problem, intention, request, MAYDAY/PAN if needed.
 - For part2-reported: check reported speech grammar (past tense, third person).
 - For part1 suggestedAnswer: base it on modelAnswer; keep the same ideas and aviation vocabulary; fix grammar only.
@@ -96,15 +96,26 @@ export async function POST(request: Request) {
       source: "openai",
       scores: parsed.scores ?? local.scores,
       summary: parsed.summary ?? local.summary,
-      strengths: parsed.strengths ?? local.strengths,
+      strengths: [...new Set([...(local.strengths ?? []), ...(parsed.strengths ?? [])])],
       improvements: parsed.improvements ?? local.improvements,
       missingKeywords: parsed.missingKeywords ?? local.missingKeywords,
       suggestedAnswer:
         type === "part1"
           ? ensurePart1SuggestedAnswer(modelAnswer, parsed.suggestedAnswer)
           : parsed.suggestedAnswer,
-      icaoLevel: estimateIcaoLevel(parsed.scores ?? local.scores, type),
+      readbackElements: local.readbackElements,
     };
+
+    if (type === "part2-readback" && local.readbackElements) {
+      feedback.scores = {
+        ...feedback.scores,
+        content: local.scores.content,
+        structure: local.scores.structure,
+        phraseology: local.scores.phraseology,
+      };
+    }
+
+    feedback.icaoLevel = estimateIcaoLevel(feedback.scores, type);
 
     return Response.json(feedback);
   } catch (e) {

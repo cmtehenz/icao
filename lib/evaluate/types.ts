@@ -24,6 +24,8 @@ export type EvaluateFeedback = {
   strengths: string[];
   improvements: string[];
   missingKeywords: string[];
+  /** Clearance element checklist for Part 2 readback feedback. */
+  readbackElements?: Array<{ id: string; label: string; found: boolean }>;
   suggestedAnswer?: string;
   source: "local" | "openai";
   icaoLevel?: IcaoLevelRating;

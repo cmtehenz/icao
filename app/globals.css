@@ -5356,6 +5356,46 @@ input {
   font-size: 1rem;
 }
 
+.readback-elements-panel {
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.readback-elements-panel h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+
+.readback-elements-list {
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.readback-elements-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 6px;
+}
+
+.readback-elements-list li.found {
+  background: rgba(34, 197, 94, 0.1);
+  color: var(--text);
+}
+
+.readback-elements-list li.missing {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--muted);
+}
+
 .answer-compare-warn {
   margin: 0 0 0.75rem;
   padding: 0.65rem 0.75rem;

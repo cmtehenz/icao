@@ -4,6 +4,7 @@ import { scorePart1Content, keywordMatches } from "./contentScore";
 import { estimateIcaoLevel } from "./icaoLevel";
 import { peelMissingConnectors, peelStructureFeedbackPt, peelStructureScore } from "./peel";
 import { normalizeAviationTranscript } from "./transcriptNormalize";
+import { normalizeReadbackTranscript, scoreReadback } from "./readbackScore";
 import { buildSpokenAnswer } from "@/lib/spokenAnswer";
 
 export type Part1AnswerMode = "level4" | "level5" | "peel";
@@ -61,6 +62,11 @@ function findMissingKeywords(transcript: string, keywords: string[]): string[] {
   return keywords.filter((kw) => !keywordMatches(transcript, kw));
 }
 
+function hasCallsignInReadback(transcript: string): boolean {
+  const t = normalize(transcript);
+  return /\banac\s*123\b/.test(t) || /\banac\s*wun\s*too\s*tree\b/.test(t);
+}
+
 function clamp(n: number): number {
   return Math.max(0, Math.min(100, Math.round(n)));
 }
@@ -69,8 +75,17 @@ export function localEvaluate(req: EvaluateRequest): EvaluateFeedback {
   const { transcript, modelAnswer, type, keywords = [], answerMode = "peel" } = req;
   const rawTranscript = transcript.trim();
   const trimmed =
-    type === "part1" ? normalizeAviationTranscript(rawTranscript) : rawTranscript;
-  const transcriptFixed = type === "part1" && trimmed !== rawTranscript;
+    type === "part1"
+      ? normalizeAviationTranscript(rawTranscript)
+      : type === "part2-readback"
+        ? normalizeReadbackTranscript(rawTranscript)
+        : rawTranscript;
+  const transcriptFixed =
+    type === "part1"
+      ? trimmed !== rawTranscript
+      : type === "part2-readback"
+        ? trimmed !== normalizeReadbackTranscript(rawTranscript)
+        : false;
 
   if (!trimmed) {
     return {
@@ -86,20 +101,30 @@ export function localEvaluate(req: EvaluateRequest): EvaluateFeedback {
 
   const words = trimmed.split(/\s+/).length;
   const referenceAnswer = type === "part1" ? buildSpokenAnswer(modelAnswer) : modelAnswer;
+  const readbackResult =
+    type === "part2-readback" ? scoreReadback(trimmed, modelAnswer) : null;
   const part1Content =
     type === "part1" ? scorePart1Content(trimmed, modelAnswer, keywords) : null;
   const content =
-    type === "part1" && part1Content
-      ? part1Content.score
-      : overlapScore(trimmed, referenceAnswer);
+    type === "part2-readback" && readbackResult
+      ? readbackResult.score
+      : type === "part1" && part1Content
+        ? part1Content.score
+        : overlapScore(trimmed, referenceAnswer);
   const structure =
-    type === "part1"
-      ? answerMode === "level4" || answerMode === "level5"
-        ? level4StructureScore(trimmed)
-        : peelStructureScore(trimmed)
-      : markerScore(trimmed, PART2_MARKERS);
+    type === "part2-readback" && readbackResult
+      ? readbackResult.score
+      : type === "part1"
+        ? answerMode === "level4" || answerMode === "level5"
+          ? level4StructureScore(trimmed)
+          : peelStructureScore(trimmed)
+        : markerScore(trimmed, PART2_MARKERS);
   const phraseology =
-    type.startsWith("part2") ? markerScore(trimmed, PART2_MARKERS) : structure;
+    type === "part2-readback" && readbackResult
+      ? readbackResult.score
+      : type.startsWith("part2")
+        ? markerScore(trimmed, PART2_MARKERS)
+        : structure;
   const missingKeywords = findMissingKeywords(trimmed, keywords);
 
   let lengthBonus = 0;
@@ -147,8 +172,17 @@ export function localEvaluate(req: EvaluateRequest): EvaluateFeedback {
     strengths.push(`Keywords do card cobertas (${part1Content.keywordCoverage}%).`);
   }
   if (scores.structure >= 60) strengths.push("Estrutura reconhecível na resposta.");
-  if (type.startsWith("part2") && normalize(trimmed).includes("anac 123")) {
+  if (type.startsWith("part2") && hasCallsignInReadback(trimmed)) {
     strengths.push("Callsign ANAC 123 presente.");
+  }
+  if (readbackResult && readbackResult.score >= 75) {
+    strengths.push(`Elementos da clearance: ${readbackResult.score}% cobertos.`);
+  }
+  if (readbackResult) {
+    const foundLabels = readbackResult.elements.filter((e) => e.found).map((e) => e.label);
+    if (foundLabels.length) {
+      strengths.push(`Incluído: ${foundLabels.join(", ")}.`);
+    }
   }
   if (words >= 80 && type === "part1") strengths.push("Duração de resposta adequada para Part 1.");
 
@@ -156,7 +190,9 @@ export function localEvaluate(req: EvaluateRequest): EvaluateFeedback {
     improvements.push(
       type === "part1"
         ? "Inclua as ideias do tema e as keywords do card — não precisa repetir a frase modelo."
-        : "Inclua mais ideias da resposta modelo e keywords.",
+        : type === "part2-readback"
+          ? "Faltam elementos da clearance no readback — veja a lista abaixo."
+          : "Inclua mais ideias da resposta modelo e keywords.",
     );
   }
   if (scores.structure < 50 && type === "part1" && answerMode === "peel") {
@@ -170,8 +206,11 @@ export function localEvaluate(req: EvaluateRequest): EvaluateFeedback {
   if (missingKeywords.length) {
     improvements.push(`Keywords faltando: ${missingKeywords.slice(0, 5).join(", ")}.`);
   }
-  if (type.startsWith("part2") && !normalize(trimmed).includes("anac 123")) {
-    improvements.push("Termine com o callsign: ANAC 123.");
+  if (type.startsWith("part2") && !hasCallsignInReadback(trimmed)) {
+    improvements.push("Inclua o callsign ANAC 123 no readback (início ou fim).");
+  }
+  if (readbackResult?.missing.length) {
+    improvements.push(`Elementos para reforçar: ${readbackResult.missing.join(", ")}.`);
   }
   if (words < 50 && type === "part1" && answerMode === "peel") {
     improvements.push("Resposta curta demais — na prova você tem ~45 segundos para falar.");
@@ -186,9 +225,17 @@ export function localEvaluate(req: EvaluateRequest): EvaluateFeedback {
     }
     if (transcriptFixed) {
       strengths.push(
-        "Termos corrigidos na transcrição (ex.: missed approach, runway) — pronúncia pode estar OK mesmo quando o texto saiu errado.",
+        type === "part1"
+          ? "Termos corrigidos na transcrição (ex.: missed approach, runway) — pronúncia pode estar OK mesmo quando o texto saiu errado."
+          : "Números normalizados na transcrição — conteúdo avaliado pelos elementos da clearance.",
       );
     }
+  }
+
+  if (type === "part2-readback" && readbackResult) {
+    improvements.push(
+      "Readback: avaliamos elementos da clearance (altitude, squawk, fix, frequência, callsign), não texto idêntico.",
+    );
   }
 
   improvements.push(
@@ -206,5 +253,6 @@ export function localEvaluate(req: EvaluateRequest): EvaluateFeedback {
     source: "local",
     icaoLevel: estimateIcaoLevel(scores, type),
     suggestedAnswer: type === "part1" ? referenceAnswer : undefined,
+    readbackElements: readbackResult?.elements,
   };
 }
