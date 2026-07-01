@@ -1,9 +1,29 @@
 import type { EvaluateFeedback, EvaluateRequest, EvaluateScores } from "./types";
 import { compareTranscriptToModel } from "./compareAnswer";
-import { scorePart1Content } from "./contentScore";
+import { scorePart1Content, keywordMatches } from "./contentScore";
 import { estimateIcaoLevel } from "./icaoLevel";
 import { peelMissingConnectors, peelStructureFeedbackPt, peelStructureScore } from "./peel";
+import { normalizeAviationTranscript } from "./transcriptNormalize";
 import { buildSpokenAnswer } from "@/lib/spokenAnswer";
+
+export type Part1AnswerMode = "level4" | "level5" | "peel";
+
+function normalize(text: string): string {
+  return text.toLowerCase().replace(/[^\w\s]/g, " ").replace(/\s+/g, " ").trim();
+}
+
+/** ICAO 4/5: clear story beats — not full PEEL connector bank. */
+export function level4StructureScore(transcript: string): number {
+  const t = normalize(transcript);
+  const sentences = transcript.split(/[.!?]+/).filter((s) => s.trim().length > 8);
+  let score = 0;
+  if (sentences.length >= 2) score += 25;
+  if (sentences.length >= 3) score += 25;
+  if (sentences.length >= 4) score += 15;
+  if (/because|when|if|may happen|this may/.test(t)) score += 15;
+  if (/then|after|overall|finally|follow|procedure|pilot/.test(t)) score += 20;
+  return Math.min(100, score);
+}
 
 const PART2_MARKERS = [
   "anac 123",
@@ -15,10 +35,6 @@ const PART2_MARKERS = [
   "roger",
   "wilco",
 ];
-
-function normalize(text: string): string {
-  return text.toLowerCase().replace(/[^\w\s]/g, " ").replace(/\s+/g, " ").trim();
-}
 
 function wordSet(text: string): Set<string> {
   return new Set(normalize(text).split(" ").filter(Boolean));
@@ -42,11 +58,7 @@ function markerScore(transcript: string, markers: string[]): number {
 }
 
 function findMissingKeywords(transcript: string, keywords: string[]): string[] {
-  const t = normalize(transcript);
-  return keywords.filter((kw) => {
-    const parts = normalize(kw).split(" ");
-    return !parts.every((p) => t.includes(p));
-  });
+  return keywords.filter((kw) => !keywordMatches(transcript, kw));
 }
 
 function clamp(n: number): number {
@@ -54,8 +66,11 @@ function clamp(n: number): number {
 }
 
 export function localEvaluate(req: EvaluateRequest): EvaluateFeedback {
-  const { transcript, modelAnswer, type, keywords = [] } = req;
-  const trimmed = transcript.trim();
+  const { transcript, modelAnswer, type, keywords = [], answerMode = "peel" } = req;
+  const rawTranscript = transcript.trim();
+  const trimmed =
+    type === "part1" ? normalizeAviationTranscript(rawTranscript) : rawTranscript;
+  const transcriptFixed = type === "part1" && trimmed !== rawTranscript;
 
   if (!trimmed) {
     return {
@@ -79,7 +94,9 @@ export function localEvaluate(req: EvaluateRequest): EvaluateFeedback {
       : overlapScore(trimmed, referenceAnswer);
   const structure =
     type === "part1"
-      ? peelStructureScore(trimmed)
+      ? answerMode === "level4" || answerMode === "level5"
+        ? level4StructureScore(trimmed)
+        : peelStructureScore(trimmed)
       : markerScore(trimmed, PART2_MARKERS);
   const phraseology =
     type.startsWith("part2") ? markerScore(trimmed, PART2_MARKERS) : structure;
@@ -87,7 +104,12 @@ export function localEvaluate(req: EvaluateRequest): EvaluateFeedback {
 
   let lengthBonus = 0;
   if (type === "part1") {
-    if (words >= 70 && words <= 140) lengthBonus = 15;
+    const shortForm = answerMode === "level4" || answerMode === "level5";
+    if (shortForm) {
+      if (words >= 35 && words <= 90) lengthBonus = 10;
+      else if (words >= 25) lengthBonus = 0;
+      else lengthBonus = -5;
+    } else if (words >= 70 && words <= 140) lengthBonus = 15;
     else if (words >= 50) lengthBonus = 5;
     else lengthBonus = -10;
   } else {
@@ -137,9 +159,13 @@ export function localEvaluate(req: EvaluateRequest): EvaluateFeedback {
         : "Inclua mais ideias da resposta modelo e keywords.",
     );
   }
-  if (scores.structure < 50 && type === "part1") {
+  if (scores.structure < 50 && type === "part1" && answerMode === "peel") {
     const missing = peelMissingConnectors(trimmed);
     improvements.push(...peelStructureFeedbackPt(missing));
+  } else if (scores.structure < 50 && type === "part1") {
+    improvements.push(
+      "Organize em frases curtas: quando / por quê / o que fazer / depois (use as keywords do card).",
+    );
   }
   if (missingKeywords.length) {
     improvements.push(`Keywords faltando: ${missingKeywords.slice(0, 5).join(", ")}.`);
@@ -147,7 +173,7 @@ export function localEvaluate(req: EvaluateRequest): EvaluateFeedback {
   if (type.startsWith("part2") && !normalize(trimmed).includes("anac 123")) {
     improvements.push("Termine com o callsign: ANAC 123.");
   }
-  if (words < 50 && type === "part1") {
+  if (words < 50 && type === "part1" && answerMode === "peel") {
     improvements.push("Resposta curta demais — na prova você tem ~45 segundos para falar.");
   }
 
@@ -158,15 +184,21 @@ export function localEvaluate(req: EvaluateRequest): EvaluateFeedback {
         "A transcrição saiu fraca nas keywords/ideias — pode ser pronúncia ou conteúdo faltando. Revise as keywords abaixo e treine palavras difíceis no banco de pronúncia.",
       );
     }
+    if (transcriptFixed) {
+      strengths.push(
+        "Termos corrigidos na transcrição (ex.: missed approach, runway) — pronúncia pode estar OK mesmo quando o texto saiu errado.",
+      );
+    }
   }
 
   improvements.push(
-    "Pronúncia: correção fonética precisa de áudio (Azure Speech ou IA com áudio). Aqui avaliamos pelo texto transcrito.",
+    "Pronúncia Azure vem do áudio; conteúdo/estrutura usam o texto transcrito — por isso podem divergir.",
   );
 
   return {
     scores,
     transcript: trimmed,
+    rawTranscript: rawTranscript !== trimmed ? rawTranscript : undefined,
     summary: `Pontuação local ${scores.overall}/100 (transcrição automática).`,
     strengths,
     improvements,

@@ -432,6 +432,13 @@ export default function FlashcardApp() {
                     modelAnswer={card.answer}
                     evaluateType="part1"
                     keywords={keywords}
+                    answerMode={
+                      connectorSet === "level4"
+                        ? "level4"
+                        : connectorSet === "level5"
+                          ? "level5"
+                          : "peel"
+                    }
                     cardNum={card.num}
                   />
                 }

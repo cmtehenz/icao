@@ -18,13 +18,14 @@ Return ONLY valid JSON with this shape:
 Rules:
 - Compare against the model answer and question.
 - For part1: accept paraphrases — same ideas, aviation keywords, and clear structure matter more than matching the model word-for-word.
-- For part1: accept any connector from the app's connector bank (Openers, Idea 1–3, Example, Conclusion groups) as valid structure.
+- For part1 level4/level5 (answerMode): short clear sentences are enough — do NOT require PEEL connectors.
+- For part1 peel mode: accept connectors from the connector bank (Openers, Idea 1–3, Example, Conclusion).
+- STT often mishears aviation terms (message→missed approach, wrong way→runway). Score ideas generously when meaning is clear.
 - For part2-readback: check clearance elements, numbers, callsign ANAC 123.
 - For part2-interaction: check problem, intention, request, MAYDAY/PAN if needed.
 - For part2-reported: check reported speech grammar (past tense, third person).
-- For part1: check structure — opener, ideas with connectors, For example, conclusion (~80-120 words ideal).
-- For part1 suggestedAnswer: base it on modelAnswer; keep the same ideas and aviation vocabulary; fix grammar only; include example + conclusion connectors.
-- pronunciation score: infer from likely misheard words in transcript vs expected aviation terms; note you only have text not audio.
+- For part1 suggestedAnswer: base it on modelAnswer; keep the same ideas and aviation vocabulary; fix grammar only.
+- pronunciation score: infer from transcript vs expected terms; if homophones suggest good aviation intent, do not crush vocabulary score.
 - Remember: official ICAO rating uses 6 criteria and overall level = LOWEST criterion (Operational = Level 4 minimum for pilots).`;
 
 export async function POST(request: Request) {
@@ -39,11 +40,12 @@ export async function POST(request: Request) {
   }
 
   const { transcript, question, modelAnswer, type, keywords } = body;
+  const answerMode = body.answerMode ?? "peel";
   if (!transcript?.trim() || !modelAnswer) {
     return Response.json({ error: "transcript and modelAnswer required" }, { status: 400 });
   }
 
-  const local = localEvaluate({ transcript, question, modelAnswer, type, keywords });
+  const local = localEvaluate({ transcript, question, modelAnswer, type, keywords, answerMode });
   const apiKey = process.env.OPENAI_API_KEY;
 
   if (!apiKey) {
@@ -70,6 +72,7 @@ export async function POST(request: Request) {
               question,
               modelAnswer,
               keywords: keywords ?? [],
+              answerMode,
               candidateTranscript: transcript,
             }),
           },
@@ -88,7 +91,8 @@ export async function POST(request: Request) {
     const parsed = JSON.parse(raw) as Omit<EvaluateFeedback, "transcript" | "source">;
 
     const feedback: EvaluateFeedback = {
-      transcript: transcript.trim(),
+      transcript: local.transcript,
+      rawTranscript: local.rawTranscript,
       source: "openai",
       scores: parsed.scores ?? local.scores,
       summary: parsed.summary ?? local.summary,

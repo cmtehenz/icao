@@ -18,6 +18,8 @@ export type EvaluateScores = {
 export type EvaluateFeedback = {
   scores: EvaluateScores;
   transcript: string;
+  /** Original STT text when aviation normalization changed it. */
+  rawTranscript?: string;
   summary: string;
   strengths: string[];
   improvements: string[];
@@ -46,4 +48,6 @@ export type EvaluateRequest = {
   modelAnswer: string;
   type: EvaluateType;
   keywords?: string[];
+  /** Part 1: level4/level5 use simpler structure scoring; peel expects full connectors. */
+  answerMode?: "level4" | "level5" | "peel";
 };

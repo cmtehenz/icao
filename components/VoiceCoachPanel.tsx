@@ -28,6 +28,8 @@ type Props = {
   keywords?: string[];
   situationId?: string;
   cardNum?: string;
+  /** Part 1 answer depth — affects content/structure scoring. */
+  answerMode?: "level4" | "level5" | "peel";
   modelAudioUrl?: string;
   recordingBlocked?: boolean;
   recordingBlockedMessage?: string;
@@ -51,6 +53,7 @@ export default function VoiceCoachPanel({
   modelAnswer,
   evaluateType,
   keywords = [],
+  answerMode = "peel",
   situationId,
   cardNum,
   modelAudioUrl,
@@ -89,6 +92,7 @@ export default function VoiceCoachPanel({
           modelAnswer,
           type: evaluateType,
           keywords,
+          answerMode,
         }),
       });
       const data = (await res.json()) as EvaluateFeedback;
@@ -419,6 +423,13 @@ export default function VoiceCoachPanel({
           )}
 
           <p className="voice-coach-summary">{feedback.summary}</p>
+
+          {feedback.rawTranscript && (
+            <p className="voice-coach-warn voice-coach-stt-note">
+              Azure ouviu: «{feedback.rawTranscript}» — termos de aviação foram corrigidos na
+              avaliação de conteúdo (ex.: missed approach, runway).
+            </p>
+          )}
 
           {evaluateType === "part1" && feedback.transcript && (
             <AnswerComparePanel

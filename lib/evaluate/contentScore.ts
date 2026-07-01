@@ -1,4 +1,5 @@
 import { buildSpokenAnswer } from "@/lib/spokenAnswer";
+import { keywordMatchesFlexible } from "./keywordAliases";
 import { peelStructureScore } from "./peel";
 
 const STOP_WORDS = new Set([
@@ -32,10 +33,7 @@ function clamp(n: number): number {
 }
 
 export function keywordMatches(transcript: string, keyword: string): boolean {
-  const parts = normalize(keyword).split(" ").filter(Boolean);
-  if (!parts.length) return false;
-  const t = normalize(transcript);
-  return parts.every((p) => t.includes(p));
+  return keywordMatchesFlexible(transcript, keyword);
 }
 
 export function keywordCoverage(transcript: string, keywords: string[]) {
