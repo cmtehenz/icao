@@ -81,6 +81,8 @@ export type Part2ItemProgress = {
   status: Part2ProgressStatus;
   reviews: number;
   lastReviewed?: string;
+  lastScore?: number;
+  bestScore?: number;
 };
 
 export type Part2ProgressStore = {

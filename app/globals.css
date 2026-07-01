@@ -2319,8 +2319,31 @@ input {
 }
 
 .difficulty-insights h3 {
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.35rem;
   font-size: 0.95rem;
+}
+
+.difficulty-insights-sub {
+  margin: 0 0 0.75rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.difficulty-insight-hint {
+  margin: 0 0 0.45rem;
+  font-size: 0.7rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.difficulty-insight-empty {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.difficulty-score.muted {
+  color: var(--muted);
+  font-weight: 600;
 }
 
 .difficulty-insights-grid {

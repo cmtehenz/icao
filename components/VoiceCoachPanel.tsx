@@ -14,6 +14,7 @@ import { addWordsToVault } from "@/lib/pronunciationVault";
 import { markPart1CoachDone, isPart1CardInTodayMission } from "@/lib/part1DailyMission";
 import type { Part2MissionKind } from "@/lib/part2DailyMission";
 import { tryMarkPart2DailyMissionPractice } from "@/lib/part2MissionComplete";
+import { recordPart2ItemScore } from "@/lib/part2/progress";
 import AnswerComparePanel from "@/components/AnswerComparePanel";
 import AudioCompareReplay from "@/components/study/AudioCompareReplay";
 import WordPhoneticHint from "@/components/WordPhoneticHint";
@@ -141,6 +142,9 @@ export default function VoiceCoachPanel({
             : evaluateType === "part2-interaction"
               ? "interaction"
               : "reported";
+        if (situationId) {
+          recordPart2ItemScore(situationId, part2MissionKind, data.scores.overall);
+        }
         const ctx = {
           accuracy: azureResult.accuracyScore,
           recognizedText: azureResult.recognizedText,

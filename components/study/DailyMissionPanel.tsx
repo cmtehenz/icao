@@ -19,6 +19,8 @@ import {
   PART2_DAILY_MISSION_EVENT,
 } from "@/lib/part2DailyMission";
 import { VOCAB_DAILY_MISSION_EVENT } from "@/lib/vocabDailyMission";
+import { PEEL_BLOCK_HISTORY_EVENT } from "@/lib/peelBlockHistory";
+import { PART2_PROGRESS_EVENT } from "@/lib/part2/progress";
 import { useStudyAgenda } from "@/hooks/useStudyAgenda";
 import {
   studyDayGoalPoints,
@@ -48,6 +50,8 @@ export default function DailyMissionPanel() {
       VOCAB_DAILY_MISSION_EVENT,
       STUDY_ACTIVITY_RECORDED_EVENT,
       DAILY_MISSION_LOG_EVENT,
+      PEEL_BLOCK_HISTORY_EVENT,
+      PART2_PROGRESS_EVENT,
     ];
     for (const ev of events) window.addEventListener(ev, refresh);
     return () => {
@@ -186,22 +190,40 @@ export default function DailyMissionPanel() {
 
       <section className="difficulty-insights">
         <h3>Onde você mais precisa treinar</h3>
+        <p className="difficulty-insights-sub">
+          Baseado nas suas gravações reais — itens não praticados não aparecem com 0% artificial.
+        </p>
         <div className="difficulty-insights-grid">
           {insights.map((area) => (
             <div key={area.area} className="difficulty-insight-card">
               <div className="difficulty-insight-head">
                 <strong>{area.label}</strong>
-                <span className={`difficulty-score ${area.score < 60 ? "bad" : area.score < 75 ? "warn" : "good"}`}>
-                  {area.score}%
+                <span
+                  className={`difficulty-score ${
+                    area.score == null
+                      ? "muted"
+                      : area.score < 60
+                        ? "bad"
+                        : area.score < 75
+                          ? "warn"
+                          : "good"
+                  }`}
+                >
+                  {area.score == null ? "—" : `${area.score}%`}
                 </span>
               </div>
+              {area.hint && <p className="difficulty-insight-hint">{area.hint}</p>}
               <ul>
-                {area.items.map((item) => (
-                  <li key={item.id}>
-                    <span>{item.label}</span>
-                    <span className="difficulty-item-score">{item.score}%</span>
-                  </li>
-                ))}
+                {area.items.length === 0 ? (
+                  <li className="difficulty-insight-empty">Nenhum dado de prática ainda</li>
+                ) : (
+                  area.items.map((item) => (
+                    <li key={item.id}>
+                      <span>{item.label}</span>
+                      <span className="difficulty-item-score">{item.score}%</span>
+                    </li>
+                  ))
+                )}
               </ul>
             </div>
           ))}
