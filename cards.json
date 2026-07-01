@@ -243,97 +243,108 @@
   {
     "num": "06",
     "question": "Why is the use of ICAO phraseology important?",
-    "memory": "Standardization → Communication → Safety",
-    "opener": "In my opinion, ICAO phraseology is essential because helicopter operations also depend on clear communication.",
+    "memory": "Standard → Clear → Safety",
+    "opener": "ICAO phraseology is very important because it is standard around the world.",
     "ideas": [
-      "1 - STANDARDIZATION: First of all, it creates a standard language that pilots and controllers can understand worldwide.",
-      "2 - COMMUNICATION: Additionally, it makes radio calls shorter, clearer and more objective, especially during high workload in the cockpit.",
-      "3 - SAFETY: Finally, it reduces misunderstandings during hover, departure, approach and emergency situations."
+      "1 - CLARITY: It makes communication clear and easy to understand.",
+      "2 - UNDERSTANDING: It also reduces misunderstandings between pilots and controllers.",
+      "3 - SAFETY: As a result, it improves flight safety."
     ],
-    "example": "For example, during an emergency in a busy area, standard phraseology helps ATC understand the helicopter position and intention quickly.",
-    "conclusion": "Overall, ICAO phraseology improves communication, reduces confusion and plays a crucial role in helicopter flight safety.",
+    "example": "For example, when pilots use standard phraseology, ATC can understand instructions quickly even in busy airspace.",
+    "conclusion": "Overall, ICAO phraseology improves flight safety through clear and standardized communication.",
     "verbs": [
       "standardize",
       "clarify",
       "reduce",
-      "prevent",
+      "improve",
       "ensure"
     ],
     "vocab": [
       "ICAO phraseology",
       "ATC",
-      "helicopter",
-      "communication",
+      "standard communication",
+      "misunderstanding",
       "flight safety"
     ],
-    "answer": "In my opinion, ICAO phraseology is essential because helicopter operations also depend on clear communication. 1 - STANDARDIZATION: First of all, it creates a standard language that pilots and controllers can understand worldwide. 2 - COMMUNICATION: Additionally, it makes radio calls shorter, clearer and more objective, especially during high workload in the cockpit. 3 - SAFETY: Finally, it reduces misunderstandings during hover, departure, approach and emergency situations. For example, during an emergency in a busy area, standard phraseology helps ATC understand the helicopter position and intention quickly. Overall, ICAO phraseology improves communication, reduces confusion and plays a crucial role in helicopter flight safety.",
+    "answer": "In my opinion, ICAO phraseology is essential for aviation communication. 1 - STANDARDIZATION: First of all, it is standard around the world, so pilots and controllers can understand each other in any country. 2 - CLARITY: Additionally, it makes communication clear and easy to understand, especially during high workload. 3 - SAFETY: Finally, it reduces misunderstandings between pilots and controllers and improves flight safety. For example, when pilots use standard phraseology, ATC can understand instructions quickly even in busy airspace. Overall, ICAO phraseology improves flight safety through clear and standardized communication.",
+    "answerLevel4": "ICAO phraseology is very important because it is standard around the world. It makes communication clear and easy to understand. It also reduces misunderstandings between pilots and controllers. As a result, it improves flight safety.",
     "difficulty": "Medium",
     "category": "helicopter",
     "tags": [
       "helicopter",
       "medium",
-      "helicopter"
+      "procedures"
     ],
     "memoryLabels": [
-      "Standardization",
-      "Communication",
+      "Standard",
+      "Clear",
       "Safety"
     ],
-    "targetWords": 103,
+    "targetWords": 88,
     "keywords": [
-      "Standardization",
+      "Standard phraseology",
       "Clear communication",
-      "High workload",
-      "Emergency calls",
-      "Safety"
+      "Misunderstandings",
+      "Pilots and controllers",
+      "Flight safety"
     ]
   },
   {
     "num": "07",
     "question": "How did you become interested in aviation?",
-    "memory": "C-I-P",
-    "opener": "I became interested in aviation because helicopters and aircraft have always caught my attention.",
+    "memory": "Young → Helicopters → Training → Career",
+    "opener": "I became interested in aviation when I was very young.",
     "ideas": [
-      "1 - CHILDHOOD: First of all, when I was younger, I used to admire helicopters and the way pilots operated them with precision.",
-      "2 - INSPIRATION: Additionally, I was fascinated by the responsibility, technology and freedom involved in rotary-wing flying.",
-      "3 - PROFESSION: Finally, over time, that interest became a real goal to become a professional helicopter pilot."
+      "1 - HELICOPTERS: I was always fascinated by helicopters and aviation technology.",
+      "2 - TRAINING: Later, I started my flight training and really enjoyed learning to fly.",
+      "3 - CAREER: Today, I work as a helicopter pilot, and aviation is an important part of my life."
     ],
-    "example": "For example, every time I saw a helicopter taking off vertically, I wanted to understand how pilots managed control, power and situational awareness.",
-    "conclusion": "Overall, my interest in aviation started as curiosity and became a lifelong helicopter career.",
+    "example": "For example, every time I saw a helicopter flying, I wanted to learn more about aviation and how pilots controlled the aircraft.",
+    "conclusion": "Overall, my interest started when I was young and became a professional helicopter career.",
     "verbs": [
       "become",
-      "admire",
+      "fascinate",
+      "train",
       "learn",
-      "develop",
-      "choose"
+      "work"
     ],
     "vocab": [
       "aviation",
       "helicopters",
-      "rotary-wing",
-      "interest",
+      "flight training",
+      "helicopter pilot",
       "career"
     ],
-    "answer": "I became interested in aviation because helicopters and aircraft have always caught my attention. 1 - CHILDHOOD: First of all, when I was younger, I used to admire helicopters and the way pilots operated them with precision. 2 - INSPIRATION: Additionally, I was fascinated by the responsibility, technology and freedom involved in rotary-wing flying. 3 - PROFESSION: Finally, over time, that interest became a real goal to become a professional helicopter pilot. For example, every time I saw a helicopter taking off vertically, I wanted to understand how pilots managed control, power and situational awareness. Overall, my interest in aviation started as curiosity and became a lifelong helicopter career.",
+    "answer": "I became interested in aviation when I was very young. 1 - HELICOPTERS: First of all, I was always fascinated by helicopters and aviation technology. 2 - TRAINING: Additionally, I started my flight training and really enjoyed learning to fly. 3 - CAREER: Finally, today I work as a helicopter pilot, and aviation is an important part of my life. For example, every time I saw a helicopter flying, I wanted to learn more about aviation and how pilots controlled the aircraft. Overall, my interest started when I was young and became a professional helicopter career.",
+    "answerLevel4": "I became interested in aviation when I was very young. I was always fascinated by helicopters and aviation technology. Later, I started my flight training and really enjoyed learning to fly. Today, I work as a helicopter pilot, and aviation is an important part of my life.",
+    "answerLevel5": "I became interested in aviation when I was very young. I was always fascinated by helicopters, aviation technology and the work pilots do. As I got older, my interest became stronger, so I decided to start my flight training. Today, I work as a helicopter pilot, and I still enjoy learning and improving my skills. Aviation is not only my job, but also my passion.",
+    "answerExtra": "I also liked the responsibility and the challenge of being a pilot.",
+    "level4Steps": [
+      { "label": "Young", "sentence": "I became interested in aviation when I was very young." },
+      { "label": "Helicopters", "sentence": "I was fascinated by helicopters." },
+      { "label": "Training", "sentence": "I started my flight training." },
+      { "label": "Career", "sentence": "Today, I work as a helicopter pilot." }
+    ],
+    "memoryIcons": ["👦", "🚁", "🎓", "👨‍✈️"],
     "difficulty": "Easy",
     "category": "helicopter",
     "tags": [
       "helicopter",
       "easy",
-      "helicopter"
+      "personal"
     ],
     "memoryLabels": [
-      "CHILDHOOD",
-      "INSPIRATION",
-      "PROFESSION"
-    ],
-    "targetWords": 109,
-    "keywords": [
-      "Childhood interest",
+      "Young",
       "Helicopters",
-      "Inspiration",
-      "Professional goal",
-      "Aviation passion"
+      "Training",
+      "Career"
+    ],
+    "targetWords": 95,
+    "keywords": [
+      "Young",
+      "Helicopters",
+      "Training",
+      "Career"
     ]
   },
   {

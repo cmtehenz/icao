@@ -379,8 +379,10 @@ export default function FlashcardApp() {
                   onClick={() => setConnectorSet(set.id)}
                   title={
                     set.id === "level4"
-                      ? "Frases curtas — ideal para começar (nota ICAO 4)"
-                      : set.label
+                      ? "4 frases curtas — ideal para começar (nota ICAO 4)"
+                      : set.id === "level5"
+                        ? "História mais completa — 50–60 segundos (nota ICAO 5)"
+                        : set.label
                   }
                 >
                   {set.label}
@@ -390,7 +392,11 @@ export default function FlashcardApp() {
 
             <div className="memory">
               Memory flow
-              <MemoryFlow memory={card.memory} memoryLabels={card.memoryLabels} />
+              <MemoryFlow
+                memory={card.memory}
+                memoryLabels={card.memoryLabels}
+                memoryIcons={card.memoryIcons}
+              />
             </div>
           </div>
 

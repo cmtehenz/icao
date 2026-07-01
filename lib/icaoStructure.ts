@@ -137,10 +137,15 @@ export function buildIcaoLevel4Answer(card: Card): string {
 /** Card PEEL simplificado para exibição no modo ICAO 4 (2 ideias, sem jargão). */
 export function toLevel4Card<T extends Card>(card: T): T {
   if (card.answerLevel4) {
+    const ideas = card.level4Steps?.length
+      ? card.level4Steps.map(
+          (step, i) => `${i + 1} - ${step.label.toUpperCase()}: ${step.sentence}`,
+        )
+      : card.ideas.slice(0, 2);
     return {
       ...card,
       answer: card.answerLevel4,
-      ideas: card.ideas.slice(0, 2),
+      ideas,
     };
   }
 
@@ -168,5 +173,14 @@ export function toLevel4Card<T extends Card>(card: T): T {
     example: ex,
     conclusion,
     answer,
+  };
+}
+
+/** Resposta narrativa mais longa para modo ICAO 5. */
+export function toLevel5Card<T extends Card>(card: T): T {
+  if (!card.answerLevel5) return card;
+  return {
+    ...card,
+    answer: card.answerLevel5,
   };
 }
