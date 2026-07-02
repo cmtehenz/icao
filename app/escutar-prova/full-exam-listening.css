@@ -1,0 +1,485 @@
+/* Full Exam Listening — cockpit-style audio player */
+
+.fel-header .delta-logo {
+  background: linear-gradient(135deg, #1e3a5f 0%, #0ea5e9 100%);
+}
+
+.fel-hero {
+  background: linear-gradient(180deg, var(--bg-subtle) 0%, var(--bg) 100%);
+}
+
+.fel-stats {
+  margin-top: 12px;
+}
+
+.fel-body {
+  padding-bottom: calc(88px + env(safe-area-inset-bottom));
+}
+
+.fel-exam-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .fel-exam-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.fel-exam-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.fel-exam-card.completed {
+  border-color: var(--green);
+  box-shadow: 0 0 0 1px rgba(22, 163, 74, 0.2);
+}
+
+.fel-exam-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.fel-exam-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--blue);
+  background: var(--blue-bg);
+  padding: 4px 8px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+
+.fel-exam-card h2 {
+  margin: 0 0 6px;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+}
+
+.fel-exam-desc {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.fel-exam-done {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--green-bg);
+  color: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.fel-exam-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 0;
+  font-size: 13px;
+}
+
+.fel-exam-meta dt {
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.fel-exam-meta dd {
+  margin: 2px 0 0;
+  font-weight: 650;
+}
+
+.fel-exam-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.fel-play-btn {
+  width: 100%;
+  justify-content: center;
+  font-size: 15px;
+  padding: 12px 16px;
+}
+
+/* Player */
+
+.fel-player {
+  background: linear-gradient(165deg, #0c1222 0%, #111827 45%, #0f172a 100%);
+  color: #e5e7eb;
+  border-radius: var(--radius-xl);
+  padding: 20px 18px 24px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+[data-theme="light"] .fel-player {
+  background: linear-gradient(165deg, #1e293b 0%, #0f172a 55%, #020617 100%);
+}
+
+.fel-player-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.fel-back-btn {
+  color: #94a3b8 !important;
+  flex-shrink: 0;
+}
+
+.fel-now-playing {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.fel-now-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #38bdf8;
+  font-weight: 700;
+}
+
+.fel-now-playing strong {
+  font-size: 1.1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fel-version {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.fel-mode-tabs {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+@media (min-width: 520px) {
+  .fel-mode-tabs {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.fel-mode-tab {
+  text-align: left;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+  color: #cbd5e1;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.fel-mode-tab strong {
+  font-size: 12px;
+}
+
+.fel-mode-tab span {
+  font-size: 10px;
+  color: #94a3b8;
+  line-height: 1.3;
+}
+
+.fel-mode-tab.active {
+  border-color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.25);
+}
+
+.fel-mode-tab.active strong {
+  color: #7dd3fc;
+}
+
+.fel-visual {
+  text-align: center;
+  padding: 12px 0 8px;
+}
+
+.fel-wave {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  height: 48px;
+  margin-bottom: 12px;
+}
+
+.fel-wave span {
+  width: 4px;
+  height: 8px;
+  border-radius: 4px;
+  background: #334155;
+  transition: background 0.2s;
+}
+
+.fel-wave.active span {
+  background: #38bdf8;
+  animation: fel-bar 0.9s ease-in-out infinite alternate;
+}
+
+@keyframes fel-bar {
+  from {
+    height: 8px;
+    opacity: 0.5;
+  }
+  to {
+    height: 36px;
+    opacity: 1;
+  }
+}
+
+.fel-part-indicator {
+  margin: 0;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #64748b;
+  font-weight: 700;
+}
+
+.fel-item-label {
+  margin: 6px 0 2px;
+  font-size: 15px;
+  font-weight: 650;
+  color: #f1f5f9;
+}
+
+.fel-speaker {
+  margin: 0;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.fel-progress-wrap {
+  margin: 16px 0;
+}
+
+.fel-progress-bar {
+  height: 6px;
+  background: rgba(148, 163, 184, 0.2);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.fel-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #0ea5e9, #38bdf8);
+  border-radius: 999px;
+  transition: width 0.35s ease;
+}
+
+.fel-progress-text {
+  display: block;
+  margin-top: 6px;
+  font-size: 11px;
+  color: #94a3b8;
+  text-align: center;
+}
+
+.fel-reveal-banner {
+  background: rgba(234, 179, 8, 0.12);
+  border: 1px solid rgba(234, 179, 8, 0.35);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.fel-reveal-banner p {
+  margin: 0 0 10px;
+  font-size: 13px;
+  color: #fde68a;
+}
+
+.fel-reveal-banner.shadow {
+  background: rgba(56, 189, 248, 0.1);
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+.fel-reveal-banner.shadow p {
+  margin: 0;
+  color: #bae6fd;
+}
+
+.fel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 8px 0 16px;
+}
+
+.fel-ctrl {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: rgba(15, 23, 42, 0.8);
+  color: #e2e8f0;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fel-ctrl:hover {
+  border-color: #38bdf8;
+  color: #7dd3fc;
+}
+
+.fel-ctrl-main {
+  width: 64px;
+  height: 64px;
+  font-size: 22px;
+  background: linear-gradient(145deg, #0284c7, #0ea5e9);
+  border: none;
+  box-shadow: 0 8px 24px rgba(14, 165, 233, 0.45);
+}
+
+.fel-ctrl-main:hover {
+  color: white;
+  transform: scale(1.03);
+}
+
+.fel-speed-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.fel-speed-btns {
+  display: flex;
+  gap: 6px;
+}
+
+.fel-speed-btn {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: transparent;
+  color: #cbd5e1;
+  font-size: 12px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.fel-speed-btn.active {
+  background: rgba(56, 189, 248, 0.2);
+  border-color: #38bdf8;
+  color: #7dd3fc;
+}
+
+.fel-voice-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.fel-voice-row label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fel-voice-row select {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 8px;
+  color: #e2e8f0;
+  padding: 6px 8px;
+  font-size: 11px;
+}
+
+.fel-transcript-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.fel-transcript-head strong {
+  margin-right: auto;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 11px;
+}
+
+.fel-transcript {
+  background: rgba(2, 6, 23, 0.55);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.fel-transcript p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: #e2e8f0;
+}
+
+.fel-transcript-audio {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fel-transcript-audio audio {
+  width: 100%;
+}
+
+.fel-difficult-on {
+  color: #fbbf24 !important;
+}
+
+.fel-hidden-audio {
+  display: none;
+}

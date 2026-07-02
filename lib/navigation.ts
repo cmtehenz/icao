@@ -21,6 +21,13 @@ export const NAV_ITEMS = [
     description: "Pilot interaction — provas reais",
   },
   {
+    href: "/escutar-prova",
+    label: "Escutar Prova",
+    shortLabel: "Ouvir",
+    icon: "🎧",
+    description: "Full exam listening — 23C–26C",
+  },
+  {
     href: "/vocabulario",
     label: "Vocabulary",
     shortLabel: "Vocab",
