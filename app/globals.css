@@ -2396,6 +2396,28 @@ input {
 .difficulty-item-score {
   color: var(--muted);
   flex-shrink: 0;
+  font-weight: 600;
+}
+
+.difficulty-item-score.icao-l1,
+.difficulty-item-score.icao-l2,
+.difficulty-score.icao-l1,
+.difficulty-score.icao-l2 {
+  color: #e5534b;
+}
+
+.difficulty-item-score.icao-l3,
+.difficulty-score.icao-l3 {
+  color: #d29922;
+}
+
+.difficulty-item-score.icao-l4,
+.difficulty-item-score.icao-l5,
+.difficulty-item-score.icao-l6,
+.difficulty-score.icao-l4,
+.difficulty-score.icao-l5,
+.difficulty-score.icao-l6 {
+  color: var(--green);
 }
 
 .vault-return-tag {

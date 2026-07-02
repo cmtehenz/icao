@@ -796,70 +796,60 @@
   {
     "num": "12",
     "question": "Could you describe the airport you operate at the most?",
-    "memory": "Location → Operations → Experience",
-    "opener": "The airport I operate at the most is one where I have built solid experience as a helicopter pilot.",
+    "memory": "Navegantes → Busy → Florianópolis → Weather",
+    "opener": "The airport I operate at the most is Navegantes Airport, SBNV.",
     "ideas": [
-      "1 - LOCATION: First of all, it is located in a region where I frequently conduct helicopter operations, with specific weather patterns and terrain features.",
-      "2 - OPERATIONS: Additionally, it has particular procedures, runways or helipads, traffic patterns and restrictions that I know very well.",
-      "3 - EXPERIENCE: Finally, my regular operations there have helped me understand local ATC, common delays and the safest approaches."
+      "1 - BUSY: First of all, it is a busy airport with commercial airlines, general aviation and helicopters.",
+      "2 - FLORIANOPOLIS: Additionally, I also operate frequently at Florianópolis Airport, SBFL, especially during the summer season.",
+      "3 - WEATHER: Finally, both airports have good infrastructure, but weather and traffic can sometimes make the operation more challenging."
     ],
-    "example": "For example, because I operate there often, I know the typical wind direction, the busiest periods and the best alternate options if weather deteriorates.",
-    "conclusion": "Overall, operating regularly at the same airport improves familiarity, confidence and safety in helicopter operations.",
+    "example": "For example, during the summer in Florianópolis, air traffic increases and weather conditions sometimes require extra attention and good communication with ATC.",
+    "conclusion": "Overall, operating regularly at Navegantes and Florianópolis improves my familiarity, confidence and safety as a helicopter pilot.",
     "verbs": [
       "operate",
+      "fly",
       "describe",
-      "know",
-      "manage",
-      "adapt"
+      "communicate",
+      "manage"
     ],
     "vocab": [
-      "airport",
-      "helicopter operations",
-      "traffic pattern",
-      "ATC",
-      "familiarity"
+      "Navegantes",
+      "SBNV",
+      "Florianópolis",
+      "SBFL",
+      "air traffic"
     ],
-    "answer": "The airport I operate at the most is one where I have built solid experience as a helicopter pilot. 1 - LOCATION: First of all, it is located in a region where I frequently conduct helicopter operations, with specific weather patterns and terrain features. 2 - OPERATIONS: Additionally, it has particular procedures, runways or helipads, traffic patterns and restrictions that I know very well. 3 - EXPERIENCE: Finally, my regular operations there have helped me understand local ATC, common delays and the safest approaches. For example, because I operate there often, I know the typical wind direction, the busiest periods and the best alternate options if weather deteriorates. Overall, operating regularly at the same airport improves familiarity, confidence and safety in helicopter operations.",
-    "difficulty": "Medium",
+    "answer": "The airport I operate at the most is Navegantes Airport, SBNV. 1 - BUSY: First of all, it is a busy airport with commercial airlines, general aviation and helicopters. 2 - FLORIANOPOLIS: Additionally, I also operate frequently at Florianópolis Airport, SBFL, especially during the summer season. 3 - WEATHER: Finally, both airports have good infrastructure, but weather and traffic can sometimes make the operation more challenging. For example, during the summer in Florianópolis, air traffic increases and weather conditions sometimes require extra attention and good communication with ATC. Overall, operating regularly at Navegantes and Florianópolis improves my familiarity, confidence and safety as a helicopter pilot.",
+    "answerLevel4": "The airport I operate at the most is Navegantes Airport, SBNV. It is a busy airport with commercial airlines, general aviation and helicopters. I also operate frequently at Florianópolis Airport, SBFL, especially during the summer season. Both airports have good infrastructure, but weather and traffic can sometimes make the operation more challenging.",
+    "answerLevel5": "The airport where I operate the most is Navegantes Airport, SBNV, in southern Brazil. It is a busy airport with commercial flights, business aviation and helicopter operations. I also fly regularly to Florianópolis Airport, SBFL, especially during the summer, when air traffic increases. In my experience, both airports have good facilities, but weather conditions and heavy traffic sometimes require extra attention and good communication with ATC.",
+    "level4Example": "For example, during the summer in Florianópolis, air traffic increases and weather conditions sometimes require extra attention and good communication with ATC.",
+    "level4Steps": [
+      { "label": "Navegantes", "sentence": "I operate mostly at Navegantes Airport, SBNV." },
+      { "label": "Busy", "sentence": "It is a busy airport with different types of aircraft." },
+      { "label": "Florianópolis", "sentence": "I also fly to Florianópolis quite often." },
+      { "label": "Weather", "sentence": "Sometimes the weather and traffic make the operation more challenging." }
+    ],
+    "memoryIcons": ["🛬", "✈️", "🛬", "🌧️"],
+    "studyTips": "Palavras-chave para decorar: Navegantes → Busy → Florianópolis → Weather\n\nSua operação real em 4 passos:\n\n• Onde mais? → Navegantes (SBNV).\n• Como é? → Busy airport, vários tipos de tráfego.\n• Onde também? → Florianópolis (SBFL), especialmente no verão.\n• Desafio? → Weather e traffic.\n\nConectores: I also / especially during / but\n\nResposta muito convincente porque é verdadeira — use SBNV e SBFL com naturalidade.",
+    "difficulty": "Easy",
     "category": "helicopter",
     "tags": [
       "helicopter",
-      "medium",
-      "helicopter"
+      "easy",
+      "personal"
     ],
     "memoryLabels": [
-      "Location",
-      "Operations",
-      "Experience"
+      "Navegantes",
+      "Busy",
+      "Florianópolis",
+      "Weather"
     ],
-    "targetWords": 108,
+    "targetWords": 95,
     "keywords": [
-      "Location",
-      "Operations",
-      "Experience"
-    ],
-    "memoryIcons": [
-      "📍",
-      "🛫",
-      "⭐"
-    ],
-    "answerLevel4": "The airport I operate at the most is where I have built solid experience as a helicopter pilot. It is in a region with specific weather patterns and terrain. It has particular procedures, helipads and traffic patterns that I know well. Operating there regularly improves my familiarity, confidence and safety.",
-    "answerLevel5": "The airport I operate at the most is one where I have built solid experience as a helicopter pilot. First of all, it is located in a region where I frequently conduct helicopter operations, with specific weather patterns and terrain features. Additionally, it has particular procedures, runways or helipads, traffic patterns and restrictions that I know very well. Finally, my regular operations there have helped me understand local ATC, common delays and the safest approaches. For example, because I operate there often, I know the typical wind direction, the busiest periods and the best alternate options if weather deteriorates. Overall, operating regularly at the same airport improves familiarity, confidence and safety in helicopter operations.",
-    "level4Example": "For example, I know the typical wind direction, the busiest periods and the best alternate options if weather deteriorates.",
-    "level4Steps": [
-      {
-        "label": "Location",
-        "sentence": "It is in a region with specific weather patterns and terrain."
-      },
-      {
-        "label": "Operations",
-        "sentence": "It has particular procedures, helipads and traffic patterns that I know well."
-      },
-      {
-        "label": "Experience",
-        "sentence": "Operating there regularly improves my familiarity, confidence and safety."
-      }
-    ],
-    "studyTips": "Palavras-chave: Location → Operations → Experience\n\n• Onde? → Região, weather, terrain.\n• Como opera? → Procedures, helipad, traffic.\n• Por que importa? → Familiarity e confidence.\n\nConectores: First of all, / Additionally, / Finally,\n\nDescreva SEU aeroporto real — examinador valoriza detalhes concretos."
+      "Navegantes",
+      "Busy",
+      "Florianópolis",
+      "Weather"
+    ]
   }
 ]

@@ -21,6 +21,7 @@ import {
 } from "@/lib/part2DailyMission";
 import { VOCAB_DAILY_MISSION_EVENT, vocabDailyMissionProgress, getOrCreateVocabDailyMission, vocabMissionLink } from "@/lib/vocabDailyMission";
 import { PEEL_BLOCK_HISTORY_EVENT } from "@/lib/peelBlockHistory";
+import { PART1_COACH_HISTORY_EVENT } from "@/lib/part1CoachHistory";
 import { PART2_PROGRESS_EVENT } from "@/lib/part2/progress";
 import { useStudyAgenda } from "@/hooks/useStudyAgenda";
 import {
@@ -52,6 +53,7 @@ export default function DailyMissionPanel() {
       STUDY_ACTIVITY_RECORDED_EVENT,
       DAILY_MISSION_LOG_EVENT,
       PEEL_BLOCK_HISTORY_EVENT,
+      PART1_COACH_HISTORY_EVENT,
       PART2_PROGRESS_EVENT,
     ];
     for (const ev of events) window.addEventListener(ev, refresh);
@@ -208,16 +210,18 @@ export default function DailyMissionPanel() {
                 <strong>{area.label}</strong>
                 <span
                   className={`difficulty-score ${
-                    area.score == null
-                      ? "muted"
-                      : area.score < 60
-                        ? "bad"
-                        : area.score < 75
-                          ? "warn"
-                          : "good"
+                    area.aggregateIcaoLevel != null
+                      ? `icao-l${area.aggregateIcaoLevel}`
+                      : area.score == null
+                        ? "muted"
+                        : area.score < 60
+                          ? "bad"
+                          : area.score < 75
+                            ? "warn"
+                            : "good"
                   }`}
                 >
-                  {area.score == null ? "—" : `${area.score}%`}
+                  {area.displayScore ?? (area.score == null ? "—" : `${area.score}%`)}
                 </span>
               </div>
               {area.hint && <p className="difficulty-insight-hint">{area.hint}</p>}
@@ -228,7 +232,13 @@ export default function DailyMissionPanel() {
                   area.items.map((item) => (
                     <li key={item.id}>
                       <span>{item.label}</span>
-                      <span className="difficulty-item-score">{item.score}%</span>
+                      <span
+                        className={`difficulty-item-score ${
+                          item.icaoLevel != null ? `icao-l${item.icaoLevel}` : ""
+                        }`}
+                      >
+                        {item.icaoLevel != null ? `ICAO ${item.icaoLevel}` : `${item.score}%`}
+                      </span>
                     </li>
                   ))
                 )}

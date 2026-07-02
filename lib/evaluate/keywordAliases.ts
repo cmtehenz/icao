@@ -51,6 +51,9 @@ const ALIASES: Record<string, string[]> = {
   location: ["location", "region", "terrain", "weather patterns"],
   operations: ["operations", "procedures", "helipad", "traffic pattern"],
   experience: ["experience", "familiarity", "regularly", "confidence"],
+  navegantes: ["navegantes", "sbnv"],
+  busy: ["busy", "commercial", "general aviation", "helicopter", "traffic"],
+  "florian polis": ["florianopolis", "florian", "sbfl"],
   standard: ["standard", "around the world", "worldwide", "phraseology"],
   safety: ["safety", "flight safety", "safe decision", "good judgment"],
 };

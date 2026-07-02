@@ -1,7 +1,6 @@
 import { CARDS } from "@/lib/cards";
-import { getPeelBlockHistory } from "@/lib/peelBlockHistory";
+import { getPart1CoachHistory } from "@/lib/part1CoachHistory";
 import { getPart2ItemProgress, loadPart2Progress } from "@/lib/part2/progress";
-import { getCardProgress, loadProgress } from "@/lib/progress";
 import { loadVault, type VaultWord } from "@/lib/pronunciationVault";
 import { ICAO_VOCABULARY } from "@/data/icaoVocabulary";
 import { ALL_EXAM_SITUATIONS } from "@/data/exams/part2Data";
@@ -12,7 +11,10 @@ export type DifficultyArea = "part1" | "part2" | "vocabulary" | "pronunciation";
 export type DifficultyItem = {
   id: string;
   label: string;
+  /** 0–100 — usado para ordenar áreas; Part 1 deriva do nível ICAO. */
   score: number;
+  /** Part 1 Coach — nível ICAO 1–6 da última gravação. */
+  icaoLevel?: number;
   detail?: string;
 };
 
@@ -21,6 +23,10 @@ export type DifficultyInsight = {
   label: string;
   /** null = sem prática registrada ainda */
   score: number | null;
+  /** Ex.: "ICAO 4" para Part 1 Coach */
+  displayScore?: string | null;
+  /** Média ICAO das perguntas mais fracas (Part 1). */
+  aggregateIcaoLevel?: number | null;
   items: DifficultyItem[];
   hint?: string;
 };
@@ -29,29 +35,40 @@ function clampScore(n: number): number {
   return Math.max(0, Math.min(100, Math.round(n)));
 }
 
+function icaoLevelToSortScore(level: number): number {
+  return clampScore((level / 6) * 100);
+}
+
+function part1AggregateLevel(items: DifficultyItem[]): number | null {
+  if (!items.length) return null;
+  const weakest = items.slice(0, Math.min(5, items.length));
+  return Math.round(
+    weakest.reduce((sum, item) => sum + (item.icaoLevel ?? 4), 0) / weakest.length,
+  );
+}
+
+function part1DisplayScore(items: DifficultyItem[]): string | null {
+  const level = part1AggregateLevel(items);
+  return level != null ? `ICAO ${level}` : null;
+}
+
 function part1DifficultyItems(): DifficultyItem[] {
-  const progress = loadProgress();
   const items: DifficultyItem[] = [];
 
   for (const card of CARDS) {
-    const history = getPeelBlockHistory(card.num);
-    const records = Object.values(history).filter((r) => r && r.attempts > 0);
-    if (!records.length) continue;
-
-    const avgAcc = records.reduce((sum, r) => sum + r.lastAccuracy, 0) / records.length;
-    const cp = getCardProgress(progress, card.num);
-    let score = avgAcc;
-    if (cp.status === "difficult") score = Math.min(score, avgAcc);
+    const record = getPart1CoachHistory(card.num);
+    if (!record) continue;
 
     items.push({
       id: card.num,
       label: `Q${card.num}`,
-      score: clampScore(score),
+      icaoLevel: record.lastIcaoLevel,
+      score: icaoLevelToSortScore(record.lastIcaoLevel),
       detail: card.question.slice(0, 60) + (card.question.length > 60 ? "…" : ""),
     });
   }
 
-  return items.sort((a, b) => a.score - b.score);
+  return items.sort((a, b) => (a.icaoLevel ?? 6) - (b.icaoLevel ?? 6));
 }
 
 function part2DifficultyItems(): DifficultyItem[] {
@@ -147,11 +164,13 @@ export function buildDifficultyInsights(limit = 5): DifficultyInsight[] {
       area: "part1" as const,
       label: "Part 1",
       score: areaScore(part1Items),
+      displayScore: part1DisplayScore(part1Items),
+      aggregateIcaoLevel: part1AggregateLevel(part1Items),
       items: part1Items.slice(0, limit),
       hint:
         part1Items.length === 0
-          ? "Notas do shadow PEEL / coach — perguntas sem gravação não aparecem."
-          : undefined,
+          ? "Nível ICAO do Coach de voz — shadow PEEL não entra aqui. Grave no Coach para aparecer."
+          : "Último nível ICAO no Coach — shadow é só pronúncia, não mede sua resposta.",
     },
     {
       area: "part2" as const,

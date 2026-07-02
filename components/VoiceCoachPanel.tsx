@@ -12,6 +12,7 @@ import { recordPart2RecordingScore } from "@/lib/part2Warmup";
 import { tryRecordStudyActivity, studyActivityRejectReason } from "@/lib/studyActivityRecord";
 import { addWordsToVault } from "@/lib/pronunciationVault";
 import { markPart1CoachDone, isPart1CardInTodayMission } from "@/lib/part1DailyMission";
+import { recordPart1CoachAttempt } from "@/lib/part1CoachHistory";
 import type { Part2MissionKind } from "@/lib/part2DailyMission";
 import { tryMarkPart2DailyMissionPractice } from "@/lib/part2MissionComplete";
 import { recordPart2ItemScore } from "@/lib/part2/progress";
@@ -137,6 +138,10 @@ export default function VoiceCoachPanel({
       }
 
       setFeedback(data);
+
+      if (evaluateType === "part1" && cardNum && data.icaoLevel?.overall) {
+        recordPart1CoachAttempt(cardNum, data.scores.overall, data.icaoLevel.overall);
+      }
 
       if (azureResult && evaluateType.startsWith("part2")) {
         recordPart2RecordingScore(azureResult.accuracyScore);
