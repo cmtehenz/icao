@@ -67,6 +67,7 @@ export default function ExamPlayer({ exam, mode, startIndex, onBack, onModeChang
     setSpeed,
     showTranscript,
     setShowTranscript,
+    playbackError,
     play,
     pause,
     next,
@@ -114,6 +115,12 @@ export default function ExamPlayer({ exam, mode, startIndex, onBack, onModeChang
       {speechError && (
         <div className="fel-azure-error" role="alert">
           {speechError}
+        </div>
+      )}
+
+      {playbackError && status === "error" && (
+        <div className="fel-azure-error" role="alert">
+          {playbackError}
         </div>
       )}
 

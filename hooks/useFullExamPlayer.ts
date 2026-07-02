@@ -8,17 +8,16 @@ import {
   markExamCompleted,
   saveListeningProgress,
 } from "@/lib/fullExamListening/progress";
-import { playExamAzureTts, playExamMp3 } from "@/lib/fullExamListening/examAudioBus";
 import {
   beginSpeechSession,
   getExamAudioSession,
-  pauseSpeech,
-  resumeSpeech,
+  playExamOriginalAudio,
+  speakText,
   stopSpeech,
 } from "@/utils/speech";
 import type { VoiceType } from "@/utils/speech";
 
-export type PlayerStatus = "idle" | "playing" | "paused" | "waiting_reveal" | "waiting_shadow";
+export type PlayerStatus = "idle" | "playing" | "paused" | "waiting_reveal" | "waiting_shadow" | "error";
 
 type Options = {
   examId: FullExamId;
@@ -52,6 +51,7 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
   const [speed, setSpeed] = useState(1);
   const [showTranscript, setShowTranscript] = useState(true);
   const [autoPlay, setAutoPlay] = useState(true);
+  const [playbackError, setPlaybackError] = useState<string | null>(null);
 
   useEffect(() => {
     modeRef.current = mode;
@@ -75,6 +75,7 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
 
   const beginSession = useCallback(() => {
     clearPauseTimer();
+    setPlaybackError(null);
     const ticket = beginSpeechSession();
     runLockRef.current = true;
     setStatus("playing");
@@ -99,6 +100,12 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
     setStatus("idle");
   }, [endSession]);
 
+  const failPlayback = useCallback((message: string) => {
+    setPlaybackError(message);
+    runLockRef.current = false;
+    setStatus("error");
+  }, []);
+
   const playPause = useCallback(
     (seconds: number, ticket: number) =>
       new Promise<void>((resolve) => {
@@ -116,31 +123,38 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
   );
 
   const playTts = useCallback(
-    async (text: string, voice: VoiceType, ticket: number) => {
-      if (!isActiveSession(ticket)) return;
-      await playExamAzureTts(text, voice, speedRef.current, ticket);
+    async (text: string, voice: VoiceType, ticket: number): Promise<boolean> => {
+      if (!isActiveSession(ticket)) return false;
+      const ok = await speakText(text, voice, {
+        rate: speedRef.current,
+        onError: (err) => setPlaybackError(err),
+      });
+      return ok && isActiveSession(ticket);
     },
     [isActiveSession],
   );
 
   const playAudioFile = useCallback(
-    async (src: string, ticket: number) => {
-      if (!isActiveSession(ticket) || !src) return;
-      await playExamMp3(src, speedRef.current, ticket);
+    async (src: string, ticket: number): Promise<boolean> => {
+      if (!isActiveSession(ticket) || !src) return false;
+      const ok = await playExamOriginalAudio(src, speedRef.current, ticket);
+      return ok && isActiveSession(ticket);
     },
     [isActiveSession],
   );
 
   const playShadowSentences = useCallback(
-    async (text: string, ticket: number) => {
+    async (text: string, ticket: number): Promise<boolean> => {
       for (const sentence of splitSentences(text)) {
-        if (!isActiveSession(ticket)) return;
+        if (!isActiveSession(ticket)) return false;
         setStatus("playing");
-        await playTts(sentence, "male_candidate", ticket);
-        if (!isActiveSession(ticket)) return;
+        const ok = await playTts(sentence, "male_candidate", ticket);
+        if (!ok) return false;
+        if (!isActiveSession(ticket)) return false;
         setStatus("waiting_shadow");
         await playPause(3, ticket);
       }
+      return true;
     },
     [isActiveSession, playPause, playTts],
   );
@@ -149,8 +163,8 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
     modeRef.current === "question_only" && item.type === "model_answer";
 
   const playItem = useCallback(
-    async (item: ExamAudioItem, ticket: number): Promise<"next" | "wait_reveal" | "done"> => {
-      if (!isActiveSession(ticket)) return "done";
+    async (item: ExamAudioItem, ticket: number): Promise<"next" | "wait_reveal" | "fail"> => {
+      if (!isActiveSession(ticket)) return "fail";
 
       if (shouldSkipModel(item)) {
         setStatus("waiting_reveal");
@@ -159,26 +173,27 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
 
       if (item.type === "pause") {
         await playPause(item.pauseSeconds ?? 1, ticket);
-        return isActiveSession(ticket) ? "next" : "done";
+        return isActiveSession(ticket) ? "next" : "fail";
       }
 
       if (item.type === "original_audio" && item.audioSrc) {
         setStatus("playing");
-        await playAudioFile(item.audioSrc, ticket);
-        return isActiveSession(ticket) ? "next" : "done";
+        const ok = await playAudioFile(item.audioSrc, ticket);
+        if (!ok) return "fail";
+        return "next";
       }
 
       if (!item.text) return "next";
 
       if (modeRef.current === "shadowing" && item.type === "model_answer") {
         setStatus("playing");
-        await playShadowSentences(item.text, ticket);
-        return isActiveSession(ticket) ? "next" : "done";
+        const ok = await playShadowSentences(item.text, ticket);
+        return ok && isActiveSession(ticket) ? "next" : "fail";
       }
 
       setStatus("playing");
-      await playTts(item.text, voiceForItem(item), ticket);
-      return isActiveSession(ticket) ? "next" : "done";
+      const ok = await playTts(item.text, voiceForItem(item), ticket);
+      return ok ? "next" : "fail";
     },
     [isActiveSession, playAudioFile, playPause, playShadowSentences, playTts],
   );
@@ -195,7 +210,10 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
           runLockRef.current = false;
           return;
         }
-        if (result === "done") break;
+        if (result === "fail") {
+          failPlayback("Não foi possível reproduzir este áudio. Toque Play para tentar de novo.");
+          return;
+        }
 
         i += 1;
       }
@@ -210,21 +228,21 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
         runLockRef.current = false;
       }
     },
-    [examId, goToIndex, isActiveSession, items, onComplete, playItem],
+    [examId, failPlayback, goToIndex, isActiveSession, items, onComplete, playItem],
   );
 
   const play = useCallback(() => {
     if (status === "waiting_reveal" || status === "waiting_shadow") return;
 
     if (status === "paused") {
-      resumeSpeech(voiceForItem(currentItem ?? items[0]), speed);
-      setStatus("playing");
+      const ticket = beginSession();
+      void runFrom(indexRef.current, ticket);
       return;
     }
 
     if (runLockRef.current || status === "playing") return;
 
-    if (status === "idle") {
+    if (status === "idle" || status === "error") {
       const p = loadListeningProgress();
       saveListeningProgress({
         lastExamId: examId,
@@ -235,12 +253,12 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
 
     const ticket = beginSession();
     void runFrom(indexRef.current, ticket);
-  }, [beginSession, currentItem, examId, items, runFrom, speed, status]);
+  }, [beginSession, examId, runFrom, status]);
 
   const pause = useCallback(() => {
     if (status !== "playing" && status !== "waiting_shadow") return;
     clearPauseTimer();
-    pauseSpeech();
+    stopSpeech();
     setStatus("paused");
   }, [clearPauseTimer, status]);
 
@@ -249,16 +267,18 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
     if (!item || item.type !== "model_answer") return;
     const ticket = beginSession();
     void (async () => {
-      if (modeRef.current === "shadowing") {
-        await playShadowSentences(item.text ?? "", ticket);
-      } else {
-        await playTts(item.text ?? "", "male_candidate", ticket);
+      const ok =
+        modeRef.current === "shadowing"
+          ? await playShadowSentences(item.text ?? "", ticket)
+          : await playTts(item.text ?? "", "male_candidate", ticket);
+      if (!ok || !isActiveSession(ticket)) {
+        if (!ok) failPlayback("Não foi possível reproduzir a resposta modelo.");
+        return;
       }
-      if (!isActiveSession(ticket)) return;
       goToIndex(indexRef.current + 1);
       void runFrom(indexRef.current, ticket);
     })();
-  }, [beginSession, goToIndex, isActiveSession, items, playShadowSentences, playTts, runFrom]);
+  }, [beginSession, failPlayback, goToIndex, isActiveSession, items, playShadowSentences, playTts, runFrom]);
 
   const next = useCallback(() => {
     const ticket = beginSession();
@@ -277,12 +297,6 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
     void runFrom(0, ticket);
   }, [beginSession, goToIndex, runFrom]);
 
-  useEffect(() => {
-    return () => {
-      endSession();
-    };
-  }, [endSession]);
-
   return {
     items,
     currentItem,
@@ -295,6 +309,7 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
     setShowTranscript,
     autoPlay,
     setAutoPlay,
+    playbackError,
     play,
     pause,
     stop,
