@@ -63,21 +63,22 @@ function buildSsml(text: string, voice: string, rate: number): string {
   return `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US"><voice name="${voice}"><prosody${prosodyRate}>${escapeXml(text)}</prosody></voice></speak>`;
 }
 
+function closeActiveSynthesizer(suppressEnd: boolean): void {
+  if (!activeSynthesizer) return;
+  if (suppressEnd) suppressEndCallback = true;
+  activeSynthesizer.close();
+  activeSynthesizer = null;
+}
+
 export function stopAzureSpeech(): void {
-  suppressEndCallback = true;
-  if (activeSynthesizer) {
-    activeSynthesizer.close();
-    activeSynthesizer = null;
-  }
+  closeActiveSynthesizer(true);
   pausedPayload = null;
   resumeCallback = undefined;
 }
 
 export function pauseAzureSpeech(): boolean {
-  if (!activeSynthesizer) return false;
-  suppressEndCallback = true;
-  activeSynthesizer.close();
-  activeSynthesizer = null;
+  if (!activeSynthesizer) return pausedPayload !== null;
+  closeActiveSynthesizer(true);
   return pausedPayload !== null;
 }
 
@@ -94,7 +95,8 @@ export async function speakAzureText(
     return true;
   }
 
-  stopAzureSpeech();
+  closeActiveSynthesizer(true);
+  suppressEndCallback = false;
 
   let tokenData = await fetchAzureToken();
   if (!tokenData.token || !tokenData.region) {
@@ -119,52 +121,65 @@ export async function speakAzureText(
   pausedPayload = { text: trimmed, role, rate };
   resumeCallback = onEnd;
 
-  const ssml = buildSsml(trimmed, AZURE_VOICES[role], rate);
+  const voice = AZURE_VOICES[role];
+  const useSsml = rate !== 1;
+  const ssml = buildSsml(trimmed, voice, rate);
+
+  const finish = (result: { reason: number; errorDetails?: string }, synth: { close: () => void }) => {
+    synth.close();
+    if (activeSynthesizer === synth) activeSynthesizer = null;
+
+    if (suppressEndCallback) {
+      suppressEndCallback = false;
+      return false;
+    }
+
+    if (result.reason === sdk.ResultReason.SynthesizingAudioCompleted) {
+      pausedPayload = null;
+      resumeCallback = undefined;
+      onEnd?.();
+      return true;
+    }
+
+    if (result.reason === sdk.ResultReason.Canceled) {
+      return false;
+    }
+
+    const detail = result.errorDetails || `Azure TTS error (${result.reason})`;
+    onError?.(detail);
+    onEnd?.();
+    return false;
+  };
 
   return new Promise((resolve) => {
-    synthesizer.speakSsmlAsync(
-      ssml,
-      (result) => {
-        synthesizer.close();
-        if (activeSynthesizer === synthesizer) activeSynthesizer = null;
-
-        if (suppressEndCallback) {
-          suppressEndCallback = false;
-          resolve(true);
-          return;
-        }
-
-        if (result.reason === sdk.ResultReason.SynthesizingAudioCompleted) {
-          pausedPayload = null;
-          resumeCallback = undefined;
-          onEnd?.();
-          resolve(true);
-          return;
-        }
-
-        if (result.reason === sdk.ResultReason.Canceled) {
-          resolve(false);
-          return;
-        }
-
-        const detail = result.errorDetails || `Azure TTS error (${result.reason})`;
-        onError?.(detail);
-        onEnd?.();
+    const onSuccess = (result: { reason: number; errorDetails?: string }) => {
+      resolve(finish(result, synthesizer));
+    };
+    const onFailure = (err: string) => {
+      synthesizer.close();
+      if (activeSynthesizer === synthesizer) activeSynthesizer = null;
+      if (suppressEndCallback) {
+        suppressEndCallback = false;
         resolve(false);
-      },
-      (err) => {
-        synthesizer.close();
-        if (activeSynthesizer === synthesizer) activeSynthesizer = null;
-        if (suppressEndCallback) {
-          suppressEndCallback = false;
-          resolve(false);
-          return;
-        }
-        onError?.(err);
-        onEnd?.();
-        resolve(false);
-      },
-    );
+        return;
+      }
+      onError?.(err);
+      onEnd?.();
+      resolve(false);
+    };
+
+    if (useSsml) {
+      synthesizer.speakSsmlAsync(
+        ssml,
+        onSuccess,
+        (err) => {
+          synthesizer.speakTextAsync(trimmed, onSuccess, onFailure);
+        },
+      );
+      return;
+    }
+
+    synthesizer.speakTextAsync(trimmed, onSuccess, onFailure);
   });
 }
 
@@ -216,5 +231,4 @@ export async function synthesizeAzureSpeech(
   });
 }
 
-// Back-compat alias
 export const isAzureSpeechConfigured = isAzureTtsAvailable;

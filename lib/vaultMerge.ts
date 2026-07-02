@@ -13,7 +13,7 @@ function safeDate(value: string | undefined, fallback = new Date()): Date {
   return Number.isNaN(d.getTime()) ? fallback : d;
 }
 
-function normalizeVaultWordKey(word: string): string {
+export function normalizeVaultWordKey(word: string): string {
   return word.trim().toLowerCase().replace(/\s+/g, " ").slice(0, 120);
 }
 

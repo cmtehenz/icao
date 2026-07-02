@@ -121,6 +121,7 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
           resolve();
           return;
         }
+        stopSpeech();
         cleanupAudio();
         const audio = new Audio(src);
         audio.playbackRate = speedRef.current;
@@ -241,7 +242,6 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
   }, [currentItem, examId, items, runFrom, speed, status]);
 
   const pause = useCallback(() => {
-    cancelledRef.current = true;
     pauseSpeech();
     const a = audioRef.current;
     if (a) a.pause();

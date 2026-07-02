@@ -82,7 +82,7 @@ export default function ExamPlayer({ exam, mode, startIndex, onBack, onModeChang
     void warmSpeechEngine().then((engine) => {
       setSpeechEngine(engine);
       if (engine === "none") {
-        setSpeechError("Azure Speech indisponível. Faça login e confirme AZURE_SPEECH_KEY no servidor.");
+        setSpeechError("Azure Speech indisponível — voz TTS pode falhar. Áudios ATC originais ainda tocam. Faça login.");
       }
     });
   }, []);
@@ -183,7 +183,7 @@ export default function ExamPlayer({ exam, mode, startIndex, onBack, onModeChang
             type="button"
             className="fel-ctrl fel-ctrl-main"
             onClick={play}
-            disabled={waitingReveal || speechEngine === "none"}
+            disabled={waitingReveal}
             aria-label="Play"
           >
             ▶

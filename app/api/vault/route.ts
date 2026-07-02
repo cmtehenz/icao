@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getCurrentUser } from "@/lib/auth/user";
 import { prisma } from "@/lib/db";
-import { dbWordToVault, vaultWordToDb } from "@/lib/vaultMerge";
+import { dbWordToVault, normalizeVaultWordKey, vaultWordToDb } from "@/lib/vaultMerge";
 import {
   resetVaultWordCounts,
   sanitizeVaultWord,
@@ -11,7 +11,17 @@ import {
 
 export const runtime = "nodejs";
 
+function prismaCode(error: unknown): string | undefined {
+  if (error && typeof error === "object" && "code" in error) {
+    return String((error as { code: string }).code);
+  }
+  return undefined;
+}
+
 function isSchemaMismatchError(error: unknown): boolean {
+  const code = prismaCode(error);
+  if (code === "P2022" || code === "P2021") return true;
+
   const message = error instanceof Error ? error.message : String(error);
   return (
     message.includes("passCount") ||
@@ -19,6 +29,46 @@ function isSchemaMismatchError(error: unknown): boolean {
     message.includes("column") ||
     message.includes("VaultWord")
   );
+}
+
+function isTransactionPoolerError(error: unknown): boolean {
+  const message = error instanceof Error ? error.message : String(error);
+  return (
+    message.includes("Transaction") ||
+    message.includes("transaction") ||
+    message.includes("prepared statement") ||
+    message.includes("25P02")
+  );
+}
+
+async function replaceUserVault(userId: string, rows: ReturnType<typeof vaultWordToDb>[]) {
+  await prisma.vaultWord.deleteMany({ where: { userId } });
+  if (!rows.length) return;
+
+  try {
+    await prisma.vaultWord.createMany({ data: rows, skipDuplicates: true });
+  } catch (error) {
+    if (prismaCode(error) !== "P2002") throw error;
+
+    for (const row of rows) {
+      await prisma.vaultWord.upsert({
+        where: { userId_word: { userId, word: row.word } },
+        create: row,
+        update: {
+          lowestAccuracy: row.lowestAccuracy,
+          lastAccuracy: row.lastAccuracy,
+          errorType: row.errorType,
+          errorLabel: row.errorLabel,
+          context: row.context,
+          timesSeen: row.timesSeen,
+          practiceCount: row.practiceCount,
+          passCount: row.passCount,
+          lastSeenAt: row.lastSeenAt,
+          lastPracticedAt: row.lastPracticedAt,
+        },
+      });
+    }
+  }
 }
 
 export async function GET() {
@@ -72,7 +122,9 @@ export async function PUT(request: Request) {
 
     const deduped = new Map<string, VaultWord>();
     for (const word of incoming) {
-      deduped.set(word.word.toLowerCase(), word);
+      const key = normalizeVaultWordKey(word.word);
+      if (key.length < 2) continue;
+      deduped.set(key, { ...word, word: key });
     }
     const merged = [...deduped.values()].sort((a, b) => a.lowestAccuracy - b.lowestAccuracy);
 
@@ -85,12 +137,7 @@ export async function PUT(request: Request) {
       }
     });
 
-    await prisma.$transaction(async (tx) => {
-      await tx.vaultWord.deleteMany({ where: { userId: user.id } });
-      if (rows.length) {
-        await tx.vaultWord.createMany({ data: rows });
-      }
-    });
+    await replaceUserVault(user.id, rows);
 
     const saved = rows.map((row) =>
       sanitizeVaultWord({
@@ -118,6 +165,12 @@ export async function PUT(request: Request) {
           error:
             "Banco desatualizado. Rode prisma migrate deploy no Neon ou redeploy na Vercel com DATABASE_URL configurado.",
         },
+        { status: 503 },
+      );
+    }
+    if (isTransactionPoolerError(error)) {
+      return NextResponse.json(
+        { error: "Erro temporário ao salvar. Tente novamente em alguns segundos." },
         { status: 503 },
       );
     }
