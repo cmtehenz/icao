@@ -5,14 +5,7 @@ import type { ExamAudioItem, FullExamId, ListeningMode } from "@/lib/fullExamLis
 import type { FullExamMeta } from "@/lib/fullExamListening/types";
 import { toggleDifficultItem, isItemDifficult } from "@/lib/fullExamListening/progress";
 import { useFullExamPlayer } from "@/hooks/useFullExamPlayer";
-import {
-  listAvailableVoices,
-  loadPreferredVoices,
-  setPreferredVoice,
-  warmSpeechEngine,
-  type SpeechEngine,
-  type VoiceType,
-} from "@/utils/speech";
+import { getLastSpeechError, warmSpeechEngine, type SpeechEngine } from "@/utils/speech";
 
 const SPEEDS = [0.75, 1, 1.25] as const;
 
@@ -40,8 +33,8 @@ type Props = {
 function speakerLabel(item: ExamAudioItem | null): string {
   if (!item) return "";
   if (item.type === "original_audio") return "Original ATC";
-  if (item.speaker === "male_candidate") return "Model candidate";
-  if (item.speaker === "female_examiner") return "Examiner";
+  if (item.speaker === "male_candidate") return "Candidato modelo (Guy)";
+  if (item.speaker === "female_examiner") return "Examinadora (Jenny)";
   return "Instruction";
 }
 
@@ -82,37 +75,22 @@ export default function ExamPlayer({ exam, mode, startIndex, onBack, onModeChang
   }, [speed]);
 
   const difficult = currentItem ? isItemDifficult(currentItem.id) : false;
-  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
   const [speechEngine, setSpeechEngine] = useState<SpeechEngine>("none");
+  const [speechError, setSpeechError] = useState<string | null>(null);
 
   useEffect(() => {
-    loadPreferredVoices();
-    const load = () => setVoices(listAvailableVoices());
-    load();
-    if (typeof window !== "undefined") {
-      window.speechSynthesis.addEventListener("voiceschanged", load);
-    }
-
-    const samples = items
-      .filter((it) => it.text && it.type !== "pause")
-      .slice(0, 4)
-      .map((it) => ({
-        text: it.text!,
-        voice: (it.speaker === "male_candidate" ? "male_candidate" : "female_examiner") as VoiceType,
-      }));
-
-    void warmSpeechEngine(samples).then(setSpeechEngine);
-
-    return () => {
-      if (typeof window !== "undefined") {
-        window.speechSynthesis.removeEventListener("voiceschanged", load);
+    void warmSpeechEngine().then((engine) => {
+      setSpeechEngine(engine);
+      if (engine === "none") {
+        setSpeechError("Azure Speech indisponível. Faça login e confirme AZURE_SPEECH_KEY no servidor.");
       }
-    };
-  }, [items]);
+    });
+  }, []);
 
-  const onVoicePick = (type: VoiceType, name: string) => {
-    setPreferredVoice(type, name);
-  };
+  useEffect(() => {
+    const err = getLastSpeechError();
+    if (err) setSpeechError(err);
+  }, [status, currentIndex]);
 
   return (
     <div className="fel-player">
@@ -126,6 +104,12 @@ export default function ExamPlayer({ exam, mode, startIndex, onBack, onModeChang
           <span className="fel-version">{exam.subtitle}</span>
         </div>
       </div>
+
+      {speechError && (
+        <div className="fel-azure-error" role="alert">
+          {speechError}
+        </div>
+      )}
 
       <div className="fel-mode-tabs" role="tablist" aria-label="Listening mode">
         {(Object.keys(MODE_LABELS) as ListeningMode[]).map((m) => (
@@ -155,10 +139,7 @@ export default function ExamPlayer({ exam, mode, startIndex, onBack, onModeChang
         <p className="fel-item-label">{currentItem?.label ?? "Ready"}</p>
         <p className="fel-speaker">{speakerLabel(currentItem)}</p>
         {speechEngine === "azure" && (
-          <p className="fel-engine-badge">Azure Neural · Jenny &amp; Guy</p>
-        )}
-        {speechEngine === "browser" && (
-          <p className="fel-engine-badge browser">Browser voice (fallback)</p>
+          <p className="fel-engine-badge">Azure Neural · Jenny (F) · Guy (M)</p>
         )}
       </div>
 
@@ -202,7 +183,7 @@ export default function ExamPlayer({ exam, mode, startIndex, onBack, onModeChang
             type="button"
             className="fel-ctrl fel-ctrl-main"
             onClick={play}
-            disabled={waitingReveal}
+            disabled={waitingReveal || speechEngine === "none"}
             aria-label="Play"
           >
             ▶
@@ -231,39 +212,6 @@ export default function ExamPlayer({ exam, mode, startIndex, onBack, onModeChang
           ))}
         </div>
       </div>
-
-      {speechEngine === "browser" && voices.length > 0 && (
-        <div className="fel-voice-row">
-          <label>
-            Examiner
-            <select
-              onChange={(e) => onVoicePick("female_examiner", e.target.value)}
-              defaultValue=""
-            >
-              <option value="">Auto</option>
-              {voices.map((v) => (
-                <option key={`f-${v.name}`} value={v.name}>
-                  {v.name}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
-            Candidate
-            <select
-              onChange={(e) => onVoicePick("male_candidate", e.target.value)}
-              defaultValue=""
-            >
-              <option value="">Auto</option>
-              {voices.map((v) => (
-                <option key={`m-${v.name}`} value={v.name}>
-                  {v.name}
-                </option>
-              ))}
-            </select>
-          </label>
-        </div>
-      )}
 
       <div className="fel-transcript-head">
         <strong>Transcript</strong>

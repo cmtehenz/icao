@@ -8,7 +8,7 @@ import {
   markExamCompleted,
   saveListeningProgress,
 } from "@/lib/fullExamListening/progress";
-import { pauseSpeech, prefetchSpeech, resumeSpeech, speakText, stopSpeech } from "@/utils/speech";
+import { pauseSpeech, resumeSpeech, speakText, stopSpeech } from "@/utils/speech";
 import type { VoiceType } from "@/utils/speech";
 
 export type PlayerStatus = "idle" | "playing" | "paused" | "waiting_reveal" | "waiting_shadow";
@@ -94,31 +94,24 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
     });
   }, []);
 
-  const prefetchUpcoming = useCallback(
-    (fromIndex: number) => {
-      for (let j = fromIndex + 1; j < Math.min(items.length, fromIndex + 4); j += 1) {
-        const upcoming = items[j];
-        if (!upcoming?.text || upcoming.type === "pause" || upcoming.type === "original_audio") continue;
-        prefetchSpeech(upcoming.text, voiceForItem(upcoming));
-      }
-    },
-    [items],
-  );
-
   const playTts = useCallback(
-    (text: string, voice: VoiceType, itemIndex?: number) =>
+    (text: string, voice: VoiceType) =>
       new Promise<void>((resolve) => {
         if (cancelledRef.current) {
           resolve();
           return;
         }
-        if (typeof itemIndex === "number") prefetchUpcoming(itemIndex);
+        let settled = false;
         speakText(text, voice, {
           rate: speedRef.current,
-          onEnd: () => resolve(),
+          onEnd: () => {
+            if (settled) return;
+            settled = true;
+            resolve();
+          },
         });
       }),
-    [prefetchUpcoming],
+    [],
   );
 
   const playAudioFile = useCallback(
@@ -186,7 +179,7 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
       }
 
       setStatus("playing");
-      await playTts(item.text, voiceForItem(item), indexRef.current);
+      await playTts(item.text, voiceForItem(item));
       return "next";
     },
     [playAudioFile, playPause, playShadowSentences, playTts],
