@@ -15,6 +15,7 @@ import { markPart1CoachDone, isPart1CardInTodayMission } from "@/lib/part1DailyM
 import type { Part2MissionKind } from "@/lib/part2DailyMission";
 import { tryMarkPart2DailyMissionPractice } from "@/lib/part2MissionComplete";
 import { recordPart2ItemScore } from "@/lib/part2/progress";
+import CoachAnswerGuide, { type Part1CoachGuide } from "@/components/study/CoachAnswerGuide";
 import AnswerComparePanel from "@/components/AnswerComparePanel";
 import AudioCompareReplay from "@/components/study/AudioCompareReplay";
 import WordPhoneticHint from "@/components/WordPhoneticHint";
@@ -31,6 +32,8 @@ type Props = {
   cardNum?: string;
   /** Part 1 answer depth — affects content/structure scoring. */
   answerMode?: "level4" | "level5" | "peel";
+  /** Part 1: optional basic / ICAO 5 answer examples (show/hide in coach). */
+  part1Guide?: Part1CoachGuide;
   modelAudioUrl?: string;
   recordingBlocked?: boolean;
   recordingBlockedMessage?: string;
@@ -58,6 +61,7 @@ export default function VoiceCoachPanel({
   situationId,
   cardNum,
   modelAudioUrl,
+  part1Guide,
   recordingBlocked = false,
   recordingBlockedMessage,
   embedded = false,
@@ -305,6 +309,10 @@ export default function VoiceCoachPanel({
           <code>AZURE_SPEECH_KEY</code> e <code>AZURE_SPEECH_REGION</code> no <code>.env.local</code>.
         </p>
       )}
+
+      {evaluateType === "part1" && part1Guide ? (
+        <CoachAnswerGuide guide={part1Guide} />
+      ) : null}
 
       <div className="voice-coach-actions">
         {azure.configured ? (

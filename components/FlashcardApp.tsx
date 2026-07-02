@@ -85,9 +85,20 @@ export default function FlashcardApp() {
     });
   }, [filter, favorites, examVersion]);
 
+  const sourceCard = CARDS[current];
   const card = useMemo(
-    () => personalizeCard(CARDS[current], profile, connectorSet),
-    [current, profile, connectorSet],
+    () => personalizeCard(sourceCard, profile, connectorSet),
+    [sourceCard, profile, connectorSet],
+  );
+  const part1CoachGuide = useMemo(
+    () => ({
+      basicAnswer: sourceCard.answerLevel4 ?? sourceCard.answer,
+      elaborateAnswer: sourceCard.answerLevel5 ?? sourceCard.answer,
+      exampleAnswer: sourceCard.level4Example ?? sourceCard.example,
+      steps: sourceCard.level4Steps,
+      memoryLabels: sourceCard.memoryLabels,
+    }),
+    [sourceCard],
   );
 
   const cardExam = getExamForCard(card.num);
@@ -440,6 +451,7 @@ export default function FlashcardApp() {
                           : "peel"
                     }
                     cardNum={card.num}
+                    part1Guide={part1CoachGuide}
                   />
                 }
               />

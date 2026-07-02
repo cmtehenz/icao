@@ -1,4 +1,5 @@
 import { shouldSkipPronunciationVaultWord } from "@/lib/aviationSpeechTerms";
+import { compareTranscriptToModel } from "@/lib/evaluate/compareAnswer";
 
 export type AzureWordScore = {
   word: string;
@@ -135,4 +136,48 @@ export function collectVaultWordCandidates(
     errorType: "Mispronunciation",
     errorLabel: "Pronúncia fraca",
   }));
+}
+
+/**
+ * Scripted shadow (PEEL blocks, readbacks): Azure word scores + transcript diff vs script.
+ * Saves weak words even when overall accuracy looks acceptable.
+ */
+export function collectScriptedShadowVaultCandidates(
+  azureResult: AzurePronunciationResult,
+  referenceText: string,
+): VaultWordCandidate[] {
+  const fromAzure = collectVaultWordCandidates(azureResult);
+  if (fromAzure.length) return fromAzure;
+
+  const reference = referenceText.trim();
+  if (!reference || !azureResult.recognizedText.trim()) return [];
+
+  const compare = compareTranscriptToModel(azureResult.recognizedText, reference);
+  const candidates: VaultWordCandidate[] = [];
+
+  for (const word of compare.missingContentWords.slice(0, 6)) {
+    if (shouldSkipPronunciationVaultWord(word)) continue;
+    candidates.push({
+      word,
+      accuracyScore: Math.min(azureResult.accuracyScore, 68),
+      errorType: "Omission",
+      errorLabel: "não detectada no script",
+    });
+  }
+
+  for (const word of compare.extraContentWords.slice(0, 5)) {
+    if (shouldSkipPronunciationVaultWord(word)) continue;
+    candidates.push({
+      word,
+      accuracyScore: Math.min(azureResult.accuracyScore, 62),
+      errorType: "Mispronunciation",
+      errorLabel: "palavra diferente do modelo",
+    });
+  }
+
+  if (!candidates.length && azureResult.accuracyScore < 80) {
+    return collectVaultWordCandidates(azureResult);
+  }
+
+  return candidates;
 }

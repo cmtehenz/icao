@@ -11,7 +11,7 @@ import { tryMarkPart2DailyMissionPractice } from "@/lib/part2MissionComplete";
 import AudioCompareReplay from "@/components/study/AudioCompareReplay";
 import { recordPart2RecordingScore } from "@/lib/part2Warmup";
 import { addWordsToVault, VAULT_PASS_SCORE } from "@/lib/pronunciationVault";
-import { collectVaultWordCandidates } from "@/lib/azure/pronunciation";
+import { collectScriptedShadowVaultCandidates } from "@/lib/azure/pronunciation";
 
 type Phase = "idle" | "listening" | "waiting" | "recording" | "result";
 
@@ -122,11 +122,9 @@ export default function Part2ReadbackShadowPanel({
       if (!ok) {
         setNote(studyActivityRejectReason("shadowPart2", ctx));
       }
-      if (accuracy < VAULT_PASS_SCORE) {
-        const candidates = collectVaultWordCandidates(assessment);
-        if (candidates.length) {
-          addWordsToVault(candidates, context.slice(0, 80));
-        }
+      const candidates = collectScriptedShadowVaultCandidates(assessment, modelReadback);
+      if (candidates.length) {
+        addWordsToVault(candidates, context.slice(0, 80));
       }
     } else {
       setNote("Nenhuma avaliação — tente falar mais alto.");

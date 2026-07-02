@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import YouGlishLink from "@/components/YouGlishLink";
+import WordPhoneticHint from "@/components/WordPhoneticHint";
 import AudioCompareReplay from "@/components/study/AudioCompareReplay";
 import { useAzureSpeech } from "@/hooks/useAzureSpeech";
 import {
@@ -9,7 +10,11 @@ import {
   studyActivityRejectReason,
   tryRecordStudyActivity,
 } from "@/lib/studyActivityRecord";
-import { collectVaultWordCandidates } from "@/lib/azure/pronunciation";
+import {
+  collectScriptedShadowVaultCandidates,
+  type VaultWordCandidate,
+} from "@/lib/azure/pronunciation";
+import { compareTranscriptToModel } from "@/lib/evaluate/compareAnswer";
 import { getPeelBlocks, type PeelBlock, type PeelBlockId } from "@/lib/peelBlocks";
 import { peelBlockActivityKey } from "@/lib/shadowPeelDedup";
 import { getPeelBlockHistory, recordPeelBlockAttempt } from "@/lib/peelBlockHistory";
@@ -24,6 +29,7 @@ type BlockScore = {
   fluency: number;
   completeness: number;
   heard?: string;
+  weakWords?: VaultWordCandidate[];
 };
 
 type Props = {
@@ -100,11 +106,9 @@ export default function PeelShadowingPanel({
   const saveWeakWords = (
     block: PeelBlock,
     assessment: NonNullable<typeof azure.result>,
-    accuracy: number,
   ) => {
-    if (accuracy >= VAULT_PASS_SCORE) return;
-    const candidates = collectVaultWordCandidates(assessment);
-    if (!candidates.length) return;
+    const candidates = collectScriptedShadowVaultCandidates(assessment, block.text);
+    if (!candidates.length) return [];
     const { added, updated } = addWordsToVault(
       candidates,
       `${question.slice(0, 40)} — ${block.label}`,
@@ -115,6 +119,7 @@ export default function PeelShadowingPanel({
         `${n} palavra${n > 1 ? "s" : ""} salva${n > 1 ? "s" : ""} no banco de pronúncia.`,
       );
     }
+    return candidates;
   };
 
   const startBlock = async (block: PeelBlock, indexForRunAll: number | null = null) => {
@@ -141,18 +146,20 @@ export default function PeelShadowingPanel({
     const { assessment, audioBlob } = await azure.stopRecording();
     setLastAudioBlob(audioBlob);
     const accuracy = assessment?.accuracyScore ?? 0;
-    setScores((prev) => ({
-      ...prev,
-      [activeBlock.id]: {
-        accuracy,
-        fluency: assessment?.fluencyScore ?? 0,
-        completeness: assessment?.completenessScore ?? 0,
-        heard: assessment?.recognizedText,
-      },
-    }));
+
     if (assessment) {
+      const weakWords = saveWeakWords(activeBlock, assessment);
       recordPeelBlockAttempt(card.num, activeBlock.id, accuracy);
-      saveWeakWords(activeBlock, assessment, accuracy);
+      setScores((prev) => ({
+        ...prev,
+        [activeBlock.id]: {
+          accuracy,
+          fluency: assessment.fluencyScore ?? 0,
+          completeness: assessment.completenessScore ?? 0,
+          heard: assessment.recognizedText,
+          weakWords,
+        },
+      }));
       const ctx = {
         accuracy,
         recognizedText: assessment.recognizedText,
@@ -166,6 +173,14 @@ export default function PeelShadowingPanel({
         setActivityNote(null);
       }
     } else {
+      setScores((prev) => ({
+        ...prev,
+        [activeBlock.id]: {
+          accuracy: 0,
+          fluency: 0,
+          completeness: 0,
+        },
+      }));
       setActivityNote("Azure não avaliou este bloco — grave de novo com o microfone mais perto.");
     }
     setPhase("result");
@@ -319,10 +334,65 @@ export default function PeelShadowingPanel({
                 </div>
               </div>
               {activeScore.heard && (
-                <p className="voice-coach-transcript">
-                  <strong>Azure ouviu:</strong> {activeScore.heard}
-                </p>
+                <>
+                  <p className="voice-coach-transcript">
+                    <strong>Azure ouviu:</strong> {activeScore.heard}
+                  </p>
+                  {(() => {
+                    const compare = compareTranscriptToModel(activeScore.heard!, activeBlock.text);
+                    if (
+                      !compare.missingContentWords.length &&
+                      !compare.extraContentWords.length
+                    ) {
+                      return null;
+                    }
+                    return (
+                      <div className="shadow-block-compare">
+                        <h4>Comparação com o bloco</h4>
+                        {compare.missingContentWords.length > 0 && (
+                          <p className="shadow-block-compare-missing">
+                            <strong>Faltaram no script:</strong>{" "}
+                            {compare.missingContentWords.join(", ")}
+                          </p>
+                        )}
+                        {compare.extraContentWords.length > 0 && (
+                          <p className="shadow-block-compare-extra">
+                            <strong>Palavras diferentes:</strong>{" "}
+                            {compare.extraContentWords.join(", ")}
+                          </p>
+                        )}
+                      </div>
+                    );
+                  })()}
+                </>
               )}
+
+              <div className="voice-coach-mispronounced">
+                <h4>Palavras para treinar na pronúncia</h4>
+                {activeScore.weakWords && activeScore.weakWords.length > 0 ? (
+                  <ul className="mispronounced-list">
+                    {activeScore.weakWords.map((w) => (
+                      <li
+                        key={`${w.word}-${w.errorType}`}
+                        className={`mispronounced-item ${w.accuracyScore < 60 ? "bad" : "warn"}`}
+                      >
+                        <span className="mispronounced-word">
+                          {w.word}
+                          <WordPhoneticHint word={w.word} className="vault-word-phonetic" />
+                        </span>
+                        <span className="mispronounced-score">{w.accuracyScore}%</span>
+                        <span className="mispronounced-error">{w.errorLabel}</span>
+                        <YouGlishLink word={w.word} compact />
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="mispronounced-none">
+                    Nenhuma palavra difícil detectada neste bloco.
+                  </p>
+                )}
+              </div>
+
               {activeScore.accuracy < VAULT_PASS_SCORE && (
                 <p className="peel-shadowing-tip">
                   Abaixo de {VAULT_PASS_SCORE}% — ouça palavras difíceis no YouGlish e tente de novo.
@@ -357,14 +427,9 @@ export default function PeelShadowingPanel({
                   </button>
                 )}
               </div>
-              {activeScore.accuracy < VAULT_PASS_SCORE && (
+              {activeScore.weakWords && activeScore.weakWords.length > 0 && (
                 <div className="peel-shadowing-youglish">
-                  <YouGlishLink
-                    word={
-                      activeBlock.text.split(/\s+/).find((w) => w.length > 5)?.replace(/[^\w-]/g, "") ??
-                      "aviation"
-                    }
-                  />
+                  <YouGlishLink word={activeScore.weakWords[0].word} />
                 </div>
               )}
             </div>

@@ -7,7 +7,7 @@ import type { AzureSpeechTokenResponse } from "@/lib/azure/speechToken";
 import { preferredRecorderMime } from "@/lib/recordings/platform";
 
 const AZURE_VOICE = "en-US-JennyNeural";
-const TOKEN_URL = "/api/speech-token";
+const TOKEN_URL = "/api/azure-speech-token";
 
 type Segment = AzurePronunciationResult;
 
