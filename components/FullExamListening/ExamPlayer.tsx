@@ -9,6 +9,8 @@ import {
   listAvailableVoices,
   loadPreferredVoices,
   setPreferredVoice,
+  warmSpeechEngine,
+  type SpeechEngine,
   type VoiceType,
 } from "@/utils/speech";
 
@@ -81,16 +83,32 @@ export default function ExamPlayer({ exam, mode, startIndex, onBack, onModeChang
 
   const difficult = currentItem ? isItemDifficult(currentItem.id) : false;
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
+  const [speechEngine, setSpeechEngine] = useState<SpeechEngine>("none");
 
   useEffect(() => {
     loadPreferredVoices();
-    const load = () => setVoices(listAvailableVoices().filter((v) => v.lang.startsWith("en")));
+    const load = () => setVoices(listAvailableVoices());
     load();
     if (typeof window !== "undefined") {
       window.speechSynthesis.addEventListener("voiceschanged", load);
-      return () => window.speechSynthesis.removeEventListener("voiceschanged", load);
     }
-  }, []);
+
+    const samples = items
+      .filter((it) => it.text && it.type !== "pause")
+      .slice(0, 4)
+      .map((it) => ({
+        text: it.text!,
+        voice: (it.speaker === "male_candidate" ? "male_candidate" : "female_examiner") as VoiceType,
+      }));
+
+    void warmSpeechEngine(samples).then(setSpeechEngine);
+
+    return () => {
+      if (typeof window !== "undefined") {
+        window.speechSynthesis.removeEventListener("voiceschanged", load);
+      }
+    };
+  }, [items]);
 
   const onVoicePick = (type: VoiceType, name: string) => {
     setPreferredVoice(type, name);
@@ -136,6 +154,12 @@ export default function ExamPlayer({ exam, mode, startIndex, onBack, onModeChang
         </p>
         <p className="fel-item-label">{currentItem?.label ?? "Ready"}</p>
         <p className="fel-speaker">{speakerLabel(currentItem)}</p>
+        {speechEngine === "azure" && (
+          <p className="fel-engine-badge">Azure Neural · Jenny &amp; Guy</p>
+        )}
+        {speechEngine === "browser" && (
+          <p className="fel-engine-badge browser">Browser voice (fallback)</p>
+        )}
       </div>
 
       <div className="fel-progress-wrap">
@@ -208,7 +232,7 @@ export default function ExamPlayer({ exam, mode, startIndex, onBack, onModeChang
         </div>
       </div>
 
-      {voices.length > 0 && (
+      {speechEngine === "browser" && voices.length > 0 && (
         <div className="fel-voice-row">
           <label>
             Examiner

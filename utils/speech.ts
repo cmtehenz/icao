@@ -1,8 +1,12 @@
 /**
- * Browser TTS abstraction — swap for ElevenLabs / OpenAI / Google later.
+ * TTS abstraction — Azure Neural primary, browser fallback.
+ * Swap provider later (ElevenLabs / OpenAI) by changing speakText internals.
  */
 
+import { isAzureSpeechConfigured, synthesizeAzureSpeech } from "@/lib/azure/synthesizeSpeech";
+
 export type VoiceType = "female_examiner" | "male_candidate";
+export type SpeechEngine = "azure" | "browser" | "none";
 
 export type SpeakOptions = {
   rate?: number;
@@ -12,13 +16,42 @@ export type SpeakOptions = {
 
 let speaking = false;
 let paused = false;
-let currentUtterance: SpeechSynthesisUtterance | null = null;
 let pausedAt = 0;
 let pausedText = "";
+let pausedVoice: VoiceType = "female_examiner";
+let pausedRate = 1;
+let resumeOnEnd: (() => void) | undefined;
+
+let currentUtterance: SpeechSynthesisUtterance | null = null;
+let activeAudio: HTMLAudioElement | null = null;
+let activeBlobUrl: string | null = null;
+let activeEngine: SpeechEngine = "none";
+
 const preferredVoices: Partial<Record<VoiceType, string>> = {};
 
-const FEMALE_PATTERNS = [/Jenny/i, /Aria/i, /Samantha/i, /Victoria/i, /Karen/i, /female/i];
-const MALE_PATTERNS = [/Guy/i, /Daniel/i, /David/i, /Mark/i, /James/i, /male/i];
+const FEMALE_PATTERNS = [
+  /Jenny/i,
+  /Aria/i,
+  /Samantha/i,
+  /Karen/i,
+  /Victoria/i,
+  /Moira/i,
+  /Google US English/i,
+  /Microsoft.*Zira/i,
+  /female/i,
+];
+const MALE_PATTERNS = [
+  /Guy/i,
+  /Davis/i,
+  /Daniel/i,
+  /Alex/i,
+  /Tom/i,
+  /Microsoft.*Mark/i,
+  /male/i,
+];
+
+const audioCache = new Map<string, Blob>();
+const AUDIO_CACHE_MAX = 40;
 
 export function setPreferredVoice(type: VoiceType, voiceName: string): void {
   preferredVoices[type] = voiceName;
@@ -35,6 +68,52 @@ export function loadPreferredVoices(): void {
   });
 }
 
+export function getActiveSpeechEngine(): SpeechEngine {
+  return activeEngine;
+}
+
+function cacheKey(voiceType: VoiceType, text: string): string {
+  return `${voiceType}::${text}`;
+}
+
+function rememberCache(key: string, blob: Blob): void {
+  if (audioCache.size >= AUDIO_CACHE_MAX) {
+    const first = audioCache.keys().next().value;
+    if (first) audioCache.delete(first);
+  }
+  audioCache.set(key, blob);
+}
+
+function cleanupAudio(): void {
+  if (activeAudio) {
+    activeAudio.pause();
+    activeAudio.onended = null;
+    activeAudio.onerror = null;
+    activeAudio = null;
+  }
+  if (activeBlobUrl) {
+    URL.revokeObjectURL(activeBlobUrl);
+    activeBlobUrl = null;
+  }
+}
+
+function scoreVoice(voice: SpeechSynthesisVoice, type: VoiceType): number {
+  let score = 0;
+  const name = voice.name;
+  if (/Neural|Natural|Premium|Enhanced/i.test(name)) score += 80;
+  if (/Google/i.test(name)) score += 40;
+  if (/Microsoft/i.test(name)) score += 30;
+  if (/Samantha|Karen|Daniel|Alex/i.test(name)) score += 25;
+  if (/Compact|Robotic|espeak/i.test(name)) score -= 60;
+  if (voice.lang.startsWith("en-US")) score += 15;
+  else if (voice.lang.startsWith("en")) score += 8;
+  const patterns = type === "female_examiner" ? FEMALE_PATTERNS : MALE_PATTERNS;
+  if (patterns.some((p) => p.test(name))) score += 50;
+  if (type === "female_examiner" && /female|samantha|jenny|aria|karen/i.test(name)) score += 20;
+  if (type === "male_candidate" && /male|guy|daniel|david|alex/i.test(name)) score += 20;
+  return score;
+}
+
 function pickVoice(type: VoiceType): SpeechSynthesisVoice | null {
   if (typeof window === "undefined") return null;
   const voices = window.speechSynthesis.getVoices();
@@ -43,47 +122,106 @@ function pickVoice(type: VoiceType): SpeechSynthesisVoice | null {
     const match = voices.find((v) => v.name === preferred);
     if (match) return match;
   }
-  const patterns = type === "female_examiner" ? FEMALE_PATTERNS : MALE_PATTERNS;
-  for (const pattern of patterns) {
-    const match = voices.find((v) => pattern.test(v.name));
-    if (match) return match;
-  }
+
   const en = voices.filter((v) => v.lang.startsWith("en"));
-  if (type === "female_examiner") {
-    return en.find((v) => /female|samantha|aria|jenny/i.test(v.name)) ?? en[0] ?? null;
-  }
-  return en.find((v) => /male|guy|daniel|david/i.test(v.name)) ?? en[1] ?? en[0] ?? null;
+  if (!en.length) return null;
+
+  return en.reduce<SpeechSynthesisVoice | null>((best, voice) => {
+    const s = scoreVoice(voice, type);
+    if (!best || s > scoreVoice(best, type)) return voice;
+    return best;
+  }, null);
 }
 
-function runSpeak(text: string, type: VoiceType, rate: number, onEnd?: () => void, onError?: (e: string) => void) {
+function finishSpeaking(onEnd?: () => void): void {
+  speaking = false;
+  paused = false;
+  currentUtterance = null;
+  activeEngine = "none";
+  onEnd?.();
+}
+
+function runBrowserSpeak(
+  text: string,
+  type: VoiceType,
+  rate: number,
+  onEnd?: () => void,
+  onError?: (e: string) => void,
+): void {
   if (typeof window === "undefined" || !window.speechSynthesis) {
     onError?.("Speech synthesis not available");
+    onEnd?.();
     return;
   }
+
   window.speechSynthesis.cancel();
+  cleanupAudio();
+
   const utterance = new SpeechSynthesisUtterance(text);
   const voice = pickVoice(type);
   if (voice) utterance.voice = voice;
   utterance.lang = voice?.lang ?? "en-US";
-  utterance.rate = rate;
-  utterance.pitch = type === "female_examiner" ? 1.05 : 0.95;
+  utterance.rate = Math.min(1.1, Math.max(0.85, rate));
+  utterance.pitch = 1;
+  utterance.volume = 1;
   currentUtterance = utterance;
-  utterance.onend = () => {
-    speaking = false;
-    paused = false;
-    currentUtterance = null;
-    onEnd?.();
-  };
-  utterance.onerror = () => {
-    speaking = false;
-    paused = false;
-    currentUtterance = null;
-    onError?.("Speech error");
-    onEnd?.();
-  };
+  activeEngine = "browser";
   speaking = true;
   paused = false;
+
+  utterance.onend = () => finishSpeaking(onEnd);
+  utterance.onerror = () => {
+    onError?.("Speech error");
+    finishSpeaking(onEnd);
+  };
   window.speechSynthesis.speak(utterance);
+}
+
+async function runAzureSpeak(
+  text: string,
+  type: VoiceType,
+  rate: number,
+  onEnd?: () => void,
+  onError?: (e: string) => void,
+): Promise<boolean> {
+  const key = cacheKey(type, text);
+  let blob = audioCache.get(key) ?? null;
+  if (!blob) {
+    blob = await synthesizeAzureSpeech(text, type);
+    if (blob) rememberCache(key, blob);
+  }
+  if (!blob) return false;
+
+  cleanupAudio();
+  if (typeof window !== "undefined") window.speechSynthesis.cancel();
+
+  const url = URL.createObjectURL(blob);
+  activeBlobUrl = url;
+  const audio = new Audio(url);
+  audio.playbackRate = Math.min(1.5, Math.max(0.5, rate));
+  activeAudio = audio;
+  activeEngine = "azure";
+  speaking = true;
+  paused = false;
+
+  audio.onended = () => {
+    cleanupAudio();
+    finishSpeaking(onEnd);
+  };
+  audio.onerror = () => {
+    onError?.("Audio playback error");
+    cleanupAudio();
+    finishSpeaking(onEnd);
+  };
+
+  try {
+    await audio.play();
+    return true;
+  } catch {
+    cleanupAudio();
+    finishSpeaking();
+    return false;
+  }
 }
 
 export function isSpeechActive(): boolean {
@@ -91,30 +229,62 @@ export function isSpeechActive(): boolean {
 }
 
 export function stopSpeech(): void {
-  if (typeof window === "undefined") return;
-  window.speechSynthesis.cancel();
+  if (typeof window !== "undefined") window.speechSynthesis.cancel();
+  cleanupAudio();
   speaking = false;
   paused = false;
   currentUtterance = null;
   pausedText = "";
   pausedAt = 0;
+  resumeOnEnd = undefined;
+  activeEngine = "none";
 }
 
-/** Web Speech API cannot truly pause — we stop and keep text for resume. */
 export function pauseSpeech(): void {
-  if (!speaking || typeof window === "undefined") return;
-  paused = true;
-  pausedText = currentUtterance?.text ?? "";
-  window.speechSynthesis.cancel();
-  speaking = false;
+  if (activeAudio && !activeAudio.paused) {
+    paused = true;
+    pausedAt = activeAudio.currentTime;
+    activeAudio.pause();
+    speaking = false;
+    return;
+  }
+
+  if (speaking && currentUtterance) {
+    paused = true;
+    pausedText = currentUtterance.text ?? "";
+    pausedVoice = activeEngine === "browser" ? inferVoiceFromUtterance() : pausedVoice;
+    if (typeof window !== "undefined") window.speechSynthesis.cancel();
+    speaking = false;
+    currentUtterance = null;
+  }
+}
+
+function inferVoiceFromUtterance(): VoiceType {
+  const name = currentUtterance?.voice?.name ?? "";
+  return MALE_PATTERNS.some((p) => p.test(name)) ? "male_candidate" : "female_examiner";
 }
 
 export function resumeSpeech(type: VoiceType = "female_examiner", rate = 1, onEnd?: () => void): void {
-  if (!paused || !pausedText) return;
-  const text = pausedText;
-  paused = false;
-  pausedText = "";
-  speakText(text, type, { rate, onEnd });
+  if (activeAudio && paused) {
+    paused = false;
+    speaking = true;
+    activeAudio.playbackRate = Math.min(1.5, Math.max(0.5, rate));
+    activeAudio.currentTime = pausedAt;
+    activeAudio.onended = () => {
+      cleanupAudio();
+      finishSpeaking(onEnd ?? resumeOnEnd);
+    };
+    void activeAudio.play();
+    return;
+  }
+
+  if (paused && pausedText) {
+    const text = pausedText;
+    const voice = pausedVoice || type;
+    paused = false;
+    pausedText = "";
+    speakText(text, voice, { rate, onEnd: onEnd ?? resumeOnEnd });
+  }
 }
 
 export function speakText(text: string, voiceType: VoiceType, options: SpeakOptions = {}): boolean {
@@ -123,32 +293,84 @@ export function speakText(text: string, voiceType: VoiceType, options: SpeakOpti
     options.onEnd?.();
     return false;
   }
-  const rate = options.rate ?? 1;
 
-  if (typeof window === "undefined" || !window.speechSynthesis) {
+  const rate = options.rate ?? 1;
+  resumeOnEnd = options.onEnd;
+
+  if (typeof window === "undefined") {
     options.onError?.("Speech synthesis not available");
     options.onEnd?.();
     return false;
   }
 
-  const voices = window.speechSynthesis.getVoices();
-  const start = () => runSpeak(trimmed, voiceType, rate, options.onEnd, options.onError);
+  const start = () => {
+    void (async () => {
+      try {
+        const azureOk = await isAzureSpeechConfigured();
+        if (azureOk) {
+          const played = await runAzureSpeak(trimmed, voiceType, rate, options.onEnd, options.onError);
+          if (played) return;
+        }
+      } catch {
+        /* fall through to browser */
+      }
 
-  if (voices.length === 0) {
-    const onVoices = () => {
-      window.speechSynthesis.removeEventListener("voiceschanged", onVoices);
-      start();
-    };
-    window.speechSynthesis.addEventListener("voiceschanged", onVoices);
-    window.speechSynthesis.getVoices();
-    return true;
-  }
+      const voices = window.speechSynthesis.getVoices();
+      if (voices.length === 0) {
+        const onVoices = () => {
+          window.speechSynthesis.removeEventListener("voiceschanged", onVoices);
+          runBrowserSpeak(trimmed, voiceType, rate, options.onEnd, options.onError);
+        };
+        window.speechSynthesis.addEventListener("voiceschanged", onVoices);
+        window.speechSynthesis.getVoices();
+        return;
+      }
+
+      runBrowserSpeak(trimmed, voiceType, rate, options.onEnd, options.onError);
+    })();
+  };
 
   start();
   return true;
 }
 
+export function prefetchSpeech(text: string, voiceType: VoiceType): void {
+  const trimmed = text.trim();
+  if (!trimmed) return;
+  const key = cacheKey(voiceType, trimmed);
+  if (audioCache.has(key)) return;
+
+  void (async () => {
+    if (!(await isAzureSpeechConfigured())) return;
+    const blob = await synthesizeAzureSpeech(trimmed, voiceType);
+    if (blob) rememberCache(key, blob);
+  })();
+}
+
+/** Warm Azure token + preload first phrases for smoother playback. */
+export async function warmSpeechEngine(samples?: Array<{ text: string; voice: VoiceType }>): Promise<SpeechEngine> {
+  loadPreferredVoices();
+  if (typeof window !== "undefined") window.speechSynthesis.getVoices();
+
+  const azureOk = await isAzureSpeechConfigured();
+  if (azureOk && samples?.length) {
+    await Promise.all(
+      samples.slice(0, 3).map(async ({ text, voice }) => {
+        const key = cacheKey(voice, text.trim());
+        if (audioCache.has(key)) return;
+        const blob = await synthesizeAzureSpeech(text, voice);
+        if (blob) rememberCache(key, blob);
+      }),
+    );
+    return "azure";
+  }
+  return azureOk ? "azure" : "browser";
+}
+
 export function listAvailableVoices(): SpeechSynthesisVoice[] {
   if (typeof window === "undefined") return [];
-  return window.speechSynthesis.getVoices();
+  return window.speechSynthesis
+    .getVoices()
+    .filter((v) => v.lang.startsWith("en"))
+    .sort((a, b) => scoreVoice(b, "female_examiner") - scoreVoice(a, "female_examiner"));
 }
