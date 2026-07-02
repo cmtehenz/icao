@@ -4,6 +4,7 @@
 
 import {
   beginExamAudioSession,
+  getExamAudioSession,
   pauseExamAudio,
   playExamAzureTts,
   playExamMp3,
@@ -100,6 +101,8 @@ export function beginSpeechSession(): number {
   activeTicket = ticket;
   return ticket;
 }
+
+export { getExamAudioSession };
 
 export function prefetchSpeech(): void {}
 

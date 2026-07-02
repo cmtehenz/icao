@@ -8,12 +8,12 @@ import {
   markExamCompleted,
   saveListeningProgress,
 } from "@/lib/fullExamListening/progress";
+import { playExamAzureTts, playExamMp3 } from "@/lib/fullExamListening/examAudioBus";
 import {
   beginSpeechSession,
+  getExamAudioSession,
   pauseSpeech,
-  playExamOriginalAudio,
   resumeSpeech,
-  speakText,
   stopSpeech,
 } from "@/utils/speech";
 import type { VoiceType } from "@/utils/speech";
@@ -41,7 +41,6 @@ function splitSentences(text: string): string[] {
 
 export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: Options) {
   const items = getExamPlaylist(examId);
-  const sessionRef = useRef(0);
   const indexRef = useRef(startIndex);
   const speedRef = useRef(1);
   const modeRef = useRef(mode);
@@ -65,7 +64,7 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
   const currentItem = items[currentIndex] ?? null;
   const progressPct = items.length ? Math.round((currentIndex / items.length) * 100) : 0;
 
-  const isActiveSession = useCallback((ticket: number) => sessionRef.current === ticket, []);
+  const isActiveSession = useCallback((ticket: number) => getExamAudioSession() === ticket, []);
 
   const clearPauseTimer = useCallback(() => {
     if (pauseTimerRef.current) {
@@ -77,7 +76,6 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
   const beginSession = useCallback(() => {
     clearPauseTimer();
     const ticket = beginSpeechSession();
-    sessionRef.current = ticket;
     runLockRef.current = true;
     setStatus("playing");
     return ticket;
@@ -97,7 +95,6 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
   }, [examId, items.length]);
 
   const stop = useCallback(() => {
-    sessionRef.current += 1;
     endSession();
     setStatus("idle");
   }, [endSession]);
@@ -119,30 +116,18 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
   );
 
   const playTts = useCallback(
-    (text: string, voice: VoiceType, ticket: number) =>
-      new Promise<void>((resolve) => {
-        if (!isActiveSession(ticket)) {
-          resolve();
-          return;
-        }
-        speakText(text, voice, {
-          rate: speedRef.current,
-          ticket,
-          onEnd: () => resolve(),
-        });
-      }),
+    async (text: string, voice: VoiceType, ticket: number) => {
+      if (!isActiveSession(ticket)) return;
+      await playExamAzureTts(text, voice, speedRef.current, ticket);
+    },
     [isActiveSession],
   );
 
   const playAudioFile = useCallback(
-    (src: string, ticket: number) =>
-      new Promise<void>((resolve) => {
-        if (!isActiveSession(ticket) || !src) {
-          resolve();
-          return;
-        }
-        playExamOriginalAudio(src, speedRef.current, ticket, () => resolve());
-      }),
+    async (src: string, ticket: number) => {
+      if (!isActiveSession(ticket) || !src) return;
+      await playExamMp3(src, speedRef.current, ticket);
+    },
     [isActiveSession],
   );
 
@@ -238,7 +223,6 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
     }
 
     if (runLockRef.current || status === "playing") return;
-    runLockRef.current = true;
 
     if (status === "idle") {
       const p = loadListeningProgress();
@@ -277,7 +261,6 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
   }, [beginSession, goToIndex, isActiveSession, items, playShadowSentences, playTts, runFrom]);
 
   const next = useCallback(() => {
-    sessionRef.current += 1;
     const ticket = beginSession();
     goToIndex(Math.min(items.length - 1, indexRef.current + 1));
     void runFrom(indexRef.current, ticket);
@@ -289,7 +272,6 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
   }, [goToIndex, stop]);
 
   const restart = useCallback(() => {
-    sessionRef.current += 1;
     const ticket = beginSession();
     goToIndex(0);
     void runFrom(0, ticket);
@@ -297,7 +279,6 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
 
   useEffect(() => {
     return () => {
-      sessionRef.current += 1;
       endSession();
     };
   }, [endSession]);
