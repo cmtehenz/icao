@@ -15,9 +15,10 @@ let cachedToken: AzureSpeechTokenResponse | null = null;
 let tokenFetchedAt = 0;
 
 let activeSynthesizer: { close: () => void } | null = null;
-let pausedPayload: { text: string; role: AzureVoiceRole; rate: number } | null = null;
+let pausedPayload: { text: string; role: AzureVoiceRole; rate: number; generation: number } | null = null;
 let resumeCallback: (() => void) | undefined;
 let suppressEndCallback = false;
+let speakGeneration = 0;
 
 export async function fetchAzureToken(force = false): Promise<AzureSpeechTokenResponse> {
   const now = Date.now();
@@ -49,20 +50,6 @@ export async function isAzureTtsAvailable(): Promise<boolean> {
   return !!(data.token && data.region);
 }
 
-function escapeXml(text: string): string {
-  return text
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
-}
-
-function buildSsml(text: string, voice: string, rate: number): string {
-  const prosodyRate =
-    rate <= 0.8 ? ' rate="-12%"' : rate >= 1.2 ? ' rate="+12%"' : "";
-  return `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US"><voice name="${voice}"><prosody${prosodyRate}>${escapeXml(text)}</prosody></voice></speak>`;
-}
-
 function closeActiveSynthesizer(suppressEnd: boolean): void {
   if (!activeSynthesizer) return;
   if (suppressEnd) suppressEndCallback = true;
@@ -71,6 +58,7 @@ function closeActiveSynthesizer(suppressEnd: boolean): void {
 }
 
 export function stopAzureSpeech(): void {
+  speakGeneration += 1;
   closeActiveSynthesizer(true);
   pausedPayload = null;
   resumeCallback = undefined;
@@ -95,13 +83,18 @@ export async function speakAzureText(
     return true;
   }
 
+  const myGeneration = ++speakGeneration;
   closeActiveSynthesizer(true);
   suppressEndCallback = false;
 
   let tokenData = await fetchAzureToken();
+  if (myGeneration !== speakGeneration) return false;
+
   if (!tokenData.token || !tokenData.region) {
     tokenData = await fetchAzureToken(true);
   }
+  if (myGeneration !== speakGeneration) return false;
+
   if (!tokenData.token || !tokenData.region) {
     const msg =
       tokenData.error ??
@@ -114,20 +107,20 @@ export async function speakAzureText(
   }
 
   const sdk = await loadSpeechSdk();
+  if (myGeneration !== speakGeneration) return false;
+
   const speechConfig = sdk.SpeechConfig.fromAuthorizationToken(tokenData.token, tokenData.region);
   speechConfig.speechSynthesisVoiceName = AZURE_VOICES[role];
   const synthesizer = new sdk.SpeechSynthesizer(speechConfig);
   activeSynthesizer = synthesizer;
-  pausedPayload = { text: trimmed, role, rate };
+  pausedPayload = { text: trimmed, role, rate, generation: myGeneration };
   resumeCallback = onEnd;
-
-  const voice = AZURE_VOICES[role];
-  const useSsml = rate !== 1;
-  const ssml = buildSsml(trimmed, voice, rate);
 
   const finish = (result: { reason: number; errorDetails?: string }, synth: { close: () => void }) => {
     synth.close();
     if (activeSynthesizer === synth) activeSynthesizer = null;
+
+    if (myGeneration !== speakGeneration) return false;
 
     if (suppressEndCallback) {
       suppressEndCallback = false;
@@ -158,6 +151,11 @@ export async function speakAzureText(
     const onFailure = (err: string) => {
       synthesizer.close();
       if (activeSynthesizer === synthesizer) activeSynthesizer = null;
+      if (myGeneration !== speakGeneration) {
+        suppressEndCallback = false;
+        resolve(false);
+        return;
+      }
       if (suppressEndCallback) {
         suppressEndCallback = false;
         resolve(false);
@@ -167,17 +165,6 @@ export async function speakAzureText(
       onEnd?.();
       resolve(false);
     };
-
-    if (useSsml) {
-      synthesizer.speakSsmlAsync(
-        ssml,
-        onSuccess,
-        (err) => {
-          synthesizer.speakTextAsync(trimmed, onSuccess, onFailure);
-        },
-      );
-      return;
-    }
 
     synthesizer.speakTextAsync(trimmed, onSuccess, onFailure);
   });

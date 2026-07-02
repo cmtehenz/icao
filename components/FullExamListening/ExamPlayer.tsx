@@ -45,6 +45,12 @@ export default function ExamPlayer({ exam, mode, startIndex, onBack, onModeChang
     startIndex,
   });
 
+  const { stop, ...controls } = player;
+
+  useEffect(() => {
+    stop();
+  }, [mode, stop]);
+
   const {
     items,
     currentItem,
@@ -57,12 +63,11 @@ export default function ExamPlayer({ exam, mode, startIndex, onBack, onModeChang
     setShowTranscript,
     play,
     pause,
-    stop,
     next,
     previous,
     restart,
     revealAndContinue,
-  } = player;
+  } = controls;
 
   const isPlaying = status === "playing";
   const isPaused = status === "paused";
@@ -239,7 +244,7 @@ export default function ExamPlayer({ exam, mode, startIndex, onBack, onModeChang
             <p className="fel-transcript-audio">
               🔊 Original ATC recording
               {currentItem.audioSrc && (
-                <audio className="fel-hidden-audio" src={currentItem.audioSrc} controls preload="metadata" />
+                <audio className="fel-hidden-audio" src={currentItem.audioSrc} preload="metadata" />
               )}
             </p>
           ) : (

@@ -90,12 +90,14 @@ export default function FullExamListeningApp() {
         )}
         {view === "player" && selectedExam && (
           <ExamPlayer
-            key={`${selectedExam.id}-${mode}-${startIndex}`}
+            key={`${selectedExam.id}-${startIndex}`}
             exam={selectedExam}
             mode={mode}
             startIndex={startIndex}
             onBack={handleBack}
-            onModeChange={setMode}
+            onModeChange={(nextMode) => {
+              setMode(nextMode);
+            }}
           />
         )}
       </div>

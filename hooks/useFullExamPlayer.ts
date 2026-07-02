@@ -38,9 +38,8 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
   const indexRef = useRef(startIndex);
   const speedRef = useRef(1);
   const modeRef = useRef(mode);
-  const shadowQueueRef = useRef<string[]>([]);
-  const shadowIdxRef = useRef(0);
-  const cancelledRef = useRef(false);
+  const runGenerationRef = useRef(0);
+  const pauseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const [currentIndex, setCurrentIndex] = useState(startIndex);
   const [status, setStatus] = useState<PlayerStatus>("idle");
@@ -59,6 +58,8 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
   const currentItem = items[currentIndex] ?? null;
   const progressPct = items.length ? Math.round((currentIndex / items.length) * 100) : 0;
 
+  const isActiveRun = useCallback((runId: number) => runGenerationRef.current === runId, []);
+
   const cleanupAudio = useCallback(() => {
     const a = audioRef.current;
     if (a) {
@@ -69,6 +70,27 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
     audioRef.current = null;
   }, []);
 
+  const clearPauseTimer = useCallback(() => {
+    if (pauseTimerRef.current) {
+      clearTimeout(pauseTimerRef.current);
+      pauseTimerRef.current = null;
+    }
+  }, []);
+
+  const invalidateRun = useCallback(() => {
+    runGenerationRef.current += 1;
+    clearPauseTimer();
+    stopSpeech();
+    cleanupAudio();
+  }, [cleanupAudio, clearPauseTimer]);
+
+  const beginRun = useCallback(() => {
+    invalidateRun();
+    const runId = runGenerationRef.current;
+    setStatus("playing");
+    return runId;
+  }, [invalidateRun]);
+
   const goToIndex = useCallback((idx: number) => {
     const clamped = Math.max(0, Math.min(items.length - 1, idx));
     indexRef.current = clamped;
@@ -77,27 +99,30 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
   }, [examId, items.length]);
 
   const stop = useCallback(() => {
-    cancelledRef.current = true;
-    stopSpeech();
-    cleanupAudio();
-    shadowQueueRef.current = [];
+    invalidateRun();
     setStatus("idle");
-  }, [cleanupAudio]);
+  }, [invalidateRun]);
 
-  const playPause = useCallback(async (seconds: number) => {
-    return new Promise<void>((resolve) => {
-      if (cancelledRef.current) {
-        resolve();
-        return;
-      }
-      setTimeout(() => resolve(), seconds * 1000 / speedRef.current);
-    });
-  }, []);
+  const playPause = useCallback(
+    (seconds: number, runId: number) =>
+      new Promise<void>((resolve) => {
+        if (!isActiveRun(runId)) {
+          resolve();
+          return;
+        }
+        clearPauseTimer();
+        pauseTimerRef.current = setTimeout(() => {
+          pauseTimerRef.current = null;
+          resolve();
+        }, seconds * 1000 / speedRef.current);
+      }),
+    [clearPauseTimer, isActiveRun],
+  );
 
   const playTts = useCallback(
-    (text: string, voice: VoiceType) =>
+    (text: string, voice: VoiceType, runId: number) =>
       new Promise<void>((resolve) => {
-        if (cancelledRef.current) {
+        if (!isActiveRun(runId)) {
           resolve();
           return;
         }
@@ -105,19 +130,19 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
         speakText(text, voice, {
           rate: speedRef.current,
           onEnd: () => {
-            if (settled) return;
+            if (settled || !isActiveRun(runId)) return;
             settled = true;
             resolve();
           },
         });
       }),
-    [],
+    [isActiveRun],
   );
 
   const playAudioFile = useCallback(
-    (src: string) =>
+    (src: string, runId: number) =>
       new Promise<void>((resolve) => {
-        if (cancelledRef.current || !src) {
+        if (!isActiveRun(runId) || !src) {
           resolve();
           return;
         }
@@ -126,34 +151,40 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
         const audio = new Audio(src);
         audio.playbackRate = speedRef.current;
         audioRef.current = audio;
-        audio.onended = () => resolve();
-        audio.onerror = () => resolve();
+        audio.onended = () => {
+          if (audioRef.current === audio) audioRef.current = null;
+          resolve();
+        };
+        audio.onerror = () => {
+          if (audioRef.current === audio) audioRef.current = null;
+          resolve();
+        };
         void audio.play().catch(() => resolve());
       }),
-    [cleanupAudio],
+    [cleanupAudio, isActiveRun],
   );
 
   const playShadowSentences = useCallback(
-    async (text: string) => {
+    async (text: string, runId: number) => {
       const sentences = splitSentences(text);
       for (const sentence of sentences) {
-        if (cancelledRef.current) return;
+        if (!isActiveRun(runId)) return;
         setStatus("playing");
-        await playTts(sentence, "male_candidate");
-        if (cancelledRef.current) return;
+        await playTts(sentence, "male_candidate", runId);
+        if (!isActiveRun(runId)) return;
         setStatus("waiting_shadow");
-        await playPause(3);
+        await playPause(3, runId);
       }
     },
-    [playPause, playTts],
+    [isActiveRun, playPause, playTts],
   );
 
   const shouldSkipModel = (item: ExamAudioItem) =>
     modeRef.current === "question_only" && item.type === "model_answer";
 
   const playItem = useCallback(
-    async (item: ExamAudioItem): Promise<"next" | "wait_reveal" | "done"> => {
-      if (cancelledRef.current) return "done";
+    async (item: ExamAudioItem, runId: number): Promise<"next" | "wait_reveal" | "done"> => {
+      if (!isActiveRun(runId)) return "done";
 
       if (shouldSkipModel(item)) {
         setStatus("waiting_reveal");
@@ -161,64 +192,59 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
       }
 
       if (item.type === "pause") {
-        await playPause(item.pauseSeconds ?? 1);
-        return "next";
+        await playPause(item.pauseSeconds ?? 1, runId);
+        return isActiveRun(runId) ? "next" : "done";
       }
 
       if (item.type === "original_audio" && item.audioSrc) {
         setStatus("playing");
-        await playAudioFile(item.audioSrc);
-        return "next";
+        await playAudioFile(item.audioSrc, runId);
+        return isActiveRun(runId) ? "next" : "done";
       }
 
       if (!item.text) return "next";
 
       if (modeRef.current === "shadowing" && item.type === "model_answer") {
         setStatus("playing");
-        await playShadowSentences(item.text);
-        return "next";
+        await playShadowSentences(item.text, runId);
+        return isActiveRun(runId) ? "next" : "done";
       }
 
       setStatus("playing");
-      await playTts(item.text, voiceForItem(item));
-      return "next";
+      await playTts(item.text, voiceForItem(item), runId);
+      return isActiveRun(runId) ? "next" : "done";
     },
-    [playAudioFile, playPause, playShadowSentences, playTts],
+    [isActiveRun, playAudioFile, playPause, playShadowSentences, playTts],
   );
 
   const runFrom = useCallback(
-    async (fromIndex: number) => {
-      cancelledRef.current = false;
-
+    async (fromIndex: number, runId: number) => {
       let i = fromIndex;
-      while (i < items.length && !cancelledRef.current) {
+      while (i < items.length && isActiveRun(runId)) {
         goToIndex(i);
         const item = items[i];
-        const result = await playItem(item);
+        const result = await playItem(item, runId);
 
+        if (!isActiveRun(runId)) break;
         if (result === "wait_reveal") return;
         if (result === "done") break;
 
-        if (autoPlay || i < fromIndex) {
-          i += 1;
-        } else {
-          i += 1;
-        }
+        i += 1;
       }
 
-      if (!cancelledRef.current && i >= items.length) {
+      if (isActiveRun(runId) && i >= items.length) {
         markExamCompleted(examId);
         setStatus("idle");
         onComplete?.();
       }
     },
-    [autoPlay, examId, goToIndex, items, onComplete, playItem],
+    [examId, goToIndex, isActiveRun, items, onComplete, playItem],
   );
 
   const play = useCallback(() => {
     if (status === "waiting_reveal" || status === "waiting_shadow") return;
+
     if (status === "paused") {
-      cancelledRef.current = false;
       const a = audioRef.current;
       if (a) {
         a.playbackRate = speedRef.current;
@@ -230,6 +256,9 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
       setStatus("playing");
       return;
     }
+
+    if (status === "playing") return;
+
     if (status === "idle") {
       const p = loadListeningProgress();
       saveListeningProgress({
@@ -238,40 +267,43 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
         lastPlayedAt: new Date().toISOString(),
       });
     }
-    void runFrom(indexRef.current);
-  }, [currentItem, examId, items, runFrom, speed, status]);
+
+    const runId = beginRun();
+    void runFrom(indexRef.current, runId);
+  }, [beginRun, currentItem, examId, items, runFrom, speed, status]);
 
   const pause = useCallback(() => {
+    if (status !== "playing" && status !== "waiting_shadow") return;
+    clearPauseTimer();
     pauseSpeech();
     const a = audioRef.current;
     if (a) a.pause();
     setStatus("paused");
-  }, []);
+  }, [clearPauseTimer, status]);
 
   const revealAndContinue = useCallback(() => {
     const item = items[indexRef.current];
     if (!item || item.type !== "model_answer") return;
-    cancelledRef.current = false;
-    setStatus("playing");
+    const runId = beginRun();
     void (async () => {
       if (modeRef.current === "shadowing") {
-        await playShadowSentences(item.text ?? "");
+        await playShadowSentences(item.text ?? "", runId);
       } else {
-        await playTts(item.text ?? "", "male_candidate");
+        await playTts(item.text ?? "", "male_candidate", runId);
       }
-      if (cancelledRef.current) return;
-      const next = indexRef.current + 1;
-      goToIndex(next);
-      void runFrom(next);
+      if (!isActiveRun(runId)) return;
+      const nextIdx = indexRef.current + 1;
+      goToIndex(nextIdx);
+      void runFrom(nextIdx, runId);
     })();
-  }, [goToIndex, items, playShadowSentences, playTts, runFrom]);
+  }, [beginRun, goToIndex, isActiveRun, items, playShadowSentences, playTts, runFrom]);
 
   const next = useCallback(() => {
-    stop();
+    const runId = beginRun();
     const nextIdx = Math.min(items.length - 1, indexRef.current + 1);
     goToIndex(nextIdx);
-    void runFrom(nextIdx);
-  }, [goToIndex, items.length, runFrom, stop]);
+    void runFrom(nextIdx, runId);
+  }, [beginRun, goToIndex, items.length, runFrom]);
 
   const previous = useCallback(() => {
     stop();
@@ -280,18 +312,16 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
   }, [goToIndex, stop]);
 
   const restart = useCallback(() => {
-    stop();
+    const runId = beginRun();
     goToIndex(0);
-    void runFrom(0);
-  }, [goToIndex, runFrom, stop]);
+    void runFrom(0, runId);
+  }, [beginRun, goToIndex, runFrom]);
 
   useEffect(() => {
     return () => {
-      cancelledRef.current = true;
-      stopSpeech();
-      cleanupAudio();
+      invalidateRun();
     };
-  }, [cleanupAudio]);
+  }, [invalidateRun]);
 
   return {
     items,
