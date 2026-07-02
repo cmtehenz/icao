@@ -69,7 +69,7 @@ export type ConnectorSet = {
 export const CONNECTOR_SETS: ConnectorSet[] = [
   {
     id: "level4",
-    label: "ICAO 4",
+    label: "Fácil",
     opener: "",
     idea1: "First,",
     idea2: "Also,",

@@ -2,7 +2,7 @@
   {
     "num": "01",
     "question": "In your opinion, what makes a briefing effective?",
-    "memory": "Information → Risk Awareness → Team Coordination",
+    "memory": "Clear → Information → Risk → Team",
     "opener": "In my opinion, an effective helicopter briefing is clear, complete and focused on safety.",
     "ideas": [
       "1 - INFORMATION: First of all, it must include weather, wind, landing site conditions, aircraft status, fuel, passengers and route limitations.",
@@ -34,18 +34,46 @@
       "helicopter"
     ],
     "memoryLabels": [
+      "Clear",
       "Information",
-      "Risk Awareness",
-      "Team Coordination"
+      "Risk",
+      "Team"
     ],
     "targetWords": 109,
     "keywords": [
-      "Weather",
-      "Landing site",
-      "Fuel",
-      "Power margin",
-      "Team coordination"
-    ]
+      "Clear",
+      "Information",
+      "Risk",
+      "Team"
+    ],
+    "memoryIcons": [
+      "📋",
+      "🌤️",
+      "⚠️",
+      "👥"
+    ],
+    "answerLevel4": "In my opinion, an effective briefing is clear, complete and focused on safety. It must include weather, landing site conditions, fuel and aircraft status. It should also discuss risks, obstacles and emergency options. As a result, the whole crew is aligned before departure.",
+    "answerLevel5": "In my opinion, an effective helicopter briefing is clear, complete and focused on safety. First of all, it must include weather, wind, landing site conditions, aircraft status, fuel and route limitations. Additionally, it should discuss power margins, obstacles, emergency landing areas and abnormal procedures. Finally, it aligns the crew and gives everyone the chance to clarify doubts before operations. For example, if wind or visibility may affect the landing site, the crew should discuss alternate options before takeoff. Overall, an effective briefing improves coordination and enhances flight safety.",
+    "level4Example": "For example, if wind or visibility may affect the landing site, the crew should discuss alternate options before takeoff.",
+    "level4Steps": [
+      {
+        "label": "Clear",
+        "sentence": "An effective briefing is clear, complete and focused on safety."
+      },
+      {
+        "label": "Information",
+        "sentence": "It must include weather, landing site conditions, fuel and aircraft status."
+      },
+      {
+        "label": "Risk",
+        "sentence": "It should also discuss risks, obstacles and emergency options."
+      },
+      {
+        "label": "Team",
+        "sentence": "As a result, the whole crew is aligned before departure."
+      }
+    ],
+    "studyTips": "Palavras-chave para decorar: Clear → Information → Risk → Team\n\nSequência lógica:\n\n• O que é? → Briefing claro e completo.\n• O que inclui? → Weather, site, fuel, aircraft.\n• O que antecipa? → Riscos e emergências.\n• Qual o resultado? → Crew alinhada.\n\nConectores fáceis: Also, / It also / As a result,\n\nCom essas quatro ideias você fala 45–60 segundos sem decorar texto inteiro."
   },
   {
     "num": "02",
@@ -88,12 +116,33 @@
     ],
     "targetWords": 122,
     "keywords": [
-      "Weather",
-      "Visibility",
-      "Decision making",
-      "Divert",
-      "Safety"
-    ]
+      "Situation",
+      "Actions",
+      "Lesson"
+    ],
+    "memoryIcons": [
+      "🌧️",
+      "✈️",
+      "💡"
+    ],
+    "answerLevel4": "One difficult situation I had was related to weather and visibility near the landing site. The visibility decreased and the workload increased quickly. I stayed calm, communicated clearly and chose the safest option. That experience taught me to prepare better and divert when necessary.",
+    "answerLevel5": "One of the most difficult situations I have had in helicopter flight was related to weather and visibility near the landing site. First of all, the visibility started to decrease and the workload increased quickly during the final phase of flight. Additionally, I had to stay calm, monitor power and wind, communicate clearly and choose the safest option. Finally, that experience reinforced the importance of preparation, conservative decisions and knowing when to divert. For example, instead of forcing a landing in deteriorating conditions, a pilot should be ready to delay, divert or return to a safer area. Overall, difficult situations help pilots become more disciplined and safety-oriented.",
+    "level4Example": "For example, instead of forcing a landing in bad conditions, I was ready to divert to a safer area.",
+    "level4Steps": [
+      {
+        "label": "Situation",
+        "sentence": "One difficult situation I had was related to weather and visibility near the landing site."
+      },
+      {
+        "label": "Actions",
+        "sentence": "I stayed calm, communicated clearly and chose the safest option."
+      },
+      {
+        "label": "Lesson",
+        "sentence": "That experience taught me to prepare better and divert when necessary."
+      }
+    ],
+    "studyTips": "Palavras-chave para decorar: Situation → Actions → Lesson\n\nHistória em 3 partes (STAR simplificado):\n\n• Situation → O que aconteceu? (weather, visibility)\n• Actions → O que você fez? (calm, communicate, decide)\n• Lesson → O que aprendeu? (prepare, divert, safety)\n\nConectores: First, / Also, / Finally, / For example,\n\nConte como uma história real — não precisa decorar palavra por palavra."
   },
   {
     "num": "03",
@@ -138,15 +187,36 @@
     "keywords": [
       "Preparation",
       "Calmness",
-      "Procedures",
-      "Safety first",
-      "Check ride"
-    ]
+      "Safety"
+    ],
+    "memoryIcons": [
+      "📖",
+      "😌",
+      "🛡️"
+    ],
+    "answerLevel4": "Before my first check ride, my instructor gave me important advice. He told me to review procedures and emergency actions. He also advised me to stay calm during hover and maneuvers. Finally, he said safety and good judgment are more important than looking perfect.",
+    "answerLevel5": "Before my first helicopter check ride, my instructor gave me advice that I still remember today. First of all, he told me to review procedures, performance limits and emergency actions for the helicopter. Additionally, he advised me to stay calm during hover, transitions and maneuvering under evaluation. Finally, he said that safety and good judgment were more important than trying to look perfect. For example, if a maneuver did not go exactly as planned, I should correct it calmly, communicate and keep flying safely. Overall, his advice helped me understand that a good pilot is prepared, calm and focused on safety.",
+    "level4Example": "For example, if a maneuver did not go as planned, I should correct it calmly and keep flying safely.",
+    "level4Steps": [
+      {
+        "label": "Preparation",
+        "sentence": "He told me to review procedures and emergency actions."
+      },
+      {
+        "label": "Calmness",
+        "sentence": "He advised me to stay calm during hover and maneuvers."
+      },
+      {
+        "label": "Safety",
+        "sentence": "Safety and good judgment are more important than looking perfect."
+      }
+    ],
+    "studyTips": "Palavras-chave: Preparation → Calmness → Safety\n\n• O que estudar? → Procedures e emergências.\n• Como agir? → Stay calm no hover.\n• O que importa? → Safety first, not ego.\n\nConectores: He told me... / He also... / Finally,\n\nPergunta pessoal — use experiência real do seu check ride."
   },
   {
     "num": "04",
     "question": "Why do pilots need to take medical exams?",
-    "memory": "H-M-S",
+    "memory": "Physical → Mental → Safety",
     "opener": "In my opinion, medical exams are extremely important for helicopter pilots.",
     "ideas": [
       "1 - PHYSICAL HEALTH: First of all, they help identify medical conditions early and keep pilots fit for demanding helicopter operations.",
@@ -178,23 +248,44 @@
       "helicopter"
     ],
     "memoryLabels": [
-      "PHYSICAL HEALTH",
-      "MENTAL HEALTH",
-      "FLIGHT SAFETY"
+      "Physical",
+      "Mental",
+      "Safety"
     ],
     "targetWords": 108,
     "keywords": [
-      "Health",
-      "Fit to fly",
-      "Safety",
-      "Regular checks",
-      "Medical conditions"
-    ]
+      "Physical",
+      "Mental",
+      "Safety"
+    ],
+    "memoryIcons": [
+      "💪",
+      "🧠",
+      "✈️"
+    ],
+    "answerLevel4": "Medical exams are extremely important for pilots. They help identify physical conditions early and keep pilots fit to fly. They also monitor stress, fatigue and concentration. As a result, they protect the pilot, passengers and flight safety.",
+    "answerLevel5": "In my opinion, medical exams are extremely important for helicopter pilots. First of all, they help identify medical conditions early and keep pilots fit for demanding helicopter operations. Additionally, they help monitor stress, fatigue and concentration, which are critical in single-pilot helicopter flights. Finally, they ensure the pilot is medically fit to manage hover, low-level flying and high workload safely. For example, a pilot with undetected fatigue may have slower reactions during approach and landing. Overall, regular medical exams protect the pilot, passengers and flight safety.",
+    "level4Example": "For example, a pilot with undetected fatigue may have slower reactions during approach and landing.",
+    "level4Steps": [
+      {
+        "label": "Physical",
+        "sentence": "Medical exams identify physical conditions and keep pilots fit to fly."
+      },
+      {
+        "label": "Mental",
+        "sentence": "They also monitor stress, fatigue and concentration."
+      },
+      {
+        "label": "Safety",
+        "sentence": "As a result, they protect the pilot, passengers and flight safety."
+      }
+    ],
+    "studyTips": "Palavras-chave: Physical → Mental → Safety (lembre H-M-S)\n\n• Physical → Fit to fly, condições médicas.\n• Mental → Stress, fatigue, concentração.\n• Safety → Protege piloto, passageiros e operação.\n\nConectores: They help... / They also... / As a result,\n\nPergunta factual — 3 frases bastam para ICAO 4."
   },
   {
     "num": "05",
     "question": "What will communications between pilots and ATC be like in ten years?",
-    "memory": "Digital → AI → Human Safety",
+    "memory": "Digital → AI → Radio → Safety",
     "opener": "I think communication will become more digital in the future.",
     "ideas": [
       "1 - AI: AI will probably help pilots and controllers with routine tasks.",
@@ -229,16 +320,43 @@
     "memoryLabels": [
       "Digital",
       "AI",
-      "Human Safety"
+      "Radio",
+      "Safety"
     ],
     "targetWords": 95,
     "keywords": [
-      "Digital communication",
+      "Digital",
       "AI",
       "Radio",
-      "Emergencies",
-      "Flight safety"
-    ]
+      "Safety"
+    ],
+    "memoryIcons": [
+      "📱",
+      "🤖",
+      "📻",
+      "🛡️"
+    ],
+    "answerLevel5": "In my opinion, communication between pilots and ATC will become more digital in the next ten years. First of all, AI will probably help pilots and controllers with routine tasks and reduce workload on standard clearances. Additionally, pilots and ATC will still communicate by radio, especially during emergencies when clear and immediate contact is critical. Finally, human communication will remain essential because flight safety depends on judgment, confirmation and teamwork. For example, AI may support routine clearances, but during an emergency pilots still need direct voice contact with ATC. Overall, technology will support communication, but human interaction will always be essential for flight safety.",
+    "level4Example": "For example, AI may support routine clearances, but during an emergency pilots still need direct voice contact with ATC.",
+    "level4Steps": [
+      {
+        "label": "Digital",
+        "sentence": "Communication will become more digital in the future."
+      },
+      {
+        "label": "AI",
+        "sentence": "AI will probably help pilots and controllers with routine tasks."
+      },
+      {
+        "label": "Radio",
+        "sentence": "However, pilots and ATC will still communicate by radio, especially during emergencies."
+      },
+      {
+        "label": "Safety",
+        "sentence": "Human communication will always be essential for flight safety."
+      }
+    ],
+    "studyTips": "Palavras-chave: Digital → AI → Radio → Safety\n\n• Futuro → Mais digital.\n• Tecnologia → AI ajuda rotina.\n• Emergência → Radio continua essencial.\n• Resultado → Human safety sempre.\n\nConector importante: However, (contraste entre AI e radio)\n\nPergunta de opinião/futuro — use In my opinion, no início."
   },
   {
     "num": "06",
@@ -282,12 +400,32 @@
     ],
     "targetWords": 88,
     "keywords": [
-      "Standard phraseology",
-      "Clear communication",
-      "Misunderstandings",
-      "Pilots and controllers",
-      "Flight safety"
-    ]
+      "Standard",
+      "Clear",
+      "Safety"
+    ],
+    "memoryIcons": [
+      "🌍",
+      "💬",
+      "🛡️"
+    ],
+    "answerLevel5": "In my opinion, ICAO phraseology is essential for aviation communication. First of all, it is standard around the world, so pilots and controllers can understand each other in any country. Additionally, it makes communication clear and easy to understand, especially during high workload. Finally, it reduces misunderstandings between pilots and controllers and improves flight safety. For example, when pilots use standard phraseology, ATC can understand instructions quickly even in busy airspace. Overall, ICAO phraseology improves flight safety through clear and standardized communication.",
+    "level4Example": "For example, when pilots use standard phraseology, ATC can understand instructions quickly even in busy airspace.",
+    "level4Steps": [
+      {
+        "label": "Standard",
+        "sentence": "ICAO phraseology is standard around the world."
+      },
+      {
+        "label": "Clear",
+        "sentence": "It makes communication clear and easy to understand."
+      },
+      {
+        "label": "Safety",
+        "sentence": "As a result, it improves flight safety."
+      }
+    ],
+    "studyTips": "Palavras-chave: Standard → Clear → Safety\n\n• Por quê? → Padrão mundial (worldwide).\n• O que faz? → Communication clara.\n• Resultado → Menos erros, mais safety.\n\nConectores: It also / As a result,\n\nResposta curta e objetiva — uma das mais fáceis do exame."
   },
   {
     "num": "07",
@@ -320,12 +458,29 @@
     "answerLevel5": "I became interested in aviation when I was very young. I was always fascinated by helicopters, aviation technology and the work pilots do. As I got older, my interest became stronger, so I decided to start my flight training. Today, I work as a helicopter pilot, and I still enjoy learning and improving my skills. Aviation is not only my job, but also my passion.",
     "answerExtra": "I also liked the responsibility and the challenge of being a pilot.",
     "level4Steps": [
-      { "label": "Young", "sentence": "I became interested in aviation when I was very young." },
-      { "label": "Helicopters", "sentence": "I was fascinated by helicopters." },
-      { "label": "Training", "sentence": "I started my flight training." },
-      { "label": "Career", "sentence": "Today, I work as a helicopter pilot." }
+      {
+        "label": "Young",
+        "sentence": "I became interested in aviation when I was very young."
+      },
+      {
+        "label": "Helicopters",
+        "sentence": "I was fascinated by helicopters."
+      },
+      {
+        "label": "Training",
+        "sentence": "I started my flight training."
+      },
+      {
+        "label": "Career",
+        "sentence": "Today, I work as a helicopter pilot."
+      }
     ],
-    "memoryIcons": ["👦", "🚁", "🎓", "👨‍✈️"],
+    "memoryIcons": [
+      "👦",
+      "🚁",
+      "🎓",
+      "👨‍✈️"
+    ],
     "difficulty": "Easy",
     "category": "helicopter",
     "tags": [
@@ -345,7 +500,8 @@
       "Helicopters",
       "Training",
       "Career"
-    ]
+    ],
+    "studyTips": "Palavras-chave: Young → Helicopters → Training → Career\n\nSua história pessoal em 4 passos:\n\n• Quando? → Very young.\n• O quê fascinou? → Helicopters.\n• O que fez? → Flight training.\n• Hoje? → Helicopter pilot career.\n\nConectores: Later, / Today,\n\nConte com emoção real — examinador gosta de resposta autêntica."
   },
   {
     "num": "08",
@@ -378,12 +534,29 @@
     "answerLevel5": "A pilot should perform a missed approach whenever a safe landing cannot be completed. This may happen because of poor visibility, bad weather, traffic on the runway or an unstable approach. In that situation, the pilot must follow the published missed approach procedure or ATC instructions. After that, the pilot can make another approach or divert to an alternate airport if necessary.",
     "level4Example": "For example, if I can't see the runway at the minimum altitude, I must perform a missed approach and follow the published procedure.",
     "level4Steps": [
-      { "label": "Unsafe", "sentence": "A pilot should perform a missed approach when it is not safe to land." },
-      { "label": "Weather", "sentence": "This may happen because of bad weather or poor visibility." },
-      { "label": "Runway", "sentence": "It can also happen because of traffic or a runway obstruction." },
-      { "label": "Try again", "sentence": "Then, the pilot follows the procedure and tries another approach or diverts." }
+      {
+        "label": "Unsafe",
+        "sentence": "A pilot should perform a missed approach when it is not safe to land."
+      },
+      {
+        "label": "Weather",
+        "sentence": "This may happen because of bad weather or poor visibility."
+      },
+      {
+        "label": "Runway",
+        "sentence": "It can also happen because of traffic or a runway obstruction."
+      },
+      {
+        "label": "Try again",
+        "sentence": "Then, the pilot follows the procedure and tries another approach or diverts."
+      }
     ],
-    "memoryIcons": ["❌🛬", "🌧️", "🚧", "🔄"],
+    "memoryIcons": [
+      "❌🛬",
+      "🌧️",
+      "🚧",
+      "🔄"
+    ],
     "difficulty": "Medium",
     "category": "helicopter",
     "tags": [
@@ -403,54 +576,84 @@
       "Weather",
       "Runway",
       "Try again"
-    ]
+    ],
+    "studyTips": "Palavras-chave: Unsafe → Weather → Runway → Try again\n\n• Quando? → Not safe to land.\n• Por quê? → Weather, traffic, obstruction.\n• O que fazer? → Follow procedure / ATC.\n• Depois? → Another approach or divert.\n\nConectores: This may happen... / Then,\n\nProcedimento técnico — fale com calma e clareza."
   },
   {
     "num": "09",
     "question": "How does a flight simulator help a pilot train for emergencies?",
-    "memory": "Practice → Emergency → Decision Making",
-    "opener": "In my opinion, a helicopter flight simulator is one of the best tools for emergency training.",
+    "memory": "Safe → Practice → Emergencies → Confidence",
+    "opener": "A flight simulator helps pilots train in a safe environment.",
     "ideas": [
-      "1 - PRACTICE: First of all, it allows pilots to practice abnormal situations without putting anyone at risk.",
-      "2 - EMERGENCY: Additionally, pilots can train engine failure, hydraulics off, bad weather and emergency landing procedures.",
-      "3 - DECISION MAKING: Finally, simulators improve reaction time, confidence and decision making under pressure."
+      "1 - SAFE: First of all, a flight simulator provides a safe environment for training.",
+      "2 - PRACTICE: Additionally, pilots can practice many different situations.",
+      "3 - EMERGENCIES: They can train engine failures, bad weather and system failures.",
+      "4 - CONFIDENCE: Finally, this makes pilots more confident and better prepared."
     ],
-    "example": "For example, a pilot can practice autorotation and engine failure after takeoff several times until the correct response becomes more natural.",
-    "conclusion": "Overall, helicopter simulator training improves preparation, reduces stress and enhances flight safety.",
+    "example": "For example, pilots can practice an engine failure or hydraulic failure many times until they know exactly what to do.",
+    "conclusion": "Overall, simulators improve decision-making and prepare pilots for real emergencies.",
     "verbs": [
       "train",
       "practice",
       "simulate",
-      "react",
-      "improve"
+      "improve",
+      "prepare"
     ],
     "vocab": [
       "flight simulator",
-      "autorotation",
+      "safe environment",
       "engine failure",
-      "emergency training",
-      "decision making"
+      "emergency procedures",
+      "confidence"
     ],
-    "answer": "In my opinion, a helicopter flight simulator is one of the best tools for emergency training. 1 - PRACTICE: First of all, it allows pilots to practice abnormal situations without putting anyone at risk. 2 - EMERGENCY: Additionally, pilots can train engine failure, hydraulics off, bad weather and emergency landing procedures. 3 - DECISION MAKING: Finally, simulators improve reaction time, confidence and decision making under pressure. For example, a pilot can practice autorotation and engine failure after takeoff several times until the correct response becomes more natural. Overall, helicopter simulator training improves preparation, reduces stress and enhances flight safety.",
-    "difficulty": "Hard",
+    "answer": "A flight simulator helps pilots train in a safe environment. 1 - SAFE: First of all, it provides a safe environment for training without any real risk. 2 - PRACTICE: Additionally, pilots can practice many different situations. 3 - EMERGENCIES: They can train engine failures, bad weather and system failures. 4 - CONFIDENCE: Finally, this makes pilots more confident and better prepared. For example, pilots can practice an engine failure or hydraulic failure many times until they know exactly what to do. Overall, simulators improve decision-making and prepare pilots for real emergencies.",
+    "answerLevel4": "A flight simulator helps pilots train in a safe environment. They can practice different emergency situations without any real risk. It also improves decision-making and emergency procedures. As a result, pilots become more confident and better prepared for real flights.",
+    "answerLevel5": "A flight simulator is a very useful training tool because it allows pilots to practice in a safe environment without any real risk. Pilots can train different emergency situations, such as engine failures, bad weather and system malfunctions. It also helps improve decision-making, communication and crew coordination. As a result, pilots become more confident and better prepared to handle real emergencies safely.",
+    "level4Example": "For example, pilots can practice an engine failure or hydraulic failure many times until they know exactly what to do.",
+    "level4Steps": [
+      {
+        "label": "Safe",
+        "sentence": "A flight simulator provides a safe environment for training."
+      },
+      {
+        "label": "Practice",
+        "sentence": "Pilots can practice many different situations."
+      },
+      {
+        "label": "Emergencies",
+        "sentence": "They can train engine failures, bad weather and system failures."
+      },
+      {
+        "label": "Confidence",
+        "sentence": "This makes pilots more confident and better prepared."
+      }
+    ],
+    "memoryIcons": [
+      "🛡️",
+      "🎯",
+      "🚨",
+      "👨‍✈️"
+    ],
+    "studyTips": "Palavras-chave: Safe → Practice → Emergencies → Confidence\n\n• Onde? → Safe environment.\n• O que faz? → Practice emergencies.\n• O que melhora? → Decision-making.\n• Resultado? → Confidence e safety.\n\nConectores: It also / As a result,\n\nUma das mais fáceis de memorizar — sequência lógica.",
+    "difficulty": "Medium",
     "category": "helicopter",
     "tags": [
       "helicopter",
-      "hard",
-      "helicopter"
+      "medium",
+      "training"
     ],
     "memoryLabels": [
+      "Safe",
       "Practice",
-      "Emergency",
-      "Decision Making"
+      "Emergencies",
+      "Confidence"
     ],
-    "targetWords": 99,
+    "targetWords": 95,
     "keywords": [
-      "Abnormal situations",
-      "Engine failure",
-      "Autorotation",
-      "Decision making",
-      "Practice"
+      "Safe",
+      "Practice",
+      "Emergencies",
+      "Confidence"
     ]
   },
   {
@@ -494,11 +697,32 @@
     ],
     "keywords": [
       "Discipline",
-      "Procedures",
-      "Aircraft limits",
-      "Safety judgment",
-      "Training"
-    ]
+      "Limits",
+      "Safety"
+    ],
+    "memoryIcons": [
+      "📋",
+      "⚖️",
+      "🛡️"
+    ],
+    "answerLevel4": "During my training, my instructor gave me advice I still follow today. He told me to respect procedures, checklists and standard calls. He also advised me to know the aircraft limits, especially power and weather. Finally, he said safety and good judgment are always more important than speed or ego.",
+    "answerLevel5": "During my helicopter training, my instructor gave me several pieces of advice that I still follow today. First of all, he told me to respect procedures, checklists and standard calls in every phase of flight. Additionally, he advised me to know the aircraft limits, especially power, weight and weather limitations. Finally, he said that safety and good judgment are always more important than speed or ego. For example, he always told me not to rush a hover or landing just because someone was waiting on the ground. Overall, the best advice was to stay disciplined, know my limits and make conservative decisions as a helicopter pilot.",
+    "level4Example": "For example, he told me not to rush a hover or landing just because someone was waiting on the ground.",
+    "level4Steps": [
+      {
+        "label": "Discipline",
+        "sentence": "He told me to respect procedures, checklists and standard calls."
+      },
+      {
+        "label": "Limits",
+        "sentence": "He advised me to know the aircraft limits, especially power and weather."
+      },
+      {
+        "label": "Safety",
+        "sentence": "Safety and good judgment are more important than speed or ego."
+      }
+    ],
+    "studyTips": "Palavras-chave: Discipline → Limits → Safety\n\n• Discipline → Procedures e checklists.\n• Limits → Power, weight, weather.\n• Safety → Judgment over ego.\n\nConectores: He told me... / He also... / Finally,\n\nSimilar ao card 03 — use conselhos reais do seu instrutor."
   },
   {
     "num": "11",
@@ -542,11 +766,32 @@
     "targetWords": 105,
     "keywords": [
       "Technology",
-      "Offshore growth",
-      "HEMS",
-      "Helipad infrastructure",
-      "Safety culture"
-    ]
+      "Growth",
+      "Safety"
+    ],
+    "memoryIcons": [
+      "🔧",
+      "📈",
+      "🛡️"
+    ],
+    "answerLevel4": "From my point of view, Brazilian aviation will continue to grow and modernize. Helicopters and navigation systems will become more technological and connected. Regional and offshore operations may also expand. As a result, training and safety culture will probably continue to improve.",
+    "answerLevel5": "From my point of view, Brazilian aviation, especially helicopter operations, will continue to grow and modernize. First of all, helicopters, helipads and navigation systems will become more technological and connected. Additionally, regional and offshore helicopter operations may expand because Brazil is a large country with diverse missions. Finally, training, regulation and safety culture in rotary-wing aviation will probably continue to improve. For example, better helipad infrastructure and more modern helicopters can support offshore, HEMS and executive operations more safely. Overall, I believe Brazilian helicopter aviation has a strong future if technology and safety continue improving together.",
+    "level4Example": "For example, better helipad infrastructure can support offshore and HEMS operations more safely.",
+    "level4Steps": [
+      {
+        "label": "Technology",
+        "sentence": "Helicopters and navigation systems will become more technological and connected."
+      },
+      {
+        "label": "Growth",
+        "sentence": "Regional and offshore operations may expand in Brazil."
+      },
+      {
+        "label": "Safety",
+        "sentence": "Training and safety culture will probably continue to improve."
+      }
+    ],
+    "studyTips": "Palavras-chave: Technology → Growth → Safety\n\n• Futuro técnico → Mais tecnologia.\n• Mercado → Crescimento offshore/HEMS.\n• Resultado → Safety culture melhora.\n\nConectores: From my point of view, / Additionally, / As a result,\n\nMencione Brasil e helicópteros — personalize com o que você vê no mercado."
   },
   {
     "num": "12",
@@ -590,10 +835,31 @@
     "targetWords": 108,
     "keywords": [
       "Location",
-      "Procedures",
-      "ATC familiarity",
-      "Weather patterns",
-      "Regular operations"
-    ]
+      "Operations",
+      "Experience"
+    ],
+    "memoryIcons": [
+      "📍",
+      "🛫",
+      "⭐"
+    ],
+    "answerLevel4": "The airport I operate at the most is where I have built solid experience as a helicopter pilot. It is in a region with specific weather patterns and terrain. It has particular procedures, helipads and traffic patterns that I know well. Operating there regularly improves my familiarity, confidence and safety.",
+    "answerLevel5": "The airport I operate at the most is one where I have built solid experience as a helicopter pilot. First of all, it is located in a region where I frequently conduct helicopter operations, with specific weather patterns and terrain features. Additionally, it has particular procedures, runways or helipads, traffic patterns and restrictions that I know very well. Finally, my regular operations there have helped me understand local ATC, common delays and the safest approaches. For example, because I operate there often, I know the typical wind direction, the busiest periods and the best alternate options if weather deteriorates. Overall, operating regularly at the same airport improves familiarity, confidence and safety in helicopter operations.",
+    "level4Example": "For example, I know the typical wind direction, the busiest periods and the best alternate options if weather deteriorates.",
+    "level4Steps": [
+      {
+        "label": "Location",
+        "sentence": "It is in a region with specific weather patterns and terrain."
+      },
+      {
+        "label": "Operations",
+        "sentence": "It has particular procedures, helipads and traffic patterns that I know well."
+      },
+      {
+        "label": "Experience",
+        "sentence": "Operating there regularly improves my familiarity, confidence and safety."
+      }
+    ],
+    "studyTips": "Palavras-chave: Location → Operations → Experience\n\n• Onde? → Região, weather, terrain.\n• Como opera? → Procedures, helipad, traffic.\n• Por que importa? → Familiarity e confidence.\n\nConectores: First of all, / Additionally, / Finally,\n\nDescreva SEU aeroporto real — examinador valoriza detalhes concretos."
   }
 ]

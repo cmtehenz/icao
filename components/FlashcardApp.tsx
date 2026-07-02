@@ -379,7 +379,7 @@ export default function FlashcardApp() {
                   onClick={() => setConnectorSet(set.id)}
                   title={
                     set.id === "level4"
-                      ? "4 frases curtas — ideal para começar (nota ICAO 4)"
+                      ? "Modo fácil — keywords, conectores e 4 frases (ICAO 4)"
                       : set.id === "level5"
                         ? "História mais completa — 50–60 segundos (nota ICAO 5)"
                         : set.label

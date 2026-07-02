@@ -28,6 +28,8 @@ export type Card = {
   answerExtra?: string;
   /** Example sentence highlighted in ICAO 4 study mode. */
   level4Example?: string;
+  /** Study tips shown at the end of ICAO 4 mode (memorization hints). */
+  studyTips?: string;
   /** Four short sentences mapped to keywords — shown in ICAO 4 study mode. */
   level4Steps?: Level4Step[];
   /** Emoji icons aligned with memoryLabels (e.g. 👦 → 🚁 → 🎓 → 👨‍✈️). */
