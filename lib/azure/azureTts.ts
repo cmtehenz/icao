@@ -59,13 +59,11 @@ export function stopAzureSpeech(): void {
   closeActiveSynthesizer();
 }
 
-export function azureVoiceName(role: AzureVoiceRole): string {
-  return AZURE_VOICES[role];
-}
+let speakQueue: Promise<boolean> = Promise.resolve(true);
 
 /**
- * Speak via Azure default output (one generation at a time).
- * Resolves when synthesis finishes or is cancelled.
+ * Speak via Azure default output — strictly one clip at a time (study / flashcards).
+ * Escutar Prova uses examAudioPipeline instead.
  */
 export async function speakAzureText(
   text: string,
@@ -73,73 +71,118 @@ export async function speakAzureText(
   _rate = 1,
   onError?: (msg: string) => void,
 ): Promise<boolean> {
+  const run = async (): Promise<boolean> => {
+    const trimmed = text.trim();
+    if (!trimmed) return true;
+
+    const myGeneration = ++speakGeneration;
+    closeActiveSynthesizer();
+
+    let tokenData = await fetchAzureToken();
+    if (myGeneration !== speakGeneration) return false;
+
+    if (!tokenData.token || !tokenData.region) {
+      tokenData = await fetchAzureToken(true);
+    }
+    if (myGeneration !== speakGeneration) return false;
+
+    if (!tokenData.token || !tokenData.region) {
+      const msg =
+        tokenData.error ??
+        (tokenData.configured === false
+          ? "Azure Speech não configurado no servidor."
+          : "Azure Speech indisponível. Confirme que você está logado.");
+      onError?.(msg);
+      return false;
+    }
+
+    const sdk = await loadSpeechSdk();
+    if (myGeneration !== speakGeneration) return false;
+
+    const speechConfig = sdk.SpeechConfig.fromAuthorizationToken(tokenData.token, tokenData.region);
+    speechConfig.speechSynthesisVoiceName = AZURE_VOICES[role];
+    const synthesizer = new sdk.SpeechSynthesizer(speechConfig);
+    activeSynthesizer = synthesizer;
+
+    return new Promise((resolve) => {
+      const done = (ok: boolean) => {
+        synthesizer.close();
+        if (activeSynthesizer === synthesizer) activeSynthesizer = null;
+        if (myGeneration !== speakGeneration) {
+          resolve(false);
+          return;
+        }
+        resolve(ok);
+      };
+
+      synthesizer.speakTextAsync(
+        trimmed,
+        (result) => {
+          if (myGeneration !== speakGeneration) {
+            done(false);
+            return;
+          }
+          if (result.reason === sdk.ResultReason.SynthesizingAudioCompleted) {
+            done(true);
+            return;
+          }
+          if (result.reason === sdk.ResultReason.Canceled) {
+            done(false);
+            return;
+          }
+          onError?.(result.errorDetails || `Azure TTS error (${result.reason})`);
+          done(false);
+        },
+        (err) => {
+          onError?.(err);
+          done(false);
+        },
+      );
+    });
+  };
+
+  const result = await (speakQueue = speakQueue.then(run, run));
+  return result;
+}
+
+/** MP3 blob for exam pipeline (browser-friendly). */
+export async function synthesizeExamMp3(
+  text: string,
+  role: AzureVoiceRole = "female_examiner",
+): Promise<Blob | null> {
   const trimmed = text.trim();
-  if (!trimmed) return true;
+  if (!trimmed) return null;
 
-  const myGeneration = ++speakGeneration;
-  closeActiveSynthesizer();
-
-  let tokenData = await fetchAzureToken();
-  if (myGeneration !== speakGeneration) return false;
-
-  if (!tokenData.token || !tokenData.region) {
-    tokenData = await fetchAzureToken(true);
-  }
-  if (myGeneration !== speakGeneration) return false;
-
-  if (!tokenData.token || !tokenData.region) {
-    const msg =
-      tokenData.error ??
-      (tokenData.configured === false
-        ? "Azure Speech não configurado no servidor."
-        : "Azure Speech indisponível. Confirme que você está logado.");
-    onError?.(msg);
-    return false;
-  }
+  const tokenData = await fetchAzureToken();
+  if (!tokenData.token || !tokenData.region) return null;
 
   const sdk = await loadSpeechSdk();
-  if (myGeneration !== speakGeneration) return false;
-
   const speechConfig = sdk.SpeechConfig.fromAuthorizationToken(tokenData.token, tokenData.region);
   speechConfig.speechSynthesisVoiceName = AZURE_VOICES[role];
-  const synthesizer = new sdk.SpeechSynthesizer(speechConfig);
-  activeSynthesizer = synthesizer;
+  speechConfig.speechSynthesisOutputFormat =
+    sdk.SpeechSynthesisOutputFormat.Audio24Khz48KBitRateMonoMp3;
+  const synthesizer = new sdk.SpeechSynthesizer(speechConfig, null);
 
   return new Promise((resolve) => {
-    const done = (ok: boolean) => {
-      synthesizer.close();
-      if (activeSynthesizer === synthesizer) activeSynthesizer = null;
-      if (myGeneration !== speakGeneration) {
-        resolve(false);
-        return;
-      }
-      resolve(ok);
-    };
-
     synthesizer.speakTextAsync(
       trimmed,
       (result) => {
-        if (myGeneration !== speakGeneration) {
-          done(false);
+        synthesizer.close();
+        if (result.reason === sdk.ResultReason.SynthesizingAudioCompleted && result.audioData) {
+          resolve(new Blob([result.audioData], { type: "audio/mpeg" }));
           return;
         }
-        if (result.reason === sdk.ResultReason.SynthesizingAudioCompleted) {
-          done(true);
-          return;
-        }
-        if (result.reason === sdk.ResultReason.Canceled) {
-          done(false);
-          return;
-        }
-        onError?.(result.errorDetails || `Azure TTS error (${result.reason})`);
-        done(false);
+        resolve(null);
       },
-      (err) => {
-        onError?.(err);
-        done(false);
+      () => {
+        synthesizer.close();
+        resolve(null);
       },
     );
   });
+}
+export function azureVoiceName(role: AzureVoiceRole): string {
+  return AZURE_VOICES[role];
 }
 
 export const isAzureSpeechConfigured = isAzureTtsAvailable;

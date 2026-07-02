@@ -127,6 +127,7 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
       if (!isActiveSession(ticket)) return false;
       const ok = await speakText(text, voice, {
         rate: speedRef.current,
+        ticket,
         onError: (err) => setPlaybackError(err),
       });
       return ok && isActiveSession(ticket);
@@ -281,6 +282,7 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
   }, [beginSession, failPlayback, goToIndex, isActiveSession, items, playShadowSentences, playTts, runFrom]);
 
   const next = useCallback(() => {
+    if (runLockRef.current) stopSpeech();
     const ticket = beginSession();
     goToIndex(Math.min(items.length - 1, indexRef.current + 1));
     void runFrom(indexRef.current, ticket);
@@ -292,6 +294,7 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
   }, [goToIndex, stop]);
 
   const restart = useCallback(() => {
+    if (runLockRef.current) stopSpeech();
     const ticket = beginSession();
     goToIndex(0);
     void runFrom(0, ticket);

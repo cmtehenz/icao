@@ -1,11 +1,16 @@
 /**
- * Exam listening audio — Azure speaker for TTS, shared bus for ATC MP3s.
+ * Exam listening audio — serialized pipeline for TTS + ATC MP3s.
  */
 
-import { getExamAudioSession, playExamMp3, stopExamAudio } from "@/lib/fullExamListening/examAudioBus";
+import {
+  beginExamPlayback,
+  getExamPlaybackGeneration,
+  queueExamMp3,
+  queueExamTts,
+  stopExamPlayback,
+} from "@/lib/fullExamListening/examAudioPipeline";
 import {
   isAzureTtsAvailable,
-  speakAzureText,
   stopAzureSpeech,
   type AzureVoiceRole,
 } from "@/lib/azure/azureTts";
@@ -15,6 +20,7 @@ export type SpeechEngine = "azure" | "none";
 
 export type SpeakOptions = {
   rate?: number;
+  ticket?: number;
   onError?: (err: string) => void;
 };
 
@@ -29,7 +35,7 @@ export function getActiveSpeechEngine(): SpeechEngine {
 }
 
 export function stopSpeech(): void {
-  stopExamAudio();
+  stopExamPlayback();
   stopAzureSpeech();
 }
 
@@ -44,11 +50,19 @@ export async function speakText(
   voiceType: VoiceType,
   options: SpeakOptions = {},
 ): Promise<boolean> {
+  const ticket = options.ticket ?? getExamPlaybackGeneration();
+  if (!ticket) return false;
+
   lastError = null;
-  return speakAzureText(text, voiceType, options.rate ?? 1, (err) => {
+  const ok = await queueExamTts(text, voiceType, options.rate ?? 1, ticket, (err) => {
     lastError = err;
     options.onError?.(err);
   });
+  if (!ok && !lastError) {
+    lastError = "Falha ao reproduzir voz Azure.";
+    options.onError?.(lastError);
+  }
+  return ok;
 }
 
 export async function playExamOriginalAudio(
@@ -56,16 +70,17 @@ export async function playExamOriginalAudio(
   rate: number,
   ticket: number,
 ): Promise<boolean> {
-  return playExamMp3(src, rate, ticket);
+  return queueExamMp3(src, rate, ticket);
 }
 
 export function beginSpeechSession(): number {
-  stopExamAudio();
   stopAzureSpeech();
-  return getExamAudioSession();
+  return beginExamPlayback();
 }
 
-export { getExamAudioSession };
+export function getExamAudioSession(): number {
+  return getExamPlaybackGeneration();
+}
 
 export async function warmSpeechEngine(): Promise<SpeechEngine> {
   const ok = await isAzureTtsAvailable();

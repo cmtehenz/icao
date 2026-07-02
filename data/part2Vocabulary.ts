@@ -135,7 +135,7 @@ export const VOCABULARY_TERMS: VocabularyTerm[] = [
   t("emg-28", "emergencies", 5, "FMS failure", "falha do FMS", "Flight Management System not working.", "We have an FMS failure."),
   t("emg-29", "emergencies", 5, "pilot incapacitation", "incapacitação do piloto", "Pilot unable to perform duties.", "We have pilot incapacitation in the cockpit."),
   t("emg-30", "emergencies", 5, "passenger passed out", "passageiro desmaiou", "Passenger lost consciousness.", "A passenger passed out in row twelve."),
-  t("emg-31", "emergencies", 5, "heart attack", "ataque cardíaco", "Passenger cardiac emergency.", "We have a passenger with a suspected heart attack."),
+  t("emg-31", "emergencies", 5, "heart attack", "ataque cardíaco", "Suspected cardiac emergency on board.", "We have a passenger with a suspected heart attack on board."),
   t("emg-32", "emergencies", 5, "seizure", "convulsão", "Passenger having a seizure.", "A passenger is having a seizure."),
   t("emg-33", "emergencies", 5, "emergency landing", "pouso de emergência", "Landing due to urgent situation.", "We need an emergency landing at the nearest airport."),
   t("emg-34", "emergencies", 5, "emergency evacuation", "evacuação de emergência", "Rapid exit of all persons from aircraft.", "We may need an emergency evacuation on the ground."),

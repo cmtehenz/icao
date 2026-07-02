@@ -63,7 +63,7 @@ function core(
       3: l3,
       4:
         levels?.[4] ??
-        `Departure, ANAC 123, Pan Pan Pan, ${l3.charAt(0).toLowerCase()}${l3.slice(1)} and request immediate return.`,
+        `Departure, ANAC 123, Pan Pan Pan, ${l3.charAt(0).toLowerCase()}${l3.slice(1)}, requesting immediate return.`,
     },
   };
 }
@@ -110,10 +110,26 @@ export const ICAO_CORE_VOCABULARY: IcaoVocabularyItem[] = [
   core("icao-27", "landing-gear", 2, "main gear collapsed", "trem principal colapsado", "The main gear collapsed on landing."),
   core("icao-28", "landing-gear", 2, "belly landing", "pouso de barriga", "We need to make a belly landing."),
   core("icao-29", "landing-gear", 2, "wheels-up landing", "pouso sem trem", "We are preparing for a wheels-up landing."),
-  core("icao-30", "emergencies", 2, "pilot incapacitation", "incapacitação do piloto", "We have pilot incapacitation in the cockpit."),
-  core("icao-31", "emergencies", 2, "passenger passed out", "passageiro desmaiou", "A passenger passed out in row twelve."),
-  core("icao-32", "emergencies", 2, "heart attack", "ataque cardíaco", "We have a passenger with a suspected heart attack."),
-  core("icao-33", "emergencies", 2, "seizure", "convulsão", "A passenger is having a seizure."),
+  core("icao-30", "emergencies", 2, "pilot incapacitation", "incapacitação do piloto", "We have pilot incapacitation in the cockpit.", {
+    2: "Pilot incapacitation in the cockpit.",
+    3: "We have pilot incapacitation in the cockpit.",
+    4: "Departure, ANAC 123, Pan Pan Pan, pilot incapacitation in the cockpit, requesting priority to land.",
+  }),
+  core("icao-31", "emergencies", 2, "passenger passed out", "passageiro desmaiou", "A passenger passed out in row twelve.", {
+    2: "Passenger passed out on board.",
+    3: "A passenger has passed out on board.",
+    4: "Departure, ANAC 123, Pan Pan Pan, a passenger has passed out on board, requesting medical assistance and priority to land.",
+  }),
+  core("icao-32", "emergencies", 2, "heart attack", "ataque cardíaco", "We have a passenger with a suspected heart attack.", {
+    2: "Suspected heart attack on board.",
+    3: "We have a passenger with a suspected heart attack on board.",
+    4: "Departure, ANAC 123, Pan Pan Pan, medical emergency — passenger with suspected heart attack — requesting priority and immediate return.",
+  }),
+  core("icao-33", "emergencies", 2, "seizure", "convulsão", "A passenger is having a seizure.", {
+    2: "Passenger seizure on board.",
+    3: "A passenger is having a seizure on board.",
+    4: "Departure, ANAC 123, Pan Pan Pan, a passenger is having a seizure, requesting medical assistance on landing.",
+  }),
   core("icao-34", "emergencies", 2, "medical assistance", "assistência médica", "Request medical assistance on landing.", {
     3: "We request medical assistance on arrival.",
     4: "Recife Tower, ANAC 123, we request medical assistance on landing.",
@@ -173,7 +189,7 @@ function fromPart2Term(term: VocabularyTerm): IcaoVocabularyItem {
       3: l3,
       4: l3.includes("ANAC")
         ? l3
-        : `Departure, ANAC 123, Pan Pan Pan, ${l3.charAt(0).toLowerCase()}${l3.slice(1)}`,
+        : `Departure, ANAC 123, Pan Pan Pan, ${l3.charAt(0).toLowerCase()}${l3.slice(1)}, requesting immediate return.`,
     },
   };
 }
