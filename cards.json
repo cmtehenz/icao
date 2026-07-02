@@ -78,15 +78,15 @@
   {
     "num": "02",
     "question": "What was the most difficult situation you have had in a flight?",
-    "memory": "Situation → Actions → Lesson",
-    "opener": "One of the most difficult situations I have had in helicopter flight was related to weather and visibility near the landing site.",
+    "memory": "Weather → Workload → Decision → Lesson",
+    "opener": "One of the most difficult situations I have had in a helicopter flight was related to weather and visibility near the landing site.",
     "ideas": [
-      "1 - SITUATION: First of all, the visibility started to decrease and the workload increased quickly during the final phase of flight.",
-      "2 - ACTIONS: Additionally, I had to stay calm, monitor power and wind, communicate clearly and choose the safest option.",
-      "3 - LESSON: Finally, that experience reinforced the importance of preparation, conservative decisions and knowing when to divert."
+      "1 - SITUATION: First of all, the visibility started to decrease and my workload increased quickly during the final approach.",
+      "2 - ACTIONS: Additionally, I had to stay calm, keep good situational awareness, communicate clearly with ATC and make a conservative decision.",
+      "3 - LESSON: Finally, that experience reinforced the importance of preparation and knowing when to divert."
     ],
-    "example": "For example, instead of forcing a landing in deteriorating conditions, a helicopter pilot should be ready to delay, divert or return to a safer area.",
-    "conclusion": "Overall, difficult situations are challenging, but they help helicopter pilots become more disciplined and safety-oriented.",
+    "example": "For example, instead of forcing a landing in deteriorating weather, a pilot should always choose the safest option.",
+    "conclusion": "Overall, this experience made me a more disciplined and safety-oriented pilot.",
     "verbs": [
       "face",
       "manage",
@@ -99,9 +99,12 @@
       "visibility",
       "landing site",
       "workload",
+      "final approach",
+      "situational awareness",
+      "conservative decision",
       "divert"
     ],
-    "answer": "One of the most difficult situations I have had in helicopter flight was related to weather and visibility near the landing site. 1 - SITUATION: First of all, the visibility started to decrease and the workload increased quickly during the final phase of flight. 2 - ACTIONS: Additionally, I had to stay calm, monitor power and wind, communicate clearly and choose the safest option. 3 - LESSON: Finally, that experience reinforced the importance of preparation, conservative decisions and knowing when to divert. For example, instead of forcing a landing in deteriorating conditions, a helicopter pilot should be ready to delay, divert or return to a safer area. Overall, difficult situations are challenging, but they help helicopter pilots become more disciplined and safety-oriented.",
+    "answer": "One of the most difficult situations I have had in a helicopter flight was related to weather and visibility near the landing site. 1 - SITUATION: First of all, the visibility started to decrease and my workload increased quickly during the final approach. 2 - ACTIONS: Additionally, I had to stay calm, keep good situational awareness, communicate clearly with ATC and make a conservative decision. 3 - LESSON: Finally, that experience reinforced the importance of preparation and knowing when to divert. For example, instead of forcing a landing in deteriorating weather, a pilot should always choose the safest option. Overall, this experience made me a more disciplined and safety-oriented pilot.",
     "difficulty": "Hard",
     "category": "helicopter",
     "tags": [
@@ -110,24 +113,27 @@
       "helicopter"
     ],
     "memoryLabels": [
-      "Situation",
-      "Actions",
+      "Weather",
+      "Workload",
+      "Decision",
       "Lesson"
     ],
-    "targetWords": 122,
+    "targetWords": 118,
     "keywords": [
-      "Situation",
-      "Actions",
+      "Weather",
+      "Workload",
+      "Decision",
       "Lesson"
     ],
     "memoryIcons": [
       "🌧️",
-      "✈️",
-      "💡"
+      "🧠",
+      "✅",
+      "🎓"
     ],
-    "answerLevel4": "One difficult situation I had was related to weather and visibility near the landing site. The visibility decreased and the workload increased quickly. I stayed calm, communicated clearly and chose the safest option. That experience taught me to prepare better and divert when necessary.",
-    "answerLevel5": "One of the most difficult situations I have had in helicopter flight was related to weather and visibility near the landing site. First of all, the visibility started to decrease and the workload increased quickly during the final phase of flight. Additionally, I had to stay calm, monitor power and wind, communicate clearly and choose the safest option. Finally, that experience reinforced the importance of preparation, conservative decisions and knowing when to divert. For example, instead of forcing a landing in deteriorating conditions, a pilot should be ready to delay, divert or return to a safer area. Overall, difficult situations help pilots become more disciplined and safety-oriented.",
-    "level4Example": "For example, instead of forcing a landing in bad conditions, I was ready to divert to a safer area.",
+    "answerLevel4": "One difficult situation I had was related to weather and visibility near the landing site. The visibility decreased and my workload increased quickly during the final approach. I stayed calm, kept good situational awareness, communicated clearly with ATC and made a conservative decision. That experience taught me to prepare better and divert when necessary.",
+    "answerLevel5": "One of the most difficult situations I have had in a helicopter flight was related to weather and visibility near the landing site. First of all, the visibility started to decrease and my workload increased quickly during the final approach. Additionally, I had to stay calm, keep good situational awareness, communicate clearly with ATC and make a conservative decision. Finally, that experience reinforced the importance of preparation and knowing when to divert. For example, instead of forcing a landing in deteriorating weather, a pilot should always choose the safest option. Overall, this experience made me a more disciplined and safety-oriented pilot.",
+    "level4Example": "For example, instead of forcing a landing in deteriorating weather, I chose the safest option.",
     "level4Steps": [
       {
         "label": "Situation",
@@ -135,14 +141,14 @@
       },
       {
         "label": "Actions",
-        "sentence": "I stayed calm, communicated clearly and chose the safest option."
+        "sentence": "I stayed calm, kept good situational awareness, communicated clearly with ATC and made a conservative decision."
       },
       {
         "label": "Lesson",
         "sentence": "That experience taught me to prepare better and divert when necessary."
       }
     ],
-    "studyTips": "Palavras-chave para decorar: Situation → Actions → Lesson\n\nHistória em 3 partes (STAR simplificado):\n\n• Situation → O que aconteceu? (weather, visibility)\n• Actions → O que você fez? (calm, communicate, decide)\n• Lesson → O que aprendeu? (prepare, divert, safety)\n\nConectores: First, / Also, / Finally, / For example,\n\nConte como uma história real — não precisa decorar palavra por palavra."
+    "studyTips": "Palavras-chave para decorar: Weather → Workload → Decision → Lesson\n\nHistória em 4 partes:\n\n• Weather → O que aconteceu? (visibility, final approach)\n• Workload → Como você se sentiu? (workload increased)\n• Decision → O que você fez? (situational awareness, communicate, conservative decision)\n• Lesson → O que aprendeu? (prepare, divert, safety)\n\nConectores: First of all, / Additionally, / Finally, / For example,\n\nConte como uma história real — não precisa decorar palavra por palavra."
   },
   {
     "num": "03",

@@ -5,8 +5,10 @@
 import {
   beginExamPlayback,
   getExamPlaybackGeneration,
+  pauseExamPlayback,
   queueExamMp3,
   queueExamTts,
+  resumeExamPlayback,
   stopExamPlayback,
 } from "@/lib/fullExamListening/examAudioPipeline";
 import {
@@ -40,10 +42,12 @@ export function stopSpeech(): void {
 }
 
 export function pauseSpeech(): boolean {
-  return false;
+  return pauseExamPlayback();
 }
 
-export function resumeSpeech(): void {}
+export function resumeSpeech(rate = 1): Promise<boolean> {
+  return resumeExamPlayback(rate);
+}
 
 export async function speakText(
   text: string,

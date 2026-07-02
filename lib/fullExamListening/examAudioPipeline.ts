@@ -9,6 +9,10 @@ let generation = 0;
 let audioEl: HTMLAudioElement | null = null;
 let activeBlobUrl: string | null = null;
 let playChain: Promise<unknown> = Promise.resolve();
+let isPaused = false;
+let pausedTime = 0;
+let pausedTicket = 0;
+let activePlayResolve: ((played: boolean) => void) | null = null;
 
 function getAudio(): HTMLAudioElement {
   if (!audioEl) {
@@ -25,7 +29,14 @@ function revokeActiveBlob(): void {
   }
 }
 
+function resolveActivePlay(played: boolean): void {
+  const resolve = activePlayResolve;
+  activePlayResolve = null;
+  resolve?.(played);
+}
+
 function stopElementNow(): void {
+  resolveActivePlay(false);
   const el = audioEl;
   if (!el) return;
   el.pause();
@@ -38,6 +49,9 @@ function stopElementNow(): void {
 /** Cancel playback and invalidate queued work. */
 export function stopExamPlayback(): void {
   generation += 1;
+  isPaused = false;
+  pausedTime = 0;
+  pausedTicket = 0;
   stopElementNow();
 }
 
@@ -49,6 +63,53 @@ export function getExamPlaybackGeneration(): number {
 export function beginExamPlayback(): number {
   stopExamPlayback();
   return generation;
+}
+
+export function pauseExamPlayback(): boolean {
+  const el = audioEl;
+  if (!el || el.paused || !el.src) return isPaused;
+  pausedTime = el.currentTime;
+  pausedTicket = generation;
+  isPaused = true;
+  el.pause();
+  return true;
+}
+
+export function resumeExamPlayback(rate = 1): Promise<boolean> {
+  if (!isPaused || pausedTicket !== generation) return Promise.resolve(false);
+  const el = getAudio();
+  const ticket = generation;
+  isPaused = false;
+  el.playbackRate = rate;
+  el.currentTime = pausedTime;
+
+  return new Promise((resolve) => {
+    let settled = false;
+    const settle = (played: boolean) => {
+      if (settled) return;
+      settled = true;
+      activePlayResolve = null;
+      resolve(played && ticket === generation);
+    };
+
+    activePlayResolve = settle;
+
+    const onDone = () => {
+      if (ticket !== generation) {
+        settle(false);
+        return;
+      }
+      el.onended = null;
+      el.onerror = null;
+      el.pause();
+      if (activeBlobUrl) revokeActiveBlob();
+      settle(true);
+    };
+
+    el.onended = onDone;
+    el.onerror = () => settle(false);
+    void el.play().catch(() => settle(false));
+  });
 }
 
 function enqueue<T>(task: () => Promise<T>): Promise<T> {
@@ -82,6 +143,7 @@ function waitUntilReady(el: HTMLAudioElement, ticket: number): Promise<boolean> 
 function playSource(src: string, rate: number, ticket: number, isBlob: boolean): Promise<boolean> {
   if (!src || ticket !== generation) return Promise.resolve(false);
 
+  isPaused = false;
   stopElementNow();
   if (ticket !== generation) return Promise.resolve(false);
 
@@ -94,8 +156,11 @@ function playSource(src: string, rate: number, ticket: number, isBlob: boolean):
     const settle = (played: boolean) => {
       if (settled) return;
       settled = true;
+      if (activePlayResolve === settle) activePlayResolve = null;
       resolve(played && ticket === generation);
     };
+
+    activePlayResolve = settle;
 
     const onDone = () => {
       if (ticket !== generation) {

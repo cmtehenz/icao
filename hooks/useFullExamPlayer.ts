@@ -11,7 +11,9 @@ import {
 import {
   beginSpeechSession,
   getExamAudioSession,
+  pauseSpeech,
   playExamOriginalAudio,
+  resumeSpeech,
   speakText,
   stopSpeech,
 } from "@/utils/speech";
@@ -45,6 +47,7 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
   const modeRef = useRef(mode);
   const pauseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const runLockRef = useRef(false);
+  const userInterruptedRef = useRef(false);
 
   const [currentIndex, setCurrentIndex] = useState(startIndex);
   const [status, setStatus] = useState<PlayerStatus>("idle");
@@ -76,6 +79,7 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
   const beginSession = useCallback(() => {
     clearPauseTimer();
     setPlaybackError(null);
+    userInterruptedRef.current = false;
     const ticket = beginSpeechSession();
     runLockRef.current = true;
     setStatus("playing");
@@ -83,6 +87,7 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
   }, [clearPauseTimer]);
 
   const endSession = useCallback(() => {
+    userInterruptedRef.current = true;
     runLockRef.current = false;
     stopSpeech();
     clearPauseTimer();
@@ -212,7 +217,9 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
           return;
         }
         if (result === "fail") {
-          failPlayback("Não foi possível reproduzir este áudio. Toque Play para tentar de novo.");
+          if (!userInterruptedRef.current) {
+            failPlayback("Não foi possível reproduzir este áudio. Toque Play para tentar de novo.");
+          }
           return;
         }
 
@@ -232,12 +239,25 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
     [examId, failPlayback, goToIndex, isActiveSession, items, onComplete, playItem],
   );
 
+  const startPlayback = useCallback(
+    (fromIndex: number) => {
+      const ticket = beginSession();
+      void runFrom(fromIndex, ticket);
+    },
+    [beginSession, runFrom],
+  );
+
   const play = useCallback(() => {
     if (status === "waiting_reveal" || status === "waiting_shadow") return;
 
     if (status === "paused") {
-      const ticket = beginSession();
-      void runFrom(indexRef.current, ticket);
+      void resumeSpeech(speedRef.current).then((resumed) => {
+        if (resumed) {
+          setStatus("playing");
+          return;
+        }
+        startPlayback(indexRef.current);
+      });
       return;
     }
 
@@ -252,14 +272,18 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
       });
     }
 
-    const ticket = beginSession();
-    void runFrom(indexRef.current, ticket);
-  }, [beginSession, examId, runFrom, status]);
+    startPlayback(indexRef.current);
+  }, [examId, startPlayback, status]);
 
   const pause = useCallback(() => {
     if (status !== "playing" && status !== "waiting_shadow") return;
     clearPauseTimer();
-    stopSpeech();
+    const pausedMidClip = pauseSpeech();
+    if (!pausedMidClip) {
+      userInterruptedRef.current = true;
+      stopSpeech();
+      runLockRef.current = false;
+    }
     setStatus("paused");
   }, [clearPauseTimer, status]);
 
@@ -273,7 +297,9 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
           ? await playShadowSentences(item.text ?? "", ticket)
           : await playTts(item.text ?? "", "male_candidate", ticket);
       if (!ok || !isActiveSession(ticket)) {
-        if (!ok) failPlayback("Não foi possível reproduzir a resposta modelo.");
+        if (!ok && !userInterruptedRef.current) {
+          failPlayback("Não foi possível reproduzir a resposta modelo.");
+        }
         return;
       }
       goToIndex(indexRef.current + 1);
@@ -282,23 +308,24 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
   }, [beginSession, failPlayback, goToIndex, isActiveSession, items, playShadowSentences, playTts, runFrom]);
 
   const next = useCallback(() => {
-    if (runLockRef.current) stopSpeech();
-    const ticket = beginSession();
-    goToIndex(Math.min(items.length - 1, indexRef.current + 1));
-    void runFrom(indexRef.current, ticket);
-  }, [beginSession, goToIndex, items.length, runFrom]);
+    endSession();
+    const idx = Math.min(items.length - 1, indexRef.current + 1);
+    goToIndex(idx);
+    startPlayback(idx);
+  }, [endSession, goToIndex, items.length, startPlayback]);
 
   const previous = useCallback(() => {
-    stop();
-    goToIndex(Math.max(0, indexRef.current - 1));
-  }, [goToIndex, stop]);
+    endSession();
+    const idx = Math.max(0, indexRef.current - 1);
+    goToIndex(idx);
+    startPlayback(idx);
+  }, [endSession, goToIndex, startPlayback]);
 
   const restart = useCallback(() => {
-    if (runLockRef.current) stopSpeech();
-    const ticket = beginSession();
+    endSession();
     goToIndex(0);
-    void runFrom(0, ticket);
-  }, [beginSession, goToIndex, runFrom]);
+    startPlayback(0);
+  }, [endSession, goToIndex, startPlayback]);
 
   return {
     items,
