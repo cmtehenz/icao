@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { ExamAudioItem, FullExamId, ListeningMode } from "@/lib/fullExamListening/types";
 import type { FullExamMeta } from "@/lib/fullExamListening/types";
 import { toggleDifficultItem, isItemDifficult } from "@/lib/fullExamListening/progress";
@@ -47,7 +47,13 @@ export default function ExamPlayer({ exam, mode, startIndex, onBack, onModeChang
 
   const { stop, ...controls } = player;
 
+  const modeInitialized = useRef(false);
+
   useEffect(() => {
+    if (!modeInitialized.current) {
+      modeInitialized.current = true;
+      return;
+    }
     stop();
   }, [mode, stop]);
 
@@ -73,11 +79,6 @@ export default function ExamPlayer({ exam, mode, startIndex, onBack, onModeChang
   const isPaused = status === "paused";
   const waitingReveal = status === "waiting_reveal";
   const waitingShadow = status === "waiting_shadow";
-
-  useEffect(() => {
-    const audio = document.querySelector<HTMLAudioElement>(".fel-hidden-audio");
-    if (audio) audio.playbackRate = speed;
-  }, [speed]);
 
   const difficult = currentItem ? isItemDifficult(currentItem.id) : false;
   const [speechEngine, setSpeechEngine] = useState<SpeechEngine>("none");
@@ -241,12 +242,7 @@ export default function ExamPlayer({ exam, mode, startIndex, onBack, onModeChang
       {showTranscript && (
         <div className="fel-transcript">
           {currentItem?.type === "original_audio" ? (
-            <p className="fel-transcript-audio">
-              🔊 Original ATC recording
-              {currentItem.audioSrc && (
-                <audio className="fel-hidden-audio" src={currentItem.audioSrc} preload="metadata" />
-              )}
-            </p>
+            <p className="fel-transcript-audio">🔊 Original ATC recording</p>
           ) : (
             <p>{currentItem?.text ?? (isPaused ? "Paused" : "Press play to start the exam simulation.")}</p>
           )}
