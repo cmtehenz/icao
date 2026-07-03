@@ -3874,8 +3874,17 @@ input {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 12px;
-  margin-bottom: 12px;
+  gap: 16px;
+}
+
+.callsign-drill-head-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.callsign-drill-close {
+  flex-shrink: 0;
+  margin-top: 2px;
 }
 
 .callsign-drill-head .question {
@@ -3883,16 +3892,25 @@ input {
   margin: 8px 0 6px;
 }
 
+.callsign-drill-sub {
+  margin: 0;
+  max-width: 42rem;
+  line-height: 1.5;
+}
+
+.callsign-drill-body {
+  gap: 16px;
+}
+
 .callsign-drill-reference {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-  margin-bottom: 12px;
+  gap: 12px;
 }
 
 .callsign-drill-written,
 .callsign-drill-spoken {
-  padding: 12px 14px;
+  padding: 14px 16px;
   border-radius: 12px;
   border: 1px solid var(--border);
   background: var(--bg);
@@ -3917,11 +3935,10 @@ input {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 8px;
 }
 
 .callsign-drill-hint {
-  margin: 0 0 12px;
+  margin: 0;
   font-size: 0.88rem;
   color: var(--muted);
   line-height: 1.45;
@@ -3931,7 +3948,6 @@ input {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 10px;
 }
 
 .callsign-drill-result {
@@ -3949,6 +3965,16 @@ input {
 @media (max-width: 700px) {
   .callsign-drill-reference {
     grid-template-columns: 1fr;
+  }
+
+  .callsign-drill-head {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .callsign-drill-close {
+    align-self: flex-start;
+    margin-top: 0;
   }
 }
 

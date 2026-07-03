@@ -28,6 +28,13 @@ export const NAV_ITEMS = [
     description: "Full exam listening — 23C–26C",
   },
   {
+    href: "/simulado",
+    label: "Simulado ICAO",
+    shortLabel: "Simulado",
+    icon: "🎯",
+    description: "SDEA mock exam — gravação e correção",
+  },
+  {
     href: "/vocabulario",
     label: "Vocabulary",
     shortLabel: "Vocab",

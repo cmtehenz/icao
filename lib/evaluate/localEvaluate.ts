@@ -122,7 +122,7 @@ export function localEvaluate(req: EvaluateRequest): EvaluateFeedback {
   const phraseology =
     type === "part2-readback" && readbackResult
       ? readbackResult.score
-      : type.startsWith("part2")
+      : type.startsWith("part2") || type.startsWith("part3")
         ? markerScore(trimmed, PART2_MARKERS)
         : structure;
   const missingKeywords = findMissingKeywords(trimmed, keywords);
@@ -168,6 +168,12 @@ export function localEvaluate(req: EvaluateRequest): EvaluateFeedback {
   const improvements: string[] = [];
 
   if (scores.content >= 70) strengths.push("Boa cobertura das ideias e termos esperados.");
+  if (type.startsWith("part3") && scores.content >= 65) {
+    strengths.push("Boa organização do reporte de situação inesperada.");
+  }
+  if (type.startsWith("part4") && scores.structure >= 60) {
+    strengths.push("Estrutura de descrição da imagem reconhecível.");
+  }
   if (part1Content && part1Content.keywordCoverage >= 70) {
     strengths.push(`Keywords do card cobertas (${part1Content.keywordCoverage}%).`);
   }
@@ -192,7 +198,11 @@ export function localEvaluate(req: EvaluateRequest): EvaluateFeedback {
         ? "Inclua as ideias do tema e as keywords do card — não precisa repetir a frase modelo."
         : type === "part2-readback"
           ? "Faltam elementos da clearance no readback — veja a lista abaixo."
-          : "Inclua mais ideias da resposta modelo e keywords.",
+          : type.startsWith("part3")
+            ? "Inclua o problema, intenção e pedido ao ATC com clareza."
+            : type.startsWith("part4")
+              ? "Cubra tópico principal, cenário, posição, tempo/clima e opinião."
+              : "Inclua mais ideias da resposta modelo e keywords.",
     );
   }
   if (scores.structure < 50 && type === "part1" && answerMode === "peel") {

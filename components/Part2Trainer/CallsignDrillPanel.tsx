@@ -73,21 +73,24 @@ export default function CallsignDrillPanel({ initialOpen = true }: Props) {
 
   return (
     <article className="card card-essential part2-card callsign-drill-card">
-      <header className="callsign-drill-head">
-        <div>
-          <span className="badge">Callsign SDEA</span>
-          <h2 className="question">Como falar {EXAM_CALLSIGN}</h2>
-          <p className="sub">
-            Na SDEA fala-se <strong>ANAC 123</strong> junto — bloco “ANAC” + dígitos separados (wun too
-            tree). Não é alfabeto fonético letra a letra.
-          </p>
-        </div>
-        <button type="button" className="btn secondary btn-sm" onClick={() => setOpen(false)}>
-          Fechar
-        </button>
-      </header>
+      <div className="card-top">
+        <header className="callsign-drill-head">
+          <div className="callsign-drill-head-text">
+            <span className="badge">Callsign SDEA</span>
+            <h2 className="question">Como falar {EXAM_CALLSIGN}</h2>
+            <p className="sub callsign-drill-sub">
+              Na SDEA fala-se <strong>ANAC 123</strong> junto — bloco “ANAC” + dígitos separados (wun
+              too tree). Não é alfabeto fonético letra a letra.
+            </p>
+          </div>
+          <button type="button" className="btn secondary btn-sm callsign-drill-close" onClick={() => setOpen(false)}>
+            Fechar
+          </button>
+        </header>
+      </div>
 
-      <div className="callsign-drill-reference">
+      <div className="card-body callsign-drill-body">
+        <div className="callsign-drill-reference">
         <div className="callsign-drill-written">
           <span className="callsign-drill-label">Escrito</span>
           <strong>{step?.display}</strong>
@@ -96,9 +99,9 @@ export default function CallsignDrillPanel({ initialOpen = true }: Props) {
           <span className="callsign-drill-label">Fale assim</span>
           <strong>{step?.referenceText}</strong>
         </div>
-      </div>
+        </div>
 
-      <div className="callsign-drill-steps" role="tablist" aria-label="Etapas do callsign">
+        <div className="callsign-drill-steps" role="tablist" aria-label="Etapas do callsign">
         {steps.map((s) => (
           <button
             key={s.id}
@@ -114,11 +117,11 @@ export default function CallsignDrillPanel({ initialOpen = true }: Props) {
             {s.label}
           </button>
         ))}
-      </div>
+        </div>
 
-      {step && <p className="callsign-drill-hint">{step.hint}</p>}
+        {step && <p className="callsign-drill-hint">{step.hint}</p>}
 
-      <div className="callsign-drill-actions">
+        <div className="callsign-drill-actions">
         <button
           type="button"
           className="btn secondary"
@@ -141,10 +144,10 @@ export default function CallsignDrillPanel({ initialOpen = true }: Props) {
             ⏹ Parar e avaliar
           </button>
         )}
-      </div>
+        </div>
 
-      {lastScore !== null && (
-        <div className="callsign-drill-result">
+        {lastScore !== null && (
+          <div className="callsign-drill-result">
           <p>
             <strong>{lastScore}%</strong> accuracy
             {lastScore >= VAULT_PASS_SCORE ? " — bom para usar no Part 2 ✓" : ` — meta ≥${VAULT_PASS_SCORE}%`}
@@ -154,12 +157,13 @@ export default function CallsignDrillPanel({ initialOpen = true }: Props) {
               <strong>Azure ouviu:</strong> {heard}
             </p>
           )}
-        </div>
-      )}
+          </div>
+        )}
 
-      {(azure.error || speech.error) && (
-        <p className="voice-coach-error">{azure.error ?? speech.error}</p>
-      )}
+        {(azure.error || speech.error) && (
+          <p className="voice-coach-error">{azure.error ?? speech.error}</p>
+        )}
+      </div>
     </article>
   );
 }

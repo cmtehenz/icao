@@ -70,7 +70,11 @@ export function estimateIcaoLevel(
   );
   const comprehension = scoreToIcaoLevel(scores.content * 0.85 + scores.structure * 0.15);
   const interactions = scoreToIcaoLevel(
-    type.startsWith("part2") ? scores.phraseology : scores.structure * 0.5 + scores.content * 0.5,
+    type.startsWith("part2")
+      ? scores.phraseology
+      : type.startsWith("part3")
+        ? scores.phraseology * 0.5 + scores.content * 0.5
+        : scores.structure * 0.5 + scores.content * 0.5,
   );
 
   const criteria: Record<IcaoCriterion, IcaoLevel> = {

@@ -24,9 +24,15 @@ export function isScriptedAssessment(type: string): boolean {
   );
 }
 
-/** Part 1 coach: free speech — Azure scores how you speak, not word-for-word script. */
+/** Free speech — Azure scores how you speak, not word-for-word script. */
 export function useUnscriptedPronunciation(type: string): boolean {
-  return type === "part1";
+  return (
+    type === "part1" ||
+    type === "part3-report" ||
+    type === "part3-followup" ||
+    type === "part4-description" ||
+    type === "part4-question"
+  );
 }
 
 /** Reference text for Azure pronunciation assessment (scripted Part 2 / vocab only). */

@@ -5,6 +5,10 @@ export type EvaluateType =
   | "part2-readback"
   | "part2-interaction"
   | "part2-reported"
+  | "part3-report"
+  | "part3-followup"
+  | "part4-description"
+  | "part4-question"
   | "vocabulary";
 
 export type EvaluateScores = {

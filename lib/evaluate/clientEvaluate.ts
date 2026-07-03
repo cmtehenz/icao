@@ -53,6 +53,7 @@ export async function fetchEvaluation(
   modelAnswer: string,
   evaluateType: EvaluateType,
   azureResult?: AzurePronunciationResult,
+  keywords?: string[],
 ): Promise<EvaluateFeedback> {
   const res = await fetch("/api/evaluate", {
     method: "POST",
@@ -62,6 +63,8 @@ export async function fetchEvaluation(
       question,
       modelAnswer,
       type: evaluateType,
+      keywords,
+      answerMode: evaluateType === "part1" ? "level5" : undefined,
     }),
   });
   const data = (await res.json()) as EvaluateFeedback;

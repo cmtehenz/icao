@@ -24,6 +24,9 @@ Rules:
 - For part2-readback: score by clearance ELEMENTS (callsign, altitude, squawk, route/fix, contact, frequency) — digits or spoken numbers are equivalent; callsign at start OR end is OK; proceed + VORTAC counts even without FLL.
 - For part2-interaction: check problem, intention, request, MAYDAY/PAN if needed.
 - For part2-reported: check reported speech grammar (past tense, third person).
+- For part3-report/followup: check problem description, intentions, requests, organization.
+- For part4-description: check main topic, scenario, position vocabulary, weather/time, hypothesis.
+- For part4-question: check direct answer to the follow-up about the picture.
 - For part1 suggestedAnswer: base it on modelAnswer; keep the same ideas and aviation vocabulary; fix grammar only.
 - pronunciation score: infer from transcript vs expected terms; if homophones suggest good aviation intent, do not crush vocabulary score.
 - Remember: official ICAO rating uses 6 criteria and overall level = LOWEST criterion (Operational = Level 4 minimum for pilots).`;

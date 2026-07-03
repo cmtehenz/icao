@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Aircraft in hangar">
+  <rect width="800" height="500" fill="#4a4a4a"/>
+  <rect x="50" y="80" width="700" height="350" fill="#666" stroke="#888" stroke-width="4"/>
+  <polygon points="150,350 550,350 600,250 100,250" fill="#ecf0f1" stroke="#333" stroke-width="2"/>
+  <circle cx="620" cy="300" r="30" fill="#e67e22"/>
+  <circle cx="650" cy="300" r="30" fill="#e67e22"/>
+  <text x="400" y="460" text-anchor="middle" font-family="sans-serif" font-size="18" fill="#ccc">Hangar maintenance  training placeholder</text>
+</svg>

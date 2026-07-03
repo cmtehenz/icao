@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Runway with aircraft">
+  <rect width="800" height="500" fill="#9BB4C8"/>
+  <rect x="200" y="0" width="400" height="500" fill="#555"/>
+  <line x1="350" y1="0" x2="350" y2="500" stroke="#fff" stroke-width="4" stroke-dasharray="40 30"/>
+  <line x1="450" y1="0" x2="450" y2="500" stroke="#fff" stroke-width="4" stroke-dasharray="40 30"/>
+  <polygon points="380,180 420,200 380,220" fill="#f5f5f5" stroke="#333"/>
+  <rect x="360" y="200" width="80" height="20" fill="#f5f5f5" stroke="#333"/>
+  <text x="400" y="460" text-anchor="middle" font-family="sans-serif" font-size="18" fill="#fff">Runway  training placeholder</text>
+</svg>
