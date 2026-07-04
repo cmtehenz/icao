@@ -6,6 +6,7 @@ import CallsignDrillPanel from "@/components/Part2Trainer/CallsignDrillPanel";
 import YouGlishLink from "@/components/YouGlishLink";
 import WordPhoneticHint from "@/components/WordPhoneticHint";
 import { useAzurePronunciation } from "@/hooks/useAzurePronunciation";
+import { useAzureSpeech } from "@/hooks/useAzureSpeech";
 import type { AzurePronunciationResult } from "@/lib/azure/pronunciation";
 import { errorTypeLabel } from "@/lib/azure/pronunciation";
 import {
@@ -103,8 +104,17 @@ export default function PronunciationWordsMode() {
   const [lastResult, setLastResult] = useState<AzurePronunciationResult | null>(null);
   const [activityNote, setActivityNote] = useState<string | null>(null);
   const azure = useAzurePronunciation();
+  const speech = useAzureSpeech();
 
   const refresh = useCallback(() => setWords(loadVault()), []);
+
+  const listenWord = async (word: string) => {
+    try {
+      await speech.speak(word);
+    } catch {
+      /* error surfaced in speech.error */
+    }
+  };
 
   useEffect(() => {
     refresh();
@@ -210,7 +220,7 @@ export default function PronunciationWordsMode() {
               <WordPhoneticHint word={activeWord.word} />
             </h2>
             <p className="part2-hint vault-practice-steps">
-              <span className="vault-step">1. Ouça no YouGlish</span>
+              <span className="vault-step">1. Ouça (Listen)</span>
               <span className="vault-step">2. Grave a palavra</span>
               <span className="vault-step">3. Veja a nota Azure</span>
               <span className="vault-step">4. Repita até 5× acima de {VAULT_PASS_SCORE}%</span>
@@ -251,8 +261,21 @@ export default function PronunciationWordsMode() {
           </div>
           <div className="card-body">
             <div className="voice-coach-actions">
+              <button
+                type="button"
+                className="btn secondary"
+                onClick={() => void listenWord(activeWord.word)}
+                disabled={speech.speaking || azure.assessing || !speech.configured}
+              >
+                {speech.speaking ? "🔊 Playing…" : "🔊 Listen"}
+              </button>
               {!azure.assessing ? (
-                <button type="button" className="btn green" onClick={startRecording}>
+                <button
+                  type="button"
+                  className="btn green"
+                  onClick={startRecording}
+                  disabled={speech.speaking}
+                >
                   ● {lastPracticeScore !== null ? "Gravar novamente" : "Gravar palavra"}
                 </button>
               ) : (
@@ -269,7 +292,9 @@ export default function PronunciationWordsMode() {
                 Voltar à lista
               </button>
             </div>
-            {azure.error && <p className="voice-coach-error">{azure.error}</p>}
+            {(azure.error || speech.error) && (
+              <p className="voice-coach-error">{azure.error || speech.error}</p>
+            )}
             {!azure.configured && (
               <p className="voice-coach-warn">Configure AZURE_SPEECH_KEY no .env para avaliar pronúncia.</p>
             )}
@@ -283,7 +308,7 @@ export default function PronunciationWordsMode() {
                   ? lastPassCount !== null && lastPassCount >= VAULT_PASSES_TO_GRADUATE
                     ? `Excelente — ${lastPracticeScore}%! ${VAULT_PASSES_TO_GRADUATE}/${VAULT_PASSES_TO_GRADUATE} — palavra removida da lista.`
                     : `Bom — ${lastPracticeScore}%! ${lastPassCount ?? activeWord.passCount}/${VAULT_PASSES_TO_GRADUATE} aprovadas. Continue treinando.`
-                  : `${lastPracticeScore}% — ouça no YouGlish e grave novamente.`}
+                  : `${lastPracticeScore}% — ouça (Listen) e grave novamente.`}
               </p>
             )}
             {activityNote && <p className="voice-coach-warn">{activityNote}</p>}
@@ -350,6 +375,15 @@ export default function PronunciationWordsMode() {
                 </div>
               </div>
               <div className="vault-word-actions">
+                <button
+                  type="button"
+                  className="btn secondary btn-sm"
+                  onClick={() => void listenWord(item.word)}
+                  disabled={speech.speaking || !speech.configured}
+                  aria-label={`Ouvir ${item.word}`}
+                >
+                  {speech.speaking ? "🔊…" : "🔊 Listen"}
+                </button>
                 <YouGlishLink word={item.word} compact />
                 <button type="button" className="btn green btn-sm" onClick={() => selectWord(item)}>
                   Praticar
