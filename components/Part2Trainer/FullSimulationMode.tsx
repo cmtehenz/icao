@@ -14,6 +14,7 @@ import {
   type SimulationStepResult,
 } from "@/lib/part2/aggregateSimulation";
 import { setPart2ItemStatus, type Part2ProgressStore } from "@/lib/part2/progress";
+import { syncDailyMissionLog } from "@/lib/dailyMissionLog";
 import { recordStudyActivity, SIMULATE_PART2_UNITS } from "@/lib/studyTime";
 import {
   getSpeakStepConfig,
@@ -153,6 +154,7 @@ export default function FullSimulationMode({ progress, onProgressChange }: Props
       onProgressChange(setPart2ItemStatus(progress, simId, status));
     }
     recordStudyActivity("simulate", SIMULATE_PART2_UNITS);
+    syncDailyMissionLog();
     setShowResults(true);
   };
 

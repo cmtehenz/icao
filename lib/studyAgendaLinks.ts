@@ -49,6 +49,8 @@ export function resolveAgendaLink(target: StudyAgendaLinkTarget): string {
       return "/part2?mode=interaction&shadow=1";
     case "part2-any":
       return "/part2?mode=readback";
+    case "part2-simulation":
+      return "/part2?mode=simulation";
     case "pronunciation": {
       const word = pickVaultWord();
       return word ? `/pronunciation?word=${encodeURIComponent(word.word)}` : "/pronunciation";

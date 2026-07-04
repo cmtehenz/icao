@@ -14,6 +14,14 @@ import {
   getOrCreateVocabDailyMission,
   vocabMissionLink,
 } from "@/lib/vocabDailyMission";
+import {
+  isSimulateMissionDone,
+  isSimulateMissionRequired,
+  SIMULATE_ICAO_HREF,
+  SIMULATE_MISSION_HREF,
+  simulateMissionProgress,
+} from "@/lib/simulateDailyMission";
+import { loadStudyPlanMode } from "@/lib/studyTime";
 
 export type DailyMissionNextAction = {
   href: string;
@@ -25,17 +33,24 @@ export type DailyMissionSummary = {
   part1: ReturnType<typeof part1DailyMissionProgress>;
   part2: ReturnType<typeof part2DailyMissionProgress>;
   vocabulary: ReturnType<typeof vocabDailyMissionProgress>;
+  simulate: ReturnType<typeof simulateMissionProgress>;
+  simulateRequired: boolean;
   complete: boolean;
   completedSections: number;
   totalSections: number;
 };
 
 export function getDailyMissionSummary(): DailyMissionSummary {
+  const mode = loadStudyPlanMode();
   const part1 = part1DailyMissionProgress(getOrCreatePart1DailyMission());
   const part2 = part2DailyMissionProgress(getOrCreatePart2DailyMission());
   const vocabulary = vocabDailyMissionProgress(getOrCreateVocabDailyMission());
+  const simulate = simulateMissionProgress();
+  const simulateRequired = isSimulateMissionRequired(mode);
 
   const sections = [part1.complete, part2.complete, vocabulary.complete];
+  if (simulateRequired) sections.push(simulate.complete);
+
   const completedSections = sections.filter(Boolean).length;
   const complete = completedSections === sections.length;
 
@@ -43,6 +58,8 @@ export function getDailyMissionSummary(): DailyMissionSummary {
     part1,
     part2,
     vocabulary,
+    simulate,
+    simulateRequired,
     complete,
     completedSections,
     totalSections: sections.length,
@@ -53,7 +70,10 @@ export function isDailyMissionComplete(): boolean {
   const part1 = part1DailyMissionProgress(getOrCreatePart1DailyMission());
   const part2 = part2DailyMissionProgress(getOrCreatePart2DailyMission());
   const vocabulary = vocabDailyMissionProgress(getOrCreateVocabDailyMission());
-  return part1.complete && part2.complete && vocabulary.complete;
+  const base = part1.complete && part2.complete && vocabulary.complete;
+  if (!base) return false;
+  if (isSimulateMissionRequired()) return isSimulateMissionDone();
+  return true;
 }
 
 /** Próximo passo concreto da missão (para CTA na home). */
@@ -104,5 +124,15 @@ export function getNextMissionAction(): DailyMissionNextAction | null {
     };
   }
 
+  if (isSimulateMissionRequired() && !isSimulateMissionDone()) {
+    return {
+      href: SIMULATE_MISSION_HREF,
+      title: "Simulado Part 2",
+      hint: "Dia bom: complete pelo menos 1 simulado (Part 2 ou Simulado ICAO)",
+    };
+  }
+
   return null;
 }
+
+export { SIMULATE_MISSION_HREF, SIMULATE_ICAO_HREF };

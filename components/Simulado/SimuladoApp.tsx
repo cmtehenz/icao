@@ -7,8 +7,10 @@ import SimuladoExamSelect from "@/components/Simulado/SimuladoExamSelect";
 import SimuladoModeSelect from "@/components/Simulado/SimuladoModeSelect";
 import SimuladoReport from "@/components/Simulado/SimuladoReport";
 import SimuladoRunner from "@/components/Simulado/SimuladoRunner";
+import { syncDailyMissionLog } from "@/lib/dailyMissionLog";
 import { examVersionFromMeta } from "@/lib/simulado/buildSteps";
 import { loadDashboardStats, saveSimuladoReport } from "@/lib/simulado/progress";
+import { recordStudyActivity } from "@/lib/studyTime";
 import type { SimuladoExamId } from "@/data/exams";
 import type {
   SimulationMode,
@@ -50,6 +52,8 @@ export default function SimuladoApp() {
   const handleReport = useCallback(
     (r: SimulationReport) => {
       saveSimuladoReport(r);
+      recordStudyActivity("simulate", 1);
+      syncDailyMissionLog();
       setReport(r);
       setView("report");
       refreshStats();

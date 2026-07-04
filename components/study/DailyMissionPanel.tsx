@@ -6,7 +6,7 @@ import { CARDS } from "@/lib/cards";
 import { ICAO_VOCABULARY } from "@/data/icaoVocabulary";
 import { STUDY_ACTIVITY_RECORDED_EVENT } from "@/lib/studyActivityRecord";
 import { DAILY_MISSION_LOG_EVENT } from "@/lib/dailyMissionLog";
-import { getDailyMissionSummary } from "@/lib/dailyMission";
+import { getDailyMissionSummary, SIMULATE_ICAO_HREF, SIMULATE_MISSION_HREF } from "@/lib/dailyMission";
 import { buildDifficultyInsights } from "@/lib/difficultyInsights";
 import {
   getOrCreatePart1DailyMission,
@@ -25,6 +25,8 @@ import { PART1_COACH_HISTORY_EVENT } from "@/lib/part1CoachHistory";
 import { PART2_PROGRESS_EVENT } from "@/lib/part2/progress";
 import { useStudyAgenda } from "@/hooks/useStudyAgenda";
 import {
+  STUDY_PLAN_CHANGE_EVENT,
+  STUDY_TIME_CHANGE_EVENT,
   studyDayGoalPoints,
   studyDayPoints,
   studyStreak,
@@ -55,6 +57,8 @@ export default function DailyMissionPanel() {
       PEEL_BLOCK_HISTORY_EVENT,
       PART1_COACH_HISTORY_EVENT,
       PART2_PROGRESS_EVENT,
+      STUDY_TIME_CHANGE_EVENT,
+      STUDY_PLAN_CHANGE_EVENT,
     ];
     for (const ev of events) window.addEventListener(ev, refresh);
     return () => {
@@ -77,7 +81,9 @@ export default function DailyMissionPanel() {
         <div>
           <h2>Plano de hoje</h2>
           <p className="sub">
-            Part 1 (4 perguntas) · Part 2 (mix) · 20 palavras — rotação diária
+            {mode === "intense"
+              ? "Part 1 · Part 2 · 20 palavras · 1 simulado — dia bom"
+              : "Part 1 (4 perguntas) · Part 2 (mix) · 20 palavras — rotação diária"}
           </p>
         </div>
         <div className="daily-mission-head-side">
@@ -112,7 +118,9 @@ export default function DailyMissionPanel() {
         </button>
       </div>
       <p className="daily-mission-mode-hint">
-        Missão = rotação fixa do dia. Pontos extras se quiser treinar além disso.
+        {mode === "intense"
+          ? "Dia bom: missão do dia + pelo menos 1 simulado (Part 2 ou Simulado ICAO). Pontos extras se treinar além disso."
+          : "Missão = rotação fixa do dia. Pontos extras se quiser treinar além disso."}
       </p>
 
       <div className="daily-mission-grid">
@@ -196,6 +204,29 @@ export default function DailyMissionPanel() {
             {summary.vocabulary.complete ? "Abrir vocabulário →" : "Treinar palavra que falta →"}
           </Link>
         </article>
+
+        {summary.simulateRequired && (
+          <article className={`daily-mission-card ${summary.simulate.complete ? "done" : ""}`}>
+            <h3>
+              Simulado — {summary.simulate.done}/{summary.simulate.total}
+            </h3>
+            <p className="daily-mission-meta">
+              Dia bom: complete pelo menos 1 simulado (Part 2 full sim ou Simulado ICAO)
+            </p>
+            {summary.simulate.complete ? (
+              <p className="daily-mission-vocab-progress">✓ Simulado concluído hoje</p>
+            ) : (
+              <div className="daily-mission-links">
+                <Link href={SIMULATE_MISSION_HREF} className="btn secondary btn-sm">
+                  Part 2 simulado →
+                </Link>
+                <Link href={SIMULATE_ICAO_HREF} className="btn secondary btn-sm">
+                  Simulado ICAO →
+                </Link>
+              </div>
+            )}
+          </article>
+        )}
       </div>
 
       <section className="difficulty-insights">

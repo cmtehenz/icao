@@ -23,6 +23,7 @@ export type StudyAgendaLinkTarget =
   | "part2-readback"
   | "part2-interaction"
   | "part2-any"
+  | "part2-simulation"
   | "pronunciation"
   | "vocabulary";
 
@@ -157,7 +158,7 @@ const WEEKDAY_PLANS: Record<number, Omit<StudyAgendaDay, "date" | "weekday" | "m
 
 function scaleTasksForMode(tasks: StudyAgendaTask[], mode: StudyPlanMode): StudyAgendaTask[] {
   if (mode === "standard") return tasks;
-  return tasks.map((t) => {
+  const scaled = tasks.map((t) => {
     const targetCount = Math.max(t.targetCount, Math.ceil(t.targetCount * INTENSE_RATIO));
     return {
       ...t,
@@ -165,6 +166,20 @@ function scaleTasksForMode(tasks: StudyAgendaTask[], mode: StudyPlanMode): Study
       points: studyActivityPoints(t.activity, targetCount),
     };
   });
+  // Dia bom: always include at least one full simulation.
+  if (!scaled.some((t) => t.activity === "simulate")) {
+    scaled.push(
+      task(
+        "intense-sim",
+        "simulate",
+        1,
+        "1 simulado completo",
+        "Part 2 full sim ou Simulado ICAO",
+        "part2-simulation",
+      ),
+    );
+  }
+  return scaled;
 }
 
 function agendaPointsFromTasks(tasks: StudyAgendaTask[]): number {
