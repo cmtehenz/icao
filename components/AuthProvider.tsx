@@ -9,9 +9,20 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import {
+  applyDailyMissionBundle,
+  isApplyingRemoteDailyMission,
+  loadLocalDailyMissionBundle,
+  mergeDailyMissionBundles,
+  type DailyMissionBundle,
+} from "@/lib/dailyMissionSync";
+import { PART1_DAILY_MISSION_EVENT } from "@/lib/part1DailyMission";
+import { PART2_DAILY_MISSION_EVENT } from "@/lib/part2DailyMission";
+import { VOCAB_DAILY_MISSION_EVENT } from "@/lib/vocabDailyMission";
+import { DAILY_MISSION_LOG_EVENT } from "@/lib/dailyMissionLog";
 import { loadVault, saveVault, VAULT_CHANGE_EVENT } from "@/lib/pronunciationVault";
 import type { VaultWord } from "@/lib/pronunciationVault";
-import { loadStudyDays, saveStudyDays, STUDY_TIME_CHANGE_EVENT } from "@/lib/studyTime";
+import { loadStudyDays, saveStudyDays, STUDY_TIME_CHANGE_EVENT, todayKey } from "@/lib/studyTime";
 import type { StudyDaysMap } from "@/lib/studyTimeMerge";
 import { mergeStudyDays } from "@/lib/studyTimeMerge";
 import { mergeVaultWords } from "@/lib/vaultMerge";
@@ -31,6 +42,7 @@ type AuthContextValue = {
   logout: () => Promise<void>;
   syncVault: () => Promise<void>;
   syncStudyTime: () => Promise<void>;
+  syncDailyMission: () => Promise<void>;
 };
 
 const AuthContext = createContext<AuthContextValue | null>(null);
@@ -79,6 +91,26 @@ async function pushStudyTimeToServer(days: StudyDaysMap): Promise<StudyDaysMap |
   return data.days as StudyDaysMap;
 }
 
+async function pullDailyMissionFromServer(date: string): Promise<DailyMissionBundle | null> {
+  const res = await fetch(`/api/daily-mission?date=${encodeURIComponent(date)}`);
+  if (!res.ok) return null;
+  const data = await res.json();
+  return data.mission as DailyMissionBundle;
+}
+
+async function pushDailyMissionToServer(
+  bundle: DailyMissionBundle,
+): Promise<DailyMissionBundle | null> {
+  const res = await fetch("/api/daily-mission", {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(bundle),
+  });
+  if (!res.ok) return null;
+  const data = await res.json();
+  return data.mission as DailyMissionBundle;
+}
+
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [loading, setLoading] = useState(true);
@@ -107,9 +139,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
+  const syncDailyMission = useCallback(async () => {
+    if (isApplyingRemoteDailyMission()) return;
+    const local = loadLocalDailyMissionBundle();
+    const merged = await pushDailyMissionToServer(local);
+    if (!merged) return;
+    const latest = loadLocalDailyMissionBundle();
+    applyDailyMissionBundle(mergeDailyMissionBundles(latest, merged));
+  }, []);
+
   const syncAll = useCallback(async () => {
-    await Promise.all([syncVault(), syncStudyTime()]);
-  }, [syncVault, syncStudyTime]);
+    await Promise.all([syncVault(), syncStudyTime(), syncDailyMission()]);
+  }, [syncVault, syncStudyTime, syncDailyMission]);
 
   const refreshUser = useCallback(async () => {
     try {
@@ -139,6 +180,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           if (pushedStudy) {
             const latestStudy = loadStudyDays();
             saveStudyDays(mergeStudyDays(latestStudy, pushedStudy));
+          }
+        }
+
+        const date = todayKey();
+        const remoteMission = await pullDailyMissionFromServer(date);
+        if (remoteMission) {
+          const localMission = loadLocalDailyMissionBundle();
+          const mergedMission = mergeDailyMissionBundles(localMission, remoteMission);
+          applyDailyMissionBundle(mergedMission);
+          const pushedMission = await pushDailyMissionToServer(mergedMission);
+          if (pushedMission) {
+            applyDailyMissionBundle(
+              mergeDailyMissionBundles(loadLocalDailyMissionBundle(), pushedMission),
+            );
           }
         }
       }
@@ -189,6 +244,46 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     };
   }, [user, syncStudyTime]);
 
+  useEffect(() => {
+    if (!user) return;
+
+    let timer: ReturnType<typeof setTimeout> | null = null;
+    const onMissionChange = () => {
+      if (isApplyingRemoteDailyMission()) return;
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(() => {
+        void syncDailyMission();
+      }, 800);
+    };
+
+    const events = [
+      PART1_DAILY_MISSION_EVENT,
+      PART2_DAILY_MISSION_EVENT,
+      VOCAB_DAILY_MISSION_EVENT,
+      DAILY_MISSION_LOG_EVENT,
+    ];
+    for (const event of events) {
+      window.addEventListener(event, onMissionChange);
+    }
+
+    const onVisible = () => {
+      if (document.visibilityState === "visible") {
+        void syncDailyMission();
+      }
+    };
+    document.addEventListener("visibilitychange", onVisible);
+    window.addEventListener("focus", onVisible);
+
+    return () => {
+      if (timer) clearTimeout(timer);
+      for (const event of events) {
+        window.removeEventListener(event, onMissionChange);
+      }
+      document.removeEventListener("visibilitychange", onVisible);
+      window.removeEventListener("focus", onVisible);
+    };
+  }, [user, syncDailyMission]);
+
   const login = useCallback(async (email: string, password: string) => {
     const res = await fetch("/api/auth/login", {
       method: "POST",
@@ -221,8 +316,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const value = useMemo(
-    () => ({ user, loading, login, register, logout, syncVault, syncStudyTime }),
-    [user, loading, login, register, logout, syncVault, syncStudyTime],
+    () => ({ user, loading, login, register, logout, syncVault, syncStudyTime, syncDailyMission }),
+    [user, loading, login, register, logout, syncVault, syncStudyTime, syncDailyMission],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

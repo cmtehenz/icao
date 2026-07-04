@@ -27,6 +27,18 @@ function saveDailyMissionLog(log: Record<string, boolean>): void {
   notify();
 }
 
+/** Merge completion log from server sync (does not recompute today's mission). */
+export function saveDailyMissionLogFromSync(log: Record<string, boolean>): void {
+  if (typeof window === "undefined") return;
+  const current = loadDailyMissionLog();
+  const merged: Record<string, boolean> = { ...current };
+  for (const [date, done] of Object.entries(log)) {
+    if (done) merged[date] = true;
+  }
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
+  notify();
+}
+
 export function markDailyMissionComplete(date = todayKey()): void {
   const log = loadDailyMissionLog();
   if (log[date]) return;

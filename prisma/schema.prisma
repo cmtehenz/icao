@@ -16,7 +16,8 @@ model User {
   updatedAt    DateTime @updatedAt
   vaultWords   VaultWord[]
   evaluations  Evaluation[]
-  studyDays    StudyDay[]
+  studyDays         StudyDay[]
+  dailyMissionDays  DailyMissionDay[]
 }
 
 model VaultWord {
@@ -74,6 +75,23 @@ model StudyDay {
   vocabularyCount    Int      @default(0)
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
+
+  @@unique([userId, date])
+  @@index([userId, date])
+}
+
+/** Daily mission checklist (Part 1 / Part 2 / Vocab) — synced across devices. */
+model DailyMissionDay {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  date      DateTime @db.Date
+  part1     Json?
+  part2     Json?
+  vocab     Json?
+  complete  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@unique([userId, date])
   @@index([userId, date])
