@@ -1,7 +1,5 @@
-import {
-  filenameForAudioBlob,
-  normalizeClientAudioBlob,
-} from "@/lib/recordings/mime";
+import { filenameForAudioBlob } from "@/lib/recordings/mime";
+import { toUniversalPlayableBlob } from "@/lib/recordings/toPlayableBlob";
 import type { EvaluateScores, EvaluateType } from "@/lib/evaluate/types";
 
 export type SaveEvaluationInput = {
@@ -36,7 +34,8 @@ export async function saveEvaluationRecord(
 
   try {
     if (input.audioBlob && input.audioBlob.size > 0) {
-      const blob = normalizeClientAudioBlob(input.audioBlob);
+      // WAV (or MP4) so recordings play on iPhone — Chrome often captures WebM.
+      const blob = await toUniversalPlayableBlob(input.audioBlob);
       const form = new FormData();
       form.append("data", JSON.stringify(payload));
       form.append("audio", blob, filenameForAudioBlob(blob));

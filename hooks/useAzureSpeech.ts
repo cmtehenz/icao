@@ -5,6 +5,7 @@ import { loadSpeechSdk } from "@/lib/azure/loadSpeechSdk";
 import type { AzurePronunciationResult, AzureWordScore } from "@/lib/azure/pronunciation";
 import type { AzureSpeechTokenResponse } from "@/lib/azure/speechToken";
 import { preferredRecorderMime } from "@/lib/recordings/platform";
+import { toUniversalPlayableBlob } from "@/lib/recordings/toPlayableBlob";
 
 const AZURE_VOICE = "en-US-JennyNeural";
 const TOKEN_URL = "/api/azure-speech-token";
@@ -85,7 +86,7 @@ export function useAzureSpeech() {
         return;
       }
       recorder.onstop = () => {
-        const mimeType = recorder.mimeType || "audio/webm";
+        const mimeType = recorder.mimeType || "audio/mp4";
         const blob =
           chunksRef.current.length > 0 ? new Blob(chunksRef.current, { type: mimeType }) : null;
         streamRef.current?.getTracks().forEach((t) => t.stop());
@@ -180,7 +181,8 @@ export function useAzureSpeech() {
         setRecording(false);
         const merged = mergeSegments(segmentsRef.current);
         setResult(merged);
-        const audioBlob = await stopMicCapture();
+        const raw = await stopMicCapture();
+        const audioBlob = raw ? await toUniversalPlayableBlob(raw) : null;
         resolve({ assessment: merged, audioBlob });
       };
 

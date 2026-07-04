@@ -16,14 +16,21 @@ export function isBlobAudioKey(audioKey: string): boolean {
 }
 
 export function mimeTypeForKey(audioKey: string): string {
-  if (audioKey.endsWith(".ogg")) return "audio/ogg";
-  if (audioKey.endsWith(".mp4")) return "audio/mp4";
+  const key = audioKey.toLowerCase();
+  if (key.endsWith(".wav")) return "audio/wav";
+  if (key.endsWith(".ogg")) return "audio/ogg";
+  if (key.endsWith(".mp4") || key.endsWith(".m4a")) return "audio/mp4";
+  if (key.endsWith(".mp3")) return "audio/mpeg";
   return "audio/webm";
 }
 
 export function extensionForMime(mimeType: string): string {
+  if (mimeType.includes("wav")) return "wav";
   if (mimeType.includes("ogg")) return "ogg";
-  if (mimeType.includes("mp4")) return "mp4";
+  if (mimeType.includes("mp4") || mimeType.includes("m4a") || mimeType.includes("aac")) {
+    return "mp4";
+  }
+  if (mimeType.includes("mpeg") || mimeType.includes("mp3")) return "mp3";
   return "webm";
 }
 

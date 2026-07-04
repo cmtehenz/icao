@@ -7,13 +7,12 @@ export function isIosDevice(): boolean {
   );
 }
 
-/** iOS grava e reproduz melhor em MP4/AAC; WebM costuma falhar no player nativo. */
-export function prefersMp4Recording(): boolean {
-  return isIosDevice();
-}
-
+/**
+ * Prefer MP4/AAC when available (iOS). Elsewhere Chrome usually only supports WebM;
+ * we convert WebM → WAV before upload so iPhone can play later.
+ */
 export function recordingMimeCandidates(): string[] {
-  if (prefersMp4Recording()) {
+  if (isIosDevice()) {
     return [
       "audio/mp4",
       "audio/aac",
@@ -23,11 +22,12 @@ export function recordingMimeCandidates(): string[] {
     ];
   }
   return [
+    "audio/mp4",
+    "audio/aac",
     "audio/webm;codecs=opus",
     "audio/webm",
     "video/webm;codecs=opus",
     "video/webm",
-    "audio/mp4",
   ];
 }
 

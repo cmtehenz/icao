@@ -6,12 +6,14 @@ export function normalizeRecordingMime(mimeType: string, filename: string): stri
   if (mime === "video/webm" || name.endsWith(".webm")) return "audio/webm";
   if (mime === "video/mp4" || name.endsWith(".mp4") || name.endsWith(".m4a")) return "audio/mp4";
   if (mime === "application/octet-stream") {
+    if (name.endsWith(".wav")) return "audio/wav";
     if (name.endsWith(".ogg")) return "audio/ogg";
     if (name.endsWith(".mp4") || name.endsWith(".m4a")) return "audio/mp4";
     return "audio/webm";
   }
+  if (!mime && name.endsWith(".wav")) return "audio/wav";
   if (!mime && name.endsWith(".webm")) return "audio/webm";
-  return mime || "audio/webm";
+  return mime || "audio/wav";
 }
 
 export function isAllowedRecordingMime(mimeType: string, filename: string): boolean {
@@ -19,8 +21,11 @@ export function isAllowedRecordingMime(mimeType: string, filename: string): bool
 }
 
 export function extensionForRecordingMime(mimeType: string): string {
+  if (mimeType.includes("wav")) return "wav";
   if (mimeType.includes("ogg")) return "ogg";
-  if (mimeType.includes("mp4")) return "mp4";
+  if (mimeType.includes("mp4") || mimeType.includes("m4a") || mimeType.includes("aac")) {
+    return "mp4";
+  }
   return "webm";
 }
 
@@ -40,11 +45,15 @@ export function filenameForAudioBlob(blob: Blob): string {
   return `recording.${extensionForRecordingMime(type)}`;
 }
 
-/** MIME para reprodução no Safari/iOS (exige audio/mp4, não video/mp4). */
+/** MIME para reprodução no Safari/iOS (exige audio/mp4 ou wav, não video/mp4 / webm). */
 export function playbackContentType(mimeType: string, audioKey: string): string {
   const normalized = normalizeRecordingMime(mimeType, audioKey);
-  if (normalized.includes("mp4")) return "audio/mp4";
+  if (normalized.includes("wav")) return "audio/wav";
+  if (normalized.includes("mp4") || normalized.includes("m4a") || normalized.includes("aac")) {
+    return "audio/mp4";
+  }
+  if (normalized.includes("mpeg") || normalized.includes("mp3")) return "audio/mpeg";
   if (normalized.includes("ogg")) return "audio/ogg";
   if (normalized.includes("webm")) return "audio/webm";
-  return normalized || "audio/mp4";
+  return normalized || "audio/wav";
 }

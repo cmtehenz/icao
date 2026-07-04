@@ -6,6 +6,7 @@ import type { AzurePronunciationResult, AzureWordScore } from "@/lib/azure/pronu
 import { azureReferenceText, useUnscriptedPronunciation } from "@/lib/azure/pronunciation";
 import type { EvaluateType } from "@/lib/evaluate/types";
 import { preferredRecorderMime } from "@/lib/recordings/platform";
+import { toUniversalPlayableBlob } from "@/lib/recordings/toPlayableBlob";
 
 type Segment = AzurePronunciationResult;
 
@@ -83,7 +84,7 @@ export function useAzurePronunciation() {
       }
 
       recorder.onstop = () => {
-        const mimeType = recorder.mimeType || "audio/webm";
+        const mimeType = recorder.mimeType || "audio/mp4";
         const blob =
           chunksRef.current.length > 0 ? new Blob(chunksRef.current, { type: mimeType }) : null;
         streamRef.current?.getTracks().forEach((t) => t.stop());
@@ -129,7 +130,8 @@ export function useAzurePronunciation() {
         setAssessing(false);
         const merged = mergeSegments(segmentsRef.current);
         setResult(merged);
-        const audioBlob = await stopMicCapture();
+        const raw = await stopMicCapture();
+        const audioBlob = raw ? await toUniversalPlayableBlob(raw) : null;
         resolve({ assessment: merged, audioBlob });
       };
 
