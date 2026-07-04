@@ -436,32 +436,35 @@
   {
     "num": "07",
     "question": "How did you become interested in aviation?",
-    "memory": "Young → Helicopters → Training → Career",
+    "memory": "Young → Airplanes → Helicopters → Fascinated → Career",
     "opener": "I became interested in aviation when I was very young.",
     "ideas": [
-      "1 - HELICOPTERS: I was always fascinated by helicopters and aviation technology.",
-      "2 - TRAINING: Later, I started my flight training and really enjoyed learning to fly.",
-      "3 - CAREER: Today, I work as a helicopter pilot, and aviation is an important part of my life."
+      "1 - AIRPLANES: At first, I wanted to become an airplane pilot.",
+      "2 - HELICOPTERS: However, when I had my first contact with helicopters, I completely changed my mind.",
+      "3 - FASCINATED: I was fascinated by their versatility and their ability to operate in places where airplanes can't."
     ],
-    "example": "For example, every time I saw a helicopter flying, I wanted to learn more about aviation and how pilots controlled the aircraft.",
-    "conclusion": "Overall, my interest started when I was young and became a professional helicopter career.",
+    "example": "For example, helicopters can operate in places where airplanes can't, and that versatility really impressed me.",
+    "conclusion": "That's why I decided to become a helicopter pilot, and even today I still enjoy learning and improving my skills.",
     "verbs": [
       "become",
+      "want",
+      "change",
       "fascinate",
-      "train",
+      "operate",
+      "decide",
       "learn",
-      "work"
+      "improve"
     ],
     "vocab": [
       "aviation",
+      "airplane pilot",
       "helicopters",
-      "flight training",
-      "helicopter pilot",
-      "career"
+      "versatility",
+      "helicopter pilot"
     ],
-    "answer": "I became interested in aviation when I was very young. 1 - HELICOPTERS: First of all, I was always fascinated by helicopters and aviation technology. 2 - TRAINING: Additionally, I started my flight training and really enjoyed learning to fly. 3 - CAREER: Finally, today I work as a helicopter pilot, and aviation is an important part of my life. For example, every time I saw a helicopter flying, I wanted to learn more about aviation and how pilots controlled the aircraft. Overall, my interest started when I was young and became a professional helicopter career.",
-    "answerLevel4": "I became interested in aviation when I was very young. I was always fascinated by helicopters and aviation technology. Later, I started my flight training and really enjoyed learning to fly. Today, I work as a helicopter pilot, and aviation is an important part of my life.",
-    "answerLevel5": "I became interested in aviation when I was very young. I was always fascinated by helicopters, aviation technology and the work pilots do. As I got older, my interest became stronger, so I decided to start my flight training. Today, I work as a helicopter pilot, and I still enjoy learning and improving my skills. Aviation is not only my job, but also my passion.",
+    "answer": "I became interested in aviation when I was very young. 1 - AIRPLANES: At first, I wanted to become an airplane pilot. 2 - HELICOPTERS: However, when I had my first contact with helicopters, I completely changed my mind. 3 - FASCINATED: I was fascinated by their versatility and their ability to operate in places where airplanes can't. For example, helicopters can operate in places where airplanes can't, and that versatility really impressed me. Overall, that's why I decided to become a helicopter pilot, and even today I still enjoy learning and improving my skills.",
+    "answerLevel4": "I became interested in aviation when I was very young. At first, I wanted to become an airplane pilot. However, when I had my first contact with helicopters, I completely changed my mind. I was fascinated by their versatility and their ability to operate in places where airplanes can't. That's why I decided to become a helicopter pilot.",
+    "answerLevel5": "I became interested in aviation when I was very young. At first, I wanted to become an airplane pilot. However, when I had my first contact with helicopters, I completely changed my mind. I was fascinated by their versatility and their ability to operate in places where airplanes can't. That's why I decided to become a helicopter pilot, and even today I still enjoy learning and improving my skills.",
     "answerExtra": "I also liked the responsibility and the challenge of being a pilot.",
     "level4Steps": [
       {
@@ -469,22 +472,27 @@
         "sentence": "I became interested in aviation when I was very young."
       },
       {
-        "label": "Helicopters",
-        "sentence": "I was fascinated by helicopters."
+        "label": "Airplanes",
+        "sentence": "At first, I wanted to become an airplane pilot."
       },
       {
-        "label": "Training",
-        "sentence": "I started my flight training."
+        "label": "Helicopters",
+        "sentence": "When I had my first contact with helicopters, I completely changed my mind."
+      },
+      {
+        "label": "Fascinated",
+        "sentence": "I was fascinated by their versatility and their ability to operate in places where airplanes can't."
       },
       {
         "label": "Career",
-        "sentence": "Today, I work as a helicopter pilot."
+        "sentence": "That's why I decided to become a helicopter pilot, and even today I still enjoy learning and improving my skills."
       }
     ],
     "memoryIcons": [
       "👦",
+      "✈️",
       "🚁",
-      "🎓",
+      "❤️",
       "👨‍✈️"
     ],
     "difficulty": "Easy",
@@ -496,18 +504,20 @@
     ],
     "memoryLabels": [
       "Young",
+      "Airplanes",
       "Helicopters",
-      "Training",
+      "Fascinated",
       "Career"
     ],
     "targetWords": 95,
     "keywords": [
       "Young",
+      "Airplanes",
       "Helicopters",
-      "Training",
+      "Fascinated",
       "Career"
     ],
-    "studyTips": "Palavras-chave: Young → Helicopters → Training → Career\n\nSua história pessoal em 4 passos:\n\n• Quando? → Very young.\n• O quê fascinou? → Helicopters.\n• O que fez? → Flight training.\n• Hoje? → Helicopter pilot career.\n\nConectores: Later, / Today,\n\nConte com emoção real — examinador gosta de resposta autêntica."
+    "studyTips": "Palavras-chave: Young → Airplanes → Helicopters → Fascinated → Career\n\nHistória fácil de lembrar — não decore palavra por palavra:\n\n👦 Young → interesse desde pequeno\n✈️ Airplanes → no começo queria ser piloto de avião\n🚁 Helicopters → primeiro contato mudou tudo\n❤️ Fascinated → versatilidade e lugares onde aviões não operam\n👨‍✈️ Career → decidiu ser piloto de helicóptero e ainda gosta de aprender\n\nConectores: At first, / However, / That's why,\n\nConte a história — soa mais natural na prova ICAO."
   },
   {
     "num": "08",

@@ -37,8 +37,8 @@ export type StreamBuildProgress = {
   label: string;
 };
 
-/** Bump when stream format changes (invalidates broken MP3-concat caches). */
-const STREAM_VERSION = 2;
+/** Bump when stream format or Part 1 model answers change (invalidates cached exam audio). */
+const STREAM_VERSION = 3;
 const STREAM_META_PREFIX = `icao_escutar_stream_meta_v${STREAM_VERSION}_`;
 
 function voiceForItem(item: ExamAudioItem): AzureVoiceRole {
