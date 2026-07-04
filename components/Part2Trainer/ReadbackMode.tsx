@@ -9,7 +9,10 @@ import Part2ReadbackShadowPanel from "@/components/Part2Trainer/Part2ReadbackSha
 import PronunciationWarmupBanner from "@/components/study/PronunciationWarmupBanner";
 import VoiceCoachPanel from "@/components/VoiceCoachPanel";
 import VoicePracticePanel from "@/components/study/VoicePracticePanel";
+import Part2NotesLayout from "@/components/Part2Trainer/Part2NotesLayout";
+import Part2NotesReviewButton from "@/components/Part2Trainer/Part2NotesReviewButton";
 import StudyCardToolbar from "@/components/study/StudyCardToolbar";
+import { usePart2StudentNotes } from "@/hooks/usePart2StudentNotes";
 import { usePart2WarmupGate } from "@/hooks/usePart2WarmupGate";
 import ProgressBadge from "@/components/study/ProgressBadge";
 import CardStatusActions from "@/components/study/CardStatusActions";
@@ -58,6 +61,7 @@ export default function ReadbackMode({
   const scenarios = useMemo(() => scenariosForExamVersion(examVersion), [examVersion]);
 
   const scenario = scenarios[index] ?? scenarios[0];
+  const { studentNotes, setStudentNotes } = usePart2StudentNotes(scenario?.id ?? "");
   if (!scenario) return null;
   const itemProgress = getPart2ItemProgress(progress, `${scenario.id}-rb`);
 
@@ -130,6 +134,7 @@ export default function ReadbackMode({
         </span>
       </header>
 
+      <Part2NotesLayout notes={studentNotes} onNotesChange={setStudentNotes}>
       <article className="card card-essential part2-card">
         <div className="card-top">
           <h2 className="question">{scenario.title}</h2>
@@ -188,9 +193,17 @@ export default function ReadbackMode({
             }
           />
 
-          <StudyCardToolbar onPrevious={() => go(-1)} onNext={() => go(1)} />
+          <div className="study-toolbar study-toolbar-split">
+            <Part2NotesReviewButton
+              studentNotes={studentNotes}
+              recommendedNotes={scenario.recommendedNotes}
+              situationTitle={scenario.title}
+            />
+            <StudyCardToolbar onPrevious={() => go(-1)} onNext={() => go(1)} />
+          </div>
         </div>
       </article>
+      </Part2NotesLayout>
     </div>
   );
 }

@@ -14,3 +14,4 @@ prisma/dev.db
 data/recordings
 
 /lib/generated/prisma
+.vercel

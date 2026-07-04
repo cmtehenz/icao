@@ -3513,6 +3513,15 @@ input {
   border-top: 1px solid var(--line);
 }
 
+.study-toolbar-split {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.study-toolbar-split .study-toolbar {
+  margin: 0;
+}
+
 .connector-highlight {
   background: linear-gradient(120deg, rgba(234, 179, 8, 0.35), rgba(249, 115, 22, 0.25));
   color: inherit;

@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import ExamAudioPlayer from "@/components/ExamAudioPlayer";
 import ExamVersionPicker from "@/components/ExamVersionPicker";
 import Part2SimulationRecord from "@/components/Part2Trainer/Part2SimulationRecord";
-import QuickNotesPad from "@/components/Part2Trainer/QuickNotesPad";
+import Part2NotesLayout from "@/components/Part2Trainer/Part2NotesLayout";
 import RecommendedNotesReview from "@/components/Part2Trainer/RecommendedNotesReview";
 import SimulationResultsPanel from "@/components/Part2Trainer/SimulationResultsPanel";
 import { getSituationsByExam } from "@/data/exams/part2Data";
@@ -200,6 +200,10 @@ export default function FullSimulationMode({ progress, onProgressChange }: Props
               ? `${EXAM_LABELS[examVersion]} — áudio original, 5 situações, avaliação Azure`
               : "Sorteia uma prova (23C–26C). Grave cada resposta com Azure; no final você vê o nível ICAO (2–6) e todos os erros."}
           </p>
+          <p className="part2-hint">
+            Durante a simulação, use o painel <strong>ICAO Quick Notes</strong> à direita (ou acima no
+            celular) para anotar códigos enquanto ouve o ATC.
+          </p>
           <button type="button" className="btn green btn-large" onClick={startSituation}>
             Iniciar simulação
           </button>
@@ -215,6 +219,7 @@ export default function FullSimulationMode({ progress, onProgressChange }: Props
         <header className="part2-mode-head">
           <span className="badge">{EXAM_LABELS[activeVersion]} — Sound check</span>
         </header>
+        <Part2NotesLayout notes={studentNotes} onNotesChange={setStudentNotes}>
         <article className="card card-essential part2-card">
           <div className="card-top">
             <h2 className="question">TRACK 1 — Sound check</h2>
@@ -234,6 +239,7 @@ export default function FullSimulationMode({ progress, onProgressChange }: Props
             </div>
           </div>
         </article>
+        </Part2NotesLayout>
       </div>
     );
   }
@@ -264,7 +270,7 @@ export default function FullSimulationMode({ progress, onProgressChange }: Props
         ))}
       </div>
 
-      <div className="part2-sim-layout">
+      <Part2NotesLayout notes={studentNotes} onNotesChange={setStudentNotes}>
       <article className="card card-essential part2-card part2-sim-main">
         <div className="card-top">
           <h2 className="question">{current.title}</h2>
@@ -404,9 +410,7 @@ export default function FullSimulationMode({ progress, onProgressChange }: Props
           </div>
         </div>
       </article>
-
-      <QuickNotesPad value={studentNotes} onChange={setStudentNotes} />
-      </div>
+      </Part2NotesLayout>
 
       {scenario.recommendedNotes && (
         <RecommendedNotesReview
