@@ -1,4 +1,5 @@
 import type { Part2ItemProgress, Part2ProgressStatus, Part2ProgressStore } from "@/lib/part2/types";
+import { recordScoreSnapshot } from "@/lib/scoreHistory";
 
 export type { Part2ProgressStore };
 
@@ -102,6 +103,7 @@ export function recordPart2ItemScore(
     },
   };
   savePart2Progress(next);
+  recordScoreSnapshot("part2", clamped);
   return next;
 }
 

@@ -5,6 +5,7 @@ import type {
   SimulationReport,
 } from "@/lib/simulado/types";
 import { suggestedNextPractice } from "@/lib/simulado/aggregateReport";
+import { recordScoreSnapshot } from "@/lib/scoreHistory";
 
 const STORAGE_KEY = "icao-simulado-history";
 const DIFFICULT_KEY = "icao-simulado-difficult";
@@ -84,6 +85,7 @@ export function saveSimuladoReport(report: SimulationReport): void {
     const merged = [...new Set([...existing, ...report.difficultItems])];
     localStorage.setItem(DIFFICULT_KEY, JSON.stringify(merged.slice(0, 50)));
   }
+  recordScoreSnapshot("simulado", overallScore(report), report.date.slice(0, 10));
   window.dispatchEvent(new Event("icao-simulado-change"));
 }
 

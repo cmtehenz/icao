@@ -1,3 +1,5 @@
+import { recordScoreSnapshot } from "@/lib/scoreHistory";
+
 const STORAGE_KEY = "icao_part1_coach_history_v1";
 export const PART1_COACH_HISTORY_EVENT = "icao-part1-coach-history-change";
 
@@ -52,6 +54,7 @@ export function recordPart1CoachAttempt(
     lastAt: new Date().toISOString(),
   };
   savePart1CoachHistory({ ...store, [cardNum]: next });
+  recordScoreSnapshot("part1", overall);
   return next;
 }
 

@@ -8,6 +8,8 @@ import { STUDY_ACTIVITY_RECORDED_EVENT } from "@/lib/studyActivityRecord";
 import { DAILY_MISSION_LOG_EVENT } from "@/lib/dailyMissionLog";
 import { getDailyMissionSummary, getSimuladoIcaoHref } from "@/lib/dailyMission";
 import { buildDifficultyInsights } from "@/lib/difficultyInsights";
+import TeacherReportPanel from "@/components/study/TeacherReportPanel";
+import ProgressTrendPanel from "@/components/study/ProgressTrendPanel";
 import {
   getOrCreatePart1DailyMission,
   part1CardPeelProgress,
@@ -268,6 +270,10 @@ export default function DailyMissionPanel() {
           ))}
         </div>
       </section>
+
+      <TeacherReportPanel />
+
+      <ProgressTrendPanel />
     </section>
   );
 }

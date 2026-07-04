@@ -1,4 +1,5 @@
 import { errorTypeLabel } from "@/lib/azure/pronunciation";
+import { recordScoreSnapshot } from "@/lib/scoreHistory";
 import { shouldSkipPronunciationVaultWord } from "@/lib/aviationSpeechTerms";
 
 export type VaultWord = {
@@ -274,12 +275,14 @@ export function recordWordPractice(word: string, accuracy: number): VaultPractic
       return { removed: true, passCount: item.passCount };
     }
     saveVault(vault);
+    recordScoreSnapshot("pronunciation", accuracy);
     return { removed: false, passCount: item.passCount };
   }
 
   item.lowestAccuracy = Math.min(item.lowestAccuracy, accuracy);
   item.returnCount = normalizeVaultCount(item.returnCount, 0) + 1;
   saveVault(vault);
+  recordScoreSnapshot("pronunciation", accuracy);
   return { removed: false, passCount: item.passCount };
 }
 

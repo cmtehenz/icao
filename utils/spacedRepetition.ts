@@ -1,3 +1,5 @@
+import { recordScoreSnapshot } from "@/lib/scoreHistory";
+
 export type VocabStatus = "new" | "learning" | "review" | "mastered";
 
 export type VocabSavedRecording = {
@@ -304,6 +306,7 @@ export function recordVocabAttempt(
   store.lastPracticeDate = date;
 
   saveVocabProgressStore(store);
+  recordScoreSnapshot("vocabulary", score, date);
   return next;
 }
 
