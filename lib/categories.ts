@@ -10,7 +10,7 @@ export const CATEGORIES = {
 } as const;
 
 export const HELICOPTER_CARD_NUMS = [
-  "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11",
+  "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12",
 ] as const;
 
 export type Category = keyof typeof CATEGORIES;

@@ -1,11 +1,11 @@
 import type { ExamVersion } from "@/lib/exams/types";
 
-/** Card nums for each real SDEA exam — Part 1 has exactly 3 questions per version. */
+/** Card nums per SDEA Part 1 exam (3 questions each — card nums match question order per prova). */
 export const PART1_BY_EXAM: Record<ExamVersion, readonly string[]> = {
-  "23C": ["01", "02", "12"],
-  "24C": ["04", "05", "03"],
-  "25C": ["06", "07", "08"],
-  "26C": ["09", "10", "11"],
+  "23C": ["01", "02", "03"],
+  "24C": ["04", "05", "06"],
+  "25C": ["07", "08", "09"],
+  "26C": ["10", "11", "12"],
 };
 
 export const ALL_PART1_CARD_NUMS = [

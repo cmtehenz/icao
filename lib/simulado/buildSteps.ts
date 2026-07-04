@@ -1,15 +1,17 @@
-import { PART1_BY_EXAM } from "@/data/exams/part1";
 import { getSituationsByExam } from "@/data/exams/part2Data";
 import { getPart3Scenario } from "@/data/simulado/part3Data";
 import { getPart4Picture } from "@/data/simulado/part4Data";
+import { SIMULADO_ACTIVE_PARTS, SIMULADO_PART1_QUESTIONS } from "@/lib/simulado/config";
 import { examAudioUrl } from "@/lib/exams/audio";
 import { CARDS } from "@/lib/cards";
 import type { ExamVersion } from "@/lib/exams/types";
 import type { SimuladoPart, SimuladoSessionConfig, SimuladoStep, SimulationMode } from "@/lib/simulado/types";
 
 function partsForMode(mode: SimulationMode, customParts?: SimuladoPart[]): SimuladoPart[] {
-  if (mode === "custom" && customParts?.length) return customParts;
-  if (mode === "full") return [1, 2, 3, 4];
+  if (mode === "custom" && customParts?.length) {
+    return customParts.filter((p) => SIMULADO_ACTIVE_PARTS.includes(p));
+  }
+  if (mode === "full") return [...SIMULADO_ACTIVE_PARTS];
   if (mode === "part1") return [1];
   if (mode === "part2") return [2];
   if (mode === "part3") return [3];
@@ -35,24 +37,23 @@ export function buildSimuladoSteps(config: SimuladoSessionConfig): SimuladoStep[
       text: "Part One. Aviation Topics. I will ask you three questions. Please answer as fully as you can.",
     });
 
-    const cardNums = PART1_BY_EXAM[examVersion];
-    cardNums.forEach((num, i) => {
-      const card = cardByNum(num);
+    SIMULADO_PART1_QUESTIONS.forEach((item, i) => {
+      const card = cardByNum(item.cardNum);
       if (!card) return;
       const model = card.answerLevel5 ?? card.answerLevel4 ?? card.answer;
       steps.push({
         kind: "examiner",
-        id: `p1-q${num}`,
+        id: `p1-q${item.cardNum}`,
         part: 1,
         label: `Part 1 · Question ${i + 1}`,
-        text: card.question,
+        text: item.question,
       });
       steps.push({
         kind: "record",
-        id: `p1-a${num}`,
+        id: `p1-a${item.cardNum}`,
         part: 1,
         label: `Your answer · Q${i + 1}`,
-        question: card.question,
+        question: item.question,
         modelAnswer: model,
         evaluateType: "part1",
         keywords: card.keywords ?? card.vocab ?? [],
@@ -289,7 +290,7 @@ export function buildSimuladoSteps(config: SimuladoSessionConfig): SimuladoStep[
 }
 
 export function modeLabel(mode: SimulationMode, customParts?: SimuladoPart[]): string {
-  if (mode === "full") return "Full Exam";
+  if (mode === "full") return "Full Exam · Parts 1–2";
   if (mode === "custom" && customParts?.length) {
     return `Custom · Part ${customParts.join(" + ")}`;
   }

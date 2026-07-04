@@ -6,6 +6,7 @@ import {
   scoreToIcaoLevel,
 } from "@/lib/evaluate/icaoLevel";
 import { modeLabel } from "@/lib/simulado/buildSteps";
+import { SIMULADO_ACTIVE_PARTS } from "@/lib/simulado/config";
 
 const CRITERIA: IcaoCriterion[] = [
   "pronunciation",
@@ -69,8 +70,10 @@ function buildRecommendations(
 }
 
 function partsIncludedForConfig(config: SimuladoSessionConfig): SimuladoPart[] {
-  if (config.mode === "custom" && config.customParts?.length) return config.customParts;
-  if (config.mode === "full") return [1, 2, 3, 4];
+  if (config.mode === "custom" && config.customParts?.length) {
+    return config.customParts.filter((p) => SIMULADO_ACTIVE_PARTS.includes(p));
+  }
+  if (config.mode === "full") return [...SIMULADO_ACTIVE_PARTS];
   if (config.mode === "part1") return [1];
   if (config.mode === "part2") return [2];
   if (config.mode === "part3") return [3];

@@ -50,22 +50,24 @@ const ENRICH = {
       "Palavras-chave para decorar: Situation → Actions → Lesson\n\nHistória em 3 partes (STAR simplificado):\n\n• Situation → O que aconteceu? (weather, visibility)\n• Actions → O que você fez? (calm, communicate, decide)\n• Lesson → O que aprendeu? (prepare, divert, safety)\n\nConectores: First, / Also, / Finally, / For example,\n\nConte como uma história real — não precisa decorar palavra por palavra.",
   },
   "03": {
-    memoryLabels: ["Preparation", "Calmness", "Safety"],
-    keywords: ["Preparation", "Calmness", "Safety"],
-    memoryIcons: ["📖", "😌", "🛡️"],
+    memory: "Navegantes → Busy → Florianópolis → Weather",
+    memoryLabels: ["Navegantes", "Busy", "Florianópolis", "Weather"],
+    keywords: ["Navegantes", "Busy", "Florianópolis", "Weather"],
+    memoryIcons: ["🛬", "✈️", "🛬", "🌧️"],
     answerLevel4:
-      "Before my first check ride, my instructor gave me important advice. He told me to review procedures and emergency actions. He also advised me to stay calm during hover and maneuvers. Finally, he said safety and good judgment are more important than looking perfect.",
+      "The airport I operate at the most is Navegantes Airport, SBNV. It is a busy airport with commercial airlines, general aviation and helicopters. I also operate frequently at Florianópolis Airport, SBFL, especially during the summer season. Both airports have good infrastructure, but weather and traffic can sometimes make the operation more challenging.",
     answerLevel5:
-      "Before my first helicopter check ride, my instructor gave me advice that I still remember today. First of all, he told me to review procedures, performance limits and emergency actions for the helicopter. Additionally, he advised me to stay calm during hover, transitions and maneuvering under evaluation. Finally, he said that safety and good judgment were more important than trying to look perfect. For example, if a maneuver did not go exactly as planned, I should correct it calmly, communicate and keep flying safely. Overall, his advice helped me understand that a good pilot is prepared, calm and focused on safety.",
+      "The airport where I operate the most is Navegantes Airport, SBNV, in southern Brazil. It is a busy airport with commercial flights, business aviation and helicopter operations. I also fly regularly to Florianópolis Airport, SBFL, especially during the summer, when air traffic increases. In my experience, both airports have good facilities, but weather conditions and heavy traffic sometimes require extra attention and good communication with ATC.",
     level4Example:
-      "For example, if a maneuver did not go as planned, I should correct it calmly and keep flying safely.",
+      "For example, during the summer in Florianópolis, air traffic increases and weather conditions sometimes require extra attention and good communication with ATC.",
     level4Steps: [
-      { label: "Preparation", sentence: "He told me to review procedures and emergency actions." },
-      { label: "Calmness", sentence: "He advised me to stay calm during hover and maneuvers." },
-      { label: "Safety", sentence: "Safety and good judgment are more important than looking perfect." },
+      { label: "Navegantes", sentence: "I operate mostly at Navegantes Airport, SBNV." },
+      { label: "Busy", sentence: "It is a busy airport with different types of aircraft." },
+      { label: "Florianópolis", sentence: "I also fly to Florianópolis quite often." },
+      { label: "Weather", sentence: "Sometimes the weather and traffic make the operation more challenging." },
     ],
     studyTips:
-      "Palavras-chave: Preparation → Calmness → Safety\n\n• O que estudar? → Procedures e emergências.\n• Como agir? → Stay calm no hover.\n• O que importa? → Safety first, not ego.\n\nConectores: He told me... / He also... / Finally,\n\nPergunta pessoal — use experiência real do seu check ride.",
+      "Palavras-chave para decorar: Navegantes → Busy → Florianópolis → Weather\n\nSua operação real em 4 passos:\n\n• Onde mais? → Navegantes (SBNV).\n• Como é? → Busy airport, vários tipos de tráfego.\n• Onde também? → Florianópolis (SBFL), especialmente no verão.\n• Desafio? → Weather e traffic.\n\nConectores: I also / especially during / but\n\nResposta muito convincente porque é verdadeira — use SBNV e SBFL com naturalidade.",
   },
   "04": {
     memory: "Physical → Mental → Safety",
@@ -105,6 +107,25 @@ const ENRICH = {
       "Palavras-chave: Digital → AI → Radio → Safety\n\n• Futuro → Mais digital.\n• Tecnologia → AI ajuda rotina.\n• Emergência → Radio continua essencial.\n• Resultado → Human safety sempre.\n\nConector importante: However, (contraste entre AI e radio)\n\nPergunta de opinião/futuro — use In my opinion, no início.",
   },
   "06": {
+    memory: "Preparation → Calmness → Safety",
+    memoryLabels: ["Preparation", "Calmness", "Safety"],
+    keywords: ["Preparation", "Calmness", "Safety"],
+    memoryIcons: ["📖", "😌", "🛡️"],
+    answerLevel4:
+      "Before my first check ride, my instructor gave me important advice. He told me to review procedures and emergency actions. He also advised me to stay calm during hover and maneuvers. Finally, he said safety and good judgment are more important than looking perfect.",
+    answerLevel5:
+      "Before my first helicopter check ride, my instructor gave me advice that I still remember today. First of all, he told me to review procedures, performance limits and emergency actions for the helicopter. Additionally, he advised me to stay calm during hover, transitions and maneuvering under evaluation. Finally, he said that safety and good judgment were more important than trying to look perfect. For example, if a maneuver did not go exactly as planned, I should correct it calmly, communicate and keep flying safely. Overall, his advice helped me understand that a good pilot is prepared, calm and focused on safety.",
+    level4Example:
+      "For example, if a maneuver did not go as planned, I should correct it calmly and keep flying safely.",
+    level4Steps: [
+      { label: "Preparation", sentence: "He told me to review procedures and emergency actions." },
+      { label: "Calmness", sentence: "He advised me to stay calm during hover and maneuvers." },
+      { label: "Safety", sentence: "Safety and good judgment are more important than looking perfect." },
+    ],
+    studyTips:
+      "Palavras-chave: Preparation → Calmness → Safety\n\n• O que estudar? → Procedures e emergências.\n• Como agir? → Stay calm no hover.\n• O que importa? → Safety first, not ego.\n\nConectores: He told me... / He also... / Finally,\n\nPergunta pessoal — use experiência real do seu check ride.",
+  },
+  "07": {
     memoryLabels: ["Standard", "Clear", "Safety"],
     keywords: ["Standard", "Clear", "Safety"],
     memoryIcons: ["🌍", "💬", "🛡️"],
@@ -120,19 +141,19 @@ const ENRICH = {
     studyTips:
       "Palavras-chave: Standard → Clear → Safety\n\n• Por quê? → Padrão mundial (worldwide).\n• O que faz? → Communication clara.\n• Resultado → Menos erros, mais safety.\n\nConectores: It also / As a result,\n\nResposta curta e objetiva — uma das mais fáceis do exame.",
   },
-  "07": {
+  "08": {
     studyTips:
       "Palavras-chave: Young → Helicopters → Training → Career\n\nSua história pessoal em 4 passos:\n\n• Quando? → Very young.\n• O quê fascinou? → Helicopters.\n• O que fez? → Flight training.\n• Hoje? → Helicopter pilot career.\n\nConectores: Later, / Today,\n\nConte com emoção real — examinador gosta de resposta autêntica.",
   },
-  "08": {
+  "09": {
     studyTips:
       "Palavras-chave: Unsafe → Weather → Runway → Try again\n\n• Quando? → Not safe to land.\n• Por quê? → Weather, traffic, obstruction.\n• O que fazer? → Follow procedure / ATC.\n• Depois? → Another approach or divert.\n\nConectores: This may happen... / Then,\n\nProcedimento técnico — fale com calma e clareza.",
   },
-  "09": {
+  "10": {
     studyTips:
       "Palavras-chave: Safe → Practice → Emergencies → Confidence\n\n• Onde? → Safe environment.\n• O que faz? → Practice emergencies.\n• O que melhora? → Decision-making.\n• Resultado? → Confidence e safety.\n\nConectores: It also / As a result,\n\nUma das mais fáceis de memorizar — sequência lógica.",
   },
-  "10": {
+  "11": {
     memoryLabels: ["Discipline", "Limits", "Safety"],
     keywords: ["Discipline", "Limits", "Safety"],
     memoryIcons: ["📋", "⚖️", "🛡️"],
@@ -148,9 +169,9 @@ const ENRICH = {
       { label: "Safety", sentence: "Safety and good judgment are more important than speed or ego." },
     ],
     studyTips:
-      "Palavras-chave: Discipline → Limits → Safety\n\n• Discipline → Procedures e checklists.\n• Limits → Power, weight, weather.\n• Safety → Judgment over ego.\n\nConectores: He told me... / He also... / Finally,\n\nSimilar ao card 03 — use conselhos reais do seu instrutor.",
+      "Palavras-chave: Discipline → Limits → Safety\n\n• Discipline → Procedures e checklists.\n• Limits → Power, weight, weather.\n• Safety → Judgment over ego.\n\nConectores: He told me... / He also... / Finally,\n\nSimilar ao card 06 — use conselhos reais do seu instrutor.",
   },
-  "11": {
+  "12": {
     memoryLabels: ["Technology", "Growth", "Safety"],
     keywords: ["Technology", "Growth", "Safety"],
     memoryIcons: ["🔧", "📈", "🛡️"],
@@ -167,24 +188,6 @@ const ENRICH = {
     ],
     studyTips:
       "Palavras-chave: Technology → Growth → Safety\n\n• Futuro técnico → Mais tecnologia.\n• Mercado → Crescimento offshore/HEMS.\n• Resultado → Safety culture melhora.\n\nConectores: From my point of view, / Additionally, / As a result,\n\nMencione Brasil e helicópteros — personalize com o que você vê no mercado.",
-  },
-  "12": {
-    memoryLabels: ["Location", "Operations", "Experience"],
-    keywords: ["Location", "Operations", "Experience"],
-    memoryIcons: ["📍", "🛫", "⭐"],
-    answerLevel4:
-      "The airport I operate at the most is where I have built solid experience as a helicopter pilot. It is in a region with specific weather patterns and terrain. It has particular procedures, helipads and traffic patterns that I know well. Operating there regularly improves my familiarity, confidence and safety.",
-    answerLevel5:
-      "The airport I operate at the most is one where I have built solid experience as a helicopter pilot. First of all, it is located in a region where I frequently conduct helicopter operations, with specific weather patterns and terrain features. Additionally, it has particular procedures, runways or helipads, traffic patterns and restrictions that I know very well. Finally, my regular operations there have helped me understand local ATC, common delays and the safest approaches. For example, because I operate there often, I know the typical wind direction, the busiest periods and the best alternate options if weather deteriorates. Overall, operating regularly at the same airport improves familiarity, confidence and safety in helicopter operations.",
-    level4Example:
-      "For example, I know the typical wind direction, the busiest periods and the best alternate options if weather deteriorates.",
-    level4Steps: [
-      { label: "Location", sentence: "It is in a region with specific weather patterns and terrain." },
-      { label: "Operations", sentence: "It has particular procedures, helipads and traffic patterns that I know well." },
-      { label: "Experience", sentence: "Operating there regularly improves my familiarity, confidence and safety." },
-    ],
-    studyTips:
-      "Palavras-chave: Location → Operations → Experience\n\n• Onde? → Região, weather, terrain.\n• Como opera? → Procedures, helipad, traffic.\n• Por que importa? → Familiarity e confidence.\n\nConectores: First of all, / Additionally, / Finally,\n\nDescreva SEU aeroporto real — examinador valoriza detalhes concretos.",
   },
 };
 

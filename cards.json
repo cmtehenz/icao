@@ -152,72 +152,79 @@
   },
   {
     "num": "03",
-    "question": "What advice did your instructor give you before your first check ride?",
-    "memory": "Preparation → Calmness → Safety",
-    "opener": "Before my first helicopter check ride, my instructor gave me advice that I still remember today.",
+    "question": "Could you describe the airport you operate at the most?",
+    "memory": "Navegantes → Busy → Florianópolis → Weather",
+    "opener": "The airport I operate at the most is Navegantes Airport, SBNV.",
     "ideas": [
-      "1 - PREPARATION: First of all, he told me to review procedures, performance limits and emergency actions for the helicopter.",
-      "2 - CALMNESS: Additionally, he advised me to stay calm during hover, transitions and maneuvering under evaluation.",
-      "3 - SAFETY: Finally, he said that safety and good judgment were more important than trying to look perfect."
+      "1 - BUSY: First of all, it is a busy airport with commercial airlines, general aviation and helicopters.",
+      "2 - FLORIANOPOLIS: Additionally, I also operate frequently at Florianópolis Airport, SBFL, especially during the summer season.",
+      "3 - WEATHER: Finally, both airports have good infrastructure, but weather and traffic can sometimes make the operation more challenging."
     ],
-    "example": "For example, if a maneuver did not go exactly as planned, I should correct it calmly, communicate and keep flying safely.",
-    "conclusion": "Overall, his advice helped me understand that a good helicopter pilot is prepared, calm and focused on safety.",
+    "example": "For example, during the summer in Florianópolis, air traffic increases and weather conditions sometimes require extra attention and good communication with ATC.",
+    "conclusion": "Overall, operating regularly at Navegantes and Florianópolis improves my familiarity, confidence and safety as a helicopter pilot.",
     "verbs": [
-      "prepare",
-      "trust",
-      "focus",
-      "follow",
-      "demonstrate"
+      "operate",
+      "fly",
+      "describe",
+      "communicate",
+      "manage"
     ],
     "vocab": [
-      "check ride",
-      "instructor",
-      "hover",
-      "procedures",
-      "safety"
+      "Navegantes",
+      "SBNV",
+      "Florianópolis",
+      "SBFL",
+      "air traffic"
     ],
-    "answer": "Before my first helicopter check ride, my instructor gave me advice that I still remember today. 1 - PREPARATION: First of all, he told me to review procedures, performance limits and emergency actions for the helicopter. 2 - CALMNESS: Additionally, he advised me to stay calm during hover, transitions and maneuvering under evaluation. 3 - SAFETY: Finally, he said that safety and good judgment were more important than trying to look perfect. For example, if a maneuver did not go exactly as planned, I should correct it calmly, communicate and keep flying safely. Overall, his advice helped me understand that a good helicopter pilot is prepared, calm and focused on safety.",
+    "answer": "The airport I operate at the most is Navegantes Airport, SBNV. 1 - BUSY: First of all, it is a busy airport with commercial airlines, general aviation and helicopters. 2 - FLORIANOPOLIS: Additionally, I also operate frequently at Florianópolis Airport, SBFL, especially during the summer season. 3 - WEATHER: Finally, both airports have good infrastructure, but weather and traffic can sometimes make the operation more challenging. For example, during the summer in Florianópolis, air traffic increases and weather conditions sometimes require extra attention and good communication with ATC. Overall, operating regularly at Navegantes and Florianópolis improves my familiarity, confidence and safety as a helicopter pilot.",
+    "answerLevel4": "The airport I operate at the most is Navegantes Airport, SBNV. It is a busy airport with commercial airlines, general aviation and helicopters. I also operate frequently at Florianópolis Airport, SBFL, especially during the summer season. Both airports have good infrastructure, but weather and traffic can sometimes make the operation more challenging.",
+    "answerLevel5": "The airport where I operate the most is Navegantes Airport, SBNV, in southern Brazil. It is a busy airport with commercial flights, business aviation and helicopter operations. I also fly regularly to Florianópolis Airport, SBFL, especially during the summer, when air traffic increases. In my experience, both airports have good facilities, but weather conditions and heavy traffic sometimes require extra attention and good communication with ATC.",
+    "level4Example": "For example, during the summer in Florianópolis, air traffic increases and weather conditions sometimes require extra attention and good communication with ATC.",
+    "level4Steps": [
+      {
+        "label": "Navegantes",
+        "sentence": "I operate mostly at Navegantes Airport, SBNV."
+      },
+      {
+        "label": "Busy",
+        "sentence": "It is a busy airport with different types of aircraft."
+      },
+      {
+        "label": "Florianópolis",
+        "sentence": "I also fly to Florianópolis quite often."
+      },
+      {
+        "label": "Weather",
+        "sentence": "Sometimes the weather and traffic make the operation more challenging."
+      }
+    ],
+    "memoryIcons": [
+      "🛬",
+      "✈️",
+      "🛬",
+      "🌧️"
+    ],
+    "studyTips": "Palavras-chave para decorar: Navegantes → Busy → Florianópolis → Weather\n\nSua operação real em 4 passos:\n\n• Onde mais? → Navegantes (SBNV).\n• Como é? → Busy airport, vários tipos de tráfego.\n• Onde também? → Florianópolis (SBFL), especialmente no verão.\n• Desafio? → Weather e traffic.\n\nConectores: I also / especially during / but\n\nResposta muito convincente porque é verdadeira — use SBNV e SBFL com naturalidade.",
     "difficulty": "Easy",
     "category": "helicopter",
     "tags": [
       "helicopter",
       "easy",
-      "helicopter"
+      "personal"
     ],
     "memoryLabels": [
-      "Preparation",
-      "Calmness",
-      "Safety"
+      "Navegantes",
+      "Busy",
+      "Florianópolis",
+      "Weather"
     ],
-    "targetWords": 111,
+    "targetWords": 95,
     "keywords": [
-      "Preparation",
-      "Calmness",
-      "Safety"
-    ],
-    "memoryIcons": [
-      "📖",
-      "😌",
-      "🛡️"
-    ],
-    "answerLevel4": "Before my first check ride, my instructor gave me important advice. He told me to review procedures and emergency actions. He also advised me to stay calm during hover and maneuvers. Finally, he said safety and good judgment are more important than looking perfect.",
-    "answerLevel5": "Before my first helicopter check ride, my instructor gave me advice that I still remember today. First of all, he told me to review procedures, performance limits and emergency actions for the helicopter. Additionally, he advised me to stay calm during hover, transitions and maneuvering under evaluation. Finally, he said that safety and good judgment were more important than trying to look perfect. For example, if a maneuver did not go exactly as planned, I should correct it calmly, communicate and keep flying safely. Overall, his advice helped me understand that a good pilot is prepared, calm and focused on safety.",
-    "level4Example": "For example, if a maneuver did not go as planned, I should correct it calmly and keep flying safely.",
-    "level4Steps": [
-      {
-        "label": "Preparation",
-        "sentence": "He told me to review procedures and emergency actions."
-      },
-      {
-        "label": "Calmness",
-        "sentence": "He advised me to stay calm during hover and maneuvers."
-      },
-      {
-        "label": "Safety",
-        "sentence": "Safety and good judgment are more important than looking perfect."
-      }
-    ],
-    "studyTips": "Palavras-chave: Preparation → Calmness → Safety\n\n• O que estudar? → Procedures e emergências.\n• Como agir? → Stay calm no hover.\n• O que importa? → Safety first, not ego.\n\nConectores: He told me... / He also... / Finally,\n\nPergunta pessoal — use experiência real do seu check ride."
+      "Navegantes",
+      "Busy",
+      "Florianópolis",
+      "Weather"
+    ]
   },
   {
     "num": "04",
@@ -290,7 +297,7 @@
   },
   {
     "num": "05",
-    "question": "What will communications between pilots and ATC be like in ten years?",
+    "question": "In your opinion, what will communications between pilots and air traffic controllers be like in ten years?",
     "memory": "Digital → AI → Radio → Safety",
     "opener": "I think communication will become more digital in the future.",
     "ideas": [
@@ -366,6 +373,75 @@
   },
   {
     "num": "06",
+    "question": "What advice did your instructor give you before your first check ride?",
+    "memory": "Preparation → Calmness → Safety",
+    "opener": "Before my first helicopter check ride, my instructor gave me advice that I still remember today.",
+    "ideas": [
+      "1 - PREPARATION: First of all, he told me to review procedures, performance limits and emergency actions for the helicopter.",
+      "2 - CALMNESS: Additionally, he advised me to stay calm during hover, transitions and maneuvering under evaluation.",
+      "3 - SAFETY: Finally, he said that safety and good judgment were more important than trying to look perfect."
+    ],
+    "example": "For example, if a maneuver did not go exactly as planned, I should correct it calmly, communicate and keep flying safely.",
+    "conclusion": "Overall, his advice helped me understand that a good helicopter pilot is prepared, calm and focused on safety.",
+    "verbs": [
+      "prepare",
+      "trust",
+      "focus",
+      "follow",
+      "demonstrate"
+    ],
+    "vocab": [
+      "check ride",
+      "instructor",
+      "hover",
+      "procedures",
+      "safety"
+    ],
+    "answer": "Before my first helicopter check ride, my instructor gave me advice that I still remember today. 1 - PREPARATION: First of all, he told me to review procedures, performance limits and emergency actions for the helicopter. 2 - CALMNESS: Additionally, he advised me to stay calm during hover, transitions and maneuvering under evaluation. 3 - SAFETY: Finally, he said that safety and good judgment were more important than trying to look perfect. For example, if a maneuver did not go exactly as planned, I should correct it calmly, communicate and keep flying safely. Overall, his advice helped me understand that a good helicopter pilot is prepared, calm and focused on safety.",
+    "difficulty": "Easy",
+    "category": "helicopter",
+    "tags": [
+      "helicopter",
+      "easy",
+      "helicopter"
+    ],
+    "memoryLabels": [
+      "Preparation",
+      "Calmness",
+      "Safety"
+    ],
+    "targetWords": 111,
+    "keywords": [
+      "Preparation",
+      "Calmness",
+      "Safety"
+    ],
+    "memoryIcons": [
+      "📖",
+      "😌",
+      "🛡️"
+    ],
+    "answerLevel4": "Before my first check ride, my instructor gave me important advice. He told me to review procedures and emergency actions. He also advised me to stay calm during hover and maneuvers. Finally, he said safety and good judgment are more important than looking perfect.",
+    "answerLevel5": "Before my first helicopter check ride, my instructor gave me advice that I still remember today. First of all, he told me to review procedures, performance limits and emergency actions for the helicopter. Additionally, he advised me to stay calm during hover, transitions and maneuvering under evaluation. Finally, he said that safety and good judgment were more important than trying to look perfect. For example, if a maneuver did not go exactly as planned, I should correct it calmly, communicate and keep flying safely. Overall, his advice helped me understand that a good pilot is prepared, calm and focused on safety.",
+    "level4Example": "For example, if a maneuver did not go as planned, I should correct it calmly and keep flying safely.",
+    "level4Steps": [
+      {
+        "label": "Preparation",
+        "sentence": "He told me to review procedures and emergency actions."
+      },
+      {
+        "label": "Calmness",
+        "sentence": "He advised me to stay calm during hover and maneuvers."
+      },
+      {
+        "label": "Safety",
+        "sentence": "Safety and good judgment are more important than looking perfect."
+      }
+    ],
+    "studyTips": "Palavras-chave: Preparation → Calmness → Safety\n\n• O que estudar? → Procedures e emergências.\n• Como agir? → Stay calm no hover.\n• O que importa? → Safety first, not ego.\n\nConectores: He told me... / He also... / Finally,\n\nPergunta pessoal — use experiência real do seu check ride."
+  },
+  {
+    "num": "07",
     "question": "Why is the use of ICAO phraseology important?",
     "memory": "Standard → Clear → Safety",
     "opener": "ICAO phraseology is very important because it is standard around the world.",
@@ -392,6 +468,27 @@
     ],
     "answer": "In my opinion, ICAO phraseology is essential for aviation communication. 1 - STANDARDIZATION: First of all, it is standard around the world, so pilots and controllers can understand each other in any country. 2 - CLARITY: Additionally, it makes communication clear and easy to understand, especially during high workload. 3 - SAFETY: Finally, it reduces misunderstandings between pilots and controllers and improves flight safety. For example, when pilots use standard phraseology, ATC can understand instructions quickly even in busy airspace. Overall, ICAO phraseology improves flight safety through clear and standardized communication.",
     "answerLevel4": "ICAO phraseology is very important because it is standard around the world. It makes communication clear and easy to understand. It also reduces misunderstandings between pilots and controllers. As a result, it improves flight safety.",
+    "answerLevel5": "In my opinion, ICAO phraseology is essential for aviation communication. First of all, it is standard around the world, so pilots and controllers can understand each other in any country. Additionally, it makes communication clear and easy to understand, especially during high workload. Finally, it reduces misunderstandings between pilots and controllers and improves flight safety. For example, when pilots use standard phraseology, ATC can understand instructions quickly even in busy airspace. Overall, ICAO phraseology improves flight safety through clear and standardized communication.",
+    "answerExtra": "I also liked the responsibility and the challenge of being a pilot.",
+    "level4Steps": [
+      {
+        "label": "Standard",
+        "sentence": "ICAO phraseology is standard around the world."
+      },
+      {
+        "label": "Clear",
+        "sentence": "It makes communication clear and easy to understand."
+      },
+      {
+        "label": "Safety",
+        "sentence": "As a result, it improves flight safety."
+      }
+    ],
+    "memoryIcons": [
+      "🌍",
+      "💬",
+      "🛡️"
+    ],
     "difficulty": "Medium",
     "category": "helicopter",
     "tags": [
@@ -410,31 +507,11 @@
       "Clear",
       "Safety"
     ],
-    "memoryIcons": [
-      "🌍",
-      "💬",
-      "🛡️"
-    ],
-    "answerLevel5": "In my opinion, ICAO phraseology is essential for aviation communication. First of all, it is standard around the world, so pilots and controllers can understand each other in any country. Additionally, it makes communication clear and easy to understand, especially during high workload. Finally, it reduces misunderstandings between pilots and controllers and improves flight safety. For example, when pilots use standard phraseology, ATC can understand instructions quickly even in busy airspace. Overall, ICAO phraseology improves flight safety through clear and standardized communication.",
-    "level4Example": "For example, when pilots use standard phraseology, ATC can understand instructions quickly even in busy airspace.",
-    "level4Steps": [
-      {
-        "label": "Standard",
-        "sentence": "ICAO phraseology is standard around the world."
-      },
-      {
-        "label": "Clear",
-        "sentence": "It makes communication clear and easy to understand."
-      },
-      {
-        "label": "Safety",
-        "sentence": "As a result, it improves flight safety."
-      }
-    ],
-    "studyTips": "Palavras-chave: Standard → Clear → Safety\n\n• Por quê? → Padrão mundial (worldwide).\n• O que faz? → Communication clara.\n• Resultado → Menos erros, mais safety.\n\nConectores: It also / As a result,\n\nResposta curta e objetiva — uma das mais fáceis do exame."
+    "studyTips": "Palavras-chave: Standard → Clear → Safety\n\n• Por quê? → Padrão mundial (worldwide).\n• O que faz? → Communication clara.\n• Resultado → Menos erros, mais safety.\n\nConectores: It also / As a result,\n\nResposta curta e objetiva — uma das mais fáceis do exame.",
+    "level4Example": "For example, when pilots use standard phraseology, ATC can understand instructions quickly even in busy airspace."
   },
   {
-    "num": "07",
+    "num": "08",
     "question": "How did you become interested in aviation?",
     "memory": "Young → Airplanes → Helicopters → Fascinated → Career",
     "opener": "I became interested in aviation when I was very young.",
@@ -465,7 +542,7 @@
     "answer": "I became interested in aviation when I was very young. 1 - AIRPLANES: At first, I wanted to become an airplane pilot. 2 - HELICOPTERS: However, when I had my first contact with helicopters, I completely changed my mind. 3 - FASCINATED: I was fascinated by their versatility and their ability to operate in places where airplanes can't. For example, helicopters can operate in places where airplanes can't, and that versatility really impressed me. Overall, that's why I decided to become a helicopter pilot, and even today I still enjoy learning and improving my skills.",
     "answerLevel4": "I became interested in aviation when I was very young. At first, I wanted to become an airplane pilot. However, when I had my first contact with helicopters, I completely changed my mind. I was fascinated by their versatility and their ability to operate in places where airplanes can't. That's why I decided to become a helicopter pilot.",
     "answerLevel5": "I became interested in aviation when I was very young. At first, I wanted to become an airplane pilot. However, when I had my first contact with helicopters, I completely changed my mind. I was fascinated by their versatility and their ability to operate in places where airplanes can't. That's why I decided to become a helicopter pilot, and even today I still enjoy learning and improving my skills.",
-    "answerExtra": "I also liked the responsibility and the challenge of being a pilot.",
+    "level4Example": "For example, if I can't see the runway at the minimum altitude, I must perform a missed approach and follow the published procedure.",
     "level4Steps": [
       {
         "label": "Young",
@@ -517,10 +594,11 @@
       "Fascinated",
       "Career"
     ],
-    "studyTips": "Palavras-chave: Young → Airplanes → Helicopters → Fascinated → Career\n\nHistória fácil de lembrar — não decore palavra por palavra:\n\n👦 Young → interesse desde pequeno\n✈️ Airplanes → no começo queria ser piloto de avião\n🚁 Helicopters → primeiro contato mudou tudo\n❤️ Fascinated → versatilidade e lugares onde aviões não operam\n👨‍✈️ Career → decidiu ser piloto de helicóptero e ainda gosta de aprender\n\nConectores: At first, / However, / That's why,\n\nConte a história — soa mais natural na prova ICAO."
+    "studyTips": "Palavras-chave: Young → Airplanes → Helicopters → Fascinated → Career\n\nHistória fácil de lembrar — não decore palavra por palavra:\n\n👦 Young → interesse desde pequeno\n✈️ Airplanes → no começo queria ser piloto de avião\n🚁 Helicopters → primeiro contato mudou tudo\n❤️ Fascinated → versatilidade e lugares onde aviões não operam\n👨‍✈️ Career → decidiu ser piloto de helicóptero e ainda gosta de aprender\n\nConectores: At first, / However, / That's why,\n\nConte a história — soa mais natural na prova ICAO.",
+    "answerExtra": "I also liked the responsibility and the challenge of being a pilot."
   },
   {
-    "num": "08",
+    "num": "09",
     "question": "When should a pilot perform a missed approach procedure?",
     "memory": "Unsafe → Weather → Runway → Try again",
     "opener": "A pilot should perform a missed approach when it is not safe to land.",
@@ -573,6 +651,7 @@
       "🚧",
       "🔄"
     ],
+    "studyTips": "Palavras-chave: Unsafe → Weather → Runway → Try again\n\n• Quando? → Not safe to land.\n• Por quê? → Weather, traffic, obstruction.\n• O que fazer? → Follow procedure / ATC.\n• Depois? → Another approach or divert.\n\nConectores: This may happen... / Then,\n\nProcedimento técnico — fale com calma e clareza.",
     "difficulty": "Medium",
     "category": "helicopter",
     "tags": [
@@ -592,11 +671,10 @@
       "Weather",
       "Runway",
       "Try again"
-    ],
-    "studyTips": "Palavras-chave: Unsafe → Weather → Runway → Try again\n\n• Quando? → Not safe to land.\n• Por quê? → Weather, traffic, obstruction.\n• O que fazer? → Follow procedure / ATC.\n• Depois? → Another approach or divert.\n\nConectores: This may happen... / Then,\n\nProcedimento técnico — fale com calma e clareza."
+    ]
   },
   {
-    "num": "09",
+    "num": "10",
     "question": "How does a flight simulator help a pilot train for emergencies?",
     "memory": "Safe → Practice → Emergencies → Confidence",
     "opener": "A flight simulator helps pilots train in a safe environment.",
@@ -622,7 +700,33 @@
       "emergency procedures",
       "confidence"
     ],
+    "difficulty": "Medium",
     "answer": "A flight simulator helps pilots train in a safe environment. 1 - SAFE: First of all, it provides a safe environment for training without any real risk. 2 - PRACTICE: Additionally, pilots can practice many different situations. 3 - EMERGENCIES: They can train engine failures, bad weather and system failures. 4 - CONFIDENCE: Finally, this makes pilots more confident and better prepared. For example, pilots can practice an engine failure or hydraulic failure many times until they know exactly what to do. Overall, simulators improve decision-making and prepare pilots for real emergencies.",
+    "targetWords": 95,
+    "category": "helicopter",
+    "tags": [
+      "helicopter",
+      "medium",
+      "training"
+    ],
+    "memoryLabels": [
+      "Safe",
+      "Practice",
+      "Emergencies",
+      "Confidence"
+    ],
+    "keywords": [
+      "Safe",
+      "Practice",
+      "Emergencies",
+      "Confidence"
+    ],
+    "memoryIcons": [
+      "🛡️",
+      "🎯",
+      "🚨",
+      "👨‍✈️"
+    ],
     "answerLevel4": "A flight simulator helps pilots train in a safe environment. They can practice different emergency situations without any real risk. It also improves decision-making and emergency procedures. As a result, pilots become more confident and better prepared for real flights.",
     "answerLevel5": "A flight simulator is a very useful training tool because it allows pilots to practice in a safe environment without any real risk. Pilots can train different emergency situations, such as engine failures, bad weather and system malfunctions. It also helps improve decision-making, communication and crew coordination. As a result, pilots become more confident and better prepared to handle real emergencies safely.",
     "level4Example": "For example, pilots can practice an engine failure or hydraulic failure many times until they know exactly what to do.",
@@ -644,37 +748,11 @@
         "sentence": "This makes pilots more confident and better prepared."
       }
     ],
-    "memoryIcons": [
-      "🛡️",
-      "🎯",
-      "🚨",
-      "👨‍✈️"
-    ],
-    "studyTips": "Palavras-chave: Safe → Practice → Emergencies → Confidence\n\n• Onde? → Safe environment.\n• O que faz? → Practice emergencies.\n• O que melhora? → Decision-making.\n• Resultado? → Confidence e safety.\n\nConectores: It also / As a result,\n\nUma das mais fáceis de memorizar — sequência lógica.",
-    "difficulty": "Medium",
-    "category": "helicopter",
-    "tags": [
-      "helicopter",
-      "medium",
-      "training"
-    ],
-    "memoryLabels": [
-      "Safe",
-      "Practice",
-      "Emergencies",
-      "Confidence"
-    ],
-    "targetWords": 95,
-    "keywords": [
-      "Safe",
-      "Practice",
-      "Emergencies",
-      "Confidence"
-    ]
+    "studyTips": "Palavras-chave: Safe → Practice → Emergencies → Confidence\n\n• Onde? → Safe environment.\n• O que faz? → Practice emergencies.\n• O que melhora? → Decision-making.\n• Resultado? → Confidence e safety.\n\nConectores: It also / As a result,\n\nUma das mais fáceis de memorizar — sequência lógica."
   },
   {
-    "num": "10",
-    "question": "What were the best pieces of advice your instructor gave you?",
+    "num": "11",
+    "question": "What were the best pieces of advice that your flight instructor gave you?",
     "memory": "Discipline → Limits → Safety",
     "opener": "During my helicopter training, my instructor gave me several pieces of advice that I still follow today.",
     "ideas": [
@@ -698,9 +776,8 @@
       "hover",
       "safety"
     ],
-    "difficulty": "Easy",
     "answer": "During my helicopter training, my instructor gave me several pieces of advice that I still follow today. 1 - DISCIPLINE: First of all, he told me to respect procedures, checklists and standard calls in every phase of flight. 2 - LIMITS: Additionally, he advised me to know the aircraft limits, especially power, weight and weather limitations. 3 - SAFETY: Finally, he said that safety and good judgment are always more important than speed or ego. For example, he always told me not to rush a hover or landing just because someone was waiting on the ground. Overall, the best advice was to stay disciplined, know my limits and make conservative decisions as a helicopter pilot.",
-    "targetWords": 115,
+    "difficulty": "Easy",
     "category": "helicopter",
     "tags": [
       "helicopter",
@@ -711,6 +788,7 @@
       "Limits",
       "Safety"
     ],
+    "targetWords": 115,
     "keywords": [
       "Discipline",
       "Limits",
@@ -741,7 +819,7 @@
     "studyTips": "Palavras-chave: Discipline → Limits → Safety\n\n• Discipline → Procedures e checklists.\n• Limits → Power, weight, weather.\n• Safety → Judgment over ego.\n\nConectores: He told me... / He also... / Finally,\n\nSimilar ao card 03 — use conselhos reais do seu instrutor."
   },
   {
-    "num": "11",
+    "num": "12",
     "question": "How do you think Brazilian aviation will change in the near future?",
     "memory": "Technology → Growth → Safety",
     "opener": "From my point of view, Brazilian aviation, especially helicopter operations, will continue to grow and modernize.",
@@ -767,6 +845,7 @@
       "helipad"
     ],
     "answer": "From my point of view, Brazilian aviation, especially helicopter operations, will continue to grow and modernize. 1 - TECHNOLOGY: First of all, helicopters, helipads and navigation systems will become more technological and connected. 2 - GROWTH: Additionally, regional and offshore helicopter operations may expand because Brazil is a large country with diverse missions. 3 - SAFETY: Finally, training, regulation and safety culture in rotary-wing aviation will probably continue to improve. For example, better helipad infrastructure and more modern helicopters can support offshore, HEMS and executive operations more safely. Overall, I believe Brazilian helicopter aviation has a strong future if technology and safety continue improving together.",
+    "answerLevel4": "From my point of view, Brazilian aviation will continue to grow and modernize. Helicopters and navigation systems will become more technological and connected. Regional and offshore operations may also expand. As a result, training and safety culture will probably continue to improve.",
     "difficulty": "Medium",
     "category": "helicopter",
     "tags": [
@@ -790,7 +869,6 @@
       "📈",
       "🛡️"
     ],
-    "answerLevel4": "From my point of view, Brazilian aviation will continue to grow and modernize. Helicopters and navigation systems will become more technological and connected. Regional and offshore operations may also expand. As a result, training and safety culture will probably continue to improve.",
     "answerLevel5": "From my point of view, Brazilian aviation, especially helicopter operations, will continue to grow and modernize. First of all, helicopters, helipads and navigation systems will become more technological and connected. Additionally, regional and offshore helicopter operations may expand because Brazil is a large country with diverse missions. Finally, training, regulation and safety culture in rotary-wing aviation will probably continue to improve. For example, better helipad infrastructure and more modern helicopters can support offshore, HEMS and executive operations more safely. Overall, I believe Brazilian helicopter aviation has a strong future if technology and safety continue improving together.",
     "level4Example": "For example, better helipad infrastructure can support offshore and HEMS operations more safely.",
     "level4Steps": [
@@ -808,64 +886,5 @@
       }
     ],
     "studyTips": "Palavras-chave: Technology → Growth → Safety\n\n• Futuro técnico → Mais tecnologia.\n• Mercado → Crescimento offshore/HEMS.\n• Resultado → Safety culture melhora.\n\nConectores: From my point of view, / Additionally, / As a result,\n\nMencione Brasil e helicópteros — personalize com o que você vê no mercado."
-  },
-  {
-    "num": "12",
-    "question": "Could you describe the airport you operate at the most?",
-    "memory": "Navegantes → Busy → Florianópolis → Weather",
-    "opener": "The airport I operate at the most is Navegantes Airport, SBNV.",
-    "ideas": [
-      "1 - BUSY: First of all, it is a busy airport with commercial airlines, general aviation and helicopters.",
-      "2 - FLORIANOPOLIS: Additionally, I also operate frequently at Florianópolis Airport, SBFL, especially during the summer season.",
-      "3 - WEATHER: Finally, both airports have good infrastructure, but weather and traffic can sometimes make the operation more challenging."
-    ],
-    "example": "For example, during the summer in Florianópolis, air traffic increases and weather conditions sometimes require extra attention and good communication with ATC.",
-    "conclusion": "Overall, operating regularly at Navegantes and Florianópolis improves my familiarity, confidence and safety as a helicopter pilot.",
-    "verbs": [
-      "operate",
-      "fly",
-      "describe",
-      "communicate",
-      "manage"
-    ],
-    "vocab": [
-      "Navegantes",
-      "SBNV",
-      "Florianópolis",
-      "SBFL",
-      "air traffic"
-    ],
-    "answer": "The airport I operate at the most is Navegantes Airport, SBNV. 1 - BUSY: First of all, it is a busy airport with commercial airlines, general aviation and helicopters. 2 - FLORIANOPOLIS: Additionally, I also operate frequently at Florianópolis Airport, SBFL, especially during the summer season. 3 - WEATHER: Finally, both airports have good infrastructure, but weather and traffic can sometimes make the operation more challenging. For example, during the summer in Florianópolis, air traffic increases and weather conditions sometimes require extra attention and good communication with ATC. Overall, operating regularly at Navegantes and Florianópolis improves my familiarity, confidence and safety as a helicopter pilot.",
-    "answerLevel4": "The airport I operate at the most is Navegantes Airport, SBNV. It is a busy airport with commercial airlines, general aviation and helicopters. I also operate frequently at Florianópolis Airport, SBFL, especially during the summer season. Both airports have good infrastructure, but weather and traffic can sometimes make the operation more challenging.",
-    "answerLevel5": "The airport where I operate the most is Navegantes Airport, SBNV, in southern Brazil. It is a busy airport with commercial flights, business aviation and helicopter operations. I also fly regularly to Florianópolis Airport, SBFL, especially during the summer, when air traffic increases. In my experience, both airports have good facilities, but weather conditions and heavy traffic sometimes require extra attention and good communication with ATC.",
-    "level4Example": "For example, during the summer in Florianópolis, air traffic increases and weather conditions sometimes require extra attention and good communication with ATC.",
-    "level4Steps": [
-      { "label": "Navegantes", "sentence": "I operate mostly at Navegantes Airport, SBNV." },
-      { "label": "Busy", "sentence": "It is a busy airport with different types of aircraft." },
-      { "label": "Florianópolis", "sentence": "I also fly to Florianópolis quite often." },
-      { "label": "Weather", "sentence": "Sometimes the weather and traffic make the operation more challenging." }
-    ],
-    "memoryIcons": ["🛬", "✈️", "🛬", "🌧️"],
-    "studyTips": "Palavras-chave para decorar: Navegantes → Busy → Florianópolis → Weather\n\nSua operação real em 4 passos:\n\n• Onde mais? → Navegantes (SBNV).\n• Como é? → Busy airport, vários tipos de tráfego.\n• Onde também? → Florianópolis (SBFL), especialmente no verão.\n• Desafio? → Weather e traffic.\n\nConectores: I also / especially during / but\n\nResposta muito convincente porque é verdadeira — use SBNV e SBFL com naturalidade.",
-    "difficulty": "Easy",
-    "category": "helicopter",
-    "tags": [
-      "helicopter",
-      "easy",
-      "personal"
-    ],
-    "memoryLabels": [
-      "Navegantes",
-      "Busy",
-      "Florianópolis",
-      "Weather"
-    ],
-    "targetWords": 95,
-    "keywords": [
-      "Navegantes",
-      "Busy",
-      "Florianópolis",
-      "Weather"
-    ]
   }
 ]
