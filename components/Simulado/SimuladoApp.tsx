@@ -8,6 +8,13 @@ import SimuladoModeSelect from "@/components/Simulado/SimuladoModeSelect";
 import SimuladoReport from "@/components/Simulado/SimuladoReport";
 import SimuladoHistoryList from "@/components/Simulado/SimuladoHistoryList";
 import SimuladoRunner from "@/components/Simulado/SimuladoRunner";
+import CaptainDeltaExaminerIntro from "@/components/CaptainDelta/Examiner/CaptainDeltaExaminerIntro";
+import CaptainDeltaExaminerDebrief from "@/components/CaptainDelta/Examiner/CaptainDeltaExaminerDebrief";
+import { useCaptainDeltaExaminer } from "@/components/CaptainDelta/Examiner/CaptainDeltaExaminerProvider";
+import { buildExaminerExamRecord } from "@/lib/captainDelta/examiner/debrief";
+import { saveExaminerExamRecord } from "@/lib/captainDelta/examiner/store";
+import { emitCaptainDeltaExamFinished } from "@/lib/captainDelta/examiner/events";
+import { emitCaptainDeltaDebrief } from "@/lib/captainDelta/events";
 import { syncDailyMissionLog } from "@/lib/dailyMissionLog";
 import { examVersionFromMeta } from "@/lib/simulado/buildSteps";
 import { loadDashboardStats, getSimuladoReportById, saveSimuladoReport } from "@/lib/simulado/progress";
@@ -25,10 +32,11 @@ import type {
   SimuladoPart,
   SimuladoSessionConfig,
   SimuladoSessionSnapshot,
+  SimuladoStepResult,
   SimulationReport,
 } from "@/lib/simulado/types";
 
-type View = "home" | "mode" | "exam" | "session" | "report";
+type View = "home" | "mode" | "exam" | "examiner-intro" | "session" | "report";
 
 export default function SimuladoApp() {
   const router = useRouter();
@@ -44,6 +52,9 @@ export default function SimuladoApp() {
   const [draft, setDraft] = useState<SimuladoSessionSnapshot | null>(null);
   const [resumeSnapshot, setResumeSnapshot] = useState<SimuladoSessionSnapshot | null>(null);
   const [historyPage, setHistoryPage] = useState(1);
+  const [captainExaminer, setCaptainExaminer] = useState(false);
+  const [sessionResults, setSessionResults] = useState<SimuladoStepResult[]>([]);
+  const examinerCtx = useCaptainDeltaExaminer();
 
   const refreshStats = useCallback(() => setStats(loadDashboardStats()), []);
   const refreshDraft = useCallback(() => setDraft(loadSimuladoDraft()), []);
@@ -88,17 +99,30 @@ export default function SimuladoApp() {
   );
 
   const handleReport = useCallback(
-    (r: SimulationReport) => {
+    (r: SimulationReport, results: SimuladoStepResult[]) => {
       saveSimuladoReport(r);
       recordStudyActivity("simulate", 1);
       syncDailyMissionLog();
+      setSessionResults(results);
+      if (captainExaminer && examinerCtx) {
+        const recordSteps = results.length;
+        saveExaminerExamRecord(
+          buildExaminerExamRecord(r, examinerCtx.recordings, recordSteps),
+        );
+        emitCaptainDeltaExamFinished(r.id);
+        emitCaptainDeltaDebrief({
+          strengths: r.strengths.slice(0, 2),
+          focus: r.weaknesses.slice(0, 2),
+          estimatedMinutes: 15,
+        });
+      }
       setReport(r);
       setReportFromHistory(false);
       setHistoryPage(1);
       setView("report");
       refreshStats();
     },
-    [refreshStats],
+    [refreshStats, captainExaminer, examinerCtx],
   );
 
   const openHistoryReport = useCallback((id: string) => {
@@ -200,8 +224,25 @@ export default function SimuladoApp() {
               </section>
             )}
             <p className="sim-suggested">{stats.suggestedNext}</p>
-            <button type="button" className="btn green sim-start-btn" onClick={() => setView("mode")}>
+            <button
+              type="button"
+              className="btn green sim-start-btn"
+              onClick={() => {
+                setCaptainExaminer(false);
+                setView("mode");
+              }}
+            >
               {draft ? "Novo simulado" : "Iniciar simulado"}
+            </button>
+            <button
+              type="button"
+              className="btn purple sim-captain-exam-btn"
+              onClick={() => {
+                setCaptainExaminer(true);
+                setView("mode");
+              }}
+            >
+              👨‍✈️ Captain Delta · Mock Exam
             </button>
 
             <SimuladoHistoryList
@@ -228,6 +269,21 @@ export default function SimuladoApp() {
           </>
         )}
 
+        {view === "examiner-intro" && (
+          <>
+            <button type="button" className="btn secondary btn-sm" onClick={() => setView("mode")}>
+              ← Voltar
+            </button>
+            <CaptainDeltaExaminerIntro
+              mode={mode}
+              customParts={customParts}
+              examVersion={examVersionFromMeta(examId)}
+              onStart={startSession}
+              onBack={() => setView("mode")}
+            />
+          </>
+        )}
+
         {view === "exam" && (
           <>
             <button type="button" className="btn secondary btn-sm" onClick={() => setView("mode")}>
@@ -236,7 +292,11 @@ export default function SimuladoApp() {
             <SimuladoExamSelect
               onSelect={(id) => {
                 setExamId(id);
-                startSession();
+                if (captainExaminer) {
+                  setView("examiner-intro");
+                } else {
+                  startSession();
+                }
               }}
             />
           </>
@@ -247,8 +307,10 @@ export default function SimuladoApp() {
             config={sessionConfigMemo}
             examId={examId}
             resumeSnapshot={resumeSnapshot}
+            examinerMode={captainExaminer}
             onFinish={handleReport}
             onExit={() => {
+              if (captainExaminer) examinerCtx?.exitExaminerMode();
               setResumeSnapshot(null);
               refreshDraft();
               setView("home");
@@ -256,7 +318,26 @@ export default function SimuladoApp() {
           />
         )}
 
-        {view === "report" && report && (
+        {view === "report" && report && captainExaminer && !reportFromHistory && (
+          <>
+            <CaptainDeltaExaminerDebrief
+              report={report}
+              results={sessionResults}
+              onRepeat={() => {
+                setReport(null);
+                setView("session");
+              }}
+              onHome={() => {
+                examinerCtx?.exitExaminerMode();
+                setCaptainExaminer(false);
+                setReport(null);
+                setView("home");
+              }}
+            />
+          </>
+        )}
+
+        {view === "report" && report && (!captainExaminer || reportFromHistory) && (
           <>
             {reportFromHistory && (
               <button

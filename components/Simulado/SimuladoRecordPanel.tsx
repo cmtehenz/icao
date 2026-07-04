@@ -12,7 +12,11 @@ type Props = {
   keywords?: string[];
   prepSeconds?: number;
   answerSeconds?: number;
-  onComplete: (feedback: EvaluateFeedback, audioBlob: Blob | null) => void;
+  onComplete: (
+    feedback: EvaluateFeedback,
+    audioBlob: Blob | null,
+    meta?: { durationSec: number; pauseCount: number },
+  ) => void;
 };
 
 function formatTime(sec: number): string {
@@ -36,6 +40,7 @@ export default function SimuladoRecordPanel({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const startedRef = useRef(false);
+  const recordStartRef = useRef<number | null>(null);
 
   useEffect(() => {
     setPhase(prepSeconds > 0 ? "prep" : "record");
@@ -67,6 +72,7 @@ export default function SimuladoRecordPanel({
   const startRecording = async () => {
     if (startedRef.current && azure.assessing) return;
     startedRef.current = true;
+    recordStartRef.current = Date.now();
     setError(null);
     azure.clear();
     await azure.start(modelAnswer, evaluateType);
@@ -91,8 +97,15 @@ export default function SimuladoRecordPanel({
         assessment ?? undefined,
         keywords,
       );
+      const durationSec = recordStartRef.current
+        ? Math.max(1, Math.round((Date.now() - recordStartRef.current) / 1000))
+        : 0;
+      const pauseCount =
+        assessment && assessment.fluencyScore < 70
+          ? Math.max(1, Math.round((70 - assessment.fluencyScore) / 15))
+          : 0;
       setPhase("done");
-      onComplete(feedback, audioBlob);
+      onComplete(feedback, audioBlob, { durationSec, pauseCount });
     } catch {
       setError("Erro ao avaliar. Tente gravar novamente.");
       startedRef.current = false;

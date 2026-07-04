@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import ExamAudioPlayer from "@/components/ExamAudioPlayer";
 import SimuladoExaminerAudio from "@/components/Simulado/SimuladoExaminerAudio";
 import SimuladoRecordPanel from "@/components/Simulado/SimuladoRecordPanel";
+import { useCaptainDeltaExaminer } from "@/components/CaptainDelta/Examiner/CaptainDeltaExaminerProvider";
 import { speakText, stopSpeech } from "@/services/azureSpeech";
 import type { EvaluateFeedback } from "@/lib/evaluate/types";
 import type { SimuladoStep, SimuladoStepResult } from "@/lib/simulado/types";
@@ -15,6 +16,7 @@ type Props = {
   existingResult?: SimuladoStepResult;
   onListenDone: () => void;
   onRecordComplete: (result: SimuladoStepResult) => void;
+  examinerMode?: boolean;
 };
 
 function formatTime(sec: number): string {
@@ -30,8 +32,10 @@ export default function SimuladoStepView({
   existingResult,
   onListenDone,
   onRecordComplete,
+  examinerMode = false,
 }: Props) {
   const notesSpokeRef = useRef(false);
+  const examiner = useCaptainDeltaExaminer();
 
   useEffect(() => {
     stopSpeech();
@@ -106,7 +110,9 @@ export default function SimuladoStepView({
     if (existingResult) {
       return (
         <div className="sim-step-card done sim-step-audio-only">
-          <p className="sim-record-done">✓ Resposta gravada · {existingResult.feedback.scores.overall}/100</p>
+          <p className="sim-record-done">
+            {examinerMode ? "✓ Answer recorded" : `✓ Resposta gravada · ${existingResult.feedback.scores.overall}/100`}
+          </p>
           <span className="sr-only">{existingResult.feedback.transcript}</span>
         </div>
       );
@@ -114,10 +120,17 @@ export default function SimuladoStepView({
 
     return (
       <div className="sim-step-card sim-step-record">
-        <p className="sim-step-kicker">🎤 Sua resposta</p>
-        <p className="sim-record-hint-block">
-          Grave com o microfone abaixo. O botão <strong>Próximo</strong> libera após a avaliação Azure.
-        </p>
+        <p className="sim-step-kicker">🎤 {examinerMode ? "Your answer" : "Sua resposta"}</p>
+        {!examinerMode && (
+          <p className="sim-record-hint-block">
+            Grave com o microfone abaixo. O botão <strong>Próximo</strong> libera após a avaliação Azure.
+          </p>
+        )}
+        {examinerMode && (
+          <p className="sim-record-hint-block sim-examiner-neutral">
+            Record your answer. The examiner will not provide hints or corrections.
+          </p>
+        )}
         <span className="sr-only">{step.question}</span>
         <SimuladoRecordPanel
           question={step.question}
@@ -126,8 +139,8 @@ export default function SimuladoStepView({
           keywords={step.keywords}
           prepSeconds={step.prepSeconds}
           answerSeconds={step.answerSeconds ?? 60}
-          onComplete={(feedback: EvaluateFeedback, _audio) => {
-            onRecordComplete({
+          onComplete={(feedback: EvaluateFeedback, _audio, meta) => {
+            const result: SimuladoStepResult = {
               stepId: step.id,
               part: step.part,
               label: step.label,
@@ -135,7 +148,22 @@ export default function SimuladoStepView({
               modelAnswer: step.modelAnswer,
               evaluateType: step.evaluateType,
               feedback,
-            });
+            };
+            if (examinerMode && meta) {
+              examiner?.addRecording({
+                stepId: step.id,
+                part: step.part,
+                label: step.label,
+                question: step.question,
+                transcript: feedback.transcript,
+                durationSec: meta.durationSec,
+                pauseCount: meta.pauseCount,
+                score: feedback.scores.overall,
+                modelAnswer: step.modelAnswer,
+                recordedAt: new Date().toISOString(),
+              });
+            }
+            onRecordComplete(result);
           }}
         />
       </div>

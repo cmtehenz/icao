@@ -1,9 +1,9 @@
 import type { SimuladoPart } from "@/lib/simulado/types";
 
-/** Parts currently available in the Simulado flow (Part 3 & 4 disabled for now). */
-export const SIMULADO_ACTIVE_PARTS: readonly SimuladoPart[] = [1, 2];
+/** Parts available in the Simulado / Examiner flow. */
+export const SIMULADO_ACTIVE_PARTS: readonly SimuladoPart[] = [1, 2, 3, 4];
 
-export const SIMULADO_PARTS_COMING_SOON: readonly SimuladoPart[] = [3, 4];
+export const SIMULADO_PARTS_COMING_SOON: readonly SimuladoPart[] = [];
 
 export type SimuladoPart1Item = {
   cardNum: string;

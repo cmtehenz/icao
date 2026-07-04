@@ -20,6 +20,7 @@ import CaptainDeltaPersonalBriefing from "@/components/CaptainDelta/Memory/Capta
 import CaptainDeltaReadinessPanel from "@/components/CaptainDelta/Memory/CaptainDeltaReadinessPanel";
 import CaptainDeltaWeeklyDebriefPanel from "@/components/CaptainDelta/Memory/CaptainDeltaWeeklyDebriefPanel";
 import CaptainDeltaQuestionHistoryPanel from "@/components/CaptainDelta/Memory/CaptainDeltaQuestionHistoryPanel";
+import CaptainDeltaExamHistoryPanel from "@/components/CaptainDelta/Examiner/CaptainDeltaExamHistoryPanel";
 import { useStudyAgenda } from "@/hooks/useStudyAgenda";
 import {
   studyDayGoalPoints,
@@ -127,6 +128,8 @@ export default function HomePage() {
       <DailyMissionPanel />
 
       <CaptainDeltaQuestionHistoryPanel />
+
+      <CaptainDeltaExamHistoryPanel />
 
       <VaultWeakWordsPanel limit={3} />
 

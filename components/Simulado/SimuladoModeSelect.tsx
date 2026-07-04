@@ -1,15 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { isSimuladoPartEnabled, SIMULADO_PARTS_COMING_SOON } from "@/lib/simulado/config";
+import { isSimuladoPartEnabled } from "@/lib/simulado/config";
 import type { SimulationMode, SimuladoPart } from "@/lib/simulado/types";
 
-const MODES: Array<{ mode: SimulationMode; label: string; desc: string; disabled?: boolean }> = [
-  { mode: "full", label: "Full Exam", desc: "Parts 1–2 (Part 3 e 4 em breve)" },
+const MODES: Array<{ mode: SimulationMode; label: string; desc: string }> = [
+  { mode: "full", label: "Full Exam", desc: "Parts 1–4 · SDEA structure" },
   { mode: "part1", label: "Part 1 only", desc: "Aviation Topics" },
   { mode: "part2", label: "Part 2 only", desc: "Interacting as a Pilot" },
-  { mode: "part3", label: "Part 3 only", desc: "Unexpected Situations", disabled: true },
-  { mode: "part4", label: "Part 4 only", desc: "Picture Description", disabled: true },
+  { mode: "part3", label: "Part 3 only", desc: "Unexpected Situations" },
+  { mode: "part4", label: "Part 4 only", desc: "Picture Description" },
 ];
 
 type Props = {
@@ -32,37 +32,29 @@ export default function SimuladoModeSelect({ onSelect }: Props) {
           <button
             key={m.mode}
             type="button"
-            className={`sim-mode-card${m.disabled ? " sim-mode-card-disabled" : ""}`}
-            disabled={m.disabled}
-            onClick={() => !m.disabled && onSelect(m.mode)}
+            className="sim-mode-card"
+            onClick={() => onSelect(m.mode)}
           >
             <strong>{m.label}</strong>
             <span>{m.desc}</span>
-            {m.disabled && <span className="sim-coming-soon">Em breve</span>}
           </button>
         ))}
       </div>
 
       <div className="sim-custom-block">
         <h3>Custom exam</h3>
-        <p>Selecione qualquer combinação de partes disponíveis:</p>
+        <p>Combine any parts — e.g. Part 1 + Part 2, Part 2 + Part 4:</p>
         <div className="sim-custom-parts">
-          {([1, 2, 3, 4] as SimuladoPart[]).map((p) => {
-            const disabled = SIMULADO_PARTS_COMING_SOON.includes(p);
-            return (
-              <button
-                key={p}
-                type="button"
-                className={`sim-part-chip${customParts.includes(p) ? " active" : ""}${disabled ? " disabled" : ""}`}
-                disabled={disabled}
-                title={disabled ? "Parte em breve" : undefined}
-                onClick={() => setCustomParts((s) => togglePart(p, s))}
-              >
-                Part {p}
-                {disabled && " · em breve"}
-              </button>
-            );
-          })}
+          {([1, 2, 3, 4] as SimuladoPart[]).map((p) => (
+            <button
+              key={p}
+              type="button"
+              className={`sim-part-chip${customParts.includes(p) ? " active" : ""}`}
+              onClick={() => setCustomParts((s) => togglePart(p, s))}
+            >
+              Part {p}
+            </button>
+          ))}
         </div>
         <button
           type="button"
