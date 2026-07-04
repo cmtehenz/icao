@@ -5,6 +5,9 @@ import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "@/components/AuthProvider";
 import CaptainDeltaFloatingAssistant from "@/components/CaptainDelta/CaptainDeltaFloatingAssistant";
 import { CaptainDeltaProvider } from "@/components/CaptainDelta/CaptainDeltaProvider";
+import CaptainDeltaVisualBridge from "@/components/CaptainDelta/Visual/CaptainDeltaVisualBridge";
+import CaptainDeltaVisualMission from "@/components/CaptainDelta/Visual/CaptainDeltaVisualMission";
+import { CaptainDeltaVisualProvider } from "@/components/CaptainDelta/Visual/CaptainDeltaVisualProvider";
 import PronunciationVaultBadge from "@/components/PronunciationVaultBadge";
 import StudyActivityToast from "@/components/study/StudyActivityToast";
 import { StudyGoalBar } from "@/components/study/StudyGoalBar";
@@ -40,6 +43,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   return (
     <CaptainDeltaProvider>
+      <CaptainDeltaVisualProvider>
+      <CaptainDeltaVisualBridge />
+      <CaptainDeltaVisualMission />
       <div className="app-shell">
       <aside className="app-sidebar" aria-label="Main navigation">
         <div className="app-sidebar-brand">
@@ -115,6 +121,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         })}
       </nav>
     </div>
+      </CaptainDeltaVisualProvider>
     </CaptainDeltaProvider>
   );
 }

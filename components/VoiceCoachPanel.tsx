@@ -37,6 +37,8 @@ import { recordInstructorSession } from "@/lib/flightInstructor/memory";
 import type { FlightInstructorReport } from "@/lib/flightInstructor/types";
 import { emitCaptainDeltaAfterAnswer } from "@/lib/captainDelta/events";
 import { useCaptainDeltaCoachBridge } from "@/hooks/useCaptainDeltaCoachBridge";
+import CaptainDeltaTarget from "@/components/CaptainDelta/Visual/CaptainDeltaTarget";
+import { keywordTargetId } from "@/lib/captainDelta/visual/types";
 
 type Props = {
   question: string;
@@ -539,10 +541,10 @@ export default function VoiceCoachPanel({
       )}
 
       {(azure.result?.recognizedText || speech.transcript) && (
-        <div className="voice-coach-transcript">
+        <CaptainDeltaTarget id="student-transcript" as="div" className="voice-coach-transcript">
           <strong>Transcrição:</strong>
           <p>{azure.result?.recognizedText || speech.transcript}</p>
-        </div>
+        </CaptainDeltaTarget>
       )}
 
       {azure.result && !feedback && !loading && (
@@ -693,7 +695,9 @@ export default function VoiceCoachPanel({
               <ul className="readback-elements-list">
                 {feedback.readbackElements.map((el) => (
                   <li key={el.id} className={el.found ? "found" : "missing"}>
-                    <span aria-hidden>{el.found ? "✓" : "○"}</span> {el.label}
+                    <CaptainDeltaTarget id={keywordTargetId(el.label)} as="span">
+                      <span aria-hidden>{el.found ? "✓" : "○"}</span> {el.label}
+                    </CaptainDeltaTarget>
                   </li>
                 ))}
               </ul>

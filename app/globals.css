@@ -8329,3 +8329,206 @@ input {
     padding-right: max(12px, env(safe-area-inset-right));
   }
 }
+
+/* ── Captain Delta Phase 2 — Visual Teaching Engine ── */
+
+body.cdv-focus-active .app-content > *:not(.cdv-mission) {
+  transition: filter 320ms ease, opacity 320ms ease;
+}
+
+body.cdv-focus-active .app-content {
+  position: relative;
+}
+
+body.cdv-focus-active .app-content::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 12, 22, 0.52);
+  pointer-events: none;
+  z-index: 75;
+  animation: cdv-dim-in 320ms ease forwards;
+}
+
+@keyframes cdv-dim-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.cdv-target {
+  transition:
+    box-shadow 280ms ease,
+    background-color 280ms ease,
+    border-color 280ms ease,
+    transform 280ms ease;
+}
+
+[data-captain-target].cdv-hl-glow,
+.cdv-hl-glow {
+  position: relative;
+  z-index: 82;
+  border-radius: 8px;
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--blue, #3b82f6) 55%, transparent),
+    0 0 18px color-mix(in srgb, var(--blue, #3b82f6) 28%, transparent);
+  background: color-mix(in srgb, var(--blue, #3b82f6) 8%, transparent);
+}
+
+[data-captain-target].cdv-hl-underline,
+.cdv-hl-underline {
+  position: relative;
+  z-index: 82;
+  box-decoration-break: clone;
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, #facc15 55%, transparent) 38%,
+    transparent 38%
+  );
+  border-radius: 2px;
+}
+
+[data-captain-target].cdv-hl-circle,
+.cdv-hl-circle {
+  position: relative;
+  z-index: 82;
+  border-radius: 999px;
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--blue, #3b82f6) 50%, transparent),
+    0 0 12px color-mix(in srgb, var(--blue, #3b82f6) 22%, transparent);
+  padding: 0 0.15em;
+}
+
+[data-captain-target].cdv-hl-pulse,
+.cdv-hl-pulse {
+  position: relative;
+  z-index: 82;
+  animation: cdv-pulse 900ms ease-in-out 2;
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--blue, #3b82f6) 40%, transparent);
+}
+
+@keyframes cdv-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--blue, #3b82f6) 35%, transparent);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow:
+      0 0 0 3px color-mix(in srgb, var(--blue, #3b82f6) 45%, transparent),
+      0 0 16px color-mix(in srgb, var(--blue, #3b82f6) 25%, transparent);
+    transform: scale(1.02);
+  }
+}
+
+[data-captain-target].cdv-hl-spotlight,
+.cdv-hl-spotlight {
+  position: relative;
+  z-index: 83;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--card, #fff) 92%, transparent);
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--blue, #3b82f6) 60%, transparent),
+    0 8px 32px rgba(0, 0, 0, 0.18),
+    0 0 48px color-mix(in srgb, var(--blue, #3b82f6) 15%, transparent);
+  padding: 0.15em 0.35em;
+}
+
+.coach-keyword-chip {
+  display: inline-block;
+  padding: 0.1em 0.45em;
+  margin: 0 0.1em;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.cdv-pronunciation-word {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.cdv-syllable {
+  display: inline-block;
+  padding: 0 0.05em;
+}
+
+.cdv-mission {
+  position: fixed;
+  left: 50%;
+  bottom: calc(6.5rem + env(safe-area-inset-bottom, 0px));
+  transform: translateX(-50%);
+  z-index: 86;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.55rem 0.85rem;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--card, #fff) 94%, transparent);
+  border: 1px solid color-mix(in srgb, var(--blue, #3b82f6) 35%, var(--line));
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
+  animation: cdv-mission-in 320ms ease forwards;
+  max-width: min(22rem, calc(100vw - 2rem));
+}
+
+@keyframes cdv-mission-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.cdv-mission-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.cdv-mission-terms {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cdv-mission-terms li {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.2em 0.55em;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--blue, #3b82f6) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--blue, #3b82f6) 28%, transparent);
+}
+
+@media (min-width: 900px) {
+  .cdv-mission {
+    left: auto;
+    right: 1.25rem;
+    transform: none;
+    bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  @keyframes cdv-mission-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

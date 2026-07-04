@@ -27,6 +27,10 @@ import {
   tryRecordStudyActivity,
 } from "@/lib/studyActivityRecord";
 import { markWarmupSatisfied } from "@/lib/part2Warmup";
+import CaptainDeltaTarget from "@/components/CaptainDelta/Visual/CaptainDeltaTarget";
+import { buildPronunciationFocusPlan } from "@/lib/captainDelta/visual/plans";
+import { emitVisualPlan } from "@/lib/captainDelta/visual/events";
+import { splitSyllables, syllableTargetId } from "@/lib/captainDelta/visual/syllables";
 
 function VaultAddWordsForm({ onAdded }: { onAdded: () => void }) {
   const [input, setInput] = useState("");
@@ -165,6 +169,15 @@ export default function PronunciationWordsMode() {
     if (score >= VAULT_PASS_SCORE) {
       markWarmupSatisfied();
     }
+    if (score < 80 && activeWord) {
+      const syllables = splitSyllables(activeWord.word);
+      const weakWord = assessment?.words
+        ?.slice()
+        .sort((a, b) => a.accuracyScore - b.accuracyScore)[0]?.word;
+      const weakSyllable =
+        syllables.find((s) => weakWord?.toLowerCase().includes(s.toLowerCase())) ?? syllables[0];
+      emitVisualPlan(buildPronunciationFocusPlan(activeWord.word, weakSyllable));
+    }
     if (outcome.removed) {
       setTimeout(() => setActiveWord(null), 2500);
     }
@@ -216,7 +229,19 @@ export default function PronunciationWordsMode() {
         <article className="card card-essential part2-card vault-practice-card">
           <div className="card-top">
             <h2 className="question">
-              Praticar: {activeWord.word}
+              Praticar:{" "}
+              <CaptainDeltaTarget id="pronunciation-word" className="cdv-pronunciation-word">
+                {splitSyllables(activeWord.word).map((syll, i, arr) => (
+                  <CaptainDeltaTarget
+                    key={`${syll}-${i}`}
+                    id={syllableTargetId(syll)}
+                    className="cdv-syllable"
+                  >
+                    {syll}
+                    {i < arr.length - 1 ? "·" : ""}
+                  </CaptainDeltaTarget>
+                ))}
+              </CaptainDeltaTarget>
               <WordPhoneticHint word={activeWord.word} />
             </h2>
             <p className="part2-hint vault-practice-steps">

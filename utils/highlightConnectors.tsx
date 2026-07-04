@@ -1,5 +1,6 @@
 import { Fragment, type ReactNode } from "react";
 import { ALL_CONNECTOR_PHRASES } from "@/lib/connectors";
+import { connectorTargetId } from "@/lib/captainDelta/visual/types";
 
 type Segment = { text: string; connector: boolean };
 
@@ -44,7 +45,11 @@ export function highlightConnectors(text: string): ReactNode {
     <>
       {segments.map((seg, i) =>
         seg.connector ? (
-          <mark key={i} className="connector-highlight">
+          <mark
+            key={i}
+            className="connector-highlight cdv-target"
+            data-captain-target={connectorTargetId(seg.text.trim())}
+          >
             {seg.text}
           </mark>
         ) : (

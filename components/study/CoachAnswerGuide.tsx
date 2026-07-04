@@ -1,8 +1,13 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import type { Level4Step } from "@/lib/types";
 import { highlightConnectors } from "@/utils/highlightConnectors";
+import CaptainDeltaTarget from "@/components/CaptainDelta/Visual/CaptainDeltaTarget";
+import { emitCaptainDeltaSuggestion } from "@/lib/captainDelta/events";
+import { buildReadingInterruptPlan } from "@/lib/captainDelta/visual/plans";
+import { emitVisualPlan } from "@/lib/captainDelta/visual/events";
+import { keywordTargetId } from "@/lib/captainDelta/visual/types";
 
 export type Part1CoachGuide = {
   basicAnswer: string;
@@ -12,13 +17,17 @@ export type Part1CoachGuide = {
   memoryLabels?: string[];
 };
 
+const READING_INTERRUPT_MS = 25_000;
+
 function AnswerToggle({
+  id,
   label,
   hint,
   text,
   defaultOpen = false,
   children,
 }: {
+  id: string;
   label: string;
   hint?: string;
   text: string;
@@ -27,8 +36,22 @@ function AnswerToggle({
 }) {
   const [open, setOpen] = useState(defaultOpen);
 
+  useEffect(() => {
+    if (!open) return;
+    const timer = window.setTimeout(() => {
+      emitVisualPlan(buildReadingInterruptPlan());
+      emitCaptainDeltaSuggestion({
+        text: "I don't want you memorizing. Now tell me the story.",
+        kind: "coaching",
+        primaryAction: { id: "explain_it", label: "🎤 Explain It", primary: true },
+        secondaryActions: [],
+      });
+    }, READING_INTERRUPT_MS);
+    return () => window.clearTimeout(timer);
+  }, [open]);
+
   return (
-    <div className={`coach-answer-toggle ${open ? "open" : ""}`}>
+    <CaptainDeltaTarget id={id} as="div" className={`coach-answer-toggle ${open ? "open" : ""}`}>
       <button
         type="button"
         className="coach-answer-toggle-btn"
@@ -47,7 +70,7 @@ function AnswerToggle({
           <p className="coach-answer-toggle-text">{highlightConnectors(text)}</p>
         </div>
       )}
-    </div>
+    </CaptainDeltaTarget>
   );
 }
 
@@ -71,12 +94,21 @@ export default function CoachAnswerGuide({ guide }: { guide: Part1CoachGuide }) 
       </p>
 
       {guide.memoryLabels?.length ? (
-        <p className="coach-answer-guide-keywords">
-          Keywords: <strong>{guide.memoryLabels.join(" → ")}</strong>
-        </p>
+        <CaptainDeltaTarget id="coach-keywords" as="p" className="coach-answer-guide-keywords" hideWhenCollapsed={false}>
+          Keywords:{" "}
+          {guide.memoryLabels.map((label, i) => (
+            <span key={label}>
+              {i > 0 ? " → " : null}
+              <CaptainDeltaTarget id={keywordTargetId(label)} className="coach-keyword-chip">
+                {label}
+              </CaptainDeltaTarget>
+            </span>
+          ))}
+        </CaptainDeltaTarget>
       ) : null}
 
       <AnswerToggle
+        id="coach-answer-basic"
         label="Resposta básica (Fácil)"
         hint="40–50 s"
         text={guide.basicAnswer}
@@ -95,6 +127,7 @@ export default function CoachAnswerGuide({ guide }: { guide: Part1CoachGuide }) 
 
       {showElaborate ? (
         <AnswerToggle
+          id="coach-answer-elaborate"
           label="Resposta elaborada (ICAO 5)"
           hint="50–60 s"
           text={showElaborate}
@@ -102,7 +135,11 @@ export default function CoachAnswerGuide({ guide }: { guide: Part1CoachGuide }) 
       ) : null}
 
       {showExample ? (
-        <AnswerToggle label="Exemplo — vale pontos extras" text={showExample} />
+        <AnswerToggle
+          id="coach-answer-example"
+          label="Exemplo — vale pontos extras"
+          text={showExample}
+        />
       ) : null}
     </section>
   );

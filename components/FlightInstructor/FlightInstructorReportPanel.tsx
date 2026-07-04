@@ -93,10 +93,23 @@ export default function FlightInstructorReportPanel({
         <p>{report.naturalnessReview.summary}</p>
         {report.naturalnessReview.suggestions.length > 0 && (
           <ul className="fi-suggestions">
-            {report.naturalnessReview.suggestions.map((s) => (
+            {report.naturalnessReview.suggestions.map((s, i) => (
               <li key={`${s.studentPhrase}-${s.pilotPhrase}`}>
-                <span className="fi-student-line">You: {s.studentPhrase}</span>
-                <span className="fi-pilot-line">I would naturally say: {s.pilotPhrase}</span>
+                {i === 0 ? (
+                  <>
+                    <span className="fi-student-line" data-captain-target="student-answer">
+                      You: {s.studentPhrase}
+                    </span>
+                    <span className="fi-pilot-line" data-captain-target="pilot-suggestion">
+                      I would naturally say: {s.pilotPhrase}
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <span className="fi-student-line">You: {s.studentPhrase}</span>
+                    <span className="fi-pilot-line">I would naturally say: {s.pilotPhrase}</span>
+                  </>
+                )}
                 <span className="fi-why">{s.why}</span>
               </li>
             ))}
@@ -129,7 +142,9 @@ export default function FlightInstructorReportPanel({
         <p className="fi-mission-label">Use in your next answer:</p>
         <ul>
           {report.mission.expressions.map((expr) => (
-            <li key={expr}>• {expr}</li>
+            <li key={expr} data-captain-target={`keyword-${expr.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}>
+              • {expr}
+            </li>
           ))}
         </ul>
         <p className="fi-mission-time">Estimated: {report.mission.estimatedMinutes} minutes</p>
