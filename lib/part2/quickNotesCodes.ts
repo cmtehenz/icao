@@ -34,7 +34,7 @@ export const QUICK_NOTE_CATEGORIES: QuickNoteCategory[] = [
     id: "atc",
     label: "ATC",
     color: "atc",
-    codes: ["MNT", "HLD", "DCT", "VEC", "PRC", "CFM", "RPT", "APP", "DEP", "TWR"],
+    codes: ["MNT", "HLD", "DCT", "VEC", "PRC", "EXPECT", "CFM", "RPT", "APP", "DEP", "TWR"],
   },
   {
     id: "aircraft",

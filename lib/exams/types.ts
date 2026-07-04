@@ -9,10 +9,15 @@ export const EXAM_LABELS: Record<ExamVersion, string> = {
   "26C": "Prova 26C",
 };
 
-export type RecommendedNotes = {
+export type NotesScope = {
   idealNotes: string[];
   requiredCodes: string[];
   optionalCodes?: string[];
+};
+
+export type RecommendedNotes = NotesScope & {
+  /** Clearance-only notes for Readback mode comparison */
+  readback?: NotesScope;
 };
 
 export type ExamSituation = {

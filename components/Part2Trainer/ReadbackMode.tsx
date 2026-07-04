@@ -198,6 +198,7 @@ export default function ReadbackMode({
               studentNotes={studentNotes}
               recommendedNotes={scenario.recommendedNotes}
               situationTitle={scenario.title}
+              scope="readback"
             />
             <StudyCardToolbar onPrevious={() => go(-1)} onNext={() => go(1)} />
           </div>

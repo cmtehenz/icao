@@ -5450,6 +5450,12 @@ input {
   color: var(--muted);
 }
 
+.recommended-notes-scope-hint {
+  margin-top: 0;
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
 .part2-sim-results {
   display: grid;
   gap: 24px;

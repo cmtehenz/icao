@@ -3,9 +3,14 @@ import type { RecommendedNotes } from "@/lib/exams/types";
 /** Ideal note-taking reference per Part 2 situation (keyed by scenario id). */
 export const PART2_RECOMMENDED_NOTES: Record<string, RecommendedNotes> = {
   "23C-s1": {
-    idealNotes: ["SQK IDENT", "RWY HDG", "↑5000", "GEAR STK", "HLD", "CFM"],
-    requiredCodes: ["↑5000", "GEAR", "HLD", "CFM"],
-    optionalCodes: ["SQK IDENT", "RWY HDG"],
+    idealNotes: ["SQK IDENT", "RWY HDG", "↑5000", "EXPECT ↑6000", "GEAR STK", "HLD", "CFM"],
+    requiredCodes: ["↑5000", "GEAR STK", "HLD", "CFM"],
+    optionalCodes: ["SQK IDENT", "RWY HDG", "EXPECT ↑6000"],
+    readback: {
+      idealNotes: ["SQK IDENT", "RWY HDG", "↑5000", "EXPECT ↑6000"],
+      requiredCodes: ["↑5000", "RWY HDG"],
+      optionalCodes: ["SQK IDENT", "EXPECT ↑6000"],
+    },
   },
   "23C-s2": {
     idealNotes: ["↑3000", "FREQ 119.25", "FIRE", "CAB", "RTN", "↓FL050", "HD060", "NEG"],

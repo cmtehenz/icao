@@ -1,7 +1,14 @@
 import type { RecommendedNotes } from "@/lib/exams/types";
-import { extractNoteTokens, normalizeNoteToken, studentNotesContainCode } from "./noteNormalization";
+import {
+  extractNoteTokens,
+  normalizeNoteToken,
+  studentNotesContainCode,
+  variantsForCode,
+} from "./noteNormalization";
+import { idealLabelForCode, resolveNotesScope, type NotesComparisonScope } from "./notesScope";
 
 export type { RecommendedNotes } from "@/lib/exams/types";
+export type { NotesComparisonScope } from "./notesScope";
 
 export type NoteScore = "Excellent" | "Good" | "Needs Review";
 
@@ -11,6 +18,7 @@ export type NoteCheckResult = {
   missingCodes: string[];
   extraNotes: string[];
   feedback: string[];
+  scope: NotesComparisonScope;
 };
 
 function isExtraToken(token: string, knownCodes: string[]): boolean {
@@ -18,9 +26,11 @@ function isExtraToken(token: string, knownCodes: string[]): boolean {
   if (!normToken || normToken.length < 2) return false;
 
   for (const code of knownCodes) {
-    const normCode = normalizeNoteToken(code);
-    if (normToken === normCode) return false;
-    if (normToken.includes(normCode) || normCode.includes(normToken)) return false;
+    for (const variant of variantsForCode(code)) {
+      const normCode = normalizeNoteToken(variant);
+      if (normToken === normCode) return false;
+      if (normToken.includes(normCode) || normCode.includes(normToken)) return false;
+    }
   }
   return true;
 }
@@ -56,23 +66,28 @@ function buildFeedback(missing: string[], extra: string[], score: NoteScore): st
 export function checkStudentNotes(
   studentNotes: string,
   recommendedNotes: RecommendedNotes,
+  scope: NotesComparisonScope = "full",
 ): NoteCheckResult {
-  const { requiredCodes, optionalCodes = [], idealNotes } = recommendedNotes;
-  const knownCodes = [...requiredCodes, ...optionalCodes, ...idealNotes];
+  const active = resolveNotesScope(recommendedNotes, scope);
+  const { requiredCodes, optionalCodes = [], idealNotes } = active;
+  const knownCodes = [...requiredCodes, ...optionalCodes, ...idealNotes, ...recommendedNotes.idealNotes];
 
-  const matchedCodes = requiredCodes.filter((code) =>
-    studentNotesContainCode(studentNotes, code),
-  );
+  const matchedCodes = requiredCodes
+    .filter((code) => studentNotesContainCode(studentNotes, code))
+    .map((code) => idealLabelForCode(code, idealNotes));
 
-  const missingCodes = requiredCodes.filter(
-    (code) => !studentNotesContainCode(studentNotes, code),
-  );
+  const missingCodes = requiredCodes
+    .filter((code) => !studentNotesContainCode(studentNotes, code))
+    .map((code) => idealLabelForCode(code, idealNotes));
 
   const extraNotes = extractNoteTokens(studentNotes).filter((token) =>
     isExtraToken(token, knownCodes),
   );
 
-  const score = buildScore(matchedCodes.length, requiredCodes.length);
+  const score = buildScore(
+    requiredCodes.filter((code) => studentNotesContainCode(studentNotes, code)).length,
+    requiredCodes.length,
+  );
   const feedback = buildFeedback(missingCodes, extraNotes, score);
 
   return {
@@ -81,5 +96,6 @@ export function checkStudentNotes(
     missingCodes,
     extraNotes,
     feedback,
+    scope,
   };
 }

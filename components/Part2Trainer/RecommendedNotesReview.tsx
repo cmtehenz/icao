@@ -1,13 +1,15 @@
 "use client";
 
 import type { RecommendedNotes } from "@/lib/exams/types";
-import { checkStudentNotes } from "@/utils/checkNotes";
+import { checkStudentNotes, type NotesComparisonScope } from "@/utils/checkNotes";
+import { resolveNotesScope } from "@/utils/notesScope";
 
 type Props = {
   open: boolean;
   studentNotes: string;
   recommendedNotes: RecommendedNotes;
   situationTitle?: string;
+  scope?: NotesComparisonScope;
   onContinue: () => void;
 };
 
@@ -22,12 +24,18 @@ export default function RecommendedNotesReview({
   studentNotes,
   recommendedNotes,
   situationTitle,
+  scope = "full",
   onContinue,
 }: Props) {
   if (!open) return null;
 
-  const result = checkStudentNotes(studentNotes, recommendedNotes);
-  const displayStudent = studentNotes.trim() || "(no notes written)";
+  const active = resolveNotesScope(recommendedNotes, scope);
+  const result = checkStudentNotes(studentNotes, recommendedNotes, scope);
+  const displayStudent = studentNotes.trim() || "(nenhuma anotação)";
+  const scopeHint =
+    scope === "readback"
+      ? "Comparação só do readback (clearance inicial)."
+      : "Situação completa — readback, problema, hold e confirmação.";
 
   return (
     <div className="modal-backdrop" role="presentation">
@@ -40,6 +48,7 @@ export default function RecommendedNotesReview({
       >
         <h2 id="recommended-notes-title">Recommended Notes</h2>
         {situationTitle && <p className="modal-sub">{situationTitle}</p>}
+        <p className="modal-sub recommended-notes-scope-hint">{scopeHint}</p>
 
         <div className={`recommended-notes-score ${scoreClass(result.score)}`}>
           <span className="recommended-notes-score-label">Note Score</span>
@@ -55,7 +64,7 @@ export default function RecommendedNotesReview({
           <section className="recommended-notes-card recommended-notes-card-ideal">
             <h3>B) Recommended Notes</h3>
             <pre className="recommended-notes-content">
-              {recommendedNotes.idealNotes.join("\n")}
+              {active.idealNotes.join("\n")}
             </pre>
           </section>
 
