@@ -35,10 +35,6 @@ function clampScore(n: number): number {
   return Math.max(0, Math.min(100, Math.round(n)));
 }
 
-function icaoLevelToSortScore(level: number): number {
-  return clampScore((level / 6) * 100);
-}
-
 function part1AggregateLevel(items: DifficultyItem[]): number | null {
   if (!items.length) return null;
   const weakest = items.slice(0, Math.min(5, items.length));
@@ -47,9 +43,10 @@ function part1AggregateLevel(items: DifficultyItem[]): number | null {
   );
 }
 
-function part1DisplayScore(items: DifficultyItem[]): string | null {
+function part1DisplayScore(items: DifficultyItem[], score: number | null): string | null {
+  if (score == null) return null;
   const level = part1AggregateLevel(items);
-  return level != null ? `ICAO ${level}` : null;
+  return level != null ? `${score}% · ICAO ${level}` : `${score}%`;
 }
 
 function part1DifficultyItems(): DifficultyItem[] {
@@ -63,12 +60,12 @@ function part1DifficultyItems(): DifficultyItem[] {
       id: card.num,
       label: `Q${card.num}`,
       icaoLevel: record.lastIcaoLevel,
-      score: icaoLevelToSortScore(record.lastIcaoLevel),
+      score: clampScore(record.lastOverall),
       detail: card.question.slice(0, 60) + (card.question.length > 60 ? "…" : ""),
     });
   }
 
-  return items.sort((a, b) => (a.icaoLevel ?? 6) - (b.icaoLevel ?? 6));
+  return items.sort((a, b) => a.score - b.score);
 }
 
 function part2DifficultyItems(): DifficultyItem[] {
@@ -158,19 +155,20 @@ export function buildDifficultyInsights(limit = 5): DifficultyInsight[] {
   const part2Items = part2DifficultyItems();
   const vocabItems = vocabularyDifficultyItems();
   const pronItems = pronunciationDifficultyItems();
+  const part1Score = areaScore(part1Items);
 
   return [
     {
       area: "part1" as const,
       label: "Part 1",
-      score: areaScore(part1Items),
-      displayScore: part1DisplayScore(part1Items),
+      score: part1Score,
+      displayScore: part1DisplayScore(part1Items, part1Score),
       aggregateIcaoLevel: part1AggregateLevel(part1Items),
       items: part1Items.slice(0, limit),
       hint:
         part1Items.length === 0
-          ? "Nível ICAO do Coach de voz — shadow PEEL não entra aqui. Grave no Coach para aparecer."
-          : "Último nível ICAO no Coach — shadow é só pronúncia, não mede sua resposta.",
+          ? "Nota % e nível ICAO do Coach — shadow PEEL não entra aqui."
+          : "Última nota % no Coach + nível ICAO — shadow é só pronúncia.",
     },
     {
       area: "part2" as const,

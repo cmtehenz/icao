@@ -38,6 +38,18 @@ function cardLabel(num: string): string {
   return `Q${num} · ${card.question.slice(0, 42)}${card.question.length > 42 ? "…" : ""}`;
 }
 
+function formatInsightItemScore(item: { score: number; icaoLevel?: number }): string {
+  if (item.icaoLevel != null) return `${item.score}% · ICAO ${item.icaoLevel}`;
+  return `${item.score}%`;
+}
+
+function insightScoreClass(score: number | null | undefined): string {
+  if (score == null) return "muted";
+  if (score < 60) return "bad";
+  if (score < 75) return "warn";
+  return "good";
+}
+
 export default function DailyMissionPanel() {
   const [tick, setTick] = useState(0);
   const { mode, setMode, today } = useStudyAgenda();
@@ -228,17 +240,7 @@ export default function DailyMissionPanel() {
               <div className="difficulty-insight-head">
                 <strong>{area.label}</strong>
                 <span
-                  className={`difficulty-score ${
-                    area.aggregateIcaoLevel != null
-                      ? `icao-l${area.aggregateIcaoLevel}`
-                      : area.score == null
-                        ? "muted"
-                        : area.score < 60
-                          ? "bad"
-                          : area.score < 75
-                            ? "warn"
-                            : "good"
-                  }`}
+                  className={`difficulty-score ${insightScoreClass(area.score)}`}
                 >
                   {area.displayScore ?? (area.score == null ? "—" : `${area.score}%`)}
                 </span>
@@ -253,10 +255,10 @@ export default function DailyMissionPanel() {
                       <span>{item.label}</span>
                       <span
                         className={`difficulty-item-score ${
-                          item.icaoLevel != null ? `icao-l${item.icaoLevel}` : ""
+                          item.icaoLevel != null ? `icao-l${item.icaoLevel}` : insightScoreClass(item.score)
                         }`}
                       >
-                        {item.icaoLevel != null ? `ICAO ${item.icaoLevel}` : `${item.score}%`}
+                        {formatInsightItemScore(item)}
                       </span>
                     </li>
                   ))
