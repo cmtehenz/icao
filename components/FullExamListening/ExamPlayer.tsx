@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import type { ExamAudioItem, FullExamId, ListeningMode } from "@/lib/fullExamListening/types";
 import type { FullExamMeta } from "@/lib/fullExamListening/types";
 import { toggleDifficultItem, isItemDifficult } from "@/lib/fullExamListening/progress";
+import { getExamOfflineStatus } from "@/lib/fullExamListening/offlinePack";
 import { useFullExamPlayer } from "@/hooks/useFullExamPlayer";
 import { getLastSpeechError, warmSpeechEngine, type SpeechEngine } from "@/utils/speech";
 
@@ -84,15 +85,22 @@ export default function ExamPlayer({ exam, mode, startIndex, onBack, onModeChang
   const difficult = currentItem ? isItemDifficult(currentItem.id) : false;
   const [speechEngine, setSpeechEngine] = useState<SpeechEngine>("none");
   const [speechError, setSpeechError] = useState<string | null>(null);
+  const [offlineReady, setOfflineReady] = useState(() => getExamOfflineStatus(exam.id).ready);
+
+  useEffect(() => {
+    setOfflineReady(getExamOfflineStatus(exam.id).ready);
+  }, [exam.id]);
 
   useEffect(() => {
     void warmSpeechEngine().then((engine) => {
       setSpeechEngine(engine);
-      if (engine === "none") {
-        setSpeechError("Azure Speech indisponível — voz TTS pode falhar. Áudios ATC originais ainda tocam. Faça login.");
+      if (engine === "none" && !getExamOfflineStatus(exam.id).ready) {
+        setSpeechError(
+          "Azure Speech indisponível — baixe a prova para offline (com internet) ou faça login para TTS ao vivo.",
+        );
       }
     });
-  }, []);
+  }, [exam.id]);
 
   useEffect(() => {
     const err = getLastSpeechError();
@@ -107,7 +115,14 @@ export default function ExamPlayer({ exam, mode, startIndex, onBack, onModeChang
         </button>
         <div className="fel-now-playing">
           <span className="fel-now-label">Now playing</span>
-          <strong>{exam.title}</strong>
+          <strong>
+            {exam.title}
+            {offlineReady && (
+              <span className="fel-player-offline-badge" title="Pacote Azure + ATC neste aparelho">
+                Offline
+              </span>
+            )}
+          </strong>
           <span className="fel-version">{exam.subtitle}</span>
         </div>
       </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import ExamOfflineControls from "@/components/FullExamListening/ExamOfflineControls";
 import type { FullExamMeta } from "@/lib/fullExamListening/types";
 import type { FullExamListeningProgress } from "@/lib/fullExamListening/progress";
 
@@ -65,6 +66,8 @@ export default function ExamSelectScreen({ exams, progress, onSelect }: Props) {
                 </button>
               )}
             </div>
+
+            <ExamOfflineControls examId={exam.id} />
           </article>
         );
       })}

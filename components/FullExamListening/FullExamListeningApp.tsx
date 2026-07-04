@@ -65,7 +65,8 @@ export default function FullExamListeningApp() {
         <div className="wrap hero-delta-inner">
           <h1>Escutar Prova</h1>
           <p className="sub hero-sub-compact">
-            Ouça a prova completa como uma aula de áudio — examinadora, candidato modelo e áudios ATC originais.
+            Ouça a prova completa como uma aula de áudio — examinadora, candidato modelo e áudios ATC
+            originais. Baixe cada prova para ouvir offline com a mesma voz Azure.
           </p>
           <div className="delta-dashboard delta-dashboard-compact fel-stats" aria-label="Listening progress">
             <div className="delta-stat mastered">

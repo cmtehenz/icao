@@ -1,9 +1,16 @@
 /**
  * Escutar Prova — one clip at a time (Azure MP3 blobs + ATC MP3 URLs).
  * Serialized queue guarantees the next clip never starts before onended.
+ * Prefers offline pack (cached Azure neural MP3s + ATC) when available.
  */
 
 import { synthesizeExamMp3, type AzureVoiceRole } from "@/lib/azure/azureTts";
+import {
+  getCachedAtcBlob,
+  getCachedTtsBlob,
+  putCachedAtcFromResponse,
+  putCachedTtsBlob,
+} from "@/lib/fullExamListening/offlinePack";
 
 let generation = 0;
 let audioEl: HTMLAudioElement | null = null;
@@ -189,7 +196,33 @@ function playSource(src: string, rate: number, ticket: number, isBlob: boolean):
 }
 
 export function queueExamMp3(src: string, rate: number, ticket: number): Promise<boolean> {
-  return enqueue(() => playSource(src, rate, ticket, false));
+  return enqueue(async () => {
+    if (!src || ticket !== generation) return false;
+
+    const cached = await getCachedAtcBlob(src);
+    if (cached && ticket === generation) {
+      const url = URL.createObjectURL(cached);
+      const played = await playSource(url, rate, ticket, true);
+      if (!played && ticket === generation) URL.revokeObjectURL(url);
+      return played;
+    }
+
+    if (ticket !== generation) return false;
+
+    try {
+      const res = await fetch(src, { credentials: "same-origin" });
+      if (!res.ok || ticket !== generation) return false;
+      void putCachedAtcFromResponse(src, res.clone());
+      const blob = await res.blob();
+      if (ticket !== generation) return false;
+      const url = URL.createObjectURL(blob);
+      const played = await playSource(url, rate, ticket, true);
+      if (!played && ticket === generation) URL.revokeObjectURL(url);
+      return played;
+    } catch {
+      return playSource(src, rate, ticket, false);
+    }
+  });
 }
 
 export function queueExamTts(
@@ -203,9 +236,20 @@ export function queueExamTts(
     const trimmed = text.trim();
     if (!trimmed || ticket !== generation) return false;
 
-    const blob = await synthesizeExamMp3(trimmed, role);
+    let blob = await getCachedTtsBlob(role, trimmed);
+    if (!blob && ticket === generation) {
+      blob = await synthesizeExamMp3(trimmed, role);
+      if (blob) void putCachedTtsBlob(role, trimmed, blob);
+    }
+
     if (!blob || ticket !== generation) {
-      if (ticket === generation) onError?.("Falha ao sintetizar voz Azure.");
+      if (ticket === generation) {
+        onError?.(
+          navigator.onLine === false
+            ? "Áudio offline não encontrado. Baixe a prova com internet antes."
+            : "Falha ao sintetizar voz Azure.",
+        );
+      }
       return false;
     }
 
