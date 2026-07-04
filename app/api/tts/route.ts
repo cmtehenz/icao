@@ -16,7 +16,12 @@ export async function POST(request: Request) {
   const text = body.text?.trim();
   if (!text) return Response.json({ error: "text required" }, { status: 400 });
 
-  const role: AzureVoiceRole = body.voiceType === "male_candidate" ? "male_candidate" : "female_examiner";
+  const role: AzureVoiceRole =
+    body.voiceType === "male_candidate"
+      ? "male_candidate"
+      : body.voiceType === "captain_delta"
+        ? "captain_delta"
+        : "female_examiner";
   const buffer = await synthesizeServerMp3(text, role);
   if (!buffer) {
     return Response.json({ error: "Azure TTS unavailable" }, { status: 503 });

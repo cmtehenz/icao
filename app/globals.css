@@ -3023,6 +3023,215 @@ input {
   margin-top: 0.75rem;
 }
 
+/* ── Captain Delta floating assistant ── */
+.cd-fab {
+  position: fixed;
+  right: 1rem;
+  bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px));
+  z-index: 92;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.85rem 0.55rem 0.55rem;
+  border: 1px solid color-mix(in srgb, var(--blue) 40%, var(--line));
+  border-radius: 999px;
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--blue) 18%, var(--card)),
+    var(--card)
+  );
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+  color: var(--text);
+  font-size: 0.78rem;
+  font-weight: 700;
+  touch-action: none;
+  user-select: none;
+}
+
+@media (min-width: 900px) {
+  .cd-fab {
+    bottom: 1.25rem;
+  }
+}
+
+.cd-fab.open {
+  border-color: var(--blue);
+}
+
+.cd-fab.listening {
+  border-color: var(--green, #22c55e);
+  animation: cd-pulse-border 1.2s ease-in-out infinite;
+}
+
+.cd-fab-avatar {
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--blue) 12%, var(--bg));
+  font-size: 1.1rem;
+}
+
+.cd-fab-label {
+  max-width: 7rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 420px) {
+  .cd-fab-label {
+    display: none;
+  }
+}
+
+.cd-fab-pulse {
+  position: absolute;
+  inset: -4px;
+  border-radius: 999px;
+  border: 2px solid var(--green, #22c55e);
+  animation: cd-pulse-ring 1s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes cd-pulse-border {
+  0%, 100% { box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18); }
+  50% { box-shadow: 0 8px 28px color-mix(in srgb, var(--green) 35%, transparent); }
+}
+
+@keyframes cd-pulse-ring {
+  0% { transform: scale(1); opacity: 0.7; }
+  100% { transform: scale(1.15); opacity: 0; }
+}
+
+.cd-panel {
+  position: fixed;
+  right: 1rem;
+  bottom: calc(7.5rem + env(safe-area-inset-bottom, 0px));
+  z-index: 91;
+  width: min(22rem, calc(100vw - 2rem));
+  max-height: min(24rem, 55vh);
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--card);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22);
+  padding: 0.85rem;
+}
+
+@media (min-width: 900px) {
+  .cd-panel {
+    bottom: 5rem;
+  }
+}
+
+.cd-panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.65rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.cd-panel-head strong {
+  display: block;
+  font-size: 0.92rem;
+}
+
+.cd-context {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 500;
+  margin-top: 0.1rem;
+}
+
+.cd-close {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 0.15rem;
+}
+
+.cd-message-current {
+  margin-bottom: 0.65rem;
+}
+
+.cd-message-text {
+  margin: 0 0 0.55rem;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.cd-voice-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.cd-voice-btn {
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 0.3rem 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cd-voice-btn.active {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+.cd-voice-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.cd-hint {
+  margin: 0 0 0.55rem;
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.cd-history {
+  list-style: none;
+  margin: 0 0 0.65rem;
+  padding: 0;
+  font-size: 0.74rem;
+}
+
+.cd-history li {
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.cd-history-kind {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.cd-panel-actions {
+  display: flex;
+  gap: 0.35rem;
+}
+
 .fi-daily-debrief {
   margin-top: 1rem;
   padding: 1rem;

@@ -35,6 +35,7 @@ import { fetchFlightInstructorReport } from "@/lib/flightInstructor/client";
 import { buildLocalInstructorReport } from "@/lib/flightInstructor/localReport";
 import { recordInstructorSession } from "@/lib/flightInstructor/memory";
 import type { FlightInstructorReport } from "@/lib/flightInstructor/types";
+import { emitCaptainDeltaAfterAnswer } from "@/lib/captainDelta/events";
 
 type Props = {
   question: string;
@@ -219,6 +220,7 @@ export default function VoiceCoachPanel({
             })
           : buildLocalInstructorReport(data, evalQuestion, modelAnswer, keywords);
         setInstructorReport(report);
+        emitCaptainDeltaAfterAnswer({ report, transcript: data.transcript });
         if (followUpContext) {
           setFollowUpContext(null);
         }

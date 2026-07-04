@@ -18,6 +18,7 @@ import {
 import { setPart2ItemStatus, type Part2ProgressStore } from "@/lib/part2/progress";
 import { syncDailyMissionLog } from "@/lib/dailyMissionLog";
 import { markPart2SimulationDailyComplete } from "@/lib/part2DailyMission";
+import { emitCaptainDeltaDebrief } from "@/lib/captainDelta/events";
 import { recordStudyActivity, SIMULATE_PART2_UNITS } from "@/lib/studyTime";
 import {
   getSpeakStepConfig,
@@ -178,6 +179,7 @@ export default function FullSimulationMode({
     if (activeVersion) {
       markPart2SimulationDailyComplete(activeVersion);
     }
+    emitCaptainDeltaDebrief({});
     recordStudyActivity("simulate", SIMULATE_PART2_UNITS);
     syncDailyMissionLog();
     setShowResults(true);

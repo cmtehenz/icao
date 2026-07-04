@@ -1,11 +1,12 @@
 import { loadSpeechSdk } from "@/lib/azure/loadSpeechSdk";
 import type { AzureSpeechTokenResponse } from "@/lib/azure/speechToken";
 
-export type AzureVoiceRole = "female_examiner" | "male_candidate";
+export type AzureVoiceRole = "female_examiner" | "male_candidate" | "captain_delta";
 
 export const AZURE_VOICES: Record<AzureVoiceRole, string> = {
   female_examiner: "en-US-JennyNeural",
   male_candidate: "en-US-GuyNeural",
+  captain_delta: "en-US-AndrewNeural",
 };
 
 const TOKEN_URL = "/api/azure-speech-token";

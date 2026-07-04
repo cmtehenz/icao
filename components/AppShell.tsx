@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "@/components/AuthProvider";
+import CaptainDeltaFloatingAssistant from "@/components/CaptainDelta/CaptainDeltaFloatingAssistant";
+import { CaptainDeltaProvider } from "@/components/CaptainDelta/CaptainDeltaProvider";
 import PronunciationVaultBadge from "@/components/PronunciationVaultBadge";
 import StudyActivityToast from "@/components/study/StudyActivityToast";
 import { StudyGoalBar } from "@/components/study/StudyGoalBar";
@@ -37,7 +39,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <div className="app-shell">
+    <CaptainDeltaProvider>
+      <div className="app-shell">
       <aside className="app-sidebar" aria-label="Main navigation">
         <div className="app-sidebar-brand">
           <span className="app-sidebar-logo">✈</span>
@@ -89,6 +92,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
       <StudyGoalBar />
       <StudyActivityToast />
+      {user && <CaptainDeltaFloatingAssistant />}
 
       <nav className="app-bottom-nav" aria-label="Mobile navigation">
         {NAV_ITEMS.map((item) => {
@@ -111,5 +115,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         })}
       </nav>
     </div>
+    </CaptainDeltaProvider>
   );
 }
