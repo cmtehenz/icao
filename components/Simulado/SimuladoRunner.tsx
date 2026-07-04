@@ -51,6 +51,16 @@ export default function SimuladoRunner({ config, onFinish, onExit }: Props) {
 
   const existingResult = session.results.find((r) => r.stepId === step.id);
 
+  const nextHint = !session.stepReady
+    ? step.kind === "record"
+      ? "Grave sua resposta com o microfone para liberar Próximo."
+      : step.kind === "listen"
+        ? "Ouça o ATC até o fim ou toque no botão verde abaixo do áudio."
+        : step.kind === "examiner" || step.kind === "picture"
+          ? "Ouça a examinadora ou toque Continuar → no card."
+          : null
+    : null;
+
   return (
     <div className="sim-runner">
       <header className="sim-runner-head">
@@ -83,6 +93,7 @@ export default function SimuladoRunner({ config, onFinish, onExit }: Props) {
       />
 
       <footer className="sim-runner-foot">
+        {nextHint && <p className="sim-next-hint">{nextHint}</p>}
         <button type="button" className="btn secondary" onClick={onExit}>
           Sair
         </button>

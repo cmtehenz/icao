@@ -11,21 +11,29 @@ type Props = {
 
 export default function SimuladoExaminerAudio({ text, onDone, autoPlay = true }: Props) {
   const spokeRef = useRef(false);
-  const [speaking, setSpeaking] = useState(autoPlay);
+  const [speaking, setSpeaking] = useState(false);
+  const [ready, setReady] = useState(false);
+
+  const markDone = useCallback(() => {
+    setReady(true);
+    onDone?.();
+  }, [onDone]);
 
   const play = useCallback(async () => {
     setSpeaking(true);
     try {
       await speakText(text, "female_examiner");
-      onDone?.();
+    } catch {
+      /* TTS failed — user can still continue */
     } finally {
       setSpeaking(false);
+      markDone();
     }
-  }, [text, onDone]);
+  }, [text, markDone]);
 
   useEffect(() => {
     spokeRef.current = false;
-    stopSpeech();
+    setReady(false);
     setSpeaking(false);
   }, [text]);
 
@@ -43,7 +51,11 @@ export default function SimuladoExaminerAudio({ text, onDone, autoPlay = true }:
         </span>
         <div className="sim-examiner-audio-body">
           <p className="sim-examiner-status">
-            {speaking ? "Examinadora falando…" : "Pronto — responda quando quiser."}
+            {speaking
+              ? "Examinadora falando…"
+              : ready
+                ? "Pronto — toque Próximo ou grave sua resposta."
+                : "Aguarde o áudio da examinadora…"}
           </p>
           {speaking && (
             <div className="sim-examiner-wave" aria-hidden>
@@ -55,16 +67,29 @@ export default function SimuladoExaminerAudio({ text, onDone, autoPlay = true }:
           <span className="sr-only">{text}</span>
         </div>
       </div>
-      <button
-        type="button"
-        className="btn secondary btn-sm"
-        onClick={() => {
-          stopSpeech();
-          void play();
-        }}
-      >
-        Repetir áudio
-      </button>
+      <div className="sim-examiner-actions">
+        <button
+          type="button"
+          className="btn green btn-sm"
+          onClick={() => {
+            stopSpeech();
+            markDone();
+          }}
+        >
+          Continuar →
+        </button>
+        <button
+          type="button"
+          className="btn secondary btn-sm"
+          onClick={() => {
+            stopSpeech();
+            spokeRef.current = true;
+            void play();
+          }}
+        >
+          Repetir áudio
+        </button>
+      </div>
     </div>
   );
 }

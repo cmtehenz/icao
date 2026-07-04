@@ -57,9 +57,9 @@ export default function SimuladoStepView({
     return (
       <div className="sim-step-card sim-step-listen">
         <p className="sim-step-kicker">🎧 Áudio ATC</p>
-        <ExamAudioPlayer src={step.audioSrc} label="ATC" autoPlay />
-        <button type="button" className="btn secondary btn-sm sim-listen-done" onClick={onListenDone}>
-          Áudio ouvido — continuar
+        <ExamAudioPlayer src={step.audioSrc} label="ATC" autoPlay onEnded={onListenDone} />
+        <button type="button" className="btn green btn-sm sim-listen-done" onClick={onListenDone}>
+          Áudio ouvido — liberar próximo passo
         </button>
       </div>
     );
@@ -115,6 +115,9 @@ export default function SimuladoStepView({
     return (
       <div className="sim-step-card sim-step-record">
         <p className="sim-step-kicker">🎤 Sua resposta</p>
+        <p className="sim-record-hint-block">
+          Grave com o microfone abaixo. O botão <strong>Próximo</strong> libera após a avaliação Azure.
+        </p>
         <span className="sr-only">{step.question}</span>
         <SimuladoRecordPanel
           question={step.question}
