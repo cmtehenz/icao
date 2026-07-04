@@ -13,10 +13,10 @@ type Props = {
 };
 
 const PART_LABELS: Record<number, string> = {
-  1: "Part 1 · Aviation Topics",
-  2: "Part 2 · Pilot Interaction",
-  3: "Part 3 · Unexpected Situations",
-  4: "Part 4 · Picture Description",
+  1: "Parte 1",
+  2: "Parte 2",
+  3: "Parte 3",
+  4: "Parte 4",
 };
 
 export default function SimuladoRunner({ config, onFinish, onExit }: Props) {

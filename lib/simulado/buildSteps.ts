@@ -31,8 +31,8 @@ export function buildSimuladoSteps(config: SimuladoSessionConfig): SimuladoStep[
       kind: "instruction",
       id: "p1-intro",
       part: 1,
-      label: "Part 1 — Aviation Topics",
-      text: "The examiner will ask you three aviation questions. You have a few seconds to prepare, then answer clearly using good structure and aviation vocabulary.",
+      label: "Part 1 — Introduction",
+      text: "Part One. Aviation Topics. I will ask you three questions. Please answer as fully as you can.",
     });
 
     const cardNums = PART1_BY_EXAM[examVersion];
@@ -67,8 +67,8 @@ export function buildSimuladoSteps(config: SimuladoSessionConfig): SimuladoStep[
       kind: "instruction",
       id: "p2-intro",
       part: 2,
-      label: "Part 2 — Interacting as a Pilot",
-      text: "Listen to ATC, read back, report abnormal situations, confirm the controller, and report what the controller said. You may take notes.",
+      label: "Part 2 — Introduction",
+      text: "Part Two. Interacting as a Pilot. Listen to the controller and read back. Then respond to the situations. You may take notes.",
     });
 
     const situations = getSituationsByExam(examVersion);
@@ -78,8 +78,15 @@ export function buildSimuladoSteps(config: SimuladoSessionConfig): SimuladoStep[
         kind: "instruction",
         id: `${sid}-ctx`,
         part: 2,
-        label: `Situation ${s.situationNumber} — ${s.title}`,
-        text: s.context,
+        label: `Situation ${s.situationNumber}`,
+        text: `Situation ${s.situationNumber}. ${s.context}`,
+      });
+      steps.push({
+        kind: "examiner",
+        id: `${sid}-rb-inst`,
+        part: 2,
+        label: "Readback instruction",
+        text: `Listen to ${s.readback.atcFacility} and read back.`,
       });
       steps.push({
         kind: "listen",
@@ -102,7 +109,7 @@ export function buildSimuladoSteps(config: SimuladoSessionConfig): SimuladoStep[
         id: `${sid}-notes`,
         part: 2,
         label: "Notes",
-        prompt: "Take notes if needed before the interaction.",
+        prompt: "You may take notes if needed before the interaction.",
       });
       steps.push({
         kind: "examiner",
@@ -161,8 +168,8 @@ export function buildSimuladoSteps(config: SimuladoSessionConfig): SimuladoStep[
       kind: "instruction",
       id: "p3-intro",
       part: 3,
-      label: "Part 3 — Unexpected Situations",
-      text: "Listen to the situation, take notes, report to ATC, and answer the follow-up question clearly.",
+      label: "Part 3 — Introduction",
+      text: "Part Three. Unexpected Situations. Listen to the situation, take notes if you wish, report to ATC, and answer the follow-up question clearly.",
     });
     steps.push({
       kind: "instruction",
@@ -185,7 +192,7 @@ export function buildSimuladoSteps(config: SimuladoSessionConfig): SimuladoStep[
       id: "p3-notes",
       part: 3,
       label: "Your notes",
-      prompt: "Write key information before you report.",
+      prompt: "Write down key information before you report.",
     });
     steps.push({
       kind: "examiner",
@@ -229,8 +236,8 @@ export function buildSimuladoSteps(config: SimuladoSessionConfig): SimuladoStep[
       kind: "instruction",
       id: "p4-intro",
       part: 4,
-      label: "Part 4 — Picture Description",
-      text: "Describe the picture with: main topic, scenario, position vocabulary, weather/time, and a hypothesis or opinion.",
+      label: "Part 4 — Introduction",
+      text: "Part Four. Picture Description. Look at the picture. Describe what you see using position vocabulary, weather, and a short opinion.",
     });
     steps.push({
       kind: "picture",
