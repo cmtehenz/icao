@@ -10,6 +10,8 @@ type Props = {
   question: string;
   modelAnswer: string;
   evaluateType: EvaluateType;
+  /** Heading when model is revealed, e.g. "Readback modelo (ICAO 5)". */
+  modelTitle?: string;
   onComplete: (feedback: EvaluateFeedback, audioBlob: Blob | null) => void;
   onRetry: () => void;
   completed?: EvaluateFeedback | null;
@@ -19,6 +21,7 @@ export default function Part2SimulationRecord({
   question,
   modelAnswer,
   evaluateType,
+  modelTitle = "Modelo ICAO 5",
   onComplete,
   onRetry,
   completed,
@@ -26,6 +29,7 @@ export default function Part2SimulationRecord({
   const azure = useAzurePronunciation();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showModel, setShowModel] = useState(false);
 
   const finishAzure = async () => {
     setLoading(true);
@@ -56,6 +60,19 @@ export default function Part2SimulationRecord({
     const level = completed.icaoLevel?.overall;
     return (
       <div className="part2-sim-record done">
+        <button
+          type="button"
+          className="btn secondary btn-sm part2-show-model-btn"
+          onClick={() => setShowModel((v) => !v)}
+        >
+          {showModel ? "Esconder modelo" : "Mostrar modelo ICAO 5"}
+        </button>
+        {showModel && (
+          <div className="part2-model-answer part2-model-answer-primary">
+            <h3>{modelTitle}</h3>
+            <p>{modelAnswer}</p>
+          </div>
+        )}
         <p className="part2-sim-record-status">
           ✓ Gravação avaliada{level != null ? ` · ICAO ${level} nesta resposta` : ""}
         </p>
@@ -84,6 +101,19 @@ export default function Part2SimulationRecord({
 
   return (
     <div className="part2-sim-record">
+      <button
+        type="button"
+        className="btn secondary btn-sm part2-show-model-btn"
+        onClick={() => setShowModel((v) => !v)}
+      >
+        {showModel ? "Esconder modelo" : "Mostrar modelo ICAO 5"}
+      </button>
+      {showModel && (
+        <div className="part2-model-answer part2-model-answer-primary">
+          <h3>{modelTitle}</h3>
+          <p>{modelAnswer}</p>
+        </div>
+      )}
       <p className="part2-sim-record-hint">
         Grave sua resposta com Azure — pronúncia e conteúdo serão avaliados ao final da simulação.
       </p>
