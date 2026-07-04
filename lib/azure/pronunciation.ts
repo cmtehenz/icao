@@ -145,6 +145,48 @@ export function collectVaultWordCandidates(
 }
 
 /**
+ * Part 1 / coach: prefer MODEL words Azure failed to hear (practice→"Brett see", pilots→"pallets").
+ * Avoids saving STT garbage; those are the words the student should train.
+ */
+export function collectCoachVaultCandidates(
+  transcript: string,
+  modelAnswer: string,
+  azureResult?: AzurePronunciationResult | null,
+): VaultWordCandidate[] {
+  const byWord = new Map<string, VaultWordCandidate>();
+  const modelTokens = new Set(
+    modelAnswer
+      .toLowerCase()
+      .replace(/[^a-z'\s-]/g, " ")
+      .split(/\s+/)
+      .filter((w) => w.length > 2),
+  );
+
+  const compare = compareTranscriptToModel(transcript, modelAnswer);
+  for (const word of compare.missingContentWords.slice(0, 10)) {
+    if (shouldSkipPronunciationVaultWord(word)) continue;
+    byWord.set(word.toLowerCase(), {
+      word,
+      accuracyScore: azureResult ? Math.min(azureResult.accuracyScore, 48) : 45,
+      errorType: "Mispronunciation",
+      errorLabel: "Azure não entendeu — treine",
+    });
+  }
+
+  if (azureResult) {
+    for (const w of collectVaultWordCandidates(azureResult)) {
+      const key = w.word.toLowerCase().replace(/[^a-z'-]/g, "");
+      if (!key || shouldSkipPronunciationVaultWord(w.word)) continue;
+      // Keep Azure flags only when the word is in the model (skip "pallets", "Brett")
+      if (!modelTokens.has(key)) continue;
+      if (!byWord.has(key)) byWord.set(key, w);
+    }
+  }
+
+  return [...byWord.values()].slice(0, 10);
+}
+
+/**
  * Scripted shadow (PEEL blocks, readbacks): Azure word scores + transcript diff vs script.
  * Saves weak words even when overall accuracy looks acceptable.
  */

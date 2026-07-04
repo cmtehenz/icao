@@ -9,12 +9,19 @@ export const EXAM_LABELS: Record<ExamVersion, string> = {
   "26C": "Prova 26C",
 };
 
+export type RecommendedNotes = {
+  idealNotes: string[];
+  requiredCodes: string[];
+  optionalCodes?: string[];
+};
+
 export type ExamSituation = {
   id: string;
   examVersion: ExamVersion;
   situationNumber: 1 | 2 | 3 | 4 | 5;
   title: string;
   context: string;
+  recommendedNotes?: RecommendedNotes;
   readback: {
     atcFacility: string;
     atcMessage: string;

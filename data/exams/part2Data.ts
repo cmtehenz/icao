@@ -1,4 +1,12 @@
 import type { ExamSituation, ExamVersion } from "@/lib/exams/types";
+import { PART2_RECOMMENDED_NOTES } from "@/data/exams/part2RecommendedNotes";
+
+function withRecommendedNotes(situations: ExamSituation[]): ExamSituation[] {
+  return situations.map((s) => ({
+    ...s,
+    recommendedNotes: PART2_RECOMMENDED_NOTES[s.id] ?? s.recommendedNotes,
+  }));
+}
 
 const CALLSIGN = "ANAC 123";
 
@@ -689,12 +697,14 @@ export const EXAM_26C_SITUATIONS: ExamSituation[] = [
   },
 ];
 
-export const ALL_EXAM_SITUATIONS: ExamSituation[] = [
+const RAW_EXAM_SITUATIONS: ExamSituation[] = [
   ...EXAM_23C_SITUATIONS,
   ...EXAM_24C_SITUATIONS,
   ...EXAM_25C_SITUATIONS,
   ...EXAM_26C_SITUATIONS,
 ];
+
+export const ALL_EXAM_SITUATIONS: ExamSituation[] = withRecommendedNotes(RAW_EXAM_SITUATIONS);
 
 export function getSituationsByExam(version: ExamVersion): ExamSituation[] {
   return ALL_EXAM_SITUATIONS.filter((s) => s.examVersion === version);

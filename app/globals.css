@@ -5175,6 +5175,269 @@ input {
   margin: 0;
 }
 
+.part2-sim-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
+  gap: 16px;
+  align-items: start;
+}
+
+.part2-sim-main {
+  min-width: 0;
+}
+
+/* ── ICAO Quick Notes ── */
+.quick-notes-pad {
+  position: sticky;
+  top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: rgba(8, 14, 28, 0.92);
+  color: #e8edf5;
+  max-height: calc(100vh - 120px);
+  overflow: auto;
+}
+
+.quick-notes-pad-head h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.quick-notes-hint {
+  margin: 4px 0 0;
+  font-size: 0.72rem;
+  color: rgba(232, 237, 245, 0.6);
+}
+
+.quick-notes-textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.35);
+  color: #f4f7fb;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  resize: vertical;
+}
+
+.quick-notes-textarea:focus {
+  outline: 2px solid var(--blue);
+  outline-offset: 1px;
+}
+
+.quick-notes-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.quick-notes-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.quick-notes-group-label {
+  font-size: 0.62rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.85;
+}
+
+.quick-notes-group-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.quick-note-btn {
+  padding: 3px 7px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  font-size: 0.68rem;
+  font-weight: 700;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  cursor: pointer;
+  line-height: 1.2;
+  transition: background 0.12s, border-color 0.12s;
+}
+
+.quick-note-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.quick-notes-color-nav {
+  color: #c5cdd8;
+  background: rgba(148, 163, 184, 0.14);
+  border-color: rgba(148, 163, 184, 0.28);
+}
+
+.quick-notes-color-atc {
+  color: #93c5fd;
+  background: rgba(59, 130, 246, 0.16);
+  border-color: rgba(59, 130, 246, 0.35);
+}
+
+.quick-notes-color-emergency {
+  color: #fca5a5;
+  background: rgba(239, 68, 68, 0.14);
+  border-color: rgba(239, 68, 68, 0.32);
+}
+
+.quick-notes-color-weather {
+  color: #fdba74;
+  background: rgba(249, 115, 22, 0.14);
+  border-color: rgba(249, 115, 22, 0.32);
+}
+
+.quick-notes-color-intention {
+  color: #86efac;
+  background: rgba(34, 197, 94, 0.14);
+  border-color: rgba(34, 197, 94, 0.32);
+}
+
+.quick-notes-color-traffic {
+  color: #d4d4d8;
+  background: rgba(161, 161, 170, 0.14);
+  border-color: rgba(161, 161, 170, 0.3);
+}
+
+.quick-notes-color-comm {
+  color: #c4b5fd;
+  background: rgba(139, 92, 246, 0.14);
+  border-color: rgba(139, 92, 246, 0.32);
+}
+
+.quick-note-btn.quick-notes-color-nav:hover:not(:disabled),
+.quick-note-btn.quick-notes-color-atc:hover:not(:disabled),
+.quick-note-btn.quick-notes-color-emergency:hover:not(:disabled),
+.quick-note-btn.quick-notes-color-weather:hover:not(:disabled),
+.quick-note-btn.quick-notes-color-intention:hover:not(:disabled),
+.quick-note-btn.quick-notes-color-traffic:hover:not(:disabled),
+.quick-note-btn.quick-notes-color-comm:hover:not(:disabled) {
+  filter: brightness(1.12);
+}
+
+/* ── Recommended Notes Review ── */
+.recommended-notes-modal h2 {
+  margin-bottom: 4px;
+}
+
+.recommended-notes-score {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  margin: 12px 0 16px;
+  border: 1px solid var(--line);
+}
+
+.recommended-notes-score-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.8;
+}
+
+.recommended-notes-score strong {
+  font-size: 1.1rem;
+}
+
+.quick-notes-score-excellent {
+  background: var(--green-bg);
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.quick-notes-score-good {
+  background: var(--blue-bg);
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+.quick-notes-score-review {
+  background: var(--orange-bg);
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+.recommended-notes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.recommended-notes-card {
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+}
+
+.recommended-notes-card h3 {
+  margin: 0 0 8px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.recommended-notes-card-ideal {
+  border-color: var(--blue);
+  background: var(--blue-bg);
+}
+
+.recommended-notes-card-missing {
+  border-color: var(--orange);
+}
+
+.recommended-notes-card-extra {
+  border-color: var(--line);
+}
+
+.recommended-notes-content {
+  margin: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.recommended-notes-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.recommended-notes-empty {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.recommended-notes-matched {
+  margin: 12px 0 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
 .part2-sim-results {
   display: grid;
   gap: 24px;
@@ -5940,6 +6203,36 @@ input {
   background: rgba(22, 163, 74, 0.12);
   color: var(--accent-green, #16a34a);
   font-size: 0.85rem;
+}
+
+.vault-manual-add-inline {
+  margin-top: 0.85rem;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.vault-manual-add-inline label {
+  font-size: 0.82rem;
+  font-weight: 650;
+  color: var(--muted);
+}
+
+.vault-manual-add-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.vault-manual-add-row input {
+  flex: 1;
+  min-width: 12rem;
+  padding: 0.45rem 0.65rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg, transparent);
+  color: inherit;
+  font: inherit;
 }
 
 .vault-stats-row {
@@ -6784,6 +7077,20 @@ input {
 
   .part2-sim-dot {
     flex-shrink: 0;
+  }
+
+  .part2-sim-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-notes-pad {
+    position: static;
+    max-height: none;
+    order: -1;
+  }
+
+  .recommended-notes-grid {
+    grid-template-columns: 1fr;
   }
 
   .exam-version-picker {

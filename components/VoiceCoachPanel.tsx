@@ -3,14 +3,21 @@
 import { useState } from "react";
 import { useAzurePronunciation } from "@/hooks/useAzurePronunciation";
 import { useSpeechRecognition } from "@/hooks/useSpeechRecognition";
-import { errorTypeLabel, collectVaultWordCandidates, useUnscriptedPronunciation } from "@/lib/azure/pronunciation";
+import {
+  collectCoachVaultCandidates,
+  collectVaultWordCandidates,
+  errorTypeLabel,
+  useUnscriptedPronunciation,
+  type VaultWordCandidate,
+} from "@/lib/azure/pronunciation";
 import type { AzurePronunciationResult } from "@/lib/azure/pronunciation";
 import type { EvaluateFeedback, EvaluateType } from "@/lib/evaluate/types";
 import { estimateIcaoLevel } from "@/lib/evaluate/icaoLevel";
 import { saveEvaluationRecord } from "@/lib/evaluate/saveEvaluation";
 import { recordPart2RecordingScore } from "@/lib/part2Warmup";
 import { tryRecordStudyActivity, studyActivityRejectReason } from "@/lib/studyActivityRecord";
-import { addWordsToVault } from "@/lib/pronunciationVault";
+import { addManualWordsToVault, addWordsToVault } from "@/lib/pronunciationVault";
+import Link from "next/link";
 import { markPart1CoachDone, isPart1CardInTodayMission } from "@/lib/part1DailyMission";
 import { recordPart1CoachAttempt } from "@/lib/part1CoachHistory";
 import type { Part2MissionKind } from "@/lib/part2DailyMission";
@@ -41,8 +48,16 @@ type Props = {
   embedded?: boolean;
 };
 
-function buildAzureExtras(azureResult: AzurePronunciationResult) {
-  const mispronounced = collectVaultWordCandidates(azureResult);
+function buildAzureExtras(
+  azureResult: AzurePronunciationResult,
+  transcript: string,
+  modelAnswer: string,
+  evaluateType: EvaluateType,
+) {
+  const mispronounced =
+    evaluateType === "part1" || evaluateType.startsWith("part3") || evaluateType.startsWith("part4")
+      ? collectCoachVaultCandidates(transcript, modelAnswer, azureResult)
+      : collectVaultWordCandidates(azureResult);
   return {
     accuracyScore: azureResult.accuracyScore,
     fluencyScore: azureResult.fluencyScore,
@@ -76,7 +91,26 @@ export default function VoiceCoachPanel({
   const [audioSaveNote, setAudioSaveNote] = useState<string | null>(null);
   const [activityNote, setActivityNote] = useState<string | null>(null);
   const [lastAudioBlob, setLastAudioBlob] = useState<Blob | null>(null);
+  const [trainWords, setTrainWords] = useState<VaultWordCandidate[]>([]);
+  const [manualWord, setManualWord] = useState("");
   const [open, setOpen] = useState(embedded);
+
+  const addWordToVault = (word: string) => {
+    const { added, updated, total } = addManualWordsToVault(word, question.slice(0, 80));
+    const n = added + updated;
+    if (n > 0) {
+      setVaultSaved(
+        `“${word}” no banco de pronúncia — total ${total}. Abra Pronúncia para treinar.`,
+      );
+    }
+  };
+
+  const addManualWord = () => {
+    const trimmed = manualWord.trim();
+    if (!trimmed) return;
+    addWordToVault(trimmed);
+    setManualWord("");
+  };
 
   const runContentEvaluation = async (
     transcript: string,
@@ -88,6 +122,7 @@ export default function VoiceCoachPanel({
     setVaultSaved(null);
     setAudioSaveNote(null);
     setActivityNote(null);
+    setTrainWords([]);
     try {
       const res = await fetch("/api/evaluate", {
         method: "POST",
@@ -103,8 +138,14 @@ export default function VoiceCoachPanel({
       });
       const data = (await res.json()) as EvaluateFeedback;
 
+      const vaultCandidates = collectCoachVaultCandidates(
+        transcript,
+        modelAnswer,
+        azureResult ?? null,
+      );
+
       if (azureResult) {
-        const azureExtras = buildAzureExtras(azureResult);
+        const azureExtras = buildAzureExtras(azureResult, transcript, modelAnswer, evaluateType);
         const unscripted = useUnscriptedPronunciation(evaluateType);
         const pronunciationScore = unscripted
           ? Math.round(
@@ -120,13 +161,18 @@ export default function VoiceCoachPanel({
             data.scores.phraseology * 0.15 +
             pronunciationScore * 0.25,
         );
-        data.azurePronunciation = azureExtras;
+        data.azurePronunciation = {
+          ...azureExtras,
+          // Prefer model words Azure failed to hear (practice, pilots) over STT garbage
+          weakWords: vaultCandidates.map((w) => w.word),
+          mispronouncedWords: vaultCandidates,
+        };
         data.summary = unscripted
           ? `Pronúncia Azure (fala livre): ${pronunciationScore}/100. ${data.summary}`
           : `Pronúncia Azure: ${azureResult.accuracyScore}/100 (accuracy). ${data.summary}`;
-        if (azureExtras.weakWords.length) {
+        if (vaultCandidates.length) {
           data.improvements = [
-            `Pronúncia: pratique — ${azureExtras.weakWords.join(", ")}.`,
+            `Pronúncia: pratique — ${vaultCandidates.map((w) => w.word).join(", ")}.`,
             ...data.improvements,
           ];
         }
@@ -205,17 +251,20 @@ export default function VoiceCoachPanel({
         }
       }
 
-      if (azureResult && data.azurePronunciation?.mispronouncedWords.length) {
+      if (vaultCandidates.length) {
         const { added, updated, total } = addWordsToVault(
-          data.azurePronunciation.mispronouncedWords,
+          vaultCandidates,
           question.slice(0, 80),
         );
         const n = added + updated;
         if (n > 0) {
           setVaultSaved(
-            `${n} palavra${n > 1 ? "s" : ""} salva${n > 1 ? "s" : ""} — total ${total} no banco (menu Pronúncia)`,
+            `${n} palavra${n > 1 ? "s" : ""} salva${n > 1 ? "s" : ""} no banco de pronúncia (ex.: practice, pilots) — total ${total}. Abra Pronúncia para treinar.`,
           );
         }
+        setTrainWords(vaultCandidates);
+      } else {
+        setTrainWords([]);
       }
     } catch {
       setFeedback({
@@ -513,34 +562,72 @@ export default function VoiceCoachPanel({
             </div>
           )}
 
-          {feedback.azurePronunciation && (
-            <div className="voice-coach-mispronounced">
-              <h3>Palavras com erro de pronúncia</h3>
-              {feedback.azurePronunciation.mispronouncedWords.length > 0 ? (
-                <ul className="mispronounced-list">
-                  {feedback.azurePronunciation.mispronouncedWords.map((w) => (
-                    <li
-                      key={`${w.word}-${w.accuracyScore}`}
-                      className={`mispronounced-item ${w.accuracyScore < 60 ? "bad" : "warn"}`}
+          <div className="voice-coach-mispronounced">
+            <h3>Treinar pronúncia</h3>
+            <p className="mispronounced-none">
+              Quando o Azure ouve errado (practice → “Brett see”, pilots → “pallets”), usamos as
+              palavras do <strong>modelo</strong> que faltaram na transcrição — não o erro do
+              microfone. Adicione ao banco e treine em Pronúncia.
+            </p>
+            {trainWords.length > 0 ? (
+              <ul className="mispronounced-list">
+                {trainWords.map((w) => (
+                  <li
+                    key={`${w.word}-${w.errorLabel}`}
+                    className={`mispronounced-item ${w.accuracyScore < 60 ? "bad" : "warn"}`}
+                  >
+                    <span className="mispronounced-word">
+                      {w.word}
+                      <WordPhoneticHint word={w.word} className="vault-word-phonetic" />
+                    </span>
+                    <span className="mispronounced-error">{w.errorLabel}</span>
+                    <button
+                      type="button"
+                      className="btn secondary btn-sm"
+                      onClick={() => addWordToVault(w.word)}
                     >
-                      <span className="mispronounced-word">
-                        {w.word}
-                        <WordPhoneticHint word={w.word} className="vault-word-phonetic" />
-                      </span>
-                      <span className="mispronounced-score">{w.accuracyScore}%</span>
-                      <span className="mispronounced-error">{w.errorLabel}</span>
-                      <YouGlishLink word={w.word} compact />
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <p className="mispronounced-none">
-                  Nenhuma palavra com erro detectada — boa pronúncia nesta gravação.
-                </p>
-              )}
-              {vaultSaved && <p className="vault-saved-banner">{vaultSaved}</p>}
+                      + Banco
+                    </button>
+                    <YouGlishLink word={w.word} compact />
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="mispronounced-none">
+                Nenhuma palavra fraca detectada automaticamente — adicione manualmente abaixo.
+              </p>
+            )}
+
+            <div className="vault-manual-add-inline">
+              <label htmlFor="coach-vault-manual">
+                Adicionar palavra manualmente (ex.: practice, pilots)
+              </label>
+              <div className="vault-manual-add-row">
+                <input
+                  id="coach-vault-manual"
+                  type="text"
+                  value={manualWord}
+                  onChange={(e) => setManualWord(e.target.value)}
+                  placeholder="practice, pilots, confident"
+                  autoComplete="off"
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      addManualWord();
+                    }
+                  }}
+                />
+                <button type="button" className="btn green btn-sm" onClick={addManualWord}>
+                  Adicionar
+                </button>
+              </div>
             </div>
-          )}
+
+            {vaultSaved && <p className="vault-saved-banner">{vaultSaved}</p>}
+            <Link href="/pronunciation" className="btn secondary btn-sm">
+              Abrir Pronúncia →
+            </Link>
+          </div>
         </div>
       )}
 

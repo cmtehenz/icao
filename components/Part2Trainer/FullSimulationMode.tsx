@@ -4,6 +4,8 @@ import { useMemo, useState } from "react";
 import ExamAudioPlayer from "@/components/ExamAudioPlayer";
 import ExamVersionPicker from "@/components/ExamVersionPicker";
 import Part2SimulationRecord from "@/components/Part2Trainer/Part2SimulationRecord";
+import QuickNotesPad from "@/components/Part2Trainer/QuickNotesPad";
+import RecommendedNotesReview from "@/components/Part2Trainer/RecommendedNotesReview";
 import SimulationResultsPanel from "@/components/Part2Trainer/SimulationResultsPanel";
 import { getSituationsByExam } from "@/data/exams/part2Data";
 import { examAudioUrl, examAudioLabel, SOUND_CHECK_TRACK } from "@/lib/exams/audio";
@@ -52,6 +54,8 @@ export default function FullSimulationMode({ progress, onProgressChange }: Props
   const [recordings, setRecordings] = useState<Record<string, EvaluateFeedback>>({});
   const [stepResults, setStepResults] = useState<SimulationStepResult[]>([]);
   const [showResults, setShowResults] = useState(false);
+  const [studentNotes, setStudentNotes] = useState("");
+  const [showNotesReview, setShowNotesReview] = useState(false);
 
   const situations = activeVersion ? getSituationsByExam(activeVersion) : [];
   const scenario = situations[situationIdx];
@@ -74,6 +78,8 @@ export default function FullSimulationMode({ progress, onProgressChange }: Props
     setRecordings({});
     setStepResults([]);
     setShowResults(false);
+    setStudentNotes("");
+    setShowNotesReview(false);
   };
 
   const startSituation = () => {
@@ -84,6 +90,8 @@ export default function FullSimulationMode({ progress, onProgressChange }: Props
     setRecordings({});
     setStepResults([]);
     setShowResults(false);
+    setStudentNotes("");
+    setShowNotesReview(false);
   };
 
   const saveRecording = async (feedback: EvaluateFeedback, audioBlob: Blob | null) => {
@@ -141,7 +149,10 @@ export default function FullSimulationMode({ progress, onProgressChange }: Props
     }
   };
 
-  const finishSituation = () => {
+  const advanceAfterSituation = () => {
+    setShowNotesReview(false);
+    setStudentNotes("");
+
     if (situationIdx < situations.length - 1) {
       setSituationIdx((i) => i + 1);
       setStep(0);
@@ -156,6 +167,14 @@ export default function FullSimulationMode({ progress, onProgressChange }: Props
     recordStudyActivity("simulate", SIMULATE_PART2_UNITS);
     syncDailyMissionLog();
     setShowResults(true);
+  };
+
+  const finishSituation = () => {
+    if (scenario?.recommendedNotes) {
+      setShowNotesReview(true);
+      return;
+    }
+    advanceAfterSituation();
   };
 
   if (showResults && aggregated && activeVersion) {
@@ -245,7 +264,8 @@ export default function FullSimulationMode({ progress, onProgressChange }: Props
         ))}
       </div>
 
-      <article className="card card-essential part2-card">
+      <div className="part2-sim-layout">
+      <article className="card card-essential part2-card part2-sim-main">
         <div className="card-top">
           <h2 className="question">{current.title}</h2>
         </div>
@@ -384,6 +404,19 @@ export default function FullSimulationMode({ progress, onProgressChange }: Props
           </div>
         </div>
       </article>
+
+      <QuickNotesPad value={studentNotes} onChange={setStudentNotes} />
+      </div>
+
+      {scenario.recommendedNotes && (
+        <RecommendedNotesReview
+          open={showNotesReview}
+          studentNotes={studentNotes}
+          recommendedNotes={scenario.recommendedNotes}
+          situationTitle={scenario.title}
+          onContinue={advanceAfterSituation}
+        />
+      )}
     </div>
   );
 }
