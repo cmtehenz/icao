@@ -201,8 +201,8 @@ export default function FullSimulationMode({ progress, onProgressChange }: Props
               : "Sorteia uma prova (23C–26C). Grave cada resposta com Azure; no final você vê o nível ICAO (2–6) e todos os erros."}
           </p>
           <p className="part2-hint">
-            Durante a simulação, use o painel <strong>ICAO Quick Notes</strong> à direita (ou acima no
-            celular) para anotar códigos enquanto ouve o ATC.
+            Durante a simulação, use o painel <strong>ICAO Quick Notes</strong> abaixo do cenário para
+            anotar códigos enquanto ouve o ATC.
           </p>
           <button type="button" className="btn green btn-large" onClick={startSituation}>
             Iniciar simulação

@@ -5185,10 +5185,9 @@ input {
 }
 
 .part2-sim-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
-  gap: 16px;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .part2-sim-main {
@@ -5197,20 +5196,23 @@ input {
 
 /* ── ICAO Quick Notes ── */
 .quick-notes-pad {
-  position: sticky;
-  top: 12px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 14px;
+  padding: 14px 16px;
   border-radius: 14px;
   border: 1px solid var(--line);
   background: rgba(8, 14, 28, 0.92);
   color: #e8edf5;
-  max-height: calc(100vh - 120px);
-  overflow: auto;
 }
 
+.quick-notes-pad-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px 12px;
+}
 .quick-notes-pad-head h3 {
   margin: 0;
   font-size: 0.95rem;
@@ -5219,14 +5221,15 @@ input {
 }
 
 .quick-notes-hint {
-  margin: 4px 0 0;
+  margin: 0;
   font-size: 0.72rem;
   color: rgba(232, 237, 245, 0.6);
 }
 
 .quick-notes-textarea {
   width: 100%;
-  min-height: 120px;
+  min-height: 72px;
+  max-height: 160px;
   padding: 10px 12px;
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -5244,8 +5247,8 @@ input {
 }
 
 .quick-notes-buttons {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
   gap: 8px;
 }
 
@@ -7088,14 +7091,8 @@ input {
     flex-shrink: 0;
   }
 
-  .part2-sim-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .quick-notes-pad {
-    position: static;
-    max-height: none;
-    order: -1;
+  .quick-notes-buttons {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .recommended-notes-grid {

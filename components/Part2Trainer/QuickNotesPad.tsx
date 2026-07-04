@@ -40,7 +40,7 @@ export default function QuickNotesPad({ value, onChange, disabled }: Props) {
     <aside className="quick-notes-pad">
       <div className="quick-notes-pad-head">
         <h3>ICAO Quick Notes</h3>
-        <p className="quick-notes-hint">Scratchpad — not saved after simulation</p>
+        <p className="quick-notes-hint">Rascunho — não salva após a situação</p>
       </div>
 
       <textarea
@@ -49,8 +49,8 @@ export default function QuickNotesPad({ value, onChange, disabled }: Props) {
         value={value}
         onChange={(e) => onChange(e.target.value)}
         disabled={disabled}
-        placeholder="Type notes or tap codes below…"
-        rows={8}
+        placeholder="Anote códigos ou digite livremente…"
+        rows={4}
         spellCheck={false}
         autoComplete="off"
         aria-label="ICAO quick notes scratchpad"
