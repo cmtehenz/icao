@@ -51,6 +51,7 @@ export default function ReportedSpeechMode({
   const { blocked, message } = usePart2WarmupGate();
   const [examVersion, setExamVersion] = useState<ExamVersion | "all">(navFromUrl.examVersion);
   const [index, setIndex] = useState(navFromUrl.index);
+  const [showModel, setShowModel] = useState(false);
   const scenarios = useMemo(
     () => scenariosForExamVersion(examVersion),
     [examVersion],
@@ -60,6 +61,7 @@ export default function ReportedSpeechMode({
     const next = resolvePart2ScenarioNav(scenarioIdFromUrl);
     setExamVersion(next.examVersion);
     setIndex(next.index);
+    setShowModel(false);
   }, [scenarioIdFromUrl]);
 
   const scenario = scenarios[index] ?? scenarios[0];
@@ -69,6 +71,7 @@ export default function ReportedSpeechMode({
 
   const go = (delta: number) => {
     setIndex((i) => (i + delta + scenarios.length) % scenarios.length);
+    setShowModel(false);
   };
 
   const mark = (status: "difficult" | "mastered") => {
@@ -87,6 +90,7 @@ export default function ReportedSpeechMode({
           const currentId = scenarios[index]?.id ?? null;
           setExamVersion(v);
           setIndex(remapIndexAfterExamChange(currentId, v));
+          setShowModel(false);
         }}
       />
 
@@ -118,10 +122,19 @@ export default function ReportedSpeechMode({
             Ouça o ATC e responda em reported speech o que o controller disse.
           </p>
 
-          <div className="part2-model-answer part2-model-answer-primary">
-            <h3>Resposta modelo (ICAO 5)</h3>
-            <p>{scenario.reportedSpeech.modelAnswer}</p>
-          </div>
+          <button
+            type="button"
+            className="btn secondary btn-sm part2-show-model-btn"
+            onClick={() => setShowModel((v) => !v)}
+          >
+            {showModel ? "Esconder modelo" : "Mostrar resposta modelo"}
+          </button>
+          {showModel && (
+            <div className="part2-model-answer part2-model-answer-primary">
+              <h3>Resposta modelo (ICAO 5)</h3>
+              <p>{scenario.reportedSpeech.modelAnswer}</p>
+            </div>
+          )}
 
           <PronunciationWarmupBanner />
 

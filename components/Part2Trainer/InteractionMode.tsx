@@ -56,6 +56,7 @@ export default function InteractionMode({
   const { blocked, message } = usePart2WarmupGate();
   const [examVersion, setExamVersion] = useState<ExamVersion | "all">(navFromUrl.examVersion);
   const [index, setIndex] = useState(navFromUrl.index);
+  const [showModel, setShowModel] = useState(false);
 
   const scenarios = useMemo(() => scenariosForExamVersion(examVersion), [examVersion]);
 
@@ -68,6 +69,7 @@ export default function InteractionMode({
       const nextIndex = findScenarioIndex(scenarios, scenarioId);
       if (nextIndex >= 0) {
         setIndex(nextIndex);
+        setShowModel(false);
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
     },
@@ -76,6 +78,7 @@ export default function InteractionMode({
 
   const go = (delta: number) => {
     setIndex((i) => (i + delta + scenarios.length) % scenarios.length);
+    setShowModel(false);
   };
 
   const mark = (status: "difficult" | "mastered") => {
@@ -87,6 +90,7 @@ export default function InteractionMode({
       const next = resolvePart2ScenarioNav(scenarioIdFromUrl);
       setExamVersion(next.examVersion);
       setIndex(next.index);
+      setShowModel(false);
       return;
     }
     if (!openShadow) return;
@@ -110,6 +114,7 @@ export default function InteractionMode({
           const currentId = scenarios[index]?.id ?? null;
           setExamVersion(v);
           setIndex(remapIndexAfterExamChange(currentId, v));
+          setShowModel(false);
         }}
       />
 
@@ -144,15 +149,25 @@ export default function InteractionMode({
             <Link href="/pronunciation?callsign=1">Treinar callsign →</Link>
           </p>
 
-          <div className="part2-model-answer part2-model-answer-primary">
-            <h3>Reporte modelo (ICAO 5)</h3>
-            <p>{scenario.interaction.modelReport}</p>
-          </div>
-
-          <div className="part2-model-answer">
-            <h3>Correção ao ATC ({scenario.atcFollowUp.correctionType})</h3>
-            <p>{scenario.atcFollowUp.modelCorrection}</p>
-          </div>
+          <button
+            type="button"
+            className="btn secondary btn-sm part2-show-model-btn"
+            onClick={() => setShowModel((v) => !v)}
+          >
+            {showModel ? "Esconder modelo" : "Mostrar reporte modelo"}
+          </button>
+          {showModel && (
+            <>
+              <div className="part2-model-answer part2-model-answer-primary">
+                <h3>Reporte modelo (ICAO 5)</h3>
+                <p>{scenario.interaction.modelReport}</p>
+              </div>
+              <div className="part2-model-answer">
+                <h3>Correção ao ATC ({scenario.atcFollowUp.correctionType})</h3>
+                <p>{scenario.atcFollowUp.modelCorrection}</p>
+              </div>
+            </>
+          )}
 
           <PronunciationWarmupBanner />
 
