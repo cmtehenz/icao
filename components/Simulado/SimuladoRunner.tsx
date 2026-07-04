@@ -3,12 +3,20 @@
 import { useCallback, useEffect } from "react";
 import SimuladoStepView, { formatTime } from "@/components/Simulado/SimuladoStepView";
 import { useSimuladoSession } from "@/hooks/useSimuladoSession";
-import type { SimuladoSessionConfig, SimuladoStepResult, SimulationReport } from "@/lib/simulado/types";
+import type { SimuladoExamId } from "@/data/exams";
+import type {
+  SimuladoSessionConfig,
+  SimuladoSessionSnapshot,
+  SimuladoStepResult,
+  SimulationReport,
+} from "@/lib/simulado/types";
 import { modeLabel } from "@/lib/simulado/buildSteps";
 
 type Props = {
   config: SimuladoSessionConfig;
-  onFinish: (report: import("@/lib/simulado/types").SimulationReport) => void;
+  examId: SimuladoExamId;
+  resumeSnapshot?: SimuladoSessionSnapshot | null;
+  onFinish: (report: SimulationReport) => void;
   onExit: () => void;
 };
 
@@ -19,8 +27,8 @@ const PART_LABELS: Record<number, string> = {
   4: "Parte 4",
 };
 
-export default function SimuladoRunner({ config, onFinish, onExit }: Props) {
-  const session = useSimuladoSession(config);
+export default function SimuladoRunner({ config, examId, resumeSnapshot, onFinish, onExit }: Props) {
+  const session = useSimuladoSession(config, { examId, resumeSnapshot });
 
   const handleRecordComplete = useCallback(
     (result: SimuladoStepResult) => {
@@ -72,6 +80,9 @@ export default function SimuladoRunner({ config, onFinish, onExit }: Props) {
           <span className="sim-timer-inline">{formatTime(session.elapsedSec)}</span>
           <span className="sim-step-counter">
             {session.stepIndex + 1} / {session.steps.length}
+          </span>
+          <span className="sim-autosave-hint" title="Progresso salvo automaticamente no navegador">
+            Salvo ✓
           </span>
         </div>
       </header>

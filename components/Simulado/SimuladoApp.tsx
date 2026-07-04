@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useTheme } from "@/hooks/useTheme";
 import SimuladoExamSelect from "@/components/Simulado/SimuladoExamSelect";
@@ -10,12 +10,19 @@ import SimuladoRunner from "@/components/Simulado/SimuladoRunner";
 import { syncDailyMissionLog } from "@/lib/dailyMissionLog";
 import { examVersionFromMeta } from "@/lib/simulado/buildSteps";
 import { loadDashboardStats, saveSimuladoReport } from "@/lib/simulado/progress";
+import {
+  clearSimuladoDraft,
+  formatDraftSummary,
+  loadSimuladoDraft,
+  SIMULADO_DRAFT_CHANGE_EVENT,
+} from "@/lib/simulado/sessionDraft";
 import { recordStudyActivity } from "@/lib/studyTime";
 import type { SimuladoExamId } from "@/data/exams";
 import type {
   SimulationMode,
   SimuladoPart,
   SimuladoSessionConfig,
+  SimuladoSessionSnapshot,
   SimulationReport,
 } from "@/lib/simulado/types";
 
@@ -30,15 +37,24 @@ export default function SimuladoApp() {
   const [examId, setExamId] = useState<SimuladoExamId>("exam1");
   const [report, setReport] = useState<SimulationReport | null>(null);
   const [stats, setStats] = useState(() => loadDashboardStats());
+  const [draft, setDraft] = useState<SimuladoSessionSnapshot | null>(null);
+  const [resumeSnapshot, setResumeSnapshot] = useState<SimuladoSessionSnapshot | null>(null);
 
   const refreshStats = useCallback(() => setStats(loadDashboardStats()), []);
+  const refreshDraft = useCallback(() => setDraft(loadSimuladoDraft()), []);
 
   useEffect(() => {
     refreshStats();
+    refreshDraft();
     const onChange = () => refreshStats();
+    const onDraftChange = () => refreshDraft();
     window.addEventListener("icao-simulado-change", onChange);
-    return () => window.removeEventListener("icao-simulado-change", onChange);
-  }, [refreshStats]);
+    window.addEventListener(SIMULADO_DRAFT_CHANGE_EVENT, onDraftChange);
+    return () => {
+      window.removeEventListener("icao-simulado-change", onChange);
+      window.removeEventListener(SIMULADO_DRAFT_CHANGE_EVENT, onDraftChange);
+    };
+  }, [refreshStats, refreshDraft]);
 
   const sessionConfig: SimuladoSessionConfig | null =
     view === "session"
@@ -48,6 +64,16 @@ export default function SimuladoApp() {
           customParts: mode === "custom" ? customParts : undefined,
         }
       : null;
+
+  const sessionConfigMemo = useMemo(
+    () => sessionConfig,
+    [
+      view,
+      examId,
+      mode,
+      mode === "custom" ? customParts?.join(",") : "",
+    ],
+  );
 
   const handleReport = useCallback(
     (r: SimulationReport) => {
@@ -61,7 +87,26 @@ export default function SimuladoApp() {
     [refreshStats],
   );
 
-  const startSession = () => setView("session");
+  const startSession = () => {
+    setResumeSnapshot(null);
+    setView("session");
+  };
+
+  const resumeDraft = () => {
+    const d = loadSimuladoDraft();
+    if (!d) return;
+    setExamId(d.examId as SimuladoExamId);
+    setMode(d.config.mode);
+    setCustomParts(d.config.customParts);
+    setResumeSnapshot(d);
+    setView("session");
+  };
+
+  const discardDraft = () => {
+    clearSimuladoDraft();
+    setDraft(null);
+    setResumeSnapshot(null);
+  };
 
   return (
     <>
@@ -116,9 +161,25 @@ export default function SimuladoApp() {
       <div className="wrap sim-body">
         {view === "home" && (
           <div className="sim-home">
+            {draft && (
+              <section className="sim-draft-banner" aria-label="Simulado em andamento">
+                <div className="sim-draft-text">
+                  <strong>Simulado em andamento</strong>
+                  <p>{formatDraftSummary(draft)}</p>
+                </div>
+                <div className="sim-draft-actions">
+                  <button type="button" className="btn green" onClick={resumeDraft}>
+                    Continuar de onde parou
+                  </button>
+                  <button type="button" className="btn secondary" onClick={discardDraft}>
+                    Descartar
+                  </button>
+                </div>
+              </section>
+            )}
             <p className="sim-suggested">{stats.suggestedNext}</p>
             <button type="button" className="btn green sim-start-btn" onClick={() => setView("mode")}>
-              Iniciar simulado
+              {draft ? "Novo simulado" : "Iniciar simulado"}
             </button>
 
             {stats.history.length > 0 && (
@@ -167,12 +228,17 @@ export default function SimuladoApp() {
           </>
         )}
 
-        {view === "session" && sessionConfig && (
+        {view === "session" && sessionConfigMemo && (
           <SimuladoRunner
-            key={`${examId}-${mode}-${customParts?.join("-")}`}
-            config={sessionConfig}
+            config={sessionConfigMemo}
+            examId={examId}
+            resumeSnapshot={resumeSnapshot}
             onFinish={handleReport}
-            onExit={() => setView("home")}
+            onExit={() => {
+              setResumeSnapshot(null);
+              refreshDraft();
+              setView("home");
+            }}
           />
         )}
 

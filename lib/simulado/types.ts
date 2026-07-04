@@ -126,6 +126,19 @@ export type SimuladoSessionConfig = {
   customParts?: SimuladoPart[];
 };
 
+/** Persisted in-progress simulation (localStorage) for resume after crash. */
+export type SimuladoSessionSnapshot = {
+  schemaVersion: 1;
+  savedAt: string;
+  examId: string;
+  config: SimuladoSessionConfig;
+  stepIndex: number;
+  stepReady: boolean;
+  notes: Record<string, string>;
+  results: SimuladoStepResult[];
+  elapsedSec: number;
+};
+
 export type SimuladoDashboardStats = {
   totalSimulations: number;
   averageScore: number;
