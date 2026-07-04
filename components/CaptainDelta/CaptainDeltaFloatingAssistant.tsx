@@ -1,29 +1,30 @@
 "use client";
 
 import { useRef } from "react";
+import CaptainDeltaCoachingCard from "@/components/CaptainDelta/CaptainDeltaCoachingCard";
 import { useCaptainDelta } from "@/components/CaptainDelta/CaptainDeltaProvider";
 
-const HOLD_MS = 450;
+const HOLD_MS = 220;
 
 export default function CaptainDeltaFloatingAssistant() {
   const {
     open,
     setOpen,
-    contextLabel,
     currentMessage,
-    messages,
+    avatarState,
     voice,
-    listening,
-    startHoldToTalk,
-    stopHoldToTalk,
-    playBriefing,
+    lesson,
+    pttActive,
+    triggerPrimaryAction,
+    triggerSecondaryAction,
+    startPtt,
+    stopPtt,
+    quickQuestion,
   } = useCaptainDelta();
 
   const holdTimerRef = useRef<number | null>(null);
-  const didHoldRef = useRef(false);
-
-  const isPlaying = voice.state === "playing" || voice.state === "loading";
-  const isPaused = voice.state === "paused";
+  const isHoldRef = useRef(false);
+  const lastTapRef = useRef(0);
 
   const clearHoldTimer = () => {
     if (holdTimerRef.current != null) {
@@ -32,119 +33,83 @@ export default function CaptainDeltaFloatingAssistant() {
     }
   };
 
-  const onPointerDown = (e: React.PointerEvent) => {
+  const onFabPointerDown = (e: React.PointerEvent) => {
     if (e.button !== 0) return;
-    didHoldRef.current = false;
+    isHoldRef.current = false;
     clearHoldTimer();
     holdTimerRef.current = window.setTimeout(() => {
-      didHoldRef.current = true;
-      startHoldToTalk();
+      isHoldRef.current = true;
+      startPtt();
     }, HOLD_MS);
   };
 
-  const onPointerUp = () => {
+  const onFabPointerUp = () => {
     clearHoldTimer();
-    if (didHoldRef.current) {
-      stopHoldToTalk();
-      didHoldRef.current = false;
+    if (isHoldRef.current) {
+      stopPtt();
+      isHoldRef.current = false;
       return;
     }
-    setOpen((o) => !o);
+
+    const now = Date.now();
+    if (now - lastTapRef.current < 350) {
+      lastTapRef.current = 0;
+      quickQuestion();
+      return;
+    }
+    lastTapRef.current = now;
+    setOpen(true);
   };
+
+  const recording = pttActive || !!lesson.recording;
 
   return (
     <>
-      {open && (
-        <aside className="cd-panel" aria-label="Captain Delta">
-          <header className="cd-panel-head">
-            <div>
-              <strong>Captain Delta</strong>
-              <span className="cd-context">{contextLabel}</span>
-            </div>
-            <button type="button" className="cd-close" onClick={() => setOpen(false)} aria-label="Close">
-              ×
-            </button>
-          </header>
-
-          {currentMessage && (
-            <div className="cd-message cd-message-current">
-              <p className="cd-message-text">{currentMessage.text}</p>
-              <div className="cd-voice-controls">
-                <button
-                  type="button"
-                  className="cd-voice-btn"
-                  onClick={() => {
-                    if (isPlaying && !isPaused) voice.pause();
-                    else if (currentMessage.speechText) void voice.speak(currentMessage.speechText);
-                    else voice.resume();
-                  }}
-                  disabled={voice.state === "loading"}
-                  title={isPaused || voice.state === "idle" ? "Play" : "Pause"}
-                >
-                  {isPaused || voice.state === "idle" ? "▶ Play" : "⏸ Pause"}
-                </button>
-                <button
-                  type="button"
-                  className="cd-voice-btn"
-                  onClick={() => void voice.replay()}
-                  title="Replay"
-                >
-                  ↺ Replay
-                </button>
-                <button
-                  type="button"
-                  className={`cd-voice-btn ${voice.muted ? "active" : ""}`}
-                  onClick={voice.toggleMute}
-                  title="Mute"
-                >
-                  {voice.muted ? "Muted" : "Sound"}
-                </button>
-              </div>
-            </div>
-          )}
-
-          <p className="cd-hint">Hold the button to ask Captain Delta a question.</p>
-
-          {messages.length > 1 && (
-            <ul className="cd-history">
-              {messages.slice(1, 5).map((m) => (
-                <li key={m.id}>
-                  <span className="cd-history-kind">{m.kind}</span>
-                  <span>{m.text.split("\n")[0]}</span>
-                </li>
-              ))}
-            </ul>
-          )}
-
-          <div className="cd-panel-actions">
-            <button type="button" className="btn secondary btn-sm" onClick={playBriefing}>
-              Today&apos;s briefing
-            </button>
-          </div>
+      {open && currentMessage && (
+        <aside className="cd-panel" aria-label="Captain Delta coaching">
+          <button
+            type="button"
+            className="cd-close"
+            onClick={() => setOpen(false)}
+            aria-label="Close coaching panel"
+          >
+            ×
+          </button>
+          <CaptainDeltaCoachingCard
+            message={currentMessage}
+            voice={voice}
+            recording={recording}
+            onPrimaryAction={triggerPrimaryAction}
+            onSecondaryAction={triggerSecondaryAction}
+          />
         </aside>
       )}
 
       <button
         type="button"
-        className={`cd-fab ${open ? "open" : ""} ${listening ? "listening" : ""}`}
+        className={`cd-fab cd-avatar-${avatarState} ${open ? "open" : ""} ${recording ? "recording" : ""}`}
         aria-label="Captain Delta"
-        title="Tap to open · Hold to speak"
-        onPointerDown={onPointerDown}
-        onPointerUp={onPointerUp}
+        title="Hold: Push-to-Talk · Tap: coaching card · Double-tap: quick question"
+        onPointerDown={onFabPointerDown}
+        onPointerUp={onFabPointerUp}
         onPointerLeave={() => {
           clearHoldTimer();
-          if (listening) stopHoldToTalk();
+          if (isHoldRef.current) {
+            stopPtt();
+            isHoldRef.current = false;
+          }
         }}
         onPointerCancel={() => {
           clearHoldTimer();
-          if (listening) stopHoldToTalk();
+          if (isHoldRef.current) {
+            stopPtt();
+            isHoldRef.current = false;
+          }
         }}
       >
-        <span className="cd-fab-avatar" aria-hidden>
+        <span className={`cd-fab-avatar cd-avatar-ring-${avatarState}`} aria-hidden>
           👨‍✈️
         </span>
-        <span className="cd-fab-label">Captain Delta</span>
-        {listening && <span className="cd-fab-pulse" aria-hidden />}
       </button>
     </>
   );

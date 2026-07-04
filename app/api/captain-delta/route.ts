@@ -26,6 +26,7 @@ export async function POST(request: Request) {
     memoryContext?: Record<string, unknown>;
     transcript?: string;
     modelAnswer?: string;
+    lessonContext?: Record<string, unknown>;
   };
 
   try {
@@ -68,6 +69,7 @@ export async function POST(request: Request) {
               memoryContext: body.memoryContext ?? {},
               currentTranscript: body.transcript ?? null,
               modelAnswer: body.modelAnswer ?? null,
+              lessonContext: body.lessonContext ?? {},
             }),
           },
         ],

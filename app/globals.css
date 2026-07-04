@@ -3023,30 +3023,23 @@ input {
   margin-top: 0.75rem;
 }
 
-/* ── Captain Delta floating assistant ── */
+/* ── Captain Delta voice coach ── */
 .cd-fab {
   position: fixed;
   right: 1rem;
   bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px));
   z-index: 92;
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.55rem 0.85rem 0.55rem 0.55rem;
-  border: 1px solid color-mix(in srgb, var(--blue) 40%, var(--line));
-  border-radius: 999px;
-  background: linear-gradient(
-    145deg,
-    color-mix(in srgb, var(--blue) 18%, var(--card)),
-    var(--card)
-  );
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+  width: 3.35rem;
+  height: 3.35rem;
+  padding: 0;
+  border: 2px solid color-mix(in srgb, var(--blue) 45%, var(--line));
+  border-radius: 50%;
+  background: var(--card);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  color: var(--text);
-  font-size: 0.78rem;
-  font-weight: 700;
   touch-action: none;
   user-select: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 @media (min-width: 900px) {
@@ -3055,126 +3048,141 @@ input {
   }
 }
 
-.cd-fab.open {
+.cd-fab.open,
+.cd-fab.recording {
   border-color: var(--blue);
-}
-
-.cd-fab.listening {
-  border-color: var(--green, #22c55e);
-  animation: cd-pulse-border 1.2s ease-in-out infinite;
+  transform: scale(1.04);
 }
 
 .cd-fab-avatar {
-  width: 2rem;
-  height: 2rem;
+  width: 100%;
+  height: 100%;
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: color-mix(in srgb, var(--blue) 12%, var(--bg));
-  font-size: 1.1rem;
+  font-size: 1.45rem;
 }
 
-.cd-fab-label {
-  max-width: 7rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.cd-avatar-ring-listening {
+  animation: cd-listen-pulse 1s ease-in-out infinite;
 }
 
-@media (max-width: 420px) {
-  .cd-fab-label {
-    display: none;
-  }
+.cd-avatar-ring-speaking {
+  animation: cd-speak-pulse 0.85s ease-in-out infinite;
 }
 
-.cd-fab-pulse {
-  position: absolute;
-  inset: -4px;
-  border-radius: 999px;
-  border: 2px solid var(--green, #22c55e);
-  animation: cd-pulse-ring 1s ease-out infinite;
-  pointer-events: none;
+.cd-avatar-ring-thinking {
+  animation: cd-think-spin 1.4s linear infinite;
 }
 
-@keyframes cd-pulse-border {
-  0%, 100% { box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18); }
-  50% { box-shadow: 0 8px 28px color-mix(in srgb, var(--green) 35%, transparent); }
+.cd-avatar-ring-celebrating {
+  animation: cd-celebrate 0.6s ease-in-out infinite alternate;
 }
 
-@keyframes cd-pulse-ring {
-  0% { transform: scale(1); opacity: 0.7; }
-  100% { transform: scale(1.15); opacity: 0; }
+.cd-avatar-ring-correcting {
+  box-shadow: inset 0 0 0 2px #d29922;
+}
+
+@keyframes cd-listen-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--green) 50%, transparent); }
+  50% { box-shadow: 0 0 0 8px transparent; }
+}
+
+@keyframes cd-speak-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+
+@keyframes cd-think-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes cd-celebrate {
+  from { transform: translateY(0); }
+  to { transform: translateY(-2px); }
 }
 
 .cd-panel {
   position: fixed;
   right: 1rem;
-  bottom: calc(7.5rem + env(safe-area-inset-bottom, 0px));
+  bottom: calc(8rem + env(safe-area-inset-bottom, 0px));
   z-index: 91;
-  width: min(22rem, calc(100vw - 2rem));
-  max-height: min(24rem, 55vh);
+  width: min(24rem, calc(100vw - 2rem));
+  max-height: min(70vh, 32rem);
   overflow: auto;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  background: var(--card);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22);
-  padding: 0.85rem;
+  padding: 0.35rem;
 }
 
 @media (min-width: 900px) {
   .cd-panel {
-    bottom: 5rem;
+    bottom: 5.5rem;
   }
 }
 
-.cd-panel-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 0.5rem;
-  margin-bottom: 0.65rem;
-  padding-bottom: 0.55rem;
-  border-bottom: 1px solid var(--line);
-}
-
-.cd-panel-head strong {
-  display: block;
-  font-size: 0.92rem;
-}
-
-.cd-context {
-  display: block;
-  font-size: 0.72rem;
-  color: var(--muted);
-  font-weight: 500;
-  margin-top: 0.1rem;
-}
-
 .cd-close {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.55rem;
+  z-index: 2;
   border: none;
-  background: transparent;
+  background: var(--bg);
   color: var(--muted);
-  font-size: 1.25rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  font-size: 1.1rem;
   line-height: 1;
   cursor: pointer;
-  padding: 0 0.15rem;
 }
 
-.cd-message-current {
+.cd-coach-card {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--blue) 7%, var(--card)),
+    var(--card)
+  );
+  padding: 0.85rem 0.85rem 0.75rem;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.18);
+}
+
+.cd-coach-card-head {
+  margin-bottom: 0.55rem;
+}
+
+.cd-coach-card-badge {
+  font-weight: 700;
+  font-size: 0.88rem;
+}
+
+.cd-coach-card-body {
   margin-bottom: 0.65rem;
 }
 
-.cd-message-text {
-  margin: 0 0 0.55rem;
+.cd-coach-line {
+  margin: 0 0 0.35rem;
   font-size: 0.84rem;
-  line-height: 1.5;
+  line-height: 1.48;
   white-space: pre-wrap;
+}
+
+.cd-coach-mission-expr {
+  margin: 0.45rem 0 0;
+  padding: 0.4rem 0.55rem;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--green) 10%, var(--bg));
+  font-weight: 700;
+  font-size: 0.82rem;
 }
 
 .cd-voice-controls {
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem;
+  margin-bottom: 0.65rem;
 }
 
 .cd-voice-btn {
@@ -3182,7 +3190,7 @@ input {
   background: var(--bg);
   color: var(--text);
   border-radius: 8px;
-  padding: 0.3rem 0.55rem;
+  padding: 0.32rem 0.55rem;
   font-size: 0.72rem;
   font-weight: 600;
   cursor: pointer;
@@ -3198,38 +3206,40 @@ input {
   cursor: not-allowed;
 }
 
-.cd-hint {
-  margin: 0 0 0.55rem;
-  font-size: 0.72rem;
-  color: var(--muted);
-  font-style: italic;
+.cd-primary-mic {
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  padding: 0.7rem 0.85rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(135deg, #1a7f37, #2ea043);
+  box-shadow: 0 4px 14px color-mix(in srgb, #2ea043 35%, transparent);
 }
 
-.cd-history {
-  list-style: none;
-  margin: 0 0 0.65rem;
-  padding: 0;
-  font-size: 0.74rem;
+.cd-primary-mic.recording {
+  background: linear-gradient(135deg, #b45309, #d97706);
+  animation: cd-listen-pulse 1s ease-in-out infinite;
 }
 
-.cd-history li {
-  padding: 0.35rem 0;
-  border-bottom: 1px solid var(--line);
+.cd-secondary-actions {
   display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-}
-
-.cd-history-kind {
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--muted);
-}
-
-.cd-panel-actions {
-  display: flex;
+  flex-wrap: wrap;
   gap: 0.35rem;
+  margin-top: 0.55rem;
+}
+
+.cd-secondary-btn {
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 0.28rem 0.55rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .fi-daily-debrief {

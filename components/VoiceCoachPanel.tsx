@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback, useRef } from "react";
 import { useAzurePronunciation } from "@/hooks/useAzurePronunciation";
 import { useSpeechRecognition } from "@/hooks/useSpeechRecognition";
 import {
@@ -36,6 +36,7 @@ import { buildLocalInstructorReport } from "@/lib/flightInstructor/localReport";
 import { recordInstructorSession } from "@/lib/flightInstructor/memory";
 import type { FlightInstructorReport } from "@/lib/flightInstructor/types";
 import { emitCaptainDeltaAfterAnswer } from "@/lib/captainDelta/events";
+import { useCaptainDeltaCoachBridge } from "@/hooks/useCaptainDeltaCoachBridge";
 
 type Props = {
   question: string;
@@ -108,6 +109,7 @@ export default function VoiceCoachPanel({
     followUpQuestion: string;
     previousTranscript: string;
   } | null>(null);
+  const guideRef = useRef<HTMLDivElement>(null);
 
   const addWordToVault = (word: string) => {
     const { added, updated, total } = addManualWordsToVault(word, question.slice(0, 80));
@@ -399,6 +401,38 @@ export default function VoiceCoachPanel({
     tryAgain(true);
   };
 
+  const scrollToGuide = useCallback(() => {
+    guideRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }, []);
+
+  useCaptainDeltaCoachBridge({
+    question,
+    modelAnswer,
+    evaluateType,
+    keywords,
+    questionLabel: cardNum ? `Question ${cardNum}` : situationId,
+    recordingBlocked,
+    loading,
+    hasFeedback: !!(instructorReport && feedback),
+    canCompareAttempts: !!(firstAttempt && feedback),
+    azureAssessing: azure.assessing,
+    speechListening: speech.listening,
+    onStartAzure: () => void evaluateWithAzure(),
+    onStopAzure: () => void finishAzure(),
+    onSpeechToggle: speech.toggle,
+    onTryAgain: () => {
+      if (instructorReport?.followUpQuestion) {
+        answerFollowUp(instructorReport.followUpQuestion);
+      } else {
+        tryAgain();
+      }
+    },
+    onShowKeywords: scrollToGuide,
+    onShowHint: scrollToGuide,
+    onShowModel: scrollToGuide,
+    azureConfigured: azure.configured,
+  });
+
   const attemptCompare =
     firstAttempt && feedback ? { first: firstAttempt, second: feedback } : null;
 
@@ -449,7 +483,9 @@ export default function VoiceCoachPanel({
       )}
 
       {evaluateType === "part1" && part1Guide ? (
-        <CoachAnswerGuide guide={part1Guide} />
+        <div ref={guideRef}>
+          <CoachAnswerGuide guide={part1Guide} />
+        </div>
       ) : null}
 
       <div className="voice-coach-actions">

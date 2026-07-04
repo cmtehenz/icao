@@ -111,34 +111,34 @@ export function buildSimulationDebrief(): { text: string; speechText: string } {
   return { text, speechText: toSpeechText(lines.join(" ")) };
 }
 
-/** One short coaching line after each answer — not a full report. */
+/** Short coaching card after each answer: positive + one fix + mission. */
 export function buildAfterAnswerCoaching(
   report: FlightInstructorReport,
-): { text: string; speechText: string } {
-  const positive = report.positiveOpening[0] ?? "Good effort.";
-  const suggestion =
-    report.naturalnessReview.suggestions[0]?.pilotPhrase ??
-    report.priorityImprovement.detail;
-
+): { text: string; speechText: string; missionExpression?: string } {
+  const positive = report.positiveOpening[0] ?? "Excellent.";
   const studentPhrase = report.naturalnessReview.suggestions[0]?.studentPhrase;
   const pilotPhrase = report.naturalnessReview.suggestions[0]?.pilotPhrase;
+  const missionExpr = report.mission.expressions[0] ?? "situational awareness";
 
-  const lines: string[] = [positive, "Only one suggestion."];
+  const lines: string[] = [positive];
 
   if (studentPhrase && pilotPhrase) {
-    lines.push(`Instead of "${studentPhrase}", try "${pilotPhrase}".`);
-    lines.push(
-      report.naturalnessReview.suggestions[0]?.why ??
-        "That is how experienced pilots usually say it.",
-    );
-  } else if (suggestion) {
-    lines.push(suggestion);
+    lines.push("Let's improve only one sentence.");
+    lines.push(`Instead of\n${studentPhrase}\nsay\n${pilotPhrase}.`);
+  } else {
+    lines.push("Only one suggestion.");
+    lines.push(report.priorityImprovement.detail);
   }
 
-  lines.push("Ready to try again?");
+  lines.push("Mission:");
+  lines.push(`Use ${missionExpr} in your next answer.`);
 
   const text = lines.join("\n");
-  return { text, speechText: toSpeechText(lines.join(" ")) };
+  return {
+    text,
+    speechText: toSpeechText(lines.join(" ")),
+    missionExpression: missionExpr,
+  };
 }
 
 export function buildMicroMission(report: FlightInstructorReport): {

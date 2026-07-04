@@ -164,9 +164,15 @@ export async function synthesizeExamMp3(
     sdk.SpeechSynthesisOutputFormat.Audio24Khz48KBitRateMonoMp3;
   const synthesizer = new sdk.SpeechSynthesizer(speechConfig, null);
 
+  const useSsml = role === "captain_delta";
+  const payload = useSsml ? captainDeltaSsml(trimmed) : trimmed;
+  const speak = useSsml
+    ? synthesizer.speakSsmlAsync.bind(synthesizer)
+    : synthesizer.speakTextAsync.bind(synthesizer);
+
   return new Promise((resolve) => {
-    synthesizer.speakTextAsync(
-      trimmed,
+    speak(
+      payload,
       (result) => {
         synthesizer.close();
         if (result.reason === sdk.ResultReason.SynthesizingAudioCompleted && result.audioData) {
@@ -181,6 +187,20 @@ export async function synthesizeExamMp3(
       },
     );
   });
+}
+
+function escapeSsml(text: string): string {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+/** Slower, calmer delivery for Captain Delta instructor voice. */
+function captainDeltaSsml(text: string): string {
+  const voice = AZURE_VOICES.captain_delta;
+  return `<speak version="1.0" xml:lang="en-US"><voice name="${voice}"><prosody rate="-12%" pitch="-3%">${escapeSsml(text)}</prosody></voice></speak>`;
 }
 export function azureVoiceName(role: AzureVoiceRole): string {
   return AZURE_VOICES[role];
