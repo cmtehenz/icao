@@ -21,6 +21,8 @@ export function resolvePrimaryAction(
 ): CaptainDeltaAction {
   if (kind === "followup") return mic("Answer", "answer_followup");
   if (kind === "debrief") return mic("Ask Captain Delta", "ask_captain");
+  if (kind === "briefing") return mic("I'm Ready", "ready");
+  if (kind === "context") return mic("Talk to Captain", "ask_captain");
 
   if (kind === "coaching" || lesson.hasFeedback) {
     if (lesson.mode === "pronunciation" || route === "pronunciation") {

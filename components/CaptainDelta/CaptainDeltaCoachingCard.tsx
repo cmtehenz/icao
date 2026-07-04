@@ -11,6 +11,8 @@ type Props = {
   onPrimaryAction: () => void;
   onSecondaryAction: (actionId: string) => void;
   recording?: boolean;
+  pttInterim?: string;
+  pttError?: string | null;
 };
 
 export default function CaptainDeltaCoachingCard({
@@ -19,6 +21,8 @@ export default function CaptainDeltaCoachingCard({
   onPrimaryAction,
   onSecondaryAction,
   recording = false,
+  pttInterim,
+  pttError,
 }: Props) {
   const isPlaying = voice.state === "playing" || voice.state === "loading";
   const isPaused = voice.state === "paused";
@@ -39,6 +43,11 @@ export default function CaptainDeltaCoachingCard({
           <p className="cd-coach-mission-expr">{message.missionExpression}</p>
         )}
       </div>
+
+      {recording && pttInterim && (
+        <p className="cd-ptt-interim">{pttInterim}</p>
+      )}
+      {pttError && <p className="cd-ptt-error">{pttError}</p>}
 
       <div className="cd-voice-controls" aria-label="Voice controls">
         <button
@@ -70,7 +79,7 @@ export default function CaptainDeltaCoachingCard({
         className={`cd-primary-mic ${recording ? "recording" : ""}`}
         onClick={onPrimaryAction}
       >
-        {recording ? "⏹ Stop" : message.primaryAction.label}
+        {recording ? "⏹ Stop and send" : message.primaryAction.label}
       </button>
 
       {message.secondaryActions.length > 0 && (

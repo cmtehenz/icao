@@ -3242,6 +3242,37 @@ input {
   cursor: pointer;
 }
 
+.cd-ptt-interim {
+  margin: 0 0 0.5rem;
+  padding: 0.45rem 0.55rem;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--green) 12%, var(--bg));
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--text);
+}
+
+.cd-ptt-error {
+  margin: 0 0 0.5rem;
+  font-size: 0.75rem;
+  color: #e5534b;
+}
+
+.cd-ptt-live {
+  position: fixed;
+  right: 1rem;
+  bottom: calc(8rem + env(safe-area-inset-bottom, 0px));
+  z-index: 90;
+  max-width: min(20rem, calc(100vw - 2rem));
+  padding: 0.5rem 0.65rem;
+  border-radius: 10px;
+  background: var(--card);
+  border: 1px solid var(--green, #22c55e);
+  font-size: 0.78rem;
+  font-style: italic;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
 .fi-daily-debrief {
   margin-top: 1rem;
   padding: 1rem;

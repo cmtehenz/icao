@@ -52,7 +52,7 @@ import { getNextMissionAction } from "@/lib/dailyMission";
 import { buildMemoryContextForPrompt } from "@/lib/flightInstructor/memory";
 import { todayKey } from "@/lib/studyTime";
 import { useCaptainDeltaVoice } from "@/hooks/useCaptainDeltaVoice";
-import { useSpeechRecognition } from "@/hooks/useSpeechRecognition";
+import { useCaptainDeltaPtt } from "@/hooks/useCaptainDeltaPtt";
 
 type CaptainDeltaContextValue = {
   open: boolean;
@@ -64,6 +64,8 @@ type CaptainDeltaContextValue = {
   avatarState: CaptainDeltaAvatarState;
   voice: ReturnType<typeof useCaptainDeltaVoice>;
   pttActive: boolean;
+  pttInterim: string;
+  pttError: string | null;
   thinking: boolean;
   triggerPrimaryAction: () => void;
   triggerSecondaryAction: (actionId: string) => void;
@@ -107,9 +109,7 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
   const routeContext = getCaptainDeltaContext(pathname);
   const contextLabel = CONTEXT_LABELS[routeContext];
   const voice = useCaptainDeltaVoice();
-  const speech = useSpeechRecognition("en-US");
-  const speechRef = useRef(speech);
-  speechRef.current = speech;
+  const ptt = useCaptainDeltaPtt("en-US");
 
   const [open, setOpen] = useState(false);
   const [currentMessage, setCurrentMessage] = useState<CaptainDeltaMessage | null>(null);
@@ -161,6 +161,9 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
             lessonContext: lessonSnapshot,
           }),
         });
+        if (!res.ok) {
+          throw new Error("Captain unavailable");
+        }
         const data = (await res.json()) as { reply: string; followUp?: string | null };
         const msg = buildMessage("coaching", data.reply, routeContext, lessonSnapshot, {
           speechText: toSpeechText(data.reply),
@@ -190,23 +193,39 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
     [contextLabel, deliverMessage, routeContext],
   );
 
-  const startPtt = useCallback(() => {
+  const startPtt = useCallback(async () => {
     voice.stop();
+    ptt.clear();
     setPttActive(true);
-    speech.clear();
-    speech.start();
-  }, [speech, voice]);
+    const ok = await ptt.start();
+    if (!ok) setPttActive(false);
+  }, [ptt, voice]);
 
-  const stopPtt = useCallback(() => {
-    speech.stop();
+  const stopPtt = useCallback(async () => {
+    if (!pttActive && !ptt.listening) return;
     setPttActive(false);
-    window.setTimeout(() => {
-      const said = speechRef.current.transcript.trim();
-      if (said) void replyFromCaptain(said, lesson);
-    }, 350);
-  }, [lesson, replyFromCaptain, speech]);
+    const said = await ptt.stop();
+    if (said) {
+      void replyFromCaptain(said, lesson);
+    } else if (!ptt.error) {
+      deliverMessage(
+        buildMessage(
+          "coaching",
+          "I did not catch that. Hold the Captain button and speak again.",
+          routeContext,
+          lesson,
+        ),
+        { autoSpeak: true },
+      );
+    }
+  }, [deliverMessage, lesson, ptt, pttActive, replyFromCaptain, routeContext]);
 
   const triggerPrimaryAction = useCallback(() => {
+    if (pttActive || ptt.listening) {
+      void stopPtt();
+      return;
+    }
+
     const bridge = getCaptainDeltaRecordBridge();
     if (bridge?.isRecording()) {
       emitStopRecord();
@@ -219,21 +238,38 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
       if (next) router.push(next.href);
       return;
     }
-    if (action === "ask_captain") {
-      startPtt();
+
+    if (
+      action === "ask_captain" ||
+      action === "answer_followup" ||
+      action === "answer_question"
+    ) {
+      void startPtt();
       return;
     }
 
-    emitStartRecord();
-  }, [currentMessage, router, startPtt]);
+    if (bridge?.canRecord()) {
+      emitStartRecord();
+      return;
+    }
 
-  const triggerSecondaryAction = useCallback((actionId: string) => {
-    emitSecondaryAction(actionId);
-  }, []);
+    void startPtt();
+  }, [currentMessage, ptt.listening, pttActive, router, startPtt, stopPtt]);
+
+  const triggerSecondaryAction = useCallback(
+    (actionId: string) => {
+      if (actionId === "ask_captain") {
+        void startPtt();
+        return;
+      }
+      emitSecondaryAction(actionId);
+    },
+    [startPtt],
+  );
 
   const quickQuestion = useCallback(() => {
     setOpen(true);
-    startPtt();
+    void startPtt();
   }, [startPtt]);
 
   useEffect(() => {
@@ -332,7 +368,7 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
   }, [deliverMessage, lesson, routeContext]);
 
   const avatarState: CaptainDeltaAvatarState = useMemo(() => {
-    if (pttActive || speech.listening || lesson.recording) return "listening";
+    if (pttActive || ptt.listening || lesson.recording) return "listening";
     if (thinking) return "thinking";
     if (voice.state === "playing" || voice.state === "loading") return "speaking";
     if (currentMessage?.kind === "coaching") return "correcting";
@@ -342,7 +378,7 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
     return "idle";
   }, [
     pttActive,
-    speech.listening,
+    ptt.listening,
     lesson.recording,
     thinking,
     voice.state,
@@ -359,7 +395,9 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
       currentMessage,
       avatarState,
       voice,
-      pttActive,
+      pttActive: pttActive || ptt.listening,
+      pttInterim: ptt.interimText,
+      pttError: ptt.error,
       thinking,
       triggerPrimaryAction,
       triggerSecondaryAction,
@@ -377,6 +415,9 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
       avatarState,
       voice,
       pttActive,
+      ptt.listening,
+      ptt.interimText,
+      ptt.error,
       thinking,
       triggerPrimaryAction,
       triggerSecondaryAction,

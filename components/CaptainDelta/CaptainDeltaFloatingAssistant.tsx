@@ -4,7 +4,7 @@ import { useRef } from "react";
 import CaptainDeltaCoachingCard from "@/components/CaptainDelta/CaptainDeltaCoachingCard";
 import { useCaptainDelta } from "@/components/CaptainDelta/CaptainDeltaProvider";
 
-const HOLD_MS = 220;
+const HOLD_MS = 180;
 
 export default function CaptainDeltaFloatingAssistant() {
   const {
@@ -15,16 +15,16 @@ export default function CaptainDeltaFloatingAssistant() {
     voice,
     lesson,
     pttActive,
+    pttInterim,
+    pttError,
     triggerPrimaryAction,
     triggerSecondaryAction,
     startPtt,
     stopPtt,
-    quickQuestion,
   } = useCaptainDelta();
 
   const holdTimerRef = useRef<number | null>(null);
   const isHoldRef = useRef(false);
-  const lastTapRef = useRef(0);
 
   const clearHoldTimer = () => {
     if (holdTimerRef.current != null) {
@@ -39,25 +39,18 @@ export default function CaptainDeltaFloatingAssistant() {
     clearHoldTimer();
     holdTimerRef.current = window.setTimeout(() => {
       isHoldRef.current = true;
-      startPtt();
+      void startPtt();
     }, HOLD_MS);
   };
 
   const onFabPointerUp = () => {
     clearHoldTimer();
-    if (isHoldRef.current) {
-      stopPtt();
+    if (isHoldRef.current || pttActive) {
       isHoldRef.current = false;
+      void stopPtt();
+      setOpen(true);
       return;
     }
-
-    const now = Date.now();
-    if (now - lastTapRef.current < 350) {
-      lastTapRef.current = 0;
-      quickQuestion();
-      return;
-    }
-    lastTapRef.current = now;
     setOpen(true);
   };
 
@@ -79,31 +72,39 @@ export default function CaptainDeltaFloatingAssistant() {
             message={currentMessage}
             voice={voice}
             recording={recording}
+            pttInterim={pttInterim}
+            pttError={pttError}
             onPrimaryAction={triggerPrimaryAction}
             onSecondaryAction={triggerSecondaryAction}
           />
         </aside>
       )}
 
+      {pttActive && !open && pttInterim && (
+        <div className="cd-ptt-live" aria-live="polite">
+          {pttInterim}
+        </div>
+      )}
+
       <button
         type="button"
         className={`cd-fab cd-avatar-${avatarState} ${open ? "open" : ""} ${recording ? "recording" : ""}`}
-        aria-label="Captain Delta"
-        title="Hold: Push-to-Talk · Tap: coaching card · Double-tap: quick question"
+        aria-label="Captain Delta — segure para falar"
+        title="Segure para falar · Toque para abrir o card"
         onPointerDown={onFabPointerDown}
         onPointerUp={onFabPointerUp}
         onPointerLeave={() => {
           clearHoldTimer();
-          if (isHoldRef.current) {
-            stopPtt();
+          if (isHoldRef.current || pttActive) {
             isHoldRef.current = false;
+            void stopPtt();
           }
         }}
         onPointerCancel={() => {
           clearHoldTimer();
-          if (isHoldRef.current) {
-            stopPtt();
+          if (isHoldRef.current || pttActive) {
             isHoldRef.current = false;
+            void stopPtt();
           }
         }}
       >
