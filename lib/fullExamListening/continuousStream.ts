@@ -1,10 +1,14 @@
 /**
- * Single continuous MP3 for Escutar Prova (Full Listening).
+ * Single continuous audio for Escutar Prova (Full Listening).
  * iOS suspends JS between clips when the screen locks — one stream keeps playing.
+ *
+ * Clips are decoded and merged to WAV (not naive MP3 concat) so Azure TTS and
+ * original ATC files with different encodings all play correctly.
  */
 
 import { getExamPlaylist } from "@/data/fullExams";
 import { synthesizeExamMp3, type AzureVoiceRole } from "@/lib/azure/azureTts";
+import { mergeClipsToWav } from "@/lib/fullExamListening/audioMerge";
 import {
   getCachedAtcBlob,
   getCachedTtsBlob,
@@ -33,14 +37,19 @@ export type StreamBuildProgress = {
   label: string;
 };
 
-const STREAM_META_PREFIX = "icao_escutar_stream_meta_v1_";
+/** Bump when stream format changes (invalidates broken MP3-concat caches). */
+const STREAM_VERSION = 2;
+const STREAM_META_PREFIX = `icao_escutar_stream_meta_v${STREAM_VERSION}_`;
 
 function voiceForItem(item: ExamAudioItem): AzureVoiceRole {
   return item.speaker === "male_candidate" ? "male_candidate" : "female_examiner";
 }
 
 function streamCacheRequest(examId: FullExamId): Request {
-  return new Request(`/__offline-exam-audio__/stream/${examId}/full.mp3`, { method: "GET" });
+  return new Request(
+    `/__offline-exam-audio__/stream/v${STREAM_VERSION}/${examId}/full.wav`,
+    { method: "GET" },
+  );
 }
 
 function streamMetaKey(examId: FullExamId): string {
@@ -48,8 +57,9 @@ function streamMetaKey(examId: FullExamId): string {
 }
 
 async function resolveItemBlob(item: ExamAudioItem): Promise<Blob | null> {
-  if (item.type === "pause" || item.type === "original_audio") {
-    if (item.type === "pause") return null;
+  if (item.type === "pause") return null;
+
+  if (item.type === "original_audio") {
     const src = item.audioSrc;
     if (!src) return null;
     const cached = await getCachedAtcBlob(src);
@@ -69,25 +79,6 @@ async function resolveItemBlob(item: ExamAudioItem): Promise<Blob | null> {
     if (blob) void putCachedTtsBlob(role, text, blob);
   }
   return blob;
-}
-
-function getMp3Duration(blob: Blob): Promise<number> {
-  return new Promise((resolve) => {
-    const url = URL.createObjectURL(blob);
-    const audio = new Audio();
-    const finish = (sec: number) => {
-      URL.revokeObjectURL(url);
-      audio.removeAttribute("src");
-      resolve(sec);
-    };
-    audio.preload = "metadata";
-    audio.addEventListener("loadedmetadata", () => {
-      const d = audio.duration;
-      finish(Number.isFinite(d) && d > 0 ? d : 0);
-    });
-    audio.addEventListener("error", () => finish(0));
-    audio.src = url;
-  });
 }
 
 /** Playable playlist items for continuous Full Listening (skips pauses). */
@@ -113,8 +104,19 @@ export async function loadCachedContinuousStream(
     const blob = await hit.blob();
     const raw = localStorage.getItem(streamMetaKey(examId));
     if (!raw) return null;
-    const meta = JSON.parse(raw) as { segments: StreamSegment[]; duration: number };
-    if (!meta.segments?.length) return null;
+    const meta = JSON.parse(raw) as {
+      segments: StreamSegment[];
+      duration: number;
+      version?: number;
+    };
+    if (meta.version !== STREAM_VERSION || !meta.segments?.length) return null;
+    if (!blob.type.includes("wav") && blob.size > 0) {
+      // Reject legacy MP3-concat blobs if any slipped through
+      const head = new Uint8Array(await blob.slice(0, 4).arrayBuffer());
+      const isRiff =
+        head[0] === 0x52 && head[1] === 0x49 && head[2] === 0x46 && head[3] === 0x46;
+      if (!isRiff) return null;
+    }
     return { examId, blob, segments: meta.segments, duration: meta.duration };
   } catch {
     return null;
@@ -128,12 +130,16 @@ async function saveContinuousStream(stream: ContinuousStream): Promise<void> {
     await cache.put(
       streamCacheRequest(stream.examId),
       new Response(stream.blob, {
-        headers: { "Content-Type": "audio/mpeg", "Cache-Control": "max-age=31536000" },
+        headers: { "Content-Type": "audio/wav", "Cache-Control": "max-age=31536000" },
       }),
     );
     localStorage.setItem(
       streamMetaKey(stream.examId),
-      JSON.stringify({ segments: stream.segments, duration: stream.duration }),
+      JSON.stringify({
+        version: STREAM_VERSION,
+        segments: stream.segments,
+        duration: stream.duration,
+      }),
     );
   } catch {
     /* quota */
@@ -143,13 +149,23 @@ async function saveContinuousStream(stream: ContinuousStream): Promise<void> {
 export async function invalidateContinuousStream(examId: FullExamId): Promise<void> {
   try {
     localStorage.removeItem(streamMetaKey(examId));
+    // Also clear legacy v1 keys
+    localStorage.removeItem(`icao_escutar_stream_meta_v1_${examId}`);
     if (typeof caches !== "undefined") {
       const cache = await caches.open(OFFLINE_AUDIO_CACHE);
       await cache.delete(streamCacheRequest(examId));
+      await cache.delete(
+        new Request(`/__offline-exam-audio__/stream/${examId}/full.mp3`, { method: "GET" }),
+      );
     }
   } catch {
     /* ignore */
   }
+}
+
+export async function invalidateAllContinuousStreams(): Promise<void> {
+  const ids: FullExamId[] = ["exam1", "exam2", "exam3", "exam4"];
+  await Promise.all(ids.map((id) => invalidateContinuousStream(id)));
 }
 
 export async function buildContinuousStream(
@@ -163,9 +179,7 @@ export async function buildContinuousStream(
   const items = getExamPlaylist(examId);
   const indices = continuousPlayableIndices(items);
   const total = indices.length;
-  const parts: Blob[] = [];
-  const segments: StreamSegment[] = [];
-  let cursor = 0;
+  const clips: Array<{ blob: Blob; itemIndex: number }> = [];
 
   let done = 0;
   for (const itemIndex of indices) {
@@ -182,25 +196,24 @@ export async function buildContinuousStream(
       throw new Error(`Falha ao preparar áudio: ${item.label ?? item.id}`);
     }
 
-    const duration = await getMp3Duration(blob);
-    const start = cursor;
-    const end = cursor + (duration > 0 ? duration : 0.5);
-    segments.push({ itemIndex, start, end });
-    cursor = end;
-    parts.push(blob);
+    clips.push({ blob, itemIndex });
     done += 1;
     onProgress?.({ done, total, label: item.label ?? item.type });
   }
 
-  if (!parts.length) {
+  if (!clips.length) {
     throw new Error("Nenhum áudio para montar o stream contínuo.");
   }
 
+  onProgress?.({ done: total, total, label: "Mesclando áudios (ATC + vozes)…" });
+
+  const merged = await mergeClipsToWav(clips, signal);
+
   const stream: ContinuousStream = {
     examId,
-    blob: new Blob(parts, { type: "audio/mpeg" }),
-    segments,
-    duration: cursor,
+    blob: merged.blob,
+    segments: merged.segments,
+    duration: merged.duration,
   };
 
   await saveContinuousStream(stream);

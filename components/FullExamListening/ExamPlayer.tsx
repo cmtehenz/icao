@@ -143,7 +143,8 @@ export default function ExamPlayer({ exam, mode, startIndex, onBack, onModeChang
 
       {mode === "full" && (
         <p className="fel-lock-hint">
-          Full Listening usa áudio contínuo — no iPhone pode bloquear a tela que a prova segue tocando.
+          Full Listening monta um áudio contínuo (vozes Azure + ATC originais). No iPhone pode bloquear a
+          tela. Se o som do ATC falhar, pare e dê Play de novo para remontar o áudio.
         </p>
       )}
 

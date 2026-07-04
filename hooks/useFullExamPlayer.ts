@@ -268,7 +268,7 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
     [examId, failPlayback, goToIndex, isActiveSession, items, onComplete, playItem],
   );
 
-  /** Full Listening: one continuous MP3 so iPhone keeps playing with screen locked. */
+  /** Full Listening: one continuous WAV so iPhone keeps playing with screen locked. */
   const runContinuous = useCallback(
     async (fromIndex: number, ticket: number) => {
       setStatus("preparing");
