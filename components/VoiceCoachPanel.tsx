@@ -30,6 +30,11 @@ import WordPhoneticHint from "@/components/WordPhoneticHint";
 import IcaoLevelPanel from "@/components/IcaoLevelPanel";
 import YouGlishLink from "@/components/YouGlishLink";
 import { useAuth } from "@/components/AuthProvider";
+import FlightInstructorReportPanel from "@/components/FlightInstructor/FlightInstructorReportPanel";
+import { fetchFlightInstructorReport } from "@/lib/flightInstructor/client";
+import { buildLocalInstructorReport } from "@/lib/flightInstructor/localReport";
+import { recordInstructorSession } from "@/lib/flightInstructor/memory";
+import type { FlightInstructorReport } from "@/lib/flightInstructor/types";
 
 type Props = {
   question: string;
@@ -87,6 +92,9 @@ export default function VoiceCoachPanel({
   const { user } = useAuth();
   const [loading, setLoading] = useState(false);
   const [feedback, setFeedback] = useState<EvaluateFeedback | null>(null);
+  const [instructorReport, setInstructorReport] = useState<FlightInstructorReport | null>(null);
+  const [instructorLoading, setInstructorLoading] = useState(false);
+  const [firstAttempt, setFirstAttempt] = useState<EvaluateFeedback | null>(null);
   const [vaultSaved, setVaultSaved] = useState<string | null>(null);
   const [audioSaveNote, setAudioSaveNote] = useState<string | null>(null);
   const [activityNote, setActivityNote] = useState<string | null>(null);
@@ -119,6 +127,7 @@ export default function VoiceCoachPanel({
   ) => {
     setLoading(true);
     setFeedback(null);
+    setInstructorReport(null);
     setVaultSaved(null);
     setAudioSaveNote(null);
     setActivityNote(null);
@@ -184,6 +193,40 @@ export default function VoiceCoachPanel({
       }
 
       setFeedback(data);
+
+      setInstructorLoading(true);
+      try {
+        const report = user
+          ? await fetchFlightInstructorReport({
+              transcript: data.transcript,
+              question,
+              modelAnswer,
+              type: evaluateType,
+              keywords,
+              answerMode,
+              cardNum,
+              situationId,
+              scores: data.scores,
+              icaoLevel: data.icaoLevel?.overall,
+              azureWeakWords: data.azurePronunciation?.weakWords,
+            })
+          : buildLocalInstructorReport(data, question, modelAnswer);
+        setInstructorReport(report);
+        recordInstructorSession({
+          type: evaluateType,
+          cardNum,
+          situationId,
+          question,
+          transcript: data.transcript,
+          overallScore: data.scores.overall,
+          icaoLevel: data.icaoLevel?.overall ?? report.icaoEvaluation.estimatedLevel,
+          report,
+        });
+      } catch {
+        setInstructorReport(buildLocalInstructorReport(data, question, modelAnswer));
+      } finally {
+        setInstructorLoading(false);
+      }
 
       if (evaluateType === "part1" && cardNum && data.icaoLevel?.overall) {
         recordPart1CoachAttempt(cardNum, data.scores.overall, data.icaoLevel.overall);
@@ -318,6 +361,21 @@ export default function VoiceCoachPanel({
     setLastAudioBlob(audioBlob);
   };
 
+  const tryAgain = () => {
+    if (feedback && !firstAttempt) {
+      setFirstAttempt(feedback);
+    }
+    setFeedback(null);
+    setInstructorReport(null);
+    setVaultSaved(null);
+    setTrainWords([]);
+    azure.clear();
+    speech.clear();
+  };
+
+  const attemptCompare =
+    firstAttempt && feedback ? { first: firstAttempt, second: feedback } : null;
+
   if (!open && !embedded) {
     return (
       <button
@@ -446,7 +504,56 @@ export default function VoiceCoachPanel({
         </div>
       )}
 
-      {feedback && (
+      {instructorLoading && (
+        <p className="fi-loading">✈️ Flight Instructor is preparing your coaching report…</p>
+      )}
+
+      {instructorReport && feedback && (
+        <FlightInstructorReportPanel
+          report={instructorReport}
+          feedback={feedback}
+          onTryAgain={tryAgain}
+          attemptCompare={attemptCompare}
+        />
+      )}
+
+      {instructorReport && feedback && (
+        <div className="voice-coach-mispronounced fi-pronunciation-extra">
+          {evaluateType.startsWith("part2") && lastAudioBlob && (
+            <AudioCompareReplay
+              modelText={modelAnswer}
+              modelAudioUrl={modelAudioUrl}
+              userAudioBlob={lastAudioBlob}
+              modelLabel="Modelo"
+              userLabel="Sua gravação"
+            />
+          )}
+          {trainWords.length > 0 && (
+            <>
+              <h3>Treinar pronúncia</h3>
+              <ul className="mispronounced-list">
+                {trainWords.map((w) => (
+                  <li
+                    key={`${w.word}-${w.errorLabel}`}
+                    className={`mispronounced-item ${w.accuracyScore < 60 ? "bad" : "warn"}`}
+                  >
+                    <span className="mispronounced-word">{w.word}</span>
+                    <button type="button" className="btn secondary btn-sm" onClick={() => addWordToVault(w.word)}>
+                      + Banco
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+          {vaultSaved && <p className="vault-saved-banner">{vaultSaved}</p>}
+          <Link href="/pronunciation" className="btn secondary btn-sm">
+            Abrir Pronúncia →
+          </Link>
+        </div>
+      )}
+
+      {feedback && !instructorReport && !instructorLoading && (
         <div className="voice-coach-feedback">
           {feedback.icaoLevel && <IcaoLevelPanel rating={feedback.icaoLevel} />}
 

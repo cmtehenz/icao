@@ -10,6 +10,7 @@ import { getDailyMissionSummary, getSimuladoIcaoHref } from "@/lib/dailyMission"
 import { buildDifficultyInsights } from "@/lib/difficultyInsights";
 import TeacherReportPanel from "@/components/study/TeacherReportPanel";
 import ProgressTrendPanel from "@/components/study/ProgressTrendPanel";
+import DailyDebriefPanel from "@/components/FlightInstructor/DailyDebriefPanel";
 import {
   getOrCreatePart1DailyMission,
   part1CardPeelProgress,
@@ -274,6 +275,8 @@ export default function DailyMissionPanel() {
       <TeacherReportPanel />
 
       <ProgressTrendPanel />
+
+      <DailyDebriefPanel />
     </section>
   );
 }

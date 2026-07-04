@@ -2691,11 +2691,256 @@ input {
   font-style: italic;
 }
 
+.fi-report {
+  margin-top: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1rem;
+  background: var(--card);
+}
+
+.fi-report-hero {
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.fi-badge {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 0.35rem;
+}
+
+.fi-confidence {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+.fi-loading {
+  margin: 0.75rem 0;
+  font-size: 0.85rem;
+  color: var(--blue);
+}
+
+.fi-section {
+  margin: 0.85rem 0;
+  padding: 0.75rem;
+  border-radius: 10px;
+  background: var(--bg);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.fi-section h3,
+.fi-section h4 {
+  margin: 0 0 0.45rem;
+  font-size: 0.88rem;
+}
+
+.fi-positive {
+  border-left: 4px solid var(--green, #22c55e);
+  background: color-mix(in srgb, var(--green, #22c55e) 6%, var(--bg));
+}
+
+.fi-positive ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.fi-naturalness-score {
+  display: inline-block;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.fi-naturalness-score.good { color: var(--green, #22c55e); }
+.fi-naturalness-score.warn { color: #d29922; }
+.fi-naturalness-score.bad { color: #e5534b; }
+
+.fi-suggestions {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+}
+
+.fi-suggestions li {
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.fi-student-line,
+.fi-pilot-line {
+  display: block;
+}
+
+.fi-pilot-line {
+  color: var(--green, #22c55e);
+  font-weight: 600;
+}
+
+.fi-why {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 0.2rem;
+}
+
+.fi-disclaimer {
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.fi-criteria-notes {
+  margin: 0.5rem 0;
+  padding-left: 1rem;
+}
+
+.fi-level-estimate {
+  margin: 0.35rem 0 0;
+}
+
+.fi-version-block {
+  margin: 0.5rem 0;
+  padding: 0.55rem;
+  border-radius: 8px;
+  background: var(--card);
+}
+
+.fi-version-block.coach {
+  border-left: 4px solid var(--blue);
+}
+
+.fi-memory-chain {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+  margin-top: 0.5rem;
+}
+
+.fi-memory-step {
+  padding: 0.25rem 0.55rem;
+  border-radius: 6px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  font-weight: 600;
+}
+
+.fi-memory-arrow {
+  color: var(--muted);
+  font-size: 0.75rem;
+  margin-left: 0.5rem;
+}
+
+.fi-memory-note {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.fi-personal {
+  border-left: 4px solid var(--blue);
+}
+
+.fi-vocab-rating {
+  font-weight: 700;
+  margin: 0 0 0.35rem;
+}
+
+.fi-mission-time {
+  margin: 0.35rem 0 0;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.fi-attempt-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.fi-replay-delta {
+  margin: 0.5rem 0 0;
+  font-weight: 600;
+}
+
+.fi-technical-scores {
+  margin: 0.75rem 0;
+  font-size: 0.78rem;
+}
+
+.fi-try-again {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.fi-pronunciation-extra {
+  margin-top: 0.75rem;
+}
+
+.fi-daily-debrief {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--blue) 5%, var(--card));
+}
+
+.fi-daily-debrief header h3 {
+  margin: 0;
+}
+
+.fi-debrief-date {
+  margin: 0.2rem 0 0.75rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.fi-debrief-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .fi-debrief-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.fi-debrief-grid h4 {
+  margin: 0 0 0.35rem;
+  font-size: 0.82rem;
+}
+
+.fi-debrief-grid ul {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  font-size: 0.78rem;
+}
+
+.fi-debrief-achievement,
+.fi-debrief-mission {
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+}
+
+.fi-debrief-empty {
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
 @media print {
   .teacher-report-actions,
   .daily-mission-grid,
   .difficulty-insights,
   .progress-trends-panel,
+  .fi-daily-debrief,
   .study-agenda-mode,
   .daily-mission-head-side {
     display: none !important;
