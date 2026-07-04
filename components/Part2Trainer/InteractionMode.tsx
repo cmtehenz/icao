@@ -56,7 +56,6 @@ export default function InteractionMode({
   const { blocked, message } = usePart2WarmupGate();
   const [examVersion, setExamVersion] = useState<ExamVersion | "all">(navFromUrl.examVersion);
   const [index, setIndex] = useState(navFromUrl.index);
-  const [showAnswer, setShowAnswer] = useState(false);
 
   const scenarios = useMemo(() => scenariosForExamVersion(examVersion), [examVersion]);
 
@@ -69,7 +68,6 @@ export default function InteractionMode({
       const nextIndex = findScenarioIndex(scenarios, scenarioId);
       if (nextIndex >= 0) {
         setIndex(nextIndex);
-        setShowAnswer(false);
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
     },
@@ -78,7 +76,6 @@ export default function InteractionMode({
 
   const go = (delta: number) => {
     setIndex((i) => (i + delta + scenarios.length) % scenarios.length);
-    setShowAnswer(false);
   };
 
   const mark = (status: "difficult" | "mastered") => {
@@ -90,7 +87,6 @@ export default function InteractionMode({
       const next = resolvePart2ScenarioNav(scenarioIdFromUrl);
       setExamVersion(next.examVersion);
       setIndex(next.index);
-      setShowAnswer(false);
       return;
     }
     if (!openShadow) return;
@@ -114,7 +110,6 @@ export default function InteractionMode({
           const currentId = scenarios[index]?.id ?? null;
           setExamVersion(v);
           setIndex(remapIndexAfterExamChange(currentId, v));
-          setShowAnswer(false);
         }}
       />
 
@@ -141,13 +136,23 @@ export default function InteractionMode({
             </span>
           </div>
           <p className="part2-situation">{scenario.context}</p>
-          <p className="part2-atc-message part2-interaction-prompt">{scenario.interaction.prompt}</p>
+          <p className="part2-interaction-task">{scenario.interaction.prompt}</p>
         </div>
         <div className="card-body">
           <p className="part2-hint">
             Ligue para o ATC: facility + ANAC 123 + urgência (se necessário) + problema + intenção + pedido.{" "}
             <Link href="/pronunciation?callsign=1">Treinar callsign →</Link>
           </p>
+
+          <div className="part2-model-answer part2-model-answer-primary">
+            <h3>Reporte modelo (ICAO 5)</h3>
+            <p>{scenario.interaction.modelReport}</p>
+          </div>
+
+          <div className="part2-model-answer">
+            <h3>Correção ao ATC ({scenario.atcFollowUp.correctionType})</h3>
+            <p>{scenario.atcFollowUp.modelCorrection}</p>
+          </div>
 
           <PronunciationWarmupBanner />
 
@@ -179,26 +184,7 @@ export default function InteractionMode({
             }
           />
 
-          <StudyCardToolbar onPrevious={() => go(-1)} onNext={() => go(1)}>
-            <button type="button" className="btn purple btn-large" onClick={() => setShowAnswer((s) => !s)}>
-              {showAnswer ? "Esconder resposta" : "Mostrar resposta"}
-            </button>
-          </StudyCardToolbar>
-
-          {showAnswer && (
-            <>
-              <div className="part2-model-answer">
-                <h3>Seu reporte (modelo)</h3>
-                <p>{scenario.interaction.modelReport}</p>
-              </div>
-              <div className="part2-model-answer">
-                <h3>Correção ao ATC ({scenario.atcFollowUp.correctionType})</h3>
-                <p className="part2-atc-message">{scenario.atcFollowUp.atcMessage}</p>
-                <p>{scenario.atcFollowUp.modelCorrection}</p>
-              </div>
-            </>
-          )}
-
+          <StudyCardToolbar onPrevious={() => go(-1)} onNext={() => go(1)} />
         </div>
       </article>
     </div>

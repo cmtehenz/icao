@@ -21,7 +21,7 @@ export const EXAM_23C_SITUATIONS: ExamSituation[] = [
       prompt:
         "Your main landing gear does not retract properly. Contact NorCal Departure, report your problem and request to hold in order to try to solve the problem.",
       modelReport:
-        "NorCal Departure, my main landing gear does not retract properly. Request to hold in order to try to solve the problem, ANAC 123.",
+        "NorCal Departure, ANAC 123, my main landing gear does not retract properly. Request to hold in order to try to solve the problem.",
       urgency: "routine",
     },
     atcFollowUp: {
@@ -88,7 +88,7 @@ export const EXAM_23C_SITUATIONS: ExamSituation[] = [
       prompt:
         "After takeoff, you start losing cabin pressure. You decide to return to Bogota, but first you must burn some fuel. Call Bogota Approach to explain and request a twenty-minute hold.",
       modelReport:
-        "Bogota Approach, ANAC 123, we are losing cabin pressure. We need to return to Bogota. Request a two zero-minute hold to burn some fuel before landing.",
+        "Pan Pan Pan, Bogota Approach, ANAC 123, we are losing cabin pressure. We need to return to Bogota. Request a two zero-minute hold to burn some fuel before landing.",
       urgency: "PAN-PAN",
     },
     atcFollowUp: {
@@ -155,7 +155,8 @@ export const EXAM_23C_SITUATIONS: ExamSituation[] = [
     interaction: {
       prompt:
         "You lost your GPS. Call Miami Tower to inform them about your problem and say your intentions.",
-      modelReport: "Miami Tower, we lost our GPS. We would like to continue using conventional navigation, ANAC 123.",
+      modelReport:
+        "Miami Tower, ANAC 123, we have lost our GPS. We would like to continue using conventional navigation.",
       urgency: "routine",
     },
     atcFollowUp: {
@@ -191,7 +192,7 @@ export const EXAM_24C_SITUATIONS: ExamSituation[] = [
       prompt:
         "You have been in a holding pattern and are running low on fuel. Call London Control and inform them you need to land in fifteen minutes.",
       modelReport:
-        "London Control, ANAC 123. We are running low on fuel and need to land within one five minutes.",
+        "Pan Pan Pan, London Control, ANAC 123, we are running low on fuel and need to land within one five minutes.",
       urgency: "PAN-PAN",
     },
     atcFollowUp: {
@@ -225,7 +226,7 @@ export const EXAM_24C_SITUATIONS: ExamSituation[] = [
       prompt:
         "You are experiencing engine high vibration and need to land as soon as possible. Contact Manchester Control to report and say your intentions.",
       modelReport:
-        "Manchester Control, ANAC 123, we have an engine high vibration. We need to land as soon as possible.",
+        "Pan Pan Pan, Manchester Control, ANAC 123, we have an engine high vibration. We need to land as soon as possible.",
       urgency: "PAN-PAN",
     },
     atcFollowUp: {
@@ -259,7 +260,7 @@ export const EXAM_24C_SITUATIONS: ExamSituation[] = [
       prompt:
         "A flight attendant tells you an unaccompanied minor has passed out. Call Vitoria Tower, explain and request medical assistance.",
       modelReport:
-        "Tower, an unaccompanied minor has passed out onboard. Request medical assistance, ANAC 123.",
+        "Vitoria Tower, ANAC 123, an unaccompanied minor has passed out onboard. Request medical assistance.",
       urgency: "routine",
     },
     atcFollowUp: {
@@ -292,7 +293,8 @@ export const EXAM_24C_SITUATIONS: ExamSituation[] = [
     interaction: {
       prompt:
         "You are cleared to land and see a truck on the runway. Call Recife Tower to report and say your intentions.",
-      modelReport: "Recife Tower, there is a truck on the runway. Missed approach, ANAC 123.",
+      modelReport:
+        "Recife Tower, ANAC 123, there is a truck on the runway. Going around, missed approach.",
       urgency: "routine",
     },
     atcFollowUp: {
@@ -325,7 +327,8 @@ export const EXAM_24C_SITUATIONS: ExamSituation[] = [
     interaction: {
       prompt:
         "During taxi, you see a drone flying near your aircraft. Call San Francisco Ground to inform them.",
-      modelReport: "San Francisco Ground, ANAC 123, there is a drone flying near my aircraft.",
+      modelReport:
+        "San Francisco Ground, ANAC 123, there is a drone flying near my aircraft. Request instructions.",
       urgency: "routine",
     },
     atcFollowUp: {
@@ -361,7 +364,7 @@ export const EXAM_25C_SITUATIONS: ExamSituation[] = [
       prompt:
         "While taxiing on taxiway Delta, you hit a fire truck and need to be towed to the hangar. Call Ground Control to explain and request assistance.",
       modelReport:
-        "We have hit a fire truck. We need to be towed to the hangar. Request assistance, ANAC 123.",
+        "Ezeiza Ground, ANAC 123, we have hit a fire truck. We need to be towed to the hangar. Request assistance.",
       urgency: "routine",
     },
     atcFollowUp: {
@@ -395,7 +398,7 @@ export const EXAM_25C_SITUATIONS: ExamSituation[] = [
       prompt:
         "Your left engine oil temperature has increased beyond limits so you shut it down. Contact Brisbane Approach to report and say your intentions.",
       modelReport:
-        "Brisbane Approach, ANAC 123, we have high oil temperature in our left engine. We are shutting it down. We need to land as soon as possible.",
+        "Pan Pan Pan, Brisbane Approach, ANAC 123, we have high oil temperature in our left engine. We are shutting it down. We need to land as soon as possible.",
       urgency: "PAN-PAN",
     },
     atcFollowUp: {
@@ -429,7 +432,7 @@ export const EXAM_25C_SITUATIONS: ExamSituation[] = [
       prompt:
         "You notice mountains ahead and suspect ATC has forgotten about you. Call Rio Approach, explain and ask for new vectors to Galeao.",
       modelReport:
-        "Rio Approach, this is ANAC 123, I see mountains ahead of me. Request vectors to Galeao.",
+        "Rio Approach, ANAC 123, I see mountains ahead of me. Request vectors to Galeao.",
       urgency: "routine",
     },
     atcFollowUp: {
@@ -463,7 +466,7 @@ export const EXAM_25C_SITUATIONS: ExamSituation[] = [
       prompt:
         "You are cleared to land and see a truck on the runway. Call Recife Tower to report and say your intentions.",
       modelReport:
-        "Recife Tower, there is a truck on the runway. Missed approach, ANAC 123.",
+        "Recife Tower, ANAC 123, there is a truck on the runway. Going around, missed approach.",
       urgency: "routine",
     },
     atcFollowUp: {
@@ -534,7 +537,7 @@ export const EXAM_26C_SITUATIONS: ExamSituation[] = [
       prompt:
         "You lost your left hydraulic system and need the emergency hydraulic system to lower the landing gear. Call Dubai Approach to inform and say your intentions.",
       modelReport:
-        "During descent we lost our left hydraulic system. We will need to use the emergency hydraulic system to lower the landing gear, ANAC 123.",
+        "Pan Pan Pan, Dubai Approach, ANAC 123, we have lost our left hydraulic system. We will need to use the emergency hydraulic system to lower the landing gear.",
       urgency: "PAN-PAN",
     },
     atcFollowUp: {
@@ -568,7 +571,7 @@ export const EXAM_26C_SITUATIONS: ExamSituation[] = [
       prompt:
         "A flight attendant tells you an unaccompanied minor has passed out. Call Vitoria Tower to report and request assistance.",
       modelReport:
-        "Tower, ANAC 123, an unaccompanied minor has passed out. Request assistance.",
+        "Vitoria Tower, ANAC 123, an unaccompanied minor has passed out. Request medical assistance.",
       urgency: "routine",
     },
     atcFollowUp: {
@@ -600,7 +603,8 @@ export const EXAM_26C_SITUATIONS: ExamSituation[] = [
     interaction: {
       prompt:
         "ATIS informs work in progress on several taxiways. Call Toronto Arrival to request landing on runway one five left, closest to your company's gates.",
-      modelReport: "Toronto Arrival, request landing on runway one five left, ANAC 123.",
+      modelReport:
+        "Toronto Arrival, ANAC 123, request landing on runway one five left, closest to our company gates.",
       urgency: "routine",
     },
     atcFollowUp: {
@@ -632,7 +636,8 @@ export const EXAM_26C_SITUATIONS: ExamSituation[] = [
     },
     interaction: {
       prompt: "You lost your GPS. Call Miami Tower to inform them about your problem.",
-      modelReport: "Miami Tower, we lost our GPS, ANAC 123.",
+      modelReport:
+        "Miami Tower, ANAC 123, we have lost our GPS. We would like to continue using conventional navigation.",
       urgency: "routine",
     },
     atcFollowUp: {

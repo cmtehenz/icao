@@ -7,7 +7,7 @@ type Props = {
   onNext?: () => void;
   previousLabel?: string;
   nextLabel?: string;
-  children: ReactNode;
+  children?: ReactNode;
 };
 
 /** Uma ação primária + navegação secundária compacta. */
@@ -20,7 +20,9 @@ export default function StudyCardToolbar({
 }: Props) {
   return (
     <div className="study-card-toolbar">
-      <div className="study-card-toolbar-primary">{children}</div>
+      {children != null && children !== false && (
+        <div className="study-card-toolbar-primary">{children}</div>
+      )}
       {(onPrevious || onNext) && (
         <div className="study-card-toolbar-nav">
           {onPrevious && (
