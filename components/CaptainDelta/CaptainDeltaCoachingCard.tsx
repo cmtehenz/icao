@@ -39,9 +39,6 @@ export default function CaptainDeltaCoachingCard({
             {line}
           </p>
         ))}
-        {message.missionExpression && (
-          <p className="cd-coach-mission-expr">{message.missionExpression}</p>
-        )}
       </div>
 
       {recording && pttInterim && (
@@ -79,7 +76,7 @@ export default function CaptainDeltaCoachingCard({
         className={`cd-primary-mic ${recording ? "recording" : ""}`}
         onClick={onPrimaryAction}
       >
-        {recording ? "⏹ Stop and send" : message.primaryAction.label}
+        {recording ? "⏹ Send" : message.primaryAction.label}
       </button>
 
       {message.secondaryActions.length > 0 && (

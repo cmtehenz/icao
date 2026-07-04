@@ -84,7 +84,6 @@ function buildMessage(
   lesson: CaptainDeltaLessonContext,
   options?: {
     speechText?: string;
-    missionExpression?: string;
     primaryAction?: CaptainDeltaAction;
     secondaryActions?: CaptainDeltaAction[];
   },
@@ -98,7 +97,6 @@ function buildMessage(
     primaryAction: options?.primaryAction ?? resolvePrimaryAction(route, lesson, kind),
     secondaryActions:
       options?.secondaryActions ?? resolveSecondaryActions(route, lesson, kind),
-    missionExpression: options?.missionExpression,
   };
 }
 
@@ -164,19 +162,11 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
         if (!res.ok) {
           throw new Error("Captain unavailable");
         }
-        const data = (await res.json()) as { reply: string; followUp?: string | null };
+        const data = (await res.json()) as { reply: string };
         const msg = buildMessage("coaching", data.reply, routeContext, lessonSnapshot, {
           speechText: toSpeechText(data.reply),
         });
         deliverMessage(msg, { avatar: "correcting" });
-        if (data.followUp) {
-          window.setTimeout(() => {
-            const follow = buildMessage("followup", data.followUp!, routeContext, lessonSnapshot, {
-              speechText: toSpeechText(data.followUp!),
-            });
-            deliverMessage(follow);
-          }, 1400);
-        }
       } catch {
         deliverMessage(
           buildMessage(
@@ -240,9 +230,8 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
     }
 
     if (
-      action === "ask_captain" ||
-      action === "answer_followup" ||
-      action === "answer_question"
+      action === "explain_it" ||
+      action === "explain_your_way"
     ) {
       void startPtt();
       return;
@@ -258,13 +247,21 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
 
   const triggerSecondaryAction = useCallback(
     (actionId: string) => {
-      if (actionId === "ask_captain") {
-        void startPtt();
+      if (actionId === "show_hint") {
+        void replyFromCaptain("I'm stuck. Give me one hint for this screen.", lesson);
+        return;
+      }
+      if (actionId === "give_example") {
+        void replyFromCaptain("Give me a short ICAO example for this.", lesson);
+        return;
+      }
+      if (actionId === "slow_audio") {
+        void voice.replay();
         return;
       }
       emitSecondaryAction(actionId);
     },
-    [startPtt],
+    [lesson, replyFromCaptain, voice],
   );
 
   const quickQuestion = useCallback(() => {
@@ -292,7 +289,7 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
       const msg = buildMessage("context", tip.text, routeContext, lesson, {
         speechText: tip.speechText,
       });
-      deliverMessage(msg, { autoSpeak: false });
+      deliverMessage(msg, { autoSpeak: true });
     }
 
     const memoryLine = buildMemoryLine();
@@ -344,7 +341,6 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
         mode: "debrief",
       }, {
         speechText: coaching.speechText,
-        missionExpression: coaching.missionExpression,
       });
       deliverMessage(msg, { avatar: "celebrating" });
     };

@@ -53,8 +53,9 @@ export type CaptainDeltaActionId =
   | "read_back"
   | "report_atc"
   | "start_exam"
-  | "ask_captain"
-  | "answer_followup"
+  | "explain_it"
+  | "give_example"
+  | "slow_audio"
   | "show_keywords"
   | "show_hint"
   | "listen_again"
@@ -93,7 +94,6 @@ export type CaptainDeltaMessage = {
   at: string;
   primaryAction: CaptainDeltaAction;
   secondaryActions: CaptainDeltaAction[];
-  missionExpression?: string;
 };
 
 export type CaptainDeltaSuggestionPayload = {

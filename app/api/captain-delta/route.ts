@@ -1,20 +1,20 @@
-import { FLIGHT_INSTRUCTOR_SYSTEM_PROMPT } from "@/lib/flightInstructor/prompt";
 import { requireUser } from "@/lib/auth/requireUser";
 
-const CAPTAIN_DELTA_QA_PROMPT = `${FLIGHT_INSTRUCTOR_SYSTEM_PROMPT}
+const CAPTAIN_DELTA_PHASE1_PROMPT = `You are Captain Delta — a senior helicopter captain and ICAO flight instructor.
 
-You are now in LIVE VOICE mode as Captain Delta floating assistant.
-
-RULES:
-- Answer in 2-4 short sentences maximum — this will be spoken aloud.
-- No emojis. No bullet lists. No markdown.
-- Only aviation English, ICAO exam prep, pilot communication, helicopter operations.
-- If asked something unrelated to aviation English training, redirect gently to exam preparation.
-- Sound like a calm senior captain beside the student in the cockpit.
-- Use the pageContext and memoryContext when provided.
+PHASE 1 RULES:
+- You are NOT ChatGPT. NOT a generic AI assistant. You are the student's personal instructor.
+- Speak about the CURRENT SCREEN only (pageContext + lessonContext). Never generic English advice.
+- ALWAYS start with something positive (one short line).
+- Then give ONLY ONE suggestion or answer — never a list, never a report.
+- Maximum 3 short sentences total. This will be spoken aloud.
+- No emojis. No markdown. No bullet lists.
+- Professional, calm, warm, experienced — like a chief flight instructor beside the student.
+- Only aviation English, ICAO exam prep, and pilot communication.
+- End by implying the next step (the student will use a microphone button — do not say "click" or "type").
 
 Return ONLY valid JSON:
-{ "reply": "spoken answer in English", "followUp": "optional one short examiner question or null" }`;
+{ "reply": "short spoken coaching in English" }`;
 
 export async function POST(request: Request) {
   const auth = await requireUser();
@@ -38,12 +38,12 @@ export async function POST(request: Request) {
   const question = body.question?.trim();
   if (!question) return Response.json({ error: "question required" }, { status: 400 });
 
+  const pageContext = body.pageContext ?? "Training";
+
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
     return Response.json({
-      reply:
-        "I heard you. Focus on operational phrasing and keep your answer structured. Record again when ready.",
-      followUp: null,
+      reply: `Good question. On ${pageContext}, keep it operational — one idea, then speak again.`,
       source: "local",
     });
   }
@@ -60,14 +60,14 @@ export async function POST(request: Request) {
         temperature: 0.4,
         response_format: { type: "json_object" },
         messages: [
-          { role: "system", content: CAPTAIN_DELTA_QA_PROMPT },
+          { role: "system", content: CAPTAIN_DELTA_PHASE1_PROMPT },
           {
             role: "user",
             content: JSON.stringify({
-              studentQuestion: question,
-              pageContext: body.pageContext ?? "training",
+              studentSaid: question,
+              pageContext,
               memoryContext: body.memoryContext ?? {},
-              currentTranscript: body.transcript ?? null,
+              currentQuestion: body.transcript ?? null,
               modelAnswer: body.modelAnswer ?? null,
               lessonContext: body.lessonContext ?? {},
             }),
@@ -78,8 +78,7 @@ export async function POST(request: Request) {
 
     if (!res.ok) {
       return Response.json({
-        reply: "Stay with operational language. One idea at a time.",
-        followUp: null,
+        reply: "I liked your effort. Keep the answer structured — situation, action, outcome.",
         source: "local",
       });
     }
@@ -87,18 +86,15 @@ export async function POST(request: Request) {
     const data = await res.json();
     const parsed = JSON.parse(data.choices?.[0]?.message?.content ?? "{}") as {
       reply?: string;
-      followUp?: string | null;
     };
 
     return Response.json({
-      reply: parsed.reply ?? "Keep it simple and pilot-like.",
-      followUp: parsed.followUp ?? null,
+      reply: parsed.reply ?? "Good. Stay with pilot language — short and operational.",
       source: "openai",
     });
   } catch {
     return Response.json({
-      reply: "Good question. Speak from your own experience and use aviation terms.",
-      followUp: null,
+      reply: "You are on the right track. Use one operational phrase at a time.",
       source: "local",
     });
   }

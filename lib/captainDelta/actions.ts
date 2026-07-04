@@ -14,53 +14,64 @@ function secondary(id: CaptainDeltaActionId, label: string): CaptainDeltaAction 
   return { id, label, primary: false };
 }
 
+/** Phase 1 — one contextual primary action per screen. Never generic Answer / Reply / Continue. */
 export function resolvePrimaryAction(
   route: CaptainDeltaContext,
   lesson: CaptainDeltaLessonContext,
   kind: CaptainDeltaMessageKind,
 ): CaptainDeltaAction {
-  if (kind === "followup") return mic("Answer", "answer_followup");
-  if (kind === "debrief") return mic("Ask Captain Delta", "ask_captain");
-  if (kind === "briefing") return mic("I'm Ready", "ready");
-  if (kind === "context") return mic("Talk to Captain", "ask_captain");
+  if (kind === "followup") return mic("Explain It", "explain_it");
+  if (kind === "debrief") return mic("Explain It", "explain_it");
+  if (kind === "briefing") return mic("Start Training", "ready");
+  if (kind === "context") return primaryForRoute(route, lesson);
 
   if (kind === "coaching" || lesson.hasFeedback) {
     if (lesson.mode === "pronunciation" || route === "pronunciation") {
       return mic("Repeat", "repeat_after_me");
     }
-    if (lesson.part2Kind === "readback") return mic("Read Back Again", "read_back");
-    if (lesson.part2Kind === "reported") return mic("Report to ATC", "report_atc");
+    if (lesson.part2Kind === "readback") return mic("Read Back", "read_back");
+    if (lesson.part2Kind === "reported") return mic("Read Back", "read_back");
+    if (lesson.part2Kind === "picture") return mic("Describe", "describe_picture");
     if (lesson.mode === "memory" || route === "memory") {
-      return mic("Explain It Again", "explain_your_way");
+      return mic("Explain It", "explain_your_way");
     }
     return mic("Try Again", "try_again");
   }
 
-  if (lesson.recording) return mic("Stop", "try_again");
+  if (lesson.recording) return mic("Try Again", "try_again");
 
+  return primaryForRoute(route, lesson);
+}
+
+function primaryForRoute(
+  route: CaptainDeltaContext,
+  lesson: CaptainDeltaLessonContext,
+): CaptainDeltaAction {
   switch (route) {
     case "dashboard":
-      return mic("I'm Ready", "ready");
+      return mic("Start Training", "ready");
     case "part1":
-      return mic("Answer Question", "answer_question");
+      return mic("Explain It", "explain_your_way");
     case "part2":
-      if (lesson.part2Kind === "readback") return mic("Read Back", "read_back");
-      if (lesson.part2Kind === "reported") return mic("Report to ATC", "report_atc");
-      if (lesson.part2Kind === "picture") return mic("Describe the Picture", "describe_picture");
+      if (lesson.part2Kind === "picture") return mic("Describe", "describe_picture");
+      if (lesson.part2Kind === "reported") return mic("Read Back", "read_back");
       return mic("Read Back", "read_back");
     case "pronunciation":
-      return mic("Repeat After Me", "repeat_after_me");
+      return mic("Repeat", "repeat_after_me");
+    case "vocabulary":
+      return mic("Repeat", "repeat_after_me");
     case "memory":
-      return mic("Explain It Your Way", "explain_your_way");
+      return mic("Explain It", "explain_your_way");
     case "simulation":
-      return mic("Start Exam", "start_exam");
+      return mic("Start Training", "start_exam");
     case "listen":
-      return mic("Listen Again", "listen_again");
+      return mic("Start Training", "ready");
     default:
-      return mic("Answer", "answer_question");
+      return mic("Explain It", "explain_it");
   }
 }
 
+/** Phase 1 — maximum two secondary actions. */
 export function resolveSecondaryActions(
   route: CaptainDeltaContext,
   lesson: CaptainDeltaLessonContext,
@@ -68,31 +79,32 @@ export function resolveSecondaryActions(
 ): CaptainDeltaAction[] {
   const actions: CaptainDeltaAction[] = [];
 
-  if (kind === "coaching" || kind === "followup") {
-    actions.push(secondary("explain_why", "🎯 Explain Why"));
-    if (lesson.canCompareAttempts) {
-      actions.push(secondary("compare_attempts", "📈 Compare Attempts"));
-    }
-  }
-
   if (route === "part1" || lesson.mode === "coach") {
     if (lesson.keywords?.length) {
       actions.push(secondary("show_keywords", "📖 Show Keywords"));
     }
-    actions.push(secondary("show_hint", "💡 Give Me a Hint"));
     if (lesson.hasModelAnswer) {
       actions.push(secondary("show_model", "📝 Show Model Answer"));
     }
   }
 
-  if (route === "part2" || lesson.mode === "simulation") {
-    if (lesson.hasNotes) actions.push(secondary("open_notes", "📋 Open Quick Notes"));
-    actions.push(secondary("listen_again", "🎧 Listen Again"));
+  if (route === "part2" || route === "listen" || lesson.mode === "simulation") {
+    actions.push(secondary("listen_again", "▶ Listen Again"));
   }
 
-  if (route === "listen") {
-    actions.push(secondary("listen_again", "🎧 Listen Again"));
+  if (route === "pronunciation") {
+    actions.push(secondary("slow_audio", "🎧 Slow Audio"));
   }
 
-  return actions.filter((a, i, arr) => arr.findIndex((x) => x.id === a.id) === i).slice(0, 3);
+  if (kind === "coaching" && actions.length < 2) {
+    actions.push(secondary("give_example", "🎤 Give Me an Example"));
+  }
+
+  if (actions.length < 2) {
+    actions.push(secondary("show_hint", "💡 I'm Stuck"));
+  }
+
+  return actions
+    .filter((a, i, arr) => arr.findIndex((x) => x.id === a.id) === i)
+    .slice(0, 2);
 }
