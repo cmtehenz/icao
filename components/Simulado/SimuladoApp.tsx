@@ -6,10 +6,11 @@ import { useTheme } from "@/hooks/useTheme";
 import SimuladoExamSelect from "@/components/Simulado/SimuladoExamSelect";
 import SimuladoModeSelect from "@/components/Simulado/SimuladoModeSelect";
 import SimuladoReport from "@/components/Simulado/SimuladoReport";
+import SimuladoHistoryList from "@/components/Simulado/SimuladoHistoryList";
 import SimuladoRunner from "@/components/Simulado/SimuladoRunner";
 import { syncDailyMissionLog } from "@/lib/dailyMissionLog";
 import { examVersionFromMeta } from "@/lib/simulado/buildSteps";
-import { loadDashboardStats, saveSimuladoReport } from "@/lib/simulado/progress";
+import { loadDashboardStats, getSimuladoReportById, saveSimuladoReport } from "@/lib/simulado/progress";
 import {
   clearSimuladoDraft,
   formatDraftSummary,
@@ -36,9 +37,11 @@ export default function SimuladoApp() {
   const [customParts, setCustomParts] = useState<SimuladoPart[] | undefined>();
   const [examId, setExamId] = useState<SimuladoExamId>("exam1");
   const [report, setReport] = useState<SimulationReport | null>(null);
+  const [reportFromHistory, setReportFromHistory] = useState(false);
   const [stats, setStats] = useState(() => loadDashboardStats());
   const [draft, setDraft] = useState<SimuladoSessionSnapshot | null>(null);
   const [resumeSnapshot, setResumeSnapshot] = useState<SimuladoSessionSnapshot | null>(null);
+  const [historyPage, setHistoryPage] = useState(1);
 
   const refreshStats = useCallback(() => setStats(loadDashboardStats()), []);
   const refreshDraft = useCallback(() => setDraft(loadSimuladoDraft()), []);
@@ -81,11 +84,21 @@ export default function SimuladoApp() {
       recordStudyActivity("simulate", 1);
       syncDailyMissionLog();
       setReport(r);
+      setReportFromHistory(false);
+      setHistoryPage(1);
       setView("report");
       refreshStats();
     },
     [refreshStats],
   );
+
+  const openHistoryReport = useCallback((id: string) => {
+    const r = getSimuladoReportById(id);
+    if (!r) return;
+    setReport(r);
+    setReportFromHistory(true);
+    setView("report");
+  }, []);
 
   const startSession = () => {
     setResumeSnapshot(null);
@@ -182,20 +195,12 @@ export default function SimuladoApp() {
               {draft ? "Novo simulado" : "Iniciar simulado"}
             </button>
 
-            {stats.history.length > 0 && (
-              <section className="sim-history">
-                <h2>Histórico</h2>
-                <ul>
-                  {stats.history.map((h) => (
-                    <li key={h.id}>
-                      <span>{new Date(h.date).toLocaleDateString("pt-BR")}</span>
-                      <span>{h.examVersion} · Nível {h.estimatedLevel}</span>
-                      <strong>{h.overallScore}/100</strong>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            )}
+            <SimuladoHistoryList
+              page={historyPage}
+              totalSimulations={stats.totalSimulations}
+              onPageChange={setHistoryPage}
+              onOpenReport={openHistoryReport}
+            />
           </div>
         )}
 
@@ -243,19 +248,41 @@ export default function SimuladoApp() {
         )}
 
         {view === "report" && report && (
-          <SimuladoReport
-            report={report}
-            onPracticeWeak={() => router.push("/part2")}
-            onRepeat={() => {
-              setReport(null);
-              setView("session");
-            }}
-            onReviewVocab={() => router.push("/vocabulario")}
-            onHome={() => {
-              setReport(null);
-              setView("home");
-            }}
-          />
+          <>
+            {reportFromHistory && (
+              <button
+                type="button"
+                className="btn secondary btn-sm"
+                onClick={() => {
+                  setReport(null);
+                  setReportFromHistory(false);
+                  setView("home");
+                }}
+              >
+                ← Voltar ao histórico
+              </button>
+            )}
+            <SimuladoReport
+              report={report}
+              fromHistory={reportFromHistory}
+              onPracticeWeak={() => router.push("/part2")}
+              onRepeat={() => {
+                setReport(null);
+                setReportFromHistory(false);
+                if (reportFromHistory) {
+                  setView("mode");
+                } else {
+                  setView("session");
+                }
+              }}
+              onReviewVocab={() => router.push("/vocabulario")}
+              onHome={() => {
+                setReport(null);
+                setReportFromHistory(false);
+                setView("home");
+              }}
+            />
+          </>
         )}
       </div>
     </>

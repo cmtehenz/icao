@@ -1,8 +1,39 @@
-import type { SimulationReport, SimuladoDashboardStats } from "@/lib/simulado/types";
+import type {
+  SimuladoDashboardStats,
+  SimuladoHistoryPage,
+  SimuladoHistorySummary,
+  SimulationReport,
+} from "@/lib/simulado/types";
 import { suggestedNextPractice } from "@/lib/simulado/aggregateReport";
 
 const STORAGE_KEY = "icao-simulado-history";
 const DIFFICULT_KEY = "icao-simulado-difficult";
+
+export const SIMULADO_HISTORY_PAGE_SIZE = 10;
+export const SIMULADO_STORAGE_WARNING_EVENT = "icao-simulado-storage-warning";
+
+function overallScore(report: SimulationReport): number {
+  return Math.round(
+    (report.scores.pronunciation +
+      report.scores.structure +
+      report.scores.vocabulary +
+      report.scores.fluency +
+      report.scores.comprehension +
+      report.scores.interactions) /
+      6,
+  );
+}
+
+function toHistorySummary(report: SimulationReport): SimuladoHistorySummary {
+  return {
+    id: report.id,
+    date: report.date,
+    mode: report.mode,
+    examVersion: report.examVersion,
+    estimatedLevel: report.estimatedLevel,
+    overallScore: overallScore(report),
+  };
+}
 
 export function loadSimuladoHistory(): SimulationReport[] {
   if (typeof window === "undefined") return [];
@@ -15,16 +46,59 @@ export function loadSimuladoHistory(): SimulationReport[] {
   }
 }
 
+export function getSimuladoReportById(id: string): SimulationReport | null {
+  return loadSimuladoHistory().find((r) => r.id === id) ?? null;
+}
+
+function persistHistory(history: SimulationReport[]): boolean {
+  if (typeof window === "undefined") return false;
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
+    return true;
+  } catch {
+    let trimmed = [...history];
+    while (trimmed.length > 1) {
+      trimmed.pop();
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(trimmed));
+        window.dispatchEvent(
+          new CustomEvent(SIMULADO_STORAGE_WARNING_EVENT, {
+            detail: { kept: trimmed.length, dropped: history.length - trimmed.length },
+          }),
+        );
+        return true;
+      } catch {
+        /* keep trimming */
+      }
+    }
+    return false;
+  }
+}
+
 export function saveSimuladoReport(report: SimulationReport): void {
   const history = loadSimuladoHistory();
   history.unshift(report);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(history.slice(0, 30)));
+  persistHistory(history);
   if (report.difficultItems.length) {
     const existing = loadDifficultItems();
     const merged = [...new Set([...existing, ...report.difficultItems])];
     localStorage.setItem(DIFFICULT_KEY, JSON.stringify(merged.slice(0, 50)));
   }
   window.dispatchEvent(new Event("icao-simulado-change"));
+}
+
+export function loadSimuladoHistoryPage(
+  page = 1,
+  pageSize = SIMULADO_HISTORY_PAGE_SIZE,
+): SimuladoHistoryPage {
+  const history = loadSimuladoHistory();
+  const total = history.length;
+  const totalPages = Math.max(1, Math.ceil(total / pageSize));
+  const safePage = Math.min(Math.max(1, page), totalPages);
+  const start = (safePage - 1) * pageSize;
+  const items = history.slice(start, start + pageSize).map(toHistorySummary);
+
+  return { items, page: safePage, pageSize, total, totalPages };
 }
 
 export function loadDifficultItems(): string[] {
@@ -39,17 +113,7 @@ export function loadDifficultItems(): string[] {
 
 export function loadDashboardStats(): SimuladoDashboardStats {
   const history = loadSimuladoHistory();
-  const scores = history.map((h) =>
-    Math.round(
-      (h.scores.pronunciation +
-        h.scores.structure +
-        h.scores.vocabulary +
-        h.scores.fluency +
-        h.scores.comprehension +
-        h.scores.interactions) /
-        6,
-    ),
-  );
+  const scores = history.map(overallScore);
 
   const partAvgs = (part: 1 | 2 | 3 | 4) => {
     const vals = history
@@ -74,21 +138,5 @@ export function loadDashboardStats(): SimuladoDashboardStats {
     weakestPart,
     strongestPart,
     suggestedNext: latest ? suggestedNextPractice(latest) : "Start your first ICAO simulation",
-    history: history.map((h) => ({
-      id: h.id,
-      date: h.date,
-      mode: h.mode,
-      examVersion: h.examVersion,
-      estimatedLevel: h.estimatedLevel,
-      overallScore: Math.round(
-        (h.scores.pronunciation +
-          h.scores.structure +
-          h.scores.vocabulary +
-          h.scores.fluency +
-          h.scores.comprehension +
-          h.scores.interactions) /
-          6,
-      ),
-    })),
   };
 }

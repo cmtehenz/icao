@@ -25,13 +25,51 @@
 .sim-draft-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 
 .sim-history ul { list-style: none; padding: 0; margin: 0; }
-.sim-history li {
+.sim-history-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.25rem;
+}
+.sim-history-head h2 { margin: 0; }
+.sim-history-count { font-size: 0.82rem; opacity: 0.7; }
+.sim-history-hint { margin: 0 0 0.5rem; font-size: 0.85rem; opacity: 0.75; }
+.sim-history li { border-bottom: 1px solid var(--border, rgba(255,255,255,0.1)); }
+.sim-history-row {
   display: grid;
   grid-template-columns: 1fr 1fr auto;
   gap: 0.5rem;
+  width: 100%;
   padding: 0.75rem 0;
-  border-bottom: 1px solid var(--border, rgba(255,255,255,0.1));
+  border: none;
+  background: transparent;
+  color: inherit;
   font-size: 0.9rem;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+.sim-history-row:hover { background: var(--surface-2, rgba(255,255,255,0.06)); }
+.sim-history-row strong { justify-self: end; }
+.sim-history-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border, rgba(255,255,255,0.1));
+}
+.sim-history-page-info {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  text-align: center;
+  flex: 1;
+  min-width: 10rem;
 }
 
 .sim-mode-grid, .sim-exam-grid {

@@ -139,6 +139,23 @@ export type SimuladoSessionSnapshot = {
   elapsedSec: number;
 };
 
+export type SimuladoHistorySummary = {
+  id: string;
+  date: string;
+  mode: SimulationMode;
+  examVersion: ExamVersion;
+  estimatedLevel: number;
+  overallScore: number;
+};
+
+export type SimuladoHistoryPage = {
+  items: SimuladoHistorySummary[];
+  page: number;
+  pageSize: number;
+  total: number;
+  totalPages: number;
+};
+
 export type SimuladoDashboardStats = {
   totalSimulations: number;
   averageScore: number;
@@ -146,12 +163,4 @@ export type SimuladoDashboardStats = {
   weakestPart: SimuladoPart | null;
   strongestPart: SimuladoPart | null;
   suggestedNext: string;
-  history: Array<{
-    id: string;
-    date: string;
-    mode: SimulationMode;
-    examVersion: ExamVersion;
-    estimatedLevel: number;
-    overallScore: number;
-  }>;
 };

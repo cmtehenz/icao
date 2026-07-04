@@ -7,6 +7,7 @@ import type { SimulationReport } from "@/lib/simulado/types";
 
 type Props = {
   report: SimulationReport;
+  fromHistory?: boolean;
   onPracticeWeak: () => void;
   onRepeat: () => void;
   onReviewVocab: () => void;
@@ -22,6 +23,7 @@ function overallScore(report: SimulationReport): number {
 
 export default function SimuladoReport({
   report,
+  fromHistory = false,
   onPracticeWeak,
   onRepeat,
   onReviewVocab,
@@ -145,7 +147,7 @@ export default function SimuladoReport({
           Praticar áreas fracas
         </button>
         <button type="button" className="btn secondary" onClick={onRepeat}>
-          Repetir simulado
+          {fromHistory ? "Novo simulado" : "Repetir simulado"}
         </button>
         <button type="button" className="btn secondary" onClick={onReviewVocab}>
           Revisar vocabulário Part 2
