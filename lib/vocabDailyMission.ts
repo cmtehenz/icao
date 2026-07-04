@@ -1,21 +1,18 @@
-import { ICAO_VOCABULARY } from "@/data/icaoVocabulary";
-import { pickDailySlice } from "@/lib/dailyRotation";
+import { pickExamVocabTermIds } from "@/lib/examVocabPool";
+import { getTodayExamVersion } from "@/lib/dailyExamRotation";
 import { syncDailyMissionLog } from "@/lib/dailyMissionLog";
+import type { ExamVersion } from "@/lib/exams/types";
 import { todayKey } from "@/lib/studyTime";
-import {
-  getItemProgress,
-  isDueForReview,
-  loadVocabProgressStore,
-  type VocabProgressStore,
-} from "@/utils/spacedRepetition";
+import { loadVocabProgressStore, type VocabProgressStore } from "@/utils/spacedRepetition";
 
 export const VOCAB_DAILY_WORD_COUNT = 20;
 
-const STORAGE_KEY = "icao_vocab_daily_mission_v1";
+const STORAGE_KEY = "icao_vocab_daily_mission_v2";
 export const VOCAB_DAILY_MISSION_EVENT = "icao-vocab-daily-mission-change";
 
 export type VocabDailyMissionState = {
   date: string;
+  examVersion: ExamVersion;
   termIds: string[];
   completedIds: string[];
 };
@@ -25,59 +22,24 @@ function notify(): void {
   window.dispatchEvent(new Event(VOCAB_DAILY_MISSION_EVENT));
 }
 
-function vocabPriority(store: VocabProgressStore, id: string): number {
-  const p = getItemProgress(store, id);
-  if (p.markedDifficult || p.status === "review") return 0;
-  if (isDueForReview(p)) return 1;
-  if (p.status === "learning") return 2;
-  if (p.status === "new") return 3;
-  return 4;
+function isValidMission(parsed: unknown, date: string): parsed is VocabDailyMissionState {
+  if (!parsed || typeof parsed !== "object") return false;
+  const m = parsed as VocabDailyMissionState;
+  return (
+    m.date === date &&
+    typeof m.examVersion === "string" &&
+    m.examVersion === getTodayExamVersion(date) &&
+    Array.isArray(m.termIds) &&
+    Array.isArray(m.completedIds)
+  );
 }
 
 export function pickVocabDailyIds(
   date = todayKey(),
   store: VocabProgressStore = loadVocabProgressStore(),
+  examVersion: ExamVersion = getTodayExamVersion(date),
 ): string[] {
-  const rotated = pickDailySlice(
-    ICAO_VOCABULARY.map((t) => t.id),
-    VOCAB_DAILY_WORD_COUNT,
-    date,
-    7,
-  );
-
-  const dueFirst = [...ICAO_VOCABULARY]
-    .sort((a, b) => vocabPriority(store, a.id) - vocabPriority(store, b.id))
-    .filter((t) => vocabPriority(store, t.id) <= 2)
-    .map((t) => t.id);
-
-  const picked = new Set<string>();
-  const result: string[] = [];
-
-  for (const id of dueFirst) {
-    if (result.length >= VOCAB_DAILY_WORD_COUNT) break;
-    if (!picked.has(id)) {
-      picked.add(id);
-      result.push(id);
-    }
-  }
-
-  for (const id of rotated) {
-    if (result.length >= VOCAB_DAILY_WORD_COUNT) break;
-    if (!picked.has(id)) {
-      picked.add(id);
-      result.push(id);
-    }
-  }
-
-  for (const item of ICAO_VOCABULARY) {
-    if (result.length >= VOCAB_DAILY_WORD_COUNT) break;
-    if (!picked.has(item.id)) {
-      picked.add(item.id);
-      result.push(item.id);
-    }
-  }
-
-  return result.slice(0, VOCAB_DAILY_WORD_COUNT);
+  return pickExamVocabTermIds(examVersion, VOCAB_DAILY_WORD_COUNT, date, store);
 }
 
 export function loadVocabDailyMission(): VocabDailyMissionState | null {
@@ -85,8 +47,8 @@ export function loadVocabDailyMission(): VocabDailyMissionState | null {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return null;
-    const parsed = JSON.parse(raw) as VocabDailyMissionState;
-    if (parsed.date !== todayKey()) return null;
+    const parsed = JSON.parse(raw) as unknown;
+    if (!isValidMission(parsed, todayKey())) return null;
     return parsed;
   } catch {
     return null;
@@ -106,9 +68,12 @@ export function getOrCreateVocabDailyMission(
   const existing = loadVocabDailyMission();
   if (existing) return existing;
 
+  const date = todayKey();
+  const examVersion = getTodayExamVersion(date);
   const state: VocabDailyMissionState = {
-    date: todayKey(),
-    termIds: pickVocabDailyIds(todayKey(), store),
+    date,
+    examVersion,
+    termIds: pickVocabDailyIds(date, store, examVersion),
     completedIds: [],
   };
   saveVocabDailyMission(state);
@@ -137,6 +102,7 @@ export function vocabDailyMissionProgress(mission = getOrCreateVocabDailyMission
   total: number;
   complete: boolean;
   currentId: string | null;
+  examVersion: ExamVersion;
 } {
   const total = mission.termIds.length;
   const done = mission.completedIds.length;
@@ -147,6 +113,7 @@ export function vocabDailyMissionProgress(mission = getOrCreateVocabDailyMission
     total,
     complete: done >= total && total > 0,
     currentId,
+    examVersion: mission.examVersion,
   };
 }
 

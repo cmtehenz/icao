@@ -6,7 +6,7 @@ import { CARDS } from "@/lib/cards";
 import { ICAO_VOCABULARY } from "@/data/icaoVocabulary";
 import { STUDY_ACTIVITY_RECORDED_EVENT } from "@/lib/studyActivityRecord";
 import { DAILY_MISSION_LOG_EVENT } from "@/lib/dailyMissionLog";
-import { getDailyMissionSummary, SIMULATE_ICAO_HREF, SIMULATE_MISSION_HREF } from "@/lib/dailyMission";
+import { getDailyMissionSummary, getSimuladoIcaoHref } from "@/lib/dailyMission";
 import { buildDifficultyInsights } from "@/lib/difficultyInsights";
 import {
   getOrCreatePart1DailyMission,
@@ -81,9 +81,10 @@ export default function DailyMissionPanel() {
         <div>
           <h2>Plano de hoje</h2>
           <p className="sub">
+            <strong>{summary.examLabel}</strong>
             {mode === "intense"
-              ? "Part 1 · Part 2 · 20 palavras · 1 simulado — dia bom"
-              : "Part 1 (4 perguntas) · Part 2 (mix) · 20 palavras — rotação diária"}
+              ? " — vocabulário · Part 1 (3) · Part 2 sim · Simulado ICAO"
+              : " — vocabulário · Part 1 (3 perguntas) · Part 2 simulação completa"}
           </p>
         </div>
         <div className="daily-mission-head-side">
@@ -119,11 +120,29 @@ export default function DailyMissionPanel() {
       </div>
       <p className="daily-mission-mode-hint">
         {mode === "intense"
-          ? "Dia bom: missão do dia + pelo menos 1 simulado (Part 2 ou Simulado ICAO). Pontos extras se treinar além disso."
-          : "Missão = rotação fixa do dia. Pontos extras se quiser treinar além disso."}
+          ? "Dia bom: missão da prova do dia + Simulado ICAO completo (Part 1 + Part 2)."
+          : "Um dia = uma prova (23C → 24C → 25C → 26C). Vocabulário primeiro, depois Part 1 e Part 2 inteiros."}
       </p>
 
       <div className="daily-mission-grid">
+        <article className={`daily-mission-card ${summary.vocabulary.complete ? "done" : ""}`}>
+          <h3>
+            Vocabulário — {summary.vocabulary.done}/{summary.vocabulary.total}
+          </h3>
+          <p className="daily-mission-meta">
+            20 palavras da {summary.examLabel} — as que você mais precisa revisar
+          </p>
+          <p className="daily-mission-vocab-progress">
+            {summary.vocabulary.done}/{summary.vocabulary.total} concluídas
+            {!summary.vocabulary.complete && vocabProgress.currentId
+              ? ` · falta: ${ICAO_VOCABULARY.find((t) => t.id === vocabProgress.currentId)?.term ?? "1"}`
+              : ""}
+          </p>
+          <Link href={vocabNextLink} className="btn secondary btn-sm">
+            {summary.vocabulary.complete ? "Abrir vocabulário →" : "Treinar palavra que falta →"}
+          </Link>
+        </article>
+
         <article className={`daily-mission-card ${summary.part1.complete ? "done" : ""}`}>
           <h3>Part 1 — {summary.part1.bothDone}/{summary.part1.total} completas</h3>
           <p className="daily-mission-meta">
@@ -168,62 +187,31 @@ export default function DailyMissionPanel() {
             Part 2 — {summary.part2.done}/{summary.part2.total}
           </h3>
           <p className="daily-mission-meta">
-            Readback {summary.part2.byKind.readback.done}/{summary.part2.byKind.readback.total} ·
-            Interaction {summary.part2.byKind.interaction.done}/{summary.part2.byKind.interaction.total} ·
-            Reported {summary.part2.byKind.reported.done}/{summary.part2.byKind.reported.total}
+            Simulação completa · {part2.examVersion} · 5 situações com coach Azure
           </p>
-          <ul className="daily-mission-list">
-            {part2.items.map((item) => {
-              const done = part2.completedIds.includes(item.id);
-              return (
-                <li key={item.id} className={done ? "done" : ""}>
-                  <span className="daily-mission-item-label">{item.label}</span>
-                  {!done && (
-                    <Link href={part2MissionLink(item)} className="btn secondary btn-sm">
-                      Treinar
-                    </Link>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
-        </article>
-
-        <article className={`daily-mission-card ${summary.vocabulary.complete ? "done" : ""}`}>
-          <h3>
-            Vocabulário — {summary.vocabulary.done}/{summary.vocabulary.total}
-          </h3>
-          <p className="daily-mission-meta">20 palavras — checklist completo no Vocabulário</p>
-          <p className="daily-mission-vocab-progress">
-            {summary.vocabulary.done}/{summary.vocabulary.total} concluídas
-            {!summary.vocabulary.complete && vocabProgress.currentId
-              ? ` · falta: ${ICAO_VOCABULARY.find((t) => t.id === vocabProgress.currentId)?.term ?? "1"}`
-              : ""}
-          </p>
-          <Link href={vocabNextLink} className="btn secondary btn-sm">
-            {summary.vocabulary.complete ? "Abrir vocabulário →" : "Treinar palavra que falta →"}
-          </Link>
+          {!summary.part2.complete ? (
+            <Link href={part2MissionLink(part2)} className="btn secondary btn-sm">
+              Iniciar simulação →
+            </Link>
+          ) : (
+            <p className="daily-mission-vocab-progress">✓ Simulação concluída hoje</p>
+          )}
         </article>
 
         {summary.simulateRequired && (
           <article className={`daily-mission-card ${summary.simulate.complete ? "done" : ""}`}>
             <h3>
-              Simulado — {summary.simulate.done}/{summary.simulate.total}
+              Simulado ICAO — {summary.simulate.done}/{summary.simulate.total}
             </h3>
             <p className="daily-mission-meta">
-              Dia bom: complete pelo menos 1 simulado (Part 2 full sim ou Simulado ICAO)
+              Dia bom: Simulado completo da {summary.examLabel} (Part 1 + Part 2)
             </p>
             {summary.simulate.complete ? (
-              <p className="daily-mission-vocab-progress">✓ Simulado concluído hoje</p>
+              <p className="daily-mission-vocab-progress">✓ Simulado ICAO concluído hoje</p>
             ) : (
-              <div className="daily-mission-links">
-                <Link href={SIMULATE_MISSION_HREF} className="btn secondary btn-sm">
-                  Part 2 simulado →
-                </Link>
-                <Link href={SIMULATE_ICAO_HREF} className="btn secondary btn-sm">
-                  Simulado ICAO →
-                </Link>
-              </div>
+              <Link href={getSimuladoIcaoHref()} className="btn secondary btn-sm">
+                Simulado ICAO →
+              </Link>
             )}
           </article>
         )}

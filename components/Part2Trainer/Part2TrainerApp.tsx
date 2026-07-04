@@ -11,6 +11,7 @@ import { ICAO_VOCABULARY, ICAO_CORE_VOCABULARY } from "@/data/icaoVocabulary";
 import { useTheme } from "@/hooks/useTheme";
 import { useSimulationUnlock } from "@/hooks/useSimulationUnlock";
 import { ALL_EXAM_SITUATIONS } from "@/data/exams/part2Data";
+import { EXAM_VERSIONS, type ExamVersion } from "@/lib/exams/types";
 import { loadPart2Progress, part2Stats, type Part2ProgressStore } from "@/lib/part2/progress";
 import type { Part2Mode } from "@/lib/part2/types";
 
@@ -26,6 +27,10 @@ export default function Part2TrainerApp() {
   const scenarioId = searchParams.get("scenario");
   const openShadow = searchParams.get("shadow") === "1";
   const openPractice = searchParams.get("practice") === "1";
+  const examParam = searchParams.get("exam");
+  const forcedExamVersion = EXAM_VERSIONS.includes(examParam as ExamVersion)
+    ? (examParam as ExamVersion)
+    : undefined;
   const { theme, toggle: toggleTheme, hydrated } = useTheme();
   const { unlocked: simUnlocked, hint: simHint } = useSimulationUnlock();
   const [mode, setMode] = useState<Part2Mode>("readback");
@@ -153,7 +158,11 @@ export default function Part2TrainerApp() {
             />
           )}
           {mode === "simulation" && simUnlocked && (
-            <FullSimulationMode progress={progress} onProgressChange={setProgress} />
+            <FullSimulationMode
+              progress={progress}
+              onProgressChange={setProgress}
+              forcedExamVersion={forcedExamVersion}
+            />
           )}
         </section>
       </main>

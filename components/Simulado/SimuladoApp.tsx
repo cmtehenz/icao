@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useTheme } from "@/hooks/useTheme";
 import SimuladoExamSelect from "@/components/Simulado/SimuladoExamSelect";
 import SimuladoModeSelect from "@/components/Simulado/SimuladoModeSelect";
@@ -19,6 +19,7 @@ import {
 } from "@/lib/simulado/sessionDraft";
 import { recordStudyActivity } from "@/lib/studyTime";
 import type { SimuladoExamId } from "@/data/exams";
+import { SIMULADO_EXAMS } from "@/data/exams";
 import type {
   SimulationMode,
   SimuladoPart,
@@ -31,6 +32,7 @@ type View = "home" | "mode" | "exam" | "session" | "report";
 
 export default function SimuladoApp() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { theme, toggle: toggleTheme, hydrated } = useTheme();
   const [view, setView] = useState<View>("home");
   const [mode, setMode] = useState<SimulationMode>("full");
@@ -58,6 +60,13 @@ export default function SimuladoApp() {
       window.removeEventListener(SIMULADO_DRAFT_CHANGE_EVENT, onDraftChange);
     };
   }, [refreshStats, refreshDraft]);
+
+  useEffect(() => {
+    const exam = searchParams.get("exam");
+    if (exam && SIMULADO_EXAMS.some((e) => e.id === exam)) {
+      setExamId(exam as SimuladoExamId);
+    }
+  }, [searchParams]);
 
   const sessionConfig: SimuladoSessionConfig | null =
     view === "session"

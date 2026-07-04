@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import ExamAudioPlayer from "@/components/ExamAudioPlayer";
 import ExamVersionPicker from "@/components/ExamVersionPicker";
 import Part2SimulationRecord from "@/components/Part2Trainer/Part2SimulationRecord";
@@ -17,6 +17,7 @@ import {
 } from "@/lib/part2/aggregateSimulation";
 import { setPart2ItemStatus, type Part2ProgressStore } from "@/lib/part2/progress";
 import { syncDailyMissionLog } from "@/lib/dailyMissionLog";
+import { markPart2SimulationDailyComplete } from "@/lib/part2DailyMission";
 import { recordStudyActivity, SIMULATE_PART2_UNITS } from "@/lib/studyTime";
 import {
   getSpeakStepConfig,
@@ -40,14 +41,19 @@ const STEPS = [
 type Props = {
   progress: Part2ProgressStore;
   onProgressChange: (store: Part2ProgressStore) => void;
+  forcedExamVersion?: ExamVersion;
 };
 
 function pickRandomVersion(): ExamVersion {
   return EXAM_VERSIONS[Math.floor(Math.random() * EXAM_VERSIONS.length)];
 }
 
-export default function FullSimulationMode({ progress, onProgressChange }: Props) {
-  const [examVersion, setExamVersion] = useState<ExamVersion | "all">("all");
+export default function FullSimulationMode({
+  progress,
+  onProgressChange,
+  forcedExamVersion,
+}: Props) {
+  const [examVersion, setExamVersion] = useState<ExamVersion | "all">(forcedExamVersion ?? "all");
   const [activeVersion, setActiveVersion] = useState<ExamVersion | null>(null);
   const [situationIdx, setSituationIdx] = useState(0);
   const [step, setStep] = useState(-1);
@@ -71,6 +77,10 @@ export default function FullSimulationMode({ progress, onProgressChange }: Props
     [stepResults],
   );
 
+  useEffect(() => {
+    if (forcedExamVersion) setExamVersion(forcedExamVersion);
+  }, [forcedExamVersion]);
+
   const resetSimulation = () => {
     setActiveVersion(null);
     setSituationIdx(0);
@@ -83,7 +93,8 @@ export default function FullSimulationMode({ progress, onProgressChange }: Props
   };
 
   const startSituation = () => {
-    const version = examVersion !== "all" ? examVersion : pickRandomVersion();
+    const version =
+      forcedExamVersion ?? (examVersion !== "all" ? examVersion : pickRandomVersion());
     setActiveVersion(version);
     setSituationIdx(0);
     setStep(-2);
@@ -164,6 +175,9 @@ export default function FullSimulationMode({ progress, onProgressChange }: Props
       const status = finalResult.rating.overall >= 4 ? ("mastered" as const) : ("difficult" as const);
       onProgressChange(setPart2ItemStatus(progress, simId, status));
     }
+    if (activeVersion) {
+      markPart2SimulationDailyComplete(activeVersion);
+    }
     recordStudyActivity("simulate", SIMULATE_PART2_UNITS);
     syncDailyMissionLog();
     setShowResults(true);
@@ -192,7 +206,7 @@ export default function FullSimulationMode({ progress, onProgressChange }: Props
   if (step === -1) {
     return (
       <div className="part2-mode">
-        <ExamVersionPicker value={examVersion} onChange={setExamVersion} />
+        {!forcedExamVersion && <ExamVersionPicker value={examVersion} onChange={setExamVersion} />}
         <div className="exam-pick-card">
           <h2>Simulação completa — Part 2</h2>
           <p className="sub">

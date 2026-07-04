@@ -8,6 +8,7 @@ import {
   loadVocabProgressStore,
 } from "@/utils/spacedRepetition";
 import type { StudyAgendaLinkTarget } from "@/lib/studyAgenda";
+import { getOrCreatePart2DailyMission, part2MissionLink } from "@/lib/part2DailyMission";
 
 export function pickPart1CardNum(progress: ProgressStore = loadProgress()): string {
   const difficult = CARDS.find((c) => getCardProgress(progress, c.num).status === "difficult");
@@ -50,7 +51,7 @@ export function resolveAgendaLink(target: StudyAgendaLinkTarget): string {
     case "part2-any":
       return "/part2?mode=readback";
     case "part2-simulation":
-      return "/part2?mode=simulation";
+      return part2MissionLink(getOrCreatePart2DailyMission());
     case "pronunciation": {
       const word = pickVaultWord();
       return word ? `/pronunciation?word=${encodeURIComponent(word.word)}` : "/pronunciation";

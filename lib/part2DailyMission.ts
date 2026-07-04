@@ -1,30 +1,18 @@
-import { ALL_EXAM_SITUATIONS } from "@/data/exams/part2Data";
-import type { ExamSituation } from "@/lib/exams/types";
-import { pickDailySlice } from "@/lib/dailyRotation";
-import { getPart2ItemProgress, loadPart2Progress, type Part2ProgressStore } from "@/lib/part2/progress";
+import { getTodayExamVersion } from "@/lib/dailyExamRotation";
 import { syncDailyMissionLog } from "@/lib/dailyMissionLog";
+import type { ExamVersion } from "@/lib/exams/types";
 import { todayKey } from "@/lib/studyTime";
 
-export const PART2_DAILY_READBACK = 2;
-export const PART2_DAILY_INTERACTION = 1;
-export const PART2_DAILY_REPORTED = 1;
-
+/** Kept for fragmented Part 2 practice modes (shadow / coach). */
 export type Part2MissionKind = "readback" | "interaction" | "reported";
-
-export type Part2DailyMissionItem = {
-  id: string;
-  kind: Part2MissionKind;
-  scenarioId: string;
-  label: string;
-};
 
 export type Part2DailyMissionState = {
   date: string;
-  items: Part2DailyMissionItem[];
-  completedIds: string[];
+  examVersion: ExamVersion;
+  simulationDone: boolean;
 };
 
-const STORAGE_KEY = "icao_part2_daily_mission_v1";
+const STORAGE_KEY = "icao_part2_daily_mission_v2";
 export const PART2_DAILY_MISSION_EVENT = "icao-part2-daily-mission-change";
 
 function notify(): void {
@@ -32,74 +20,16 @@ function notify(): void {
   window.dispatchEvent(new Event(PART2_DAILY_MISSION_EVENT));
 }
 
-function scenarioPriority(store: Part2ProgressStore, scenario: ExamSituation, suffix: string): number {
-  const status = getPart2ItemProgress(store, `${scenario.id}-${suffix}`).status;
-  switch (status) {
-    case "difficult":
-      return 0;
-    case "new":
-      return 1;
-    case "learning":
-      return 2;
-    default:
-      return 3;
-  }
-}
-
-function pickScenarios(
-  scenarios: ExamSituation[],
-  progress: Part2ProgressStore,
-  suffix: string,
-  count: number,
-  date: string,
-  salt: number,
-): ExamSituation[] {
-  const sorted = [...scenarios].sort((a, b) => {
-    const diff = scenarioPriority(progress, a, suffix) - scenarioPriority(progress, b, suffix);
-    if (diff !== 0) return diff;
-    return a.id.localeCompare(b.id);
-  });
-  const rotated = pickDailySlice(sorted, Math.max(count, 1), date, salt);
-  return rotated.slice(0, count);
-}
-
-export function buildPart2DailyItems(
-  date = todayKey(),
-  progress: Part2ProgressStore = loadPart2Progress(),
-  scenarios: ExamSituation[] = ALL_EXAM_SITUATIONS,
-): Part2DailyMissionItem[] {
-  const readbacks = pickScenarios(scenarios, progress, "rb", PART2_DAILY_READBACK, date, 3);
-  const interactions = pickScenarios(scenarios, progress, "int", PART2_DAILY_INTERACTION, date, 11);
-  const reported = pickScenarios(scenarios, progress, "rep", PART2_DAILY_REPORTED, date, 19);
-
-  const items: Part2DailyMissionItem[] = [];
-
-  for (const s of readbacks) {
-    items.push({
-      id: `rb-${s.id}`,
-      kind: "readback",
-      scenarioId: s.id,
-      label: `Readback · ${s.examVersion} · ${s.title}`,
-    });
-  }
-  for (const s of interactions) {
-    items.push({
-      id: `int-${s.id}`,
-      kind: "interaction",
-      scenarioId: s.id,
-      label: `Interaction · ${s.examVersion} · ${s.title}`,
-    });
-  }
-  for (const s of reported) {
-    items.push({
-      id: `rep-${s.id}`,
-      kind: "reported",
-      scenarioId: s.id,
-      label: `Reported · ${s.examVersion} · ${s.title}`,
-    });
-  }
-
-  return items;
+function isValidMission(parsed: unknown, date: string): parsed is Part2DailyMissionState {
+  if (!parsed || typeof parsed !== "object") return false;
+  const m = parsed as Part2DailyMissionState;
+  if ("items" in m) return false;
+  return (
+    m.date === date &&
+    typeof m.examVersion === "string" &&
+    m.examVersion === getTodayExamVersion(date) &&
+    typeof m.simulationDone === "boolean"
+  );
 }
 
 export function loadPart2DailyMission(): Part2DailyMissionState | null {
@@ -107,8 +37,8 @@ export function loadPart2DailyMission(): Part2DailyMissionState | null {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return null;
-    const parsed = JSON.parse(raw) as Part2DailyMissionState;
-    if (parsed.date !== todayKey()) return null;
+    const parsed = JSON.parse(raw) as unknown;
+    if (!isValidMission(parsed, todayKey())) return null;
     return parsed;
   } catch {
     return null;
@@ -122,79 +52,46 @@ export function savePart2DailyMission(state: Part2DailyMissionState): void {
   notify();
 }
 
-export function getOrCreatePart2DailyMission(
-  progress: Part2ProgressStore = loadPart2Progress(),
-): Part2DailyMissionState {
+export function getOrCreatePart2DailyMission(): Part2DailyMissionState {
   const existing = loadPart2DailyMission();
   if (existing) return existing;
 
   const state: Part2DailyMissionState = {
     date: todayKey(),
-    items: buildPart2DailyItems(todayKey(), progress),
-    completedIds: [],
+    examVersion: getTodayExamVersion(),
+    simulationDone: false,
   };
   savePart2DailyMission(state);
   return state;
 }
 
-export function markPart2DailyComplete(itemId: string): Part2DailyMissionState | null {
+export function markPart2SimulationDailyComplete(examVersion: ExamVersion): Part2DailyMissionState | null {
   const mission = getOrCreatePart2DailyMission();
-  if (!mission.items.some((i) => i.id === itemId)) return mission;
-  if (mission.completedIds.includes(itemId)) return mission;
+  if (mission.examVersion !== examVersion || mission.simulationDone) return mission;
 
-  const next: Part2DailyMissionState = {
-    ...mission,
-    completedIds: [...mission.completedIds, itemId],
-  };
+  const next: Part2DailyMissionState = { ...mission, simulationDone: true };
   savePart2DailyMission(next);
   return next;
-}
-
-export function markPart2DailyCompleteByScenario(
-  kind: Part2MissionKind,
-  scenarioId: string,
-): Part2DailyMissionState | null {
-  const prefix = kind === "readback" ? "rb" : kind === "interaction" ? "int" : "rep";
-  return markPart2DailyComplete(`${prefix}-${scenarioId}`);
 }
 
 export function part2DailyMissionProgress(mission = getOrCreatePart2DailyMission()): {
   done: number;
   total: number;
   complete: boolean;
-  byKind: Record<Part2MissionKind, { done: number; total: number }>;
+  examVersion: ExamVersion;
 } {
-  const total = mission.items.length;
-  const done = mission.completedIds.length;
-  const byKind: Record<Part2MissionKind, { done: number; total: number }> = {
-    readback: { done: 0, total: 0 },
-    interaction: { done: 0, total: 0 },
-    reported: { done: 0, total: 0 },
-  };
-
-  for (const item of mission.items) {
-    byKind[item.kind].total += 1;
-    if (mission.completedIds.includes(item.id)) {
-      byKind[item.kind].done += 1;
-    }
-  }
-
   return {
-    done,
-    total,
-    complete: done >= total && total > 0,
-    byKind,
+    done: mission.simulationDone ? 1 : 0,
+    total: 1,
+    complete: mission.simulationDone,
+    examVersion: mission.examVersion,
   };
 }
 
-export function part2MissionLink(item: Part2DailyMissionItem): string {
+export function part2MissionLink(mission = getOrCreatePart2DailyMission()): string {
   const params = new URLSearchParams({
-    mode: item.kind,
-    scenario: item.scenarioId,
-    practice: "1",
+    mode: "simulation",
+    exam: mission.examVersion,
   });
-  if (item.kind === "readback" || item.kind === "interaction") {
-    params.set("shadow", "1");
-  }
   return `/part2?${params.toString()}`;
 }

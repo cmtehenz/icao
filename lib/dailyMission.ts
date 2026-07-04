@@ -1,3 +1,4 @@
+import { todayExamLabel } from "@/lib/dailyExamRotation";
 import {
   part1DailyMissionProgress,
   getOrCreatePart1DailyMission,
@@ -15,10 +16,9 @@ import {
   vocabMissionLink,
 } from "@/lib/vocabDailyMission";
 import {
+  getSimuladoIcaoHref,
   isSimulateMissionDone,
   isSimulateMissionRequired,
-  SIMULATE_ICAO_HREF,
-  SIMULATE_MISSION_HREF,
   simulateMissionProgress,
 } from "@/lib/simulateDailyMission";
 import { loadStudyPlanMode } from "@/lib/studyTime";
@@ -30,6 +30,7 @@ export type DailyMissionNextAction = {
 };
 
 export type DailyMissionSummary = {
+  examLabel: string;
   part1: ReturnType<typeof part1DailyMissionProgress>;
   part2: ReturnType<typeof part2DailyMissionProgress>;
   vocabulary: ReturnType<typeof vocabDailyMissionProgress>;
@@ -48,13 +49,14 @@ export function getDailyMissionSummary(): DailyMissionSummary {
   const simulate = simulateMissionProgress();
   const simulateRequired = isSimulateMissionRequired(mode);
 
-  const sections = [part1.complete, part2.complete, vocabulary.complete];
+  const sections = [vocabulary.complete, part1.complete, part2.complete];
   if (simulateRequired) sections.push(simulate.complete);
 
   const completedSections = sections.filter(Boolean).length;
   const complete = completedSections === sections.length;
 
   return {
+    examLabel: todayExamLabel(),
     part1,
     part2,
     vocabulary,
@@ -81,6 +83,17 @@ export function getNextMissionAction(): DailyMissionNextAction | null {
   const summary = getDailyMissionSummary();
   if (summary.complete) return null;
 
+  const vocabMission = getOrCreateVocabDailyMission();
+  const nextVocabId = vocabMission.termIds.find((id) => !vocabMission.completedIds.includes(id));
+  if (nextVocabId) {
+    const done = vocabMission.completedIds.length;
+    return {
+      href: vocabMissionLink(nextVocabId),
+      title: `Vocabulário · ${summary.examLabel}`,
+      hint: `${done}/20 palavras da prova de hoje`,
+    };
+  }
+
   const part1Mission = getOrCreatePart1DailyMission();
   for (const card of part1Mission.cards) {
     if (!card.shadowDone) {
@@ -104,35 +117,23 @@ export function getNextMissionAction(): DailyMissionNextAction | null {
   }
 
   const part2Mission = getOrCreatePart2DailyMission();
-  const nextPart2 = part2Mission.items.find((i) => !part2Mission.completedIds.includes(i.id));
-  if (nextPart2) {
+  if (!part2Mission.simulationDone) {
     return {
-      href: part2MissionLink(nextPart2),
-      title: nextPart2.label,
-      hint: "Part 2 da missão de hoje",
-    };
-  }
-
-  const vocabMission = getOrCreateVocabDailyMission();
-  const nextVocabId = vocabMission.termIds.find((id) => !vocabMission.completedIds.includes(id));
-  if (nextVocabId) {
-    const done = vocabMission.completedIds.length;
-    return {
-      href: vocabMissionLink(nextVocabId),
-      title: "Vocabulário da missão",
-      hint: `${done}/20 palavras concluídas`,
+      href: part2MissionLink(part2Mission),
+      title: `Part 2 · Simulação ${part2Mission.examVersion}`,
+      hint: "5 situações completas da prova de hoje",
     };
   }
 
   if (isSimulateMissionRequired() && !isSimulateMissionDone()) {
     return {
-      href: SIMULATE_MISSION_HREF,
-      title: "Simulado Part 2",
-      hint: "Dia bom: complete pelo menos 1 simulado (Part 2 ou Simulado ICAO)",
+      href: getSimuladoIcaoHref(),
+      title: `Simulado ICAO · ${summary.examLabel}`,
+      hint: "Dia bom: simulado completo (Part 1 + Part 2) da prova de hoje",
     };
   }
 
   return null;
 }
 
-export { SIMULATE_MISSION_HREF, SIMULATE_ICAO_HREF };
+export { getSimuladoIcaoHref };

@@ -8,11 +8,7 @@ import {
   markShadowPart2Scored,
 } from "@/lib/shadowPart2Dedup";
 import { markPart1ShadowDone, isPart1CardInTodayMission, tryMarkPart1ShadowComplete } from "@/lib/part1DailyMission";
-import {
-  getOrCreatePart2DailyMission,
-  type Part2MissionKind,
-} from "@/lib/part2DailyMission";
-import { tryMarkPart2DailyMissionPractice } from "@/lib/part2MissionComplete";
+import type { Part2MissionKind } from "@/lib/part2DailyMission";
 import { markVocabDailyComplete, isVocabTermInTodayMission } from "@/lib/vocabDailyMission";
 import { syncDailyMissionLog } from "@/lib/dailyMissionLog";
 import {
@@ -185,25 +181,6 @@ export function tryRecordStudyActivity(
   }
   if (activity === "shadowPart2" && ctx.situationId) {
     markShadowPart2Scored(ctx.situationId, ctx.part2MissionKind ?? "readback");
-    if (ctx.part2MissionKind) {
-      tryMarkPart2DailyMissionPractice({
-        part2MissionKind: ctx.part2MissionKind,
-        situationId: ctx.situationId,
-        accuracy: ctx.accuracy,
-        recognizedText: ctx.recognizedText,
-      });
-    } else {
-      const mission = getOrCreatePart2DailyMission();
-      const item = mission.items.find((i) => i.scenarioId === ctx.situationId);
-      if (item) {
-        tryMarkPart2DailyMissionPractice({
-          part2MissionKind: item.kind,
-          situationId: ctx.situationId,
-          accuracy: ctx.accuracy,
-          recognizedText: ctx.recognizedText,
-        });
-      }
-    }
   }
   if (activity === "shadow" && ctx.cardNum) {
     tryMarkPart1ShadowComplete(ctx.cardNum);

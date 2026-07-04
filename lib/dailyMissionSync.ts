@@ -101,6 +101,7 @@ export function mergePart1Mission(
 
   return {
     date: a.date,
+    examVersion: a.examVersion ?? b.examVersion,
     cards: order.map((num) => byNum.get(num)!),
   };
 }
@@ -113,22 +114,11 @@ export function mergePart2Mission(
   if (!b) return a;
   if (a.date !== b.date) return a.date >= b.date ? a : b;
 
-  const preferA = a.completedIds.length >= b.completedIds.length;
-  const primary = preferA ? a : b;
-  const secondary = preferA ? b : a;
-
-  const itemsById = new Map(primary.items.map((i) => [i.id, i]));
-  for (const item of secondary.items) {
-    if (!itemsById.has(item.id) && secondary.completedIds.includes(item.id)) {
-      itemsById.set(item.id, item);
-    }
-  }
-
-  const items = [...itemsById.values()];
-  const completed = new Set([...a.completedIds, ...b.completedIds]);
-  const completedIds = items.map((i) => i.id).filter((id) => completed.has(id));
-
-  return { date: a.date, items, completedIds };
+  return {
+    date: a.date,
+    examVersion: a.examVersion ?? b.examVersion,
+    simulationDone: a.simulationDone || b.simulationDone,
+  };
 }
 
 export function mergeVocabMission(
@@ -153,7 +143,12 @@ export function mergeVocabMission(
   const completed = new Set([...a.completedIds, ...b.completedIds]);
   const completedIds = termIds.filter((id) => completed.has(id));
 
-  return { date: a.date, termIds, completedIds };
+  return {
+    date: a.date,
+    examVersion: a.examVersion ?? b.examVersion,
+    termIds,
+    completedIds,
+  };
 }
 
 export function mergeDailyMissionBundles(
