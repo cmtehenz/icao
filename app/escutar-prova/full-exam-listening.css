@@ -206,6 +206,41 @@
   vertical-align: middle;
 }
 
+.fel-lock-hint {
+  margin: 0 0 12px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 12px;
+  line-height: 1.4;
+  background: rgba(59, 130, 246, 0.12);
+  color: #93c5fd;
+}
+
+[data-theme="light"] .fel-lock-hint {
+  background: rgba(37, 99, 235, 0.08);
+  color: #1d4ed8;
+}
+
+.fel-prepare-banner {
+  margin: 0 0 12px;
+  padding: 12px;
+  border-radius: 10px;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+}
+
+.fel-prepare-banner p {
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.fel-prepare-label {
+  font-weight: 400 !important;
+  font-size: 12px !important;
+  opacity: 0.85;
+}
+
 /* Player */
 
 .fel-player {

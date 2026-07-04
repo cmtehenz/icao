@@ -3,6 +3,10 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { FullExamId } from "@/lib/fullExamListening/types";
 import {
+  buildContinuousStream,
+  invalidateContinuousStream,
+} from "@/lib/fullExamListening/continuousStream";
+import {
   deleteExamPack,
   downloadExamPack,
   getExamOfflineStatus,
@@ -47,6 +51,8 @@ export function useExamOfflinePack(examId: FullExamId) {
     abortRef.current = ac;
     try {
       await downloadExamPack(examId, setProgress, ac.signal);
+      setProgress({ done: 1, total: 1, label: "Montando áudio contínuo (tela bloqueada)…" });
+      await buildContinuousStream(examId, undefined, ac.signal);
       await refresh();
     } catch (e) {
       if ((e as Error).name === "AbortError") {
@@ -67,6 +73,7 @@ export function useExamOfflinePack(examId: FullExamId) {
 
   const remove = useCallback(async () => {
     await deleteExamPack(examId);
+    await invalidateContinuousStream(examId);
     await refresh();
   }, [examId, refresh]);
 

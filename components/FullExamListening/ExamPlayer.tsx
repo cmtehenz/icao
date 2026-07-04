@@ -69,6 +69,7 @@ export default function ExamPlayer({ exam, mode, startIndex, onBack, onModeChang
     showTranscript,
     setShowTranscript,
     playbackError,
+    prepareProgress,
     play,
     pause,
     next,
@@ -79,6 +80,7 @@ export default function ExamPlayer({ exam, mode, startIndex, onBack, onModeChang
 
   const isPlaying = status === "playing";
   const isPaused = status === "paused";
+  const isPreparing = status === "preparing";
   const waitingReveal = status === "waiting_reveal";
   const waitingShadow = status === "waiting_shadow";
 
@@ -136,6 +138,33 @@ export default function ExamPlayer({ exam, mode, startIndex, onBack, onModeChang
       {playbackError && status === "error" && (
         <div className="fel-azure-error" role="alert">
           {playbackError}
+        </div>
+      )}
+
+      {mode === "full" && (
+        <p className="fel-lock-hint">
+          Full Listening usa áudio contínuo — no iPhone pode bloquear a tela que a prova segue tocando.
+        </p>
+      )}
+
+      {isPreparing && prepareProgress && (
+        <div className="fel-prepare-banner" role="status">
+          <p>
+            Preparando áudio contínuo… {prepareProgress.done}/{prepareProgress.total}
+          </p>
+          <p className="fel-prepare-label">{prepareProgress.label}</p>
+          <div className="fel-offline-bar" aria-hidden>
+            <div
+              className="fel-offline-bar-fill"
+              style={{
+                width: `${
+                  prepareProgress.total
+                    ? Math.round((prepareProgress.done / prepareProgress.total) * 100)
+                    : 0
+                }%`,
+              }}
+            />
+          </div>
         </div>
       )}
 
@@ -202,9 +231,15 @@ export default function ExamPlayer({ exam, mode, startIndex, onBack, onModeChang
         <button type="button" className="fel-ctrl" onClick={previous} title="Previous" aria-label="Previous">
           ⏮
         </button>
-        {isPlaying ? (
-          <button type="button" className="fel-ctrl fel-ctrl-main" onClick={pause} aria-label="Pause">
-            ⏸
+        {isPlaying || isPreparing ? (
+          <button
+            type="button"
+            className="fel-ctrl fel-ctrl-main"
+            onClick={pause}
+            disabled={isPreparing}
+            aria-label="Pause"
+          >
+            {isPreparing ? "…" : "⏸"}
           </button>
         ) : (
           <button

@@ -6,6 +6,11 @@
 
 import { synthesizeExamMp3, type AzureVoiceRole } from "@/lib/azure/azureTts";
 import {
+  segmentIndexAtTime,
+  type ContinuousStream,
+  type StreamSegment,
+} from "@/lib/fullExamListening/continuousStream";
+import {
   getCachedAtcBlob,
   getCachedTtsBlob,
   putCachedAtcFromResponse,
@@ -21,12 +26,35 @@ let pausedTime = 0;
 let pausedTicket = 0;
 let activePlayResolve: ((played: boolean) => void) | null = null;
 
+/** Continuous stream (iOS lock-screen safe). */
+let continuousActive = false;
+let continuousSegments: StreamSegment[] = [];
+let continuousOnItemIndex: ((itemIndex: number) => void) | null = null;
+let continuousLastSeg = -1;
+let continuousTimeHandler: (() => void) | null = null;
+
 function getAudio(): HTMLAudioElement {
   if (!audioEl) {
     audioEl = new Audio();
     audioEl.preload = "auto";
+    audioEl.setAttribute("playsinline", "true");
+    audioEl.setAttribute("webkit-playsinline", "true");
+    // Helps iOS treat this as media playback (lock screen / Control Center).
+    audioEl.setAttribute("x-webkit-airplay", "allow");
   }
   return audioEl;
+}
+
+function clearContinuousTracking(): void {
+  continuousActive = false;
+  continuousSegments = [];
+  continuousOnItemIndex = null;
+  continuousLastSeg = -1;
+  const el = audioEl;
+  if (el && continuousTimeHandler) {
+    el.removeEventListener("timeupdate", continuousTimeHandler);
+  }
+  continuousTimeHandler = null;
 }
 
 function revokeActiveBlob(): void {
@@ -59,7 +87,72 @@ export function stopExamPlayback(): void {
   isPaused = false;
   pausedTime = 0;
   pausedTicket = 0;
+  clearContinuousTracking();
   stopElementNow();
+  clearMediaSession();
+}
+
+export function isContinuousPlaybackActive(): boolean {
+  return continuousActive;
+}
+
+export function setExamPlaybackRate(rate: number): void {
+  const el = audioEl;
+  if (!el) return;
+  el.playbackRate = rate;
+}
+
+export function seekContinuousToItem(itemIndex: number): boolean {
+  if (!continuousActive || !audioEl) return false;
+  const seg =
+    continuousSegments.find((s) => s.itemIndex === itemIndex) ??
+    continuousSegments.find((s) => s.itemIndex >= itemIndex);
+  if (!seg) return false;
+  audioEl.currentTime = seg.start;
+  continuousLastSeg = continuousSegments.indexOf(seg);
+  continuousOnItemIndex?.(seg.itemIndex);
+  return true;
+}
+
+function clearMediaSession(): void {
+  if (typeof navigator === "undefined" || !("mediaSession" in navigator)) return;
+  try {
+    navigator.mediaSession.playbackState = "none";
+    navigator.mediaSession.metadata = null;
+  } catch {
+    /* ignore */
+  }
+}
+
+export function setupMediaSession(handlers: {
+  title: string;
+  artist?: string;
+  onPlay?: () => void;
+  onPause?: () => void;
+  onPrevious?: () => void;
+  onNext?: () => void;
+}): void {
+  if (typeof navigator === "undefined" || !("mediaSession" in navigator)) return;
+  try {
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: handlers.title,
+      artist: handlers.artist ?? "ICAO Delta",
+      album: "Escutar Prova",
+    });
+    const bind = (action: MediaSessionAction, fn?: () => void) => {
+      try {
+        navigator.mediaSession.setActionHandler(action, fn ? () => fn() : null);
+      } catch {
+        /* unsupported action */
+      }
+    };
+    bind("play", handlers.onPlay);
+    bind("pause", handlers.onPause);
+    bind("previoustrack", handlers.onPrevious);
+    bind("nexttrack", handlers.onNext);
+  } catch {
+    /* ignore */
+  }
 }
 
 export function getExamPlaybackGeneration(): number {
@@ -79,6 +172,13 @@ export function pauseExamPlayback(): boolean {
   pausedTicket = generation;
   isPaused = true;
   el.pause();
+  if (typeof navigator !== "undefined" && "mediaSession" in navigator) {
+    try {
+      navigator.mediaSession.playbackState = "paused";
+    } catch {
+      /* ignore */
+    }
+  }
   return true;
 }
 
@@ -88,7 +188,10 @@ export function resumeExamPlayback(rate = 1): Promise<boolean> {
   const ticket = generation;
   isPaused = false;
   el.playbackRate = rate;
-  el.currentTime = pausedTime;
+  // Continuous stream: keep currentTime (already paused mid-stream).
+  if (!continuousActive) {
+    el.currentTime = pausedTime;
+  }
 
   return new Promise((resolve) => {
     let settled = false;
@@ -98,6 +201,19 @@ export function resumeExamPlayback(rate = 1): Promise<boolean> {
       activePlayResolve = null;
       resolve(played && ticket === generation);
     };
+
+    // Continuous mode keeps its own onended; resume only unpauses.
+    if (continuousActive) {
+      if (typeof navigator !== "undefined" && "mediaSession" in navigator) {
+        try {
+          navigator.mediaSession.playbackState = "playing";
+        } catch {
+          /* ignore */
+        }
+      }
+      void el.play().then(() => settle(true)).catch(() => settle(false));
+      return;
+    }
 
     activePlayResolve = settle;
 
@@ -116,6 +232,106 @@ export function resumeExamPlayback(rate = 1): Promise<boolean> {
     el.onended = onDone;
     el.onerror = () => settle(false);
     void el.play().catch(() => settle(false));
+  });
+}
+
+/**
+ * Play a pre-built continuous exam MP3 (survives iPhone screen lock).
+ * Resolves when the whole stream ends or playback is stopped/fails.
+ */
+export function playContinuousStream(
+  stream: ContinuousStream,
+  rate: number,
+  ticket: number,
+  onItemIndex: (itemIndex: number) => void,
+  startItemIndex = 0,
+): Promise<boolean> {
+  return enqueue(async () => {
+    if (ticket !== generation) return false;
+
+    clearContinuousTracking();
+    stopElementNow();
+    if (ticket !== generation) return false;
+
+    continuousActive = true;
+    continuousSegments = stream.segments;
+    continuousOnItemIndex = onItemIndex;
+    continuousLastSeg = -1;
+
+    const url = URL.createObjectURL(stream.blob);
+    activeBlobUrl = url;
+    const el = getAudio();
+    el.playbackRate = rate;
+
+    const startSeg =
+      continuousSegments.find((s) => s.itemIndex === startItemIndex) ??
+      continuousSegments.find((s) => s.itemIndex >= startItemIndex) ??
+      continuousSegments[0];
+
+    continuousTimeHandler = () => {
+      if (ticket !== generation || !continuousActive) return;
+      const segIdx = segmentIndexAtTime(continuousSegments, el.currentTime);
+      if (segIdx !== continuousLastSeg) {
+        continuousLastSeg = segIdx;
+        const seg = continuousSegments[segIdx];
+        if (seg) onItemIndex(seg.itemIndex);
+      }
+      if (typeof navigator !== "undefined" && "mediaSession" in navigator) {
+        try {
+          navigator.mediaSession.playbackState = el.paused ? "paused" : "playing";
+        } catch {
+          /* ignore */
+        }
+      }
+    };
+    el.addEventListener("timeupdate", continuousTimeHandler);
+
+    return new Promise((resolve) => {
+      let settled = false;
+      const settle = (played: boolean) => {
+        if (settled) return;
+        settled = true;
+        activePlayResolve = null;
+        if (continuousTimeHandler) {
+          el.removeEventListener("timeupdate", continuousTimeHandler);
+          continuousTimeHandler = null;
+        }
+        if (ticket === generation) {
+          continuousActive = false;
+        }
+        resolve(played && ticket === generation);
+      };
+
+      activePlayResolve = settle;
+
+      el.onended = () => {
+        if (ticket !== generation) {
+          settle(false);
+          return;
+        }
+        el.onended = null;
+        el.onerror = null;
+        el.pause();
+        revokeActiveBlob();
+        settle(true);
+      };
+      el.onerror = () => settle(false);
+      el.src = url;
+
+      void waitUntilReady(el, ticket).then((ready) => {
+        if (!ready || ticket !== generation) {
+          settle(false);
+          return;
+        }
+        if (startSeg) {
+          el.currentTime = startSeg.start;
+          continuousLastSeg = continuousSegments.indexOf(startSeg);
+          onItemIndex(startSeg.itemIndex);
+        }
+        isPaused = false;
+        void el.play().catch(() => settle(false));
+      });
+    });
   });
 }
 

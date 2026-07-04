@@ -4,22 +4,38 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import type { ExamAudioItem, FullExamId, ListeningMode } from "@/lib/fullExamListening/types";
 import { getExamPlaylist } from "@/data/fullExams";
 import {
+  buildContinuousStream,
+  type StreamBuildProgress,
+} from "@/lib/fullExamListening/continuousStream";
+import {
   loadListeningProgress,
   markExamCompleted,
   saveListeningProgress,
 } from "@/lib/fullExamListening/progress";
 import {
   beginSpeechSession,
+  configureExamMediaSession,
   getExamAudioSession,
+  isContinuousAudioActive,
   pauseSpeech,
+  playExamContinuousStream,
   playExamOriginalAudio,
   resumeSpeech,
+  seekContinuousAudio,
+  setContinuousPlaybackRate,
   speakText,
   stopSpeech,
 } from "@/utils/speech";
 import type { VoiceType } from "@/utils/speech";
 
-export type PlayerStatus = "idle" | "playing" | "paused" | "waiting_reveal" | "waiting_shadow" | "error";
+export type PlayerStatus =
+  | "idle"
+  | "preparing"
+  | "playing"
+  | "paused"
+  | "waiting_reveal"
+  | "waiting_shadow"
+  | "error";
 
 type Options = {
   examId: FullExamId;
@@ -48,6 +64,7 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
   const pauseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const runLockRef = useRef(false);
   const userInterruptedRef = useRef(false);
+  const prepareAbortRef = useRef<AbortController | null>(null);
 
   const [currentIndex, setCurrentIndex] = useState(startIndex);
   const [status, setStatus] = useState<PlayerStatus>("idle");
@@ -55,6 +72,7 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
   const [showTranscript, setShowTranscript] = useState(true);
   const [autoPlay, setAutoPlay] = useState(true);
   const [playbackError, setPlaybackError] = useState<string | null>(null);
+  const [prepareProgress, setPrepareProgress] = useState<StreamBuildProgress | null>(null);
 
   useEffect(() => {
     modeRef.current = mode;
@@ -62,6 +80,7 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
 
   useEffect(() => {
     speedRef.current = speed;
+    setContinuousPlaybackRate(speed);
   }, [speed]);
 
   const currentItem = items[currentIndex] ?? null;
@@ -78,7 +97,10 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
 
   const beginSession = useCallback(() => {
     clearPauseTimer();
+    prepareAbortRef.current?.abort();
+    prepareAbortRef.current = null;
     setPlaybackError(null);
+    setPrepareProgress(null);
     userInterruptedRef.current = false;
     const ticket = beginSpeechSession();
     runLockRef.current = true;
@@ -89,16 +111,22 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
   const endSession = useCallback(() => {
     userInterruptedRef.current = true;
     runLockRef.current = false;
+    prepareAbortRef.current?.abort();
+    prepareAbortRef.current = null;
+    setPrepareProgress(null);
     stopSpeech();
     clearPauseTimer();
   }, [clearPauseTimer]);
 
-  const goToIndex = useCallback((idx: number) => {
-    const clamped = Math.max(0, Math.min(items.length - 1, idx));
-    indexRef.current = clamped;
-    setCurrentIndex(clamped);
-    saveListeningProgress({ lastExamId: examId, lastItemIndex: clamped });
-  }, [examId, items.length]);
+  const goToIndex = useCallback(
+    (idx: number) => {
+      const clamped = Math.max(0, Math.min(items.length - 1, idx));
+      indexRef.current = clamped;
+      setCurrentIndex(clamped);
+      saveListeningProgress({ lastExamId: examId, lastItemIndex: clamped });
+    },
+    [examId, items.length],
+  );
 
   const stop = useCallback(() => {
     endSession();
@@ -109,6 +137,7 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
     setPlaybackError(message);
     runLockRef.current = false;
     setStatus("error");
+    setPrepareProgress(null);
   }, []);
 
   const playPause = useCallback(
@@ -122,7 +151,7 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
         pauseTimerRef.current = setTimeout(() => {
           pauseTimerRef.current = null;
           resolve();
-        }, seconds * 1000 / speedRef.current);
+        }, (seconds * 1000) / speedRef.current);
       }),
     [clearPauseTimer, isActiveSession],
   );
@@ -204,7 +233,7 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
     [isActiveSession, playAudioFile, playPause, playShadowSentences, playTts],
   );
 
-  const runFrom = useCallback(
+  const runFromClipByClip = useCallback(
     async (fromIndex: number, ticket: number) => {
       let i = fromIndex;
       while (i < items.length && isActiveSession(ticket)) {
@@ -239,16 +268,112 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
     [examId, failPlayback, goToIndex, isActiveSession, items, onComplete, playItem],
   );
 
+  /** Full Listening: one continuous MP3 so iPhone keeps playing with screen locked. */
+  const runContinuous = useCallback(
+    async (fromIndex: number, ticket: number) => {
+      setStatus("preparing");
+      const ac = new AbortController();
+      prepareAbortRef.current = ac;
+
+      try {
+        const stream = await buildContinuousStream(
+          examId,
+          (p) => setPrepareProgress(p),
+          ac.signal,
+        );
+
+        if (!isActiveSession(ticket)) return;
+
+        prepareAbortRef.current = null;
+        setPrepareProgress(null);
+        setStatus("playing");
+
+        configureExamMediaSession({
+          title: `Escutar Prova · ${examId}`,
+          artist: "ICAO Delta",
+          onPlay: () => {
+            void resumeSpeech(speedRef.current);
+            setStatus("playing");
+          },
+          onPause: () => {
+            pauseSpeech();
+            setStatus("paused");
+          },
+          onPrevious: () => {
+            const prev = Math.max(0, indexRef.current - 1);
+            if (seekContinuousAudio(prev)) goToIndex(prev);
+          },
+          onNext: () => {
+            const next = Math.min(items.length - 1, indexRef.current + 1);
+            if (seekContinuousAudio(next)) goToIndex(next);
+          },
+        });
+
+        const ok = await playExamContinuousStream(
+          stream,
+          speedRef.current,
+          ticket,
+          (itemIndex) => {
+            if (!isActiveSession(ticket)) return;
+            goToIndex(itemIndex);
+          },
+          fromIndex,
+        );
+
+        if (!isActiveSession(ticket)) return;
+
+        if (ok) {
+          markExamCompleted(examId);
+          setStatus("idle");
+          runLockRef.current = false;
+          onComplete?.();
+        } else if (!userInterruptedRef.current) {
+          failPlayback(
+            "Não foi possível reproduzir o áudio contínuo. Toque Play para tentar de novo.",
+          );
+        } else {
+          setStatus("idle");
+          runLockRef.current = false;
+        }
+      } catch (e) {
+        if ((e as Error).name === "AbortError" || !isActiveSession(ticket)) {
+          runLockRef.current = false;
+          return;
+        }
+        // Fall back to clip-by-clip if stream build fails (still needs screen on).
+        setPrepareProgress(null);
+        if (!isActiveSession(ticket)) return;
+        setStatus("playing");
+        await runFromClipByClip(fromIndex, ticket);
+      }
+    },
+    [
+      examId,
+      failPlayback,
+      goToIndex,
+      isActiveSession,
+      items.length,
+      onComplete,
+      runFromClipByClip,
+    ],
+  );
+
   const startPlayback = useCallback(
     (fromIndex: number) => {
       const ticket = beginSession();
-      void runFrom(fromIndex, ticket);
+      if (modeRef.current === "full") {
+        void runContinuous(fromIndex, ticket);
+      } else {
+        void runFromClipByClip(fromIndex, ticket);
+      }
     },
-    [beginSession, runFrom],
+    [beginSession, runContinuous, runFromClipByClip],
   );
 
   const play = useCallback(() => {
-    if (status === "waiting_reveal" || status === "waiting_shadow") return;
+    if (status === "waiting_reveal" || status === "waiting_shadow" || status === "preparing") {
+      return;
+    }
 
     if (status === "paused") {
       void resumeSpeech(speedRef.current).then((resumed) => {
@@ -303,29 +428,62 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
         return;
       }
       goToIndex(indexRef.current + 1);
-      void runFrom(indexRef.current, ticket);
+      void runFromClipByClip(indexRef.current, ticket);
     })();
-  }, [beginSession, failPlayback, goToIndex, isActiveSession, items, playShadowSentences, playTts, runFrom]);
+  }, [
+    beginSession,
+    failPlayback,
+    goToIndex,
+    isActiveSession,
+    items,
+    playShadowSentences,
+    playTts,
+    runFromClipByClip,
+  ]);
 
   const next = useCallback(() => {
-    endSession();
     const idx = Math.min(items.length - 1, indexRef.current + 1);
+    if (isContinuousAudioActive() && (status === "playing" || status === "paused")) {
+      if (seekContinuousAudio(idx)) {
+        goToIndex(idx);
+        if (status === "paused") setStatus("playing");
+        return;
+      }
+    }
+    endSession();
     goToIndex(idx);
     startPlayback(idx);
-  }, [endSession, goToIndex, items.length, startPlayback]);
+  }, [endSession, goToIndex, items.length, startPlayback, status]);
 
   const previous = useCallback(() => {
-    endSession();
     const idx = Math.max(0, indexRef.current - 1);
+    if (isContinuousAudioActive() && (status === "playing" || status === "paused")) {
+      if (seekContinuousAudio(idx)) {
+        goToIndex(idx);
+        if (status === "paused") setStatus("playing");
+        return;
+      }
+    }
+    endSession();
     goToIndex(idx);
     startPlayback(idx);
-  }, [endSession, goToIndex, startPlayback]);
+  }, [endSession, goToIndex, startPlayback, status]);
 
   const restart = useCallback(() => {
+    if (isContinuousAudioActive() && (status === "playing" || status === "paused")) {
+      if (seekContinuousAudio(0)) {
+        goToIndex(0);
+        if (status === "paused") {
+          void resumeSpeech(speedRef.current);
+          setStatus("playing");
+        }
+        return;
+      }
+    }
     endSession();
     goToIndex(0);
     startPlayback(0);
-  }, [endSession, goToIndex, startPlayback]);
+  }, [endSession, goToIndex, startPlayback, status]);
 
   return {
     items,
@@ -340,6 +498,7 @@ export function useFullExamPlayer({ examId, mode, startIndex = 0, onComplete }: 
     autoPlay,
     setAutoPlay,
     playbackError,
+    prepareProgress,
     play,
     pause,
     stop,

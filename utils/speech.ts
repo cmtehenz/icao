@@ -5,12 +5,18 @@
 import {
   beginExamPlayback,
   getExamPlaybackGeneration,
+  isContinuousPlaybackActive,
   pauseExamPlayback,
+  playContinuousStream,
   queueExamMp3,
   queueExamTts,
   resumeExamPlayback,
+  seekContinuousToItem,
+  setExamPlaybackRate,
+  setupMediaSession,
   stopExamPlayback,
 } from "@/lib/fullExamListening/examAudioPipeline";
+import type { ContinuousStream } from "@/lib/fullExamListening/continuousStream";
 import {
   isAzureTtsAvailable,
   stopAzureSpeech,
@@ -84,6 +90,39 @@ export function beginSpeechSession(): number {
 
 export function getExamAudioSession(): number {
   return getExamPlaybackGeneration();
+}
+
+export function isContinuousAudioActive(): boolean {
+  return isContinuousPlaybackActive();
+}
+
+export function seekContinuousAudio(itemIndex: number): boolean {
+  return seekContinuousToItem(itemIndex);
+}
+
+export function setContinuousPlaybackRate(rate: number): void {
+  setExamPlaybackRate(rate);
+}
+
+export async function playExamContinuousStream(
+  stream: ContinuousStream,
+  rate: number,
+  ticket: number,
+  onItemIndex: (itemIndex: number) => void,
+  startItemIndex = 0,
+): Promise<boolean> {
+  return playContinuousStream(stream, rate, ticket, onItemIndex, startItemIndex);
+}
+
+export function configureExamMediaSession(handlers: {
+  title: string;
+  artist?: string;
+  onPlay?: () => void;
+  onPause?: () => void;
+  onPrevious?: () => void;
+  onNext?: () => void;
+}): void {
+  setupMediaSession(handlers);
 }
 
 export async function warmSpeechEngine(): Promise<SpeechEngine> {
