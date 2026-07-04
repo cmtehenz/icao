@@ -2877,6 +2877,148 @@ input {
   margin-top: 0.5rem;
 }
 
+.fi-captain-delta .fi-badge {
+  font-size: 0.95rem;
+}
+
+.fi-memory-inline {
+  margin: 0.35rem 0 0;
+  font-size: 0.82rem;
+  color: var(--blue);
+  font-style: italic;
+}
+
+.fi-level-why {
+  margin: 0 0 0.35rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.fi-priority {
+  border-left: 4px solid #d29922;
+}
+
+.fi-priority-focus {
+  font-weight: 700;
+  margin: 0 0 0.25rem;
+}
+
+.fi-mission-title {
+  font-weight: 700;
+  margin: 0 0 0.25rem;
+}
+
+.fi-mission-label,
+.fi-vocab-label {
+  margin: 0.35rem 0 0.15rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.fi-vocab-used {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.5rem;
+}
+
+.fi-bands {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin: 0.5rem 0;
+}
+
+.fi-band-row {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--card);
+}
+
+.fi-band-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.45rem 0.6rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  list-style: none;
+}
+
+.fi-band-summary::-webkit-details-marker {
+  display: none;
+}
+
+.fi-band-summary.good strong { color: var(--green, #22c55e); }
+.fi-band-summary.warn strong { color: #d29922; }
+.fi-band-summary.bad strong { color: #e5534b; }
+
+.fi-band-detail {
+  margin: 0;
+  padding: 0 0.6rem 0.5rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.fi-compare-toggle {
+  background: none;
+  border: none;
+  color: var(--blue);
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0;
+  margin-bottom: 0.5rem;
+}
+
+.fi-what-changed li {
+  margin-bottom: 0.45rem;
+}
+
+.fi-what-changed li span {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 0.1rem;
+}
+
+.fi-followup {
+  border-left: 4px solid var(--blue);
+}
+
+.fi-followup-q {
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+
+.fi-followup-banner {
+  margin: 0.75rem 0;
+  padding: 0.65rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid var(--blue);
+  background: color-mix(in srgb, var(--blue) 8%, var(--bg));
+  font-size: 0.82rem;
+}
+
+.fi-followup-banner p {
+  margin: 0.35rem 0 0;
+}
+
+.fi-followup-active {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-style: italic;
+  margin: 0.5rem 0;
+}
+
+.fi-closing {
+  margin: 0.75rem 0 0.25rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
 .fi-pronunciation-extra {
   margin-top: 0.75rem;
 }

@@ -1,4 +1,5 @@
 import { buildLocalInstructorReport } from "@/lib/flightInstructor/localReport";
+import { normalizeFlightInstructorReport } from "@/lib/flightInstructor/normalizeReport";
 import { FLIGHT_INSTRUCTOR_SYSTEM_PROMPT } from "@/lib/flightInstructor/prompt";
 import type { FlightInstructorReport, FlightInstructorRequest } from "@/lib/flightInstructor/types";
 import { localEvaluate } from "@/lib/evaluate/localEvaluate";
@@ -30,6 +31,7 @@ export async function POST(request: Request) {
     keywords,
     answerMode = "peel",
     memoryContext,
+    followUpContext,
     scores,
     icaoLevel,
     azureWeakWords,
@@ -41,7 +43,7 @@ export async function POST(request: Request) {
 
   const local = localEvaluate({
     transcript,
-    question,
+    question: followUpContext?.followUpQuestion ?? question,
     modelAnswer,
     type,
     keywords,
@@ -55,9 +57,22 @@ export async function POST(request: Request) {
     local.icaoLevel.overall = icaoLevel as typeof local.icaoLevel.overall;
   }
 
+  const fallbackSource = "local" as const;
+  const buildFallback = () =>
+    normalizeFlightInstructorReport(
+      buildLocalInstructorReport(local, question, modelAnswer, keywords ?? []),
+      {
+        transcript,
+        modelAnswer,
+        feedback: local,
+        keywords: keywords ?? [],
+        source: fallbackSource,
+      },
+    );
+
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
-    return Response.json(buildLocalInstructorReport(local, question, modelAnswer));
+    return Response.json(buildFallback());
   }
 
   try {
@@ -88,6 +103,7 @@ export async function POST(request: Request) {
               missingKeywords: local.missingKeywords,
               azureWeakWords: azureWeakWords ?? [],
               memoryContext: memoryContext ?? {},
+              followUpContext: followUpContext ?? null,
             }),
           },
         ],
@@ -96,32 +112,27 @@ export async function POST(request: Request) {
 
     if (!res.ok) {
       console.error("Flight instructor OpenAI error:", await res.text());
-      return Response.json(buildLocalInstructorReport(local, question, modelAnswer));
+      return Response.json(buildFallback());
     }
 
     const data = await res.json();
     const raw = data.choices?.[0]?.message?.content;
-    const parsed = JSON.parse(raw) as FlightInstructorReport;
+    const parsed = JSON.parse(raw) as Partial<FlightInstructorReport>;
 
-    const report: FlightInstructorReport = {
-      ...parsed,
-      source: "openai",
-      icaoEvaluation: {
-        ...parsed.icaoEvaluation,
-        disclaimer:
-          parsed.icaoEvaluation?.disclaimer ??
-          "This is a training estimate — not an official SDEA/ANAC rating.",
+    const report = normalizeFlightInstructorReport(
+      { ...parsed, source: "openai" },
+      {
+        transcript,
+        modelAnswer,
+        feedback: local,
+        keywords: keywords ?? [],
+        source: "openai",
       },
-      improvedAnswer: {
-        studentVersion: parsed.improvedAnswer?.studentVersion ?? transcript,
-        coachVersion: parsed.improvedAnswer?.coachVersion ?? local.suggestedAnswer ?? modelAnswer,
-        whatChanged: parsed.improvedAnswer?.whatChanged ?? [],
-      },
-    };
+    );
 
     return Response.json(report);
   } catch (e) {
     console.error(e);
-    return Response.json(buildLocalInstructorReport(local, question, modelAnswer));
+    return Response.json(buildFallback());
   }
 }

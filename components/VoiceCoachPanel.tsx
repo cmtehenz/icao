@@ -102,6 +102,11 @@ export default function VoiceCoachPanel({
   const [trainWords, setTrainWords] = useState<VaultWordCandidate[]>([]);
   const [manualWord, setManualWord] = useState("");
   const [open, setOpen] = useState(embedded);
+  const [followUpContext, setFollowUpContext] = useState<{
+    originalQuestion: string;
+    followUpQuestion: string;
+    previousTranscript: string;
+  } | null>(null);
 
   const addWordToVault = (word: string) => {
     const { added, updated, total } = addManualWordsToVault(word, question.slice(0, 80));
@@ -132,13 +137,14 @@ export default function VoiceCoachPanel({
     setAudioSaveNote(null);
     setActivityNote(null);
     setTrainWords([]);
+    const evalQuestion = followUpContext?.followUpQuestion ?? question;
     try {
       const res = await fetch("/api/evaluate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           transcript,
-          question,
+          question: evalQuestion,
           modelAnswer,
           type: evaluateType,
           keywords,
@@ -199,7 +205,7 @@ export default function VoiceCoachPanel({
         const report = user
           ? await fetchFlightInstructorReport({
               transcript: data.transcript,
-              question,
+              question: evalQuestion,
               modelAnswer,
               type: evaluateType,
               keywords,
@@ -209,21 +215,25 @@ export default function VoiceCoachPanel({
               scores: data.scores,
               icaoLevel: data.icaoLevel?.overall,
               azureWeakWords: data.azurePronunciation?.weakWords,
+              followUpContext: followUpContext ?? undefined,
             })
-          : buildLocalInstructorReport(data, question, modelAnswer);
+          : buildLocalInstructorReport(data, evalQuestion, modelAnswer, keywords);
         setInstructorReport(report);
+        if (followUpContext) {
+          setFollowUpContext(null);
+        }
         recordInstructorSession({
           type: evaluateType,
           cardNum,
           situationId,
-          question,
+          question: evalQuestion,
           transcript: data.transcript,
           overallScore: data.scores.overall,
-          icaoLevel: data.icaoLevel?.overall ?? report.icaoEvaluation.estimatedLevel,
+          icaoLevel: data.icaoLevel?.overall ?? report.icaoBands.estimatedLevel,
           report,
         });
       } catch {
-        setInstructorReport(buildLocalInstructorReport(data, question, modelAnswer));
+        setInstructorReport(buildLocalInstructorReport(data, evalQuestion, modelAnswer, keywords));
       } finally {
         setInstructorLoading(false);
       }
@@ -361,7 +371,7 @@ export default function VoiceCoachPanel({
     setLastAudioBlob(audioBlob);
   };
 
-  const tryAgain = () => {
+  const tryAgain = (keepFollowUp = false) => {
     if (feedback && !firstAttempt) {
       setFirstAttempt(feedback);
     }
@@ -369,8 +379,22 @@ export default function VoiceCoachPanel({
     setInstructorReport(null);
     setVaultSaved(null);
     setTrainWords([]);
+    if (!keepFollowUp) {
+      setFollowUpContext(null);
+    }
     azure.clear();
     speech.clear();
+  };
+
+  const answerFollowUp = (followUpQuestion: string) => {
+    if (feedback) {
+      setFollowUpContext({
+        originalQuestion: question,
+        followUpQuestion,
+        previousTranscript: feedback.transcript,
+      });
+    }
+    tryAgain(true);
   };
 
   const attemptCompare =
@@ -504,16 +528,25 @@ export default function VoiceCoachPanel({
         </div>
       )}
 
+      {followUpContext && !feedback && (
+        <div className="fi-followup-banner">
+          <strong>👨‍✈️ Captain Delta — follow-up</strong>
+          <p>{followUpContext.followUpQuestion}</p>
+        </div>
+      )}
+
       {instructorLoading && (
-        <p className="fi-loading">✈️ Flight Instructor is preparing your coaching report…</p>
+        <p className="fi-loading">👨‍✈️ Captain Delta is preparing your debrief…</p>
       )}
 
       {instructorReport && feedback && (
         <FlightInstructorReportPanel
           report={instructorReport}
           feedback={feedback}
-          onTryAgain={tryAgain}
+          onTryAgain={() => tryAgain()}
+          onAnswerFollowUp={answerFollowUp}
           attemptCompare={attemptCompare}
+          followUpBanner={followUpContext?.followUpQuestion ?? null}
         />
       )}
 

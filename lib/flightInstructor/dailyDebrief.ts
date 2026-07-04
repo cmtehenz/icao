@@ -11,49 +11,47 @@ export function buildLocalDailyDebrief(date = todayKey()): DailyDebrief {
 
   const strengths: string[] = [];
   if (sessions.some((s) => s.overallScore >= 70)) {
-    strengths.push("Good confidence in at least one coach session today");
+    strengths.push("Good confidence in at least one debrief today");
   }
   if (sessions.length >= 2) {
-    strengths.push("You showed up for multiple practice blocks");
+    strengths.push("Multiple practice blocks logged — solid habit");
   }
   const avg =
     sessions.length > 0
       ? Math.round(sessions.reduce((s, x) => s + x.overallScore, 0) / sessions.length)
       : null;
-  if (avg != null && avg >= 65) strengths.push("Solid overall structure in today's answers");
+  if (avg != null && avg >= 65) {
+    strengths.push("Clear organization in today's answers");
+  }
+  if (sessions.some((s) => s.naturalnessLevel === "natural" || s.naturalnessLevel === "professional_pilot")) {
+    strengths.push("Aviation vocabulary sounding more natural");
+  }
 
   if (!strengths.length) {
-    strengths.push("You started today's training — consistency matters most");
+    strengths.push("You started today's training — consistency builds Level 4");
   }
 
-  const needs: string[] = [];
+  const focusNextFlight: string[] = [];
   for (const area of insights) {
-    for (const item of area.items.slice(0, 2)) {
-      needs.push(`${area.label}: ${item.label}`);
+    for (const item of area.items.slice(0, 1)) {
+      focusNextFlight.push(`${area.label}: ${item.label}`);
     }
   }
+  if (!focusNextFlight.length) {
+    focusNextFlight.push("More natural pilot language", "Better connectors", "Less translated English");
+  }
 
-  const achievement =
-    sessions.length >= 2 && avg != null
-      ? avg >= 70
-        ? "You sounded more structured than your first session today."
-        : "You completed multiple recordings — that builds real speaking habit."
-      : sessions.length === 1
-        ? "First coach session of the day logged — come back for one more block."
-        : "Complete at least one Coach recording to unlock a personalized debrief.";
-
-  const missionItems = next
-    ? [next.title, ...needs.slice(0, 2)]
-    : ["Review today's weakest vocabulary", "One Part 2 simulation", "Pronunciation bank"];
+  const practiceAreas = next
+    ? [next.title, "Weather briefing", "CRM", ...focusNextFlight.slice(0, 1)]
+    : ["Weather", "Briefing", "CRM"];
 
   return {
     date,
     strengths: strengths.slice(0, 4),
-    needsImprovement: needs.slice(0, 5),
-    achievement,
-    tomorrowMission: {
-      items: missionItems.slice(0, 5),
-      estimatedMinutes: 18,
+    focusNextFlight: focusNextFlight.slice(0, 4),
+    mission: {
+      practiceAreas: practiceAreas.slice(0, 4),
+      estimatedMinutes: 8,
     },
     source: "local",
   };

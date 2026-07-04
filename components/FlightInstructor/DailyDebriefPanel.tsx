@@ -17,9 +17,9 @@ export default function DailyDebriefPanel() {
   const debrief = useMemo(() => buildLocalDailyDebrief(), [tick]);
 
   return (
-    <section className="fi-daily-debrief" aria-label="Daily debrief">
+    <section className="fi-daily-debrief" aria-label="Flight debrief">
       <header>
-        <h3>✈ Daily Debrief</h3>
+        <h3>✈ Flight Debrief</h3>
         <p className="fi-debrief-date">{debrief.date}</p>
       </header>
 
@@ -33,32 +33,24 @@ export default function DailyDebriefPanel() {
           </ul>
         </div>
         <div>
-          <h4>Needs improvement</h4>
-          {debrief.needsImprovement.length ? (
-            <ul>
-              {debrief.needsImprovement.map((s) => (
-                <li key={s}>• {s}</li>
-              ))}
-            </ul>
-          ) : (
-            <p className="fi-debrief-empty">Practice more today to populate this section.</p>
-          )}
+          <h4>Focus for next flight</h4>
+          <ul>
+            {debrief.focusNextFlight.map((s) => (
+              <li key={s}>• {s}</li>
+            ))}
+          </ul>
         </div>
       </div>
 
-      <div className="fi-debrief-achievement">
-        <strong>Today&apos;s achievement</strong>
-        <p>{debrief.achievement}</p>
-      </div>
-
       <div className="fi-debrief-mission">
-        <strong>Mission for tomorrow</strong>
+        <strong>Mission</strong>
+        <p className="fi-mission-label">Practice</p>
         <ul>
-          {debrief.tomorrowMission.items.map((item) => (
+          {debrief.mission.practiceAreas.map((item) => (
             <li key={item}>{item}</li>
           ))}
         </ul>
-        <p>Estimated: {debrief.tomorrowMission.estimatedMinutes} minutes</p>
+        <p>Estimated: {debrief.mission.estimatedMinutes} minutes</p>
       </div>
     </section>
   );

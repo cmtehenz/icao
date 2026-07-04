@@ -75,7 +75,7 @@ export function recordInstructorSession(input: {
   const store = loadInstructorMemory();
   const date = todayKey();
   const weakAreas = [
-    ...input.report.pilotVocabulary.missingExpressions,
+    ...input.report.pilotVocabulary.nextToLearn,
     ...input.report.naturalnessReview.suggestions.map((s) => s.studentPhrase),
   ].slice(0, 6);
 
@@ -95,7 +95,7 @@ export function recordInstructorSession(input: {
   };
 
   let pronunciationMistakes = { ...store.pronunciationMistakes };
-  for (const expr of input.report.pilotVocabulary.missingExpressions) {
+  for (const expr of input.report.pilotVocabulary.nextToLearn) {
     pronunciationMistakes = bump(pronunciationMistakes, expr);
   }
 

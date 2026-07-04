@@ -1,24 +1,34 @@
 import type { EvaluateFeedback } from "@/lib/evaluate/types";
-import type { FlightInstructorReport, NaturalnessLevel, PilotVocabRating } from "@/lib/flightInstructor/types";
+import type { FlightInstructorReport, NaturalnessLevel, SkillBand } from "@/lib/flightInstructor/types";
+import { normalizeFlightInstructorReport } from "@/lib/flightInstructor/normalizeReport";
 
 function naturalnessFromScores(overall: number): NaturalnessLevel {
-  if (overall >= 82) return "professional_pilot";
-  if (overall >= 70) return "natural";
-  if (overall >= 55) return "acceptable";
-  return "scripted";
-}
-
-function vocabRating(content: number, missing: number): PilotVocabRating {
-  if (content >= 80 && missing <= 1) return "excellent";
-  if (content >= 65) return "good";
+  if (overall >= 85) return "professional_pilot";
+  if (overall >= 72) return "natural";
+  if (overall >= 58) return "understandable";
+  if (overall >= 42) return "scripted";
   return "needs_improvement";
 }
 
-/** Build instructor-shaped report from existing evaluate feedback when OpenAI is unavailable. */
+function scoreToBand(score: number): SkillBand {
+  if (score >= 75) return "operational";
+  if (score >= 55) return "developing";
+  return "needs_practice";
+}
+
+function bandDetail(label: string, score: number): string {
+  const band = scoreToBand(score);
+  if (band === "operational") return `${label} sounds operational for exam practice.`;
+  if (band === "developing") return `${label} is developing — one focused repetition will help.`;
+  return `${label} needs practice — use the mission expressions in your next attempt.`;
+}
+
+/** Build Captain Delta report from evaluate feedback when OpenAI is unavailable. */
 export function buildLocalInstructorReport(
   feedback: EvaluateFeedback,
   question: string,
   modelAnswer: string,
+  keywords: string[] = [],
 ): FlightInstructorReport {
   const transcript = feedback.transcript.trim();
   const level = feedback.icaoLevel?.overall ?? 4;
@@ -26,15 +36,18 @@ export function buildLocalInstructorReport(
 
   const positives =
     feedback.strengths.length > 0
-      ? feedback.strengths.slice(0, 4)
+      ? feedback.strengths.slice(0, 2)
       : [
-          "You completed a full spoken answer — that already builds exam confidence.",
-          "Your answer shows you understood the question.",
+          "You delivered a full spoken answer — that builds real SDEA confidence.",
+          "Your answer shows you understood the scenario.",
         ];
 
-  const suggestions = feedback.improvements.slice(0, 3).map((imp) => ({
-    studentPhrase: transcript.slice(0, 80) + (transcript.length > 80 ? "…" : ""),
-    pilotPhrase: modelAnswer.split(/[.!?]/)[0]?.trim() ?? modelAnswer.slice(0, 120),
+  const suggestions = feedback.improvements.slice(0, 2).map((imp, i) => ({
+    studentPhrase:
+      i === 0
+        ? transcript.slice(0, 90) + (transcript.length > 90 ? "…" : "")
+        : imp.slice(0, 60),
+    pilotPhrase: modelAnswer.split(/[.!?]/)[0]?.trim() ?? modelAnswer.slice(0, 100),
     why: imp,
   }));
 
@@ -42,68 +55,105 @@ export function buildLocalInstructorReport(
     feedback.suggestedAnswer?.trim() ||
     (transcript.length > 20 ? transcript : modelAnswer);
 
-  return {
-    positiveFeedback: positives,
+  const alreadyUsed = keywords
+    ? keywords.filter((k) => !feedback.missingKeywords.some((m) => m.toLowerCase() === k.toLowerCase()))
+    : [];
+  const nextToLearn = feedback.missingKeywords.slice(0, 5);
+
+  const priorityFocus =
+    nat === "scripted" || nat === "needs_improvement"
+      ? "More natural pilot language"
+      : nextToLearn.length
+        ? "Operational aviation vocabulary"
+        : "Smoother connectors between ideas";
+
+  const raw = {
+    positiveOpening: positives,
     naturalnessReview: {
       summary:
         nat === "professional_pilot" || nat === "natural"
-          ? "Your answer sounded reasonably pilot-like. Small wording upgrades would make it more professional."
-          : "Some phrases sound like textbook English rather than cockpit communication. Focus on shorter, operational wording.",
+          ? "You sounded reasonably pilot-like. Small wording upgrades would make it sharper."
+          : "Some phrases read like translated English — shorter, operational wording will help.",
       suggestions,
       level: nat,
+      levelWhy:
+        nat === "professional_pilot" || nat === "natural"
+          ? "Your phrasing fits how experienced pilots brief and explain decisions."
+          : "A few sentences still sound textbook rather than cockpit communication.",
     },
-    icaoEvaluation: {
-      pronunciation: `Training note: pronunciation score ${feedback.scores.pronunciation}/100.`,
-      fluency: `Keep a steady pace with clear pauses between ideas.`,
-      vocabulary: `Aviation vocabulary score ${feedback.scores.content}/100 — use operational terms where possible.`,
-      structure: `Structure score ${feedback.scores.structure}/100 — organize: situation → action → outcome.`,
-      interaction: `Interaction clarity ${feedback.scores.phraseology}/100.`,
-      estimatedLevel: level,
-      disclaimer: "This is a training estimate — not an official SDEA/ANAC rating.",
+    pilotLanguageReview: feedback.missingKeywords.slice(0, 3).map((term) => ({
+      term,
+      usage: `Pilots use "${term}" in briefings and CRM — try it in your next answer.`,
+    })),
+    priorityImprovement: {
+      focus: priorityFocus,
+      detail:
+        priorityFocus === "More natural pilot language"
+          ? "Rewrite one sentence at a time using the pilot phrases above — do not memorize a full script."
+          : `Work "${nextToLearn[0] ?? "situational awareness"}" into your next recording once.`,
+    },
+    mission: {
+      title: "Operational phrases",
+      expressions: [
+        ...nextToLearn.slice(0, 2),
+        "conservative decision",
+        "situational awareness",
+      ]
+        .filter(Boolean)
+        .slice(0, 3),
+      estimatedMinutes: 8,
     },
     improvedAnswer: {
       studentVersion: transcript || "(no speech detected)",
       coachVersion,
-      whatChanged: feedback.improvements.slice(0, 5).map((imp) => ({
+      whatChanged: feedback.improvements.slice(0, 3).map((imp) => ({
         change: imp,
-        why: "Improves ICAO structure or aviation naturalness.",
+        why: "Sounds more natural in operational aviation English.",
       })),
     },
-    pilotLanguage: feedback.missingKeywords.slice(0, 5).map((term) => ({
-      term,
-      usage: `Use "${term}" when describing this scenario to sound more operational.`,
-    })),
-    memoryCoaching: {
-      keyIdeas: extractKeyIdeas(question, modelAnswer),
-      note: "Speak from these ideas — do not memorize a full paragraph.",
+    pilotVocabulary: { alreadyUsed, nextToLearn },
+    icaoBands: {
+      pronunciation: {
+        band: scoreToBand(feedback.scores.pronunciation),
+        detail: bandDetail("Pronunciation", feedback.scores.pronunciation),
+      },
+      fluency: {
+        band: scoreToBand(feedback.scores.overall),
+        detail: "Keep a steady pace with clear pauses between ideas.",
+      },
+      vocabulary: {
+        band: scoreToBand(feedback.scores.content),
+        detail: bandDetail("Aviation vocabulary", feedback.scores.content),
+      },
+      structure: {
+        band: scoreToBand(feedback.scores.structure),
+        detail: bandDetail("Structure", feedback.scores.structure),
+      },
+      interaction: {
+        band: scoreToBand(feedback.scores.phraseology),
+        detail: bandDetail("Interaction", feedback.scores.phraseology),
+      },
+      estimatedLevel: level,
+      disclaimer: "Training estimate — not an official SDEA/ANAC rating.",
     },
-    personalCoaching: null,
-    nextMission: {
-      items: [
-        ...feedback.missingKeywords.slice(0, 2),
-        ...feedback.improvements.slice(0, 2).map((i) => i.slice(0, 60)),
-      ].filter(Boolean).slice(0, 4),
-      estimatedMinutes: 15,
-    },
-    confidenceMessage:
+    memoryNote: null,
+    followUpQuestion:
+      question.toLowerCase().includes("weather") ||
+      question.toLowerCase().includes("decision")
+        ? "What made you choose that course of action instead of continuing?"
+        : null,
+    closingLine:
       feedback.scores.overall >= 70
-        ? "This answer has a solid structure. You are getting closer to a consistent ICAO Level 4."
-        : "This answer has good raw material — I would only improve one part at a time. Keep recording.",
-    pilotVocabulary: {
-      rating: vocabRating(feedback.scores.content, feedback.missingKeywords.length),
-      missingExpressions: feedback.missingKeywords.slice(0, 6),
-    },
-    source: "local",
+        ? "Solid structure — one more recording with today's mission will sharpen it."
+        : "Good raw material — focus on one improvement, then record again.",
+    source: "local" as const,
   };
-}
 
-function extractKeyIdeas(question: string, modelAnswer: string): string[] {
-  const words = modelAnswer
-    .split(/\s+/)
-    .filter((w) => w.length > 4)
-    .slice(0, 8);
-  if (words.length >= 3) {
-    return ["Situation", "Action", "Outcome", "Lesson"];
-  }
-  return [question.slice(0, 40), "Details", "Decision", "Lesson learned"];
+  return normalizeFlightInstructorReport(raw, {
+    transcript,
+    modelAnswer,
+    feedback,
+    keywords,
+    source: "local",
+  });
 }

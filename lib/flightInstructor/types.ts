@@ -1,8 +1,18 @@
 import type { EvaluateType } from "@/lib/evaluate/types";
 
-export type NaturalnessLevel = "scripted" | "acceptable" | "natural" | "professional_pilot";
+export type NaturalnessLevel =
+  | "professional_pilot"
+  | "natural"
+  | "understandable"
+  | "scripted"
+  | "needs_improvement";
 
-export type PilotVocabRating = "excellent" | "good" | "needs_improvement";
+export type SkillBand = "operational" | "developing" | "needs_practice";
+
+export type SkillBandNote = {
+  band: SkillBand;
+  detail: string;
+};
 
 export type NaturalnessSuggestion = {
   studentPhrase: string;
@@ -21,41 +31,44 @@ export type PilotLanguageTip = {
 };
 
 export type FlightInstructorReport = {
-  positiveFeedback: string[];
+  positiveOpening: string[];
   naturalnessReview: {
     summary: string;
     suggestions: NaturalnessSuggestion[];
     level: NaturalnessLevel;
+    levelWhy: string;
   };
-  icaoEvaluation: {
-    pronunciation: string;
-    fluency: string;
-    vocabulary: string;
-    structure: string;
-    interaction: string;
-    estimatedLevel: number;
-    disclaimer: string;
+  pilotLanguageReview: PilotLanguageTip[];
+  priorityImprovement: {
+    focus: string;
+    detail: string;
+  };
+  mission: {
+    title: string;
+    expressions: string[];
+    estimatedMinutes: number;
   };
   improvedAnswer: {
     studentVersion: string;
     coachVersion: string;
     whatChanged: AnswerChange[];
   };
-  pilotLanguage: PilotLanguageTip[];
-  memoryCoaching: {
-    keyIdeas: string[];
-    note: string;
-  };
-  personalCoaching: string | null;
-  nextMission: {
-    items: string[];
-    estimatedMinutes: number;
-  };
-  confidenceMessage: string;
   pilotVocabulary: {
-    rating: PilotVocabRating;
-    missingExpressions: string[];
+    alreadyUsed: string[];
+    nextToLearn: string[];
   };
+  icaoBands: {
+    pronunciation: SkillBandNote;
+    fluency: SkillBandNote;
+    vocabulary: SkillBandNote;
+    structure: SkillBandNote;
+    interaction: SkillBandNote;
+    estimatedLevel: number;
+    disclaimer: string;
+  };
+  memoryNote: string | null;
+  followUpQuestion: string | null;
+  closingLine: string;
   source: "openai" | "local";
 };
 
@@ -68,7 +81,6 @@ export type FlightInstructorRequest = {
   answerMode?: "level4" | "level5" | "peel";
   cardNum?: string;
   situationId?: string;
-  /** Scores from /api/evaluate — helps the instructor stay consistent. */
   scores?: {
     overall: number;
     structure: number;
@@ -78,6 +90,11 @@ export type FlightInstructorRequest = {
   };
   icaoLevel?: number;
   azureWeakWords?: string[];
+  followUpContext?: {
+    originalQuestion: string;
+    followUpQuestion: string;
+    previousTranscript: string;
+  };
 };
 
 export type InstructorSessionRecord = {
@@ -106,24 +123,24 @@ export type InstructorMemoryStore = {
 export type DailyDebrief = {
   date: string;
   strengths: string[];
-  needsImprovement: string[];
-  achievement: string;
-  tomorrowMission: {
-    items: string[];
+  focusNextFlight: string[];
+  mission: {
+    practiceAreas: string[];
     estimatedMinutes: number;
   };
   source: "openai" | "local";
 };
 
 export const NATURALNESS_LABELS: Record<NaturalnessLevel, string> = {
-  scripted: "Scripted",
-  acceptable: "Acceptable",
-  natural: "Natural",
-  professional_pilot: "Professional Pilot",
+  professional_pilot: "🟢 Professional Pilot",
+  natural: "🟢 Natural",
+  understandable: "🟡 Understandable",
+  scripted: "🟠 Scripted",
+  needs_improvement: "🔴 Needs Improvement",
 };
 
-export const PILOT_VOCAB_LABELS: Record<PilotVocabRating, string> = {
-  excellent: "Excellent",
-  good: "Good",
-  needs_improvement: "Needs Improvement",
+export const SKILL_BAND_LABELS: Record<SkillBand, string> = {
+  operational: "Operational",
+  developing: "Developing",
+  needs_practice: "Needs Practice",
 };

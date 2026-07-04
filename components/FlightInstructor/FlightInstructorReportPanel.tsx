@@ -1,65 +1,102 @@
 "use client";
 
-import type { FlightInstructorReport } from "@/lib/flightInstructor/types";
+import { useState } from "react";
+import type { FlightInstructorReport, SkillBand } from "@/lib/flightInstructor/types";
 import {
   NATURALNESS_LABELS,
-  PILOT_VOCAB_LABELS,
+  SKILL_BAND_LABELS,
 } from "@/lib/flightInstructor/types";
-import IcaoLevelPanel from "@/components/IcaoLevelPanel";
 import type { EvaluateFeedback } from "@/lib/evaluate/types";
 
 type AttemptCompare = {
   first: EvaluateFeedback;
   second: EvaluateFeedback;
+  firstNaturalness?: string;
+  secondNaturalness?: string;
 };
 
 type Props = {
   report: FlightInstructorReport;
   feedback: EvaluateFeedback;
   onTryAgain: () => void;
+  onAnswerFollowUp?: (question: string) => void;
   attemptCompare?: AttemptCompare | null;
+  followUpBanner?: string | null;
 };
 
 function naturalnessClass(level: FlightInstructorReport["naturalnessReview"]["level"]): string {
   if (level === "professional_pilot" || level === "natural") return "good";
-  if (level === "acceptable") return "warn";
+  if (level === "understandable") return "warn";
   return "bad";
+}
+
+function bandClass(band: SkillBand): string {
+  if (band === "operational") return "good";
+  if (band === "developing") return "warn";
+  return "bad";
+}
+
+function IcaoBandRow({
+  label,
+  band,
+  detail,
+}: {
+  label: string;
+  band: SkillBand;
+  detail: string;
+}) {
+  return (
+    <details className="fi-band-row">
+      <summary className={`fi-band-summary ${bandClass(band)}`}>
+        <span>{label}</span>
+        <strong>{SKILL_BAND_LABELS[band]}</strong>
+      </summary>
+      <p className="fi-band-detail">{detail}</p>
+    </details>
+  );
 }
 
 export default function FlightInstructorReportPanel({
   report,
   feedback,
   onTryAgain,
+  onAnswerFollowUp,
   attemptCompare,
+  followUpBanner,
 }: Props) {
+  const [compareOpen, setCompareOpen] = useState(false);
+
   return (
-    <div className="fi-report">
+    <div className="fi-report fi-captain-delta">
       <header className="fi-report-hero">
-        <span className="fi-badge">✈️ AI Flight Instructor</span>
-        <p className="fi-confidence">{report.confidenceMessage}</p>
+        <span className="fi-badge">👨‍✈️ Captain Delta</span>
+        {report.memoryNote && (
+          <p className="fi-memory-inline">{report.memoryNote}</p>
+        )}
       </header>
 
       <section className="fi-section fi-positive">
-        <h3>What you did well</h3>
+        <h3>1 · Positive opening</h3>
         <ul>
-          {report.positiveFeedback.map((item) => (
+          {report.positiveOpening.map((item) => (
             <li key={item}>{item}</li>
           ))}
         </ul>
       </section>
 
       <section className="fi-section">
-        <h3>Naturalness</h3>
+        <h3>2 · Naturalness review</h3>
         <p className={`fi-naturalness-score ${naturalnessClass(report.naturalnessReview.level)}`}>
           {NATURALNESS_LABELS[report.naturalnessReview.level]}
         </p>
+        <p className="fi-level-why">{report.naturalnessReview.levelWhy}</p>
         <p>{report.naturalnessReview.summary}</p>
         {report.naturalnessReview.suggestions.length > 0 && (
           <ul className="fi-suggestions">
             {report.naturalnessReview.suggestions.map((s) => (
               <li key={`${s.studentPhrase}-${s.pilotPhrase}`}>
                 <span className="fi-student-line">You: {s.studentPhrase}</span>
-                <span className="fi-pilot-line">Pilot: {s.pilotPhrase}</span>
+                <span className="fi-pilot-line">I would naturally say: {s.pilotPhrase}</span>
                 <span className="fi-why">{s.why}</span>
               </li>
             ))}
@@ -67,51 +104,11 @@ export default function FlightInstructorReportPanel({
         )}
       </section>
 
-      <section className="fi-section">
-        <h3>ICAO training estimate</h3>
-        <p className="fi-disclaimer">{report.icaoEvaluation.disclaimer}</p>
-        {feedback.icaoLevel && <IcaoLevelPanel rating={feedback.icaoLevel} />}
-        <ul className="fi-criteria-notes">
-          <li><strong>Pronunciation:</strong> {report.icaoEvaluation.pronunciation}</li>
-          <li><strong>Fluency:</strong> {report.icaoEvaluation.fluency}</li>
-          <li><strong>Vocabulary:</strong> {report.icaoEvaluation.vocabulary}</li>
-          <li><strong>Structure:</strong> {report.icaoEvaluation.structure}</li>
-          <li><strong>Interaction:</strong> {report.icaoEvaluation.interaction}</li>
-        </ul>
-        <p className="fi-level-estimate">
-          Estimated level: <strong>ICAO {report.icaoEvaluation.estimatedLevel}</strong>
-        </p>
-      </section>
-
-      <section className="fi-section fi-compare">
-        <h3>Improve my answer</h3>
-        <div className="fi-version-block">
-          <strong>Your version</strong>
-          <p>{report.improvedAnswer.studentVersion}</p>
-        </div>
-        <div className="fi-version-block coach">
-          <strong>Coach version</strong>
-          <p>{report.improvedAnswer.coachVersion}</p>
-        </div>
-        {report.improvedAnswer.whatChanged.length > 0 && (
-          <>
-            <h4>What changed</h4>
-            <ul>
-              {report.improvedAnswer.whatChanged.map((c) => (
-                <li key={c.change}>
-                  <strong>{c.change}</strong> — {c.why}
-                </li>
-              ))}
-            </ul>
-          </>
-        )}
-      </section>
-
-      {report.pilotLanguage.length > 0 && (
+      {report.pilotLanguageReview.length > 0 && (
         <section className="fi-section">
-          <h3>Pilot language</h3>
+          <h3>3 · Pilot language</h3>
           <ul className="fi-pilot-terms">
-            {report.pilotLanguage.map((p) => (
+            {report.pilotLanguageReview.map((p) => (
               <li key={p.term}>
                 <strong>{p.term}</strong> — {p.usage}
               </li>
@@ -120,64 +117,158 @@ export default function FlightInstructorReportPanel({
         </section>
       )}
 
-      <section className="fi-section fi-memory">
-        <h3>Memory coaching</h3>
-        <p className="fi-memory-note">{report.memoryCoaching.note}</p>
-        <div className="fi-memory-chain">
-          {report.memoryCoaching.keyIdeas.map((idea, i) => (
-            <span key={idea}>
-              {i > 0 && <span className="fi-memory-arrow">↓</span>}
-              <span className="fi-memory-step">{idea}</span>
-            </span>
-          ))}
-        </div>
-      </section>
-
-      {report.personalCoaching && (
-        <section className="fi-section fi-personal">
-          <h3>Personal coaching</h3>
-          <p>{report.personalCoaching}</p>
-        </section>
-      )}
-
-      <section className="fi-section">
-        <h3>Pilot vocabulary</h3>
-        <p className="fi-vocab-rating">{PILOT_VOCAB_LABELS[report.pilotVocabulary.rating]}</p>
-        {report.pilotVocabulary.missingExpressions.length > 0 && (
-          <p>Missing aviation expressions: {report.pilotVocabulary.missingExpressions.join(", ")}</p>
-        )}
+      <section className="fi-section fi-priority">
+        <h3>4 · Today&apos;s focus</h3>
+        <p className="fi-priority-focus">{report.priorityImprovement.focus}</p>
+        <p>{report.priorityImprovement.detail}</p>
       </section>
 
       <section className="fi-section fi-mission">
-        <h3>Next mission</h3>
+        <h3>5 · Mission</h3>
+        <p className="fi-mission-title">{report.mission.title}</p>
+        <p className="fi-mission-label">Use in your next answer:</p>
         <ul>
-          {report.nextMission.items.map((item) => (
-            <li key={item}>{item}</li>
+          {report.mission.expressions.map((expr) => (
+            <li key={expr}>• {expr}</li>
           ))}
         </ul>
-        <p className="fi-mission-time">Estimated: {report.nextMission.estimatedMinutes} minutes</p>
+        <p className="fi-mission-time">Estimated: {report.mission.estimatedMinutes} minutes</p>
       </section>
+
+      <section className="fi-section fi-vocab">
+        <h3>Pilot vocabulary</h3>
+        {report.pilotVocabulary.alreadyUsed.length > 0 && (
+          <>
+            <p className="fi-vocab-label">You already used</p>
+            <ul className="fi-vocab-used">
+              {report.pilotVocabulary.alreadyUsed.map((w) => (
+                <li key={w}>✔ {w}</li>
+              ))}
+            </ul>
+          </>
+        )}
+        {report.pilotVocabulary.nextToLearn.length > 0 && (
+          <>
+            <p className="fi-vocab-label">Next expressions to learn</p>
+            <ul>
+              {report.pilotVocabulary.nextToLearn.map((w) => (
+                <li key={w}>• {w}</li>
+              ))}
+            </ul>
+          </>
+        )}
+      </section>
+
+      <section className="fi-section fi-icao-bands">
+        <h3>ICAO training estimate</h3>
+        <p className="fi-disclaimer">{report.icaoBands.disclaimer}</p>
+        <div className="fi-bands">
+          <IcaoBandRow
+            label="Pronunciation"
+            band={report.icaoBands.pronunciation.band}
+            detail={report.icaoBands.pronunciation.detail}
+          />
+          <IcaoBandRow
+            label="Fluency"
+            band={report.icaoBands.fluency.band}
+            detail={report.icaoBands.fluency.detail}
+          />
+          <IcaoBandRow
+            label="Vocabulary"
+            band={report.icaoBands.vocabulary.band}
+            detail={report.icaoBands.vocabulary.detail}
+          />
+          <IcaoBandRow
+            label="Structure"
+            band={report.icaoBands.structure.band}
+            detail={report.icaoBands.structure.detail}
+          />
+          <IcaoBandRow
+            label="Interaction"
+            band={report.icaoBands.interaction.band}
+            detail={report.icaoBands.interaction.detail}
+          />
+        </div>
+        <p className="fi-level-estimate">
+          Training level estimate: <strong>ICAO {report.icaoBands.estimatedLevel}</strong>
+        </p>
+      </section>
+
+      <section className="fi-section fi-compare">
+        <button
+          type="button"
+          className="fi-compare-toggle"
+          onClick={() => setCompareOpen((o) => !o)}
+        >
+          {compareOpen ? "Hide" : "Show"} answer comparison
+        </button>
+        {compareOpen && (
+          <>
+            <div className="fi-version-block">
+              <strong>Your answer</strong>
+              <p>{report.improvedAnswer.studentVersion}</p>
+            </div>
+            <div className="fi-version-block coach">
+              <strong>Coach answer</strong>
+              <p>{report.improvedAnswer.coachVersion}</p>
+            </div>
+            {report.improvedAnswer.whatChanged.length > 0 && (
+              <>
+                <h4>What changed</h4>
+                <ul className="fi-what-changed">
+                  {report.improvedAnswer.whatChanged.map((c) => (
+                    <li key={c.change}>
+                      <strong>{c.change}</strong>
+                      <span>{c.why}</span>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </>
+        )}
+      </section>
+
+      {report.followUpQuestion && onAnswerFollowUp && (
+        <section className="fi-section fi-followup">
+          <h3>Examiner follow-up</h3>
+          <p className="fi-followup-q">{report.followUpQuestion}</p>
+          <button
+            type="button"
+            className="btn secondary btn-sm"
+            onClick={() => onAnswerFollowUp(report.followUpQuestion!)}
+          >
+            Answer this follow-up
+          </button>
+        </section>
+      )}
+
+      {followUpBanner && (
+        <p className="fi-followup-active">Follow-up mode: {followUpBanner}</p>
+      )}
 
       {attemptCompare && (
         <section className="fi-section fi-replay-compare">
-          <h3>First vs second attempt</h3>
+          <h3>Attempt 1 vs Attempt 2</h3>
           <div className="fi-attempt-grid">
             <div>
-              <strong>First attempt</strong>
+              <strong>Attempt 1</strong>
               <p>{attemptCompare.first.scores.overall}% overall</p>
             </div>
             <div>
-              <strong>Second attempt</strong>
+              <strong>Attempt 2</strong>
               <p>{attemptCompare.second.scores.overall}% overall</p>
             </div>
           </div>
           <p className="fi-replay-delta">
             {attemptCompare.second.scores.overall - attemptCompare.first.scores.overall >= 0
-              ? `↑ +${attemptCompare.second.scores.overall - attemptCompare.first.scores.overall} points — nice improvement!`
-              : `Keep practicing — focus on the coach version above.`}
+              ? `↑ +${attemptCompare.second.scores.overall - attemptCompare.first.scores.overall} points — you're improving.`
+              : "Keep the mission expressions in mind — one more try."}
           </p>
         </section>
       )}
+
+      <p className="fi-closing">{report.closingLine}</p>
 
       <details className="fi-technical-scores">
         <summary>Technical scores</summary>
@@ -206,7 +297,7 @@ export default function FlightInstructorReportPanel({
       </details>
 
       <button type="button" className="btn green btn-large fi-try-again" onClick={onTryAgain}>
-        🎤 Try Again
+        🎤 Record Again
       </button>
     </div>
   );
