@@ -16,6 +16,10 @@ import { PART2_DAILY_MISSION_EVENT } from "@/lib/part2DailyMission";
 import { VOCAB_DAILY_MISSION_EVENT } from "@/lib/vocabDailyMission";
 import { DAILY_MISSION_LOG_EVENT } from "@/lib/dailyMissionLog";
 import { STUDY_ACTIVITY_RECORDED_EVENT } from "@/lib/studyActivityRecord";
+import CaptainDeltaPersonalBriefing from "@/components/CaptainDelta/Memory/CaptainDeltaPersonalBriefing";
+import CaptainDeltaReadinessPanel from "@/components/CaptainDelta/Memory/CaptainDeltaReadinessPanel";
+import CaptainDeltaWeeklyDebriefPanel from "@/components/CaptainDelta/Memory/CaptainDeltaWeeklyDebriefPanel";
+import CaptainDeltaQuestionHistoryPanel from "@/components/CaptainDelta/Memory/CaptainDeltaQuestionHistoryPanel";
 import { useStudyAgenda } from "@/hooks/useStudyAgenda";
 import {
   studyDayGoalPoints,
@@ -89,6 +93,10 @@ export default function HomePage() {
         </div>
       </header>
 
+      <CaptainDeltaPersonalBriefing />
+      <CaptainDeltaReadinessPanel />
+      <CaptainDeltaWeeklyDebriefPanel />
+
       <section className="home-continue-card">
         {missionComplete ? (
           <>
@@ -117,6 +125,8 @@ export default function HomePage() {
       </section>
 
       <DailyMissionPanel />
+
+      <CaptainDeltaQuestionHistoryPanel />
 
       <VaultWeakWordsPanel limit={3} />
 

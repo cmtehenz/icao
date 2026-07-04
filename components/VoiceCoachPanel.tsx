@@ -39,6 +39,8 @@ import { emitCaptainDeltaAfterAnswer } from "@/lib/captainDelta/events";
 import { useCaptainDeltaCoachBridge } from "@/hooks/useCaptainDeltaCoachBridge";
 import CaptainDeltaTarget from "@/components/CaptainDelta/Visual/CaptainDeltaTarget";
 import { keywordTargetId } from "@/lib/captainDelta/visual/types";
+import { emitCaptainDeltaSessionRecord } from "@/lib/captainDelta/memory/events";
+import CaptainDeltaConfidencePrompt from "@/components/CaptainDelta/Memory/CaptainDeltaConfidencePrompt";
 
 type Props = {
   question: string;
@@ -111,6 +113,7 @@ export default function VoiceCoachPanel({
     followUpQuestion: string;
     previousTranscript: string;
   } | null>(null);
+  const [confidenceQuestionId, setConfidenceQuestionId] = useState<string | null>(null);
   const guideRef = useRef<HTMLDivElement>(null);
 
   const addWordToVault = (word: string) => {
@@ -225,6 +228,28 @@ export default function VoiceCoachPanel({
           : buildLocalInstructorReport(data, evalQuestion, modelAnswer, keywords);
         setInstructorReport(report);
         emitCaptainDeltaAfterAnswer({ report, transcript: data.transcript });
+        const sessionLabel = cardNum
+          ? `Question ${cardNum}`
+          : situationId
+            ? `${evaluateType} · ${situationId}`
+            : evaluateType;
+        const sessionQid = cardNum
+          ? `part1-${cardNum}`
+          : situationId
+            ? `${evaluateType}-${situationId}`
+            : evaluateType;
+        emitCaptainDeltaSessionRecord({
+          type: evaluateType,
+          cardNum,
+          situationId,
+          question: evalQuestion,
+          label: sessionLabel,
+          transcript: data.transcript,
+          overallScore: data.scores.overall,
+          icaoLevel: data.icaoLevel?.overall ?? report.icaoBands.estimatedLevel,
+          report,
+        });
+        setConfidenceQuestionId(sessionQid);
         if (followUpContext) {
           setFollowUpContext(null);
         }
@@ -388,6 +413,7 @@ export default function VoiceCoachPanel({
     if (!keepFollowUp) {
       setFollowUpContext(null);
     }
+    setConfidenceQuestionId(null);
     azure.clear();
     speech.clear();
   };
@@ -580,7 +606,14 @@ export default function VoiceCoachPanel({
       )}
 
       {instructorReport && feedback && (
-        <FlightInstructorReportPanel
+        <>
+          {confidenceQuestionId && (
+            <CaptainDeltaConfidencePrompt
+              questionId={confidenceQuestionId}
+              onSelect={() => setConfidenceQuestionId(null)}
+            />
+          )}
+          <FlightInstructorReportPanel
           report={instructorReport}
           feedback={feedback}
           onTryAgain={() => tryAgain()}
@@ -588,6 +621,7 @@ export default function VoiceCoachPanel({
           attemptCompare={attemptCompare}
           followUpBanner={followUpContext?.followUpQuestion ?? null}
         />
+        </>
       )}
 
       {instructorReport && feedback && (
