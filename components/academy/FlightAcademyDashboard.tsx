@@ -26,6 +26,15 @@ import { CAPTAIN_DELTA_MEMORY_EVENT } from "@/lib/captainDelta/memory/store";
 import { STUDY_ACTIVITY_RECORDED_EVENT } from "@/lib/studyActivityRecord";
 import { daysUntilExam } from "@/lib/captainDelta/examDate";
 
+const QUICK_LINKS = [
+  { href: "/part1", label: "Part 1", desc: "Aviation topics", icon: "✈" },
+  { href: "/part2", label: "Part 2", desc: "Readback & interaction", icon: "📡" },
+  { href: "/pronunciation", label: "Pronúncia", desc: "Word bank", icon: "🎤" },
+  { href: "/vocabulario", label: "Vocabulário", desc: "SRS + shadowing", icon: "📚" },
+  { href: "/simulado", label: "Simulado", desc: "Mock exam", icon: "🎯" },
+  { href: "/escutar-prova", label: "Escutar", desc: "Full exam listening", icon: "🎧" },
+] as const;
+
 function formatFlightDate(iso: string): string {
   return new Date(iso).toLocaleDateString("en-US", {
     weekday: "long",
@@ -145,6 +154,21 @@ export default function FlightAcademyDashboard() {
         <Link href={startHref} className="btn purple btn-large cda-start-flight">
           Start Flight
         </Link>
+      </section>
+
+      <section className="cda-quick-nav" aria-label="Training areas">
+        <h2>Training areas</h2>
+        <div className="cda-quick-grid">
+          {QUICK_LINKS.map((item) => (
+            <Link key={item.href} href={item.href} className="cda-quick-card">
+              <span className="cda-quick-icon" aria-hidden>
+                {item.icon}
+              </span>
+              <strong>{item.label}</strong>
+              <span>{item.desc}</span>
+            </Link>
+          ))}
+        </div>
       </section>
 
       <section className="cda-briefing" aria-label="Flight briefing">

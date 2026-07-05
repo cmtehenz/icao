@@ -56,13 +56,12 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       <CaptainDeltaExaminerBridge />
       <AcademySessionBridge />
       <CaptainDeltaRoleIndicator />
-      <div className="app-shell">
       <aside className="app-sidebar" aria-label="Main navigation">
         <div className="app-sidebar-brand">
           <span className="app-sidebar-logo">✈</span>
           <div>
             <strong>ICAO Delta</strong>
-            <span>Helicopter trainer</span>
+            <span>Flight Academy</span>
           </div>
         </div>
         <nav className="app-sidebar-nav">
@@ -102,8 +101,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         <p className="app-sidebar-foot">PWA · Study daily</p>
       </aside>
 
-      <div className="app-main">
-        <div className="app-content">{children}</div>
+      <div className="app-shell">
+        <div className="app-main">
+          <div className="app-content">{children}</div>
+        </div>
       </div>
 
       <StudyGoalBar />
@@ -130,7 +131,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           );
         })}
       </nav>
-    </div>
       </CaptainDeltaVisualProvider>
       </CaptainDeltaExaminerProvider>
     </CaptainDeltaProvider>
