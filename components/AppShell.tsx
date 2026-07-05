@@ -13,6 +13,8 @@ import { CaptainDeltaExaminerProvider } from "@/components/CaptainDelta/Examiner
 import CaptainDeltaExaminerBridge from "@/components/CaptainDelta/Examiner/CaptainDeltaExaminerBridge";
 import CaptainDeltaRoleIndicator from "@/components/CaptainDelta/Examiner/CaptainDeltaRoleIndicator";
 import AcademySessionBridge from "@/components/academy/AcademySessionBridge";
+import AcademyHomeCaptainBridge from "@/components/academy/AcademyHomeCaptainBridge";
+import AppNavigationPortal from "@/components/AppNavigationPortal";
 import PronunciationVaultBadge from "@/components/PronunciationVaultBadge";
 import StudyActivityToast from "@/components/study/StudyActivityToast";
 import { StudyGoalBar } from "@/components/study/StudyGoalBar";
@@ -49,89 +51,96 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <CaptainDeltaProvider>
       <CaptainDeltaExaminerProvider>
-      <CaptainDeltaVisualProvider>
-      <CaptainDeltaVisualBridge />
-      <CaptainDeltaVisualMission />
-      <CaptainDeltaMemoryBridge />
-      <CaptainDeltaExaminerBridge />
-      <AcademySessionBridge />
-      <CaptainDeltaRoleIndicator />
-      <aside className="app-sidebar" aria-label="Main navigation">
-        <div className="app-sidebar-brand">
-          <span className="app-sidebar-logo">✈</span>
-          <div>
-            <strong>ICAO Delta</strong>
-            <span>Flight Academy</span>
+        <CaptainDeltaVisualProvider>
+          <CaptainDeltaVisualBridge />
+          <CaptainDeltaVisualMission />
+          <CaptainDeltaMemoryBridge />
+          <CaptainDeltaExaminerBridge />
+          <AcademySessionBridge />
+          <AcademyHomeCaptainBridge />
+          <CaptainDeltaRoleIndicator />
+
+          <AppNavigationPortal>
+            <aside className="app-sidebar" aria-label="Main navigation">
+              <div className="app-sidebar-brand">
+                <span className="app-sidebar-logo">✈</span>
+                <div>
+                  <strong>ICAO Delta</strong>
+                  <span>Flight Academy</span>
+                </div>
+              </div>
+              <nav className="app-sidebar-nav">
+                {NAV_ITEMS.map((item) => {
+                  const active = isNavActive(pathname, item.href);
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={`app-sidebar-link ${active ? "active" : ""}`}
+                    >
+                      <span className="app-nav-icon" aria-hidden>
+                        {item.icon}
+                        {showVaultBadge(item.href) && (
+                          <PronunciationVaultBadge count={vault.total} />
+                        )}
+                      </span>
+                      <span className="app-sidebar-link-text">
+                        <strong>{item.label}</strong>
+                        <small>{item.description}</small>
+                      </span>
+                    </Link>
+                  );
+                })}
+              </nav>
+              {user && (
+                <div className="app-sidebar-account">
+                  <Link href="/conta" className="app-sidebar-user">
+                    <span>👤</span>
+                    <span>{user.name || user.email.split("@")[0]}</span>
+                  </Link>
+                  <button type="button" className="app-sidebar-logout" onClick={handleLogout}>
+                    Sair
+                  </button>
+                </div>
+              )}
+              <p className="app-sidebar-foot">PWA · Study daily</p>
+            </aside>
+
+            <nav className="app-bottom-nav" aria-label="Mobile navigation">
+              {NAV_ITEMS.map((item) => {
+                const active = isNavActive(pathname, item.href);
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`app-bottom-link ${active ? "active" : ""}`}
+                  >
+                    <span className="app-bottom-icon" aria-hidden>
+                      {item.icon}
+                      {showVaultBadge(item.href) && (
+                        <PronunciationVaultBadge count={vault.total} />
+                      )}
+                    </span>
+                    <span className="app-bottom-label">{item.shortLabel}</span>
+                  </Link>
+                );
+              })}
+            </nav>
+          </AppNavigationPortal>
+
+          <div className="app-shell">
+            <div className="app-main">
+              <div className="app-content">{children}</div>
+            </div>
           </div>
-        </div>
-        <nav className="app-sidebar-nav">
-          {NAV_ITEMS.map((item) => {
-            const active = isNavActive(pathname, item.href);
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`app-sidebar-link ${active ? "active" : ""}`}
-              >
-                <span className="app-nav-icon" aria-hidden>
-                  {item.icon}
-                  {showVaultBadge(item.href) && (
-                    <PronunciationVaultBadge count={vault.total} />
-                  )}
-                </span>
-                <span className="app-sidebar-link-text">
-                  <strong>{item.label}</strong>
-                  <small>{item.description}</small>
-                </span>
-              </Link>
-            );
-          })}
-        </nav>
-        {user && (
-          <div className="app-sidebar-account">
-            <Link href="/conta" className="app-sidebar-user">
-              <span>👤</span>
-              <span>{user.name || user.email.split("@")[0]}</span>
-            </Link>
-            <button type="button" className="app-sidebar-logout" onClick={handleLogout}>
-              Sair
-            </button>
-          </div>
-        )}
-        <p className="app-sidebar-foot">PWA · Study daily</p>
-      </aside>
 
-      <div className="app-shell">
-        <div className="app-main">
-          <div className="app-content">{children}</div>
-        </div>
-      </div>
+          <StudyGoalBar />
+          <StudyActivityToast />
 
-      <StudyGoalBar />
-      <StudyActivityToast />
-      {user && <CaptainDeltaFloatingAssistant />}
-
-      <nav className="app-bottom-nav" aria-label="Mobile navigation">
-        {NAV_ITEMS.map((item) => {
-          const active = isNavActive(pathname, item.href);
-          return (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`app-bottom-link ${active ? "active" : ""}`}
-            >
-              <span className="app-bottom-icon" aria-hidden>
-                {item.icon}
-                {showVaultBadge(item.href) && (
-                  <PronunciationVaultBadge count={vault.total} />
-                )}
-              </span>
-              <span className="app-bottom-label">{item.shortLabel}</span>
-            </Link>
-          );
-        })}
-      </nav>
-      </CaptainDeltaVisualProvider>
+          <AppNavigationPortal>
+            {user && <CaptainDeltaFloatingAssistant />}
+          </AppNavigationPortal>
+        </CaptainDeltaVisualProvider>
       </CaptainDeltaExaminerProvider>
     </CaptainDeltaProvider>
   );
