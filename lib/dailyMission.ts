@@ -11,6 +11,11 @@ import {
   part2MissionLink,
 } from "@/lib/part2DailyMission";
 import {
+  pronunciationDailyMissionProgress,
+  getOrCreatePronunciationDailyMission,
+  pronunciationMissionLink,
+} from "@/lib/pronunciationDailyMission";
+import {
   vocabDailyMissionProgress,
   getOrCreateVocabDailyMission,
   vocabMissionLink,
@@ -31,6 +36,7 @@ export type DailyMissionNextAction = {
 
 export type DailyMissionSummary = {
   examLabel: string;
+  pronunciation: ReturnType<typeof pronunciationDailyMissionProgress>;
   part1: ReturnType<typeof part1DailyMissionProgress>;
   part2: ReturnType<typeof part2DailyMissionProgress>;
   vocabulary: ReturnType<typeof vocabDailyMissionProgress>;
@@ -43,13 +49,19 @@ export type DailyMissionSummary = {
 
 export function getDailyMissionSummary(): DailyMissionSummary {
   const mode = loadStudyPlanMode();
+  const pronunciation = pronunciationDailyMissionProgress(getOrCreatePronunciationDailyMission());
   const part1 = part1DailyMissionProgress(getOrCreatePart1DailyMission());
   const part2 = part2DailyMissionProgress(getOrCreatePart2DailyMission());
   const vocabulary = vocabDailyMissionProgress(getOrCreateVocabDailyMission());
   const simulate = simulateMissionProgress();
   const simulateRequired = isSimulateMissionRequired(mode);
 
-  const sections = [vocabulary.complete, part1.complete, part2.complete];
+  const sections = [
+    pronunciation.complete,
+    vocabulary.complete,
+    part1.complete,
+    part2.complete,
+  ];
   if (simulateRequired) sections.push(simulate.complete);
 
   const completedSections = sections.filter(Boolean).length;
@@ -57,6 +69,7 @@ export function getDailyMissionSummary(): DailyMissionSummary {
 
   return {
     examLabel: todayExamLabel(),
+    pronunciation,
     part1,
     part2,
     vocabulary,
@@ -69,10 +82,12 @@ export function getDailyMissionSummary(): DailyMissionSummary {
 }
 
 export function isDailyMissionComplete(): boolean {
+  const pronunciation = pronunciationDailyMissionProgress(getOrCreatePronunciationDailyMission());
   const part1 = part1DailyMissionProgress(getOrCreatePart1DailyMission());
   const part2 = part2DailyMissionProgress(getOrCreatePart2DailyMission());
   const vocabulary = vocabDailyMissionProgress(getOrCreateVocabDailyMission());
-  const base = part1.complete && part2.complete && vocabulary.complete;
+  const base =
+    pronunciation.complete && vocabulary.complete && part1.complete && part2.complete;
   if (!base) return false;
   if (isSimulateMissionRequired()) return isSimulateMissionDone();
   return true;
@@ -82,6 +97,18 @@ export function isDailyMissionComplete(): boolean {
 export function getNextMissionAction(): DailyMissionNextAction | null {
   const summary = getDailyMissionSummary();
   if (summary.complete) return null;
+
+  const pronMission = getOrCreatePronunciationDailyMission();
+  const nextPronWord = pronMission.words.find(
+    (w) => !pronMission.completedWords.includes(w.toLowerCase()),
+  );
+  if (nextPronWord) {
+    return {
+      href: pronunciationMissionLink(nextPronWord),
+      title: `Pronúncia · ${summary.examLabel}`,
+      hint: `${pronMission.completedWords.length}/${pronMission.words.length} palavras do dia`,
+    };
+  }
 
   const vocabMission = getOrCreateVocabDailyMission();
   const nextVocabId = vocabMission.termIds.find((id) => !vocabMission.completedIds.includes(id));

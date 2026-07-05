@@ -2,6 +2,7 @@
 
 import type { CaptainDeltaMessage } from "@/lib/captainDelta/types";
 import type { useCaptainDeltaVoice } from "@/hooks/useCaptainDeltaVoice";
+import { isCaptainDeltaVoiceEnabled } from "@/lib/captainDelta/voiceConfig";
 
 type Voice = ReturnType<typeof useCaptainDeltaVoice>;
 
@@ -26,6 +27,7 @@ export default function CaptainDeltaCoachingCard({
 }: Props) {
   const isPlaying = voice.state === "playing" || voice.state === "loading";
   const isPaused = voice.state === "paused";
+  const voiceEnabled = isCaptainDeltaVoiceEnabled();
 
   return (
     <article className="cd-coach-card">
@@ -46,6 +48,7 @@ export default function CaptainDeltaCoachingCard({
       )}
       {pttError && <p className="cd-ptt-error">{pttError}</p>}
 
+      {voiceEnabled && (
       <div className="cd-voice-controls" aria-label="Voice controls">
         <button
           type="button"
@@ -70,6 +73,7 @@ export default function CaptainDeltaCoachingCard({
           {voice.muted ? "🔇 Muted" : "🔊 Mute"}
         </button>
       </div>
+      )}
 
       <button
         type="button"

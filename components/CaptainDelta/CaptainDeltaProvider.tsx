@@ -49,6 +49,10 @@ import type {
 } from "@/lib/captainDelta/types";
 import { DEFAULT_LESSON_CONTEXT } from "@/lib/captainDelta/types";
 import { toSpeechText } from "@/lib/captainDelta/voiceText";
+import {
+  isCaptainDeltaProactiveEnabled,
+  isCaptainDeltaVoiceEnabled,
+} from "@/lib/captainDelta/voiceConfig";
 import { getNextMissionAction } from "@/lib/dailyMission";
 import { buildMemoryContextForPrompt } from "@/lib/flightInstructor/memory";
 import { todayKey } from "@/lib/studyTime";
@@ -130,7 +134,9 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
     ) => {
       setCurrentMessage(msg);
       setOpen(true);
-      if (options?.autoSpeak !== false) {
+      const maySpeak =
+        isCaptainDeltaVoiceEnabled() && options?.autoSpeak !== false;
+      if (maySpeak) {
         void voice.speak(msg.speechText ?? msg.text);
       }
     },
@@ -283,7 +289,7 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
-    if (!user) return;
+    if (!user || !isCaptainDeltaProactiveEnabled()) return;
     if (routeContext === lastContextRef.current) return;
     lastContextRef.current = routeContext;
 
@@ -326,6 +332,7 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (!user || pathname !== "/" || briefingTriggeredRef.current) return;
+    if (!isCaptainDeltaProactiveEnabled()) return;
     const dateKey = todayKey();
     if (wasBriefingShownToday(dateKey)) return;
     briefingTriggeredRef.current = true;

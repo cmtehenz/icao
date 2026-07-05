@@ -10,6 +10,7 @@ import { useAzureSpeech } from "@/hooks/useAzureSpeech";
 import type { AzurePronunciationResult } from "@/lib/azure/pronunciation";
 import { errorTypeLabel } from "@/lib/azure/pronunciation";
 import { emitCaptainDeltaSuggestion } from "@/lib/captainDelta/events";
+import { isCaptainDeltaVoiceEnabled } from "@/lib/captainDelta/voiceConfig";
 import { emitLessonContext } from "@/lib/captainDelta/lessonContext";
 import { buildPronunciationFocusPlan } from "@/lib/captainDelta/visual/plans";
 import { emitVisualPlan } from "@/lib/captainDelta/visual/events";
@@ -27,13 +28,15 @@ import { deriveVaultWordStatus } from "@/lib/pronunciationGraduation";
 import {
   buildDailyPronunciationMission,
   buildMissionDebrief,
-  loadActiveMission,
-  loadMissionProgress,
   practiceTextForLevel,
-  saveActiveMission,
-  saveMissionProgress,
   type PronunciationMission,
 } from "@/lib/pronunciationMission";
+import {
+  getOrCreatePronunciationDailyMission,
+  isPronunciationWordInTodayMission,
+  markPronunciationDailyWordComplete,
+  PRONUNCIATION_DAILY_MISSION_EVENT,
+} from "@/lib/pronunciationDailyMission";
 import {
   addManualWordsToVault,
   loadVault,
@@ -127,6 +130,47 @@ function VaultAddWordsForm({ onAdded }: { onAdded: () => void }) {
   );
 }
 
+function missionFromDaily(vault: VaultWord[]): PronunciationMission {
+  const daily = getOrCreatePronunciationDailyMission();
+  const built = buildDailyPronunciationMission(vault);
+  const wordMap = new Map(built.words.map((m) => [m.word.word.toLowerCase(), m]));
+  return {
+    date: daily.date,
+    words: daily.words.map((wordStr) => {
+      const hit = wordMap.get(wordStr.toLowerCase());
+      if (hit) return hit;
+      const vaultWord = vault.find((w) => w.word.toLowerCase() === wordStr.toLowerCase());
+      return {
+        word: vaultWord ?? {
+          word: wordStr,
+          lowestAccuracy: 0,
+          lastAccuracy: 0,
+          errorType: "Manual",
+          errorLabel: "daily mission",
+          context: "",
+          timesSeen: 1,
+          practiceCount: 0,
+          passCount: 0,
+          returnCount: 0,
+          lastSeenAt: new Date().toISOString(),
+        },
+        role: "below80" as const,
+      };
+    }),
+  };
+}
+
+function syncDailyMissionState(vault: VaultWord[]): {
+  mission: PronunciationMission;
+  progress: string[];
+} {
+  const daily = getOrCreatePronunciationDailyMission();
+  return {
+    mission: missionFromDaily(vault),
+    progress: daily.completedWords,
+  };
+}
+
 export default function PronunciationWordsMode() {
   const searchParams = useSearchParams();
   const [words, setWords] = useState<VaultWord[]>([]);
@@ -142,14 +186,22 @@ export default function PronunciationWordsMode() {
   const azure = useAzurePronunciation();
   const speech = useAzureSpeech();
 
-  const refresh = useCallback(() => setWords(loadVault()), []);
+  const refresh = useCallback(() => {
+    const vault = loadVault();
+    setWords(vault);
+    const { mission: m, progress } = syncDailyMissionState(vault);
+    setMission(m);
+    setMissionProgress(progress);
+  }, []);
 
   useEffect(() => {
     refresh();
-    setMission(loadActiveMission());
-    setMissionProgress(loadMissionProgress());
     window.addEventListener(VAULT_CHANGE_EVENT, refresh);
-    return () => window.removeEventListener(VAULT_CHANGE_EVENT, refresh);
+    window.addEventListener(PRONUNCIATION_DAILY_MISSION_EVENT, refresh);
+    return () => {
+      window.removeEventListener(VAULT_CHANGE_EVENT, refresh);
+      window.removeEventListener(PRONUNCIATION_DAILY_MISSION_EVENT, refresh);
+    };
   }, [refresh]);
 
   useEffect(() => {
@@ -216,13 +268,15 @@ export default function PronunciationWordsMode() {
       captainFeedbackAfterAttempt(updated ?? activeWord, score, practiceLevel, status);
     setCaptainNote(feedback.message);
     emitLessonContext({ mode: "pronunciation", pronunciationWord: activeWord.word });
-    emitCaptainDeltaSuggestion({
-      text: feedback.message,
-      speechText: feedback.speechText,
-      kind: "coaching",
-      primaryAction: { id: "ready", label: "Continue", primary: true },
-      secondaryActions: [],
-    });
+    if (isCaptainDeltaVoiceEnabled()) {
+      emitCaptainDeltaSuggestion({
+        text: feedback.message,
+        speechText: feedback.speechText,
+        kind: "coaching",
+        primaryAction: { id: "ready", label: "Continue", primary: true },
+        secondaryActions: [],
+      });
+    }
 
     const ctx = { accuracy: score, recognizedText: assessment?.recognizedText };
     const counted = tryRecordStudyActivity("pronunciation", ctx);
@@ -241,10 +295,12 @@ export default function PronunciationWordsMode() {
     }
 
     if (mission) {
-      const next = [...missionProgress, activeWord.word.toLowerCase()];
-      setMissionProgress(next);
-      saveMissionProgress(next);
-      if (next.length >= mission.words.length) setShowDebrief(true);
+      if (isPronunciationWordInTodayMission(activeWord.word)) {
+        const daily = markPronunciationDailyWordComplete(activeWord.word);
+        const next = [...daily.completedWords];
+        setMissionProgress(next);
+        if (next.length >= mission.words.length) setShowDebrief(true);
+      }
     }
 
     if (outcome.removed) {
@@ -256,12 +312,18 @@ export default function PronunciationWordsMode() {
   };
 
   const startMission = () => {
-    const m = buildDailyPronunciationMission(words);
-    saveActiveMission(m);
+    const daily = getOrCreatePronunciationDailyMission();
+    const m = missionFromDaily(words);
     setMission(m);
-    setMissionProgress([]);
+    setMissionProgress(daily.completedWords);
     setShowDebrief(false);
-    if (m.words[0]) selectWord(m.words[0]!.word);
+    const nextWord =
+      daily.words.find((w) => !daily.completedWords.includes(w.toLowerCase())) ??
+      m.words[0]?.word.word;
+    if (nextWord) {
+      const match = words.find((w) => w.word.toLowerCase() === nextWord.toLowerCase());
+      if (match) selectWord(match);
+    }
   };
 
   if (!words.length) {
@@ -294,7 +356,7 @@ export default function PronunciationWordsMode() {
           <p className="pron-mission-badge">👨‍✈️ Captain Delta</p>
           <p className="pron-mission-quote">&ldquo;{CAPTAIN_MISSION_INTRO}&rdquo;</p>
           <button type="button" className="btn purple" onClick={startMission}>
-            Start Pronunciation Mission
+            {missionProgress.length > 0 ? "Continuar missão do dia" : "Start Pronunciation Mission"}
           </button>
           {mission && (
             <p className="pron-mission-meta">

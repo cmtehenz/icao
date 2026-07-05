@@ -19,6 +19,7 @@ import {
 import { CAPTAIN_DELTA_MEMORY_EVENT } from "@/lib/captainDelta/memory/store";
 import { INSTRUCTOR_MEMORY_EVENT } from "@/lib/flightInstructor/memory";
 import { STUDY_ACTIVITY_RECORDED_EVENT } from "@/lib/studyActivityRecord";
+import { isCaptainDeltaProactiveEnabled } from "@/lib/captainDelta/voiceConfig";
 import { getCaptainDeltaContext } from "@/lib/captainDelta/context";
 import type { CaptainDeltaContext } from "@/lib/captainDelta/types";
 
@@ -50,6 +51,7 @@ export default function CaptainDeltaMemoryBridge() {
     if (!SESSION_CLOSE_CONTEXTS.includes(context)) return;
 
     const maybeCloseSession = () => {
+      if (!isCaptainDeltaProactiveEnabled()) return;
       if (sessionCloseSent.current || !shouldOfferSessionClose()) return;
       if (closeTimer.current) window.clearTimeout(closeTimer.current);
       closeTimer.current = window.setTimeout(() => {

@@ -1,7 +1,8 @@
+import { getPart1CardsForExam } from "@/data/exams/part1";
 import { getSituationsByExam } from "@/data/exams/part2Data";
 import { getPart3Scenario } from "@/data/simulado/part3Data";
 import { getPart4Picture } from "@/data/simulado/part4Data";
-import { SIMULADO_ACTIVE_PARTS, SIMULADO_PART1_QUESTIONS } from "@/lib/simulado/config";
+import { SIMULADO_ACTIVE_PARTS } from "@/lib/simulado/config";
 import { examAudioUrl } from "@/lib/exams/audio";
 import { CARDS } from "@/lib/cards";
 import type { ExamVersion } from "@/lib/exams/types";
@@ -37,23 +38,24 @@ export function buildSimuladoSteps(config: SimuladoSessionConfig): SimuladoStep[
       text: "Part One. Aviation Topics. I will ask you three questions. Please answer as fully as you can.",
     });
 
-    SIMULADO_PART1_QUESTIONS.forEach((item, i) => {
-      const card = cardByNum(item.cardNum);
+    getPart1CardsForExam(examVersion).forEach((cardNum, i) => {
+      const card = cardByNum(cardNum);
       if (!card) return;
+      const question = card.question;
       const model = card.answerLevel5 ?? card.answerLevel4 ?? card.answer;
       steps.push({
         kind: "examiner",
-        id: `p1-q${item.cardNum}`,
+        id: `p1-q${cardNum}`,
         part: 1,
         label: `Part 1 · Question ${i + 1}`,
-        text: item.question,
+        text: question,
       });
       steps.push({
         kind: "record",
-        id: `p1-a${item.cardNum}`,
+        id: `p1-a${cardNum}`,
         part: 1,
         label: `Your answer · Q${i + 1}`,
-        question: item.question,
+        question,
         modelAnswer: model,
         evaluateType: "part1",
         keywords: card.keywords ?? card.vocab ?? [],
