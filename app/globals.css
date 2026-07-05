@@ -4811,8 +4811,176 @@ input {
 }
 
 .pronunciation-dashboard {
-  grid-template-columns: repeat(3, 1fr);
-  max-width: 420px;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 520px;
+}
+
+.pron-mission-card {
+  margin-bottom: 1rem;
+  padding: 1rem 1.1rem;
+  border-radius: 16px;
+  border: 1px solid color-mix(in srgb, var(--blue) 30%, var(--line));
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--blue) 8%, var(--card)) 0%,
+    var(--card) 70%
+  );
+}
+
+.pron-mission-badge {
+  margin: 0 0 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.pron-mission-quote {
+  margin: 0 0 0.75rem;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  font-style: italic;
+}
+
+.pron-mission-meta {
+  margin: 0.65rem 0 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.pron-debrief-card {
+  margin-bottom: 1rem;
+  padding: 1rem 1.1rem;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: var(--card);
+}
+
+.pron-debrief-card h2 {
+  margin: 0 0 0.65rem;
+  font-size: 1rem;
+}
+
+.pron-debrief-list {
+  margin: 0 0 0.75rem;
+  padding-left: 1.1rem;
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
+.pron-status-row {
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pron-level-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 0.65rem;
+}
+
+.pron-level-tab {
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--muted);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.pron-level-tab.active {
+  background: var(--blue-bg);
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+.pron-level-tab.locked {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.pron-word-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.pron-word-status-critical {
+  background: color-mix(in srgb, #ef4444 15%, var(--card));
+  color: #ef4444;
+}
+
+.pron-word-status-review {
+  background: color-mix(in srgb, var(--orange) 15%, var(--card));
+  color: var(--orange);
+}
+
+.pron-word-status-context {
+  background: color-mix(in srgb, var(--purple) 14%, var(--card));
+  color: var(--purple);
+}
+
+.pron-word-status-new {
+  background: var(--line);
+  color: var(--muted);
+}
+
+.pron-word-status-practicing {
+  background: var(--blue-bg);
+  color: var(--blue);
+}
+
+.pron-smart-progress {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin: 0.65rem 0;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.pron-smart-progress span:first-child {
+  font-weight: 800;
+  color: var(--text);
+}
+
+.pron-captain-feedback {
+  margin: 0.5rem 0;
+  padding: 0.55rem 0.75rem;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--blue) 8%, var(--card));
+  border-left: 3px solid var(--blue);
+  font-size: 0.84rem;
+}
+
+.pron-model-fragment {
+  margin: 0.35rem 0 0.5rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.pron-practice-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 0.75rem;
+}
+
+.vault-word-item.pron-status-critical {
+  border-color: color-mix(in srgb, #ef4444 35%, var(--line));
+}
+
+.vault-word-item.pron-status-context {
+  border-color: color-mix(in srgb, var(--purple) 30%, var(--line));
 }
 
 .hero-pronunciation .sub {

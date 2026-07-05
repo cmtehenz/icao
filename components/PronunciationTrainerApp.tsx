@@ -30,16 +30,24 @@ export default function PronunciationTrainerApp() {
         <div className="wrap hero-delta-inner">
           <h1>Pronúncia</h1>
           <p className="sub hero-sub-compact">
-            Grave com Azure · meta 5× acima de 80% para graduar cada palavra.
+            Captain Delta coach · smart graduation · word → sentence → ICAO answer.
           </p>
           <div className="delta-dashboard delta-dashboard-compact pronunciation-dashboard" aria-label="Banco de pronúncia">
             <div className="delta-stat difficult">
               <strong>{vault.critical}</strong>
-              <span>críticas</span>
+              <span>Critical</span>
             </div>
             <div className="delta-stat learning">
               <strong>{vault.needsPractice}</strong>
-              <span>para treinar</span>
+              <span>&lt;80%</span>
+            </div>
+            <div className="delta-stat">
+              <strong>{vault.practicing}</strong>
+              <span>Practicing</span>
+            </div>
+            <div className="delta-stat">
+              <strong>{vault.useSentence + vault.useIcao}</strong>
+              <span>In context</span>
             </div>
           </div>
           {vault.total > 0 && (

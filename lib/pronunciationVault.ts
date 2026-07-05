@@ -1,6 +1,26 @@
 import { errorTypeLabel } from "@/lib/azure/pronunciation";
+import { ensureWordContext } from "@/lib/pronunciationContext";
+import { applyPracticeAttempt, deriveVaultWordStatus } from "@/lib/pronunciationGraduation";
 import { recordScoreSnapshot } from "@/lib/scoreHistory";
 import { shouldSkipPronunciationVaultWord } from "@/lib/aviationSpeechTerms";
+
+export type VaultWordStatus =
+  | "new"
+  | "practicing"
+  | "needs_review"
+  | "critical"
+  | "graduated"
+  | "use_sentence"
+  | "use_icao";
+
+export type PracticeLevel = 1 | 2 | 3 | 4;
+
+export type WordContextPack = {
+  expression: string;
+  sentence: string;
+  icaoPrompt: string;
+  fragment: string;
+};
 
 export type VaultWord = {
   word: string;
@@ -11,12 +31,22 @@ export type VaultWord = {
   context: string;
   timesSeen: number;
   practiceCount: number;
-  /** Approved practices with accuracy above VAULT_PASS_SCORE */
+  /** Scores >= 80 at current level (legacy passCount). */
   passCount: number;
   /** How often the word came back to training (failed practice or re-added after graduation). */
   returnCount: number;
   lastSeenAt: string;
   lastPracticedAt?: string;
+  status?: VaultWordStatus;
+  practiceLevel?: PracticeLevel;
+  recentScores?: number[];
+  contextPack?: WordContextPack;
+  graduatedAt?: string;
+  pass90Count?: number;
+  pass85Count?: number;
+  pass80Count?: number;
+  fail70Count?: number;
+  needsReview?: boolean;
 };
 
 const STORAGE_KEY = "icao_pronunciation_vault_v1";
@@ -26,6 +56,8 @@ const MAX_VAULT_COUNT = 99;
 const CORRUPT_COUNT_THRESHOLD = 10;
 
 export const VAULT_PASS_SCORE = 80;
+/** Só adiciona palavras ao banco automaticamente quando accuracy < este valor. */
+export const VAULT_ADD_SCORE = 40;
 export const VAULT_PASSES_TO_GRADUATE = 5;
 
 /** Evita concatenação de strings e valores inflados por sync duplicado. */
@@ -68,6 +100,9 @@ export function resetVaultWordCounts(word: VaultWord): VaultWord {
 }
 
 export function sanitizeVaultWord(word: VaultWord): VaultWord {
+  const contextPack = word.contextPack
+    ? ensureWordContext(word.word, word.contextPack)
+    : undefined;
   return {
     ...word,
     lowestAccuracy: normalizeVaultCount(word.lowestAccuracy, 0),
@@ -76,6 +111,15 @@ export function sanitizeVaultWord(word: VaultWord): VaultWord {
     practiceCount: normalizePracticeCount(word.practiceCount),
     passCount: normalizeVaultCount(word.passCount, 0),
     returnCount: normalizeVaultCount(word.returnCount, 0),
+    practiceLevel: (word.practiceLevel ?? 1) as PracticeLevel,
+    pass90Count: normalizeVaultCount(word.pass90Count, 0),
+    pass85Count: normalizeVaultCount(word.pass85Count, 0),
+    pass80Count: normalizeVaultCount(word.pass80Count ?? word.passCount, 0),
+    fail70Count: normalizeVaultCount(word.fail70Count, 0),
+    recentScores: Array.isArray(word.recentScores)
+      ? word.recentScores.slice(-10).map((s) => normalizeVaultCount(s, 0))
+      : [],
+    contextPack,
   };
 }
 
@@ -168,6 +212,7 @@ export function addWordsToVault(
 
   for (const item of incoming) {
     if (shouldSkipPronunciationVaultWord(item.word)) continue;
+    if (item.errorType !== "Manual" && item.accuracyScore >= VAULT_ADD_SCORE) continue;
     const key = item.word.toLowerCase();
     const wasRemoved = loadRemovedVaultKeys().has(key);
     clearVaultWordRemoved(key);
@@ -192,8 +237,15 @@ export function addWordsToVault(
         timesSeen: 1,
         practiceCount: 0,
         passCount: 0,
+        pass80Count: 0,
+        pass90Count: 0,
+        pass85Count: 0,
+        fail70Count: 0,
+        practiceLevel: 1,
+        status: "new",
         returnCount: wasRemoved ? 1 : 0,
         lastSeenAt: now,
+        contextPack: ensureWordContext(item.word),
       });
       added += 1;
     }
@@ -255,35 +307,68 @@ export function removeVaultWord(word: string): void {
 export type VaultPracticeResult = {
   removed: boolean;
   passCount: number;
+  status: VaultWordStatus;
+  practiceLevel: PracticeLevel;
+  advancedLevel: boolean;
+  graduated: boolean;
 };
 
-export function recordWordPractice(word: string, accuracy: number): VaultPracticeResult {
+export function recordWordPractice(
+  word: string,
+  accuracy: number,
+  level: PracticeLevel = 1,
+): VaultPracticeResult {
   const key = word.toLowerCase();
   const vault = loadVault();
   const item = vault.find((w) => w.word.toLowerCase() === key);
-  if (!item) return { removed: false, passCount: 0 };
+  if (!item) {
+    return {
+      removed: false,
+      passCount: 0,
+      status: "new",
+      practiceLevel: 1,
+      advancedLevel: false,
+      graduated: false,
+    };
+  }
 
   item.practiceCount = normalizeVaultCount(item.practiceCount, 0) + 1;
   item.lastPracticedAt = new Date().toISOString();
   item.lastAccuracy = accuracy;
+  item.contextPack = ensureWordContext(item.word, item.contextPack);
 
-  if (accuracy >= VAULT_PASS_SCORE) {
-    item.passCount = normalizeVaultCount(item.passCount, 0) + 1;
-    if (item.passCount >= VAULT_PASSES_TO_GRADUATE) {
-      markVaultWordRemoved(key);
-      saveVault(vault.filter((w) => w.word.toLowerCase() !== key));
-      return { removed: true, passCount: item.passCount };
-    }
-    saveVault(vault);
-    recordScoreSnapshot("pronunciation", accuracy);
-    return { removed: false, passCount: item.passCount };
+  const { word: updated, outcome } = applyPracticeAttempt(item, accuracy, level);
+  Object.assign(item, updated);
+
+  if (accuracy < VAULT_PASS_SCORE) {
+    item.lowestAccuracy = Math.min(item.lowestAccuracy, accuracy);
+    item.returnCount = normalizeVaultCount(item.returnCount, 0) + 1;
   }
 
-  item.lowestAccuracy = Math.min(item.lowestAccuracy, accuracy);
-  item.returnCount = normalizeVaultCount(item.returnCount, 0) + 1;
-  saveVault(vault);
   recordScoreSnapshot("pronunciation", accuracy);
-  return { removed: false, passCount: item.passCount };
+
+  if (outcome.removed) {
+    markVaultWordRemoved(key);
+    saveVault(vault.filter((w) => w.word.toLowerCase() !== key));
+    return {
+      removed: true,
+      passCount: outcome.passCount,
+      status: "graduated",
+      practiceLevel: outcome.practiceLevel,
+      advancedLevel: outcome.advancedLevel,
+      graduated: true,
+    };
+  }
+
+  saveVault(vault);
+  return {
+    removed: false,
+    passCount: outcome.passCount,
+    status: outcome.status,
+    practiceLevel: outcome.practiceLevel,
+    advancedLevel: outcome.advancedLevel,
+    graduated: outcome.graduated,
+  };
 }
 
 export function clearVault(): void {
@@ -294,10 +379,16 @@ export function clearVault(): void {
 }
 
 export function vaultStats(words: VaultWord[]) {
+  const statuses = words.map((w) => deriveVaultWordStatus(w));
   return {
     total: words.length,
-    critical: words.filter((w) => w.lowestAccuracy < 60).length,
-    needsPractice: words.filter((w) => w.lowestAccuracy < 80).length,
+    critical: statuses.filter((s) => s === "critical").length,
+    needsPractice: words.filter((w) => w.lastAccuracy < VAULT_PASS_SCORE).length,
+    new: statuses.filter((s) => s === "new").length,
+    practicing: statuses.filter((s) => s === "practicing").length,
+    needsReview: statuses.filter((s) => s === "needs_review").length,
+    useSentence: statuses.filter((s) => s === "use_sentence").length,
+    useIcao: statuses.filter((s) => s === "use_icao").length,
   };
 }
 

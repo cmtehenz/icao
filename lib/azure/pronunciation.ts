@@ -1,4 +1,5 @@
 import { shouldSkipPronunciationVaultWord } from "@/lib/aviationSpeechTerms";
+import { VAULT_ADD_SCORE } from "@/lib/pronunciationVault";
 import { compareTranscriptToModel } from "@/lib/evaluate/compareAnswer";
 
 export type AzureWordScore = {
@@ -67,7 +68,18 @@ export function errorTypeLabel(errorType?: string): string {
   return ERROR_LABELS[errorType] ?? errorType;
 }
 
-/** Words Azure flagged or scored below 80 — sorted worst first. */
+/** Words Azure scored below VAULT_ADD_SCORE — sorted worst first. */
+export function getVaultAddWords(words: AzureWordScore[]): AzureWordScore[] {
+  return words
+    .filter((w) => {
+      if (!w.word?.trim()) return false;
+      if (shouldSkipPronunciationVaultWord(w.word)) return false;
+      return w.accuracyScore < VAULT_ADD_SCORE;
+    })
+    .sort((a, b) => a.accuracyScore - b.accuracyScore);
+}
+
+/** Words Azure flagged or scored below 80 — sorted worst first (UI display). */
 export function getMispronouncedWords(words: AzureWordScore[]): AzureWordScore[] {
   return words
     .filter((w) => {
@@ -110,7 +122,7 @@ export type VaultWordCandidate = {
 export function collectVaultWordCandidates(
   azureResult: AzurePronunciationResult,
 ): VaultWordCandidate[] {
-  const flagged = getMispronouncedWords(azureResult.words);
+  const flagged = getVaultAddWords(azureResult.words);
   if (flagged.length) {
     return flagged.map((w) => ({
       word: w.word,
@@ -120,7 +132,7 @@ export function collectVaultWordCandidates(
     }));
   }
 
-  if (azureResult.accuracyScore >= 80) return [];
+  if (azureResult.accuracyScore >= VAULT_ADD_SCORE) return [];
 
   const practiceWords = extractPracticeWordsFromTranscript(azureResult.recognizedText);
   if (!practiceWords.length) {
@@ -183,7 +195,9 @@ export function collectCoachVaultCandidates(
     }
   }
 
-  return [...byWord.values()].slice(0, 10);
+  return [...byWord.values()]
+    .filter((c) => c.accuracyScore < VAULT_ADD_SCORE)
+    .slice(0, 10);
 }
 
 /**
@@ -223,7 +237,7 @@ export function collectScriptedShadowVaultCandidates(
     });
   }
 
-  if (!candidates.length && azureResult.accuracyScore < 80) {
+  if (!candidates.length && azureResult.accuracyScore < VAULT_ADD_SCORE) {
     return collectVaultWordCandidates(azureResult);
   }
 

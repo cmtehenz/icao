@@ -69,12 +69,22 @@ export function mergeVaultWords(local: VaultWord[], remote: VaultWord[]): VaultW
       timesSeen: mergeCount(existing.timesSeen, item.timesSeen, 1),
       practiceCount: mergeCount(existing.practiceCount, item.practiceCount, 0),
       passCount: mergeCount(existing.passCount, item.passCount, 0),
+      pass80Count: mergeCount(existing.pass80Count ?? existing.passCount, item.pass80Count ?? item.passCount, 0),
+      pass90Count: mergeCount(existing.pass90Count, item.pass90Count, 0),
+      pass85Count: mergeCount(existing.pass85Count, item.pass85Count, 0),
+      fail70Count: mergeCount(existing.fail70Count, item.fail70Count, 0),
       returnCount: mergeCount(existing.returnCount, item.returnCount, 0),
+      practiceLevel: Math.max(existing.practiceLevel ?? 1, item.practiceLevel ?? 1) as import("@/lib/pronunciationVault").PracticeLevel,
+      status: existing.status ?? item.status,
+      contextPack: existing.contextPack ?? item.contextPack,
+      recentScores: [...(existing.recentScores ?? []), ...(item.recentScores ?? [])].slice(-10),
+      needsReview: existing.needsReview || item.needsReview,
       lastSeenAt: pickLatest(existing.lastSeenAt, item.lastSeenAt),
       lastPracticedAt:
         existing.lastPracticedAt && item.lastPracticedAt
           ? pickLatest(existing.lastPracticedAt, item.lastPracticedAt)
           : existing.lastPracticedAt ?? item.lastPracticedAt,
+      graduatedAt: existing.graduatedAt ?? item.graduatedAt,
     }));
   }
 

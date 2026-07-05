@@ -1,14 +1,37 @@
 "use client";
 
-import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import CallsignDrillPanel from "@/components/Part2Trainer/CallsignDrillPanel";
 import YouGlishLink from "@/components/YouGlishLink";
 import WordPhoneticHint from "@/components/WordPhoneticHint";
+import CaptainDeltaTarget from "@/components/CaptainDelta/Visual/CaptainDeltaTarget";
 import { useAzurePronunciation } from "@/hooks/useAzurePronunciation";
 import { useAzureSpeech } from "@/hooks/useAzureSpeech";
 import type { AzurePronunciationResult } from "@/lib/azure/pronunciation";
 import { errorTypeLabel } from "@/lib/azure/pronunciation";
+import { emitCaptainDeltaSuggestion } from "@/lib/captainDelta/events";
+import { buildPronunciationFocusPlan } from "@/lib/captainDelta/visual/plans";
+import { emitVisualPlan } from "@/lib/captainDelta/visual/events";
+import { splitSyllables, syllableTargetId } from "@/lib/captainDelta/visual/syllables";
+import { ensureWordContext } from "@/lib/pronunciationContext";
+import {
+  captainFeedbackAfterAttempt,
+  CAPTAIN_MISSION_DEBRIEF,
+  CAPTAIN_MISSION_INTRO,
+  levelLabel,
+  statusLabel,
+} from "@/lib/pronunciationCoach";
+import { deriveVaultWordStatus } from "@/lib/pronunciationGraduation";
+import {
+  buildDailyPronunciationMission,
+  buildMissionDebrief,
+  loadActiveMission,
+  loadMissionProgress,
+  practiceTextForLevel,
+  saveActiveMission,
+  saveMissionProgress,
+  type PronunciationMission,
+} from "@/lib/pronunciationMission";
 import {
   addManualWordsToVault,
   loadVault,
@@ -17,20 +40,26 @@ import {
   removeVaultWord,
   VAULT_CHANGE_EVENT,
   VAULT_PASS_SCORE,
-  VAULT_PASSES_TO_GRADUATE,
   vaultStats,
+  type PracticeLevel,
   type VaultWord,
 } from "@/lib/pronunciationVault";
-import { useCallback, useEffect, useState, type FormEvent } from "react";
+import { markWarmupSatisfied } from "@/lib/part2Warmup";
 import {
   studyActivityRejectReason,
   tryRecordStudyActivity,
 } from "@/lib/studyActivityRecord";
-import { markWarmupSatisfied } from "@/lib/part2Warmup";
-import CaptainDeltaTarget from "@/components/CaptainDelta/Visual/CaptainDeltaTarget";
-import { buildPronunciationFocusPlan } from "@/lib/captainDelta/visual/plans";
-import { emitVisualPlan } from "@/lib/captainDelta/visual/events";
-import { splitSyllables, syllableTargetId } from "@/lib/captainDelta/visual/syllables";
+import { useCallback, useEffect, useMemo, useState, type FormEvent } from "react";
+
+const LEVELS: PracticeLevel[] = [1, 2, 3, 4];
+
+function statusClass(status: ReturnType<typeof deriveVaultWordStatus>): string {
+  if (status === "critical") return "critical";
+  if (status === "needs_review") return "review";
+  if (status === "use_sentence" || status === "use_icao") return "context";
+  if (status === "new") return "new";
+  return "practicing";
+}
 
 function VaultAddWordsForm({ onAdded }: { onAdded: () => void }) {
   const [input, setInput] = useState("");
@@ -44,12 +73,10 @@ function VaultAddWordsForm({ onAdded }: { onAdded: () => void }) {
       setMessage("Digite ao menos uma palavra em inglês (separe várias com vírgula).");
       return;
     }
-
     const { added, updated, total } = addManualWordsToVault(input, context);
     setInput("");
     setContext("");
     onAdded();
-
     if (added > 0) {
       setMessage(
         `${added} palavra${added > 1 ? "s" : ""} adicionada${added > 1 ? "s" : ""}` +
@@ -57,7 +84,7 @@ function VaultAddWordsForm({ onAdded }: { onAdded: () => void }) {
           ` · ${total} no banco.`,
       );
     } else if (updated > 0) {
-      setMessage(`${updated} palavra${updated > 1 ? "s" : ""} já estava${updated > 1 ? "m" : ""} no banco — contexto atualizado.`);
+      setMessage(`${updated} palavra${updated > 1 ? "s" : ""} já no banco — contexto atualizado.`);
     }
   };
 
@@ -65,8 +92,7 @@ function VaultAddWordsForm({ onAdded }: { onAdded: () => void }) {
     <form className="vault-add-form" onSubmit={handleSubmit}>
       <h2>Adicionar palavras</h2>
       <p className="sub">
-        Digite termos de aviação para treinar. Separe várias com vírgula — ex.:{" "}
-        <em>helicopter, autorotation, phraseology</em>
+        Separe várias com vírgula — ex.: <em>helicopter, clearance, turbulence</em>
       </p>
       <label className="field">
         <span>Palavra(s)</span>
@@ -76,7 +102,7 @@ function VaultAddWordsForm({ onAdded }: { onAdded: () => void }) {
             setInput(e.target.value);
             setMessage(null);
           }}
-          placeholder="helicopter, hover, check ride"
+          placeholder="helicopter, hover, clearance"
           autoComplete="off"
         />
       </label>
@@ -85,7 +111,7 @@ function VaultAddWordsForm({ onAdded }: { onAdded: () => void }) {
         <input
           value={context}
           onChange={(e) => setContext(e.target.value)}
-          placeholder="Part 1 — check ride"
+          placeholder="Part 1 — weather"
           autoComplete="off"
         />
       </label>
@@ -103,25 +129,23 @@ export default function PronunciationWordsMode() {
   const searchParams = useSearchParams();
   const [words, setWords] = useState<VaultWord[]>([]);
   const [activeWord, setActiveWord] = useState<VaultWord | null>(null);
+  const [practiceLevel, setPracticeLevel] = useState<PracticeLevel>(1);
   const [lastPracticeScore, setLastPracticeScore] = useState<number | null>(null);
-  const [lastPassCount, setLastPassCount] = useState<number | null>(null);
   const [lastResult, setLastResult] = useState<AzurePronunciationResult | null>(null);
   const [activityNote, setActivityNote] = useState<string | null>(null);
+  const [captainNote, setCaptainNote] = useState<string | null>(null);
+  const [mission, setMission] = useState<PronunciationMission | null>(null);
+  const [missionProgress, setMissionProgress] = useState<string[]>([]);
+  const [showDebrief, setShowDebrief] = useState(false);
   const azure = useAzurePronunciation();
   const speech = useAzureSpeech();
 
   const refresh = useCallback(() => setWords(loadVault()), []);
 
-  const listenWord = async (word: string) => {
-    try {
-      await speech.speak(word);
-    } catch {
-      /* error surfaced in speech.error */
-    }
-  };
-
   useEffect(() => {
     refresh();
+    setMission(loadActiveMission());
+    setMissionProgress(loadMissionProgress());
     window.addEventListener(VAULT_CHANGE_EVENT, refresh);
     return () => window.removeEventListener(VAULT_CHANGE_EVENT, refresh);
   }, [refresh]);
@@ -130,25 +154,44 @@ export default function PronunciationWordsMode() {
     const requested = searchParams.get("word")?.trim().toLowerCase();
     if (!requested || !words.length) return;
     const match = words.find((w) => w.word.toLowerCase() === requested);
-    if (match) setActiveWord(match);
+    if (match) selectWord(match);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams, words]);
 
   const stats = vaultStats(words);
+  const debrief = useMemo(
+    () => (mission ? buildMissionDebrief(mission, missionProgress) : null),
+    [mission, missionProgress],
+  );
 
   const selectWord = (item: VaultWord) => {
-    setActiveWord(item);
+    const pack = ensureWordContext(item.word, item.contextPack);
+    const enriched = { ...item, contextPack: pack };
+    setActiveWord(enriched);
+    setPracticeLevel(item.practiceLevel ?? 1);
     setLastPracticeScore(null);
-    setLastPassCount(null);
     setLastResult(null);
+    setCaptainNote(null);
     azure.clear();
   };
 
-  const startRecording = async () => {
+  const listenText = async (text: string) => {
+    try {
+      await speech.speak(text);
+    } catch {
+      /* speech.error */
+    }
+  };
+
+  const startRecording = async (level: PracticeLevel = practiceLevel) => {
     if (!activeWord) return;
+    setPracticeLevel(level);
     setLastPracticeScore(null);
-    setLastPassCount(null);
     setLastResult(null);
-    await azure.start(activeWord.word, "part2-readback");
+    setCaptainNote(null);
+    const text = practiceTextForLevel(activeWord, level);
+    const type = level >= 4 ? "part1" : "part2-readback";
+    await azure.start(text, type);
   };
 
   const finishPractice = async () => {
@@ -157,19 +200,34 @@ export default function PronunciationWordsMode() {
     const score = assessment?.accuracyScore ?? 0;
     setLastPracticeScore(score);
     setLastResult(assessment);
-    const outcome = recordWordPractice(activeWord.word, score);
-    setLastPassCount(outcome.passCount);
+
+    const outcome = recordWordPractice(activeWord.word, score, practiceLevel);
     refresh();
-    const ctx = {
-      accuracy: score,
-      recognizedText: assessment?.recognizedText,
-    };
+
+    const updated = loadVault().find((w) => w.word.toLowerCase() === activeWord.word.toLowerCase());
+    const status = outcome.status;
+    const feedback = captainFeedbackAfterAttempt(
+      updated ?? activeWord,
+      score,
+      practiceLevel,
+      status,
+    );
+    setCaptainNote(feedback.message);
+    emitCaptainDeltaSuggestion({
+      text: feedback.message,
+      speechText: feedback.speechText,
+      kind: "coaching",
+      primaryAction: { id: "ready", label: "Continue", primary: true },
+      secondaryActions: [],
+    });
+
+    const ctx = { accuracy: score, recognizedText: assessment?.recognizedText };
     const counted = tryRecordStudyActivity("pronunciation", ctx);
     setActivityNote(counted ? null : studyActivityRejectReason("pronunciation", ctx));
-    if (score >= VAULT_PASS_SCORE) {
-      markWarmupSatisfied();
-    }
-    if (score < 80 && activeWord) {
+
+    if (score >= VAULT_PASS_SCORE) markWarmupSatisfied();
+
+    if (score < 80 && practiceLevel === 1) {
       const syllables = splitSyllables(activeWord.word);
       const weakWord = assessment?.words
         ?.slice()
@@ -178,17 +236,29 @@ export default function PronunciationWordsMode() {
         syllables.find((s) => weakWord?.toLowerCase().includes(s.toLowerCase())) ?? syllables[0];
       emitVisualPlan(buildPronunciationFocusPlan(activeWord.word, weakSyllable));
     }
+
+    if (mission) {
+      const next = [...missionProgress, activeWord.word.toLowerCase()];
+      setMissionProgress(next);
+      saveMissionProgress(next);
+      if (next.length >= mission.words.length) setShowDebrief(true);
+    }
+
     if (outcome.removed) {
-      setTimeout(() => setActiveWord(null), 2500);
+      setTimeout(() => setActiveWord(null), 2800);
+    } else if (outcome.advancedLevel && updated) {
+      setActiveWord(updated);
+      setPracticeLevel(updated.practiceLevel ?? practiceLevel);
     }
   };
 
-  const resetForRetry = () => {
-    setLastPracticeScore(null);
-    setLastPassCount(null);
-    setLastResult(null);
-    setActivityNote(null);
-    azure.clear();
+  const startMission = () => {
+    const m = buildDailyPronunciationMission(words);
+    saveActiveMission(m);
+    setMission(m);
+    setMissionProgress([]);
+    setShowDebrief(false);
+    if (m.words[0]) selectWord(m.words[0]!.word);
   };
 
   if (!words.length) {
@@ -199,97 +269,205 @@ export default function PronunciationWordsMode() {
         <div className="exam-pick-card">
           <h2>Palavras para treinar</h2>
           <p className="sub">
-            Ainda não há palavras salvas. Adicione manualmente acima ou use{" "}
-            <strong>Falar e corrigir</strong> no Part 1/Part 2 — palavras com pronúncia fraca são
-            salvas automaticamente.
+            Adicione manualmente ou use <strong>Falar e corrigir</strong> no Part 1/Part 2 — palavras
+            com pronúncia abaixo de 40% entram no banco automaticamente.
           </p>
         </div>
       </div>
     );
   }
 
+  const pack = activeWord ? ensureWordContext(activeWord.word, activeWord.contextPack) : null;
+  const wordStatus = activeWord ? deriveVaultWordStatus(activeWord) : null;
+  const maxLevel = activeWord?.practiceLevel ?? 1;
+
   return (
     <div className="part2-mode">
       <CallsignDrillPanel initialOpen={searchParams.get("callsign") !== "0"} />
       <VaultAddWordsForm onAdded={refresh} />
+
+      {!activeWord && !showDebrief && (
+        <section className="pron-mission-card">
+          <p className="pron-mission-badge">👨‍✈️ Captain Delta</p>
+          <p className="pron-mission-quote">&ldquo;{CAPTAIN_MISSION_INTRO}&rdquo;</p>
+          <button type="button" className="btn purple" onClick={startMission}>
+            Start Pronunciation Mission
+          </button>
+          {mission && (
+            <p className="pron-mission-meta">
+              Missão de hoje: {missionProgress.length}/{mission.words.length} palavras
+            </p>
+          )}
+        </section>
+      )}
+
+      {showDebrief && debrief && (
+        <section className="pron-debrief-card">
+          <h2>Pronunciation Debrief</h2>
+          <ul className="pron-debrief-list">
+            {debrief.bestWord && (
+              <li>
+                <strong>Best word:</strong> {debrief.bestWord}
+              </li>
+            )}
+            {debrief.mostImprovedWord && (
+              <li>
+                <strong>Most improved:</strong> {debrief.mostImprovedWord}
+              </li>
+            )}
+            {debrief.stillCritical.length > 0 && (
+              <li>
+                <strong>Still critical:</strong> {debrief.stillCritical.join(", ")}
+              </li>
+            )}
+            {debrief.graduated.length > 0 && (
+              <li>
+                <strong>Graduated:</strong> {debrief.graduated.join(", ")}
+              </li>
+            )}
+            {debrief.nextFocus && (
+              <li>
+                <strong>Next mission:</strong> focus on {debrief.nextFocus}
+              </li>
+            )}
+          </ul>
+          <p className="pron-mission-quote">&ldquo;{CAPTAIN_MISSION_DEBRIEF}&rdquo;</p>
+          <button
+            type="button"
+            className="btn secondary"
+            onClick={() => {
+              setShowDebrief(false);
+              setMission(null);
+            }}
+          >
+            Voltar ao banco
+          </button>
+        </section>
+      )}
+
       <header className="part2-mode-head">
-        <span className="badge">Pronúncia — banco de palavras</span>
+        <span className="badge">Pronúncia — aviation coach</span>
         <span className="part2-counter">{stats.total} palavras</span>
       </header>
 
-      <div className="vault-stats-row">
-        <span className="vault-stat critical">{stats.critical} críticas (&lt;60%)</span>
-        <span className="vault-stat warn">{stats.needsPractice} para treinar (&lt;80%)</span>
-        <span className="vault-stat vault-stat-hint">
-          Apagar banco em <Link href="/conta">Conta</Link>
-        </span>
+      <div className="vault-stats-row pron-status-row">
+        <span className="vault-stat critical">{stats.critical} Critical</span>
+        <span className="vault-stat warn">{stats.needsPractice} &lt;80%</span>
+        <span className="vault-stat">{stats.practicing} Practicing</span>
+        <span className="vault-stat">{stats.useSentence + stats.useIcao} In context</span>
       </div>
 
-      {activeWord ? (
+      {activeWord && pack ? (
         <article className="card card-essential part2-card vault-practice-card">
           <div className="card-top">
+            <div className="pron-level-tabs" role="tablist">
+              {LEVELS.map((lvl) => (
+                <button
+                  key={lvl}
+                  type="button"
+                  role="tab"
+                  aria-selected={practiceLevel === lvl}
+                  className={`pron-level-tab ${practiceLevel === lvl ? "active" : ""} ${lvl > maxLevel ? "locked" : ""}`}
+                  onClick={() => lvl <= maxLevel && setPracticeLevel(lvl)}
+                  disabled={lvl > maxLevel}
+                >
+                  L{lvl}: {levelLabel(lvl)}
+                </button>
+              ))}
+            </div>
+
+            <span className={`pron-word-status pron-word-status-${statusClass(wordStatus!)}`}>
+              {statusLabel(wordStatus!)}
+            </span>
+
             <h2 className="question">
-              Praticar:{" "}
-              <CaptainDeltaTarget id="pronunciation-word" className="cdv-pronunciation-word">
-                {splitSyllables(activeWord.word).map((syll, i, arr) => (
-                  <CaptainDeltaTarget
-                    key={`${syll}-${i}`}
-                    id={syllableTargetId(syll)}
-                    className="cdv-syllable"
-                  >
-                    {syll}
-                    {i < arr.length - 1 ? "·" : ""}
+              {practiceLevel === 1 && (
+                <>
+                  Word:{" "}
+                  <CaptainDeltaTarget id="pronunciation-word" className="cdv-pronunciation-word">
+                    {splitSyllables(activeWord.word).map((syll, i, arr) => (
+                      <CaptainDeltaTarget
+                        key={`${syll}-${i}`}
+                        id={syllableTargetId(syll)}
+                        className="cdv-syllable"
+                      >
+                        {syll}
+                        {i < arr.length - 1 ? "·" : ""}
+                      </CaptainDeltaTarget>
+                    ))}
                   </CaptainDeltaTarget>
-                ))}
-              </CaptainDeltaTarget>
+                </>
+              )}
+              {practiceLevel === 2 && <>Expression: {pack.expression}</>}
+              {practiceLevel === 3 && <>Sentence: {pack.sentence}</>}
+              {practiceLevel === 4 && <>ICAO: {pack.icaoPrompt}</>}
               <WordPhoneticHint word={activeWord.word} />
             </h2>
-            <p className="part2-hint vault-practice-steps">
-              <span className="vault-step">1. Ouça (Listen)</span>
-              <span className="vault-step">2. Grave a palavra</span>
-              <span className="vault-step">3. Veja a nota Azure</span>
-              <span className="vault-step">4. Repita até 5× acima de {VAULT_PASS_SCORE}%</span>
-            </p>
-            <div className="vocab-recording-progress">
-              <div className="vocab-recording-progress-head">
-                <span>Progresso</span>
-                <strong>
-                  {(lastPassCount ?? activeWord.passCount)}/{VAULT_PASSES_TO_GRADUATE} aprovadas
-                </strong>
-              </div>
-              <div className="daily-study-bar" aria-hidden>
-                <div
-                  className="daily-study-bar-fill"
-                  style={{
-                    width: `${Math.min(
-                      100,
-                      Math.round(
-                        ((lastPassCount ?? activeWord.passCount) / VAULT_PASSES_TO_GRADUATE) * 100,
-                      ),
-                    )}%`,
-                  }}
-                />
-              </div>
+
+            {practiceLevel === 4 && (
+              <p className="pron-model-fragment">
+                Model fragment: <em>{pack.fragment}</em>
+              </p>
+            )}
+
+            <div className="pron-smart-progress">
+              <span>Smart graduation:</span>
+              <span>{activeWord.pass90Count ?? 0}/2 ≥90%</span>
+              <span>{activeWord.pass85Count ?? 0}/3 ≥85%</span>
+              <span>{activeWord.pass80Count ?? activeWord.passCount}/5 ≥80%</span>
             </div>
+
+            {captainNote && (
+              <p className="pron-captain-feedback">👨‍✈️ Captain Delta: {captainNote}</p>
+            )}
+
             <div className="vault-youglish-row">
               <YouGlishLink word={activeWord.word} />
             </div>
             <p className="part2-situation">Contexto: {activeWord.context || "—"}</p>
-            <p className="part2-meta-row">
-              <span className="part2-tag">Última nota: {activeWord.lastAccuracy}%</span>
-              <span className="part2-tag">Pior nota: {activeWord.lowestAccuracy}%</span>
-              <span className="part2-tag">{activeWord.errorLabel}</span>
-              {activeWord.returnCount > 0 && (
-                <span className="part2-tag vault-return-tag">voltou {activeWord.returnCount}×</span>
-              )}
-            </p>
           </div>
+
           <div className="card-body">
+            <div className="pron-practice-actions">
+              <button
+                type="button"
+                className="btn green btn-sm"
+                onClick={() => void startRecording(1)}
+                disabled={azure.assessing}
+              >
+                Practice Word
+              </button>
+              <button
+                type="button"
+                className="btn secondary btn-sm"
+                onClick={() => void startRecording(2)}
+                disabled={azure.assessing || maxLevel < 2}
+              >
+                Practice Expression
+              </button>
+              <button
+                type="button"
+                className="btn secondary btn-sm"
+                onClick={() => void startRecording(3)}
+                disabled={azure.assessing || maxLevel < 2}
+              >
+                Practice Sentence
+              </button>
+              <button
+                type="button"
+                className="btn purple btn-sm"
+                onClick={() => void startRecording(4)}
+                disabled={azure.assessing || maxLevel < 3}
+              >
+                Use in ICAO Answer
+              </button>
+            </div>
+
             <div className="voice-coach-actions">
               <button
                 type="button"
                 className="btn secondary"
-                onClick={() => void listenWord(activeWord.word)}
+                onClick={() => void listenText(practiceTextForLevel(activeWord, practiceLevel))}
                 disabled={speech.speaking || azure.assessing || !speech.configured}
               >
                 {speech.speaking ? "🔊 Playing…" : "🔊 Listen"}
@@ -298,30 +476,30 @@ export default function PronunciationWordsMode() {
                 <button
                   type="button"
                   className="btn green"
-                  onClick={startRecording}
+                  onClick={() => void startRecording(practiceLevel)}
                   disabled={speech.speaking}
                 >
-                  ● {lastPracticeScore !== null ? "Gravar novamente" : "Gravar palavra"}
+                  ● Gravar
                 </button>
               ) : (
-                <button type="button" className="btn orange" onClick={finishPractice}>
-                  ⏹ Parar e avaliar (Azure)
+                <button type="button" className="btn orange" onClick={() => void finishPractice()}>
+                  ⏹ Parar e avaliar
                 </button>
               )}
-              {lastPracticeScore !== null && !azure.assessing && (
-                <button type="button" className="btn secondary" onClick={resetForRetry}>
-                  Limpar resultado
-                </button>
-              )}
-              <button type="button" className="btn secondary" onClick={() => { setActiveWord(null); azure.clear(); }}>
+              <button
+                type="button"
+                className="btn secondary"
+                onClick={() => {
+                  setActiveWord(null);
+                  azure.clear();
+                }}
+              >
                 Voltar à lista
               </button>
             </div>
+
             {(azure.error || speech.error) && (
               <p className="voice-coach-error">{azure.error || speech.error}</p>
-            )}
-            {!azure.configured && (
-              <p className="voice-coach-warn">Configure AZURE_SPEECH_KEY no .env para avaliar pronúncia.</p>
             )}
             {lastPracticeScore !== null && (
               <p
@@ -329,41 +507,27 @@ export default function PronunciationWordsMode() {
                   lastPracticeScore >= VAULT_PASS_SCORE ? "good" : "bad"
                 }`}
               >
-                {lastPracticeScore >= VAULT_PASS_SCORE
-                  ? lastPassCount !== null && lastPassCount >= VAULT_PASSES_TO_GRADUATE
-                    ? `Excelente — ${lastPracticeScore}%! ${VAULT_PASSES_TO_GRADUATE}/${VAULT_PASSES_TO_GRADUATE} — palavra removida da lista.`
-                    : `Bom — ${lastPracticeScore}%! ${lastPassCount ?? activeWord.passCount}/${VAULT_PASSES_TO_GRADUATE} aprovadas. Continue treinando.`
-                  : `${lastPracticeScore}% — ouça (Listen) e grave novamente.`}
+                {lastPracticeScore}% — {levelLabel(practiceLevel)}
+                {lastPracticeScore >= 90
+                  ? " · Excellent"
+                  : lastPracticeScore >= VAULT_PASS_SCORE
+                    ? " · Good"
+                    : " · Keep practicing"}
               </p>
             )}
             {activityNote && <p className="voice-coach-warn">{activityNote}</p>}
-            {lastPracticeScore !== null && lastPracticeScore >= VAULT_PASS_SCORE && !activityNote && (
-              <p className="study-activity-counted">✓ Contou na meta de hoje</p>
-            )}
-            {(lastResult || (azure.result && !lastResult)) && (
+
+            {lastResult && (
               <div className="voice-coach-azure-scores vault-azure-scores">
                 <div className="voice-score">
-                  <strong>{(lastResult ?? azure.result)!.accuracyScore}</strong>
+                  <strong>{lastResult.accuracyScore}</strong>
                   <span>accuracy</span>
                 </div>
                 <div className="voice-score">
-                  <strong>{(lastResult ?? azure.result)!.fluencyScore}</strong>
+                  <strong>{lastResult.fluencyScore}</strong>
                   <span>fluency</span>
                 </div>
-                <div className="voice-score">
-                  <strong>{(lastResult ?? azure.result)!.completenessScore}</strong>
-                  <span>completeness</span>
-                </div>
-                <div className="voice-score">
-                  <strong>{(lastResult ?? azure.result)!.prosodyScore}</strong>
-                  <span>prosody</span>
-                </div>
               </div>
-            )}
-            {lastResult?.recognizedText && (
-              <p className="voice-coach-transcript vault-recognized">
-                Azure ouviu: <em>{lastResult.recognizedText}</em>
-              </p>
             )}
             {lastResult?.words
               .filter((w) => w.errorType && w.errorType !== "None")
@@ -375,58 +539,62 @@ export default function PronunciationWordsMode() {
           </div>
         </article>
       ) : (
-        <ul className="vault-word-list">
-          {words.map((item) => (
-            <li key={item.word} className={`vault-word-item ${item.lowestAccuracy < 60 ? "bad" : "warn"}`}>
-              <div className="vault-word-top">
-                <div className="vault-word-headline">
-                  <strong className="vault-word-title">
-                    {item.word}
-                    <WordPhoneticHint word={item.word} className="vault-word-phonetic" />
-                  </strong>
-                  <span className={`vault-word-pct ${item.lowestAccuracy < 60 ? "bad" : "warn"}`}>
-                    {item.lowestAccuracy}%
-                  </span>
-                </div>
-                <div className="vault-word-meta">
-                  <span className="vault-word-scores">
-                    visto {item.timesSeen}x
-                    {item.returnCount > 0 && ` · voltou ${item.returnCount}×`}
-                    {item.practiceCount > 0 && ` · ${item.practiceCount} treino${item.practiceCount > 1 ? "s" : ""}`}
-                    {` · ${item.passCount}/${VAULT_PASSES_TO_GRADUATE} aprovadas`}
-                  </span>
-                  <span className="vault-word-error">{item.errorLabel}</span>
-                  {item.context && <span className="vault-word-context">{item.context}</span>}
-                </div>
-              </div>
-              <div className="vault-word-actions">
-                <button
-                  type="button"
-                  className="btn secondary btn-sm"
-                  onClick={() => void listenWord(item.word)}
-                  disabled={speech.speaking || !speech.configured}
-                  aria-label={`Ouvir ${item.word}`}
+        !showDebrief && (
+          <ul className="vault-word-list">
+            {words.map((item) => {
+              const st = deriveVaultWordStatus(item);
+              return (
+                <li
+                  key={item.word}
+                  className={`vault-word-item pron-status-${statusClass(st)}`}
                 >
-                  {speech.speaking ? "🔊…" : "🔊 Listen"}
-                </button>
-                <YouGlishLink word={item.word} compact />
-                <button type="button" className="btn green btn-sm" onClick={() => selectWord(item)}>
-                  Praticar
-                </button>
-                <button
-                  type="button"
-                  className="btn secondary btn-sm"
-                  onClick={() => {
-                    removeVaultWord(item.word);
-                    refresh();
-                  }}
-                >
-                  Remover
-                </button>
-              </div>
-            </li>
-          ))}
-        </ul>
+                  <div className="vault-word-top">
+                    <div className="vault-word-headline">
+                      <strong className="vault-word-title">
+                        {item.word}
+                        <WordPhoneticHint word={item.word} className="vault-word-phonetic" />
+                      </strong>
+                      <span className={`pron-word-status pron-word-status-${statusClass(st)}`}>
+                        {statusLabel(st)}
+                      </span>
+                    </div>
+                    <div className="vault-word-meta">
+                      <span className="vault-word-scores">
+                        L{item.practiceLevel ?? 1} · {item.lastAccuracy}% · {item.practiceCount}{" "}
+                        treinos
+                      </span>
+                      {item.context && <span className="vault-word-context">{item.context}</span>}
+                    </div>
+                  </div>
+                  <div className="vault-word-actions">
+                    <button
+                      type="button"
+                      className="btn secondary btn-sm"
+                      onClick={() => void listenText(item.word)}
+                      disabled={speech.speaking || !speech.configured}
+                    >
+                      🔊 Listen
+                    </button>
+                    <YouGlishLink word={item.word} compact />
+                    <button type="button" className="btn green btn-sm" onClick={() => selectWord(item)}>
+                      Practice in Context
+                    </button>
+                    <button
+                      type="button"
+                      className="btn secondary btn-sm"
+                      onClick={() => {
+                        removeVaultWord(item.word);
+                        refresh();
+                      }}
+                    >
+                      Remover
+                    </button>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        )
       )}
     </div>
   );

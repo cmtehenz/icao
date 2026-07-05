@@ -14,7 +14,8 @@ const WORD_HINTS: Record<string, string> = {
   heading: "HÉ-ding",
   frequency: "FRÍ-quên-si",
   contact: "CÓN-tact",
-  cleared: "CLÍRD",
+  cleared: "KLÍR-âns",
+  clearance: "KLÍR-âns",
   caution: "CÓ-shãn",
   vicinity: "vi-SÍ-ni-ti",
   aerodrome: "É-ro-drôum",
@@ -96,7 +97,7 @@ const WORD_HINTS: Record<string, string> = {
   severe: "si-VÍR",
   moderate: "MÓ-dâ-rêit",
   icing: "ÁI-sing",
-  fuel: "FIÚL",
+  fuel: "FYOOL",
   starvation: "star-VÊI-shãn",
   dumping: "DÂM-ping",
   total: "TÔU-tâl",
@@ -150,7 +151,7 @@ const WORD_HINTS: Record<string, string> = {
   headwind: "HÉD-uind",
   lightning: "LÁIT-ning",
   shower: "XÁU-âr",
-  weather: "UÉ-dhâr",
+  weather: "WEH-ther",
   deteriorating: "di-TÍ-ri-ô-rêi-ting",
   broken: "BRÔU-kãn",
 
@@ -189,7 +190,7 @@ const WORD_HINTS: Record<string, string> = {
   precaution: "pri-KÓ-shãn",
   moment: "MÔU-mãnt",
   reasons: "RÍ-zãnz",
-  safety: "SÊIF-ti",
+  safety: "SAYF-tee",
 
   // ── Reported speech ───────────────────────────────────────────────────────
   controller: "cãn-TRÔU-lâr",
@@ -207,14 +208,14 @@ const WORD_HINTS: Record<string, string> = {
   delay: "di-LÊI",
 
   // ── Part 1 / general aviation ─────────────────────────────────────────────
-  helicopter: "HÉ-li-cóp-ter",
+  helicopter: "HÉ-li-cop-ter",
   phraseology: "frei-zi-O-lo-dji",
   helipad: "HÉ-li-pæd",
   offshore: "ÓF-xórf",
   hems: "HÉMS",
   aviation: "êi-vi-ÊI-shãn",
-  pilot: "PÁI-lât",
-  pilots: "PÁI-lâts",
+  pilot: "PY-luht",
+  pilots: "PY-luhts",
   aircraft: "ÉR-kræft",
   flight: "FLÁIT",
   level: "LÉ-vâl",
@@ -400,7 +401,10 @@ const WORD_HINTS: Record<string, string> = {
   small: "SMÓL",
   large: "LÁRDJ",
   long: "LÓNG",
-  high: "RÁI",
+  high: "HAI",
+  route: "RÚT / RAUT",
+  complete: "kum-PLEET",
+  focused: "FOH-kust",
   low: "LÔU",
   fast: "FÉST",
   near: "NÍR",
@@ -569,6 +573,9 @@ function hintForToken(token: string): string {
   const key = token.toLowerCase().replace(/[^a-z0-9'-]/g, "");
   if (!key) return token;
   if (WORD_HINTS[key]) return WORD_HINTS[key];
+
+  // Fix common mis-generations (e.g. clereance → clearance)
+  if (/^cl[ae]r?e?ance$/i.test(key)) return WORD_HINTS.clearance ?? "KLÍR-âns";
 
   const transformed = applyPhoneticRules(key);
   const syllables = splitSyllables(transformed);
