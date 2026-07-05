@@ -88,6 +88,10 @@ export type CaptainDeltaLessonContext = {
   recording?: boolean;
 };
 
+export type CaptainDeltaLessonContextPatch = Partial<CaptainDeltaLessonContext> & {
+  eventId?: string;
+};
+
 export type CaptainDeltaMessage = {
   id: string;
   kind: CaptainDeltaMessageKind;

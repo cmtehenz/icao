@@ -1,5 +1,9 @@
 import { warnCaptain } from "@/lib/captainDelta/devLog";
-import type { CaptainDeltaContext, CaptainDeltaLessonContext } from "@/lib/captainDelta/types";
+import type {
+  CaptainDeltaContext,
+  CaptainDeltaLessonContext,
+  CaptainDeltaLessonContextPatch,
+} from "@/lib/captainDelta/types";
 import { DEFAULT_LESSON_CONTEXT } from "@/lib/captainDelta/types";
 
 export const CAPTAIN_DELTA_LESSON_CONTEXT = "icao-captain-delta-lesson-context";
@@ -22,6 +26,10 @@ type BridgeEntry = {
 
 let bridgeEntry: BridgeEntry | null = null;
 let bridgeListenersInstalled = false;
+
+/** Authoritative pronunciation word — owned by PronunciationWordsMode.activeWord. */
+let authoritativePronunciationWord: string | null = null;
+let pronunciationPublishSeq = 0;
 
 function ensureBridgeListeners(): void {
   if (bridgeListenersInstalled || typeof window === "undefined") return;
@@ -74,13 +82,39 @@ export function getCaptainDeltaRecordBridge(): CaptainDeltaRecordBridge | null {
   return bridgeEntry?.bridge ?? null;
 }
 
-export function emitLessonContext(context: Partial<CaptainDeltaLessonContext>): void {
+export function emitLessonContext(context: CaptainDeltaLessonContextPatch): void {
   if (typeof window === "undefined") return;
   window.dispatchEvent(
     new CustomEvent(CAPTAIN_DELTA_LESSON_CONTEXT, {
       detail: context,
     }),
   );
+}
+
+/** Publish the visible pronunciation card word — single source for Captain on /pronunciation. */
+export function publishActivePronunciationWord(word: string | null | undefined): string | null {
+  const trimmed = word?.trim() || null;
+  if (trimmed === authoritativePronunciationWord) return null;
+  authoritativePronunciationWord = trimmed;
+  if (!trimmed) return null;
+
+  pronunciationPublishSeq += 1;
+  const eventId = `pronunciation-word:${trimmed.toLowerCase()}:${pronunciationPublishSeq}`;
+  emitLessonContext({
+    mode: "pronunciation",
+    pronunciationWord: trimmed,
+    question: trimmed,
+    eventId,
+  });
+  return eventId;
+}
+
+export function clearActivePronunciationWord(): void {
+  authoritativePronunciationWord = null;
+}
+
+export function getAuthoritativePronunciationWord(): string | null {
+  return authoritativePronunciationWord;
 }
 
 export function emitStartRecord(): boolean {
@@ -119,25 +153,68 @@ export function lessonContextForRoute(context: CaptainDeltaContext): CaptainDelt
 
 export function mergeLessonContext(
   current: CaptainDeltaLessonContext,
-  patch: Partial<CaptainDeltaLessonContext>,
+  patch: CaptainDeltaLessonContextPatch,
 ): CaptainDeltaLessonContext {
   if (patch.mode === "pronunciation") {
+    const word = patch.pronunciationWord?.trim();
+    if (!word) {
+      return {
+        ...DEFAULT_LESSON_CONTEXT,
+        mode: "pronunciation",
+      };
+    }
     return {
       ...DEFAULT_LESSON_CONTEXT,
       mode: "pronunciation",
-      pronunciationWord: patch.pronunciationWord ?? current.pronunciationWord,
+      pronunciationWord: word,
+      question: patch.question?.trim() || word,
     };
   }
   return { ...DEFAULT_LESSON_CONTEXT, ...current, ...patch };
 }
 
-/** Active mission term from bridges — pronunciation word or vocabulary term. */
+/** Active mission term from lesson context. */
 export function getActiveMissionTerm(lesson: CaptainDeltaLessonContext): string | undefined {
   const word = lesson.pronunciationWord?.trim();
   return word || undefined;
 }
 
+/** Captain-facing term — on /pronunciation prefers the visible card word. */
+export function resolveCaptainActiveTerm(
+  route: CaptainDeltaContext,
+  lesson: CaptainDeltaLessonContext,
+): string | undefined {
+  if (route === "pronunciation") {
+    const authoritative = getAuthoritativePronunciationWord();
+    if (authoritative) return authoritative;
+  }
+  return getActiveMissionTerm(lesson);
+}
+
+/** True when lesson.pronunciationWord matches the authoritative card word. */
+export function isPronunciationTermSynced(lesson: CaptainDeltaLessonContext): boolean {
+  const authoritative = getAuthoritativePronunciationWord();
+  if (!authoritative) return !getActiveMissionTerm(lesson);
+  const lessonTerm = getActiveMissionTerm(lesson);
+  return !!lessonTerm && lessonTerm.toLowerCase() === authoritative.toLowerCase();
+}
+
+export function pronunciationWordChanged(
+  previous: string | null | undefined,
+  next: string | null | undefined,
+): boolean {
+  const a = previous?.trim().toLowerCase();
+  const b = next?.trim().toLowerCase();
+  if (!a || !b) return false;
+  return a !== b;
+}
+
 /** Test-only reset for bridge singleton state. */
 export function resetCaptainDeltaRecordBridgeForTests(): void {
   bridgeEntry = null;
+}
+
+export function resetActivePronunciationWordForTests(): void {
+  authoritativePronunciationWord = null;
+  pronunciationPublishSeq = 0;
 }

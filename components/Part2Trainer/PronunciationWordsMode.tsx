@@ -12,7 +12,10 @@ import { usePronunciationCaptainBridge } from "@/hooks/usePronunciationCaptainBr
 import type { AzurePronunciationResult } from "@/lib/azure/pronunciation";
 import { errorTypeLabel } from "@/lib/azure/pronunciation";
 import { emitCaptainDeltaSuggestion } from "@/lib/captainDelta/events";
-import { emitLessonContext } from "@/lib/captainDelta/lessonContext";
+import {
+  clearActivePronunciationWord,
+  publishActivePronunciationWord,
+} from "@/lib/captainDelta/lessonContext";
 import { buildPronunciationFocusPlan } from "@/lib/captainDelta/visual/plans";
 import { emitVisualPlan } from "@/lib/captainDelta/visual/events";
 import { splitSyllables, syllableTargetId } from "@/lib/captainDelta/visual/syllables";
@@ -228,7 +231,6 @@ export default function PronunciationWordsMode() {
     setLastResult(null);
     setCaptainNote(null);
     clearAzure();
-    emitLessonContext({ mode: "pronunciation", pronunciationWord: enriched.word, question: enriched.word });
     if (isPronunciationWordInTodayMission(item.word)) {
       setMissionLegActive(true);
     }
@@ -269,6 +271,14 @@ export default function PronunciationWordsMode() {
     if (match) selectWord(match);
   }, [searchParams, words, selectWord]);
 
+  useEffect(() => {
+    publishActivePronunciationWord(activeWord?.word ?? null);
+  }, [activeWord?.word]);
+
+  useEffect(() => {
+    return () => clearActivePronunciationWord();
+  }, []);
+
   const listenText = async (text: string) => {
     try {
       await speech.speak(text);
@@ -279,12 +289,12 @@ export default function PronunciationWordsMode() {
 
   const startRecording = useCallback(async (level: PracticeLevel = practiceLevel) => {
     if (!activeWord) return;
+    const text = practiceTextForLevel(activeWord, level);
     setPracticeLevel(level);
     setLastPracticeScore(null);
     setLastResult(null);
     setCaptainNote(null);
     setAssessingPending(false);
-    const text = practiceTextForLevel(activeWord, level);
     const type = level >= 4 ? "part1" : "part2-readback";
     await azure.start(text, type);
   }, [activeWord, azure, practiceLevel]);
@@ -332,11 +342,6 @@ export default function PronunciationWordsMode() {
       const recoveryHint = score < VAULT_PASS_SCORE ? ` ${AZURE_RECOVERY_GUIDANCE}` : "";
       const coachingText = feedback.message + recoveryHint;
       setCaptainNote(coachingText);
-      emitLessonContext({
-        mode: "pronunciation",
-        pronunciationWord: activeWord.word,
-        question: activeWord.word,
-      });
       emitCaptainDeltaSuggestion({
         text: coachingText,
         speechText: feedback.speechText,

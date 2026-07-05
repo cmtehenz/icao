@@ -33,20 +33,30 @@ import {
 } from "@/lib/captainDelta/events";
 import { warnCaptain } from "@/lib/captainDelta/devLog";
 import {
+  createCaptainMessageDedupState,
+  evaluateCaptainMessageDelivery,
+  type CaptainMessageDedupState,
+  shouldDeliverActiveTermSync,
+} from "@/lib/captainDelta/messageDedup";
+import {
   CAPTAIN_DELTA_LESSON_CONTEXT,
+  clearActivePronunciationWord,
   emitSecondaryAction,
   emitStartRecord,
   emitStopRecord,
-  getActiveMissionTerm,
   getCaptainDeltaRecordBridge,
+  isPronunciationTermSynced,
   lessonContextForRoute,
   mergeLessonContext,
+  pronunciationWordChanged,
+  resolveCaptainActiveTerm,
 } from "@/lib/captainDelta/lessonContext";
 import type {
   CaptainDeltaAction,
   CaptainDeltaAvatarState,
   CaptainDeltaContext,
   CaptainDeltaLessonContext,
+  CaptainDeltaLessonContextPatch,
   CaptainDeltaMessage,
   CaptainDeltaMessageKind,
 } from "@/lib/captainDelta/types";
@@ -86,6 +96,15 @@ type CaptainDeltaContextValue = {
 };
 
 const CaptainDeltaCtx = createContext<CaptainDeltaContextValue | null>(null);
+
+type DeliverMessageOptions = {
+  autoSpeak?: boolean;
+  avatar?: CaptainDeltaAvatarState;
+  source?: string;
+  eventId?: string;
+};
+
+const TERM_ROUTE_CONTEXTS: CaptainDeltaContext[] = ["pronunciation", "vocabulary"];
 
 function buildMessage(
   kind: CaptainDeltaMessageKind,
@@ -129,8 +148,13 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
   const routeContextRef = useRef(routeContext);
   routeContextRef.current = routeContext;
   const briefingTriggeredRef = useRef(false);
-  const lastSyncedMissionTermRef = useRef<string | null>(null);
-  const lastDeliveredRef = useRef<{ key: string; at: number } | null>(null);
+  const lastPronunciationWordRef = useRef<string | null>(null);
+  const dedupStateRef = useRef<CaptainMessageDedupState>(createCaptainMessageDedupState());
+
+  const activeTerm = useMemo(
+    () => resolveCaptainActiveTerm(routeContext, lesson),
+    [routeContext, lesson],
+  );
 
   const firstName =
     user?.name?.split(" ")[0] || user?.email?.split("@")[0] || "pilot";
@@ -138,19 +162,20 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
   const deliverMessage = useCallback(
     (
       msg: CaptainDeltaMessage,
-      options?: { autoSpeak?: boolean; avatar?: CaptainDeltaAvatarState },
+      options?: DeliverMessageOptions,
     ) => {
-      const term = getActiveMissionTerm(lesson);
-      const dedupKey = `${routeContext}:${term ?? ""}:${msg.text}:${msg.kind}`;
-      const now = Date.now();
-      if (
-        lastDeliveredRef.current?.key === dedupKey &&
-        now - lastDeliveredRef.current.at < 1000
-      ) {
-        warnCaptain("deliverMessage", "duplicate Captain message ignored");
-        return;
-      }
-      lastDeliveredRef.current = { key: dedupKey, at: now };
+      const term = resolveCaptainActiveTerm(routeContext, lesson);
+      const decision = evaluateCaptainMessageDelivery(dedupStateRef.current, {
+        route: routeContext,
+        kind: msg.kind,
+        activeTerm: term,
+        text: msg.text,
+        speechText: msg.speechText ?? msg.text,
+        source: options?.source,
+        eventId: options?.eventId,
+      });
+      dedupStateRef.current = decision.next;
+      if (!decision.deliver) return;
 
       voice.stop();
       setCurrentMessage(msg);
@@ -169,7 +194,7 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
       if (!wantSpeech) return;
 
       void voice.speak(msg.speechText ?? msg.text).then((result) => {
-        if (!result.ok) {
+        if (!result.ok && result.error !== "stale") {
           setVoiceStatusLabel(CAPTAIN_VOICE_TEXT_MODE_LABEL);
           warnCaptain("deliverMessage", result.error ?? "Voice output failed");
         }
@@ -191,7 +216,7 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
       setThinking(true);
       try {
         const memoryContext = buildMemoryContextForPrompt();
-        const activeTerm = getActiveMissionTerm(lessonSnapshot);
+        const activeTerm = resolveCaptainActiveTerm(routeContext, lessonSnapshot);
         const res = await fetch("/api/captain-delta", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -307,7 +332,8 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
 
   const triggerSecondaryAction = useCallback(
     (actionId: string) => {
-      const activeTerm = getActiveMissionTerm(lesson);
+      const activeTerm = resolveCaptainActiveTerm(routeContext, lesson);
+
       if (actionId === "show_hint") {
         const prompt = activeTerm
           ? `I'm stuck on "${activeTerm}". Give me one hint for this screen.`
@@ -328,7 +354,7 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
       }
       emitSecondaryAction(actionId);
     },
-    [lesson, replyFromCaptain],
+    [lesson, replyFromCaptain, routeContext],
   );
 
   const quickQuestion = useCallback(() => {
@@ -338,56 +364,94 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const onLesson = (e: Event) => {
-      const patch = (e as CustomEvent<Partial<CaptainDeltaLessonContext>>).detail;
+      const patch = (e as CustomEvent<CaptainDeltaLessonContextPatch>).detail;
       if (!patch) return;
-      setLesson((prev) => mergeLessonContext(prev, patch));
+      const { eventId: _eventId, ...lessonPatch } = patch;
+      setLesson((prev) => mergeLessonContext(prev, lessonPatch));
     };
     window.addEventListener(CAPTAIN_DELTA_LESSON_CONTEXT, onLesson);
     return () => window.removeEventListener(CAPTAIN_DELTA_LESSON_CONTEXT, onLesson);
   }, []);
 
   useEffect(() => {
+    if (routeContext !== "pronunciation") {
+      lastPronunciationWordRef.current = null;
+      return;
+    }
+    const word = resolveCaptainActiveTerm(routeContext, lesson);
+    if (!word) return;
+    if (pronunciationWordChanged(lastPronunciationWordRef.current, word)) {
+      voice.stop();
+      setCurrentMessage(null);
+      dedupStateRef.current = {
+        ...dedupStateRef.current,
+        lastDeliveredActiveTerm: null,
+        lastMessageKey: null,
+        lastMessageAt: 0,
+      };
+    }
+    lastPronunciationWordRef.current = word;
+  }, [lesson, routeContext, voice]);
+
+  useEffect(() => {
     if (!user || !isCaptainDeltaProactiveEnabled()) return;
     if (routeContext === lastContextRef.current) return;
     lastContextRef.current = routeContext;
-    lastSyncedMissionTermRef.current = null;
+    lastPronunciationWordRef.current = null;
+    dedupStateRef.current = createCaptainMessageDedupState();
 
     voice.stop();
     setCurrentMessage(null);
     setOpen(false);
 
+    if (routeContext !== "pronunciation") {
+      clearActivePronunciationWord();
+    }
+
     const freshLesson = lessonContextForRoute(routeContext);
     setLesson(freshLesson);
 
     const tip = buildContextTip(routeContext);
-    if (tip) {
+    if (tip && !TERM_ROUTE_CONTEXTS.includes(routeContext)) {
       deliverMessage(
         buildMessage("context", tip.text, routeContext, freshLesson, {
           speechText: tip.speechText,
         }),
-        { autoSpeak: true },
+        {
+          autoSpeak: true,
+          source: "route-entry",
+          eventId: `route-tip:${routeContext}`,
+        },
       );
     }
   }, [deliverMessage, routeContext, user, voice]);
 
   useEffect(() => {
     if (!user || !isCaptainDeltaProactiveEnabled()) return;
-    if (routeContext !== "pronunciation" && routeContext !== "vocabulary") return;
+    if (!TERM_ROUTE_CONTEXTS.includes(routeContext)) return;
 
-    const term = getActiveMissionTerm(lesson);
-    if (!term) return;
-    const syncKey = `${routeContext}:${term.toLowerCase()}`;
-    if (lastSyncedMissionTermRef.current === syncKey) return;
-    lastSyncedMissionTermRef.current = syncKey;
+    if (routeContext === "pronunciation" && !isPronunciationTermSynced(lesson)) {
+      return;
+    }
 
-    const line = buildActiveMissionTermLine(term, routeContext);
+    if (!activeTerm) return;
+    if (!shouldDeliverActiveTermSync(dedupStateRef.current, routeContext, activeTerm)) {
+      return;
+    }
+
+    const eventId = `sync-term:${routeContext}:${activeTerm.toLowerCase()}`;
+    const line = buildActiveMissionTermLine(activeTerm, routeContext);
     deliverMessage(
       buildMessage("coaching", line.text, routeContext, lesson, {
         speechText: line.speechText,
       }),
-      { autoSpeak: true },
+      {
+        autoSpeak: true,
+        source: "sync-effect",
+        eventId,
+      },
     );
-  }, [deliverMessage, lesson, routeContext, user]);
+  }, [activeTerm, deliverMessage, lesson, routeContext, user]);
 
   useEffect(() => {
     if (!user || pathname !== "/" || briefingTriggeredRef.current) return;

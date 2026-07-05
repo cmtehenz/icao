@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { synthesizeExamMp3, stopAzureSpeech, type AzureVoiceRole } from "@/lib/azure/azureTts";
 import { warnCaptain } from "@/lib/captainDelta/devLog";
+import { shouldAbortCaptainSpeak } from "@/lib/captainDelta/voiceGeneration";
 import { isCaptainDeltaVoiceEnabled } from "@/lib/captainDelta/voiceConfig";
 import { speakText as browserSpeak, stopSpeaking as browserStop } from "@/lib/tts";
 
@@ -27,6 +28,7 @@ export function useCaptainDeltaVoice() {
   const [lastError, setLastError] = useState<string | null>(null);
   const [muted, setMuted] = useState(false);
   const mutedRef = useRef(false);
+  const speakGenerationRef = useRef(0);
 
   useEffect(() => {
     mutedRef.current = muted;
@@ -42,6 +44,7 @@ export function useCaptainDeltaVoice() {
   }, []);
 
   const stop = useCallback(() => {
+    speakGenerationRef.current += 1;
     stopAzureSpeech();
     browserStop();
     const audio = audioRef.current;
@@ -56,7 +59,8 @@ export function useCaptainDeltaVoice() {
   useEffect(() => () => stop(), [stop]);
 
   const playBlob = useCallback(
-    async (blob: Blob, channel: VoiceSpeakChannel): Promise<boolean> => {
+    async (blob: Blob, channel: VoiceSpeakChannel, generation: number): Promise<boolean> => {
+      if (shouldAbortCaptainSpeak(generation, speakGenerationRef.current)) return false;
       cleanupBlob();
       const url = URL.createObjectURL(blob);
       blobUrlRef.current = url;
@@ -85,6 +89,11 @@ export function useCaptainDeltaVoice() {
 
       try {
         await audio.play();
+        if (shouldAbortCaptainSpeak(generation, speakGenerationRef.current)) {
+          audio.pause();
+          audio.currentTime = 0;
+          return false;
+        }
         setLastChannel(channel);
         return true;
       } catch (err) {
@@ -110,21 +119,40 @@ export function useCaptainDeltaVoice() {
         return { ok: false, channel: "disabled", error: "voice disabled" };
       }
 
+      const generation = ++speakGenerationRef.current;
       lastTextRef.current = trimmed;
-      stop();
+      stopAzureSpeech();
+      browserStop();
+      const audio = audioRef.current;
+      if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
+      cleanupBlob();
       setState("loading");
       setLastError(null);
 
+      const stale = () => shouldAbortCaptainSpeak(generation, speakGenerationRef.current);
+
       try {
         const blob = await synthesizeExamMp3(trimmed, CAPTAIN_VOICE);
+        if (stale()) {
+          return { ok: false, channel: "none", error: "stale" };
+        }
         if (blob) {
-          const played = await playBlob(blob, "azure-client");
+          const played = await playBlob(blob, "azure-client", generation);
+          if (stale()) {
+            return { ok: false, channel: "none", error: "stale" };
+          }
           return played
             ? { ok: true, channel: "azure-client" }
             : { ok: false, channel: "azure-client", error: "playback failed" };
         }
         warnCaptain("voice", "Client Azure TTS returned no audio — trying /api/tts");
       } catch (err) {
+        if (stale()) {
+          return { ok: false, channel: "none", error: "stale" };
+        }
         warnCaptain("voice", "Client Azure TTS failed — trying /api/tts", err);
       }
 
@@ -134,15 +162,28 @@ export function useCaptainDeltaVoice() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ text: trimmed, voiceType: CAPTAIN_VOICE }),
         });
+        if (stale()) {
+          return { ok: false, channel: "none", error: "stale" };
+        }
         if (res.ok) {
-          const played = await playBlob(await res.blob(), "server");
+          const played = await playBlob(await res.blob(), "server", generation);
+          if (stale()) {
+            return { ok: false, channel: "none", error: "stale" };
+          }
           return played
             ? { ok: true, channel: "server" }
             : { ok: false, channel: "server", error: "playback failed" };
         }
         warnCaptain("voice", `/api/tts returned ${res.status} — trying browser SpeechSynthesis`);
       } catch (err) {
+        if (stale()) {
+          return { ok: false, channel: "none", error: "stale" };
+        }
         warnCaptain("voice", "/api/tts request failed — trying browser SpeechSynthesis", err);
+      }
+
+      if (stale()) {
+        return { ok: false, channel: "none", error: "stale" };
       }
 
       if (mutedRef.current) {
@@ -152,6 +193,9 @@ export function useCaptainDeltaVoice() {
       }
 
       const browserOk = browserSpeak(trimmed);
+      if (stale()) {
+        return { ok: false, channel: "none", error: "stale" };
+      }
       if (browserOk) {
         setState("playing");
         setLastChannel("browser");
@@ -164,7 +208,7 @@ export function useCaptainDeltaVoice() {
       warnCaptain("voice", message);
       return { ok: false, channel: "none", error: message };
     },
-    [playBlob, stop],
+    [cleanupBlob, playBlob],
   );
 
   const pause = useCallback(() => {

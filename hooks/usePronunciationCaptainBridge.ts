@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import { emitLessonContext } from "@/lib/captainDelta/lessonContext";
 import type { PracticeLevel, VaultWord } from "@/lib/pronunciationVault";
 import { useCaptainRecordBridge } from "@/hooks/useCaptainRecordBridge";
 
@@ -20,7 +19,6 @@ type Options = {
 export function usePronunciationCaptainBridge(options: Options): void {
   const {
     activeWord,
-    practiceLevel,
     azureAssessing,
     speechSpeaking,
     azureConfigured,
@@ -28,15 +26,6 @@ export function usePronunciationCaptainBridge(options: Options): void {
     onStopRecord,
     onListen,
   } = options;
-
-  useEffect(() => {
-    if (!activeWord) return;
-    emitLessonContext({
-      mode: "pronunciation",
-      pronunciationWord: activeWord.word,
-      question: activeWord.word,
-    });
-  }, [activeWord, practiceLevel]);
 
   useCaptainRecordBridge("pronunciation", {
     canRecord: () => !!activeWord && azureConfigured && !speechSpeaking && !azureAssessing,
