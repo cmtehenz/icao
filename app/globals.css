@@ -1186,6 +1186,132 @@ input {
   padding-bottom: calc(var(--bottom-nav-height) + var(--safe-bottom) + 20px);
 }
 
+/* Mission Focus Layout — no sidebar / bottom nav during daily flight */
+.mission-focus-layout {
+  min-height: 100dvh;
+  min-height: -webkit-fill-available;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100vw;
+  min-width: 0;
+}
+
+.mission-focus-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 250;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--line);
+  padding: calc(8px + var(--safe-top)) 0 8px;
+}
+
+[data-theme="dark"] .mission-focus-topbar {
+  background: rgba(7, 11, 24, 0.94);
+}
+
+.mission-focus-topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.mission-focus-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+  min-width: 0;
+}
+
+.mission-focus-brand-icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--blue-bg), color-mix(in srgb, var(--purple) 20%, var(--bg)));
+  font-size: 1.1rem;
+}
+
+.mission-focus-brand-text {
+  min-width: 0;
+}
+
+.mission-focus-brand-text strong {
+  display: block;
+  font-size: 0.92rem;
+  line-height: 1.2;
+}
+
+.mission-focus-brand-text span {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--muted);
+  font-weight: 650;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mission-focus-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.mission-focus-cta {
+  white-space: nowrap;
+}
+
+.mission-focus-profile {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  text-decoration: none;
+  color: inherit;
+  font-size: 0.82rem;
+  font-weight: 750;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mission-focus-profile-name {
+  display: none;
+  max-width: 88px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (min-width: 480px) {
+  .mission-focus-profile-name {
+    display: inline;
+  }
+}
+
+.mission-focus-strip {
+  padding-top: 6px;
+  padding-bottom: 4px;
+}
+
+.mission-focus-main {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  padding-bottom: calc(var(--safe-bottom) + 28px);
+}
+
 /* Mobile bottom navigation */
 .app-bottom-nav {
   position: fixed;
@@ -3022,6 +3148,224 @@ input {
 
 .fi-followup-banner p {
   margin: 0.35rem 0 0;
+}
+
+.hex-examiner-banner {
+  border-color: color-mix(in srgb, var(--purple) 60%, var(--border));
+  background: color-mix(in srgb, var(--purple) 6%, var(--bg));
+}
+
+.hex-examiner-banner strong {
+  color: var(--purple);
+}
+
+/* Sprint 6.1 — Continuous AI Presence */
+.mission-focus-presence {
+  padding: 4px 0 6px;
+}
+
+.ai-presence-indicator {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--card) 92%, var(--bg));
+  font-size: 0.8rem;
+}
+
+.ai-presence-captain {
+  border-color: color-mix(in srgb, var(--purple) 35%, var(--line));
+}
+
+.ai-presence-examiner {
+  border-color: color-mix(in srgb, var(--blue) 35%, var(--line));
+}
+
+.ai-presence-icon {
+  font-size: 1rem;
+  line-height: 1.2;
+  flex-shrink: 0;
+}
+
+.ai-presence-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.ai-presence-copy strong {
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+}
+
+.ai-presence-copy span {
+  color: var(--text);
+  font-weight: 650;
+}
+
+.ai-presence-copy small {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.hex-presence-panel {
+  margin: 0.75rem 0;
+  padding: 0.75rem;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--blue) 30%, var(--line));
+  background: color-mix(in srgb, var(--blue) 5%, var(--card));
+}
+
+.hex-presence-banner {
+  margin-bottom: 0.65rem;
+}
+
+.hex-presence-title {
+  margin: 0;
+  font-weight: 750;
+  font-size: 0.88rem;
+}
+
+.hex-presence-sub {
+  margin: 0.25rem 0 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.hex-conversation-progress {
+  margin: 0.5rem 0 0.65rem;
+}
+
+.hex-progress-count {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  margin-bottom: 0.35rem;
+}
+
+.hex-progress-count strong {
+  font-variant-numeric: tabular-nums;
+}
+
+.hex-progress-stages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hex-stage {
+  font-size: 0.68rem;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-weight: 650;
+}
+
+.hex-stage.active {
+  border-color: var(--blue);
+  color: var(--blue);
+  background: var(--blue-bg);
+}
+
+.hex-stage.done {
+  border-color: color-mix(in srgb, var(--green) 40%, var(--line));
+  color: var(--green, #16a34a);
+}
+
+.hex-examiner-thinking {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0.5rem 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.hex-thinking-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--blue);
+  animation: hex-think-pulse 1s ease-in-out infinite;
+}
+
+@keyframes hex-think-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+.hex-examiner-line {
+  margin: 0.5rem 0;
+  padding: 0.55rem 0.65rem;
+  border-radius: 10px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  font-size: 0.84rem;
+}
+
+.hex-examiner-line strong {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-bottom: 0.2rem;
+}
+
+.hex-examiner-closing {
+  border-color: color-mix(in srgb, var(--purple) 30%, var(--line));
+}
+
+.hex-captain-standby {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 0.55rem;
+  padding-top: 0.55rem;
+  border-top: 1px dashed var(--line);
+  font-size: 0.76rem;
+  color: var(--muted);
+}
+
+.hex-standby-pulse,
+.cd-standby-pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--purple);
+  flex-shrink: 0;
+  animation: hex-think-pulse 1.4s ease-in-out infinite;
+}
+
+.cd-standby-card .cd-standby-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cd-standby-hint {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.cd-standby-close {
+  margin-top: 0.5rem;
+}
+
+.cd-fab-standby {
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--purple) 25%, transparent);
+}
+
+.hex-captain-preparing {
+  font-size: 0.84rem;
 }
 
 .fi-followup-active {
@@ -4901,6 +5245,28 @@ input {
 .pron-level-tab.locked {
   opacity: 0.45;
   cursor: not-allowed;
+}
+
+.pron-level-tab:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.pron-recording-state {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--orange, #c45c00);
+}
+
+.pron-recording-state-assessing {
+  color: var(--blue);
+}
+
+.pron-recovery-guidance {
+  margin: 0.35rem 0 0;
+  font-size: 0.82rem;
+  color: var(--muted);
 }
 
 .pron-word-status {
@@ -9848,4 +10214,370 @@ body.cde-examiner-mode .cd-fab {
   gap: 1rem;
   margin-top: 1rem;
   font-size: 0.82rem;
+}
+
+/* Sprint 1 — Home flight academy */
+.home-flight-deck {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 720px;
+}
+
+.home-flight-academy {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.home-flight-primary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.25rem 1.35rem 1.35rem;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--card) 92%, var(--accent, #6366f1) 8%) 0%,
+    var(--card) 55%
+  );
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--line) 60%, transparent);
+}
+
+.home-flight-records {
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--line);
+}
+
+.home-flight-records > summary {
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--muted);
+  list-style: none;
+  user-select: none;
+  border-radius: 4px;
+  padding: 0.15rem 0.1rem;
+}
+
+.home-flight-records > summary:focus-visible {
+  outline: 2px solid var(--accent, #6366f1);
+  outline-offset: 2px;
+}
+
+.home-flight-records > summary::-webkit-details-marker {
+  display: none;
+}
+
+.home-flight-records > summary::before {
+  content: "▸ ";
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+
+.home-flight-records[open] > summary::before {
+  transform: rotate(90deg);
+}
+
+.home-flight-records[open] > summary {
+  margin-bottom: 0.75rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-flight-records > summary::before {
+    transition: none;
+  }
+}
+
+.home-captain-briefing {
+  margin-bottom: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+@media (max-width: 560px) {
+  .home-captain-briefing.cda-hero {
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "badge copy"
+      "countdown countdown";
+  }
+
+  .home-captain-briefing .cda-captain-badge {
+    grid-area: badge;
+  }
+
+  .home-captain-briefing .cda-hero-copy {
+    grid-area: copy;
+  }
+
+  .home-captain-briefing .cda-exam-countdown {
+    grid-area: countdown;
+    text-align: left;
+    margin-top: 0.35rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+  }
+}
+
+.mission-focus-strip-home {
+  margin-bottom: 0.15rem;
+}
+
+.mission-cta {
+  text-align: center;
+  padding: 0.75rem 0 0;
+  border-top: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+}
+
+.mission-cta-exam {
+  margin: 0 0 0.65rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.mission-cta-btn {
+  display: inline-block;
+  min-width: min(100%, 280px);
+  min-height: 44px;
+}
+
+.mission-cta-hint {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin: 0.75rem 0 0;
+  font-size: 0.85rem;
+}
+
+.mission-cta-next {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.mission-cta-next-detail {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.mission-cta-progress {
+  margin: 0.65rem 0 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.mission-cta-complete {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--good, #22c55e);
+}
+
+.pronunciation-flight-deck {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 720px;
+}
+
+.pronunciation-leg {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pron-mission-progress {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.pronunciation-empty-card h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+}
+
+.pron-debrief-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 0.75rem;
+}
+
+.pronunciation-record-actions .btn.green {
+  min-height: 44px;
+  min-width: min(100%, 140px);
+}
+
+.pronunciation-record-actions .btn.orange {
+  min-height: 44px;
+}
+
+.home-training-insights {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding-top: 0.25rem;
+}
+
+.home-academy-widgets {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.mission-recall-page,
+.flight-debrief-page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+}
+
+.mission-recall-head,
+.flight-debrief-head {
+  margin-bottom: 1rem;
+}
+
+.mission-recall-card {
+  padding: 1.25rem;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  margin-bottom: 1rem;
+}
+
+.mission-recall-stage {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+.mission-recall-prompt {
+  font-size: 1.05rem;
+  line-height: 1.45;
+  margin: 0 0 1rem;
+}
+
+.mission-recall-feedback {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--purple, #8b5cf6);
+  margin: 0 0 0.75rem;
+}
+
+.mission-recall-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.mission-recall-hint {
+  margin: 0;
+  font-size: 0.82rem;
+}
+
+.mission-recall-transcript {
+  margin: 0.65rem 0 0;
+  padding: 0.5rem 0.65rem;
+  border-radius: 8px;
+  background: var(--card, #111827);
+  border: 1px solid var(--line, #1f2937);
+  font-size: 0.85rem;
+}
+
+.mission-recall-error {
+  margin: 0.5rem 0 0;
+  font-size: 0.82rem;
+  color: var(--bad, #f87171);
+}
+
+.mission-recall-stars {
+  font-size: 1.25rem;
+  letter-spacing: 0.15em;
+  margin: 0 0 0.75rem;
+}
+
+.mission-recall-complete {
+  text-align: center;
+  padding: 1.5rem;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--card);
+}
+
+.flight-debrief-section {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--card);
+}
+
+.flight-debrief-section h2 {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+}
+
+.flight-debrief-legs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.flight-debrief-legs li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.35rem 0;
+  font-size: 0.88rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.flight-debrief-legs li.done span:last-child {
+  color: var(--good, #22c55e);
+}
+
+.flight-debrief-priority p {
+  font-weight: 600;
+}
+
+.flight-debrief-hex-metrics {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.flight-debrief-hex-metrics li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.35rem 0;
+  font-size: 0.88rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.flight-debrief-hex-metrics li strong {
+  font-variant-numeric: tabular-nums;
+}
+
+.flight-debrief-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-top: 1rem;
 }

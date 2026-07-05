@@ -7,6 +7,7 @@ import { getLevelText } from "@/data/icaoVocabulary";
 import type { AzurePronunciationResult } from "@/lib/azure/pronunciation";
 import type { VocabItemProgress } from "@/utils/spacedRepetition";
 import { countLevelsPassed, masteryNextStep } from "@/utils/spacedRepetition";
+import { vbLevelCode, vbLevelLabel } from "@/lib/vocabGraduation";
 
 type Props = {
   item: IcaoVocabularyItem;
@@ -44,7 +45,7 @@ export default function VocabTrainingPanel({
     <div className="vocab-studio-training">
       <header className="vocab-studio-training-head">
         <button type="button" className="vocab-studio-back btn secondary btn-sm" onClick={onClose}>
-          ← Voltar
+          ← Back
         </button>
         <span className="vocab-studio-training-cat">{item.category}</span>
       </header>
@@ -65,14 +66,14 @@ export default function VocabTrainingPanel({
 
         <div className="vocab-studio-hero-stats">
           <span>Best {progress.bestScore}</span>
-          <span>{progress.attempts} tentativas</span>
-          <span>Níveis {levelsDone}/4</span>
+          <span>{progress.attempts} attempts</span>
+          <span>Levels {levelsDone}/4</span>
           <span>{masteryPct}% mastery</span>
         </div>
         {nextStep && <p className="vocab-studio-hero-hint">{nextStep}</p>}
       </div>
 
-      <div className="vocab-studio-levels" role="tablist" aria-label="Nível de treino">
+      <div className="vocab-studio-levels" role="tablist" aria-label="VB training level">
         {([1, 2, 3, 4] as const).map((l) => (
           <button
             key={l}
@@ -81,15 +82,15 @@ export default function VocabTrainingPanel({
             aria-selected={level === l}
             className={`vocab-studio-level-tab ${level === l ? "active" : ""}`}
             onClick={() => onLevelChange(l)}
-            title={getLevelText(item, l)}
+            title={vbLevelLabel(l)}
           >
-            Nível {l}
+            {vbLevelCode(l)}
           </button>
         ))}
       </div>
 
       <div className="vocab-studio-practice-box">
-        <span className="vocab-studio-practice-label">Texto para praticar</span>
+        <span className="vocab-studio-practice-label">Practice text</span>
         <p className="vocab-studio-practice-text">{referenceText}</p>
       </div>
 

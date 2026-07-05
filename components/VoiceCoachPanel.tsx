@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import { useAzurePronunciation } from "@/hooks/useAzurePronunciation";
 import { useSpeechRecognition } from "@/hooks/useSpeechRecognition";
 import {
@@ -41,6 +41,33 @@ import CaptainDeltaTarget from "@/components/CaptainDelta/Visual/CaptainDeltaTar
 import { keywordTargetId } from "@/lib/captainDelta/visual/types";
 import { emitCaptainDeltaSessionRecord } from "@/lib/captainDelta/memory/events";
 import CaptainDeltaConfidencePrompt from "@/components/CaptainDelta/Memory/CaptainDeltaConfidencePrompt";
+import {
+  createConversation,
+  resolveQuestionContext,
+} from "@/lib/humanExaminer/buildConversation";
+import {
+  loadConversation,
+  saveConversation,
+  saveConversationMetrics,
+  clearConversation,
+} from "@/lib/humanExaminer/conversationStore";
+import type { ConversationState } from "@/lib/humanExaminer/types";
+import {
+  buildConversationProgress,
+  deriveConversationPhase,
+  presenceFromPhase,
+} from "@/lib/aiPresence/conversationPresence";
+import { emitAIPresenceClearHex, emitAIPresenceUpdate } from "@/lib/aiPresence/events";
+import { processHexAnswerSafe } from "@/lib/aiPresence/processHexAnswer";
+import ExaminerPresencePanel from "@/components/aiPresence/ExaminerPresencePanel";
+import type { ConversationSessionPhase } from "@/lib/aiPresence/types";
+
+const EXAMINER_THINKING_MS = 500;
+const CONVERSATION_CLOSE_MS = 1400;
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => window.setTimeout(resolve, ms));
+}
 
 type Props = {
   question: string;
@@ -112,9 +139,65 @@ export default function VoiceCoachPanel({
     originalQuestion: string;
     followUpQuestion: string;
     previousTranscript: string;
+    examiner?: boolean;
   } | null>(null);
+  const [hexConversation, setHexConversation] = useState<ConversationState | null>(null);
+  const [showExaminerThinking, setShowExaminerThinking] = useState(false);
+  const [closingActive, setClosingActive] = useState(false);
+  const [displayExaminerLine, setDisplayExaminerLine] = useState<string | null>(null);
   const [confidenceQuestionId, setConfidenceQuestionId] = useState<string | null>(null);
   const guideRef = useRef<HTMLDivElement>(null);
+  const thinkingTimerRef = useRef<number | null>(null);
+
+  const isHexPart1 = evaluateType === "part1" && !!cardNum;
+  const hexExamining = isHexPart1 && !!hexConversation && !hexConversation.complete;
+  const showHexPresence = isHexPart1 && (hexExamining || closingActive);
+  const hexCtx = cardNum ? resolveQuestionContext(cardNum) : null;
+  const hexProgress =
+    hexConversation && hexCtx
+      ? buildConversationProgress(hexConversation, hexCtx)
+      : null;
+
+  const conversationPhase: ConversationSessionPhase = deriveConversationPhase({
+    hexActive: isHexPart1 && !!hexConversation,
+    hexComplete: !!hexConversation?.complete,
+    loading,
+    azureAssessing: azure.assessing,
+    examinerThinking: showExaminerThinking,
+    closingActive,
+    instructorLoading,
+    hasInstructorReport: !!instructorReport,
+    hasExaminerFollowUp: !!(displayExaminerLine || followUpContext?.followUpQuestion),
+  });
+
+  useEffect(() => {
+    if (!isHexPart1) {
+      emitAIPresenceClearHex();
+      return;
+    }
+    emitAIPresenceUpdate(presenceFromPhase(conversationPhase));
+  }, [isHexPart1, conversationPhase]);
+
+  useEffect(() => {
+    return () => {
+      if (thinkingTimerRef.current) window.clearTimeout(thinkingTimerRef.current);
+      emitAIPresenceClearHex();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isHexPart1 || !cardNum) {
+      setHexConversation(null);
+      return;
+    }
+    const loaded = loadConversation(cardNum);
+    if (loaded && !loaded.complete) {
+      setHexConversation(loaded);
+    } else {
+      if (loaded?.complete) clearConversation(cardNum);
+      setHexConversation(createConversation(cardNum));
+    }
+  }, [cardNum, isHexPart1]);
 
   const addWordToVault = (word: string) => {
     const { added, updated, total } = addManualWordsToVault(word, question.slice(0, 80));
@@ -146,6 +229,12 @@ export default function VoiceCoachPanel({
     setActivityNote(null);
     setTrainWords([]);
     const evalQuestion = followUpContext?.followUpQuestion ?? question;
+    if (isHexPart1 && hexExamining) {
+      thinkingTimerRef.current = window.setTimeout(
+        () => setShowExaminerThinking(true),
+        EXAMINER_THINKING_MS,
+      );
+    }
     try {
       const res = await fetch("/api/evaluate", {
         method: "POST",
@@ -208,6 +297,50 @@ export default function VoiceCoachPanel({
 
       setFeedback(data);
 
+      let skipCaptainDebrief = false;
+      if (isHexPart1 && cardNum) {
+        const ctx = resolveQuestionContext(cardNum);
+        if (ctx) {
+          const base = hexConversation ?? createConversation(cardNum);
+          const hexResult = processHexAnswerSafe(
+            base,
+            ctx,
+            data.transcript,
+            data.scores.overall,
+          );
+          saveConversation(hexResult.state);
+          setHexConversation(hexResult.state);
+
+          if (!hexResult.state.complete) {
+            skipCaptainDebrief = true;
+            const line = hexResult.examinerLine ?? "Tell me more.";
+            setDisplayExaminerLine(line);
+            setFollowUpContext({
+              originalQuestion: question,
+              followUpQuestion: line,
+              previousTranscript: data.transcript,
+              examiner: true,
+            });
+            if (data.icaoLevel?.overall) {
+              recordPart1CoachAttempt(cardNum, data.scores.overall, data.icaoLevel.overall);
+            }
+            tryAgain(true);
+          } else {
+            const closingLine =
+              hexResult.examinerLine ?? "Thank you. Let's move to the next question.";
+            setDisplayExaminerLine(closingLine);
+            setClosingActive(true);
+            emitAIPresenceUpdate(presenceFromPhase("conversation_closing"));
+            await sleep(CONVERSATION_CLOSE_MS);
+            setClosingActive(false);
+            if (hexResult.metrics) {
+              saveConversationMetrics(cardNum, hexResult.metrics);
+            }
+          }
+        }
+      }
+
+      if (!skipCaptainDebrief) {
       setInstructorLoading(true);
       try {
         const report = user
@@ -250,7 +383,7 @@ export default function VoiceCoachPanel({
           report,
         });
         setConfidenceQuestionId(sessionQid);
-        if (followUpContext) {
+        if (followUpContext && !followUpContext.examiner) {
           setFollowUpContext(null);
         }
         recordInstructorSession({
@@ -268,8 +401,9 @@ export default function VoiceCoachPanel({
       } finally {
         setInstructorLoading(false);
       }
+      }
 
-      if (evaluateType === "part1" && cardNum && data.icaoLevel?.overall) {
+      if (evaluateType === "part1" && cardNum && data.icaoLevel?.overall && !skipCaptainDebrief) {
         recordPart1CoachAttempt(cardNum, data.scores.overall, data.icaoLevel.overall);
       }
 
@@ -307,7 +441,8 @@ export default function VoiceCoachPanel({
         evaluateType === "part1" &&
         cardNum &&
         isPart1CardInTodayMission(cardNum) &&
-        data.scores.overall >= 50
+        data.scores.overall >= 50 &&
+        !skipCaptainDebrief
       ) {
         markPart1CoachDone(cardNum);
       }
@@ -361,6 +496,11 @@ export default function VoiceCoachPanel({
         source: "local",
       });
     } finally {
+      if (thinkingTimerRef.current) {
+        window.clearTimeout(thinkingTimerRef.current);
+        thinkingTimerRef.current = null;
+      }
+      setShowExaminerThinking(false);
       setLoading(false);
     }
   };
@@ -441,7 +581,7 @@ export default function VoiceCoachPanel({
     questionLabel: cardNum ? `Question ${cardNum}` : situationId,
     recordingBlocked,
     loading,
-    hasFeedback: !!(instructorReport && feedback),
+    hasFeedback: !!(instructorReport && feedback) && !hexExamining,
     canCompareAttempts: !!(firstAttempt && feedback),
     azureAssessing: azure.assessing,
     speechListening: speech.listening,
@@ -449,6 +589,10 @@ export default function VoiceCoachPanel({
     onStopAzure: () => void finishAzure(),
     onSpeechToggle: speech.toggle,
     onTryAgain: () => {
+      if (followUpContext?.examiner) {
+        tryAgain(true);
+        return;
+      }
       if (instructorReport?.followUpQuestion) {
         answerFollowUp(instructorReport.followUpQuestion);
       } else {
@@ -594,15 +738,30 @@ export default function VoiceCoachPanel({
         </div>
       )}
 
-      {followUpContext && !feedback && (
-        <div className="fi-followup-banner">
-          <strong>👨‍✈️ Captain Delta — follow-up</strong>
+      {showHexPresence && hexProgress && (
+        <ExaminerPresencePanel
+          progress={hexProgress}
+          phase={conversationPhase}
+          examinerLine={displayExaminerLine ?? followUpContext?.followUpQuestion}
+          showThinking={showExaminerThinking || (loading && hexExamining)}
+        />
+      )}
+
+      {followUpContext && !feedback && !showHexPresence && (
+        <div
+          className={`fi-followup-banner ${followUpContext.examiner ? "hex-examiner-banner" : ""}`}
+        >
+          <strong>
+            {followUpContext.examiner ? "🎙️ Examiner" : "👨‍✈️ Captain Delta — follow-up"}
+          </strong>
           <p>{followUpContext.followUpQuestion}</p>
         </div>
       )}
 
-      {instructorLoading && (
-        <p className="fi-loading">👨‍✈️ Captain Delta is preparing your debrief…</p>
+      {instructorLoading && !hexExamining && !closingActive && (
+        <p className="fi-loading hex-captain-preparing">
+          🟣 Captain Delta is preparing your debrief…
+        </p>
       )}
 
       {instructorReport && feedback && (
@@ -617,9 +776,10 @@ export default function VoiceCoachPanel({
           report={instructorReport}
           feedback={feedback}
           onTryAgain={() => tryAgain()}
-          onAnswerFollowUp={answerFollowUp}
+          onAnswerFollowUp={isHexPart1 ? undefined : answerFollowUp}
           attemptCompare={attemptCompare}
           followUpBanner={followUpContext?.followUpQuestion ?? null}
+          suppressFollowUp={isHexPart1}
         />
         </>
       )}

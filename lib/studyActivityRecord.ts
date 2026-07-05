@@ -9,7 +9,6 @@ import {
 } from "@/lib/shadowPart2Dedup";
 import { markPart1ShadowDone, isPart1CardInTodayMission, tryMarkPart1ShadowComplete } from "@/lib/part1DailyMission";
 import type { Part2MissionKind } from "@/lib/part2DailyMission";
-import { markVocabDailyComplete, isVocabTermInTodayMission } from "@/lib/vocabDailyMission";
 import { syncDailyMissionLog } from "@/lib/dailyMissionLog";
 import {
   recordStudyActivity,
@@ -184,9 +183,6 @@ export function tryRecordStudyActivity(
   }
   if (activity === "shadow" && ctx.cardNum) {
     tryMarkPart1ShadowComplete(ctx.cardNum);
-  }
-  if (activity === "vocabulary" && ctx.vocabTermId && isVocabTermInTodayMission(ctx.vocabTermId)) {
-    markVocabDailyComplete(ctx.vocabTermId);
   }
   syncDailyMissionLog();
   const points = studyActivityPoints(activity, count);

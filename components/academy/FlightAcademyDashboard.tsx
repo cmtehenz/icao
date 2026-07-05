@@ -1,5 +1,10 @@
 "use client";
 
+/**
+ * @deprecated ADR-007 — Do not use for home mission orchestration.
+ * Academy widgets extracted to `components/home/AcademyHomeWidgets.tsx`.
+ * Mission order comes from `lib/dailyMission.ts` only.
+ */
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useAuth } from "@/components/AuthProvider";

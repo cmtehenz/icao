@@ -1,5 +1,5 @@
 import { buildDailyPronunciationMission } from "@/lib/pronunciationMission";
-import { loadVault } from "@/lib/pronunciationVault";
+import { loadVault, VAULT_PASS_SCORE } from "@/lib/pronunciationVault";
 import { syncDailyMissionLog } from "@/lib/dailyMissionLog";
 import { todayKey } from "@/lib/studyTime";
 
@@ -82,6 +82,11 @@ export function isPronunciationWordInTodayMission(word: string): boolean {
   return getOrCreatePronunciationDailyMission().words.some((w) => w.toLowerCase() === key);
 }
 
+/** Daily mission word counts only after a valid Azure pass (Mission Engine). */
+export function passesDailyMissionWordAttempt(score: number, assessed: boolean): boolean {
+  return assessed && score >= VAULT_PASS_SCORE;
+}
+
 export function pronunciationDailyMissionProgress(
   mission = getOrCreatePronunciationDailyMission(),
 ): {
@@ -97,7 +102,7 @@ export function pronunciationDailyMissionProgress(
   return {
     done,
     total,
-    complete: total === 0 || (total > 0 && done >= total),
+    complete: total > 0 && done >= total,
     currentWord,
   };
 }

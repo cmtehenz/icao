@@ -21,7 +21,6 @@ export type MissionDebrief = {
   nextFocus: string | null;
 };
 
-const MISSION_STORAGE_KEY = "icao_pronunciation_mission_v1";
 const MISSION_PROGRESS_KEY = "icao_pronunciation_mission_progress_v1";
 
 export function buildDailyPronunciationMission(words: VaultWord[]): PronunciationMission {
@@ -88,25 +87,6 @@ export function loadMissionProgress(): string[] {
     return raw ? (JSON.parse(raw) as string[]) : [];
   } catch {
     return [];
-  }
-}
-
-export function saveActiveMission(mission: PronunciationMission): void {
-  if (typeof window === "undefined") return;
-  sessionStorage.setItem(MISSION_STORAGE_KEY, JSON.stringify(mission));
-  saveMissionProgress([]);
-}
-
-export function loadActiveMission(): PronunciationMission | null {
-  if (typeof window === "undefined") return null;
-  try {
-    const raw = sessionStorage.getItem(MISSION_STORAGE_KEY);
-    if (!raw) return null;
-    const mission = JSON.parse(raw) as PronunciationMission;
-    if (mission.date !== todayKey()) return null;
-    return mission;
-  } catch {
-    return null;
   }
 }
 

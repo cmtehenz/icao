@@ -165,12 +165,12 @@ export function useAzurePronunciation() {
         const res = await fetch("/api/azure-speech-token");
         tokenData = await res.json();
       } catch {
-        setError("Não foi possível conectar ao Azure.");
+        setError("Could not connect to Azure Speech.");
         return;
       }
 
       if (!tokenData.configured || !tokenData.token || !tokenData.region) {
-        setError("Azure Speech não configurado. Adicione AZURE_SPEECH_KEY e AZURE_SPEECH_REGION.");
+        setError("Azure Speech is not configured. Add AZURE_SPEECH_KEY and AZURE_SPEECH_REGION.");
         return;
       }
 
@@ -219,7 +219,7 @@ export function useAzurePronunciation() {
 
         recognizer.canceled = (_, e) => {
           if (e.reason === sdk.CancellationReason.Error) {
-            setError(e.errorDetails || "Erro no reconhecimento Azure.");
+            setError(e.errorDetails || "Azure recognition error.");
           }
           setAssessing(false);
           void stopMicCapture();
@@ -241,7 +241,7 @@ export function useAzurePronunciation() {
           },
         );
       } catch (e) {
-        setError(e instanceof Error ? e.message : "Erro ao iniciar Azure Speech.");
+        setError(e instanceof Error ? e.message : "Could not start Azure Speech.");
         setAssessing(false);
         await stopMicCapture();
       }

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import WordPhoneticHint from "@/components/WordPhoneticHint";
 import { ICAO_VOCABULARY } from "@/data/icaoVocabulary";
+import { countVbLevelsPassed } from "@/lib/vocabGraduation";
 import {
   getOrCreateVocabDailyMission,
   vocabDailyMissionProgress,
@@ -11,6 +12,7 @@ import {
   VOCAB_DAILY_MISSION_EVENT,
   VOCAB_DAILY_WORD_COUNT,
 } from "@/lib/vocabDailyMission";
+import { getItemProgress, loadVocabProgressStore } from "@/utils/spacedRepetition";
 
 function termLabel(id: string): string {
   return ICAO_VOCABULARY.find((t) => t.id === id)?.term ?? id;
@@ -18,8 +20,6 @@ function termLabel(id: string): string {
 
 type Props = {
   onSelectTerm?: (termId: string) => void;
-  /** @deprecated Missão abre expandida quando há palavras pendentes */
-  defaultCollapsed?: boolean;
 };
 
 export default function VocabDailyMissionChecklist({ onSelectTerm }: Props) {
@@ -55,7 +55,7 @@ export default function VocabDailyMissionChecklist({ onSelectTerm }: Props) {
   return (
     <section
       className={`vocab-daily-mission ${expanded ? "expanded" : "collapsed"} ${progress.complete ? "complete" : "pending"}`}
-      aria-label="Missão diária de vocabulário"
+      aria-label="Daily vocabulary mission"
     >
       <header className="vocab-daily-mission-head">
         <button
@@ -65,10 +65,10 @@ export default function VocabDailyMissionChecklist({ onSelectTerm }: Props) {
           aria-expanded={expanded}
         >
           <div className="vocab-daily-mission-toggle-text">
-            <h2>Missão de hoje — {VOCAB_DAILY_WORD_COUNT} palavras</h2>
+            <h2>Today&apos;s mission — {VOCAB_DAILY_WORD_COUNT} terms</h2>
             <p className="sub">
-              {progress.done}/{progress.total} concluídas
-              {remaining > 0 ? ` · ${remaining} faltando` : " · completa"}
+              {progress.done}/{progress.total} complete
+              {remaining > 0 ? ` · ${remaining} remaining` : " · complete"}
             </p>
           </div>
           <span className="vocab-daily-mission-chevron" aria-hidden>
@@ -76,11 +76,18 @@ export default function VocabDailyMissionChecklist({ onSelectTerm }: Props) {
           </span>
         </button>
         <span className={`vocab-daily-mission-pill ${progress.complete ? "done" : ""}`}>
-          {progress.complete ? "Completa ✓" : `${remaining} faltando`}
+          {progress.complete ? "Complete ✓" : `${remaining} remaining`}
         </span>
       </header>
 
-      <div className="daily-study-bar vocab-daily-mission-bar" aria-hidden>
+      <div
+        className="daily-study-bar vocab-daily-mission-bar"
+        role="progressbar"
+        aria-valuenow={progress.done}
+        aria-valuemin={0}
+        aria-valuemax={progress.total}
+        aria-label={`Mission progress ${progress.done} of ${progress.total}`}
+      >
         <div
           className="daily-study-bar-fill"
           style={{ width: `${progress.total ? Math.round((progress.done / progress.total) * 100) : 0}%` }}
@@ -89,18 +96,18 @@ export default function VocabDailyMissionChecklist({ onSelectTerm }: Props) {
 
       {!expanded && remaining > 0 && nextId && nextLabel && (
         <div className="vocab-daily-mission-next">
-          <span className="vocab-daily-mission-next-label">Próxima palavra</span>
+          <span className="vocab-daily-mission-next-label">Next term</span>
           <span className="vocab-daily-mission-next-term">
             {nextLabel}
             <WordPhoneticHint word={nextLabel} className="vault-word-phonetic" />
           </span>
           {onSelectTerm ? (
             <button type="button" className="btn green btn-sm" onClick={() => openTerm(nextId)}>
-              Treinar agora
+              Train now
             </button>
           ) : (
             <Link href={vocabMissionLink(nextId)} className="btn green btn-sm">
-              Treinar agora
+              Train now
             </Link>
           )}
         </div>
@@ -112,6 +119,9 @@ export default function VocabDailyMissionChecklist({ onSelectTerm }: Props) {
             const done = mission.completedIds.includes(id);
             const label = termLabel(id);
             const isNext = id === nextId;
+            const vbLevels = done
+              ? 4
+              : countVbLevelsPassed(getItemProgress(loadVocabProgressStore(), id));
             return (
               <li
                 key={id}
@@ -126,7 +136,7 @@ export default function VocabDailyMissionChecklist({ onSelectTerm }: Props) {
                       {label}
                       <WordPhoneticHint word={label} className="vault-word-phonetic" />
                     </span>
-                    <span className="vocab-daily-done-label">feito</span>
+                    <span className="vocab-daily-done-label">VB 4/4</span>
                   </>
                 ) : (
                   <button
@@ -141,7 +151,8 @@ export default function VocabDailyMissionChecklist({ onSelectTerm }: Props) {
                       {label}
                       <WordPhoneticHint word={label} className="vault-word-phonetic" />
                     </span>
-                    <span className="vocab-daily-train-label">Treinar →</span>
+                    <span className="vocab-daily-vb-progress">VB {vbLevels}/4</span>
+                    <span className="vocab-daily-train-label">Train →</span>
                   </button>
                 )}
               </li>

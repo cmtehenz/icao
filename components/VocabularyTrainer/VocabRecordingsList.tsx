@@ -10,7 +10,7 @@ type Props = {
 
 function formatWhen(iso: string): string {
   try {
-    return new Date(iso).toLocaleString("pt-BR", {
+    return new Date(iso).toLocaleString("en-US", {
       day: "2-digit",
       month: "short",
       hour: "2-digit",
@@ -21,7 +21,7 @@ function formatWhen(iso: string): string {
   }
 }
 
-export default function VocabRecordingsList({ recordings, title = "Suas gravações" }: Props) {
+export default function VocabRecordingsList({ recordings, title = "Your recordings" }: Props) {
   if (!recordings.length) return null;
 
   return (

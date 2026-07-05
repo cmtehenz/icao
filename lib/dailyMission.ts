@@ -1,4 +1,11 @@
 import { todayExamLabel } from "@/lib/dailyExamRotation";
+import { flightDebriefLink, flightDebriefProgress, isFlightDebriefComplete } from "@/lib/flightDebrief/flightDebriefProgress";
+import { isFlightDebriefAvailable } from "@/lib/flightDebrief/buildFlightDebrief";
+import {
+  isMissionRecallComplete,
+  missionRecallLink,
+  missionRecallProgress,
+} from "@/lib/missionRecall/missionRecallProgress";
 import {
   part1DailyMissionProgress,
   getOrCreatePart1DailyMission,
@@ -40,12 +47,22 @@ export type DailyMissionSummary = {
   part1: ReturnType<typeof part1DailyMissionProgress>;
   part2: ReturnType<typeof part2DailyMissionProgress>;
   vocabulary: ReturnType<typeof vocabDailyMissionProgress>;
+  recall: ReturnType<typeof missionRecallProgress>;
   simulate: ReturnType<typeof simulateMissionProgress>;
+  debrief: ReturnType<typeof flightDebriefProgress>;
   simulateRequired: boolean;
   complete: boolean;
   completedSections: number;
   totalSections: number;
 };
+
+export function areBaseMissionLegsComplete(): boolean {
+  const pronunciation = pronunciationDailyMissionProgress(getOrCreatePronunciationDailyMission());
+  const part1 = part1DailyMissionProgress(getOrCreatePart1DailyMission());
+  const part2 = part2DailyMissionProgress(getOrCreatePart2DailyMission());
+  const vocabulary = vocabDailyMissionProgress(getOrCreateVocabDailyMission());
+  return pronunciation.complete && vocabulary.complete && part1.complete && part2.complete;
+}
 
 export function getDailyMissionSummary(): DailyMissionSummary {
   const mode = loadStudyPlanMode();
@@ -53,7 +70,9 @@ export function getDailyMissionSummary(): DailyMissionSummary {
   const part1 = part1DailyMissionProgress(getOrCreatePart1DailyMission());
   const part2 = part2DailyMissionProgress(getOrCreatePart2DailyMission());
   const vocabulary = vocabDailyMissionProgress(getOrCreateVocabDailyMission());
+  const recall = missionRecallProgress();
   const simulate = simulateMissionProgress();
+  const debrief = flightDebriefProgress();
   const simulateRequired = isSimulateMissionRequired(mode);
 
   const sections = [
@@ -61,8 +80,10 @@ export function getDailyMissionSummary(): DailyMissionSummary {
     vocabulary.complete,
     part1.complete,
     part2.complete,
+    recall.complete,
   ];
   if (simulateRequired) sections.push(simulate.complete);
+  sections.push(debrief.complete);
 
   const completedSections = sections.filter(Boolean).length;
   const complete = completedSections === sections.length;
@@ -73,7 +94,9 @@ export function getDailyMissionSummary(): DailyMissionSummary {
     part1,
     part2,
     vocabulary,
+    recall,
     simulate,
+    debrief,
     simulateRequired,
     complete,
     completedSections,
@@ -82,14 +105,10 @@ export function getDailyMissionSummary(): DailyMissionSummary {
 }
 
 export function isDailyMissionComplete(): boolean {
-  const pronunciation = pronunciationDailyMissionProgress(getOrCreatePronunciationDailyMission());
-  const part1 = part1DailyMissionProgress(getOrCreatePart1DailyMission());
-  const part2 = part2DailyMissionProgress(getOrCreatePart2DailyMission());
-  const vocabulary = vocabDailyMissionProgress(getOrCreateVocabDailyMission());
-  const base =
-    pronunciation.complete && vocabulary.complete && part1.complete && part2.complete;
-  if (!base) return false;
-  if (isSimulateMissionRequired()) return isSimulateMissionDone();
+  if (!areBaseMissionLegsComplete()) return false;
+  if (!isMissionRecallComplete()) return false;
+  if (isSimulateMissionRequired() && !isSimulateMissionDone()) return false;
+  if (!isFlightDebriefComplete()) return false;
   return true;
 }
 
@@ -105,8 +124,8 @@ export function getNextMissionAction(): DailyMissionNextAction | null {
   if (nextPronWord) {
     return {
       href: pronunciationMissionLink(nextPronWord),
-      title: `Pronúncia · ${summary.examLabel}`,
-      hint: `${pronMission.completedWords.length}/${pronMission.words.length} palavras do dia`,
+      title: `Pronunciation · ${summary.examLabel}`,
+      hint: `${pronMission.completedWords.length}/${pronMission.words.length} words today`,
     };
   }
 
@@ -116,8 +135,8 @@ export function getNextMissionAction(): DailyMissionNextAction | null {
     const done = vocabMission.completedIds.length;
     return {
       href: vocabMissionLink(nextVocabId),
-      title: `Vocabulário · ${summary.examLabel}`,
-      hint: `${done}/20 palavras da prova de hoje`,
+      title: `Vocabulary · ${summary.examLabel}`,
+      hint: `${done}/20 exam terms today`,
     };
   }
 
@@ -130,15 +149,15 @@ export function getNextMissionAction(): DailyMissionNextAction | null {
         title: `Part 1 · Q${card.cardNum} Shadow`,
         hint:
           peel.total > 0
-            ? `Complete os blocos PEEL (${peel.done}/${peel.total})`
-            : "Shadow nos blocos PEEL desta pergunta",
+            ? `Complete PEEL blocks (${peel.done}/${peel.total})`
+            : "Shadow the PEEL blocks for this question",
       };
     }
     if (!card.coachDone) {
       return {
         href: part1MissionLink(card.cardNum, "coach"),
         title: `Part 1 · Q${card.cardNum} Coach`,
-        hint: "Grave a resposta no coach de voz",
+        hint: "Record your answer in voice coach",
       };
     }
   }
@@ -147,16 +166,33 @@ export function getNextMissionAction(): DailyMissionNextAction | null {
   if (!part2Mission.simulationDone) {
     return {
       href: part2MissionLink(part2Mission),
-      title: `Part 2 · Simulação ${part2Mission.examVersion}`,
-      hint: "5 situações completas da prova de hoje",
+      title: `Part 2 · ${part2Mission.examVersion} simulation`,
+      hint: "5 full situations from today's exam",
+    };
+  }
+
+  if (!isMissionRecallComplete()) {
+    const recall = missionRecallProgress();
+    return {
+      href: missionRecallLink(),
+      title: `Mission Recall · ${summary.examLabel}`,
+      hint: `${recall.done}/${recall.total} recall items — answer from memory`,
     };
   }
 
   if (isSimulateMissionRequired() && !isSimulateMissionDone()) {
     return {
       href: getSimuladoIcaoHref(),
-      title: `Simulado ICAO · ${summary.examLabel}`,
-      hint: "Dia bom: simulado completo (Part 1 + Part 2) da prova de hoje",
+      title: `Mock Exam · ${summary.examLabel}`,
+      hint: "Intense day: full exam simulation (Part 1 + Part 2)",
+    };
+  }
+
+  if (isFlightDebriefAvailable() && !isFlightDebriefComplete()) {
+    return {
+      href: flightDebriefLink(),
+      title: `Flight Debrief · ${summary.examLabel}`,
+      hint: "Close today's flight — one priority improvement",
     };
   }
 

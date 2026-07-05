@@ -13,18 +13,18 @@ type Props = {
 };
 
 function statusLabel(progress: VocabItemProgress): { text: string; tone: "due" | "learning" | "mastered" | "new" } {
-  if (isMastered(progress)) return { text: "Dominado", tone: "mastered" };
-  if (isDueForReview(progress)) return { text: "Revisar", tone: "due" };
-  if (progress.attempts > 0) return { text: "Aprendendo", tone: "learning" };
-  return { text: "Novo", tone: "new" };
+  if (isMastered(progress)) return { text: "Mastered", tone: "mastered" };
+  if (isDueForReview(progress)) return { text: "Due", tone: "due" };
+  if (progress.attempts > 0) return { text: "Learning", tone: "learning" };
+  return { text: "New", tone: "new" };
 }
 
 export default function VocabTermTable({ terms, getProgress, activeId, onSelect }: Props) {
   if (!terms.length) {
     return (
       <div className="vocab-studio-empty">
-        <p>Nenhum termo neste filtro.</p>
-        <p className="sub">Tente outra categoria ou filtro de status.</p>
+        <p>No terms in this filter.</p>
+        <p className="sub">Try another category or status filter.</p>
       </div>
     );
   }
@@ -34,8 +34,8 @@ export default function VocabTermTable({ terms, getProgress, activeId, onSelect 
       <table className="vocab-studio-table">
         <thead>
           <tr>
-            <th>Termo</th>
-            <th>Significado</th>
+            <th>Term</th>
+            <th>Meaning</th>
             <th>Mastery</th>
             <th>Status</th>
           </tr>
@@ -58,6 +58,7 @@ export default function VocabTermTable({ terms, getProgress, activeId, onSelect 
                 }}
                 tabIndex={0}
                 role="button"
+                aria-label={`Practice ${item.term}`}
                 aria-pressed={active}
               >
                 <td className="vocab-studio-cell-term">

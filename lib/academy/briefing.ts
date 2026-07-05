@@ -1,3 +1,4 @@
+/** @deprecated ADR-007 — Use `lib/captainDelta/briefing.ts` (`buildTodayBriefing`). */
 import { buildDailyFlightMission } from "@/lib/academy/flightMission";
 import { getCaptainPersonality } from "@/lib/academy/personality";
 import { daysUntilExam } from "@/lib/captainDelta/examDate";

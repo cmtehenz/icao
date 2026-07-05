@@ -132,7 +132,7 @@ export function useAzureSpeech() {
 
       const tokenData = await fetchToken();
       if (!tokenData.configured || !tokenData.token || !tokenData.region) {
-        throw new Error("Azure Speech não configurado.");
+        throw new Error("Azure Speech is not configured.");
       }
 
       const sdk = await loadSpeechSdk();
@@ -211,7 +211,7 @@ export function useAzureSpeech() {
 
       const tokenData = await fetchToken();
       if (!tokenData.configured || !tokenData.token || !tokenData.region) {
-        setError("Azure Speech não configurado. Adicione AZURE_SPEECH_KEY e AZURE_SPEECH_REGION.");
+        setError("Azure Speech is not configured. Add AZURE_SPEECH_KEY and AZURE_SPEECH_REGION.");
         return;
       }
 
@@ -258,7 +258,7 @@ export function useAzureSpeech() {
 
         recognizer.canceled = (_, e) => {
           if (e.reason === sdk.CancellationReason.Error) {
-            setError(e.errorDetails || "Erro no reconhecimento Azure.");
+            setError(e.errorDetails || "Azure recognition error.");
           }
           setRecording(false);
           void stopMicCapture();
@@ -279,7 +279,7 @@ export function useAzureSpeech() {
           },
         );
       } catch (e) {
-        setError(e instanceof Error ? e.message : "Erro ao iniciar gravação.");
+        setError(e instanceof Error ? e.message : "Could not start recording.");
         setRecording(false);
         await stopMicCapture();
       }

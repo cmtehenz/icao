@@ -1,0 +1,5 @@
+# Audio assets
+
+Exam recordings, TTS exports, and mission audio.
+
+Production: `public/provas/`, `public/exams/`, `provas/` (source).

@@ -5,6 +5,8 @@ import { buildLocalDailyDebrief } from "@/lib/flightInstructor/dailyDebrief";
 import { buildMemoryContextForPrompt } from "@/lib/flightInstructor/memory";
 import type { FlightInstructorReport } from "@/lib/flightInstructor/types";
 import { getDailyMissionSummary, getNextMissionAction } from "@/lib/dailyMission";
+import { buildFlightProgress } from "@/lib/flightProgress/buildFlightProgress";
+import { getFlightPhaseCaptainCopy } from "@/lib/flightProgress/flightProgressCopy";
 import { loadStudyPlanMode, STUDY_DAILY_GOAL_MINUTES, STUDY_INTENSE_DAY_MINUTES } from "@/lib/studyTime";
 import { loadVault, pickWarmupWords } from "@/lib/pronunciationVault";
 
@@ -45,25 +47,39 @@ export function buildContextTip(context: CaptainDeltaContext): { text: string; s
 }
 
 /** Phase 1 daily briefing — short, spoken, ends with Start Training action. */
-export function buildTodayBriefing(firstName: string, _dateKey: string): {
+export function buildTodayBriefing(
+  firstName: string,
+  _dateKey: string,
+  options?: { surface?: "home" | "full" },
+): {
   text: string;
   speechText: string;
 } {
+  const surface = options?.surface ?? "full";
   const greeting = greetingForHour(new Date().getHours());
   const days = daysUntilExam();
   const mission = getDailyMissionSummary();
   const next = getNextMissionAction();
   const mode = loadStudyPlanMode();
   const minutes = mode === "intense" ? STUDY_INTENSE_DAY_MINUTES : STUDY_DAILY_GOAL_MINUTES;
+  const flight = buildFlightProgress(mission);
 
-  const lines = [
-    `${greeting}, ${firstName}.`,
-    `Your ICAO exam is in ${days} days.`,
-    `Today we train ${mission.examLabel}.`,
-  ];
+  const lines = [`${greeting}, ${firstName}.`];
 
-  if (next) lines.push(`We begin with ${next.title}.`);
-  lines.push(`Estimated training: ${minutes} minutes.`);
+  if (surface !== "home") {
+    lines.push(`Your ICAO exam is in ${days} days.`);
+  }
+
+  lines.push(`Today we train ${mission.examLabel}.`);
+
+  if (surface !== "home") {
+    lines.push(`Flight phase: ${flight.currentPhase.aviationLabel} — ${flight.currentPhase.missionLabel}.`);
+    if (!mission.complete) {
+      lines.push(getFlightPhaseCaptainCopy(flight.currentPhaseId));
+    }
+    if (next) lines.push(`We begin with ${next.title}.`);
+    lines.push(`Estimated training: ${minutes} minutes.`);
+  }
 
   const text = lines.join("\n");
   return { text, speechText: toSpeechText(lines.join(" ")) };

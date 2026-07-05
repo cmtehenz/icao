@@ -7,10 +7,10 @@ import { ICAO_VOCABULARY } from "@/data/icaoVocabulary";
 import { STUDY_ACTIVITY_RECORDED_EVENT } from "@/lib/studyActivityRecord";
 import { DAILY_MISSION_LOG_EVENT } from "@/lib/dailyMissionLog";
 import { getDailyMissionSummary, getSimuladoIcaoHref } from "@/lib/dailyMission";
-import { buildDifficultyInsights } from "@/lib/difficultyInsights";
-import TeacherReportPanel from "@/components/study/TeacherReportPanel";
-import ProgressTrendPanel from "@/components/study/ProgressTrendPanel";
-import DailyDebriefPanel from "@/components/FlightInstructor/DailyDebriefPanel";
+import { flightDebriefLink } from "@/lib/flightDebrief/flightDebriefProgress";
+import { missionRecallLink } from "@/lib/missionRecall/missionRecallProgress";
+import { FLIGHT_DEBRIEF_EVENT } from "@/lib/flightDebrief/flightDebriefProgress";
+import { MISSION_RECALL_EVENT } from "@/lib/missionRecall/missionRecallProgress";
 import {
   getOrCreatePart1DailyMission,
   part1CardPeelProgress,
@@ -43,20 +43,8 @@ import {
 
 function cardLabel(num: string): string {
   const card = CARDS.find((c) => c.num === num);
-  if (!card) return `Pergunta ${num}`;
+  if (!card) return `Question ${num}`;
   return `Q${num} · ${card.question.slice(0, 42)}${card.question.length > 42 ? "…" : ""}`;
-}
-
-function formatInsightItemScore(item: { score: number; icaoLevel?: number }): string {
-  if (item.icaoLevel != null) return `${item.score}% · ICAO ${item.icaoLevel}`;
-  return `${item.score}%`;
-}
-
-function insightScoreClass(score: number | null | undefined): string {
-  if (score == null) return "muted";
-  if (score < 60) return "bad";
-  if (score < 75) return "warn";
-  return "good";
 }
 
 export default function DailyMissionPanel() {
@@ -74,6 +62,8 @@ export default function DailyMissionPanel() {
       PART2_DAILY_MISSION_EVENT,
       VOCAB_DAILY_MISSION_EVENT,
       PRONUNCIATION_DAILY_MISSION_EVENT,
+      MISSION_RECALL_EVENT,
+      FLIGHT_DEBRIEF_EVENT,
       STUDY_ACTIVITY_RECORDED_EVENT,
       DAILY_MISSION_LOG_EVENT,
       PEEL_BLOCK_HISTORY_EVENT,
@@ -91,7 +81,6 @@ export default function DailyMissionPanel() {
   const summary = useMemo(() => getDailyMissionSummary(), [tick]);
   const part1 = useMemo(() => getOrCreatePart1DailyMission(), [tick]);
   const part2 = useMemo(() => getOrCreatePart2DailyMission(), [tick]);
-  const insights = useMemo(() => buildDifficultyInsights(3), [tick]);
   const vocabProgress = useMemo(() => vocabDailyMissionProgress(getOrCreateVocabDailyMission()), [tick]);
   const pronProgress = useMemo(
     () => pronunciationDailyMissionProgress(getOrCreatePronunciationDailyMission()),
@@ -110,8 +99,8 @@ export default function DailyMissionPanel() {
           <p className="sub">
             <strong>{summary.examLabel}</strong>
             {mode === "intense"
-              ? " — pronúncia · vocabulário · Part 1 (3) · Part 2 sim · Simulado ICAO"
-              : " — pronúncia · vocabulário · Part 1 (3 perguntas) · Part 2 simulação completa"}
+              ? " — pronúncia · vocabulário · Part 1 · Part 2 · Recall · Simulado · Debrief"
+              : " — pronúncia · vocabulário · Part 1 · Part 2 · Recall · Debrief"}
           </p>
         </div>
         <div className="daily-mission-head-side">
@@ -147,8 +136,8 @@ export default function DailyMissionPanel() {
       </div>
       <p className="daily-mission-mode-hint">
         {mode === "intense"
-          ? "Dia bom: missão da prova do dia + Simulado ICAO completo (Part 1 + Part 2)."
-          : "Um dia = uma prova (23C → 24C → 25C → 26C). Pronúncia, vocabulário, Part 1 e Part 2 inteiros."}
+          ? "Dia bom: missão completa + Mission Recall + Simulado ICAO + Flight Debrief."
+          : "Um dia = uma prova. Pronúncia, vocabulário, Part 1, Part 2, Mission Recall e Flight Debrief."}
       </p>
 
       <div className="daily-mission-grid">
@@ -243,6 +232,24 @@ export default function DailyMissionPanel() {
           )}
         </article>
 
+        <article className={`daily-mission-card ${summary.recall.complete ? "done" : ""}`}>
+          <h3>
+            Mission Recall — {summary.recall.done}/{summary.recall.total}
+          </h3>
+          <p className="daily-mission-meta">
+            Active recall from today&apos;s mission — no new content
+          </p>
+          {summary.recall.complete ? (
+            <p className="daily-mission-vocab-progress">
+              ✓ Recall complete · {summary.recall.confidenceStars}/5 confidence
+            </p>
+          ) : (
+            <Link href={missionRecallLink()} className="btn secondary btn-sm">
+              {summary.part2.complete ? "Start Mission Recall →" : "Complete Part 2 first →"}
+            </Link>
+          )}
+        </article>
+
         {summary.simulateRequired && (
           <article className={`daily-mission-card ${summary.simulate.complete ? "done" : ""}`}>
             <h3>
@@ -260,53 +267,23 @@ export default function DailyMissionPanel() {
             )}
           </article>
         )}
+
+        <article className={`daily-mission-card ${summary.debrief.complete ? "done" : ""}`}>
+          <h3>
+            Flight Debrief — {summary.debrief.done}/{summary.debrief.total}
+          </h3>
+          <p className="daily-mission-meta">
+            Close today&apos;s flight — one priority improvement
+          </p>
+          {summary.debrief.complete ? (
+            <p className="daily-mission-vocab-progress">✓ Today&apos;s flight debrief complete</p>
+          ) : (
+            <Link href={flightDebriefLink()} className="btn secondary btn-sm">
+              Open Flight Debrief →
+            </Link>
+          )}
+        </article>
       </div>
-
-      <section className="difficulty-insights">
-        <h3>Onde você mais precisa treinar</h3>
-        <p className="difficulty-insights-sub">
-          Baseado nas suas gravações reais — itens não praticados não aparecem com 0% artificial.
-        </p>
-        <div className="difficulty-insights-grid">
-          {insights.map((area) => (
-            <div key={area.area} className="difficulty-insight-card">
-              <div className="difficulty-insight-head">
-                <strong>{area.label}</strong>
-                <span
-                  className={`difficulty-score ${insightScoreClass(area.score)}`}
-                >
-                  {area.displayScore ?? (area.score == null ? "—" : `${area.score}%`)}
-                </span>
-              </div>
-              {area.hint && <p className="difficulty-insight-hint">{area.hint}</p>}
-              <ul>
-                {area.items.length === 0 ? (
-                  <li className="difficulty-insight-empty">Nenhum dado de prática ainda</li>
-                ) : (
-                  area.items.map((item) => (
-                    <li key={item.id}>
-                      <span>{item.label}</span>
-                      <span
-                        className={`difficulty-item-score ${
-                          item.icaoLevel != null ? `icao-l${item.icaoLevel}` : insightScoreClass(item.score)
-                        }`}
-                      >
-                        {formatInsightItemScore(item)}
-                      </span>
-                    </li>
-                  ))
-                )}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <TeacherReportPanel />
-
-      <ProgressTrendPanel />
-
-      <DailyDebriefPanel />
     </section>
   );
 }

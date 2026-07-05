@@ -2,6 +2,9 @@
 
 import { useRef } from "react";
 import CaptainDeltaCoachingCard from "@/components/CaptainDelta/CaptainDeltaCoachingCard";
+import CaptainStandbyCard from "@/components/aiPresence/CaptainStandbyCard";
+import { useAIPresence } from "@/components/aiPresence/AIPresenceProvider";
+import { captainStandbyCopy } from "@/lib/aiPresence/conversationPresence";
 import { useCaptainDelta } from "@/components/CaptainDelta/CaptainDeltaProvider";
 
 const HOLD_MS = 180;
@@ -22,6 +25,9 @@ export default function CaptainDeltaFloatingAssistant() {
     startPtt,
     stopPtt,
   } = useCaptainDelta();
+
+  const presence = useAIPresence();
+  const standbyCopy = captainStandbyCopy(presence.phase);
 
   const holdTimerRef = useRef<number | null>(null);
   const isHoldRef = useRef(false);
@@ -55,10 +61,11 @@ export default function CaptainDeltaFloatingAssistant() {
   };
 
   const recording = pttActive || !!lesson.recording;
+  const showStandby = open && !currentMessage;
 
   return (
     <>
-      {open && currentMessage && (
+      {open && (
         <aside className="cd-panel" aria-label="Captain Delta coaching">
           <button
             type="button"
@@ -68,15 +75,19 @@ export default function CaptainDeltaFloatingAssistant() {
           >
             ×
           </button>
-          <CaptainDeltaCoachingCard
-            message={currentMessage}
-            voice={voice}
-            recording={recording}
-            pttInterim={pttInterim}
-            pttError={pttError}
-            onPrimaryAction={triggerPrimaryAction}
-            onSecondaryAction={triggerSecondaryAction}
-          />
+          {currentMessage ? (
+            <CaptainDeltaCoachingCard
+              message={currentMessage}
+              voice={voice}
+              recording={recording}
+              pttInterim={pttInterim}
+              pttError={pttError}
+              onPrimaryAction={triggerPrimaryAction}
+              onSecondaryAction={triggerSecondaryAction}
+            />
+          ) : (
+            <CaptainStandbyCard copy={standbyCopy} onDismiss={() => setOpen(false)} />
+          )}
         </aside>
       )}
 
@@ -86,9 +97,15 @@ export default function CaptainDeltaFloatingAssistant() {
         </div>
       )}
 
+      {showStandby && (
+        <div className="cd-standby-fab-hint" aria-hidden>
+          <span className="cd-standby-pulse" />
+        </div>
+      )}
+
       <button
         type="button"
-        className={`cd-fab cd-avatar-${avatarState} ${open ? "open" : ""} ${recording ? "recording" : ""}`}
+        className={`cd-fab cd-avatar-${avatarState} ${open ? "open" : ""} ${recording ? "recording" : ""} ${presence.hexActive ? "cd-fab-standby" : ""}`}
         aria-label="Captain Delta — segure para falar"
         title="Segure para falar · Toque para abrir o card"
         onPointerDown={onFabPointerDown}

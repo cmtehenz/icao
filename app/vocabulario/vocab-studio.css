@@ -736,3 +736,220 @@
     display: none;
   }
 }
+
+/* Sprint 5 — Vocabulary mission VB-1→VB-4 */
+.vocab-mission-panel .vocab-mission-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--purple, #8b5cf6);
+}
+
+.vocab-mission-captain-intro {
+  margin: 0 0 0.75rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 8px;
+  background: var(--card, #111827);
+  border: 1px solid var(--line, #1f2937);
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.vocab-mission-intro-dismiss {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--purple, #8b5cf6);
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.vocab-mission-vb-track {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  margin-top: 0.65rem;
+}
+
+.vocab-mission-vb-step {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.45rem;
+  border-radius: 4px;
+  border: 1px solid var(--line, #374151);
+  color: var(--muted, #9ca3af);
+}
+
+.vocab-mission-vb-step.current {
+  border-color: var(--purple, #8b5cf6);
+  color: var(--text, #f9fafb);
+  background: rgba(139, 92, 246, 0.12);
+}
+
+.vocab-mission-vb-step.done {
+  border-color: var(--good, #22c55e);
+  color: var(--good, #86efac);
+}
+
+.vocab-mission-current-level {
+  margin: 0.75rem 0 0.5rem;
+}
+
+.vocab-mission-level-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--purple, #a78bfa);
+}
+
+.vocab-mission-complete {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--good, #22c55e);
+  background: rgba(34, 197, 94, 0.08);
+}
+
+.vocab-daily-vb-progress {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--muted, #9ca3af);
+  margin-right: 0.35rem;
+}
+
+/* TAXI leg — mission-through flow (Sprint 8 Critical) */
+.vocab-flight-deck {
+  padding-top: 0.5rem;
+  padding-bottom: 2rem;
+}
+
+.vocab-leg {
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+.vocab-mission-progress {
+  margin: 0 0 0.75rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--purple, #8b5cf6);
+}
+
+.vocab-mission-card {
+  margin-bottom: 1.25rem;
+  padding: 1.25rem 1.35rem;
+  border-radius: 12px;
+  border: 1px solid var(--line, #1f2937);
+  background: var(--card, #111827);
+}
+
+.vocab-mission-card-browse {
+  grid-column: 1 / -1;
+}
+
+.vocab-mission-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--purple, #8b5cf6);
+}
+
+.vocab-mission-badge-inline {
+  display: block;
+  margin-bottom: 0.65rem;
+}
+
+.vocab-mission-quote {
+  margin: 0.5rem 0 1rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text, #f3f4f6);
+}
+
+.vocab-mission-meta {
+  margin: 0.65rem 0 0;
+  font-size: 0.82rem;
+  color: var(--muted, #9ca3af);
+}
+
+.vocab-debrief-card {
+  padding: 1.25rem 1.35rem;
+  border-radius: 12px;
+  border: 1px solid var(--line, #1f2937);
+  background: var(--card, #111827);
+}
+
+.vocab-debrief-card h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.15rem;
+}
+
+.vocab-debrief-list {
+  margin: 0 0 1rem;
+  padding-left: 1.15rem;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.vocab-debrief-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.vocab-leg .vocab-mission-panel {
+  border: none;
+  padding: 0;
+  background: transparent;
+}
+
+.vocab-mission-progress-detail {
+  margin: 0 0 0.75rem;
+  font-size: 0.88rem;
+  color: var(--muted, #9ca3af);
+}
+
+.vocab-recording-state {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--orange, #c45c00);
+}
+
+.vocab-recording-state-assessing {
+  color: var(--blue, #3b82f6);
+}
+
+.vocab-recovery-guidance {
+  margin: 0.35rem 0 0;
+  font-size: 0.82rem;
+  color: var(--muted, #9ca3af);
+}
+
+.vocab-recorder-mission .vocab-recorder-actions-mission {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.vocab-recorder-mission .vocab-recorder-primary {
+  flex: 1;
+  min-width: 10rem;
+  min-height: 44px;
+}
+
+.vocab-recorder-mission .vocab-recorder-listen:focus-visible,
+.vocab-recorder-mission .vocab-recorder-primary:focus-visible {
+  outline: 2px solid var(--blue, #3b82f6);
+  outline-offset: 2px;
+}

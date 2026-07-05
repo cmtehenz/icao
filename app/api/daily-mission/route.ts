@@ -7,7 +7,10 @@ import {
 } from "@/lib/dailyMissionSync";
 import type { Part1DailyMissionState } from "@/lib/part1DailyMission";
 import type { Part2DailyMissionState } from "@/lib/part2DailyMission";
+import type { PronunciationDailyMissionState } from "@/lib/pronunciationDailyMission";
 import type { VocabDailyMissionState } from "@/lib/vocabDailyMission";
+import type { MissionRecallState } from "@/lib/missionRecall/missionRecallTypes";
+import type { FlightDebriefState } from "@/lib/flightDebrief/flightDebriefTypes";
 
 export const runtime = "nodejs";
 
@@ -22,23 +25,38 @@ function dateKeyFromInput(value: string): string | null {
 
 function rowToBundle(row: {
   date: Date;
+  pronunciation: unknown;
   part1: unknown;
   part2: unknown;
   vocab: unknown;
+  recall: unknown;
+  debrief: unknown;
   complete: boolean;
 }): DailyMissionBundle {
   const date = row.date.toISOString().slice(0, 10);
   return {
     date,
+    pronunciation: (row.pronunciation as PronunciationDailyMissionState | null) ?? null,
     part1: (row.part1 as Part1DailyMissionState | null) ?? null,
     part2: (row.part2 as Part2DailyMissionState | null) ?? null,
     vocab: (row.vocab as VocabDailyMissionState | null) ?? null,
+    recall: (row.recall as MissionRecallState | null) ?? null,
+    debrief: (row.debrief as FlightDebriefState | null) ?? null,
     complete: row.complete,
   };
 }
 
 function emptyBundle(date: string): DailyMissionBundle {
-  return { date, part1: null, part2: null, vocab: null, complete: false };
+  return {
+    date,
+    pronunciation: null,
+    part1: null,
+    part2: null,
+    vocab: null,
+    recall: null,
+    debrief: null,
+    complete: false,
+  };
 }
 
 export async function GET(request: Request) {
@@ -82,7 +100,19 @@ export async function GET(request: Request) {
 
   const latest = rows[0] ? rowToBundle(rows[0]) : null;
   return NextResponse.json({
-    mission: latest ? { ...latest, log } : { date: null, part1: null, part2: null, vocab: null, complete: false, log },
+    mission: latest
+      ? { ...latest, log }
+      : {
+          date: null,
+          pronunciation: null,
+          part1: null,
+          part2: null,
+          vocab: null,
+          recall: null,
+          debrief: null,
+          complete: false,
+          log,
+        },
   });
 }
 
@@ -99,9 +129,12 @@ export async function PUT(request: Request) {
 
     const incoming: DailyMissionBundle = {
       date,
+      pronunciation: body.pronunciation ?? null,
       part1: body.part1 ?? null,
       part2: body.part2 ?? null,
       vocab: body.vocab ?? null,
+      recall: body.recall ?? null,
+      debrief: body.debrief ?? null,
       complete: !!body.complete,
       log: body.log && typeof body.log === "object" ? body.log : {},
     };
@@ -122,15 +155,21 @@ export async function PUT(request: Request) {
       create: {
         userId: user.id,
         date: new Date(`${date}T12:00:00`),
+        pronunciation: merged.pronunciation ?? undefined,
         part1: merged.part1 ?? undefined,
         part2: merged.part2 ?? undefined,
         vocab: merged.vocab ?? undefined,
+        recall: merged.recall ?? undefined,
+        debrief: merged.debrief ?? undefined,
         complete: merged.complete,
       },
       update: {
+        pronunciation: merged.pronunciation ?? undefined,
         part1: merged.part1 ?? undefined,
         part2: merged.part2 ?? undefined,
         vocab: merged.vocab ?? undefined,
+        recall: merged.recall ?? undefined,
+        debrief: merged.debrief ?? undefined,
         complete: merged.complete,
       },
     });

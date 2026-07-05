@@ -1,5 +1,5 @@
 /**
- * Sync daily mission (Part 1 / Part 2 / Vocab) across devices via the user account.
+ * Sync daily mission (pronunciation / Part 1 / Part 2 / Vocab) across devices via the user account.
  */
 
 import {
@@ -15,6 +15,12 @@ import {
   type Part2DailyMissionState,
 } from "@/lib/part2DailyMission";
 import {
+  loadPronunciationDailyMission,
+  pronunciationDailyMissionProgress,
+  savePronunciationDailyMission,
+  type PronunciationDailyMissionState,
+} from "@/lib/pronunciationDailyMission";
+import {
   loadVocabDailyMission,
   saveVocabDailyMission,
   vocabDailyMissionProgress,
@@ -25,15 +31,28 @@ import {
   markDailyMissionComplete,
   saveDailyMissionLogFromSync,
 } from "@/lib/dailyMissionLog";
+import {
+  loadFlightDebriefState,
+  saveFlightDebriefState,
+} from "@/lib/flightDebrief/flightDebriefProgress";
+import type { FlightDebriefState } from "@/lib/flightDebrief/flightDebriefTypes";
+import {
+  loadMissionRecallState,
+  saveMissionRecallState,
+} from "@/lib/missionRecall/missionRecallProgress";
+import type { MissionRecallState } from "@/lib/missionRecall/missionRecallTypes";
 import { todayKey } from "@/lib/studyTime";
 
 export const DAILY_MISSION_SYNC_EVENT = "icao-daily-mission-sync-request";
 
 export type DailyMissionBundle = {
   date: string;
+  pronunciation: PronunciationDailyMissionState | null;
   part1: Part1DailyMissionState | null;
   part2: Part2DailyMissionState | null;
   vocab: VocabDailyMissionState | null;
+  recall: MissionRecallState | null;
+  debrief: FlightDebriefState | null;
   complete: boolean;
   /** Historical completion flags by date (YYYY-MM-DD). */
   log?: Record<string, boolean>;
@@ -46,26 +65,55 @@ export function isApplyingRemoteDailyMission(): boolean {
 }
 
 function missionsComplete(
+  pronunciation: PronunciationDailyMissionState | null,
   part1: Part1DailyMissionState | null,
   part2: Part2DailyMissionState | null,
   vocab: VocabDailyMissionState | null,
 ): boolean {
-  if (!part1 || !part2 || !vocab) return false;
+  if (!pronunciation || !part1 || !part2 || !vocab) return false;
   return (
+    pronunciationDailyMissionProgress(pronunciation).complete &&
     part1DailyMissionProgress(part1).complete &&
     part2DailyMissionProgress(part2).complete &&
     vocabDailyMissionProgress(vocab).complete
   );
 }
 
+export function mergePronunciationMission(
+  a: PronunciationDailyMissionState | null,
+  b: PronunciationDailyMissionState | null,
+): PronunciationDailyMissionState | null {
+  if (!a) return b;
+  if (!b) return a;
+  if (a.date !== b.date) return a.date >= b.date ? a : b;
+
+  const completed = new Set(
+    [...a.completedWords, ...b.completedWords].map((w) => w.toLowerCase()),
+  );
+  const words = [...a.words];
+  for (const w of b.words) {
+    if (!words.some((x) => x.toLowerCase() === w.toLowerCase())) words.push(w);
+  }
+
+  return {
+    date: a.date,
+    words,
+    completedWords: words.filter((w) => completed.has(w.toLowerCase())),
+  };
+}
+
 export function loadLocalDailyMissionBundle(): DailyMissionBundle {
   const date = todayKey();
+  const pronunciation = loadPronunciationDailyMission();
   const part1 = loadPart1DailyMission();
   const part2 = loadPart2DailyMission();
   const vocab = loadVocabDailyMission();
+  const recall = loadMissionRecallState();
+  const debrief = loadFlightDebriefState();
   const log = loadDailyMissionLog();
-  const complete = !!log[date] || missionsComplete(part1, part2, vocab);
-  return { date, part1, part2, vocab, complete, log };
+  const complete =
+    !!log[date] || missionsComplete(pronunciation, part1, part2, vocab);
+  return { date, pronunciation, part1, part2, vocab, recall, debrief, complete, log };
 }
 
 export function mergePart1Mission(
@@ -151,6 +199,61 @@ export function mergeVocabMission(
   };
 }
 
+export function mergeMissionRecallState(
+  a: MissionRecallState | null,
+  b: MissionRecallState | null,
+): MissionRecallState | null {
+  if (!a) return b;
+  if (!b) return a;
+  if (a.date !== b.date) return a.date >= b.date ? a : b;
+
+  const answeredIds = [...new Set([...a.answeredIds, ...b.answeredIds])];
+  const itemIds = a.itemIds.length >= b.itemIds.length ? a.itemIds : b.itemIds;
+  const answers = { ...(b.answers ?? {}), ...(a.answers ?? {}) };
+  for (const id of answeredIds) {
+    const local = a.answers?.[id];
+    const remote = b.answers?.[id];
+    if (local && remote) {
+      answers[id] = (local.transcript?.length ?? 0) >= (remote.transcript?.length ?? 0)
+        ? local
+        : remote;
+    } else if (local || remote) {
+      answers[id] = local ?? remote!;
+    }
+  }
+
+  const total = itemIds.length;
+  const done = answeredIds.length;
+  const complete = total > 0 && done >= total;
+  const confidenceStars = Math.max(a.confidenceStars, b.confidenceStars);
+
+  return {
+    date: a.date,
+    itemIds,
+    answeredIds,
+    answers: Object.keys(answers).length > 0 ? answers : undefined,
+    complete: a.complete || b.complete || complete,
+    confidenceStars: complete ? Math.max(confidenceStars, 1) : confidenceStars,
+    completedAt: a.completedAt ?? b.completedAt,
+  };
+}
+
+export function mergeFlightDebriefState(
+  a: FlightDebriefState | null,
+  b: FlightDebriefState | null,
+): FlightDebriefState | null {
+  if (!a) return b;
+  if (!b) return a;
+  if (a.date !== b.date) return a.date >= b.date ? a : b;
+
+  return {
+    date: a.date,
+    viewed: a.viewed || b.viewed,
+    complete: a.complete || b.complete,
+    completedAt: a.completedAt ?? b.completedAt,
+  };
+}
+
 export function mergeDailyMissionBundles(
   local: DailyMissionBundle,
   remote: DailyMissionBundle,
@@ -158,21 +261,49 @@ export function mergeDailyMissionBundles(
   const date =
     local.date >= remote.date ? local.date : remote.date;
 
-  const localToday = local.date === date ? local : { ...local, part1: null, part2: null, vocab: null };
-  const remoteToday = remote.date === date ? remote : { ...remote, part1: null, part2: null, vocab: null };
+  const localToday =
+    local.date === date
+      ? local
+      : {
+          ...local,
+          pronunciation: null,
+          part1: null,
+          part2: null,
+          vocab: null,
+          recall: null,
+          debrief: null,
+        };
+  const remoteToday =
+    remote.date === date
+      ? remote
+      : {
+          ...remote,
+          pronunciation: null,
+          part1: null,
+          part2: null,
+          vocab: null,
+          recall: null,
+          debrief: null,
+        };
 
+  const pronunciation = mergePronunciationMission(
+    localToday.pronunciation,
+    remoteToday.pronunciation,
+  );
   const part1 = mergePart1Mission(localToday.part1, remoteToday.part1);
   const part2 = mergePart2Mission(localToday.part2, remoteToday.part2);
   const vocab = mergeVocabMission(localToday.vocab, remoteToday.vocab);
+  const recall = mergeMissionRecallState(localToday.recall, remoteToday.recall);
+  const debrief = mergeFlightDebriefState(localToday.debrief, remoteToday.debrief);
   const complete =
     localToday.complete ||
     remoteToday.complete ||
-    missionsComplete(part1, part2, vocab);
+    missionsComplete(pronunciation, part1, part2, vocab);
 
   const log = { ...(remote.log ?? {}), ...(local.log ?? {}) };
   if (complete) log[date] = true;
 
-  return { date, part1, part2, vocab, complete, log };
+  return { date, pronunciation, part1, part2, vocab, recall, debrief, complete, log };
 }
 
 /** Write merged mission into localStorage and notify UI (does not push to server). */
@@ -185,9 +316,12 @@ export function applyDailyMissionBundle(bundle: DailyMissionBundle): void {
 
   applyingRemote = true;
   try {
+    if (bundle.pronunciation) savePronunciationDailyMission(bundle.pronunciation);
     if (bundle.part1) savePart1DailyMission(bundle.part1);
     if (bundle.part2) savePart2DailyMission(bundle.part2);
     if (bundle.vocab) saveVocabDailyMission(bundle.vocab);
+    if (bundle.recall) saveMissionRecallState(bundle.recall);
+    if (bundle.debrief) saveFlightDebriefState(bundle.debrief);
     if (bundle.complete) markDailyMissionComplete(bundle.date);
     if (bundle.log) saveDailyMissionLogFromSync(bundle.log);
   } finally {

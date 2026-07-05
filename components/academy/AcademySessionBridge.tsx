@@ -1,12 +1,15 @@
 "use client";
 
+/**
+ * @deprecated ADR-007 — Logbook idle recording only; mission title from `getDailyMissionSummary()`.
+ */
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { useAuth } from "@/components/AuthProvider";
 import { recordLogbookFlight } from "@/lib/academy/logbook";
 import { loadAcademyStore } from "@/lib/academy/store";
 import { evaluateAchievements } from "@/lib/academy/achievements";
-import { buildDailyFlightMission } from "@/lib/academy/flightMission";
+import { getDailyMissionSummary } from "@/lib/dailyMission";
 import { buildExamReadiness } from "@/lib/captainDelta/memory/readiness";
 import { CAPTAIN_DELTA_EXAM_FINISHED } from "@/lib/captainDelta/examiner/events";
 import { STUDY_ACTIVITY_RECORDED_EVENT } from "@/lib/studyActivityRecord";
@@ -51,7 +54,7 @@ export default function AcademySessionBridge() {
         if (!memory.sessionDates.includes(today)) return;
 
         flightRecorded.current = true;
-        const mission = buildDailyFlightMission().title;
+        const mission = `Daily flight · ${getDailyMissionSummary().examLabel}`;
         recordTodayFlight(mission);
       }, 90_000);
     };

@@ -1,0 +1,5 @@
+# Voice reference
+
+Captain Delta / examiner voice samples and script timing references.
+
+TTS configuration remains in `hooks/useCaptainDeltaVoice.ts` until migrated.

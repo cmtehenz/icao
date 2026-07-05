@@ -55,12 +55,12 @@ export function azureReferenceText(modelAnswer: string, type: string): string {
 
 const ERROR_LABELS: Record<string, string> = {
   None: "ok",
-  Mispronunciation: "pronúncia errada",
-  Omission: "omitida",
-  Insertion: "palavra extra",
-  UnexpectedBreak: "pausa inesperada",
-  MissingBreak: "falta pausa",
-  Monotone: "monótono",
+  Mispronunciation: "mispronounced",
+  Omission: "omitted",
+  Insertion: "extra word",
+  UnexpectedBreak: "unexpected pause",
+  MissingBreak: "missing pause",
+  Monotone: "monotone",
 };
 
 export function errorTypeLabel(errorType?: string): string {

@@ -22,6 +22,8 @@ type Props = {
   onAnswerFollowUp?: (question: string) => void;
   attemptCompare?: AttemptCompare | null;
   followUpBanner?: string | null;
+  /** Part 1 HEX: follow-ups handled by examiner conversation, not Captain. */
+  suppressFollowUp?: boolean;
 };
 
 function naturalnessClass(level: FlightInstructorReport["naturalnessReview"]["level"]): string {
@@ -63,6 +65,7 @@ export default function FlightInstructorReportPanel({
   onAnswerFollowUp,
   attemptCompare,
   followUpBanner,
+  suppressFollowUp = false,
 }: Props) {
   const [compareOpen, setCompareOpen] = useState(false);
 
@@ -244,7 +247,7 @@ export default function FlightInstructorReportPanel({
         )}
       </section>
 
-      {report.followUpQuestion && onAnswerFollowUp && (
+      {report.followUpQuestion && onAnswerFollowUp && !suppressFollowUp && (
         <section className="fi-section fi-followup">
           <h3>Examiner follow-up</h3>
           <p className="fi-followup-q">{report.followUpQuestion}</p>

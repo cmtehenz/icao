@@ -1,3 +1,7 @@
+/**
+ * @deprecated ADR-007 — Adaptive leg order conflicts with Mission Flow Matrix.
+ * Use `getNextMissionAction()` from `lib/dailyMission.ts` for mission progression.
+ */
 import { getNextMissionAction } from "@/lib/dailyMission";
 import { computeAdaptivePriorities } from "@/lib/captainDelta/memory/adaptive";
 import { buildImprovementLines } from "@/lib/captainDelta/memory/improvements";
