@@ -4,7 +4,7 @@ ICAO DELTA CERTIFICATION
 
 ✅ Pronunciation
 
-⬜ Vocabulary
+✅ Vocabulary
 
 ⬜ Part 1
 

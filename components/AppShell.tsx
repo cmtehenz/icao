@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "@/components/AuthProvider";
+import CaptainDeltaAuthHint from "@/components/CaptainDelta/CaptainDeltaAuthHint";
 import CaptainDeltaFloatingAssistant from "@/components/CaptainDelta/CaptainDeltaFloatingAssistant";
 import { CaptainDeltaProvider } from "@/components/CaptainDelta/CaptainDeltaProvider";
 import CaptainDeltaVisualBridge from "@/components/CaptainDelta/Visual/CaptainDeltaVisualBridge";
@@ -158,7 +159,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           )}
 
           <StudyActivityToast />
-          {user && <CaptainDeltaFloatingAssistant />}
+          {user ? <CaptainDeltaFloatingAssistant /> : <CaptainDeltaAuthHint />}
         </CaptainDeltaVisualProvider>
       </CaptainDeltaExaminerProvider>
     </CaptainDeltaProvider>

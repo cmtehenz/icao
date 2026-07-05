@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import { useAzurePronunciation } from "@/hooks/useAzurePronunciation";
+import { warnCaptain } from "@/lib/captainDelta/devLog";
+import { emitCaptainDeltaSuggestion } from "@/lib/captainDelta/events";
+import { buildPart2StepCoaching } from "@/lib/captainDelta/part2StepCoaching";
 import { fetchEvaluation } from "@/lib/evaluate/clientEvaluate";
 import { saveEvaluationRecord } from "@/lib/evaluate/saveEvaluation";
 import type { EvaluateFeedback, EvaluateType } from "@/lib/evaluate/types";
@@ -12,6 +15,8 @@ type Props = {
   evaluateType: EvaluateType;
   /** Heading when model is revealed, e.g. "Readback modelo (ICAO 5)". */
   modelTitle?: string;
+  /** Step label for Captain coaching, e.g. "Seu readback". */
+  stepLabel?: string;
   onComplete: (feedback: EvaluateFeedback, audioBlob: Blob | null) => void;
   onRetry: () => void;
   completed?: EvaluateFeedback | null;
@@ -22,6 +27,7 @@ export default function Part2SimulationRecord({
   modelAnswer,
   evaluateType,
   modelTitle = "Modelo ICAO 5",
+  stepLabel = "This response",
   onComplete,
   onRetry,
   completed,
@@ -42,8 +48,16 @@ export default function Part2SimulationRecord({
         return;
       }
       const feedback = await fetchEvaluation(text, question, modelAnswer, evaluateType, assessment ?? undefined);
+      const coaching = buildPart2StepCoaching(feedback, stepLabel);
+      emitCaptainDeltaSuggestion({
+        text: coaching.text,
+        speechText: coaching.speechText,
+        kind: "coaching",
+        primaryAction: { id: "ready", label: "Continue", primary: true },
+      });
       onComplete(feedback, audioBlob);
-    } catch {
+    } catch (err) {
+      warnCaptain("part2SimulationRecord", "Assessment failed after recording", err);
       setError("Erro ao avaliar. Tente gravar novamente.");
     } finally {
       setLoading(false);

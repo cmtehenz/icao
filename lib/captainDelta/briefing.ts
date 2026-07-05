@@ -36,6 +36,10 @@ export function buildContextTip(context: CaptainDeltaContext): { text: string; s
       "Learn the operational meaning first, then say it out loud like a pilot — not like a dictionary.",
     simulation:
       "This is a full exam run. Breathe, one situation at a time, like a real check ride.",
+    recall:
+      "Mission Recall — answer from memory. Fast pace, no model answers first.",
+    debrief:
+      "Flight Debrief — one priority improvement, then we close today's flight.",
     listen:
       "Listen mode: notice how controllers keep it short. Copy that rhythm in your answers.",
     memory:

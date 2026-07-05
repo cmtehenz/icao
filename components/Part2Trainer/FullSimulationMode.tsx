@@ -312,6 +312,7 @@ export default function FullSimulationMode({
                   modelAnswer={speakConfig.modelAnswer}
                   modelTitle="Readback modelo (ICAO 5)"
                   evaluateType={speakConfig.evaluateType}
+                  stepLabel={current.title}
                   completed={currentRecording}
                   onComplete={saveRecording}
                   onRetry={clearRecording}
@@ -332,6 +333,7 @@ export default function FullSimulationMode({
                   modelAnswer={speakConfig.modelAnswer}
                   modelTitle="Reporte modelo (ICAO 5)"
                   evaluateType={speakConfig.evaluateType}
+                  stepLabel={current.title}
                   completed={currentRecording}
                   onComplete={saveRecording}
                   onRetry={clearRecording}
@@ -360,6 +362,7 @@ export default function FullSimulationMode({
                   modelAnswer={speakConfig.modelAnswer}
                   modelTitle={`${scenario.atcFollowUp.correctionType} modelo (ICAO 5)`}
                   evaluateType={speakConfig.evaluateType}
+                  stepLabel={current.title}
                   completed={currentRecording}
                   onComplete={saveRecording}
                   onRetry={clearRecording}
@@ -380,6 +383,7 @@ export default function FullSimulationMode({
                   modelAnswer={speakConfig.modelAnswer}
                   modelTitle="Reported speech modelo (ICAO 5)"
                   evaluateType={speakConfig.evaluateType}
+                  stepLabel={current.title}
                   completed={currentRecording}
                   onComplete={saveRecording}
                   onRetry={clearRecording}

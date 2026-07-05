@@ -2,13 +2,17 @@
 
 import type { CaptainDeltaMessage } from "@/lib/captainDelta/types";
 import type { useCaptainDeltaVoice } from "@/hooks/useCaptainDeltaVoice";
-import { isCaptainDeltaVoiceEnabled } from "@/lib/captainDelta/voiceConfig";
+import {
+  CAPTAIN_VOICE_TEXT_MODE_LABEL,
+  isCaptainDeltaVoiceEnabled,
+} from "@/lib/captainDelta/voiceConfig";
 
 type Voice = ReturnType<typeof useCaptainDeltaVoice>;
 
 type Props = {
   message: CaptainDeltaMessage;
   voice: Voice;
+  voiceStatusLabel?: string | null;
   onPrimaryAction: () => void;
   onSecondaryAction: (actionId: string) => void;
   recording?: boolean;
@@ -19,6 +23,7 @@ type Props = {
 export default function CaptainDeltaCoachingCard({
   message,
   voice,
+  voiceStatusLabel,
   onPrimaryAction,
   onSecondaryAction,
   recording = false,
@@ -27,13 +32,26 @@ export default function CaptainDeltaCoachingCard({
 }: Props) {
   const isPlaying = voice.state === "playing" || voice.state === "loading";
   const isPaused = voice.state === "paused";
-  const voiceEnabled = isCaptainDeltaVoiceEnabled();
+  const voiceConfigured = isCaptainDeltaVoiceEnabled();
+  const statusLine =
+    voiceStatusLabel ??
+    (voiceConfigured && voice.state === "error" && voice.lastError
+      ? CAPTAIN_VOICE_TEXT_MODE_LABEL
+      : !voiceConfigured
+        ? CAPTAIN_VOICE_TEXT_MODE_LABEL
+        : null);
 
   return (
     <article className="cd-coach-card">
       <header className="cd-coach-card-head">
         <span className="cd-coach-card-badge">👨‍✈️ Captain Delta</span>
       </header>
+
+      {statusLine && (
+        <p className="cd-voice-notice" role="status">
+          {statusLine}
+        </p>
+      )}
 
       <div className="cd-coach-card-body">
         {message.text.split("\n").map((line) => (
@@ -48,31 +66,31 @@ export default function CaptainDeltaCoachingCard({
       )}
       {pttError && <p className="cd-ptt-error">{pttError}</p>}
 
-      {voiceEnabled && (
-      <div className="cd-voice-controls" aria-label="Voice controls">
-        <button
-          type="button"
-          className="cd-voice-btn"
-          onClick={() => {
-            if (isPlaying && !isPaused) voice.pause();
-            else if (message.speechText) void voice.speak(message.speechText);
-            else voice.resume();
-          }}
-          disabled={voice.state === "loading"}
-        >
-          {isPaused || voice.state === "idle" ? "▶ Play" : "⏸ Pause"}
-        </button>
-        <button type="button" className="cd-voice-btn" onClick={() => void voice.replay()}>
-          ↺ Replay
-        </button>
-        <button
-          type="button"
-          className={`cd-voice-btn ${voice.muted ? "active" : ""}`}
-          onClick={voice.toggleMute}
-        >
-          {voice.muted ? "🔇 Muted" : "🔊 Mute"}
-        </button>
-      </div>
+      {voiceConfigured && (
+        <div className="cd-voice-controls" aria-label="Voice controls">
+          <button
+            type="button"
+            className="cd-voice-btn"
+            onClick={() => {
+              if (isPlaying && !isPaused) voice.pause();
+              else if (message.speechText) void voice.speak(message.speechText);
+              else voice.resume();
+            }}
+            disabled={voice.state === "loading"}
+          >
+            {isPaused || voice.state === "idle" ? "▶ Play" : "⏸ Pause"}
+          </button>
+          <button type="button" className="cd-voice-btn" onClick={() => void voice.replay()}>
+            ↺ Replay
+          </button>
+          <button
+            type="button"
+            className={`cd-voice-btn ${voice.muted ? "active" : ""}`}
+            onClick={voice.toggleMute}
+          >
+            {voice.muted ? "🔇 Muted" : "🔊 Mute"}
+          </button>
+        </div>
       )}
 
       <button

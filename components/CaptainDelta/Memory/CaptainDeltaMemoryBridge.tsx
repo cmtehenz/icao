@@ -28,6 +28,8 @@ const SESSION_CLOSE_CONTEXTS: CaptainDeltaContext[] = [
   "part1",
   "part2",
   "simulation",
+  "recall",
+  "debrief",
 ];
 
 export default function CaptainDeltaMemoryBridge() {

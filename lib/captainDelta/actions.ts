@@ -64,6 +64,10 @@ function primaryForRoute(
       return mic("Explain It", "explain_your_way");
     case "simulation":
       return mic("Start Training", "start_exam");
+    case "recall":
+      return mic("Answer", "explain_your_way");
+    case "debrief":
+      return mic("Explain It", "explain_it");
     case "listen":
       return mic("Start Training", "ready");
     default:

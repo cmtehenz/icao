@@ -16,6 +16,7 @@ export default function CaptainDeltaFloatingAssistant() {
     currentMessage,
     avatarState,
     voice,
+    voiceStatusLabel,
     lesson,
     pttActive,
     pttInterim,
@@ -79,6 +80,7 @@ export default function CaptainDeltaFloatingAssistant() {
             <CaptainDeltaCoachingCard
               message={currentMessage}
               voice={voice}
+              voiceStatusLabel={voiceStatusLabel}
               recording={recording}
               pttInterim={pttInterim}
               pttError={pttError}

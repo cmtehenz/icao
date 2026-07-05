@@ -146,8 +146,8 @@ describe("examiner thinking", () => {
 });
 
 describe("voice independence", () => {
-  it("keeps proactive on when voice is off", () => {
-    expect(isCaptainDeltaVoiceEnabled()).toBe(false);
+  it("defaults voice on and keeps proactive on", () => {
+    expect(isCaptainDeltaVoiceEnabled()).toBe(true);
     expect(isCaptainDeltaProactiveEnabled()).toBe(true);
   });
 });

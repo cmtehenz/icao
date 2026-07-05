@@ -29,7 +29,9 @@ import {
   CAPTAIN_DELTA_AFTER_ANSWER,
   CAPTAIN_DELTA_DEBRIEF,
   CAPTAIN_DELTA_SUGGESTION,
+  emitCaptainDeltaMessageDelivered,
 } from "@/lib/captainDelta/events";
+import { warnCaptain } from "@/lib/captainDelta/devLog";
 import {
   CAPTAIN_DELTA_LESSON_CONTEXT,
   emitSecondaryAction,
@@ -50,6 +52,7 @@ import type {
 import { DEFAULT_LESSON_CONTEXT } from "@/lib/captainDelta/types";
 import { toSpeechText } from "@/lib/captainDelta/voiceText";
 import {
+  CAPTAIN_VOICE_TEXT_MODE_LABEL,
   isCaptainDeltaProactiveEnabled,
   isCaptainDeltaVoiceEnabled,
 } from "@/lib/captainDelta/voiceConfig";
@@ -71,6 +74,7 @@ type CaptainDeltaContextValue = {
   pttActive: boolean;
   pttInterim: string;
   pttError: string | null;
+  voiceStatusLabel: string | null;
   thinking: boolean;
   triggerPrimaryAction: () => void;
   triggerSecondaryAction: (actionId: string) => void;
@@ -119,6 +123,7 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
   const [lesson, setLesson] = useState<CaptainDeltaLessonContext>(DEFAULT_LESSON_CONTEXT);
   const [pttActive, setPttActive] = useState(false);
   const [thinking, setThinking] = useState(false);
+  const [voiceStatusLabel, setVoiceStatusLabel] = useState<string | null>(null);
   const lastContextRef = useRef<CaptainDeltaContext | null>(null);
   const routeContextRef = useRef(routeContext);
   routeContextRef.current = routeContext;
@@ -134,11 +139,25 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
     ) => {
       setCurrentMessage(msg);
       setOpen(true);
-      const maySpeak =
-        isCaptainDeltaVoiceEnabled() && options?.autoSpeak !== false;
-      if (maySpeak) {
-        void voice.speak(msg.speechText ?? msg.text);
+      emitCaptainDeltaMessageDelivered(msg);
+
+      const wantSpeech = options?.autoSpeak !== false;
+
+      if (!isCaptainDeltaVoiceEnabled()) {
+        setVoiceStatusLabel(CAPTAIN_VOICE_TEXT_MODE_LABEL);
+        return;
       }
+
+      setVoiceStatusLabel(null);
+
+      if (!wantSpeech) return;
+
+      void voice.speak(msg.speechText ?? msg.text).then((result) => {
+        if (!result.ok) {
+          setVoiceStatusLabel(CAPTAIN_VOICE_TEXT_MODE_LABEL);
+          warnCaptain("deliverMessage", result.error ?? "Voice output failed");
+        }
+      });
     },
     [voice],
   );
@@ -168,15 +187,27 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
             lessonContext: lessonSnapshot,
           }),
         });
+        if (res.status === 401) {
+          deliverMessage(
+            buildMessage(
+              "coaching",
+              "Your session expired. Sign in again to ask Captain Delta a question.",
+              routeContext,
+              lessonSnapshot,
+            ),
+          );
+          return;
+        }
         if (!res.ok) {
-          throw new Error("Captain unavailable");
+          throw new Error(`Captain unavailable (${res.status})`);
         }
         const data = (await res.json()) as { reply: string };
         const msg = buildMessage("coaching", data.reply, routeContext, lessonSnapshot, {
           speechText: toSpeechText(data.reply),
         });
         deliverMessage(msg, { avatar: "correcting" });
-      } catch {
+      } catch (err) {
+        warnCaptain("replyFromCaptain", "API request failed — using local coaching line", err);
         deliverMessage(
           buildMessage(
             "coaching",
@@ -426,6 +457,7 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
       pttActive: pttActive || ptt.listening,
       pttInterim: ptt.interimText,
       pttError: ptt.error,
+      voiceStatusLabel,
       thinking,
       triggerPrimaryAction,
       triggerSecondaryAction,
@@ -446,6 +478,7 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
       ptt.listening,
       ptt.interimText,
       ptt.error,
+      voiceStatusLabel,
       thinking,
       triggerPrimaryAction,
       triggerSecondaryAction,

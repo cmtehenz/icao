@@ -7,6 +7,8 @@ export function getCaptainDeltaContext(pathname: string): CaptainDeltaContext {
   if (pathname.startsWith("/pronunciation")) return "pronunciation";
   if (pathname.startsWith("/vocabulario")) return "vocabulary";
   if (pathname.startsWith("/simulado")) return "simulation";
+  if (pathname.startsWith("/mission-recall")) return "recall";
+  if (pathname.startsWith("/flight-debrief")) return "debrief";
   if (pathname.startsWith("/escutar-prova")) return "listen";
   if (pathname.startsWith("/structure")) return "memory";
   if (pathname.startsWith("/conta")) return "account";
@@ -20,6 +22,8 @@ export const CONTEXT_LABELS: Record<CaptainDeltaContext, string> = {
   pronunciation: "Pronunciation",
   vocabulary: "Vocabulary",
   simulation: "Simulation",
+  recall: "Mission Recall",
+  debrief: "Flight Debrief",
   listen: "Listen Mode",
   memory: "Memory Mode",
   account: "Account",

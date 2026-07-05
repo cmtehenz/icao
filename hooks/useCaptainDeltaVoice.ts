@@ -2,9 +2,19 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { synthesizeExamMp3, stopAzureSpeech, type AzureVoiceRole } from "@/lib/azure/azureTts";
+import { warnCaptain } from "@/lib/captainDelta/devLog";
+import { isCaptainDeltaVoiceEnabled } from "@/lib/captainDelta/voiceConfig";
 import { speakText as browserSpeak, stopSpeaking as browserStop } from "@/lib/tts";
 
 export type VoicePlaybackState = "idle" | "loading" | "playing" | "paused" | "error";
+
+export type VoiceSpeakChannel = "azure-client" | "server" | "browser" | "disabled" | "none";
+
+export type VoiceSpeakResult = {
+  ok: boolean;
+  channel: VoiceSpeakChannel;
+  error?: string;
+};
 
 const CAPTAIN_VOICE: AzureVoiceRole = "captain_delta";
 
@@ -13,6 +23,8 @@ export function useCaptainDeltaVoice() {
   const blobUrlRef = useRef<string | null>(null);
   const lastTextRef = useRef("");
   const [state, setState] = useState<VoicePlaybackState>("idle");
+  const [lastChannel, setLastChannel] = useState<VoiceSpeakChannel>("none");
+  const [lastError, setLastError] = useState<string | null>(null);
   const [muted, setMuted] = useState(false);
   const mutedRef = useRef(false);
 
@@ -44,7 +56,7 @@ export function useCaptainDeltaVoice() {
   useEffect(() => () => stop(), [stop]);
 
   const playBlob = useCallback(
-    (blob: Blob) => {
+    async (blob: Blob, channel: VoiceSpeakChannel): Promise<boolean> => {
       cleanupBlob();
       const url = URL.createObjectURL(blob);
       blobUrlRef.current = url;
@@ -59,30 +71,61 @@ export function useCaptainDeltaVoice() {
         }
       };
       audio.onplay = () => setState("playing");
-      audio.onerror = () => setState("error");
+      audio.onerror = () => {
+        setState("error");
+        setLastError("Audio playback failed");
+        warnCaptain("voice", "Audio element playback error");
+      };
 
       if (mutedRef.current) {
         setState("playing");
-        return;
+        setLastChannel(channel);
+        return true;
       }
 
-      void audio.play().catch(() => setState("error"));
+      try {
+        await audio.play();
+        setLastChannel(channel);
+        return true;
+      } catch (err) {
+        setState("error");
+        const message = err instanceof Error ? err.message : "Autoplay blocked";
+        setLastError(message);
+        warnCaptain("voice", "Audio play() rejected — try Play in the coaching card", err);
+        return false;
+      }
     },
     [cleanupBlob],
   );
 
   const speak = useCallback(
-    async (text: string) => {
+    async (text: string): Promise<VoiceSpeakResult> => {
       const trimmed = text.trim();
-      if (!trimmed) return;
+      if (!trimmed) {
+        return { ok: false, channel: "none", error: "empty text" };
+      }
+
+      if (!isCaptainDeltaVoiceEnabled()) {
+        warnCaptain("voice", "Voice disabled via NEXT_PUBLIC_CAPTAIN_DELTA_VOICE_ENABLED");
+        return { ok: false, channel: "disabled", error: "voice disabled" };
+      }
+
       lastTextRef.current = trimmed;
       stop();
       setState("loading");
+      setLastError(null);
 
-      const blob = await synthesizeExamMp3(trimmed, CAPTAIN_VOICE);
-      if (blob) {
-        playBlob(blob);
-        return;
+      try {
+        const blob = await synthesizeExamMp3(trimmed, CAPTAIN_VOICE);
+        if (blob) {
+          const played = await playBlob(blob, "azure-client");
+          return played
+            ? { ok: true, channel: "azure-client" }
+            : { ok: false, channel: "azure-client", error: "playback failed" };
+        }
+        warnCaptain("voice", "Client Azure TTS returned no audio — trying /api/tts");
+      } catch (err) {
+        warnCaptain("voice", "Client Azure TTS failed — trying /api/tts", err);
       }
 
       try {
@@ -92,20 +135,34 @@ export function useCaptainDeltaVoice() {
           body: JSON.stringify({ text: trimmed, voiceType: CAPTAIN_VOICE }),
         });
         if (res.ok) {
-          playBlob(await res.blob());
-          return;
+          const played = await playBlob(await res.blob(), "server");
+          return played
+            ? { ok: true, channel: "server" }
+            : { ok: false, channel: "server", error: "playback failed" };
         }
-      } catch {
-        /* fallback below */
+        warnCaptain("voice", `/api/tts returned ${res.status} — trying browser SpeechSynthesis`);
+      } catch (err) {
+        warnCaptain("voice", "/api/tts request failed — trying browser SpeechSynthesis", err);
       }
 
       if (mutedRef.current) {
         setState("playing");
-        return;
+        setLastChannel("browser");
+        return { ok: true, channel: "browser" };
       }
 
-      browserSpeak(trimmed);
-      setState("playing");
+      const browserOk = browserSpeak(trimmed);
+      if (browserOk) {
+        setState("playing");
+        setLastChannel("browser");
+        return { ok: true, channel: "browser" };
+      }
+
+      setState("error");
+      const message = "Browser speech synthesis unavailable";
+      setLastError(message);
+      warnCaptain("voice", message);
+      return { ok: false, channel: "none", error: message };
     },
     [playBlob, stop],
   );
@@ -130,7 +187,7 @@ export function useCaptainDeltaVoice() {
   }, []);
 
   const replay = useCallback(() => {
-    void speak(lastTextRef.current);
+    return speak(lastTextRef.current);
   }, [speak]);
 
   const toggleMute = useCallback(() => {
@@ -140,6 +197,8 @@ export function useCaptainDeltaVoice() {
   return {
     state,
     muted,
+    lastChannel,
+    lastError,
     speak,
     pause,
     resume,

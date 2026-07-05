@@ -3364,6 +3364,50 @@ input {
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--purple) 25%, transparent);
 }
 
+.cd-voice-notice {
+  margin: 0 0 0.55rem;
+  padding: 0.4rem 0.55rem;
+  border-radius: 8px;
+  font-size: 0.76rem;
+  color: var(--muted);
+  background: color-mix(in srgb, var(--purple) 8%, var(--card));
+  border: 1px dashed color-mix(in srgb, var(--purple) 25%, var(--line));
+}
+
+.cd-auth-hint {
+  position: fixed;
+  right: 1rem;
+  bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px));
+  z-index: 301;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  max-width: 14rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  font-size: 0.78rem;
+}
+
+@media (min-width: 900px) {
+  .cd-auth-hint {
+    bottom: 1.25rem;
+  }
+}
+
+.cd-auth-hint-icon {
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.cd-auth-hint-copy p {
+  margin: 0.25rem 0 0.5rem;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
 .hex-captain-preparing {
   font-size: 0.84rem;
 }

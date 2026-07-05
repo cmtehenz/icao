@@ -7,6 +7,8 @@ export type CaptainDeltaContext =
   | "pronunciation"
   | "vocabulary"
   | "simulation"
+  | "recall"
+  | "debrief"
   | "listen"
   | "memory"
   | "account"

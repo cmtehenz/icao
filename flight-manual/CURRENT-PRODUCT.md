@@ -20,6 +20,23 @@ This document describes **shipped behavior only**. Vision lives in [18-product-r
 
 ---
 
+## Screen certification (July 2026)
+
+| Screen | Route | Status |
+|--------|-------|--------|
+| Home | `/` | ✅ Production Certified |
+| Pronunciation | `/pronunciation` | ✅ Production Certified |
+| Vocabulary | `/vocabulario` | ✅ Production Certified |
+| Part 1 | `/part1` | ⬜ Next — Assessment Journey |
+| Part 2 | `/part2` | ⬜ Assessment Journey |
+| Mission Recall | `/mission-recall` | ⬜ Assessment Journey |
+| Flight Debrief | `/flight-debrief` | ⬜ Assessment Journey |
+| Mock Exam | `/simulado` | ⬜ Pending |
+
+Certified screens are frozen except bug fixes, accessibility, localization, performance, and security. See [CERTIFICATION.md](./CERTIFICATION.md).
+
+---
+
 ## Implemented modules
 
 | Module | Route | What works |
@@ -28,7 +45,7 @@ This document describes **shipped behavior only**. Vision lives in [18-product-r
 | Mission Recall | `/mission-recall` | Active recall — Azure speech capture + transcript per item, “Mark as answered” fallback |
 | Flight Debrief | `/flight-debrief` | End-of-flight debrief — legs, recall result, strongest/weakest area, priority improvement, tomorrow focus |
 | Pronunciation | `/pronunciation` | Mission Focus leg — L1–L4 practice, Azure assessment, daily 5-word mission (pass ≥80% counts), auto-advance, debrief → Vocabulary; Captain FAB record bridge; English mission copy |
-| Vocabulary | `/vocabulario` | Mission Focus TAXI leg — VB-1→VB-4 daily mission (20 terms), mission-through flow, Captain FAB record bridge, debrief → Part 1; content-only shell |
+| Vocabulary | `/vocabulario` | **Production Certified** — TAXI leg; VB-1→VB-4 daily mission (20 terms), mission-through flow, Captain FAB bridge, debrief → Part 1; content-only shell |
 | Part 1 | `/part1` | 42 cards, PEEL shadow, **human examiner conversation** with continuous AI presence, Captain debrief after conversation, flight progress strip |
 | Part 2 | `/part2` | Readback, interaction, reported, picture drills, full simulation, flight progress strip |
 | Simulado | `/simulado` | Full exam flow Parts 1–4 config; P1–2 primary; examiner debrief optional |
@@ -142,11 +159,10 @@ LocalStorage (client):
 
 ## Next priorities (product — not committed dates)
 
-1. **Mission Recall** — Section 08 before mock on intense days
-2. **Vocabulary Mission parity** — VB-1→VB-4 shipped (Sprint 5); VB-5 conversation still planned
-3. **Part 1 conversation** — HEX shipped (Sprint 6); examiner profiles + deeper operational graph refs later
-4. **Captain voice** — re-enable with proactive rules from Section 02
-6. **Learning tools** — Confidence Gates + Mission Timeline (see roadmap)
+1. **Assessment Journey certification** — Part 1 → Part 2 → Mission Recall → Flight Debrief (one continuous scope)
+2. **Captain voice** — re-enable with proactive rules from Section 02
+3. **Learning tools** — Confidence Gates + Mission Timeline (see roadmap)
+4. **Vocabulary VB-5 conversation** — planned; not required for daily mission
 
 ---
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { warnCaptain } from "@/lib/captainDelta/devLog";
 
 type SpeechRecognitionCtor = new () => SpeechRecognition;
 
@@ -105,10 +106,11 @@ export function useCaptainDeltaPtt(lang = "en-US") {
         finishWithText(data.transcript ?? "");
         return;
       }
-      setError("Não consegui transcrever o áudio. Tente de novo.");
+      setError("Could not transcribe audio. Try again.");
       finishWithText("");
-    } catch {
-      setError("Erro ao enviar áudio para transcrição.");
+    } catch (err) {
+      warnCaptain("ptt", "Azure STT fallback failed", err);
+      setError("Error sending audio for transcription.");
       finishWithText("");
     }
   }, [cleanupStream, finishWithText]);
