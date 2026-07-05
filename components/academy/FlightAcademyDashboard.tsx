@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useAuth } from "@/components/AuthProvider";
 import PostExamPanel from "@/components/academy/PostExamPanel";
-import { evaluateAchievements } from "@/lib/academy/achievements";
+import { evaluateAchievements, listAchievements } from "@/lib/academy/achievements";
 import { buildFlightBriefing } from "@/lib/academy/briefing";
 import { buildCareerGoals } from "@/lib/academy/career";
 import { communityComingSoon } from "@/lib/academy/community";
@@ -20,7 +20,7 @@ import {
   phaseLabel,
 } from "@/lib/academy/personality";
 import { ACADEMY_CHANGE_EVENT, loadAcademyStore } from "@/lib/academy/store";
-import { computeAcademyStatistics } from "@/lib/academy/stats";
+import { computeAcademyStatistics, readAcademyStatistics } from "@/lib/academy/stats";
 import { buildExamReadiness } from "@/lib/captainDelta/memory/readiness";
 import { CAPTAIN_DELTA_MEMORY_EVENT } from "@/lib/captainDelta/memory/store";
 import { STUDY_ACTIVITY_RECORDED_EVENT } from "@/lib/studyActivityRecord";
@@ -66,6 +66,11 @@ export default function FlightAcademyDashboard() {
     };
   }, [refresh]);
 
+  useEffect(() => {
+    evaluateAchievements();
+    computeAcademyStatistics();
+  }, [tick]);
+
   const firstName =
     user?.name?.split(" ")[0] || user?.email?.split("@")[0] || "Pilot";
 
@@ -73,8 +78,8 @@ export default function FlightAcademyDashboard() {
   const mission = useMemo(() => buildDailyFlightMission(), [tick]);
   const startHref = useMemo(() => firstFlightLegHref(mission), [mission]);
   const readiness = useMemo(() => buildExamReadiness(), [tick]);
-  const stats = useMemo(() => computeAcademyStatistics(), [tick]);
-  const achievements = useMemo(() => evaluateAchievements(), [tick]);
+  const stats = useMemo(() => readAcademyStatistics(), [tick]);
+  const achievements = useMemo(() => listAchievements(), [tick]);
   const flights = useMemo(() => loadLogbookFlights(12), [tick]);
   const career = useMemo(() => buildCareerGoals(), [tick]);
   const monthly = useMemo(() => buildMonthlyAcademyReport(), [tick]);

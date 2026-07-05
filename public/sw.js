@@ -1,4 +1,4 @@
-const CACHE = "icao-pwa-v4";
+const CACHE = "icao-pwa-v5";
 
 /** Never cache API routes (tokens, auth). */
 function isApi(path) {

@@ -33,9 +33,11 @@ export default function CaptainDeltaVisualBridge() {
   const lastMessageIdRef = useRef<string | null>(null);
   const voicePlayingRef = useRef(false);
 
+  const clearPlan = visual?.clearPlan;
+
   useEffect(() => {
-    visual?.clearPlan();
-  }, [pathname, visual]);
+    clearPlan?.();
+  }, [pathname, clearPlan]);
 
   useEffect(() => {
     if (!visual || !cd.currentMessage) return;
@@ -102,7 +104,7 @@ export default function CaptainDeltaVisualBridge() {
     if (cd.voice.state === "idle" && voicePlayingRef.current) {
       voicePlayingRef.current = false;
     }
-  }, [cd, visual, cd.voice.state, cd.currentMessage, cd.lesson, cd.context]);
+  }, [visual, cd.voice.state, cd.currentMessage, cd.lesson, cd.context]);
 
   useEffect(() => {
     const onAfterAnswer = (e: Event) => {

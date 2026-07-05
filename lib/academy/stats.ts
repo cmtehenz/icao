@@ -10,7 +10,7 @@ import {
 import { loadAcademyStore, saveAcademyStore } from "@/lib/academy/store";
 import type { AcademyStatistics } from "@/lib/academy/types";
 
-export function computeAcademyStatistics(): AcademyStatistics {
+export function readAcademyStatistics(): AcademyStatistics {
   const days = loadStudyDays();
   const mode = loadStudyPlanMode();
   let totalMinutes = 0;
@@ -30,10 +30,6 @@ export function computeAcademyStatistics(): AcademyStatistics {
   const store = loadAcademyStore();
   const bestStreak = Math.max(store.bestStreak, currentStreak);
 
-  if (bestStreak > store.bestStreak) {
-    saveAcademyStore({ ...store, bestStreak });
-  }
-
   return {
     hoursStudied: Math.round((totalMinutes / 60) * 10) / 10,
     hoursSpeaking: Math.round((speakingMinutes / 60) * 10) / 10,
@@ -42,4 +38,15 @@ export function computeAcademyStatistics(): AcademyStatistics {
     bestStreak,
     currentStreak,
   };
+}
+
+export function computeAcademyStatistics(): AcademyStatistics {
+  const stats = readAcademyStatistics();
+  const store = loadAcademyStore();
+
+  if (stats.bestStreak > store.bestStreak) {
+    saveAcademyStore({ ...store, bestStreak: stats.bestStreak });
+  }
+
+  return stats;
 }

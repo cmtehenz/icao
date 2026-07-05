@@ -1,6 +1,6 @@
 import type { AviationAchievement } from "@/lib/academy/types";
 import { loadAcademyStore, saveAcademyStore } from "@/lib/academy/store";
-import { computeAcademyStatistics } from "@/lib/academy/stats";
+import { readAcademyStatistics } from "@/lib/academy/stats";
 import { loadSimuladoHistory } from "@/lib/simulado/progress";
 import { loadInstructorMemory } from "@/lib/flightInstructor/memory";
 import { buildExamReadiness } from "@/lib/captainDelta/memory/readiness";
@@ -64,9 +64,17 @@ function countByKeyword(keyword: string): number {
   ).length;
 }
 
+export function listAchievements(): AviationAchievement[] {
+  const achievements = loadAcademyStore().achievements;
+  return ACHIEVEMENT_DEFS.map((def) => ({
+    ...def,
+    unlockedAt: achievements[def.id] ?? null,
+  }));
+}
+
 export function evaluateAchievements(): AviationAchievement[] {
   const store = loadAcademyStore();
-  const stats = computeAcademyStatistics();
+  const stats = readAcademyStatistics();
   const readiness = buildExamReadiness();
   const sims = loadSimuladoHistory().length;
   const readbacks = countReadbacks();
