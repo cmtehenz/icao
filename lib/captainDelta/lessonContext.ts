@@ -1,4 +1,4 @@
-import type { CaptainDeltaLessonContext } from "@/lib/captainDelta/types";
+import type { CaptainDeltaContext, CaptainDeltaLessonContext } from "@/lib/captainDelta/types";
 import { DEFAULT_LESSON_CONTEXT } from "@/lib/captainDelta/types";
 
 export const CAPTAIN_DELTA_LESSON_CONTEXT = "icao-captain-delta-lesson-context";
@@ -61,9 +61,21 @@ export function emitSecondaryAction(actionId: string): void {
   );
 }
 
+export function lessonContextForRoute(context: CaptainDeltaContext): CaptainDeltaLessonContext {
+  const mode = context === "pronunciation" ? "pronunciation" : "idle";
+  return { ...DEFAULT_LESSON_CONTEXT, mode };
+}
+
 export function mergeLessonContext(
   current: CaptainDeltaLessonContext,
   patch: Partial<CaptainDeltaLessonContext>,
 ): CaptainDeltaLessonContext {
+  if (patch.mode === "pronunciation") {
+    return {
+      ...DEFAULT_LESSON_CONTEXT,
+      mode: "pronunciation",
+      pronunciationWord: patch.pronunciationWord ?? current.pronunciationWord,
+    };
+  }
   return { ...DEFAULT_LESSON_CONTEXT, ...current, ...patch };
 }

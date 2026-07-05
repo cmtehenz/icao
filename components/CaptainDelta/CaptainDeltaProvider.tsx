@@ -36,6 +36,7 @@ import {
   emitStartRecord,
   emitStopRecord,
   getCaptainDeltaRecordBridge,
+  lessonContextForRoute,
   mergeLessonContext,
 } from "@/lib/captainDelta/lessonContext";
 import type {
@@ -115,6 +116,8 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
   const [pttActive, setPttActive] = useState(false);
   const [thinking, setThinking] = useState(false);
   const lastContextRef = useRef<CaptainDeltaContext | null>(null);
+  const routeContextRef = useRef(routeContext);
+  routeContextRef.current = routeContext;
   const briefingTriggeredRef = useRef(false);
 
   const firstName =
@@ -284,24 +287,42 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
     if (routeContext === lastContextRef.current) return;
     lastContextRef.current = routeContext;
 
-    const tip = buildContextTip(routeContext);
-    if (tip) {
-      const msg = buildMessage("context", tip.text, routeContext, lesson, {
-        speechText: tip.speechText,
-      });
-      deliverMessage(msg, { autoSpeak: true });
+    voice.stop();
+    setCurrentMessage(null);
+    setOpen(false);
+
+    const freshLesson = lessonContextForRoute(routeContext);
+    setLesson(freshLesson);
+
+    if (routeContext === "pronunciation") {
+      const memoryLine = buildMemoryLine();
+      const tip = buildContextTip("pronunciation");
+      const text = memoryLine ?? tip?.text;
+      const speechText = memoryLine ?? tip?.speechText;
+      if (text && speechText) {
+        const pronunciationWord = memoryLine?.match(/"([^"]+)"/)?.[1];
+        const msg = buildMessage(
+          memoryLine ? "coaching" : "context",
+          text,
+          routeContext,
+          pronunciationWord ? { ...freshLesson, pronunciationWord } : freshLesson,
+          { speechText },
+        );
+        deliverMessage(msg, { autoSpeak: true });
+      }
+      return;
     }
 
-    const memoryLine = buildMemoryLine();
-    if (memoryLine && routeContext === "pronunciation") {
-      const msg = buildMessage("coaching", memoryLine, routeContext, {
-        ...lesson,
-        pronunciationWord: memoryLine.match(/"([^"]+)"/)?.[1],
-        mode: "pronunciation",
-      }, { speechText: memoryLine });
-      deliverMessage(msg);
+    const tip = buildContextTip(routeContext);
+    if (tip) {
+      deliverMessage(
+        buildMessage("context", tip.text, routeContext, freshLesson, {
+          speechText: tip.speechText,
+        }),
+        { autoSpeak: true },
+      );
     }
-  }, [deliverMessage, lesson, routeContext, user]);
+  }, [deliverMessage, routeContext, user, voice]);
 
   useEffect(() => {
     if (!user || pathname !== "/" || briefingTriggeredRef.current) return;
@@ -331,6 +352,8 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
       deliverMessage(msg);
     };
     const onAfterAnswer = (e: Event) => {
+      const ctx = routeContextRef.current;
+      if (ctx !== "part1" && ctx !== "part2" && ctx !== "dashboard") return;
       const detail = (e as CustomEvent<{ report: import("@/lib/flightInstructor/types").FlightInstructorReport }>)
         .detail;
       if (!detail?.report) return;
@@ -345,6 +368,8 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
       deliverMessage(msg, { avatar: "celebrating" });
     };
     const onDebrief = () => {
+      const ctx = routeContextRef.current;
+      if (ctx !== "simulation" && ctx !== "part2") return;
       const debrief = buildSimulationDebrief();
       const msg = buildMessage("debrief", debrief.text, routeContext, {
         ...lesson,

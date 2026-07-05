@@ -50,54 +50,60 @@ export default function CaptainDeltaVisualBridge() {
       lastMessageIdRef.current = msg.id;
       voicePlayingRef.current = true;
 
-      if (msg.kind === "mission" && lesson.keywords?.length) {
-        visual.applyPlan(buildVisualMissionPlan(lesson.keywords), speech);
+      if (context === "pronunciation") {
+        if (lesson.pronunciationWord) {
+          visual.applyPlan(buildPronunciationFocusPlan(lesson.pronunciationWord), speech);
+        }
         return;
       }
 
-      if (
-        lesson.keywords?.length &&
-        (msg.primaryAction.id === "explain_it" ||
-          msg.secondaryActions.some((a) => a.id === "show_keywords"))
-      ) {
-        visual.applyPlan(buildKeywordModePlan(lesson.keywords), speech);
-        return;
-      }
-
-      if (context === "pronunciation" && lesson.pronunciationWord) {
-        visual.applyPlan(buildPronunciationFocusPlan(lesson.pronunciationWord), speech);
-        return;
-      }
-
-      if (context === "part2" && lesson.simulationStep) {
-        const match = PART2_ELEMENTS.find((el) =>
-          speech.toLowerCase().includes(el),
-        );
-        if (match) {
-          visual.applyPlan(buildPart2ElementPlan(match), speech);
+      if (context === "part1" || context === "dashboard") {
+        if (msg.kind === "mission" && lesson.keywords?.length) {
+          visual.applyPlan(buildVisualMissionPlan(lesson.keywords), speech);
           return;
         }
-      }
 
-      if (
-        msg.secondaryActions.some((a) => a.id === "show_model") ||
-        /connector|structure|first of all|additionally/i.test(speech)
-      ) {
-        visual.applyPlan(buildConnectorStructurePlan(), speech);
+        if (
+          lesson.keywords?.length &&
+          (msg.primaryAction.id === "explain_it" ||
+            msg.secondaryActions.some((a) => a.id === "show_keywords"))
+        ) {
+          visual.applyPlan(buildKeywordModePlan(lesson.keywords), speech);
+          return;
+        }
+
+        if (
+          msg.secondaryActions.some((a) => a.id === "show_model") ||
+          /connector|structure|first of all|additionally/i.test(speech)
+        ) {
+          visual.applyPlan(buildConnectorStructurePlan(), speech);
+          return;
+        }
+
+        if (lesson.keywords?.length) {
+          visual.applyPlan(
+            {
+              steps: [],
+              speechTerms: lesson.keywords.map((term) => ({
+                term,
+                targetId: keywordTargetId(term),
+              })),
+            },
+            speech,
+          );
+        }
         return;
       }
 
-      if (lesson.keywords?.length) {
-        visual.applyPlan(
-          {
-            steps: [],
-            speechTerms: lesson.keywords.map((term) => ({
-              term,
-              targetId: keywordTargetId(term),
-            })),
-          },
-          speech,
-        );
+      if (context === "part2" || context === "simulation") {
+        if (lesson.simulationStep) {
+          const match = PART2_ELEMENTS.find((el) =>
+            speech.toLowerCase().includes(el),
+          );
+          if (match) {
+            visual.applyPlan(buildPart2ElementPlan(match), speech);
+          }
+        }
       }
     }
 
@@ -110,6 +116,9 @@ export default function CaptainDeltaVisualBridge() {
     const onAfterAnswer = (e: Event) => {
       const detail = (e as CustomEvent<CaptainDeltaAfterAnswerPayload>).detail;
       if (!detail || !visual) return;
+      if (cd.context !== "part1" && cd.context !== "part2" && cd.context !== "dashboard") {
+        return;
+      }
       const suggestion = detail.report.naturalnessReview.suggestions[0];
       if (!suggestion) return;
 
@@ -132,6 +141,7 @@ export default function CaptainDeltaVisualBridge() {
     const onSecondary = (e: Event) => {
       const actionId = (e as CustomEvent<{ actionId: string }>).detail?.actionId;
       if (!visual || !cd.lesson.keywords?.length) return;
+      if (cd.context !== "part1" && cd.context !== "dashboard") return;
       if (actionId === "show_keywords") {
         visual.applyPlan(buildKeywordModePlan(cd.lesson.keywords));
       }
@@ -150,7 +160,7 @@ export default function CaptainDeltaVisualBridge() {
       window.removeEventListener(CAPTAIN_DELTA_SECONDARY_ACTION, onSecondary);
       window.removeEventListener(CAPTAIN_DELTA_LESSON_CONTEXT, onDebrief);
     };
-  }, [visual, cd.lesson.keywords]);
+  }, [visual, cd.lesson.keywords, cd.context]);
 
   return null;
 }

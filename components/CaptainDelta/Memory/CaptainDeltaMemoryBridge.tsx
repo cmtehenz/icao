@@ -19,6 +19,15 @@ import {
 import { CAPTAIN_DELTA_MEMORY_EVENT } from "@/lib/captainDelta/memory/store";
 import { INSTRUCTOR_MEMORY_EVENT } from "@/lib/flightInstructor/memory";
 import { STUDY_ACTIVITY_RECORDED_EVENT } from "@/lib/studyActivityRecord";
+import { getCaptainDeltaContext } from "@/lib/captainDelta/context";
+import type { CaptainDeltaContext } from "@/lib/captainDelta/types";
+
+const SESSION_CLOSE_CONTEXTS: CaptainDeltaContext[] = [
+  "dashboard",
+  "part1",
+  "part2",
+  "simulation",
+];
 
 export default function CaptainDeltaMemoryBridge() {
   const { user } = useAuth();
@@ -37,6 +46,8 @@ export default function CaptainDeltaMemoryBridge() {
 
   useEffect(() => {
     if (!user || pathname === "/login") return;
+    const context = getCaptainDeltaContext(pathname);
+    if (!SESSION_CLOSE_CONTEXTS.includes(context)) return;
 
     const maybeCloseSession = () => {
       if (sessionCloseSent.current || !shouldOfferSessionClose()) return;

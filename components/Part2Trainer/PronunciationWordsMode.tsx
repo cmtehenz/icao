@@ -10,6 +10,7 @@ import { useAzureSpeech } from "@/hooks/useAzureSpeech";
 import type { AzurePronunciationResult } from "@/lib/azure/pronunciation";
 import { errorTypeLabel } from "@/lib/azure/pronunciation";
 import { emitCaptainDeltaSuggestion } from "@/lib/captainDelta/events";
+import { emitLessonContext } from "@/lib/captainDelta/lessonContext";
 import { buildPronunciationFocusPlan } from "@/lib/captainDelta/visual/plans";
 import { emitVisualPlan } from "@/lib/captainDelta/visual/events";
 import { splitSyllables, syllableTargetId } from "@/lib/captainDelta/visual/syllables";
@@ -173,6 +174,7 @@ export default function PronunciationWordsMode() {
     setLastResult(null);
     setCaptainNote(null);
     azure.clear();
+    emitLessonContext({ mode: "pronunciation", pronunciationWord: enriched.word });
   };
 
   const listenText = async (text: string) => {
@@ -213,6 +215,7 @@ export default function PronunciationWordsMode() {
       status,
     );
     setCaptainNote(feedback.message);
+    emitLessonContext({ mode: "pronunciation", pronunciationWord: activeWord.word });
     emitCaptainDeltaSuggestion({
       text: feedback.message,
       speechText: feedback.speechText,
