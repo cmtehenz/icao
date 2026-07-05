@@ -17,8 +17,8 @@ import { useAuth } from "@/components/AuthProvider";
 import { resolvePrimaryAction, resolveSecondaryActions } from "@/lib/captainDelta/actions";
 import {
   buildAfterAnswerCoaching,
+  buildActiveMissionTermLine,
   buildContextTip,
-  buildMemoryLine,
   buildSimulationDebrief,
   buildTodayBriefing,
   markBriefingShown,
@@ -37,6 +37,7 @@ import {
   emitSecondaryAction,
   emitStartRecord,
   emitStopRecord,
+  getActiveMissionTerm,
   getCaptainDeltaRecordBridge,
   lessonContextForRoute,
   mergeLessonContext,
@@ -128,6 +129,8 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
   const routeContextRef = useRef(routeContext);
   routeContextRef.current = routeContext;
   const briefingTriggeredRef = useRef(false);
+  const lastSyncedMissionTermRef = useRef<string | null>(null);
+  const lastDeliveredRef = useRef<{ key: string; at: number } | null>(null);
 
   const firstName =
     user?.name?.split(" ")[0] || user?.email?.split("@")[0] || "pilot";
@@ -137,6 +140,19 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
       msg: CaptainDeltaMessage,
       options?: { autoSpeak?: boolean; avatar?: CaptainDeltaAvatarState },
     ) => {
+      const term = getActiveMissionTerm(lesson);
+      const dedupKey = `${routeContext}:${term ?? ""}:${msg.text}:${msg.kind}`;
+      const now = Date.now();
+      if (
+        lastDeliveredRef.current?.key === dedupKey &&
+        now - lastDeliveredRef.current.at < 1000
+      ) {
+        warnCaptain("deliverMessage", "duplicate Captain message ignored");
+        return;
+      }
+      lastDeliveredRef.current = { key: dedupKey, at: now };
+
+      voice.stop();
       setCurrentMessage(msg);
       setOpen(true);
       emitCaptainDeltaMessageDelivered(msg);
@@ -159,7 +175,7 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
         }
       });
     },
-    [voice],
+    [lesson, routeContext, voice],
   );
 
   const playBriefing = useCallback(() => {
@@ -175,6 +191,7 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
       setThinking(true);
       try {
         const memoryContext = buildMemoryContextForPrompt();
+        const activeTerm = getActiveMissionTerm(lessonSnapshot);
         const res = await fetch("/api/captain-delta", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -184,7 +201,10 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
             memoryContext,
             transcript: lessonSnapshot.question,
             modelAnswer: lessonSnapshot.modelAnswer,
-            lessonContext: lessonSnapshot,
+            lessonContext: {
+              ...lessonSnapshot,
+              activeMissionTerm: activeTerm,
+            },
           }),
         });
         if (res.status === 401) {
@@ -287,21 +307,28 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
 
   const triggerSecondaryAction = useCallback(
     (actionId: string) => {
+      const activeTerm = getActiveMissionTerm(lesson);
       if (actionId === "show_hint") {
-        void replyFromCaptain("I'm stuck. Give me one hint for this screen.", lesson);
+        const prompt = activeTerm
+          ? `I'm stuck on "${activeTerm}". Give me one hint for this screen.`
+          : "I'm stuck. Give me one hint for this screen.";
+        void replyFromCaptain(prompt, lesson);
         return;
       }
       if (actionId === "give_example") {
-        void replyFromCaptain("Give me a short ICAO example for this.", lesson);
+        const prompt = activeTerm
+          ? `Give me a short ICAO operational example sentence using "${activeTerm}".`
+          : "Give me a short ICAO example for this.";
+        void replyFromCaptain(prompt, lesson);
         return;
       }
       if (actionId === "slow_audio") {
-        void voice.replay();
+        emitSecondaryAction("slow_audio");
         return;
       }
       emitSecondaryAction(actionId);
     },
-    [lesson, replyFromCaptain, voice],
+    [lesson, replyFromCaptain],
   );
 
   const quickQuestion = useCallback(() => {
@@ -323,6 +350,7 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
     if (!user || !isCaptainDeltaProactiveEnabled()) return;
     if (routeContext === lastContextRef.current) return;
     lastContextRef.current = routeContext;
+    lastSyncedMissionTermRef.current = null;
 
     voice.stop();
     setCurrentMessage(null);
@@ -330,25 +358,6 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
 
     const freshLesson = lessonContextForRoute(routeContext);
     setLesson(freshLesson);
-
-    if (routeContext === "pronunciation") {
-      const memoryLine = buildMemoryLine();
-      const tip = buildContextTip("pronunciation");
-      const text = memoryLine ?? tip?.text;
-      const speechText = memoryLine ?? tip?.speechText;
-      if (text && speechText) {
-        const pronunciationWord = memoryLine?.match(/"([^"]+)"/)?.[1];
-        const msg = buildMessage(
-          memoryLine ? "coaching" : "context",
-          text,
-          routeContext,
-          pronunciationWord ? { ...freshLesson, pronunciationWord } : freshLesson,
-          { speechText },
-        );
-        deliverMessage(msg, { autoSpeak: true });
-      }
-      return;
-    }
 
     const tip = buildContextTip(routeContext);
     if (tip) {
@@ -360,6 +369,25 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
       );
     }
   }, [deliverMessage, routeContext, user, voice]);
+
+  useEffect(() => {
+    if (!user || !isCaptainDeltaProactiveEnabled()) return;
+    if (routeContext !== "pronunciation" && routeContext !== "vocabulary") return;
+
+    const term = getActiveMissionTerm(lesson);
+    if (!term) return;
+    const syncKey = `${routeContext}:${term.toLowerCase()}`;
+    if (lastSyncedMissionTermRef.current === syncKey) return;
+    lastSyncedMissionTermRef.current = syncKey;
+
+    const line = buildActiveMissionTermLine(term, routeContext);
+    deliverMessage(
+      buildMessage("coaching", line.text, routeContext, lesson, {
+        speechText: line.speechText,
+      }),
+      { autoSpeak: true },
+    );
+  }, [deliverMessage, lesson, routeContext, user]);
 
   useEffect(() => {
     if (!user || pathname !== "/" || briefingTriggeredRef.current) return;

@@ -1,13 +1,8 @@
 "use client";
 
 import { useEffect } from "react";
-import {
-  CAPTAIN_DELTA_SECONDARY_ACTION,
-  CAPTAIN_DELTA_START_RECORD,
-  CAPTAIN_DELTA_STOP_RECORD,
-  emitLessonContext,
-  registerCaptainDeltaRecordBridge,
-} from "@/lib/captainDelta/lessonContext";
+import { emitLessonContext } from "@/lib/captainDelta/lessonContext";
+import { useCaptainRecordBridge } from "@/hooks/useCaptainRecordBridge";
 
 type Options = {
   termLabel: string | null;
@@ -36,46 +31,19 @@ export function useVocabularyCaptainBridge(options: Options): void {
     emitLessonContext({
       mode: "coach",
       pronunciationWord: termLabel,
+      question: termLabel,
     });
   }, [termLabel]);
 
-  useEffect(() => {
-    registerCaptainDeltaRecordBridge({
-      canRecord: () => !!termLabel && azureConfigured && !speechSpeaking,
-      startRecord: () => onStartRecord(),
-      stopRecord: () => {
-        if (azureRecording) onStopRecord();
-      },
-      isRecording: () => azureRecording,
-    });
-    return () => registerCaptainDeltaRecordBridge(null);
-  }, [
-    azureConfigured,
-    azureRecording,
-    onStartRecord,
-    onStopRecord,
-    speechSpeaking,
-    termLabel,
-  ]);
-
-  useEffect(() => {
-    const onStart = () => {
-      if (termLabel && azureConfigured) onStartRecord();
-    };
-    const onStop = () => {
+  useCaptainRecordBridge("vocabulary", {
+    canRecord: () => !!termLabel && azureConfigured && !speechSpeaking && !azureRecording,
+    startRecord: () => onStartRecord(),
+    stopRecord: () => {
       if (azureRecording) onStopRecord();
-    };
-    const onSecondary = (e: Event) => {
-      const id = (e as CustomEvent<{ actionId: string }>).detail?.actionId;
-      if (id === "slow_audio") onListen();
-    };
-    window.addEventListener(CAPTAIN_DELTA_START_RECORD, onStart);
-    window.addEventListener(CAPTAIN_DELTA_STOP_RECORD, onStop);
-    window.addEventListener(CAPTAIN_DELTA_SECONDARY_ACTION, onSecondary);
-    return () => {
-      window.removeEventListener(CAPTAIN_DELTA_START_RECORD, onStart);
-      window.removeEventListener(CAPTAIN_DELTA_STOP_RECORD, onStop);
-      window.removeEventListener(CAPTAIN_DELTA_SECONDARY_ACTION, onSecondary);
-    };
-  }, [azureConfigured, azureRecording, onListen, onStartRecord, onStopRecord, termLabel]);
+    },
+    isRecording: () => azureRecording,
+    onSecondaryAction: (actionId) => {
+      if (actionId === "slow_audio") onListen();
+    },
+  });
 }

@@ -100,6 +100,10 @@ export function resolveSecondaryActions(
     actions.push(secondary("slow_audio", "🎧 Slow Audio"));
   }
 
+  if (route === "vocabulary") {
+    actions.push(secondary("slow_audio", "🎧 Slow Audio"));
+  }
+
   if (kind === "coaching" && actions.length < 2) {
     actions.push(secondary("give_example", "🎤 Give Me an Example"));
   }

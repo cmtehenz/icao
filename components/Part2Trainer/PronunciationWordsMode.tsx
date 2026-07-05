@@ -228,7 +228,7 @@ export default function PronunciationWordsMode() {
     setLastResult(null);
     setCaptainNote(null);
     clearAzure();
-    emitLessonContext({ mode: "pronunciation", pronunciationWord: enriched.word });
+    emitLessonContext({ mode: "pronunciation", pronunciationWord: enriched.word, question: enriched.word });
     if (isPronunciationWordInTodayMission(item.word)) {
       setMissionLegActive(true);
     }
@@ -332,7 +332,11 @@ export default function PronunciationWordsMode() {
       const recoveryHint = score < VAULT_PASS_SCORE ? ` ${AZURE_RECOVERY_GUIDANCE}` : "";
       const coachingText = feedback.message + recoveryHint;
       setCaptainNote(coachingText);
-      emitLessonContext({ mode: "pronunciation", pronunciationWord: activeWord.word });
+      emitLessonContext({
+        mode: "pronunciation",
+        pronunciationWord: activeWord.word,
+        question: activeWord.word,
+      });
       emitCaptainDeltaSuggestion({
         text: coachingText,
         speechText: feedback.speechText,

@@ -2,13 +2,8 @@
 
 import { useEffect } from "react";
 import type { EvaluateType } from "@/lib/evaluate/types";
-import {
-  emitLessonContext,
-  registerCaptainDeltaRecordBridge,
-  CAPTAIN_DELTA_SECONDARY_ACTION,
-  CAPTAIN_DELTA_START_RECORD,
-  CAPTAIN_DELTA_STOP_RECORD,
-} from "@/lib/captainDelta/lessonContext";
+import { emitLessonContext } from "@/lib/captainDelta/lessonContext";
+import { useCaptainRecordBridge } from "@/hooks/useCaptainRecordBridge";
 
 type Part2Kind = "readback" | "interaction" | "reported" | "picture";
 
@@ -92,78 +87,27 @@ export function useCaptainDeltaCoachBridge(options: Options): void {
     recording,
   ]);
 
-  useEffect(() => {
-    registerCaptainDeltaRecordBridge({
-      canRecord: () => !recordingBlocked && !loading,
-      startRecord: () => {
-        if (hasFeedback && onTryAgain) {
-          onTryAgain();
-          return;
-        }
-        if (azureConfigured) onStartAzure();
-        else onSpeechToggle();
-      },
-      stopRecord: () => {
-        if (azureConfigured && azureAssessing) onStopAzure();
-        else if (speechListening) onSpeechToggle();
-      },
-      isRecording: () => recording,
-    });
-    return () => registerCaptainDeltaRecordBridge(null);
-  }, [
-    recordingBlocked,
-    loading,
-    hasFeedback,
-    onTryAgain,
-    azureConfigured,
-    onStartAzure,
-    onStopAzure,
-    onSpeechToggle,
-    azureAssessing,
-    speechListening,
-    recording,
-  ]);
-
-  useEffect(() => {
-    const onStart = () => {
+  useCaptainRecordBridge("coach", {
+    canRecord: () => !recordingBlocked && !loading && !recording,
+    startRecord: () => {
       if (hasFeedback && onTryAgain) {
         onTryAgain();
         return;
       }
       if (azureConfigured) onStartAzure();
       else onSpeechToggle();
-    };
-    const onStop = () => {
+    },
+    stopRecord: () => {
       if (azureConfigured && azureAssessing) onStopAzure();
       else if (speechListening) onSpeechToggle();
-    };
-    const onSecondary = (e: Event) => {
-      const id = (e as CustomEvent<{ actionId: string }>).detail?.actionId;
-      if (id === "show_keywords") onShowKeywords?.();
-      if (id === "show_hint") onShowHint?.();
-      if (id === "show_model") onShowModel?.();
-      if (id === "compare_attempts") onTryAgain?.();
-      if (id === "try_again") onTryAgain?.();
-    };
-    window.addEventListener(CAPTAIN_DELTA_START_RECORD, onStart);
-    window.addEventListener(CAPTAIN_DELTA_STOP_RECORD, onStop);
-    window.addEventListener(CAPTAIN_DELTA_SECONDARY_ACTION, onSecondary);
-    return () => {
-      window.removeEventListener(CAPTAIN_DELTA_START_RECORD, onStart);
-      window.removeEventListener(CAPTAIN_DELTA_STOP_RECORD, onStop);
-      window.removeEventListener(CAPTAIN_DELTA_SECONDARY_ACTION, onSecondary);
-    };
-  }, [
-    hasFeedback,
-    onTryAgain,
-    azureConfigured,
-    onStartAzure,
-    onStopAzure,
-    onSpeechToggle,
-    azureAssessing,
-    speechListening,
-    onShowKeywords,
-    onShowHint,
-    onShowModel,
-  ]);
+    },
+    isRecording: () => recording,
+    onSecondaryAction: (actionId) => {
+      if (actionId === "show_keywords") onShowKeywords?.();
+      if (actionId === "show_hint") onShowHint?.();
+      if (actionId === "show_model") onShowModel?.();
+      if (actionId === "compare_attempts") onTryAgain?.();
+      if (actionId === "try_again") onTryAgain?.();
+    },
+  });
 }

@@ -89,6 +89,20 @@ export function buildTodayBriefing(
   return { text, speechText: toSpeechText(lines.join(" ")) };
 }
 
+/** Coaching line for the active mission term — must match UI and Azure target. */
+export function buildActiveMissionTermLine(
+  word: string,
+  context: CaptainDeltaContext,
+): { text: string; speechText: string } {
+  const trimmed = word.trim();
+  if (context === "vocabulary") {
+    const text = `Today's term: "${trimmed}". Learn the meaning, then say it like a pilot.`;
+    return { text, speechText: toSpeechText(text) };
+  }
+  const text = `Today's word: "${trimmed}". Slow and clear — quality before speed.`;
+  return { text, speechText: toSpeechText(text) };
+}
+
 export function buildMemoryLine(): string | null {
   const vault = loadVault();
   if (!vault.length) return null;

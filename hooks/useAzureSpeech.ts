@@ -1,6 +1,15 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  acquireRecordingSession,
+  createRecordingSessionId,
+  isRecordingGenerationStale,
+  releaseRecordingSession,
+  runRecordingStart,
+  safeStopAndCloseRecognizer,
+  trackRecognizer,
+} from "@/lib/azure/recognizerSession";
 import { loadSpeechSdk } from "@/lib/azure/loadSpeechSdk";
 import type { AzurePronunciationResult, AzureWordScore } from "@/lib/azure/pronunciation";
 import type { AzureSpeechTokenResponse } from "@/lib/azure/speechToken";
@@ -69,6 +78,34 @@ export function useAzureSpeech() {
   const streamRef = useRef<MediaStream | null>(null);
   const recorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
+  const sessionIdRef = useRef(createRecordingSessionId("speech"));
+  const generationRef = useRef(0);
+  const stoppingRef = useRef(false);
+  const mountedRef = useRef(true);
+
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => {
+      mountedRef.current = false;
+      synthesizerRef.current?.close();
+      synthesizerRef.current = null;
+      const rec = recognizerRef.current;
+      recognizerRef.current = null;
+      safeStopAndCloseRecognizer(rec, () => {
+        releaseRecordingSession(sessionIdRef.current);
+      });
+      streamRef.current?.getTracks().forEach((t) => t.stop());
+      streamRef.current = null;
+      if (recorderRef.current && recorderRef.current.state !== "inactive") {
+        try {
+          recorderRef.current.stop();
+        } catch {
+          /* ignore */
+        }
+      }
+      recorderRef.current = null;
+    };
+  }, []);
 
   useEffect(() => {
     fetchToken()
@@ -95,7 +132,15 @@ export function useAzureSpeech() {
         chunksRef.current = [];
         resolve(blob && blob.size > 0 ? blob : null);
       };
-      recorder.stop();
+      try {
+        recorder.stop();
+      } catch {
+        streamRef.current?.getTracks().forEach((t) => t.stop());
+        streamRef.current = null;
+        recorderRef.current = null;
+        chunksRef.current = [];
+        resolve(null);
+      }
     });
   }, []);
 
@@ -120,7 +165,11 @@ export function useAzureSpeech() {
   }, []);
 
   const stopSpeaking = useCallback(() => {
-    synthesizerRef.current?.close();
+    try {
+      synthesizerRef.current?.close();
+    } catch {
+      /* already closed */
+    }
     synthesizerRef.current = null;
     setSpeaking(false);
   }, []);
@@ -149,16 +198,26 @@ export function useAzureSpeech() {
         synthesizer.speakTextAsync(
           text,
           () => {
-            synthesizer.close();
+            try {
+              synthesizer.close();
+            } catch {
+              /* ignore */
+            }
             synthesizerRef.current = null;
-            setSpeaking(false);
+            if (mountedRef.current) setSpeaking(false);
             resolve();
           },
           (err) => {
-            synthesizer.close();
+            try {
+              synthesizer.close();
+            } catch {
+              /* ignore */
+            }
             synthesizerRef.current = null;
-            setSpeaking(false);
-            setError(err);
+            if (mountedRef.current) {
+              setSpeaking(false);
+              setError(err);
+            }
             reject(new Error(err));
           },
         );
@@ -171,13 +230,22 @@ export function useAzureSpeech() {
     assessment: AzurePronunciationResult | null;
     audioBlob: Blob | null;
   }> => {
+    if (stoppingRef.current) {
+      return Promise.resolve({ assessment: mergeSegments(segmentsRef.current), audioBlob: null });
+    }
+    stoppingRef.current = true;
+
     return new Promise((resolve) => {
-      const rec = recognizerRef.current as {
-        stopContinuousRecognitionAsync?: (ok?: () => void, err?: (e: string) => void) => void;
-        close: () => void;
-      } | null;
+      const rec = recognizerRef.current;
+      const generation = generationRef.current;
 
       const finish = async () => {
+        releaseRecordingSession(sessionIdRef.current);
+        stoppingRef.current = false;
+        if (!mountedRef.current || isRecordingGenerationStale(generation)) {
+          resolve({ assessment: null, audioBlob: null });
+          return;
+        }
         setRecording(false);
         const merged = mergeSegments(segmentsRef.current);
         setResult(merged);
@@ -191,98 +259,127 @@ export function useAzureSpeech() {
         return;
       }
 
-      const done = () => {
-        rec.close();
-        recognizerRef.current = null;
+      recognizerRef.current = null;
+      safeStopAndCloseRecognizer(rec, () => {
         void finish();
-      };
-      rec.stopContinuousRecognitionAsync?.(done, done);
+      });
     });
   }, [stopMicCapture]);
 
   const startRecording = useCallback(
     async (referenceText: string) => {
-      setError(null);
-      setResult(null);
-      segmentsRef.current = [];
-      await stopRecording();
-      await stopMicCapture();
-      await startMicCapture();
+      return runRecordingStart(async () => {
+        setError(null);
+        setResult(null);
+        segmentsRef.current = [];
 
-      const tokenData = await fetchToken();
-      if (!tokenData.configured || !tokenData.token || !tokenData.region) {
-        setError("Azure Speech is not configured. Add AZURE_SPEECH_KEY and AZURE_SPEECH_REGION.");
-        return;
-      }
-
-      try {
-        const sdk = await loadSpeechSdk();
-        const speechConfig = sdk.SpeechConfig.fromAuthorizationToken(
-          tokenData.token,
-          tokenData.region,
-        );
-        speechConfig.speechRecognitionLanguage = "en-US";
-        const audioConfig = sdk.AudioConfig.fromDefaultMicrophoneInput();
-        const recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
-
-        const pronunciationConfig = new sdk.PronunciationAssessmentConfig(
-          referenceText.slice(0, 500),
-          sdk.PronunciationAssessmentGradingSystem.HundredMark,
-          sdk.PronunciationAssessmentGranularity.Phoneme,
-          true,
-        );
-        pronunciationConfig.enableProsodyAssessment = true;
-        pronunciationConfig.applyTo(recognizer);
-
-        recognizer.recognized = (_, e) => {
-          if (e.result.reason !== sdk.ResultReason.RecognizedSpeech) return;
-          const pa = sdk.PronunciationAssessmentResult.fromResult(e.result);
-          const jsonRaw = e.result.properties.getProperty(
-            sdk.PropertyId.SpeechServiceResponse_JsonResult,
-          );
-          let words: AzureWordScore[] = [];
-          try {
-            words = parseWordScores(JSON.parse(jsonRaw));
-          } catch {
-            /* ignore */
-          }
-          segmentsRef.current.push({
-            accuracyScore: Math.round(pa.accuracyScore),
-            fluencyScore: Math.round(pa.fluencyScore),
-            completenessScore: Math.round(pa.completenessScore),
-            prosodyScore: Math.round(pa.prosodyScore ?? 0),
-            recognizedText: e.result.text,
-            words,
-          });
-        };
-
-        recognizer.canceled = (_, e) => {
-          if (e.reason === sdk.CancellationReason.Error) {
-            setError(e.errorDetails || "Azure recognition error.");
-          }
-          setRecording(false);
-          void stopMicCapture();
-          recognizer.close();
-          recognizerRef.current = null;
-        };
-
-        recognizerRef.current = recognizer;
-        setRecording(true);
-        recognizer.startContinuousRecognitionAsync(
-          () => {},
-          (err) => {
-            setError(err);
-            setRecording(false);
-            void stopMicCapture();
-            recognizer.close();
-            recognizerRef.current = null;
-          },
-        );
-      } catch (e) {
-        setError(e instanceof Error ? e.message : "Could not start recording.");
-        setRecording(false);
+        await stopRecording();
         await stopMicCapture();
-      }
+
+        const { acquired, generation } = await acquireRecordingSession(sessionIdRef.current);
+        if (!acquired) return;
+
+        generationRef.current = generation;
+        await startMicCapture();
+
+        const tokenData = await fetchToken();
+        if (!tokenData.configured || !tokenData.token || !tokenData.region) {
+          releaseRecordingSession(sessionIdRef.current);
+          if (mountedRef.current && !isRecordingGenerationStale(generation)) {
+            setError("Azure Speech is not configured. Add AZURE_SPEECH_KEY and AZURE_SPEECH_REGION.");
+            setRecording(false);
+          }
+          await stopMicCapture();
+          return;
+        }
+
+        try {
+          const sdk = await loadSpeechSdk();
+          const speechConfig = sdk.SpeechConfig.fromAuthorizationToken(
+            tokenData.token,
+            tokenData.region,
+          );
+          speechConfig.speechRecognitionLanguage = "en-US";
+          const audioConfig = sdk.AudioConfig.fromDefaultMicrophoneInput();
+          const recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
+
+          const pronunciationConfig = new sdk.PronunciationAssessmentConfig(
+            referenceText.slice(0, 500),
+            sdk.PronunciationAssessmentGradingSystem.HundredMark,
+            sdk.PronunciationAssessmentGranularity.Phoneme,
+            true,
+          );
+          pronunciationConfig.enableProsodyAssessment = true;
+          pronunciationConfig.applyTo(recognizer);
+
+          recognizer.recognized = (_, e) => {
+            if (isRecordingGenerationStale(generation)) return;
+            if (e.result.reason !== sdk.ResultReason.RecognizedSpeech) return;
+            const pa = sdk.PronunciationAssessmentResult.fromResult(e.result);
+            const jsonRaw = e.result.properties.getProperty(
+              sdk.PropertyId.SpeechServiceResponse_JsonResult,
+            );
+            let words: AzureWordScore[] = [];
+            try {
+              words = parseWordScores(JSON.parse(jsonRaw));
+            } catch {
+              /* ignore */
+            }
+            segmentsRef.current.push({
+              accuracyScore: Math.round(pa.accuracyScore),
+              fluencyScore: Math.round(pa.fluencyScore),
+              completenessScore: Math.round(pa.completenessScore),
+              prosodyScore: Math.round(pa.prosodyScore ?? 0),
+              recognizedText: e.result.text,
+              words,
+            });
+          };
+
+          recognizer.canceled = (_, e) => {
+            if (isRecordingGenerationStale(generation)) return;
+            if (e.reason === sdk.CancellationReason.Error) {
+              if (mountedRef.current) {
+                setError(e.errorDetails || "Azure recognition error.");
+              }
+            }
+            if (recognizerRef.current === recognizer) {
+              recognizerRef.current = null;
+            }
+            releaseRecordingSession(sessionIdRef.current);
+            if (mountedRef.current) setRecording(false);
+            void stopMicCapture();
+            safeStopAndCloseRecognizer(recognizer, () => {});
+          };
+
+          trackRecognizer(recognizer, sessionIdRef.current, generation);
+          recognizerRef.current = recognizer;
+          if (mountedRef.current) setRecording(true);
+
+          recognizer.startContinuousRecognitionAsync(
+            () => {},
+            (err) => {
+              if (isRecordingGenerationStale(generation)) return;
+              if (mountedRef.current) {
+                setError(err);
+                setRecording(false);
+              }
+              if (recognizerRef.current === recognizer) {
+                recognizerRef.current = null;
+              }
+              releaseRecordingSession(sessionIdRef.current);
+              void stopMicCapture();
+              safeStopAndCloseRecognizer(recognizer, () => {});
+            },
+          );
+        } catch (e) {
+          releaseRecordingSession(sessionIdRef.current);
+          if (mountedRef.current && !isRecordingGenerationStale(generation)) {
+            setError(e instanceof Error ? e.message : "Could not start recording.");
+            setRecording(false);
+          }
+          await stopMicCapture();
+        }
+      });
     },
     [startMicCapture, stopMicCapture, stopRecording],
   );
