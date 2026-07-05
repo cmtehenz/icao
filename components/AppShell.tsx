@@ -57,54 +57,56 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           <AcademySessionBridge />
           <CaptainDeltaRoleIndicator />
 
-          <aside className="app-sidebar" aria-label="Main navigation">
-            <div className="app-sidebar-brand">
-              <span className="app-sidebar-logo">✈</span>
-              <div>
-                <strong>ICAO Delta</strong>
-                <span>Flight Academy</span>
+          <div className="app-layout">
+            <aside className="app-sidebar" aria-label="Main navigation">
+              <div className="app-sidebar-brand">
+                <span className="app-sidebar-logo">✈</span>
+                <div>
+                  <strong>ICAO Delta</strong>
+                  <span>Flight Academy</span>
+                </div>
               </div>
-            </div>
-            <nav className="app-sidebar-nav">
-              {NAV_ITEMS.map((item) => {
-                const active = isNavActive(pathname, item.href);
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`app-sidebar-link ${active ? "active" : ""}`}
-                  >
-                    <span className="app-nav-icon" aria-hidden>
-                      {item.icon}
-                      {showVaultBadge(item.href) && (
-                        <PronunciationVaultBadge count={vault.total} />
-                      )}
-                    </span>
-                    <span className="app-sidebar-link-text">
-                      <strong>{item.label}</strong>
-                      <small>{item.description}</small>
-                    </span>
+              <nav className="app-sidebar-nav">
+                {NAV_ITEMS.map((item) => {
+                  const active = isNavActive(pathname, item.href);
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={`app-sidebar-link ${active ? "active" : ""}`}
+                    >
+                      <span className="app-nav-icon" aria-hidden>
+                        {item.icon}
+                        {showVaultBadge(item.href) && (
+                          <PronunciationVaultBadge count={vault.total} />
+                        )}
+                      </span>
+                      <span className="app-sidebar-link-text">
+                        <strong>{item.label}</strong>
+                        <small>{item.description}</small>
+                      </span>
+                    </Link>
+                  );
+                })}
+              </nav>
+              {user && (
+                <div className="app-sidebar-account">
+                  <Link href="/conta" className="app-sidebar-user">
+                    <span>👤</span>
+                    <span>{user.name || user.email.split("@")[0]}</span>
                   </Link>
-                );
-              })}
-            </nav>
-            {user && (
-              <div className="app-sidebar-account">
-                <Link href="/conta" className="app-sidebar-user">
-                  <span>👤</span>
-                  <span>{user.name || user.email.split("@")[0]}</span>
-                </Link>
-                <button type="button" className="app-sidebar-logout" onClick={handleLogout}>
-                  Sair
-                </button>
-              </div>
-            )}
-            <p className="app-sidebar-foot">PWA · Study daily</p>
-          </aside>
+                  <button type="button" className="app-sidebar-logout" onClick={handleLogout}>
+                    Sair
+                  </button>
+                </div>
+              )}
+              <p className="app-sidebar-foot">PWA · Study daily</p>
+            </aside>
 
-          <div className="app-shell">
-            <div className="app-main">
-              <div className="app-content">{children}</div>
+            <div className="app-shell">
+              <div className="app-main">
+                <div className="app-content">{children}</div>
+              </div>
             </div>
           </div>
 
