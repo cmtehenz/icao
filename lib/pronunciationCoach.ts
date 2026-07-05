@@ -77,6 +77,20 @@ export function levelLabel(level: PracticeLevel): string {
   return "ICAO Use";
 }
 
+export function captainFeedbackBelowStoredLevel(
+  word: VaultWord,
+  attemptLevel: PracticeLevel,
+): CaptainPronunciationFeedback | null {
+  const stored = word.practiceLevel ?? 1;
+  if (attemptLevel >= stored) return null;
+  const next = levelLabel(stored);
+  return {
+    tone: "review",
+    message: `"${word.word}" is already at level ${stored} (${next}). Practice at that level to graduate — not the isolated word again.`,
+    speechText: `"${word.word}" is already at level ${stored}. Practice at ${next} level to graduate.`,
+  };
+}
+
 export function statusLabel(status: VaultWordStatus): string {
   const labels: Record<VaultWordStatus, string> = {
     new: "New",

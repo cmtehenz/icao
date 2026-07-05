@@ -17,6 +17,7 @@ import { splitSyllables, syllableTargetId } from "@/lib/captainDelta/visual/syll
 import { ensureWordContext } from "@/lib/pronunciationContext";
 import {
   captainFeedbackAfterAttempt,
+  captainFeedbackBelowStoredLevel,
   CAPTAIN_MISSION_DEBRIEF,
   CAPTAIN_MISSION_INTRO,
   levelLabel,
@@ -208,12 +209,11 @@ export default function PronunciationWordsMode() {
 
     const updated = loadVault().find((w) => w.word.toLowerCase() === activeWord.word.toLowerCase());
     const status = outcome.status;
-    const feedback = captainFeedbackAfterAttempt(
-      updated ?? activeWord,
-      score,
-      practiceLevel,
-      status,
-    );
+    const belowLevel =
+      updated && captainFeedbackBelowStoredLevel(updated, practiceLevel);
+    const feedback =
+      belowLevel ??
+      captainFeedbackAfterAttempt(updated ?? activeWord, score, practiceLevel, status);
     setCaptainNote(feedback.message);
     emitLessonContext({ mode: "pronunciation", pronunciationWord: activeWord.word });
     emitCaptainDeltaSuggestion({

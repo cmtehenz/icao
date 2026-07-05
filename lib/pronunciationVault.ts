@@ -1,4 +1,5 @@
 import { errorTypeLabel } from "@/lib/azure/pronunciation";
+import { acknowledgePronunciationProgress } from "@/lib/flightInstructor/memory";
 import { ensureWordContext } from "@/lib/pronunciationContext";
 import { applyPracticeAttempt, deriveVaultWordStatus } from "@/lib/pronunciationGraduation";
 import { recordScoreSnapshot } from "@/lib/scoreHistory";
@@ -346,6 +347,11 @@ export function recordWordPractice(
   }
 
   recordScoreSnapshot("pronunciation", accuracy);
+
+  acknowledgePronunciationProgress(word, {
+    score: accuracy,
+    graduated: outcome.removed,
+  });
 
   if (outcome.removed) {
     markVaultWordRemoved(key);

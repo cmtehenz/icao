@@ -6,7 +6,7 @@ import { buildMemoryContextForPrompt } from "@/lib/flightInstructor/memory";
 import type { FlightInstructorReport } from "@/lib/flightInstructor/types";
 import { getDailyMissionSummary, getNextMissionAction } from "@/lib/dailyMission";
 import { loadStudyPlanMode, STUDY_DAILY_GOAL_MINUTES, STUDY_INTENSE_DAY_MINUTES } from "@/lib/studyTime";
-import { loadVault } from "@/lib/pronunciationVault";
+import { loadVault, pickWarmupWords } from "@/lib/pronunciationVault";
 
 const BRIEFING_DATE_KEY = "icao_captain_delta_briefing_v1";
 
@@ -70,15 +70,30 @@ export function buildTodayBriefing(firstName: string, _dateKey: string): {
 }
 
 export function buildMemoryLine(): string | null {
-  const memory = buildMemoryContextForPrompt();
-  if (memory.topPronunciationMistakes.length) {
-    return `Good progress yesterday. Today let's fix "${memory.topPronunciationMistakes[0]}" again.`;
-  }
   const vault = loadVault();
-  if (vault.length) {
-    return `Let's work on "${vault[0].word}" — slow and clear.`;
+  if (!vault.length) return null;
+
+  const target = pickWarmupWords(vault, 1)[0]!;
+  const memory = buildMemoryContextForPrompt();
+  const pass80 = target.pass80Count ?? target.passCount ?? 0;
+  const level = target.practiceLevel ?? 1;
+  const inMemory = memory.topPronunciationMistakes.some(
+    (w) => w.toLowerCase() === target.word.toLowerCase(),
+  );
+
+  if (level >= 4 && pass80 >= 2) {
+    return `Almost there — one more solid pass on "${target.word}" in ICAO context and we graduate it.`;
   }
-  return null;
+
+  if (level > 1 || pass80 >= 2) {
+    return `You're building "${target.word}" — step ${level} of 4. Use the higher practice levels, not just the isolated word.`;
+  }
+
+  if (inMemory) {
+    return `Good progress yesterday. Today let's fix "${target.word}" again.`;
+  }
+
+  return `Let's work on "${target.word}" — slow and clear.`;
 }
 
 export function buildSimulationDebrief(): { text: string; speechText: string } {

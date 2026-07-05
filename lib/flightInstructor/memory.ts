@@ -121,6 +121,28 @@ export function recordInstructorSession(input: {
   });
 }
 
+export function acknowledgePronunciationProgress(
+  word: string,
+  options?: { graduated?: boolean; score?: number },
+): void {
+  const store = loadInstructorMemory();
+  const k = word.trim().toLowerCase();
+  if (!k || !store.pronunciationMistakes[k]) return;
+
+  const pronunciationMistakes = { ...store.pronunciationMistakes };
+  if (options?.graduated || (options?.score ?? 0) >= 85) {
+    delete pronunciationMistakes[k];
+  } else if ((options?.score ?? 0) >= 80) {
+    const next = pronunciationMistakes[k]! - 1;
+    if (next <= 0) delete pronunciationMistakes[k];
+    else pronunciationMistakes[k] = next;
+  } else {
+    return;
+  }
+
+  saveMemory({ ...store, pronunciationMistakes });
+}
+
 export function buildMemoryContextForPrompt(): {
   recentSessions: InstructorSessionRecord[];
   topPronunciationMistakes: string[];
