@@ -12,6 +12,7 @@ import CaptainDeltaMemoryBridge from "@/components/CaptainDelta/Memory/CaptainDe
 import { CaptainDeltaExaminerProvider } from "@/components/CaptainDelta/Examiner/CaptainDeltaExaminerProvider";
 import CaptainDeltaExaminerBridge from "@/components/CaptainDelta/Examiner/CaptainDeltaExaminerBridge";
 import CaptainDeltaRoleIndicator from "@/components/CaptainDelta/Examiner/CaptainDeltaRoleIndicator";
+import AcademySessionBridge from "@/components/academy/AcademySessionBridge";
 import PronunciationVaultBadge from "@/components/PronunciationVaultBadge";
 import StudyActivityToast from "@/components/study/StudyActivityToast";
 import { StudyGoalBar } from "@/components/study/StudyGoalBar";
@@ -53,6 +54,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       <CaptainDeltaVisualMission />
       <CaptainDeltaMemoryBridge />
       <CaptainDeltaExaminerBridge />
+      <AcademySessionBridge />
       <CaptainDeltaRoleIndicator />
       <div className="app-shell">
       <aside className="app-sidebar" aria-label="Main navigation">
