@@ -62,6 +62,16 @@ import {
   teardownPronunciationRecordingStore,
   type AzureStopResult,
 } from "@/lib/azure/pronunciationRecordingStore";
+import {
+  azureConfigStartErrorMessage,
+  AZURE_TOKEN_REQUEST_FAILED_MESSAGE,
+  fetchAzureSpeechConfig,
+  isAzureEnvConfigured,
+  isAzureEnvMissing,
+  resolveAzureConfigFromResponse,
+  traceAzureConfig,
+} from "@/lib/azure/azureSpeechConfig";
+import type { AzureSpeechTokenResponse } from "@/lib/azure/speechToken";
 import { traceRecordStep } from "@/lib/captainDelta/pronunciationRecordTrace";
 import {
   shouldAllowPronunciationStop,
@@ -90,6 +100,7 @@ function isMicPermissionError(err: unknown): boolean {
 }
 
 export function useAzurePronunciation() {
+  const [envConfigured, setEnvConfigured] = useState<boolean | null>(null);
   const [configured, setConfigured] = useState(false);
   const [assessing, setAssessing] = useState(false);
   const [recordingPhase, setRecordingPhase] = useState<AzureRecordingPhase>("idle");
@@ -177,10 +188,17 @@ export function useAzurePronunciation() {
   }, [syncReactFromStore]);
 
   useEffect(() => {
-    fetch("/api/azure-speech-token")
-      .then((r) => r.json())
-      .then((d) => setConfigured(!!d.configured))
-      .catch(() => setConfigured(false));
+    void fetchAzureSpeechConfig().then((status) => {
+      if (isAzureEnvMissing(status)) {
+        setEnvConfigured(false);
+        setConfigured(false);
+        return;
+      }
+      if (isAzureEnvConfigured(status)) {
+        setEnvConfigured(true);
+        setConfigured(status.hasToken);
+      }
+    });
   }, []);
 
   const stopMicCapture = useCallback((): Promise<Blob | null> => {
@@ -569,35 +587,53 @@ export function useAzurePronunciation() {
 
         if (mountedRef.current) setRecordingPhase("connecting");
 
-        let tokenData: { configured?: boolean; token?: string; region?: string; error?: string };
+        let tokenData: AzureSpeechTokenResponse;
+        let tokenStatus: ReturnType<typeof resolveAzureConfigFromResponse>;
         try {
           traceAzureStartStep(1, "before fetch /api/azure-speech-token");
           const res = await fetch("/api/azure-speech-token");
-          tokenData = await res.json();
+          tokenData = (await res.json()) as AzureSpeechTokenResponse;
+          tokenStatus = resolveAzureConfigFromResponse(res, tokenData);
+          traceAzureConfig(tokenStatus);
           traceAzureStartStep(1, "after fetch /api/azure-speech-token", {
             ok: res.ok,
             status: res.status,
-            configured: tokenData.configured,
-            hasToken: !!tokenData.token,
-            region: tokenData.region,
+            configured: tokenStatus.configured,
+            hasToken: tokenStatus.hasToken,
+            region: tokenStatus.region,
           });
         } catch (e) {
           traceAzureStartError(1, "fetch /api/azure-speech-token failed", e);
-          await failStartup(MIC_START_FAILED);
+          await failStartup(AZURE_TOKEN_REQUEST_FAILED_MESSAGE);
           return;
         }
 
-        if (!tokenData!.configured || !tokenData!.token || !tokenData!.region) {
-          traceAzureStartStep(1, "BLOCKED at token check — not configured", tokenData);
+        if (isAzureEnvMissing(tokenStatus)) {
+          setEnvConfigured(false);
+          setConfigured(false);
+          traceAzureStartStep(1, "BLOCKED at token check — env missing", tokenStatus);
           releaseRecordingSession(rs().sessionId);
           await stopMicCapture();
-          const message =
-            "Azure Speech is not configured. Add AZURE_SPEECH_KEY and AZURE_SPEECH_REGION.";
+          const message = azureConfigStartErrorMessage(tokenStatus);
           if (mountedRef.current && !isRecordingGenerationStale(generation)) {
             setError(message);
           }
           throw new Error(message);
         }
+
+        if (!tokenStatus.hasToken) {
+          traceAzureStartStep(1, "BLOCKED at token check — token unavailable", tokenStatus);
+          releaseRecordingSession(rs().sessionId);
+          await stopMicCapture();
+          const message = azureConfigStartErrorMessage(tokenStatus);
+          if (mountedRef.current && !isRecordingGenerationStale(generation)) {
+            setError(message);
+          }
+          throw new Error(message);
+        }
+
+        setEnvConfigured(true);
+        setConfigured(true);
 
         try {
           traceAzureStartStep(1, "before loadSpeechSdk()");
@@ -939,6 +975,8 @@ export function useAzurePronunciation() {
 
   return {
     configured,
+    envConfigured,
+    envMissing: envConfigured === false,
     assessing,
     recordingReady,
     lifecycle,

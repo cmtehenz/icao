@@ -4,10 +4,18 @@ type Props = {
   word: string;
   className?: string;
   compact?: boolean;
+  label?: string;
 };
 
-export default function YouGlishLink({ word, className = "", compact = false }: Props) {
+export default function YouGlishLink({
+  word,
+  className = "",
+  compact = false,
+  label,
+}: Props) {
   const href = youGlishUrl(word);
+  const text =
+    label ?? (compact ? "▶ YouGlish" : "▶ Ouvir no YouGlish");
   return (
     <a
       href={href}
@@ -16,7 +24,7 @@ export default function YouGlishLink({ word, className = "", compact = false }: 
       className={`youglish-link ${compact ? "youglish-link-compact" : ""} ${className}`.trim()}
       title={`Ouvir "${word}" no YouGlish`}
     >
-      {compact ? "▶ YouGlish" : "▶ Ouvir no YouGlish"}
+      {text}
     </a>
   );
 }

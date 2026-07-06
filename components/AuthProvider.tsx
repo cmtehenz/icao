@@ -6,9 +6,20 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type ReactNode,
 } from "react";
+import { hashStudyDaysPayload, hashVaultPayload } from "@/lib/autosave/payloadHash";
+import {
+  getLastStudyTimePushHash,
+  getLastVaultPushHash,
+  noteStudyTimePushSuccess,
+  noteVaultPushSuccess,
+  shouldSkipStudyTimePush,
+  shouldSkipVaultPush,
+} from "@/lib/autosave/syncState";
+import { traceAutosave } from "@/lib/autosave/trace";
 import {
   applyDailyMissionBundle,
   isApplyingRemoteDailyMission,
@@ -61,7 +72,33 @@ async function pullVaultFromServer(): Promise<VaultWord[] | null> {
   return data.words as VaultWord[];
 }
 
+const STUDY_TIME_FLUSH_MS = 45_000;
+
 async function pushVaultToServer(words: VaultWord[]): Promise<VaultWord[] | null> {
+  const nextHash = hashVaultPayload(words);
+  const previousHash = getLastVaultPushHash();
+  if (shouldSkipVaultPush(words)) {
+    traceAutosave({
+      source: "pushVaultToServer",
+      component: "AuthProvider",
+      reason: "unchanged_payload",
+      payloadChanged: false,
+      previousHash,
+      nextHash,
+      skipped: true,
+    });
+    return words;
+  }
+
+  traceAutosave({
+    source: "pushVaultToServer",
+    component: "AuthProvider",
+    reason: "vault_change",
+    payloadChanged: previousHash !== nextHash,
+    previousHash,
+    nextHash,
+  });
+
   const res = await fetch("/api/vault", {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
@@ -73,7 +110,9 @@ async function pushVaultToServer(words: VaultWord[]): Promise<VaultWord[] | null
     return null;
   }
   const data = await res.json();
-  return data.words as VaultWord[];
+  const pushed = data.words as VaultWord[];
+  noteVaultPushSuccess(pushed);
+  return pushed;
 }
 
 async function pullStudyTimeFromServer(): Promise<StudyDaysMap | null> {
@@ -84,6 +123,30 @@ async function pullStudyTimeFromServer(): Promise<StudyDaysMap | null> {
 }
 
 async function pushStudyTimeToServer(days: StudyDaysMap): Promise<StudyDaysMap | null> {
+  const nextHash = hashStudyDaysPayload(days);
+  const previousHash = getLastStudyTimePushHash();
+  if (shouldSkipStudyTimePush(days)) {
+    traceAutosave({
+      source: "pushStudyTimeToServer",
+      component: "AuthProvider",
+      reason: "unchanged_payload",
+      payloadChanged: false,
+      previousHash,
+      nextHash,
+      skipped: true,
+    });
+    return days;
+  }
+
+  traceAutosave({
+    source: "pushStudyTimeToServer",
+    component: "AuthProvider",
+    reason: "study_time_change",
+    payloadChanged: previousHash !== nextHash,
+    previousHash,
+    nextHash,
+  });
+
   const res = await fetch("/api/study-time", {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
@@ -91,7 +154,9 @@ async function pushStudyTimeToServer(days: StudyDaysMap): Promise<StudyDaysMap |
   });
   if (!res.ok) return null;
   const data = await res.json();
-  return data.days as StudyDaysMap;
+  const pushed = data.days as StudyDaysMap;
+  noteStudyTimePushSuccess(pushed);
+  return pushed;
 }
 
 async function pullDailyMissionFromServer(date: string): Promise<DailyMissionBundle | null> {
@@ -117,28 +182,75 @@ async function pushDailyMissionToServer(
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [loading, setLoading] = useState(true);
+  const studyTimeDirtyRef = useRef(false);
 
   const syncVault = useCallback(async () => {
     const snapshot = loadVault();
+    const nextHash = hashVaultPayload(snapshot);
+    const previousHash = getLastVaultPushHash();
+
+    if (shouldSkipVaultPush(snapshot)) {
+      traceAutosave({
+        source: "syncVault",
+        component: "AuthProvider",
+        reason: "unchanged_payload",
+        payloadChanged: false,
+        previousHash,
+        nextHash,
+        skipped: true,
+      });
+      return;
+    }
+
     const pushed = await pushVaultToServer(snapshot);
     if (!pushed) return;
 
     const current = loadVault();
     const reconciled = mergeVaultWords(current, pushed);
-    saveVault(reconciled);
+    const reconciledHash = hashVaultPayload(reconciled);
+    const currentHash = hashVaultPayload(current);
 
-    if (JSON.stringify(reconciled) !== JSON.stringify(pushed)) {
-      const repushed = await pushVaultToServer(reconciled);
-      if (!repushed) return;
+    if (reconciledHash !== currentHash) {
+      saveVault(reconciled);
+    }
+
+    if (!shouldSkipVaultPush(reconciled)) {
+      await pushVaultToServer(reconciled);
     }
   }, []);
 
   const syncStudyTime = useCallback(async () => {
+    if (!studyTimeDirtyRef.current) return;
+
     const local = loadStudyDays();
+    const nextHash = hashStudyDaysPayload(local);
+    const previousHash = getLastStudyTimePushHash();
+
+    if (shouldSkipStudyTimePush(local)) {
+      studyTimeDirtyRef.current = false;
+      traceAutosave({
+        source: "syncStudyTime",
+        component: "AuthProvider",
+        reason: "unchanged_payload",
+        payloadChanged: false,
+        previousHash,
+        nextHash,
+        skipped: true,
+      });
+      return;
+    }
+
     const merged = await pushStudyTimeToServer(local);
-    if (merged) {
-      const latest = loadStudyDays();
-      saveStudyDays(mergeStudyDays(latest, merged));
+    if (!merged) return;
+
+    studyTimeDirtyRef.current = false;
+    const latest = loadStudyDays();
+    const reconciled = mergeStudyDays(latest, merged);
+    const reconciledHash = hashStudyDaysPayload(reconciled);
+    const latestHash = hashStudyDaysPayload(latest);
+
+    if (reconciledHash !== latestHash) {
+      saveStudyDays(reconciled);
     }
   }, []);
 
@@ -152,6 +264,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const syncAll = useCallback(async () => {
+    studyTimeDirtyRef.current = true;
     await Promise.all([syncVault(), syncStudyTime(), syncDailyMission()]);
   }, [syncVault, syncStudyTime, syncDailyMission]);
 
@@ -166,11 +279,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         if (remote) {
           const local = loadVault();
           const merged = mergeVaultWords(local, remote);
-          saveVault(merged);
+          if (hashVaultPayload(merged) !== hashVaultPayload(local)) {
+            saveVault(merged);
+          }
           const pushed = await pushVaultToServer(merged);
           if (pushed) {
             const reconciled = mergeVaultWords(loadVault(), pushed);
-            saveVault(reconciled);
+            if (hashVaultPayload(reconciled) !== hashVaultPayload(loadVault())) {
+              saveVault(reconciled);
+            }
           }
         }
 
@@ -178,11 +295,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         if (remoteStudy) {
           const localStudy = loadStudyDays();
           const mergedStudy = mergeStudyDays(localStudy, remoteStudy);
-          saveStudyDays(mergedStudy);
+          if (hashStudyDaysPayload(mergedStudy) !== hashStudyDaysPayload(localStudy)) {
+            saveStudyDays(mergedStudy);
+          }
           const pushedStudy = await pushStudyTimeToServer(mergedStudy);
           if (pushedStudy) {
             const latestStudy = loadStudyDays();
-            saveStudyDays(mergeStudyDays(latestStudy, pushedStudy));
+            const reconciledStudy = mergeStudyDays(latestStudy, pushedStudy);
+            if (hashStudyDaysPayload(reconciledStudy) !== hashStudyDaysPayload(latestStudy)) {
+              saveStudyDays(reconciledStudy);
+            }
           }
         }
 
@@ -232,18 +354,48 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (!user) return;
 
-    let timer: ReturnType<typeof setTimeout> | null = null;
     const onStudyTimeChange = () => {
-      if (timer) clearTimeout(timer);
-      timer = setTimeout(() => {
-        void syncStudyTime();
-      }, 1200);
+      studyTimeDirtyRef.current = true;
+    };
+
+    const flushStudyTime = () => {
+      void syncStudyTime();
     };
 
     window.addEventListener(STUDY_TIME_CHANGE_EVENT, onStudyTimeChange);
+    const interval = window.setInterval(flushStudyTime, STUDY_TIME_FLUSH_MS);
+
+    const onHide = () => {
+      if (document.visibilityState === "hidden") flushStudyTime();
+    };
+    const onUnload = () => flushStudyTime();
+
+    document.addEventListener("visibilitychange", onHide);
+    window.addEventListener("pagehide", onUnload);
+    window.addEventListener("beforeunload", onUnload);
+
+    const missionEvents = [
+      PRONUNCIATION_DAILY_MISSION_EVENT,
+      PART1_DAILY_MISSION_EVENT,
+      PART2_DAILY_MISSION_EVENT,
+      VOCAB_DAILY_MISSION_EVENT,
+      MISSION_RECALL_EVENT,
+      FLIGHT_DEBRIEF_EVENT,
+      DAILY_MISSION_LOG_EVENT,
+    ];
+    for (const event of missionEvents) {
+      window.addEventListener(event, flushStudyTime);
+    }
+
     return () => {
-      if (timer) clearTimeout(timer);
+      window.clearInterval(interval);
       window.removeEventListener(STUDY_TIME_CHANGE_EVENT, onStudyTimeChange);
+      document.removeEventListener("visibilitychange", onHide);
+      window.removeEventListener("pagehide", onUnload);
+      window.removeEventListener("beforeunload", onUnload);
+      for (const event of missionEvents) {
+        window.removeEventListener(event, flushStudyTime);
+      }
     };
   }, [user, syncStudyTime]);
 

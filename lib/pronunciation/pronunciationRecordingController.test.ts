@@ -39,7 +39,7 @@ describe("PronunciationRecordingController", () => {
     const ui = derivePronunciationRecorderUi(next);
     expect(next.phase).toBe("starting");
     expect(ui.visualState).toBe("starting");
-    expect(ui.primaryLabel).toBe("Starting mic…");
+    expect(ui.primaryLabel).toBe("Starting microphone…");
     expect(ui.primaryDisabled).toBe(true);
     expect(canStartPronunciationRecording(next)).toBe(false);
   });
@@ -57,7 +57,7 @@ describe("PronunciationRecordingController", () => {
     const ui = derivePronunciationRecorderUi(recording);
     expect(recording.phase).toBe("recording");
     expect(ui.visualState).toBe("listening");
-    expect(ui.primaryLabel).toBe("● Recording — Stop");
+    expect(ui.primaryLabel).toBe("● Recording");
     expect(ui.visualState).not.toBe("idle");
   });
 
@@ -186,7 +186,7 @@ describe("PronunciationRecordingController", () => {
     expect(sameStringList(["a"], ["b"])).toBe(false);
   });
 
-  it("mergeLessonContext preserves pronunciationRecorder for Captain mic", () => {
+  it("lessonContext merge still supports optional pronunciationRecorder UI payload", () => {
     const micUi = derivePronunciationRecorderUi(
       reducePronunciationRecording(INITIAL_PRONUNCIATION_RECORDING_STATE, {
         type: "recording_started",
@@ -199,6 +199,6 @@ describe("PronunciationRecordingController", () => {
       pronunciationRecorder: micUi,
     });
     expect(merged.pronunciationRecorder?.visualState).toBe("listening");
-    expect(merged.pronunciationRecorder?.primaryLabel).toBe("● Recording — Stop");
+    expect(merged.pronunciationRecorder?.primaryLabel).toBe("● Recording");
   });
 });

@@ -8,6 +8,7 @@ export type RecordTraceStep =
   | "gate_pass"
   | "recordNotice"
   | "startRecording"
+  | "recordingStartContext"
   | "azureStart"
   | "awaitStop"
   | "acquireSession"

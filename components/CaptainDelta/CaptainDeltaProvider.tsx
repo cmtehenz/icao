@@ -41,6 +41,7 @@ import {
 } from "@/lib/captainDelta/messageDedup";
 import {
   CAPTAIN_DELTA_LESSON_CONTEXT,
+  CAPTAIN_DELTA_RECORD_BLOCKED,
   CAPTAIN_DELTA_STOP_VOICE,
   clearActivePronunciationWord,
   emitSecondaryAction,
@@ -76,6 +77,11 @@ import { buildMemoryContextForPrompt } from "@/lib/flightInstructor/memory";
 import { todayKey } from "@/lib/studyTime";
 import { useCaptainDeltaVoice } from "@/hooks/useCaptainDeltaVoice";
 import { useCaptainDeltaPtt } from "@/hooks/useCaptainDeltaPtt";
+import {
+  pronunciationRecorderUiSnapshot,
+  type PronunciationRecorderUiState,
+} from "@/lib/pronunciation/pronunciationRecordingController";
+import type { PronunciationRecordingRegistration } from "@/lib/pronunciation/pronunciationRecordingRegistration";
 
 type CaptainDeltaContextValue = {
   open: boolean;
@@ -91,6 +97,10 @@ type CaptainDeltaContextValue = {
   pttError: string | null;
   voiceStatusLabel: string | null;
   thinking: boolean;
+  /** Captain mic UI — observed from PronunciationRecordingController on /pronunciation. */
+  pronunciationMicUi: PronunciationRecorderUiState | null;
+  pronunciationRecordingActive: boolean;
+  registerPronunciationRecording: (entry: PronunciationRecordingRegistration | null) => void;
   triggerPrimaryAction: () => void;
   triggerSecondaryAction: (actionId: string) => void;
   startPtt: () => void;
@@ -156,6 +166,44 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
   const dedupStateRef = useRef<CaptainMessageDedupState>(createCaptainMessageDedupState());
   const voiceCancelRef = useRef(voice.cancelPlayback);
   voiceCancelRef.current = voice.cancelPlayback;
+  const pronunciationHandlesRef = useRef<
+    PronunciationRecordingRegistration["handles"] | null
+  >(null);
+  const [pronunciationMicUi, setPronunciationMicUi] =
+    useState<PronunciationRecorderUiState | null>(null);
+  const [pronunciationRecordingActive, setPronunciationRecordingActive] = useState(false);
+
+  const registerPronunciationRecording = useCallback(
+    (entry: PronunciationRecordingRegistration | null) => {
+      if (!entry) {
+        pronunciationHandlesRef.current = null;
+        setPronunciationMicUi(null);
+        setPronunciationRecordingActive(false);
+        return;
+      }
+      pronunciationHandlesRef.current = entry.handles;
+      const recording = entry.micUi.phase === "recording";
+      setPronunciationRecordingActive(recording);
+      setPronunciationMicUi((prev) => {
+        if (!prev) return entry.micUi;
+        const prevKey = pronunciationRecorderUiSnapshot(
+          prev,
+          null,
+          prev.phase === "recording",
+        );
+        const nextKey = pronunciationRecorderUiSnapshot(entry.micUi, null, recording);
+        return prevKey === nextKey ? prev : entry.micUi;
+      });
+    },
+    [],
+  );
+
+  const emitPronunciationRecordBlocked = useCallback((reason: string) => {
+    if (typeof window === "undefined") return;
+    window.dispatchEvent(
+      new CustomEvent(CAPTAIN_DELTA_RECORD_BLOCKED, { detail: { reason } }),
+    );
+  }, []);
 
   const activeTerm = useMemo(
     () => resolveCaptainActiveTerm(routeContext, lesson),
@@ -169,7 +217,8 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
     voiceCancelRef.current();
     forceReleaseRecordingSession();
     setCurrentMessage(null);
-  }, [pathname]);
+    registerPronunciationRecording(null);
+  }, [pathname, registerPronunciationRecording]);
 
   useEffect(() => {
     const onStopVoice = () => voiceCancelRef.current();
@@ -321,19 +370,23 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
       return;
     }
 
-    const bridge = getCaptainDeltaRecordBridge();
-    if (routeContext === "pronunciation" && bridge) {
-      if (bridge.isRecording()) {
-        emitStopRecord();
+    if (routeContext === "pronunciation") {
+      const handles = pronunciationHandlesRef.current;
+      if (!handles) return;
+      if (handles.isRecording()) {
+        void handles.stop();
         return;
       }
-      if (bridge.canRecord()) {
-        emitStartRecord();
+      if (handles.canStart()) {
+        void handles.start();
         return;
       }
+      const reason = handles.getBlockReason();
+      if (reason) emitPronunciationRecordBlocked(reason);
       return;
     }
 
+    const bridge = getCaptainDeltaRecordBridge();
     if (bridge?.isRecording()) {
       emitStopRecord();
       return;
@@ -372,7 +425,16 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
     }
 
     void startPtt();
-  }, [currentMessage, ptt.listening, pttActive, routeContext, router, startPtt, stopPtt]);
+  }, [
+    currentMessage,
+    emitPronunciationRecordBlocked,
+    ptt.listening,
+    pttActive,
+    routeContext,
+    router,
+    startPtt,
+    stopPtt,
+  ]);
 
   const triggerSecondaryAction = useCallback(
     (actionId: string) => {
@@ -393,7 +455,21 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
         return;
       }
       if (actionId === "slow_audio") {
+        if (routeContext === "pronunciation") {
+          const handles = pronunciationHandlesRef.current;
+          if (handles) {
+            void handles.playSlow();
+            return;
+          }
+        }
         emitSecondaryAction("slow_audio");
+        return;
+      }
+      if (actionId === "watch_real_examples") {
+        if (routeContext === "pronunciation") {
+          pronunciationHandlesRef.current?.openYouGlish?.();
+          return;
+        }
         return;
       }
       emitSecondaryAction(actionId);
@@ -564,7 +640,7 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
   }, [deliverMessage, lesson, routeContext]);
 
   const avatarState: CaptainDeltaAvatarState = useMemo(() => {
-    if (pttActive || ptt.listening || lesson.recording) return "listening";
+    if (pttActive || ptt.listening || pronunciationRecordingActive) return "listening";
     if (thinking) return "thinking";
     if (voice.state === "playing" || voice.state === "loading") return "speaking";
     if (currentMessage?.kind === "coaching") return "correcting";
@@ -575,7 +651,7 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
   }, [
     pttActive,
     ptt.listening,
-    lesson.recording,
+    pronunciationRecordingActive,
     thinking,
     voice.state,
     currentMessage?.kind,
@@ -596,6 +672,9 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
       pttError: ptt.error,
       voiceStatusLabel,
       thinking,
+      pronunciationMicUi,
+      pronunciationRecordingActive,
+      registerPronunciationRecording,
       triggerPrimaryAction,
       triggerSecondaryAction,
       startPtt,
@@ -617,6 +696,9 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
       ptt.error,
       voiceStatusLabel,
       thinking,
+      pronunciationMicUi,
+      pronunciationRecordingActive,
+      registerPronunciationRecording,
       triggerPrimaryAction,
       triggerSecondaryAction,
       startPtt,

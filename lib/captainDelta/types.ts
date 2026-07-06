@@ -59,6 +59,7 @@ export type CaptainDeltaActionId =
   | "explain_it"
   | "give_example"
   | "slow_audio"
+  | "watch_real_examples"
   | "show_keywords"
   | "show_hint"
   | "listen_again"

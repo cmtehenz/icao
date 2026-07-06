@@ -48,7 +48,7 @@ export default function CaptainDeltaCoachingCard({
   const captainMicLabel =
     pronunciationRecorder?.primaryLabel ??
     (recording
-      ? "● Recording — Stop"
+      ? "● Recording"
       : message.primaryAction.id === "repeat_after_me" ||
           message.primaryAction.id === "try_again"
         ? "🎤 Record"

@@ -66,9 +66,9 @@ describe("pronunciation record gate", () => {
     );
   });
 
-  it("azure_not_configured blocks on click only, not via disabled attribute", () => {
+  it("does not block record when azure is not yet probed", () => {
     const gate = { ...ready, azureConfigured: false };
-    expect(resolvePronunciationRecordBlockReason(gate)).toBe("azure_not_configured");
+    expect(resolvePronunciationRecordBlockReason(gate)).toBeNull();
     expect(isPronunciationRecordButtonDisabled(gate)).toBe(false);
   });
 

@@ -45,7 +45,6 @@ export function resolvePronunciationRecordBlockReason(
 ): PronunciationRecordBlockReason | null {
   if (!gate.activeWord) return "no_active_word";
   if (gate.browserSupported === false) return "browser_unsupported";
-  if (!gate.azureConfigured) return "azure_not_configured";
   if (gate.assessingPending) return "assessing_pending";
   if (gate.lifecycle === "starting") return "already_recording";
   if (gate.lifecycle === "listening") return "already_recording";

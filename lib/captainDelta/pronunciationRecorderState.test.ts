@@ -25,7 +25,7 @@ describe("derivePronunciationRecorderUi", () => {
       phaseLabel: "Connecting to Azure Speech…",
     });
     const ui = derivePronunciationRecorderUi(state);
-    expect(ui.primaryLabel).toBe("Starting mic…");
+    expect(ui.primaryLabel).toBe("Starting microphone…");
     expect(ui.visualState).toBe("starting");
     expect(ui.micStatusLine).toBe("Opening microphone");
     expect(ui.primaryDisabled).toBe(true);
@@ -43,7 +43,7 @@ describe("derivePronunciationRecorderUi", () => {
       { type: "recording_started", phaseLabel: "Recording — speak clearly…" },
     );
     const ui = derivePronunciationRecorderUi(state);
-    expect(ui.primaryLabel).toBe("● Recording — Stop");
+    expect(ui.primaryLabel).toBe("● Recording");
     expect(ui.visualState).toBe("listening");
     expect(ui.micStatusLine).toBe("Mic live — speak now");
     expect(ui.isMicPressed).toBe(true);

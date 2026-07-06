@@ -5557,6 +5557,57 @@ input {
   font-size: 0.84rem;
 }
 
+.pron-captain-coaching-card {
+  margin: 0.65rem 0 0.75rem;
+  padding: 0.75rem 0.85rem;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--blue) 7%, var(--card));
+  border: 1px solid color-mix(in srgb, var(--blue) 18%, var(--border));
+}
+
+.pron-captain-coaching-title {
+  margin: 0 0 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.pron-captain-coaching-message {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+.pron-captain-coaching-focus {
+  margin: 0.45rem 0 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+.pron-captain-youglish {
+  display: inline-flex;
+  margin-top: 0.55rem;
+}
+
+.pron-captain-technical {
+  margin-top: 0.55rem;
+  font-size: 0.76rem;
+  color: var(--muted);
+}
+
+.pron-captain-technical summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.pron-captain-technical p {
+  margin: 0.35rem 0 0;
+}
+
 .pron-model-fragment {
   margin: 0.35rem 0 0.5rem;
   font-size: 0.82rem;

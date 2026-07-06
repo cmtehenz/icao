@@ -28,6 +28,7 @@ import {
   sameStringList,
   type PronunciationRecordingPhase,
 } from "@/lib/pronunciation/pronunciationRecordingController";
+import { missionCardStatusLine } from "@/lib/pronunciation/missionCardStatusLine";
 import { ensureWordContext } from "@/lib/pronunciationContext";
 import { deriveVaultWordStatus } from "@/lib/pronunciationGraduation";
 import {
@@ -252,7 +253,7 @@ export default function PronunciationWordsMode() {
   resetRecordingRef.current = recording.reset;
   recorderPhaseRef.current = recording.state.phase;
 
-  const { micUi, captainNote, recordNotice, activityNote, configured, state: recorderState } =
+  const { micUi, captainNote, captainDebrief, recordNotice, activityNote, azureEnvMissing, state: recorderState } =
     recording;
 
   useEffect(() => {
@@ -565,7 +566,30 @@ export default function PronunciationWordsMode() {
               </p>
             )}
 
-            {captainNote && (
+            {captainDebrief && (
+              <div className="pron-captain-coaching-card">
+                <h3 className="pron-captain-coaching-title">Captain feedback</h3>
+                <p className="pron-captain-coaching-message">{captainDebrief.message}</p>
+                {captainDebrief.focusLabel && (
+                  <p className="pron-captain-coaching-focus">
+                    Focus: {captainDebrief.focusLabel}
+                  </p>
+                )}
+                {captainDebrief.showYouGlish && captainDebrief.youGlishQuery && (
+                  <YouGlishLink
+                    word={captainDebrief.youGlishQuery}
+                    compact
+                    label="Watch real examples"
+                    className="pron-captain-youglish"
+                  />
+                )}
+                <details className="pron-captain-technical">
+                  <summary>Technical details</summary>
+                  <p>{captainDebrief.technicalDetails}</p>
+                </details>
+              </div>
+            )}
+            {!captainDebrief && captainNote && (
               <p className="pron-captain-feedback">Captain Delta: {captainNote}</p>
             )}
 
@@ -579,7 +603,7 @@ export default function PronunciationWordsMode() {
           </div>
 
           <div className="card-body">
-            {!configured && (
+            {azureEnvMissing && (
               <p className="voice-coach-warn">
                 Azure Speech is not configured. Recording will not work until speech keys are set.
               </p>
@@ -593,10 +617,11 @@ export default function PronunciationWordsMode() {
               <p className="pron-captain-recorder-line">
                 <span className="pron-captain-recorder-label">Captain Recorder</span>
                 <span aria-hidden> · </span>
+                <span className="pron-captain-recorder-status-label">Status:</span>{" "}
                 <span
                   className={`pron-captain-recorder-status pron-captain-recorder-status--${micUi.visualState}`}
                 >
-                  {micUi.micStatusLine}
+                  {missionCardStatusLine(recorderState.phase)}
                 </span>
               </p>
             </div>

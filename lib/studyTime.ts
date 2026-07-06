@@ -114,7 +114,10 @@ export function loadStudyDays(): StudyDaysMap {
 export function saveStudyDays(days: StudyDaysMap): void {
   if (typeof window === "undefined") return;
   const trimmed = trimHistory(days);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify({ days: trimmed }));
+  const next = JSON.stringify({ days: trimmed });
+  const prev = localStorage.getItem(STORAGE_KEY);
+  if (prev === next) return;
+  localStorage.setItem(STORAGE_KEY, next);
   window.dispatchEvent(new Event(STUDY_TIME_CHANGE_EVENT));
 }
 

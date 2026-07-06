@@ -1,9 +1,9 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from "react";
+import { useCaptainDelta } from "@/components/CaptainDelta/CaptainDeltaProvider";
 import { useAzurePronunciation } from "@/hooks/useAzurePronunciation";
 import { useAzureSpeech } from "@/hooks/useAzureSpeech";
-import { usePronunciationCaptainBridge } from "@/hooks/usePronunciationCaptainBridge";
 import { formatAssessmentFailureMessage } from "@/lib/azure/assessmentFailure";
 import { forceReleaseRecordingSession, isRecordingMutexHeld } from "@/lib/azure/recognizerSession";
 import { emitCaptainDeltaSuggestion } from "@/lib/captainDelta/events";
@@ -16,17 +16,19 @@ import { traceRecordStep } from "@/lib/captainDelta/pronunciationRecordTrace";
 import { buildPronunciationFocusPlan } from "@/lib/captainDelta/visual/plans";
 import { emitVisualPlan } from "@/lib/captainDelta/visual/events";
 import { splitSyllables } from "@/lib/captainDelta/visual/syllables";
+import type { CaptainAssessmentDebrief } from "@/lib/pronunciationCoach";
 import {
-  captainFeedbackAfterAttempt,
   captainFeedbackBelowStoredLevel,
   buildCaptainAssessmentDebrief,
 } from "@/lib/pronunciationCoach";
-import { practiceTextForLevel } from "@/lib/pronunciationMission";
+import { youGlishUrl } from "@/lib/youglish";
 import {
   isPronunciationWordInTodayMission,
   markPronunciationDailyWordComplete,
   passesDailyMissionWordAttempt,
 } from "@/lib/pronunciationDailyMission";
+import { practiceTextForLevel } from "@/lib/pronunciationMission";
+import { PronunciationRecordingError } from "@/lib/pronunciation/PronunciationRecordingError";
 import {
   canStartPronunciationRecording,
   canStopPronunciationRecording,
@@ -38,6 +40,8 @@ import {
   type PronunciationRecordingControllerState,
   type PronunciationRecorderUiState,
 } from "@/lib/pronunciation/pronunciationRecordingController";
+import type { PronunciationRecordingHandles } from "@/lib/pronunciation/pronunciationRecordingRegistration";
+import { assertReferenceTextForRecording } from "@/lib/pronunciation/validateReferenceText";
 import { markWarmupSatisfied } from "@/lib/part2Warmup";
 import {
   loadVault,
@@ -58,13 +62,17 @@ export type PronunciationRecordingControllerApi = {
   state: PronunciationRecordingControllerState;
   micUi: PronunciationRecorderUiState;
   configured: boolean;
+  azureEnvMissing: boolean;
   captainNote: string | null;
+  captainDebrief: CaptainAssessmentDebrief | null;
   recordNotice: string | null;
   activityNote: string | null;
   start: () => Promise<void>;
   stop: () => Promise<void>;
   reset: () => void;
   listen: () => Promise<void>;
+  playSlow: () => Promise<void>;
+  replay: () => Promise<void>;
 };
 
 type Options = {
@@ -87,14 +95,12 @@ function browserSupportsRecording(): boolean {
   );
 }
 
-/** Single controller for /pronunciation recording — owns state machine + Azure I/O. */
+/** Single owner of /pronunciation recording — Azure I/O + Captain registration. */
 export function usePronunciationRecordingController(
   options: Options,
 ): PronunciationRecordingControllerApi {
-  const {
-    activeWord,
-    practiceLevel,
-  } = options;
+  const { activeWord, practiceLevel } = options;
+  const { registerPronunciationRecording } = useCaptainDelta();
 
   const azure = useAzurePronunciation();
   const speech = useAzureSpeech();
@@ -105,12 +111,15 @@ export function usePronunciationRecordingController(
   const stateRef = useRef(state);
   stateRef.current = state;
   const [captainNote, setCaptainNote] = useState<string | null>(null);
+  const [captainDebrief, setCaptainDebrief] = useState<CaptainAssessmentDebrief | null>(null);
+  const youGlishQueryRef = useRef<string | null>(null);
   const [recordNotice, setRecordNotice] = useState<string | null>(null);
   const [activityNote, setActivityNote] = useState<string | null>(null);
   const startInFlightRef = useRef(false);
   const stopInFlightRef = useRef(false);
   const optionsRef = useRef(options);
   optionsRef.current = options;
+  const lastReferenceRef = useRef<string | null>(null);
 
   const micUi = useMemo(() => derivePronunciationRecorderUi(state), [state]);
 
@@ -126,7 +135,7 @@ export function usePronunciationRecordingController(
   const recordGate = useCallback(
     () => ({
       activeWord: !!activeWord,
-      azureConfigured: azure.configured,
+      azureConfigured: true,
       lifecycle: phaseToGateLifecycle(stateRef.current.phase),
       assessingPending: stateRef.current.phase === "assessing",
       listenPlaying: speech.speaking,
@@ -134,29 +143,77 @@ export function usePronunciationRecordingController(
       recognizerBusy: isRecordingMutexHeld() && stateRef.current.phase === "idle",
       browserSupported: browserSupportsRecording(),
     }),
-    [activeWord, azure.configured, speech.speaking],
+    [activeWord, speech.speaking],
   );
+
+  const getBlockReason = useCallback((): string | null => {
+    if (!micUi.canStart) {
+      if (stateRef.current.phase === "starting") return "Starting microphone…";
+      if (stateRef.current.phase === "assessing") return "Assessment in progress.";
+      if (stateRef.current.phase === "recording") {
+        return "Recording is in progress — use Stop & assess.";
+      }
+    }
+    const reason = resolvePronunciationRecordBlockReason(recordGate());
+    return reason ? pronunciationRecordBlockLabel(reason) : null;
+  }, [micUi.canStart, recordGate]);
 
   const reset = useCallback(() => {
     dispatch({ type: "reset" });
     setCaptainNote(null);
+    setCaptainDebrief(null);
+    youGlishQueryRef.current = null;
     setRecordNotice(null);
     if (!isPronunciationRecordingActive(stateRef.current.phase)) {
       azure.clear("word_clear");
     }
   }, [azure]);
 
+  const speakPracticeText = useCallback(async () => {
+    if (!activeWord) return;
+    const text = practiceTextForLevel(activeWord, practiceLevel);
+    lastReferenceRef.current = text;
+    await speech.speak(text);
+  }, [activeWord, practiceLevel, speech]);
+
+  const listen = useCallback(async () => {
+    try {
+      await speakPracticeText();
+    } catch {
+      /* speech.error */
+    }
+  }, [speakPracticeText]);
+
+  const playSlow = useCallback(async () => {
+    try {
+      await speakPracticeText();
+    } catch {
+      /* speech.error */
+    }
+  }, [speakPracticeText]);
+
+  const replay = useCallback(async () => {
+    const text =
+      lastReferenceRef.current ??
+      (activeWord ? practiceTextForLevel(activeWord, practiceLevel) : null);
+    if (!text) return;
+    try {
+      await speech.speak(text);
+    } catch {
+      /* speech.error */
+    }
+  }, [activeWord, practiceLevel, speech]);
+
   const start = useCallback(async () => {
     if (startInFlightRef.current) return;
     if (!canStartPronunciationRecording(stateRef.current)) return;
     if (!activeWord) {
-      const label = pronunciationRecordBlockLabel("no_active_word");
-      setRecordNotice(label);
+      setRecordNotice(pronunciationRecordBlockLabel("no_active_word"));
       return;
     }
 
     startInFlightRef.current = true;
-    traceRecordStep("handlePrimaryRecord", "captainStart");
+    traceRecordStep("handlePrimaryRecord", "controllerStart");
 
     try {
       emitStopCaptainVoice();
@@ -178,9 +235,27 @@ export function usePronunciationRecordingController(
         return;
       }
 
-      const text = practiceTextForLevel(activeWord, practiceLevel);
-      const type = practiceLevel >= 4 ? "part1" : "part2-readback";
+      const sentenceUsed = practiceTextForLevel(activeWord, practiceLevel);
+      let referenceText: string;
+      try {
+        referenceText = assertReferenceTextForRecording(sentenceUsed, {
+          currentWord: activeWord.word,
+          missionId: optionsRef.current.mission?.date ?? null,
+          practiceLevel,
+          sentenceUsed,
+        });
+      } catch (err) {
+        const message =
+          err instanceof PronunciationRecordingError
+            ? err.message
+            : "Missing referenceText.";
+        traceRecordStep("error", message);
+        dispatch({ type: "start_failed", message });
+        setRecordNotice(message);
+        return;
+      }
 
+      lastReferenceRef.current = referenceText;
       setCaptainNote(null);
       setRecordNotice(null);
       setActivityNote(null);
@@ -188,16 +263,16 @@ export function usePronunciationRecordingController(
       dispatch({
         type: "start_requested",
         word: activeWord.word,
-        referenceText: text,
+        referenceText,
         practiceLevel,
-        phaseLabel: azure.recordingPhaseLabel,
+        phaseLabel: "Opening microphone…",
       });
 
       traceRecordStep("gate_pass");
       traceRecordStep("startRecording");
 
       try {
-        await azure.start(text, type);
+        await azure.startWithReference(referenceText);
         dispatch({
           type: "recording_started",
           phaseLabel: "Recording — speak now",
@@ -252,12 +327,8 @@ export function usePronunciationRecordingController(
       const updated = loadVault().find(
         (w) => w.word.toLowerCase() === activeWord.word.toLowerCase(),
       );
-      const status = outcome.status;
       const belowLevel =
         updated && captainFeedbackBelowStoredLevel(updated, practiceLevel);
-      const feedback =
-        belowLevel ??
-        captainFeedbackAfterAttempt(updated ?? activeWord, score, practiceLevel, status);
 
       const missionPass =
         optionsRef.current.missionLegActive &&
@@ -265,24 +336,51 @@ export function usePronunciationRecordingController(
         isPronunciationWordInTodayMission(activeWord.word) &&
         passesDailyMissionWordAttempt(score, true);
 
-      const recoveryHint = score < VAULT_PASS_SCORE ? ` ${AZURE_RECOVERY_GUIDANCE}` : "";
-      const debrief = buildCaptainAssessmentDebrief(assessment, feedback, {
+      if (belowLevel) {
+        setCaptainDebrief(null);
+        youGlishQueryRef.current = null;
+        setCaptainNote(belowLevel.message);
+        emitCaptainDeltaSuggestion({
+          text: belowLevel.message,
+          speechText: belowLevel.speechText,
+          kind: "coaching",
+          primaryAction: { id: "try_again", label: "Try again", primary: true },
+          secondaryActions: [{ id: "slow_audio", label: "🎧 Slow Audio", primary: false }],
+        });
+      } else {
+      const referenceText = practiceTextForLevel(activeWord, practiceLevel);
+      const debrief = buildCaptainAssessmentDebrief(assessment, {
+        targetWord: activeWord.word,
+        practiceLevel,
+        referenceText,
         missionPass: !!missionPass,
       });
-      const coachingText = debrief.message + recoveryHint;
-      setCaptainNote(coachingText);
+      youGlishQueryRef.current = debrief.youGlishQuery;
+      setCaptainDebrief(debrief);
+      setCaptainNote(debrief.message);
       emitCaptainDeltaSuggestion({
-        text: coachingText,
+        text: debrief.message,
         speechText: debrief.speechText,
         kind: "coaching",
         primaryAction: missionPass
           ? { id: "ready", label: "Continue", primary: true }
           : { id: "try_again", label: "Try again", primary: true },
-        secondaryActions:
-          score < VAULT_PASS_SCORE
-            ? [{ id: "slow_audio", label: "🎧 Slow Audio", primary: false }]
-            : [],
+        secondaryActions: [
+          ...(score < VAULT_PASS_SCORE
+            ? [{ id: "slow_audio" as const, label: "🎧 Slow Audio", primary: false }]
+            : []),
+          ...(debrief.showYouGlish && debrief.youGlishQuery
+            ? [
+                {
+                  id: "watch_real_examples" as const,
+                  label: "Watch real examples",
+                  primary: false,
+                },
+              ]
+            : []),
+        ],
       });
+      }
 
       const ctx = { accuracy: score, recognizedText: assessment.recognizedText };
       const counted = tryRecordStudyActivity("pronunciation", ctx);
@@ -323,52 +421,68 @@ export function usePronunciationRecordingController(
     }
   }, [activeWord, azure, practiceLevel]);
 
-  const listen = useCallback(async () => {
-    if (!activeWord) return;
-    try {
-      await speech.speak(practiceTextForLevel(activeWord, practiceLevel));
-    } catch {
-      /* speech.error */
-    }
-  }, [activeWord, practiceLevel, speech]);
-
-  const startRef = useRef(start);
-  const stopRef = useRef(stop);
-  const listenRef = useRef(listen);
-  startRef.current = start;
-  stopRef.current = stop;
-  listenRef.current = listen;
-
-  usePronunciationCaptainBridge({
-    activeWord,
-    micUi,
-    recordGate,
-    onStartRecord: () => void startRef.current(),
-    onStopRecord: () => void stopRef.current(),
-    onListen: () => void listenRef.current(),
+  const handlesRef = useRef<PronunciationRecordingHandles>({
+    start: () => {},
+    stop: () => {},
+    listen: () => {},
+    playSlow: () => {},
+    replay: () => {},
+    canStart: () => false,
+    canStop: () => false,
+    isRecording: () => false,
+    getBlockReason: () => null,
   });
+  handlesRef.current = {
+    start: () => void start(),
+    stop: () => void stop(),
+    listen: () => void listen(),
+    playSlow: () => void playSlow(),
+    replay: () => void replay(),
+    openYouGlish: () => {
+      const query = youGlishQueryRef.current;
+      if (!query) return;
+      window.open(youGlishUrl(query), "_blank", "noopener,noreferrer");
+    },
+    canStart: () => micUi.canStart && resolvePronunciationRecordBlockReason(recordGate()) === null,
+    canStop: () => micUi.canStop,
+    isRecording: () => stateRef.current.phase === "recording",
+    getBlockReason,
+  };
+
+  useEffect(() => {
+    registerPronunciationRecording({ handles: handlesRef.current, micUi });
+    return () => registerPronunciationRecording(null);
+  }, [micUi, registerPronunciationRecording]);
 
   return useMemo(
     () => ({
       state,
       micUi,
       configured: azure.configured,
+      azureEnvMissing: azure.envMissing,
       captainNote,
+      captainDebrief,
       recordNotice: recordNotice ?? azure.error,
       activityNote,
       start,
       stop,
       reset,
       listen,
+      playSlow,
+      replay,
     }),
     [
       activityNote,
       azure.configured,
+      azure.envMissing,
       azure.error,
       captainNote,
+      captainDebrief,
       listen,
       micUi,
+      playSlow,
       recordNotice,
+      replay,
       reset,
       start,
       state,

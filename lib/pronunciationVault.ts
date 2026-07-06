@@ -151,7 +151,11 @@ export function loadVault(): VaultWord[] {
 
 export function saveVault(words: VaultWord[]): void {
   if (typeof window === "undefined") return;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(words.map(sanitizeVaultWord)));
+  const sanitized = words.map(sanitizeVaultWord);
+  const next = JSON.stringify(sanitized);
+  const prev = localStorage.getItem(STORAGE_KEY);
+  if (prev === next) return;
+  localStorage.setItem(STORAGE_KEY, next);
   notifyVaultChange();
 }
 

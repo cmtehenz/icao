@@ -17,7 +17,8 @@ export default function CaptainDeltaFloatingAssistant() {
     avatarState,
     voice,
     voiceStatusLabel,
-    lesson,
+    pronunciationMicUi,
+    pronunciationRecordingActive,
     pttActive,
     pttInterim,
     pttError,
@@ -61,7 +62,7 @@ export default function CaptainDeltaFloatingAssistant() {
     setOpen(true);
   };
 
-  const recording = pttActive || !!lesson.recording;
+  const recording = pttActive || pronunciationRecordingActive;
   const showStandby = open && !currentMessage;
 
   return (
@@ -82,9 +83,7 @@ export default function CaptainDeltaFloatingAssistant() {
               voice={voice}
               voiceStatusLabel={voiceStatusLabel}
               recording={recording}
-              pronunciationRecorder={
-                lesson.mode === "pronunciation" ? lesson.pronunciationRecorder ?? null : null
-              }
+              pronunciationRecorder={pronunciationMicUi}
               pttInterim={pttInterim}
               pttError={pttError}
               onPrimaryAction={triggerPrimaryAction}
