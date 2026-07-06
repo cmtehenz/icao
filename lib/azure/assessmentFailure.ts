@@ -46,12 +46,51 @@ export function assessmentFailure(
   return { code, userMessage, detail };
 }
 
+export const STUDENT_SAFE_RECORDING_FAILURE =
+  "I couldn't get a clear recording that time. Try again with a short phrase and speak a little closer to the mic.";
+
+const TECHNICAL_ERROR_PATTERN =
+  /\b(drain\s+timeout|callback|RecognizedSpeech|SDK|Azure|session|no_recognizer|NoMatch|JSON|pronunciation assessment|recognizer|parser failed)\b/i;
+
+export function logAssessmentFailureTechnical(
+  failure: AssessmentFailure | null | undefined,
+): void {
+  if (!failure) return;
+  console.warn("[AzureAssessment]", {
+    code: failure.code,
+    userMessage: failure.userMessage,
+    detail: failure.detail,
+  });
+}
+
+/** Student-facing copy only — technical reason stays in console. */
+export function studentSafeAssessmentMessage(
+  failure: AssessmentFailure | null | undefined,
+  recoveryGuidance?: string,
+): string {
+  logAssessmentFailureTechnical(failure);
+  if (!failure) {
+    return recoveryGuidance ?? "Let's try that once more.";
+  }
+  return recoveryGuidance
+    ? `${STUDENT_SAFE_RECORDING_FAILURE} ${recoveryGuidance}`
+    : STUDENT_SAFE_RECORDING_FAILURE;
+}
+
+export function sanitizeStudentFacingError(text: string | null | undefined): string | null {
+  if (!text?.trim()) return null;
+  if (TECHNICAL_ERROR_PATTERN.test(text) || FORBIDDEN_TECHNICAL.test(text)) {
+    return STUDENT_SAFE_RECORDING_FAILURE;
+  }
+  return text.trim();
+}
+
+const FORBIDDEN_TECHNICAL =
+  /\b(Accuracy|Fluency|Completeness|Prosody)\s+\d+/i;
+
 export function formatAssessmentFailureMessage(
   failure: AssessmentFailure | null | undefined,
   recoveryGuidance?: string,
 ): string {
-  if (!failure) return "Assessment unavailable.";
-  return recoveryGuidance
-    ? `${failure.userMessage} ${recoveryGuidance}`
-    : failure.userMessage;
+  return studentSafeAssessmentMessage(failure, recoveryGuidance);
 }

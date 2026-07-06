@@ -426,12 +426,14 @@ describe("resolveStopAssessmentFailure", () => {
 });
 
 describe("formatAssessmentFailureMessage", () => {
-  it("includes the runtime reason instead of a generic message", () => {
+  it("returns student-safe copy and hides technical Azure details", () => {
     const msg = formatAssessmentFailureMessage(
-      assessmentFailure("no_pronunciation_json"),
+      assessmentFailure("session_stopped_before_result"),
       "Listen → slow down → retry.",
     );
-    expect(msg).toContain("No PronunciationAssessment JSON");
+    expect(msg).toContain("couldn't get a clear recording");
+    expect(msg).not.toMatch(/drain timeout/i);
+    expect(msg).not.toMatch(/session ended/i);
     expect(msg).toContain("Listen → slow down → retry.");
   });
 });

@@ -73,6 +73,11 @@ import {
   isCaptainDeltaVoiceEnabled,
 } from "@/lib/captainDelta/voiceConfig";
 import { getNextMissionAction } from "@/lib/dailyMission";
+import {
+  answerPronunciationCoachingQuestion,
+  getLastPronunciationCoachSession,
+  isPronunciationCoachingQuestion,
+} from "@/lib/pronunciationCoach";
 import { buildMemoryContextForPrompt } from "@/lib/flightInstructor/memory";
 import { todayKey } from "@/lib/studyTime";
 import { useCaptainDeltaVoice } from "@/hooks/useCaptainDeltaVoice";
@@ -280,6 +285,34 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
 
   const replyFromCaptain = useCallback(
     async (question: string, lessonSnapshot: CaptainDeltaLessonContext) => {
+      if (
+        routeContext === "pronunciation" &&
+        isPronunciationCoachingQuestion(question)
+      ) {
+        const activeTerm = resolveCaptainActiveTerm(routeContext, lessonSnapshot);
+        const last = getLastPronunciationCoachSession();
+        const answer = answerPronunciationCoachingQuestion(question, {
+          targetWord: activeTerm ?? last?.targetWord,
+          referenceText:
+            lessonSnapshot.modelAnswer ??
+            lessonSnapshot.question ??
+            last?.referenceText,
+          practiceLevel: last?.practiceLevel,
+          lastFocus: last?.lastFocus,
+        });
+        deliverMessage(
+          buildMessage("coaching", answer.message, routeContext, lessonSnapshot, {
+            speechText: answer.speechText,
+            primaryAction: { id: "try_again", label: "Try again", primary: true },
+            secondaryActions: [
+              { id: "slow_audio", label: "🎧 Slow Audio", primary: false },
+            ],
+          }),
+          { avatar: "correcting", autoSpeak: true },
+        );
+        return;
+      }
+
       setThinking(true);
       try {
         const memoryContext = buildMemoryContextForPrompt();

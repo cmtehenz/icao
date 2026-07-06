@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from "r
 import { useCaptainDelta } from "@/components/CaptainDelta/CaptainDeltaProvider";
 import { useAzurePronunciation } from "@/hooks/useAzurePronunciation";
 import { useAzureSpeech } from "@/hooks/useAzureSpeech";
-import { formatAssessmentFailureMessage } from "@/lib/azure/assessmentFailure";
+import { studentSafeAssessmentMessage } from "@/lib/azure/assessmentFailure";
 import { forceReleaseRecordingSession, isRecordingMutexHeld } from "@/lib/azure/recognizerSession";
 import { emitCaptainDeltaSuggestion } from "@/lib/captainDelta/events";
 import { emitStopCaptainVoice, CAPTAIN_DELTA_RECORD_BLOCKED } from "@/lib/captainDelta/lessonContext";
@@ -306,13 +306,13 @@ export function usePronunciationRecordingController(
       const { assessment, failure } = await azure.stop("user_click");
 
       if (!assessment) {
-        const message = formatAssessmentFailureMessage(failure, AZURE_RECOVERY_GUIDANCE);
+        const message = studentSafeAssessmentMessage(failure, AZURE_RECOVERY_GUIDANCE);
         traceRecordStep("error", failure?.code ?? "assessment_unavailable");
         dispatch({ type: "assessment_error", message });
         setCaptainNote(message);
         emitCaptainDeltaSuggestion({
           text: message,
-          speechText: failure?.userMessage ?? "Assessment unavailable.",
+          speechText: message,
           kind: "coaching",
           primaryAction: { id: "try_again", label: "Try again", primary: true },
           secondaryActions: [{ id: "slow_audio", label: "🎧 Slow Audio", primary: false }],
