@@ -107,12 +107,6 @@ export function useAzureSpeech() {
     };
   }, []);
 
-  useEffect(() => {
-    fetchToken()
-      .then((d) => setConfigured(!!d.configured))
-      .catch(() => setConfigured(false));
-  }, []);
-
   const stopMicCapture = useCallback((): Promise<Blob | null> => {
     return new Promise((resolve) => {
       const recorder = recorderRef.current;
@@ -181,8 +175,9 @@ export function useAzureSpeech() {
 
       const tokenData = await fetchToken();
       if (!tokenData.configured || !tokenData.token || !tokenData.region) {
-        throw new Error("Azure Speech is not configured.");
+        throw new Error(tokenData.error ?? "Azure Speech is not configured.");
       }
+      if (mountedRef.current) setConfigured(true);
 
       const sdk = await loadSpeechSdk();
       const speechConfig = sdk.SpeechConfig.fromAuthorizationToken(
@@ -286,12 +281,16 @@ export function useAzureSpeech() {
         if (!tokenData.configured || !tokenData.token || !tokenData.region) {
           releaseRecordingSession(sessionIdRef.current);
           if (mountedRef.current && !isRecordingGenerationStale(generation)) {
-            setError("Azure Speech is not configured. Add AZURE_SPEECH_KEY and AZURE_SPEECH_REGION.");
+            setError(
+              tokenData.error ??
+                "Azure Speech is not configured. Add AZURE_SPEECH_KEY and AZURE_SPEECH_REGION.",
+            );
             setRecording(false);
           }
           await stopMicCapture();
           return;
         }
+        if (mountedRef.current) setConfigured(true);
 
         try {
           const sdk = await loadSpeechSdk();

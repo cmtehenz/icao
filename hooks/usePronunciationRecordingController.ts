@@ -21,6 +21,7 @@ import {
   captainFeedbackBelowStoredLevel,
   buildCaptainAssessmentDebrief,
 } from "@/lib/pronunciationCoach";
+import { recommendedPracticeLevel } from "@/lib/pronunciationGraduation";
 import { youGlishUrl } from "@/lib/youglish";
 import {
   isPronunciationWordInTodayMission,
@@ -85,6 +86,7 @@ type Options = {
   onSelectNextMissionWord: (completed: string[]) => void;
   onWordAdvanced: (word: VaultWord, level: PracticeLevel) => void;
   onWordCleared: () => void;
+  onPracticeLevelBelowStored?: (level: PracticeLevel) => void;
 };
 
 function browserSupportsRecording(): boolean {
@@ -340,6 +342,8 @@ export function usePronunciationRecordingController(
         setCaptainDebrief(null);
         youGlishQueryRef.current = null;
         setCaptainNote(belowLevel.message);
+        const stored = recommendedPracticeLevel(updated!);
+        optionsRef.current.onPracticeLevelBelowStored?.(stored);
         emitCaptainDeltaSuggestion({
           text: belowLevel.message,
           speechText: belowLevel.speechText,

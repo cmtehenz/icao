@@ -65,8 +65,6 @@ import {
 import {
   azureConfigStartErrorMessage,
   AZURE_TOKEN_REQUEST_FAILED_MESSAGE,
-  fetchAzureSpeechConfig,
-  isAzureEnvConfigured,
   isAzureEnvMissing,
   resolveAzureConfigFromResponse,
   traceAzureConfig,
@@ -186,20 +184,6 @@ export function useAzurePronunciation() {
       });
     };
   }, [syncReactFromStore]);
-
-  useEffect(() => {
-    void fetchAzureSpeechConfig().then((status) => {
-      if (isAzureEnvMissing(status)) {
-        setEnvConfigured(false);
-        setConfigured(false);
-        return;
-      }
-      if (isAzureEnvConfigured(status)) {
-        setEnvConfigured(true);
-        setConfigured(status.hasToken);
-      }
-    });
-  }, []);
 
   const stopMicCapture = useCallback((): Promise<Blob | null> => {
     return new Promise((resolve) => {

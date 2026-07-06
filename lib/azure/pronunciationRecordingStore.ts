@@ -103,6 +103,10 @@ export function cancelDeferredPronunciationTeardown(): void {
   }
 }
 
+export function getPronunciationHookMountCount(): number {
+  return store.hookMountCount;
+}
+
 export function registerPronunciationHookMount(): () => void {
   cancelDeferredPronunciationTeardown();
   store.hookMountCount += 1;

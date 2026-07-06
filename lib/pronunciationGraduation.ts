@@ -27,6 +27,25 @@ function hasImproved(scores: number[]): boolean {
   return last > first + 4;
 }
 
+/** Current unlocked / recommended practice level from vault progress. */
+export function recommendedPracticeLevel(word: VaultWord): PracticeLevel {
+  const stored = clampLevel(word.practiceLevel ?? 1);
+  if (word.status === "use_icao") return clampLevel(Math.max(stored, 4));
+  if (word.status === "use_sentence") return clampLevel(Math.max(stored, 3));
+  return stored;
+}
+
+export function unlockedPracticeLevel(word: VaultWord): PracticeLevel {
+  return recommendedPracticeLevel(word);
+}
+
+export function isPracticeLevelUnlocked(
+  word: VaultWord,
+  level: PracticeLevel,
+): boolean {
+  return level <= unlockedPracticeLevel(word);
+}
+
 export function deriveVaultWordStatus(word: VaultWord): VaultWordStatus {
   if (word.status) return word.status;
   if (word.practiceCount === 0) return "new";

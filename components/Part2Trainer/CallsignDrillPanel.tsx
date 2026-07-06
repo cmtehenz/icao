@@ -125,7 +125,7 @@ export default function CallsignDrillPanel({ initialOpen = true }: Props) {
         <button
           type="button"
           className="btn secondary"
-          disabled={!speech.configured || speech.speaking || azure.assessing}
+          disabled={speech.speaking || azure.assessing}
           onClick={() => void listenModel()}
         >
           {speech.speaking ? "Ouvindo…" : "🔊 Ouvir modelo"}
@@ -134,7 +134,7 @@ export default function CallsignDrillPanel({ initialOpen = true }: Props) {
           <button
             type="button"
             className="btn green"
-            disabled={!azure.configured}
+            disabled={azure.starting}
             onClick={() => void startRecording()}
           >
             ● Gravar

@@ -28,15 +28,29 @@ export async function issueAzureSpeechToken(): Promise<Response> {
     );
 
     if (!res.ok) {
+      const body = await res.text().catch(() => "");
+      console.error("[AzureSpeechToken] STS token request failed", {
+        status: res.status,
+        statusText: res.statusText,
+        region,
+        body: body.slice(0, 500),
+      });
       return Response.json(
-        { configured: true, error: "Falha ao obter token Azure" } satisfies AzureSpeechTokenResponse,
+        {
+          configured: true,
+          error: body.trim() || "Falha ao obter token Azure",
+        } satisfies AzureSpeechTokenResponse,
         { status: 502 },
       );
     }
 
     const token = await res.text();
     return Response.json({ configured: true, token, region } satisfies AzureSpeechTokenResponse);
-  } catch {
+  } catch (err) {
+    console.error("[AzureSpeechToken] STS token request error", {
+      region,
+      error: err instanceof Error ? err.message : String(err),
+    });
     return Response.json(
       { configured: true, error: "Azure indisponível" } satisfies AzureSpeechTokenResponse,
       { status: 502 },

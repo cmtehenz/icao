@@ -3,41 +3,35 @@
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import CallsignDrillPanel from "@/components/Part2Trainer/CallsignDrillPanel";
-import YouGlishLink from "@/components/YouGlishLink";
+import PronunciationLessonSession from "@/components/Part2Trainer/PronunciationLessonSession";
 import WordPhoneticHint from "@/components/WordPhoneticHint";
-import CaptainDeltaTarget from "@/components/CaptainDelta/Visual/CaptainDeltaTarget";
-import { useAzureSpeech } from "@/hooks/useAzureSpeech";
-import { usePronunciationRecordingController } from "@/hooks/usePronunciationRecordingController";
-import type { AzurePronunciationResult } from "@/lib/azure/pronunciation";
-import { errorTypeLabel } from "@/lib/azure/pronunciation";
+import { speakAzureText } from "@/lib/azure/azureTts";
 import {
   clearActivePronunciationWord,
-  getRecordBridgeOwnerId,
   publishActivePronunciationWord,
 } from "@/lib/captainDelta/lessonContext";
 import {
-  PRON_RECORD_DEBUG_EVENT,
-  type PronRecordDebugPayload,
-} from "@/lib/captainDelta/recordRuntimeDebug";
-import {
-  RECORD_TRACE_EVENT,
-  type RecordTracePayload,
-} from "@/lib/captainDelta/pronunciationRecordTrace";
-import {
-  isPronunciationRecordingActive,
   sameStringList,
-  type PronunciationRecordingPhase,
 } from "@/lib/pronunciation/pronunciationRecordingController";
-import { missionCardStatusLine } from "@/lib/pronunciation/missionCardStatusLine";
 import { ensureWordContext } from "@/lib/pronunciationContext";
 import { deriveVaultWordStatus } from "@/lib/pronunciationGraduation";
 import {
+  initialPracticeLevelForWord,
+  practiceLevelAfterVaultRefresh,
+} from "@/lib/pronunciation/practiceLevelSelection";
+import {
   buildDailyPronunciationMission,
   buildMissionDebrief,
-  practiceTextForLevel,
   pronunciationMissionKey,
   type PronunciationMission,
 } from "@/lib/pronunciationMission";
+import {
+  buildPronunciationEntryTrace,
+  nextIncompleteMissionWord,
+  resolvePronunciationEntryWord,
+  shouldMountCallsignDrill,
+  tracePronunciationEntry,
+} from "@/lib/pronunciation/pronunciationEntry";
 import {
   getOrCreatePronunciationDailyMission,
   isPronunciationWordInTodayMission,
@@ -49,21 +43,15 @@ import {
   parseManualVaultInput,
   removeVaultWord,
   VAULT_CHANGE_EVENT,
-  VAULT_PASS_SCORE,
   type PracticeLevel,
   type VaultWord,
 } from "@/lib/pronunciationVault";
-import { splitSyllables, syllableTargetId } from "@/lib/captainDelta/visual/syllables";
 import {
   CAPTAIN_MISSION_DEBRIEF,
   CAPTAIN_MISSION_INTRO,
-  levelLabel,
   statusLabel,
 } from "@/lib/pronunciationCoach";
-import { useCallback, useEffect, useMemo, useRef, useState, type FormEvent, type KeyboardEvent } from "react";
-
-const LEVELS: PracticeLevel[] = [1, 2, 3, 4];
-const LEVEL_PANEL_ID = "pron-level-panel";
+import { useCallback, useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 
 function statusClass(status: ReturnType<typeof deriveVaultWordStatus>): string {
   if (status === "critical") return "critical";
@@ -182,31 +170,20 @@ export default function PronunciationWordsMode() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const recordDebug = searchParams.get("recordDebug") === "1";
+  const missionWordParam = searchParams.get("word")?.trim() ?? null;
   const [words, setWords] = useState<VaultWord[]>([]);
   const [activeWord, setActiveWord] = useState<VaultWord | null>(null);
   const [practiceLevel, setPracticeLevel] = useState<PracticeLevel>(1);
-  const [lastPracticeScore, setLastPracticeScore] = useState<number | null>(null);
-  const [lastResult, setLastResult] = useState<AzurePronunciationResult | null>(null);
   const [mission, setMission] = useState<PronunciationMission | null>(null);
   const [missionProgress, setMissionProgress] = useState<string[]>([]);
   const [missionLegActive, setMissionLegActive] = useState(false);
   const [showDebrief, setShowDebrief] = useState(false);
-  const [recordTraceLine, setRecordTraceLine] = useState<{
-    at: number;
-    step: string;
-    reason: string;
-  } | null>(null);
-  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
-  const [recordDebugState, setRecordDebugState] = useState({
-    lastEvent: "—",
-    lastAt: 0,
-    hitTarget: "—",
-    handlerReached: false,
-  });
-  const speech = useAzureSpeech();
+  const [entryResolved, setEntryResolved] = useState(!missionWordParam);
+  const [missionEntryMissing, setMissionEntryMissing] = useState(false);
+  const [listenWord, setListenWord] = useState<string | null>(null);
+  const [listenError, setListenError] = useState<string | null>(null);
+  const userLevelOverrideRef = useRef(false);
   const selectWordRef = useRef<(item: VaultWord) => void>(() => {});
-  const resetRecordingRef = useRef<() => void>(() => {});
-  const recorderPhaseRef = useRef<PronunciationRecordingPhase>("idle");
 
   const refresh = useCallback(() => {
     const vault = loadVault();
@@ -219,52 +196,6 @@ export default function PronunciationWordsMode() {
     });
     setMissionProgress((prev) => (sameStringList(prev, progress) ? prev : progress));
   }, []);
-
-  const recording = usePronunciationRecordingController({
-    activeWord,
-    practiceLevel,
-    missionLegActive,
-    mission,
-    onVaultRefresh: refresh,
-    onMissionProgress: setMissionProgress,
-    onSelectNextMissionWord: (completedKeys) => {
-      const daily = getOrCreatePronunciationDailyMission();
-      if (completedKeys.length >= daily.words.length) {
-        setShowDebrief(true);
-        setActiveWord(null);
-        return;
-      }
-      const nextWord = daily.words.find((w) => !completedKeys.includes(w.toLowerCase()));
-      if (!nextWord) {
-        setShowDebrief(true);
-        setActiveWord(null);
-        return;
-      }
-      const match = loadVault().find((w) => w.word.toLowerCase() === nextWord.toLowerCase());
-      if (match) selectWordRef.current(match);
-    },
-    onWordAdvanced: (word, level) => {
-      setActiveWord(word);
-      setPracticeLevel(level);
-    },
-    onWordCleared: () => setActiveWord(null),
-  });
-
-  resetRecordingRef.current = recording.reset;
-  recorderPhaseRef.current = recording.state.phase;
-
-  const { micUi, captainNote, captainDebrief, recordNotice, activityNote, azureEnvMissing, state: recorderState } =
-    recording;
-
-  useEffect(() => {
-    if (recorderState.phase !== "success" || recorderState.score == null) return;
-    setLastPracticeScore((prev) =>
-      prev === recorderState.score ? prev : recorderState.score,
-    );
-    setLastResult((prev) =>
-      prev === recorderState.assessment ? prev : recorderState.assessment,
-    );
-  }, [recorderState.phase, recorderState.score, recorderState.assessment]);
 
   useEffect(() => {
     refresh();
@@ -283,27 +214,40 @@ export default function PronunciationWordsMode() {
 
   const browseMode = !missionLegActive && !showDebrief;
   const callsignOpen = searchParams.get("callsign") === "1";
+  const showCallsignDrill = shouldMountCallsignDrill(
+    browseMode,
+    activeWord,
+    missionLegActive,
+    missionWordParam,
+  );
+
+  const listenVaultWord = useCallback(async (word: string) => {
+    setListenError(null);
+    setListenWord(word);
+    const ok = await speakAzureText(word, "female_examiner", 1, (msg) => setListenError(msg));
+    setListenWord(null);
+    if (!ok) {
+      setListenError((prev) => prev ?? "Azure Speech is unavailable. Try again when logged in.");
+    }
+  }, []);
 
   const selectWord = useCallback((item: VaultWord) => {
     const pack = ensureWordContext(item.word, item.contextPack);
     const enriched = { ...item, contextPack: pack };
     const sameWord = activeWord?.word.toLowerCase() === item.word.toLowerCase();
+    const recommended = initialPracticeLevelForWord(enriched);
 
     if (sameWord) {
       setActiveWord(enriched);
-      setPracticeLevel(item.practiceLevel ?? 1);
+      if (!userLevelOverrideRef.current) {
+        setPracticeLevel(recommended);
+      }
       return;
     }
 
-    if (isPronunciationRecordingActive(recorderPhaseRef.current)) {
-      return;
-    }
-
+    userLevelOverrideRef.current = false;
     setActiveWord(enriched);
-    setPracticeLevel(item.practiceLevel ?? 1);
-    setLastPracticeScore(null);
-    setLastResult(null);
-    resetRecordingRef.current();
+    setPracticeLevel(recommended);
     if (isPronunciationWordInTodayMission(item.word)) {
       setMissionLegActive(true);
     }
@@ -312,8 +256,13 @@ export default function PronunciationWordsMode() {
   selectWordRef.current = selectWord;
 
   useEffect(() => {
-    const requested = searchParams.get("word")?.trim().toLowerCase();
-    if (!requested || !words.length) return;
+    const requested = missionWordParam?.toLowerCase();
+    if (!requested) {
+      setEntryResolved(true);
+      setMissionEntryMissing(false);
+      return;
+    }
+
     const daily = getOrCreatePronunciationDailyMission();
     const m = missionFromDaily(words);
     setMission((prev) => {
@@ -324,15 +273,50 @@ export default function PronunciationWordsMode() {
     setMissionProgress((prev) =>
       sameStringList(prev, daily.completedWords) ? prev : daily.completedWords,
     );
-    if (daily.words.some((w) => w.toLowerCase() === requested)) {
-      setMissionLegActive((prev) => (prev ? prev : true));
-      setShowDebrief((prev) => (prev ? false : prev));
+
+    const inDaily = daily.words.some((w) => w.toLowerCase() === requested);
+    if (!inDaily) {
+      setMissionEntryMissing(true);
+      setEntryResolved(true);
+      return;
     }
-    const match = words.find((w) => w.word.toLowerCase() === requested);
-    if (match && activeWord?.word.toLowerCase() !== requested) {
-      selectWordRef.current(match);
+
+    const resolved = resolvePronunciationEntryWord(requested, words);
+    if (resolved) {
+      setMissionLegActive(true);
+      setShowDebrief(false);
+      setMissionEntryMissing(false);
+      setEntryResolved(true);
+      if (activeWord?.word.toLowerCase() !== requested) {
+        selectWordRef.current(resolved);
+      }
+    } else {
+      setMissionEntryMissing(true);
+      setEntryResolved(true);
     }
-  }, [searchParams, words, activeWord?.word]);
+  }, [missionWordParam, words, activeWord?.word]);
+
+  useEffect(() => {
+    if (!activeWord?.word || !words.length) return;
+    const fresh = words.find((w) => w.word.toLowerCase() === activeWord.word.toLowerCase());
+    if (!fresh) return;
+    const pack = ensureWordContext(fresh.word, fresh.contextPack);
+    const enriched = { ...fresh, contextPack: pack };
+    setActiveWord((prev) => {
+      if (!prev || prev.word.toLowerCase() !== enriched.word.toLowerCase()) return prev;
+      if (
+        prev.practiceLevel === enriched.practiceLevel &&
+        prev.status === enriched.status &&
+        prev.lastAccuracy === enriched.lastAccuracy
+      ) {
+        return prev;
+      }
+      return enriched;
+    });
+    setPracticeLevel((prev) =>
+      practiceLevelAfterVaultRefresh(enriched, prev, userLevelOverrideRef.current),
+    );
+  }, [activeWord?.word, words]);
 
   useEffect(() => {
     publishActivePronunciationWord(activeWord?.word ?? null);
@@ -343,55 +327,25 @@ export default function PronunciationWordsMode() {
   }, []);
 
   useEffect(() => {
-    const onTrace = (e: Event) => {
-      const detail = (e as CustomEvent<RecordTracePayload>).detail;
-      if (!detail) return;
-      setRecordTraceLine({
-        at: detail.at,
-        step: detail.step,
-        reason: detail.reason,
-      });
-    };
-    window.addEventListener(RECORD_TRACE_EVENT, onTrace);
-    return () => window.removeEventListener(RECORD_TRACE_EVENT, onTrace);
-  }, []);
-
-  useEffect(() => {
-    if (!recordDebug) return;
-    const onDebug = (e: Event) => {
-      const detail = (e as CustomEvent<PronRecordDebugPayload>).detail;
-      if (!detail) return;
-      setRecordDebugState((prev) => ({
-        ...prev,
-        lastEvent: `${detail.source}:${detail.phase}`,
-        lastAt: Date.now(),
-        hitTarget: detail.hitTarget ?? prev.hitTarget,
-        handlerReached:
-          detail.phase === "click" && detail.source === "captain-primary"
-            ? true
-            : prev.handlerReached,
-      }));
-    };
-    window.addEventListener(PRON_RECORD_DEBUG_EVENT, onDebug);
-    return () => window.removeEventListener(PRON_RECORD_DEBUG_EVENT, onDebug);
-  }, [recordDebug]);
-
-  const handleLevelTabKeyDown = (e: KeyboardEvent<HTMLButtonElement>, lvl: PracticeLevel) => {
-    const unlocked = activeWord?.practiceLevel ?? 1;
-    const idx = LEVELS.indexOf(lvl);
-    if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
-    e.preventDefault();
-    const dir = e.key === "ArrowRight" ? 1 : -1;
-    let next = idx;
-    for (let i = 0; i < LEVELS.length; i += 1) {
-      next = (next + dir + LEVELS.length) % LEVELS.length;
-      if (LEVELS[next] <= unlocked) {
-        setPracticeLevel(LEVELS[next]);
-        tabRefs.current[next]?.focus();
-        break;
-      }
-    }
-  };
+    const route =
+      pathname + (searchParams.toString() ? `?${searchParams.toString()}` : "");
+    tracePronunciationEntry(
+      buildPronunciationEntryTrace({
+        route,
+        missionWordParam,
+        activeWord,
+        missionLegActive,
+        callsignMounted: showCallsignDrill,
+      }),
+    );
+  }, [
+    pathname,
+    searchParams,
+    missionWordParam,
+    activeWord,
+    missionLegActive,
+    showCallsignDrill,
+  ]);
 
   const startMission = () => {
     const daily = getOrCreatePronunciationDailyMission();
@@ -400,20 +354,27 @@ export default function PronunciationWordsMode() {
     setMissionProgress(daily.completedWords);
     setMissionLegActive(true);
     setShowDebrief(false);
-    const nextWord =
-      daily.words.find((w) => !daily.completedWords.includes(w.toLowerCase())) ??
-      m.words[0]?.word.word;
-    if (nextWord) {
-      const match = words.find((w) => w.word.toLowerCase() === nextWord.toLowerCase());
-      if (match) selectWord(match);
+    setMissionEntryMissing(false);
+    const next = nextIncompleteMissionWord(words);
+    if (next) {
+      selectWord(next);
+    } else {
+      setMissionEntryMissing(true);
     }
   };
 
-  if (!words.length) {
+  const missionEmptyState =
+    entryResolved &&
+    !activeWord &&
+    !showDebrief &&
+    (missionEntryMissing ||
+      (missionLegActive && (mission?.words.length ?? 0) === 0));
+
+  if (!words.length && !missionWordParam && !missionLegActive && !showDebrief) {
     return (
       <div className="pronunciation-leg">
-        {browseMode && !activeWord && <CallsignDrillPanel initialOpen={callsignOpen} />}
-        {browseMode && !activeWord && <VaultAddWordsForm onAdded={refresh} />}
+        {showCallsignDrill && <CallsignDrillPanel initialOpen={callsignOpen} />}
+        <VaultAddWordsForm onAdded={refresh} />
         <section className="pron-mission-card pronunciation-empty-card">
           <p className="pron-mission-badge">Captain Delta · ENGINE START</p>
           <h2>Add words to begin today&apos;s pronunciation leg</h2>
@@ -426,9 +387,6 @@ export default function PronunciationWordsMode() {
     );
   }
 
-  const pack = activeWord ? ensureWordContext(activeWord.word, activeWord.contextPack) : null;
-  const wordStatus = activeWord ? deriveVaultWordStatus(activeWord) : null;
-  const maxLevel = activeWord?.practiceLevel ?? 1;
   const missionTotal = mission?.words.length ?? 0;
 
   return (
@@ -439,10 +397,25 @@ export default function PronunciationWordsMode() {
         </p>
       )}
 
-      {browseMode && !activeWord && <CallsignDrillPanel initialOpen={callsignOpen} />}
+      {showCallsignDrill && <CallsignDrillPanel initialOpen={callsignOpen} />}
       {browseMode && !activeWord && <VaultAddWordsForm onAdded={refresh} />}
 
-      {!activeWord && !showDebrief && browseMode && (
+      {missionEmptyState && (
+        <section className="pron-mission-card pronunciation-empty-card">
+          <p className="pron-mission-badge">Captain Delta · MISSION HOLD</p>
+          <h2>Today&apos;s pronunciation word is not available</h2>
+          <p className="sub">
+            {missionWordParam
+              ? `"${missionWordParam}" is not in your vault or today's mission. Add it below or pick another word.`
+              : "No mission words are ready. Add words to your vault, then start the pronunciation leg again."}
+          </p>
+          <Link href="/" className="btn secondary">
+            Back to Home
+          </Link>
+        </section>
+      )}
+
+      {!activeWord && !showDebrief && browseMode && !missionEmptyState && (
         <section className="pron-mission-card">
           <p className="pron-mission-badge">Captain Delta · ENGINE START</p>
           <p className="pron-mission-quote">&ldquo;{CAPTAIN_MISSION_INTRO}&rdquo;</p>
@@ -501,229 +474,49 @@ export default function PronunciationWordsMode() {
         </section>
       )}
 
-      {activeWord && pack ? (
-        <article className="card card-essential part2-card vault-practice-card">
-          <div className="card-top">
-            <div className="pron-level-tabs" role="tablist" aria-label="Practice level">
-              {LEVELS.map((lvl, i) => (
-                <button
-                  key={lvl}
-                  ref={(el) => {
-                    tabRefs.current[i] = el;
-                  }}
-                  type="button"
-                  role="tab"
-                  id={`pron-level-tab-${lvl}`}
-                  aria-controls={LEVEL_PANEL_ID}
-                  aria-selected={practiceLevel === lvl}
-                  tabIndex={practiceLevel === lvl ? 0 : -1}
-                  className={`pron-level-tab ${practiceLevel === lvl ? "active" : ""} ${lvl > maxLevel ? "locked" : ""}`}
-                  onClick={() => lvl <= maxLevel && setPracticeLevel(lvl)}
-                  onKeyDown={(e) => handleLevelTabKeyDown(e, lvl)}
-                  disabled={lvl > maxLevel}
-                >
-                  L{lvl}: {levelLabel(lvl)}
-                </button>
-              ))}
-            </div>
+      {activeWord && (
+        <PronunciationLessonSession
+          key={activeWord.word}
+          activeWord={activeWord}
+          practiceLevel={practiceLevel}
+          missionLegActive={missionLegActive}
+          mission={mission}
+          recordDebug={recordDebug}
+          userLevelOverrideRef={userLevelOverrideRef}
+          onPracticeLevelChange={setPracticeLevel}
+          onVaultRefresh={refresh}
+          onMissionProgress={setMissionProgress}
+          onSelectNextMissionWord={(completedKeys) => {
+            const daily = getOrCreatePronunciationDailyMission();
+            if (completedKeys.length >= daily.words.length) {
+              setShowDebrief(true);
+              setActiveWord(null);
+              return;
+            }
+            const nextWord = daily.words.find((w) => !completedKeys.includes(w.toLowerCase()));
+            if (!nextWord) {
+              setShowDebrief(true);
+              setActiveWord(null);
+              return;
+            }
+            const resolved = resolvePronunciationEntryWord(nextWord, loadVault());
+            if (resolved) selectWordRef.current(resolved);
+          }}
+          onWordAdvanced={(word, level) => {
+            userLevelOverrideRef.current = false;
+            setActiveWord(word);
+            setPracticeLevel(level);
+          }}
+          onWordCleared={() => setActiveWord(null)}
+          onPracticeLevelBelowStored={(level) => {
+            userLevelOverrideRef.current = false;
+            setPracticeLevel(level);
+          }}
+          onClearWord={() => setActiveWord(null)}
+        />
+      )}
 
-            <span className={`pron-word-status pron-word-status-${statusClass(wordStatus!)}`}>
-              {statusLabel(wordStatus!)}
-            </span>
-
-            <div
-              id={LEVEL_PANEL_ID}
-              role="tabpanel"
-              aria-labelledby={`pron-level-tab-${practiceLevel}`}
-            >
-            <h2 className="question">
-              {practiceLevel === 1 && (
-                <>
-                  Word:{" "}
-                  <CaptainDeltaTarget id="pronunciation-word" className="cdv-pronunciation-word">
-                    {splitSyllables(activeWord.word).map((syll, i, arr) => (
-                      <CaptainDeltaTarget
-                        key={`${syll}-${i}`}
-                        id={syllableTargetId(syll)}
-                        className="cdv-syllable"
-                      >
-                        {syll}
-                        {i < arr.length - 1 ? "·" : ""}
-                      </CaptainDeltaTarget>
-                    ))}
-                  </CaptainDeltaTarget>
-                </>
-              )}
-              {practiceLevel === 2 && <>Expression: {pack.expression}</>}
-              {practiceLevel === 3 && <>Sentence: {pack.sentence}</>}
-              {practiceLevel === 4 && <>ICAO: {pack.icaoPrompt}</>}
-              <WordPhoneticHint word={activeWord.word} />
-            </h2>
-
-            {practiceLevel === 4 && (
-              <p className="pron-model-fragment">
-                Model fragment: <em>{pack.fragment}</em>
-              </p>
-            )}
-
-            {captainDebrief && (
-              <div className="pron-captain-coaching-card">
-                <h3 className="pron-captain-coaching-title">Captain feedback</h3>
-                <p className="pron-captain-coaching-message">{captainDebrief.message}</p>
-                {captainDebrief.focusLabel && (
-                  <p className="pron-captain-coaching-focus">
-                    Focus: {captainDebrief.focusLabel}
-                  </p>
-                )}
-                {captainDebrief.showYouGlish && captainDebrief.youGlishQuery && (
-                  <YouGlishLink
-                    word={captainDebrief.youGlishQuery}
-                    compact
-                    label="Watch real examples"
-                    className="pron-captain-youglish"
-                  />
-                )}
-                <details className="pron-captain-technical">
-                  <summary>Technical details</summary>
-                  <p>{captainDebrief.technicalDetails}</p>
-                </details>
-              </div>
-            )}
-            {!captainDebrief && captainNote && (
-              <p className="pron-captain-feedback">Captain Delta: {captainNote}</p>
-            )}
-
-            {!missionLegActive && (
-              <div className="vault-youglish-row">
-                <YouGlishLink word={activeWord.word} />
-              </div>
-            )}
-            <p className="part2-situation">Context: {activeWord.context || "—"}</p>
-            </div>
-          </div>
-
-          <div className="card-body">
-            {azureEnvMissing && (
-              <p className="voice-coach-warn">
-                Azure Speech is not configured. Recording will not work until speech keys are set.
-              </p>
-            )}
-
-            <div
-              className={`pron-captain-recorder-panel pron-captain-recorder-panel--${micUi.visualState}`}
-              role="status"
-              aria-live="polite"
-            >
-              <p className="pron-captain-recorder-line">
-                <span className="pron-captain-recorder-label">Captain Recorder</span>
-                <span aria-hidden> · </span>
-                <span className="pron-captain-recorder-status-label">Status:</span>{" "}
-                <span
-                  className={`pron-captain-recorder-status pron-captain-recorder-status--${micUi.visualState}`}
-                >
-                  {missionCardStatusLine(recorderState.phase)}
-                </span>
-              </p>
-            </div>
-
-            <div className="voice-coach-actions pronunciation-record-actions">
-              {recordDebug && (
-                <pre className="pron-record-debug" aria-live="polite">
-                  {`captain recorder: ${micUi.primaryLabel} (${micUi.phase})
-last event: ${recordDebugState.lastEvent}
-handler reached: ${recordDebugState.handlerReached ? "yes" : "no"}
-activeWord: ${activeWord?.word ?? "—"}
-referenceText: ${activeWord ? practiceTextForLevel(activeWord, practiceLevel) : "—"}
-controller.phase: ${recorderState.phase}
-speech.speaking: ${String(speech.speaking)}
-bridge owner: ${getRecordBridgeOwnerId() ?? "—"}
-pathname: ${pathname}`}
-                </pre>
-              )}
-              <button
-                type="button"
-                className="btn secondary"
-                onClick={() => void recording.listen()}
-                disabled={
-                  speech.speaking ||
-                  isPronunciationRecordingActive(recorderState.phase) ||
-                  !speech.configured
-                }
-                aria-label="Listen to model pronunciation"
-              >
-                {speech.speaking ? "Playing…" : "Listen"}
-              </button>
-              {!missionLegActive && (
-                <button
-                  type="button"
-                  className="btn secondary"
-                  onClick={() => {
-                    setActiveWord(null);
-                    recording.reset();
-                  }}
-                  disabled={isPronunciationRecordingActive(recorderState.phase)}
-                >
-                  Back to list
-                </button>
-              )}
-            </div>
-
-            <p className="pron-record-trace" aria-live="polite">
-              Last record click:{" "}
-              {recordTraceLine
-                ? `${new Date(recordTraceLine.at).toLocaleTimeString()} · stopped at ${recordTraceLine.step}${recordTraceLine.reason ? ` · ${recordTraceLine.reason}` : ""}`
-                : "—"}
-            </p>
-
-            {(recordNotice || speech.error) && micUi.phase === "idle" && (
-              <p className="pron-recording-state pron-recording-state-error" role="alert">
-                {recordNotice ?? speech.error}
-              </p>
-            )}
-            {(recorderState.phase === "error" ||
-              (lastPracticeScore !== null && lastPracticeScore < 80)) && (
-              <p className="pron-recovery-guidance">Listen → slow down → retry.</p>
-            )}
-            {lastPracticeScore !== null && (
-              <p
-                className={`vault-practice-result ${
-                  lastPracticeScore >= VAULT_PASS_SCORE ? "good" : "bad"
-                }`}
-              >
-                {lastPracticeScore}% — {levelLabel(practiceLevel)}
-                {lastPracticeScore >= 90
-                  ? " · Excellent"
-                  : lastPracticeScore >= VAULT_PASS_SCORE
-                    ? " · Good"
-                    : " · Keep practicing"}
-              </p>
-            )}
-            {activityNote && <p className="voice-coach-warn">{activityNote}</p>}
-
-            {lastResult && (
-              <div className="voice-coach-azure-scores vault-azure-scores">
-                <div className="voice-score">
-                  <strong>{lastResult.accuracyScore}</strong>
-                  <span>accuracy</span>
-                </div>
-                <div className="voice-score">
-                  <strong>{lastResult.fluencyScore}</strong>
-                  <span>fluency</span>
-                </div>
-              </div>
-            )}
-            {lastResult?.words
-              .filter((w) => w.errorType && w.errorType !== "None")
-              .map((w) => (
-                <p key={w.word} className="vault-word-azure-detail">
-                  {w.word}: {w.accuracyScore}% — {errorTypeLabel(w.errorType)}
-                </p>
-              ))}
-          </div>
-        </article>
-      ) : (
-        !showDebrief &&
-        browseMode && (
+      {!activeWord && !showDebrief && browseMode && !missionEmptyState && (
           <ul className="vault-word-list">
             {words.map((item) => {
               const st = deriveVaultWordStatus(item);
@@ -754,10 +547,10 @@ pathname: ${pathname}`}
                     <button
                       type="button"
                       className="btn secondary btn-sm"
-                      onClick={() => void speech.speak(item.word)}
-                      disabled={speech.speaking || !speech.configured}
+                      onClick={() => void listenVaultWord(item.word)}
+                      disabled={listenWord === item.word}
                     >
-                      Listen
+                      {listenWord === item.word ? "Playing…" : "Listen"}
                     </button>
                     <button type="button" className="btn green btn-sm" onClick={() => selectWord(item)}>
                       Practice
@@ -777,7 +570,12 @@ pathname: ${pathname}`}
               );
             })}
           </ul>
-        )
+        )}
+
+      {listenError && browseMode && (
+        <p className="pron-recording-state pron-recording-state-error" role="alert">
+          {listenError}
+        </p>
       )}
     </div>
   );
