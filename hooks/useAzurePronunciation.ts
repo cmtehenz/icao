@@ -3,15 +3,72 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
   acquireRecordingSession,
-  createRecordingSessionId,
+  forceReleaseRecordingSession,
   isRecordingGenerationStale,
+  isRecordingSessionActive,
   releaseRecordingSession,
+  resetRecordingStartChain,
   runRecordingStart,
+  closeRecognizerOnly,
+  stopContinuousRecognition,
   safeStopAndCloseRecognizer,
   trackRecognizer,
+  waitForRecordingIdle,
 } from "@/lib/azure/recognizerSession";
+import {
+  ASSESSMENT_DRAIN_MS,
+  createAssessmentDrainWait,
+  type AssessmentDrainSignal,
+} from "@/lib/azure/assessmentDrain";
+import { assessmentFailure, type AssessmentFailure } from "@/lib/azure/assessmentFailure";
+import {
+  AZURE_SPEECH_SDK_PACKAGE_VERSION,
+  traceAssessmentError,
+  traceAssessmentStep,
+} from "@/lib/azure/assessmentTrace";
+import { traceAzureStartError, traceAzureStartStep } from "@/lib/azure/azureStartTrace";
+import {
+  collectSpeechResultPropertyIds,
+  hasValidStoredSegments,
+  isDuplicateAssessmentSegment,
+  isNonSpeechTrailingSegment,
+  isTerminalRecognizedCallback,
+  isValidAssessmentSegment,
+  mergeAssessmentSegments,
+  mergeSdkAndJsonAssessment,
+  parsePronunciationAssessmentJson,
+  parseSdkPronunciationScores,
+  resolveStopAssessmentFailure,
+} from "@/lib/azure/parsePronunciationAssessment";
+import {
+  type AzureRecordingPhase,
+  MIC_PERMISSION_GUIDANCE,
+  MIC_START_FAILED,
+  RECORD_STARTUP_TIMEOUTS,
+  recordingPhaseLabel as getRecordingPhaseLabel,
+  withStartupTimeout,
+} from "@/lib/azure/recordingStartup";
+import {
+  shouldDrainRecognizerOnStop,
+  type RecognizerLifecycle,
+} from "@/lib/azure/recognizerLifecycle";
+import {
+  emptyAssessmentMeta,
+  ensurePronunciationForceReleaseListener,
+  getPronunciationRecordingStore,
+  registerPronunciationHookMount,
+  scheduleDeferredPronunciationTeardown,
+  subscribePronunciationForceRelease,
+  teardownPronunciationRecordingStore,
+  type AzureStopResult,
+} from "@/lib/azure/pronunciationRecordingStore";
+import { traceRecordStep } from "@/lib/captainDelta/pronunciationRecordTrace";
+import {
+  shouldAllowPronunciationStop,
+  type PronunciationStopSource,
+} from "@/lib/azure/pronunciationStop";
 import { loadSpeechSdk } from "@/lib/azure/loadSpeechSdk";
-import type { AzurePronunciationResult, AzureWordScore } from "@/lib/azure/pronunciation";
+import type { AzurePronunciationResult } from "@/lib/azure/pronunciation";
 import { azureReferenceText, useUnscriptedPronunciation } from "@/lib/azure/pronunciation";
 import type { EvaluateType } from "@/lib/evaluate/types";
 import { preferredRecorderMime } from "@/lib/recordings/platform";
@@ -19,87 +76,105 @@ import { toUniversalPlayableBlob } from "@/lib/recordings/toPlayableBlob";
 
 type Segment = AzurePronunciationResult;
 
-export type AzureStopResult = {
-  assessment: AzurePronunciationResult | null;
-  audioBlob: Blob | null;
-};
+export type { PronunciationStopSource };
 
-function avg(nums: number[]): number {
-  if (!nums.length) return 0;
-  return Math.round(nums.reduce((a, b) => a + b, 0) / nums.length);
+export type { AzureRecordingPhase, AssessmentFailure, AzureStopResult };
+
+function rs() {
+  return getPronunciationRecordingStore();
 }
 
-function mergeSegments(segments: Segment[]): AzurePronunciationResult | null {
-  if (!segments.length) return null;
-  const words: AzureWordScore[] = [];
-  for (const s of segments) words.push(...s.words);
-
-  return {
-    accuracyScore: avg(segments.map((s) => s.accuracyScore)),
-    fluencyScore: avg(segments.map((s) => s.fluencyScore)),
-    completenessScore: avg(segments.map((s) => s.completenessScore)),
-    prosodyScore: avg(segments.map((s) => s.prosodyScore)),
-    recognizedText: segments.map((s) => s.recognizedText).filter(Boolean).join(" "),
-    words,
-  };
-}
-
-function parseWordScores(json: {
-  NBest?: Array<{
-    Words?: Array<{
-      Word: string;
-      AccuracyScore?: number;
-      PronunciationAssessment?: { AccuracyScore?: number; ErrorType?: string };
-    }>;
-  }>;
-}): AzureWordScore[] {
-  const words = json.NBest?.[0]?.Words ?? [];
-  return words.map((w) => {
-    const pa = w.PronunciationAssessment;
-    return {
-      word: w.Word,
-      accuracyScore: Math.round(pa?.AccuracyScore ?? w.AccuracyScore ?? 0),
-      errorType: pa?.ErrorType ?? "None",
-    };
-  });
+function isMicPermissionError(err: unknown): boolean {
+  if (!(err instanceof DOMException)) return false;
+  return err.name === "NotAllowedError" || err.name === "PermissionDeniedError";
 }
 
 export function useAzurePronunciation() {
   const [configured, setConfigured] = useState(false);
   const [assessing, setAssessing] = useState(false);
+  const [recordingPhase, setRecordingPhase] = useState<AzureRecordingPhase>("idle");
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<AzurePronunciationResult | null>(null);
-  const recognizerRef = useRef<{ close: () => void } | null>(null);
-  const segmentsRef = useRef<Segment[]>([]);
-  const streamRef = useRef<MediaStream | null>(null);
-  const recorderRef = useRef<MediaRecorder | null>(null);
-  const chunksRef = useRef<Blob[]>([]);
-  const sessionIdRef = useRef(createRecordingSessionId("pronunciation"));
-  const generationRef = useRef(0);
-  const stoppingRef = useRef(false);
+  const [recordingReady, setRecordingReady] = useState(false);
+  const [lifecycle, setLifecycle] = useState<RecognizerLifecycle>("idle");
+  const assessmentDrainSignalRef = useRef<AssessmentDrainSignal | null>(null);
   const mountedRef = useRef(true);
 
+  const starting =
+    recordingPhase === "preparing" ||
+    recordingPhase === "permission" ||
+    recordingPhase === "connecting";
+
+  const recordingPhaseLabel = getRecordingPhaseLabel(recordingPhase);
+
+  const syncReactFromStore = useCallback(() => {
+    const s = rs();
+    setLifecycle(s.lifecycle);
+    if (s.lifecycle === "listening") {
+      setRecordingReady(true);
+      setAssessing(true);
+      setRecordingPhase("recording");
+    } else if (s.lifecycle === "stopping") {
+      setRecordingReady(false);
+      setAssessing(true);
+      setRecordingPhase("assessing");
+    } else if (s.lifecycle === "starting") {
+      setRecordingReady(false);
+      setAssessing(false);
+      setRecordingPhase((prev) => (prev === "idle" ? "connecting" : prev));
+    } else {
+      setRecordingReady(false);
+      if (s.lifecycle === "idle") setAssessing(false);
+    }
+  }, []);
+
+  const resetLifecycle = useCallback(() => {
+    const s = rs();
+    s.lifecycle = "idle";
+    s.listeningReady = false;
+    s.startListeningPromise = null;
+    setRecordingReady(false);
+  }, []);
+
+  const waitForSessionIdle = useCallback(async (): Promise<void> => {
+    const s = rs();
+    if (s.stopPromise) {
+      traceRecordStep("awaitStop", "waiting for in-flight stop");
+      await s.stopPromise;
+    }
+    if (s.startListeningPromise && s.lifecycle === "starting") {
+      traceRecordStep("awaitStop", "waiting for recognizer start to settle");
+      try {
+        await s.startListeningPromise;
+      } catch {
+        /* start failed */
+      }
+    }
+  }, []);
+
+  ensurePronunciationForceReleaseListener();
+
   useEffect(() => {
+    const unregisterMount = registerPronunciationHookMount();
     mountedRef.current = true;
+    syncReactFromStore();
+
+    const unsubForceRelease = subscribePronunciationForceRelease(() => {
+      if (!mountedRef.current) return;
+      setAssessing(false);
+      setRecordingReady(false);
+      setRecordingPhase("idle");
+    });
+
     return () => {
       mountedRef.current = false;
-      const rec = recognizerRef.current;
-      recognizerRef.current = null;
-      safeStopAndCloseRecognizer(rec, () => {
-        releaseRecordingSession(sessionIdRef.current);
+      unsubForceRelease();
+      unregisterMount();
+      scheduleDeferredPronunciationTeardown(() => {
+        teardownPronunciationRecordingStore();
       });
-      streamRef.current?.getTracks().forEach((t) => t.stop());
-      streamRef.current = null;
-      if (recorderRef.current && recorderRef.current.state !== "inactive") {
-        try {
-          recorderRef.current.stop();
-        } catch {
-          /* ignore */
-        }
-      }
-      recorderRef.current = null;
     };
-  }, []);
+  }, [syncReactFromStore]);
 
   useEffect(() => {
     fetch("/api/azure-speech-token")
@@ -110,10 +185,10 @@ export function useAzurePronunciation() {
 
   const stopMicCapture = useCallback((): Promise<Blob | null> => {
     return new Promise((resolve) => {
-      const recorder = recorderRef.current;
+      const recorder = rs().recorder;
       if (!recorder || recorder.state === "inactive") {
-        streamRef.current?.getTracks().forEach((t) => t.stop());
-        streamRef.current = null;
+        rs().stream?.getTracks().forEach((t) => t.stop());
+        rs().stream = null;
         resolve(null);
         return;
       }
@@ -121,135 +196,435 @@ export function useAzurePronunciation() {
       recorder.onstop = () => {
         const mimeType = recorder.mimeType || "audio/mp4";
         const blob =
-          chunksRef.current.length > 0 ? new Blob(chunksRef.current, { type: mimeType }) : null;
-        streamRef.current?.getTracks().forEach((t) => t.stop());
-        streamRef.current = null;
-        recorderRef.current = null;
-        chunksRef.current = [];
+          rs().chunks.length > 0 ? new Blob(rs().chunks, { type: mimeType }) : null;
+        rs().stream?.getTracks().forEach((t) => t.stop());
+        rs().stream = null;
+        rs().recorder = null;
+        rs().chunks = [];
         resolve(blob && blob.size > 0 ? blob : null);
       };
 
       try {
         recorder.stop();
       } catch {
-        streamRef.current?.getTracks().forEach((t) => t.stop());
-        streamRef.current = null;
-        recorderRef.current = null;
-        chunksRef.current = [];
+        rs().stream?.getTracks().forEach((t) => t.stop());
+        rs().stream = null;
+        rs().recorder = null;
+        rs().chunks = [];
         resolve(null);
       }
     });
   }, []);
 
-  const startMicCapture = useCallback(async () => {
-    if (typeof MediaRecorder === "undefined" || !navigator.mediaDevices?.getUserMedia) return;
-
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      streamRef.current = stream;
-      const mimeType = preferredRecorderMime();
-      const recorder = mimeType
-        ? new MediaRecorder(stream, { mimeType })
-        : new MediaRecorder(stream);
-      chunksRef.current = [];
-      recorder.ondataavailable = (e) => {
-        if (e.data.size > 0) chunksRef.current.push(e.data);
-      };
-      recorder.start(1000);
-      recorderRef.current = recorder;
-    } catch (e) {
-      console.warn("[mic] MediaRecorder failed — Azure transcript will save without audio", e);
+  const requestMicCapture = useCallback(async () => {
+    if (typeof MediaRecorder === "undefined" || !navigator.mediaDevices?.getUserMedia) {
+      traceAzureStartStep(2, "before getUserMedia() — skipped (no MediaRecorder/getUserMedia)");
+      return;
     }
+
+    traceAzureStartStep(2, "before getUserMedia()");
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    traceAzureStartStep(3, "after getUserMedia()", {
+      trackCount: stream.getTracks().length,
+      labels: stream.getTracks().map((t) => t.label),
+    });
+    rs().stream = stream;
+    const mimeType = preferredRecorderMime();
+    const recorder = mimeType
+      ? new MediaRecorder(stream, { mimeType })
+      : new MediaRecorder(stream);
+    rs().chunks = [];
+    recorder.ondataavailable = (e) => {
+      if (e.data.size > 0) rs().chunks.push(e.data);
+    };
+    recorder.start(1000);
+    rs().recorder = recorder;
   }, []);
 
-  const stop = useCallback((): Promise<AzureStopResult> => {
-    if (stoppingRef.current) {
-      return Promise.resolve({ assessment: mergeSegments(segmentsRef.current), audioBlob: null });
+  const abandonRecordingSession = useCallback(
+    (recognizer: { close: () => void } | null) => {
+      releaseRecordingSession(rs().sessionId);
+      if (recognizer && rs().recognizer === recognizer) {
+        rs().recognizer = null;
+      }
+      rs().lifecycle = "idle";
+      rs().listeningReady = false;
+      rs().startListeningPromise = null;
+      if (mountedRef.current) {
+        setAssessing(false);
+        setRecordingReady(false);
+        setRecordingPhase("idle");
+      }
+      void stopMicCapture();
+      if (recognizer) safeStopAndCloseRecognizer(recognizer, () => {});
+    },
+    [stopMicCapture],
+  );
+
+  const cleanupStartupFailure = useCallback(async () => {
+    rs().stopPromise = null;
+    rs().stopping = false;
+    const rec = rs().recognizer;
+    rs().recognizer = null;
+    resetLifecycle();
+    if (rec) safeStopAndCloseRecognizer(rec, () => {});
+    resetRecordingStartChain();
+    forceReleaseRecordingSession(rs().sessionId);
+    await stopMicCapture();
+    if (mountedRef.current) {
+      setAssessing(false);
+      setRecordingReady(false);
+      setRecordingPhase("idle");
     }
-    stoppingRef.current = true;
+  }, [resetLifecycle, stopMicCapture]);
 
-    return new Promise((resolve) => {
-      const rec = recognizerRef.current;
-      const generation = generationRef.current;
+  const failStartup = useCallback(
+    async (message: string) => {
+      await cleanupStartupFailure();
+      if (mountedRef.current) setError(message);
+      throw new Error(message);
+    },
+    [cleanupStartupFailure],
+  );
 
-      const finish = async () => {
-        releaseRecordingSession(sessionIdRef.current);
-        stoppingRef.current = false;
-        if (!mountedRef.current || isRecordingGenerationStale(generation)) {
-          resolve({ assessment: null, audioBlob: null });
+  const stop = useCallback((source: PronunciationStopSource = "unknown"): Promise<AzureStopResult> => {
+    const lifecycleNow = rs().lifecycle;
+    traceAssessmentStep(6, "stop requested", { source, lifecycle: lifecycleNow });
+
+    if (!shouldAllowPronunciationStop(lifecycleNow, source)) {
+      traceAssessmentStep(6, "stop ignored — not allowed for lifecycle/source", {
+        source,
+        lifecycle: lifecycleNow,
+      });
+      return Promise.resolve({ assessment: null, audioBlob: null, failure: null });
+    }
+
+    const inFlight = rs().stopPromise;
+    if (inFlight) return inFlight;
+
+    const promise = new Promise<AzureStopResult>((resolve) => {
+      void (async () => {
+        const rec = rs().recognizer;
+        const generation = rs().generation;
+        const lifecycle = rs().lifecycle;
+
+        if (source === "user_click" && lifecycle !== "listening") {
+          traceAssessmentStep(6, "stop ignored — user_click outside listening", {
+            source,
+            lifecycle,
+          });
+          rs().stopPromise = null;
+          resolve({ assessment: null, audioBlob: null, failure: null });
           return;
         }
-        setAssessing(false);
-        const merged = mergeSegments(segmentsRef.current);
-        setResult(merged);
-        const raw = await stopMicCapture();
-        const audioBlob = raw ? await toUniversalPlayableBlob(raw) : null;
-        resolve({ assessment: merged, audioBlob });
-      };
 
-      if (!rec) {
-        void finish();
-        return;
-      }
+        const metaAtStop = { ...rs().assessmentMeta };
+        const canDrain = shouldDrainRecognizerOnStop(lifecycle) && !!rec;
 
-      recognizerRef.current = null;
-      safeStopAndCloseRecognizer(rec, () => {
-        void finish();
-      });
+        if (!canDrain) {
+          const idleNoop =
+            lifecycle === "idle" &&
+            !rec &&
+            rs().segments.length === 0 &&
+            !rs().assessmentMeta.sawNoMatch;
+          if (idleNoop) {
+            rs().stopPromise = null;
+            resolve({ assessment: null, audioBlob: null, failure: null });
+            return;
+          }
+
+          const merged = mergeAssessmentSegments(
+            rs().segments,
+            rs().assessmentMeta.referenceText,
+          );
+          const failure =
+            merged == null
+              ? resolveStopAssessmentFailure(merged, {
+                  segmentCount: rs().assessmentMeta.segmentCount,
+                  staleGeneration: isRecordingGenerationStale(generation),
+                  hadRecognizer: false,
+                  sawNoMatch: metaAtStop.sawNoMatch,
+                  sawCancellation: metaAtStop.sawCancellation,
+                  configAttached: metaAtStop.configAttached,
+                  recognizerMatch: true,
+                  referenceText: metaAtStop.referenceText,
+                  scripted: metaAtStop.scripted,
+                  lifecycle,
+                })
+              : null;
+          traceAssessmentStep(7, "stop skipped — no active recognizer", {
+            source,
+            lifecycle,
+            hasSegments: !!merged,
+            failure,
+          });
+          rs().stopping = false;
+          rs().stopPromise = null;
+          if (mountedRef.current) {
+            setAssessing(false);
+            setRecordingReady(false);
+            setRecordingPhase("idle");
+            resetLifecycle();
+          }
+          const raw = await stopMicCapture();
+          const audioBlob = raw ? await toUniversalPlayableBlob(raw) : null;
+          resolve({ assessment: merged, audioBlob, failure });
+          return;
+        }
+
+        rs().stopping = true;
+        rs().lifecycle = "stopping";
+        if (mountedRef.current) setRecordingPhase("assessing");
+
+        const finish = async () => {
+          releaseRecordingSession(rs().sessionId);
+          rs().stopping = false;
+          rs().stopPromise = null;
+          rs().recognizer = null;
+          rs().lifecycle = "idle";
+          rs().listeningReady = false;
+          rs().startListeningPromise = null;
+
+          const staleGeneration = isRecordingGenerationStale(generation);
+          const merged = staleGeneration
+            ? null
+            : mergeAssessmentSegments(rs().segments, metaAtStop.referenceText);
+          const failure =
+            merged == null
+              ? resolveStopAssessmentFailure(merged, {
+                  segmentCount: rs().segments.length,
+                  staleGeneration,
+                  hadRecognizer: true,
+                  sawNoMatch: metaAtStop.sawNoMatch,
+                  sawCancellation: metaAtStop.sawCancellation,
+                  configAttached: metaAtStop.configAttached,
+                  recognizerMatch: metaAtStop.configuredRecognizer === rec,
+                  referenceText: metaAtStop.referenceText,
+                  scripted: metaAtStop.scripted,
+                  lifecycle: "stopping",
+                })
+              : null;
+
+          if (failure) {
+            traceAssessmentStep(7, "assessment null — reason", failure);
+          } else if (merged) {
+            traceAssessmentStep(7, "parsed assessment", {
+              accuracy: merged.accuracyScore,
+              fluency: merged.fluencyScore,
+              completeness: merged.completenessScore,
+              prosody: merged.prosodyScore,
+              recognizedText: merged.recognizedText,
+              wordCount: merged.words.length,
+            });
+          }
+
+          if (!mountedRef.current) {
+            resolve({ assessment: null, audioBlob: null, failure });
+            return;
+          }
+          setRecordingPhase("idle");
+          setAssessing(false);
+          setRecordingReady(false);
+          setResult(merged);
+          const raw = await stopMicCapture();
+          const audioBlob = raw ? await toUniversalPlayableBlob(raw) : null;
+          resolve({ assessment: merged, audioBlob, failure });
+        };
+
+        const segmentCountBefore = rs().segments.length;
+        const drain = createAssessmentDrainWait(ASSESSMENT_DRAIN_MS);
+        assessmentDrainSignalRef.current = drain.signal;
+
+        traceAssessmentStep(6, "stop requested — draining for late recognized", {
+          source,
+          segmentCountBefore,
+          lifecycle,
+        });
+
+        stopContinuousRecognition(rec!, () => {
+          traceAssessmentStep(6, "stopContinuousRecognitionAsync completed — still draining");
+        });
+
+        const drainResult = await drain.wait();
+        assessmentDrainSignalRef.current = null;
+
+        traceAssessmentStep(6, "drain complete — closing recognizer", {
+          ...drainResult,
+          segmentCountAfter: rs().segments.length,
+          gainedSegments: rs().segments.length - segmentCountBefore,
+        });
+
+        closeRecognizerOnly(rec!, () => {});
+        await finish();
+      })();
     });
-  }, [stopMicCapture]);
+    rs().stopPromise = promise;
+    return promise;
+  }, [resetLifecycle, stopMicCapture]);
 
   const startWithReference = useCallback(
     async (referenceText: string) => {
+      if (mountedRef.current) {
+        setError(null);
+        setRecordingPhase("preparing");
+      }
+      traceRecordStep("azureStart", referenceText.slice(0, 40));
+
+      const idle = await waitForRecordingIdle(RECORD_STARTUP_TIMEOUTS.waitIdle);
+      traceAzureStartStep(1, "after waitForRecordingIdle", { idle });
+      if (!idle) {
+        await failStartup(MIC_START_FAILED);
+        return;
+      }
+
       return runRecordingStart(async () => {
         const reference = referenceText.trim().slice(0, 500);
 
         setError(null);
         setResult(null);
-        segmentsRef.current = [];
+        rs().segments = [];
+        rs().assessmentMeta = emptyAssessmentMeta();
+        resetLifecycle();
+        if (mountedRef.current) setRecordingPhase("preparing");
 
-        await stop();
+        await waitForSessionIdle();
 
-        const { acquired, generation } = await acquireRecordingSession(sessionIdRef.current);
-        if (!acquired) return;
+        if (rs().recognizer && shouldDrainRecognizerOnStop(rs().lifecycle)) {
+          traceRecordStep("awaitStop", "stopping stale listening recognizer");
+          const stale = rs().recognizer;
+          rs().recognizer = null;
+          rs().stopPromise = null;
+          rs().stopping = false;
+          safeStopAndCloseRecognizer(stale, () => {});
+          resetLifecycle();
+          await waitForSessionIdle();
+        } else if (rs().recognizer) {
+          const stale = rs().recognizer;
+          rs().recognizer = null;
+          rs().stopPromise = null;
+          rs().stopping = false;
+          safeStopAndCloseRecognizer(stale, () => {});
+          resetLifecycle();
+        }
 
-        generationRef.current = generation;
-        await startMicCapture();
+        traceRecordStep("awaitStop", "done");
+        traceAzureStartStep(1, "after awaitStop");
+
+        traceRecordStep("acquireSession", rs().sessionId);
+        let acquired = false;
+        let generation = rs().generation;
+        try {
+          ({ acquired, generation } = await withStartupTimeout(
+            acquireRecordingSession(rs().sessionId),
+            RECORD_STARTUP_TIMEOUTS.acquire,
+            "acquireSession",
+          ));
+        } catch (e) {
+          traceAzureStartError(1, "acquireRecordingSession failed", e);
+          await failStartup(MIC_START_FAILED);
+          return;
+        }
+        traceAzureStartStep(1, "after acquireSession", { acquired, generation });
+
+        if (!acquired) {
+          try {
+            forceReleaseRecordingSession(rs().sessionId);
+            ({ acquired, generation } = await withStartupTimeout(
+              acquireRecordingSession(rs().sessionId),
+              RECORD_STARTUP_TIMEOUTS.acquire,
+              "acquireSession",
+            ));
+          } catch (e) {
+            traceAzureStartError(1, "acquireRecordingSession retry failed", e);
+            await failStartup(MIC_START_FAILED);
+            return;
+          }
+        }
+
+        if (!acquired) {
+          traceRecordStep("acquireFailed", "mutex busy");
+          traceAzureStartStep(1, "BLOCKED at acquireSession — mutex busy");
+          await failStartup("Microphone is busy. Try again.");
+          return;
+        }
+
+        rs().generation = generation;
+
+        if (mountedRef.current) setRecordingPhase("permission");
+        try {
+          await withStartupTimeout(
+            requestMicCapture(),
+            RECORD_STARTUP_TIMEOUTS.getUserMedia,
+            "getUserMedia",
+          );
+        } catch (e) {
+          traceAzureStartError(3, "getUserMedia() failed", e);
+          if (isMicPermissionError(e)) {
+            await failStartup(MIC_PERMISSION_GUIDANCE);
+            return;
+          }
+          await failStartup(MIC_START_FAILED);
+          return;
+        }
+
+        if (mountedRef.current) setRecordingPhase("connecting");
 
         let tokenData: { configured?: boolean; token?: string; region?: string; error?: string };
         try {
+          traceAzureStartStep(1, "before fetch /api/azure-speech-token");
           const res = await fetch("/api/azure-speech-token");
           tokenData = await res.json();
-        } catch {
-          releaseRecordingSession(sessionIdRef.current);
-          if (mountedRef.current && !isRecordingGenerationStale(generation)) {
-            setError("Could not connect to Azure Speech.");
-            setAssessing(false);
-          }
-          await stopMicCapture();
+          traceAzureStartStep(1, "after fetch /api/azure-speech-token", {
+            ok: res.ok,
+            status: res.status,
+            configured: tokenData.configured,
+            hasToken: !!tokenData.token,
+            region: tokenData.region,
+          });
+        } catch (e) {
+          traceAzureStartError(1, "fetch /api/azure-speech-token failed", e);
+          await failStartup(MIC_START_FAILED);
           return;
         }
 
-        if (!tokenData.configured || !tokenData.token || !tokenData.region) {
-          releaseRecordingSession(sessionIdRef.current);
-          if (mountedRef.current && !isRecordingGenerationStale(generation)) {
-            setError("Azure Speech is not configured. Add AZURE_SPEECH_KEY and AZURE_SPEECH_REGION.");
-            setAssessing(false);
-          }
+        if (!tokenData!.configured || !tokenData!.token || !tokenData!.region) {
+          traceAzureStartStep(1, "BLOCKED at token check — not configured", tokenData);
+          releaseRecordingSession(rs().sessionId);
           await stopMicCapture();
-          return;
+          const message =
+            "Azure Speech is not configured. Add AZURE_SPEECH_KEY and AZURE_SPEECH_REGION.";
+          if (mountedRef.current && !isRecordingGenerationStale(generation)) {
+            setError(message);
+          }
+          throw new Error(message);
         }
 
         try {
+          traceAzureStartStep(1, "before loadSpeechSdk()");
           const sdk = await loadSpeechSdk();
+          traceAzureStartStep(1, "after loadSpeechSdk()");
+
+          traceAssessmentStep(1, "SpeechConfig created", {
+            sdkPackageVersion: AZURE_SPEECH_SDK_PACKAGE_VERSION,
+            region: tokenData!.region,
+            language: "en-US",
+          });
+          traceAzureStartStep(4, "before SpeechConfig");
           const speechConfig = sdk.SpeechConfig.fromAuthorizationToken(
-            tokenData.token,
-            tokenData.region,
+            tokenData!.token!,
+            tokenData!.region!,
           );
           speechConfig.speechRecognitionLanguage = "en-US";
+          traceAzureStartStep(5, "after SpeechConfig");
 
+          traceAzureStartStep(6, "before AudioConfig.fromDefaultMicrophoneInput()");
           const audioConfig = sdk.AudioConfig.fromDefaultMicrophoneInput();
+          traceAzureStartStep(7, "after AudioConfig");
+
+          traceAzureStartStep(8, "before new SpeechRecognizer()");
           const recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
+          traceAzureStartStep(9, "after recognizer created");
+          rs().lifecycle = "starting";
 
           const pronunciationConfig = new sdk.PronunciationAssessmentConfig(
             reference,
@@ -258,79 +633,268 @@ export function useAzurePronunciation() {
             !!reference,
           );
           pronunciationConfig.enableProsodyAssessment = true;
+          traceAssessmentStep(2, "PronunciationAssessmentConfig created", {
+            referenceText: reference,
+            gradingSystem: "HundredMark",
+            granularity: "Phoneme",
+            phonemeAlphabet:
+              "phonemeAlphabet" in pronunciationConfig
+                ? (pronunciationConfig as { phonemeAlphabet?: string }).phonemeAlphabet
+                : "IPA (default)",
+            enableMiscue: !!reference,
+            enableProsodyAssessment: pronunciationConfig.enableProsodyAssessment,
+            scripted: !!reference,
+          });
+
           pronunciationConfig.applyTo(recognizer);
+          rs().assessmentMeta = {
+            referenceText: reference,
+            scripted: !!reference,
+            configAttached: true,
+            configuredRecognizer: recognizer,
+            sawNoMatch: false,
+            sawCancellation: false,
+            segmentCount: 0,
+          };
+          traceAssessmentStep(3, "PronunciationAssessmentConfig.applyTo(recognizer) success", {
+            recognizerIdentity: "single-recognizer",
+            sameRecognizer: rs().assessmentMeta.configuredRecognizer === recognizer,
+          });
 
           recognizer.recognized = (_, e) => {
-            if (isRecordingGenerationStale(generation)) return;
-            if (e.result.reason !== sdk.ResultReason.RecognizedSpeech) return;
-            const pa = sdk.PronunciationAssessmentResult.fromResult(e.result);
+            const propertyDump = collectSpeechResultPropertyIds(
+              e.result.properties,
+              sdk.PropertyId as Record<string, unknown>,
+            );
+            traceAssessmentStep(5, "recognized callback — complete result", {
+              reason: e.result.reason,
+              text: e.result.text,
+              duration: e.result.duration,
+              offset: e.result.offset,
+              properties: propertyDump,
+              jsonResult: propertyDump.SpeechServiceResponse_JsonResult?.slice(0, 1200),
+              jsonError: propertyDump.SpeechServiceResponse_JsonErrorDetails,
+            });
+            if (isRecordingGenerationStale(generation)) {
+              traceAssessmentStep(5, "recognized ignored — stale generation", { generation });
+              return;
+            }
+
             const jsonRaw = e.result.properties.getProperty(
               sdk.PropertyId.SpeechServiceResponse_JsonResult,
             );
-            let words: AzureWordScore[] = [];
+            let sdkScores = null;
             try {
-              words = parseWordScores(JSON.parse(jsonRaw));
-            } catch {
-              /* ignore parse errors */
+              const pa = sdk.PronunciationAssessmentResult.fromResult(e.result);
+              sdkScores = parseSdkPronunciationScores(pa);
+              if (sdkScores) {
+                traceAssessmentStep(6, "PronunciationAssessmentResult.fromResult", sdkScores);
+              }
+            } catch (parseErr) {
+              traceAssessmentError(6, "PronunciationAssessmentResult.fromResult failed", parseErr);
             }
 
-            segmentsRef.current.push({
-              accuracyScore: Math.round(pa.accuracyScore),
-              fluencyScore: Math.round(pa.fluencyScore),
-              completenessScore: Math.round(pa.completenessScore),
-              prosodyScore: Math.round(pa.prosodyScore ?? 0),
-              recognizedText: e.result.text,
-              words,
+            const hasValidStored = hasValidStoredSegments(rs().segments);
+            if (
+              hasValidStored &&
+              (e.result.reason === sdk.ResultReason.NoMatch ||
+                isTerminalRecognizedCallback({
+                  recognizedText: e.result.text,
+                  jsonRaw,
+                  sdkScores,
+                }))
+            ) {
+              traceAssessmentStep(5, "ignored terminal recognized callback", {
+                reason: e.result.reason,
+                text: e.result.text,
+                hasValidStored,
+              });
+              return;
+            }
+
+            if (e.result.reason === sdk.ResultReason.NoMatch) {
+              rs().assessmentMeta.sawNoMatch = true;
+              traceAssessmentStep(5, "recognized NoMatch — no assessment segment", {
+                text: e.result.text,
+              });
+              return;
+            }
+            if (e.result.reason !== sdk.ResultReason.RecognizedSpeech) {
+              traceAssessmentStep(5, "recognized skipped — unexpected reason", {
+                reason: e.result.reason,
+              });
+              return;
+            }
+
+            if (
+              isTerminalRecognizedCallback({
+                recognizedText: e.result.text,
+                jsonRaw,
+                sdkScores,
+              })
+            ) {
+              traceAssessmentStep(5, "ignored terminal recognized callback", {
+                reason: e.result.reason,
+                text: e.result.text,
+                hasValidStored,
+              });
+              return;
+            }
+
+            const jsonParsed = parsePronunciationAssessmentJson(jsonRaw, e.result.text);
+            if (jsonParsed.failure) {
+              traceAssessmentStep(6, "JSON pronunciation parse failure", jsonParsed.failure);
+            } else if (jsonParsed.assessment) {
+              traceAssessmentStep(6, "JSON pronunciation parse success", {
+                accuracy: jsonParsed.assessment.accuracyScore,
+                fluency: jsonParsed.assessment.fluencyScore,
+                completeness: jsonParsed.assessment.completenessScore,
+                prosody: jsonParsed.assessment.prosodyScore,
+              });
+            }
+
+            const merged = mergeSdkAndJsonAssessment(sdkScores, jsonParsed, e.result.text);
+            if (!merged.assessment || !isValidAssessmentSegment(merged.assessment)) {
+              if (
+                isNonSpeechTrailingSegment(
+                  merged.assessment ?? {
+                    accuracyScore: sdkScores?.accuracyScore ?? 0,
+                    fluencyScore: sdkScores?.fluencyScore ?? 0,
+                    completenessScore: sdkScores?.completenessScore ?? 0,
+                    prosodyScore: sdkScores?.prosodyScore ?? 0,
+                    recognizedText: e.result.text,
+                    words: [],
+                  },
+                )
+              ) {
+                traceAssessmentStep(5, "ignored non-speech trailing segment", {
+                  text: e.result.text,
+                  hasValidStored,
+                });
+              } else {
+                traceAssessmentStep(6, "segment not stored — no assessment", merged.failure);
+              }
+              return;
+            }
+
+            if (isDuplicateAssessmentSegment(rs().segments, merged.assessment)) {
+              traceAssessmentStep(5, "ignored duplicate assessment segment", {
+                text: merged.assessment.recognizedText,
+                accuracy: merged.assessment.accuracyScore,
+              });
+              return;
+            }
+
+            rs().segments.push(merged.assessment);
+            rs().assessmentMeta.segmentCount = rs().segments.length;
+            const storedIndex = rs().segments.length - 1;
+            traceAssessmentStep(6, "segment stored", {
+              segmentIndex: storedIndex,
+              segmentCount: rs().segments.length,
+              accuracy: merged.assessment.accuracyScore,
+              recognizedText: merged.assessment.recognizedText,
+              duringDrain: rs().stopping,
             });
+            if (rs().stopping) {
+              assessmentDrainSignalRef.current?.onLateRecognized();
+            }
+          };
+
+          recognizer.sessionStopped = (_, e) => {
+            traceAzureStartStep(13, "sessionStopped", e);
+            traceAssessmentStep(6, "sessionStopped", {
+              duringDrain: rs().stopping,
+            });
+            if (rs().stopping) {
+              assessmentDrainSignalRef.current?.onSessionStopped();
+            }
           };
 
           recognizer.canceled = (_, e) => {
-            if (isRecordingGenerationStale(generation)) return;
+            rs().assessmentMeta.sawCancellation = true;
+            traceAzureStartStep(14, "canceled", {
+              reason: e.reason,
+              errorCode: e.errorCode,
+              errorDetails: e.errorDetails,
+            });
+            traceAssessmentStep(6, "recognition cancelled", {
+              reason: e.reason,
+              errorDetails: e.errorDetails,
+            });
+            if (isRecordingGenerationStale(generation)) {
+              abandonRecordingSession(recognizer);
+              return;
+            }
             if (e.reason === sdk.CancellationReason.Error) {
               if (mountedRef.current) {
                 setError(e.errorDetails || "Azure recognition error.");
               }
             }
-            if (recognizerRef.current === recognizer) {
-              recognizerRef.current = null;
-            }
-            releaseRecordingSession(sessionIdRef.current);
-            if (mountedRef.current) setAssessing(false);
-            void stopMicCapture();
-            safeStopAndCloseRecognizer(recognizer, () => {});
+            abandonRecordingSession(recognizer);
           };
 
-          trackRecognizer(recognizer, sessionIdRef.current, generation);
-          recognizerRef.current = recognizer;
-          if (mountedRef.current) setAssessing(true);
-
-          recognizer.startContinuousRecognitionAsync(
-            () => {},
-            (err) => {
-              if (isRecordingGenerationStale(generation)) return;
-              if (mountedRef.current) {
-                setError(err);
-                setAssessing(false);
-              }
-              if (recognizerRef.current === recognizer) {
-                recognizerRef.current = null;
-              }
-              releaseRecordingSession(sessionIdRef.current);
-              void stopMicCapture();
-              safeStopAndCloseRecognizer(recognizer, () => {});
-            },
-          );
-        } catch (e) {
-          releaseRecordingSession(sessionIdRef.current);
-          if (mountedRef.current && !isRecordingGenerationStale(generation)) {
-            setError(e instanceof Error ? e.message : "Could not start Azure Speech.");
-            setAssessing(false);
+          if (rs().assessmentMeta.configuredRecognizer !== recognizer) {
+            traceAssessmentError(4, "recognizer mismatch before start", {
+              configured: rs().assessmentMeta.configuredRecognizer,
+              active: recognizer,
+            });
+            await failStartup(
+              assessmentFailure("recognizer_mismatch").userMessage,
+            );
+            return;
           }
-          await stopMicCapture();
+
+          trackRecognizer(recognizer, rs().sessionId, generation);
+          rs().recognizer = recognizer;
+
+          traceRecordStep("assessingTrue", "pending startContinuousRecognitionAsync");
+          traceAssessmentStep(4, "before startContinuousRecognitionAsync()", {
+            sameRecognizer:
+              rs().assessmentMeta.configuredRecognizer === recognizer &&
+              rs().recognizer === recognizer,
+            referenceText: rs().assessmentMeta.referenceText,
+            lifecycle: rs().lifecycle,
+          });
+          traceAzureStartStep(10, "before startContinuousRecognitionAsync()");
+
+          const startListening = new Promise<void>((resolve, reject) => {
+            recognizer.startContinuousRecognitionAsync(
+              () => {
+                rs().lifecycle = "listening";
+                rs().listeningReady = true;
+                traceAzureStartStep(11, "recognizer started");
+                traceRecordStep("recognizerStart");
+                if (mountedRef.current) {
+                  setAssessing(true);
+                  setRecordingReady(true);
+                  setRecordingPhase("recording");
+                }
+                resolve();
+              },
+              (err) => {
+                console.error(
+                  "[AzureStart] STEP 11 ERROR: startContinuousRecognitionAsync error callback",
+                  err,
+                );
+                reject(err);
+              },
+            );
+          });
+          rs().startListeningPromise = startListening;
+          await startListening;
+          rs().startListeningPromise = null;
+        } catch (e) {
+          console.error("[AzureStart] STEP 0 ERROR: startWithReference inner try failed", e);
+          if (e instanceof Error) {
+            console.error("[AzureStart] STEP 0 ERROR stack:", e.stack);
+          }
+          await failStartup(
+            e instanceof Error && e.message ? e.message : MIC_START_FAILED,
+          );
         }
       });
     },
-    [startMicCapture, stop, stopMicCapture],
+    [abandonRecordingSession, failStartup, requestMicCapture, resetLifecycle, stop, stopMicCapture, waitForSessionIdle],
   );
 
   const start = useCallback(
@@ -345,12 +909,47 @@ export function useAzurePronunciation() {
     [startWithReference],
   );
 
-  const clear = useCallback(() => {
-    void stop();
+  const clear = useCallback((source: PronunciationStopSource = "word_clear") => {
+    const s = rs();
+    const busy =
+      s.lifecycle === "starting" ||
+      s.lifecycle === "listening" ||
+      s.lifecycle === "stopping";
+    if (busy) {
+      traceAssessmentStep(6, "clear skipped — recorder busy", {
+        source,
+        lifecycle: s.lifecycle,
+      });
+      return;
+    }
+    s.stopPromise = null;
+    s.stopping = false;
+    if (s.recognizer) {
+      const stale = s.recognizer;
+      s.recognizer = null;
+      safeStopAndCloseRecognizer(stale, () => {});
+    }
     setResult(null);
     setError(null);
-    segmentsRef.current = [];
-  }, [stop]);
+    setRecordingPhase("idle");
+    s.segments = [];
+    s.assessmentMeta = emptyAssessmentMeta();
+    resetLifecycle();
+  }, [resetLifecycle]);
 
-  return { configured, assessing, error, result, start, startWithReference, stop, clear };
+  return {
+    configured,
+    assessing,
+    recordingReady,
+    lifecycle,
+    starting,
+    recordingPhase,
+    recordingPhaseLabel,
+    error,
+    result,
+    start,
+    startWithReference,
+    stop,
+    clear,
+  };
 }

@@ -82,6 +82,9 @@ export default function CaptainDeltaFloatingAssistant() {
               voice={voice}
               voiceStatusLabel={voiceStatusLabel}
               recording={recording}
+              pronunciationRecorder={
+                lesson.mode === "pronunciation" ? lesson.pronunciationRecorder ?? null : null
+              }
               pttInterim={pttInterim}
               pttError={pttError}
               onPrimaryAction={triggerPrimaryAction}

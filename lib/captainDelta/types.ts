@@ -1,4 +1,5 @@
 import type { FlightInstructorReport } from "@/lib/flightInstructor/types";
+import type { PronunciationRecorderUiState } from "@/lib/captainDelta/pronunciationRecorderState";
 
 export type CaptainDeltaContext =
   | "dashboard"
@@ -86,6 +87,7 @@ export type CaptainDeltaLessonContext = {
   hasNotes?: boolean;
   canCompareAttempts?: boolean;
   recording?: boolean;
+  pronunciationRecorder?: PronunciationRecorderUiState;
 };
 
 export type CaptainDeltaLessonContextPatch = Partial<CaptainDeltaLessonContext> & {

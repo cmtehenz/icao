@@ -10,9 +10,12 @@ export const CAPTAIN_DELTA_LESSON_CONTEXT = "icao-captain-delta-lesson-context";
 export const CAPTAIN_DELTA_START_RECORD = "icao-captain-delta-start-record";
 export const CAPTAIN_DELTA_STOP_RECORD = "icao-captain-delta-stop-record";
 export const CAPTAIN_DELTA_SECONDARY_ACTION = "icao-captain-delta-secondary-action";
+export const CAPTAIN_DELTA_STOP_VOICE = "icao-captain-delta-stop-voice";
+export const CAPTAIN_DELTA_RECORD_BLOCKED = "icao-captain-delta-record-blocked";
 
 export type CaptainDeltaRecordBridge = {
   canRecord: () => boolean;
+  getRecordBlockReason?: () => string | null;
   startRecord: () => void;
   stopRecord: () => void;
   isRecording: () => boolean;
@@ -37,9 +40,22 @@ function ensureBridgeListeners(): void {
 
   window.addEventListener(CAPTAIN_DELTA_START_RECORD, () => {
     const entry = bridgeEntry;
-    if (entry?.bridge.canRecord()) {
-      entry.bridge.startRecord();
+    if (!entry) {
+      emitRecordBlocked("No recording bridge is active on this screen.");
+      return;
     }
+    if (entry.bridge.isRecording()) {
+      entry.bridge.stopRecord();
+      return;
+    }
+    if (entry.bridge.canRecord()) {
+      entry.bridge.startRecord();
+      return;
+    }
+    const reason =
+      entry.bridge.getRecordBlockReason?.() ??
+      "Recording is unavailable right now.";
+    emitRecordBlocked(reason);
   });
 
   window.addEventListener(CAPTAIN_DELTA_STOP_RECORD, () => {
@@ -82,6 +98,10 @@ export function getCaptainDeltaRecordBridge(): CaptainDeltaRecordBridge | null {
   return bridgeEntry?.bridge ?? null;
 }
 
+export function getRecordBridgeOwnerId(): string | null {
+  return bridgeEntry?.id ?? null;
+}
+
 export function emitLessonContext(context: CaptainDeltaLessonContextPatch): void {
   if (typeof window === "undefined") return;
   window.dispatchEvent(
@@ -117,14 +137,36 @@ export function getAuthoritativePronunciationWord(): string | null {
   return authoritativePronunciationWord;
 }
 
+function emitRecordBlocked(reason: string): void {
+  if (typeof window === "undefined") return;
+  window.dispatchEvent(
+    new CustomEvent(CAPTAIN_DELTA_RECORD_BLOCKED, { detail: { reason } }),
+  );
+}
+
+export function emitStopCaptainVoice(): void {
+  if (typeof window === "undefined") return;
+  window.dispatchEvent(new Event(CAPTAIN_DELTA_STOP_VOICE));
+}
+
 export function emitStartRecord(): boolean {
-  if (bridgeEntry?.bridge.canRecord()) {
-    bridgeEntry.bridge.startRecord();
+  const entry = bridgeEntry;
+  if (!entry) {
+    emitRecordBlocked("No recording bridge is active on this screen.");
+    return false;
+  }
+  if (entry.bridge.isRecording()) {
+    entry.bridge.stopRecord();
     return true;
   }
-  if (typeof window !== "undefined") {
-    window.dispatchEvent(new Event(CAPTAIN_DELTA_START_RECORD));
+  if (entry.bridge.canRecord()) {
+    entry.bridge.startRecord();
+    return true;
   }
+  const reason =
+    entry.bridge.getRecordBlockReason?.() ??
+    "Recording is unavailable right now.";
+  emitRecordBlocked(reason);
   return false;
 }
 
@@ -161,6 +203,8 @@ export function mergeLessonContext(
       return {
         ...DEFAULT_LESSON_CONTEXT,
         mode: "pronunciation",
+        recording: patch.recording ?? false,
+        pronunciationRecorder: patch.pronunciationRecorder,
       };
     }
     return {
@@ -168,6 +212,8 @@ export function mergeLessonContext(
       mode: "pronunciation",
       pronunciationWord: word,
       question: patch.question?.trim() || word,
+      recording: patch.recording ?? false,
+      pronunciationRecorder: patch.pronunciationRecorder,
     };
   }
   return { ...DEFAULT_LESSON_CONTEXT, ...current, ...patch };

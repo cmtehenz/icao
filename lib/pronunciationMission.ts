@@ -141,3 +141,7 @@ export function practiceTextForLevel(
   if (level === 3) return pack?.sentence ?? word.word;
   return pack?.icaoPrompt ?? pack?.fragment ?? word.word;
 }
+
+export function pronunciationMissionKey(m: PronunciationMission): string {
+  return `${m.date}|${m.words.map((w) => w.word.word.toLowerCase()).join(",")}`;
+}

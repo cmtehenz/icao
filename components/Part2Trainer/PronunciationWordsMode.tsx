@@ -1,67 +1,67 @@
 "use client";
 
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import CallsignDrillPanel from "@/components/Part2Trainer/CallsignDrillPanel";
 import YouGlishLink from "@/components/YouGlishLink";
 import WordPhoneticHint from "@/components/WordPhoneticHint";
 import CaptainDeltaTarget from "@/components/CaptainDelta/Visual/CaptainDeltaTarget";
-import { useAzurePronunciation } from "@/hooks/useAzurePronunciation";
 import { useAzureSpeech } from "@/hooks/useAzureSpeech";
-import { usePronunciationCaptainBridge } from "@/hooks/usePronunciationCaptainBridge";
+import { usePronunciationRecordingController } from "@/hooks/usePronunciationRecordingController";
 import type { AzurePronunciationResult } from "@/lib/azure/pronunciation";
 import { errorTypeLabel } from "@/lib/azure/pronunciation";
-import { emitCaptainDeltaSuggestion } from "@/lib/captainDelta/events";
 import {
   clearActivePronunciationWord,
+  getRecordBridgeOwnerId,
   publishActivePronunciationWord,
 } from "@/lib/captainDelta/lessonContext";
-import { buildPronunciationFocusPlan } from "@/lib/captainDelta/visual/plans";
-import { emitVisualPlan } from "@/lib/captainDelta/visual/events";
-import { splitSyllables, syllableTargetId } from "@/lib/captainDelta/visual/syllables";
-import { ensureWordContext } from "@/lib/pronunciationContext";
 import {
-  captainFeedbackAfterAttempt,
-  captainFeedbackBelowStoredLevel,
-  CAPTAIN_MISSION_DEBRIEF,
-  CAPTAIN_MISSION_INTRO,
-  levelLabel,
-  statusLabel,
-} from "@/lib/pronunciationCoach";
+  PRON_RECORD_DEBUG_EVENT,
+  type PronRecordDebugPayload,
+} from "@/lib/captainDelta/recordRuntimeDebug";
+import {
+  RECORD_TRACE_EVENT,
+  type RecordTracePayload,
+} from "@/lib/captainDelta/pronunciationRecordTrace";
+import {
+  isPronunciationRecordingActive,
+  sameStringList,
+  type PronunciationRecordingPhase,
+} from "@/lib/pronunciation/pronunciationRecordingController";
+import { ensureWordContext } from "@/lib/pronunciationContext";
 import { deriveVaultWordStatus } from "@/lib/pronunciationGraduation";
 import {
   buildDailyPronunciationMission,
   buildMissionDebrief,
   practiceTextForLevel,
+  pronunciationMissionKey,
   type PronunciationMission,
 } from "@/lib/pronunciationMission";
 import {
   getOrCreatePronunciationDailyMission,
   isPronunciationWordInTodayMission,
-  markPronunciationDailyWordComplete,
-  passesDailyMissionWordAttempt,
   PRONUNCIATION_DAILY_MISSION_EVENT,
 } from "@/lib/pronunciationDailyMission";
 import {
   addManualWordsToVault,
   loadVault,
   parseManualVaultInput,
-  recordWordPractice,
   removeVaultWord,
   VAULT_CHANGE_EVENT,
   VAULT_PASS_SCORE,
   type PracticeLevel,
   type VaultWord,
 } from "@/lib/pronunciationVault";
-import { markWarmupSatisfied } from "@/lib/part2Warmup";
+import { splitSyllables, syllableTargetId } from "@/lib/captainDelta/visual/syllables";
 import {
-  studyActivityRejectReason,
-  tryRecordStudyActivity,
-} from "@/lib/studyActivityRecord";
+  CAPTAIN_MISSION_DEBRIEF,
+  CAPTAIN_MISSION_INTRO,
+  levelLabel,
+  statusLabel,
+} from "@/lib/pronunciationCoach";
 import { useCallback, useEffect, useMemo, useRef, useState, type FormEvent, type KeyboardEvent } from "react";
 
 const LEVELS: PracticeLevel[] = [1, 2, 3, 4];
-const AZURE_RECOVERY_GUIDANCE = "Listen → slow down → retry.";
 const LEVEL_PANEL_ID = "pron-level-panel";
 
 function statusClass(status: ReturnType<typeof deriveVaultWordStatus>): string {
@@ -178,31 +178,92 @@ function syncDailyMissionState(vault: VaultWord[]): {
 }
 
 export default function PronunciationWordsMode() {
+  const pathname = usePathname();
   const searchParams = useSearchParams();
+  const recordDebug = searchParams.get("recordDebug") === "1";
   const [words, setWords] = useState<VaultWord[]>([]);
   const [activeWord, setActiveWord] = useState<VaultWord | null>(null);
   const [practiceLevel, setPracticeLevel] = useState<PracticeLevel>(1);
   const [lastPracticeScore, setLastPracticeScore] = useState<number | null>(null);
   const [lastResult, setLastResult] = useState<AzurePronunciationResult | null>(null);
-  const [activityNote, setActivityNote] = useState<string | null>(null);
-  const [captainNote, setCaptainNote] = useState<string | null>(null);
   const [mission, setMission] = useState<PronunciationMission | null>(null);
   const [missionProgress, setMissionProgress] = useState<string[]>([]);
   const [missionLegActive, setMissionLegActive] = useState(false);
   const [showDebrief, setShowDebrief] = useState(false);
-  const [assessingPending, setAssessingPending] = useState(false);
+  const [recordTraceLine, setRecordTraceLine] = useState<{
+    at: number;
+    step: string;
+    reason: string;
+  } | null>(null);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
-  const azure = useAzurePronunciation();
+  const [recordDebugState, setRecordDebugState] = useState({
+    lastEvent: "—",
+    lastAt: 0,
+    hitTarget: "—",
+    handlerReached: false,
+  });
   const speech = useAzureSpeech();
-  const clearAzure = azure.clear;
+  const selectWordRef = useRef<(item: VaultWord) => void>(() => {});
+  const resetRecordingRef = useRef<() => void>(() => {});
+  const recorderPhaseRef = useRef<PronunciationRecordingPhase>("idle");
 
   const refresh = useCallback(() => {
     const vault = loadVault();
     setWords(vault);
     const { mission: m, progress } = syncDailyMissionState(vault);
-    setMission(m);
-    setMissionProgress(progress);
+    setMission((prev) => {
+      const nextKey = pronunciationMissionKey(m);
+      const prevKey = prev ? pronunciationMissionKey(prev) : "";
+      return nextKey === prevKey ? prev : m;
+    });
+    setMissionProgress((prev) => (sameStringList(prev, progress) ? prev : progress));
   }, []);
+
+  const recording = usePronunciationRecordingController({
+    activeWord,
+    practiceLevel,
+    missionLegActive,
+    mission,
+    onVaultRefresh: refresh,
+    onMissionProgress: setMissionProgress,
+    onSelectNextMissionWord: (completedKeys) => {
+      const daily = getOrCreatePronunciationDailyMission();
+      if (completedKeys.length >= daily.words.length) {
+        setShowDebrief(true);
+        setActiveWord(null);
+        return;
+      }
+      const nextWord = daily.words.find((w) => !completedKeys.includes(w.toLowerCase()));
+      if (!nextWord) {
+        setShowDebrief(true);
+        setActiveWord(null);
+        return;
+      }
+      const match = loadVault().find((w) => w.word.toLowerCase() === nextWord.toLowerCase());
+      if (match) selectWordRef.current(match);
+    },
+    onWordAdvanced: (word, level) => {
+      setActiveWord(word);
+      setPracticeLevel(level);
+    },
+    onWordCleared: () => setActiveWord(null),
+  });
+
+  resetRecordingRef.current = recording.reset;
+  recorderPhaseRef.current = recording.state.phase;
+
+  const { micUi, captainNote, recordNotice, activityNote, configured, state: recorderState } =
+    recording;
+
+  useEffect(() => {
+    if (recorderState.phase !== "success" || recorderState.score == null) return;
+    setLastPracticeScore((prev) =>
+      prev === recorderState.score ? prev : recorderState.score,
+    );
+    setLastResult((prev) =>
+      prev === recorderState.assessment ? prev : recorderState.assessment,
+    );
+  }, [recorderState.phase, recorderState.score, recorderState.assessment]);
 
   useEffect(() => {
     refresh();
@@ -225,51 +286,52 @@ export default function PronunciationWordsMode() {
   const selectWord = useCallback((item: VaultWord) => {
     const pack = ensureWordContext(item.word, item.contextPack);
     const enriched = { ...item, contextPack: pack };
+    const sameWord = activeWord?.word.toLowerCase() === item.word.toLowerCase();
+
+    if (sameWord) {
+      setActiveWord(enriched);
+      setPracticeLevel(item.practiceLevel ?? 1);
+      return;
+    }
+
+    if (isPronunciationRecordingActive(recorderPhaseRef.current)) {
+      return;
+    }
+
     setActiveWord(enriched);
     setPracticeLevel(item.practiceLevel ?? 1);
     setLastPracticeScore(null);
     setLastResult(null);
-    setCaptainNote(null);
-    clearAzure();
+    resetRecordingRef.current();
     if (isPronunciationWordInTodayMission(item.word)) {
       setMissionLegActive(true);
     }
-  }, [clearAzure]);
+  }, [activeWord?.word]);
 
-  const selectNextMissionWord = useCallback(
-    (completedKeys: string[]) => {
-      const daily = getOrCreatePronunciationDailyMission();
-      if (completedKeys.length >= daily.words.length) {
-        setShowDebrief(true);
-        setActiveWord(null);
-        return;
-      }
-      const nextWord = daily.words.find((w) => !completedKeys.includes(w.toLowerCase()));
-      if (!nextWord) {
-        setShowDebrief(true);
-        setActiveWord(null);
-        return;
-      }
-      const match = loadVault().find((w) => w.word.toLowerCase() === nextWord.toLowerCase());
-      if (match) selectWord(match);
-    },
-    [selectWord],
-  );
+  selectWordRef.current = selectWord;
 
   useEffect(() => {
     const requested = searchParams.get("word")?.trim().toLowerCase();
     if (!requested || !words.length) return;
     const daily = getOrCreatePronunciationDailyMission();
     const m = missionFromDaily(words);
-    setMission(m);
-    setMissionProgress(daily.completedWords);
+    setMission((prev) => {
+      const nextKey = pronunciationMissionKey(m);
+      const prevKey = prev ? pronunciationMissionKey(prev) : "";
+      return nextKey === prevKey ? prev : m;
+    });
+    setMissionProgress((prev) =>
+      sameStringList(prev, daily.completedWords) ? prev : daily.completedWords,
+    );
     if (daily.words.some((w) => w.toLowerCase() === requested)) {
-      setMissionLegActive(true);
-      setShowDebrief(false);
+      setMissionLegActive((prev) => (prev ? prev : true));
+      setShowDebrief((prev) => (prev ? false : prev));
     }
     const match = words.find((w) => w.word.toLowerCase() === requested);
-    if (match) selectWord(match);
-  }, [searchParams, words, selectWord]);
+    if (match && activeWord?.word.toLowerCase() !== requested) {
+      selectWordRef.current(match);
+    }
+  }, [searchParams, words, activeWord?.word]);
 
   useEffect(() => {
     publishActivePronunciationWord(activeWord?.word ?? null);
@@ -279,141 +341,39 @@ export default function PronunciationWordsMode() {
     return () => clearActivePronunciationWord();
   }, []);
 
-  const listenText = async (text: string) => {
-    try {
-      await speech.speak(text);
-    } catch {
-      /* speech.error */
-    }
-  };
-
-  const startRecording = useCallback(async (level: PracticeLevel = practiceLevel) => {
-    if (!activeWord) return;
-    const text = practiceTextForLevel(activeWord, level);
-    setPracticeLevel(level);
-    setLastPracticeScore(null);
-    setLastResult(null);
-    setCaptainNote(null);
-    setAssessingPending(false);
-    const type = level >= 4 ? "part1" : "part2-readback";
-    await azure.start(text, type);
-  }, [activeWord, azure, practiceLevel]);
-
-  const finishPractice = useCallback(async () => {
-    if (!activeWord) return;
-    setAssessingPending(true);
-    try {
-      const { assessment } = await azure.stop();
-
-      if (!assessment) {
-        const message = `Assessment unavailable. ${AZURE_RECOVERY_GUIDANCE}`;
-        setCaptainNote(message);
-        emitCaptainDeltaSuggestion({
-          text: message,
-          speechText: "Assessment unavailable. Listen to the model, slow down, then record again.",
-          kind: "coaching",
-          primaryAction: { id: "try_again", label: "Try again", primary: true },
-          secondaryActions: [{ id: "slow_audio", label: "🎧 Slow Audio", primary: false }],
-        });
-        return;
-      }
-
-      const score = assessment.accuracyScore ?? 0;
-      setLastPracticeScore(score);
-      setLastResult(assessment);
-
-      const outcome = recordWordPractice(activeWord.word, score, practiceLevel);
-      refresh();
-
-      const updated = loadVault().find((w) => w.word.toLowerCase() === activeWord.word.toLowerCase());
-      const status = outcome.status;
-      const belowLevel =
-        updated && captainFeedbackBelowStoredLevel(updated, practiceLevel);
-      const feedback =
-        belowLevel ??
-        captainFeedbackAfterAttempt(updated ?? activeWord, score, practiceLevel, status);
-
-      const missionPass =
-        missionLegActive &&
-        mission &&
-        isPronunciationWordInTodayMission(activeWord.word) &&
-        passesDailyMissionWordAttempt(score, true);
-
-      const recoveryHint = score < VAULT_PASS_SCORE ? ` ${AZURE_RECOVERY_GUIDANCE}` : "";
-      const coachingText = feedback.message + recoveryHint;
-      setCaptainNote(coachingText);
-      emitCaptainDeltaSuggestion({
-        text: coachingText,
-        speechText: feedback.speechText,
-        kind: "coaching",
-        primaryAction: missionPass
-          ? { id: "ready", label: "Continue", primary: true }
-          : { id: "try_again", label: "Try again", primary: true },
-        secondaryActions:
-          score < VAULT_PASS_SCORE
-            ? [{ id: "slow_audio", label: "🎧 Slow Audio", primary: false }]
-            : [],
+  useEffect(() => {
+    const onTrace = (e: Event) => {
+      const detail = (e as CustomEvent<RecordTracePayload>).detail;
+      if (!detail) return;
+      setRecordTraceLine({
+        at: detail.at,
+        step: detail.step,
+        reason: detail.reason,
       });
+    };
+    window.addEventListener(RECORD_TRACE_EVENT, onTrace);
+    return () => window.removeEventListener(RECORD_TRACE_EVENT, onTrace);
+  }, []);
 
-      const ctx = { accuracy: score, recognizedText: assessment.recognizedText };
-      const counted = tryRecordStudyActivity("pronunciation", ctx);
-      setActivityNote(counted ? null : studyActivityRejectReason("pronunciation", ctx));
-
-      if (score >= VAULT_PASS_SCORE) markWarmupSatisfied();
-
-      if (score < 80 && practiceLevel === 1) {
-        const syllables = splitSyllables(activeWord.word);
-        const weakWord = assessment.words
-          ?.slice()
-          .sort((a, b) => a.accuracyScore - b.accuracyScore)[0]?.word;
-        const weakSyllable =
-          syllables.find((s) => weakWord?.toLowerCase().includes(s.toLowerCase())) ?? syllables[0];
-        emitVisualPlan(buildPronunciationFocusPlan(activeWord.word, weakSyllable));
-      }
-
-      if (missionPass) {
-        const daily = markPronunciationDailyWordComplete(activeWord.word);
-        const next = [...daily.completedWords];
-        setMissionProgress(next);
-        if (outcome.removed) {
-          setTimeout(() => selectNextMissionWord(next), 1200);
-        } else {
-          setTimeout(() => selectNextMissionWord(next), 800);
-        }
-        return;
-      }
-
-      if (outcome.removed) {
-        setTimeout(() => setActiveWord(null), 2800);
-      } else if (outcome.advancedLevel && updated) {
-        setActiveWord(updated);
-        setPracticeLevel(updated.practiceLevel ?? practiceLevel);
-      }
-    } finally {
-      setAssessingPending(false);
-    }
-  }, [
-    activeWord,
-    azure,
-    mission,
-    missionLegActive,
-    practiceLevel,
-    refresh,
-    selectNextMissionWord,
-  ]);
-
-  usePronunciationCaptainBridge({
-    activeWord,
-    practiceLevel,
-    azureAssessing: azure.assessing,
-    speechSpeaking: speech.speaking,
-    azureConfigured: azure.configured,
-    onStartRecord: () => void startRecording(practiceLevel),
-    onStopRecord: () => void finishPractice(),
-    onListen: () => {
-      if (activeWord) void listenText(practiceTextForLevel(activeWord, practiceLevel));
-    },
-  });
+  useEffect(() => {
+    if (!recordDebug) return;
+    const onDebug = (e: Event) => {
+      const detail = (e as CustomEvent<PronRecordDebugPayload>).detail;
+      if (!detail) return;
+      setRecordDebugState((prev) => ({
+        ...prev,
+        lastEvent: `${detail.source}:${detail.phase}`,
+        lastAt: Date.now(),
+        hitTarget: detail.hitTarget ?? prev.hitTarget,
+        handlerReached:
+          detail.phase === "click" && detail.source === "captain-primary"
+            ? true
+            : prev.handlerReached,
+      }));
+    };
+    window.addEventListener(PRON_RECORD_DEBUG_EVENT, onDebug);
+    return () => window.removeEventListener(PRON_RECORD_DEBUG_EVENT, onDebug);
+  }, [recordDebug]);
 
   const handleLevelTabKeyDown = (e: KeyboardEvent<HTMLButtonElement>, lvl: PracticeLevel) => {
     const unlocked = activeWord?.practiceLevel ?? 1;
@@ -451,8 +411,8 @@ export default function PronunciationWordsMode() {
   if (!words.length) {
     return (
       <div className="pronunciation-leg">
-        {browseMode && <CallsignDrillPanel initialOpen={callsignOpen} />}
-        {browseMode && <VaultAddWordsForm onAdded={refresh} />}
+        {browseMode && !activeWord && <CallsignDrillPanel initialOpen={callsignOpen} />}
+        {browseMode && !activeWord && <VaultAddWordsForm onAdded={refresh} />}
         <section className="pron-mission-card pronunciation-empty-card">
           <p className="pron-mission-badge">Captain Delta · ENGINE START</p>
           <h2>Add words to begin today&apos;s pronunciation leg</h2>
@@ -478,7 +438,7 @@ export default function PronunciationWordsMode() {
         </p>
       )}
 
-      {browseMode && <CallsignDrillPanel initialOpen={callsignOpen} />}
+      {browseMode && !activeWord && <CallsignDrillPanel initialOpen={callsignOpen} />}
       {browseMode && !activeWord && <VaultAddWordsForm onAdded={refresh} />}
 
       {!activeWord && !showDebrief && browseMode && (
@@ -619,73 +579,85 @@ export default function PronunciationWordsMode() {
           </div>
 
           <div className="card-body">
-            {!azure.configured && (
+            {!configured && (
               <p className="voice-coach-warn">
                 Azure Speech is not configured. Recording will not work until speech keys are set.
               </p>
             )}
 
-            {azure.assessing && (
-              <p className="pron-recording-state" role="status" aria-live="polite">
-                Recording — speak clearly, then tap Stop &amp; assess.
+            <div
+              className={`pron-captain-recorder-panel pron-captain-recorder-panel--${micUi.visualState}`}
+              role="status"
+              aria-live="polite"
+            >
+              <p className="pron-captain-recorder-line">
+                <span className="pron-captain-recorder-label">Captain Recorder</span>
+                <span aria-hidden> · </span>
+                <span
+                  className={`pron-captain-recorder-status pron-captain-recorder-status--${micUi.visualState}`}
+                >
+                  {micUi.micStatusLine}
+                </span>
               </p>
-            )}
-            {assessingPending && (
-              <p className="pron-recording-state pron-recording-state-assessing" role="status" aria-live="polite">
-                Assessing your recording…
-              </p>
-            )}
+            </div>
 
             <div className="voice-coach-actions pronunciation-record-actions">
+              {recordDebug && (
+                <pre className="pron-record-debug" aria-live="polite">
+                  {`captain recorder: ${micUi.primaryLabel} (${micUi.phase})
+last event: ${recordDebugState.lastEvent}
+handler reached: ${recordDebugState.handlerReached ? "yes" : "no"}
+activeWord: ${activeWord?.word ?? "—"}
+referenceText: ${activeWord ? practiceTextForLevel(activeWord, practiceLevel) : "—"}
+controller.phase: ${recorderState.phase}
+speech.speaking: ${String(speech.speaking)}
+bridge owner: ${getRecordBridgeOwnerId() ?? "—"}
+pathname: ${pathname}`}
+                </pre>
+              )}
               <button
                 type="button"
                 className="btn secondary"
-                onClick={() => void listenText(practiceTextForLevel(activeWord, practiceLevel))}
-                disabled={speech.speaking || azure.assessing || !speech.configured}
+                onClick={() => void recording.listen()}
+                disabled={
+                  speech.speaking ||
+                  isPronunciationRecordingActive(recorderState.phase) ||
+                  !speech.configured
+                }
                 aria-label="Listen to model pronunciation"
               >
                 {speech.speaking ? "Playing…" : "Listen"}
               </button>
-              {!azure.assessing ? (
-                <button
-                  type="button"
-                  className="btn green"
-                  onClick={() => void startRecording(practiceLevel)}
-                  disabled={speech.speaking || !azure.configured || assessingPending}
-                >
-                  Record
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  className="btn orange"
-                  onClick={() => void finishPractice()}
-                  disabled={assessingPending}
-                >
-                  Stop &amp; assess
-                </button>
-              )}
               {!missionLegActive && (
                 <button
                   type="button"
                   className="btn secondary"
                   onClick={() => {
                     setActiveWord(null);
-                    azure.clear();
+                    recording.reset();
                   }}
+                  disabled={isPronunciationRecordingActive(recorderState.phase)}
                 >
                   Back to list
                 </button>
               )}
             </div>
 
-            {(azure.error || speech.error) && (
-              <p className="voice-coach-error">{azure.error || speech.error}</p>
+            <p className="pron-record-trace" aria-live="polite">
+              Last record click:{" "}
+              {recordTraceLine
+                ? `${new Date(recordTraceLine.at).toLocaleTimeString()} · stopped at ${recordTraceLine.step}${recordTraceLine.reason ? ` · ${recordTraceLine.reason}` : ""}`
+                : "—"}
+            </p>
+
+            {(recordNotice || speech.error) && micUi.phase === "idle" && (
+              <p className="pron-recording-state pron-recording-state-error" role="alert">
+                {recordNotice ?? speech.error}
+              </p>
             )}
-            {(azure.error ||
-              (lastPracticeScore !== null && lastPracticeScore < VAULT_PASS_SCORE) ||
-              (captainNote?.includes("Assessment unavailable") ?? false)) && (
-              <p className="pron-recovery-guidance">{AZURE_RECOVERY_GUIDANCE}</p>
+            {(recorderState.phase === "error" ||
+              (lastPracticeScore !== null && lastPracticeScore < 80)) && (
+              <p className="pron-recovery-guidance">Listen → slow down → retry.</p>
             )}
             {lastPracticeScore !== null && (
               <p
@@ -757,7 +729,7 @@ export default function PronunciationWordsMode() {
                     <button
                       type="button"
                       className="btn secondary btn-sm"
-                      onClick={() => void listenText(item.word)}
+                      onClick={() => void speech.speak(item.word)}
                       disabled={speech.speaking || !speech.configured}
                     >
                       Listen

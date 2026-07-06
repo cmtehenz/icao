@@ -133,7 +133,7 @@ export default function Part2SimulationRecord({
       </p>
       <div className="voice-coach-actions">
         {!azure.assessing ? (
-          <button type="button" className="btn green" onClick={startRecording} disabled={loading}>
+          <button type="button" className="btn green" data-record-source="legacy" onClick={startRecording} disabled={loading}>
             ● Gravar resposta
           </button>
         ) : (

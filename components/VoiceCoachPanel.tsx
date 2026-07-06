@@ -667,6 +667,7 @@ export default function VoiceCoachPanel({
               <button
                 type="button"
                 className="btn green"
+                data-record-source="legacy"
                 onClick={evaluateWithAzure}
                 disabled={recordingBlocked}
               >

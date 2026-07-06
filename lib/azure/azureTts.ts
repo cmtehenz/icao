@@ -16,7 +16,18 @@ let cachedToken: AzureSpeechTokenResponse | null = null;
 let tokenFetchedAt = 0;
 
 let activeSynthesizer: { close: () => void } | null = null;
+let activeExamSynthesizer: { close: () => void } | null = null;
 let speakGeneration = 0;
+
+function closeActiveExamSynthesizer(): void {
+  if (!activeExamSynthesizer) return;
+  try {
+    activeExamSynthesizer.close();
+  } catch {
+    /* already closed */
+  }
+  activeExamSynthesizer = null;
+}
 
 export async function fetchAzureToken(force = false): Promise<AzureSpeechTokenResponse> {
   const now = Date.now();
@@ -54,10 +65,11 @@ function closeActiveSynthesizer(): void {
   activeSynthesizer = null;
 }
 
-/** Cancel in-flight Azure speaker synthesis. */
+/** Cancel in-flight Azure speaker synthesis and exam MP3 generation. */
 export function stopAzureSpeech(): void {
   speakGeneration += 1;
   closeActiveSynthesizer();
+  closeActiveExamSynthesizer();
 }
 
 let speakQueue: Promise<boolean> = Promise.resolve(true);
@@ -154,15 +166,20 @@ export async function synthesizeExamMp3(
   const trimmed = text.trim();
   if (!trimmed) return null;
 
+  const myGeneration = speakGeneration;
+
   const tokenData = await fetchAzureToken();
+  if (myGeneration !== speakGeneration) return null;
   if (!tokenData.token || !tokenData.region) return null;
 
   const sdk = await loadSpeechSdk();
+  if (myGeneration !== speakGeneration) return null;
   const speechConfig = sdk.SpeechConfig.fromAuthorizationToken(tokenData.token, tokenData.region);
   speechConfig.speechSynthesisVoiceName = AZURE_VOICES[role];
   speechConfig.speechSynthesisOutputFormat =
     sdk.SpeechSynthesisOutputFormat.Audio24Khz48KBitRateMonoMp3;
   const synthesizer = new sdk.SpeechSynthesizer(speechConfig, null);
+  activeExamSynthesizer = synthesizer;
 
   const useSsml = role === "captain_delta";
   const payload = useSsml ? captainDeltaSsml(trimmed) : trimmed;
@@ -171,19 +188,31 @@ export async function synthesizeExamMp3(
     : synthesizer.speakTextAsync.bind(synthesizer);
 
   return new Promise((resolve) => {
+    const finish = (blob: Blob | null) => {
+      try {
+        synthesizer.close();
+      } catch {
+        /* ignore */
+      }
+      if (activeExamSynthesizer === synthesizer) activeExamSynthesizer = null;
+      if (myGeneration !== speakGeneration) {
+        resolve(null);
+        return;
+      }
+      resolve(blob);
+    };
+
     speak(
       payload,
       (result) => {
-        synthesizer.close();
         if (result.reason === sdk.ResultReason.SynthesizingAudioCompleted && result.audioData) {
-          resolve(new Blob([result.audioData], { type: "audio/mpeg" }));
+          finish(new Blob([result.audioData], { type: "audio/mpeg" }));
           return;
         }
-        resolve(null);
+        finish(null);
       },
       () => {
-        synthesizer.close();
-        resolve(null);
+        finish(null);
       },
     );
   });

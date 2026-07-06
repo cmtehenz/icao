@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import {
   registerCaptainDeltaRecordBridge,
   type CaptainDeltaRecordBridge,
@@ -30,13 +30,14 @@ export function useCaptainRecordBridge(
   if (!bridgeRef.current) {
     bridgeRef.current = {
       canRecord: () => implRef.current.canRecord(),
+      getRecordBlockReason: () => implRef.current.getRecordBlockReason?.() ?? null,
       startRecord: () => implRef.current.startRecord(),
       stopRecord: () => implRef.current.stopRecord(),
       isRecording: () => implRef.current.isRecording(),
     };
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const ownerId = ownerIdRef.current!;
     registerCaptainDeltaRecordBridge(ownerId, bridgeRef.current!, {
       onSecondaryAction: (actionId) => implRef.current.onSecondaryAction?.(actionId),

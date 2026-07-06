@@ -203,6 +203,7 @@ export default function PronunciationRecorder({
         <button
           type="button"
           className={`btn ${azure.recording ? "orange" : "green"} vocab-recorder-primary`}
+          data-record-source="recorder-component"
           onClick={() => void handleRecord()}
           disabled={azure.speaking || !azure.configured || assessingPending}
         >

@@ -1,5 +1,6 @@
 import type { PracticeLevel, VaultWord, VaultWordStatus } from "@/lib/pronunciationVault";
 import { VAULT_PASS_SCORE } from "@/lib/pronunciationVault";
+import type { AzurePronunciationResult } from "@/lib/azure/pronunciation";
 
 export type CaptainPronunciationFeedback = {
   message: string;
@@ -62,6 +63,30 @@ export function captainFeedbackAfterAttempt(
     message: "Slow down. Let's break this word into smaller parts.",
     speechText: "Slow down. Let's break this word into smaller parts.",
   };
+}
+
+/** Short Captain debrief after a valid pronunciation assessment. */
+export function buildCaptainAssessmentDebrief(
+  assessment: AzurePronunciationResult,
+  feedback: CaptainPronunciationFeedback,
+  options?: { missionPass?: boolean },
+): { message: string; speechText: string } {
+  const scoreLine = `Accuracy ${assessment.accuracyScore}, Fluency ${assessment.fluencyScore}.`;
+  let coaching: string;
+
+  if (assessment.accuracyScore >= 90 && assessment.fluencyScore >= 90) {
+    coaching = options?.missionPass
+      ? "Nice work. Continue to the next word."
+      : "Nice work — keep that clarity and pace.";
+  } else if (assessment.accuracyScore >= VAULT_PASS_SCORE) {
+    coaching =
+      "Good attempt — accuracy is fine, but slow down and repeat the stressed syllable.";
+  } else {
+    coaching = feedback.message;
+  }
+
+  const message = `${scoreLine} ${coaching}`;
+  return { message, speechText: message };
 }
 
 export const CAPTAIN_MISSION_INTRO =
