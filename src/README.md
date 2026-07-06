@@ -45,5 +45,5 @@ This is a **structural** change with zero product benefit if rushed. Phase 0 kee
 
 ## See also
 
-- [docs/architecture.md](../docs/architecture.md)
+- [flight-manual/README.md](../flight-manual/README.md)
 - [flight-manual/14-roadmap.md](../flight-manual/14-roadmap.md)

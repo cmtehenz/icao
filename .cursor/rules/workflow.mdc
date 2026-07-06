@@ -1,0 +1,24 @@
+---
+description: Engineering Workflow
+alwaysApply: true
+---
+
+# Workflow
+
+Never start implementing immediately.
+
+Follow this order:
+
+1. Understand the feature.
+2. Read the Flight Manual.
+3. Inspect existing implementation.
+4. Search for similar code.
+5. Reuse existing architecture.
+6. Implement.
+7. Run tests.
+8. Run build.
+9. Summarize changes.
+
+Never rewrite large portions of the application unless explicitly requested.
+
+Prefer incremental improvements.

@@ -1,0 +1,30 @@
+---
+description: Coding Standards
+alwaysApply: true
+---
+
+# Code
+
+Prefer:
+
+Small components.
+
+Small hooks.
+
+Clear naming.
+
+Readable code.
+
+Avoid:
+
+Massive files.
+
+Nested effects.
+
+Deep prop drilling.
+
+Duplicated utilities.
+
+Large object state when smaller state is sufficient.
+
+Every architectural change should explain WHY in comments or documentation.

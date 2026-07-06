@@ -1,0 +1,27 @@
+---
+description: Architecture Rules
+alwaysApply: true
+---
+
+# Architecture
+
+Always prefer:
+
+- Single Source of Truth
+- One owner per responsibility
+- Stable state
+- Stable effects
+- Minimal Context Providers
+
+Never duplicate:
+
+- Controllers
+- State
+- Lifecycle
+- Business logic
+
+Before creating a new Context, Provider, Controller or Hook,
+
+verify whether an existing one can own the responsibility.
+
+Refactor instead of duplicating.

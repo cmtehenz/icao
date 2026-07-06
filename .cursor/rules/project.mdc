@@ -1,0 +1,18 @@
+---
+description: ICAO Delta Project Rules
+alwaysApply: true
+---
+
+# ICAO Delta
+
+The `flight-manual/` directory is the only authoritative documentation.
+
+Before implementing or refactoring any feature:
+
+1. Read the relevant Flight Manual section.
+2. Verify that implementation matches documentation.
+3. If implementation changes intended behavior, update the Flight Manual in the same PR.
+
+Never create parallel documentation unless explicitly requested.
+
+Never duplicate product decisions outside the Flight Manual.

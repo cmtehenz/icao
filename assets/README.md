@@ -26,7 +26,7 @@ Static media catalog for ICAO Delta 2.0.
 | `public/simulado/pictures/` | `assets/images/simulado/` |
 | App icons in `public/` | `assets/icons/` |
 
-Do not move files until build pipeline is updated — see [docs/architecture.md](../docs/architecture.md).
+Do not move files until build pipeline is updated — see [flight-manual/02_ARCHITECTURE.md](../flight-manual/02_ARCHITECTURE.md).
 
 ---
 
