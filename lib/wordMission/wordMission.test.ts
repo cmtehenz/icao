@@ -3,29 +3,29 @@ import { ICAO_VOCABULARY } from "@/data/icaoVocabulary";
 import { recordWordMissionLevelAttempt } from "@/lib/wordMission/progress";
 import { WM_LEVEL_NAMES, wmLevelLabel } from "@/lib/wordMission/types";
 import { vaultWordFromVocabTerm } from "@/lib/wordMission/vaultAdapter";
-import { pronunciationMissionLink } from "@/lib/pronunciationDailyMission";
+import { buildWordMissionLesson, lessonSpeakTextForLevel } from "@/lib/wordMission/lesson/lessonEngine";
 import { legacyPronunciationRedirectTarget, legacyVocabRedirectTarget } from "@/lib/wordMission/legacyRedirects";
 import { resolveVocabTermIdForWord, wordMissionLink } from "@/lib/wordMission/wordDailyMission";
-import { practiceTextForLevel } from "@/lib/pronunciationMission";
+import { pronunciationMissionLink } from "@/lib/pronunciationDailyMission";
 
 const sample = ICAO_VOCABULARY[0]!;
 
 describe("word mission levels", () => {
   it("defines L1–L4 labels", () => {
     expect(WM_LEVEL_NAMES[1]).toBe("Meaning");
-    expect(WM_LEVEL_NAMES[2]).toBe("Pilot phrase");
-    expect(WM_LEVEL_NAMES[3]).toBe("Sentence");
-    expect(WM_LEVEL_NAMES[4]).toBe("ICAO use");
+    expect(WM_LEVEL_NAMES[2]).toBe("Operational Use");
+    expect(WM_LEVEL_NAMES[3]).toBe("Say It");
+    expect(WM_LEVEL_NAMES[4]).toBe("ICAO Practice");
     expect(wmLevelLabel(3)).toContain("WM-3");
   });
 
   it("maps vocab term to vault word for recording controller", () => {
     const vault = vaultWordFromVocabTerm(sample);
+    const lesson = buildWordMissionLesson(sample);
     expect(vault.word).toBe(sample.term);
-    expect(practiceTextForLevel(vault, 1)).toBe(sample.levels[1]);
-    expect(practiceTextForLevel(vault, 2)).toBe(sample.levels[2]);
-    expect(practiceTextForLevel(vault, 3)).toBe(sample.levels[3]);
-    expect(practiceTextForLevel(vault, 4)).toBe(sample.levels[4]);
+    expect(lessonSpeakTextForLevel(lesson, 3)).toBe(vault.contextPack.sentence);
+    expect(lessonSpeakTextForLevel(lesson, 4)).toBe(vault.contextPack.fragment);
+    expect(vault.contextPack.fragment).not.toMatch(/Pan Pan Pan.*immediate return/i);
   });
 });
 

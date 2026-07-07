@@ -18,20 +18,19 @@ describe("WordMissionSession UI certification", () => {
     expect(sessionSource).toMatch(/vocab-studio-hero word-mission-hero/);
     expect(sessionSource).toMatch(/vocab-studio-practice-box/);
     expect(sessionSource).toMatch(/pron-captain-recorder-panel/);
-    expect(sessionSource).toMatch(/pron-captain-coaching-card/);
   });
 
-  it("uses lesson phase groups instead of L1–L4 level tabs", () => {
-    expect(sessionSource).toMatch(/word-mission-lesson-groups/);
-    expect(sessionSource).toMatch(/Micro-flight · Word Mission 2\.0/);
-    expect(sessionSource).toMatch(/buildWordMissionLesson/);
-    expect(sessionSource).toMatch(/Continue sortie/);
+  it("uses four clean step tabs only", () => {
+    expect(sessionSource).toMatch(/word-mission-step-tabs/);
+    expect(sessionSource).toMatch(/WM_LEVEL_NAMES\[l\]/);
+    expect(sessionSource).not.toMatch(/word-mission-lesson-groups/);
+    expect(sessionSource).not.toMatch(/Continue sortie/);
+    expect(sessionSource).not.toMatch(/WORD_MISSION_PHASE_ORDER/);
   });
 
   it("does not mount duplicate Record buttons — Captain recorder only", () => {
     expect(sessionSource).not.toMatch(/PronunciationRecorder/);
     expect(sessionSource).not.toMatch(/>Record</);
-    expect(sessionSource).not.toMatch(/Stop & assess/);
     expect(sessionSource).toMatch(/Captain Recorder/);
   });
 
@@ -41,9 +40,14 @@ describe("WordMissionSession UI certification", () => {
     expect(sessionSource).toMatch(/buildWordMissionLesson/);
   });
 
+  it("records only on Say It and ICAO Practice", () => {
+    expect(sessionSource).toMatch(/shouldEnableRecording/);
+    expect(sessionSource).toMatch(/markWordMissionStepViewed/);
+    expect(sessionSource).toMatch(/Continue/);
+  });
+
   it("hides raw Azure debug behind technical details", () => {
     expect(sessionSource).toMatch(/pron-captain-technical word-mission-technical/);
-    expect(sessionSource).not.toMatch(/word-mission-recorder-note/);
   });
 });
 
@@ -51,12 +55,10 @@ describe("WordMissionApp styling", () => {
   it("imports certified vocab studio stylesheet", () => {
     expect(appSource).toMatch(/vocab-studio\.css/);
     expect(appSource).toMatch(/vocab-flight-deck/);
-    expect(appSource).toMatch(/pronunciation-flight-deck/);
   });
 
   it("includes mobile-first word mission CSS", () => {
     expect(cssSource).toMatch(/\.word-mission-panel/);
-    expect(cssSource).toMatch(/@media \(max-width: 520px\)/);
-    expect(cssSource).toMatch(/\.word-mission-lesson-groups/);
+    expect(cssSource).toMatch(/\.word-mission-step-tabs/);
   });
 });

@@ -4,7 +4,6 @@ import CaptainDeltaTarget from "@/components/CaptainDelta/Visual/CaptainDeltaTar
 import WordPhoneticHint from "@/components/WordPhoneticHint";
 import { usePronunciationRecordingController } from "@/hooks/usePronunciationRecordingController";
 import type { IcaoVocabularyItem } from "@/data/icaoVocabulary";
-import { getLevelText } from "@/data/icaoVocabulary";
 import { errorTypeLabel } from "@/lib/azure/pronunciation";
 import { publishActivePronunciationWord } from "@/lib/captainDelta/lessonContext";
 import { missionCardStatusLine } from "@/lib/pronunciation/missionCardStatusLine";
@@ -13,29 +12,19 @@ import {
   isVocabMissionTermComplete,
   nextVocabMissionLevel,
 } from "@/lib/vocabGraduation";
-import { buildWordMissionLesson } from "@/lib/wordMission/lesson/lessonEngine";
+import { buildWordMissionLesson, lessonSpeakTextForLevel } from "@/lib/wordMission/lesson/lessonEngine";
+import { shouldEnableRecording, stepIdForLevel } from "@/lib/wordMission/lesson/simpleFlow";
 import {
-  advanceLessonContext,
-  createLessonContext,
-  currentPhaseContent,
-  groupedPhaseLabel,
-  isLessonComplete,
-  practiceLevelForPhase,
-  shouldEnableRecording,
-} from "@/lib/wordMission/lesson/lessonFlow";
-import {
-  WORD_MISSION_PHASE_ORDER,
-  WORD_MISSION_PHASE_LABELS,
-  type WordMissionPhaseId,
-} from "@/lib/wordMission/lesson/types";
-import { recordWordMissionLevelAttempt } from "@/lib/wordMission/progress";
-import { WM_PASS_SCORE, type WordMissionLevel } from "@/lib/wordMission/types";
+  markWordMissionStepViewed,
+  recordWordMissionLevelAttempt,
+} from "@/lib/wordMission/progress";
+import { WM_LEVEL_NAMES, WM_PASS_SCORE, type WordMissionLevel } from "@/lib/wordMission/types";
 import { vaultWordFromVocabTerm } from "@/lib/wordMission/vaultAdapter";
 import type { PracticeLevel } from "@/lib/pronunciationVault";
 import type { VocabItemProgress } from "@/utils/spacedRepetition";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
-const PHASE_GROUPS = ["Brief", "Learn", "Speak", "Master", "Fly"] as const;
+const STEPS: WordMissionLevel[] = [1, 2, 3, 4];
 
 type Props = {
   item: IcaoVocabularyItem;
@@ -47,10 +36,6 @@ type Props = {
   onLevelAdvanced: (level: WordMissionLevel) => void;
   onSelectNextMissionTerm: () => void;
 };
-
-function speakTextForLevel(item: IcaoVocabularyItem, level: WordMissionLevel): string {
-  return getLevelText(item, level);
-}
 
 export default function WordMissionSession({
   item,
@@ -66,23 +51,14 @@ export default function WordMissionSession({
   const lesson = useMemo(() => buildWordMissionLesson(item), [item]);
   const termComplete = isVocabMissionTermComplete(progress);
   const [lastScore, setLastScore] = useState<number | null>(null);
-  const [lessonCtx, setLessonCtx] = useState(() => createLessonContext(lesson));
 
-  useEffect(() => {
-    setLessonCtx(createLessonContext(lesson));
-  }, [lesson]);
-
-  const phase = currentPhaseContent(lessonCtx);
-  const recordingEnabled = shouldEnableRecording(lessonCtx);
-  const showListen = practiceLevel >= 3 || lessonCtx.phaseIndex >= 4;
+  const step = lesson.steps[practiceLevel - 1]!;
+  const recordingEnabled = shouldEnableRecording(stepIdForLevel(practiceLevel));
+  const speakText = lessonSpeakTextForLevel(lesson, practiceLevel);
 
   useEffect(() => {
     publishActivePronunciationWord(item.term);
   }, [item.id, item.term]);
-
-  useEffect(() => {
-    onPracticeLevelChange(practiceLevelForPhase(lessonCtx.currentPhaseId));
-  }, [lessonCtx.currentPhaseId, onPracticeLevelChange]);
 
   useEffect(() => {
     onPracticeLevelChange(nextVocabMissionLevel(progress));
@@ -98,13 +74,15 @@ export default function WordMissionSession({
       onProgressRefresh();
       if (result.passed && !result.termComplete) {
         onLevelAdvanced(level);
-        const next = nextVocabMissionLevel(result.progress);
-        onPracticeLevelChange(next);
+        onPracticeLevelChange(nextVocabMissionLevel(result.progress));
+      }
+      if (result.termComplete) {
+        onSelectNextMissionTerm();
       }
       setLastScore(score);
       return { levelPassed: result.passed, termComplete: result.termComplete };
     },
-    [item.id, onLevelAdvanced, onPracticeLevelChange, onProgressRefresh],
+    [item.id, onLevelAdvanced, onPracticeLevelChange, onProgressRefresh, onSelectNextMissionTerm],
   );
 
   const recording = usePronunciationRecordingController({
@@ -121,41 +99,39 @@ export default function WordMissionSession({
     onWordCleared: () => {},
   });
 
-  const { micUi, captainNote, captainDebrief, recordNotice, azureEnvMissing, state: recorderState } =
-    recording;
+  const { micUi, captainDebrief, recordNotice, azureEnvMissing, state: recorderState } = recording;
 
   useEffect(() => {
     if (recorderState.phase !== "success" || recorderState.score == null) return;
     setLastScore(recorderState.score);
   }, [recorderState.phase, recorderState.score]);
 
-  const advancePhase = useCallback(() => {
-    setLessonCtx((prev) => {
-      const next = advanceLessonContext(prev);
-      if (isLessonComplete(next)) return next;
-      return next;
-    });
-  }, []);
+  const continueStep = useCallback(() => {
+    if (practiceLevel > 2) return;
+    markWordMissionStepViewed(item.id, practiceLevel as 1 | 2);
+    onProgressRefresh();
+    const next = (practiceLevel + 1) as WordMissionLevel;
+    onPracticeLevelChange(next);
+    onLevelAdvanced(practiceLevel);
+  }, [item.id, onLevelAdvanced, onPracticeLevelChange, onProgressRefresh, practiceLevel]);
 
   if (termComplete) {
     return (
       <section className="vocab-mission-complete word-mission-complete">
         <h3>Mission complete</h3>
         <p className="sub">
-          You learned how real pilots use &ldquo;{item.term}&rdquo; — not just the dictionary definition.
+          You learned how pilots use &ldquo;{item.term}&rdquo; — meaning, operations, and ICAO practice.
         </p>
       </section>
     );
   }
 
-  const speakText = speakTextForLevel(item, practiceLevel);
   const azureWords =
     recorderState.assessment?.words?.filter((w) => w.errorType && w.errorType !== "None") ?? [];
-  const activeGroup = groupedPhaseLabel(lessonCtx.currentPhaseId);
 
   return (
     <div className="vocab-studio-training vocab-mission-panel word-mission-panel">
-      <p className="vocab-mission-badge vocab-mission-badge-inline">Micro-flight · Word Mission 2.0</p>
+      <p className="vocab-mission-badge vocab-mission-badge-inline">Word Mission</p>
 
       <div className="vocab-studio-hero word-mission-hero">
         <div className="vocab-studio-hero-top">
@@ -165,122 +141,106 @@ export default function WordMissionSession({
             </CaptainDeltaTarget>
             <WordPhoneticHint word={item.term} className="vault-word-phonetic word-mission-phonetic" />
           </h2>
-          <div className="word-mission-lesson-progress" aria-label="Lesson progress">
-            <strong>{lessonCtx.phaseIndex + 1}</strong>
-            <span>/{WORD_MISSION_PHASE_ORDER.length}</span>
-          </div>
         </div>
 
         <div
-          className="word-mission-lesson-groups"
+          className="word-mission-step-tabs"
           role="tablist"
-          aria-label="Word Mission lesson groups"
+          aria-label="Word Mission steps"
         >
-          {PHASE_GROUPS.map((group) => (
-            <span
-              key={group}
-              className={`word-mission-lesson-group ${group === activeGroup ? "active" : ""}`}
-            >
-              {group}
-            </span>
-          ))}
+          {STEPS.map((l) => {
+            const active = l === practiceLevel;
+            const passed = !!progress.levelsPassed?.[l];
+            return (
+              <button
+                key={l}
+                type="button"
+                role="tab"
+                aria-selected={active}
+                disabled={l > nextVocabMissionLevel(progress) && !passed}
+                className={`word-mission-step-tab ${active ? "active" : ""} ${passed ? "passed" : ""}`}
+                onClick={() => {
+                  if (l <= nextVocabMissionLevel(progress) || passed) onPracticeLevelChange(l);
+                }}
+              >
+                {WM_LEVEL_NAMES[l]}
+              </button>
+            );
+          })}
         </div>
       </div>
 
-      <div id="wm-lesson-panel" role="tabpanel" className="word-mission-body">
-        <div className="word-mission-level-head">
-          <span className="vocab-mission-level-label word-mission-phase-label">
-            {phase.label}
-          </span>
-          <span className="word-mission-phase-hint">
-            {phase.studentTurn ? "Your turn — speak out loud" : "Captain Delta"}
-          </span>
-        </div>
+      <div className="word-mission-body word-mission-simple-card">
+        <p className="word-mission-step-label">{step.label}</p>
 
         <div className="word-mission-content-card word-mission-lesson-card">
           <p className="word-mission-content-label">Captain Delta</p>
-          <p className="word-mission-lesson-message">{phase.message}</p>
+          <p className="word-mission-lesson-message">{step.captainLine}</p>
+          {step.detail && <p className="word-mission-step-detail">{step.detail}</p>}
         </div>
 
         {recordingEnabled && (
           <div className="vocab-studio-practice-box word-mission-speak-box">
-            <span className="vocab-studio-practice-label">
-              {lessonCtx.currentPhaseId === "micro_challenge" ? "Micro challenge" : "Speak this"}
-            </span>
+            <span className="vocab-studio-practice-label">Speak this</span>
             <p className="vocab-studio-practice-text">{speakText}</p>
           </div>
         )}
 
-        {!isLessonComplete(lessonCtx) && (
-          <div className="word-mission-lesson-nav">
-            <button type="button" className="btn purple btn-sm" onClick={advancePhase}>
-              Continue sortie
+        <div className="word-mission-lesson-nav">
+          {!recordingEnabled ? (
+            <button type="button" className="btn purple" onClick={continueStep}>
+              Continue
             </button>
-          </div>
-        )}
+          ) : (
+            <p className="word-mission-action-hint">Use Captain Recorder below — then speak.</p>
+          )}
+        </div>
 
-        {isLessonComplete(lessonCtx) && (
-          <div className="word-mission-lesson-nav">
-            <button type="button" className="btn purple" onClick={onSelectNextMissionTerm}>
-              Next mission
-            </button>
-          </div>
-        )}
-
-        {(captainDebrief || captainNote) && (
+        {captainDebrief && recordingEnabled && (
           <div className="word-mission-captain-block">
-            {captainDebrief ? (
-              <div className="pron-captain-coaching-card word-mission-coaching">
-                <h3 className="pron-captain-coaching-title">Captain Delta</h3>
-                <p className="pron-captain-coaching-message">{captainDebrief.message}</p>
-                {captainDebrief.focusLabel && (
-                  <p className="pron-captain-coaching-focus">Focus: {captainDebrief.focusLabel}</p>
-                )}
-              </div>
-            ) : (
-              <p className="pron-captain-feedback word-mission-captain-note">{captainNote}</p>
-            )}
+            <div className="pron-captain-coaching-card word-mission-coaching">
+              <p className="pron-captain-coaching-message">{captainDebrief.message}</p>
+            </div>
           </div>
         )}
 
         <footer className="word-mission-recorder-foot">
-          {azureEnvMissing && (
+          {azureEnvMissing && recordingEnabled && (
             <p className="voice-coach-warn word-mission-warn">
               Azure Speech is not configured. Use Captain mic when speech keys are set.
             </p>
           )}
 
-          {showListen && recordingEnabled && (
-            <div className="word-mission-listen-row">
-              <button
-                type="button"
-                className="btn secondary btn-sm word-mission-listen-btn"
-                onClick={() => void recording.listen()}
-                disabled={isPronunciationRecordingActive(recorderState.phase)}
-                aria-label="Listen to model pronunciation"
-              >
-                Listen
-              </button>
-              <p className="word-mission-listen-hint">Hear the model, then speak with Captain.</p>
-            </div>
-          )}
-
           {recordingEnabled && (
-            <div
-              className={`pron-captain-recorder-panel word-mission-recorder-status pron-captain-recorder-panel--${micUi.visualState}`}
-              role="status"
-              aria-live="polite"
-            >
-              <p className="pron-captain-recorder-line">
-                <span className="pron-captain-recorder-label">Captain Recorder</span>
-                <span aria-hidden> · </span>
-                <span
-                  className={`pron-captain-recorder-status pron-captain-recorder-status--${micUi.visualState}`}
+            <>
+              <div className="word-mission-listen-row">
+                <button
+                  type="button"
+                  className="btn secondary btn-sm word-mission-listen-btn"
+                  onClick={() => void recording.listen()}
+                  disabled={isPronunciationRecordingActive(recorderState.phase)}
+                  aria-label="Listen to model pronunciation"
                 >
-                  {missionCardStatusLine(recorderState.phase)}
-                </span>
-              </p>
-            </div>
+                  Listen
+                </button>
+              </div>
+
+              <div
+                className={`pron-captain-recorder-panel word-mission-recorder-status pron-captain-recorder-panel--${micUi.visualState}`}
+                role="status"
+                aria-live="polite"
+              >
+                <p className="pron-captain-recorder-line">
+                  <span className="pron-captain-recorder-label">Captain Recorder</span>
+                  <span aria-hidden> · </span>
+                  <span
+                    className={`pron-captain-recorder-status pron-captain-recorder-status--${micUi.visualState}`}
+                  >
+                    {missionCardStatusLine(recorderState.phase)}
+                  </span>
+                </p>
+              </div>
+            </>
           )}
 
           {recordNotice && micUi.phase === "idle" && recordingEnabled && (
@@ -293,8 +253,8 @@ export default function WordMissionSession({
             <p
               className={`vault-practice-result word-mission-score ${lastScore >= WM_PASS_SCORE ? "good" : "bad"}`}
             >
-              {lastScore}% — {WORD_MISSION_PHASE_LABELS[lessonCtx.currentPhaseId as WordMissionPhaseId]}
-              {lastScore >= WM_PASS_SCORE ? " · Solid readback" : " · Try again"}
+              {lastScore}% — {step.label}
+              {lastScore >= WM_PASS_SCORE ? " · Passed" : " · Try again"}
             </p>
           )}
 
@@ -311,11 +271,6 @@ export default function WordMissionSession({
                   <span>fluency</span>
                 </div>
               </div>
-              {azureWords.map((w) => (
-                <p key={w.word} className="vault-word-azure-detail">
-                  {w.word}: {w.accuracyScore}% — {errorTypeLabel(w.errorType)}
-                </p>
-              ))}
             </details>
           )}
         </footer>

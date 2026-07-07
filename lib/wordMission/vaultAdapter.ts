@@ -1,9 +1,13 @@
 import type { IcaoVocabularyItem } from "@/data/icaoVocabulary";
-import { getLevelText } from "@/data/icaoVocabulary";
+import {
+  buildWordMissionLesson,
+  lessonSpeakTextForLevel,
+} from "@/lib/wordMission/lesson/lessonEngine";
 import type { VaultWord } from "@/lib/pronunciationVault";
 
 /** Ephemeral vault word for the pronunciation recording controller from a vocab term. */
 export function vaultWordFromVocabTerm(item: IcaoVocabularyItem): VaultWord {
+  const lesson = buildWordMissionLesson(item);
   return {
     word: item.term,
     lowestAccuracy: 0,
@@ -18,10 +22,10 @@ export function vaultWordFromVocabTerm(item: IcaoVocabularyItem): VaultWord {
     lastSeenAt: new Date().toISOString(),
     practiceLevel: 1,
     contextPack: {
-      expression: getLevelText(item, 2),
-      sentence: getLevelText(item, 3),
-      icaoPrompt: getLevelText(item, 4),
-      fragment: getLevelText(item, 4),
+      expression: lessonSpeakTextForLevel(lesson, 2),
+      sentence: lessonSpeakTextForLevel(lesson, 3),
+      icaoPrompt: lesson.steps[3]!.captainLine,
+      fragment: lessonSpeakTextForLevel(lesson, 4),
     },
   };
 }

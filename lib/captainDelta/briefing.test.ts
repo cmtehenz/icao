@@ -45,10 +45,11 @@ vi.mock("@/lib/captainDelta/voiceText", () => ({
 import { buildActiveMissionTermLine, buildTodayBriefing } from "@/lib/captainDelta/briefing";
 
 describe("buildActiveMissionTermLine", () => {
-  it("opens pronunciation sorties with mission context brief", () => {
+  it("opens pronunciation sorties with meaning brief", () => {
     const line = buildActiveMissionTermLine("heading", "pronunciation");
-    expect(line.text).toMatch(/Today's mission focuses/i);
-    expect(line.text).toMatch(/heading/i);
+    expect(line.text).toMatch(/direction|degrees|proa/i);
+    const flyDirect = buildActiveMissionTermLine("fly direct", "pronunciation");
+    expect(flyDirect.text).toMatch(/waypoint|straight/i);
   });
 });
 

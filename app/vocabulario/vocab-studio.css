@@ -1016,6 +1016,69 @@
   color: var(--muted, #9ca3af);
 }
 
+.word-mission-step-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.35rem;
+  margin-top: 0.75rem;
+}
+
+.word-mission-step-tab {
+  min-height: 2.25rem;
+  padding: 0.35rem 0.25rem;
+  border-radius: 8px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--muted, #9ca3af);
+  border: none;
+  cursor: pointer;
+}
+
+.word-mission-step-tab.active {
+  background: rgba(99, 102, 241, 0.2);
+  color: #c7d2fe;
+  box-shadow: inset 0 0 0 1px rgba(129, 140, 248, 0.35);
+}
+
+.word-mission-step-tab.passed {
+  color: #86efac;
+}
+
+.word-mission-step-tab:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.word-mission-step-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted, #9ca3af);
+  margin: 0 0 0.5rem;
+}
+
+.word-mission-step-detail {
+  margin: 0.5rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text, #e5e7eb);
+}
+
+.word-mission-action-hint {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted, #9ca3af);
+}
+
+.word-mission-simple-card {
+  margin-top: 0.75rem;
+}
+
 .word-mission-lesson-progress {
   display: flex;
   align-items: baseline;

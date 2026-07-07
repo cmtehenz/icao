@@ -3,9 +3,9 @@ export type WordMissionLevel = 1 | 2 | 3 | 4;
 
 export const WM_LEVEL_NAMES: Record<WordMissionLevel, string> = {
   1: "Meaning",
-  2: "Pilot phrase",
-  3: "Sentence",
-  4: "ICAO use",
+  2: "Operational Use",
+  3: "Say It",
+  4: "ICAO Practice",
 };
 
 export const WM_PASS_SCORE = 75;

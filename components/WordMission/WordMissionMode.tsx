@@ -25,7 +25,7 @@ import {
 import { wmLevelCode } from "@/lib/wordMission/types";
 
 const WORD_MISSION_INTRO =
-  "Every word is a flight lesson — brief, meaning, real ATC, pronunciation, then you fly the conversation.";
+  "Every word is a flight lesson — meaning, operational use, say it, then ICAO practice.";
 
 export default function WordMissionMode({ initialTermId }: { initialTermId?: string }) {
   const searchParams = useSearchParams();

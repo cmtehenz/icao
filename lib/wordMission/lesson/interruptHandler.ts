@@ -1,7 +1,7 @@
 import { respondAsCaptainInstructor } from "@/lib/captainDelta/infinity/respond";
 import type { CaptainIntent } from "@/lib/captainDelta/infinity/types";
-import { currentPhaseContent } from "@/lib/wordMission/lesson/lessonFlow";
-import type { WordMissionLessonContext, WordMissionPhaseId } from "@/lib/wordMission/lesson/types";
+import { currentStep } from "@/lib/wordMission/lesson/simpleFlow";
+import type { WordMissionLessonContext, WordMissionStepId } from "@/lib/wordMission/lesson/types";
 
 const INTERRUPT_PATTERNS: { pattern: RegExp; intent: CaptainIntent }[] = [
   { pattern: /what does this mean|meaning|o que significa/i, intent: "meaning_question" },
@@ -24,7 +24,7 @@ export type WordMissionInterruptResult = {
   message: string;
   speechText: string;
   intent: CaptainIntent;
-  resumePhaseId: WordMissionPhaseId;
+  resumeStepId: WordMissionStepId;
 };
 
 /** Student interrupts — Captain answers, then returns to lesson context. */
@@ -32,22 +32,22 @@ export function handleWordMissionInterrupt(
   question: string,
   ctx: WordMissionLessonContext,
 ): WordMissionInterruptResult {
-  const phase = currentPhaseContent(ctx);
+  const phase = currentStep(ctx);
   const intent = classifyWordMissionInterrupt(question);
   const response = respondAsCaptainInstructor({
     question,
     intent,
     currentWord: ctx.lesson.term,
-    referenceText: phase.message,
+    referenceText: phase.detail ?? phase.captainLine,
     practiceLevel: 2,
   });
 
-  const resume = `Back to our sortie — ${phase.label}. ${phase.speechText}`;
+  const resume = `Back to our lesson — ${phase.label}. ${phase.captainLine}`;
   return {
     message: `${response.message} ${resume}`,
     speechText: `${response.speechText} Back to the lesson.`,
     intent,
-    resumePhaseId: ctx.currentPhaseId,
+    resumeStepId: ctx.currentStepId,
   };
 }
 

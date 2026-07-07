@@ -46,6 +46,23 @@ export function recordWordMissionLevelAttempt(
   return { progress, passed, termComplete, missionMarkedComplete };
 }
 
+/** Mark read-only steps (Meaning, Operational Use) complete without recording. */
+export function markWordMissionStepViewed(
+  termId: string,
+  level: 1 | 2,
+): WordMissionLevelResult {
+  const store = loadVocabProgressStore();
+  const progress = recordVocabAttempt(store, termId, WM_PASS_SCORE, level);
+  const termComplete = isVocabMissionTermComplete(progress);
+  let missionMarkedComplete = false;
+  const daily = getOrCreateVocabDailyMission();
+  if (termComplete && daily.termIds.includes(termId) && !daily.completedIds.includes(termId)) {
+    markVocabDailyComplete(termId);
+    missionMarkedComplete = true;
+  }
+  return { progress, passed: true, termComplete, missionMarkedComplete };
+}
+
 export function wordMissionTermProgress(termId: string): VocabItemProgress {
   return getItemProgress(loadVocabProgressStore(), termId);
 }

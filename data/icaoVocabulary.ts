@@ -37,6 +37,23 @@ function cap(s: string): string {
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
+function defaultLevel4(item: Pick<IcaoVocabularyItem, "term" | "categoryId">, l3: string): string {
+  const term = item.term;
+  if (item.categoryId === "emergencies") {
+    if (/engine failure/i.test(term)) {
+      return "Mayday, ANAC 123, we have an engine failure, requesting immediate return.";
+    }
+    if (/fire/i.test(term)) {
+      return "Mayday, ANAC 123, we have fire on board, requesting immediate landing.";
+    }
+    return `Pan Pan Pan, ANAC 123, we have ${term}, requesting priority.`;
+  }
+  if (item.categoryId === "atc") {
+    return `Recife Tower, ANAC 123, roger, ${term}.`;
+  }
+  return `In Part 2, I would explain when pilots use ${term}.`;
+}
+
 function core(
   id: string,
   categoryId: Exclude<IcaoVocabCategoryId, "extended">,
@@ -63,7 +80,7 @@ function core(
       3: l3,
       4:
         levels?.[4] ??
-        `Departure, ANAC 123, Pan Pan Pan, ${l3.charAt(0).toLowerCase()}${l3.slice(1)}, requesting immediate return.`,
+        defaultLevel4({ term, categoryId }, l3),
     },
   };
 }
@@ -189,7 +206,7 @@ function fromPart2Term(term: VocabularyTerm): IcaoVocabularyItem {
       3: l3,
       4: l3.includes("ANAC")
         ? l3
-        : `Departure, ANAC 123, Pan Pan Pan, ${l3.charAt(0).toLowerCase()}${l3.slice(1)}, requesting immediate return.`,
+        : defaultLevel4({ term: term.term, categoryId: "extended" }, l3),
     },
   };
 }

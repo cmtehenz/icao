@@ -108,7 +108,7 @@ describe("active pronunciation word single source", () => {
     publishActivePronunciationWord("route");
     const term = resolveCaptainActiveTerm("pronunciation", DEFAULT_LESSON_CONTEXT);
     const line = buildActiveMissionTermLine(term!, "pronunciation");
-    expect(line.text).toMatch(/Today's mission focuses/i);
+    expect(line.text).toMatch(/direction|degrees|operational/i);
     expect(line.text).toContain("route");
     expect(line.speechText).toContain("route");
   });
