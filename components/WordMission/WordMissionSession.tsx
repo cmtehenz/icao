@@ -64,16 +64,6 @@ export default function WordMissionSession({
   }, [item.id, item.term]);
 
   useEffect(() => {
-    if (recordingEnabled && captainDebrief) return;
-    const coaching = buildStepCaptainCoaching(step);
-    emitCaptainDeltaSuggestion({
-      text: coaching.text,
-      speechText: coaching.speechText,
-      kind: "coaching",
-    });
-  }, [item.id, practiceLevel, speakText, step, recordingEnabled, captainDebrief]);
-
-  useEffect(() => {
     if (!recordingEnabled) setLastScore(null);
   }, [practiceLevel, recordingEnabled]);
 
@@ -117,6 +107,16 @@ export default function WordMissionSession({
   });
 
   const { micUi, captainDebrief, recordNotice, azureEnvMissing, state: recorderState } = recording;
+
+  useEffect(() => {
+    if (recordingEnabled && captainDebrief) return;
+    const coaching = buildStepCaptainCoaching(step);
+    emitCaptainDeltaSuggestion({
+      text: coaching.text,
+      speechText: coaching.speechText,
+      kind: "coaching",
+    });
+  }, [item.id, practiceLevel, speakText, step, recordingEnabled, captainDebrief]);
 
   useEffect(() => {
     if (recorderState.phase !== "success" || recorderState.score == null) return;
