@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "completedCount": 17,
-  "pendingCount": 493,
+  "completedCount": 18,
+  "pendingCount": 492,
   "concepts": [
     {
       "id": "0001",
@@ -119,6 +119,13 @@
       "id": "0017",
       "concept": "Maintain Present Heading",
       "slug": "0017-maintain-present-heading",
+      "status": "complete",
+      "completedAt": "2026-07-07"
+    },
+    {
+      "id": "0018",
+      "concept": "Maintain Present Speed",
+      "slug": "0018-maintain-present-speed",
       "status": "complete",
       "completedAt": "2026-07-07"
     }

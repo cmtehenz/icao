@@ -358,5 +358,26 @@ export const BATCH01_DEV_ENTRIES: DevKnowledgeEntry[] = [
     "sayItCoach": "Maintain Present Heading.",
     "icaoModelAnswer": "Maintain Present Heading means I continue flying my current heading without turning. Fly Heading 090 instructs me to turn, if necessary, and establish heading zero niner zero.",
     "memoryTrick": "Imagine pressing the pause button.\n\nNothing changes."
+  },
+  {
+    "catalogId": "0018",
+    "id": "0018",
+    "displayTerm": "Maintain Present Speed",
+    "term": "maintain present speed",
+    "slug": "maintain-present-speed",
+    "category": "ATC Phraseology",
+    "meaningEn": "Maintain Present Speed instructs the pilot to continue flying at the aircraft's current indicated airspeed unless another speed is assigned.",
+    "meaningPt": "Mantenha a velocidade atual.",
+    "whenUsed": "When ATC issues Maintain Present Speed, the pilot should:",
+    "example": "Approach: ANAC123, maintain present speed.",
+    "sayPhrase": "Maintaining present speed, ANAC123.",
+    "icaoQuestion": "Why would ATC instruct an aircraft to maintain its present speed?",
+    "icaoSpeakText": "Maintaining present speed until five-mile final, ANAC123.",
+    "missionBrief": "Today's lesson covers an instruction that controllers use every day to sequence traffic safely.\n\nSometimes ATC does not want you to accelerate.",
+    "captainTeaching": "Imagine you're driving on a highway.\n\nThe car in front of you is moving at exactly the right speed.\n\nIf you suddenly accelerate, you'll reduce the safety distance.",
+    "operationalContext": "You're flying your H130 toward Florianópolis Airport.\n\nAnother helicopter is three miles ahead on the same approach.\n\nApproach wants to keep the spacing constant.\n\nThe controller transmits:",
+    "sayItCoach": "Maintaining present speed, ANAC123.",
+    "icaoModelAnswer": "ATC may instruct an aircraft to maintain its present speed to preserve safe spacing between aircraft, improve traffic sequencing, and reduce the need for additional vectoring. The pilot should continue flying at the current speed until another clearance is received.",
+    "memoryTrick": "Imagine you're walking through a crowded airport terminal.\n\nEveryone is moving smoothly."
   }
 ];
