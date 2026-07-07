@@ -11,7 +11,7 @@ const CURATED: Record<string, CuratedWordContent> = {
     whoSaysIt: "Approach or Center — occasionally Tower on departure.",
     whenUsed: "When ATC wants to shorten your track to a fix or destination.",
     whyUsed: "It saves time and fuel when separation allows a direct routing.",
-    towerLine: "Helicopter PT-ABC, fly direct NITUX.",
+    towerLine: "Helicopter ANAC123, fly direct NITUX.",
     towerExplanation:
       "Instead of following the published route, ATC is shortening your flight to the NITUX waypoint.",
     pronunciationChunks: ["Fly...", "Direct...", "Fly direct."],
@@ -48,7 +48,7 @@ const CURATED: Record<string, CuratedWordContent> = {
     whoSaysIt: "Tower on departure, Approach in the circuit.",
     whenUsed: "Immediately after takeoff and during vectoring.",
     whyUsed: "Headings keep you clear of other traffic until you can resume navigation.",
-    towerLine: "Helicopter PT-ABC, fly heading zero nine zero.",
+    towerLine: "Helicopter ANAC123, fly heading zero nine zero.",
     towerExplanation: "Tower is assigning a magnetic heading — read back the heading and your callsign.",
     pronunciationChunks: ["Heading...", "Zero nine zero.", "Fly heading zero nine zero."],
     commonMistakes: [
@@ -80,7 +80,7 @@ const CURATED: Record<string, CuratedWordContent> = {
     whoSaysIt: "Pilot to ATC — you request; ATC may suggest.",
     whenUsed: "Low fuel, weather below minima, system failures, medical emergencies.",
     whyUsed: "Clear intention keeps ATC and crew aligned under pressure.",
-    towerLine: "PT-ABC, say intentions.",
+    towerLine: "ANAC123, say intentions.",
     towerExplanation: "ATC needs your plan — divert, fuel state, souls on board, in one calm call.",
     pronunciationChunks: ["Di...", "Vert...", "We would like to divert."],
     commonMistakes: [
@@ -106,7 +106,7 @@ const CURATED: Record<string, CuratedWordContent> = {
     whoSaysIt: "Pilot to ATC — Mayday or Pan Pan depending on severity.",
     whenUsed: "Power loss, flameout, compressor stall with no recovery.",
     whyUsed: "Priority handling and crew coordination depend on clear, short English.",
-    towerLine: "PT-ABC, say again your emergency.",
+    towerLine: "ANAC123, say again your emergency.",
     towerExplanation: "ATC needs your nature of emergency and intentions — engine failure, souls, fuel, intentions.",
     pronunciationChunks: ["Engine...", "Failure...", "We have an engine failure."],
     commonMistakes: [
@@ -132,7 +132,7 @@ const CURATED: Record<string, CuratedWordContent> = {
     whoSaysIt: "Tower to aircraft on ground frequency.",
     whenUsed: "Runway occupancy, sequencing departures, wake turbulence separation.",
     whyUsed: "Positions you for immediate departure when traffic allows.",
-    towerLine: "PT-ABC, runway three six, line up and wait.",
+    towerLine: "ANAC123, runway three six, line up and wait.",
     towerExplanation: "You may enter the runway — but you must not take off until cleared.",
     pronunciationChunks: ["Line up...", "And wait.", "Line up and wait runway three six."],
     commonMistakes: [
@@ -183,7 +183,7 @@ export function buildFallbackCuratedContent(item: IcaoVocabularyItem): CuratedWo
     whoSaysIt: item.categoryId === "atc" ? "ATC to pilot, or pilot readback." : "Pilot to ATC or crew.",
     whenUsed: `During ${item.category.toLowerCase()} — see your example scenario.`,
     whyUsed: "Clear English keeps crew and ATC aligned in real operations.",
-    towerLine: `PT-ABC, ${getLevelTextSafe(item, 2)}`,
+    towerLine: `ANAC123, ${getLevelTextSafe(item, 2)}`,
     towerExplanation: item.example || `This is how "${term}" appears in operational context.`,
     pronunciationChunks: term.split(" ").length > 1
       ? [...term.split(" ").map((w) => `${cap(w)}...`), cap(term) + "."]
@@ -236,7 +236,7 @@ function buildFallbackFromTerm(term: string): CuratedWordContent {
     whoSaysIt: "Pilot or ATC depending on context.",
     whenUsed: "During operational radio calls.",
     whyUsed: "Standard phraseology keeps communication clear.",
-    towerLine: `PT-ABC, ${term}.`,
+    towerLine: `ANAC123, ${term}.`,
     towerExplanation: `Listen for "${term}" in context — then read back essentials.`,
     pronunciationChunks: [term, term],
     commonMistakes: ["Speak slowly — quality before speed on radio."],

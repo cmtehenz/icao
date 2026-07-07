@@ -989,22 +989,41 @@
   margin-bottom: 1rem;
   padding: 1rem 1.1rem;
   border-radius: 12px;
-  border: 1px solid var(--line, #1f2937);
-  background: color-mix(in srgb, var(--card, #111827) 92%, var(--purple, #8b5cf6) 8%);
+  border: 1px solid color-mix(in srgb, var(--purple) 22%, var(--line));
+  background: var(--purple-bg);
 }
 
 .word-mission-term {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.2rem;
+  gap: 0.35rem;
 }
 
-.word-mission-phonetic {
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--muted, #9ca3af);
-  letter-spacing: 0.02em;
+.word-mission-term .vocab-studio-hero-term {
+  color: var(--text);
+}
+
+.word-mission-phonetic,
+.word-mission-term .word-phonetic-hint {
+  display: block;
+  margin-left: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-style: normal;
+  color: color-mix(in srgb, var(--purple) 70%, var(--text));
+  letter-spacing: 0.03em;
+  line-height: 1.35;
+}
+
+[data-theme="dark"] .word-mission-hero {
+  background: color-mix(in srgb, var(--card) 86%, var(--purple) 14%);
+  border-color: color-mix(in srgb, var(--purple) 35%, var(--line));
+}
+
+[data-theme="dark"] .word-mission-phonetic,
+[data-theme="dark"] .word-mission-term .word-phonetic-hint {
+  color: #e0e7ff;
 }
 
 .word-mission-meaning-line {
@@ -1026,38 +1045,67 @@
 .word-mission-step-tabs {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.35rem;
-  margin-top: 0.75rem;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
 }
 
 .word-mission-step-tab {
-  min-height: 2.25rem;
-  padding: 0.35rem 0.25rem;
+  min-height: 2.4rem;
+  padding: 0.4rem 0.3rem;
   border-radius: 8px;
-  font-size: 0.62rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   text-align: center;
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--muted, #9ca3af);
-  border: none;
+  line-height: 1.2;
+  background: var(--bg-subtle);
+  color: var(--text);
+  border: 1px solid var(--line);
   cursor: pointer;
 }
 
-.word-mission-step-tab.active {
-  background: rgba(99, 102, 241, 0.2);
-  color: #c7d2fe;
-  box-shadow: inset 0 0 0 1px rgba(129, 140, 248, 0.35);
+.word-mission-step-tab:hover:not(:disabled):not(.active) {
+  border-color: color-mix(in srgb, var(--purple) 30%, var(--line));
+  background: color-mix(in srgb, var(--purple) 6%, var(--bg-subtle));
 }
 
-.word-mission-step-tab.passed {
-  color: #86efac;
+.word-mission-step-tab.active {
+  background: var(--purple);
+  color: #fff;
+  border-color: var(--purple);
+  box-shadow: 0 2px 10px color-mix(in srgb, var(--purple) 30%, transparent);
+}
+
+.word-mission-step-tab.passed:not(.active) {
+  color: var(--green);
+  background: var(--green-bg);
+  border-color: color-mix(in srgb, var(--green) 35%, var(--line));
 }
 
 .word-mission-step-tab:disabled {
-  opacity: 0.45;
+  opacity: 0.55;
   cursor: not-allowed;
+  color: var(--muted);
+}
+
+[data-theme="dark"] .word-mission-step-tab {
+  background: color-mix(in srgb, var(--card) 92%, var(--bg-subtle));
+  color: #d1d5db;
+  border-color: var(--line);
+}
+
+[data-theme="dark"] .word-mission-step-tab.active {
+  background: #7c3aed;
+  color: #fff;
+  border-color: #a78bfa;
+  box-shadow: 0 0 0 1px rgba(167, 139, 250, 0.45);
+}
+
+[data-theme="dark"] .word-mission-step-tab.passed:not(.active) {
+  color: #86efac;
+  background: rgba(22, 163, 74, 0.14);
+  border-color: rgba(74, 222, 128, 0.35);
 }
 
 .word-mission-step-label {
@@ -1065,7 +1113,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--muted, #9ca3af);
+  color: color-mix(in srgb, var(--text) 75%, var(--muted));
   margin: 0 0 0.5rem;
 }
 
@@ -1188,6 +1236,109 @@
 
 .word-mission-lesson-card {
   border-left: 3px solid rgba(129, 140, 248, 0.45);
+}
+
+.word-mission-step-detail {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.15);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--text, #e5e7eb);
+}
+
+.word-mission-rich-panels {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 0.75rem;
+}
+
+.word-mission-rich-panel {
+  padding: 0.75rem 0.85rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: rgba(15, 23, 42, 0.45);
+}
+
+.word-mission-rich-panel-title {
+  margin: 0 0 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #a5b4fc;
+}
+
+.word-mission-rich-para {
+  margin: 0 0 0.55rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--text, #e5e7eb);
+}
+
+.word-mission-rich-para:last-child {
+  margin-bottom: 0;
+}
+
+.word-mission-rich-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--text, #e5e7eb);
+}
+
+.word-mission-rich-quotes {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.word-mission-radio-quote {
+  display: block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: #dbeafe;
+}
+
+.word-mission-rich-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.word-mission-rich-chip {
+  display: inline-flex;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  text-decoration: none;
+  border: 1px solid rgba(129, 140, 248, 0.35);
+  background: rgba(99, 102, 241, 0.12);
+  color: #c7d2fe;
+}
+
+.word-mission-rich-chip:hover {
+  background: rgba(99, 102, 241, 0.22);
+}
+
+.word-mission-rich-chip--static {
+  opacity: 0.85;
+}
+
+.word-mission-rich-links {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+.word-mission-rich-links a {
+  color: #93c5fd;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .word-mission-lesson-message {

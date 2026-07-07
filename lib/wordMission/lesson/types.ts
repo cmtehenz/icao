@@ -34,6 +34,7 @@ export type WordMissionStep = {
 
 import type { KnowledgeSource } from "@/lib/wordMission/lesson/knowledgeSource";
 import type { KnowledgeReviewMeta } from "@/lib/knowledge/review";
+import type { WordMissionRichContent } from "@/lib/wordMission/lesson/richContent";
 
 export type WordMissionLesson = {
   term: string;
@@ -45,6 +46,8 @@ export type WordMissionLesson = {
   knowledgeSource?: KnowledgeSource;
   /** Developer review metadata — knowledge provenance. */
   knowledgeReview?: KnowledgeReviewMeta;
+  /** Premium lesson panels — references, phraseology, coaching, etc. */
+  richContent?: WordMissionRichContent;
 };
 
 export type WordMissionLessonContext = {

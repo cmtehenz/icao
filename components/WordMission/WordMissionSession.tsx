@@ -16,6 +16,7 @@ import {
 import { SKYBRARY_UI_LABEL } from "@/lib/wordMission/lesson/knowledgeSource";
 import { buildWordMissionLesson, lessonSpeakTextForLevel } from "@/lib/wordMission/lesson/lessonEngine";
 import { buildStepCaptainCoaching, shouldEnableRecording, stepIdForLevel, wordMissionStepActionHint } from "@/lib/wordMission/lesson/simpleFlow";
+import WordMissionRichPanels, { InstructorProse } from "@/components/WordMission/WordMissionRichPanels";
 import {
   markWordMissionStepViewed,
   recordWordMissionLevelAttempt,
@@ -63,7 +64,7 @@ export default function WordMissionSession({
   }, [item.id, item.term]);
 
   useEffect(() => {
-    const coaching = buildStepCaptainCoaching(step, speakText);
+    const coaching = buildStepCaptainCoaching(step);
     emitCaptainDeltaSuggestion({
       text: coaching.text,
       speechText: coaching.speechText,
@@ -194,12 +195,20 @@ export default function WordMissionSession({
 
         <div className="word-mission-content-card word-mission-lesson-card">
           <p className="word-mission-content-label">Captain Delta</p>
-          <p className="word-mission-lesson-message">{step.captainLine}</p>
-          {step.detail && <p className="word-mission-step-detail">{step.detail}</p>}
+          <div className="word-mission-lesson-message">
+            <InstructorProse text={step.captainLine} />
+          </div>
+          {step.detail && (
+            <div className="word-mission-step-detail">
+              <InstructorProse text={step.detail} />
+            </div>
+          )}
           {lesson.knowledgeSource?.provider === "skybrary" && (
             <p className="word-mission-source-label">{SKYBRARY_UI_LABEL}</p>
           )}
         </div>
+
+        <WordMissionRichPanels stepId={step.id} richContent={lesson.richContent} />
 
         {recordingEnabled && (
           <div className="vocab-studio-practice-box word-mission-speak-box">

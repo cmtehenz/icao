@@ -5,7 +5,7 @@ import {
   type WordMissionStep,
   type WordMissionStepId,
 } from "@/lib/wordMission/lesson/types";
-import { instructorSpeechFromParts } from "@/lib/wordMission/lesson/instructorText";
+import { instructorDisplayText, instructorSpeechFromParts } from "@/lib/wordMission/lesson/instructorText";
 
 export function stepIndex(id: WordMissionStepId): number {
   return WORD_MISSION_STEP_ORDER.indexOf(id);
@@ -49,9 +49,9 @@ export function wordMissionStepActionHint(
 ): string {
   switch (stepId) {
     case "meaning":
-      return "Listen only — no recording. Tap Continue when the meaning is clear.";
+      return "Tap Continue when Captain Delta has explained the meaning.";
     case "operational_use":
-      return "Picture the scenario — no recording on this step. Tap Continue. On Say It you will speak the full pilot readback with callsign.";
+      return "Picture the scenario, then tap Continue. You will record the full pilot readback on Say It.";
     case "say_it":
       return `Record this complete pilot readback out loud — callsign and full phrase: ${speakText}`;
     case "icao_practice":
@@ -61,14 +61,13 @@ export function wordMissionStepActionHint(
   }
 }
 
+/** Captain speaks instructor script only — step hints stay on the mission card. */
 export function buildStepCaptainCoaching(
   step: WordMissionStep,
-  speakText: string,
 ): { text: string; speechText: string } {
-  const actionHint = wordMissionStepActionHint(step.id, speakText);
-  const text = [step.captainLine, step.detail, actionHint].filter(Boolean).join("\n\n");
+  const instructorText = instructorDisplayText(step.captainLine, step.detail);
   return {
-    text,
-    speechText: instructorSpeechFromParts(step.captainLine, step.detail, actionHint),
+    text: instructorText,
+    speechText: instructorSpeechFromParts(step.captainLine, step.detail),
   };
 }

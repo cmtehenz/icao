@@ -57,7 +57,7 @@ You're approaching Navegantes Airport in your H130.
 
 Tower instructs:
 
-"PT-ABC, continue approach."
+"ANAC123, continue approach."
 
 You continue descending.
 
@@ -69,7 +69,7 @@ However, an aircraft is still backtracking on the runway.
 
 Only after the runway becomes available does Tower transmit:
 
-"PT-ABC, runway zero seven, cleared to land."
+"ANAC123, runway zero seven, cleared to land."
 
 Now the runway is officially yours.
 
@@ -77,19 +77,19 @@ You continue the landing.
 
 ## Real ATC Phraseology
 
-1. PT-ABC, runway zero seven, cleared to land.
-2. PT-ABC, wind zero eight zero at seven knots, runway one eight, cleared to land.
-3. PT-ABC, number one, runway two seven, cleared to land.
-4. PT-ABC, runway zero seven, cleared to land, caution wake turbulence.
-5. PT-ABC, cleared to land, traffic vacating the runway.
+1. ANAC123, runway zero seven, cleared to land.
+2. ANAC123, wind zero eight zero at seven knots, runway one eight, cleared to land.
+3. ANAC123, number one, runway two seven, cleared to land.
+4. ANAC123, runway zero seven, cleared to land, caution wake turbulence.
+5. ANAC123, cleared to land, traffic vacating the runway.
 
 ## Professional Pilot Readbacks
 
-1. Runway zero seven, cleared to land, PT-ABC.
-2. Cleared to land runway one eight, PT-ABC.
-3. Number one, cleared to land runway two seven, PT-ABC.
-4. Cleared to land, caution wake turbulence acknowledged, PT-ABC.
-5. Cleared to land, PT-ABC.
+1. Runway zero seven, cleared to land, ANAC123.
+2. Cleared to land runway one eight, ANAC123.
+3. Number one, cleared to land runway two seven, ANAC123.
+4. Cleared to land, caution wake turbulence acknowledged, ANAC123.
+5. Cleared to land, ANAC123.
 
 ## Captain Delta Teaching
 
@@ -134,7 +134,7 @@ The pilot should continue the approach while monitoring the radio and be prepare
   Only ATC can issue landing clearance at a controlled airport.
 
 - ❌ Reading back only: Roger.  
-  ✔ Correct: Cleared to land runway zero seven, PT-ABC.
+  ✔ Correct: Cleared to land runway zero seven, ANAC123.
 
 - ❌ Forgetting the runway number.  
   Whenever practical, include the runway in the readback.
@@ -156,7 +156,7 @@ Cleared... To land... Cleared to land.
 
 Now inside a complete transmission:
 
-PT-ABC, runway zero seven, cleared to land.
+ANAC123, runway zero seven, cleared to land.
 
 Speak smoothly, avoiding long pauses between the words.
 
@@ -197,7 +197,7 @@ Cleared to Land.
 
 Tower:
 
-"PT-ABC, runway zero seven, cleared to land."
+"ANAC123, runway zero seven, cleared to land."
 
 Your task:
 

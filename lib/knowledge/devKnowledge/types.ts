@@ -1,3 +1,8 @@
+export type DevKnowledgeReference = {
+  label: string;
+  href?: string;
+};
+
 export type DevKnowledgeEntry = {
   id: string;
   catalogId: string;
@@ -24,4 +29,20 @@ export type DevKnowledgeEntry = {
   /** ICAO Level 4 model answer. */
   icaoModelAnswer?: string;
   memoryTrick?: string;
+  /** Full operational meaning section. */
+  operationalMeaning?: string;
+  /** Bullet list from Why ATC Uses It. */
+  whyAtcUsesIt?: string[];
+  /** Real ATC phraseology examples. */
+  atcPhraseology?: string[];
+  /** Professional pilot readbacks. */
+  pilotReadbacks?: string[];
+  /** Common Brazilian mistakes section. */
+  brazilianMistakes?: string;
+  /** Full pronunciation coaching block. */
+  pronunciationCoaching?: string;
+  /** Related concept labels. */
+  relatedConcepts?: string[];
+  /** Reference sources with optional links. */
+  references?: DevKnowledgeReference[];
 };

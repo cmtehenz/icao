@@ -1,6 +1,6 @@
 # ICAO Delta — Callsign Policy
 
-**Applies to:** all premium lessons from 0008 onward (0001–0007 retain PT-ABC).
+**Applies to:** all premium Word Mission lessons.
 
 ## Part 2 (Radiotelephony)
 

@@ -32,9 +32,34 @@ describe("Word Mission 2.1 — simplified lesson", () => {
     const ops = lesson.steps[1]!;
     const sayIt = lesson.steps[2]!;
     expect(ops.detail).toMatch(/pilot readback/i);
-    expect(ops.detail).toMatch(/Holding short runway one eight, PT-ABC/i);
-    expect(sayIt.speakText).toMatch(/Holding short runway one eight, PT-ABC/i);
-    expect(sayIt.captainLine).toMatch(/complete pilot readback/i);
+    expect(ops.detail).toMatch(/Holding short runway one eight, ANAC123/i);
+    expect(sayIt.speakText).toMatch(/Holding short runway one eight, ANAC123/i);
+    expect(sayIt.captainLine).not.toMatch(/Record this complete/i);
+  });
+
+  it("cleared for takeoff uses full instructor brief and rich panels", () => {
+    const lesson = buildWordMissionLesson("cleared for takeoff");
+    expect(lesson.steps[0]!.captainLine).toMatch(/most important phrases in aviation/i);
+    expect(lesson.steps[0]!.detail).toMatch(/Gustavo, this is one of the most disciplined moments/i);
+    expect(lesson.steps[0]!.detail).toMatch(/No clearance, no takeoff/i);
+    expect(lesson.richContent?.references?.length).toBeGreaterThan(3);
+    expect(lesson.richContent?.atcPhraseology?.length).toBe(5);
+  });
+
+  it("report position Say It uses immediate position report from operational scenario", () => {
+    const lesson = buildWordMissionLesson("0019");
+    const sayIt = lesson.steps[2]!;
+    expect(sayIt.speakText).toMatch(/five miles south of Navegantes/i);
+    expect(sayIt.speakText).toMatch(/maintaining two thousand feet/i);
+    expect(lesson.steps[1]!.detail).toMatch(/five miles south of Navegantes/i);
+  });
+
+  it("maintain own separation uses visual separation readback on Say It", () => {
+    const lesson = buildWordMissionLesson("0020");
+    const sayIt = lesson.steps[2]!;
+    expect(sayIt.speakText).toMatch(/Traffic in sight, maintaining own separation, ANAC123/i);
+    expect(lesson.steps[1]!.captainLine).toMatch(/Florianópolis/i);
+    expect(lesson.steps[3]!.speakText).toMatch(/visual operations/i);
   });
 
   it("fly direct examples come from premium knowledge", () => {

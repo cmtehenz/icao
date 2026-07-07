@@ -80,7 +80,7 @@ Landing checklist complete.
 
 At approximately 200 feet AGL, Tower suddenly transmits:
 
-"PT-ABC, Go Around, traffic still on the runway."
+"ANAC123, Go Around, traffic still on the runway."
 
 Without hesitation you:
 
@@ -97,19 +97,19 @@ The safest landing is sometimes the one you don't complete.
 
 ## 📡 Real ATC Phraseology
 
-1. PT-ABC, Go Around.
-2. PT-ABC, Go Around, traffic on the runway.
-3. PT-ABC, Go Around, unstable spacing.
-4. PT-ABC, Go Around, runway occupied.
-5. PT-ABC, Go Around, windshear reported on final.
+1. ANAC123, Go Around.
+2. ANAC123, Go Around, traffic on the runway.
+3. ANAC123, Go Around, unstable spacing.
+4. ANAC123, Go Around, runway occupied.
+5. ANAC123, Go Around, windshear reported on final.
 
 ## 🎙 Professional Pilot Readbacks
 
-1. Going around, PT-ABC.
-2. PT-ABC going around.
-3. Going around due traffic, PT-ABC.
-4. Going around, runway occupied, PT-ABC.
-5. Going around, following published missed approach, PT-ABC.
+1. Going around, ANAC123.
+2. ANAC123 going around.
+3. Going around due traffic, ANAC123.
+4. Going around, runway occupied, ANAC123.
+5. Going around, following published missed approach, ANAC123.
 
 ## 👨‍✈️ Captain Delta Teaching
 
@@ -178,7 +178,7 @@ Go... Around... Go Around.
 
 Now naturally:
 
-Going around, PT-ABC.
+Going around, ANAC123.
 
 Avoid saying: Goooo Around
 
@@ -226,7 +226,7 @@ You're choosing the next safe opportunity instead of forcing the current one.
 
 ATC says:
 
-"PT-ABC, Go Around, traffic still on the runway."
+"ANAC123, Go Around, traffic still on the runway."
 
 **Your first task**
 

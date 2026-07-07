@@ -53,7 +53,7 @@ You're taxiing your H130 for departure.
 
 Ground instructs:
 
-"PT-ABC, taxi via Alpha, hold short runway one eight."
+"ANAC123, taxi via Alpha, hold short runway one eight."
 
 As you approach the holding position, you notice the runway looks completely empty.
 
@@ -69,19 +69,19 @@ They wait for the clearance.
 
 ## Real ATC Phraseology
 
-1. PT-ABC, hold short runway one eight.
-2. PT-ABC, taxi via Alpha, hold short runway two seven.
-3. PT-ABC, hold short the active runway.
-4. PT-ABC, cross runway zero niner, hold short runway one eight.
-5. PT-ABC, hold short taxiway Bravo.
+1. ANAC123, hold short runway one eight.
+2. ANAC123, taxi via Alpha, hold short runway two seven.
+3. ANAC123, hold short the active runway.
+4. ANAC123, cross runway zero niner, hold short runway one eight.
+5. ANAC123, hold short taxiway Bravo.
 
 ## Professional Pilot Readbacks
 
-1. Holding short runway one eight, PT-ABC.
-2. Taxi via Alpha, holding short runway two seven, PT-ABC.
-3. Holding short the active runway, PT-ABC.
-4. Crossing runway zero niner, holding short runway one eight, PT-ABC.
-5. Holding short taxiway Bravo, PT-ABC.
+1. Holding short runway one eight, ANAC123.
+2. Taxi via Alpha, holding short runway two seven, ANAC123.
+3. Holding short the active runway, ANAC123.
+4. Crossing runway zero niner, holding short runway one eight, ANAC123.
+5. Holding short taxiway Bravo, ANAC123.
 
 ## Captain Delta Teaching
 
@@ -108,7 +108,7 @@ Hold Short instructions protect active runways. Reading them back correctly conf
 ## Common Brazilian Mistakes
 
 - ❌ Reading back only: Roger.  
-  ✔ Correct: Holding short runway one eight, PT-ABC.
+  ✔ Correct: Holding short runway one eight, ANAC123.
 
 - ❌ Saying: Holding position.  
   ✔ Better: Holding short runway one eight.
@@ -138,7 +138,7 @@ Hold Short.
 
 Now inside a transmission:
 
-PT-ABC, hold short runway one eight.
+ANAC123, hold short runway one eight.
 
 ## Memory Trick
 

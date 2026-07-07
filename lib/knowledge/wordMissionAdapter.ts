@@ -16,6 +16,14 @@ export type KnowledgeLessonDef = {
   sayItCoach?: string;
   icaoModelAnswer?: string;
   memoryTrick?: string;
+  operationalMeaning?: string;
+  whyAtcUsesIt?: string[];
+  atcPhraseology?: string[];
+  pilotReadbacks?: string[];
+  brazilianMistakes?: string;
+  pronunciationCoaching?: string;
+  relatedConcepts?: string[];
+  references?: Array<{ label: string; href?: string }>;
   knowledgeSource?: KnowledgeSource;
   review: KnowledgeReviewMeta;
 };

@@ -83,11 +83,12 @@ The controller now has an accurate picture of your location and continues provid
 
 ## 🎙 Professional Pilot Readbacks
 
-1. Wilco, ANAC123.
-2. Will report overhead AFA VOR, ANAC123.
-3. Will report five-mile final, ANAC123.
-4. Will report left downwind, ANAC123.
-5. Will report passing REKPA, ANAC123.
+1. ANAC123 is five miles south of Navegantes, maintaining two thousand feet.
+2. Wilco, ANAC123.
+3. Will report overhead AFA VOR, ANAC123.
+4. Will report five-mile final, ANAC123.
+5. Will report left downwind, ANAC123.
+6. Will report passing REKPA, ANAC123.
 
 ## 👨‍✈️ Captain Delta Teaching
 

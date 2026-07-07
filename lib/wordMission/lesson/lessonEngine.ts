@@ -12,9 +12,9 @@ import { getCuratedContent } from "@/lib/wordMission/lesson/curatedContent";
 import {
   captainChallengeLine,
   instructorDisplayText,
-  instructorOpening,
   instructorSpeechFromParts,
 } from "@/lib/wordMission/lesson/instructorText";
+import { richContentFromEntry } from "@/lib/wordMission/lesson/richContent";
 import type { KnowledgeSource } from "@/lib/wordMission/lesson/knowledgeSource";
 import type { SyncKnowledgeProvider } from "@/lib/wordMission/lesson/enrichment";
 import { enrichFromSyncProviders, noopKnowledgeProvider } from "@/lib/wordMission/lesson/enrichment";
@@ -28,7 +28,7 @@ import {
 } from "@/lib/wordMission/lesson/types";
 import type { KnowledgeReviewMeta } from "@/lib/knowledge/review";
 
-const DEFAULT_CALLSIGN = "PT-ABC";
+const DEFAULT_CALLSIGN = "ANAC123";
 
 type SimpleWordDef = {
   meaningEn: string;
@@ -44,6 +44,14 @@ type SimpleWordDef = {
   sayItCoach?: string;
   icaoModelAnswer?: string;
   memoryTrick?: string;
+  operationalMeaning?: string;
+  whyAtcUsesIt?: string[];
+  atcPhraseology?: string[];
+  pilotReadbacks?: string[];
+  brazilianMistakes?: string;
+  pronunciationCoaching?: string;
+  relatedConcepts?: string[];
+  references?: Array<{ label: string; href?: string }>;
   knowledgeSource?: KnowledgeSource;
   review?: KnowledgeReviewMeta;
 };
@@ -53,7 +61,7 @@ const SIMPLE_CURATED: Record<string, SimpleWordDef> = {
     meaningEn: "Fly straight to a waypoint.",
     meaningPt: "Voar diretamente para um ponto.",
     whenUsed: "ATC may say this to shorten your route.",
-    example: "Helicopter PT-ABC, fly direct NITUX.",
+    example: "Helicopter ANAC123, fly direct NITUX.",
     sayPhrase: "Fly direct NITUX.",
     icaoQuestion: "When would ATC ask a pilot to fly direct?",
     icaoSpeakText: "When traffic allows a shorter route to the destination.",
@@ -80,10 +88,10 @@ const SIMPLE_CURATED: Record<string, SimpleWordDef> = {
     meaningEn: "The direction the aircraft nose is pointing, in degrees.",
     meaningPt: "A proa da aeronave, em graus.",
     whenUsed: "Tower often assigns headings right after departure.",
-    example: "Helicopter PT-ABC, fly heading zero nine zero.",
+    example: "Helicopter ANAC123, fly heading zero nine zero.",
     sayPhrase: "Fly heading zero nine zero.",
     icaoQuestion: "What would you read back after a heading assignment?",
-    icaoSpeakText: "Heading zero nine zero, PT-ABC.",
+    icaoSpeakText: "Heading zero nine zero, ANAC123.",
   },
 };
 
@@ -96,7 +104,7 @@ function splitMeaning(meaning: string): { en: string; pt: string } {
 function fallbackDef(item: IcaoVocabularyItem): SimpleWordDef {
   const curated = getCuratedContent(item.term, item);
   const { en, pt } = splitMeaning(item.meaning);
-  const example = curated.towerLine.includes("PT-ABC")
+  const example = curated.towerLine.includes("ANAC123")
     ? curated.towerLine
     : `${DEFAULT_CALLSIGN}, ${naturalSayPhrase(item)}.`;
 
@@ -182,25 +190,23 @@ function step(
 }
 
 function buildSteps(def: SimpleWordDef): WordMissionStep[] {
-  const meaningCaptain = def.missionBrief
-    ? instructorOpening(def.missionBrief, 380)
-    : def.captainTeaching
-      ? instructorOpening(def.captainTeaching, 420)
-      : def.meaningEn;
-  const meaningDetail = def.captainTeaching
-    ? instructorOpening(def.captainTeaching, 520)
-    : def.meaningPt;
+  const meaningCaptain =
+    def.missionBrief?.trim() || def.captainTeaching?.trim() || def.meaningEn;
+  const meaningDetail =
+    instructorDisplayText(
+      def.missionBrief ? def.captainTeaching : undefined,
+      def.meaningEn ? `Meaning: ${def.meaningEn}` : undefined,
+      def.meaningPt ? `Português: ${def.meaningPt}` : undefined,
+    ) || def.meaningPt;
 
-  const opsCaptain = def.operationalContext
-    ? instructorOpening(def.operationalContext, 540)
-    : def.whenUsed;
+  const opsCaptain = def.operationalContext?.trim() || def.whenUsed;
   const opsDetail = def.operationalContext
     ? `On Say It you will record this pilot readback:\n"${def.sayPhrase}"`
     : `On Say It you will say:\n"${def.sayPhrase}"`;
 
-  const sayCoach =
+  const sayCaptain =
     def.sayItCoach?.trim() ||
-    "Open your mouth on the vowel and keep the phrase steady at phraseology speed.";
+    "Transmit the full readback at phraseology speed — callsign and runway included.";
 
   const icaoCaptain = captainChallengeLine(def.icaoQuestion);
   const icaoDetail = def.icaoModelAnswer
@@ -209,15 +215,15 @@ function buildSteps(def: SimpleWordDef): WordMissionStep[] {
 
   return [
     step("meaning", meaningCaptain, {
-      detail: meaningDetail,
+      detail: meaningDetail !== meaningCaptain ? meaningDetail : undefined,
       recordHere: false,
     }),
     step("operational_use", opsCaptain, {
       detail: opsDetail,
       recordHere: false,
     }),
-    step("say_it", "Record this complete pilot readback — callsign and full phrase included.", {
-      detail: `"${def.sayPhrase}"\n\n${sayCoach}`,
+    step("say_it", sayCaptain, {
+      detail: `"${def.sayPhrase}"`,
       speakText: def.sayPhrase,
       recordHere: true,
     }),
@@ -242,6 +248,9 @@ export function buildWordMissionLesson(
   const term = typeof termOrItem === "string" ? termOrItem.trim() : termOrItem.term;
   enrichFromSyncProviders(term, options?.providers ?? [noopKnowledgeProvider], item);
   const def = resolveDef(term, item);
+  const premium =
+    (item?.id ? lookupDevKnowledgeById(item.id) : null) ??
+    lookupDevKnowledgeByTerm(term);
 
   return {
     term,
@@ -252,6 +261,7 @@ export function buildWordMissionLesson(
     knowledgeSource: def.knowledgeSource,
     knowledgeReview:
       def.review ?? buildKnowledgeReviewMeta(null, { fallbackUsed: true }),
+    richContent: premium ? richContentFromEntry(premium) : undefined,
   };
 }
 

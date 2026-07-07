@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "completedCount": 19,
-  "pendingCount": 491,
+  "completedCount": 20,
+  "pendingCount": 490,
   "concepts": [
     {
       "id": "0001",
@@ -133,6 +133,13 @@
       "id": "0019",
       "concept": "Report Position",
       "slug": "0019-report-position",
+      "status": "complete",
+      "completedAt": "2026-07-07"
+    },
+    {
+      "id": "0020",
+      "concept": "Maintain Own Separation",
+      "slug": "0020-maintain-own-separation",
       "status": "complete",
       "completedAt": "2026-07-07"
     }

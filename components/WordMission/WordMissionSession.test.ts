@@ -56,10 +56,10 @@ describe("WordMissionSession UI certification", () => {
     expect(sessionSource).toMatch(/recordingEnabled &&/);
   });
 
-  it("shows per-step action hint on card and recording label", () => {
+  it("shows per-step action hint on card and rich knowledge panels", () => {
     expect(sessionSource).toMatch(/wordMissionStepActionHint/);
     expect(sessionSource).toMatch(/word-mission-step-action/);
-    expect(sessionSource).toMatch(/Record this complete pilot readback/);
+    expect(sessionSource).toMatch(/WordMissionRichPanels/);
   });
 });
 
@@ -72,5 +72,7 @@ describe("WordMissionApp styling", () => {
   it("includes mobile-first word mission CSS", () => {
     expect(cssSource).toMatch(/\.word-mission-panel/);
     expect(cssSource).toMatch(/\.word-mission-step-tabs/);
+    expect(cssSource).toMatch(/\.word-mission-step-tab\.active/);
+    expect(cssSource).toMatch(/color: #fff/);
   });
 });

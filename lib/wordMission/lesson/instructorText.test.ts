@@ -14,7 +14,7 @@ describe("instructorSpeechFromParts", () => {
   it("includes step detail such as operational examples", () => {
     const speech = instructorSpeechFromParts(
       "You're taxiing your H130 for departure.",
-      'On the radio: "PT-ABC, hold short runway one eight."',
+      'On the radio: "ANAC123, hold short runway one eight."',
     );
     expect(speech).toContain("taxiing your H130");
     expect(speech).toContain("hold short runway one eight");

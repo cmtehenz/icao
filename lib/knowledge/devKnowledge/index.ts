@@ -52,6 +52,14 @@ export function lessonDefFromDevEntry(entry: DevKnowledgeEntry): KnowledgeLesson
     sayItCoach: entry.sayItCoach,
     icaoModelAnswer: entry.icaoModelAnswer,
     memoryTrick: entry.memoryTrick,
+    operationalMeaning: entry.operationalMeaning,
+    whyAtcUsesIt: entry.whyAtcUsesIt,
+    atcPhraseology: entry.atcPhraseology,
+    pilotReadbacks: entry.pilotReadbacks,
+    brazilianMistakes: entry.brazilianMistakes,
+    pronunciationCoaching: entry.pronunciationCoaching,
+    relatedConcepts: entry.relatedConcepts,
+    references: entry.references,
     review: devReviewMeta(entry),
   };
 }

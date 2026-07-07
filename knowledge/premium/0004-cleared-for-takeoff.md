@@ -53,7 +53,7 @@ You're flying your H130 from Navegantes Airport.
 
 Tower previously instructed:
 
-"PT-ABC, runway zero seven, line up and wait."
+"ANAC123, runway zero seven, line up and wait."
 
 You enter the runway and align with the centerline.
 
@@ -61,7 +61,7 @@ A commercial jet lands ahead of you and vacates the runway.
 
 The controller then says:
 
-"PT-ABC, runway zero seven, cleared for takeoff."
+"ANAC123, runway zero seven, cleared for takeoff."
 
 Only now do you:
 
@@ -73,19 +73,19 @@ The runway became yours only after hearing those words.
 
 ## Real ATC Phraseology
 
-1. PT-ABC, runway zero seven, cleared for takeoff.
-2. PT-ABC, wind zero eight zero at six knots, runway one eight, cleared for takeoff.
-3. PT-ABC, cleared for immediate takeoff.
-4. PT-ABC, runway two seven, cleared for takeoff, traffic departing parallel runway.
-5. PT-ABC, after departure fly runway heading, runway one eight, cleared for takeoff.
+1. ANAC123, runway zero seven, cleared for takeoff.
+2. ANAC123, wind zero eight zero at six knots, runway one eight, cleared for takeoff.
+3. ANAC123, cleared for immediate takeoff.
+4. ANAC123, runway two seven, cleared for takeoff, traffic departing parallel runway.
+5. ANAC123, after departure fly runway heading, runway one eight, cleared for takeoff.
 
 ## Professional Pilot Readbacks
 
-1. Runway zero seven, cleared for takeoff, PT-ABC.
-2. Cleared for takeoff runway one eight, PT-ABC.
-3. Immediate takeoff approved, PT-ABC.
-4. Cleared for takeoff, runway two seven, PT-ABC.
-5. Runway heading after departure, cleared for takeoff, PT-ABC.
+1. Runway zero seven, cleared for takeoff, ANAC123.
+2. Cleared for takeoff runway one eight, ANAC123.
+3. Immediate takeoff approved, ANAC123.
+4. Cleared for takeoff, runway two seven, ANAC123.
+5. Runway heading after departure, cleared for takeoff, ANAC123.
 
 ## Captain Delta Teaching
 
@@ -134,7 +134,7 @@ Assuming takeoff clearance can lead to a runway incursion or collision with anot
   Visual observation never replaces ATC clearance.
 
 - ❌ Reading back only: Roger.  
-  ✔ Correct: Cleared for takeoff runway one eight, PT-ABC.
+  ✔ Correct: Cleared for takeoff runway one eight, ANAC123.
 
 - ❌ Forgetting the runway number.  
   Always include the runway in your readback.
@@ -160,7 +160,7 @@ Cleared... Cleared for... Cleared for Takeoff.
 
 Then inside a complete transmission:
 
-PT-ABC, runway one eight, cleared for takeoff.
+ANAC123, runway one eight, cleared for takeoff.
 
 ## Memory Trick
 

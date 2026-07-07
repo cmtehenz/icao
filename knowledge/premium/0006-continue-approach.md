@@ -54,7 +54,7 @@ You're flying an H130 to Florianópolis International Airport.
 
 Tower says:
 
-"PT-ABC, continue approach."
+"ANAC123, continue approach."
 
 The runway is clearly visible.
 
@@ -66,25 +66,25 @@ Instead of clearing you to land immediately, Tower keeps you on the approach whi
 
 A few moments later:
 
-"PT-ABC, runway one four, cleared to land."
+"ANAC123, runway one four, cleared to land."
 
 Only now is the landing authorized.
 
 ## 📡 Real ATC Phraseology
 
-1. PT-ABC, continue approach.
-2. PT-ABC, continue approach, traffic vacating the runway.
-3. PT-ABC, continue approach, expect late landing clearance.
-4. PT-ABC, continue approach, number two behind the Airbus A320.
-5. PT-ABC, continue approach, caution wake turbulence.
+1. ANAC123, continue approach.
+2. ANAC123, continue approach, traffic vacating the runway.
+3. ANAC123, continue approach, expect late landing clearance.
+4. ANAC123, continue approach, number two behind the Airbus A320.
+5. ANAC123, continue approach, caution wake turbulence.
 
 ## 🎙 Professional Pilot Readbacks
 
-1. Continuing approach, PT-ABC.
-2. Continuing approach, number two, PT-ABC.
-3. Continuing approach behind the Airbus, PT-ABC.
-4. Continuing approach, expecting landing clearance, PT-ABC.
-5. Continuing approach, caution wake turbulence acknowledged, PT-ABC.
+1. Continuing approach, ANAC123.
+2. Continuing approach, number two, ANAC123.
+3. Continuing approach behind the Airbus, ANAC123.
+4. Continuing approach, expecting landing clearance, ANAC123.
+5. Continuing approach, caution wake turbulence acknowledged, ANAC123.
 
 ## 👨‍✈️ Captain Delta Teaching
 
@@ -131,7 +131,7 @@ Continue Approach instructs the pilot to keep flying the approach while waiting 
   Continue normal approach procedures.
 
 - ❌ Reading back only: Roger.  
-  ✔ Correct: Continuing approach, PT-ABC.
+  ✔ Correct: Continuing approach, ANAC123.
 
 - ❌ Becoming fixated on the runway.  
   Continue monitoring the radio because ATC may issue Go Around, Continue Approach, or Cleared to Land at any moment.
@@ -157,7 +157,7 @@ Continue Approach.
 
 Now inside a transmission:
 
-PT-ABC, continue approach.
+ANAC123, continue approach.
 
 ## 🧠 Memory Trick
 
@@ -195,7 +195,7 @@ The runway is not yet yours.
 
 Tower says:
 
-"PT-ABC, continue approach, traffic vacating the runway."
+"ANAC123, continue approach, traffic vacating the runway."
 
 **Your first task**
 

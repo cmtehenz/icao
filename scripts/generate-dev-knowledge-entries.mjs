@@ -39,19 +39,11 @@ function proseParagraphs(text) {
     .filter((line) => line && !line.startsWith("-") && !/^\*\*/.test(line));
 }
 
-function joinProse(text, maxParas = 3, maxChars = 520) {
+/** Full instructor prose — no artificial truncation. */
+function fullProse(text) {
   if (!text.trim()) return "";
   const paras = proseParagraphs(text);
-  let out = "";
-  let count = 0;
-  for (const para of paras) {
-    if (count >= maxParas) break;
-    const next = out ? `${out}\n\n${para}` : para;
-    if (next.length > maxChars) break;
-    out = next;
-    count += 1;
-  }
-  return out || firstParagraph(text);
+  return paras.length ? paras.join("\n\n") : text.trim();
 }
 
 function extractSayItCoach(md) {
@@ -81,13 +73,45 @@ function extractIcaoAnswer(md) {
   if (labeled?.[1]) {
     return labeled[1].trim().split(/\n+/).find((line) => line.trim())?.trim() ?? "";
   }
-  const lines = block.split(/\n+/).map((l) => l.trim()).filter(Boolean);
-  return lines.find((line) => line.length > 40 && !line.endsWith("?")) ?? "";
+  const blockLines = block.split(/\n+/).map((l) => l.trim()).filter(Boolean);
+  return blockLines.find((line) => line.length > 40 && !line.endsWith("?")) ?? "";
 }
 
 function category(md) {
   const m = md.match(/\*\*Category:\*\*\s*(.+)/);
   return m ? m[1].trim() : "ATC Phraseology";
+}
+
+const REFERENCE_PATTERNS = [
+  { pattern: /skybrary/i, href: "https://skybrary.aero" },
+  {
+    pattern: /icao doc 4444|pans-atm/i,
+    href: "https://www.icao.int/publications/pages/doc-4444.aspx",
+  },
+  {
+    pattern: /annex 10/i,
+    href: "https://www.icao.int/publications/pages/publication.aspx?docnum=101",
+  },
+  { pattern: /7110\.65/i, href: "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/" },
+  {
+    pattern: /aeronautical information manual|\baim\b/i,
+    href: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/",
+  },
+  {
+    pattern: /pilot\/controller glossary/i,
+    href: "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/",
+  },
+  {
+    pattern: /pilot's handbook/i,
+    href: "https://www.faa.gov/regulations_policies/handbooks_manuals/aviation/phak/",
+  },
+];
+
+function referenceHref(label) {
+  for (const { pattern, href } of REFERENCE_PATTERNS) {
+    if (pattern.test(label)) return href;
+  }
+  return undefined;
 }
 
 const manifest = JSON.parse(readFileSync(MANIFEST_PATH, "utf8"));
@@ -99,6 +123,8 @@ const entries = concepts.map((c) => {
   const pilot = lines(section(md, "Professional Pilot Readbacks", "Real Pilot Readbacks"));
   const questionBlock = section(md, "Common ICAO Speaking Question", "Common ICAO Speaking Questions");
   const question = firstParagraph(questionBlock).replace(/\?$/, "") + "?";
+  const icaoAnswer = extractIcaoAnswer(md);
+  const refLabels = lines(section(md, "References"));
 
   return {
     catalogId: c.id,
@@ -108,18 +134,26 @@ const entries = concepts.map((c) => {
     slug: c.slug.replace(/^\d{4}-/, ""),
     category: category(md),
     meaningEn: firstParagraph(section(md, "Meaning")),
-    meaningPt: firstParagraph(section(md, "Portuguese Meaning")),
+    meaningPt: fullProse(section(md, "Portuguese Meaning")),
     whenUsed: firstParagraph(section(md, "Operational Meaning")),
     example: atc[0] ?? `${c.concept}.`,
     sayPhrase: pilot[0] ?? atc[0] ?? c.concept,
     icaoQuestion: question || `When would a pilot use "${c.concept.toLowerCase()}"?`,
-    icaoSpeakText: pilot[1] ?? pilot[0] ?? atc[0] ?? c.concept,
-    missionBrief: joinProse(section(md, "Mission Brief"), 2, 360),
-    captainTeaching: joinProse(section(md, "Captain Delta Teaching"), 3, 620),
-    operationalContext: joinProse(section(md, "Real Operational Context"), 4, 620),
+    icaoSpeakText: icaoAnswer || pilot[1] || pilot[0] || atc[0] || c.concept,
+    missionBrief: fullProse(section(md, "Mission Brief")),
+    captainTeaching: fullProse(section(md, "Captain Delta Teaching")),
+    operationalContext: fullProse(section(md, "Real Operational Context")),
     sayItCoach: extractSayItCoach(md),
     icaoModelAnswer: extractIcaoAnswer(md),
-    memoryTrick: joinProse(section(md, "Memory Trick"), 2, 280),
+    memoryTrick: fullProse(section(md, "Memory Trick")),
+    operationalMeaning: fullProse(section(md, "Operational Meaning")),
+    whyAtcUsesIt: lines(section(md, "Why ATC Uses It")),
+    atcPhraseology: atc,
+    pilotReadbacks: pilot,
+    brazilianMistakes: section(md, "Common Brazilian Mistakes"),
+    pronunciationCoaching: section(md, "Pronunciation Coaching"),
+    relatedConcepts: lines(section(md, "Related Concepts")),
+    references: refLabels.map((label) => ({ label, href: referenceHref(label) })),
   };
 });
 

@@ -52,7 +52,7 @@ Ground has already transferred you to Tower.
 
 Tower says:
 
-"PT-ABC, runway one eight, line up and wait."
+"ANAC123, runway one eight, line up and wait."
 
 You taxi onto the runway.
 
@@ -66,25 +66,25 @@ A Boeing 737 is still on short final.
 
 Only after it lands and clears the runway will Tower say:
 
-"PT-ABC, runway one eight, cleared for takeoff."
+"ANAC123, runway one eight, cleared for takeoff."
 
 Only then do you begin your departure.
 
 ## Real ATC Phraseology
 
-1. PT-ABC, runway one eight, line up and wait.
-2. PT-ABC, line up and wait runway two seven.
-3. PT-ABC, line up and wait behind landing traffic.
-4. PT-ABC, runway one eight, line up and wait, traffic departing.
-5. PT-ABC, line up and wait, expect immediate departure.
+1. ANAC123, runway one eight, line up and wait.
+2. ANAC123, line up and wait runway two seven.
+3. ANAC123, line up and wait behind landing traffic.
+4. ANAC123, runway one eight, line up and wait, traffic departing.
+5. ANAC123, line up and wait, expect immediate departure.
 
 ## Professional Pilot Readbacks
 
-1. Line up and wait runway one eight, PT-ABC.
-2. Lining up and waiting runway two seven, PT-ABC.
-3. Line up and wait behind landing traffic, PT-ABC.
-4. Runway one eight, line up and wait, PT-ABC.
-5. Line up and wait, expecting immediate departure, PT-ABC.
+1. Line up and wait runway one eight, ANAC123.
+2. Lining up and waiting runway two seven, ANAC123.
+3. Line up and wait behind landing traffic, ANAC123.
+4. Runway one eight, line up and wait, ANAC123.
+5. Line up and wait, expecting immediate departure, ANAC123.
 
 ## Captain Delta Teaching
 
@@ -121,7 +121,7 @@ What is the difference between "Line Up and Wait" and "Cleared for Takeoff"?
   ✔ Wait for: Cleared for Takeoff.
 
 - ❌ Reading back only: Roger.  
-  ✔ Correct: Line up and wait runway one eight, PT-ABC.
+  ✔ Correct: Line up and wait runway one eight, ANAC123.
 
 - ❌ Forgetting the runway number.  
   Always include the assigned runway in your readback.
@@ -149,7 +149,7 @@ Line up and wait.
 
 Then inside a transmission:
 
-PT-ABC, runway one eight, line up and wait.
+ANAC123, runway one eight, line up and wait.
 
 ## Memory Trick
 

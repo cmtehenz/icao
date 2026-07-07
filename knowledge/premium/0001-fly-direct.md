@@ -49,7 +49,7 @@ Originally your GPS route contains six waypoints.
 
 ATC sees there is no conflicting traffic and says:
 
-"PT-ABC, fly direct Balneário."
+"ANAC123, fly direct Balneário."
 
 Instead of continuing through every waypoint, you simply navigate directly toward Balneário while complying with every other ATC clearance.
 
@@ -65,19 +65,19 @@ Only your navigation changes.
 
 ## Real ATC Phraseology
 
-1. PT-ABC, fly direct NITUX.
-2. PT-ABC, cleared direct AFA VOR.
-3. PT-ABC, fly direct present position to waypoint BRAVO.
-4. PT-ABC, proceed direct REKPA.
-5. PT-ABC, fly direct the airport.
+1. ANAC123, fly direct NITUX.
+2. ANAC123, cleared direct AFA VOR.
+3. ANAC123, fly direct present position to waypoint BRAVO.
+4. ANAC123, proceed direct REKPA.
+5. ANAC123, fly direct the airport.
 
 ## Professional Pilot Readbacks
 
-1. Flying direct NITUX, PT-ABC.
-2. Cleared direct AFA VOR, PT-ABC.
-3. Direct BRAVO, PT-ABC.
-4. Proceeding direct REKPA, PT-ABC.
-5. Flying direct the airport, PT-ABC.
+1. Flying direct NITUX, ANAC123.
+2. Cleared direct AFA VOR, ANAC123.
+3. Direct BRAVO, ANAC123.
+4. Proceeding direct REKPA, ANAC123.
+5. Flying direct the airport, ANAC123.
 
 ## Captain Delta Teaching
 
@@ -101,7 +101,7 @@ ATC may instruct an aircraft to fly direct when they want to shorten the route, 
   ✔ Prefer: Fly direct. or Proceed direct.
 
 - ❌ Reading back only: Roger.  
-  ✔ Correct: Flying direct NITUX, PT-ABC.
+  ✔ Correct: Flying direct NITUX, ANAC123.
 
 - ❌ Turning immediately without understanding the destination waypoint.  
   Always identify the correct fix before changing course.
@@ -128,7 +128,7 @@ Fly Direct.
 
 Then inside a complete transmission:
 
-PT-ABC, fly direct NITUX.
+ANAC123, fly direct NITUX.
 
 ## Memory Trick
 
