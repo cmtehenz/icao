@@ -64,13 +64,14 @@ export default function WordMissionSession({
   }, [item.id, item.term]);
 
   useEffect(() => {
+    if (recordingEnabled && captainDebrief) return;
     const coaching = buildStepCaptainCoaching(step);
     emitCaptainDeltaSuggestion({
       text: coaching.text,
       speechText: coaching.speechText,
       kind: "coaching",
     });
-  }, [item.id, practiceLevel, speakText, step]);
+  }, [item.id, practiceLevel, speakText, step, recordingEnabled, captainDebrief]);
 
   useEffect(() => {
     if (!recordingEnabled) setLastScore(null);
@@ -146,8 +147,8 @@ export default function WordMissionSession({
     recorderState.assessment?.words?.filter((w) => w.errorType && w.errorType !== "None") ?? [];
 
   const actionHint = wordMissionStepActionHint(stepIdForLevel(practiceLevel), speakText);
-  const speakBoxLabel =
-    practiceLevel === 3 ? "Record this complete pilot readback" : "Record your ICAO answer";
+  const recordTaskLabel =
+    practiceLevel === 3 ? "Your pilot readback" : "Your ICAO answer";
 
   return (
     <div className="vocab-studio-training vocab-mission-panel word-mission-panel">
@@ -193,28 +194,43 @@ export default function WordMissionSession({
       <div className="word-mission-body word-mission-simple-card">
         <p className="word-mission-step-label">{step.label}</p>
 
-        <div className="word-mission-content-card word-mission-lesson-card">
-          <p className="word-mission-content-label">Captain Delta</p>
-          <div className="word-mission-lesson-message">
-            <InstructorProse text={step.captainLine} />
-          </div>
-          {step.detail && (
-            <div className="word-mission-step-detail">
-              <InstructorProse text={step.detail} />
+        {recordingEnabled ? (
+          <>
+            <div className="word-mission-record-task" role="status">
+              <p className="word-mission-record-task-label">{recordTaskLabel}</p>
+              <p className="word-mission-record-task-phrase">{speakText}</p>
+              <p className="word-mission-record-task-hint">{actionHint}</p>
             </div>
-          )}
-          {lesson.knowledgeSource?.provider === "skybrary" && (
-            <p className="word-mission-source-label">{SKYBRARY_UI_LABEL}</p>
-          )}
-        </div>
 
-        <WordMissionRichPanels stepId={step.id} richContent={lesson.richContent} />
+            {step.captainLine && (
+              <p className="word-mission-record-coach-tip">{step.captainLine}</p>
+            )}
 
-        {recordingEnabled && (
-          <div className="vocab-studio-practice-box word-mission-speak-box">
-            <span className="vocab-studio-practice-label">{speakBoxLabel}</span>
-            <p className="vocab-studio-practice-text">{speakText}</p>
-          </div>
+            <WordMissionRichPanels
+              stepId={step.id}
+              richContent={lesson.richContent}
+              collapsible
+            />
+          </>
+        ) : (
+          <>
+            <div className="word-mission-content-card word-mission-lesson-card">
+              <p className="word-mission-content-label">Captain Delta</p>
+              <div className="word-mission-lesson-message">
+                <InstructorProse text={step.captainLine} />
+              </div>
+              {step.detail && (
+                <div className="word-mission-step-detail">
+                  <InstructorProse text={step.detail} />
+                </div>
+              )}
+              {lesson.knowledgeSource?.provider === "skybrary" && (
+                <p className="word-mission-source-label">{SKYBRARY_UI_LABEL}</p>
+              )}
+            </div>
+
+            <WordMissionRichPanels stepId={step.id} richContent={lesson.richContent} />
+          </>
         )}
 
         <div className="word-mission-lesson-nav">
@@ -227,18 +243,8 @@ export default function WordMissionSession({
                 Continue
               </button>
             </>
-          ) : (
-            <p className="word-mission-action-hint">{actionHint}</p>
-          )}
+          ) : null}
         </div>
-
-        {captainDebrief && recordingEnabled && (
-          <div className="word-mission-captain-block">
-            <div className="pron-captain-coaching-card word-mission-coaching">
-              <p className="pron-captain-coaching-message">{captainDebrief.message}</p>
-            </div>
-          </div>
-        )}
 
         <footer className="word-mission-recorder-foot">
           {azureEnvMissing && recordingEnabled && (

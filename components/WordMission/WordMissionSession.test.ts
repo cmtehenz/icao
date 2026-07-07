@@ -16,7 +16,7 @@ describe("WordMissionSession UI certification", () => {
   it("renders premium flight deck panel structure", () => {
     expect(sessionSource).toMatch(/vocab-studio-training vocab-mission-panel word-mission-panel/);
     expect(sessionSource).toMatch(/vocab-studio-hero word-mission-hero/);
-    expect(sessionSource).toMatch(/vocab-studio-practice-box/);
+    expect(sessionSource).toMatch(/word-mission-record-task/);
     expect(sessionSource).toMatch(/pron-captain-recorder-panel/);
   });
 
@@ -59,6 +59,7 @@ describe("WordMissionSession UI certification", () => {
   it("shows per-step action hint on card and rich knowledge panels", () => {
     expect(sessionSource).toMatch(/wordMissionStepActionHint/);
     expect(sessionSource).toMatch(/word-mission-step-action/);
+    expect(sessionSource).toMatch(/word-mission-record-task/);
     expect(sessionSource).toMatch(/WordMissionRichPanels/);
   });
 });

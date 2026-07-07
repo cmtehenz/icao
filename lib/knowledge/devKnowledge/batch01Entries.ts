@@ -47,7 +47,7 @@ export const BATCH01_DEV_ENTRIES: DevKnowledgeEntry[] = [
       "Flying direct the airport, ANAC123."
     ],
     "brazilianMistakes": "- ❌ Saying: Go direct.  \n  ✔ Prefer: Fly direct. or Proceed direct.\n\n- ❌ Reading back only: Roger.  \n  ✔ Correct: Flying direct NITUX, ANAC123.\n\n- ❌ Turning immediately without understanding the destination waypoint.  \n  Always identify the correct fix before changing course.\n\n- ❌ Thinking Fly Direct cancels previous clearances.  \n  It doesn't. Maintain altitude, speed and frequency unless instructed otherwise.",
-    "pronunciationCoaching": "**Fly Direct** (flai dih-REKT)\n\n**Word Stress**\n\n- Fly → clear and short\n- Direct → stress the second syllable: di-RECT (not DI-rect)\n\nPractice slowly:\n\nFly... Direct...\n\nNow together:\n\nFly Direct.\n\nThen inside a complete transmission:\n\nANAC123, fly direct NITUX.",
+    "pronunciationCoaching": "**Fly Direct** (flai dih-REKT)\n\n**Word Stress**\n\n- Fly → clear and short\n- Direct → stress the second syllable: di-RECT (not DI-rect)\n\nPractice slowly:\n\nFly... Direct...\n\nNow together:\n\nFly Direct.\n\nThen inside a complete transmission:\n\nFlying direct NITUX, ANAC123.",
     "relatedConcepts": [
       "Resume Own Navigation",
       "Radar Vectors",
@@ -275,7 +275,7 @@ export const BATCH01_DEV_ENTRIES: DevKnowledgeEntry[] = [
       "Runway heading after departure, cleared for takeoff, ANAC123."
     ],
     "brazilianMistakes": "- ❌ Confusing Line Up and Wait with Cleared for Takeoff.  \n  Only the second authorizes departure.\n\n- ❌ Starting the takeoff because the runway appears empty.  \n  Visual observation never replaces ATC clearance.\n\n- ❌ Reading back only: Roger.  \n  ✔ Correct: Cleared for takeoff runway one eight, ANAC123.\n\n- ❌ Forgetting the runway number.  \n  Always include the runway in your readback.",
-    "pronunciationCoaching": "**Target Phrase:** Cleared for Takeoff\n\n**Pronunciation:** kleerd for TAKE-off\n\n**Word Stress**\n\n- Cleared → clear and confident\n- Takeoff → stress TAKE\n\nDo not split it unnaturally into: Take... off...\n\nInstead, say it smoothly: Takeoff.\n\nPractice:\n\nCleared... Cleared for... Cleared for Takeoff.\n\nThen inside a complete transmission:\n\nANAC123, runway one eight, cleared for takeoff.",
+    "pronunciationCoaching": "**Target Phrase:** Cleared for Takeoff\n\n**Pronunciation:** kleerd for TAKE-off\n\n**Word Stress**\n\n- Cleared → clear and confident\n- Takeoff → stress TAKE\n\nDo not split it unnaturally into: Take... off...\n\nInstead, say it smoothly: Takeoff.\n\nPractice:\n\nCleared... Cleared for... Cleared for Takeoff.\n\nThen inside a complete transmission:\n\nRunway zero seven, cleared for takeoff, ANAC123.",
     "relatedConcepts": [
       "Line Up and Wait",
       "Hold Short",
@@ -599,7 +599,7 @@ export const BATCH01_DEV_ENTRIES: DevKnowledgeEntry[] = [
       "Will report established in the hold, ANAC123."
     ],
     "brazilianMistakes": "- ❌ Using Go Around and Missed Approach as identical terms.  \n  ✔ They are closely related but not identical.\n\n- ❌ Forgetting to brief the Missed Approach before starting the approach.  \n  Professional crews always review it during the approach briefing.\n\n- ❌ Trying to decide what to do after reaching minimums.  \n  The decision should already be planned.\n\n- ❌ Believing a Missed Approach means something went wrong.  \n  Many Missed Approaches occur simply because weather is below landing minimums. They are normal IFR procedures.",
-    "pronunciationCoaching": "**Target Phrase:** Missed Approach\n\n**Pronunciation:** MISST uh-PROACH\n\n**Word Stress**\n\n- Missed\n- Approach (second syllable stronger)\n\nPractice:\n\nMissed... Approach...\n\nTogether:\n\nMissed Approach.\n\nThen inside a complete transmission:\n\nExecuting published missed approach.\n\nKeep the phrase smooth and confident.",
+    "pronunciationCoaching": "**Target Phrase:** Missed Approach\n\n**Pronunciation:** MISST uh-PROACH\n\n**Word Stress**\n\n- Missed\n- Approach (second syllable stronger)\n\nPractice:\n\nMissed... Approach...\n\nTogether:\n\nMissed Approach.\n\nThen inside a complete transmission:\n\nExecuting published missed approach, ANAC123.\n\nKeep the phrase smooth and confident.",
     "relatedConcepts": [
       "Go Around",
       "Continue Approach",

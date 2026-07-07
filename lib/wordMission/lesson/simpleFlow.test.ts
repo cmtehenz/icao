@@ -15,11 +15,11 @@ describe("wordMissionStepActionHint", () => {
     expect(hint).toMatch(/full pilot readback/i);
   });
 
-  it("names the full readback on Say It", () => {
-    const phrase = "Holding short runway one eight, PT-ABC.";
+  it("names the recording task on Say It without repeating the phrase in the hint", () => {
+    const phrase = "Holding short runway one eight, ANAC123.";
     const hint = wordMissionStepActionHint("say_it", phrase);
-    expect(hint).toMatch(/Record this complete pilot readback/i);
-    expect(hint).toContain(phrase);
+    expect(hint).toMatch(/Captain Recorder/i);
+    expect(hint).not.toContain(phrase);
   });
 });
 

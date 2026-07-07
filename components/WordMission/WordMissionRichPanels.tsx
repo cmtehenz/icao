@@ -92,13 +92,15 @@ function PanelBody({ section }: { section: RichPanelSection }) {
 type Props = {
   stepId: WordMissionStepId;
   richContent?: WordMissionRichContent;
+  /** Collapse reference panels so the recording task stays primary. */
+  collapsible?: boolean;
 };
 
-export default function WordMissionRichPanels({ stepId, richContent }: Props) {
+export default function WordMissionRichPanels({ stepId, richContent, collapsible = false }: Props) {
   const panels = richPanelsForStep(stepId, richContent);
   if (!panels.length) return null;
 
-  return (
+  const body = (
     <div className="word-mission-rich-panels">
       {panels.map((section) => (
         <section key={section.id} className="word-mission-rich-panel">
@@ -107,6 +109,15 @@ export default function WordMissionRichPanels({ stepId, richContent }: Props) {
         </section>
       ))}
     </div>
+  );
+
+  if (!collapsible) return body;
+
+  return (
+    <details className="word-mission-rich-collapsible">
+      <summary>Pronunciation tips &amp; pitfalls</summary>
+      {body}
+    </details>
   );
 }
 

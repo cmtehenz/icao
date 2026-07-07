@@ -53,9 +53,9 @@ export function wordMissionStepActionHint(
     case "operational_use":
       return "Picture the scenario, then tap Continue. You will record the full pilot readback on Say It.";
     case "say_it":
-      return `Record this complete pilot readback out loud — callsign and full phrase: ${speakText}`;
+      return "Tap Captain Recorder below and speak the highlighted readback exactly.";
     case "icao_practice":
-      return `Record your ICAO answer out loud: ${speakText}`;
+      return "Tap Captain Recorder below and speak the highlighted ICAO answer exactly.";
     default:
       return "";
   }

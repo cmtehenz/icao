@@ -134,6 +134,11 @@ export function usePronunciationRecordingController(
   const micUi = useMemo(() => derivePronunciationRecorderUi(state), [state]);
 
   useEffect(() => {
+    setCaptainDebrief(null);
+    setCaptainNote(null);
+  }, [practiceLevel, activeWord?.word]);
+
+  useEffect(() => {
     const onBlocked = (e: Event) => {
       const reason = (e as CustomEvent<{ reason: string }>).detail?.reason;
       if (reason) setRecordNotice(reason);

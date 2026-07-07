@@ -60,6 +60,15 @@ function extractSayItCoach(md) {
   return "";
 }
 
+/** Keep pronunciation example transmission aligned with the step readback. */
+function alignPronunciationExample(block, sayPhrase) {
+  if (!block?.trim() || !sayPhrase) return block;
+  return block.replace(
+    /(Then inside a complete transmission:)\s*\n+[^\n]+/i,
+    `$1\n\n${sayPhrase}`,
+  );
+}
+
 function extractIcaoAnswer(md) {
   const block = section(
     md,
@@ -151,7 +160,7 @@ const entries = concepts.map((c) => {
     atcPhraseology: atc,
     pilotReadbacks: pilot,
     brazilianMistakes: section(md, "Common Brazilian Mistakes"),
-    pronunciationCoaching: section(md, "Pronunciation Coaching"),
+    pronunciationCoaching: alignPronunciationExample(section(md, "Pronunciation Coaching"), pilot[0]),
     relatedConcepts: lines(section(md, "Related Concepts")),
     references: refLabels.map((label) => ({ label, href: referenceHref(label) })),
   };

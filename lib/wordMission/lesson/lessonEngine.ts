@@ -206,7 +206,7 @@ function buildSteps(def: SimpleWordDef): WordMissionStep[] {
 
   const sayCaptain =
     def.sayItCoach?.trim() ||
-    "Transmit the full readback at phraseology speed — callsign and runway included.";
+    "Focus on crisp consonants and steady phraseology speed.";
 
   const icaoCaptain = captainChallengeLine(def.icaoQuestion);
   const icaoDetail = def.icaoModelAnswer
@@ -223,7 +223,6 @@ function buildSteps(def: SimpleWordDef): WordMissionStep[] {
       recordHere: false,
     }),
     step("say_it", sayCaptain, {
-      detail: `"${def.sayPhrase}"`,
       speakText: def.sayPhrase,
       recordHere: true,
     }),
