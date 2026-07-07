@@ -29,7 +29,7 @@ export function buildContextTip(context: CaptainDeltaContext): { text: string; s
     part2:
       "Part 2 is quick notes only — callsign, problem, intention, request. Then speak clearly.",
     pronunciation:
-      "Pronunciation today: one word, slow and operational. Quality beats speed.",
+      "Every term is a mini flight lesson — I'll coach meaning, operations, radio phrase, and ICAO practice.",
     vocabulary:
       "Learn the operational meaning first, then say it out loud like a pilot — not like a dictionary.",
     simulation:

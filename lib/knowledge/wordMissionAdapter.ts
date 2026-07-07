@@ -10,6 +10,12 @@ export type KnowledgeLessonDef = {
   sayPhrase: string;
   icaoQuestion: string;
   icaoSpeakText?: string;
+  missionBrief?: string;
+  captainTeaching?: string;
+  operationalContext?: string;
+  sayItCoach?: string;
+  icaoModelAnswer?: string;
+  memoryTrick?: string;
   knowledgeSource?: KnowledgeSource;
   review: KnowledgeReviewMeta;
 };

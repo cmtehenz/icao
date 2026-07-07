@@ -5,6 +5,7 @@ import WordPhoneticHint from "@/components/WordPhoneticHint";
 import { usePronunciationRecordingController } from "@/hooks/usePronunciationRecordingController";
 import type { IcaoVocabularyItem } from "@/data/icaoVocabulary";
 import { errorTypeLabel } from "@/lib/azure/pronunciation";
+import { emitCaptainDeltaSuggestion } from "@/lib/captainDelta/events";
 import { publishActivePronunciationWord } from "@/lib/captainDelta/lessonContext";
 import { missionCardStatusLine } from "@/lib/pronunciation/missionCardStatusLine";
 import { isPronunciationRecordingActive } from "@/lib/pronunciation/pronunciationRecordingController";
@@ -60,6 +61,16 @@ export default function WordMissionSession({
   useEffect(() => {
     publishActivePronunciationWord(item.term);
   }, [item.id, item.term]);
+
+  useEffect(() => {
+    const speech = step.captainLine;
+    const text = step.detail ? `${step.captainLine}\n\n${step.detail}` : step.captainLine;
+    emitCaptainDeltaSuggestion({
+      text,
+      speechText: speech,
+      kind: "coaching",
+    });
+  }, [item.id, practiceLevel, step.captainLine, step.detail]);
 
   useEffect(() => {
     onPracticeLevelChange(nextVocabMissionLevel(progress));

@@ -9,6 +9,10 @@ import { buildKnowledgeReviewMeta } from "@/lib/knowledge/review";
 import { lessonDefFromVocabularyEntry } from "@/lib/knowledge/wordMissionAdapter";
 import { findWordMissionVocabItem } from "@/lib/wordMission/wordMissionCatalog";
 import { getCuratedContent } from "@/lib/wordMission/lesson/curatedContent";
+import {
+  captainChallengeLine,
+  instructorOpening,
+} from "@/lib/wordMission/lesson/instructorText";
 import type { KnowledgeSource } from "@/lib/wordMission/lesson/knowledgeSource";
 import type { SyncKnowledgeProvider } from "@/lib/wordMission/lesson/enrichment";
 import { enrichFromSyncProviders, noopKnowledgeProvider } from "@/lib/wordMission/lesson/enrichment";
@@ -32,6 +36,12 @@ type SimpleWordDef = {
   sayPhrase: string;
   icaoQuestion: string;
   icaoSpeakText?: string;
+  missionBrief?: string;
+  captainTeaching?: string;
+  operationalContext?: string;
+  sayItCoach?: string;
+  icaoModelAnswer?: string;
+  memoryTrick?: string;
   knowledgeSource?: KnowledgeSource;
   review?: KnowledgeReviewMeta;
 };
@@ -170,22 +180,47 @@ function step(
 }
 
 function buildSteps(def: SimpleWordDef): WordMissionStep[] {
+  const meaningCaptain = def.missionBrief
+    ? instructorOpening(def.missionBrief, 380)
+    : def.captainTeaching
+      ? instructorOpening(def.captainTeaching, 420)
+      : def.meaningEn;
+  const meaningDetail = def.captainTeaching
+    ? instructorOpening(def.captainTeaching, 520)
+    : def.meaningPt;
+
+  const opsCaptain = def.operationalContext
+    ? instructorOpening(def.operationalContext, 540)
+    : def.whenUsed;
+  const opsDetail = def.operationalContext
+    ? `On the radio: "${def.example}"`
+    : `Example: "${def.example}"`;
+
+  const sayCaptain =
+    def.sayItCoach ||
+    "Copy this on the radio — calm pace, like a professional pilot.";
+
+  const icaoCaptain = captainChallengeLine(def.icaoQuestion);
+  const icaoDetail = def.icaoModelAnswer
+    ? `Level 4 model: ${def.icaoModelAnswer}`
+    : def.icaoSpeakText;
+
   return [
-    step("meaning", def.meaningEn, {
-      detail: def.meaningPt,
+    step("meaning", meaningCaptain, {
+      detail: meaningDetail,
       recordHere: false,
     }),
-    step("operational_use", def.whenUsed, {
-      detail: `Example: "${def.example}"`,
+    step("operational_use", opsCaptain, {
+      detail: opsDetail,
       recordHere: false,
     }),
-    step("say_it", "Say this line — calm radio pace.", {
+    step("say_it", sayCaptain, {
       detail: def.sayPhrase,
       speakText: def.sayPhrase,
       recordHere: true,
     }),
-    step("icao_practice", def.icaoQuestion, {
-      detail: def.icaoSpeakText,
+    step("icao_practice", icaoCaptain, {
+      detail: icaoDetail,
       speakText: def.icaoSpeakText ?? def.sayPhrase,
       recordHere: true,
     }),
@@ -222,10 +257,17 @@ export function buildWordMissionBrief(termOrItem: string | IcaoVocabularyItem): 
   message: string;
   speechText: string;
 } {
-  const lesson = buildWordMissionLesson(termOrItem);
-  const meaning = lesson.steps[0]!;
-  const message = `${meaning.captainLine} ${meaning.detail ?? ""}`.trim();
-  return { message, speechText: meaning.captainLine };
+  const item = typeof termOrItem === "string" ? findVocabItemForTerm(termOrItem) : termOrItem;
+  const term = typeof termOrItem === "string" ? termOrItem.trim() : termOrItem.term;
+  const def = resolveDef(term, item);
+
+  const message = def.missionBrief
+    ? instructorOpening(def.missionBrief, 360)
+    : def.captainTeaching
+      ? instructorOpening(def.captainTeaching, 320)
+      : `${def.meaningEn} ${def.meaningPt}`.trim();
+
+  return { message, speechText: instructorOpening(message, 280) };
 }
 
 export function lessonSpeakTextForLevel(

@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "completedCount": 13,
-  "pendingCount": 497,
+  "completedCount": 17,
+  "pendingCount": 493,
   "concepts": [
     {
       "id": "0001",
@@ -91,6 +91,34 @@
       "id": "0013",
       "concept": "Fly Heading",
       "slug": "0013-fly-heading",
+      "status": "complete",
+      "completedAt": "2026-07-07"
+    },
+    {
+      "id": "0014",
+      "concept": "Climb and Maintain",
+      "slug": "0014-climb-and-maintain",
+      "status": "complete",
+      "completedAt": "2026-07-07"
+    },
+    {
+      "id": "0015",
+      "concept": "Descend and Maintain",
+      "slug": "0015-descend-and-maintain",
+      "status": "complete",
+      "completedAt": "2026-07-07"
+    },
+    {
+      "id": "0016",
+      "concept": "Maintain Altitude",
+      "slug": "0016-maintain-altitude",
+      "status": "complete",
+      "completedAt": "2026-07-07"
+    },
+    {
+      "id": "0017",
+      "concept": "Maintain Present Heading",
+      "slug": "0017-maintain-present-heading",
       "status": "complete",
       "completedAt": "2026-07-07"
     }

@@ -15,7 +15,13 @@ export const BATCH01_DEV_ENTRIES: DevKnowledgeEntry[] = [
     "example": "PT-ABC, fly direct NITUX.",
     "sayPhrase": "Flying direct NITUX, PT-ABC.",
     "icaoQuestion": "When would ATC instruct an aircraft to fly direct?",
-    "icaoSpeakText": "Cleared direct AFA VOR, PT-ABC."
+    "icaoSpeakText": "Cleared direct AFA VOR, PT-ABC.",
+    "missionBrief": "Today you'll learn one of the most common ATC instructions used worldwide.\n\nFly Direct is a navigation clearance that allows an aircraft to proceed directly to a specified waypoint, navigation aid, airport, or fix instead of following the originally planned route.",
+    "captainTeaching": "Gustavo, imagine you're driving with Google Maps. The GPS originally planned a route through several streets. Suddenly, it finds a faster way and tells you to turn immediately toward your destination. That's exactly what Fly Direct means in aviation.\n\nIt is one of the simplest and most common ATC shortcuts. Your responsibility is to acknowledge the clearance, read back the waypoint correctly, and navigate directly to it while continuing to comply with every other clearance already in effect.\n\nRemember: Fly Direct changes your route—not your altitude, speed, or other instructions.",
+    "operationalContext": "You're flying an H130 from Ituporanga (SSKG) to Balneário Camboriú.\n\nOriginally your GPS route contains six waypoints.\n\nATC sees there is no conflicting traffic and says:\n\n\"PT-ABC, fly direct Balneário.\"",
+    "sayItCoach": "Fly Direct.",
+    "icaoModelAnswer": "ATC may instruct an aircraft to fly direct when they want to shorten the route, improve traffic flow, reduce delays, or help the aircraft avoid weather. It is a common instruction in both IFR and VFR operations.",
+    "memoryTrick": "Imagine drawing a straight line on your GPS.\n\nNo airways. No extra turns. No intermediate fixes."
   },
   {
     "catalogId": "0002",
@@ -30,7 +36,13 @@ export const BATCH01_DEV_ENTRIES: DevKnowledgeEntry[] = [
     "example": "PT-ABC, hold short runway one eight.",
     "sayPhrase": "Holding short runway one eight, PT-ABC.",
     "icaoQuestion": "Why is it important to read back Hold Short instructions?",
-    "icaoSpeakText": "Taxi via Alpha, holding short runway two seven, PT-ABC."
+    "icaoSpeakText": "Taxi via Alpha, holding short runway two seven, PT-ABC.",
+    "missionBrief": "Today you'll learn one of the most important safety instructions in aviation.\n\nEvery year, runway incursions occur because a pilot misunderstood—or ignored—a simple instruction:",
+    "captainTeaching": "Gustavo, imagine you're approaching a railroad crossing. The gates are down, but you can't see the train yet. You don't cross just because it looks safe—you wait until it's truly safe.\n\nA Hold Short instruction works the same way. ATC has a complete picture of the airport that you may not have from the cockpit.\n\nNever guess.",
+    "operationalContext": "You're taxiing your H130 for departure.\n\nGround instructs:\n\n\"PT-ABC, taxi via Alpha, hold short runway one eight.\"\n\nAs you approach the holding position, you notice the runway looks completely empty.",
+    "sayItCoach": "Hold Short.",
+    "icaoModelAnswer": "Hold Short instructions protect active runways. Reading them back correctly confirms that the pilot understood the restriction and helps prevent runway incursions.",
+    "memoryTrick": "Imagine a red stop sign painted across the taxiway.\n\nYou stop."
   },
   {
     "catalogId": "0003",
@@ -45,7 +57,13 @@ export const BATCH01_DEV_ENTRIES: DevKnowledgeEntry[] = [
     "example": "PT-ABC, runway one eight, line up and wait.",
     "sayPhrase": "Line up and wait runway one eight, PT-ABC.",
     "icaoQuestion": "What is the difference between \"Line Up and Wait\" and \"Cleared for Takeoff\"?",
-    "icaoSpeakText": "Lining up and waiting runway two seven, PT-ABC."
+    "icaoSpeakText": "Lining up and waiting runway two seven, PT-ABC.",
+    "missionBrief": "Today's lesson covers one of the most safety-critical runway instructions you'll ever receive.\n\nMany runway incursions and serious accidents have happened because pilots misunderstood the difference between:",
+    "captainTeaching": "Gustavo, imagine you're first in line at a traffic light.\n\nThe light is still red.\n\nYou move your car up to the stop line because you're next.",
+    "operationalContext": "You're flying your H130 at a controlled airport.\n\nGround has already transferred you to Tower.\n\nTower says:\n\n\"PT-ABC, runway one eight, line up and wait.\"",
+    "sayItCoach": "Line up and wait.",
+    "icaoModelAnswer": "\"Line Up and Wait\" allows the aircraft to enter the runway and prepare for departure, but the pilot must remain stopped. \"Cleared for Takeoff\" is the instruction that authorizes the aircraft to begin the takeoff roll.",
+    "memoryTrick": "Think of a sprinter at the Olympic Games.\n\nThe athlete is already in position."
   },
   {
     "catalogId": "0004",
@@ -60,7 +78,13 @@ export const BATCH01_DEV_ENTRIES: DevKnowledgeEntry[] = [
     "example": "PT-ABC, runway zero seven, cleared for takeoff.",
     "sayPhrase": "Runway zero seven, cleared for takeoff, PT-ABC.",
     "icaoQuestion": "Why is it dangerous to assume you are cleared for takeoff?",
-    "icaoSpeakText": "Cleared for takeoff runway one eight, PT-ABC."
+    "icaoSpeakText": "Cleared for takeoff runway one eight, PT-ABC.",
+    "missionBrief": "Today you'll learn one of the most important phrases in aviation.\n\nThere is only one instruction that authorizes an aircraft to begin its takeoff roll:",
+    "captainTeaching": "Gustavo, this is one of the most disciplined moments in every flight.\n\nImagine you've completed every checklist.\n\nThe helicopter is perfectly aligned.",
+    "operationalContext": "You're flying your H130 from Navegantes Airport.\n\nTower previously instructed:\n\n\"PT-ABC, runway zero seven, line up and wait.\"\n\nYou enter the runway and align with the centerline.",
+    "sayItCoach": "",
+    "icaoModelAnswer": "Assuming takeoff clearance can lead to a runway incursion or collision with another aircraft. Pilots should begin the takeoff roll only after hearing the explicit instruction \"Cleared for Takeoff.\"",
+    "memoryTrick": "Imagine an airport runway as a stage.\n\nMany aircraft may be waiting behind the curtain."
   },
   {
     "catalogId": "0005",
@@ -75,7 +99,13 @@ export const BATCH01_DEV_ENTRIES: DevKnowledgeEntry[] = [
     "example": "PT-ABC, runway zero seven, cleared to land.",
     "sayPhrase": "Runway zero seven, cleared to land, PT-ABC.",
     "icaoQuestion": "What should a pilot do if the runway is in sight but landing clearance has not been received?",
-    "icaoSpeakText": "Cleared to land runway one eight, PT-ABC."
+    "icaoSpeakText": "Cleared to land runway one eight, PT-ABC.",
+    "missionBrief": "Landing is one of the busiest phases of flight, and one of the easiest moments to make assumptions.\n\nToday you'll learn an essential rule:",
+    "captainTeaching": "Gustavo, imagine you're arriving at a hotel.\n\nYou can see your room.\n\nYour luggage is ready.",
+    "operationalContext": "You're approaching Navegantes Airport in your H130.\n\nTower instructs:\n\n\"PT-ABC, continue approach.\"\n\nYou continue descending.",
+    "sayItCoach": "",
+    "icaoModelAnswer": "The pilot should continue the approach while monitoring the radio and be prepared to follow ATC instructions. If landing clearance is not received in time, or if the approach becomes unsafe, the pilot should perform a go-around in accordance with ATC instructions or standard procedures.",
+    "memoryTrick": "Imagine the runway is a parking space reserved just for you.\n\nYou may see it."
   },
   {
     "catalogId": "0006",
@@ -90,7 +120,13 @@ export const BATCH01_DEV_ENTRIES: DevKnowledgeEntry[] = [
     "example": "PT-ABC, continue approach.",
     "sayPhrase": "Continuing approach, PT-ABC.",
     "icaoQuestion": "What is the difference between Continue Approach and Cleared to Land?",
-    "icaoSpeakText": "Continuing approach, number two, PT-ABC."
+    "icaoSpeakText": "Continuing approach, number two, PT-ABC.",
+    "missionBrief": "Today's lesson covers one of the most misunderstood instructions in aviation.\n\nMany pilots believe that if Tower tells them to Continue Approach, they are automatically cleared to land.",
+    "captainTeaching": "Gustavo, imagine you're walking toward the gate at an airport.\n\nThe security guard says:\n\n\"Keep walking.\"",
+    "operationalContext": "You're flying an H130 to Florianópolis International Airport.\n\nTower says:\n\n\"PT-ABC, continue approach.\"\n\nThe runway is clearly visible.",
+    "sayItCoach": "Continue Approach.",
+    "icaoModelAnswer": "Continue Approach instructs the pilot to keep flying the approach while waiting for further instructions. Cleared to Land authorizes the aircraft to land on the assigned runway. The first is not a landing clearance.",
+    "memoryTrick": "Think of a traffic light turning yellow.\n\nYou're allowed to continue moving."
   },
   {
     "catalogId": "0007",
@@ -105,7 +141,13 @@ export const BATCH01_DEV_ENTRIES: DevKnowledgeEntry[] = [
     "example": "PT-ABC, Go Around.",
     "sayPhrase": "Going around, PT-ABC.",
     "icaoQuestion": "When would you decide to perform a Go Around?",
-    "icaoSpeakText": "PT-ABC going around."
+    "icaoSpeakText": "PT-ABC going around.",
+    "missionBrief": "Every professional pilot performs Go Arounds.\n\nA Go Around is not a mistake.",
+    "captainTeaching": "Gustavo, imagine you're driving toward a parking space.\n\nJust as you're about to park, another car suddenly reverses into the space.\n\nYou don't force your way in.",
+    "operationalContext": "You're flying your H130 into Florianópolis Airport.\n\nEverything looks perfect.\n\nThe runway is in sight.\n\nLanding checklist complete.",
+    "sayItCoach": "Going around, PT-ABC.",
+    "icaoModelAnswer": "I would perform a Go Around whenever the approach became unstable or the landing could no longer be completed safely. For example, if another aircraft was still on the runway, if I experienced windshear, if I lost visual references, or if ATC instructed me to Go Around.",
+    "memoryTrick": "Imagine you're walking toward an elevator.\n\nJust before the doors close, someone steps inside carrying a large box."
   },
   {
     "catalogId": "0008",
@@ -120,7 +162,13 @@ export const BATCH01_DEV_ENTRIES: DevKnowledgeEntry[] = [
     "example": "ANAC123, execute published missed approach.",
     "sayPhrase": "Executing published missed approach, ANAC123.",
     "icaoQuestion": "What is the difference between a Go Around and a Missed Approach?",
-    "icaoSpeakText": "Runway heading, climb three thousand, ANAC123."
+    "icaoSpeakText": "Runway heading, climb three thousand, ANAC123.",
+    "missionBrief": "Today's lesson explains one of the most misunderstood concepts in instrument flying.\n\nMany pilots use Go Around and Missed Approach as if they meant exactly the same thing.",
+    "captainTeaching": "Gustavo, think of climbing a mountain.\n\nBefore you start, you already know the escape trail if the weather suddenly gets worse.\n\nYou don't invent the escape route while you're in trouble.",
+    "operationalContext": "You're flying your H130 on an IFR approach into Curitiba.\n\nWeather is poor.\n\nVisibility is close to minimums.\n\nAs you reach Decision Altitude, you still cannot see the runway.",
+    "sayItCoach": "Missed Approach.",
+    "icaoModelAnswer": "A Go Around is the decision to discontinue a landing. A Missed Approach is the published or assigned IFR procedure followed after discontinuing an instrument approach. Every Missed Approach is a Go Around, but not every Go Around becomes a published Missed Approach.",
+    "memoryTrick": "Imagine climbing a building.\n\nBefore entering, you already know where the emergency exit is."
   },
   {
     "catalogId": "0009",
@@ -135,7 +183,13 @@ export const BATCH01_DEV_ENTRIES: DevKnowledgeEntry[] = [
     "example": "Approach: ANAC123, report airport in sight.",
     "sayPhrase": "Airport in sight, ANAC123.",
     "icaoQuestion": "When may ATC clear an aircraft for a Visual Approach?",
-    "icaoSpeakText": "Cleared visual approach runway one four, ANAC123."
+    "icaoSpeakText": "Cleared visual approach runway one four, ANAC123.",
+    "missionBrief": "Today's lesson covers one of the most common clearances issued in good weather.\n\nMany pilots believe a Visual Approach means they are flying under VFR.",
+    "captainTeaching": "Imagine you're driving to a friend's house.\n\nNormally, you follow your GPS turn by turn.\n\nBut when you finally see the house at the end of the street, you don't need every remaining instruction from the GPS.",
+    "operationalContext": "You're arriving at Florianópolis on a clear afternoon.\n\nVisibility is excellent.\n\nThe airport is already in sight more than ten miles away.\n\nApproach says:",
+    "sayItCoach": "Cleared visual approach runway one four, ANAC123.",
+    "icaoModelAnswer": "ATC may clear an aircraft for a visual approach when weather conditions permit visual navigation and the pilot has the airport or the preceding aircraft in sight. Even during a visual approach, the pilot must continue following ATC instructions and wait for landing clearance.",
+    "memoryTrick": "Imagine you're hiking with a guide.\n\nAt first, you follow the map carefully."
   },
   {
     "catalogId": "0010",
@@ -150,7 +204,13 @@ export const BATCH01_DEV_ENTRIES: DevKnowledgeEntry[] = [
     "example": "Approach: ANAC123, fly heading zero niner zero.",
     "sayPhrase": "Heading zero niner zero, ANAC123.",
     "icaoQuestion": "Why would ATC provide radar vectors to an aircraft?",
-    "icaoSpeakText": "Left heading zero six zero, ANAC123."
+    "icaoSpeakText": "Left heading zero six zero, ANAC123.",
+    "missionBrief": "Today's lesson covers one of the most common services provided by Air Traffic Control.\n\nImagine you're approaching an unfamiliar airport in poor weather. Instead of navigating every waypoint yourself, ATC begins giving you headings one by one.",
+    "captainTeaching": "Imagine you're driving in a city you've never visited before.\n\nNormally, you follow your GPS.\n\nBut suddenly, a police officer begins directing traffic because there's a major accident ahead.",
+    "operationalContext": "You're flying your H130 toward Navegantes Airport.\n\nWeather conditions are marginal, and several aircraft are arriving simultaneously.\n\nInstead of instructing you to fly the complete published arrival, Approach says:\n\n\"ANAC123, fly heading zero niner zero.\"",
+    "sayItCoach": "Expecting radar vectors for the ILS approach, ANAC123.",
+    "icaoModelAnswer": "ATC provides radar vectors to simplify navigation, sequence arriving traffic, maintain separation between aircraft, avoid weather, or position an aircraft for an instrument approach. The pilot follows the assigned headings until receiving further instructions.",
+    "memoryTrick": "Imagine ATC holding an invisible string attached to your helicopter.\n\nInstead of choosing your own path, the controller gently guides you turn by turn."
   },
   {
     "catalogId": "0011",
@@ -165,7 +225,13 @@ export const BATCH01_DEV_ENTRIES: DevKnowledgeEntry[] = [
     "example": "Approach: ANAC123, resume own navigation.",
     "sayPhrase": "Resuming own navigation, ANAC123.",
     "icaoQuestion": "When would ATC instruct an aircraft to resume own navigation?",
-    "icaoSpeakText": "Direct REKPA, resuming own navigation, ANAC123."
+    "icaoSpeakText": "Direct REKPA, resuming own navigation, ANAC123.",
+    "missionBrief": "Today's lesson explains one of the most important transitions between ATC guidance and pilot navigation.\n\nDuring radar vectoring, ATC temporarily tells you where to fly.",
+    "captainTeaching": "Imagine you're driving with a police escort through heavy traffic.\n\nFor a while, you simply follow the police vehicle.\n\nYou don't choose your own turns.",
+    "operationalContext": "You're flying your H130 toward Curitiba Airport.\n\nBecause of heavy traffic, Approach has been providing radar vectors for the last ten minutes.\n\nYou have flown several assigned headings.\n\nOnce spacing has been achieved, the controller says:",
+    "sayItCoach": "Resuming own navigation, ANAC123.",
+    "icaoModelAnswer": "ATC normally issues Resume Own Navigation after radar vectoring is no longer necessary. The pilot then resumes following the cleared route or flight plan using the aircraft's navigation systems.",
+    "memoryTrick": "Imagine someone borrowing the steering wheel of your car for a few minutes.\n\nWhen they give it back, you're driving again."
   },
   {
     "catalogId": "0012",
@@ -180,7 +246,13 @@ export const BATCH01_DEV_ENTRIES: DevKnowledgeEntry[] = [
     "example": "Tower: ANAC123, runway zero seven, cleared for takeoff. Maintain runway heading.",
     "sayPhrase": "Cleared for takeoff, maintaining runway heading, ANAC123.",
     "icaoQuestion": "Why would ATC instruct an aircraft to maintain runway heading after departure?",
-    "icaoSpeakText": "Maintaining runway heading, climbing three thousand, ANAC123."
+    "icaoSpeakText": "Maintaining runway heading, climbing three thousand, ANAC123.",
+    "missionBrief": "Today's lesson covers one of the first instructions you'll hear immediately after departure.\n\nMany pilots instinctively want to turn toward their destination after takeoff.",
+    "captainTeaching": "Imagine you're leaving a hospital parking lot.\n\nThe exit lane is narrow and carefully designed to keep every vehicle separated from incoming traffic.\n\nIf you decide to turn early because you know where you're going, you could create a dangerous conflict.",
+    "operationalContext": "You're departing Navegantes Airport on runway 07 in your H130.\n\nTower clears you for takeoff:\n\nTower: ANAC123, runway zero seven, cleared for takeoff. Maintain runway heading.\n\nA crosswind from the south begins pushing the helicopter sideways.",
+    "sayItCoach": "Cleared for takeoff, maintaining runway heading, ANAC123.",
+    "icaoModelAnswer": "ATC may instruct an aircraft to maintain runway heading to ensure safe separation from other traffic, simplify departure sequencing, and position the aircraft for radar vectors or another clearance. The pilot should maintain the assigned heading until receiving further instructions.",
+    "memoryTrick": "Imagine you're leaving an airport parking garage.\n\nThere are arrows painted on the exit lane."
   },
   {
     "catalogId": "0013",
@@ -195,6 +267,96 @@ export const BATCH01_DEV_ENTRIES: DevKnowledgeEntry[] = [
     "example": "Approach: ANAC123, fly heading zero niner zero.",
     "sayPhrase": "Heading zero niner zero, ANAC123.",
     "icaoQuestion": "Why would ATC instruct an aircraft to fly a specific heading?",
-    "icaoSpeakText": "Heading one eight zero, ANAC123."
+    "icaoSpeakText": "Heading one eight zero, ANAC123.",
+    "missionBrief": "Today's lesson introduces one of the most common ATC instructions you'll hear while under radar control.\n\nUnlike Maintain Runway Heading, which keeps you on the departure heading, Fly Heading instructs you to turn to a specific magnetic heading assigned by ATC.",
+    "captainTeaching": "Imagine you're following your GPS on a road trip.\n\nSuddenly, a police officer closes the highway and points you toward a detour.\n\nFor the next few kilometers, you stop following your GPS and simply follow the officer's directions.",
+    "operationalContext": "You're flying your H130 toward Curitiba Airport.\n\nApproach is sequencing several arriving aircraft.\n\nInstead of allowing you to continue directly to the next waypoint, the controller transmits:\n\nApproach: ANAC123, fly heading zero niner zero.",
+    "sayItCoach": "Heading zero niner zero, ANAC123.",
+    "icaoModelAnswer": "ATC may assign a specific heading to provide radar vectors, separate aircraft, sequence traffic, avoid weather, or position the aircraft for an instrument approach. The pilot should maintain the assigned heading until receiving another clearance.",
+    "memoryTrick": "Imagine ATC is drawing a compass on your windshield.\n\nInstead of saying \"Go over there,\" the controller points to one exact direction."
+  },
+  {
+    "catalogId": "0014",
+    "id": "0014",
+    "displayTerm": "Climb and Maintain",
+    "term": "climb and maintain",
+    "slug": "climb-and-maintain",
+    "category": "ATC Phraseology",
+    "meaningEn": "Climb and Maintain instructs the pilot to climb immediately and maintain the assigned altitude until receiving further ATC instructions.",
+    "meaningPt": "Suba e mantenha.",
+    "whenUsed": "When ATC issues Climb and Maintain, the pilot must:",
+    "example": "Departure: ANAC123, climb and maintain three thousand feet.",
+    "sayPhrase": "Climbing to three thousand, ANAC123.",
+    "icaoQuestion": "Why is it important to maintain the assigned altitude accurately?",
+    "icaoSpeakText": "Climb and maintain five thousand, ANAC123.",
+    "missionBrief": "Today's lesson covers one of the most common ATC climb instructions issued after departure.\n\nMany new pilots focus only on the altitude.",
+    "captainTeaching": "Imagine you're taking an elevator to the eighth floor.\n\nYou don't stop at the sixth floor because it looks close enough.\n\nAnd you certainly don't continue to the tenth floor.",
+    "operationalContext": "You're departing Florianópolis Airport on an IFR flight.\n\nAfter takeoff, Departure contacts you:\n\nDeparture: ANAC123, climb and maintain four thousand feet.\n\nYou immediately begin climbing.",
+    "sayItCoach": "Climb and maintain four thousand, ANAC123.",
+    "icaoModelAnswer": "Maintaining the assigned altitude ensures safe separation from other aircraft and allows ATC to manage traffic efficiently. Climbing above or below the assigned altitude may create a conflict with nearby traffic.",
+    "memoryTrick": "Imagine filling a glass with water.\n\nYou pour until the water reaches a marked line."
+  },
+  {
+    "catalogId": "0015",
+    "id": "0015",
+    "displayTerm": "Descend and Maintain",
+    "term": "descend and maintain",
+    "slug": "descend-and-maintain",
+    "category": "ATC Phraseology",
+    "meaningEn": "Descend and Maintain instructs the pilot to descend immediately and level off at the assigned altitude.",
+    "meaningPt": "Desça e mantenha.",
+    "whenUsed": "When ATC issues Descend and Maintain, the pilot must:",
+    "example": "Approach: ANAC123, descend and maintain four thousand feet.",
+    "sayPhrase": "Descending to four thousand, ANAC123.",
+    "icaoQuestion": "Why is it important to stop exactly at the assigned altitude?",
+    "icaoSpeakText": "Descend and maintain two thousand five hundred, ANAC123.",
+    "missionBrief": "Today's lesson covers one of the most common descent clearances issued by Air Traffic Control.\n\nJust like Climb and Maintain, this clearance contains two actions:",
+    "captainTeaching": "Imagine you're taking an elevator down.\n\nYou press the button for the fourth floor.\n\nYou don't stop at the fifth.",
+    "operationalContext": "You're approaching Curitiba Airport at 8,000 feet.\n\nApproach instructs:\n\nApproach: ANAC123, descend and maintain four thousand feet.\n\nYou immediately begin descending.",
+    "sayItCoach": "Descending to four thousand, ANAC123.",
+    "icaoModelAnswer": "Because ATC uses altitude assignments to maintain safe vertical separation between aircraft. Descending below the assigned altitude may create a conflict with other traffic and reduce safety.",
+    "memoryTrick": "Think of parking on the third floor of a building.\n\nYou don't stop on the fourth."
+  },
+  {
+    "catalogId": "0016",
+    "id": "0016",
+    "displayTerm": "Maintain Altitude",
+    "term": "maintain altitude",
+    "slug": "maintain-altitude",
+    "category": "ATC Phraseology",
+    "meaningEn": "Maintain Altitude instructs the pilot to continue flying at the current assigned altitude until receiving another ATC clearance.",
+    "meaningPt": "Mantenha a altitude.",
+    "whenUsed": "When ATC issues Maintain Altitude, the pilot must:",
+    "example": "Departure: ANAC123, maintain four thousand feet.",
+    "sayPhrase": "Maintaining four thousand, ANAC123.",
+    "icaoQuestion": "Why is maintaining the assigned altitude important?",
+    "icaoSpeakText": "Maintaining present altitude, ANAC123.",
+    "missionBrief": "Today's lesson covers one of the simplest ATC instructions—and one of the easiest to misunderstand.\n\nWhen a controller says:",
+    "captainTeaching": "Imagine you're standing on the fifth floor of a building waiting for an elevator.\n\nSomeone tells you:\n\n\"Stay right there.\"",
+    "operationalContext": "You're flying your H130 at 4,000 feet.\n\nAnother aircraft is climbing through 3,000 feet beneath you.\n\nDeparture says:\n\nDeparture: ANAC123, maintain four thousand feet.",
+    "sayItCoach": "Maintaining four thousand, ANAC123.",
+    "icaoModelAnswer": "Maintaining the assigned altitude helps ATC keep safe vertical separation between aircraft. Deviating from the assigned altitude may create a conflict with nearby traffic and reduce overall flight safety.",
+    "memoryTrick": "Imagine cruise control in your car.\n\nOnce set, the speed remains constant until you deliberately change it."
+  },
+  {
+    "catalogId": "0017",
+    "id": "0017",
+    "displayTerm": "Maintain Present Heading",
+    "term": "maintain present heading",
+    "slug": "maintain-present-heading",
+    "category": "ATC Phraseology",
+    "meaningEn": "Maintain Present Heading instructs the pilot to continue flying the current magnetic heading until receiving another ATC clearance.",
+    "meaningPt": "Mantenha o rumo atual.",
+    "whenUsed": "When ATC says Maintain Present Heading, the pilot should:",
+    "example": "Departure: ANAC123, maintain present heading.",
+    "sayPhrase": "Maintaining present heading, ANAC123.",
+    "icaoQuestion": "What is the difference between \"Maintain Present Heading\" and \"Fly Heading 090\"?",
+    "icaoSpeakText": "Present heading due traffic, ANAC123.",
+    "missionBrief": "Today's lesson explains a subtle but important ATC instruction.\n\nUnlike Fly Heading, which tells you to turn to a new heading,",
+    "captainTeaching": "Imagine you're driving through an intersection.\n\nJust before you turn, a police officer raises a hand and says:\n\n\"Keep going straight.\"",
+    "operationalContext": "You're climbing after departure.\n\nDeparture intends to vector you left.\n\nHowever, another aircraft is crossing ahead.\n\nInstead of issuing the turn immediately, ATC says:",
+    "sayItCoach": "Maintain Present Heading.",
+    "icaoModelAnswer": "Maintain Present Heading means I continue flying my current heading without turning. Fly Heading 090 instructs me to turn, if necessary, and establish heading zero niner zero.",
+    "memoryTrick": "Imagine pressing the pause button.\n\nNothing changes."
   }
 ];

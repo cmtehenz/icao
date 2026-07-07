@@ -32,6 +32,59 @@ function firstParagraph(text) {
     .filter(Boolean)[0] ?? "";
 }
 
+function proseParagraphs(text) {
+  return text
+    .split(/\n+/)
+    .map((line) => line.trim())
+    .filter((line) => line && !line.startsWith("-") && !/^\*\*/.test(line));
+}
+
+function joinProse(text, maxParas = 3, maxChars = 520) {
+  if (!text.trim()) return "";
+  const paras = proseParagraphs(text);
+  let out = "";
+  let count = 0;
+  for (const para of paras) {
+    if (count >= maxParas) break;
+    const next = out ? `${out}\n\n${para}` : para;
+    if (next.length > maxChars) break;
+    out = next;
+    count += 1;
+  }
+  return out || firstParagraph(text);
+}
+
+function extractSayItCoach(md) {
+  const block = section(md, "Pronunciation Coaching");
+  if (!block) return "";
+  const practice = block.match(
+    /(?:Then practice|Now practice)[^\n]*\n+([^\n]+)/i,
+  );
+  if (practice?.[1]) return practice[1].trim();
+  const together = block.match(
+    /(?:Together|Now together|Now naturally):\s*\n+([^\n]+)/i,
+  );
+  if (together?.[1]) return together[1].trim();
+  return "";
+}
+
+function extractIcaoAnswer(md) {
+  const block = section(
+    md,
+    "Common ICAO Speaking Question",
+    "Common ICAO Speaking Questions",
+  );
+  if (!block) return "";
+  const labeled = block.match(
+    /\*\*Good ICAO Level 4 Answer\*\*\s*\n+([\s\S]*?)(?=\n## |\n\*\*|$)/,
+  );
+  if (labeled?.[1]) {
+    return labeled[1].trim().split(/\n+/).find((line) => line.trim())?.trim() ?? "";
+  }
+  const lines = block.split(/\n+/).map((l) => l.trim()).filter(Boolean);
+  return lines.find((line) => line.length > 40 && !line.endsWith("?")) ?? "";
+}
+
 function category(md) {
   const m = md.match(/\*\*Category:\*\*\s*(.+)/);
   return m ? m[1].trim() : "ATC Phraseology";
@@ -61,6 +114,12 @@ const entries = concepts.map((c) => {
     sayPhrase: pilot[0] ?? atc[0] ?? c.concept,
     icaoQuestion: question || `When would a pilot use "${c.concept.toLowerCase()}"?`,
     icaoSpeakText: pilot[1] ?? pilot[0] ?? atc[0] ?? c.concept,
+    missionBrief: joinProse(section(md, "Mission Brief"), 2, 360),
+    captainTeaching: joinProse(section(md, "Captain Delta Teaching"), 3, 620),
+    operationalContext: joinProse(section(md, "Real Operational Context"), 4, 620),
+    sayItCoach: extractSayItCoach(md),
+    icaoModelAnswer: extractIcaoAnswer(md),
+    memoryTrick: joinProse(section(md, "Memory Trick"), 2, 280),
   };
 });
 

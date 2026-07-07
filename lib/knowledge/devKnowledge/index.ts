@@ -46,6 +46,12 @@ export function lessonDefFromDevEntry(entry: DevKnowledgeEntry): KnowledgeLesson
     sayPhrase: entry.sayPhrase,
     icaoQuestion: entry.icaoQuestion,
     icaoSpeakText: entry.icaoSpeakText,
+    missionBrief: entry.missionBrief,
+    captainTeaching: entry.captainTeaching,
+    operationalContext: entry.operationalContext,
+    sayItCoach: entry.sayItCoach,
+    icaoModelAnswer: entry.icaoModelAnswer,
+    memoryTrick: entry.memoryTrick,
     review: devReviewMeta(entry),
   };
 }

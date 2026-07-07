@@ -13,4 +13,15 @@ export type DevKnowledgeEntry = {
   sayPhrase: string;
   icaoQuestion: string;
   icaoSpeakText: string;
+  /** Premium Mission Brief — Captain opens the lesson. */
+  missionBrief?: string;
+  /** Captain Delta Teaching narrative. */
+  captainTeaching?: string;
+  /** Real Operational Context story. */
+  operationalContext?: string;
+  /** Pronunciation / readback coaching line. */
+  sayItCoach?: string;
+  /** ICAO Level 4 model answer. */
+  icaoModelAnswer?: string;
+  memoryTrick?: string;
 };
