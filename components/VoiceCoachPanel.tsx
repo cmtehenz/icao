@@ -815,7 +815,7 @@ export default function VoiceCoachPanel({
             </>
           )}
           {vaultSaved && <p className="vault-saved-banner">{vaultSaved}</p>}
-          <Link href="/pronunciation" className="btn secondary btn-sm">
+          <Link href="/word-mission" className="btn secondary btn-sm">
             Abrir Pronúncia →
           </Link>
         </div>
@@ -1001,7 +1001,7 @@ export default function VoiceCoachPanel({
             </div>
 
             {vaultSaved && <p className="vault-saved-banner">{vaultSaved}</p>}
-            <Link href="/pronunciation" className="btn secondary btn-sm">
+            <Link href="/word-mission" className="btn secondary btn-sm">
               Abrir Pronúncia →
             </Link>
           </div>

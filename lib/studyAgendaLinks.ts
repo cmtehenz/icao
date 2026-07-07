@@ -9,6 +9,7 @@ import {
 } from "@/utils/spacedRepetition";
 import type { StudyAgendaLinkTarget } from "@/lib/studyAgenda";
 import { getOrCreatePart2DailyMission, part2MissionLink } from "@/lib/part2DailyMission";
+import { resolveVocabTermIdForWord, wordMissionLink } from "@/lib/wordMission/wordDailyMission";
 
 export function pickPart1CardNum(progress: ProgressStore = loadProgress()): string {
   const difficult = CARDS.find((c) => getCardProgress(progress, c.num).status === "difficult");
@@ -54,11 +55,15 @@ export function resolveAgendaLink(target: StudyAgendaLinkTarget): string {
       return part2MissionLink(getOrCreatePart2DailyMission());
     case "pronunciation": {
       const word = pickVaultWord();
-      return word ? `/pronunciation?word=${encodeURIComponent(word.word)}` : "/pronunciation";
+      if (word) {
+        const termId = resolveVocabTermIdForWord(word.word);
+        if (termId) return wordMissionLink(termId);
+      }
+      return "/word-mission";
     }
     case "vocabulary": {
       const id = pickDueVocabId();
-      return id ? `/vocabulario?term=${encodeURIComponent(id)}` : "/vocabulario";
+      return id ? wordMissionLink(id) : "/word-mission";
     }
     default:
       return "/part1";

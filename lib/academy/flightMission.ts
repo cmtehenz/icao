@@ -21,19 +21,19 @@ export function buildDailyFlightMission(): DailyFlightMission {
   const next = getNextMissionAction();
 
   const legs: FlightMissionLeg[] = [
-    leg("warmup", "Warm-up · Pronunciation", "/pronunciation", 5),
+    leg("warmup", "Word Mission", "/word-mission", 18),
   ];
 
   const weakArea = adaptive[0]?.area?.toLowerCase() ?? "";
 
-  if (weakArea.includes("pronunciation")) {
-    legs.push(leg("pronunciation", "Pronunciation focus", "/pronunciation", 12));
+  if (weakArea.includes("pronunciation") || weakArea.includes("vocabulary")) {
+    legs.push(leg("word-mission", "Word Mission focus", "/word-mission", 12));
     legs.push(leg("part1", "Part 1 · Speaking", "/part1", 15));
   } else if (weakArea.includes("part 2")) {
     legs.push(leg("part1", "Part 1 · Topics", "/part1", 10));
     legs.push(leg("part2", "Part 2 · Readback extra", "/part2", 18));
   } else if (weakArea.includes("vocabulary")) {
-    legs.push(leg("vocab", "Vocabulary mission", "/vocabulario", 12));
+    legs.push(leg("word-mission", "Word Mission", "/word-mission", 12));
     legs.push(leg("part1", "Part 1 · Apply phrases", "/part1", 15));
   } else if (weakArea.includes("confidence")) {
     legs.push(leg("part1", "Part 1 · Conversation", "/part1", 18));
@@ -43,7 +43,6 @@ export function buildDailyFlightMission(): DailyFlightMission {
     legs.push(leg("part2", "Part 2 · Pilot interaction", "/part2", 12));
   }
 
-  legs.push(leg("pronunciation", "Pronunciation", "/pronunciation", 8));
 
   if (phase === "simulation" || phase === "exam" || phase === "confidence") {
     legs.push(leg("simulation", "Simulation / Mock exam", "/simulado", 20));

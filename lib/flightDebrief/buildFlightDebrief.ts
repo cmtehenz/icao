@@ -16,13 +16,9 @@ import {
   getOrCreatePart2DailyMission,
 } from "@/lib/part2DailyMission";
 import {
-  pronunciationDailyMissionProgress,
-  getOrCreatePronunciationDailyMission,
-} from "@/lib/pronunciationDailyMission";
-import {
-  vocabDailyMissionProgress,
-  getOrCreateVocabDailyMission,
-} from "@/lib/vocabDailyMission";
+  wordDailyMissionProgress,
+  getOrCreateWordDailyMission,
+} from "@/lib/wordMission/wordDailyMission";
 import { buildVocabMissionDebrief } from "@/lib/vocabMission";
 import { loadStudyPlanMode, todayKey } from "@/lib/studyTime";
 import { loadAllConversationMetrics } from "@/lib/humanExaminer/conversationStore";
@@ -55,16 +51,14 @@ export function buildFlightDebrief(dateKey = todayKey()): FlightDebriefSummary {
   const vocabDebrief = buildVocabMissionDebrief();
   const part1Conversation = aggregatePart1Conversation();
 
-  const pronunciation = pronunciationDailyMissionProgress(getOrCreatePronunciationDailyMission());
-  const vocabulary = vocabDailyMissionProgress(getOrCreateVocabDailyMission());
+  const wordMission = wordDailyMissionProgress(getOrCreateWordDailyMission());
   const part1 = part1DailyMissionProgress(getOrCreatePart1DailyMission());
   const part2 = part2DailyMissionProgress(getOrCreatePart2DailyMission());
   const recall = missionRecallProgress();
   const simulate = simulateMissionProgress(dateKey);
 
   const legs = [
-    { id: "pronunciation", label: "Pronunciation", complete: pronunciation.complete },
-    { id: "vocabulary", label: "Vocabulary", complete: vocabulary.complete },
+    { id: "wordMission", label: "Word Mission", complete: wordMission.complete },
     { id: "part1", label: "Part 1", complete: part1.complete },
     { id: "part2", label: "Part 2", complete: part2.complete },
     { id: "recall", label: "Mission Recall", complete: recall.complete },
@@ -83,7 +77,7 @@ export function buildFlightDebrief(dateKey = todayKey()): FlightDebriefSummary {
     part1Conversation?.priorityImprovement ??
     weakest?.hint ??
     (vocabDebrief.weakTerms.length > 0
-      ? `Vocabulary mission: finish VB-1→VB-4 on ${vocabDebrief.weakTerms[0]}.`
+      ? `Word Mission: finish WM-1→WM-4 on ${vocabDebrief.weakTerms[0]}.`
       : weakest?.items[0]?.label) ??
     "Keep answers short and operational — one idea at a time.";
 
@@ -121,7 +115,7 @@ export function buildFlightDebrief(dateKey = todayKey()): FlightDebriefSummary {
   const readinessPercent = Math.round((completedCount / Math.max(legs.length, 1)) * 100);
 
   const positiveOpening =
-    pronunciation.complete && vocabulary.complete && part1.complete && part2.complete
+    wordMission.complete && part1.complete && part2.complete
       ? vocabDebrief.strongTerms.length > 0
         ? `Today's flight is complete — strong vocabulary on ${vocabDebrief.strongTerms.slice(0, 2).join(", ")}.`
         : "Today's flight is complete — solid work across the mission legs."
@@ -145,11 +139,10 @@ export function buildFlightDebrief(dateKey = todayKey()): FlightDebriefSummary {
 }
 
 export function isFlightDebriefAvailable(dateKey = todayKey()): boolean {
-  const pronunciation = pronunciationDailyMissionProgress(getOrCreatePronunciationDailyMission());
-  const vocabulary = vocabDailyMissionProgress(getOrCreateVocabDailyMission());
+  const wordMission = wordDailyMissionProgress(getOrCreateWordDailyMission());
   const part1 = part1DailyMissionProgress(getOrCreatePart1DailyMission());
   const part2 = part2DailyMissionProgress(getOrCreatePart2DailyMission());
-  if (!pronunciation.complete || !vocabulary.complete || !part1.complete || !part2.complete) {
+  if (!wordMission.complete || !part1.complete || !part2.complete) {
     return false;
   }
   const recall = missionRecallProgress();

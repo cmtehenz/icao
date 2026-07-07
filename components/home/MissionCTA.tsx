@@ -43,7 +43,7 @@ export default function MissionCTA() {
   return (
     <section className="mission-cta" aria-label="Today's flight">
       <Link
-        href={next?.href ?? "/pronunciation"}
+        href={next?.href ?? "/word-mission"}
         className="btn purple btn-large mission-cta-btn"
         aria-describedby={next ? "mission-cta-desc" : undefined}
       >

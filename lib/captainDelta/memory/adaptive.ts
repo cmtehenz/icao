@@ -13,9 +13,9 @@ export function computeAdaptivePriorities(): {
     if (ins.score == null) continue;
     if (ins.area === "pronunciation" && ins.score < 65) {
       priorities.push({
-        area: "Pronunciation",
-        reason: "Weak pronunciation — more vault practice",
-        href: "/pronunciation",
+        area: "Word Mission",
+        reason: "Weak pronunciation — more Word Mission practice",
+        href: "/word-mission",
         score: ins.score,
       });
     }
@@ -37,9 +37,9 @@ export function computeAdaptivePriorities(): {
     }
     if (ins.area === "vocabulary" && ins.score < 60) {
       priorities.push({
-        area: "Vocabulary",
+        area: "Word Mission",
         reason: "Aviation phrases need reinforcement",
-        href: "/vocabulario",
+        href: "/word-mission",
         score: ins.score,
       });
     }

@@ -4,8 +4,7 @@ import { isMissionFocusHome, isMissionFocusRoute } from "@/lib/missionFocusRoute
 describe("missionFocusRoutes", () => {
   it("includes home and mission routes", () => {
     expect(isMissionFocusRoute("/")).toBe(true);
-    expect(isMissionFocusRoute("/pronunciation")).toBe(true);
-    expect(isMissionFocusRoute("/vocabulario")).toBe(true);
+    expect(isMissionFocusRoute("/word-mission")).toBe(true);
     expect(isMissionFocusRoute("/part1")).toBe(true);
     expect(isMissionFocusRoute("/part2")).toBe(true);
     expect(isMissionFocusRoute("/mission-recall")).toBe(true);
@@ -13,7 +12,9 @@ describe("missionFocusRoutes", () => {
     expect(isMissionFocusRoute("/simulado")).toBe(true);
   });
 
-  it("excludes legacy and admin routes", () => {
+  it("excludes legacy pronunciation/vocab and admin routes", () => {
+    expect(isMissionFocusRoute("/pronunciation")).toBe(false);
+    expect(isMissionFocusRoute("/vocabulario")).toBe(false);
     expect(isMissionFocusRoute("/conta")).toBe(false);
     expect(isMissionFocusRoute("/escutar-prova")).toBe(false);
     expect(isMissionFocusRoute("/structure")).toBe(false);

@@ -34,8 +34,7 @@ import { daysUntilExam } from "@/lib/captainDelta/examDate";
 const QUICK_LINKS = [
   { href: "/part1", label: "Part 1", desc: "Aviation topics", icon: "✈" },
   { href: "/part2", label: "Part 2", desc: "Readback & interaction", icon: "📡" },
-  { href: "/pronunciation", label: "Pronúncia", desc: "Word bank", icon: "🎤" },
-  { href: "/vocabulario", label: "Vocabulário", desc: "SRS + shadowing", icon: "📚" },
+  { href: "/word-mission", label: "Word Mission", desc: "Meaning + pronunciation + ICAO use", icon: "🎤" },
   { href: "/simulado", label: "Simulado", desc: "Mock exam", icon: "🎯" },
   { href: "/escutar-prova", label: "Escutar", desc: "Full exam listening", icon: "🎧" },
 ] as const;

@@ -1,8 +1,7 @@
 import type { DailyMissionSummary } from "@/lib/dailyMission";
 
 export type FlightPhaseId =
-  | "pronunciation"
-  | "vocabulary"
+  | "wordMission"
   | "part1"
   | "part2"
   | "recall"
@@ -41,16 +40,11 @@ export type FlightProgress = {
 
 export const FLIGHT_PHASE_DEFINITIONS: FlightPhaseDefinition[] = [
   {
-    id: "pronunciation",
+    id: "wordMission",
     aviationLabel: "ENGINE START",
-    missionLabel: "Pronunciation",
-    captainCopy: "Engine start — five words, slow and operational. Quality before speed.",
-  },
-  {
-    id: "vocabulary",
-    aviationLabel: "TAXI",
-    missionLabel: "Vocabulary",
-    captainCopy: "Taxi clearance — learn the operational meaning, then say it like a pilot.",
+    missionLabel: "Word Mission",
+    captainCopy:
+      "Engine start — meaning, pilot phrase, sentence, then ICAO use. One term at a time.",
   },
   {
     id: "part1",

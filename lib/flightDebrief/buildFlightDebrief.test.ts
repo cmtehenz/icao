@@ -10,19 +10,20 @@ vi.mock("@/lib/dailyExamRotation", () => ({
   todayExamLabel: () => "Prova 23C",
 }));
 
-vi.mock("@/lib/pronunciationDailyMission", () => ({
-  getOrCreatePronunciationDailyMission: () => ({ words: [], completedWords: [], date: "2026-07-05" }),
-  pronunciationDailyMissionProgress: () => ({ done: 5, total: 5, complete: true, currentWord: null }),
-}));
-
-vi.mock("@/lib/vocabDailyMission", () => ({
-  getOrCreateVocabDailyMission: () => ({
+vi.mock("@/lib/wordMission/wordDailyMission", () => ({
+  getOrCreateWordDailyMission: () => ({
     date: "2026-07-05",
     termIds: [],
     completedIds: [],
     examVersion: "23C",
   }),
-  vocabDailyMissionProgress: () => ({ done: 20, total: 20, complete: true }),
+  wordDailyMissionProgress: () => ({
+    done: 20,
+    total: 20,
+    complete: true,
+    currentId: null,
+    examVersion: "23C",
+  }),
 }));
 
 vi.mock("@/lib/part1DailyMission", () => ({
@@ -92,8 +93,8 @@ describe("buildFlightDebrief", () => {
   it("builds summary from daily mission state", () => {
     const debrief = buildFlightDebrief("2026-07-05");
     expect(debrief.examLabel).toBe("Prova 23C");
-    expect(debrief.legs.length).toBeGreaterThanOrEqual(5);
-    expect(debrief.legs.find((l) => l.id === "pronunciation")?.complete).toBe(true);
+    expect(debrief.legs.length).toBeGreaterThanOrEqual(4);
+    expect(debrief.legs.find((l) => l.id === "wordMission")?.complete).toBe(true);
     expect(debrief.legs.find((l) => l.id === "recall")?.complete).toBe(true);
   });
 

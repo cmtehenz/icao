@@ -16,7 +16,6 @@ import {
 } from "@/lib/part2DailyMission";
 import {
   loadPronunciationDailyMission,
-  pronunciationDailyMissionProgress,
   savePronunciationDailyMission,
   type PronunciationDailyMissionState,
 } from "@/lib/pronunciationDailyMission";
@@ -65,14 +64,12 @@ export function isApplyingRemoteDailyMission(): boolean {
 }
 
 function missionsComplete(
-  pronunciation: PronunciationDailyMissionState | null,
   part1: Part1DailyMissionState | null,
   part2: Part2DailyMissionState | null,
   vocab: VocabDailyMissionState | null,
 ): boolean {
-  if (!pronunciation || !part1 || !part2 || !vocab) return false;
+  if (!part1 || !part2 || !vocab) return false;
   return (
-    pronunciationDailyMissionProgress(pronunciation).complete &&
     part1DailyMissionProgress(part1).complete &&
     part2DailyMissionProgress(part2).complete &&
     vocabDailyMissionProgress(vocab).complete
@@ -112,7 +109,7 @@ export function loadLocalDailyMissionBundle(): DailyMissionBundle {
   const debrief = loadFlightDebriefState();
   const log = loadDailyMissionLog();
   const complete =
-    !!log[date] || missionsComplete(pronunciation, part1, part2, vocab);
+    !!log[date] || missionsComplete(part1, part2, vocab);
   return { date, pronunciation, part1, part2, vocab, recall, debrief, complete, log };
 }
 
@@ -298,7 +295,7 @@ export function mergeDailyMissionBundles(
   const complete =
     localToday.complete ||
     remoteToday.complete ||
-    missionsComplete(pronunciation, part1, part2, vocab);
+    missionsComplete(part1, part2, vocab);
 
   const log = { ...(remote.log ?? {}), ...(local.log ?? {}) };
   if (complete) log[date] = true;

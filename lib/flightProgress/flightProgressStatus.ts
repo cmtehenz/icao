@@ -9,8 +9,7 @@ import {
 
 export function detectCurrentPhaseId(summary: DailyMissionSummary): FlightPhaseId {
   if (summary.complete) return "shutdown";
-  if (!summary.pronunciation.complete) return "pronunciation";
-  if (!summary.vocabulary.complete) return "vocabulary";
+  if (!summary.wordMission.complete) return "wordMission";
   if (!summary.part1.complete) return "part1";
   if (!summary.part2.complete) return "part2";
   if (!summary.recall.complete) return "recall";
@@ -21,10 +20,8 @@ export function detectCurrentPhaseId(summary: DailyMissionSummary): FlightPhaseI
 
 function phaseProgress(summary: DailyMissionSummary, id: FlightPhaseId): FlightPhaseProgress | undefined {
   switch (id) {
-    case "pronunciation":
-      return { done: summary.pronunciation.done, total: summary.pronunciation.total };
-    case "vocabulary":
-      return { done: summary.vocabulary.done, total: summary.vocabulary.total };
+    case "wordMission":
+      return { done: summary.wordMission.done, total: summary.wordMission.total };
     case "part1":
       return { done: summary.part1.bothDone, total: summary.part1.total };
     case "part2":
@@ -42,10 +39,8 @@ function phaseProgress(summary: DailyMissionSummary, id: FlightPhaseId): FlightP
 
 function isPhaseComplete(summary: DailyMissionSummary, id: FlightPhaseId): boolean {
   switch (id) {
-    case "pronunciation":
-      return summary.pronunciation.complete;
-    case "vocabulary":
-      return summary.vocabulary.complete;
+    case "wordMission":
+      return summary.wordMission.complete;
     case "part1":
       return summary.part1.complete;
     case "part2":

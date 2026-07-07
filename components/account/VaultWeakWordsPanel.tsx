@@ -10,6 +10,7 @@ import {
   VAULT_PASS_SCORE,
   type VaultWord,
 } from "@/lib/pronunciationVault";
+import { pronunciationMissionLink } from "@/lib/pronunciationDailyMission";
 
 const DEFAULT_TOP_N = 5;
 
@@ -52,7 +53,7 @@ export default function VaultWeakWordsPanel({ limit = DEFAULT_TOP_N }: Props) {
           <li key={w.word} className={`vault-weak-top-item ${w.lastAccuracy < 60 ? "bad" : "warn"}`}>
             <span className="vault-weak-rank">{i + 1}</span>
             <div className="vault-weak-body">
-              <Link href={`/pronunciation?word=${encodeURIComponent(w.word)}`}>
+              <Link href={pronunciationMissionLink(w.word)}>
                 {w.word}
                 <WordPhoneticHint word={w.word} className="vault-word-phonetic" />
               </Link>
@@ -62,7 +63,7 @@ export default function VaultWeakWordsPanel({ limit = DEFAULT_TOP_N }: Props) {
               {w.context && <span className="vault-weak-context">{w.context}</span>}
             </div>
             <Link
-              href={`/pronunciation?word=${encodeURIComponent(w.word)}`}
+              href={pronunciationMissionLink(w.word)}
               className="btn green btn-sm"
             >
               Treinar
@@ -70,7 +71,7 @@ export default function VaultWeakWordsPanel({ limit = DEFAULT_TOP_N }: Props) {
           </li>
         ))}
       </ol>
-      <Link href="/pronunciation" className="btn secondary btn-sm vault-weak-all">
+      <Link href="/word-mission" className="btn secondary btn-sm vault-weak-all">
         Ver banco completo →
       </Link>
     </section>

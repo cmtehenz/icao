@@ -22,13 +22,11 @@ import {
   part2MissionLink,
   PART2_DAILY_MISSION_EVENT,
 } from "@/lib/part2DailyMission";
-import { VOCAB_DAILY_MISSION_EVENT, vocabDailyMissionProgress, getOrCreateVocabDailyMission, vocabMissionLink } from "@/lib/vocabDailyMission";
 import {
-  PRONUNCIATION_DAILY_MISSION_EVENT,
-  getOrCreatePronunciationDailyMission,
-  pronunciationDailyMissionProgress,
-  pronunciationMissionLink,
-} from "@/lib/pronunciationDailyMission";
+  VOCAB_DAILY_MISSION_EVENT,
+  getOrCreateVocabDailyMission,
+} from "@/lib/vocabDailyMission";
+import { wordMissionLink } from "@/lib/wordMission/wordDailyMission";
 import { PEEL_BLOCK_HISTORY_EVENT } from "@/lib/peelBlockHistory";
 import { PART1_COACH_HISTORY_EVENT } from "@/lib/part1CoachHistory";
 import { PART2_PROGRESS_EVENT } from "@/lib/part2/progress";
@@ -61,7 +59,6 @@ export default function DailyMissionPanel() {
       PART1_DAILY_MISSION_EVENT,
       PART2_DAILY_MISSION_EVENT,
       VOCAB_DAILY_MISSION_EVENT,
-      PRONUNCIATION_DAILY_MISSION_EVENT,
       MISSION_RECALL_EVENT,
       FLIGHT_DEBRIEF_EVENT,
       STUDY_ACTIVITY_RECORDED_EVENT,
@@ -81,15 +78,12 @@ export default function DailyMissionPanel() {
   const summary = useMemo(() => getDailyMissionSummary(), [tick]);
   const part1 = useMemo(() => getOrCreatePart1DailyMission(), [tick]);
   const part2 = useMemo(() => getOrCreatePart2DailyMission(), [tick]);
-  const vocabProgress = useMemo(() => vocabDailyMissionProgress(getOrCreateVocabDailyMission()), [tick]);
-  const pronProgress = useMemo(
-    () => pronunciationDailyMissionProgress(getOrCreatePronunciationDailyMission()),
-    [tick],
-  );
-  const vocabNextLink = vocabProgress.currentId
-    ? vocabMissionLink(vocabProgress.currentId)
-    : "/vocabulario";
-  const pronNextLink = pronunciationMissionLink(pronProgress.currentWord ?? undefined);
+  const wordMission = useMemo(() => getOrCreateVocabDailyMission(), [tick]);
+  const wordNextLink = wordMission.termIds.find((id) => !wordMission.completedIds.includes(id))
+    ? wordMissionLink(
+        wordMission.termIds.find((id) => !wordMission.completedIds.includes(id))!,
+      )
+    : "/word-mission";
 
   return (
     <section className="daily-mission-panel" aria-label="Plano de estudo de hoje">
@@ -99,8 +93,8 @@ export default function DailyMissionPanel() {
           <p className="sub">
             <strong>{summary.examLabel}</strong>
             {mode === "intense"
-              ? " — pronúncia · vocabulário · Part 1 · Part 2 · Recall · Simulado · Debrief"
-              : " — pronúncia · vocabulário · Part 1 · Part 2 · Recall · Debrief"}
+              ? " — Word Mission · Part 1 · Part 2 · Recall · Simulado · Debrief"
+              : " — Word Mission · Part 1 · Part 2 · Recall · Debrief"}
           </p>
         </div>
         <div className="daily-mission-head-side">
@@ -137,43 +131,25 @@ export default function DailyMissionPanel() {
       <p className="daily-mission-mode-hint">
         {mode === "intense"
           ? "Dia bom: missão completa + Mission Recall + Simulado ICAO + Flight Debrief."
-          : "Um dia = uma prova. Pronúncia, vocabulário, Part 1, Part 2, Mission Recall e Flight Debrief."}
+          : "Um dia = uma prova. Word Mission, Part 1, Part 2, Mission Recall e Flight Debrief."}
       </p>
 
       <div className="daily-mission-grid">
-        <article className={`daily-mission-card ${summary.pronunciation.complete ? "done" : ""}`}>
+        <article className={`daily-mission-card ${summary.wordMission.complete ? "done" : ""}`}>
           <h3>
-            Pronúncia — {summary.pronunciation.done}/{summary.pronunciation.total}
+            Word Mission — {summary.wordMission.done}/{summary.wordMission.total}
           </h3>
           <p className="daily-mission-meta">
-            5 palavras do banco — as mais críticas ou abaixo de 80%
+            20 termos da {summary.examLabel} — meaning, pilot phrase, sentence, ICAO use
           </p>
           <p className="daily-mission-vocab-progress">
-            {summary.pronunciation.done}/{summary.pronunciation.total} praticadas hoje
-            {!summary.pronunciation.complete && pronProgress.currentWord
-              ? ` · falta: ${pronProgress.currentWord}`
+            {summary.wordMission.done}/{summary.wordMission.total} concluídos
+            {!summary.wordMission.complete && summary.wordMission.currentId
+              ? ` · falta: ${ICAO_VOCABULARY.find((t) => t.id === summary.wordMission.currentId)?.term ?? "1"}`
               : ""}
           </p>
-          <Link href={pronNextLink} className="btn secondary btn-sm">
-            {summary.pronunciation.complete ? "Abrir pronúncia →" : "Praticar palavra que falta →"}
-          </Link>
-        </article>
-
-        <article className={`daily-mission-card ${summary.vocabulary.complete ? "done" : ""}`}>
-          <h3>
-            Vocabulário — {summary.vocabulary.done}/{summary.vocabulary.total}
-          </h3>
-          <p className="daily-mission-meta">
-            20 palavras da {summary.examLabel} — as que você mais precisa revisar
-          </p>
-          <p className="daily-mission-vocab-progress">
-            {summary.vocabulary.done}/{summary.vocabulary.total} concluídas
-            {!summary.vocabulary.complete && vocabProgress.currentId
-              ? ` · falta: ${ICAO_VOCABULARY.find((t) => t.id === vocabProgress.currentId)?.term ?? "1"}`
-              : ""}
-          </p>
-          <Link href={vocabNextLink} className="btn secondary btn-sm">
-            {summary.vocabulary.complete ? "Abrir vocabulário →" : "Treinar palavra que falta →"}
+          <Link href={wordNextLink} className="btn secondary btn-sm">
+            {summary.wordMission.complete ? "Abrir Word Mission →" : "Treinar termo que falta →"}
           </Link>
         </article>
 

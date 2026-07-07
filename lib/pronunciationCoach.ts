@@ -445,6 +445,8 @@ export function buildHumanCaptainFeedback(
     referenceText,
     practiceLevel,
     lastFocus: focus,
+    recognizedText: assessment.recognizedText ?? "",
+    lastCoachingMessage: copy.message,
   });
 
   return {
@@ -458,15 +460,39 @@ export function buildHumanCaptainFeedback(
   };
 }
 
+export type PronunciationAskIntent =
+  | "pronunciation_help"
+  | "stress_help"
+  | "rhythm_help"
+  | "vowel_help"
+  | "word_meaning"
+  | "sentence_explanation"
+  | "aviation_context"
+  | "icao_answer_help"
+  | "repeat_instruction"
+  | "technical_recording_error"
+  | "general_question";
+
 export type PronunciationAskContext = {
   targetWord?: string | null;
   referenceText?: string | null;
+  targetPhrase?: string | null;
   practiceLevel?: PracticeLevel;
+  recognizedText?: string | null;
   lastFocus?: CoachingFocus | null;
+  lastCoachingMessage?: string | null;
 };
 
 type PronunciationCoachSession = Required<
-  Pick<PronunciationAskContext, "targetWord" | "referenceText" | "practiceLevel" | "lastFocus">
+  Pick<
+    PronunciationAskContext,
+    | "targetWord"
+    | "referenceText"
+    | "practiceLevel"
+    | "lastFocus"
+    | "recognizedText"
+    | "lastCoachingMessage"
+  >
 >;
 
 let lastPronunciationCoachSession: PronunciationCoachSession | null = null;
@@ -477,6 +503,8 @@ export function rememberPronunciationCoachSession(
     referenceText: string;
     practiceLevel: PracticeLevel;
     lastFocus: CoachingFocus;
+    lastCoachingMessage: string;
+    recognizedText?: string;
   },
 ): void {
   lastPronunciationCoachSession = {
@@ -484,6 +512,8 @@ export function rememberPronunciationCoachSession(
     referenceText: session.referenceText,
     practiceLevel: session.practiceLevel,
     lastFocus: session.lastFocus,
+    recognizedText: session.recognizedText?.trim() ?? "",
+    lastCoachingMessage: session.lastCoachingMessage,
   };
 }
 
@@ -496,96 +526,319 @@ export function resetPronunciationCoachSessionForTests(): void {
 }
 
 const QUESTION_LEAD =
-  /^(how can i|how do i|how to|why|what is|what's|explain|can you help|can you|could you|tell me|help me)\b/i;
+  /^(how can i|how do i|how to|why|what is|what's|what does|explain|can you help|can you|could you|tell me|help me)\b/i;
 
 const COACHING_TOPIC =
-  /\b(stress|stressed|syllable|rhythm|fluency|prosody|pronunciation|pronounce|vowel|sound|intonation|flow|pause|link|mouth|stronger|louder|clearer|engine)\b/i;
+  /\b(stress|stressed|syllable|rhythm|fluency|prosody|pronunciation|pronounce|vowel|sound|intonation|flow|pause|link|mouth|stronger|louder|clearer|mean|meaning|icao|helicopter|repeat)\b/i;
 
+const TECHNICAL_ERROR_INPUT =
+  /\b(drain\s+timeout|session ended|no_recognizer|recognizer|azure|callback|nomatch|sdk|stack|technical)\b/i;
+
+function resolveAskContext(ctx: PronunciationAskContext = {}) {
+  const session = lastPronunciationCoachSession;
+  const word = ctx.targetWord?.trim() || session?.targetWord || "the word";
+  const referenceText =
+    ctx.referenceText?.trim() ||
+    ctx.targetPhrase?.trim() ||
+    session?.referenceText ||
+    "";
+  return {
+    word,
+    referenceText,
+    practiceLevel: ctx.practiceLevel ?? session?.practiceLevel ?? 1,
+    lastFocus: ctx.lastFocus ?? session?.lastFocus ?? null,
+    recognizedText: ctx.recognizedText?.trim() || session?.recognizedText || "",
+    lastCoachingMessage:
+      ctx.lastCoachingMessage?.trim() || session?.lastCoachingMessage || "",
+  };
+}
+
+/** V2 intent router for student text during /pronunciation. */
+export function classifyPronunciationStudentIntent(
+  question: string,
+  ctx: PronunciationAskContext = {},
+): PronunciationAskIntent {
+  const q = question.trim().toLowerCase();
+  const { lastFocus } = resolveAskContext(ctx);
+
+  if (TECHNICAL_ERROR_INPUT.test(q)) return "technical_recording_error";
+  if (/\b(repeat|say again|one more time|repeat that|repeat instruction)\b/.test(q)) {
+    return "repeat_instruction";
+  }
+  if (/\b(stress|stressed|syllable|stronger|louder|intonation|prosody)\b/.test(q)) {
+    return "stress_help";
+  }
+  if (/\b(rhythm|fluency|flow|pause|choppy|breath|link|smooth|one breath)\b/.test(q)) {
+    return "rhythm_help";
+  }
+  if (/\b(vowel|mouth|sound|pronounce|clearer|open your mouth)\b/.test(q)) {
+    return "vowel_help";
+  }
+  if (/\b(what does this sentence|sentence mean|what does the sentence|meaning of the sentence)\b/.test(q)) {
+    return "sentence_explanation";
+  }
+  if (/\b(what does .* mean|meaning of|what is .* mean)\b/.test(q)) {
+    return "word_meaning";
+  }
+  if (/\b(icao|exam answer|level 4|how should i answer|model answer|part 1 answer)\b/.test(q)) {
+    return "icao_answer_help";
+  }
+  if (/\b(helicopter|pilot|atc|operational|when would|who says|in flight|checklist)\b/.test(q)) {
+    return "aviation_context";
+  }
+  if (/\b(pronunciation|how can i|how do i|how to|help me|explain|tell me)\b/.test(q)) {
+    return "pronunciation_help";
+  }
+  if (lastFocus === "prosody") return "stress_help";
+  if (lastFocus === "fluency") return "rhythm_help";
+  if (lastFocus === "accuracy") return "vowel_help";
+  if (q.includes("?") || QUESTION_LEAD.test(q)) return "general_question";
+  return "general_question";
+}
+
+export function isPronunciationStudentQuestion(text: string): boolean {
+  const q = text.trim();
+  if (q.length < 8) return false;
+  if (QUESTION_LEAD.test(q) || q.includes("?")) return true;
+  return COACHING_TOPIC.test(q);
+}
+
+/** @deprecated use isPronunciationStudentQuestion */
 export function isPronunciationCoachingQuestion(text: string): boolean {
-  const q = text.trim().toLowerCase();
-  if (q.length < 10) return false;
-  if (q.includes("?")) {
-    return COACHING_TOPIC.test(q) || QUESTION_LEAD.test(q);
-  }
-  if (QUESTION_LEAD.test(q)) return true;
-  return COACHING_TOPIC.test(q) && /\b(how|why|what|explain|help)\b/.test(q);
+  return isPronunciationStudentQuestion(text);
 }
 
-type AskTopic = "stress" | "rhythm" | "vowel" | "general";
-
-function detectAskTopic(question: string, lastFocus: CoachingFocus | null | undefined): AskTopic {
-  const q = question.toLowerCase();
-  if (/\b(stress|stressed|syllable|prosody|intonation|stronger|louder)\b/.test(q)) {
-    return "stress";
-  }
-  if (/\b(rhythm|fluency|flow|pause|choppy|breath|link)\b/.test(q)) {
-    return "rhythm";
-  }
-  if (/\b(vowel|mouth|sound|pronounce|clearer|open)\b/.test(q)) {
-    return "vowel";
-  }
-  if (lastFocus === "prosody") return "stress";
-  if (lastFocus === "fluency") return "rhythm";
-  if (lastFocus === "accuracy") return "vowel";
-  return "general";
+export function shouldAnswerPronunciationLocally(_intent: PronunciationAskIntent): boolean {
+  return true;
 }
 
-/** Local instructor answer when the student asks Captain a pronunciation question. */
+function stressSyllableDrill(word: string): { drill: string; stressed: string } {
+  const w = word.trim().toLowerCase();
+  if (w === "engine") {
+    return { drill: "EN... gine... ENGINE", stressed: "EN" };
+  }
+  const parts = splitSyllables(word);
+  if (parts.length <= 1) {
+    const upper = word.toUpperCase();
+    return { drill: `${upper}... ${upper}`, stressed: upper };
+  }
+  const stressed = parts[0]!.toUpperCase();
+  const tail = parts.slice(1).join("").toLowerCase();
+  return {
+    drill: `${stressed}... ${tail}... ${word.toUpperCase()}`,
+    stressed,
+  };
+}
+
+function stressHelpAnswer(word: string, referenceText: string): { message: string; speechText: string } {
+  const q = quoteWord(word);
+  const { drill, stressed } = stressSyllableDrill(word);
+  const repeatLine = referenceText
+    ? "Now put it back into the full sentence."
+    : "Now say the full sentence again.";
+
+  return buildInstructorLesson({
+    positive: "Good question.",
+    focus: `For ${q}, stress the first syllable: ${drill}.`,
+    teach: `Make ${stressed} a little stronger, a little longer, and slightly higher.`,
+    exercise: "",
+    repeat: repeatLine,
+  });
+}
+
+function rhythmHelpAnswer(word: string, referenceText: string): { message: string; speechText: string } {
+  const linked = linkedSpeechHint(referenceText || word);
+  const linkedDisplay = linked.includes("_") ? linked : linked.replace(/\s+/g, "_");
+  return buildInstructorLesson({
+    positive: "Good question.",
+    focus: "Keep it moving in one breath.",
+    teach: "Don't separate every word — link the phrase smoothly, like a calm radio call.",
+    exercise: `Try: ${linkedDisplay.replace(/_/g, "_")}. Slowly first, then normal speed.`,
+    repeat: referenceText
+      ? "Now say the full sentence again."
+      : "Now try the full phrase again.",
+  });
+}
+
+function vowelHelpAnswer(word: string, referenceText: string): { message: string; speechText: string } {
+  const q = quoteWord(word);
+  return buildInstructorLesson({
+    positive: "Good question.",
+    focus: `Let's clean the vowel in ${q}.`,
+    teach: "Keep the vowel short and clean. Don't stretch it too much — open your mouth just a little more.",
+    exercise: `Say ${q} once slowly, then once at normal speed.`,
+    repeat: referenceText
+      ? "Now put it back into the full sentence."
+      : "Now say the full sentence again.",
+  });
+}
+
+function sentenceExplanationAnswer(
+  word: string,
+  referenceText: string,
+): { message: string; speechText: string } {
+  const sentence = referenceText.trim() || `Practice with ${quoteWord(word)}.`;
+  return buildInstructorLesson({
+    positive: "Good question.",
+    focus: `This line is operational: ${quoteWord(sentence)}`,
+    teach:
+      "A pilot or crew member would say it during briefing or checklist work — short, clear, and calm.",
+    exercise: `Listen to the meaning first, then say ${quoteWord(word)} clearly inside the sentence.`,
+    repeat: "Now repeat the full sentence in your own steady voice.",
+  });
+}
+
+function aviationContextAnswer(
+  word: string,
+  referenceText: string,
+): { message: string; speechText: string } {
+  const q = quoteWord(word);
+  const contextLine = referenceText.trim()
+    ? `In helicopter operations, ${quoteWord(referenceText)} is a standard briefing-style line.`
+    : `In helicopter operations, ${q} is common briefing and checklist language.`;
+  return buildInstructorLesson({
+    positive: "Good question.",
+    focus: contextLine,
+    teach: "Keep it operational — who, what, and when. No extra story on the radio.",
+    exercise: `Say ${q} once clearly, then use it in the sentence.`,
+    repeat: "Now repeat the full sentence again.",
+  });
+}
+
+function icaoAnswerHelp(
+  word: string,
+  referenceText: string,
+): { message: string; speechText: string } {
+  const q = quoteWord(word);
+  const model = referenceText.trim()
+    ? `I would say: ${referenceText.trim().slice(0, 120)}`
+    : `I would use ${q} in a short operational sentence — one idea, then stop.`;
+  return buildInstructorLesson({
+    positive: "Good question.",
+    focus: "Keep your ICAO answer short — Level 4 English, simple words.",
+    teach: model,
+    exercise: "Use your own details, but keep the same clear structure.",
+    repeat: "Now say your version out loud once.",
+  });
+}
+
+function wordMeaningAnswer(word: string): { message: string; speechText: string } {
+  const q = quoteWord(word);
+  return buildInstructorLesson({
+    positive: "Good question.",
+    focus: `${q} here is the target word in your practice line.`,
+    teach:
+      "Focus on saying it clearly in context — the exam cares about understandable operational English, not dictionary detail.",
+    exercise: `Say ${q} once by itself, then in the sentence.`,
+    repeat: "Now repeat the full sentence again.",
+  });
+}
+
+function repeatInstructionAnswer(
+  lastCoachingMessage: string,
+  word: string,
+): { message: string; speechText: string } {
+  if (lastCoachingMessage && coachingCopyIsInstructorSafe(lastCoachingMessage)) {
+    return {
+      message: lastCoachingMessage,
+      speechText: clampSentences(lastCoachingMessage, 3),
+    };
+  }
+  return buildInstructorLesson({
+    positive: "Sure.",
+    focus: `Let's go again on ${quoteWord(word)}.`,
+    teach: "Slow and clear first — quality before speed.",
+    exercise: `Say ${quoteWord(word)} once, then the full sentence.`,
+    repeat: "Go when ready.",
+  });
+}
+
+function technicalRecordingErrorAnswer(): { message: string; speechText: string } {
+  const safe =
+    "I couldn't get a clear recording that time. Try again with a short phrase and speak a little closer to the mic.";
+  return { message: safe, speechText: safe };
+}
+
+function generalQuestionAnswer(
+  word: string,
+  referenceText: string,
+  practiceLevel: PracticeLevel,
+): { message: string; speechText: string } {
+  const levelHint =
+    practiceLevel >= 3
+      ? "You're on sentence level — connect the words naturally."
+      : "Start with the word alone, then build up.";
+  return buildInstructorLesson({
+    positive: "Good question.",
+    focus: `We're working on ${quoteWord(word)}${referenceText ? ` in ${quoteWord(referenceText)}` : ""}.`,
+    teach: levelHint,
+    exercise: `Say ${quoteWord(word)} once clearly.`,
+    repeat: "Now repeat the full sentence again.",
+  });
+}
+
+/** V2 — local instructor answer; never triggers recording or Azure. */
+export function answerPronunciationStudentQuestion(
+  question: string,
+  intent: PronunciationAskIntent = classifyPronunciationStudentIntent(question),
+  ctx: PronunciationAskContext = {},
+): { message: string; speechText: string; intent: PronunciationAskIntent } {
+  const resolved = resolveAskContext(ctx);
+  const { word, referenceText, practiceLevel, lastCoachingMessage } = resolved;
+
+  let copy: { message: string; speechText: string };
+  switch (intent) {
+    case "stress_help":
+      copy = stressHelpAnswer(word, referenceText);
+      break;
+    case "rhythm_help":
+      copy = rhythmHelpAnswer(word, referenceText);
+      break;
+    case "vowel_help":
+      copy = vowelHelpAnswer(word, referenceText);
+      break;
+    case "sentence_explanation":
+      copy = sentenceExplanationAnswer(word, referenceText);
+      break;
+    case "aviation_context":
+      copy = aviationContextAnswer(word, referenceText);
+      break;
+    case "icao_answer_help":
+      copy = icaoAnswerHelp(word, referenceText);
+      break;
+    case "word_meaning":
+      copy = wordMeaningAnswer(word);
+      break;
+    case "repeat_instruction":
+      copy = repeatInstructionAnswer(lastCoachingMessage, word);
+      break;
+    case "technical_recording_error":
+      copy = technicalRecordingErrorAnswer();
+      break;
+    case "pronunciation_help":
+      copy =
+        resolved.lastFocus === "prosody"
+          ? stressHelpAnswer(word, referenceText)
+          : resolved.lastFocus === "fluency"
+            ? rhythmHelpAnswer(word, referenceText)
+            : resolved.lastFocus === "accuracy"
+              ? vowelHelpAnswer(word, referenceText)
+              : generalQuestionAnswer(word, referenceText, practiceLevel);
+      break;
+    default:
+      copy = generalQuestionAnswer(word, referenceText, practiceLevel);
+  }
+
+  return { ...copy, intent };
+}
+
+/** @deprecated use answerPronunciationStudentQuestion */
 export function answerPronunciationCoachingQuestion(
   question: string,
   ctx: PronunciationAskContext = {},
 ): { message: string; speechText: string } {
-  const session = lastPronunciationCoachSession;
-  const word =
-    ctx.targetWord?.trim() ||
-    session?.targetWord ||
-    "the word";
-  const referenceText = ctx.referenceText?.trim() || session?.referenceText || "";
-  const topic = detectAskTopic(question, ctx.lastFocus ?? session?.lastFocus ?? null);
-  const q = quoteWord(word);
-  const repeatLine = referenceText
-    ? "Now say the full sentence again."
-    : "Now put it back into your practice sentence.";
-
-  switch (topic) {
-    case "stress":
-      return buildInstructorLesson({
-        positive: "Good question.",
-        focus: `For ${q}, stress the first syllable.`,
-        teach:
-          "Make the stressed syllable a little louder, longer, and slightly higher — like emphasis on the radio.",
-        exercise: syllableDrillLine(word),
-        repeat: repeatLine,
-      });
-    case "rhythm":
-      return buildInstructorLesson({
-        positive: "Good question.",
-        focus: "Keep the sentence flowing in one breath.",
-        teach:
-          "Try not to stop between the words. Link them smoothly — imagine a calm checklist call.",
-        exercise: referenceText
-          ? `Practice the flow: ${linkedSpeechHint(referenceText).replace(/_/g, " ")}.`
-          : "Take a small breath, then run the line without pausing in the middle.",
-        repeat: repeatLine,
-      });
-    case "vowel":
-      return buildInstructorLesson({
-        positive: "Good question.",
-        focus: `Let's clean up the vowel in ${q}.`,
-        teach:
-          "Open your mouth a little more and keep the vowel short — don't turn it into an 'ee' sound.",
-        exercise: `Say ${q} slowly once, then once at normal speed.`,
-        repeat: repeatLine,
-      });
-    default:
-      return buildInstructorLesson({
-        positive: "Good question.",
-        focus: `For ${q}, speak slowly and keep one idea at a time.`,
-        teach: "Think briefing English — short, clear, operational.",
-        exercise: `Say ${q} once clearly.`,
-        repeat: repeatLine,
-      });
-  }
+  const result = answerPronunciationStudentQuestion(question, undefined, ctx);
+  return { message: result.message, speechText: result.speechText };
 }
 
 /** Short Captain debrief after a valid pronunciation assessment — human coaching only. */

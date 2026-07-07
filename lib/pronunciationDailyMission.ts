@@ -1,5 +1,6 @@
 import { buildDailyPronunciationMission } from "@/lib/pronunciationMission";
 import { loadVault, VAULT_PASS_SCORE } from "@/lib/pronunciationVault";
+import { resolveVocabTermIdForWord, wordMissionLink } from "@/lib/wordMission/wordDailyMission";
 import { syncDailyMissionLog } from "@/lib/dailyMissionLog";
 import { todayKey } from "@/lib/studyTime";
 
@@ -108,10 +109,10 @@ export function pronunciationDailyMissionProgress(
 }
 
 export function pronunciationMissionLink(word?: string): string {
-  if (!word) {
-    const { currentWord } = pronunciationDailyMissionProgress();
-    if (currentWord) return `/pronunciation?word=${encodeURIComponent(currentWord)}`;
-    return "/pronunciation";
+  const target = word?.trim() ?? pronunciationDailyMissionProgress().currentWord ?? "";
+  if (target) {
+    const termId = resolveVocabTermIdForWord(target);
+    if (termId) return wordMissionLink(termId);
   }
-  return `/pronunciation?word=${encodeURIComponent(word)}`;
+  return "/word-mission";
 }

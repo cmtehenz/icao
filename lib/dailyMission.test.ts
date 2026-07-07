@@ -13,7 +13,13 @@ const state = {
     termIds: ["t1", "t2", "t3"],
     completedIds: [] as string[],
   },
-  vocabProgress: { done: 0, total: 20, complete: false },
+  vocabProgress: {
+    done: 0,
+    total: 20,
+    complete: false,
+    currentId: "t1" as string | null,
+    examVersion: "23C" as const,
+  },
   part1Mission: {
     cards: [
       { cardNum: "1", shadowDone: false, coachDone: false },
@@ -45,7 +51,18 @@ vi.mock("@/lib/pronunciationDailyMission", () => ({
   }),
   pronunciationDailyMissionProgress: () => state.pronProgress,
   pronunciationMissionLink: (word?: string) =>
-    `/pronunciation?word=${encodeURIComponent(word ?? "alpha")}`,
+    `/word-mission${word ? `?word=${encodeURIComponent(word)}` : ""}`,
+}));
+
+vi.mock("@/lib/wordMission/wordDailyMission", () => ({
+  getOrCreateWordDailyMission: () => ({
+    date: "2026-07-05",
+    examVersion: "23C",
+    termIds: state.vocabMission.termIds,
+    completedIds: state.vocabMission.completedIds,
+  }),
+  wordDailyMissionProgress: () => state.vocabProgress,
+  wordMissionLink: (id: string) => `/word-mission?term=${id}`,
 }));
 
 vi.mock("@/lib/vocabDailyMission", () => ({
@@ -56,7 +73,7 @@ vi.mock("@/lib/vocabDailyMission", () => ({
     completedIds: state.vocabMission.completedIds,
   }),
   vocabDailyMissionProgress: () => state.vocabProgress,
-  vocabMissionLink: (id: string) => `/vocabulario?term=${id}`,
+  vocabMissionLink: (id: string) => `/word-mission?term=${id}`,
 }));
 
 vi.mock("@/lib/part1DailyMission", () => ({
@@ -96,7 +113,6 @@ vi.mock("@/lib/missionRecall/missionRecallProgress", () => ({
 vi.mock("@/lib/flightDebrief/buildFlightDebrief", () => ({
   isFlightDebriefAvailable: () => {
     const base =
-      state.pronProgress.complete &&
       state.vocabProgress.complete &&
       state.part1Progress.complete &&
       state.part2Progress.complete;
@@ -122,7 +138,13 @@ function completeBaseLegs() {
   state.pronMission.completedWords = state.pronMission.words.map((w) => w.toLowerCase());
   state.pronProgress = { done: 5, total: 5, complete: true, currentWord: null };
   state.vocabMission.completedIds = [...state.vocabMission.termIds];
-  state.vocabProgress = { done: 20, total: 20, complete: true };
+  state.vocabProgress = {
+    done: 20,
+    total: 20,
+    complete: true,
+    currentId: null,
+    examVersion: "23C",
+  };
   state.part1Progress = { complete: true, bothDone: 3, total: 3 };
   state.part2Progress = { complete: true, done: 1, total: 1 };
   state.part2Mission.simulationDone = true;
@@ -138,7 +160,13 @@ function resetState() {
   state.pronMission.completedWords = [];
   state.pronProgress = { done: 0, total: 5, complete: false, currentWord: "alpha" };
   state.vocabMission.completedIds = [];
-  state.vocabProgress = { done: 0, total: 20, complete: false };
+  state.vocabProgress = {
+    done: 0,
+    total: 20,
+    complete: false,
+    currentId: "t1",
+    examVersion: "23C",
+  };
   state.part1Mission.cards = [
     { cardNum: "1", shadowDone: false, coachDone: false },
     { cardNum: "2", shadowDone: false, coachDone: false },
@@ -155,23 +183,30 @@ function resetState() {
 describe("getDailyMissionSummary", () => {
   beforeEach(resetState);
 
-  it("standard mode counts six sections (recall + debrief, no simulate)", () => {
+  it("standard mode counts five sections (word mission + recall + debrief, no simulate)", () => {
     const summary = getDailyMissionSummary();
     expect(summary.simulateRequired).toBe(false);
-    expect(summary.totalSections).toBe(6);
+    expect(summary.totalSections).toBe(5);
     expect(summary.examLabel).toBe("Prova 23C");
     expect(summary.complete).toBe(false);
+    expect(summary.wordMission).toEqual(state.vocabProgress);
   });
 
-  it("intense mode includes simulate as seventh section before debrief", () => {
+  it("intense mode includes simulate as sixth section before debrief", () => {
     state.mode = "intense";
     const summary = getDailyMissionSummary();
     expect(summary.simulateRequired).toBe(true);
-    expect(summary.totalSections).toBe(7);
+    expect(summary.totalSections).toBe(6);
   });
 
   it("reports incomplete mission progress", () => {
-    state.pronProgress = { done: 2, total: 5, complete: false, currentWord: "charlie" };
+    state.vocabProgress = {
+      done: 2,
+      total: 20,
+      complete: false,
+      currentId: "t2",
+      examVersion: "23C",
+    };
     const summary = getDailyMissionSummary();
     expect(summary.complete).toBe(false);
     expect(summary.completedSections).toBe(0);
@@ -183,17 +218,18 @@ describe("getDailyMissionSummary", () => {
     state.debrief = { done: 1, total: 1, complete: true };
     const summary = getDailyMissionSummary();
     expect(summary.complete).toBe(true);
-    expect(summary.completedSections).toBe(6);
+    expect(summary.completedSections).toBe(5);
   });
 });
 
 describe("getNextMissionAction", () => {
   beforeEach(resetState);
 
-  it("returns pronunciation as first leg", () => {
+  it("returns word mission as first leg", () => {
     const next = getNextMissionAction();
     expect(next).not.toBeNull();
-    expect(next!.href).toContain("/pronunciation");
+    expect(next!.href).toContain("/word-mission");
+    expect(next!.title).toContain("Word Mission");
   });
 
   it("returns mission recall after base legs are complete", () => {

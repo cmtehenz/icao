@@ -1,18 +1,13 @@
-import { Suspense } from "react";
-import PronunciationTrainerApp from "@/components/PronunciationTrainerApp";
+import { redirect } from "next/navigation";
+import { legacyPronunciationRedirectTarget } from "@/lib/wordMission/legacyRedirects";
 
 export const dynamic = "force-dynamic";
 
-export default function PronunciationPage() {
-  return (
-    <Suspense
-      fallback={
-        <div className="wrap pronunciation-flight-deck">
-          <p className="sub">Loading pronunciation…</p>
-        </div>
-      }
-    >
-      <PronunciationTrainerApp />
-    </Suspense>
-  );
+type PageProps = {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+};
+
+/** Legacy route — Word Mission is the single word-learning leg. */
+export default async function PronunciationPage({ searchParams }: PageProps) {
+  redirect(legacyPronunciationRedirectTarget(await searchParams));
 }

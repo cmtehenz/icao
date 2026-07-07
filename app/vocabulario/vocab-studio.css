@@ -953,3 +953,252 @@
   outline: 2px solid var(--blue, #3b82f6);
   outline-offset: 2px;
 }
+
+/* ── Word Mission (ENGINE START unified leg) ── */
+
+.word-mission-wrap {
+  max-width: 42rem;
+}
+
+.word-mission-leg {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.word-mission-panel {
+  border-radius: 14px;
+  border: 1px solid var(--line, #1f2937);
+  background: var(--card, #111827);
+  padding: 1.15rem 1.25rem 1.25rem;
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--text) 4%, transparent);
+}
+
+.word-mission-panel .vocab-mission-badge-inline {
+  margin-bottom: 0.85rem;
+}
+
+.word-mission-hero {
+  margin-bottom: 1rem;
+  padding: 1rem 1.1rem;
+  border-radius: 12px;
+  border: 1px solid var(--line, #1f2937);
+  background: color-mix(in srgb, var(--card, #111827) 92%, var(--purple, #8b5cf6) 8%);
+}
+
+.word-mission-term {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+}
+
+.word-mission-phonetic {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--muted, #9ca3af);
+  letter-spacing: 0.02em;
+}
+
+.word-mission-meaning-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.word-mission-meaning-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted, #9ca3af);
+}
+
+.word-mission-level-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.35rem;
+  margin-bottom: 0;
+}
+
+.word-mission-level-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.1rem;
+  min-height: 2.75rem;
+  padding: 0.35rem 0.25rem;
+  border-radius: 10px;
+  font-size: 0.72rem;
+  line-height: 1.15;
+  text-align: center;
+}
+
+.word-mission-level-tab-name {
+  display: block;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  opacity: 0.85;
+}
+
+.word-mission-level-tab.passed:not(.active) {
+  border-color: color-mix(in srgb, var(--good, #22c55e) 55%, var(--line));
+  color: color-mix(in srgb, var(--good, #86efac) 90%, var(--text));
+  background: color-mix(in srgb, var(--good, #22c55e) 8%, var(--card));
+}
+
+.word-mission-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.word-mission-level-head {
+  margin: 0;
+}
+
+.word-mission-content-card {
+  padding: 0.85rem 0.95rem;
+  border-radius: 10px;
+  border: 1px solid var(--line, #1f2937);
+  background: var(--bg, #0f1419);
+}
+
+.word-mission-content-label {
+  margin: 0 0 0.35rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted, #9ca3af);
+}
+
+.word-mission-definition,
+.word-mission-phrase {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  color: var(--text, #f3f4f6);
+}
+
+.word-mission-phrase {
+  font-weight: 500;
+}
+
+.word-mission-icao {
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.word-mission-speak-box {
+  margin: 0;
+}
+
+.word-mission-captain-block {
+  margin: 0;
+}
+
+.word-mission-coaching {
+  margin: 0;
+}
+
+.word-mission-captain-note {
+  margin: 0;
+}
+
+.word-mission-recorder-foot {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding-top: 0.15rem;
+}
+
+.word-mission-listen-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+}
+
+.word-mission-listen-btn {
+  border-radius: 999px;
+  min-height: 2.25rem;
+  padding-inline: 1rem;
+}
+
+.word-mission-listen-hint {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--muted, #9ca3af);
+}
+
+.word-mission-recorder-status {
+  margin: 0;
+}
+
+.word-mission-score {
+  margin: 0;
+}
+
+.word-mission-technical {
+  margin: 0;
+}
+
+.word-mission-azure-scores {
+  margin-top: 0.5rem;
+}
+
+.word-mission-warn {
+  margin: 0;
+}
+
+.word-mission-complete {
+  border-radius: 12px;
+}
+
+.word-mission-intro-card {
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 520px) {
+  .word-mission-panel {
+    padding: 1rem 1rem 1.15rem;
+    border-radius: 12px;
+  }
+
+  .word-mission-hero {
+    padding: 0.85rem 0.9rem;
+  }
+
+  .word-mission-level-tab {
+    min-height: 2.5rem;
+    padding: 0.3rem 0.15rem;
+  }
+
+  .word-mission-level-tab-name {
+    font-size: 0.52rem;
+  }
+
+  .vocab-studio-hero-term {
+    font-size: 1.45rem;
+  }
+
+  .word-mission-listen-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 380px) {
+  .word-mission-level-tab-name {
+    display: none;
+  }
+
+  .word-mission-level-tab {
+    min-height: 2.25rem;
+  }
+}

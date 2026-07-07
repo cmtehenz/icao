@@ -30,7 +30,7 @@ function LegacyAppLayout({ children }: { children: React.ReactNode }) {
   const vault = usePronunciationVault();
   const { user, logout } = useAuth();
 
-  const showVaultBadge = (href: string) => href === "/pronunciation";
+  const showVaultBadge = (href: string) => href === "/word-mission";
 
   const handleLogout = async () => {
     await logout();

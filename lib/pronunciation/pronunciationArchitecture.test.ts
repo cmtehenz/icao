@@ -1,22 +1,22 @@
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import {
-  emitStartRecord,
-  registerCaptainDeltaRecordBridge,
-  resetCaptainDeltaRecordBridgeForTests,
-} from "@/lib/captainDelta/lessonContext";
 
 describe("pronunciation architecture — no bridge recording control", () => {
-  beforeEach(() => {
+  beforeEach(async () => {
+    const { resetCaptainDeltaRecordBridgeForTests } = await import(
+      "@/lib/captainDelta/lessonContext"
+    );
     resetCaptainDeltaRecordBridgeForTests();
   });
 
-  it("emitStartRecord does nothing when no bridge is registered", () => {
+  it("emitStartRecord does nothing when no bridge is registered", async () => {
+    const { emitStartRecord } = await import("@/lib/captainDelta/lessonContext");
     expect(emitStartRecord()).toBe(false);
   });
 
-  it("vocabulary bridge is separate from pronunciation controller", () => {
+  it("vocabulary bridge is separate from pronunciation controller", async () => {
+    const { emitStartRecord, registerCaptainDeltaRecordBridge } = await import(
+      "@/lib/captainDelta/lessonContext"
+    );
     const startRecord = vi.fn();
     registerCaptainDeltaRecordBridge("vocabulary-test", {
       canRecord: () => true,
@@ -29,17 +29,16 @@ describe("pronunciation architecture — no bridge recording control", () => {
   });
 });
 
-describe("pronunciation architecture — Azure entry", () => {
-  it("recording controller lives in lesson session, not browse shell", () => {
-    const lesson = readFileSync(
-      join(process.cwd(), "components/Part2Trainer/PronunciationLessonSession.tsx"),
+describe("pronunciation architecture — Word Mission owns recording", () => {
+  it("Word Mission session mounts the pronunciation recording controller", async () => {
+    const { readFileSync } = await import("node:fs");
+    const { join } = await import("node:path");
+    const session = readFileSync(
+      join(process.cwd(), "components/WordMission/WordMissionSession.tsx"),
       "utf8",
     );
-    const mode = readFileSync(
-      join(process.cwd(), "components/Part2Trainer/PronunciationWordsMode.tsx"),
-      "utf8",
-    );
-    expect(lesson).toMatch(/usePronunciationRecordingController/);
-    expect(mode).not.toMatch(/usePronunciationRecordingController/);
+    expect(session).toMatch(/usePronunciationRecordingController/);
+    expect(session).not.toMatch(/useVocabularyCaptainBridge/);
+    expect(session).not.toMatch(/PronunciationRecorder/);
   });
 });

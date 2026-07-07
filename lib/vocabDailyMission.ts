@@ -118,5 +118,5 @@ export function vocabDailyMissionProgress(mission = getOrCreateVocabDailyMission
 }
 
 export function vocabMissionLink(termId: string): string {
-  return `/vocabulario?term=${encodeURIComponent(termId)}`;
+  return `/word-mission?term=${encodeURIComponent(termId)}`;
 }

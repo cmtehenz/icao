@@ -365,7 +365,7 @@ export default function SimuladoApp() {
                   setView("session");
                 }
               }}
-              onReviewVocab={() => router.push("/vocabulario")}
+              onReviewVocab={() => router.push("/word-mission")}
               onHome={() => {
                 setReport(null);
                 setReportFromHistory(false);

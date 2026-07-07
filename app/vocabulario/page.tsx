@@ -1,5 +1,13 @@
-import VocabularyTrainerApp from "@/components/VocabularyTrainer/VocabularyTrainerApp";
+import { redirect } from "next/navigation";
+import { legacyVocabRedirectTarget } from "@/lib/wordMission/legacyRedirects";
 
-export default function VocabularioPage() {
-  return <VocabularyTrainerApp />;
+export const dynamic = "force-dynamic";
+
+type PageProps = {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+};
+
+/** Legacy route — Word Mission is the single word-learning leg. */
+export default async function VocabularioPage({ searchParams }: PageProps) {
+  redirect(legacyVocabRedirectTarget(await searchParams));
 }

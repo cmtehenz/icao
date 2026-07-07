@@ -96,7 +96,7 @@ export default function Part2TrainerApp() {
             </div>
           </div>
           <p className="hero-inline-links">
-            <Link href="/vocabulario" className="hero-inline-link">
+            <Link href="/word-mission" className="hero-inline-link">
               Vocabulário Part 2 ({ICAO_CORE_VOCABULARY.length} core) →
             </Link>
           </p>

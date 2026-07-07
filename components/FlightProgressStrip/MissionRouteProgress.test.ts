@@ -3,8 +3,7 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 
 const missionRoutes = [
-  { name: "PronunciationTrainerApp", file: "components/PronunciationTrainerApp.tsx" },
-  { name: "VocabularyTrainerApp", file: "components/VocabularyTrainer/VocabularyTrainerApp.tsx" },
+  { name: "WordMissionApp", file: "components/WordMission/WordMissionApp.tsx" },
   { name: "FlashcardApp", file: "components/FlashcardApp.tsx" },
   { name: "Part2TrainerApp", file: "components/Part2Trainer/Part2TrainerApp.tsx" },
   { name: "MissionRecallApp", file: "components/MissionRecall/MissionRecallApp.tsx" },
@@ -18,4 +17,13 @@ describe("Mission progress strip in layout (not duplicated per route)", () => {
       expect(source).not.toMatch(/MissionRouteProgress/);
     });
   }
+});
+
+describe("legacy trainer apps removed", () => {
+  it("does not ship PronunciationTrainerApp or VocabularyTrainerApp", () => {
+    expect(() => readFileSync(path.join(process.cwd(), "components/PronunciationTrainerApp.tsx"))).toThrow();
+    expect(() =>
+      readFileSync(path.join(process.cwd(), "components/VocabularyTrainer/VocabularyTrainerApp.tsx")),
+    ).toThrow();
+  });
 });

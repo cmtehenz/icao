@@ -124,7 +124,7 @@ export default function CaptainDeltaExaminerDebrief({
         <section className="cde-debrief-section">
           <h3>Words to practice</h3>
           <p>{debrief.wordsToPractice.join(", ")}</p>
-          <Link href="/pronunciation" className="btn secondary btn-sm">
+          <Link href="/word-mission" className="btn secondary btn-sm">
             Open pronunciation bank →
           </Link>
         </section>
@@ -155,7 +155,7 @@ export default function CaptainDeltaExaminerDebrief({
                   <strong>Model:</strong> {reviewItem.modelAnswer}
                 </p>
               )}
-              <Link href="/pronunciation" className="btn secondary btn-sm">
+              <Link href="/word-mission" className="btn secondary btn-sm">
                 Send to pronunciation bank
               </Link>
             </div>

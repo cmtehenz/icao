@@ -151,7 +151,7 @@ export default function InteractionMode({
         <div className="card-body">
           <p className="part2-hint">
             Ligue para o ATC: facility + ANAC 123 + urgência (se necessário) + problema + intenção + pedido.{" "}
-            <Link href="/pronunciation?callsign=1">Treinar callsign →</Link>
+            <Link href="/word-mission">Treinar callsign →</Link>
           </p>
 
           <button

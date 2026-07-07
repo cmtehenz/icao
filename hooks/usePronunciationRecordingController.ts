@@ -6,7 +6,7 @@ import { useAzurePronunciation } from "@/hooks/useAzurePronunciation";
 import { useAzureSpeech } from "@/hooks/useAzureSpeech";
 import { studentSafeAssessmentMessage } from "@/lib/azure/assessmentFailure";
 import { forceReleaseRecordingSession, isRecordingMutexHeld } from "@/lib/azure/recognizerSession";
-import { emitCaptainDeltaSuggestion } from "@/lib/captainDelta/events";
+import { emitCaptainDeltaSuggestion, CAPTAIN_DELTA_CLEAR_PRONUNCIATION_ERROR } from "@/lib/captainDelta/events";
 import { emitStopCaptainVoice, CAPTAIN_DELTA_RECORD_BLOCKED } from "@/lib/captainDelta/lessonContext";
 import {
   pronunciationRecordBlockLabel,
@@ -29,6 +29,7 @@ import {
   passesDailyMissionWordAttempt,
 } from "@/lib/pronunciationDailyMission";
 import { practiceTextForLevel } from "@/lib/pronunciationMission";
+import { WM_PASS_SCORE } from "@/lib/wordMission/types";
 import { PronunciationRecordingError } from "@/lib/pronunciation/PronunciationRecordingError";
 import {
   canStartPronunciationRecording,
@@ -81,6 +82,13 @@ type Options = {
   practiceLevel: PracticeLevel;
   missionLegActive: boolean;
   mission: PronunciationMission | null;
+  /** Word Mission — records vocab progress and uses WM pass threshold. */
+  wordMissionTermId?: string | null;
+  onWordMissionRecord?: (
+    assessment: import("@/lib/azure/pronunciation").AzurePronunciationResult,
+    score: number,
+    level: PracticeLevel,
+  ) => { levelPassed: boolean; termComplete: boolean };
   onVaultRefresh: () => void;
   onMissionProgress: (completed: string[]) => void;
   onSelectNextMissionWord: (completed: string[]) => void;
@@ -130,8 +138,16 @@ export function usePronunciationRecordingController(
       const reason = (e as CustomEvent<{ reason: string }>).detail?.reason;
       if (reason) setRecordNotice(reason);
     };
+    const onClearError = () => {
+      setRecordNotice(null);
+      setCaptainNote(null);
+    };
     window.addEventListener(CAPTAIN_DELTA_RECORD_BLOCKED, onBlocked);
-    return () => window.removeEventListener(CAPTAIN_DELTA_RECORD_BLOCKED, onBlocked);
+    window.addEventListener(CAPTAIN_DELTA_CLEAR_PRONUNCIATION_ERROR, onClearError);
+    return () => {
+      window.removeEventListener(CAPTAIN_DELTA_RECORD_BLOCKED, onBlocked);
+      window.removeEventListener(CAPTAIN_DELTA_CLEAR_PRONUNCIATION_ERROR, onClearError);
+    };
   }, []);
 
   const recordGate = useCallback(
@@ -334,11 +350,24 @@ export function usePronunciationRecordingController(
 
       const missionPass =
         optionsRef.current.missionLegActive &&
+        !optionsRef.current.wordMissionTermId &&
         optionsRef.current.mission &&
         isPronunciationWordInTodayMission(activeWord.word) &&
         passesDailyMissionWordAttempt(score, true);
 
-      if (belowLevel) {
+      let wordMissionPass = false;
+      let wordMissionTermComplete = false;
+      if (optionsRef.current.wordMissionTermId && optionsRef.current.onWordMissionRecord) {
+        const wm = optionsRef.current.onWordMissionRecord(assessment, score, practiceLevel);
+        wordMissionPass = wm.levelPassed;
+        wordMissionTermComplete = wm.termComplete;
+      }
+
+      const showMissionContinue =
+        (missionPass || (wordMissionPass && wordMissionTermComplete)) &&
+        optionsRef.current.missionLegActive;
+
+      if (belowLevel && !optionsRef.current.wordMissionTermId) {
         setCaptainDebrief(null);
         youGlishQueryRef.current = null;
         setCaptainNote(belowLevel.message);
@@ -357,7 +386,7 @@ export function usePronunciationRecordingController(
         targetWord: activeWord.word,
         practiceLevel,
         referenceText,
-        missionPass: !!missionPass,
+        missionPass: !!showMissionContinue,
       });
       youGlishQueryRef.current = debrief.youGlishQuery;
       setCaptainDebrief(debrief);
@@ -366,11 +395,11 @@ export function usePronunciationRecordingController(
         text: debrief.message,
         speechText: debrief.speechText,
         kind: "coaching",
-        primaryAction: missionPass
+        primaryAction: showMissionContinue
           ? { id: "ready", label: "Continue", primary: true }
           : { id: "try_again", label: "Try again", primary: true },
         secondaryActions: [
-          ...(score < VAULT_PASS_SCORE
+          ...(score < (optionsRef.current.wordMissionTermId ? WM_PASS_SCORE : VAULT_PASS_SCORE)
             ? [{ id: "slow_audio" as const, label: "🎧 Slow Audio", primary: false }]
             : []),
           ...(debrief.showYouGlish && debrief.youGlishQuery
@@ -412,6 +441,11 @@ export function usePronunciationRecordingController(
         } else {
           setTimeout(() => optionsRef.current.onSelectNextMissionWord(next), 800);
         }
+        return;
+      }
+
+      if (wordMissionPass && wordMissionTermComplete) {
+        setTimeout(() => optionsRef.current.onSelectNextMissionWord([]), 800);
         return;
       }
 

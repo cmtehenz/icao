@@ -49,8 +49,40 @@ export function assessmentFailure(
 export const STUDENT_SAFE_RECORDING_FAILURE =
   "I couldn't get a clear recording that time. Try again with a short phrase and speak a little closer to the mic.";
 
+export const STUDENT_SAFE_NO_SPEECH =
+  "I couldn't hear enough speech. Say the full phrase clearly and try again.";
+
+export const STUDENT_SAFE_TOKEN =
+  "Recording is temporarily unavailable. Check the speech service setup.";
+
+export const STUDENT_SAFE_MIC =
+  "Microphone access is blocked. Allow microphone permission and try again.";
+
 const TECHNICAL_ERROR_PATTERN =
-  /\b(drain\s+timeout|callback|RecognizedSpeech|SDK|Azure|session|no_recognizer|NoMatch|JSON|pronunciation assessment|recognizer|parser failed)\b/i;
+  /\b(drain\s+timeout|callback|RecognizedSpeech|SDK|Azure|session|no_recognizer|NoMatch|JSON|pronunciation assessment|recognizer|parser failed|stack|technical)\b/i;
+
+function studentSafeMessageForCode(code: AssessmentFailureCode): string {
+  switch (code) {
+    case "recognition_no_match":
+    case "no_segments":
+      return STUDENT_SAFE_NO_SPEECH;
+    case "no_pronunciation_json":
+    case "parser_failed":
+    case "missing_pronunciation_property":
+    case "pronunciation_config_not_attached":
+    case "empty_sdk_result":
+      return STUDENT_SAFE_TOKEN;
+    case "session_stopped_before_result":
+    case "stale_generation":
+    case "no_recognizer":
+    case "recognition_cancelled":
+    case "recognizer_mismatch":
+    case "recognizer_not_ready":
+      return STUDENT_SAFE_RECORDING_FAILURE;
+    default:
+      return STUDENT_SAFE_RECORDING_FAILURE;
+  }
+}
 
 export function logAssessmentFailureTechnical(
   failure: AssessmentFailure | null | undefined,
@@ -72,13 +104,16 @@ export function studentSafeAssessmentMessage(
   if (!failure) {
     return recoveryGuidance ?? "Let's try that once more.";
   }
-  return recoveryGuidance
-    ? `${STUDENT_SAFE_RECORDING_FAILURE} ${recoveryGuidance}`
-    : STUDENT_SAFE_RECORDING_FAILURE;
+  const base = studentSafeMessageForCode(failure.code);
+  return recoveryGuidance ? `${base} ${recoveryGuidance}` : base;
 }
 
 export function sanitizeStudentFacingError(text: string | null | undefined): string | null {
   if (!text?.trim()) return null;
+  const lower = text.toLowerCase();
+  if (lower.includes("microphone") && (lower.includes("permission") || lower.includes("blocked") || lower.includes("allow"))) {
+    return STUDENT_SAFE_MIC;
+  }
   if (TECHNICAL_ERROR_PATTERN.test(text) || FORBIDDEN_TECHNICAL.test(text)) {
     return STUDENT_SAFE_RECORDING_FAILURE;
   }

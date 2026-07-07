@@ -4,8 +4,7 @@ export function getCaptainDeltaContext(pathname: string): CaptainDeltaContext {
   if (pathname === "/" || pathname === "") return "dashboard";
   if (pathname.startsWith("/part1")) return "part1";
   if (pathname.startsWith("/part2")) return "part2";
-  if (pathname.startsWith("/pronunciation")) return "pronunciation";
-  if (pathname.startsWith("/vocabulario")) return "vocabulary";
+  if (pathname.startsWith("/word-mission")) return "pronunciation";
   if (pathname.startsWith("/simulado")) return "simulation";
   if (pathname.startsWith("/mission-recall")) return "recall";
   if (pathname.startsWith("/flight-debrief")) return "debrief";

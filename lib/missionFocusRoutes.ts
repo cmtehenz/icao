@@ -1,8 +1,7 @@
 /** Routes that use Mission Focus Layout (no sidebar / bottom nav). */
 
 const MISSION_FOCUS_PREFIXES = [
-  "/pronunciation",
-  "/vocabulario",
+  "/word-mission",
   "/part1",
   "/part2",
   "/mission-recall",

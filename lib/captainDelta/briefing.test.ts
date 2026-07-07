@@ -4,8 +4,7 @@ vi.mock("@/lib/dailyMission", () => ({
   getDailyMissionSummary: vi.fn(() => ({
     examLabel: "23C",
     complete: false,
-    pronunciation: { complete: false },
-    vocabulary: { complete: false },
+    wordMission: { complete: false },
     part1: { complete: false },
     part2: { complete: false },
     recall: { complete: false },
@@ -14,9 +13,9 @@ vi.mock("@/lib/dailyMission", () => ({
     simulateRequired: false,
   })),
   getNextMissionAction: vi.fn(() => ({
-    href: "/pronunciation",
-    title: "Pronunciation · 23C",
-    hint: "0/5 words today",
+    href: "/word-mission",
+    title: "Word Mission · 23C",
+    hint: "0/20 terms today",
   })),
 }));
 
@@ -28,8 +27,8 @@ vi.mock("@/lib/studyTime", () => ({
 
 vi.mock("@/lib/flightProgress/buildFlightProgress", () => ({
   buildFlightProgress: vi.fn(() => ({
-    currentPhase: { aviationLabel: "ENGINE START", missionLabel: "Pronunciation" },
-    currentPhaseId: "pronunciation",
+    currentPhase: { aviationLabel: "ENGINE START", missionLabel: "Word Mission" },
+    currentPhaseId: "wordMission",
   })),
 }));
 

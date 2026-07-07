@@ -15,8 +15,7 @@ import { detectCurrentPhaseId } from "@/lib/flightProgress/flightProgressStatus"
 function baseSummary(overrides: Partial<DailyMissionSummary> = {}): DailyMissionSummary {
   return {
     examLabel: "Prova 23C",
-    pronunciation: { done: 0, total: 5, complete: false, currentWord: "alpha" },
-    vocabulary: { done: 0, total: 20, complete: false },
+    wordMission: { done: 0, total: 20, complete: false, currentId: "icao-01", examVersion: "23C" },
     part1: { complete: false, bothDone: 0, total: 3 },
     part2: { complete: false, done: 0, total: 1 },
     recall: { done: 0, total: 10, complete: false, confidenceStars: 0 },
@@ -25,7 +24,7 @@ function baseSummary(overrides: Partial<DailyMissionSummary> = {}): DailyMission
     simulateRequired: mode.value === "intense",
     complete: false,
     completedSections: 0,
-    totalSections: mode.value === "intense" ? 7 : 6,
+    totalSections: mode.value === "intense" ? 6 : 5,
     ...overrides,
   };
 }
@@ -33,8 +32,7 @@ function baseSummary(overrides: Partial<DailyMissionSummary> = {}): DailyMission
 function completeBase(summary: DailyMissionSummary): DailyMissionSummary {
   return {
     ...summary,
-    pronunciation: { done: 5, total: 5, complete: true, currentWord: null },
-    vocabulary: { done: 20, total: 20, complete: true },
+    wordMission: { done: 20, total: 20, complete: true, currentId: null, examVersion: "23C" },
     part1: { complete: true, bothDone: 3, total: 3 },
     part2: { complete: true, done: 1, total: 1 },
   };
@@ -45,9 +43,9 @@ describe("buildFlightProgress", () => {
     mode.value = "standard";
   });
 
-  it("standard mode includes eight phases with mock marked optional", () => {
+  it("standard mode includes seven phases with mock marked optional", () => {
     const progress = buildFlightProgress(baseSummary());
-    expect(progress.phases).toHaveLength(8);
+    expect(progress.phases).toHaveLength(7);
     const mock = progress.phases.find((p) => p.id === "mock");
     expect(mock?.status).toBe("optional");
     expect(progress.mode).toBe("standard");
@@ -63,11 +61,12 @@ describe("buildFlightProgress", () => {
     expect(progress.currentPhaseId).toBe("mock");
   });
 
-  it("detects pronunciation as current at mission start", () => {
+  it("detects word mission as current at mission start", () => {
     const progress = buildFlightProgress(baseSummary());
-    expect(detectCurrentPhaseId(baseSummary())).toBe("pronunciation");
-    expect(progress.currentPhaseId).toBe("pronunciation");
+    expect(detectCurrentPhaseId(baseSummary())).toBe("wordMission");
+    expect(progress.currentPhaseId).toBe("wordMission");
     expect(progress.currentPhase.aviationLabel).toBe("ENGINE START");
+    expect(progress.currentPhase.missionLabel).toBe("Word Mission");
     expect(progress.youAreHereLabel).toContain("ENGINE START");
   });
 
@@ -92,7 +91,7 @@ describe("buildFlightProgress", () => {
         recall: { done: 10, total: 10, complete: true, confidenceStars: 5 },
         debrief: { done: 1, total: 1, complete: true },
         complete: true,
-        completedSections: 6,
+        completedSections: 5,
       }),
     );
     const progress = buildFlightProgress(summary);
@@ -101,14 +100,14 @@ describe("buildFlightProgress", () => {
     expect(progress.youAreHereLabel).toBe("Flight complete");
   });
 
-  it("marks completed phases before current", () => {
+  it("marks completed word mission before part1", () => {
     const summary = baseSummary({
-      pronunciation: { done: 5, total: 5, complete: true, currentWord: null },
-      vocabulary: { done: 8, total: 20, complete: false },
+      wordMission: { done: 20, total: 20, complete: true, currentId: null, examVersion: "23C" },
+      part1: { complete: false, bothDone: 1, total: 3 },
     });
     const progress = buildFlightProgress(summary);
-    expect(progress.phases.find((p) => p.id === "pronunciation")?.status).toBe("completed");
-    expect(progress.currentPhaseId).toBe("vocabulary");
+    expect(progress.phases.find((p) => p.id === "wordMission")?.status).toBe("completed");
+    expect(progress.currentPhaseId).toBe("part1");
   });
 
   it("estimates remaining time when work remains", () => {

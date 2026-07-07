@@ -2,8 +2,7 @@ import type { FlightPhase } from "@/lib/flightProgress/flightProgressTypes";
 
 /** Rough minutes per leg — display estimate only, not scheduling logic. */
 const PHASE_ESTIMATE_MINUTES: Record<string, number> = {
-  pronunciation: 8,
-  vocabulary: 10,
+  wordMission: 18,
   part1: 12,
   part2: 15,
   recall: 8,

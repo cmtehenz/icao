@@ -1,3 +1,5 @@
+export const WORD_MISSION_HREF = "/word-mission";
+
 export const NAV_ITEMS = [
   {
     href: "/",
@@ -5,6 +7,13 @@ export const NAV_ITEMS = [
     shortLabel: "Início",
     icon: "🏠",
     description: "Meta de hoje e próximo passo",
+  },
+  {
+    href: WORD_MISSION_HREF,
+    label: "Word Mission",
+    shortLabel: "Words",
+    icon: "🎤",
+    description: "Meaning, pronunciation, and ICAO use",
   },
   {
     href: "/part1",
@@ -34,23 +43,10 @@ export const NAV_ITEMS = [
     icon: "🎯",
     description: "SDEA mock exam — gravação e correção",
   },
-  {
-    href: "/vocabulario",
-    label: "Vocabulary",
-    shortLabel: "Vocab",
-    icon: "📚",
-    description: "ICAO vocabulary — Azure TTS & SRS",
-  },
-  {
-    href: "/pronunciation",
-    label: "Pronúncia",
-    shortLabel: "Pronúncia",
-    icon: "🎤",
-    description: "Palavras com erro para treinar",
-  },
 ] as const;
 
-export const PRONUNCIATION_HREF = "/pronunciation";
+/** @deprecated Use WORD_MISSION_HREF */
+export const PRONUNCIATION_HREF = WORD_MISSION_HREF;
 export const PART1_HREF = "/part1";
 export const HOME_HREF = "/";
 

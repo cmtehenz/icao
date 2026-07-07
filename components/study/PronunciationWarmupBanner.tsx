@@ -8,6 +8,7 @@ import {
   PART2_WARMUP_CHANGE_EVENT,
   warmupWords,
 } from "@/lib/part2Warmup";
+import { pronunciationMissionLink } from "@/lib/pronunciationDailyMission";
 import { VAULT_CHANGE_EVENT, VAULT_PASS_SCORE } from "@/lib/pronunciationVault";
 
 export default function PronunciationWarmupBanner() {
@@ -43,7 +44,7 @@ export default function PronunciationWarmupBanner() {
         <ul className="pronunciation-warmup-words">
           {words.map((w) => (
             <li key={w.word}>
-              <Link href={`/pronunciation?word=${encodeURIComponent(w.word)}`}>
+              <Link href={pronunciationMissionLink(w.word)}>
                 {w.word}
               </Link>
               <span>{w.lastAccuracy}%</span>
@@ -51,7 +52,7 @@ export default function PronunciationWarmupBanner() {
           ))}
         </ul>
       </div>
-      <Link href="/pronunciation" className="btn green btn-sm">
+      <Link href="/word-mission" className="btn green btn-sm">
         Ir treinar →
       </Link>
     </section>

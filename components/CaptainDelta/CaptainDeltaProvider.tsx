@@ -28,9 +28,11 @@ import {
 import { CONTEXT_LABELS, getCaptainDeltaContext } from "@/lib/captainDelta/context";
 import {
   CAPTAIN_DELTA_AFTER_ANSWER,
+  CAPTAIN_DELTA_CLEAR_PRONUNCIATION_ERROR,
   CAPTAIN_DELTA_DEBRIEF,
   CAPTAIN_DELTA_SUGGESTION,
   emitCaptainDeltaMessageDelivered,
+  emitClearPronunciationRecordError,
 } from "@/lib/captainDelta/events";
 import { warnCaptain } from "@/lib/captainDelta/devLog";
 import {
@@ -74,9 +76,10 @@ import {
 } from "@/lib/captainDelta/voiceConfig";
 import { getNextMissionAction } from "@/lib/dailyMission";
 import {
-  answerPronunciationCoachingQuestion,
+  answerPronunciationStudentQuestion,
+  classifyPronunciationStudentIntent,
   getLastPronunciationCoachSession,
-  isPronunciationCoachingQuestion,
+  isPronunciationStudentQuestion,
 } from "@/lib/pronunciationCoach";
 import { buildMemoryContextForPrompt } from "@/lib/flightInstructor/memory";
 import { todayKey } from "@/lib/studyTime";
@@ -285,13 +288,11 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
 
   const replyFromCaptain = useCallback(
     async (question: string, lessonSnapshot: CaptainDeltaLessonContext) => {
-      if (
-        routeContext === "pronunciation" &&
-        isPronunciationCoachingQuestion(question)
-      ) {
+      if (routeContext === "pronunciation" && isPronunciationStudentQuestion(question)) {
+        emitClearPronunciationRecordError();
         const activeTerm = resolveCaptainActiveTerm(routeContext, lessonSnapshot);
         const last = getLastPronunciationCoachSession();
-        const answer = answerPronunciationCoachingQuestion(question, {
+        const askCtx = {
           targetWord: activeTerm ?? last?.targetWord,
           referenceText:
             lessonSnapshot.modelAnswer ??
@@ -299,7 +300,11 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
             last?.referenceText,
           practiceLevel: last?.practiceLevel,
           lastFocus: last?.lastFocus,
-        });
+          recognizedText: last?.recognizedText,
+          lastCoachingMessage: last?.lastCoachingMessage,
+        };
+        const intent = classifyPronunciationStudentIntent(question, askCtx);
+        const answer = answerPronunciationStudentQuestion(question, intent, askCtx);
         deliverMessage(
           buildMessage("coaching", answer.message, routeContext, lessonSnapshot, {
             speechText: answer.speechText,
@@ -308,7 +313,12 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
               { id: "slow_audio", label: "🎧 Slow Audio", primary: false },
             ],
           }),
-          { avatar: "correcting", autoSpeak: true },
+          {
+            avatar: "correcting",
+            autoSpeak: true,
+            source: "pronunciation-ask",
+            eventId: `pronunciation-ask:${intent}:${(activeTerm ?? "word").toLowerCase()}`,
+          },
         );
         return;
       }

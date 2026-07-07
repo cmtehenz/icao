@@ -1,10 +1,13 @@
 import { describe, expect, it, beforeEach } from "vitest";
 import {
+  answerPronunciationCoachingQuestion,
+  answerPronunciationStudentQuestion,
   buildCaptainAssessmentDebrief,
   buildHumanCaptainFeedback,
-  answerPronunciationCoachingQuestion,
+  classifyPronunciationStudentIntent,
   coachingCopyIsInstructorSafe,
   isPronunciationCoachingQuestion,
+  isPronunciationStudentQuestion,
   resetPronunciationCoachSessionForTests,
   spokenFeedbackExcludesRawScores,
   youGlishQueryForLevel,
@@ -13,6 +16,7 @@ import {
   assessmentFailure,
   formatAssessmentFailureMessage,
   sanitizeStudentFacingError,
+  STUDENT_SAFE_NO_SPEECH,
   studentSafeAssessmentMessage,
 } from "@/lib/azure/assessmentFailure";
 
@@ -176,32 +180,95 @@ describe("Pronunciation Coaching Engine v1", () => {
   });
 });
 
-describe("Ask Captain — pronunciation coaching questions", () => {
+describe("Ask Captain — pronunciation V2", () => {
   beforeEach(() => {
     resetPronunciationCoachSessionForTests();
   });
 
-  it("detects stress coaching questions", () => {
-    expect(isPronunciationCoachingQuestion("How can I make stronger stress?")).toBe(true);
-    expect(isPronunciationCoachingQuestion("try again")).toBe(false);
-    expect(isPronunciationCoachingQuestion("complete")).toBe(false);
+  it("classifies stress help intent", () => {
+    expect(classifyPronunciationStudentIntent("How can I make stronger stress?")).toBe(
+      "stress_help",
+    );
   });
 
-  it("returns instructor stress answer with active word and syllable drill", () => {
-    const answer = answerPronunciationCoachingQuestion(
+  it("classifies rhythm and sentence explanation intents", () => {
+    expect(classifyPronunciationStudentIntent("How do I keep better rhythm?")).toBe(
+      "rhythm_help",
+    );
+    expect(
+      classifyPronunciationStudentIntent("What does this sentence mean?"),
+    ).toBe("sentence_explanation");
+  });
+
+  it("classifies ICAO answer help", () => {
+    expect(classifyPronunciationStudentIntent("How should I answer in ICAO?")).toBe(
+      "icao_answer_help",
+    );
+  });
+
+  it("detects student questions but not record commands", () => {
+    expect(isPronunciationStudentQuestion("How can I make stronger stress?")).toBe(true);
+    expect(isPronunciationCoachingQuestion("How can I make stronger stress?")).toBe(true);
+    expect(isPronunciationStudentQuestion("try again")).toBe(false);
+  });
+
+  it("returns instructor stress answer with active word and syllable breakdown", () => {
+    const { message, speechText, intent } = answerPronunciationStudentQuestion(
       "How can I make stronger stress?",
+      "stress_help",
       {
         targetWord: "engine",
         referenceText: "Check the engine before departure.",
       },
     );
-    expect(answer.message).toMatch(/Good question/i);
-    expect(answer.message).toContain('"engine"');
-    expect(answer.message).toMatch(/EN.*GINE|Listen carefully/i);
-    expect(answer.message.toLowerCase()).toMatch(/louder|longer|higher/);
-    expect(answer.message.toLowerCase()).toMatch(/full sentence/);
-    expect(coachingCopyIsInstructorSafe(answer.message)).toBe(true);
-    expect(coachingCopyIsInstructorSafe(answer.speechText)).toBe(true);
+    expect(intent).toBe("stress_help");
+    expect(message).toMatch(/Good question/i);
+    expect(message).toContain('"engine"');
+    expect(message).toMatch(/EN.*gine|EN.*GINE/i);
+    expect(message.toLowerCase()).toMatch(/stronger|longer|higher/);
+    expect(message.toLowerCase()).toMatch(/full sentence/);
+    expect(coachingCopyIsInstructorSafe(message)).toBe(true);
+    expect(coachingCopyIsInstructorSafe(speechText)).toBe(true);
+  });
+
+  it("rhythm question returns linked phrase coaching", () => {
+    const { message, intent } = answerPronunciationStudentQuestion(
+      "How do I improve rhythm?",
+      "rhythm_help",
+      {
+        targetWord: "engine",
+        referenceText: "Check the engine before departure.",
+      },
+    );
+    expect(intent).toBe("rhythm_help");
+    expect(message.toLowerCase()).toMatch(/one breath|link/);
+    expect(message).toMatch(/check.*engine/i);
+  });
+
+  it("sentence explanation uses reference text", () => {
+    const { message } = answerPronunciationStudentQuestion(
+      "What does this sentence mean?",
+      "sentence_explanation",
+      {
+        targetWord: "engine",
+        referenceText: "Check the engine before departure.",
+      },
+    );
+    expect(message).toContain("Check the engine before departure.");
+    expect(message.toLowerCase()).toMatch(/operational|briefing/);
+  });
+
+  it("ICAO answer help gives short model guidance", () => {
+    const { message } = answerPronunciationStudentQuestion(
+      "How should I answer in ICAO?",
+      "icao_answer_help",
+      {
+        targetWord: "engine",
+        referenceText: "Check the engine before departure.",
+      },
+    );
+    expect(message.toLowerCase()).toMatch(/icao|level 4|short/);
+    expect(message).toContain("Check the engine before departure.");
   });
 
   it("uses last coach session when active word missing from context", () => {
@@ -220,8 +287,17 @@ describe("Ask Captain — pronunciation coaching questions", () => {
         referenceText: "Check the engine before departure.",
       },
     );
-    const answer = answerPronunciationCoachingQuestion("How do I improve stress?");
-    expect(answer.message).toContain('"engine"');
+    const { message } = answerPronunciationCoachingQuestion("How do I improve stress?");
+    expect(message).toContain('"engine"');
+  });
+
+  it("technical recording error input returns safe coaching not Azure text", () => {
+    const { message } = answerPronunciationStudentQuestion(
+      "Session ended before a final recognized result arrived drain timeout",
+      "technical_recording_error",
+    );
+    expect(message).toContain("couldn't get a clear recording");
+    expect(message).not.toMatch(/drain timeout/i);
   });
 });
 
@@ -235,10 +311,13 @@ describe("student-safe assessment errors", () => {
     expect(msg).not.toMatch(/session ended/i);
   });
 
+  it("maps no speech to dedicated student message", () => {
+    const msg = studentSafeAssessmentMessage(assessmentFailure("recognition_no_match"));
+    expect(msg).toBe(STUDENT_SAFE_NO_SPEECH);
+  });
+
   it("formatAssessmentFailureMessage hides technical details", () => {
-    const msg = formatAssessmentFailureMessage(
-      assessmentFailure("no_recognizer"),
-    );
+    const msg = formatAssessmentFailureMessage(assessmentFailure("no_recognizer"));
     expect(msg).not.toMatch(/no_recognizer|Recognizer was not active/i);
   });
 

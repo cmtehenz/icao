@@ -83,7 +83,7 @@ export default function AccountPage() {
             : "Nenhuma palavra no banco."}
         </p>
         <div className="account-links">
-          <Link href="/pronunciation" className="btn green">
+          <Link href="/word-mission" className="btn green">
             Abrir pronúncia
           </Link>
           <PronunciationVaultClearButton className="btn orange" />
