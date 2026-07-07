@@ -1,6 +1,13 @@
 import type { IcaoVocabularyItem } from "@/data/icaoVocabulary";
 import { ICAO_VOCABULARY } from "@/data/icaoVocabulary";
 import { KnowledgeEngine } from "@/lib/knowledge/engine";
+import {
+  devEntryToIcaoVocabularyItem,
+  lessonDefFromDevEntry,
+  lookupDevKnowledgeById,
+  lookupDevKnowledgeByTerm,
+} from "@/lib/knowledge/devKnowledge";
+import { isDevKnowledgeEnabled } from "@/lib/knowledge/devKnowledgeFlag";
 import { buildKnowledgeReviewMeta } from "@/lib/knowledge/review";
 import { lessonDefFromVocabularyEntry } from "@/lib/knowledge/wordMissionAdapter";
 import { getCuratedContent } from "@/lib/wordMission/lesson/curatedContent";
@@ -113,6 +120,15 @@ function applySkybrary(def: SimpleWordDef, term: string, item?: IcaoVocabularyIt
 }
 
 function resolveDef(term: string, item?: IcaoVocabularyItem): SimpleWordDef {
+  if (isDevKnowledgeEnabled()) {
+    const dev =
+      (item?.id ? lookupDevKnowledgeById(item.id) : null) ??
+      lookupDevKnowledgeByTerm(term);
+    if (dev) {
+      return lessonDefFromDevEntry(dev);
+    }
+  }
+
   const knowledge = KnowledgeEngine.lookupVocabulary(term);
   if (knowledge) {
     return lessonDefFromVocabularyEntry(knowledge.entry);
@@ -182,6 +198,10 @@ function buildSteps(def: SimpleWordDef): WordMissionStep[] {
 
 export function findVocabItemForTerm(term: string): IcaoVocabularyItem | undefined {
   const key = term.trim().toLowerCase();
+  if (isDevKnowledgeEnabled()) {
+    const dev = lookupDevKnowledgeByTerm(key);
+    if (dev) return devEntryToIcaoVocabularyItem(dev);
+  }
   return ICAO_VOCABULARY.find((v) => v.term.toLowerCase() === key);
 }
 

@@ -1,9 +1,9 @@
 import type { AzurePronunciationResult } from "@/lib/azure/pronunciation";
 import { isVocabMissionTermComplete } from "@/lib/vocabGraduation";
 import {
-  getOrCreateVocabDailyMission,
-  markVocabDailyComplete,
-} from "@/lib/vocabDailyMission";
+  getOrCreateWordDailyMission,
+  markWordMissionTermComplete,
+} from "@/lib/wordMission/wordDailyMission";
 import { WM_PASS_SCORE } from "@/lib/wordMission/types";
 import {
   getItemProgress,
@@ -37,9 +37,9 @@ export function recordWordMissionLevelAttempt(
   const termComplete = isVocabMissionTermComplete(progress);
   let missionMarkedComplete = false;
 
-  const daily = getOrCreateVocabDailyMission();
+  const daily = getOrCreateWordDailyMission();
   if (termComplete && daily.termIds.includes(termId) && !daily.completedIds.includes(termId)) {
-    markVocabDailyComplete(termId);
+    markWordMissionTermComplete(termId);
     missionMarkedComplete = true;
   }
 
@@ -55,9 +55,9 @@ export function markWordMissionStepViewed(
   const progress = recordVocabAttempt(store, termId, WM_PASS_SCORE, level);
   const termComplete = isVocabMissionTermComplete(progress);
   let missionMarkedComplete = false;
-  const daily = getOrCreateVocabDailyMission();
+  const daily = getOrCreateWordDailyMission();
   if (termComplete && daily.termIds.includes(termId) && !daily.completedIds.includes(termId)) {
-    markVocabDailyComplete(termId);
+    markWordMissionTermComplete(termId);
     missionMarkedComplete = true;
   }
   return { progress, passed: true, termComplete, missionMarkedComplete };

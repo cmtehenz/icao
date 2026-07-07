@@ -1,0 +1,107 @@
+{
+  "batch": "batch-02-weather-ops",
+  "generatedAt": "2026-07-07",
+  "conceptCount": 20,
+  "concepts": [
+    {
+      "id": "0041",
+      "concept": "Windshear on Final",
+      "slug": "windshear-on-final"
+    },
+    {
+      "id": "0042",
+      "concept": "Microburst on Final",
+      "slug": "microburst-on-final"
+    },
+    {
+      "id": "0043",
+      "concept": "Severe Turbulence",
+      "slug": "severe-turbulence"
+    },
+    {
+      "id": "0044",
+      "concept": "Moderate Turbulence",
+      "slug": "moderate-turbulence"
+    },
+    {
+      "id": "0045",
+      "concept": "Thunderstorm Avoidance",
+      "slug": "thunderstorm-avoidance"
+    },
+    {
+      "id": "0046",
+      "concept": "Icing Conditions",
+      "slug": "icing-conditions"
+    },
+    {
+      "id": "0047",
+      "concept": "Weather Deviation",
+      "slug": "weather-deviation"
+    },
+    {
+      "id": "0048",
+      "concept": "Weather Deterioration",
+      "slug": "weather-deterioration"
+    },
+    {
+      "id": "0049",
+      "concept": "Low Visibility Operations",
+      "slug": "low-visibility-operations"
+    },
+    {
+      "id": "0050",
+      "concept": "Runway Incursion",
+      "slug": "runway-incursion"
+    },
+    {
+      "id": "0051",
+      "concept": "Runway Excursion",
+      "slug": "runway-excursion"
+    },
+    {
+      "id": "0052",
+      "concept": "Runway Overrun",
+      "slug": "runway-overrun"
+    },
+    {
+      "id": "0053",
+      "concept": "FOD on Runway",
+      "slug": "fod-on-runway"
+    },
+    {
+      "id": "0054",
+      "concept": "Debris on Taxiway",
+      "slug": "debris-on-taxiway"
+    },
+    {
+      "id": "0055",
+      "concept": "Wreckage on Runway",
+      "slug": "wreckage-on-runway"
+    },
+    {
+      "id": "0056",
+      "concept": "Drone Near Airport",
+      "slug": "drone-near-airport"
+    },
+    {
+      "id": "0057",
+      "concept": "Hot Air Balloon Traffic",
+      "slug": "hot-air-balloon-traffic"
+    },
+    {
+      "id": "0058",
+      "concept": "Confirm Runway in Sight",
+      "slug": "confirm-runway-in-sight"
+    },
+    {
+      "id": "0059",
+      "concept": "Number One for Landing",
+      "slug": "number-one-for-landing"
+    },
+    {
+      "id": "0060",
+      "concept": "Priority Landing",
+      "slug": "priority-landing"
+    }
+  ]
+}

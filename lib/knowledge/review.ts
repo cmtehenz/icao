@@ -38,7 +38,3 @@ export function buildKnowledgeReviewMeta(
     referenceCount: entry.references.length,
   };
 }
-
-export const KNOWLEDGE_REVIEW_ENABLED =
-  typeof process !== "undefined" &&
-  process.env.NEXT_PUBLIC_KNOWLEDGE_REVIEW === "true";

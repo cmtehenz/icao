@@ -1,0 +1,866 @@
+{
+  "maintain position": {
+    "term": "maintain position",
+    "example": "Tower, N123AB maintaining position at holding point Alpha."
+  },
+  "hold position": {
+    "term": "hold position",
+    "example": "Ground, N456CD holding position at taxiway Bravo."
+  },
+  "holding short": {
+    "term": "holding short",
+    "example": "N789EF holding short of runway 27L."
+  },
+  "line up and wait": {
+    "term": "line up and wait",
+    "example": "Tower, N234GH lined up and waiting, runway 36R."
+  },
+  "cleared straight in approach": {
+    "term": "cleared straight in approach",
+    "example": "Approach, N567IJ cleared straight in approach runway 09."
+  },
+  "continue approach": {
+    "term": "continue approach",
+    "example": "Tower, N890KL continuing approach runway 18."
+  },
+  "cleared to divert": {
+    "term": "cleared to divert",
+    "example": "Center, N123LM cleared to divert to alternate airport."
+  },
+  "cleared to deviate": {
+    "term": "cleared to deviate",
+    "example": "N456NO cleared to deviate left for weather avoidance."
+  },
+  "follow the traffic ahead of you": {
+    "term": "follow the traffic ahead of you",
+    "example": "N789PQ following traffic ahead, visual contact established."
+  },
+  "proceed to afa vor afa vortac": {
+    "term": "proceed to AFA VOR / AFA VORTAC",
+    "example": "N234QR proceeding direct to AFA VOR."
+  },
+  "fly direct": {
+    "term": "fly direct",
+    "example": "N567ST flying direct to KXYZ."
+  },
+  "resume own navigation": {
+    "term": "resume own navigation",
+    "example": "N890UV resuming own navigation, radar service terminated."
+  },
+  "resume conventional navigation": {
+    "term": "resume conventional navigation",
+    "example": "N123WX resuming conventional navigation, GPS unavailable."
+  },
+  "squawk ident": {
+    "term": "squawk ident",
+    "example": "N456YZ squawking ident for radar identification."
+  },
+  "exit hold now": {
+    "term": "exit hold now",
+    "example": "N789AB exiting hold at waypoint DELTA."
+  },
+  "expect hold": {
+    "term": "expect hold",
+    "example": "N234CD expecting holding instructions at waypoint ECHO."
+  },
+  "expect circling": {
+    "term": "expect circling",
+    "example": "N567EF expecting circling approach runway 27."
+  },
+  "expect vector to intercept": {
+    "term": "expect vector to intercept",
+    "example": "N890GH expecting vectors to intercept localizer."
+  },
+  "vectors to final approach": {
+    "term": "vectors to final approach",
+    "example": "N123IJ requesting vectors for the final approach course."
+  },
+  "maintain own separation": {
+    "term": "maintain own separation",
+    "example": "N456KL maintaining own separation in VFR conditions."
+  },
+  "fly en route": {
+    "term": "fly en route",
+    "example": "N789MN flying en route to destination."
+  },
+  "maintain rwy heading": {
+    "term": "maintain rwy heading",
+    "example": "Tower, N234OP maintaining runway heading after departure."
+  },
+  "left hand pattern": {
+    "term": "left hand pattern",
+    "example": "N567QR entering left hand pattern runway 36."
+  },
+  "pattern work": {
+    "term": "pattern work",
+    "example": "N890ST performing pattern work at KABC."
+  },
+  "reduce speed to 230 kt": {
+    "term": "reduce speed to 230 kt",
+    "example": "N123UV reducing speed to 230 knots."
+  },
+  "reduce speed to mach 0 75": {
+    "term": "reduce speed to mach 0.75",
+    "example": "N456WX reducing speed to mach 0.75."
+  },
+  "descend at your discretion": {
+    "term": "descend at your discretion",
+    "example": "N789YZ descending at pilot's discretion to FL180."
+  },
+  "drift down procedure": {
+    "term": "drift down procedure",
+    "example": "N234AB initiating drift down after engine failure."
+  },
+  "maximum altitude capability": {
+    "term": "maximum altitude capability",
+    "example": "N567CD reporting maximum altitude capability FL250."
+  },
+  "leveled at flight level 200": {
+    "term": "leveled at flight level 200",
+    "example": "N890EF leveled at flight level 200."
+  },
+  "steep descent": {
+    "term": "steep descent",
+    "example": "N123GH executing a steep descent for emergency."
+  },
+  "vacate rwy": {
+    "term": "vacate rwy",
+    "example": "Tower, N456IJ vacating runway 09 at taxiway Charlie."
+  },
+  "rwy incursion": {
+    "term": "rwy incursion",
+    "example": "Ground, possible runway incursion at intersection Delta."
+  },
+  "cross rwy": {
+    "term": "cross rwy",
+    "example": "N789KL requesting to cross runway 18."
+  },
+  "back track": {
+    "term": "back track",
+    "example": "N234MN backtracking runway 27 for departure."
+  },
+  "cleared for immediate takeoff": {
+    "term": "cleared for immediate takeoff",
+    "example": "Tower, N567OP cleared for immediate takeoff runway 36L."
+  },
+  "immediate takeoff": {
+    "term": "immediate takeoff",
+    "example": "N890QR executing immediate takeoff for emergency."
+  },
+  "reject take off": {
+    "term": "reject take-off",
+    "example": "Rejecting takeoff at 80 knots!"
+  },
+  "going around": {
+    "term": "going around",
+    "example": "Tower, N456UV going around from runway 09."
+  },
+  "follow missed approach procedure": {
+    "term": "follow missed approach procedure",
+    "example": "N789WX following published missed approach procedure."
+  },
+  "longest available rwy": {
+    "term": "longest available rwy",
+    "example": "Requesting the longest available runway for emergency landing."
+  },
+  "direct approach": {
+    "term": "direct approach",
+    "example": "N234YZ requesting direct approach to runway 15."
+  },
+  "expect approach": {
+    "term": "expect approach",
+    "example": "N567AB expecting approach clearance in 5 minutes."
+  },
+  "expect ils approach": {
+    "term": "expect ILS approach",
+    "example": "N890CD expecting ILS approach runway 28R."
+  },
+  "expect rnav rwy 20 approach": {
+    "term": "expect RNAV RWY 20 approach",
+    "example": "N123EF expecting RNAV runway 20 approach."
+  },
+  "straight in approach": {
+    "term": "straight in approach",
+    "example": "N456GH requesting straight in approach runway 33."
+  },
+  "downwind leg": {
+    "term": "downwind leg",
+    "example": "N789IJ entering downwind leg for runway 24."
+  },
+  "on the visual": {
+    "term": "on the visual",
+    "example": "Tower, N234KL on the visual for runway 17."
+  },
+  "confirm rwy in sight": {
+    "term": "confirm rwy in sight",
+    "example": "N567MN confirming runway 12 in sight."
+  },
+  "priority to land": {
+    "term": "priority to land",
+    "example": "N890OP requesting priority to land due to emergency."
+  },
+  "number one for landing": {
+    "term": "number one for landing",
+    "example": "Tower, N123QR number one for landing runway 21."
+  },
+  "taxi with caution": {
+    "term": "taxi with caution",
+    "example": "Ground, N456ST taxiing with caution for construction."
+  },
+  "expedite taxi": {
+    "term": "expedite taxi",
+    "example": "N789UV expediting taxi to runway 31."
+  },
+  "via taxiway l": {
+    "term": "via taxiway L",
+    "example": "N234WX taxiing via taxiway Lima to ramp."
+  },
+  "taxi to gate 5": {
+    "term": "taxi to gate 5",
+    "example": "Ground, N567YZ taxiing to gate 5."
+  },
+  "taxi to the ramp": {
+    "term": "taxi to the ramp",
+    "example": "N890AB taxiing to the ramp."
+  },
+  "approved taxi": {
+    "term": "approved taxi",
+    "example": "N123CD approved taxi to runway 25."
+  },
+  "push back tow truck": {
+    "term": "push back tow truck",
+    "example": "Ground, N456EF ready for pushback, tow truck standing by."
+  },
+  "push back tow bar": {
+    "term": "push back tow bar",
+    "example": "N789GH requesting pushback with tow bar attached."
+  },
+  "engine stall": {
+    "term": "engine stall",
+    "example": "MAYDAY, N123AB engine stall, immediate return!"
+  },
+  "loss of thrust": {
+    "term": "loss of thrust",
+    "example": "PAN-PAN, N456CD loss of thrust in engine two!"
+  },
+  "loss of power": {
+    "term": "loss of power",
+    "example": "MAYDAY, N789EF complete loss of power!"
+  },
+  "we lost engine number 1": {
+    "term": "we lost engine number 1",
+    "example": "Tower, N234GH lost engine number one!"
+  },
+  "flame out on the right engine": {
+    "term": "flame out on the right engine",
+    "example": "Center, N567IJ right engine flame out!"
+  },
+  "an engine flame out": {
+    "term": "an engine flame out",
+    "example": "N890KL declaring emergency, engine flame out!"
+  },
+  "engine low oil pressure": {
+    "term": "engine low oil pressure",
+    "example": "PAN-PAN, N123MN engine one, low oil pressure!"
+  },
+  "engine high temperature": {
+    "term": "engine high temperature",
+    "example": "N456OP engine two, high temperature!"
+  },
+  "high oil temperature": {
+    "term": "high oil temperature",
+    "example": "N789QR high oil temperature in engine one!"
+  },
+  "low oil pressure": {
+    "term": "low oil pressure",
+    "example": "N234ST low oil pressure alert!"
+  },
+  "engine surge": {
+    "term": "engine surge",
+    "example": "N567UV experiencing engine surge!"
+  },
+  "hydraulic fluid leak": {
+    "term": "hydraulic fluid leak",
+    "example": "MAYDAY, N890WX hydraulic fluid leak!"
+  },
+  "hydraulic pressure indication is dropping": {
+    "term": "hydraulic pressure indication is dropping",
+    "example": "PAN-PAN, N123YZ hydraulic pressure decreasing!"
+  },
+  "total electrical failure": {
+    "term": "total electrical failure",
+    "example": "MAYDAY, N456AB total electrical failure!"
+  },
+  "battery power": {
+    "term": "battery power",
+    "example": "N789CD switching to battery power!"
+  },
+  "partial panel": {
+    "term": "partial panel",
+    "example": "N234EF flying partial panel!"
+  },
+  "fms went blank": {
+    "term": "FMS went blank",
+    "example": "N567GH FMS failure!"
+  },
+  "gps inoperative": {
+    "term": "GPS inoperative",
+    "example": "N890IJ GPS navigation lost!"
+  },
+  "electronic navigation capability": {
+    "term": "electronic navigation capability",
+    "example": "N123KL electronic nav systems inoperative!"
+  },
+  "neither of propellers is working": {
+    "term": "neither of propellers is working",
+    "example": "MAYDAY, N456MN both propellers feathered!"
+  },
+  "main gear is stuck": {
+    "term": "main gear is stuck",
+    "example": "Tower, N789OP main gear stuck!"
+  },
+  "landing gear stuck": {
+    "term": "landing gear stuck",
+    "example": "PAN-PAN, N234QR landing gear unsafe!"
+  },
+  "landing gear bugged down": {
+    "term": "landing gear bugged down",
+    "example": "N567ST landing gear unsafe indication!"
+  },
+  "left main landing gear": {
+    "term": "left main landing gear",
+    "example": "MAYDAY, N890UV left main gear issue!"
+  },
+  "main landing gear collapsed": {
+    "term": "main landing gear collapsed",
+    "example": "Emergency, main gear collapsed!"
+  },
+  "main landing gear retracted": {
+    "term": "main landing gear retracted",
+    "example": "N456YZ gear retraction failure!"
+  },
+  "main landing gear twisted": {
+    "term": "main landing gear twisted",
+    "example": "N789AB right main gear twisted!"
+  },
+  "main landing gear extended": {
+    "term": "main landing gear extended",
+    "example": "Tower, N234CD all gear down and locked!"
+  },
+  "wheels up landing": {
+    "term": "wheels up landing",
+    "example": "Preparing for wheels-up landing!"
+  },
+  "belly landing": {
+    "term": "belly landing",
+    "example": "Executing belly landing!"
+  },
+  "flaps up landing": {
+    "term": "flaps up landing",
+    "example": "Preparing for flaps-up landing!"
+  },
+  "air cabin depressurization": {
+    "term": "air cabin depressurization",
+    "example": "MAYDAY, rapid decompression!"
+  },
+  "sudden decompression": {
+    "term": "sudden decompression",
+    "example": "PAN-PAN, sudden decompression!"
+  },
+  "due to pressurization problem": {
+    "term": "due to pressurization problem",
+    "example": "Requesting lower altitude, pressurization issue!"
+  },
+  "fire in the hold": {
+    "term": "fire in the hold",
+    "example": "MAYDAY, fire in cargo hold!"
+  },
+  "fire on board": {
+    "term": "fire on board",
+    "example": "Emergency, fire in cabin!"
+  },
+  "fire in the wheel well": {
+    "term": "fire in the wheel well",
+    "example": "MAYDAY, smoke in wheel well!"
+  },
+  "fire in the catering": {
+    "term": "fire in the catering",
+    "example": "PAN-PAN, galley fire!"
+  },
+  "uncontrollable fire": {
+    "term": "uncontrollable fire",
+    "example": "MAYDAY, uncontrollable fire!"
+  },
+  "smoke in the cabin": {
+    "term": "smoke in the cabin",
+    "example": "Emergency, smoke in the cabin!"
+  },
+  "fumes in the cabin": {
+    "term": "fumes in the cabin",
+    "example": "PAN-PAN, strong fumes in the cockpit!"
+  },
+  "door separated from the airplane": {
+    "term": "door separated from the airplane",
+    "example": "MAYDAY, cargo door separated!"
+  },
+  "broken windshield": {
+    "term": "broken windshield",
+    "example": "Emergency, windshield cracked!"
+  },
+  "cracked windshield": {
+    "term": "cracked windshield",
+    "example": "Reporting cracked windshield!"
+  },
+  "cracked windscreen": {
+    "term": "cracked windscreen",
+    "example": "PAN-PAN, windscreen cracked!"
+  },
+  "shattered windscreen": {
+    "term": "shattered windscreen",
+    "example": "MAYDAY, windscreen shattered!"
+  },
+  "windscreen damaged": {
+    "term": "windscreen damaged",
+    "example": "Windscreen damage from bird strike!"
+  },
+  "it is opened in the front": {
+    "term": "it is opened in the front",
+    "example": "Emergency, forward cargo door open!"
+  },
+  "it is opened in the aft cargo hold": {
+    "term": "it is opened in the aft cargo hold",
+    "example": "PAN-PAN, aft cargo door open!"
+  },
+  "it is opened in the forward cargo hold": {
+    "term": "it is opened in the forward cargo hold",
+    "example": "Forward cargo door warning light!"
+  },
+  "thunderstorm": {
+    "term": "thunderstorm",
+    "example": "PAN-PAN, severe thunderstorm!"
+  },
+  "severe turbulence": {
+    "term": "severe turbulence",
+    "example": "MAYDAY, severe turbulence!"
+  },
+  "moderate turbulence": {
+    "term": "moderate turbulence",
+    "example": "Experiencing moderate turbulence!"
+  },
+  "windshear on final": {
+    "term": "windshear on final",
+    "example": "Windshear alert on final!"
+  },
+  "microburst on final": {
+    "term": "microburst on final",
+    "example": "MAYDAY, microburst encounter!"
+  },
+  "gust wind on final approach": {
+    "term": "gust wind on final approach",
+    "example": "Severe gusty winds on final!"
+  },
+  "icing conditions": {
+    "term": "icing conditions",
+    "example": "PAN-PAN, severe icing!"
+  },
+  "de icing system not working": {
+    "term": "de-icing system not working",
+    "example": "De-icing system failure!"
+  },
+  "dump some fuel": {
+    "term": "dump some fuel",
+    "example": "MAYDAY, requesting fuel dump!"
+  },
+  "request fuel dumping": {
+    "term": "request fuel dumping",
+    "example": "Requesting fuel dumping area!"
+  },
+  "facing low fuel": {
+    "term": "facing low fuel",
+    "example": "PAN-PAN, low fuel state!"
+  },
+  "facing fuel starvation": {
+    "term": "facing fuel starvation",
+    "example": "MAYDAY, fuel starvation imminent!"
+  },
+  "confirm fuel remaining in hours": {
+    "term": "confirm fuel remaining in hours",
+    "example": "Confirming 1.5 hours of fuel remaining!"
+  },
+  "distress call": {
+    "term": "distress call",
+    "example": "MAYDAY MAYDAY MAYDAY!"
+  },
+  "emergency evacuation": {
+    "term": "emergency evacuation",
+    "example": "Preparing for emergency evacuation!"
+  },
+  "emergency landing": {
+    "term": "emergency landing",
+    "example": "Executing emergency landing!"
+  },
+  "perform an emergency landing": {
+    "term": "perform an emergency landing",
+    "example": "Performing emergency landing!"
+  },
+  "emergency services": {
+    "term": "emergency services",
+    "example": "Requesting emergency services!"
+  },
+  "scapes slides accidentally deployed": {
+    "term": "scapes slides accidentally deployed",
+    "example": "PAN-PAN, escape slide deployed!"
+  },
+  "struck by lightning": {
+    "term": "struck by lightning",
+    "example": "Struck by lightning!"
+  },
+  "bird strike": {
+    "term": "bird strike",
+    "example": "MAYDAY, bird strike!"
+  },
+  "hit birds": {
+    "term": "hit birds",
+    "example": "Hit multiple birds!"
+  },
+  "flock of birds on final": {
+    "term": "flock of birds on final",
+    "example": "Large flock of birds on final!"
+  },
+  "vultures in the vicinity": {
+    "term": "vultures in the vicinity",
+    "example": "Vultures near runway threshold!"
+  },
+  "a person passed out": {
+    "term": "a person passed out",
+    "example": "PAN-PAN, passenger unconscious, need medical assistance"
+  },
+  "the flight attendant has fainted": {
+    "term": "the flight attendant has fainted",
+    "example": "Crew member incapacitated, need paramedics"
+  },
+  "heart attack": {
+    "term": "heart attack",
+    "example": "MAYDAY, suspected heart attack onboard"
+  },
+  "seizure": {
+    "term": "seizure",
+    "example": "PAN-PAN, passenger having seizure"
+  },
+  "epileptic attack": {
+    "term": "epileptic attack",
+    "example": "Epileptic emergency, diverting to nearest airport"
+  },
+  "pilot incapacitated": {
+    "term": "pilot incapacitated",
+    "example": "MAYDAY, captain incapacitated, FO assuming control"
+  },
+  "pilot incapacitation": {
+    "term": "pilot incapacitation",
+    "example": "Declaring emergency, pilot medical emergency"
+  },
+  "food poisoning": {
+    "term": "food poisoning",
+    "example": "PAN-PAN, multiple cases of food poisoning"
+  },
+  "passenger fighting on board": {
+    "term": "passenger fighting on board",
+    "example": "MAYDAY, unruly passenger situation"
+  },
+  "passenger misbehavior": {
+    "term": "passenger misbehavior",
+    "example": "PAN-PAN, disruptive passenger restrained"
+  },
+  "passengers misconduct": {
+    "term": "passengers misconduct",
+    "example": "Reporting passenger misconduct"
+  },
+  "unaccompanied minor": {
+    "term": "unaccompanied minor",
+    "example": "Requesting escort for unaccompanied minor"
+  },
+  "flight attendant": {
+    "term": "flight attendant",
+    "example": "Cabin crew to flight deck, medical emergency"
+  },
+  "flight purser": {
+    "term": "flight purser",
+    "example": "Purser reporting cabin preparations complete"
+  },
+  "stewardess": {
+    "term": "stewardess",
+    "example": "Stewardess requesting pilot assistance"
+  },
+  "towed": {
+    "term": "towed",
+    "example": "Ready to be towed to maintenance hangar"
+  },
+  "disembark passengers": {
+    "term": "disembark passengers",
+    "example": "Requesting stairs for passenger disembarkation"
+  },
+  "give way to the aircraft": {
+    "term": "give way to the aircraft",
+    "example": "Give way to taxiing B747"
+  },
+  "got stuck": {
+    "term": "got stuck",
+    "example": "Stuck in soft ground off taxiway"
+  },
+  "maintenance people are on the way": {
+    "term": "maintenance people are on the way",
+    "example": "Maintenance technician en route"
+  },
+  "ground staff on the way": {
+    "term": "ground staff on the way",
+    "example": "Ground crew dispatched to gate"
+  },
+  "fire fighters are on the way": {
+    "term": "fire fighters are on the way",
+    "example": "Fire trucks responding to location"
+  },
+  "airport authority": {
+    "term": "airport authority",
+    "example": "Requesting airport authority representative"
+  },
+  "work in progress": {
+    "term": "work in progress",
+    "example": "Construction work near taxiway"
+  },
+  "debris on the taxiway": {
+    "term": "debris on the taxiway",
+    "example": "FOD observed on taxiway"
+  },
+  "wreckage on the rwy": {
+    "term": "wreckage on the RWY",
+    "example": "Aircraft debris on runway"
+  },
+  "fod was reported": {
+    "term": "FOD was reported",
+    "example": "FOD reported on ramp area"
+  },
+  "drone near the airport": {
+    "term": "drone near the airport",
+    "example": "Drone sighting north of airfield"
+  },
+  "collision with a tow truck": {
+    "term": "collision with a tow truck",
+    "example": "MAYDAY, wingtip collision with tow vehicle"
+  },
+  "loose dog on board": {
+    "term": "loose dog on board",
+    "example": "PAN-PAN, escaped pet in cabin"
+  },
+  "return to the parking": {
+    "term": "return to the parking",
+    "example": "Returning to parking due to technical issue"
+  },
+  "start up at 60": {
+    "term": "start up at 60",
+    "example": "Requesting startup at 60 minutes past hour"
+  },
+  "start up and pushback approved": {
+    "term": "start up and pushback approved",
+    "example": "Cleared for startup and pushback"
+  },
+  "operations closed": {
+    "term": "operations closed",
+    "example": "Airport operations closed until 0600Z"
+  },
+  "radar contact lost": {
+    "term": "radar contact lost",
+    "example": "Radar contact lost, switching to HF"
+  },
+  "radio contact lost": {
+    "term": "radio contact lost",
+    "example": "MAYDAY, lost radio contact, squawking 7600"
+  },
+  "loss of radio contact": {
+    "term": "loss of radio contact",
+    "example": "PAN-PAN, complete radio failure"
+  },
+  "transmission is readable": {
+    "term": "transmission is readable",
+    "example": "Your transmission readable 5 by 5"
+  },
+  "transmission is poor": {
+    "term": "transmission is poor",
+    "example": "Your transmission barely readable"
+  },
+  "readability is poor": {
+    "term": "readability is poor",
+    "example": "Readability poor, say again slowly"
+  },
+  "transmission is blocked": {
+    "term": "transmission is blocked",
+    "example": "Your transmission blocked by other traffic"
+  },
+  "message was blocked": {
+    "term": "message was blocked",
+    "example": "Please repeat last message"
+  },
+  "message was garbled": {
+    "term": "message was garbled",
+    "example": "Say again, transmission garbled"
+  },
+  "under visual meteorological conditions": {
+    "term": "under visual meteorological conditions",
+    "example": "Maintaining VMC at 5,500 feet"
+  },
+  "under radar vectors": {
+    "term": "under radar vectors",
+    "example": "On your vectors to final"
+  },
+  "expect rnav approach": {
+    "term": "expect RNAV approach",
+    "example": "Expect RNAV Z approach runway 28R"
+  },
+  "tod top of descent is close": {
+    "term": "TOD (top of descent) is close",
+    "example": "Approaching TOD point"
+  },
+  "confirm eta": {
+    "term": "confirm ETA",
+    "example": "Request confirmation of estimated arrival"
+  },
+  "confirm diversion": {
+    "term": "confirm diversion",
+    "example": "Confirming diversion to alternate"
+  },
+  "confirm deviation": {
+    "term": "confirm deviation",
+    "example": "Confirming weather deviation approved"
+  },
+  "confirm detour due to bad weather": {
+    "term": "confirm detour due to bad weather",
+    "example": "Confirming reroute for weather"
+  },
+  "deviation to avoid weather": {
+    "term": "deviation to avoid weather",
+    "example": "PAN-PAN, deviating for weather"
+  },
+  "restricted area": {
+    "term": "restricted area",
+    "example": "Requesting clearance through restricted area"
+  },
+  "military activity": {
+    "term": "military activity",
+    "example": "Military exercise in progress"
+  },
+  "altimeter setting": {
+    "term": "altimeter setting",
+    "example": "Request current altimeter setting"
+  },
+  "disagreement in the altimeters": {
+    "term": "disagreement in the altimeters",
+    "example": "PAN-PAN, altimeter disagreement"
+  },
+  "rate of descent": {
+    "term": "rate of descent",
+    "example": "Establishing 500 fpm descent"
+  },
+  "present heading": {
+    "term": "present heading",
+    "example": "Maintaining present heading 270"
+  },
+  "shower over the field": {
+    "term": "shower over the field",
+    "example": "ATIS reports light shower"
+  },
+  "weather is deteriorating rapidly": {
+    "term": "weather is deteriorating rapidly",
+    "example": "Warning, conditions deteriorating"
+  },
+  "expect moderate turbulence": {
+    "term": "expect moderate turbulence",
+    "example": "PIREP, moderate turbulence at FL320"
+  },
+  "expect severe turbulence": {
+    "term": "expect severe turbulence",
+    "example": "Urgent PIREP, severe turbulence"
+  },
+  "hot air balloon at 12 o clock": {
+    "term": "hot air balloon at 12 o'clock",
+    "example": "Traffic alert, balloon 12 o'clock"
+  },
+  "cargo apron": {
+    "term": "cargo apron",
+    "example": "Proceeding to cargo apron"
+  },
+  "dangerous goods on board": {
+    "term": "dangerous goods on board",
+    "example": "Declaring dangerous goods as per manifest"
+  },
+  "hazmat on board": {
+    "term": "hazmat on board",
+    "example": "PAN-PAN, hazmat cargo category 3"
+  },
+  "human organ for transplant": {
+    "term": "human organ for transplant",
+    "example": "Priority, carrying human organ"
+  },
+  "number of persons on board": {
+    "term": "number of persons on board",
+    "example": "Declaring 145 souls on board"
+  },
+  "confirm people on board": {
+    "term": "confirm people on board",
+    "example": "Confirming 87 passengers and 5 crew"
+  },
+  "confirm souls on board": {
+    "term": "confirm souls on board",
+    "example": "MAYDAY, confirming 203 souls"
+  },
+  "hot air balloon": {
+    "term": "hot air balloon",
+    "example": "Traffic, balloon drifting northeast"
+  },
+  "need assistance": {
+    "term": "need assistance",
+    "example": "PAN-PAN, needing ATC assistance"
+  },
+  "assistance upon arrival": {
+    "term": "assistance upon arrival",
+    "example": "Requesting medical assistance"
+  },
+  "at your discretion": {
+    "term": "at your discretion",
+    "example": "Climb at your discretion"
+  },
+  "confirm intentions": {
+    "term": "confirm intentions",
+    "example": "Please confirm your intentions"
+  },
+  "confirm if the approach is adequate": {
+    "term": "confirm if the approach is adequate",
+    "example": "Confirm visual approach approved"
+  },
+  "be advised": {
+    "term": "be advised",
+    "example": "Be advised, wake turbulence"
+  },
+  "say indicated airspeed": {
+    "term": "say indicated airspeed",
+    "example": "Say indicated airspeed"
+  },
+  "copied you lost ailerons": {
+    "term": "copied you lost ailerons",
+    "example": "Copied, lost aileron control"
+  },
+  "read back all information": {
+    "term": "read back all information",
+    "example": "Please read back clearance"
+  },
+  "check out the problem": {
+    "term": "check out the problem",
+    "example": "Maintenance checking issue"
+  },
+  "looks like i have a failure": {
+    "term": "looks like I have a failure",
+    "example": "PAN-PAN, hydraulic failure"
+  },
+  "we are assessing the system": {
+    "term": "we are assessing the system",
+    "example": "Assessing electrical system"
+  }
+}

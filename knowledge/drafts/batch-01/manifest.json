@@ -1,0 +1,182 @@
+{
+  "batch": "batch-01",
+  "generatedAt": "2026-07-07",
+  "conceptCount": 30,
+  "concepts": [
+    {
+      "id": "0001",
+      "concept": "Fly Direct",
+      "slug": "fly-direct",
+      "sourceLevel": "researched",
+      "category": "ATC Phraseology"
+    },
+    {
+      "id": "0002",
+      "concept": "Hold Short",
+      "slug": "hold-short",
+      "sourceLevel": "researched",
+      "category": "ATC Phraseology"
+    },
+    {
+      "id": "0003",
+      "concept": "Line Up and Wait",
+      "slug": "line-up-and-wait",
+      "sourceLevel": "researched",
+      "category": "ATC Phraseology"
+    },
+    {
+      "id": "0004",
+      "concept": "Cleared for Takeoff",
+      "slug": "cleared-for-takeoff",
+      "sourceLevel": "researched",
+      "category": "ATC Phraseology"
+    },
+    {
+      "id": "0005",
+      "concept": "Cleared to Land",
+      "slug": "cleared-to-land",
+      "sourceLevel": "researched",
+      "category": "ATC Phraseology"
+    },
+    {
+      "id": "0006",
+      "concept": "Continue Approach",
+      "slug": "continue-approach",
+      "sourceLevel": "researched",
+      "category": "Approach",
+      "icaoParts": [2, 3]
+    },
+    {
+      "id": "0007",
+      "concept": "Go Around",
+      "slug": "go-around",
+      "sourceLevel": "researched",
+      "category": "Approach",
+      "icaoParts": [2, 3]
+    },
+    {
+      "id": "0008",
+      "concept": "Missed Approach",
+      "slug": "missed-approach",
+      "sourceLevel": "researched",
+      "category": "Instrument Procedures",
+      "icaoParts": [2, 3]
+    },
+    {
+      "id": "0009",
+      "concept": "Visual Approach",
+      "slug": "visual-approach",
+      "sourceLevel": "researched",
+      "category": "Approach",
+      "icaoParts": [2, 3]
+    },
+    {
+      "id": "0010",
+      "concept": "Radar Vectors",
+      "slug": "radar-vectors",
+      "sourceLevel": "researched",
+      "category": "Navigation",
+      "icaoParts": [2, 3]
+    },
+    {
+      "id": "0021",
+      "concept": "Engine Failure",
+      "slug": "engine-failure"
+    },
+    {
+      "id": "0022",
+      "concept": "Engine Flameout",
+      "slug": "engine-flameout"
+    },
+    {
+      "id": "0023",
+      "concept": "Loss of Power",
+      "slug": "loss-of-power"
+    },
+    {
+      "id": "0024",
+      "concept": "Loss of Thrust",
+      "slug": "loss-of-thrust"
+    },
+    {
+      "id": "0025",
+      "concept": "Bird Strike",
+      "slug": "bird-strike"
+    },
+    {
+      "id": "0026",
+      "concept": "Fire on Board",
+      "slug": "fire-on-board"
+    },
+    {
+      "id": "0027",
+      "concept": "Smoke in the Cabin",
+      "slug": "smoke-in-the-cabin"
+    },
+    {
+      "id": "0028",
+      "concept": "Fumes in the Cabin",
+      "slug": "fumes-in-the-cabin"
+    },
+    {
+      "id": "0029",
+      "concept": "Emergency Landing",
+      "slug": "emergency-landing"
+    },
+    {
+      "id": "0030",
+      "concept": "Precautionary Landing",
+      "slug": "precautionary-landing"
+    },
+    {
+      "id": "0031",
+      "concept": "Low Fuel",
+      "slug": "low-fuel"
+    },
+    {
+      "id": "0032",
+      "concept": "Fuel Starvation",
+      "slug": "fuel-starvation"
+    },
+    {
+      "id": "0033",
+      "concept": "Fuel Dumping",
+      "slug": "fuel-dumping"
+    },
+    {
+      "id": "0034",
+      "concept": "Hydraulic Failure",
+      "slug": "hydraulic-failure"
+    },
+    {
+      "id": "0035",
+      "concept": "Electrical Failure",
+      "slug": "electrical-failure"
+    },
+    {
+      "id": "0036",
+      "concept": "GPS Inoperative",
+      "slug": "gps-inoperative"
+    },
+    {
+      "id": "0037",
+      "concept": "Landing Gear Malfunction",
+      "slug": "landing-gear-malfunction"
+    },
+    {
+      "id": "0038",
+      "concept": "Cabin Depressurization",
+      "slug": "cabin-depressurization"
+    },
+    {
+      "id": "0039",
+      "concept": "Pilot Incapacitation",
+      "slug": "pilot-incapacitation"
+    },
+    {
+      "id": "0040",
+      "concept": "Mayday Distress Call",
+      "slug": "mayday-distress-call"
+    }
+  ]
+}

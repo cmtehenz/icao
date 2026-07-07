@@ -1,0 +1,750 @@
+1. Air Traffic Control (ATC) Instructions & Clearances
+● General Instructions:
+○ maintain position
+○ hold position
+○ holding short
+○ line up and wait
+○ cleared straight in approach
+○ continue approach
+○ cleared to divert
+○ cleared to deviate
+○ follow the traffic ahead of you
+○ proceed to AFA VOR / AFA VORTAC
+○ fly direct
+○ resume own navigation
+○ resume conventional navigation
+○ squawk ident
+○ exit hold now
+○ expect hold
+○ expect circling
+○ expect vector to intercept
+○ vectors to final approach
+○ maintain own separation
+○ fly en route
+○ maintain rwy heading
+○ left hand pattern
+○ pattern work
+● Speed & Altitude Adjustments:
+○ reduce speed to 230 kt
+○ reduce speed to mach 0.75
+○ descend at your discretion
+○ drift down procedure
+○ maximum altitude capability
+○ leveled at flight level 200
+○ steep descent
+● Runway Operations:
+○ vacate rwy
+○ rwy incursion
+○ cross rwy
+○ back track
+○ cleared for immediate takeoff
+
+-- 1 of 28 --
+
+○ immediate takeoff
+○ reject take-off
+○ going around
+○ follow missed approach procedure
+○ longest available rwy
+● Approach & Landing:
+○ direct approach
+○ expect approach
+○ expect ILS approach
+○ expect RNAV RWY 20 approach
+○ straight in approach
+○ downwind leg
+○ on the visual
+○ confirm rwy in sight
+○ priority to land
+○ number one for landing
+● Taxi Instructions:
+○ taxi with caution
+○ expedite taxi
+○ via taxiway L
+○ taxi to gate 5
+○ taxi to the ramp
+○ approved taxi
+○ push back tow truck
+○ push back tow bar
+2. Emergencies & Abnormal Situations
+● Engine & Systems Failures:
+○ engine stall
+○ loss of thrust
+○ loss of power
+○ we lost engine number 1
+○ flame out on the right engine
+○ an engine flame out
+○ engine low oil pressure
+○ engine high temperature
+○ high oil temperature
+○ low oil pressure
+○ engine surge
+
+-- 2 of 28 --
+
+○ hydraulic fluid leak
+○ hydraulic pressure indication is dropping
+○ total electrical failure
+○ battery power
+○ partial panel
+○ FMS went blank
+○ GPS inoperative
+○ electronic navigation capability
+○ neither of propellers is working
+● Landing Gear Issues:
+○ main gear is stuck
+○ landing gear stuck
+○ landing gear bugged down
+○ left main landing gear
+○ main landing gear collapsed
+○ main landing gear retracted
+○ main landing gear twisted
+○ main landing gear extended
+○ wheels up landing
+○ belly landing
+○ flaps up landing
+● Pressurization & Decompression:
+○ air cabin depressurization
+○ sudden decompression
+○ due to pressurization problem
+● Fire & Smoke:
+○ fire in the hold
+○ fire on board
+○ fire in the wheel well
+○ fire in the catering
+○ uncontrollable fire
+○ smoke in the cabin
+○ fumes in the cabin
+● Structural Damage:
+○ door separated from the airplane
+○ broken windshield
+○ cracked windshield
+○ cracked windscreen
+○ shattered windscreen
+○ windscreen damaged
+○ it is opened in the front of the plane
+○ it is opened in the aft cargo hold
+
+-- 3 of 28 --
+
+○ it is opened in the forward cargo hold
+● Weather-Related Emergencies:
+○ thunderstorm
+○ severe turbulence
+○ moderate turbulence
+○ windshear on final
+○ microburst on final
+○ gust wind on final approach
+○ icing conditions
+○ de-icing system not working properly
+● Fuel Issues:
+○ dump some fuel
+○ request fuel dumping
+○ facing low fuel
+○ facing fuel starvation
+○ confirm fuel remaining in hours
+● Other Emergencies:
+○ distress call
+○ emergency evacuation
+○ emergency landing
+○ perform an emergency landing
+○ emergency services
+○ scapes slides accidentally deployed
+○ struck by lightning
+○ bird strike
+○ hit birds
+○ flock of birds on final
+○ vultures in the vicinity
+3. Passenger & Crew Incidents
+● Medical Emergencies:
+○ a person passed out
+○ the flight attendant has fainted
+○ heart attack
+○ seizure
+○ epileptic attack
+○ pilot incapacitated
+○ pilot incapacitation
+○ food poisoning
+
+-- 4 of 28 --
+
+● Passenger Behavior:
+○ passenger fighting on board
+○ passenger misbehavior
+○ passengers misconduct
+○ unaccompanied minor
+● Crew Communications:
+○ flight attendant
+○ flight purser
+○ stewardess
+4. Ground Operations & Airport Incidents
+● Ground Handling:
+○ towed
+○ disembark passengers
+○ give way to the aircraft
+○ got stuck
+○ maintenance people are on the way
+○ ground staff on the way
+○ fire fighters are on the way
+○ airport authority
+○ work in progress
+○ debris on the taxiway
+○ wreckage on the RWY
+○ FOD was reported
+○ drone near the airport
+○ collision with a tow truck
+○ loose dog on board
+● Parking & Startup:
+○ return to the parking
+○ start up at 60
+○ start up and pushback approved
+○ operations closed
+5. Navigation & Communication
+● Radio & Transmission Issues:
+○ radar contact lost
+○ radio contact lost
+
+-- 5 of 28 --
+
+○ loss of radio contact
+○ transmission is readable
+○ transmission is poor
+○ readability is poor
+○ transmission is blocked
+○ message was blocked
+○ message was garbled
+● Navigation Procedures:
+○ under visual meteorological conditions
+○ under radar vectors
+○ expect RNAV approach
+○ TOD (top of descent) is close
+○ confirm ETA
+○ confirm diversion
+○ confirm deviation
+○ confirm detour due to bad weather
+○ deviation to avoid weather
+○ restricted area
+○ military activity
+● Instrumentation Issues:
+○ altimeter setting
+○ disagreement in the altimeters
+○ rate of descent
+○ present heading
+6. Weather & Environmental Conditions
+● Weather Reports & Advisories:
+○ shower over the field
+○ weather is deteriorating rapidly
+○ expect moderate turbulence
+○ expect severe turbulence
+● Visual Observations:
+○ hot air balloon at 12 o'clock
+○ hot air balloon at 6 o'clock
+7. Cargo & Special Situations
+● Cargo Operations:
+
+-- 6 of 28 --
+
+○ cargo apron
+○ dangerous goods on board
+○ hazmat on board
+○ human organ for transplant
+● Aircraft Weight & Balance:
+○ number of persons on board
+○ confirm people on board
+○ confirm souls on board
+8. General Aviation & Miscellaneous
+● Balloon Operations:
+○ hot air balloon
+● Pilot Reports & Requests:
+○ need assistance
+○ assistance upon arrival
+○ at your discretion
+○ confirm intentions
+○ confirm if the approach is adequate
+○ be advised
+○ say indicated airspeed
+○ copied you lost ailerons
+○ read back all information
+○ check out the problem
+○ looks like I have a failure
+○ we are assessing the system
+
+-- 7 of 28 --
+
+Aviation Phraseology Reference Table
+1. Air Traffic Control (ATC) Instructions & Clearances
+General Instructions
+Term 	Example Phrase
+maintain position 	"Tower, N123AB maintaining position at
+holding point Alpha."
+hold position 	"Ground, N456CD holding position at taxiway
+Bravo."
+holding short 	"N789EF holding short of runway 27L."
+line up and wait 	"Tower, N234GH lined up and waiting, runway
+36R."
+cleared straight in approach 	"Approach, N567IJ cleared straight in
+approach runway 09."
+continue approach 	"Tower, N890KL continuing approach runway
+18."
+cleared to divert 	"Center, N123LM cleared to divert to alternate
+airport."
+cleared to deviate 	"N456NO cleared to deviate left for weather
+avoidance."
+
+-- 8 of 28 --
+
+follow the traffic ahead of you 	"N789PQ following traffic ahead, visual
+contact established."
+proceed to AFA VOR / AFA
+VORTAC
+"N234QR proceeding direct to AFA VOR."
+fly direct 	"N567ST flying direct to KXYZ."
+resume own navigation 	"N890UV resuming own navigation, radar
+service terminated."
+resume conventional navigation 	"N123WX resuming conventional navigation,
+GPS unavailable."
+squawk ident 	"N456YZ squawking ident for radar
+identification."
+exit hold now 	"N789AB exiting hold at waypoint DELTA."
+expect hold 	"N234CD expecting holding instructions at
+waypoint ECHO."
+expect circling 	"N567EF expecting circling approach runway
+27."
+expect vector to intercept 	"N890GH expecting vectors to intercept
+localizer."
+vectors to final approach 	"N123IJ requesting vectors for the final
+approach course."
+
+-- 9 of 28 --
+
+maintain own separation 	"N456KL maintaining own separation in VFR
+conditions."
+fly en route 	"N789MN flying en route to destination."
+maintain rwy heading 	"Tower, N234OP maintaining runway heading
+after departure."
+left hand pattern 	"N567QR entering left hand pattern runway
+36."
+pattern work 	"N890ST performing pattern work at KABC."
+Speed & Altitude Adjustments
+Term 	Example Phrase
+reduce speed to 230 kt 	"N123UV reducing speed to 230 knots."
+reduce speed to mach 0.75 	"N456WX reducing speed to mach 0.75."
+descend at your discretion 	"N789YZ descending at pilot's discretion to
+FL180."
+drift down procedure 	"N234AB initiating drift down after engine
+failure."
+maximum altitude
+capability
+"N567CD reporting maximum altitude
+capability FL250."
+leveled at flight level 200 	"N890EF leveled at flight level 200."
+
+-- 10 of 28 --
+
+steep descent 	"N123GH executing a steep descent for
+emergency."
+Runway Operations
+Term 	Example Phrase
+vacate rwy 	"Tower, N456IJ vacating runway 09 at taxiway
+Charlie."
+rwy incursion 	"Ground, possible runway incursion at
+intersection Delta."
+cross rwy 	"N789KL requesting to cross runway 18."
+back track 	"N234MN backtracking runway 27 for
+departure."
+cleared for immediate takeoff 	"Tower, N567OP cleared for immediate takeoff
+runway 36L."
+immediate takeoff 	"N890QR executing immediate takeoff for
+emergency."
+reject take-off 	"Rejecting takeoff at 80 knots!"
+going around 	"Tower, N456UV going around from runway
+09."
+follow missed approach
+procedure
+"N789WX following published missed
+approach procedure."
+
+-- 11 of 28 --
+
+longest available rwy 	"Requesting the longest available runway for
+emergency landing."
+Approach & Landing
+Term 	Example Phrase
+direct approach 	"N234YZ requesting direct approach to runway
+15."
+expect approach 	"N567AB expecting approach clearance in 5
+minutes."
+expect ILS approach 	"N890CD expecting ILS approach runway 28R."
+expect RNAV RWY 20
+approach
+"N123EF expecting RNAV runway 20
+approach."
+straight in approach 	"N456GH requesting straight in approach
+runway 33."
+downwind leg 	"N789IJ entering downwind leg for runway 24."
+on the visual 	"Tower, N234KL on the visual for runway 17."
+confirm rwy in sight 	"N567MN confirming runway 12 in sight."
+priority to land 	"N890OP requesting priority to land due to
+emergency."
+
+-- 12 of 28 --
+
+number one for landing 	"Tower, N123QR number one for landing
+runway 21."
+Taxi Instructions
+Term 	Example Phrase
+taxi with caution 	"Ground, N456ST taxiing with caution for
+construction."
+expedite taxi 	"N789UV expediting taxi to runway 31."
+via taxiway L 	"N234WX taxiing via taxiway Lima to ramp."
+taxi to gate 5 	"Ground, N567YZ taxiing to gate 5."
+taxi to the ramp 	"N890AB taxiing to the ramp."
+approved taxi 	"N123CD approved taxi to runway 25."
+push back tow
+truck
+"Ground, N456EF ready for pushback, tow
+truck standing by."
+push back tow bar 	"N789GH requesting pushback with tow bar
+attached."
+2. Emergencies & Abnormal Situations
+Engine & Systems Failures
+Term 	Example Phrase
+
+-- 13 of 28 --
+
+engine stall 	"MAYDAY, N123AB engine stall, immediate
+return!"
+loss of thrust 	"PAN-PAN, N456CD loss of thrust in engine
+two!"
+loss of power 	"MAYDAY, N789EF complete loss of power!"
+we lost engine number 1 	"Tower, N234GH lost engine number one!"
+flame out on the right engine 	"Center, N567IJ right engine flame out!"
+an engine flame out 	"N890KL declaring emergency, engine flame
+out!"
+engine low oil pressure 	"PAN-PAN, N123MN engine one, low oil
+pressure!"
+engine high temperature 	"N456OP engine two, high temperature!"
+high oil temperature 	"N789QR high oil temperature in engine one!"
+low oil pressure 	"N234ST low oil pressure alert!"
+engine surge 	"N567UV experiencing engine surge!"
+hydraulic fluid leak 	"MAYDAY, N890WX hydraulic fluid leak!"
+hydraulic pressure indication is
+dropping
+"PAN-PAN, N123YZ hydraulic pressure
+decreasing!"
+total electrical failure 	"MAYDAY, N456AB total electrical failure!"
+
+-- 14 of 28 --
+
+battery power 	"N789CD switching to battery power!"
+partial panel 	"N234EF flying partial panel!"
+FMS went blank 	"N567GH FMS failure!"
+GPS inoperative 	"N890IJ GPS navigation lost!"
+electronic navigation capability 	"N123KL electronic nav systems inoperative!"
+neither of propellers is working 	"MAYDAY, N456MN both propellers
+feathered!"
+Landing Gear Issues
+Term 	Example Phrase
+main gear is stuck 	"Tower, N789OP main gear stuck!"
+landing gear stuck 	"PAN-PAN, N234QR landing gear unsafe!"
+landing gear bugged down 	"N567ST landing gear unsafe indication!"
+left main landing gear 	"MAYDAY, N890UV left main gear issue!"
+main landing gear
+collapsed
+"Emergency, main gear collapsed!"
+main landing gear
+retracted
+"N456YZ gear retraction failure!"
+main landing gear twisted 	"N789AB right main gear twisted!"
+
+-- 15 of 28 --
+
+main landing gear
+extended
+"Tower, N234CD all gear down and
+locked!"
+wheels up landing 	"Preparing for wheels-up landing!"
+belly landing 	"Executing belly landing!"
+flaps up landing 	"Preparing for flaps-up landing!"
+Pressurization & Decompression
+Term 	Example Phrase
+air cabin depressurization 	"MAYDAY, rapid decompression!"
+sudden decompression 	"PAN-PAN, sudden decompression!"
+due to pressurization
+problem
+"Requesting lower altitude, pressurization
+issue!"
+Fire & Smoke
+Term 	Example Phrase
+fire in the hold 	"MAYDAY, fire in cargo hold!"
+fire on board 	"Emergency, fire in cabin!"
+fire in the wheel
+well
+"MAYDAY, smoke in wheel well!"
+fire in the catering 	"PAN-PAN, galley fire!"
+
+-- 16 of 28 --
+
+uncontrollable fire 	"MAYDAY, uncontrollable fire!"
+smoke in the cabin 	"Emergency, smoke in the cabin!"
+fumes in the cabin 	"PAN-PAN, strong fumes in the
+cockpit!"
+Structural Damage
+Term 	Example Phrase
+door separated from the airplane 	"MAYDAY, cargo door separated!"
+broken windshield 	"Emergency, windshield cracked!"
+cracked windshield 	"Reporting cracked windshield!"
+cracked windscreen 	"PAN-PAN, windscreen cracked!"
+shattered windscreen 	"MAYDAY, windscreen shattered!"
+windscreen damaged 	"Windscreen damage from bird strike!"
+it is opened in the front 	"Emergency, forward cargo door
+open!"
+it is opened in the aft cargo hold 	"PAN-PAN, aft cargo door open!"
+it is opened in the forward cargo
+hold
+"Forward cargo door warning light!"
+Weather-Related Emergencies
+
+-- 17 of 28 --
+
+Term 	Example Phrase
+thunderstorm 	"PAN-PAN, severe thunderstorm!"
+severe turbulence 	"MAYDAY, severe turbulence!"
+moderate turbulence 	"Experiencing moderate
+turbulence!"
+windshear on final 	"Windshear alert on final!"
+microburst on final 	"MAYDAY, microburst encounter!"
+gust wind on final
+approach
+"Severe gusty winds on final!"
+icing conditions 	"PAN-PAN, severe icing!"
+de-icing system not
+working
+"De-icing system failure!"
+Fuel Issues
+Term 	Example Phrase
+dump some fuel 	"MAYDAY, requesting fuel dump!"
+request fuel dumping 	"Requesting fuel dumping area!"
+facing low fuel 	"PAN-PAN, low fuel state!"
+facing fuel starvation 	"MAYDAY, fuel starvation imminent!"
+
+-- 18 of 28 --
+
+confirm fuel remaining in
+hours
+"Confirming 1.5 hours of fuel
+remaining!"
+Other Emergencies
+Term 	Example Phrase
+distress call 	"MAYDAY MAYDAY MAYDAY!"
+emergency evacuation 	"Preparing for emergency
+evacuation!"
+emergency landing 	"Executing emergency landing!"
+perform an emergency landing 	"Performing emergency landing!"
+emergency services 	"Requesting emergency services!"
+scapes slides accidentally
+deployed
+"PAN-PAN, escape slide deployed!"
+struck by lightning 	"Struck by lightning!"
+bird strike 	"MAYDAY, bird strike!"
+hit birds 	"Hit multiple birds!"
+flock of birds on final 	"Large flock of birds on final!"
+vultures in the vicinity 	"Vultures near runway threshold!"
+
+-- 19 of 28 --
+
+3. Passenger & Crew Incidents
+Medical Emergencies
+Term 	Example Phrase
+a person passed out 	"PAN-PAN, passenger unconscious, need
+medical assistance"
+the flight attendant has
+fainted
+"Crew member incapacitated, need
+paramedics"
+heart attack 	"MAYDAY, suspected heart attack onboard"
+seizure 	"PAN-PAN, passenger having seizure"
+epileptic attack 	"Epileptic emergency, diverting to nearest
+airport"
+pilot incapacitated 	"MAYDAY, captain incapacitated, FO assuming
+control"
+pilot incapacitation 	"Declaring emergency, pilot medical
+emergency"
+food poisoning 	"PAN-PAN, multiple cases of food poisoning"
+Passenger Behavior
+Term 	Example Phrase
+
+-- 20 of 28 --
+
+passenger fighting on
+board
+"MAYDAY, unruly passenger situation"
+passenger misbehavior 	"PAN-PAN, disruptive passenger restrained"
+passengers misconduct 	"Reporting passenger misconduct"
+unaccompanied minor 	"Requesting escort for unaccompanied
+minor"
+Crew Communications
+Term 	Example Phrase
+flight
+attendant
+"Cabin crew to flight deck, medical
+emergency"
+flight purser 	"Purser reporting cabin preparations
+complete"
+stewardess 	"Stewardess requesting pilot assistance"
+4. Ground Operations & Airport Incidents
+Ground Handling
+Term 	Example Phrase
+towed 	"Ready to be towed to maintenance hangar"
+
+-- 21 of 28 --
+
+disembark passengers 	"Requesting stairs for passenger
+disembarkation"
+give way to the aircraft 	"Give way to taxiing B747"
+got stuck 	"Stuck in soft ground off taxiway"
+maintenance people are on the
+way
+"Maintenance technician en route"
+ground staff on the way 	"Ground crew dispatched to gate"
+fire fighters are on the way 	"Fire trucks responding to location"
+airport authority 	"Requesting airport authority representative"
+work in progress 	"Construction work near taxiway"
+debris on the taxiway 	"FOD observed on taxiway"
+wreckage on the RWY 	"Aircraft debris on runway"
+FOD was reported 	"FOD reported on ramp area"
+drone near the airport 	"Drone sighting north of airfield"
+collision with a tow truck 	"MAYDAY, wingtip collision with tow vehicle"
+loose dog on board 	"PAN-PAN, escaped pet in cabin"
+Parking & Startup
+
+-- 22 of 28 --
+
+Term 	Example Phrase
+return to the parking 	"Returning to parking due to technical
+issue"
+start up at 60 	"Requesting startup at 60 minutes past
+hour"
+start up and pushback
+approved
+"Cleared for startup and pushback"
+operations closed 	"Airport operations closed until 0600Z"
+5. Navigation & Communication
+Radio & Transmission Issues
+Term 	Example Phrase
+radar contact lost 	"Radar contact lost, switching to HF"
+radio contact lost 	"MAYDAY, lost radio contact, squawking
+7600"
+loss of radio contact 	"PAN-PAN, complete radio failure"
+transmission is
+readable
+"Your transmission readable 5 by 5"
+transmission is poor 	"Your transmission barely readable"
+readability is poor 	"Readability poor, say again slowly"
+
+-- 23 of 28 --
+
+transmission is
+blocked
+"Your transmission blocked by other traffic"
+message was blocked 	"Please repeat last message"
+message was garbled 	"Say again, transmission garbled"
+Navigation Procedures
+Term 	Example Phrase
+under visual meteorological
+conditions
+"Maintaining VMC at 5,500 feet"
+under radar vectors 	"On your vectors to final"
+expect RNAV approach 	"Expect RNAV Z approach runway 28R"
+TOD (top of descent) is close 	"Approaching TOD point"
+confirm ETA 	"Request confirmation of estimated arrival"
+confirm diversion 	"Confirming diversion to alternate"
+confirm deviation 	"Confirming weather deviation approved"
+confirm detour due to bad weather 	"Confirming reroute for weather"
+deviation to avoid weather 	"PAN-PAN, deviating for weather"
+restricted area 	"Requesting clearance through restricted
+area"
+
+-- 24 of 28 --
+
+military activity 	"Military exercise in progress"
+Instrumentation Issues
+Term 	Example Phrase
+altimeter setting 	"Request current altimeter setting"
+disagreement in the
+altimeters
+"PAN-PAN, altimeter
+disagreement"
+rate of descent 	"Establishing 500 fpm descent"
+present heading 	"Maintaining present heading 270"
+6. Weather & Environmental Conditions
+Weather Reports & Advisories
+Term 	Example Phrase
+shower over the field 	"ATIS reports light shower"
+weather is deteriorating
+rapidly
+"Warning, conditions deteriorating"
+expect moderate turbulence 	"PIREP, moderate turbulence at
+FL320"
+expect severe turbulence 	"Urgent PIREP, severe turbulence"
+Visual Observations
+
+-- 25 of 28 --
+
+Term 	Example Phrase
+hot air balloon at 12
+o'clock
+"Traffic alert, balloon 12 o'clock"
+hot air balloon at 12
+o'clock
+"Correction, balloon at 12
+o'clock"
+7. Cargo & Special Situations
+Cargo Operations
+Term 	Example Phrase
+cargo apron 	"Proceeding to cargo apron"
+dangerous goods on
+board
+"Declaring dangerous goods as per
+manifest"
+hazmat on board 	"PAN-PAN, hazmat cargo category 3"
+human organ for
+transplant
+"Priority, carrying human organ"
+Aircraft Weight & Balance
+Term 	Example Phrase
+number of persons on
+board
+"Declaring 145 souls on board"
+
+-- 26 of 28 --
+
+confirm people on board 	"Confirming 87 passengers and 5
+crew"
+confirm souls on board 	"MAYDAY, confirming 203 souls"
+8. General Aviation & Miscellaneous
+Balloon Operations
+Term 	Example Phrase
+hot air balloon 	"Traffic, balloon drifting
+northeast"
+Pilot Reports & Requests
+Term 	Example Phrase
+need assistance 	"PAN-PAN, needing ATC
+assistance"
+assistance upon arrival 	"Requesting medical assistance"
+at your discretion 	"Climb at your discretion"
+confirm intentions 	"Please confirm your intentions"
+confirm if the approach is
+adequate
+"Confirm visual approach
+approved"
+be advised 	"Be advised, wake turbulence"
+
+-- 27 of 28 --
+
+say indicated airspeed 	"Say indicated airspeed"
+copied you lost ailerons 	"Copied, lost aileron control"
+read back all information 	"Please read back clearance"
+check out the problem 	"Maintenance checking issue"
+looks like I have a failure 	"PAN-PAN, hydraulic failure"
+we are assessing the system 	"Assessing electrical system"

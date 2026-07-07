@@ -4,10 +4,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import WordMissionSession from "@/components/WordMission/WordMissionSession";
-import {
-  ICAO_VOCABULARY,
-  type IcaoVocabularyItem,
-} from "@/data/icaoVocabulary";
+import type { IcaoVocabularyItem } from "@/data/icaoVocabulary";
 import { useVocabularyProgress } from "@/hooks/useVocabularyProgress";
 import { CAPTAIN_VOCAB_FLIGHT_DEBRIEF } from "@/lib/vocabCoach";
 import {
@@ -15,6 +12,7 @@ import {
   nextVocabMissionLevel,
 } from "@/lib/vocabGraduation";
 import { buildVocabMissionDebrief } from "@/lib/vocabMission";
+import { findWordMissionVocabItem } from "@/lib/wordMission/wordMissionCatalog";
 import {
   getOrCreateWordDailyMission,
   isWordMissionTermInTodayMission,
@@ -79,7 +77,7 @@ export default function WordMissionMode({ initialTermId }: { initialTermId?: str
         setActiveItem(null);
         return;
       }
-      const item = ICAO_VOCABULARY.find((t) => t.id === nextId);
+      const item = findWordMissionVocabItem(nextId);
       if (item) selectTerm(item);
     },
     [selectTerm],
@@ -96,7 +94,7 @@ export default function WordMissionMode({ initialTermId }: { initialTermId?: str
       setActiveItem(null);
       return;
     }
-    const item = ICAO_VOCABULARY.find((t) => t.id === nextId);
+    const item = findWordMissionVocabItem(nextId);
     if (item) selectTerm(item);
   }, [selectTerm, syncMissionProgress]);
 
@@ -109,7 +107,7 @@ export default function WordMissionMode({ initialTermId }: { initialTermId?: str
       setMissionLegActive(true);
       setShowDebrief(false);
     }
-    const item = ICAO_VOCABULARY.find((t) => t.id === requested);
+    const item = findWordMissionVocabItem(requested);
     if (item) selectTerm(item);
   }, [searchParams, initialTermId, selectTerm, syncMissionProgress]);
 

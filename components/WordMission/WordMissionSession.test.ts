@@ -51,11 +51,6 @@ describe("WordMissionSession UI certification", () => {
     expect(sessionSource).toMatch(/SKYBRARY_UI_LABEL/);
   });
 
-  it("supports knowledge review developer mode", () => {
-    expect(sessionSource).toMatch(/KnowledgeReviewPanel/);
-    expect(sessionSource).toMatch(/KNOWLEDGE_REVIEW_ENABLED/);
-  });
-
   it("hides raw Azure debug behind technical details", () => {
     expect(sessionSource).toMatch(/pron-captain-technical word-mission-technical/);
   });

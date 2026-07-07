@@ -1,0 +1,3472 @@
+# ICAO Delta — Master Knowledge Catalog
+# Source of truth for all operational concepts.
+# Chief Instructor maintained. Do not invent concepts.
+
+version: "1.0"
+conceptCount: 510
+
+concepts:
+  - id: "0001"
+    concept: Fly Direct
+    category: ATC Phraseology
+    priority: Critical
+    icaoParts:
+      - Part 2
+  - id: "0002"
+    concept: Hold Short
+    category: ATC Phraseology
+    priority: Critical
+    icaoParts:
+      - Part 2
+  - id: "0003"
+    concept: Line Up and Wait
+    category: ATC Phraseology
+    priority: Critical
+    icaoParts:
+      - Part 2
+  - id: "0004"
+    concept: Cleared for Takeoff
+    category: ATC Phraseology
+    priority: Critical
+    icaoParts:
+      - Part 2
+  - id: "0005"
+    concept: Cleared to Land
+    category: ATC Phraseology
+    priority: Critical
+    icaoParts:
+      - Part 2
+  - id: "0006"
+    concept: Continue Approach
+    category: ATC Phraseology
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0007"
+    concept: Go Around
+    category: ATC Phraseology
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0008"
+    concept: Missed Approach
+    category: ATC Phraseology
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0009"
+    concept: Visual Approach
+    category: ATC Phraseology
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0010"
+    concept: Radar Vectors
+    category: Navigation
+    priority: Critical
+    icaoParts:
+      - Part 2
+  - id: "0011"
+    concept: Resume Own Navigation
+    category: Navigation
+    priority: Critical
+    icaoParts:
+      - Part 2
+  - id: "0012"
+    concept: Maintain Runway Heading
+    category: ATC Phraseology
+    priority: Critical
+    icaoParts:
+      - Part 2
+  - id: "0013"
+    concept: Fly Heading
+    category: ATC Phraseology
+    priority: Critical
+    icaoParts:
+      - Part 2
+  - id: "0014"
+    concept: Climb and Maintain
+    category: ATC Phraseology
+    priority: Critical
+    icaoParts:
+      - Part 2
+  - id: "0015"
+    concept: Descend and Maintain
+    category: ATC Phraseology
+    priority: Critical
+    icaoParts:
+      - Part 2
+  - id: "0016"
+    concept: Maintain Altitude
+    category: ATC Phraseology
+    priority: Critical
+    icaoParts:
+      - Part 2
+  - id: "0017"
+    concept: Maintain Present Heading
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0018"
+    concept: Maintain Present Speed
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0019"
+    concept: Report Position
+    category: Radio Communication
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0020"
+    concept: Report Final
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0021"
+    concept: Report Downwind
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0022"
+    concept: Report Base
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0023"
+    concept: Taxi Via
+    category: Ground Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+  - id: "0024"
+    concept: Taxi to Holding Point
+    category: Ground Operations
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0025"
+    concept: Cross Runway
+    category: Airport Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+  - id: "0026"
+    concept: Backtrack
+    category: Airport Operations
+    priority: Medium
+    icaoParts:
+      - Part 2
+  - id: "0027"
+    concept: Vacate Runway
+    category: Airport Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+  - id: "0028"
+    concept: Expedite Taxi
+    category: Ground Operations
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0029"
+    concept: Follow Traffic
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0030"
+    concept: Number One for Landing
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0031"
+    concept: Number Two Behind Traffic
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0032"
+    concept: Priority Landing
+    category: ATC Phraseology
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0033"
+    concept: Engine Failure
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0034"
+    concept: Loss of Power
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0035"
+    concept: Loss of Thrust
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0036"
+    concept: Engine Flameout
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0037"
+    concept: Bird Strike
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0038"
+    concept: Fire on Board
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0039"
+    concept: Smoke in Cabin
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0040"
+    concept: Fumes in Cabin
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0041"
+    concept: Emergency Landing
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0042"
+    concept: Precautionary Landing
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0043"
+    concept: Low Fuel
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0044"
+    concept: Fuel Starvation
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0045"
+    concept: Fuel Dumping
+    category: Emergency
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0046"
+    concept: Hydraulic Failure
+    category: Aircraft Systems
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0047"
+    concept: Electrical Failure
+    category: Aircraft Systems
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0048"
+    concept: GPS Inoperative
+    category: Aircraft Systems
+    priority: Critical
+    icaoParts:
+      - Part 2
+  - id: "0049"
+    concept: Landing Gear Malfunction
+    category: Aircraft Systems
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0050"
+    concept: Cabin Depressurization
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0051"
+    concept: Pilot Incapacitation
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0052"
+    concept: Mayday
+    category: Radio Communication
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0053"
+    concept: Pan Pan
+    category: Radio Communication
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0054"
+    concept: Radio Failure
+    category: Radio Communication
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0055"
+    concept: Lost Communications
+    category: Radio Communication
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0056"
+    concept: Alternator Failure
+    category: Aircraft Systems
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0057"
+    concept: Generator Failure
+    category: Aircraft Systems
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0058"
+    concept: Battery Failure
+    category: Aircraft Systems
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0059"
+    concept: Oil Pressure Warning
+    category: Aircraft Systems
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0060"
+    concept: Oil Temperature High
+    category: Aircraft Systems
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0061"
+    concept: Chip Warning
+    category: Aircraft Systems
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0062"
+    concept: Tail Rotor Failure
+    category: Helicopter Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0063"
+    concept: Main Rotor Damage
+    category: Helicopter Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0064"
+    concept: Rotor Overspeed
+    category: Helicopter Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0065"
+    concept: Rotor RPM Low
+    category: Helicopter Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0066"
+    concept: Autorotation
+    category: Helicopter Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0067"
+    concept: Hover Taxi
+    category: Helicopter Operations
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0068"
+    concept: Air Taxi
+    category: Helicopter Operations
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0069"
+    concept: Running Landing
+    category: Helicopter Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0070"
+    concept: Confined Area Landing
+    category: Helicopter Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0071"
+    concept: Pinnacle Landing
+    category: Helicopter Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0072"
+    concept: Slope Landing
+    category: Helicopter Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0073"
+    concept: Brownout
+    category: Helicopter Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0074"
+    concept: Whiteout
+    category: Helicopter Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0075"
+    concept: Dynamic Rollover
+    category: Helicopter Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0076"
+    concept: "LTE (Loss of Tail Rotor Effectiveness)"
+    category: Helicopter Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0077"
+    concept: Vortex Ring State
+    category: Helicopter Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0078"
+    concept: Settling With Power
+    category: Helicopter Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0079"
+    concept: Mast Bumping
+    category: Helicopter Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0080"
+    concept: Wire Strike
+    category: Helicopter Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0081"
+    concept: Obstacle Avoidance
+    category: Helicopter Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0082"
+    concept: Weather Deterioration
+    category: Weather
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0083"
+    concept: Thunderstorm
+    category: Weather
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0084"
+    concept: Embedded Thunderstorm
+    category: Weather
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0085"
+    concept: Severe Turbulence
+    category: Weather
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0086"
+    concept: Moderate Turbulence
+    category: Weather
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0087"
+    concept: Light Turbulence
+    category: Weather
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0088"
+    concept: Windshear
+    category: Weather
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0089"
+    concept: Microburst
+    category: Weather
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0090"
+    concept: Icing Conditions
+    category: Weather
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0091"
+    concept: Low Visibility
+    category: Weather
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0092"
+    concept: Fog
+    category: Weather
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0093"
+    concept: Heavy Rain
+    category: Weather
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0094"
+    concept: Hail
+    category: Weather
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0095"
+    concept: Crosswind Landing
+    category: Weather
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0096"
+    concept: Tailwind Landing
+    category: Weather
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0097"
+    concept: Headwind Takeoff
+    category: Performance
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0098"
+    concept: Density Altitude
+    category: Performance
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+      - Part 4
+  - id: "0099"
+    concept: Mountain Flying
+    category: Navigation
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+      - Part 4
+  - id: "0100"
+    concept: Offshore Operations
+    category: Helicopter Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+      - Part 4
+  - id: "0101"
+    concept: Maintain Position
+    category: ATC Phraseology
+    priority: Critical
+    icaoParts:
+      - Part 2
+  - id: "0102"
+    concept: Hold Position
+    category: ATC Phraseology
+    priority: Critical
+    icaoParts:
+      - Part 2
+  - id: "0103"
+    concept: Cleared Straight-In Approach
+    category: ATC Phraseology
+    priority: Critical
+    icaoParts:
+      - Part 2
+  - id: "0104"
+    concept: Cleared to Divert
+    category: ATC Phraseology
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0105"
+    concept: Cleared to Deviate
+    category: ATC Phraseology
+    priority: Critical
+    icaoParts:
+      - Part 2
+  - id: "0106"
+    concept: Squawk Ident
+    category: ATC Phraseology
+    priority: Critical
+    icaoParts:
+      - Part 2
+  - id: "0107"
+    concept: Exit Hold
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0108"
+    concept: Expect Hold
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0109"
+    concept: Expect Circling
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0110"
+    concept: Expect Vectors to Intercept
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0111"
+    concept: Vectors to Final
+    category: ATC Phraseology
+    priority: Critical
+    icaoParts:
+      - Part 2
+  - id: "0112"
+    concept: Maintain Own Separation
+    category: ATC Phraseology
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0113"
+    concept: Reduce Speed
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0114"
+    concept: Descend at Your Discretion
+    category: ATC Phraseology
+    priority: Critical
+    icaoParts:
+      - Part 2
+  - id: "0115"
+    concept: Cleared for Immediate Takeoff
+    category: ATC Phraseology
+    priority: Critical
+    icaoParts:
+      - Part 2
+  - id: "0116"
+    concept: Immediate Takeoff
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0117"
+    concept: Rejected Takeoff
+    category: ATC Phraseology
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0118"
+    concept: Direct Approach
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0119"
+    concept: Expect Approach
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0120"
+    concept: Expect ILS Approach
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0121"
+    concept: Expect RNAV Approach
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0122"
+    concept: Straight-In Approach
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0123"
+    concept: Downwind Leg
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0124"
+    concept: Runway in Sight
+    category: ATC Phraseology
+    priority: Critical
+    icaoParts:
+      - Part 2
+  - id: "0125"
+    concept: At Your Discretion
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0126"
+    concept: Read Back
+    category: Radio Communication
+    priority: Critical
+    icaoParts:
+      - Part 2
+  - id: "0127"
+    concept: Say Again
+    category: Radio Communication
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0128"
+    concept: Roger
+    category: Radio Communication
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0129"
+    concept: Wilco
+    category: Radio Communication
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0130"
+    concept: Unable
+    category: Radio Communication
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0131"
+    concept: Stand By
+    category: Radio Communication
+    priority: Medium
+    icaoParts:
+      - Part 2
+  - id: "0132"
+    concept: Affirm
+    category: Radio Communication
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0133"
+    concept: Negative
+    category: Radio Communication
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0134"
+    concept: Confirm
+    category: Radio Communication
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0135"
+    concept: Verify
+    category: Radio Communication
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0136"
+    concept: Monitor
+    category: Radio Communication
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0137"
+    concept: Contact
+    category: Radio Communication
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0138"
+    concept: Frequency Change
+    category: Radio Communication
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0139"
+    concept: Squawk
+    category: ATC Phraseology
+    priority: Critical
+    icaoParts:
+      - Part 2
+  - id: "0140"
+    concept: Transponder Failure
+    category: Aircraft Systems
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0141"
+    concept: Ident
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0142"
+    concept: Traffic in Sight
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0143"
+    concept: No Traffic in Sight
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0144"
+    concept: Traffic Alert
+    category: ATC Phraseology
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0145"
+    concept: TCAS Resolution Advisory
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0146"
+    concept: TCAS Traffic Advisory
+    category: Emergency
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0147"
+    concept: Cleared ILS Approach
+    category: ATC Phraseology
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0148"
+    concept: Cleared RNAV Approach
+    category: ATC Phraseology
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0149"
+    concept: Cleared VOR Approach
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0150"
+    concept: Hold at Fix
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0151"
+    concept: Hold as Published
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0152"
+    concept: Standard Terminal Arrival
+    category: Navigation
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0153"
+    concept: SID Clearance
+    category: Navigation
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0154"
+    concept: STAR Clearance
+    category: Navigation
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0155"
+    concept: Climb Via SID
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0156"
+    concept: Descend Via STAR
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0157"
+    concept: Speed Restriction
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0158"
+    concept: Altitude Restriction
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0159"
+    concept: Crossing Restriction
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0160"
+    concept: Procedure Turn
+    category: Navigation
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0161"
+    concept: Circling Approach
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0162"
+    concept: Contact Approach
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0163"
+    concept: Localizer Approach
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0164"
+    concept: Glideslope Unreliable
+    category: Aircraft Systems
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0165"
+    concept: RVR Report
+    category: Weather
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0166"
+    concept: Braking Action
+    category: Airport Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0167"
+    concept: Runway Condition
+    category: Airport Operations
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0168"
+    concept: Runway Wet
+    category: Airport Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0169"
+    concept: Runway Contaminated
+    category: Airport Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0170"
+    concept: Winds Reported
+    category: Weather
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0171"
+    concept: Altimeter Setting
+    category: Navigation
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0172"
+    concept: Proceed to VOR
+    category: Navigation
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0173"
+    concept: Resume Conventional Navigation
+    category: Navigation
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0174"
+    concept: Fly En Route
+    category: Navigation
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0175"
+    concept: Left-Hand Pattern
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0176"
+    concept: Pattern Work
+    category: ATC Phraseology
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0177"
+    concept: Drift Down Procedure
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0178"
+    concept: Maximum Altitude Capability
+    category: Performance
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0179"
+    concept: Level at Flight Level
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0180"
+    concept: Steep Descent
+    category: ATC Phraseology
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0181"
+    concept: Runway Incursion
+    category: Airport Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+  - id: "0182"
+    concept: Longest Available Runway
+    category: Airport Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0183"
+    concept: Visual Meteorological Conditions
+    category: Navigation
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0184"
+    concept: Instrument Meteorological Conditions
+    category: Navigation
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0185"
+    concept: Top of Descent
+    category: Navigation
+    priority: Medium
+    icaoParts:
+      - Part 2
+  - id: "0186"
+    concept: Weather Deviation
+    category: Navigation
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0187"
+    concept: Restricted Area
+    category: Navigation
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0188"
+    concept: Military Activity
+    category: Navigation
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0189"
+    concept: Rate of Descent
+    category: Navigation
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0190"
+    concept: Altimeter Disagreement
+    category: Aircraft Systems
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0191"
+    concept: RNAV Failure
+    category: Aircraft Systems
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0192"
+    concept: VOR Failure
+    category: Aircraft Systems
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0193"
+    concept: ILS Failure
+    category: Aircraft Systems
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0194"
+    concept: Autopilot Failure
+    category: Aircraft Systems
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0195"
+    concept: Yaw Damper Failure
+    category: Aircraft Systems
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0196"
+    concept: Flight Management System Failure
+    category: Aircraft Systems
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0197"
+    concept: Electronic Navigation Failure
+    category: Aircraft Systems
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0198"
+    concept: GPS RAIM Failure
+    category: Aircraft Systems
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0199"
+    concept: Magnetic Compass Failure
+    category: Aircraft Systems
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0200"
+    concept: Taxi with Caution
+    category: Ground Operations
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0201"
+    concept: Taxi to Gate
+    category: Ground Operations
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0202"
+    concept: Taxi to Ramp
+    category: Ground Operations
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0203"
+    concept: Approved Taxi
+    category: Ground Operations
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0204"
+    concept: Pushback
+    category: Ground Operations
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0205"
+    concept: Tow Truck
+    category: Ground Operations
+    priority: Medium
+    icaoParts:
+      - Part 2
+  - id: "0206"
+    concept: Tow Bar
+    category: Ground Operations
+    priority: Low
+    icaoParts:
+      - Part 2
+  - id: "0207"
+    concept: Startup Clearance
+    category: Ground Operations
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0208"
+    concept: Return to Parking
+    category: Ground Operations
+    priority: Medium
+    icaoParts:
+      - Part 2
+  - id: "0209"
+    concept: Disembark Passengers
+    category: Ground Operations
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0210"
+    concept: Give Way to Aircraft
+    category: Ground Operations
+    priority: Medium
+    icaoParts:
+      - Part 2
+  - id: "0211"
+    concept: Aircraft Towed
+    category: Ground Operations
+    priority: Medium
+    icaoParts:
+      - Part 2
+  - id: "0212"
+    concept: Aircraft Stuck on Taxiway
+    category: Ground Operations
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0213"
+    concept: Maintenance on the Way
+    category: Ground Operations
+    priority: Medium
+    icaoParts:
+      - Part 2
+  - id: "0214"
+    concept: Ground Staff on the Way
+    category: Ground Operations
+    priority: Medium
+    icaoParts:
+      - Part 2
+  - id: "0215"
+    concept: Firefighters on the Way
+    category: Ground Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0216"
+    concept: Airport Authority
+    category: Ground Operations
+    priority: Medium
+    icaoParts:
+      - Part 2
+  - id: "0217"
+    concept: Work in Progress
+    category: Ground Operations
+    priority: Medium
+    icaoParts:
+      - Part 2
+  - id: "0218"
+    concept: Airport Operations Closed
+    category: Ground Operations
+    priority: Medium
+    icaoParts:
+      - Part 2
+  - id: "0219"
+    concept: Cargo Apron
+    category: Ground Operations
+    priority: Low
+    icaoParts:
+      - Part 2
+  - id: "0220"
+    concept: Debris on Taxiway
+    category: Airport Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0221"
+    concept: Wreckage on Runway
+    category: Airport Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0222"
+    concept: FOD Reported
+    category: Airport Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0223"
+    concept: Drone Near Airport
+    category: Airport Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0224"
+    concept: Tow Truck Collision
+    category: Ground Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0225"
+    concept: Runway Excursion
+    category: Airport Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0226"
+    concept: Runway Overrun
+    category: Airport Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0227"
+    concept: Runway Closure
+    category: Airport Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0228"
+    concept: Taxiway Closure
+    category: Airport Operations
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0229"
+    concept: NOTAM
+    category: Navigation
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0230"
+    concept: Temporary Restricted Area
+    category: Navigation
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0231"
+    concept: Hot Spot
+    category: Airport Operations
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0232"
+    concept: Stop Bar
+    category: Airport Operations
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0233"
+    concept: Follow Me Vehicle
+    category: Ground Operations
+    priority: Medium
+    icaoParts:
+      - Part 2
+  - id: "0234"
+    concept: Marshalling Signals
+    category: Ground Operations
+    priority: Medium
+    icaoParts:
+      - Part 2
+  - id: "0235"
+    concept: De-Icing
+    category: Ground Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0236"
+    concept: Anti-Icing
+    category: Ground Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0237"
+    concept: Holdover Time
+    category: Ground Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0238"
+    concept: De-Icing System Failure
+    category: Aircraft Systems
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0239"
+    concept: Pitot Heat Failure
+    category: Aircraft Systems
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0240"
+    concept: Windshield Heat Failure
+    category: Aircraft Systems
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0241"
+    concept: Bleed Air Failure
+    category: Aircraft Systems
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0242"
+    concept: Air Conditioning Smoke
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0243"
+    concept: Avionics Smoke
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0244"
+    concept: Cargo Smoke
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0245"
+    concept: Lavatory Smoke
+    category: Emergency
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0246"
+    concept: Oxygen Mask Deployment
+    category: Emergency
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0247"
+    concept: Passenger Oxygen On
+    category: Emergency
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0248"
+    concept: Crew Oxygen On
+    category: Emergency
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0249"
+    concept: Emergency Descent
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0250"
+    concept: Rapid Decompression
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0251"
+    concept: Engine Stall
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0252"
+    concept: Engine Surge
+    category: Emergency
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0253"
+    concept: Hydraulic Leak
+    category: Aircraft Systems
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0254"
+    concept: Hydraulic Pressure Dropping
+    category: Aircraft Systems
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0255"
+    concept: Total Electrical Failure
+    category: Aircraft Systems
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0256"
+    concept: Battery Power
+    category: Aircraft Systems
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0257"
+    concept: Partial Panel
+    category: Aircraft Systems
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0258"
+    concept: Propeller Failure
+    category: Aircraft Systems
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0259"
+    concept: Landing Gear Stuck
+    category: Aircraft Systems
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0260"
+    concept: Landing Gear Unsafe Indication
+    category: Aircraft Systems
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0261"
+    concept: Main Landing Gear Collapsed
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0262"
+    concept: Landing Gear Retraction Failure
+    category: Aircraft Systems
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0263"
+    concept: Gear Down and Locked
+    category: Aircraft Systems
+    priority: Medium
+    icaoParts:
+      - Part 2
+  - id: "0264"
+    concept: Wheels-Up Landing
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0265"
+    concept: Belly Landing
+    category: Emergency
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0266"
+    concept: Flaps-Up Landing
+    category: Emergency
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0267"
+    concept: Flap Failure
+    category: Aircraft Systems
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0268"
+    concept: Spoiler Failure
+    category: Aircraft Systems
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0269"
+    concept: Speed Brake Failure
+    category: Aircraft Systems
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0270"
+    concept: Aileron Failure
+    category: Aircraft Systems
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0271"
+    concept: Elevator Failure
+    category: Aircraft Systems
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0272"
+    concept: Rudder Failure
+    category: Aircraft Systems
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0273"
+    concept: Trim Runaway
+    category: Aircraft Systems
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0274"
+    concept: Stabilizer Trim Failure
+    category: Aircraft Systems
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0275"
+    concept: Pressurization Problem
+    category: Emergency
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0276"
+    concept: Fire in the Hold
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0277"
+    concept: Fire in the Wheel Well
+    category: Emergency
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0278"
+    concept: Galley Fire
+    category: Emergency
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0279"
+    concept: Uncontrollable Fire
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0280"
+    concept: Cargo Door Separated
+    category: Emergency
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0281"
+    concept: Windshield Damage
+    category: Emergency
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0282"
+    concept: Forward Cargo Door Open
+    category: Emergency
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0283"
+    concept: Aft Cargo Door Open
+    category: Emergency
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0284"
+    concept: Lightning Strike
+    category: Emergency
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0285"
+    concept: Emergency Evacuation
+    category: Emergency
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0286"
+    concept: Emergency Services
+    category: Emergency
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0287"
+    concept: Escape Slide Deployed
+    category: Emergency
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0288"
+    concept: Dangerous Goods on Board
+    category: Emergency
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0289"
+    concept: Hazmat on Board
+    category: Emergency
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0290"
+    concept: Human Organ Transport
+    category: Emergency
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0291"
+    concept: Ditching
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0292"
+    concept: Forced Landing
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0293"
+    concept: Overweight Landing
+    category: Emergency
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0294"
+    concept: Overrun Evacuation
+    category: Emergency
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0295"
+    concept: Fuel Leak
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0296"
+    concept: Fuel Imbalance
+    category: Aircraft Systems
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0297"
+    concept: Fuel Transfer Failure
+    category: Aircraft Systems
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0298"
+    concept: Crossfeed Failure
+    category: Aircraft Systems
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0299"
+    concept: APU Fire
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0300"
+    concept: APU Failure
+    category: Aircraft Systems
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0301"
+    concept: Engine Fire
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0302"
+    concept: Radar Contact Lost
+    category: Radio Communication
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0303"
+    concept: Transmission Readable
+    category: Radio Communication
+    priority: Medium
+    icaoParts:
+      - Part 2
+  - id: "0304"
+    concept: Poor Readability
+    category: Radio Communication
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0305"
+    concept: Blocked Transmission
+    category: Radio Communication
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0306"
+    concept: Garbled Message
+    category: Radio Communication
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0307"
+    concept: Confirm ETA
+    category: Radio Communication
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0308"
+    concept: Confirm Diversion
+    category: Radio Communication
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0309"
+    concept: Confirm Deviation
+    category: Radio Communication
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0310"
+    concept: Confirm Detour for Weather
+    category: Radio Communication
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0311"
+    concept: Confirm Fuel Remaining
+    category: Radio Communication
+    priority: Medium
+    icaoParts:
+      - Part 2
+  - id: "0312"
+    concept: Confirm Souls on Board
+    category: Radio Communication
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0313"
+    concept: Need Assistance
+    category: Radio Communication
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0314"
+    concept: Assistance upon Arrival
+    category: Radio Communication
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0315"
+    concept: Confirm Intentions
+    category: Radio Communication
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0316"
+    concept: Confirm Approach Adequate
+    category: Radio Communication
+    priority: Medium
+    icaoParts:
+      - Part 2
+  - id: "0317"
+    concept: Be Advised
+    category: Radio Communication
+    priority: Medium
+    icaoParts:
+      - Part 2
+  - id: "0318"
+    concept: Say Indicated Airspeed
+    category: Radio Communication
+    priority: Medium
+    icaoParts:
+      - Part 2
+  - id: "0319"
+    concept: Say Altitude
+    category: Radio Communication
+    priority: Medium
+    icaoParts:
+      - Part 2
+  - id: "0320"
+    concept: Say Heading
+    category: Radio Communication
+    priority: Medium
+    icaoParts:
+      - Part 2
+  - id: "0321"
+    concept: Report Leaving Altitude
+    category: Radio Communication
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0322"
+    concept: Report Reaching Altitude
+    category: Radio Communication
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0323"
+    concept: Report Established
+    category: Radio Communication
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0324"
+    concept: Report Airborne
+    category: Radio Communication
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0325"
+    concept: Report Passing Fix
+    category: Radio Communication
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0326"
+    concept: Report Level
+    category: Radio Communication
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0327"
+    concept: Passenger Passed Out
+    category: Passenger
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0328"
+    concept: Flight Attendant Fainted
+    category: Crew
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0329"
+    concept: Heart Attack
+    category: Passenger
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0330"
+    concept: Seizure
+    category: Passenger
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0331"
+    concept: Food Poisoning
+    category: Passenger
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0332"
+    concept: Unruly Passenger
+    category: Passenger
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0333"
+    concept: Unaccompanied Minor
+    category: Passenger
+    priority: Medium
+    icaoParts:
+      - Part 2
+  - id: "0334"
+    concept: Persons on Board
+    category: Passenger
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0335"
+    concept: Loose Animal on Board
+    category: Passenger
+    priority: Low
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0336"
+    concept: Medical Emergency
+    category: Passenger
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0337"
+    concept: In-Flight Childbirth
+    category: Passenger
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0338"
+    concept: Allergic Reaction
+    category: Passenger
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0339"
+    concept: Diabetic Emergency
+    category: Passenger
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0340"
+    concept: Hypoxia Symptoms
+    category: Human Factors
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0341"
+    concept: Hyperventilation
+    category: Human Factors
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0342"
+    concept: Flight Attendant
+    category: Crew
+    priority: Medium
+    icaoParts:
+      - Part 1
+      - Part 2
+  - id: "0343"
+    concept: Flight Purser
+    category: Crew
+    priority: Medium
+    icaoParts:
+      - Part 1
+      - Part 2
+  - id: "0344"
+    concept: Cabin Crew
+    category: Crew
+    priority: Medium
+    icaoParts:
+      - Part 1
+      - Part 2
+  - id: "0345"
+    concept: First Officer
+    category: Crew
+    priority: Medium
+    icaoParts:
+      - Part 1
+      - Part 2
+  - id: "0346"
+    concept: Captain
+    category: Crew
+    priority: Medium
+    icaoParts:
+      - Part 1
+      - Part 2
+  - id: "0347"
+    concept: Relief Pilot
+    category: Crew
+    priority: Medium
+    icaoParts:
+      - Part 1
+      - Part 2
+  - id: "0348"
+    concept: Check Pilot
+    category: Crew
+    priority: Medium
+    icaoParts:
+      - Part 1
+      - Part 2
+  - id: "0349"
+    concept: System Assessment
+    category: Aircraft Systems
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0350"
+    concept: Smoke Evacuation Procedure
+    category: Emergency
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0351"
+    concept: Fire Suppression
+    category: Emergency
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0352"
+    concept: Brace Position
+    category: Emergency
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0353"
+    concept: Evacuation Command
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0354"
+    concept: Gusty Wind on Final
+    category: Weather
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0355"
+    concept: Shower Over the Field
+    category: Weather
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0356"
+    concept: Expect Moderate Turbulence
+    category: Weather
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0357"
+    concept: Expect Severe Turbulence
+    category: Weather
+    priority: High
+    icaoParts:
+      - Part 2
+  - id: "0358"
+    concept: Hot Air Balloon Traffic
+    category: Weather
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0359"
+    concept: Volcanic Ash
+    category: Weather
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0360"
+    concept: Sandstorm
+    category: Weather
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0361"
+    concept: Dust Storm
+    category: Weather
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0362"
+    concept: Freezing Rain
+    category: Weather
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0363"
+    concept: Freezing Drizzle
+    category: Weather
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0364"
+    concept: Supercooled Large Droplets
+    category: Weather
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0365"
+    concept: Clear Ice
+    category: Weather
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0366"
+    concept: Rime Ice
+    category: Weather
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0367"
+    concept: Structural Icing
+    category: Weather
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0368"
+    concept: Carburetor Icing
+    category: Aircraft Systems
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0369"
+    concept: Anti-Ice System Failure
+    category: Aircraft Systems
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0370"
+    concept: Windshield Icing
+    category: Weather
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0371"
+    concept: Low-Level Wind Shear
+    category: Weather
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0372"
+    concept: Mountain Wave
+    category: Weather
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0373"
+    concept: Lee Side Turbulence
+    category: Weather
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0374"
+    concept: Convective SIGMET
+    category: Weather
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0375"
+    concept: AIRMET
+    category: Weather
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0376"
+    concept: SIGMET
+    category: Weather
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0377"
+    concept: METAR
+    category: Weather
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0378"
+    concept: TAF
+    category: Weather
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0379"
+    concept: Ceiling Below Minimums
+    category: Weather
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0380"
+    concept: Visibility Below Minimums
+    category: Weather
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0381"
+    concept: Alternate Required
+    category: Navigation
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0382"
+    concept: Fuel Reserve
+    category: Performance
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0383"
+    concept: Takeoff Performance
+    category: Performance
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+      - Part 4
+  - id: "0384"
+    concept: Landing Performance
+    category: Performance
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+      - Part 4
+  - id: "0385"
+    concept: Weight and Balance
+    category: Performance
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+      - Part 4
+  - id: "0386"
+    concept: Center of Gravity Limits
+    category: Performance
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0387"
+    concept: Maximum Takeoff Weight
+    category: Performance
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0388"
+    concept: Maximum Landing Weight
+    category: Performance
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0389"
+    concept: Runway Length Limitation
+    category: Performance
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0390"
+    concept: Obstacle Clearance
+    category: Performance
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+      - Part 4
+  - id: "0391"
+    concept: Single-Engine Performance
+    category: Performance
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0392"
+    concept: Critical Engine Failure
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0393"
+    concept: V1 Decision Speed
+    category: Performance
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0394"
+    concept: V2 Takeoff Safety Speed
+    category: Performance
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0395"
+    concept: Vref Landing Reference Speed
+    category: Performance
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0396"
+    concept: Stall Warning
+    category: Aircraft Systems
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0397"
+    concept: Stick Shaker
+    category: Aircraft Systems
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0398"
+    concept: Stick Pusher
+    category: Aircraft Systems
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0399"
+    concept: Windshear Escape Maneuver
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0400"
+    concept: GPWS Warning
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0401"
+    concept: GPWS Pull Up
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0402"
+    concept: Terrain Awareness Warning
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0403"
+    concept: Minimum Safe Altitude
+    category: Navigation
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0404"
+    concept: Helicopter Emergency Medical Services
+    category: Helicopter Operations
+    priority: High
+    icaoParts:
+      - Part 1
+      - Part 2
+      - Part 4
+  - id: "0405"
+    concept: Search and Rescue
+    category: Helicopter Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+      - Part 4
+  - id: "0406"
+    concept: Sling Load Operations
+    category: Helicopter Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0407"
+    concept: External Load Jettison
+    category: Helicopter Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0408"
+    concept: Deck Landing
+    category: Helicopter Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+      - Part 4
+  - id: "0409"
+    concept: Helideck Operations
+    category: Helicopter Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+      - Part 4
+  - id: "0410"
+    concept: Helideck Winching
+    category: Helicopter Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0411"
+    concept: Night Vision Goggle Operations
+    category: Helicopter Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0412"
+    concept: NVG Failure
+    category: Helicopter Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0413"
+    concept: Rotor Brake Engagement
+    category: Helicopter Operations
+    priority: Medium
+    icaoParts:
+      - Part 2
+  - id: "0414"
+    concept: Rotor Brake Failure
+    category: Helicopter Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0415"
+    concept: Collective Failure
+    category: Helicopter Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0416"
+    concept: Cyclic Failure
+    category: Helicopter Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0417"
+    concept: Pedal Failure
+    category: Helicopter Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0418"
+    concept: Governor Failure
+    category: Helicopter Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0419"
+    concept: Dual Engine Failure
+    category: Helicopter Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0420"
+    concept: Single Engine Operation
+    category: Helicopter Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0421"
+    concept: OEI Training
+    category: Helicopter Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0422"
+    concept: Translational Lift
+    category: Helicopter Operations
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0423"
+    concept: Effective Translational Lift
+    category: Helicopter Operations
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0424"
+    concept: Ground Effect
+    category: Performance
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0425"
+    concept: High Hover
+    category: Helicopter Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0426"
+    concept: Low Hover
+    category: Helicopter Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0427"
+    concept: Hover Out of Ground Effect
+    category: Helicopter Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0428"
+    concept: Hover In Ground Effect
+    category: Helicopter Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0429"
+    concept: Quick Stop
+    category: Helicopter Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0430"
+    concept: Steep Approach
+    category: Helicopter Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0431"
+    concept: Steep Turn
+    category: Helicopter Operations
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 4
+  - id: "0432"
+    concept: Low-G Condition
+    category: Helicopter Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0433"
+    concept: Retreating Blade Stall
+    category: Helicopter Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0434"
+    concept: Ground Resonance
+    category: Helicopter Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0435"
+    concept: Blade Sail
+    category: Helicopter Operations
+    priority: Medium
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0436"
+    concept: Fenestron Blockage
+    category: Helicopter Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0437"
+    concept: Tail Rotor Pedal Input
+    category: Helicopter Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0438"
+    concept: Swirl on Helideck
+    category: Helicopter Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+      - Part 4
+  - id: "0439"
+    concept: Hot Refueling
+    category: Helicopter Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0440"
+    concept: Cold Refueling
+    category: Helicopter Operations
+    priority: Medium
+    icaoParts:
+      - Part 2
+  - id: "0441"
+    concept: Fuel Contamination
+    category: Aircraft Systems
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0442"
+    concept: Fuel Filter Bypass
+    category: Aircraft Systems
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0443"
+    concept: MGB Temperature High
+    category: Helicopter Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0444"
+    concept: MGB Chip Detector
+    category: Helicopter Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0445"
+    concept: MGB Oil Pressure Low
+    category: Helicopter Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0446"
+    concept: Tail Rotor Drive Failure
+    category: Helicopter Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0447"
+    concept: Hydraulic Boost Failure
+    category: Helicopter Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0448"
+    concept: Flight Control Hydraulic Failure
+    category: Helicopter Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0449"
+    concept: AFCS Failure
+    category: Helicopter Operations
+    priority: High
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0450"
+    concept: Trim Release Runaway
+    category: Helicopter Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0451"
+    concept: Cyclic Trim Runaway
+    category: Helicopter Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0452"
+    concept: Collective Trim Runaway
+    category: Helicopter Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0453"
+    concept: Engine Overtemp
+    category: Helicopter Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0454"
+    concept: Engine Overtorque
+    category: Helicopter Operations
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0455"
+    concept: Crew Resource Management
+    category: CRM
+    priority: Critical
+    icaoParts:
+      - Part 1
+      - Part 2
+      - Part 4
+  - id: "0456"
+    concept: Situational Awareness
+    category: CRM
+    priority: Critical
+    icaoParts:
+      - Part 1
+      - Part 2
+      - Part 4
+  - id: "0457"
+    concept: Threat and Error Management
+    category: CRM
+    priority: Critical
+    icaoParts:
+      - Part 1
+      - Part 2
+      - Part 4
+  - id: "0458"
+    concept: Decision Making
+    category: CRM
+    priority: Critical
+    icaoParts:
+      - Part 1
+      - Part 2
+      - Part 4
+  - id: "0459"
+    concept: Workload Management
+    category: CRM
+    priority: High
+    icaoParts:
+      - Part 1
+      - Part 2
+      - Part 4
+  - id: "0460"
+    concept: Communication Loop Closure
+    category: CRM
+    priority: High
+    icaoParts:
+      - Part 1
+      - Part 2
+  - id: "0461"
+    concept: Cross-Checking
+    category: CRM
+    priority: High
+    icaoParts:
+      - Part 1
+      - Part 2
+  - id: "0462"
+    concept: Challenge and Response
+    category: CRM
+    priority: High
+    icaoParts:
+      - Part 1
+      - Part 2
+  - id: "0463"
+    concept: Standard Operating Procedures
+    category: CRM
+    priority: High
+    icaoParts:
+      - Part 1
+      - Part 2
+      - Part 4
+  - id: "0464"
+    concept: Sterile Cockpit
+    category: CRM
+    priority: High
+    icaoParts:
+      - Part 1
+      - Part 2
+  - id: "0465"
+    concept: Fatigue Management
+    category: Human Factors
+    priority: Critical
+    icaoParts:
+      - Part 1
+      - Part 2
+      - Part 4
+  - id: "0466"
+    concept: Stress Management
+    category: Human Factors
+    priority: High
+    icaoParts:
+      - Part 1
+      - Part 2
+      - Part 4
+  - id: "0467"
+    concept: Startle Effect
+    category: Human Factors
+    priority: High
+    icaoParts:
+      - Part 1
+      - Part 2
+      - Part 3
+  - id: "0468"
+    concept: Surprise Response
+    category: Human Factors
+    priority: High
+    icaoParts:
+      - Part 1
+      - Part 2
+      - Part 3
+  - id: "0469"
+    concept: Automation Complacency
+    category: Human Factors
+    priority: High
+    icaoParts:
+      - Part 1
+      - Part 2
+      - Part 4
+  - id: "0470"
+    concept: Automation Bias
+    category: Human Factors
+    priority: High
+    icaoParts:
+      - Part 1
+      - Part 2
+      - Part 4
+  - id: "0471"
+    concept: Mode Confusion
+    category: Human Factors
+    priority: High
+    icaoParts:
+      - Part 1
+      - Part 2
+      - Part 3
+  - id: "0472"
+    concept: Confirmation Bias
+    category: Human Factors
+    priority: Medium
+    icaoParts:
+      - Part 1
+      - Part 2
+      - Part 4
+  - id: "0473"
+    concept: Plan Continuation Bias
+    category: Human Factors
+    priority: High
+    icaoParts:
+      - Part 1
+      - Part 2
+      - Part 3
+  - id: "0474"
+    concept: Channelized Attention
+    category: Human Factors
+    priority: High
+    icaoParts:
+      - Part 1
+      - Part 2
+      - Part 3
+  - id: "0475"
+    concept: Distraction
+    category: Human Factors
+    priority: High
+    icaoParts:
+      - Part 1
+      - Part 2
+      - Part 3
+  - id: "0476"
+    concept: Interruption Management
+    category: Human Factors
+    priority: High
+    icaoParts:
+      - Part 1
+      - Part 2
+  - id: "0477"
+    concept: Spatial Disorientation
+    category: Human Factors
+    priority: Critical
+    icaoParts:
+      - Part 1
+      - Part 2
+      - Part 3
+  - id: "0478"
+    concept: Vestibular Illusion
+    category: Human Factors
+    priority: High
+    icaoParts:
+      - Part 1
+      - Part 2
+      - Part 4
+  - id: "0479"
+    concept: Somatogravic Illusion
+    category: Human Factors
+    priority: High
+    icaoParts:
+      - Part 1
+      - Part 2
+      - Part 4
+  - id: "0480"
+    concept: Leans
+    category: Human Factors
+    priority: Medium
+    icaoParts:
+      - Part 1
+      - Part 2
+      - Part 4
+  - id: "0481"
+    concept: Black Hole Approach
+    category: Human Factors
+    priority: High
+    icaoParts:
+      - Part 1
+      - Part 2
+      - Part 3
+  - id: "0482"
+    concept: Controlled Flight Into Terrain
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+      - Part 4
+  - id: "0483"
+    concept: Loss of Control In Flight
+    category: Emergency
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+      - Part 4
+  - id: "0484"
+    concept: Unstable Approach
+    category: Human Factors
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0485"
+    concept: Go-Around Decision
+    category: CRM
+    priority: Critical
+    icaoParts:
+      - Part 2
+      - Part 3
+  - id: "0486"
+    concept: Just Culture
+    category: CRM
+    priority: Medium
+    icaoParts:
+      - Part 1
+      - Part 4
+  - id: "0487"
+    concept: Assertiveness
+    category: CRM
+    priority: High
+    icaoParts:
+      - Part 1
+      - Part 2
+  - id: "0488"
+    concept: Leadership
+    category: CRM
+    priority: High
+    icaoParts:
+      - Part 1
+      - Part 2
+  - id: "0489"
+    concept: Team Coordination
+    category: CRM
+    priority: High
+    icaoParts:
+      - Part 1
+      - Part 2
+      - Part 4
+  - id: "0490"
+    concept: Briefing
+    category: CRM
+    priority: High
+    icaoParts:
+      - Part 1
+      - Part 2
+  - id: "0491"
+    concept: Debriefing
+    category: CRM
+    priority: High
+    icaoParts:
+      - Part 1
+      - Part 2
+      - Part 4
+  - id: "0492"
+    concept: Risk Assessment
+    category: CRM
+    priority: High
+    icaoParts:
+      - Part 1
+      - Part 2
+      - Part 4
+  - id: "0493"
+    concept: Hazard Identification
+    category: CRM
+    priority: High
+    icaoParts:
+      - Part 1
+      - Part 2
+      - Part 4
+  - id: "0494"
+    concept: Safety Culture
+    category: CRM
+    priority: Medium
+    icaoParts:
+      - Part 1
+      - Part 4
+  - id: "0495"
+    concept: Aviation English Proficiency
+    category: ICAO Speaking
+    priority: Critical
+    icaoParts:
+      - Part 1
+  - id: "0496"
+    concept: Pronunciation
+    category: ICAO Speaking
+    priority: Critical
+    icaoParts:
+      - Part 1
+  - id: "0497"
+    concept: Structure
+    category: ICAO Speaking
+    priority: Critical
+    icaoParts:
+      - Part 1
+  - id: "0498"
+    concept: Vocabulary
+    category: ICAO Speaking
+    priority: Critical
+    icaoParts:
+      - Part 1
+  - id: "0499"
+    concept: Fluency
+    category: ICAO Speaking
+    priority: Critical
+    icaoParts:
+      - Part 1
+  - id: "0500"
+    concept: Comprehension
+    category: ICAO Speaking
+    priority: Critical
+    icaoParts:
+      - Part 1
+  - id: "0501"
+    concept: Interactions
+    category: ICAO Speaking
+    priority: Critical
+    icaoParts:
+      - Part 1
+  - id: "0502"
+    concept: Describing a Picture
+    category: ICAO Speaking
+    priority: High
+    icaoParts:
+      - Part 1
+  - id: "0503"
+    concept: Describing an Unusual Situation
+    category: ICAO Speaking
+    priority: High
+    icaoParts:
+      - Part 1
+  - id: "0504"
+    concept: Role Play ATC Communication
+    category: ICAO Speaking
+    priority: Critical
+    icaoParts:
+      - Part 2
+  - id: "0505"
+    concept: Giving Opinions
+    category: ICAO Speaking
+    priority: High
+    icaoParts:
+      - Part 1
+  - id: "0506"
+    concept: Explaining Procedures
+    category: ICAO Speaking
+    priority: High
+    icaoParts:
+      - Part 1
+      - Part 2
+  - id: "0507"
+    concept: Comparing Options
+    category: ICAO Speaking
+    priority: High
+    icaoParts:
+      - Part 1
+  - id: "0508"
+    concept: Hypothetical Scenarios
+    category: ICAO Speaking
+    priority: High
+    icaoParts:
+      - Part 1
+      - Part 2
+  - id: "0509"
+    concept: Past Experience Narrative
+    category: ICAO Speaking
+    priority: High
+    icaoParts:
+      - Part 1
+  - id: "0510"
+    concept: Future Plans Discussion
+    category: ICAO Speaking
+    priority: Medium
+    icaoParts:
+      - Part 1
