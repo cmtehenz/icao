@@ -20,16 +20,17 @@ import {
   type PronunciationDailyMissionState,
 } from "@/lib/pronunciationDailyMission";
 import {
-  loadVocabDailyMission,
-  saveVocabDailyMission,
-  vocabDailyMissionProgress,
-  type VocabDailyMissionState,
-} from "@/lib/vocabDailyMission";
+  loadWordDailyMission,
+  saveWordDailyMission,
+  wordDailyMissionProgress,
+} from "@/lib/wordMission/wordDailyMission";
+import type { VocabDailyMissionState } from "@/lib/vocabDailyMission";
 import {
   loadDailyMissionLog,
   markDailyMissionComplete,
   saveDailyMissionLogFromSync,
 } from "@/lib/dailyMissionLog";
+import { getDevKnowledgeTermIds } from "@/lib/knowledge/devKnowledge";
 import {
   loadFlightDebriefState,
   saveFlightDebriefState,
@@ -72,7 +73,7 @@ function missionsComplete(
   return (
     part1DailyMissionProgress(part1).complete &&
     part2DailyMissionProgress(part2).complete &&
-    vocabDailyMissionProgress(vocab).complete
+    wordDailyMissionProgress(vocab).complete
   );
 }
 
@@ -104,7 +105,7 @@ export function loadLocalDailyMissionBundle(): DailyMissionBundle {
   const pronunciation = loadPronunciationDailyMission();
   const part1 = loadPart1DailyMission();
   const part2 = loadPart2DailyMission();
-  const vocab = loadVocabDailyMission();
+  const vocab = loadWordDailyMission();
   const recall = loadMissionRecallState();
   const debrief = loadFlightDebriefState();
   const log = loadDailyMissionLog();
@@ -174,18 +175,10 @@ export function mergeVocabMission(
   if (!b) return a;
   if (a.date !== b.date) return a.date >= b.date ? a : b;
 
-  const preferA = a.completedIds.length >= b.completedIds.length;
-  const primary = preferA ? a : b;
-  const secondary = preferA ? b : a;
-
-  const termIds = [...primary.termIds];
-  for (const id of secondary.termIds) {
-    if (!termIds.includes(id) && secondary.completedIds.includes(id)) {
-      termIds.push(id);
-    }
-  }
-
-  const completed = new Set([...a.completedIds, ...b.completedIds]);
+  const termIds = getDevKnowledgeTermIds();
+  const completed = new Set(
+    [...a.completedIds, ...b.completedIds].filter((id) => termIds.includes(id)),
+  );
   const completedIds = termIds.filter((id) => completed.has(id));
 
   return {
@@ -316,7 +309,7 @@ export function applyDailyMissionBundle(bundle: DailyMissionBundle): void {
     if (bundle.pronunciation) savePronunciationDailyMission(bundle.pronunciation);
     if (bundle.part1) savePart1DailyMission(bundle.part1);
     if (bundle.part2) savePart2DailyMission(bundle.part2);
-    if (bundle.vocab) saveVocabDailyMission(bundle.vocab);
+    if (bundle.vocab) saveWordDailyMission(bundle.vocab);
     if (bundle.recall) saveMissionRecallState(bundle.recall);
     if (bundle.debrief) saveFlightDebriefState(bundle.debrief);
     if (bundle.complete) markDailyMissionComplete(bundle.date);

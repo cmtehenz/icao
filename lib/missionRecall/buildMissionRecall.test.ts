@@ -18,13 +18,48 @@ vi.mock("@/lib/pronunciationDailyMission", () => ({
   }),
 }));
 
-vi.mock("@/lib/vocabDailyMission", () => ({
-  getOrCreateVocabDailyMission: () => ({
+vi.mock("@/lib/wordMission/wordDailyMission", () => ({
+  getOrCreateWordDailyMission: () => ({
     date: "2026-07-05",
     examVersion: "23C",
-    termIds: ["v-atc-1", "v-emerg-1", "v-gear-1"],
-    completedIds: ["v-atc-1", "v-emerg-1", "v-gear-1"],
+    termIds: ["0001", "0007", "0009"],
+    completedIds: ["0001", "0007", "0009"],
   }),
+}));
+
+vi.mock("@/lib/wordMission/wordMissionCatalog", () => ({
+  getWordMissionVocabulary: () => [
+    {
+      id: "0001",
+      term: "fly direct",
+      meaning: "navegar direto para um ponto",
+      example: "ANAC123, fly direct NITUX.",
+      category: "Navigation",
+      categoryId: "atc",
+      difficulty: 2,
+      levels: { 1: "", 2: "", 3: "", 4: "" },
+    },
+    {
+      id: "0007",
+      term: "go around",
+      meaning: "arremeter",
+      example: "ANAC123, go around.",
+      category: "Approach",
+      categoryId: "atc",
+      difficulty: 2,
+      levels: { 1: "", 2: "", 3: "", 4: "" },
+    },
+    {
+      id: "0009",
+      term: "hold short",
+      meaning: "aguardar antes da pista",
+      example: "ANAC123, hold short runway 09.",
+      category: "Taxi",
+      categoryId: "atc",
+      difficulty: 2,
+      levels: { 1: "", 2: "", 3: "", 4: "" },
+    },
+  ],
 }));
 
 vi.mock("@/lib/part1DailyMission", () => ({
@@ -47,41 +82,6 @@ vi.mock("@/lib/cards", () => ({
       answer: "",
       vocab: [],
       targetWords: 0,
-    },
-  ],
-}));
-
-vi.mock("@/data/icaoVocabulary", () => ({
-  ICAO_VOCABULARY: [
-    {
-      id: "v-atc-1",
-      term: "crew coordination",
-      meaning: "communication between pilots",
-      example: "",
-      category: "ATC",
-      categoryId: "atc",
-      difficulty: 1,
-      levels: { 1: "", 2: "", 3: "", 4: "" },
-    },
-    {
-      id: "v-emerg-1",
-      term: "mayday",
-      meaning: "distress call",
-      example: "",
-      category: "Emergencies",
-      categoryId: "emergencies",
-      difficulty: 1,
-      levels: { 1: "", 2: "", 3: "", 4: "" },
-    },
-    {
-      id: "v-gear-1",
-      term: "gear",
-      meaning: "landing gear",
-      example: "",
-      category: "Landing Gear",
-      categoryId: "landing-gear",
-      difficulty: 1,
-      levels: { 1: "", 2: "", 3: "", 4: "" },
     },
   ],
 }));

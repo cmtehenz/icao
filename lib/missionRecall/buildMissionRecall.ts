@@ -1,11 +1,11 @@
 import { CARDS } from "@/lib/cards";
-import { ICAO_VOCABULARY } from "@/data/icaoVocabulary";
 import { getSituationsByExam } from "@/data/exams/part2Data";
 import { getTodayExamVersion, getTodayPart1CardNums } from "@/lib/dailyExamRotation";
 import { pickDailySlice } from "@/lib/dailyRotation";
 import { getOrCreatePart1DailyMission } from "@/lib/part1DailyMission";
 import { getOrCreatePronunciationDailyMission } from "@/lib/pronunciationDailyMission";
-import { getOrCreateVocabDailyMission } from "@/lib/vocabDailyMission";
+import { getOrCreateWordDailyMission } from "@/lib/wordMission/wordDailyMission";
+import { getWordMissionVocabulary } from "@/lib/wordMission/wordMissionCatalog";
 import type { MissionRecallItem } from "@/lib/missionRecall/missionRecallTypes";
 import { todayKey } from "@/lib/studyTime";
 
@@ -36,7 +36,7 @@ export function buildMissionRecallItems(dateKey = todayKey()): MissionRecallItem
   const items: MissionRecallItem[] = [];
 
   const pronMission = getOrCreatePronunciationDailyMission();
-  const vocabMission = getOrCreateVocabDailyMission();
+  const vocabMission = getOrCreateWordDailyMission();
   const part1Mission = getOrCreatePart1DailyMission(dateKey);
   const examVersion = getTodayExamVersion(dateKey);
   const situations = getSituationsByExam(examVersion);
@@ -62,8 +62,8 @@ export function buildMissionRecallItems(dateKey = todayKey()): MissionRecallItem
   }
 
   const vocabTerms = vocabMission.termIds
-    .map((id) => ICAO_VOCABULARY.find((t) => t.id === id))
-    .filter((t): t is (typeof ICAO_VOCABULARY)[number] => !!t);
+    .map((id) => getWordMissionVocabulary().find((t) => t.id === id))
+    .filter((t): t is ReturnType<typeof getWordMissionVocabulary>[number] => !!t);
   const recallTerms = pickDailySlice(vocabTerms, Math.min(VOCAB_RECALL_COUNT, vocabTerms.length), dateKey, 7);
 
   for (const term of recallTerms) {

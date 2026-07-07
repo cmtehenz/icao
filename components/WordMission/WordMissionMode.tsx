@@ -12,13 +12,16 @@ import {
   nextVocabMissionLevel,
 } from "@/lib/vocabGraduation";
 import { buildVocabMissionDebrief } from "@/lib/vocabMission";
-import { findWordMissionVocabItem } from "@/lib/wordMission/wordMissionCatalog";
+import {
+  findWordMissionVocabItem,
+  getWordMissionTermLabel,
+} from "@/lib/wordMission/wordMissionCatalog";
 import {
   getOrCreateWordDailyMission,
+  getWordMissionTodayTermLabels,
   isWordMissionTermInTodayMission,
   wordDailyMissionProgress,
   WORD_DAILY_MISSION_EVENT,
-  VOCAB_DAILY_WORD_COUNT,
 } from "@/lib/wordMission/wordDailyMission";
 import { wmLevelCode } from "@/lib/wordMission/types";
 
@@ -121,6 +124,11 @@ export default function WordMissionMode({ initialTermId }: { initialTermId?: str
     }
   }, [searchParams, initialTermId, startMission]);
 
+  const todayTermLabels = useMemo(
+    () => getWordMissionTodayTermLabels(getOrCreateWordDailyMission()),
+    [missionProgress.done, missionProgress.total],
+  );
+
   const activeProgress = activeItem ? getProgress(activeItem.id) : null;
   const missionTotal = missionProgress.total;
   const termIndex =
@@ -149,7 +157,7 @@ export default function WordMissionMode({ initialTermId }: { initialTermId?: str
           </p>
           {activeItem && termIndex > 0 && (
             <p className="vocab-mission-progress-detail" aria-live="polite">
-              Term {termIndex} of {missionTotal}: {activeItem.term}
+              Term {termIndex} of {missionTotal}: {getWordMissionTermLabel(activeItem)}
               {activeProgress && !isVocabMissionTermComplete(activeProgress) && (
                 <> · {wmLevelCode(practiceLevel)}</>
               )}
@@ -192,12 +200,17 @@ export default function WordMissionMode({ initialTermId }: { initialTermId?: str
         <section className="vocab-mission-card word-mission-intro-card">
           <p className="vocab-mission-badge">Captain Delta · ENGINE START</p>
           <p className="vocab-mission-quote">&ldquo;{WORD_MISSION_INTRO}&rdquo;</p>
+          {missionTotal > 0 && todayTermLabels.length > 0 && (
+            <p className="vocab-mission-today-terms">
+              Today&apos;s terms: {todayTermLabels.join(" · ")}
+            </p>
+          )}
           <button type="button" className="btn purple" onClick={startMission}>
             {missionProgress.done > 0 ? "Continue Flight" : "Begin Word Mission"}
           </button>
           {missionTotal > 0 && (
             <p className="vocab-mission-meta">
-              {missionProgress.done}/{missionTotal} terms complete · {VOCAB_DAILY_WORD_COUNT} today
+              {missionProgress.done}/{missionTotal} terms complete
             </p>
           )}
         </section>

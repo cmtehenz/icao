@@ -1,6 +1,8 @@
 export type DevKnowledgeEntry = {
   id: string;
   catalogId: string;
+  /** Title-case label for UI (e.g. "Fly Direct"). */
+  displayTerm: string;
   term: string;
   slug: string;
   category: string;

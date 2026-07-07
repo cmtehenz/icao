@@ -1,8 +1,12 @@
-import { ICAO_VOCABULARY } from "@/data/icaoVocabulary";
 import {
-  getOrCreateVocabDailyMission,
-  vocabDailyMissionProgress,
-} from "@/lib/vocabDailyMission";
+  findWordMissionVocabItem,
+  getWordMissionTermLabel,
+  getWordMissionVocabulary,
+} from "@/lib/wordMission/wordMissionCatalog";
+import {
+  getOrCreateWordDailyMission,
+  wordDailyMissionProgress,
+} from "@/lib/wordMission/wordDailyMission";
 import { isVocabMissionTermComplete, countVbLevelsPassed } from "@/lib/vocabGraduation";
 import { getItemProgress, loadVocabProgressStore } from "@/utils/spacedRepetition";
 
@@ -16,8 +20,8 @@ export type VocabMissionDebrief = {
 };
 
 export function buildVocabMissionDebrief(): VocabMissionDebrief {
-  const mission = getOrCreateVocabDailyMission();
-  const progress = vocabDailyMissionProgress(mission);
+  const mission = getOrCreateWordDailyMission();
+  const progress = wordDailyMissionProgress(mission);
   const store = loadVocabProgressStore();
 
   const weakTerms: string[] = [];
@@ -27,7 +31,9 @@ export function buildVocabMissionDebrief(): VocabMissionDebrief {
 
   for (const id of mission.termIds) {
     const item = getItemProgress(store, id);
-    const label = ICAO_VOCABULARY.find((t) => t.id === id)?.term ?? id;
+    const label = findWordMissionVocabItem(id)
+      ? getWordMissionTermLabel(findWordMissionVocabItem(id)!)
+      : id;
     if (isVocabMissionTermComplete(item)) {
       strongTerms.push(label);
     } else if (item.attempts > 0) {
@@ -41,7 +47,10 @@ export function buildVocabMissionDebrief(): VocabMissionDebrief {
 
   const nextId = progress.currentId;
   const nextLabel = nextId
-    ? ICAO_VOCABULARY.find((t) => t.id === nextId)?.term ?? null
+    ? (() => {
+        const item = findWordMissionVocabItem(nextId);
+        return item ? getWordMissionTermLabel(item) : null;
+      })()
     : null;
 
   let nextFocus: string | null = null;

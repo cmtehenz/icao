@@ -880,6 +880,13 @@
   color: var(--muted, #9ca3af);
 }
 
+.vocab-mission-today-terms {
+  margin: 0.75rem 0 0;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--muted, #9ca3af);
+}
+
 .vocab-debrief-card {
   padding: 1.25rem 1.35rem;
   border-radius: 12px;

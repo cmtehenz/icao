@@ -1,7 +1,6 @@
 import type { IcaoVocabularyItem } from "@/data/icaoVocabulary";
 import type { KnowledgeReviewMeta } from "@/lib/knowledge/review";
 import type { KnowledgeLessonDef } from "@/lib/knowledge/wordMissionAdapter";
-import { isDevKnowledgeEnabled } from "@/lib/knowledge/devKnowledgeFlag";
 import { BATCH01_DEV_ENTRIES } from "@/lib/knowledge/devKnowledge/batch01Entries";
 import type { DevKnowledgeEntry } from "@/lib/knowledge/devKnowledge/types";
 
@@ -12,6 +11,10 @@ const BY_TERM = new Map(BATCH01_DEV_ENTRIES.map((e) => [e.term.toLowerCase(), e]
 
 export function getDevKnowledgeTermIds(): string[] {
   return BATCH01_DEV_ENTRIES.map((e) => e.id);
+}
+
+export function getDevKnowledgeDisplayTerms(): string[] {
+  return BATCH01_DEV_ENTRIES.map((e) => e.displayTerm);
 }
 
 export function lookupDevKnowledgeById(id: string): DevKnowledgeEntry | null {
@@ -74,5 +77,5 @@ export function getDevWordMissionVocabulary(): IcaoVocabularyItem[] {
 }
 
 export function isDevKnowledgeTermId(id: string): boolean {
-  return isDevKnowledgeEnabled() && BY_ID.has(id);
+  return BY_ID.has(id);
 }

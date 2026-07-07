@@ -1,14 +1,17 @@
-import { ICAO_VOCABULARY } from "@/data/icaoVocabulary";
 import type { IcaoVocabularyItem } from "@/data/icaoVocabulary";
-import { isDevKnowledgeEnabled } from "@/lib/knowledge/devKnowledgeFlag";
-import { getDevWordMissionVocabulary } from "@/lib/knowledge/devKnowledge";
+import {
+  getDevKnowledgeDisplayTerms,
+  getDevWordMissionVocabulary,
+  lookupDevKnowledgeById,
+} from "@/lib/knowledge/devKnowledge";
 
-/** Word Mission term catalog — dev batch-01 only when NEXT_PUBLIC_DEV_KNOWLEDGE=true. */
+/** Word Mission catalog — completed premium lessons only. */
 export function getWordMissionVocabulary(): IcaoVocabularyItem[] {
-  if (isDevKnowledgeEnabled()) {
-    return getDevWordMissionVocabulary();
-  }
-  return ICAO_VOCABULARY;
+  return getDevWordMissionVocabulary();
+}
+
+export function getWordMissionVocabularyCount(): number {
+  return getWordMissionVocabulary().length;
 }
 
 export function findWordMissionVocabItem(idOrTerm: string): IcaoVocabularyItem | undefined {
@@ -18,4 +21,13 @@ export function findWordMissionVocabItem(idOrTerm: string): IcaoVocabularyItem |
     catalog.find((t) => t.id === key) ??
     catalog.find((t) => t.term.toLowerCase() === key.toLowerCase())
   );
+}
+
+export function getWordMissionTermLabel(item: IcaoVocabularyItem): string {
+  const premium = lookupDevKnowledgeById(item.id);
+  return premium?.displayTerm ?? item.term;
+}
+
+export function getWordMissionCatalogLabels(): string[] {
+  return getDevKnowledgeDisplayTerms();
 }

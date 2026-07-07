@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { CARDS } from "@/lib/cards";
-import { ICAO_VOCABULARY } from "@/data/icaoVocabulary";
 import { STUDY_ACTIVITY_RECORDED_EVENT } from "@/lib/studyActivityRecord";
 import { DAILY_MISSION_LOG_EVENT } from "@/lib/dailyMissionLog";
 import { getDailyMissionSummary, getSimuladoIcaoHref } from "@/lib/dailyMission";
@@ -24,9 +23,15 @@ import {
 } from "@/lib/part2DailyMission";
 import {
   VOCAB_DAILY_MISSION_EVENT,
-  getOrCreateVocabDailyMission,
 } from "@/lib/vocabDailyMission";
-import { wordMissionLink } from "@/lib/wordMission/wordDailyMission";
+import {
+  getOrCreateWordDailyMission,
+  wordMissionLink,
+} from "@/lib/wordMission/wordDailyMission";
+import {
+  findWordMissionVocabItem,
+  getWordMissionTermLabel,
+} from "@/lib/wordMission/wordMissionCatalog";
 import { PEEL_BLOCK_HISTORY_EVENT } from "@/lib/peelBlockHistory";
 import { PART1_COACH_HISTORY_EVENT } from "@/lib/part1CoachHistory";
 import { PART2_PROGRESS_EVENT } from "@/lib/part2/progress";
@@ -78,7 +83,10 @@ export default function DailyMissionPanel() {
   const summary = useMemo(() => getDailyMissionSummary(), [tick]);
   const part1 = useMemo(() => getOrCreatePart1DailyMission(), [tick]);
   const part2 = useMemo(() => getOrCreatePart2DailyMission(), [tick]);
-  const wordMission = useMemo(() => getOrCreateVocabDailyMission(), [tick]);
+  const wordMission = useMemo(() => getOrCreateWordDailyMission(), [tick]);
+  const currentWordMissionItem = summary.wordMission.currentId
+    ? findWordMissionVocabItem(summary.wordMission.currentId)
+    : null;
   const wordNextLink = wordMission.termIds.find((id) => !wordMission.completedIds.includes(id))
     ? wordMissionLink(
         wordMission.termIds.find((id) => !wordMission.completedIds.includes(id))!,
@@ -140,12 +148,16 @@ export default function DailyMissionPanel() {
             Word Mission — {summary.wordMission.done}/{summary.wordMission.total}
           </h3>
           <p className="daily-mission-meta">
-            20 termos da {summary.examLabel} — meaning, pilot phrase, sentence, ICAO use
+            {summary.wordMission.total} conceitos premium — meaning, pilot phrase, sentence, ICAO use
           </p>
           <p className="daily-mission-vocab-progress">
             {summary.wordMission.done}/{summary.wordMission.total} concluídos
             {!summary.wordMission.complete && summary.wordMission.currentId
-              ? ` · falta: ${ICAO_VOCABULARY.find((t) => t.id === summary.wordMission.currentId)?.term ?? "1"}`
+              ? ` · falta: ${
+                  currentWordMissionItem
+                    ? getWordMissionTermLabel(currentWordMissionItem)
+                    : summary.wordMission.currentId
+                }`
               : ""}
           </p>
           <Link href={wordNextLink} className="btn secondary btn-sm">

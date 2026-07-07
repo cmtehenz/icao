@@ -27,25 +27,19 @@ describe("Word Mission 2.1 — simplified lesson", () => {
     expect(totalLessonSteps()).toBe(4);
   });
 
-  it("fly direct examples come from knowledge base", () => {
+  it("fly direct examples come from premium knowledge", () => {
     const lesson = buildWordMissionLesson("fly direct");
     expect(lesson.knowledgeReview?.curated).toBe(true);
-    expect(lesson.steps[0]!.captainLine).toMatch(/straight to a point/i);
-    expect(lesson.steps[1]!.detail).toMatch(/fly direct NITUX/i);
-    expect(lesson.steps[2]!.speakText).toMatch(/fly direct NITUX/i);
+    expect(lesson.steps[0]!.captainLine).toMatch(/waypoint|specified/i);
+    expect(lesson.steps[1]!.detail).toMatch(/NITUX/i);
+    expect(lesson.steps[2]!.speakText).toMatch(/direct NITUX/i);
     expect(lesson.steps[3]!.captainLine).toMatch(/fly direct/i);
   });
 
-  it("continue uses continue approach example", () => {
-    const lesson = buildWordMissionLesson("continue");
-    expect(lesson.steps[1]!.detail).toMatch(/continue approach runway one eight/i);
+  it("continue approach uses premium example", () => {
+    const lesson = buildWordMissionLesson("continue approach");
+    expect(lesson.steps[1]!.detail).toMatch(/continue approach/i);
     expect(lesson.steps[3]!.captainLine).toMatch(/continue approach/i);
-  });
-
-  it("expect uses expected clearance example", () => {
-    const lesson = buildWordMissionLesson("expect");
-    expect(lesson.steps[1]!.detail).toMatch(/Expect descent after passing CHARLIE/i);
-    expect(lesson.steps[3]!.captainLine).toMatch(/expected clearances/i);
   });
 
   it("record enabled only in Say It and ICAO Practice", () => {
@@ -58,21 +52,21 @@ describe("Word Mission 2.1 — simplified lesson", () => {
   });
 
   it("normal ATC terms do not generate Pan Pan emergency L4", () => {
-    const vectors = findVocabItemForTerm("vectors to final")!;
-    const l4 = naturalIcaoSpeakText(vectors);
+    const goAround = findVocabItemForTerm("go around")!;
+    const l4 = naturalIcaoSpeakText(goAround);
     expect(l4).not.toMatch(/Pan Pan|Mayday|immediate return/i);
-    const vault = vaultWordFromVocabTerm(vectors);
+    const vault = vaultWordFromVocabTerm(goAround);
     expect(vault.contextPack.fragment).not.toMatch(/Pan Pan|immediate return/i);
   });
 
   it("emergency terms may use emergency phraseology in L4", () => {
-    const engine = findVocabItemForTerm("engine failure")!;
+    const engine = ICAO_VOCABULARY.find((t) => /engine failure/i.test(t.term))!;
     const l4 = naturalIcaoSpeakText(engine);
     expect(l4).toMatch(/Mayday|engine failure/i);
   });
 
   it("vault adapter uses simple lesson speak texts", () => {
-    const item = findVocabItemForTerm("fly direct") ?? ICAO_VOCABULARY[0]!;
+    const item = findVocabItemForTerm("fly direct")!;
     const lesson = buildWordMissionLesson(item);
     const vault = vaultWordFromVocabTerm(item);
     expect(vault.contextPack.sentence).toBe(lessonSpeakTextForLevel(lesson, 3));
@@ -84,7 +78,7 @@ describe("Word Mission 2.1 — interrupts", () => {
   beforeEach(() => resetCaptainLessonMemoryForTests());
 
   it("returns to lesson after interrupt", () => {
-    const lesson = buildWordMissionLesson("divert");
+    const lesson = buildWordMissionLesson("go around");
     const ctx = createLessonContext(lesson);
     const result = handleWordMissionInterrupt("What does divert mean?", ctx);
     expect(result.message).toMatch(/Back to our lesson/i);

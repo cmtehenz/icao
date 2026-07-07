@@ -2,30 +2,36 @@ import { getTodayExamVersion } from "@/lib/dailyExamRotation";
 import { syncDailyMissionLog } from "@/lib/dailyMissionLog";
 import type { ExamVersion } from "@/lib/exams/types";
 import { getDevKnowledgeTermIds } from "@/lib/knowledge/devKnowledge";
-import { isDevKnowledgeEnabled } from "@/lib/knowledge/devKnowledgeFlag";
-import { findWordMissionVocabItem, getWordMissionVocabulary } from "@/lib/wordMission/wordMissionCatalog";
+import {
+  findWordMissionVocabItem,
+  getWordMissionTermLabel,
+  getWordMissionVocabulary,
+  getWordMissionVocabularyCount,
+} from "@/lib/wordMission/wordMissionCatalog";
 import { todayKey } from "@/lib/studyTime";
 import {
-  getOrCreateVocabDailyMission,
-  isVocabTermInTodayMission,
-  markVocabDailyComplete,
   vocabDailyMissionProgress,
   VOCAB_DAILY_MISSION_EVENT,
-  VOCAB_DAILY_WORD_COUNT,
   type VocabDailyMissionState,
 } from "@/lib/vocabDailyMission";
 
-export { VOCAB_DAILY_WORD_COUNT };
 export const WORD_DAILY_MISSION_EVENT = VOCAB_DAILY_MISSION_EVENT;
 
-const DEV_MISSION_STORAGE_KEY = "icao_word_dev_daily_mission_v1";
+const PREMIUM_MISSION_STORAGE_KEY = "icao_word_premium_daily_mission_v1";
+const LEGACY_DEV_MISSION_STORAGE_KEY = "icao_word_dev_daily_mission_v1";
 
 function notifyMissionChange(): void {
   if (typeof window === "undefined") return;
   window.dispatchEvent(new Event(VOCAB_DAILY_MISSION_EVENT));
 }
 
-function isValidDevMission(parsed: unknown, date: string): parsed is VocabDailyMissionState {
+function clearLegacyMissionStorage(): void {
+  if (typeof window === "undefined") return;
+  localStorage.removeItem(LEGACY_DEV_MISSION_STORAGE_KEY);
+  localStorage.removeItem("icao_vocab_daily_mission_v2");
+}
+
+function isValidPremiumMission(parsed: unknown, date: string): parsed is VocabDailyMissionState {
   if (!parsed || typeof parsed !== "object") return false;
   const m = parsed as VocabDailyMissionState;
   const expectedIds = getDevKnowledgeTermIds();
@@ -38,29 +44,31 @@ function isValidDevMission(parsed: unknown, date: string): parsed is VocabDailyM
   );
 }
 
-function loadDevWordDailyMission(): VocabDailyMissionState | null {
+function loadPremiumWordDailyMission(): VocabDailyMissionState | null {
   if (typeof window === "undefined") return null;
   try {
-    const raw = localStorage.getItem(DEV_MISSION_STORAGE_KEY);
+    const raw = localStorage.getItem(PREMIUM_MISSION_STORAGE_KEY);
     if (!raw) return null;
     const parsed = JSON.parse(raw) as unknown;
-    if (!isValidDevMission(parsed, todayKey())) return null;
+    if (!isValidPremiumMission(parsed, todayKey())) return null;
     return parsed;
   } catch {
     return null;
   }
 }
 
-function saveDevWordDailyMission(state: VocabDailyMissionState): void {
+function savePremiumWordDailyMission(state: VocabDailyMissionState): void {
   if (typeof window === "undefined") return;
-  localStorage.setItem(DEV_MISSION_STORAGE_KEY, JSON.stringify(state));
+  localStorage.setItem(PREMIUM_MISSION_STORAGE_KEY, JSON.stringify(state));
   syncDailyMissionLog();
   notifyMissionChange();
 }
 
-function getOrCreateDevWordDailyMission(): VocabDailyMissionState {
-  const existing = loadDevWordDailyMission();
+function getOrCreatePremiumWordDailyMission(): VocabDailyMissionState {
+  const existing = loadPremiumWordDailyMission();
   if (existing) return existing;
+
+  clearLegacyMissionStorage();
 
   const date = todayKey();
   const examVersion = getTodayExamVersion(date) as ExamVersion;
@@ -70,15 +78,12 @@ function getOrCreateDevWordDailyMission(): VocabDailyMissionState {
     termIds: getDevKnowledgeTermIds(),
     completedIds: [],
   };
-  saveDevWordDailyMission(state);
+  savePremiumWordDailyMission(state);
   return state;
 }
 
 export function getOrCreateWordDailyMission(): VocabDailyMissionState {
-  if (isDevKnowledgeEnabled()) {
-    return getOrCreateDevWordDailyMission();
-  }
-  return getOrCreateVocabDailyMission();
+  return getOrCreatePremiumWordDailyMission();
 }
 
 export function wordDailyMissionProgress(mission = getOrCreateWordDailyMission()) {
@@ -86,26 +91,20 @@ export function wordDailyMissionProgress(mission = getOrCreateWordDailyMission()
 }
 
 export function isWordMissionTermInTodayMission(termId: string): boolean {
-  if (isDevKnowledgeEnabled()) {
-    return getOrCreateDevWordDailyMission().termIds.includes(termId);
-  }
-  return isVocabTermInTodayMission(termId);
+  return getOrCreatePremiumWordDailyMission().termIds.includes(termId);
 }
 
 export function markWordMissionTermComplete(termId: string): VocabDailyMissionState | null {
-  if (isDevKnowledgeEnabled()) {
-    const mission = getOrCreateDevWordDailyMission();
-    if (!mission.termIds.includes(termId) || mission.completedIds.includes(termId)) {
-      return mission;
-    }
-    const next: VocabDailyMissionState = {
-      ...mission,
-      completedIds: [...mission.completedIds, termId],
-    };
-    saveDevWordDailyMission(next);
-    return next;
+  const mission = getOrCreatePremiumWordDailyMission();
+  if (!mission.termIds.includes(termId) || mission.completedIds.includes(termId)) {
+    return mission;
   }
-  return markVocabDailyComplete(termId);
+  const next: VocabDailyMissionState = {
+    ...mission,
+    completedIds: [...mission.completedIds, termId],
+  };
+  savePremiumWordDailyMission(next);
+  return next;
 }
 
 export function wordMissionLink(termId: string): string {
@@ -116,7 +115,7 @@ export function wordMissionBrowseLink(): string {
   return "/word-mission";
 }
 
-/** Map legacy pronunciation vault word to a vocab term id when possible. */
+/** Map pronunciation vault word to a premium concept id when possible. */
 export function resolveVocabTermIdForWord(word: string): string | null {
   const normalized = word.trim().toLowerCase();
   const catalog = getWordMissionVocabulary();
@@ -128,4 +127,27 @@ export function resolveVocabTermIdForWord(word: string): string | null {
 
 export function findWordMissionItemById(termId: string) {
   return findWordMissionVocabItem(termId);
+}
+
+export function getWordMissionTodayTermLabels(
+  mission = getOrCreateWordDailyMission(),
+): string[] {
+  return mission.termIds
+    .map((id) => {
+      const item = findWordMissionVocabItem(id);
+      return item ? getWordMissionTermLabel(item) : null;
+    })
+    .filter((label): label is string => Boolean(label));
+}
+
+export function getWordMissionDailyWordCount(): number {
+  return getWordMissionVocabularyCount();
+}
+
+export function loadWordDailyMission(): VocabDailyMissionState | null {
+  return loadPremiumWordDailyMission();
+}
+
+export function saveWordDailyMission(state: VocabDailyMissionState): void {
+  savePremiumWordDailyMission(state);
 }
