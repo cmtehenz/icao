@@ -11,7 +11,9 @@ import { findWordMissionVocabItem } from "@/lib/wordMission/wordMissionCatalog";
 import { getCuratedContent } from "@/lib/wordMission/lesson/curatedContent";
 import {
   captainChallengeLine,
+  instructorDisplayText,
   instructorOpening,
+  instructorSpeechFromParts,
 } from "@/lib/wordMission/lesson/instructorText";
 import type { KnowledgeSource } from "@/lib/wordMission/lesson/knowledgeSource";
 import type { SyncKnowledgeProvider } from "@/lib/wordMission/lesson/enrichment";
@@ -193,12 +195,12 @@ function buildSteps(def: SimpleWordDef): WordMissionStep[] {
     ? instructorOpening(def.operationalContext, 540)
     : def.whenUsed;
   const opsDetail = def.operationalContext
-    ? `On the radio: "${def.example}"`
-    : `Example: "${def.example}"`;
+    ? `On Say It you will record this pilot readback:\n"${def.sayPhrase}"`
+    : `On Say It you will say:\n"${def.sayPhrase}"`;
 
-  const sayCaptain =
-    def.sayItCoach ||
-    "Copy this on the radio — calm pace, like a professional pilot.";
+  const sayCoach =
+    def.sayItCoach?.trim() ||
+    "Open your mouth on the vowel and keep the phrase steady at phraseology speed.";
 
   const icaoCaptain = captainChallengeLine(def.icaoQuestion);
   const icaoDetail = def.icaoModelAnswer
@@ -214,8 +216,8 @@ function buildSteps(def: SimpleWordDef): WordMissionStep[] {
       detail: opsDetail,
       recordHere: false,
     }),
-    step("say_it", sayCaptain, {
-      detail: def.sayPhrase,
+    step("say_it", "Record this complete pilot readback — callsign and full phrase included.", {
+      detail: `"${def.sayPhrase}"\n\n${sayCoach}`,
       speakText: def.sayPhrase,
       recordHere: true,
     }),
@@ -261,13 +263,17 @@ export function buildWordMissionBrief(termOrItem: string | IcaoVocabularyItem): 
   const term = typeof termOrItem === "string" ? termOrItem.trim() : termOrItem.term;
   const def = resolveDef(term, item);
 
-  const message = def.missionBrief
-    ? instructorOpening(def.missionBrief, 360)
-    : def.captainTeaching
-      ? instructorOpening(def.captainTeaching, 320)
-      : `${def.meaningEn} ${def.meaningPt}`.trim();
+  const message =
+    instructorDisplayText(def.missionBrief, def.captainTeaching) ||
+    `${def.meaningEn}\n\n${def.meaningPt}`.trim();
 
-  return { message, speechText: instructorOpening(message, 280) };
+  const speechText = instructorSpeechFromParts(
+    def.missionBrief,
+    def.captainTeaching,
+    !def.missionBrief && !def.captainTeaching ? message : undefined,
+  );
+
+  return { message, speechText };
 }
 
 export function lessonSpeakTextForLevel(

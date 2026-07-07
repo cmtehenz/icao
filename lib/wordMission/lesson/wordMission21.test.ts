@@ -27,10 +27,21 @@ describe("Word Mission 2.1 — simplified lesson", () => {
     expect(totalLessonSteps()).toBe(4);
   });
 
+  it("hold short operational previews pilot readback on Say It", () => {
+    const lesson = buildWordMissionLesson("hold short");
+    const ops = lesson.steps[1]!;
+    const sayIt = lesson.steps[2]!;
+    expect(ops.detail).toMatch(/pilot readback/i);
+    expect(ops.detail).toMatch(/Holding short runway one eight, PT-ABC/i);
+    expect(sayIt.speakText).toMatch(/Holding short runway one eight, PT-ABC/i);
+    expect(sayIt.captainLine).toMatch(/complete pilot readback/i);
+  });
+
   it("fly direct examples come from premium knowledge", () => {
     const lesson = buildWordMissionLesson("fly direct");
     expect(lesson.knowledgeReview?.curated).toBe(true);
     expect(lesson.steps[0]!.captainLine).toMatch(/waypoint|specified/i);
+    expect(lesson.steps[1]!.detail).toMatch(/Say It/i);
     expect(lesson.steps[1]!.detail).toMatch(/NITUX/i);
     expect(lesson.steps[2]!.speakText).toMatch(/direct NITUX/i);
     expect(lesson.steps[3]!.captainLine).toMatch(/fly direct/i);
@@ -38,7 +49,7 @@ describe("Word Mission 2.1 — simplified lesson", () => {
 
   it("continue approach uses premium example", () => {
     const lesson = buildWordMissionLesson("continue approach");
-    expect(lesson.steps[1]!.detail).toMatch(/continue approach/i);
+    expect(lesson.steps[1]!.detail).toMatch(/Continuing approach/i);
     expect(lesson.steps[3]!.captainLine).toMatch(/continue approach/i);
   });
 

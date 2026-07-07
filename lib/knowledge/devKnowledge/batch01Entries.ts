@@ -379,5 +379,26 @@ export const BATCH01_DEV_ENTRIES: DevKnowledgeEntry[] = [
     "sayItCoach": "Maintaining present speed, ANAC123.",
     "icaoModelAnswer": "ATC may instruct an aircraft to maintain its present speed to preserve safe spacing between aircraft, improve traffic sequencing, and reduce the need for additional vectoring. The pilot should continue flying at the current speed until another clearance is received.",
     "memoryTrick": "Imagine you're walking through a crowded airport terminal.\n\nEveryone is moving smoothly."
+  },
+  {
+    "catalogId": "0019",
+    "id": "0019",
+    "displayTerm": "Report Position",
+    "term": "report position",
+    "slug": "report-position",
+    "category": "ATC Phraseology",
+    "meaningEn": "Report Position instructs the pilot to advise ATC of the aircraft's current position when requested or upon reaching a specified point.",
+    "meaningPt": "Reporte sua posição.",
+    "whenUsed": "When ATC issues Report Position, the pilot should report the aircraft's location using an appropriate reference, such as:",
+    "example": "Approach: ANAC123, report position.",
+    "sayPhrase": "Wilco, ANAC123.",
+    "icaoQuestion": "Why are position reports still important even when aircraft have GPS and radar?",
+    "icaoSpeakText": "Will report overhead AFA VOR, ANAC123.",
+    "missionBrief": "Today's lesson covers one of the oldest and most important reporting instructions in aviation.\n\nEven with modern surveillance systems like ADS-B and radar, pilots are still frequently instructed to report their position.",
+    "captainTeaching": "Imagine a friend asks where you are while driving.\n\nYou wouldn't answer:\n\n\"I'm somewhere on the highway.\"",
+    "operationalContext": "You're flying your H130 along the coast toward Balneário Camboriú.\n\nRadar coverage becomes intermittent due to terrain.\n\nApproach requests:\n\nApproach: ANAC123, report position.",
+    "sayItCoach": "ANAC123 is five miles south of Navegantes, maintaining two thousand feet.",
+    "icaoModelAnswer": "Position reports help ATC confirm an aircraft's location, especially in areas with limited radar coverage or during VFR operations. They also improve situational awareness and help controllers provide safe traffic separation.",
+    "memoryTrick": "Imagine dropping a pin on a digital map.\n\nWhen ATC asks for your position, you're simply telling the controller:"
   }
 ];

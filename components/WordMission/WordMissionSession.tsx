@@ -15,7 +15,7 @@ import {
 } from "@/lib/vocabGraduation";
 import { SKYBRARY_UI_LABEL } from "@/lib/wordMission/lesson/knowledgeSource";
 import { buildWordMissionLesson, lessonSpeakTextForLevel } from "@/lib/wordMission/lesson/lessonEngine";
-import { shouldEnableRecording, stepIdForLevel } from "@/lib/wordMission/lesson/simpleFlow";
+import { buildStepCaptainCoaching, shouldEnableRecording, stepIdForLevel, wordMissionStepActionHint } from "@/lib/wordMission/lesson/simpleFlow";
 import {
   markWordMissionStepViewed,
   recordWordMissionLevelAttempt,
@@ -63,14 +63,17 @@ export default function WordMissionSession({
   }, [item.id, item.term]);
 
   useEffect(() => {
-    const speech = step.captainLine;
-    const text = step.detail ? `${step.captainLine}\n\n${step.detail}` : step.captainLine;
+    const coaching = buildStepCaptainCoaching(step, speakText);
     emitCaptainDeltaSuggestion({
-      text,
-      speechText: speech,
+      text: coaching.text,
+      speechText: coaching.speechText,
       kind: "coaching",
     });
-  }, [item.id, practiceLevel, step.captainLine, step.detail]);
+  }, [item.id, practiceLevel, speakText, step]);
+
+  useEffect(() => {
+    if (!recordingEnabled) setLastScore(null);
+  }, [practiceLevel, recordingEnabled]);
 
   useEffect(() => {
     onPracticeLevelChange(nextVocabMissionLevel(progress));
@@ -141,6 +144,10 @@ export default function WordMissionSession({
   const azureWords =
     recorderState.assessment?.words?.filter((w) => w.errorType && w.errorType !== "None") ?? [];
 
+  const actionHint = wordMissionStepActionHint(stepIdForLevel(practiceLevel), speakText);
+  const speakBoxLabel =
+    practiceLevel === 3 ? "Record this complete pilot readback" : "Record your ICAO answer";
+
   return (
     <div className="vocab-studio-training vocab-mission-panel word-mission-panel">
       <p className="vocab-mission-badge vocab-mission-badge-inline">Word Mission</p>
@@ -196,18 +203,23 @@ export default function WordMissionSession({
 
         {recordingEnabled && (
           <div className="vocab-studio-practice-box word-mission-speak-box">
-            <span className="vocab-studio-practice-label">Speak this</span>
+            <span className="vocab-studio-practice-label">{speakBoxLabel}</span>
             <p className="vocab-studio-practice-text">{speakText}</p>
           </div>
         )}
 
         <div className="word-mission-lesson-nav">
           {!recordingEnabled ? (
-            <button type="button" className="btn purple" onClick={continueStep}>
-              Continue
-            </button>
+            <>
+              <p className="word-mission-step-action" role="status">
+                {actionHint}
+              </p>
+              <button type="button" className="btn purple" onClick={continueStep}>
+                Continue
+              </button>
+            </>
           ) : (
-            <p className="word-mission-action-hint">Use Captain Recorder below — then speak.</p>
+            <p className="word-mission-action-hint">{actionHint}</p>
           )}
         </div>
 
@@ -273,7 +285,7 @@ export default function WordMissionSession({
             </p>
           )}
 
-          {recorderState.assessment && azureWords.length > 0 && (
+          {recorderState.assessment && azureWords.length > 0 && recordingEnabled && (
             <details className="pron-captain-technical word-mission-technical">
               <summary>Pronunciation details</summary>
               <div className="voice-coach-azure-scores vault-azure-scores word-mission-azure-scores">

@@ -45,11 +45,12 @@ vi.mock("@/lib/captainDelta/voiceText", () => ({
 import { buildActiveMissionTermLine, buildTodayBriefing } from "@/lib/captainDelta/briefing";
 
 describe("buildActiveMissionTermLine", () => {
-  it("opens pronunciation sorties with meaning brief", () => {
-    const line = buildActiveMissionTermLine("heading", "pronunciation");
-    expect(line.text).toMatch(/direction|degrees|proa/i);
+  it("opens pronunciation sorties with premium instructor brief", () => {
+    const holdShort = buildActiveMissionTermLine("hold short", "pronunciation");
+    expect(holdShort.text).toMatch(/safety instructions|runway incursion/i);
+    expect(holdShort.speechText).toMatch(/Gustavo, imagine you're approaching a railroad crossing/i);
     const flyDirect = buildActiveMissionTermLine("fly direct", "pronunciation");
-    expect(flyDirect.text).toMatch(/waypoint|straight/i);
+    expect(flyDirect.text).toMatch(/waypoint|navigation|direct/i);
   });
 });
 

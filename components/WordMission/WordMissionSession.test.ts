@@ -51,8 +51,15 @@ describe("WordMissionSession UI certification", () => {
     expect(sessionSource).toMatch(/SKYBRARY_UI_LABEL/);
   });
 
-  it("hides raw Azure debug behind technical details", () => {
+  it("hides raw Azure debug behind technical details on recording steps only", () => {
     expect(sessionSource).toMatch(/pron-captain-technical word-mission-technical/);
+    expect(sessionSource).toMatch(/recordingEnabled &&/);
+  });
+
+  it("shows per-step action hint on card and recording label", () => {
+    expect(sessionSource).toMatch(/wordMissionStepActionHint/);
+    expect(sessionSource).toMatch(/word-mission-step-action/);
+    expect(sessionSource).toMatch(/Record this complete pilot readback/);
   });
 });
 

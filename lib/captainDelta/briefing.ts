@@ -73,7 +73,7 @@ export function buildActiveMissionTermLine(
     return { text, speechText: toSpeechText(text) };
   }
   const mission = buildWordMissionBrief(trimmed);
-  return { text: mission.message, speechText: toSpeechText(mission.message) };
+  return { text: mission.message, speechText: mission.speechText };
 }
 
 export function buildMemoryLine(): string | null {

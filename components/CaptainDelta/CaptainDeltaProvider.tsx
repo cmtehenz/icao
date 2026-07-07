@@ -592,6 +592,9 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
     if (!user || !isCaptainDeltaProactiveEnabled()) return;
     if (!TERM_ROUTE_CONTEXTS.includes(routeContext)) return;
 
+    // Word Mission drives per-step Captain coaching (full instructor script).
+    if (pathname.startsWith("/word-mission")) return;
+
     if (routeContext === "pronunciation" && !isPronunciationTermSynced(lesson)) {
       return;
     }
@@ -613,7 +616,7 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
         eventId,
       },
     );
-  }, [activeTerm, deliverMessage, lesson, routeContext, user]);
+  }, [activeTerm, deliverMessage, lesson, pathname, routeContext, user]);
 
   useEffect(() => {
     if (!user || pathname !== "/" || briefingTriggeredRef.current) return;
