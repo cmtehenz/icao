@@ -1,0 +1,73 @@
+{
+  "id": "vocab-roger",
+  "term": "roger",
+  "category": "atc",
+  "level": 5,
+  "meaning": "I have received all of your last transmission.",
+  "simpleMeaning": "I heard you.",
+  "portugueseMeaning": "Recebi sua última transmissão.",
+  "operationalMeaning": "Roger acknowledges receipt — it does not mean approval, wilco, or readback.",
+  "whoUsesIt": "Pilots and controllers.",
+  "whenUsed": "To confirm information received when no readback or action is required.",
+  "whyUsed": "Closes the loop on ATC information without cluttering the frequency with repetition.",
+  "realExamples": [
+    {
+      "text": "ANAC 123, traffic twelve o'clock, five miles, opposite direction.",
+      "context": "approach",
+      "speaker": "Approach"
+    },
+    {
+      "text": "Roger, looking, ANAC 123.",
+      "context": "pilot",
+      "speaker": "Pilot"
+    },
+    {
+      "text": "Wind three three zero at one five, runway three six.",
+      "context": "tower",
+      "speaker": "Tower"
+    },
+    {
+      "text": "Roger, ANAC 123.",
+      "context": "pilot",
+      "speaker": "Pilot"
+    }
+  ],
+  "pilotResponses": [
+    "Roger, ANAC 123.",
+    "Roger, looking, ANAC 123."
+  ],
+  "icaoQuestions": [
+    "When should you use roger instead of a full readback?",
+    "Why is roger wrong as a reply to a clearance requiring readback?"
+  ],
+  "commonMistakes": [
+    "Saying roger instead of reading back a clearance.",
+    "Using roger to mean yes — use affirm for yes/no questions.",
+    "Brazilian pilots sometimes say 'received' — roger is standard."
+  ],
+  "pronunciationTips": [
+    "RO-jer — clear 'j' sound.",
+    "Never 'rodger' with a 'd'."
+  ],
+  "relatedTerms": ["wilco", "affirm", "negative", "say again"],
+  "compareTerms": [
+    { "term": "wilco", "note": "Wilco adds compliance; roger is receipt only." },
+    { "term": "affirm", "note": "Affirm answers yes/no; roger acknowledges information." }
+  ],
+  "didYouKnow": [
+    "Roger comes from the phonetic 'R' for 'received' in legacy radio procedure."
+  ],
+  "captainStory": "Approach passed traffic we could not see in haze — 'Roger, looking' bought time until the traffic appeared at ten o'clock.",
+  "references": [
+    {
+      "title": "ICAO Delta Phraseology — Roger",
+      "source": "icao-delta"
+    },
+    {
+      "title": "Pilot/Controller Glossary — Roger",
+      "source": "faa-aim"
+    }
+  ],
+  "lastReviewed": "2026-07-06",
+  "version": "1.0.0"
+}

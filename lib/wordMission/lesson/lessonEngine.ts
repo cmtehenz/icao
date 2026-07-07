@@ -1,8 +1,13 @@
 import type { IcaoVocabularyItem } from "@/data/icaoVocabulary";
 import { ICAO_VOCABULARY } from "@/data/icaoVocabulary";
+import { KnowledgeEngine } from "@/lib/knowledge/engine";
+import { buildKnowledgeReviewMeta } from "@/lib/knowledge/review";
+import { lessonDefFromVocabularyEntry } from "@/lib/knowledge/wordMissionAdapter";
 import { getCuratedContent } from "@/lib/wordMission/lesson/curatedContent";
+import type { KnowledgeSource } from "@/lib/wordMission/lesson/knowledgeSource";
 import type { SyncKnowledgeProvider } from "@/lib/wordMission/lesson/enrichment";
 import { enrichFromSyncProviders, noopKnowledgeProvider } from "@/lib/wordMission/lesson/enrichment";
+import { skybraryPatchForTerm } from "@/lib/wordMission/lesson/skybraryProvider";
 import { naturalIcaoSpeakText, naturalSayPhrase, isEmergencyTerm } from "@/lib/wordMission/lesson/levelTexts";
 import {
   WORD_MISSION_STEP_LABELS,
@@ -10,6 +15,7 @@ import {
   type WordMissionStep,
   type WordMissionStepId,
 } from "@/lib/wordMission/lesson/types";
+import type { KnowledgeReviewMeta } from "@/lib/knowledge/review";
 
 const DEFAULT_CALLSIGN = "PT-ABC";
 
@@ -21,6 +27,8 @@ type SimpleWordDef = {
   sayPhrase: string;
   icaoQuestion: string;
   icaoSpeakText?: string;
+  knowledgeSource?: KnowledgeSource;
+  review?: KnowledgeReviewMeta;
 };
 
 const SIMPLE_CURATED: Record<string, SimpleWordDef> = {
@@ -87,22 +95,51 @@ function fallbackDef(item: IcaoVocabularyItem): SimpleWordDef {
         ? `When would ATC use "${item.term}"?`
         : `When would a pilot use "${item.term}"?`),
     icaoSpeakText: naturalIcaoSpeakText(item),
+    review: buildKnowledgeReviewMeta(null, { fallbackUsed: true }),
+  };
+}
+
+function applySkybrary(def: SimpleWordDef, term: string, item?: IcaoVocabularyItem): SimpleWordDef {
+  const patch = skybraryPatchForTerm(term, item);
+  if (!patch) return def;
+  return {
+    ...def,
+    whenUsed: patch.whenUsed ?? def.whenUsed,
+    icaoQuestion: patch.icaoQuestion ?? def.icaoQuestion,
+    icaoSpeakText: patch.icaoSpeakText ?? def.icaoSpeakText,
+    knowledgeSource: patch.knowledgeSource,
+    review: def.review,
   };
 }
 
 function resolveDef(term: string, item?: IcaoVocabularyItem): SimpleWordDef {
+  const knowledge = KnowledgeEngine.lookupVocabulary(term);
+  if (knowledge) {
+    return lessonDefFromVocabularyEntry(knowledge.entry);
+  }
+
   const hand = SIMPLE_CURATED[term.trim().toLowerCase()];
-  if (hand) return hand;
-  if (item) return fallbackDef(item);
-  return {
-    meaningEn: `Operational use of "${term}".`,
-    meaningPt: `Uso operacional de "${term}".`,
-    whenUsed: "Used on radio in real operations.",
-    example: `${DEFAULT_CALLSIGN}, ${term}.`,
-    sayPhrase: term.charAt(0).toUpperCase() + term.slice(1),
-    icaoQuestion: `When would a pilot use "${term}"?`,
-    icaoSpeakText: `I would use ${term} in a normal operational call.`,
-  };
+  if (hand) {
+    return {
+      ...hand,
+      review: buildKnowledgeReviewMeta(null, { fallbackUsed: true }),
+    };
+  }
+  if (item) return applySkybrary(fallbackDef(item), term, item);
+  return applySkybrary(
+    {
+      meaningEn: `Operational use of "${term}".`,
+      meaningPt: `Uso operacional de "${term}".`,
+      whenUsed: "Used on radio in real operations.",
+      example: `${DEFAULT_CALLSIGN}, ${term}.`,
+      sayPhrase: term.charAt(0).toUpperCase() + term.slice(1),
+      icaoQuestion: `When would a pilot use "${term}"?`,
+      icaoSpeakText: `I would use ${term} in a normal operational call.`,
+      review: buildKnowledgeReviewMeta(null, { fallbackUsed: true }),
+    },
+    term,
+    item,
+  );
 }
 
 function step(
@@ -164,6 +201,9 @@ export function buildWordMissionLesson(
     category: item?.category ?? "Operational",
     steps: buildSteps(def),
     callsign: options?.callsign ?? DEFAULT_CALLSIGN,
+    knowledgeSource: def.knowledgeSource,
+    knowledgeReview:
+      def.review ?? buildKnowledgeReviewMeta(null, { fallbackUsed: true }),
   };
 }
 

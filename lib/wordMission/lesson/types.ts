@@ -32,12 +32,19 @@ export type WordMissionStep = {
   recordHere: boolean;
 };
 
+import type { KnowledgeSource } from "@/lib/wordMission/lesson/knowledgeSource";
+import type { KnowledgeReviewMeta } from "@/lib/knowledge/review";
+
 export type WordMissionLesson = {
   term: string;
   termId: string | null;
   category: string;
   steps: WordMissionStep[];
   callsign: string;
+  /** Present when a curated external reference informed the lesson. */
+  knowledgeSource?: KnowledgeSource;
+  /** Developer review metadata — knowledge provenance. */
+  knowledgeReview?: KnowledgeReviewMeta;
 };
 
 export type WordMissionLessonContext = {

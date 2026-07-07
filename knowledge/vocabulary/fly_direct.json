@@ -1,0 +1,68 @@
+{
+  "id": "vocab-fly-direct",
+  "term": "fly direct",
+  "category": "atc",
+  "level": 5,
+  "meaning": "Navigate straight to a specified fix, waypoint, or aerodrome without following the previously cleared route.",
+  "simpleMeaning": "Fly straight to a point.",
+  "portugueseMeaning": "Voar diretamente para um ponto ou fixo.",
+  "operationalMeaning": "ATC shortens your route when traffic and airspace allow a direct track.",
+  "whoUsesIt": "Center and Approach controllers; pilots acknowledge and navigate direct.",
+  "whenUsed": "When traffic permits a shortcut, for re-routing around weather, or to improve flow.",
+  "whyUsed": "Saves time and fuel while maintaining radar separation from other traffic.",
+  "realExamples": [
+    {
+      "text": "Helicopter PT-ABC, fly direct NITUX.",
+      "context": "center",
+      "speaker": "Center"
+    },
+    {
+      "text": "Proceed direct Galeao, descend flight level one four zero.",
+      "context": "approach",
+      "speaker": "Approach"
+    },
+    {
+      "text": "Direct NITUX, PT-ABC.",
+      "context": "pilot",
+      "speaker": "Pilot"
+    }
+  ],
+  "pilotResponses": [
+    "Fly direct NITUX, PT-ABC.",
+    "Direct Galeao, ANAC 123."
+  ],
+  "icaoQuestions": [
+    "When would ATC ask a pilot to fly direct?",
+    "What navigation action do you take after 'proceed direct'?"
+  ],
+  "commonMistakes": [
+    "Starting the turn before confirming the correct fix name.",
+    "Saying 'OK direct' instead of reading back the fix.",
+    "Confusing 'direct to' with 'resume own navigation'."
+  ],
+  "pronunciationTips": [
+    "Fly di-RECT — stress the second syllable.",
+    "Spell unusual fix names clearly if asked."
+  ],
+  "relatedTerms": ["vectors", "resume own navigation", "proceed direct"],
+  "compareTerms": [
+    { "term": "vectors", "note": "Vectors are heading assignments; direct is navigation to a fix." },
+    { "term": "resume own navigation", "note": "Resume own nav returns routing responsibility to the pilot." }
+  ],
+  "didYouKnow": [
+    "Direct clearances are common in cruise when IFR traffic is radar-identified."
+  ],
+  "captainStory": "Cruise over the interior, Center offered direct Brasília when the sector was quiet — saved twelve minutes without a single vector.",
+  "references": [
+    {
+      "title": "ICAO Delta ATC Phraseology — Fly Direct",
+      "source": "icao-delta"
+    },
+    {
+      "title": "ICAO Doc 4444 — Phraseologies",
+      "source": "icao-phraseology"
+    }
+  ],
+  "lastReviewed": "2026-07-06",
+  "version": "1.0.0"
+}

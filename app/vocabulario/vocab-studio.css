@@ -1069,6 +1069,53 @@
   color: var(--text, #e5e7eb);
 }
 
+.word-mission-source-label {
+  margin: 0.65rem 0 0;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--muted, #9ca3af);
+  font-style: italic;
+}
+
+.word-mission-knowledge-review {
+  margin-top: 0.75rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px dashed rgba(148, 163, 184, 0.35);
+  background: rgba(15, 23, 42, 0.35);
+  font-size: 0.72rem;
+}
+
+.word-mission-knowledge-review-title {
+  margin: 0 0 0.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted, #9ca3af);
+}
+
+.word-mission-knowledge-review-list {
+  margin: 0;
+  display: grid;
+  gap: 0.25rem;
+}
+
+.word-mission-knowledge-review-list div {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.word-mission-knowledge-review-list dt {
+  margin: 0;
+  min-width: 5.5rem;
+  color: var(--muted, #9ca3af);
+}
+
+.word-mission-knowledge-review-list dd {
+  margin: 0;
+  color: var(--text, #e5e7eb);
+}
+
 .word-mission-action-hint {
   margin: 0;
   font-size: 0.85rem;

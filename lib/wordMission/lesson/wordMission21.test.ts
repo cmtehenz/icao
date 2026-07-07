@@ -27,12 +27,13 @@ describe("Word Mission 2.1 — simplified lesson", () => {
     expect(totalLessonSteps()).toBe(4);
   });
 
-  it("fly direct examples match spec", () => {
+  it("fly direct examples come from knowledge base", () => {
     const lesson = buildWordMissionLesson("fly direct");
-    expect(lesson.steps[0]!.captainLine).toMatch(/straight to a waypoint/i);
-    expect(lesson.steps[1]!.detail).toContain("fly direct NITUX");
-    expect(lesson.steps[2]!.speakText).toBe("Fly direct NITUX.");
-    expect(lesson.steps[3]!.captainLine).toMatch(/When would ATC ask/i);
+    expect(lesson.knowledgeReview?.curated).toBe(true);
+    expect(lesson.steps[0]!.captainLine).toMatch(/straight to a point/i);
+    expect(lesson.steps[1]!.detail).toMatch(/fly direct NITUX/i);
+    expect(lesson.steps[2]!.speakText).toMatch(/fly direct NITUX/i);
+    expect(lesson.steps[3]!.captainLine).toMatch(/fly direct/i);
   });
 
   it("continue uses continue approach example", () => {

@@ -1,0 +1,74 @@
+{
+  "id": "vocab-maintain",
+  "term": "maintain",
+  "category": "atc",
+  "level": 5,
+  "meaning": "Continue at the specified altitude, heading, or speed until further advised.",
+  "simpleMeaning": "Keep doing what ATC told you — same altitude, heading, or speed.",
+  "portugueseMeaning": "Manter altitude, proa ou velocidade conforme instruído.",
+  "operationalMeaning": "Maintain is a restriction — you stay at the assigned value until ATC changes it.",
+  "whoUsesIt": "All ATC positions; pilots read back and comply.",
+  "whenUsed": "Climb/descent clearances, speed control on approach, runway heading after departure.",
+  "whyUsed": "Creates predictable flight paths for separation and sequencing.",
+  "realExamples": [
+    {
+      "text": "Climb and maintain five thousand feet.",
+      "context": "departure",
+      "speaker": "Departure"
+    },
+    {
+      "text": "Maintain runway heading until passing three thousand feet.",
+      "context": "tower",
+      "speaker": "Tower"
+    },
+    {
+      "text": "Maintain two five zero knots until five mile final.",
+      "context": "approach",
+      "speaker": "Approach"
+    },
+    {
+      "text": "Maintaining five thousand feet, ANAC 123.",
+      "context": "pilot",
+      "speaker": "Pilot"
+    }
+  ],
+  "pilotResponses": [
+    "Climb and maintain five thousand feet, ANAC 123.",
+    "Maintaining runway heading, ANAC 123.",
+    "Maintaining two five zero knots, ANAC 123."
+  ],
+  "icaoQuestions": [
+    "What is the difference between 'climb to' and 'climb and maintain'?",
+    "When would Tower tell you to maintain runway heading?"
+  ],
+  "commonMistakes": [
+    "Stopping a climb at 'to' altitude when clearance said 'climb and maintain'.",
+    "Leaving an assigned speed early on final.",
+    "Translating as 'manter' on frequency — use maintain in English."
+  ],
+  "pronunciationTips": [
+    "main-TAIN — stress the second syllable.",
+    "Altitude: flight level FOUR ZERO, not forty thousand."
+  ],
+  "relatedTerms": ["climb", "descend", "heading", "speed", "expect"],
+  "compareTerms": [
+    { "term": "descend", "note": "Descend changes altitude downward; maintain holds a value." },
+    { "term": "expect", "note": "Expect prepares you for a future clearance; maintain is current." }
+  ],
+  "didYouKnow": [
+    "Maintain speed assignments are common on busy approaches into São Paulo."
+  ],
+  "captainStory": "After takeoff from Congonhas, Tower said maintain runway heading — the FO kept the departure path clean until Departure picked us up on radar.",
+  "references": [
+    {
+      "title": "ICAO Delta ATC Phraseology — Maintain",
+      "source": "icao-delta"
+    },
+    {
+      "title": "Pilot/Controller Glossary — Maintain",
+      "source": "faa-aim"
+    }
+  ],
+  "lastReviewed": "2026-07-06",
+  "version": "1.0.0"
+}

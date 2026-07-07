@@ -1,0 +1,70 @@
+{
+  "id": "vocab-line-up-and-wait",
+  "term": "line up and wait",
+  "category": "atc",
+  "level": 5,
+  "meaning": "Taxi onto the runway, align with the centerline, and wait — takeoff clearance not yet issued.",
+  "simpleMeaning": "Enter the runway, line up, and wait for takeoff clearance.",
+  "portugueseMeaning": "Entrar na pista, alinhar e aguardar autorização de decolagem.",
+  "operationalMeaning": "You are on the runway but not cleared for takeoff — position for imminent departure.",
+  "whoUsesIt": "Tower controllers; pilots read back and comply exactly.",
+  "whenUsed": "When departure is imminent but landing traffic or wake turbulence requires a short wait.",
+  "whyUsed": "Reduces taxi time while keeping the runway protected until takeoff is safe.",
+  "realExamples": [
+    {
+      "text": "ANAC 123, runway three six, line up and wait.",
+      "context": "tower",
+      "speaker": "Tower"
+    },
+    {
+      "text": "Behind the landing Airbus, line up and wait runway one eight.",
+      "context": "tower",
+      "speaker": "Tower"
+    },
+    {
+      "text": "Line up and wait runway three six, ANAC 123.",
+      "context": "pilot",
+      "speaker": "Pilot"
+    }
+  ],
+  "pilotResponses": [
+    "Line up and wait runway three six, ANAC 123.",
+    "Holding in position runway three six, line up and wait, ANAC 123."
+  ],
+  "icaoQuestions": [
+    "Why is a correct readback critical after 'line up and wait'?",
+    "What must you not do after lining up and waiting?"
+  ],
+  "commonMistakes": [
+    "Taking off without hearing 'cleared for takeoff'.",
+    "Confusing line up and wait with position and hold.",
+    "Incomplete readback missing the runway number."
+  ],
+  "pronunciationTips": [
+    "LINE UP AND WAIT — four distinct words, steady pace.",
+    "Do not clip 'and' — it matters legally."
+  ],
+  "relatedTerms": ["hold short", "cleared for takeoff", "cancel takeoff"],
+  "compareTerms": [
+    { "term": "cleared for takeoff", "note": "Takeoff clearance follows line up and wait — they are not the same." },
+    { "term": "hold short", "note": "Hold short keeps you off the runway; line up and wait puts you on it." }
+  ],
+  "didYouKnow": [
+    "ICAO phraseology replaced 'position and hold' with 'line up and wait'."
+  ],
+  "captainStory": "Morning rush at Congonhas, Tower sequenced three departures with line up and wait — each crew waited for takeoff clearance before adding power.",
+  "references": [
+    {
+      "title": "ICAO Delta Tower Phraseology — Line Up and Wait",
+      "source": "icao-delta"
+    },
+    {
+      "title": "Runway Incursion",
+      "source": "skybrary",
+      "url": "https://skybrary.aero/articles/runway-incursion",
+      "attribution": "Source: SKYbrary Aviation Safety"
+    }
+  ],
+  "lastReviewed": "2026-07-06",
+  "version": "1.0.0"
+}

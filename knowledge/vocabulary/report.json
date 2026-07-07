@@ -1,0 +1,70 @@
+{
+  "id": "vocab-report",
+  "term": "report",
+  "category": "atc",
+  "level": 5,
+  "meaning": "Inform ATC when a specified condition or position is reached.",
+  "simpleMeaning": "Tell ATC when something happens.",
+  "portugueseMeaning": "Informar o ATC quando uma condição ou posição é atingida.",
+  "operationalMeaning": "ATC uses 'report' to obtain a position or status update without issuing a new clearance.",
+  "whoUsesIt": "Approach, Departure, Center, and Tower controllers; pilots read back and comply.",
+  "whenUsed": "When ATC needs confirmation of altitude, fix passage, field in sight, or gear down.",
+  "whyUsed": "Keeps separation and sequencing accurate when radar coverage or workload requires pilot updates.",
+  "realExamples": [
+    {
+      "text": "ANAC 123, report passing flight level one zero zero.",
+      "context": "approach",
+      "speaker": "Approach"
+    },
+    {
+      "text": "Report field in sight.",
+      "context": "tower",
+      "speaker": "Tower"
+    },
+    {
+      "text": "Recife Approach, ANAC 123, passing flight level one zero zero.",
+      "context": "pilot",
+      "speaker": "Pilot"
+    }
+  ],
+  "pilotResponses": [
+    "Passing flight level one zero zero, ANAC 123.",
+    "Field in sight, ANAC 123.",
+    "Gear down and locked, ANAC 123."
+  ],
+  "icaoQuestions": [
+    "What would you say when passing the altitude ATC asked you to report?",
+    "Why might Approach ask you to report field in sight on a visual approach?"
+  ],
+  "commonMistakes": [
+    "Saying only 'roger' without making the required report.",
+    "Reporting before the condition is actually met.",
+    "Using 'report' as a question — it is an instruction to inform ATC."
+  ],
+  "pronunciationTips": [
+    "Stress the second syllable: re-PORT.",
+    "Keep a steady pace — do not rush the altitude numbers."
+  ],
+  "relatedTerms": ["maintain", "contact", "squawk", "when able"],
+  "compareTerms": [
+    { "term": "roger", "note": "Roger means received; report requires you to send information back." },
+    { "term": "wilco", "note": "Wilco means you will comply; report means you will inform when done." }
+  ],
+  "didYouKnow": [
+    "Report clearances are common on non-radar segments and visual approaches."
+  ],
+  "captainStory": "On a night approach into Recife, Approach kept spacing with 'report five miles final.' The FO called each fix — ATC never had to ask twice.",
+  "references": [
+    {
+      "title": "ICAO Delta ATC Phraseology — Report",
+      "source": "icao-delta"
+    },
+    {
+      "title": "Pilot/Controller Glossary — Report",
+      "source": "faa-aim",
+      "url": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/glossary.html"
+    }
+  ],
+  "lastReviewed": "2026-07-06",
+  "version": "1.0.0"
+}

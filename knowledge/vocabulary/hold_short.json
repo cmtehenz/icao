@@ -1,0 +1,70 @@
+{
+  "id": "vocab-hold-short",
+  "term": "hold short",
+  "category": "atc",
+  "level": 5,
+  "meaning": "Stop before entering the runway or a protected area and wait for further clearance.",
+  "simpleMeaning": "Stop before the runway and wait.",
+  "portugueseMeaning": "Parar antes da pista e aguardar autorização.",
+  "operationalMeaning": "Hold short prevents runway incursions — you must stop at the holding point.",
+  "whoUsesIt": "Ground and Tower controllers; pilots read back and stop at the line.",
+  "whenUsed": "During taxi when crossing a runway is not yet authorized.",
+  "whyUsed": "Runway incursions are a top safety risk — hold short is a critical barrier.",
+  "realExamples": [
+    {
+      "text": "Taxi via Romeo, hold short of runway one eight.",
+      "context": "ground",
+      "speaker": "Ground"
+    },
+    {
+      "text": "Cross runway three six, hold short of runway one eight.",
+      "context": "ground",
+      "speaker": "Ground"
+    },
+    {
+      "text": "Taxi via Romeo, hold short runway one eight, ANAC 123.",
+      "context": "pilot",
+      "speaker": "Pilot"
+    }
+  ],
+  "pilotResponses": [
+    "Hold short runway one eight, ANAC 123.",
+    "Holding short runway three six, ANAC 123."
+  ],
+  "icaoQuestions": [
+    "Why must you read back 'hold short' on every taxi clearance?",
+    "What do you do if you reach the holding point before a runway crossing clearance?"
+  ],
+  "commonMistakes": [
+    "Rolling past the hold line without a crossing clearance.",
+    "Reading back hold short but not stopping.",
+    "Confusing hold short with line up and wait."
+  ],
+  "pronunciationTips": [
+    "HOLD SHORT — equal stress, crisp stop between words.",
+    "Always include the runway designation in the readback."
+  ],
+  "relatedTerms": ["line up and wait", "taxi", "cross runway", "holding point"],
+  "compareTerms": [
+    { "term": "line up and wait", "note": "Line up and wait is on the runway; hold short is before entering." },
+    { "term": "holding short", "note": "Holding short is your report; hold short is the instruction." }
+  ],
+  "didYouKnow": [
+    "Many runway incursions start with an incomplete hold short readback."
+  ],
+  "captainStory": "Ground at Guarulhos issued a complex taxi with two hold shorts — the FO read each runway back; Tower thanked us for the crisp calls.",
+  "references": [
+    {
+      "title": "ICAO Delta Ground Phraseology — Hold Short",
+      "source": "icao-delta"
+    },
+    {
+      "title": "Runway Incursion",
+      "source": "skybrary",
+      "url": "https://skybrary.aero/articles/runway-incursion",
+      "attribution": "Source: SKYbrary Aviation Safety"
+    }
+  ],
+  "lastReviewed": "2026-07-06",
+  "version": "1.0.0"
+}

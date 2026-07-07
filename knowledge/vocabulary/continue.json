@@ -1,0 +1,68 @@
+{
+  "id": "vocab-continue",
+  "term": "continue",
+  "category": "atc",
+  "level": 5,
+  "meaning": "Keep performing the current procedure or approach without change.",
+  "simpleMeaning": "Keep doing what you are already doing.",
+  "portugueseMeaning": "Continuar o procedimento ou aproximação em curso.",
+  "operationalMeaning": "Continue confirms you should not abandon the current action — often an approach or taxi route.",
+  "whoUsesIt": "Approach and Tower; pilots acknowledge.",
+  "whenUsed": "When traffic allows the approach to proceed, or after a brief hold or query.",
+  "whyUsed": "Reduces unnecessary go-arounds and keeps stable approaches when conditions are acceptable.",
+  "realExamples": [
+    {
+      "text": "Continue approach runway one eight.",
+      "context": "approach",
+      "speaker": "Approach"
+    },
+    {
+      "text": "Traffic in sight, continue.",
+      "context": "tower",
+      "speaker": "Tower"
+    },
+    {
+      "text": "Continue approach runway one eight, ANAC 123.",
+      "context": "pilot",
+      "speaker": "Pilot"
+    }
+  ],
+  "pilotResponses": [
+    "Continue approach runway one eight, ANAC 123.",
+    "Continue, ANAC 123."
+  ],
+  "icaoQuestions": [
+    "What should a pilot do after receiving 'continue approach'?",
+    "How is 'continue' different from a new clearance?"
+  ],
+  "commonMistakes": [
+    "Going around when ATC said continue.",
+    "Assuming continue means landing clearance — it does not.",
+    "Using continue as a filler word in pilot transmissions."
+  ],
+  "pronunciationTips": [
+    "con-TIN-ue — three clear syllables.",
+    "Runway numbers as individual digits: one eight."
+  ],
+  "relatedTerms": ["cleared to land", "go around", "expect", "contact"],
+  "compareTerms": [
+    { "term": "cleared to land", "note": "Cleared to land authorizes landing; continue only keeps the approach going." },
+    { "term": "go around", "note": "Go around cancels the approach; continue keeps it active." }
+  ],
+  "didYouKnow": [
+    "'Continue' on approach does not replace a landing clearance."
+  ],
+  "captainStory": "Short final at Recife, Approach called traffic ahead — 'continue approach, traffic in sight.' We stabilized and got landing clearance two miles later.",
+  "references": [
+    {
+      "title": "ICAO Delta ATC Phraseology — Continue",
+      "source": "icao-delta"
+    },
+    {
+      "title": "AIM — Approach Clearance",
+      "source": "faa-aim"
+    }
+  ],
+  "lastReviewed": "2026-07-06",
+  "version": "1.0.0"
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import CaptainDeltaTarget from "@/components/CaptainDelta/Visual/CaptainDeltaTarget";
+import KnowledgeReviewPanel from "@/components/WordMission/KnowledgeReviewPanel";
 import WordPhoneticHint from "@/components/WordPhoneticHint";
 import { usePronunciationRecordingController } from "@/hooks/usePronunciationRecordingController";
 import type { IcaoVocabularyItem } from "@/data/icaoVocabulary";
@@ -12,6 +13,8 @@ import {
   isVocabMissionTermComplete,
   nextVocabMissionLevel,
 } from "@/lib/vocabGraduation";
+import { KNOWLEDGE_REVIEW_ENABLED } from "@/lib/knowledge/review";
+import { SKYBRARY_UI_LABEL } from "@/lib/wordMission/lesson/knowledgeSource";
 import { buildWordMissionLesson, lessonSpeakTextForLevel } from "@/lib/wordMission/lesson/lessonEngine";
 import { shouldEnableRecording, stepIdForLevel } from "@/lib/wordMission/lesson/simpleFlow";
 import {
@@ -177,6 +180,12 @@ export default function WordMissionSession({
           <p className="word-mission-content-label">Captain Delta</p>
           <p className="word-mission-lesson-message">{step.captainLine}</p>
           {step.detail && <p className="word-mission-step-detail">{step.detail}</p>}
+          {lesson.knowledgeSource?.provider === "skybrary" && (
+            <p className="word-mission-source-label">{SKYBRARY_UI_LABEL}</p>
+          )}
+          {KNOWLEDGE_REVIEW_ENABLED && lesson.knowledgeReview && (
+            <KnowledgeReviewPanel review={lesson.knowledgeReview} />
+          )}
         </div>
 
         {recordingEnabled && (

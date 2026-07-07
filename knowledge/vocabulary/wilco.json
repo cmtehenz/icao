@@ -1,0 +1,73 @@
+{
+  "id": "vocab-wilco",
+  "term": "wilco",
+  "category": "atc",
+  "level": 5,
+  "meaning": "I have received your message and will comply with the instruction.",
+  "simpleMeaning": "Understood — I will do it.",
+  "portugueseMeaning": "Recebido — cumprirei a instrução.",
+  "operationalMeaning": "Wilco means compliance, not just acknowledgement — use when you will follow the instruction.",
+  "whoUsesIt": "Pilots to ATC; occasionally military or specific procedures.",
+  "whenUsed": "When an instruction requires action and a simple readback is not required or after a full readback.",
+  "whyUsed": "Confirms the crew will execute — stronger than roger alone.",
+  "realExamples": [
+    {
+      "text": "ANAC 123, if unable RVSM, descend flight level two eight zero.",
+      "context": "center",
+      "speaker": "Center"
+    },
+    {
+      "text": "Wilco, descending flight level two eight zero, ANAC 123.",
+      "context": "pilot",
+      "speaker": "Pilot"
+    },
+    {
+      "text": "Expedite descent, traffic below.",
+      "context": "approach",
+      "speaker": "Approach"
+    },
+    {
+      "text": "Wilco, ANAC 123.",
+      "context": "pilot",
+      "speaker": "Pilot"
+    }
+  ],
+  "pilotResponses": [
+    "Wilco, ANAC 123.",
+    "Wilco, descending flight level two eight zero, ANAC 123."
+  ],
+  "icaoQuestions": [
+    "When is wilco appropriate instead of a full readback?",
+    "What is the difference between wilco and roger?"
+  ],
+  "commonMistakes": [
+    "Saying wilco when you only received information — use roger.",
+    "Using wilco without intending to comply immediately.",
+    "Overusing wilco on complex clearances that need a full readback."
+  ],
+  "pronunciationTips": [
+    "WILL-co — two syllables, stress WILL.",
+    "Do not say 'will comply' and 'wilco' in the same transmission."
+  ],
+  "relatedTerms": ["roger", "affirm", "negative", "unable"],
+  "compareTerms": [
+    { "term": "roger", "note": "Roger means received; wilco means received and will comply." },
+    { "term": "affirm", "note": "Affirm means yes to a question; wilco is compliance with an instruction." }
+  ],
+  "didYouKnow": [
+    "Wilco is shortened from 'will comply' — use sparingly in civil IFR."
+  ],
+  "captainStory": "Busy sector over Brasília, Center asked us to expedite descent for traffic — 'Wilco' after the readback kept the frequency short.",
+  "references": [
+    {
+      "title": "ICAO Delta Phraseology — Wilco",
+      "source": "icao-delta"
+    },
+    {
+      "title": "Pilot/Controller Glossary — Wilco",
+      "source": "faa-aim"
+    }
+  ],
+  "lastReviewed": "2026-07-06",
+  "version": "1.0.0"
+}

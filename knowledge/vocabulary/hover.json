@@ -1,0 +1,69 @@
+{
+  "id": "vocab-hover",
+  "term": "hover",
+  "category": "rotorcraft",
+  "level": 4,
+  "meaning": "Maintain the helicopter in a stationary position above a point with zero ground speed.",
+  "simpleMeaning": "Stay still in the air above one spot.",
+  "portugueseMeaning": "Manter o helicóptero parado no ar sobre um ponto.",
+  "operationalMeaning": "Hover is used for helipad ops, sling loads, SAR, and confined-area landings.",
+  "whoUsesIt": "Helicopter pilots; Tower or Helo control may request hover or report hover complete.",
+  "whenUsed": "Before landing on a helipad, during external load work, or when ATC requests position hold.",
+  "whyUsed": "Helicopters can hold position without a runway — hover is core rotorcraft technique.",
+  "realExamples": [
+    {
+      "text": "PT-ABC, report hover complete over the helipad.",
+      "context": "tower",
+      "speaker": "Tower"
+    },
+    {
+      "text": "Unable to hover due to gusts, request delay.",
+      "context": "pilot",
+      "speaker": "Pilot"
+    },
+    {
+      "text": "Hovering over the hospital helipad, PT-ABC.",
+      "context": "pilot",
+      "speaker": "Pilot"
+    }
+  ],
+  "pilotResponses": [
+    "Hover complete, PT-ABC.",
+    "Hovering over the helipad, PT-ABC."
+  ],
+  "icaoQuestions": [
+    "When would a helicopter pilot report hover complete to Tower?",
+    "What factors make a hover more difficult in hot weather?"
+  ],
+  "commonMistakes": [
+    "Using 'stop' instead of 'hover' for rotorcraft position reports.",
+    "Not reporting when unable to maintain hover in strong gusts.",
+    "Confusing hover with slow forward flight near the ground."
+  ],
+  "pronunciationTips": [
+    "HO-ver — clear 'v' sound, not 'over'.",
+    "HOVER COMPLETE — stress COMPLETE on the report."
+  ],
+  "relatedTerms": ["land", "takeoff", "orbit", "hold"],
+  "compareTerms": [
+    { "term": "hold", "note": "Hold in fixed-wing means orbit or position; hover is zero ground speed." },
+    { "term": "orbit", "note": "Orbit is circling; hover is stationary." }
+  ],
+  "didYouKnow": [
+    "High density altitude reduces hover performance significantly in Brazil's interior."
+  ],
+  "captainStory": "SAR training off the coast, we held a hover while the winchman dropped to the deck — Tower only cleared us to land after 'hover complete.'",
+  "references": [
+    {
+      "title": "ICAO Delta Rotorcraft Operations — Hover",
+      "source": "icao-delta"
+    },
+    {
+      "title": "Helicopter Flying Handbook",
+      "source": "rotorcraft",
+      "url": "https://www.faa.gov/regulations_policies/handbooks_manuals/aviation/helicopter_flying_handbook"
+    }
+  ],
+  "lastReviewed": "2026-07-06",
+  "version": "1.0.0"
+}

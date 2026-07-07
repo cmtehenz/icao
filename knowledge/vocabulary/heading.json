@@ -1,0 +1,69 @@
+{
+  "id": "vocab-heading",
+  "term": "heading",
+  "category": "atc",
+  "level": 5,
+  "meaning": "The magnetic direction the aircraft nose is pointing, expressed in degrees.",
+  "simpleMeaning": "The direction the aircraft is pointing, in degrees.",
+  "portugueseMeaning": "A proa magnética da aeronave, em graus.",
+  "operationalMeaning": "Controllers assign headings to vector aircraft for traffic, weather, or sequencing.",
+  "whoUsesIt": "Tower, Departure, Approach, and Center; pilots fly and read back assigned headings.",
+  "whenUsed": "After departure, on vectors to final, for weather deviations, or traffic spacing.",
+  "whyUsed": "Precise heading control keeps aircraft separated when navigation is radar-based.",
+  "realExamples": [
+    {
+      "text": "Helicopter PT-ABC, fly heading zero nine zero.",
+      "context": "tower",
+      "speaker": "Tower"
+    },
+    {
+      "text": "Turn left heading two seven zero, vectors to the ILS.",
+      "context": "approach",
+      "speaker": "Approach"
+    },
+    {
+      "text": "Heading zero nine zero, PT-ABC.",
+      "context": "pilot",
+      "speaker": "Pilot"
+    }
+  ],
+  "pilotResponses": [
+    "Heading zero nine zero, PT-ABC.",
+    "Turning left heading two seven zero, ANAC 123."
+  ],
+  "icaoQuestions": [
+    "What would you read back after receiving a heading assignment?",
+    "When might Tower assign a heading immediately after takeoff?"
+  ],
+  "commonMistakes": [
+    "Confusing heading with track or course over the ground.",
+    "Reading back the wrong number group — always three digits for headings.",
+    "Brazilian pilots sometimes say 'proa' in English — use 'heading' on frequency."
+  ],
+  "pronunciationTips": [
+    "HEAD-ing — clear 'd' sound.",
+    "Say headings digit by digit: zero nine zero, not ninety."
+  ],
+  "relatedTerms": ["fly direct", "vectors", "maintain", "turn left", "turn right"],
+  "compareTerms": [
+    { "term": "track", "note": "Track is path over the ground; heading is where the nose points." },
+    { "term": "course", "note": "Course is the intended path; heading is current magnetic direction." }
+  ],
+  "didYouKnow": [
+    "Helicopters receive heading assignments just like fixed-wing aircraft in controlled airspace."
+  ],
+  "captainStory": "Departing Salvador at night, Tower issued heading zero nine zero before passing two thousand feet — standard flow to keep departures clear of the arrival stream.",
+  "references": [
+    {
+      "title": "ICAO Delta ATC Phraseology — Heading",
+      "source": "icao-delta"
+    },
+    {
+      "title": "AIM — ATC Services",
+      "source": "faa-aim",
+      "url": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+    }
+  ],
+  "lastReviewed": "2026-07-06",
+  "version": "1.0.0"
+}
