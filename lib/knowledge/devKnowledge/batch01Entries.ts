@@ -166,5 +166,35 @@ export const BATCH01_DEV_ENTRIES: DevKnowledgeEntry[] = [
     "sayPhrase": "Resuming own navigation, ANAC123.",
     "icaoQuestion": "When would ATC instruct an aircraft to resume own navigation?",
     "icaoSpeakText": "Direct REKPA, resuming own navigation, ANAC123."
+  },
+  {
+    "catalogId": "0012",
+    "id": "0012",
+    "displayTerm": "Maintain Runway Heading",
+    "term": "maintain runway heading",
+    "slug": "maintain-runway-heading",
+    "category": "ATC Phraseology",
+    "meaningEn": "Maintain Runway Heading means continue flying the magnetic heading of the departure runway after takeoff until ATC gives another instruction.",
+    "meaningPt": "Mantenha o rumo da pista.",
+    "whenUsed": "When ATC instructs Maintain Runway Heading, the pilot must continue climbing while maintaining the magnetic heading of the departure runway.",
+    "example": "Tower: ANAC123, runway zero seven, cleared for takeoff. Maintain runway heading.",
+    "sayPhrase": "Cleared for takeoff, maintaining runway heading, ANAC123.",
+    "icaoQuestion": "Why would ATC instruct an aircraft to maintain runway heading after departure?",
+    "icaoSpeakText": "Maintaining runway heading, climbing three thousand, ANAC123."
+  },
+  {
+    "catalogId": "0013",
+    "id": "0013",
+    "displayTerm": "Fly Heading",
+    "term": "fly heading",
+    "slug": "fly-heading",
+    "category": "ATC Phraseology",
+    "meaningEn": "Fly Heading instructs the pilot to turn to and maintain a specific magnetic heading assigned by Air Traffic Control.",
+    "meaningPt": "Voe no rumo indicado.",
+    "whenUsed": "When ATC issues a Fly Heading instruction, the pilot must:",
+    "example": "Approach: ANAC123, fly heading zero niner zero.",
+    "sayPhrase": "Heading zero niner zero, ANAC123.",
+    "icaoQuestion": "Why would ATC instruct an aircraft to fly a specific heading?",
+    "icaoSpeakText": "Heading one eight zero, ANAC123."
   }
 ];
