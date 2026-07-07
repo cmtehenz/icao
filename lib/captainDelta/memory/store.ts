@@ -24,6 +24,8 @@ function emptyStore(): CaptainDeltaMemoryStore {
     connectorUsage: {},
     vocabularyRepeats: {},
     grammarMistakes: {},
+    wordJourney: {},
+    flightLog: [],
     sessionDates: [],
     lastSessionCloseAt: null,
     lastWeeklyDebriefAt: null,

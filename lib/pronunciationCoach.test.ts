@@ -19,6 +19,7 @@ import {
   STUDENT_SAFE_NO_SPEECH,
   studentSafeAssessmentMessage,
 } from "@/lib/azure/assessmentFailure";
+import { resetCaptainLessonMemoryForTests } from "@/lib/captainDelta/infinity/lessonMemory";
 
 const baseAssessment = {
   prosodyScore: 88,
@@ -42,6 +43,10 @@ function expectInstructorLesson(debrief: { message: string; speechText: string }
 }
 
 describe("Pronunciation Coaching Engine v1", () => {
+  beforeEach(() => {
+    resetPronunciationCoachSessionForTests();
+  });
+
   const context = {
     targetWord: "on",
     practiceLevel: 3 as const,

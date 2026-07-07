@@ -20,6 +20,7 @@ vi.mock("@/lib/dailyMission", () => ({
 }));
 
 vi.mock("@/lib/studyTime", () => ({
+  todayKey: () => "2026-07-06",
   loadStudyPlanMode: vi.fn(() => "standard"),
   STUDY_DAILY_GOAL_MINUTES: 25,
   STUDY_INTENSE_DAY_MINUTES: 45,
@@ -41,24 +42,30 @@ vi.mock("@/lib/captainDelta/voiceText", () => ({
   toSpeechText: vi.fn((t: string) => t),
 }));
 
-import { buildTodayBriefing } from "@/lib/captainDelta/briefing";
+import { buildActiveMissionTermLine, buildTodayBriefing } from "@/lib/captainDelta/briefing";
+
+describe("buildActiveMissionTermLine", () => {
+  it("opens pronunciation sorties with mission context brief", () => {
+    const line = buildActiveMissionTermLine("heading", "pronunciation");
+    expect(line.text).toMatch(/Today's mission focuses/i);
+    expect(line.text).toMatch(/heading/i);
+  });
+});
 
 describe("buildTodayBriefing", () => {
-  it("home surface omits phase and countdown lines covered by the flight deck UI", () => {
+  it("home surface keeps greeting and sortie summary", () => {
     const home = buildTodayBriefing("Alex", "2026-07-05", { surface: "home" });
     expect(home.text).toContain("Good afternoon, Alex.");
-    expect(home.text).toContain("Today we train 23C.");
-    expect(home.text).not.toContain("Your ICAO exam is in");
-    expect(home.text).not.toContain("Flight phase:");
-    expect(home.text).not.toContain("We begin with");
-    expect(home.text).not.toContain("Estimated training:");
+    expect(home.text).toMatch(/Today's sortie:/);
+    expect(home.text).toMatch(/Estimated flight time/);
+    expect(home.text).toMatch(/Ready\?/);
   });
 
-  it("full surface keeps instructor briefing detail for proactive Captain Delta", () => {
+  it("full surface lists training blocks for proactive Captain Delta", () => {
     const full = buildTodayBriefing("Alex", "2026-07-05", { surface: "full" });
-    expect(full.text).toContain("Your ICAO exam is in 42 days.");
-    expect(full.text).toContain("Flight phase:");
-    expect(full.text).toContain("We begin with");
-    expect(full.text).toContain("Estimated training:");
+    expect(full.text).toContain("Alex");
+    expect(full.text).toMatch(/Today's training includes/);
+    expect(full.text).toMatch(/Estimated flight time/);
+    expect(full.text).toMatch(/Ready\?/);
   });
 });

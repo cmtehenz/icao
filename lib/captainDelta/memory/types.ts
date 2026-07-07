@@ -39,6 +39,14 @@ export type AviationStory = {
   at: string;
 };
 
+/** Cross-session word journey — mentor memory (internal only). */
+export type WordJourneyEntry = {
+  lastStruggledDate?: string;
+  lastSuccessDate?: string;
+  struggleCount: number;
+  lastFocus?: string;
+};
+
 export type CaptainDeltaMemoryStore = {
   version: 1;
   questionHistory: Record<string, QuestionMemoryEntry>;
@@ -49,6 +57,15 @@ export type CaptainDeltaMemoryStore = {
   connectorUsage: Record<string, number>;
   vocabularyRepeats: Record<string, number>;
   grammarMistakes: Record<string, number>;
+  wordJourney?: Record<string, WordJourneyEntry>;
+  sessionJournal?: {
+    date: string;
+    wins: string[];
+    struggles: string[];
+    reviewTopics: string[];
+  };
+  flightLog?: import("@/lib/captainDelta/infinity/flight/types").FlightLogEntry[];
+  academyStudyPlan?: import("@/lib/captainDelta/infinity/academy/types").AcademyStudyPlan;
   sessionDates: string[];
   lastSessionCloseAt: string | null;
   lastWeeklyDebriefAt: string | null;

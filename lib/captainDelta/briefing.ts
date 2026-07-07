@@ -1,13 +1,11 @@
 import type { CaptainDeltaContext } from "@/lib/captainDelta/types";
-import { daysUntilExam } from "@/lib/captainDelta/examDate";
-import { greetingForHour, toSpeechText } from "@/lib/captainDelta/voiceText";
+import { toSpeechText } from "@/lib/captainDelta/voiceText";
+import { buildTrainingDayBriefing } from "@/lib/captainDelta/infinity/academy/trainingDay";
+import { buildWordMissionBrief } from "@/lib/wordMission/lesson/lessonEngine";
+import { loadProfile } from "@/lib/profile";
 import { buildLocalDailyDebrief } from "@/lib/flightInstructor/dailyDebrief";
 import { buildMemoryContextForPrompt } from "@/lib/flightInstructor/memory";
 import type { FlightInstructorReport } from "@/lib/flightInstructor/types";
-import { getDailyMissionSummary, getNextMissionAction } from "@/lib/dailyMission";
-import { buildFlightProgress } from "@/lib/flightProgress/buildFlightProgress";
-import { getFlightPhaseCaptainCopy } from "@/lib/flightProgress/flightProgressCopy";
-import { loadStudyPlanMode, STUDY_DAILY_GOAL_MINUTES, STUDY_INTENSE_DAY_MINUTES } from "@/lib/studyTime";
 import { loadVault, pickWarmupWords } from "@/lib/pronunciationVault";
 
 const BRIEFING_DATE_KEY = "icao_captain_delta_briefing_v1";
@@ -50,7 +48,7 @@ export function buildContextTip(context: CaptainDeltaContext): { text: string; s
   return { text: line, speechText: line };
 }
 
-/** Phase 1 daily briefing — short, spoken, ends with Start Training action. */
+/** Phase 1 daily briefing — V6 training day opens every login. */
 export function buildTodayBriefing(
   firstName: string,
   _dateKey: string,
@@ -59,34 +57,9 @@ export function buildTodayBriefing(
   text: string;
   speechText: string;
 } {
-  const surface = options?.surface ?? "full";
-  const greeting = greetingForHour(new Date().getHours());
-  const days = daysUntilExam();
-  const mission = getDailyMissionSummary();
-  const next = getNextMissionAction();
-  const mode = loadStudyPlanMode();
-  const minutes = mode === "intense" ? STUDY_INTENSE_DAY_MINUTES : STUDY_DAILY_GOAL_MINUTES;
-  const flight = buildFlightProgress(mission);
-
-  const lines = [`${greeting}, ${firstName}.`];
-
-  if (surface !== "home") {
-    lines.push(`Your ICAO exam is in ${days} days.`);
-  }
-
-  lines.push(`Today we train ${mission.examLabel}.`);
-
-  if (surface !== "home") {
-    lines.push(`Flight phase: ${flight.currentPhase.aviationLabel} — ${flight.currentPhase.missionLabel}.`);
-    if (!mission.complete) {
-      lines.push(getFlightPhaseCaptainCopy(flight.currentPhaseId));
-    }
-    if (next) lines.push(`We begin with ${next.title}.`);
-    lines.push(`Estimated training: ${minutes} minutes.`);
-  }
-
-  const text = lines.join("\n");
-  return { text, speechText: toSpeechText(lines.join(" ")) };
+  const profile = loadProfile();
+  const training = buildTrainingDayBriefing(firstName, { profile, surface: options?.surface });
+  return { text: training.text, speechText: training.speechText };
 }
 
 /** Coaching line for the active mission term — must match UI and Azure target. */
@@ -99,8 +72,8 @@ export function buildActiveMissionTermLine(
     const text = `Today's term: "${trimmed}". Learn the meaning, then say it like a pilot.`;
     return { text, speechText: toSpeechText(text) };
   }
-  const text = `Today's word: "${trimmed}". Slow and clear — quality before speed.`;
-  return { text, speechText: toSpeechText(text) };
+  const mission = buildWordMissionBrief(trimmed);
+  return { text: mission.message, speechText: toSpeechText(mission.message) };
 }
 
 export function buildMemoryLine(): string | null {

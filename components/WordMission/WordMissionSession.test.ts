@@ -21,10 +21,11 @@ describe("WordMissionSession UI certification", () => {
     expect(sessionSource).toMatch(/pron-captain-coaching-card/);
   });
 
-  it("uses segmented L1–L4 level tabs with active state", () => {
-    expect(sessionSource).toMatch(/word-mission-level-tabs pron-level-tabs/);
-    expect(sessionSource).toMatch(/word-mission-level-tab \$\{active \? "active"/);
-    expect(sessionSource).toMatch(/WM_LEVEL_NAMES\[l\]/);
+  it("uses lesson phase groups instead of L1–L4 level tabs", () => {
+    expect(sessionSource).toMatch(/word-mission-lesson-groups/);
+    expect(sessionSource).toMatch(/Micro-flight · Word Mission 2\.0/);
+    expect(sessionSource).toMatch(/buildWordMissionLesson/);
+    expect(sessionSource).toMatch(/Continue sortie/);
   });
 
   it("does not mount duplicate Record buttons — Captain recorder only", () => {
@@ -34,10 +35,10 @@ describe("WordMissionSession UI certification", () => {
     expect(sessionSource).toMatch(/Captain Recorder/);
   });
 
-  it("shows term header with phonetic hint and meaning", () => {
+  it("shows term header with phonetic hint and lesson card", () => {
     expect(sessionSource).toMatch(/WordPhoneticHint/);
-    expect(sessionSource).toMatch(/word-mission-meaning-line/);
-    expect(sessionSource).toMatch(/item\.meaning/);
+    expect(sessionSource).toMatch(/word-mission-lesson-message/);
+    expect(sessionSource).toMatch(/buildWordMissionLesson/);
   });
 
   it("hides raw Azure debug behind technical details", () => {
@@ -56,6 +57,6 @@ describe("WordMissionApp styling", () => {
   it("includes mobile-first word mission CSS", () => {
     expect(cssSource).toMatch(/\.word-mission-panel/);
     expect(cssSource).toMatch(/@media \(max-width: 520px\)/);
-    expect(cssSource).toMatch(/\.word-mission-level-tabs/);
+    expect(cssSource).toMatch(/\.word-mission-lesson-groups/);
   });
 });

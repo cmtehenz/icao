@@ -25,7 +25,7 @@ import {
 import { wmLevelCode } from "@/lib/wordMission/types";
 
 const WORD_MISSION_INTRO =
-  "Engine start — one term at a time. Meaning, pilot phrase, sentence, then ICAO use. Quality before speed.";
+  "Every word is a flight lesson — brief, meaning, real ATC, pronunciation, then you fly the conversation.";
 
 export default function WordMissionMode({ initialTermId }: { initialTermId?: string }) {
   const searchParams = useSearchParams();

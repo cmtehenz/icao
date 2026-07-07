@@ -12,7 +12,8 @@ describe("active mission term sync", () => {
 
   it("buildActiveMissionTermLine uses the same word for pronunciation", () => {
     const line = buildActiveMissionTermLine("route", "pronunciation");
-    expect(line.text).toContain('"route"');
+    expect(line.text).toMatch(/Today's mission focuses/i);
+    expect(line.text).toContain("route");
     expect(line.speechText).toContain("route");
   });
 
