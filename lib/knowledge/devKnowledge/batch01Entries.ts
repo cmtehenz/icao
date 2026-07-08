@@ -4395,5 +4395,781 @@ export const BATCH01_DEV_ENTRIES: DevKnowledgeEntry[] = [
         "href": "https://skybrary.aero"
       }
     ]
+  },
+  {
+    "catalogId": "0056",
+    "id": "0056",
+    "displayTerm": "Alternator Failure",
+    "term": "alternator failure",
+    "slug": "alternator-failure",
+    "category": "Aircraft Systems",
+    "meaningEn": "Alternator Failure is the loss of alternator output, requiring the aircraft to operate on battery power with reduced electrical endurance.",
+    "meaningPt": "Falha do alternador.\n\nPerda da produção de energia pelo alternador, exigindo operação com bateria e tempo elétrico limitado.",
+    "whenUsed": "When Alternator Failure occurs, the pilot should:",
+    "example": "Approach: ANAC123, roger Pan Pan, say battery endurance and souls on board.",
+    "sayPhrase": "Pan Pan Pan Pan, Navegantes Approach, ANAC123, alternator failure, operating on battery power.",
+    "icaoQuestion": "What would you tell ATC if your alternator failed during cruise?",
+    "icaoSpeakText": "After securing the aircraft, I would declare Pan Pan Pan Pan, state my callsign, report alternator failure and that I am operating on battery power, state my position, and request vectors to the nearest suitable airport. I would upgrade to Mayday if battery endurance becomes critical. I would provide souls on board and fuel remaining when ATC requests.",
+    "missionBrief": "Today's lesson covers a common electrical systems problem in flight.\n\nAlternator Failure means the alternator has stopped producing electrical power — the aircraft must rely on battery power until the alternator is restored or the flight ends.\n\nIn the H130, the alternator charges the battery and powers avionics, instruments, and radios during normal operation.\n\nA failed alternator does not always mean immediate catastrophe — but battery time is limited.\n\nYou must aviate first, monitor electrical load, then communicate with the correct urgency call.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Alternator failure is often manageable — if you act early.\n\nThe sequence every professional pilot learns:\n\nAviate. Shed. Communicate.\n\nFly the aircraft first.\n\nReduce electrical load — radios and essential instruments only.\n\nMonitor battery voltage.\n\nThen declare your urgency.\n\nA healthy battery with a nearby airport — Pan Pan.\n\nCritically low battery or total electrical loss — Mayday.\n\nBrazilian pilots sometimes say \"alternador queimou\" or \"caiu o alternador\" on frequency.\n\nUse alternator failure or alternator out — ICAO standard terms.\n\nIn the H130, know your battery endurance from the flight manual.\n\nDo not wait until the radios fail to call ATC.\n\nTrain the reflex so your radio call comes from a stable aircraft with a plan, not a surprised voice.",
+    "operationalContext": "You are cruising at two thousand feet in your H130 on a charter from Joinville to Navegantes.\n\nThe alternator failure warning illuminates and battery voltage begins to drop.\n\nYou shed non-essential electrical load and maintain stable flight.\n\nWhen stable, you transmit:\n\nPan Pan Pan Pan, Navegantes Approach, ANAC123, alternator failure, operating on battery power, request vectors to Navegantes.\n\nApproach clears traffic and provides direct routing.\n\nYou complete a precautionary landing before battery endurance becomes critical.",
+    "sayItCoach": "Pan Pan Pan Pan, Navegantes Approach, ANAC123, alternator failure, operating on battery power.",
+    "icaoModelAnswer": "After securing the aircraft, I would declare Pan Pan Pan Pan, state my callsign, report alternator failure and that I am operating on battery power, state my position, and request vectors to the nearest suitable airport. I would upgrade to Mayday if battery endurance becomes critical. I would provide souls on board and fuel remaining when ATC requests.",
+    "memoryTrick": "**CHARGE** — **C**ontrol the aircraft, **H**ead for nearest airport, **A**nnounce Pan Pan or Mayday, **R**educe electrical load, **G**auge battery voltage, **E**ndurance — know your time limit.",
+    "operationalMeaning": "When Alternator Failure occurs, the pilot should:\n\nAlternator Failure reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "clear traffic from the aircraft's route",
+      "provide vectors to the nearest suitable airport",
+      "coordinate priority landing if battery endurance is critical",
+      "request souls on board and fuel remaining",
+      "alert airport authorities if distress is declared"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger Pan Pan, say battery endurance and souls on board.",
+      "Approach: ANAC123, turn right heading zero nine zero, descend at your discretion, Navegantes one five miles.",
+      "Tower: ANAC123, all traffic cleared from your approach, runway two nine cleared to land.",
+      "Tower: ANAC123, wind two seven zero at one zero knots, report final.",
+      "Departure: ANAC123, say nature of electrical problem and intentions."
+    ],
+    "pilotReadbacks": [
+      "Pan Pan Pan Pan, Navegantes Approach, ANAC123, alternator failure, operating on battery power.",
+      "Pan Pan Pan Pan, ANAC123, alternator out, request vectors to Joinville.",
+      "Mayday Mayday Mayday, Florianópolis Tower, ANAC123, alternator failure, battery critically low, request immediate landing.",
+      "ANAC123, alternator failure, souls on board three, battery endurance approximately twenty minutes.",
+      "Tower, ANAC123, alternator failure, operating on battery, request priority landing."
+    ],
+    "brazilianMistakes": "- ❌ Waiting until the battery is dead before calling ATC.  \n  ✔ Declare early — battery endurance is limited.\n\n- ❌ Saying \"alternador parou\" instead of standard English.  \n  ✔ Use alternator failure or alternator out.\n\n- ❌ Not reducing non-essential electrical load.  \n  ✔ Shed load to extend battery endurance.\n\n- ❌ Forgetting to state operating on battery power.  \n  ✔ Tell ATC you are on battery — it explains urgency.",
+    "pronunciationCoaching": "**Target Phrase:** Pan Pan Pan Pan, Alternator Failure, Operating on Battery Power\n\n**Pronunciation:** pan pan pan pan, AWL-ter-nay-ter FAIL-yer, OP-er-ay-ting on BAT-ter-ee POW-er\n\n**Word Stress**\n\n- Alternator → AWL-ter-nay-ter\n- Failure → FAIL-yer\n- Battery → BAT-ter-ee\n\nPractice:\n\nPan... Pan... Pan... Pan...\n\nTogether:\n\nPan Pan Pan Pan, Navegantes Approach, ANAC123, alternator failure, operating on battery power.\n\nSpeak slowly and clearly — controllers need every word.",
+    "relatedConcepts": [
+      "Electrical Failure",
+      "Generator Failure",
+      "Battery Failure",
+      "Pan Pan Urgency Call",
+      "Mayday Distress Call",
+      "Precautionary Landing"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Electrical System Malfunctions",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Alternator",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Electrical System"
+      },
+      {
+        "label": "SKYbrary — Electrical Problems",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0057",
+    "id": "0057",
+    "displayTerm": "Generator Failure",
+    "term": "generator failure",
+    "slug": "generator-failure",
+    "category": "Aircraft Systems",
+    "meaningEn": "Generator Failure is the loss of generator output, requiring operation on battery power with limited electrical endurance.",
+    "meaningPt": "Falha do gerador.\n\nPerda da produção de energia pelo gerador, exigindo operação com bateria e tempo elétrico limitado.",
+    "whenUsed": "When Generator Failure occurs, the pilot should:",
+    "example": "Approach: ANAC123, roger Pan Pan, say battery endurance and souls on board.",
+    "sayPhrase": "Pan Pan Pan Pan, Curitiba Approach, ANAC123, generator failure, operating on battery power.",
+    "icaoQuestion": "What is the difference between generator failure and total electrical failure?",
+    "icaoSpeakText": "Generator failure means the generator has stopped producing power, but the aircraft may still operate on battery with limited endurance. Total electrical failure means all electrical power is lost, including battery, which is more serious. For generator failure, I would declare Pan Pan, report operating on battery power, and request vectors to the nearest suitable airport. I would upgrade to Mayday if battery endurance becomes critical or essential systems fail.",
+    "missionBrief": "Today's lesson covers generator failure — a critical electrical systems event.\n\nGenerator Failure means the aircraft's primary electrical generator has stopped producing power — the aircraft must operate on battery or alternate power sources.\n\nIn the H130, the generator supplies electrical power for avionics, instruments, and communication equipment during flight.\n\nWithout generator output, battery endurance becomes your limiting factor.\n\nYou must aviate first, manage electrical load, then communicate with the correct urgency call.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Generator failure and alternator failure feel similar on the radio.\n\nBoth mean you are losing electrical endurance.\n\nThe sequence every professional pilot learns:\n\nAviate. Load-shed. Communicate.\n\nFly the aircraft first.\n\nTurn off everything non-essential.\n\nKnow your battery time from the flight manual.\n\nThen declare your urgency.\n\nBrazilian pilots sometimes say \"gerador caiu\" or \"perdeu o gerador\" on frequency.\n\nUse generator failure or generator out — ICAO standard terms.\n\nDo not confuse generator failure with total electrical failure.\n\nGenerator out on battery — Pan Pan.\n\nTotal electrical loss with no instruments — Mayday.\n\nTrain the assessment reflex so your radio call comes from a stable aircraft with a plan.",
+    "operationalContext": "You are on a cross-country flight at three thousand feet in your H130 from Curitiba toward Londrina.\n\nThe generator failure light illuminates and electrical bus voltage drops.\n\nYou reduce non-essential load and maintain stable flight.\n\nWhen stable, you transmit:\n\nPan Pan Pan Pan, Curitiba Approach, ANAC123, generator failure, operating on battery power, request vectors to Londrina.\n\nApproach acknowledges and provides direct routing.\n\nYou land at Londrina before battery endurance becomes critical.",
+    "sayItCoach": "Pan Pan Pan Pan, Curitiba Approach, ANAC123, generator failure, operating on battery power.",
+    "icaoModelAnswer": "Generator failure means the generator has stopped producing power, but the aircraft may still operate on battery with limited endurance. Total electrical failure means all electrical power is lost, including battery, which is more serious. For generator failure, I would declare Pan Pan, report operating on battery power, and request vectors to the nearest suitable airport. I would upgrade to Mayday if battery endurance becomes critical or essential systems fail.",
+    "memoryTrick": "**POWER** — **P**ilot flies first, **O**ff with non-essential load, **W**atch battery voltage, **E**xplain to ATC, **R**equest vectors to nearest airport.",
+    "operationalMeaning": "When Generator Failure occurs, the pilot should:\n\nGenerator Failure reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "clear traffic from the aircraft's route",
+      "provide vectors to the nearest suitable airport",
+      "coordinate priority landing if battery endurance is critical",
+      "request souls on board and fuel remaining",
+      "alert airport authorities if distress is declared"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger Pan Pan, say battery endurance and souls on board.",
+      "Approach: ANAC123, turn left heading two four zero, descend two thousand five hundred, Londrina two zero miles.",
+      "Tower: ANAC123, runway one eight cleared to land, wind calm.",
+      "Tower: ANAC123, emergency services notified, report final.",
+      "Departure: ANAC123, say nature of electrical problem and intentions."
+    ],
+    "pilotReadbacks": [
+      "Pan Pan Pan Pan, Curitiba Approach, ANAC123, generator failure, operating on battery power.",
+      "Pan Pan Pan Pan, ANAC123, generator out, request vectors to Curitiba.",
+      "Mayday Mayday Mayday, Londrina Tower, ANAC123, generator failure, battery critically low, request immediate landing.",
+      "ANAC123, generator failure, souls on board two, battery endurance approximately fifteen minutes.",
+      "Tower, ANAC123, generator failure, operating on battery, request priority landing."
+    ],
+    "brazilianMistakes": "- ❌ Using \"gerador queimou\" instead of standard English.  \n  ✔ Use generator failure or generator out.\n\n- ❌ Not distinguishing generator failure from total electrical failure.  \n  ✔ Generator out on battery is urgency; total loss may be distress.\n\n- ❌ Forgetting to report operating on battery power.  \n  ✔ State battery operation — ATC needs to know your endurance.\n\n- ❌ Delaying the call until radios fail.  \n  ✔ Declare early while communication is still reliable.",
+    "pronunciationCoaching": "**Target Phrase:** Pan Pan Pan Pan, Generator Failure, Operating on Battery Power\n\n**Pronunciation:** pan pan pan pan, JEN-er-ay-ter FAIL-yer, OP-er-ay-ting on BAT-ter-ee POW-er\n\n**Word Stress**\n\n- Generator → JEN-er-ay-ter\n- Failure → FAIL-yer\n- Operating → OP-er-ay-ting\n\nPractice:\n\nPan... Pan... Pan... Pan...\n\nTogether:\n\nPan Pan Pan Pan, Curitiba Approach, ANAC123, generator failure, operating on battery power.\n\nSpeak slowly and clearly — controllers need every word.",
+    "relatedConcepts": [
+      "Alternator Failure",
+      "Electrical Failure",
+      "Battery Failure",
+      "Pan Pan Urgency Call",
+      "Mayday Distress Call",
+      "Precautionary Landing"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Electrical System Malfunctions",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Generator",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Electrical System"
+      },
+      {
+        "label": "SKYbrary — Electrical Problems",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0058",
+    "id": "0058",
+    "displayTerm": "Battery Failure",
+    "term": "battery failure",
+    "slug": "battery-failure",
+    "category": "Aircraft Systems",
+    "meaningEn": "Battery Failure is the inability of the aircraft battery to supply adequate electrical power, threatening loss of communication and essential avionics.",
+    "meaningPt": "Falha da bateria.\n\nIncapacidade da bateria de fornecer energia elétrica adequada, ameaçando perda de comunicação e aviônicos essenciais.",
+    "whenUsed": "When Battery Failure occurs, the pilot should:",
+    "example": "Approach: ANAC123, Mayday acknowledged, turn left heading three six zero, Congonhas five miles, descend at pilot's discretion.",
+    "sayPhrase": "Mayday Mayday Mayday, São Paulo Approach, ANAC123, battery failure, request immediate landing Congonhas.",
+    "icaoQuestion": "What would you do if your battery failed after a generator failure in flight?",
+    "icaoSpeakText": "I would maintain aircraft control, declare Mayday Mayday Mayday immediately, state battery failure and that generator previously failed, report souls on board, and request immediate vectors to the nearest suitable airport. I would squawk seven seven zero zero if possible. I would use remaining radio power to confirm intentions before possible loss of communication.",
+    "missionBrief": "Today's lesson covers battery failure — when your last electrical reserve is gone.\n\nBattery Failure means the aircraft battery can no longer supply adequate electrical power — radios, instruments, and essential avionics may fail.\n\nIn the H130, the battery is the backup when the generator or alternator fails.\n\nIf the battery also fails, you may lose communication capability entirely.\n\nYou must aviate first, use remaining power wisely, then communicate before you go silent.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Battery failure is the end of your electrical runway.\n\nIf generator or alternator already failed, this is Mayday — not Pan Pan.\n\nThe sequence every professional pilot learns:\n\nAviate. Transmit. Proceed.\n\nFly the aircraft first.\n\nUse every second of remaining radio power.\n\nDeclare Mayday immediately.\n\nState souls on board.\n\nRequest immediate landing.\n\nBrazilian pilots sometimes say \"bateria acabou\" or \"morreu a bateria\" on frequency.\n\nUse battery failure or battery critically low — ICAO standard terms.\n\nIf you lose radio before landing, squawk 7700 if the transponder still works.\n\nATC will see you and clear traffic.\n\nTrain the reflex to call Mayday before silence — not after.",
+    "operationalContext": "You are ten miles south of Congonhas at one thousand two hundred feet in your H130.\n\nThe generator failed twenty minutes ago. Now battery voltage collapses and warning lights flash.\n\nYou have seconds of radio power remaining.\n\nYou transmit immediately:\n\nMayday Mayday Mayday, São Paulo Approach, ANAC123, battery failure, generator previously failed, request immediate vectors to Congonhas.\n\nApproach clears traffic and vectors you direct.\n\nYou land at Congonhas as the last radio transmission fades.",
+    "sayItCoach": "Mayday Mayday Mayday, São Paulo Approach, ANAC123, battery failure, request immediate landing.",
+    "icaoModelAnswer": "I would maintain aircraft control, declare Mayday Mayday Mayday immediately, state battery failure and that generator previously failed, report souls on board, and request immediate vectors to the nearest suitable airport. I would squawk seven seven zero zero if possible. I would use remaining radio power to confirm intentions before possible loss of communication.",
+    "memoryTrick": "**DEAD** — **D**eclare Mayday immediately, **E**ssential radios only, **A**im for nearest airport, **D**o not wait for silence.",
+    "operationalMeaning": "When Battery Failure occurs, the pilot should:\n\nBattery Failure reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "clear all traffic from the aircraft's route immediately",
+      "provide vectors to the nearest suitable airport",
+      "prepare for possible loss of radio contact",
+      "coordinate emergency services on the ground",
+      "monitor transponder if still operational"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, Mayday acknowledged, turn left heading three six zero, Congonhas five miles, descend at pilot's discretion.",
+      "Approach: ANAC123, all traffic cleared, say souls on board.",
+      "Tower: ANAC123, runway one seven cleared to land, emergency services standing by.",
+      "Tower: ANAC123, wind three five zero at zero eight knots, report final if able.",
+      "Approach: ANAC123, radar contact, if you read, squawk ident."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, São Paulo Approach, ANAC123, battery failure, request immediate landing Congonhas.",
+      "Mayday Mayday Mayday, ANAC123, battery critically low, possible loss of radio contact, souls on board four.",
+      "Pan Pan Pan Pan, ANAC123, battery voltage low, generator failure, request vectors to nearest airport.",
+      "ANAC123, battery failure, squawking seven seven zero zero, proceeding direct Congonhas.",
+      "Tower, ANAC123, battery failure, on final runway one seven, unable to maintain radio much longer."
+    ],
+    "brazilianMistakes": "- ❌ Treating battery failure as minor urgency after generator failure.  \n  ✔ Battery failure after generator loss is distress — Mayday.\n\n- ❌ Saying \"bateria fraca\" instead of standard English.  \n  ✔ Use battery failure or battery critically low.\n\n- ❌ Waiting to call ATC until the radio dies.  \n  ✔ Transmit Mayday while communication still works.\n\n- ❌ Forgetting to squawk 7700 when radio may fail.  \n  ✔ Squawk seven seven zero zero — ATC tracks you without voice.",
+    "pronunciationCoaching": "**Target Phrase:** Mayday Mayday Mayday, Battery Failure, Request Immediate Landing\n\n**Pronunciation:** MAY-day MAY-day MAY-day, BAT-ter-ee FAIL-yer, ree-KWEST im-MEE-dee-it LAN-ding\n\n**Word Stress**\n\n- Battery → BAT-ter-ee\n- Failure → FAIL-yer\n- Immediate → im-MEE-dee-it\n\nPractice:\n\nMayday... Mayday... Mayday...\n\nTogether:\n\nMayday Mayday Mayday, São Paulo Approach, ANAC123, battery failure, request immediate landing.\n\nSpeak with urgency but clearly — every word must be understood.",
+    "relatedConcepts": [
+      "Generator Failure",
+      "Alternator Failure",
+      "Electrical Failure",
+      "Mayday Distress Call",
+      "Squawk 7700",
+      "Emergency Landing"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Electrical System Malfunctions",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Battery",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Electrical System"
+      },
+      {
+        "label": "SKYbrary — Electrical Problems",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0059",
+    "id": "0059",
+    "displayTerm": "Oil Pressure Warning",
+    "term": "oil pressure warning",
+    "slug": "oil-pressure-warning",
+    "category": "Aircraft Systems",
+    "meaningEn": "Oil Pressure Warning is an indication that engine oil pressure has fallen below safe operating limits, threatening engine damage or failure.",
+    "meaningPt": "Alerta de pressão de óleo.\n\nIndicação de que a pressão de óleo do motor caiu abaixo dos limites seguros de operação.",
+    "whenUsed": "When Oil Pressure Warning occurs, the pilot should:",
+    "example": "Approach: ANAC123, roger Pan Pan, say oil pressure reading and souls on board.",
+    "sayPhrase": "Pan Pan Pan Pan, Florianópolis Approach, ANAC123, low oil pressure, reducing power.",
+    "icaoQuestion": "What would you tell ATC if you received an oil pressure warning during cruise?",
+    "icaoSpeakText": "After securing the aircraft, I would declare Pan Pan Pan Pan or Mayday depending on severity, state my callsign, report low oil pressure or oil pressure warning, describe that I am reducing power and monitoring engine parameters, and request vectors to the nearest suitable airport. I would upgrade to Mayday if engine failure appears imminent. I would provide souls on board and fuel remaining when ATC requests.",
+    "missionBrief": "Today's lesson covers one of the most serious engine warnings in flight.\n\nOil Pressure Warning means oil pressure has dropped below safe limits — the engine may seize if lubrication is lost.\n\nIn the H130, the turboshaft engine depends on continuous oil pressure for cooling and lubrication.\n\nA low oil pressure warning demands immediate action and clear communication.\n\nYou must aviate first, reduce power if required, then communicate with the correct urgency call.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Oil pressure is the lifeblood of your engine.\n\nWithout it, metal eats metal.\n\nThe sequence every professional pilot learns:\n\nAviate. Reduce. Communicate.\n\nFly the aircraft first.\n\nReduce power to reduce engine load.\n\nWatch pressure and temperature together.\n\nThen declare your urgency.\n\nRapid drop with high temperature — Mayday.\n\nLow but stable — Pan Pan.\n\nBrazilian pilots sometimes say \"pressão de óleo baixa\" or \"óleo caindo\" on frequency.\n\nUse low oil pressure or oil pressure warning — ICAO standard terms.\n\nIn the H130, do not ignore a flickering oil pressure light.\n\nA seized engine in a helicopter is a very bad day.\n\nTrain the reflex to reduce power and call ATC from a stable aircraft.",
+    "operationalContext": "You are cruising at two thousand five hundred feet in your H130 over the coast near Florianópolis.\n\nThe oil pressure warning illuminates and the gauge shows pressure dropping toward the red line.\n\nYou reduce collective and monitor engine parameters.\n\nWhen stable, you transmit:\n\nPan Pan Pan Pan, Florianópolis Approach, ANAC123, low oil pressure, reducing power, request vectors to Florianópolis.\n\nApproach clears traffic and provides direct routing.\n\nOil pressure stabilizes at a low but manageable level.\n\nYou complete a precautionary landing and report safe on the ground.",
+    "sayItCoach": "Pan Pan Pan Pan, Florianópolis Approach, ANAC123, low oil pressure, reducing power.",
+    "icaoModelAnswer": "After securing the aircraft, I would declare Pan Pan Pan Pan or Mayday depending on severity, state my callsign, report low oil pressure or oil pressure warning, describe that I am reducing power and monitoring engine parameters, and request vectors to the nearest suitable airport. I would upgrade to Mayday if engine failure appears imminent. I would provide souls on board and fuel remaining when ATC requests.",
+    "memoryTrick": "**OIL** — **O**bserve the gauge, **I**mmediate power reduction, **L**and at nearest suitable airport.",
+    "operationalMeaning": "When Oil Pressure Warning occurs, the pilot should:\n\nOil Pressure Warning reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "clear traffic from the aircraft's route",
+      "provide vectors to the nearest suitable airport",
+      "coordinate priority landing and emergency services",
+      "request souls on board and fuel remaining",
+      "prepare for possible engine failure on approach"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger Pan Pan, say oil pressure reading and souls on board.",
+      "Approach: ANAC123, turn right heading one eight zero, descend two thousand, Florianópolis one zero miles.",
+      "Tower: ANAC123, runway one four cleared to land, emergency services standing by.",
+      "Tower: ANAC123, wind one six zero at one two knots, report final.",
+      "Departure: ANAC123, say nature of engine problem and intentions."
+    ],
+    "pilotReadbacks": [
+      "Pan Pan Pan Pan, Florianópolis Approach, ANAC123, low oil pressure, reducing power.",
+      "Mayday Mayday Mayday, ANAC123, oil pressure warning, engine may fail, request immediate landing.",
+      "Pan Pan Pan Pan, ANAC123, oil pressure decreasing, request vectors to Navegantes.",
+      "ANAC123, low oil pressure, souls on board three, request priority landing.",
+      "Tower, ANAC123, oil pressure warning, precautionary landing runway one four."
+    ],
+    "brazilianMistakes": "- ❌ Ignoring a brief oil pressure flicker.  \n  ✔ Any oil pressure warning demands immediate attention.\n\n- ❌ Saying \"pressão do óleo\" instead of standard English.  \n  ✔ Use low oil pressure or oil pressure warning.\n\n- ❌ Maintaining full power with low oil pressure.  \n  ✔ Reduce power per flight manual procedures.\n\n- ❌ Not monitoring oil temperature alongside pressure.  \n  ✔ Rising temperature with falling pressure indicates imminent failure.",
+    "pronunciationCoaching": "**Target Phrase:** Pan Pan Pan Pan, Low Oil Pressure, Reducing Power\n\n**Pronunciation:** pan pan pan pan, loh oyl PRESH-er, ree-DOOS-ing POW-er\n\n**Word Stress**\n\n- Pressure → PRESH-er\n- Reducing → ree-DOOS-ing\n- Warning → WOR-ning\n\nPractice:\n\nPan... Pan... Pan... Pan...\n\nTogether:\n\nPan Pan Pan Pan, Florianópolis Approach, ANAC123, low oil pressure, reducing power.\n\nSpeak slowly and clearly — controllers need every word.",
+    "relatedConcepts": [
+      "Oil Temperature High",
+      "Engine Failure",
+      "Chip Warning",
+      "Pan Pan Urgency Call",
+      "Mayday Distress Call",
+      "Precautionary Landing"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Engine Failure Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Oil Pressure",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Engine Oil System"
+      },
+      {
+        "label": "SKYbrary — Engine Oil System",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0060",
+    "id": "0060",
+    "displayTerm": "Oil Temperature High",
+    "term": "oil temperature high",
+    "slug": "oil-temperature-high",
+    "category": "Aircraft Systems",
+    "meaningEn": "Oil Temperature High is an indication that engine oil temperature has risen above safe operating limits, threatening engine damage or failure.",
+    "meaningPt": "Temperatura de óleo alta.\n\nIndicação de que a temperatura do óleo do motor excedeu os limites seguros de operação.",
+    "whenUsed": "When Oil Temperature High occurs, the pilot should:",
+    "example": "Tower: ANAC123, roger Pan Pan, say oil temperature and souls on board.",
+    "sayPhrase": "Pan Pan Pan Pan, São Paulo Tower, ANAC123, high oil temperature, reducing power.",
+    "icaoQuestion": "What would you do if oil temperature became high during a hover operation?",
+    "icaoSpeakText": "I would maintain aircraft control, reduce power, transition to forward flight to improve engine cooling, and monitor oil temperature and pressure. I would declare Pan Pan Pan Pan or Mayday depending on severity, report high oil temperature, and request landing at the nearest suitable location. I would upgrade to Mayday if temperature continues rising or engine parameters deteriorate.",
+    "missionBrief": "Today's lesson covers high oil temperature — a warning that your engine is overheating.\n\nOil Temperature High means engine oil temperature has exceeded safe operating limits — lubrication efficiency drops and engine damage becomes likely.\n\nIn the H130, the turboshaft engine generates significant heat during high-power operations.\n\nSustained high oil temperature can lead to engine failure if not managed promptly.\n\nYou must aviate first, reduce power, then communicate with the correct urgency call.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "High oil temperature in a helicopter often comes from sustained high power.\n\nHovering on a hot day is a classic trigger.\n\nThe sequence every professional pilot learns:\n\nAviate. Cool. Communicate.\n\nFly the aircraft first.\n\nReduce power and gain airspeed if possible.\n\nAirflow cools the engine.\n\nWatch oil pressure alongside temperature.\n\nThen declare your urgency.\n\nRapid rise with falling pressure — Mayday.\n\nHigh but responding to reduction — Pan Pan.\n\nBrazilian pilots sometimes say \"óleo quente\" or \"temperatura alta\" on frequency.\n\nUse high oil temperature or oil temperature warning — ICAO standard terms.\n\nDo not hover indefinitely with a rising oil temperature gauge.\n\nLand and investigate.\n\nTrain the reflex to transition to forward flight and call ATC early.",
+    "operationalContext": "You are in a hover-taxi operation near Congonhas helipad in your H130 on a hot afternoon.\n\nOil temperature rises into the caution range and the warning activates.\n\nYou transition to forward flight, reduce power, and gain airspeed for cooling.\n\nWhen stable, you transmit:\n\nPan Pan Pan Pan, São Paulo Tower, ANAC123, high oil temperature, reducing power, request landing Congonhas helipad.\n\nTower clears the area and approves immediate landing.\n\nOil temperature decreases during the approach.\n\nYou land safely and shut down for inspection.",
+    "sayItCoach": "Pan Pan Pan Pan, São Paulo Tower, ANAC123, high oil temperature, reducing power.",
+    "icaoModelAnswer": "I would maintain aircraft control, reduce power, transition to forward flight to improve engine cooling, and monitor oil temperature and pressure. I would declare Pan Pan Pan Pan or Mayday depending on severity, report high oil temperature, and request landing at the nearest suitable location. I would upgrade to Mayday if temperature continues rising or engine parameters deteriorate.",
+    "memoryTrick": "**HEAT** — **H**over less, gain **E**forward flight, **A**nnounce Pan Pan or Mayday, **T**emperature — watch the gauge.",
+    "operationalMeaning": "When Oil Temperature High occurs, the pilot should:\n\nOil Temperature High reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "clear traffic from the aircraft's route",
+      "provide vectors to the nearest suitable airport",
+      "coordinate priority landing and emergency services",
+      "request souls on board and fuel remaining",
+      "prepare for possible engine failure on approach"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, roger Pan Pan, say oil temperature and souls on board.",
+      "Tower: ANAC123, cleared direct helipad, all traffic cleared from your approach.",
+      "Approach: ANAC123, turn left heading two seven zero, descend at pilot's discretion.",
+      "Tower: ANAC123, wind calm, cleared to land helipad.",
+      "Departure: ANAC123, say nature of engine problem and intentions."
+    ],
+    "pilotReadbacks": [
+      "Pan Pan Pan Pan, São Paulo Tower, ANAC123, high oil temperature, reducing power.",
+      "Mayday Mayday Mayday, ANAC123, oil temperature warning, engine may fail, request immediate landing.",
+      "Pan Pan Pan Pan, ANAC123, oil temperature high, request vectors to nearest airport.",
+      "ANAC123, high oil temperature, souls on board two, request priority landing.",
+      "Tower, ANAC123, oil temperature decreasing, proceeding direct helipad."
+    ],
+    "brazilianMistakes": "- ❌ Continuing to hover with rising oil temperature.  \n  ✔ Transition to forward flight or land to reduce engine load.\n\n- ❌ Saying \"óleo quente demais\" instead of standard English.  \n  ✔ Use high oil temperature or oil temperature warning.\n\n- ❌ Ignoring oil temperature because pressure looks normal.  \n  ✔ Monitor both — high temperature with normal pressure can still damage the engine.\n\n- ❌ Delaying the call until engine failure.  \n  ✔ Declare early while the engine still responds to power reduction.",
+    "pronunciationCoaching": "**Target Phrase:** Pan Pan Pan Pan, High Oil Temperature, Reducing Power\n\n**Pronunciation:** pan pan pan pan, hy oyl TEM-per-uh-cher, ree-DOOS-ing POW-er\n\n**Word Stress**\n\n- Temperature → TEM-per-uh-cher\n- Reducing → ree-DOOS-ing\n- High → hy\n\nPractice:\n\nPan... Pan... Pan... Pan...\n\nTogether:\n\nPan Pan Pan Pan, São Paulo Tower, ANAC123, high oil temperature, reducing power.\n\nSpeak slowly and clearly — controllers need every word.",
+    "relatedConcepts": [
+      "Oil Pressure Warning",
+      "Engine Failure",
+      "Chip Warning",
+      "Pan Pan Urgency Call",
+      "Mayday Distress Call",
+      "Precautionary Landing"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Engine Failure Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Oil Temperature",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Engine Oil System"
+      },
+      {
+        "label": "SKYbrary — Engine Oil System",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0061",
+    "id": "0061",
+    "displayTerm": "Chip Warning",
+    "term": "chip warning",
+    "slug": "chip-warning",
+    "category": "Aircraft Systems",
+    "meaningEn": "Chip Warning is an indication that ferrous metal particles have been detected in the engine or gearbox oil, suggesting internal mechanical damage.",
+    "meaningPt": "Alerta de detecção de partículas metálicas.\n\nIndicação de que partículas metálicas ferrosas foram detectadas no óleo do motor ou da caixa de engrenagens.",
+    "whenUsed": "When Chip Warning occurs, the pilot should:",
+    "example": "Approach: ANAC123, roger Pan Pan, say nature of chip warning and souls on board.",
+    "sayPhrase": "Pan Pan Pan Pan, Curitiba Approach, ANAC123, chip warning, reducing power.",
+    "icaoQuestion": "What does a chip warning indicate and what would you tell ATC?",
+    "icaoSpeakText": "A chip warning indicates ferrous metal particles detected in the engine or gearbox oil, suggesting internal mechanical damage. I would maintain aircraft control, reduce power, declare Pan Pan Pan Pan or Mayday depending on severity, report chip warning or chip detector activated, and request vectors to the nearest suitable airport. I would upgrade to Mayday if vibrations or abnormal engine parameters develop.",
+    "missionBrief": "Today's lesson covers the chip detector warning — a sign of metal in your oil system.\n\nChip Warning means the chip detector has found ferrous metal particles in the engine or gearbox oil — indicating internal component wear or damage.\n\nIn the H130, chip detectors monitor the main gearbox and engine oil systems.\n\nMetal in the oil means something inside is breaking apart.\n\nYou must aviate first, reduce power, then communicate with the correct urgency call.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Chip warning means metal is moving through your oil.\n\nSomething inside is wearing or breaking.\n\nThe sequence every professional pilot learns:\n\nAviate. Listen. Communicate.\n\nFly the aircraft first.\n\nReduce power to reduce load on damaged components.\n\nListen and feel for vibrations, noise, or parameter changes.\n\nThen declare your urgency.\n\nChip warning alone with stable flight — Pan Pan.\n\nChip warning with vibration or parameter loss — Mayday.\n\nBrazilian pilots sometimes say \"chip acionou\" or \"detector de partículas\" on frequency.\n\nUse chip warning or chip detector activated — ICAO standard terms.\n\nIn the H130, never reset a chip warning without maintenance inspection.\n\nMetal does not disappear — it accumulates.\n\nTrain the reflex to reduce power and land before catastrophic failure.",
+    "operationalContext": "You are cruising at one thousand eight hundred feet in your H130 from Curitiba toward Joinville.\n\nThe chip detector warning illuminates on the caution panel.\n\nYou reduce collective and monitor for unusual vibrations.\n\nWhen stable, you transmit:\n\nPan Pan Pan Pan, Curitiba Approach, ANAC123, chip warning, reducing power, request vectors to Joinville.\n\nApproach clears traffic and provides direct routing.\n\nYou complete a precautionary landing and report safe on the ground for maintenance inspection.",
+    "sayItCoach": "Pan Pan Pan Pan, Curitiba Approach, ANAC123, chip warning, reducing power.",
+    "icaoModelAnswer": "A chip warning indicates ferrous metal particles detected in the engine or gearbox oil, suggesting internal mechanical damage. I would maintain aircraft control, reduce power, declare Pan Pan Pan Pan or Mayday depending on severity, report chip warning or chip detector activated, and request vectors to the nearest suitable airport. I would upgrade to Mayday if vibrations or abnormal engine parameters develop.",
+    "memoryTrick": "**METAL** — **M**onitor vibrations, **E**ngine power down, **T**ell ATC chip warning, **A**im for nearest airport, **L**and for inspection.",
+    "operationalMeaning": "When Chip Warning occurs, the pilot should:\n\nChip Warning reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "clear traffic from the aircraft's route",
+      "provide vectors to the nearest suitable airport",
+      "coordinate priority landing and emergency services",
+      "request souls on board and fuel remaining",
+      "prepare for possible mechanical failure on approach"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger Pan Pan, say nature of chip warning and souls on board.",
+      "Approach: ANAC123, turn right heading zero four five, descend one thousand five hundred, Joinville one two miles.",
+      "Tower: ANAC123, runway one five cleared to land, emergency services standing by.",
+      "Tower: ANAC123, wind zero nine zero at zero eight knots, report final.",
+      "Departure: ANAC123, say engine parameters and intentions."
+    ],
+    "pilotReadbacks": [
+      "Pan Pan Pan Pan, Curitiba Approach, ANAC123, chip warning, reducing power.",
+      "Mayday Mayday Mayday, ANAC123, chip detector activated, abnormal vibration, request immediate landing.",
+      "Pan Pan Pan Pan, ANAC123, chip warning, metal particles in oil, request vectors to Curitiba.",
+      "ANAC123, chip warning, souls on board four, request priority landing.",
+      "Tower, ANAC123, chip detector activated, precautionary landing runway one five."
+    ],
+    "brazilianMistakes": "- ❌ Resetting the chip warning and continuing the flight.  \n  ✔ Land and inspect — metal in oil means internal damage.\n\n- ❌ Saying \"detector de chip\" instead of standard English.  \n  ✔ Use chip warning or chip detector activated.\n\n- ❌ Ignoring chip warning because engine sounds normal.  \n  ✔ Damage may be developing — reduce power and land.\n\n- ❌ Not reporting abnormal vibrations with chip warning.  \n  ✔ Vibration plus chip warning is Mayday territory.",
+    "pronunciationCoaching": "**Target Phrase:** Pan Pan Pan Pan, Chip Warning, Reducing Power\n\n**Pronunciation:** pan pan pan pan, chip WOR-ning, ree-DOOS-ing POW-er\n\n**Word Stress**\n\n- Chip → chip\n- Warning → WOR-ning\n- Detector → dee-TEK-ter\n\nPractice:\n\nPan... Pan... Pan... Pan...\n\nTogether:\n\nPan Pan Pan Pan, Curitiba Approach, ANAC123, chip warning, reducing power.\n\nSpeak slowly and clearly — controllers need every word.",
+    "relatedConcepts": [
+      "Oil Pressure Warning",
+      "Oil Temperature High",
+      "Engine Failure",
+      "Pan Pan Urgency Call",
+      "Mayday Distress Call",
+      "Precautionary Landing"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Engine Failure Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Chip Detector",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Chip Detection System"
+      },
+      {
+        "label": "SKYbrary — Engine Monitoring",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0062",
+    "id": "0062",
+    "displayTerm": "Tail Rotor Failure",
+    "term": "tail rotor failure",
+    "slug": "tail-rotor-failure",
+    "category": "Helicopter Operations",
+    "meaningEn": "Tail Rotor Failure is the loss of tail rotor effectiveness or drive, resulting in degraded or lost yaw control.",
+    "meaningPt": "Falha do rotor de cauda.\n\nPerda de efetividade ou acionamento do rotor de cauda, resultando em controle de guinada degradado ou perdido.",
+    "whenUsed": "When Tail Rotor Failure occurs, the pilot should:",
+    "example": "Tower: ANAC123, Mayday acknowledged, all traffic cleared, say souls on board and position.",
+    "sayPhrase": "Mayday Mayday Mayday, Navegantes Tower, ANAC123, tail rotor failure, request immediate landing.",
+    "icaoQuestion": "What would you tell ATC if you experienced tail rotor failure in flight?",
+    "icaoSpeakText": "I would maintain aircraft control and apply tail rotor failure emergency procedures. I would declare Mayday Mayday Mayday, state my callsign, report tail rotor failure or loss of tail rotor effectiveness, state my position and souls on board, and request immediate landing at the nearest suitable area. I would provide updates as the situation develops.",
+    "missionBrief": "Today's lesson covers one of the most critical helicopter emergencies.\n\nTail Rotor Failure means the tail rotor has lost effectiveness — yaw control is degraded or lost entirely.\n\nIn the H130, the tail rotor counteracts main rotor torque and provides directional control.\n\nWithout tail rotor authority, the helicopter may enter an uncontrolled yaw or spin.\n\nYou must aviate first, apply emergency procedures, then communicate with Mayday.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Tail rotor failure is one of the most dangerous helicopter emergencies.\n\nTwo types matter:\n\nLoss of tail rotor effectiveness — LTE — often at low speed and high power.\n\nComplete drive failure — total loss of yaw control.\n\nThe sequence every professional pilot learns:\n\nAviate. Procedure. Mayday.\n\nFly the aircraft first.\n\nApply the correct emergency procedure from the flight manual.\n\nDo not chase the radio while spinning.\n\nWhen you have partial control — Mayday immediately.\n\nBrazilian pilots sometimes say \"perdeu o rotor de cauda\" or \"girando\" on frequency.\n\nUse tail rotor failure or loss of tail rotor effectiveness — ICAO standard terms.\n\nIn the H130, train the tail rotor failure procedure until it is muscle memory.\n\nYou may have seconds to act.\n\nThe radio call comes after you start flying the procedure — not before.",
+    "operationalContext": "You are at five hundred feet on approach to Navegantes helipad in your H130.\n\nSuddenly the helicopter yaws uncontrollably to the right — tail rotor drive has failed.\n\nYou lower collective, apply anti-torque procedures, and fight to maintain heading.\n\nWhen partially stable, you transmit:\n\nMayday Mayday Mayday, Navegantes Tower, ANAC123, tail rotor failure, unable to control yaw, request immediate landing helipad.\n\nTower clears all traffic and emergency services respond.\n\nYou execute a running landing on the helipad and secure the aircraft.",
+    "sayItCoach": "Mayday Mayday Mayday, Navegantes Tower, ANAC123, tail rotor failure, request immediate landing.",
+    "icaoModelAnswer": "I would maintain aircraft control and apply tail rotor failure emergency procedures. I would declare Mayday Mayday Mayday, state my callsign, report tail rotor failure or loss of tail rotor effectiveness, state my position and souls on board, and request immediate landing at the nearest suitable area. I would provide updates as the situation develops.",
+    "memoryTrick": "**YAW** — **Y**ou fly first, **A**pply emergency procedure, **W**hen stable — Mayday and land.",
+    "operationalMeaning": "When Tail Rotor Failure occurs, the pilot should:\n\nTail Rotor Failure reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "clear all traffic from the aircraft's route immediately",
+      "provide vectors to the nearest suitable landing area",
+      "coordinate emergency services on the ground",
+      "request souls on board and exact position",
+      "prepare for possible crash landing or autorotation"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, Mayday acknowledged, all traffic cleared, say souls on board and position.",
+      "Tower: ANAC123, cleared direct helipad, emergency services standing by.",
+      "Approach: ANAC123, radar contact, say intentions and souls on board.",
+      "Tower: ANAC123, wind two seven zero at one zero knots, cleared to land any area.",
+      "Tower: ANAC123, emergency vehicles dispatched to helipad."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, Navegantes Tower, ANAC123, tail rotor failure, request immediate landing.",
+      "Mayday Mayday Mayday, ANAC123, loss of tail rotor effectiveness, unable to control yaw, souls on board three.",
+      "Mayday Mayday Mayday, Florianópolis Approach, ANAC123, tail rotor drive failure, request nearest landing area.",
+      "ANAC123, tail rotor failure, position five miles south Navegantes, request immediate vectors.",
+      "Tower, ANAC123, tail rotor failure, executing running landing helipad."
+    ],
+    "brazilianMistakes": "- ❌ Trying to radio Mayday before applying emergency procedures.  \n  ✔ Aviate first — apply tail rotor failure procedure, then transmit.\n\n- ❌ Saying \"rotor de cauda parou\" instead of standard English.  \n  ✔ Use tail rotor failure or loss of tail rotor effectiveness.\n\n- ❌ Increasing power when yaw becomes uncontrollable.  \n  ✔ Follow flight manual — often reduce power and airspeed.\n\n- ❌ Not declaring Mayday — treating it as urgency.  \n  ✔ Tail rotor failure is always distress — Mayday.",
+    "pronunciationCoaching": "**Target Phrase:** Mayday Mayday Mayday, Tail Rotor Failure, Request Immediate Landing\n\n**Pronunciation:** MAY-day MAY-day MAY-day, tayl ROH-ter FAIL-yer, ree-KWEST im-MEE-dee-it LAN-ding\n\n**Word Stress**\n\n- Tail → tayl\n- Rotor → ROH-ter\n- Failure → FAIL-yer\n\nPractice:\n\nMayday... Mayday... Mayday...\n\nTogether:\n\nMayday Mayday Mayday, Navegantes Tower, ANAC123, tail rotor failure, request immediate landing.\n\nSpeak with urgency but clearly — every word must be understood.",
+    "relatedConcepts": [
+      "Main Rotor Damage",
+      "Rotor Overspeed",
+      "Rotor RPM Low",
+      "Autorotation",
+      "Mayday Distress Call",
+      "Emergency Landing"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Helicopter Flying Handbook — Tail Rotor Emergencies"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Tail Rotor",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Tail Rotor Failure Procedures"
+      },
+      {
+        "label": "SKYbrary — Helicopter Tail Rotor Failures",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0063",
+    "id": "0063",
+    "displayTerm": "Main Rotor Damage",
+    "term": "main rotor damage",
+    "slug": "main-rotor-damage",
+    "category": "Helicopter Operations",
+    "meaningEn": "Main Rotor Damage is physical damage to the main rotor blades or hub, causing abnormal vibration and threatening catastrophic failure.",
+    "meaningPt": "Dano no rotor principal.\n\nDano físico às pás ou ao hub do rotor principal, causando vibração anormal e ameaçando falha catastrófica.",
+    "whenUsed": "When Main Rotor Damage occurs, the pilot should:",
+    "example": "Approach: ANAC123, Mayday acknowledged, say souls on board and nature of damage.",
+    "sayPhrase": "Mayday Mayday Mayday, Florianópolis Approach, ANAC123, main rotor damage, request immediate landing.",
+    "icaoQuestion": "What would you tell ATC if you suspected main rotor damage during flight?",
+    "icaoSpeakText": "I would maintain aircraft control, reduce power smoothly, and declare Mayday Mayday Mayday. I would state my callsign, report main rotor damage or abnormal main rotor vibration, describe severity, state position and souls on board, and request immediate landing at the nearest suitable area. I would be prepared to autorotate if power loss follows.",
+    "missionBrief": "Today's lesson covers main rotor damage — a catastrophic helicopter emergency.\n\nMain Rotor Damage means the main rotor blades or hub have been damaged — vibration, imbalance, or structural compromise threatens flight safety.\n\nIn the H130, the main rotor provides all lift and thrust.\n\nDamaged main rotor blades can fail catastrophically without warning.\n\nYou must aviate first, reduce power, then communicate with Mayday.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Main rotor damage is a race against structural failure.\n\nCauses include bird strike, foreign object, ground contact, or material fatigue.\n\nThe sequence every professional pilot learns:\n\nAviate. Gentle. Mayday.\n\nFly the aircraft first.\n\nReduce power smoothly — abrupt inputs can worsen the damage.\n\nMaintain rotor RPM within limits.\n\nDo not fight severe vibration with aggressive cyclic.\n\nWhen stable — Mayday immediately.\n\nBrazilian pilots sometimes say \"dano no rotor\" or \"vibração forte\" on frequency.\n\nUse main rotor damage or abnormal main rotor vibration — ICAO standard terms.\n\nIn the H130, any severe unexplained vibration is Mayday until proven otherwise.\n\nTrain the reflex to reduce power gently and land immediately.",
+    "operationalContext": "You are cruising at one thousand five hundred feet near Florianópolis in your H130 when you hear a loud bang and severe vibration begins.\n\nYou suspect main rotor blade strike or damage — possibly bird strike or foreign object.\n\nYou reduce collective smoothly and maintain rotor RPM.\n\nWhen stable, you transmit:\n\nMayday Mayday Mayday, Florianópolis Approach, ANAC123, main rotor damage, severe vibration, request immediate landing.\n\nApproach clears all traffic and vectors you to the nearest helipad.\n\nYou execute a cautious approach and land safely.",
+    "sayItCoach": "Mayday Mayday Mayday, Florianópolis Approach, ANAC123, main rotor damage, request immediate landing.",
+    "icaoModelAnswer": "I would maintain aircraft control, reduce power smoothly, and declare Mayday Mayday Mayday. I would state my callsign, report main rotor damage or abnormal main rotor vibration, describe severity, state position and souls on board, and request immediate landing at the nearest suitable area. I would be prepared to autorotate if power loss follows.",
+    "memoryTrick": "**BLADE** — **B**ack off power gently, **L**and immediately, **A**nnounce Mayday, **D**escribe vibration, **E**vacuate souls on board count.",
+    "operationalMeaning": "When Main Rotor Damage occurs, the pilot should:\n\nMain Rotor Damage reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "clear all traffic from the aircraft's route immediately",
+      "provide vectors to the nearest suitable landing area",
+      "coordinate emergency services on the ground",
+      "request souls on board and exact position",
+      "prepare for possible autorotation or crash landing"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, Mayday acknowledged, say souls on board and nature of damage.",
+      "Approach: ANAC123, turn left heading two seven zero, nearest helipad three miles, all traffic cleared.",
+      "Tower: ANAC123, cleared direct helipad, emergency services standing by.",
+      "Tower: ANAC123, wind one eight zero at one five knots, cleared to land any area.",
+      "Approach: ANAC123, radar contact, say rotor RPM and intentions."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, Florianópolis Approach, ANAC123, main rotor damage, request immediate landing.",
+      "Mayday Mayday Mayday, ANAC123, abnormal main rotor vibration, reducing power, souls on board four.",
+      "Mayday Mayday Mayday, Navegantes Tower, ANAC123, suspected main rotor blade damage, request nearest landing area.",
+      "ANAC123, main rotor damage, severe vibration, position one zero miles north Florianópolis.",
+      "Tower, ANAC123, main rotor damage, executing immediate landing helipad."
+    ],
+    "brazilianMistakes": "- ❌ Making abrupt control inputs with severe vibration.  \n  ✔ Reduce power smoothly and avoid aggressive cyclic movements.\n\n- ❌ Saying \"rotor principal danificado\" instead of standard English.  \n  ✔ Use main rotor damage or abnormal main rotor vibration.\n\n- ❌ Continuing flight to a distant airport.  \n  ✔ Land at the nearest suitable area immediately.\n\n- ❌ Treating severe vibration as Pan Pan.  \n  ✔ Main rotor damage is always Mayday.",
+    "pronunciationCoaching": "**Target Phrase:** Mayday Mayday Mayday, Main Rotor Damage, Request Immediate Landing\n\n**Pronunciation:** MAY-day MAY-day MAY-day, mayn ROH-ter DAM-ij, ree-KWEST im-MEE-dee-it LAN-ding\n\n**Word Stress**\n\n- Main → mayn\n- Rotor → ROH-ter\n- Damage → DAM-ij\n\nPractice:\n\nMayday... Mayday... Mayday...\n\nTogether:\n\nMayday Mayday Mayday, Florianópolis Approach, ANAC123, main rotor damage, request immediate landing.\n\nSpeak with urgency but clearly — every word must be understood.",
+    "relatedConcepts": [
+      "Tail Rotor Failure",
+      "Bird Strike",
+      "Rotor Overspeed",
+      "Rotor RPM Low",
+      "Autorotation",
+      "Mayday Distress Call"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Helicopter Flying Handbook — Rotor System Emergencies"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Main Rotor",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Main Rotor System"
+      },
+      {
+        "label": "SKYbrary — Helicopter Rotor Damage",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0064",
+    "id": "0064",
+    "displayTerm": "Rotor Overspeed",
+    "term": "rotor overspeed",
+    "slug": "rotor-overspeed",
+    "category": "Helicopter Operations",
+    "meaningEn": "Rotor Overspeed is the condition where main rotor RPM exceeds maximum allowable limits, threatening structural damage or blade separation.",
+    "meaningPt": "Sobrevelocidade do rotor.\n\nCondição em que o RPM do rotor principal excede os limites máximos permitidos, ameaçando dano estrutural.",
+    "whenUsed": "When Rotor Overspeed occurs, the pilot should:",
+    "example": "Approach: ANAC123, roger Pan Pan, say current rotor RPM and souls on board.",
+    "sayPhrase": "Pan Pan Pan Pan, Navegantes Approach, ANAC123, rotor overspeed, RPM corrected, request precautionary landing.",
+    "icaoQuestion": "What would you tell ATC if you experienced rotor overspeed during descent?",
+    "icaoSpeakText": "I would maintain aircraft control, adjust collective to correct rotor RPM, and declare Pan Pan Pan Pan or Mayday depending on whether RPM is controlled. I would report rotor overspeed or rotor RPM high, state whether RPM is now corrected, and request vectors to the nearest suitable landing area for precautionary landing and inspection.",
+    "missionBrief": "Today's lesson covers rotor overspeed — when rotor RPM exceeds safe limits.\n\nRotor Overspeed means main rotor RPM has risen above the maximum allowable limit — centrifugal forces on the blades increase and structural failure becomes possible.\n\nIn the H130, rotor RPM must stay within the green arc for safe operation.\n\nOverspeed can result from governor failure, collective mismanagement, or emergency descent.\n\nYou must aviate first, correct RPM, then communicate with the correct urgency call.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Rotor overspeed is a numbers game.\n\nRPM above the red line means blades are stressed beyond design limits.\n\nThe sequence every professional pilot learns:\n\nAviate. RPM. Communicate.\n\nFly the aircraft first.\n\nAdjust collective to bring RPM back to the green arc.\n\nCheck governor and engine parameters.\n\nThen declare your urgency.\n\nBrief overspeed corrected — Pan Pan for precautionary landing.\n\nUncontrolled overspeed — Mayday.\n\nBrazilian pilots sometimes say \"RPM alto\" or \"rotor acelerado\" on frequency.\n\nUse rotor overspeed or rotor RPM high — ICAO standard terms.\n\nIn the H130, steep descents with low collective are a common overspeed trigger.\n\nTrain the collective reflex before you need the radio.",
+    "operationalContext": "You are descending toward Navegantes at one thousand two hundred feet in your H130.\n\nDuring a steep descent, rotor RPM rises into the red arc and the overspeed warning activates.\n\nYou raise collective slightly to reduce RPM and level the descent.\n\nWhen RPM returns to the green arc, you transmit:\n\nPan Pan Pan Pan, Navegantes Approach, ANAC123, rotor overspeed, RPM now corrected, request vectors to Navegantes for precautionary landing.\n\nApproach clears traffic and provides direct routing.\n\nYou land safely for inspection.",
+    "sayItCoach": "Pan Pan Pan Pan, Navegantes Approach, ANAC123, rotor overspeed, RPM corrected.",
+    "icaoModelAnswer": "I would maintain aircraft control, adjust collective to correct rotor RPM, and declare Pan Pan Pan Pan or Mayday depending on whether RPM is controlled. I would report rotor overspeed or rotor RPM high, state whether RPM is now corrected, and request vectors to the nearest suitable landing area for precautionary landing and inspection.",
+    "memoryTrick": "**RPM** — **R**educe collective, **P**ull RPM to green arc, **M**ayday if uncontrolled, Pan Pan if corrected.",
+    "operationalMeaning": "When Rotor Overspeed occurs, the pilot should:\n\nRotor Overspeed reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "clear traffic from the aircraft's route",
+      "provide vectors to the nearest suitable landing area",
+      "coordinate emergency services if distress is declared",
+      "request souls on board and position",
+      "prepare for possible autorotation if overspeed leads to failure"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger Pan Pan, say current rotor RPM and souls on board.",
+      "Approach: ANAC123, turn right heading one eight zero, descend eight hundred, Navegantes five miles.",
+      "Tower: ANAC123, runway two nine cleared to land, emergency services notified.",
+      "Tower: ANAC123, wind two seven zero at one two knots, report final.",
+      "Departure: ANAC123, say nature of rotor problem and intentions."
+    ],
+    "pilotReadbacks": [
+      "Pan Pan Pan Pan, Navegantes Approach, ANAC123, rotor overspeed, RPM corrected, request precautionary landing.",
+      "Mayday Mayday Mayday, ANAC123, rotor overspeed, unable to control RPM, request immediate landing.",
+      "Pan Pan Pan Pan, ANAC123, rotor RPM high, correcting, request vectors to Florianópolis.",
+      "ANAC123, rotor overspeed warning, souls on board three, request priority landing.",
+      "Tower, ANAC123, rotor RPM now normal, precautionary landing runway two nine."
+    ],
+    "brazilianMistakes": "- ❌ Ignoring a brief overspeed without landing for inspection.  \n  ✔ Overspeed stresses blades — precautionary landing and inspection required.\n\n- ❌ Saying \"RPM do rotor alto\" instead of standard English.  \n  ✔ Use rotor overspeed or rotor RPM high.\n\n- ❌ Continuing flight after uncontrolled overspeed.  \n  ✔ Land immediately if RPM cannot be controlled.\n\n- ❌ Not reporting whether RPM is currently corrected.  \n  ✔ Tell ATC current RPM status — it determines urgency level.",
+    "pronunciationCoaching": "**Target Phrase:** Pan Pan Pan Pan, Rotor Overspeed, RPM Corrected\n\n**Pronunciation:** pan pan pan pan, ROH-ter OH-ver-speed, R-P-M kor-REK-ted\n\n**Word Stress**\n\n- Rotor → ROH-ter\n- Overspeed → OH-ver-speed\n- Corrected → kor-REK-ted\n\nPractice:\n\nPan... Pan... Pan... Pan...\n\nTogether:\n\nPan Pan Pan Pan, Navegantes Approach, ANAC123, rotor overspeed, RPM corrected.\n\nSpeak slowly and clearly — controllers need every word.",
+    "relatedConcepts": [
+      "Rotor RPM Low",
+      "Tail Rotor Failure",
+      "Main Rotor Damage",
+      "Autorotation",
+      "Pan Pan Urgency Call",
+      "Mayday Distress Call"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Helicopter Flying Handbook — Rotor RPM Management"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Rotor RPM",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Rotor Limitations"
+      },
+      {
+        "label": "SKYbrary — Helicopter Rotor Overspeed",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0065",
+    "id": "0065",
+    "displayTerm": "Rotor RPM Low",
+    "term": "rotor rpm low",
+    "slug": "rotor-rpm-low",
+    "category": "Helicopter Operations",
+    "meaningEn": "Rotor RPM Low is the condition where main rotor RPM falls below minimum safe limits, threatening loss of lift and requiring immediate corrective action.",
+    "meaningPt": "RPM do rotor baixo.\n\nCondição em que o RPM do rotor principal cai abaixo dos limites mínimos seguros, ameaçando perda de sustentação.",
+    "whenUsed": "When Rotor RPM Low occurs, the pilot should:",
+    "example": "Tower: ANAC123, Mayday acknowledged, say souls on board and current rotor RPM.",
+    "sayPhrase": "Mayday Mayday Mayday, São Paulo Tower, ANAC123, low rotor RPM, request immediate landing.",
+    "icaoQuestion": "What is the first action when rotor RPM becomes low during hover?",
+    "icaoSpeakText": "I would lower collective immediately to recover rotor RPM. I would avoid abrupt aft cyclic, transition to forward flight if appropriate, and maintain aircraft control. If RPM recovers, I would declare Pan Pan or Mayday depending on altitude lost and declare my intentions. If RPM cannot be recovered and altitude is being lost, I would enter autorotation and declare Mayday Mayday Mayday with position and souls on board.",
+    "missionBrief": "Today's lesson covers low rotor RPM — one of the most dangerous helicopter conditions.\n\nRotor RPM Low means main rotor RPM has dropped below safe operating limits — lift decreases and autorotation may become necessary.\n\nIn the H130, maintaining rotor RPM in the green arc is the pilot's primary responsibility.\n\nLow rotor RPM can lead to rotor stall and catastrophic loss of lift.\n\nYou must aviate first, lower collective immediately, then communicate with Mayday if altitude cannot be maintained.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Low rotor RPM is the helicopter pilot's oldest enemy.\n\nBelow minimum RPM, the blades stall aerodynamically — lift disappears.\n\nThe sequence every professional pilot learns:\n\nCollective down. Aviate. Mayday.\n\nLower collective first — before anything else.\n\nDo not pull aft cyclic while RPM is low.\n\nIf RPM does not recover and altitude is lost — autorotate.\n\nThen Mayday.\n\nBrazilian pilots sometimes say \"RPM baixo\" or \"perdendo RPM\" on frequency.\n\nUse low rotor RPM or rotor RPM decay — ICAO standard terms.\n\nIn the H130, high-power hover on hot days is a classic low RPM trap.\n\nTrain the collective-down reflex until it is automatic.\n\nThe radio comes after collective — always.",
+    "operationalContext": "You are at six hundred feet on approach to Congonhas helipad in your H130.\n\nDuring a high-power hover, rotor RPM decays into the yellow arc and continues dropping.\n\nYou lower collective aggressively and transition to forward flight.\n\nRPM recovers but altitude was lost.\n\nYou transmit:\n\nMayday Mayday Mayday, São Paulo Tower, ANAC123, low rotor RPM, RPM recovered, request immediate landing helipad.\n\nTower clears all traffic and emergency services respond.\n\nYou land safely on the helipad.",
+    "sayItCoach": "Mayday Mayday Mayday, São Paulo Tower, ANAC123, low rotor RPM, request immediate landing.",
+    "icaoModelAnswer": "I would lower collective immediately to recover rotor RPM. I would avoid abrupt aft cyclic, transition to forward flight if appropriate, and maintain aircraft control. If RPM recovers, I would declare Pan Pan or Mayday depending on altitude lost and declare my intentions. If RPM cannot be recovered and altitude is being lost, I would enter autorotation and declare Mayday Mayday Mayday with position and souls on board.",
+    "memoryTrick": "**DOWN** — **D**rop collective immediately, **O**bserve RPM recovery, **W**hen stable — Mayday, **N**earest landing area.",
+    "operationalMeaning": "When Rotor RPM Low occurs, the pilot should:\n\nRotor RPM Low reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "clear all traffic from the aircraft's route immediately",
+      "provide vectors to the nearest suitable landing area",
+      "coordinate emergency services on the ground",
+      "request souls on board and exact position",
+      "prepare for possible autorotation or emergency landing"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, Mayday acknowledged, say souls on board and current rotor RPM.",
+      "Tower: ANAC123, cleared direct helipad, all traffic cleared, emergency services standing by.",
+      "Approach: ANAC123, radar contact, say intentions and altitude.",
+      "Tower: ANAC123, wind calm, cleared to land any area.",
+      "Tower: ANAC123, emergency vehicles dispatched to helipad."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, São Paulo Tower, ANAC123, low rotor RPM, request immediate landing.",
+      "Mayday Mayday Mayday, ANAC123, rotor RPM decay, entering autorotation, souls on board two.",
+      "Pan Pan Pan Pan, Navegantes Approach, ANAC123, low rotor RPM, RPM now recovered, request precautionary landing.",
+      "ANAC123, low rotor RPM, position three miles south Congonhas, request immediate vectors.",
+      "Tower, ANAC123, low rotor RPM, RPM recovered, executing landing helipad."
+    ],
+    "brazilianMistakes": "- ❌ Pulling collective up when RPM is low.  \n  ✔ Lower collective immediately — this is the only recovery action.\n\n- ❌ Calling Mayday before lowering collective.  \n  ✔ Collective down first — radio second.\n\n- ❌ Saying \"RPM caindo\" instead of standard English.  \n  ✔ Use low rotor RPM or rotor RPM decay.\n\n- ❌ Not preparing for autorotation if RPM does not recover.  \n  ✔ Enter autorotation if altitude cannot be maintained.",
+    "pronunciationCoaching": "**Target Phrase:** Mayday Mayday Mayday, Low Rotor RPM, Request Immediate Landing\n\n**Pronunciation:** MAY-day MAY-day MAY-day, loh ROH-ter R-P-M, ree-KWEST im-MEE-dee-it LAN-ding\n\n**Word Stress**\n\n- Rotor → ROH-ter\n- Low → loh\n- Immediate → im-MEE-dee-it\n\nPractice:\n\nMayday... Mayday... Mayday...\n\nTogether:\n\nMayday Mayday Mayday, São Paulo Tower, ANAC123, low rotor RPM, request immediate landing.\n\nSpeak with urgency but clearly — every word must be understood.",
+    "relatedConcepts": [
+      "Rotor Overspeed",
+      "Autorotation",
+      "Tail Rotor Failure",
+      "Engine Failure",
+      "Mayday Distress Call",
+      "Emergency Landing"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Helicopter Flying Handbook — Rotor RPM Management"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Rotor RPM",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Rotor Limitations"
+      },
+      {
+        "label": "SKYbrary — Helicopter Low Rotor RPM",
+        "href": "https://skybrary.aero"
+      }
+    ]
   }
 ];

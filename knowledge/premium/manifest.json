@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "completedCount": 55,
-  "pendingCount": 455,
+  "completedCount": 65,
+  "pendingCount": 445,
   "concepts": [
     {
       "id": "0001",
@@ -385,6 +385,76 @@
       "id": "0055",
       "concept": "Lost Communications",
       "slug": "0055-lost-communications",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0056",
+      "concept": "Alternator Failure",
+      "slug": "0056-alternator-failure",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0057",
+      "concept": "Generator Failure",
+      "slug": "0057-generator-failure",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0058",
+      "concept": "Battery Failure",
+      "slug": "0058-battery-failure",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0059",
+      "concept": "Oil Pressure Warning",
+      "slug": "0059-oil-pressure-warning",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0060",
+      "concept": "Oil Temperature High",
+      "slug": "0060-oil-temperature-high",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0061",
+      "concept": "Chip Warning",
+      "slug": "0061-chip-warning",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0062",
+      "concept": "Tail Rotor Failure",
+      "slug": "0062-tail-rotor-failure",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0063",
+      "concept": "Main Rotor Damage",
+      "slug": "0063-main-rotor-damage",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0064",
+      "concept": "Rotor Overspeed",
+      "slug": "0064-rotor-overspeed",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0065",
+      "concept": "Rotor RPM Low",
+      "slug": "0065-rotor-rpm-low",
       "status": "complete",
       "completedAt": "2026-07-08"
     }
