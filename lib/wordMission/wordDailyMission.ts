@@ -34,14 +34,46 @@ function clearLegacyMissionStorage(): void {
 function isValidPremiumMission(parsed: unknown, date: string): parsed is VocabDailyMissionState {
   if (!parsed || typeof parsed !== "object") return false;
   const m = parsed as VocabDailyMissionState;
-  const expectedIds = getDevKnowledgeTermIds();
+  const examVersion = getTodayExamVersion(date) as ExamVersion;
+  const expectedIds = seededShuffle(getDevKnowledgeTermIds(), `${date}|${examVersion}`);
   return (
     m.date === date &&
+    m.examVersion === examVersion &&
     Array.isArray(m.termIds) &&
     Array.isArray(m.completedIds) &&
     m.termIds.length === expectedIds.length &&
     m.termIds.every((id, i) => id === expectedIds[i])
   );
+}
+
+function hashStringToUint32(input: string): number {
+  // FNV-1a 32-bit
+  let hash = 0x811c9dc5;
+  for (let i = 0; i < input.length; i++) {
+    hash ^= input.charCodeAt(i);
+    hash = Math.imul(hash, 0x01000193);
+  }
+  return hash >>> 0;
+}
+
+function mulberry32(seed: number): () => number {
+  let t = seed;
+  return () => {
+    t += 0x6d2b79f5;
+    let x = Math.imul(t ^ (t >>> 15), 1 | t);
+    x ^= x + Math.imul(x ^ (x >>> 7), 61 | x);
+    return ((x ^ (x >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function seededShuffle<T>(arr: T[], seed: string): T[] {
+  const out = arr.slice();
+  const rng = mulberry32(hashStringToUint32(seed));
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [out[i], out[j]] = [out[j], out[i]];
+  }
+  return out;
 }
 
 function loadPremiumWordDailyMission(): VocabDailyMissionState | null {
@@ -72,10 +104,11 @@ function getOrCreatePremiumWordDailyMission(): VocabDailyMissionState {
 
   const date = todayKey();
   const examVersion = getTodayExamVersion(date) as ExamVersion;
+  const termIds = seededShuffle(getDevKnowledgeTermIds(), `${date}|${examVersion}`);
   const state: VocabDailyMissionState = {
     date,
     examVersion,
-    termIds: getDevKnowledgeTermIds(),
+    termIds,
     completedIds: [],
   };
   savePremiumWordDailyMission(state);

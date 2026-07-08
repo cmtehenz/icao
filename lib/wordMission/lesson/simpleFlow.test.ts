@@ -12,7 +12,7 @@ describe("wordMissionStepActionHint", () => {
       "Holding short runway one eight, PT-ABC.",
     );
     expect(hint).toMatch(/Say It/i);
-    expect(hint).toMatch(/full pilot readback/i);
+    expect(hint).toMatch(/full readback/i);
   });
 
   it("names the recording task on Say It without repeating the phrase in the hint", () => {

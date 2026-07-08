@@ -49,9 +49,9 @@ export function wordMissionStepActionHint(
 ): string {
   switch (stepId) {
     case "meaning":
-      return "Tap Continue when Captain Delta has explained the meaning.";
+      return "Listen only (no recording). When Captain Delta is done, tap Continue.";
     case "operational_use":
-      return "Picture the scenario, then tap Continue. You will record the full pilot readback on Say It.";
+      return "Listen only (no recording). Read the operational scenario, then tap Continue. Next: Say It (you will record the full readback).";
     case "say_it":
       return "Tap Captain Recorder below and speak the highlighted readback exactly.";
     case "icao_practice":

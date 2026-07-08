@@ -149,6 +149,8 @@ export default function WordMissionSession({
   const actionHint = wordMissionStepActionHint(stepIdForLevel(practiceLevel), speakText);
   const recordTaskLabel =
     practiceLevel === 3 ? "Your pilot readback" : "Your ICAO answer";
+  const continueLabel =
+    practiceLevel === 1 ? "Continue to Operational Use" : "Continue to Say It";
 
   return (
     <div className="vocab-studio-training vocab-mission-panel word-mission-panel">
@@ -194,6 +196,12 @@ export default function WordMissionSession({
       <div className="word-mission-body word-mission-simple-card">
         <p className="word-mission-step-label">{step.label}</p>
 
+        {!recordingEnabled ? (
+          <p className="word-mission-step-action" role="status">
+            {actionHint}
+          </p>
+        ) : null}
+
         {recordingEnabled ? (
           <>
             <div className="word-mission-record-task" role="status">
@@ -236,11 +244,8 @@ export default function WordMissionSession({
         <div className="word-mission-lesson-nav">
           {!recordingEnabled ? (
             <>
-              <p className="word-mission-step-action" role="status">
-                {actionHint}
-              </p>
               <button type="button" className="btn purple" onClick={continueStep}>
-                Continue
+                {continueLabel}
               </button>
             </>
           ) : null}
