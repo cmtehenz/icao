@@ -50,7 +50,7 @@ Captain Delta always knows. Captain Delta always guides.
 
 ## Daily training flight
 
-Each day follows one exam rotation (**23C → 24C → 25C → 26C**). Captain Delta presents a single mission — like a training flight with briefing, legs, and debrief.
+Each day follows one exam rotation by weekday (**Mon → 23C**, **Tue → 24C**, **Wed → 25C**, **Thu → 26C**, then repeats). Captain Delta presents a single mission — like a training flight with briefing, legs, and debrief.
 
 ### Study modes
 
@@ -86,9 +86,9 @@ Each day follows one exam rotation (**23C → 24C → 25C → 26C**). Captain De
 
 First active block — voice warm-up before the rest of the flight. Five words per day from the student's vault. Four levels per word: isolated word → expression → sentence → ICAO answer fragment. Goal is **clarity and operational communication**, not accent elimination.
 
-### Vocabulary (leg 2)
+### Vocabulary (leg 2) — Word Mission
 
-Twenty operational terms per exam day. Spaced repetition with aviation meaning first. Prepares phraseology for Part 1 and Part 2.
+Four premium operational concepts per exam day (~15 minutes), rotated from the full catalog. At least two terms align with that day's exam corpus (Part 1 + Part 2). Up to two slots prioritize marked-difficult or low-score terms; the rest defer to future days. Four levels per term: meaning → operational use → say it → ICAO practice.
 
 ### Part 1 (leg 3)
 

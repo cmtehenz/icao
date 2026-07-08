@@ -3,6 +3,7 @@ import { getPart1CoachHistory } from "@/lib/part1CoachHistory";
 import { getPart2ItemProgress, loadPart2Progress } from "@/lib/part2/progress";
 import { loadVault, type VaultWord } from "@/lib/pronunciationVault";
 import { ICAO_VOCABULARY } from "@/data/icaoVocabulary";
+import { getWordMissionVocabulary } from "@/lib/wordMission/wordMissionCatalog";
 import { ALL_EXAM_SITUATIONS } from "@/data/exams/part2Data";
 import { getItemProgress, loadVocabProgressStore } from "@/utils/spacedRepetition";
 
@@ -106,8 +107,28 @@ function part2DifficultyItems(): DifficultyItem[] {
 function vocabularyDifficultyItems(): DifficultyItem[] {
   const store = loadVocabProgressStore();
   const items: DifficultyItem[] = [];
+  const catalog = getWordMissionVocabulary();
+  const seen = new Set<string>();
+
+  for (const item of catalog) {
+    const p = getItemProgress(store, item.id);
+    if (p.attempts === 0) continue;
+
+    const masteryPct = (p.masteryLevel / 5) * 100;
+    let score = p.bestScore > 0 ? p.bestScore : masteryPct;
+    if (p.markedDifficult || p.status === "review") score = Math.min(score, 45);
+
+    items.push({
+      id: item.id,
+      label: item.term,
+      score: clampScore(score),
+      detail: item.meaning,
+    });
+    seen.add(item.id);
+  }
 
   for (const item of ICAO_VOCABULARY) {
+    if (seen.has(item.id)) continue;
     const p = getItemProgress(store, item.id);
     if (p.attempts === 0) continue;
 

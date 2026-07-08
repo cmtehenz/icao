@@ -21,6 +21,7 @@ import {
 } from "@/lib/pronunciationDailyMission";
 import {
   loadWordDailyMission,
+  pickWordDailyTermIds,
   saveWordDailyMission,
   wordDailyMissionProgress,
 } from "@/lib/wordMission/wordDailyMission";
@@ -30,7 +31,6 @@ import {
   markDailyMissionComplete,
   saveDailyMissionLogFromSync,
 } from "@/lib/dailyMissionLog";
-import { getDevKnowledgeTermIds } from "@/lib/knowledge/devKnowledge";
 import {
   loadFlightDebriefState,
   saveFlightDebriefState,
@@ -175,7 +175,9 @@ export function mergeVocabMission(
   if (!b) return a;
   if (a.date !== b.date) return a.date >= b.date ? a : b;
 
-  const termIds = getDevKnowledgeTermIds();
+  const examVersion = a.examVersion ?? b.examVersion;
+  if (!examVersion) return a;
+  const termIds = pickWordDailyTermIds(a.date, examVersion);
   const completed = new Set(
     [...a.completedIds, ...b.completedIds].filter((id) => termIds.includes(id)),
   );

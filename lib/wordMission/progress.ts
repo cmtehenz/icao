@@ -8,6 +8,7 @@ import { WM_PASS_SCORE } from "@/lib/wordMission/types";
 import {
   getItemProgress,
   loadVocabProgressStore,
+  markVocabDifficult,
   pronunciationScore,
   recordVocabAttempt,
   type VocabItemProgress,
@@ -34,6 +35,9 @@ export function recordWordMissionLevelAttempt(
   );
   const progress = recordVocabAttempt(store, termId, score, level);
   const passed = score >= WM_PASS_SCORE;
+  if (!passed && level >= 3 && score < 60) {
+    markVocabDifficult(store, termId);
+  }
   const termComplete = isVocabMissionTermComplete(progress);
   let missionMarkedComplete = false;
 

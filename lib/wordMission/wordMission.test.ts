@@ -4,7 +4,16 @@ import { WM_LEVEL_NAMES, wmLevelLabel } from "@/lib/wordMission/types";
 import { vaultWordFromVocabTerm } from "@/lib/wordMission/vaultAdapter";
 import { buildWordMissionLesson, lessonSpeakTextForLevel } from "@/lib/wordMission/lesson/lessonEngine";
 import { legacyPronunciationRedirectTarget, legacyVocabRedirectTarget } from "@/lib/wordMission/legacyRedirects";
-import { resolveVocabTermIdForWord, wordMissionLink, effectiveMissionCompletedIds, nextWordMissionTermId } from "@/lib/wordMission/wordDailyMission";
+import {
+  pickWordDailyTermIds,
+  WORD_DAILY_MISSION_TERM_COUNT,
+} from "@/lib/wordMission/pickWordDailyTerms";
+import {
+  effectiveMissionCompletedIds,
+  nextWordMissionTermId,
+  resolveVocabTermIdForWord,
+  wordMissionLink,
+} from "@/lib/wordMission/wordDailyMission";
 import { pronunciationMissionLink } from "@/lib/pronunciationDailyMission";
 import { getWordMissionVocabulary } from "@/lib/wordMission/wordMissionCatalog";
 
@@ -53,6 +62,34 @@ describe("word mission legacy redirects", () => {
     expect(legacyVocabRedirectTarget({ term: "0001" })).toBe(
       "/word-mission?term=0001",
     );
+  });
+});
+
+describe("word daily mission slice", () => {
+  it("picks four terms per day from the premium catalog", () => {
+    const ids = pickWordDailyTermIds("2026-07-08", "23C", WORD_DAILY_MISSION_TERM_COUNT, {
+      items: {},
+      dailyAttempts: {},
+      dailyPhrases: {},
+      dailyScoreSum: {},
+      streak: 0,
+    });
+    expect(ids).toHaveLength(WORD_DAILY_MISSION_TERM_COUNT);
+    expect(new Set(ids).size).toBe(WORD_DAILY_MISSION_TERM_COUNT);
+  });
+
+  it("is stable for the same date and exam version", () => {
+    const store = { items: {}, dailyAttempts: {}, dailyPhrases: {}, dailyScoreSum: {}, streak: 0 };
+    const a = pickWordDailyTermIds("2026-07-08", "24C", WORD_DAILY_MISSION_TERM_COUNT, store);
+    const b = pickWordDailyTermIds("2026-07-08", "24C", WORD_DAILY_MISSION_TERM_COUNT, store);
+    expect(a).toEqual(b);
+  });
+
+  it("rotates by exam version on different weekdays", () => {
+    const store = { items: {}, dailyAttempts: {}, dailyPhrases: {}, dailyScoreSum: {}, streak: 0 };
+    const a = pickWordDailyTermIds("2026-07-08", "25C", WORD_DAILY_MISSION_TERM_COUNT, store);
+    const b = pickWordDailyTermIds("2026-07-08", "26C", WORD_DAILY_MISSION_TERM_COUNT, store);
+    expect(a).not.toEqual(b);
   });
 });
 

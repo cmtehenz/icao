@@ -3,16 +3,20 @@ import { examIdFromVersion } from "@/data/exams";
 import type { SimuladoExamId } from "@/data/exams";
 import type { ExamVersion } from "@/lib/exams/types";
 import { EXAM_LABELS } from "@/lib/exams/types";
-import { daysSinceEpoch } from "@/lib/dailyRotation";
 import { todayKey } from "@/lib/studyTime";
 
-/** Daily focus cycles 23C → 24C → 25C → 26C. */
+/** Daily focus cycles Mon→23C, Tue→24C, Wed→25C, Thu→26C, then repeats. */
 export const DAILY_EXAM_ROTATION: readonly ExamVersion[] = ["23C", "24C", "25C", "26C"];
+
+/** Monday = 0 … Sunday = 6 (ISO weekday order). */
+export function weekdayIndex(dateKey: string): number {
+  const jsDay = new Date(`${dateKey}T12:00:00`).getDay();
+  return jsDay === 0 ? 6 : jsDay - 1;
+}
 
 export function getTodayExamVersion(dateKey?: string): ExamVersion {
   const key = dateKey ?? todayKey();
-  const day = daysSinceEpoch(key);
-  return DAILY_EXAM_ROTATION[day % DAILY_EXAM_ROTATION.length]!;
+  return DAILY_EXAM_ROTATION[weekdayIndex(key) % DAILY_EXAM_ROTATION.length]!;
 }
 
 export function getTodayExamId(dateKey?: string): SimuladoExamId {

@@ -1,13 +1,16 @@
 import { getTodayExamVersion } from "@/lib/dailyExamRotation";
 import { syncDailyMissionLog } from "@/lib/dailyMissionLog";
 import type { ExamVersion } from "@/lib/exams/types";
-import { getDevKnowledgeTermIds } from "@/lib/knowledge/devKnowledge";
 import {
   findWordMissionVocabItem,
   getWordMissionTermLabel,
   getWordMissionVocabulary,
   getWordMissionVocabularyCount,
 } from "@/lib/wordMission/wordMissionCatalog";
+import {
+  pickWordDailyTermIds,
+  WORD_DAILY_MISSION_TERM_COUNT,
+} from "@/lib/wordMission/pickWordDailyTerms";
 import { todayKey } from "@/lib/studyTime";
 import {
   vocabDailyMissionProgress,
@@ -17,7 +20,14 @@ import {
 
 export const WORD_DAILY_MISSION_EVENT = VOCAB_DAILY_MISSION_EVENT;
 
-const PREMIUM_MISSION_STORAGE_KEY = "icao_word_premium_daily_mission_v1";
+export {
+  pickWordDailyTermIds,
+  WORD_DAILY_MISSION_TERM_COUNT,
+  WORD_DAILY_MIN_EXAM_TERMS,
+  WORD_DAILY_MAX_REVIEW_TERMS,
+} from "@/lib/wordMission/pickWordDailyTerms";
+
+const PREMIUM_MISSION_STORAGE_KEY = "icao_word_premium_daily_mission_v2";
 const LEGACY_DEV_MISSION_STORAGE_KEY = "icao_word_dev_daily_mission_v1";
 
 function notifyMissionChange(): void {
@@ -29,13 +39,14 @@ function clearLegacyMissionStorage(): void {
   if (typeof window === "undefined") return;
   localStorage.removeItem(LEGACY_DEV_MISSION_STORAGE_KEY);
   localStorage.removeItem("icao_vocab_daily_mission_v2");
+  localStorage.removeItem("icao_word_premium_daily_mission_v1");
 }
 
 function isValidPremiumMission(parsed: unknown, date: string): parsed is VocabDailyMissionState {
   if (!parsed || typeof parsed !== "object") return false;
   const m = parsed as VocabDailyMissionState;
   const examVersion = getTodayExamVersion(date) as ExamVersion;
-  const expectedIds = seededShuffle(getDevKnowledgeTermIds(), `${date}|${examVersion}`);
+  const expectedIds = pickWordDailyTermIds(date, examVersion);
   return (
     m.date === date &&
     m.examVersion === examVersion &&
@@ -44,36 +55,6 @@ function isValidPremiumMission(parsed: unknown, date: string): parsed is VocabDa
     m.termIds.length === expectedIds.length &&
     m.termIds.every((id, i) => id === expectedIds[i])
   );
-}
-
-function hashStringToUint32(input: string): number {
-  // FNV-1a 32-bit
-  let hash = 0x811c9dc5;
-  for (let i = 0; i < input.length; i++) {
-    hash ^= input.charCodeAt(i);
-    hash = Math.imul(hash, 0x01000193);
-  }
-  return hash >>> 0;
-}
-
-function mulberry32(seed: number): () => number {
-  let t = seed;
-  return () => {
-    t += 0x6d2b79f5;
-    let x = Math.imul(t ^ (t >>> 15), 1 | t);
-    x ^= x + Math.imul(x ^ (x >>> 7), 61 | x);
-    return ((x ^ (x >>> 14)) >>> 0) / 4294967296;
-  };
-}
-
-function seededShuffle<T>(arr: T[], seed: string): T[] {
-  const out = arr.slice();
-  const rng = mulberry32(hashStringToUint32(seed));
-  for (let i = out.length - 1; i > 0; i--) {
-    const j = Math.floor(rng() * (i + 1));
-    [out[i], out[j]] = [out[j], out[i]];
-  }
-  return out;
 }
 
 function loadPremiumWordDailyMission(): VocabDailyMissionState | null {
@@ -104,7 +85,7 @@ function getOrCreatePremiumWordDailyMission(): VocabDailyMissionState {
 
   const date = todayKey();
   const examVersion = getTodayExamVersion(date) as ExamVersion;
-  const termIds = seededShuffle(getDevKnowledgeTermIds(), `${date}|${examVersion}`);
+  const termIds = pickWordDailyTermIds(date, examVersion);
   const state: VocabDailyMissionState = {
     date,
     examVersion,

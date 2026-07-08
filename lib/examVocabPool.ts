@@ -20,7 +20,8 @@ function vocabDifficultyRank(store: VocabProgressStore, id: string): number {
   return 4;
 }
 
-function examCorpus(examVersion: ExamVersion): string {
+/** Text corpus for an exam version — Part 1 cards + Part 2 situations. */
+export function examCorpus(examVersion: ExamVersion): string {
   const situations = getSituationsByExam(examVersion);
   const chunks = situations.flatMap((s) => [
     s.context,
@@ -42,7 +43,7 @@ function examCorpus(examVersion: ExamVersion): string {
   return chunks.join(" ").toLowerCase();
 }
 
-function termExamBoost(corpus: string, term: string): number {
+export function termExamBoost(corpus: string, term: string): number {
   const t = term.toLowerCase().trim();
   if (!t) return 0;
   if (corpus.includes(t)) return 4;
