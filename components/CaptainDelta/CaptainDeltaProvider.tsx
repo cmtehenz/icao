@@ -545,6 +545,11 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
     }
     const word = resolveCaptainActiveTerm(routeContext, lesson);
     if (!word) return;
+    // Word Mission emits its own per-step coaching — do not tear down voice on term change.
+    if (pathname.startsWith("/word-mission")) {
+      lastPronunciationWordRef.current = word;
+      return;
+    }
     if (pronunciationWordChanged(lastPronunciationWordRef.current, word)) {
       voice.stop();
       setCurrentMessage(null);
@@ -556,7 +561,7 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
       };
     }
     lastPronunciationWordRef.current = word;
-  }, [lesson, routeContext, voice]);
+  }, [lesson, pathname, routeContext, voice]);
 
   useEffect(() => {
     if (!user || !isCaptainDeltaProactiveEnabled()) return;
@@ -648,7 +653,9 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
         },
       );
       deliverMessage(msg, {
-        autoSpeak: !!(detail.speechText && (detail.kind ?? "suggestion") === "coaching"),
+        autoSpeak: !!(detail.speechText?.trim() && (detail.kind ?? "suggestion") === "coaching"),
+        source: detail.source ?? "suggestion",
+        eventId: detail.eventId,
       });
     };
     const onAfterAnswer = (e: Event) => {

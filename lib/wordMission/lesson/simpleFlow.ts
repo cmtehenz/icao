@@ -5,7 +5,7 @@ import {
   type WordMissionStep,
   type WordMissionStepId,
 } from "@/lib/wordMission/lesson/types";
-import { instructorDisplayText, instructorSpeechFromParts } from "@/lib/wordMission/lesson/instructorText";
+import { instructorDisplayText, instructorOpening, instructorSpeechFromParts } from "@/lib/wordMission/lesson/instructorText";
 
 export function stepIndex(id: WordMissionStepId): number {
   return WORD_MISSION_STEP_ORDER.indexOf(id);
@@ -66,8 +66,10 @@ export function buildStepCaptainCoaching(
   step: WordMissionStep,
 ): { text: string; speechText: string } {
   const instructorText = instructorDisplayText(step.captainLine, step.detail);
+  // Full prose on card; cap TTS length so Azure does not fail and rapid step changes do not cancel endlessly.
+  const voiceProse = instructorOpening(instructorText, 1200);
   return {
     text: instructorText,
-    speechText: instructorSpeechFromParts(step.captainLine, step.detail),
+    speechText: voiceProse ? instructorSpeechFromParts(voiceProse) : "",
   };
 }

@@ -119,13 +119,16 @@ export default function WordMissionSession({
   useEffect(() => {
     if (recordingEnabled && captainDebrief) return;
     const coaching = buildStepCaptainCoaching(step);
+    if (!coaching.text.trim()) return;
     emitCaptainDeltaSuggestion({
       text: coaching.text,
       speechText: coaching.speechText,
       kind: "coaching",
       ui: WORD_MISSION_CAPTAIN_UI,
+      source: "word-mission-step",
+      eventId: `wm:${item.id}:L${practiceLevel}`,
     });
-  }, [item.id, practiceLevel, speakText, step, recordingEnabled, captainDebrief]);
+  }, [item.id, practiceLevel, recordingEnabled, captainDebrief, step]);
 
   useEffect(() => {
     if (recorderState.phase !== "success" || recorderState.score == null) return;
@@ -143,15 +146,9 @@ export default function WordMissionSession({
 
   useEffect(() => {
     if (!termComplete || !missionLegActive) return;
-    emitCaptainDeltaSuggestion({
-      text: `Nice work on "${item.term}". Loading the next term…`,
-      speechText: `Nice work. Next term.`,
-      kind: "coaching",
-      ui: WORD_MISSION_CAPTAIN_UI,
-    });
     const timer = window.setTimeout(() => onSelectNextMissionTerm(), 900);
     return () => window.clearTimeout(timer);
-  }, [termComplete, missionLegActive, item.id, item.term, onSelectNextMissionTerm]);
+  }, [termComplete, missionLegActive, item.id, onSelectNextMissionTerm]);
 
   if (termComplete) {
     return (

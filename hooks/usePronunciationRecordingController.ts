@@ -432,6 +432,10 @@ export function usePronunciationRecordingController(
         speechText: debrief.speechText,
         kind: "coaching",
         ui: isWordMission ? WORD_MISSION_CAPTAIN_UI : undefined,
+        source: isWordMission ? "word-mission-debrief" : "pronunciation-debrief",
+        eventId: isWordMission
+          ? `wm-debrief:${activeWord.word}:${practiceLevel}:${Math.round(score)}`
+          : undefined,
         primaryAction: showMissionContinue
           ? { id: "ready", label: "Continue", primary: true }
           : { id: "try_again", label: "Try again", primary: true },

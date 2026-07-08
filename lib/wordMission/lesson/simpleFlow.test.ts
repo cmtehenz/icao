@@ -31,4 +31,13 @@ describe("buildStepCaptainCoaching", () => {
     expect(coaching.text).not.toMatch(/Tap Continue/i);
     expect(coaching.speechText).toMatch(/taxiing your H130/i);
   });
+
+  it("caps voice script length for reliable TTS", () => {
+    const lesson = buildWordMissionLesson("continue approach");
+    const step = lesson.steps[0]!;
+    const coaching = buildStepCaptainCoaching(step);
+    expect(coaching.text.length).toBeGreaterThan(coaching.speechText.length);
+    expect(coaching.speechText.length).toBeLessThanOrEqual(1400);
+    expect(coaching.speechText.length).toBeGreaterThan(20);
+  });
 });

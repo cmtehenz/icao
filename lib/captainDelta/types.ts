@@ -119,6 +119,9 @@ export type CaptainDeltaSuggestionPayload = {
   primaryAction?: CaptainDeltaAction;
   secondaryActions?: CaptainDeltaAction[];
   ui?: CaptainDeltaMessageUi;
+  /** Stable id so dedup does not drop legitimate step/term updates. */
+  eventId?: string;
+  source?: string;
 };
 
 export type CaptainDeltaAfterAnswerPayload = {
