@@ -27,7 +27,7 @@ export {
   WORD_DAILY_MAX_REVIEW_TERMS,
 } from "@/lib/wordMission/pickWordDailyTerms";
 
-const PREMIUM_MISSION_STORAGE_KEY = "icao_word_premium_daily_mission_v2";
+const PREMIUM_MISSION_STORAGE_KEY = "icao_word_premium_daily_mission_v3";
 const LEGACY_DEV_MISSION_STORAGE_KEY = "icao_word_dev_daily_mission_v1";
 
 function notifyMissionChange(): void {
@@ -40,20 +40,21 @@ function clearLegacyMissionStorage(): void {
   localStorage.removeItem(LEGACY_DEV_MISSION_STORAGE_KEY);
   localStorage.removeItem("icao_vocab_daily_mission_v2");
   localStorage.removeItem("icao_word_premium_daily_mission_v1");
+  localStorage.removeItem("icao_word_premium_daily_mission_v2");
 }
 
 function isValidPremiumMission(parsed: unknown, date: string): parsed is VocabDailyMissionState {
   if (!parsed || typeof parsed !== "object") return false;
   const m = parsed as VocabDailyMissionState;
   const examVersion = getTodayExamVersion(date) as ExamVersion;
-  const expectedIds = pickWordDailyTermIds(date, examVersion);
   return (
     m.date === date &&
     m.examVersion === examVersion &&
     Array.isArray(m.termIds) &&
     Array.isArray(m.completedIds) &&
-    m.termIds.length === expectedIds.length &&
-    m.termIds.every((id, i) => id === expectedIds[i])
+    m.termIds.length === WORD_DAILY_MISSION_TERM_COUNT &&
+    m.termIds.every((id) => Boolean(findWordMissionVocabItem(id))) &&
+    m.completedIds.every((id) => m.termIds.includes(id))
   );
 }
 

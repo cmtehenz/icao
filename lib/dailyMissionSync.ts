@@ -21,8 +21,8 @@ import {
 } from "@/lib/pronunciationDailyMission";
 import {
   loadWordDailyMission,
-  pickWordDailyTermIds,
   saveWordDailyMission,
+  WORD_DAILY_MISSION_TERM_COUNT,
   wordDailyMissionProgress,
 } from "@/lib/wordMission/wordDailyMission";
 import type { VocabDailyMissionState } from "@/lib/vocabDailyMission";
@@ -177,7 +177,14 @@ export function mergeVocabMission(
 
   const examVersion = a.examVersion ?? b.examVersion;
   if (!examVersion) return a;
-  const termIds = pickWordDailyTermIds(a.date, examVersion);
+  const termIds =
+    a.termIds.length >= WORD_DAILY_MISSION_TERM_COUNT
+      ? a.termIds
+      : b.termIds.length >= WORD_DAILY_MISSION_TERM_COUNT
+        ? b.termIds
+        : a.termIds.length
+          ? a.termIds
+          : b.termIds;
   const completed = new Set(
     [...a.completedIds, ...b.completedIds].filter((id) => termIds.includes(id)),
   );

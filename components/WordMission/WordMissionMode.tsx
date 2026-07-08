@@ -79,19 +79,27 @@ export default function WordMissionMode({ initialTermId }: { initialTermId?: str
   }, [getProgress, syncMissionProgress]);
 
   const selectNextMissionTerm = useCallback(
-    (completedIds?: string[]) => {
+    (fromTermId?: string) => {
+      if (fromTermId) {
+        const daily = getOrCreateWordDailyMission();
+        if (daily.termIds.includes(fromTermId) && !daily.completedIds.includes(fromTermId)) {
+          markWordMissionTermComplete(fromTermId);
+        }
+      }
       syncDailyCompletedFromVocab();
       const daily = getOrCreateWordDailyMission();
-      const nextId = nextWordMissionTermId(daily, completedIds);
+      const nextId = nextWordMissionTermId(daily);
       if (!nextId) {
         setShowDebrief(true);
         setActiveItem(null);
+        syncMissionProgress();
         return;
       }
       const item = findWordMissionVocabItem(nextId);
       if (item) selectTerm(item);
+      syncMissionProgress();
     },
-    [selectTerm, syncDailyCompletedFromVocab],
+    [selectTerm, syncDailyCompletedFromVocab, syncMissionProgress],
   );
 
   const startMission = useCallback(() => {
@@ -231,7 +239,7 @@ export default function WordMissionMode({ initialTermId }: { initialTermId?: str
             syncMissionProgress();
           }}
           onLevelAdvanced={handleLevelAdvanced}
-          onSelectNextMissionTerm={() => selectNextMissionTerm()}
+          onSelectNextMissionTerm={(fromTermId) => selectNextMissionTerm(fromTermId ?? activeItem?.id)}
         />
       )}
     </div>

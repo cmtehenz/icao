@@ -41,7 +41,7 @@ type Props = {
   onPracticeLevelChange: (level: WordMissionLevel) => void;
   onProgressRefresh: () => void;
   onLevelAdvanced: (level: WordMissionLevel) => void;
-  onSelectNextMissionTerm: () => void;
+  onSelectNextMissionTerm: (fromTermId?: string) => void;
 };
 
 export default function WordMissionSession({
@@ -91,7 +91,7 @@ export default function WordMissionSession({
         onPracticeLevelChange(nextVocabMissionLevel(result.progress));
       }
       if (result.termComplete) {
-        onSelectNextMissionTerm();
+        onSelectNextMissionTerm(item.id);
       }
       setLastScore(score);
       return { levelPassed: result.passed, termComplete: result.termComplete };
@@ -109,7 +109,7 @@ export default function WordMissionSession({
     onWordMissionRecord,
     onVaultRefresh: () => {},
     onMissionProgress: () => {},
-    onSelectNextMissionWord: () => onSelectNextMissionTerm(),
+    onSelectNextMissionWord: () => onSelectNextMissionTerm(item.id),
     onWordAdvanced: () => {},
     onWordCleared: () => {},
   });
@@ -146,7 +146,7 @@ export default function WordMissionSession({
 
   useEffect(() => {
     if (!termComplete || !missionLegActive) return;
-    const timer = window.setTimeout(() => onSelectNextMissionTerm(), 900);
+    const timer = window.setTimeout(() => onSelectNextMissionTerm(item.id), 900);
     return () => window.clearTimeout(timer);
   }, [termComplete, missionLegActive, item.id, onSelectNextMissionTerm]);
 
@@ -157,7 +157,7 @@ export default function WordMissionSession({
         <p className="sub">
           You learned how pilots use &ldquo;{item.term}&rdquo; — meaning, operations, and ICAO practice.
         </p>
-        <button type="button" className="btn purple" onClick={() => onSelectNextMissionTerm()}>
+        <button type="button" className="btn purple" onClick={() => onSelectNextMissionTerm(item.id)}>
           Next term
         </button>
       </section>
