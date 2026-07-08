@@ -127,6 +127,29 @@ export function isWordMissionTermInTodayMission(termId: string): boolean {
   return getOrCreatePremiumWordDailyMission().termIds.includes(termId);
 }
 
+/**
+ * Pronunciation vault passes completed word lists; Word Mission must not treat `[]` as override.
+ * An empty array previously reset progress and re-selected term 1 (stuck on "Mission complete").
+ */
+export function effectiveMissionCompletedIds(
+  mission: VocabDailyMissionState,
+  completedOverride?: string[],
+): string[] {
+  if (completedOverride !== undefined && completedOverride.length > 0) {
+    return completedOverride;
+  }
+  return mission.completedIds;
+}
+
+export function nextWordMissionTermId(
+  mission: VocabDailyMissionState,
+  completedOverride?: string[],
+): string | null {
+  const done = effectiveMissionCompletedIds(mission, completedOverride);
+  if (done.length >= mission.termIds.length) return null;
+  return mission.termIds.find((id) => !done.includes(id)) ?? null;
+}
+
 export function markWordMissionTermComplete(termId: string): VocabDailyMissionState | null {
   const mission = getOrCreatePremiumWordDailyMission();
   if (!mission.termIds.includes(termId) || mission.completedIds.includes(termId)) {

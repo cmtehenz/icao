@@ -141,13 +141,28 @@ export default function WordMissionSession({
     onLevelAdvanced(practiceLevel);
   }, [item.id, onLevelAdvanced, onPracticeLevelChange, onProgressRefresh, practiceLevel]);
 
+  useEffect(() => {
+    if (!termComplete || !missionLegActive) return;
+    emitCaptainDeltaSuggestion({
+      text: `Nice work on "${item.term}". Loading the next term…`,
+      speechText: `Nice work. Next term.`,
+      kind: "coaching",
+      ui: WORD_MISSION_CAPTAIN_UI,
+    });
+    const timer = window.setTimeout(() => onSelectNextMissionTerm(), 900);
+    return () => window.clearTimeout(timer);
+  }, [termComplete, missionLegActive, item.id, item.term, onSelectNextMissionTerm]);
+
   if (termComplete) {
     return (
       <section className="vocab-mission-complete word-mission-complete">
-        <h3>Mission complete</h3>
+        <h3>Term complete</h3>
         <p className="sub">
           You learned how pilots use &ldquo;{item.term}&rdquo; — meaning, operations, and ICAO practice.
         </p>
+        <button type="button" className="btn purple" onClick={() => onSelectNextMissionTerm()}>
+          Next term
+        </button>
       </section>
     );
   }

@@ -93,7 +93,7 @@ type Options = {
   ) => { levelPassed: boolean; termComplete: boolean };
   onVaultRefresh: () => void;
   onMissionProgress: (completed: string[]) => void;
-  onSelectNextMissionWord: (completed: string[]) => void;
+  onSelectNextMissionWord: (completed?: string[]) => void;
   onWordAdvanced: (word: VaultWord, level: PracticeLevel) => void;
   onWordCleared: () => void;
   onPracticeLevelBelowStored?: (level: PracticeLevel) => void;
@@ -484,7 +484,7 @@ export function usePronunciationRecordingController(
       }
 
       if (wordMissionPass && wordMissionTermComplete) {
-        setTimeout(() => optionsRef.current.onSelectNextMissionWord([]), 800);
+        // Word Mission advances via onWordMissionRecord — do not pass [] (breaks next-term selection).
         return;
       }
 

@@ -72,6 +72,12 @@ describe("WordMissionSession UI certification", () => {
     expect(sessionSource).toMatch(/WORD_MISSION_CAPTAIN_UI/);
     expect(sessionSource).toMatch(/wordMissionSpeakText/);
   });
+
+  it("auto-advances and offers Next term when a term is already complete", () => {
+    expect(sessionSource).toMatch(/Term complete/);
+    expect(sessionSource).toMatch(/Next term/);
+    expect(sessionSource).toMatch(/onSelectNextMissionTerm/);
+  });
 });
 
 describe("WordMissionApp styling", () => {

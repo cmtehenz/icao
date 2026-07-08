@@ -4,7 +4,7 @@ import { WM_LEVEL_NAMES, wmLevelLabel } from "@/lib/wordMission/types";
 import { vaultWordFromVocabTerm } from "@/lib/wordMission/vaultAdapter";
 import { buildWordMissionLesson, lessonSpeakTextForLevel } from "@/lib/wordMission/lesson/lessonEngine";
 import { legacyPronunciationRedirectTarget, legacyVocabRedirectTarget } from "@/lib/wordMission/legacyRedirects";
-import { resolveVocabTermIdForWord, wordMissionLink } from "@/lib/wordMission/wordDailyMission";
+import { resolveVocabTermIdForWord, wordMissionLink, effectiveMissionCompletedIds, nextWordMissionTermId } from "@/lib/wordMission/wordDailyMission";
 import { pronunciationMissionLink } from "@/lib/pronunciationDailyMission";
 import { getWordMissionVocabulary } from "@/lib/wordMission/wordMissionCatalog";
 
@@ -53,6 +53,28 @@ describe("word mission legacy redirects", () => {
     expect(legacyVocabRedirectTarget({ term: "0001" })).toBe(
       "/word-mission?term=0001",
     );
+  });
+});
+
+describe("word daily mission advance", () => {
+  const mission = {
+    date: "2026-07-08",
+    examVersion: "v1" as const,
+    termIds: ["0001", "0006", "0007"],
+    completedIds: ["0001"],
+  };
+
+  it("ignores empty completed override (pronunciation vault bug)", () => {
+    expect(effectiveMissionCompletedIds(mission, [])).toEqual(["0001"]);
+    expect(nextWordMissionTermId(mission, [])).toBe("0006");
+  });
+
+  it("uses non-empty override when provided", () => {
+    expect(nextWordMissionTermId(mission, ["0001", "0006"])).toBe("0007");
+  });
+
+  it("returns null when all terms are done", () => {
+    expect(nextWordMissionTermId(mission, ["0001", "0006", "0007"])).toBeNull();
   });
 });
 

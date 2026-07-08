@@ -20,6 +20,8 @@ import {
   getOrCreateWordDailyMission,
   getWordMissionTodayTermLabels,
   isWordMissionTermInTodayMission,
+  markWordMissionTermComplete,
+  nextWordMissionTermId,
   wordDailyMissionProgress,
   WORD_DAILY_MISSION_EVENT,
 } from "@/lib/wordMission/wordDailyMission";
@@ -65,16 +67,22 @@ export default function WordMissionMode({ initialTermId }: { initialTermId?: str
     [getProgress],
   );
 
+  const syncDailyCompletedFromVocab = useCallback(() => {
+    const daily = getOrCreateWordDailyMission();
+    for (const id of daily.termIds) {
+      if (daily.completedIds.includes(id)) continue;
+      if (isVocabMissionTermComplete(getProgress(id))) {
+        markWordMissionTermComplete(id);
+      }
+    }
+    syncMissionProgress();
+  }, [getProgress, syncMissionProgress]);
+
   const selectNextMissionTerm = useCallback(
     (completedIds?: string[]) => {
+      syncDailyCompletedFromVocab();
       const daily = getOrCreateWordDailyMission();
-      const done = completedIds ?? daily.completedIds;
-      if (done.length >= daily.termIds.length) {
-        setShowDebrief(true);
-        setActiveItem(null);
-        return;
-      }
-      const nextId = daily.termIds.find((id) => !done.includes(id));
+      const nextId = nextWordMissionTermId(daily, completedIds);
       if (!nextId) {
         setShowDebrief(true);
         setActiveItem(null);
@@ -83,23 +91,15 @@ export default function WordMissionMode({ initialTermId }: { initialTermId?: str
       const item = findWordMissionVocabItem(nextId);
       if (item) selectTerm(item);
     },
-    [selectTerm],
+    [selectTerm, syncDailyCompletedFromVocab],
   );
 
   const startMission = useCallback(() => {
-    const daily = getOrCreateWordDailyMission();
-    syncMissionProgress();
+    syncDailyCompletedFromVocab();
     setMissionLegActive(true);
     setShowDebrief(false);
-    const nextId = daily.termIds.find((id) => !daily.completedIds.includes(id));
-    if (!nextId) {
-      setShowDebrief(true);
-      setActiveItem(null);
-      return;
-    }
-    const item = findWordMissionVocabItem(nextId);
-    if (item) selectTerm(item);
-  }, [selectTerm, syncMissionProgress]);
+    selectNextMissionTerm();
+  }, [selectNextMissionTerm, syncDailyCompletedFromVocab]);
 
   useEffect(() => {
     const requested = searchParams.get("term")?.trim() ?? initialTermId?.trim();
