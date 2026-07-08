@@ -72,6 +72,13 @@ describe("practice level selection", () => {
     );
   });
 
+  it("uses L4 spoken answer (fragment), not the coaching question", () => {
+    const word = baseWord({ practiceLevel: 4 });
+    expect(practiceTextForLevel(word, 4)).toBe(
+      "After takeoff we climbed to cruise altitude.",
+    );
+  });
+
   it("changing word resets to that word's current level", () => {
     const climb = baseWord({ word: "climb", practiceLevel: 3 });
     const route = baseWord({ word: "route", practiceLevel: 2 });

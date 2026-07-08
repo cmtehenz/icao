@@ -139,7 +139,8 @@ export function practiceTextForLevel(
   if (level === 1) return word.word;
   if (level === 2) return pack?.expression ?? word.word;
   if (level === 3) return pack?.sentence ?? word.word;
-  return pack?.icaoPrompt ?? pack?.fragment ?? word.word;
+  // Level 4 — spoken ICAO answer, not the coaching question in icaoPrompt.
+  return pack?.fragment ?? pack?.icaoPrompt ?? word.word;
 }
 
 export function pronunciationMissionKey(m: PronunciationMission): string {

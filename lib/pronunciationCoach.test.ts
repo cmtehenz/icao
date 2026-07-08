@@ -102,6 +102,20 @@ describe("Pronunciation Coaching Engine v1", () => {
     expectInstructorLesson(debrief);
   });
 
+  it("word mission skips generic infinity micro-debrief tails", () => {
+    const debrief = buildCaptainAssessmentDebrief(
+      { ...baseAssessment, accuracyScore: 92, fluencyScore: 68, prosodyScore: 90 },
+      {
+        targetWord: "continue approach",
+        practiceLevel: 3,
+        referenceText: "Continuing approach, ANAC123.",
+        wordMission: true,
+      },
+    );
+    expect(debrief.message).not.toContain("Stress on departure");
+    expect(debrief.message).not.toContain("Tomorrow:");
+  });
+
   it("prosody-low teaches stress with syllable drill", () => {
     const debrief = buildHumanCaptainFeedback(
       {

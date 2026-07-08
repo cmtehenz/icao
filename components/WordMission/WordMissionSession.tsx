@@ -12,6 +12,7 @@ import { isPronunciationRecordingActive } from "@/lib/pronunciation/pronunciatio
 import {
   isVocabMissionTermComplete,
   nextVocabMissionLevel,
+  vocabTermMissionProgress,
 } from "@/lib/vocabGraduation";
 import { SKYBRARY_UI_LABEL } from "@/lib/wordMission/lesson/knowledgeSource";
 import { buildWordMissionLesson, lessonSpeakTextForLevel } from "@/lib/wordMission/lesson/lessonEngine";
@@ -21,7 +22,7 @@ import {
   markWordMissionStepViewed,
   recordWordMissionLevelAttempt,
 } from "@/lib/wordMission/progress";
-import { WM_LEVEL_NAMES, WM_PASS_SCORE, type WordMissionLevel } from "@/lib/wordMission/types";
+import { WM_LEVEL_NAMES, WM_PASS_SCORE, WORD_MISSION_CAPTAIN_UI, type WordMissionLevel } from "@/lib/wordMission/types";
 import { vaultWordFromVocabTerm } from "@/lib/wordMission/vaultAdapter";
 import type { PracticeLevel } from "@/lib/pronunciationVault";
 import type { VocabItemProgress } from "@/utils/spacedRepetition";
@@ -34,6 +35,9 @@ type Props = {
   progress: VocabItemProgress;
   practiceLevel: WordMissionLevel;
   missionLegActive: boolean;
+  termIndex: number;
+  missionTotal: number;
+  missionDone: number;
   onPracticeLevelChange: (level: WordMissionLevel) => void;
   onProgressRefresh: () => void;
   onLevelAdvanced: (level: WordMissionLevel) => void;
@@ -45,6 +49,9 @@ export default function WordMissionSession({
   progress,
   practiceLevel,
   missionLegActive,
+  termIndex,
+  missionTotal,
+  missionDone,
   onPracticeLevelChange,
   onProgressRefresh,
   onLevelAdvanced,
@@ -98,6 +105,7 @@ export default function WordMissionSession({
     missionLegActive,
     mission: null,
     wordMissionTermId: item.id,
+    wordMissionSpeakText: speakText,
     onWordMissionRecord,
     onVaultRefresh: () => {},
     onMissionProgress: () => {},
@@ -115,6 +123,7 @@ export default function WordMissionSession({
       text: coaching.text,
       speechText: coaching.speechText,
       kind: "coaching",
+      ui: WORD_MISSION_CAPTAIN_UI,
     });
   }, [item.id, practiceLevel, speakText, step, recordingEnabled, captainDebrief]);
 
@@ -152,9 +161,31 @@ export default function WordMissionSession({
   const continueLabel =
     practiceLevel === 1 ? "Continue to Operational Use" : "Continue to Say It";
 
+  const termProgress = vocabTermMissionProgress(progress);
+  const termsRemaining = Math.max(0, missionTotal - missionDone);
+  const stepsRemaining = Math.max(0, termProgress.total - termProgress.levelsDone);
+
   return (
     <div className="vocab-studio-training vocab-mission-panel word-mission-panel">
       <p className="vocab-mission-badge vocab-mission-badge-inline">Word Mission</p>
+
+      <p className="word-mission-lesson-progress" aria-live="polite">
+        <strong>
+          Term {termIndex} of {missionTotal}
+        </strong>
+        {" · "}
+        {termsRemaining === 0
+          ? "Last term today"
+          : `${termsRemaining} term${termsRemaining === 1 ? "" : "s"} left today`}
+        {" · "}
+        Step {practiceLevel} of 4 — {WM_LEVEL_NAMES[practiceLevel]}
+        {stepsRemaining > 0 && !termComplete && (
+          <>
+            {" · "}
+            {stepsRemaining} step{stepsRemaining === 1 ? "" : "s"} left on this term
+          </>
+        )}
+      </p>
 
       <div className="vocab-studio-hero word-mission-hero">
         <div className="vocab-studio-hero-top">

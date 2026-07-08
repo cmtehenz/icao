@@ -95,6 +95,12 @@ export type CaptainDeltaLessonContextPatch = Partial<CaptainDeltaLessonContext> 
   eventId?: string;
 };
 
+export type CaptainDeltaMessageUi = {
+  /** Hide the Captain card mic — recording lives elsewhere (e.g. Word Mission card). */
+  hideMic?: boolean;
+  hideSecondaryActions?: boolean;
+};
+
 export type CaptainDeltaMessage = {
   id: string;
   kind: CaptainDeltaMessageKind;
@@ -103,6 +109,7 @@ export type CaptainDeltaMessage = {
   at: string;
   primaryAction: CaptainDeltaAction;
   secondaryActions: CaptainDeltaAction[];
+  ui?: CaptainDeltaMessageUi;
 };
 
 export type CaptainDeltaSuggestionPayload = {
@@ -111,6 +118,7 @@ export type CaptainDeltaSuggestionPayload = {
   kind?: CaptainDeltaMessageKind;
   primaryAction?: CaptainDeltaAction;
   secondaryActions?: CaptainDeltaAction[];
+  ui?: CaptainDeltaMessageUi;
 };
 
 export type CaptainDeltaAfterAnswerPayload = {

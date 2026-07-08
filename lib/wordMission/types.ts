@@ -17,3 +17,9 @@ export function wmLevelCode(level: WordMissionLevel): string {
 export function wmLevelLabel(level: WordMissionLevel): string {
   return `${wmLevelCode(level)} — ${WM_LEVEL_NAMES[level]}`;
 }
+
+/** Captain floating card on Word Mission — feedback only; recording stays on the lesson card. */
+export const WORD_MISSION_CAPTAIN_UI = {
+  hideMic: true,
+  hideSecondaryActions: true,
+} as const;

@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "completedCount": 20,
-  "pendingCount": 490,
+  "completedCount": 45,
+  "pendingCount": 465,
   "concepts": [
     {
       "id": "0001",
@@ -142,6 +142,181 @@
       "slug": "0020-maintain-own-separation",
       "status": "complete",
       "completedAt": "2026-07-07"
+    },
+    {
+      "id": "0021",
+      "concept": "Report Final",
+      "slug": "0021-report-final",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0022",
+      "concept": "Report Downwind",
+      "slug": "0022-report-downwind",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0023",
+      "concept": "Report Base",
+      "slug": "0023-report-base",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0024",
+      "concept": "Taxi Via",
+      "slug": "0024-taxi-via",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0025",
+      "concept": "Cross Runway",
+      "slug": "0025-cross-runway",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0026",
+      "concept": "Taxi to Holding Point",
+      "slug": "0026-taxi-to-holding-point",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0027",
+      "concept": "Backtrack",
+      "slug": "0027-backtrack",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0028",
+      "concept": "Vacate Runway",
+      "slug": "0028-vacate-runway",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0029",
+      "concept": "Expedite Taxi",
+      "slug": "0029-expedite-taxi",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0030",
+      "concept": "Follow Traffic",
+      "slug": "0030-follow-traffic",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0031",
+      "concept": "Number One for Landing",
+      "slug": "0031-number-one-for-landing",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0032",
+      "concept": "Number Two Behind Traffic",
+      "slug": "0032-number-two-behind-traffic",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0033",
+      "concept": "Priority Landing",
+      "slug": "0033-priority-landing",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0034",
+      "concept": "Engine Failure",
+      "slug": "0034-engine-failure",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0035",
+      "concept": "Loss of Power",
+      "slug": "0035-loss-of-power",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0036",
+      "concept": "Engine Flameout",
+      "slug": "0036-engine-flameout",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0037",
+      "concept": "Bird Strike",
+      "slug": "0037-bird-strike",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0038",
+      "concept": "Fire on Board",
+      "slug": "0038-fire-on-board",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0039",
+      "concept": "Smoke in Cabin",
+      "slug": "0039-smoke-in-cabin",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0040",
+      "concept": "Fumes in Cabin",
+      "slug": "0040-fumes-in-cabin",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0041",
+      "concept": "Emergency Landing",
+      "slug": "0041-emergency-landing",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0042",
+      "concept": "Precautionary Landing",
+      "slug": "0042-precautionary-landing",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0043",
+      "concept": "Low Fuel",
+      "slug": "0043-low-fuel",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0044",
+      "concept": "Fuel Starvation",
+      "slug": "0044-fuel-starvation",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0045",
+      "concept": "Fuel Dumping",
+      "slug": "0045-fuel-dumping",
+      "status": "complete",
+      "completedAt": "2026-07-08"
     }
   ]
 }

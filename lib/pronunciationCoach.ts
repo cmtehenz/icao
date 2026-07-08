@@ -397,6 +397,8 @@ export function buildHumanCaptainFeedback(
     practiceLevel: PracticeLevel;
     referenceText: string;
     missionPass?: boolean;
+    /** Word Mission — keep coaching tied to the phrase on the card only. */
+    wordMission?: boolean;
   },
 ): CaptainAssessmentDebrief {
   const { targetWord, practiceLevel, referenceText, missionPass } = context;
@@ -449,14 +451,16 @@ export function buildHumanCaptainFeedback(
       focus === "accuracy" ||
       focus === "prosody");
 
-  copy = applyAdaptiveDebrief(copy, {
-    targetWord,
-    referenceText,
-    practiceLevel,
-    focus,
-    missionPass,
-    assessment,
-  });
+  copy = context.wordMission
+    ? copy
+    : applyAdaptiveDebrief(copy, {
+        targetWord,
+        referenceText,
+        practiceLevel,
+        focus,
+        missionPass,
+        assessment,
+      });
 
   rememberPronunciationCoachSession({
     targetWord,
@@ -714,6 +718,7 @@ export function buildCaptainAssessmentDebrief(
     practiceLevel: PracticeLevel;
     referenceText: string;
     missionPass?: boolean;
+    wordMission?: boolean;
   },
 ): CaptainAssessmentDebrief {
   return buildHumanCaptainFeedback(assessment, context);

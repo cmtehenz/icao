@@ -61,6 +61,8 @@ export default function CaptainDeltaCoachingCard({
   const showMicSpinner =
     captainMicVisual === "starting" || captainMicVisual === "assessing";
   const showMicLive = captainMicVisual === "listening";
+  const hideMic = message.ui?.hideMic === true;
+  const hideSecondary = message.ui?.hideSecondaryActions === true;
 
   return (
     <article className="cd-coach-card">
@@ -115,41 +117,49 @@ export default function CaptainDeltaCoachingCard({
       )}
 
       <div className="cd-primary-mic-wrap">
-        <button
-          type="button"
-          className={`cd-primary-mic cd-primary-mic--${captainMicVisual}${captainMicRecording ? " recording" : ""}`}
-          data-record-source="captain-card"
-          data-mic-state={captainMicVisual}
-          aria-pressed={pronunciationRecorder ? pronunciationRecorder.isMicPressed : recording}
-          aria-describedby={pronunciationRecorder ? "cd-mic-status-line" : undefined}
-          disabled={captainMicDisabled}
-          onPointerDown={() =>
-            emitPronRecordDebug({ source: "captain-primary", phase: "pointerdown" })
-          }
-          onMouseDown={() =>
-            emitPronRecordDebug({ source: "captain-primary", phase: "mousedown" })
-          }
-          onClick={() => {
-            if (captainMicDisabled) return;
-            emitPronRecordDebug({ source: "captain-primary", phase: "click" });
-            onPrimaryAction();
-          }}
-        >
-          {showMicLive && <span className="cd-mic-live" aria-hidden />}
-          {showMicSpinner && <span className="cd-mic-spinner" aria-hidden />}
-          <span className="cd-mic-label">{captainMicLabel}</span>
-        </button>
-        {pronunciationRecorder && (
-          <p
-            id="cd-mic-status-line"
-            className={`cd-mic-status-line cd-mic-status-line--${captainMicVisual}`}
-          >
-            {pronunciationRecorder.micStatusLine}
+        {!hideMic ? (
+          <>
+            <button
+              type="button"
+              className={`cd-primary-mic cd-primary-mic--${captainMicVisual}${captainMicRecording ? " recording" : ""}`}
+              data-record-source="captain-card"
+              data-mic-state={captainMicVisual}
+              aria-pressed={pronunciationRecorder ? pronunciationRecorder.isMicPressed : recording}
+              aria-describedby={pronunciationRecorder ? "cd-mic-status-line" : undefined}
+              disabled={captainMicDisabled}
+              onPointerDown={() =>
+                emitPronRecordDebug({ source: "captain-primary", phase: "pointerdown" })
+              }
+              onMouseDown={() =>
+                emitPronRecordDebug({ source: "captain-primary", phase: "mousedown" })
+              }
+              onClick={() => {
+                if (captainMicDisabled) return;
+                emitPronRecordDebug({ source: "captain-primary", phase: "click" });
+                onPrimaryAction();
+              }}
+            >
+              {showMicLive && <span className="cd-mic-live" aria-hidden />}
+              {showMicSpinner && <span className="cd-mic-spinner" aria-hidden />}
+              <span className="cd-mic-label">{captainMicLabel}</span>
+            </button>
+            {pronunciationRecorder && (
+              <p
+                id="cd-mic-status-line"
+                className={`cd-mic-status-line cd-mic-status-line--${captainMicVisual}`}
+              >
+                {pronunciationRecorder.micStatusLine}
+              </p>
+            )}
+          </>
+        ) : (
+          <p className="cd-word-mission-hint" role="status">
+            Use <strong>Listen</strong> and <strong>Record</strong> on the lesson card.
           </p>
         )}
       </div>
 
-      {message.secondaryActions.length > 0 && (
+      {!hideSecondary && message.secondaryActions.length > 0 && (
         <div className="cd-secondary-actions">
           {message.secondaryActions.map((action) => (
             <button

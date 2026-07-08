@@ -63,6 +63,15 @@ describe("WordMissionSession UI certification", () => {
     expect(sessionSource).toMatch(/word-mission-record-task/);
     expect(sessionSource).toMatch(/WordMissionRichPanels/);
   });
+
+  it("shows terms and steps remaining in lesson progress banner", () => {
+    expect(sessionSource).toMatch(/word-mission-lesson-progress/);
+    expect(sessionSource).toMatch(/termsRemaining/);
+    expect(sessionSource).toMatch(/stepsRemaining/);
+    expect(sessionSource).toMatch(/left on this term/);
+    expect(sessionSource).toMatch(/WORD_MISSION_CAPTAIN_UI/);
+    expect(sessionSource).toMatch(/wordMissionSpeakText/);
+  });
 });
 
 describe("WordMissionApp styling", () => {

@@ -137,6 +137,7 @@ function buildMessage(
     speechText?: string;
     primaryAction?: CaptainDeltaAction;
     secondaryActions?: CaptainDeltaAction[];
+    ui?: import("@/lib/captainDelta/types").CaptainDeltaMessageUi;
   },
 ): CaptainDeltaMessage {
   return {
@@ -148,6 +149,7 @@ function buildMessage(
     primaryAction: options?.primaryAction ?? resolvePrimaryAction(route, lesson, kind),
     secondaryActions:
       options?.secondaryActions ?? resolveSecondaryActions(route, lesson, kind),
+    ui: options?.ui,
   };
 }
 
@@ -642,6 +644,7 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
           speechText: detail.speechText,
           primaryAction: detail.primaryAction,
           secondaryActions: detail.secondaryActions,
+          ui: detail.ui,
         },
       );
       deliverMessage(msg, {

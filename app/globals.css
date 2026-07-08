@@ -3743,6 +3743,13 @@ input {
   animation: cd-listen-pulse 1s ease-in-out infinite;
 }
 
+.cd-word-mission-hint {
+  margin: 0.35rem 0 0;
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
 .cd-secondary-actions {
   display: flex;
   flex-wrap: wrap;

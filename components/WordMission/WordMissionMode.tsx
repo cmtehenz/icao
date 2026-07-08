@@ -157,9 +157,9 @@ export default function WordMissionMode({ initialTermId }: { initialTermId?: str
           </p>
           {activeItem && termIndex > 0 && (
             <p className="vocab-mission-progress-detail" aria-live="polite">
-              Term {termIndex} of {missionTotal}: {getWordMissionTermLabel(activeItem)}
+              {getWordMissionTermLabel(activeItem)}
               {activeProgress && !isVocabMissionTermComplete(activeProgress) && (
-                <> · {wmLevelCode(practiceLevel)}</>
+                <> · {wmLevelCode(practiceLevel)} — {missionProgress.total - missionProgress.done} terms left</>
               )}
             </p>
           )}
@@ -222,6 +222,9 @@ export default function WordMissionMode({ initialTermId }: { initialTermId?: str
           progress={activeProgress}
           practiceLevel={practiceLevel}
           missionLegActive={missionLegActive}
+          termIndex={termIndex}
+          missionTotal={missionTotal}
+          missionDone={missionProgress.done}
           onPracticeLevelChange={setPracticeLevel}
           onProgressRefresh={() => {
             refresh();

@@ -1620,5 +1620,1987 @@ export const BATCH01_DEV_ENTRIES: DevKnowledgeEntry[] = [
         "href": "https://skybrary.aero"
       }
     ]
+  },
+  {
+    "catalogId": "0021",
+    "id": "0021",
+    "displayTerm": "Report Final",
+    "term": "report final",
+    "slug": "report-final",
+    "category": "ATC Phraseology",
+    "meaningEn": "Report Final instructs the pilot to advise ATC when the aircraft is on final approach to the assigned runway.",
+    "meaningPt": "Reporte final.\n\nInforme ao controle quando a aeronave estiver estabelecida na perna final da pista designada.",
+    "whenUsed": "When ATC issues Report Final, the pilot should:",
+    "example": "Tower: ANAC123, report final runway one eight.",
+    "sayPhrase": "Wilco, ANAC123.",
+    "icaoQuestion": "What is the difference between Report Final and Cleared to Land?",
+    "icaoSpeakText": "Report Final instructs the pilot to advise ATC when established on final approach. Cleared to Land authorizes the aircraft to land on the assigned runway. Reporting final does not mean landing is approved.",
+    "missionBrief": "Today's lesson covers one of the most common instructions during a visual approach.\n\nWhen Tower says Report Final, the controller wants to know exactly when you are established on final approach.\n\nThis helps ATC sequence traffic, issue landing clearance at the right moment, and maintain safe spacing on the runway and in the pattern.\n\nReporting final is not the same as being cleared to land.\n\nProfessional pilots understand that difference immediately.",
+    "captainTeaching": "Imagine you're waiting for a friend at a restaurant.\n\nYou don't need to know every step they took on the way.\n\nYou only need to know when they are about to arrive at the door.\n\nThat's what Report Final does for ATC.\n\nThe controller does not need to watch your entire approach.\n\nThey need one clear message at the right moment:\n\n\"I am now on final.\"\n\nUntil you report final, Tower may delay landing clearance because they cannot confirm your position in the sequence.\n\nAnd remember — reporting final is like knocking on the door.\n\nIt does not mean you are allowed to enter.\n\nLanding clearance is still required.",
+    "operationalContext": "You're flying your H130 to Navegantes Airport on a clear afternoon.\n\nTower has already instructed you to join the left downwind for runway one eight.\n\nAfter you report downwind, Tower says:\n\nTower: ANAC123, number two, follow the traffic on a two-mile final. Report final runway one eight.\n\nYou acknowledge and continue the approach.\n\nWhen you turn final and the runway is clearly in sight, you report:\n\nPilot: Final runway one eight, ANAC123.\n\nTower then issues landing clearance when spacing is correct.",
+    "sayItCoach": "Report Final.",
+    "icaoModelAnswer": "Report Final instructs the pilot to advise ATC when established on final approach. Cleared to Land authorizes the aircraft to land on the assigned runway. Reporting final does not mean landing is approved.",
+    "memoryTrick": "Think of final approach like the last corridor before the runway.\n\nReport Final is simply telling Tower:\n\n\"I have entered the corridor.\"\n\nThe door to land still requires Cleared to Land.",
+    "operationalMeaning": "When ATC issues Report Final, the pilot should:\n\nA final report is commonly used:",
+    "whyAtcUsesIt": [
+      "sequence arriving traffic safely",
+      "confirm aircraft position before issuing landing clearance",
+      "manage spacing between arrivals",
+      "coordinate runway occupancy",
+      "maintain situational awareness in the visual circuit"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, report final runway one eight.",
+      "Tower: ANAC123, report final.",
+      "Tower: ANAC123, report long final runway three six.",
+      "Tower: ANAC123, report three-mile final runway two seven.",
+      "Tower: ANAC123, report final, number two behind the Airbus."
+    ],
+    "pilotReadbacks": [
+      "Wilco, ANAC123.",
+      "Will report final runway one eight, ANAC123.",
+      "Will report final, ANAC123.",
+      "Final runway one eight, ANAC123.",
+      "Long final runway three six, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Assuming Report Final means cleared to land.  \n  ✔ Continue the approach and wait for explicit landing clearance.\n\n- ❌ Reporting final too early, before established on final.  \n  ✔ Report when you are actually on the final leg for the correct runway.\n\n- ❌ Forgetting the runway number.  \n  ✔ Include the runway whenever practical: Final runway one eight, ANAC123.\n\n- ❌ Reading back only: Roger.  \n  ✔ Better: Will report final runway one eight, ANAC123.",
+    "pronunciationCoaching": "**Target Phrase:** Report Final\n\n**Pronunciation:** ri-PORT FY-nul\n\n**Word Stress**\n\n- Report → second syllable\n- Final → first syllable\n\nPractice:\n\nReport... Final...\n\nTogether:\n\nReport Final.\n\nThen inside a complete transmission:\n\nWilco, ANAC123.\n\nSpeak the runway number clearly and keep a steady pace.",
+    "relatedConcepts": [
+      "Report Downwind",
+      "Report Base",
+      "Cleared to Land",
+      "Continue Approach",
+      "Visual Approach",
+      "Go Around",
+      "Number Two for Landing"
+    ],
+    "references": [
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Traffic Pattern Operations",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA AIM 4-3-2 — Airports with an Operating Control Tower",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Air Traffic Management",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Final Approach",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Read-back or Hear-back",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0022",
+    "id": "0022",
+    "displayTerm": "Report Downwind",
+    "term": "report downwind",
+    "slug": "report-downwind",
+    "category": "ATC Phraseology",
+    "meaningEn": "Report Downwind instructs the pilot to advise ATC when the aircraft is on the downwind leg of the traffic pattern for the assigned runway.",
+    "meaningPt": "Reporte downwind.\n\nInforme ao controle quando a aeronave estiver na perna contrária à pista de pouso.",
+    "whenUsed": "When ATC issues Report Downwind, the pilot should:",
+    "example": "Tower: ANAC123, report downwind runway one four.",
+    "sayPhrase": "Wilco, ANAC123.",
+    "icaoQuestion": "Why does ATC ask pilots to report downwind during VFR operations?",
+    "icaoSpeakText": "Reporting downwind helps ATC confirm that the aircraft has entered the traffic pattern correctly. It allows the controller to sequence traffic and issue further instructions for base, final, and landing clearance.",
+    "missionBrief": "Today's lesson focuses on one of the first reports in a standard traffic pattern.\n\nWhen Tower instructs you to report downwind, they want to know when you are parallel to the landing runway, flying opposite to the landing direction.\n\nThis report helps ATC build the traffic sequence before base, final, and landing clearance.\n\nFor helicopter pilots, downwind reports are especially common during VFR operations at busy airports.",
+    "captainTeaching": "Think of the traffic pattern like a racetrack around the airport.\n\nDownwind is the long straight section where you run parallel to the runway, but in the opposite direction of landing.\n\nWhen Tower says Report Downwind, they are asking:\n\n\"Tell me when you are on that straight section.\"\n\nWhy does it matter?\n\nBecause from downwind, ATC can see how the whole sequence will develop — who is first, who is second, and when to send you base or final.\n\nHelicopter pilots must be especially disciplined here.\n\nYou may fly a slightly different path than fixed-wing traffic, but your radio reports must still be clear and standard.",
+    "operationalContext": "You're inbound to Florianópolis International Airport in your H130.\n\nTower clears you to join the circuit:\n\nTower: ANAC123, enter left downwind runway one four, report downwind.\n\nYou read back and join at pattern altitude.\n\nWhen abeam the threshold on the downwind leg, you report:\n\nPilot: Left downwind runway one four, ANAC123.\n\nTower now sequences you with other traffic and later clears you to continue the approach.",
+    "sayItCoach": "Report Downwind.",
+    "icaoModelAnswer": "Reporting downwind helps ATC confirm that the aircraft has entered the traffic pattern correctly. It allows the controller to sequence traffic and issue further instructions for base, final, and landing clearance.",
+    "memoryTrick": "Downwind = you are **down** the runway direction, flying **wind** coming toward you (opposite landing).\n\nWhen Tower wants that leg, they say Report Downwind.\n\nSimple: parallel, opposite, report.",
+    "operationalMeaning": "When ATC issues Report Downwind, the pilot should:\n\nDownwind reports are used:",
+    "whyAtcUsesIt": [
+      "establish traffic sequence early",
+      "confirm pattern entry",
+      "coordinate spacing before base and final",
+      "manage mixed helicopter and fixed-wing traffic",
+      "maintain runway and airspace awareness"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, report downwind runway one four.",
+      "Tower: ANAC123, enter right downwind runway two seven, report downwind.",
+      "Tower: ANAC123, report mid-field downwind.",
+      "Tower: ANAC123, report downwind, number three in sequence.",
+      "Tower: ANAC123, extend downwind, report abeam the tower."
+    ],
+    "pilotReadbacks": [
+      "Wilco, ANAC123.",
+      "Will report downwind runway one four, ANAC123.",
+      "Enter left downwind, will report downwind, ANAC123.",
+      "Left downwind runway one four, ANAC123.",
+      "Right downwind runway two seven, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Reporting downwind before actually established on the leg.  \n  ✔ Report when you are parallel to the runway on the downwind leg.\n\n- ❌ Omitting left or right downwind when it matters.  \n  ✔ Say left downwind or right downwind clearly.\n\n- ❌ Forgetting the runway number.  \n  ✔ Include the runway: Left downwind runway one four, ANAC123.\n\n- ❌ Confusing downwind with base or final.  \n  ✔ Downwind is parallel to the runway, opposite landing direction.",
+    "pronunciationCoaching": "**Target Phrase:** Report Downwind\n\n**Pronunciation:** ri-PORT DOWN-wind\n\n**Word Stress**\n\n- Report → second syllable\n- Downwind → first syllable on DOWN\n\nPractice:\n\nReport... Downwind...\n\nTogether:\n\nReport Downwind.\n\nThen inside a complete transmission:\n\nWilco, ANAC123.\n\nKeep downwind as one smooth word: DOWN-wind.",
+    "relatedConcepts": [
+      "Report Base",
+      "Report Final",
+      "Visual Approach",
+      "Cleared to Land",
+      "Maintain Own Separation",
+      "Traffic in Sight",
+      "Extend Downwind"
+    ],
+    "references": [
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Traffic Pattern Operations",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA AIM 4-3-2 — Airports with an Operating Control Tower",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Downwind Leg",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Read-back or Hear-back",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0023",
+    "id": "0023",
+    "displayTerm": "Report Base",
+    "term": "report base",
+    "slug": "report-base",
+    "category": "ATC Phraseology",
+    "meaningEn": "Report Base instructs the pilot to advise ATC when the aircraft is on the base leg of the traffic pattern for the assigned runway.",
+    "meaningPt": "Reporte base.\n\nInforme ao controle quando a aeronave estiver na perna base do circuito de tráfego.",
+    "whenUsed": "When ATC issues Report Base, the pilot should:",
+    "example": "Tower: ANAC123, report base runway one eight.",
+    "sayPhrase": "Wilco, ANAC123.",
+    "icaoQuestion": "Why is the base report important for traffic separation?",
+    "icaoSpeakText": "The base report helps ATC confirm when an aircraft is turning toward final approach. This allows the controller to manage spacing between aircraft and issue landing clearance or other instructions at the correct time.",
+    "missionBrief": "Today's lesson covers the report that connects downwind and final.\n\nWhen Tower says Report Base, they want to know when you turn onto the base leg — the crosswind portion of the pattern that sets up your final approach.\n\nThis report helps ATC confirm spacing and decide when to issue landing clearance or further instructions.",
+    "captainTeaching": "If downwind is the long parallel leg, base is the turn that points your nose toward the runway.\n\nIt's the bridge between \"I'm in the pattern\" and \"I'm on final.\"\n\nWhen ATC asks for Report Base, they want to know you've made that bridge.\n\nWhy?\n\nBecause base is where spacing problems often appear.\n\nIf you turn base too early or too late, the aircraft ahead or behind you may no longer be safely separated.\n\nA timely base report gives Tower time to react — hold you on downwind, extend, or clear you to land.",
+    "operationalContext": "You are on left downwind for runway one eight at Navegantes in your H130.\n\nTower instructs:\n\nTower: ANAC123, report base runway one eight.\n\nYou continue downwind until abeam the normal turn point, then turn base.\n\nWhen established on base, you report:\n\nPilot: Base runway one eight, ANAC123.\n\nTower may then clear you to continue or instruct you to report final.",
+    "sayItCoach": "Report Base.",
+    "icaoModelAnswer": "The base report helps ATC confirm when an aircraft is turning toward final approach. This allows the controller to manage spacing between aircraft and issue landing clearance or other instructions at the correct time.",
+    "memoryTrick": "You report when you cross the bridge from downwind toward the runway centerline.",
+    "operationalMeaning": "When ATC issues Report Base, the pilot should:\n\nBase reports are common:",
+    "whyAtcUsesIt": [
+      "confirm the aircraft is turning from downwind toward final",
+      "manage spacing between aircraft on base and final",
+      "issue timely landing clearances",
+      "detect early or late turns that affect separation",
+      "maintain an accurate traffic picture"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, report base runway one eight.",
+      "Tower: ANAC123, report base.",
+      "Tower: ANAC123, report left base runway two seven.",
+      "Tower: ANAC123, extend downwind, report base.",
+      "Tower: ANAC123, report base, number two following traffic on final."
+    ],
+    "pilotReadbacks": [
+      "Wilco, ANAC123.",
+      "Will report base runway one eight, ANAC123.",
+      "Will report base, ANAC123.",
+      "Base runway one eight, ANAC123.",
+      "Left base runway two seven, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Reporting base while still on downwind.  \n  ✔ Report only when established on the base leg.\n\n- ❌ Turning base without spacing awareness.  \n  ✔ Maintain visual scan and follow Tower sequencing instructions.\n\n- ❌ Omitting the runway in the report.  \n  ✔ Say: Base runway one eight, ANAC123.\n\n- ❌ Assuming base report means cleared to land.  \n  ✔ Landing clearance is still required unless already issued.",
+    "pronunciationCoaching": "**Target Phrase:** Report Base\n\n**Pronunciation:** ri-PORT bays\n\n**Word Stress**\n\n- Report → second syllable\n- Base → one syllable, clear \"bays\" sound\n\nPractice:\n\nReport... Base...\n\nTogether:\n\nReport Base.\n\nThen inside a complete transmission:\n\nWilco, ANAC123.\n\nDo not rush the word base — keep it distinct from \"race.\"",
+    "relatedConcepts": [
+      "Report Downwind",
+      "Report Final",
+      "Extend Downwind",
+      "Cleared to Land",
+      "Visual Approach",
+      "Traffic in Sight",
+      "Go Around"
+    ],
+    "references": [
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Traffic Pattern Operations",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA AIM 4-3-2 — Airports with an Operating Control Tower",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Base Leg",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Read-back or Hear-back",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0024",
+    "id": "0024",
+    "displayTerm": "Taxi Via",
+    "term": "taxi via",
+    "slug": "taxi-via",
+    "category": "Ground Operations",
+    "meaningEn": "Taxi Via instructs the pilot to taxi to a destination using the specific taxiways or route stated by ATC.",
+    "meaningPt": "Taxi via.\n\nSiga a rota de táxi indicada pelo controle até o ponto autorizado.",
+    "whenUsed": "When ATC issues Taxi Via, the pilot should:",
+    "example": "Ground: ANAC123, runway one eight, taxi via Alpha, hold short of runway two seven.",
+    "sayPhrase": "Runway one eight, taxi via Alpha, hold short of runway two seven, ANAC123.",
+    "icaoQuestion": "What should a pilot include in a taxi clearance readback?",
+    "icaoSpeakText": "The pilot should read back the runway assignment if given, the taxi route, and any hold short or runway crossing instructions. The readback should include the aircraft identification and use standard phraseology.",
+    "missionBrief": "Today's lesson moves from the air to the ground — and it is one of the most important surface instructions in aviation.\n\nWhen Ground says Taxi Via, they are giving you a specific route to follow on the airport movement area.\n\nYou must understand the route, read it back correctly, and comply with any hold short instructions along the way.\n\nRunway incursions often begin with misunderstood taxi clearances.\n\nProfessional pilots treat Taxi Via with the same discipline as a takeoff clearance.",
+    "captainTeaching": "Imagine a hospital with colored lines on the floor.\n\nYou are not free to walk anywhere.\n\nYou must follow the line Ground assigns.\n\nTaxi Via is that line.\n\nIf Ground says via Alpha, Bravo, you do not shortcut across an open ramp unless cleared.\n\nAnd if they say hold short of a runway, that is a hard stop — even if the runway looks empty.\n\nThe FAA requires controllers to obtain a readback of runway hold short instructions.\n\nThat means your readback is not optional politeness.\n\nIt is part of the safety system.",
+    "operationalContext": "You have just landed at Congonhas Airport in your H130.\n\nAfter vacating the runway, Ground contacts you:\n\nGround: ANAC123, taxi to the general aviation ramp via Alpha, Bravo, hold short of runway one seven left.\n\nYou read back the full route and hold short instruction, then taxi carefully using the airport diagram.\n\nAt the hold short point, you stop and wait for further clearance before crossing the active runway.",
+    "sayItCoach": "Taxi Via Alpha.",
+    "icaoModelAnswer": "The pilot should read back the runway assignment if given, the taxi route, and any hold short or runway crossing instructions. The readback should include the aircraft identification and use standard phraseology.",
+    "memoryTrick": "Ground gives you the vector (route). You follow it exactly — no improvisation.",
+    "operationalMeaning": "When ATC issues Taxi Via, the pilot should:\n\nTaxi Via clearances commonly include:",
+    "whyAtcUsesIt": [
+      "guide aircraft safely on the movement area",
+      "prevent runway incursions",
+      "sequence departures and arrivals on the ground",
+      "route traffic around construction or closed taxiways",
+      "coordinate traffic at complex airports"
+    ],
+    "atcPhraseology": [
+      "Ground: ANAC123, runway one eight, taxi via Alpha, hold short of runway two seven.",
+      "Ground: ANAC123, taxi to parking via Bravo, Charlie.",
+      "Ground: ANAC123, taxi via Alpha, cross runway zero nine, hold short of runway one eight.",
+      "Ground: ANAC123, taxi via Charlie to the helipad.",
+      "Ground: ANAC123, runway three six left, taxi via Alpha, Delta, contact tower at holding point Delta two."
+    ],
+    "pilotReadbacks": [
+      "Runway one eight, taxi via Alpha, hold short of runway two seven, ANAC123.",
+      "Taxi to parking via Bravo, Charlie, ANAC123.",
+      "Taxi via Alpha, cross runway zero nine, hold short of runway one eight, ANAC123.",
+      "Taxi via Charlie to the helipad, ANAC123.",
+      "Runway three six left, taxi via Alpha, Delta, contact tower at Delta two, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Reading back only \"Roger\" or \"Wilco\" without the route.  \n  ✔ Read back route and hold short points completely.\n\n- ❌ Omitting hold short from the readback.  \n  ✔ Always repeat hold short of runway XX when issued.\n\n- ❌ Crossing a runway without explicit clearance.  \n  ✔ Wait for cross runway or taxi instructions that authorize crossing.\n\n- ❌ Confusing taxi instruction with takeoff clearance.  \n  ✔ Taxi Via does not authorize entering the departure runway for takeoff.",
+    "pronunciationCoaching": "**Target Phrase:** Taxi Via\n\n**Pronunciation:** TAK-see VY-uh\n\n**Word Stress**\n\n- Taxi → first syllable\n- Via → VY-uh (two syllables)\n\nPractice:\n\nTaxi... Via...\n\nTogether:\n\nTaxi Via Alpha.\n\nThen inside a complete transmission:\n\nRunway one eight, taxi via Alpha, hold short of runway two seven, ANAC123.\n\nSpeak taxiway letters with ICAO phonetics when needed in busy frequency environments.",
+    "relatedConcepts": [
+      "Hold Short",
+      "Cross Runway",
+      "Line Up and Wait",
+      "Cleared for Takeoff",
+      "Vacate Runway",
+      "Runway Incursion",
+      "Contact Tower"
+    ],
+    "references": [
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) 4-3-18 — Taxiing",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA JO 7110.65 — Taxi and Ground Movement Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/"
+      },
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Ground Movement",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Taxi",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Runway Incursion",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0025",
+    "id": "0025",
+    "displayTerm": "Cross Runway",
+    "term": "cross runway",
+    "slug": "cross-runway",
+    "category": "Airport Operations",
+    "meaningEn": "Cross Runway instructs the pilot to taxi across the designated runway using the assigned route, after receiving explicit ATC authorization.",
+    "meaningPt": "Cruze a pista.\n\nAutorização explícita para atravessar a pista indicada durante o táxi.",
+    "whenUsed": "When ATC issues Cross Runway, the pilot should:",
+    "example": "Ground: ANAC123, cross runway one eight, taxi via Bravo.",
+    "sayPhrase": "Cross runway one eight, taxi via Bravo, ANAC123.",
+    "icaoQuestion": "When is a pilot allowed to cross a runway during taxi?",
+    "icaoSpeakText": "A pilot may cross a runway only after receiving explicit ATC authorization as part of a taxi instruction. If the clearance is unclear or hold short is issued, the pilot must stop and request clarification before crossing.",
+    "missionBrief": "Today's lesson covers one of the highest-risk instructions on the airport surface.\n\nCross Runway authorizes an aircraft or vehicle to proceed across an active or inactive runway at a specified point.\n\nThis instruction exists because runway incursions remain one of the most serious safety risks in aviation.\n\nYou must never cross a runway without explicit authorization.",
+    "captainTeaching": "A runway is not a taxiway.\n\nIt is a high-speed corridor for aircraft on takeoff and landing.\n\nWhen Ground says Cross Runway, they are opening a controlled gate for you — for a moment.\n\nBefore you enter that gate:\n\nIf anything is unclear, stop and ask.\n\nThe worst phrase on the ground is \"I thought I was cleared.\"\n\nProfessional pilots never cross on assumption.",
+    "operationalContext": "You are taxiing your H130 at Navegantes after landing.\n\nGround instructs:\n\nGround: ANAC123, taxi via Bravo, cross runway one eight, hold short of runway zero seven.\n\nYou stop at runway one eight, scan left and right, confirm no landing or departing traffic, and cross when safe.\n\nAfter crossing, you continue on Bravo and hold short of runway zero seven as instructed.",
+    "sayItCoach": "Cross Runway.",
+    "icaoModelAnswer": "A pilot may cross a runway only after receiving explicit ATC authorization as part of a taxi instruction. If the clearance is unclear or hold short is issued, the pilot must stop and request clarification before crossing.",
+    "memoryTrick": "Hold short means the door is closed.\n\nNo explicit cross = door stays closed.",
+    "operationalMeaning": "When ATC issues Cross Runway, the pilot should:\n\nA pilot must not cross a runway when:",
+    "whyAtcUsesIt": [
+      "allow aircraft to reach departure runways or parking areas",
+      "coordinate ground movement at complex airports",
+      "protect active landing and departing traffic",
+      "prevent runway incursions",
+      "maintain orderly surface operations"
+    ],
+    "atcPhraseology": [
+      "Ground: ANAC123, cross runway one eight, taxi via Bravo.",
+      "Ground: ANAC123, taxi via Alpha, cross runway zero nine, hold short of runway one eight.",
+      "Ground: ANAC123, cross runway two seven left at Bravo.",
+      "Ground: ANAC123, hold short runway one eight. (No crossing — contrast instruction.)",
+      "Ground: ANAC123, cross runway three six left, contact tower on the other side."
+    ],
+    "pilotReadbacks": [
+      "Cross runway one eight, taxi via Bravo, ANAC123.",
+      "Taxi via Alpha, cross runway zero nine, hold short of runway one eight, ANAC123.",
+      "Cross runway two seven left at Bravo, ANAC123.",
+      "Holding short runway one eight, ANAC123.",
+      "Cross runway three six left, contact tower, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Crossing because the runway looks empty.  \n  ✔ Cross only with explicit ATC authorization.\n\n- ❌ Confusing hold short with cross runway.  \n  ✔ Hold short means stop before the runway. Cross runway means authorized to proceed across.\n\n- ❌ Slow unnecessary stop on the runway after crossing is authorized.  \n  ✔ Cross expeditiously — do not loiter on the runway.\n\n- ❌ Incomplete readback omitting the runway to cross.  \n  ✔ Read back: Cross runway one eight, ANAC123.",
+    "pronunciationCoaching": "**Target Phrase:** Cross Runway\n\n**Pronunciation:** kross RUN-way\n\n**Word Stress**\n\n- Cross → one syllable, crisp \"kross\"\n- Runway → RUN-way\n\nPractice:\n\nCross... Runway...\n\nTogether:\n\nCross Runway.\n\nThen inside a complete transmission:\n\nCross runway one eight, taxi via Bravo, ANAC123.\n\nSay the runway number distinctly — it is safety-critical.",
+    "relatedConcepts": [
+      "Hold Short",
+      "Taxi Via",
+      "Line Up and Wait",
+      "Cleared for Takeoff",
+      "Vacate Runway",
+      "Runway Incursion",
+      "LAHSO"
+    ],
+    "references": [
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) 4-3-18 — Taxiing",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA JO 7110.65 — Taxi and Ground Movement Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Surface Movement",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Runway Crossing",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Runway Incursion",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0026",
+    "id": "0026",
+    "displayTerm": "Taxi to Holding Point",
+    "term": "taxi to holding point",
+    "slug": "taxi-to-holding-point",
+    "category": "Ground Operations",
+    "meaningEn": "Taxi to Holding Point instructs the pilot to taxi to a designated holding position and stop, awaiting further clearance before entering the runway.",
+    "meaningPt": "Táxi até o ponto de espera.\n\nSiga a rota indicada e pare no ponto de espera designado, aguardando novas instruções.",
+    "whenUsed": "When ATC issues Taxi to Holding Point, the pilot should:",
+    "example": "Ground: ANAC123, taxi to holding point Charlie via Alpha, hold short of runway three five.",
+    "sayPhrase": "Taxi to holding point Charlie via Alpha, hold short of runway three five, ANAC123.",
+    "icaoQuestion": "What is the difference between taxi to holding point and line up and wait?",
+    "icaoSpeakText": "Taxi to holding point is a ground movement instruction to taxi to a designated position and stop before the runway. Line up and wait is a tower instruction to enter the runway and position for departure without takeoff clearance. The holding point is reached on the taxiway; line up means you are on the runway.",
+    "missionBrief": "Today's lesson bridges taxi clearances and runway operations.\n\nWhen Ground says Taxi to Holding Point, they are directing you to a specific position on the movement area — usually near the departure runway — where you will wait for further instructions from Tower.\n\nThis is not a takeoff clearance.\n\nIt is not permission to enter the runway.\n\nProfessional pilots understand that the holding point is a staging area where ground control hands you off to tower control.\n\nGetting this right prevents runway incursions and keeps departure sequencing safe.",
+    "captainTeaching": "Think of the holding point as the waiting room before the runway.\n\nGround brings you to the door.\n\nTower decides when you may enter.\n\nMany runway incursions happen because pilots treat the holding point as optional — rolling past it because the runway looks empty.\n\nThe holding point is a hard boundary until Tower clears you forward.\n\nIn Brazil, pilots sometimes confuse taxi to holding point with line up and wait.\n\nThey are different steps in the departure sequence.\n\nAt Congonhas, with its short runways and dense traffic, discipline at the holding point is not optional.",
+    "operationalContext": "You are departing Congonhas Airport in your H130.\n\nGround has cleared you from the helipad:\n\nGround: ANAC123, taxi to holding point Alpha one via Bravo, hold short of runway one seven right.\n\nYou taxi carefully along Bravo, stop at holding point Alpha one, and switch to Tower frequency as instructed.\n\nTower later clears you to line up and wait.\n\nUntil that moment, you remain stopped at the holding point.",
+    "sayItCoach": "Taxi to holding point Charlie, ANAC123.",
+    "icaoModelAnswer": "Taxi to holding point is a ground movement instruction to taxi to a designated position and stop before the runway. Line up and wait is a tower instruction to enter the runway and position for departure without takeoff clearance. The holding point is reached on the taxiway; line up means you are on the runway.",
+    "memoryTrick": "**HOLD** at the holding point — **H**alt, **O**bserve the runway, **L**isten to tower, **D**o not enter until cleared.",
+    "operationalMeaning": "When ATC issues Taxi to Holding Point, the pilot should:\n\nTaxi to Holding Point clearances commonly include:",
+    "whyAtcUsesIt": [
+      "position aircraft near the departure runway efficiently",
+      "coordinate the handoff from Ground to Tower",
+      "prevent premature runway entry",
+      "sequence departures in busy traffic",
+      "keep the movement area organized at complex airports"
+    ],
+    "atcPhraseology": [
+      "Ground: ANAC123, taxi to holding point Charlie via Alpha, hold short of runway three five.",
+      "Ground: ANAC123, taxi to holding point Delta two, contact tower.",
+      "Ground: ANAC123, runway two seven, taxi to holding point Bravo via Alpha, Delta.",
+      "Ground: ANAC123, taxi to holding point Alpha one, hold short runway one eight.",
+      "Ground: ANAC123, taxi to holding point Lima, monitor tower one one eight point seven."
+    ],
+    "pilotReadbacks": [
+      "Taxi to holding point Charlie via Alpha, hold short of runway three five, ANAC123.",
+      "Taxi to holding point Delta two, contact tower, ANAC123.",
+      "Runway two seven, taxi to holding point Bravo via Alpha, Delta, ANAC123.",
+      "Taxi to holding point Alpha one, hold short runway one eight, ANAC123.",
+      "Taxi to holding point Lima, monitoring tower, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Entering the runway after reaching the holding point without tower clearance.  \n  ✔ Stop at the holding point and wait for tower instructions.\n\n- ❌ Confusing holding point with the runway threshold.  \n  ✔ The holding point is on the taxiway, before the runway.\n\n- ❌ Omitting hold short from the readback.  \n  ✔ Always read back hold short instructions when included.\n\n- ❌ Forgetting to contact tower when instructed.  \n  ✔ Switch to tower frequency at the holding point as cleared.",
+    "pronunciationCoaching": "**Target Phrase:** Taxi to Holding Point\n\n**Pronunciation:** TAK-see too HOLD-ing point\n\n**Word Stress**\n\n- Taxi → first syllable\n- Holding → first syllable\n- Point → one syllable, clear T at the end\n\nPractice:\n\nTaxi... to... Holding Point...\n\nTogether:\n\nTaxi to holding point Charlie, ANAC123.\n\nThen inside a complete transmission:\n\nTaxi to holding point Charlie via Alpha, hold short of runway three five, ANAC123.",
+    "relatedConcepts": [
+      "Hold Short",
+      "Taxi Via",
+      "Line Up and Wait",
+      "Contact Tower",
+      "Cross Runway",
+      "Cleared for Takeoff",
+      "Runway Incursion"
+    ],
+    "references": [
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) 4-3-18 — Taxiing",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA JO 7110.65 — Taxi and Ground Movement Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/"
+      },
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Ground Movement",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Holding Point",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Runway Incursion",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0027",
+    "id": "0027",
+    "displayTerm": "Backtrack",
+    "term": "backtrack",
+    "slug": "backtrack",
+    "category": "Airport Operations",
+    "meaningEn": "Backtrack instructs or authorizes the pilot to taxi along the runway surface, typically toward the departure end opposite to the landing direction.",
+    "meaningPt": "Retornar pela pista.\n\nTáxi ao longo da pista em uso, geralmente em sentido contrário ao pouso, para posicionar-se para decolagem.",
+    "whenUsed": "When ATC authorizes Backtrack, the pilot should:",
+    "example": "Tower: ANAC123, backtrack runway two seven for departure.",
+    "sayPhrase": "Backtracking runway two seven for departure, ANAC123.",
+    "icaoQuestion": "How would you report that you are backtracking the runway for departure?",
+    "icaoSpeakText": "I would report to Tower: ANAC123 backtracking runway two seven for departure. I include my callsign, the word backtracking, the runway designator, and the purpose.",
+    "missionBrief": "Today's lesson covers a surface maneuver that surprises many pilots the first time they hear it.\n\nBacktrack means taxiing on the runway itself — opposite to the landing direction — to reach the departure end for takeoff.\n\nThis is common at smaller airports and heliports where there is no parallel taxiway to the runway threshold.\n\nYou must understand when backtracking is authorized, how to report it, and why controllers need to protect the runway while you are on it.",
+    "captainTeaching": "Imagine you landed on a one-way street and need to drive to the other end to depart.\n\nYou cannot use the sidewalk — you must use the street itself.\n\nThat is backtrack.\n\nThe runway is active airspace even when you are taxiing on it.\n\nTower must know you are there.\n\nOther aircraft may be on final approach.\n\nAt Brazilian coastal heliports like Balneário Camboriú, backtrack is routine.\n\nTreat it with the same alertness as a takeoff or landing roll.\n\nNever backtrack without explicit tower authorization.",
+    "operationalContext": "You have just landed at Balneário Camboriú in your H130 on runway two seven.\n\nThere is no taxiway to the departure end.\n\nTower instructs you to backtrack for departure.\n\nTower: ANAC123, backtrack runway two seven for departure.\n\nYou report:\n\nTower, ANAC123 backtracking runway two seven for departure.\n\nYou taxi carefully along the runway centerline, scanning for traffic, until you reach the departure end and await further clearance.",
+    "sayItCoach": "ANAC123 backtracking runway two seven for departure.",
+    "icaoModelAnswer": "I would report to Tower: ANAC123 backtracking runway two seven for departure. I include my callsign, the word backtracking, the runway designator, and the purpose.",
+    "memoryTrick": "**BACK** on the runway — **B**efore takeoff, **A**uthorized by tower, **C**enterline, **K**eep scanning for traffic.",
+    "operationalMeaning": "When ATC authorizes Backtrack, the pilot should:\n\nBacktrack is commonly used when:",
+    "whyAtcUsesIt": [
+      "position aircraft at the departure end when no parallel taxiway exists",
+      "coordinate runway use at airports with limited infrastructure",
+      "maintain awareness of aircraft on the runway surface",
+      "sequence departures after arrivals on the same runway",
+      "protect landing traffic while aircraft backtrack"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, backtrack runway two seven for departure.",
+      "Tower: ANAC123, cleared to backtrack runway one eight.",
+      "Tower: ANAC123, backtrack runway three five, report reaching the threshold.",
+      "Tower: ANAC123, expedite backtrack, traffic on a three-mile final.",
+      "Tower: ANAC123, cancel backtrack, taxi via Alpha to holding point Bravo."
+    ],
+    "pilotReadbacks": [
+      "Backtracking runway two seven for departure, ANAC123.",
+      "Cleared to backtrack runway one eight, ANAC123.",
+      "Backtracking runway three five, will report reaching the threshold, ANAC123.",
+      "Expediting backtrack, ANAC123.",
+      "Cancel backtrack, taxi via Alpha to holding point Bravo, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Backtracking without tower clearance.  \n  ✔ Wait for explicit authorization before entering the runway to backtrack.\n\n- ❌ Saying \"returning on the runway\" instead of standard phraseology.  \n  ✔ Use backtracking runway XX for departure.\n\n- ❌ Assuming backtrack includes takeoff clearance.  \n  ✔ Backtrack only positions you; you still need line up and takeoff clearance.\n\n- ❌ Moving slowly without reporting when traffic is on final.  \n  ✔ Expedite when instructed and keep tower informed of your position.",
+    "pronunciationCoaching": "**Target Phrase:** Backtracking Runway Two Seven for Departure\n\n**Pronunciation:** BACK-track-ing RUN-way two SEV-en for dee-PAR-chur\n\n**Word Stress**\n\n- Backtrack → BACK-track (stress first syllable)\n- Departure → second syllable\n\nPractice:\n\nBacktrack... runway two seven...\n\nTogether:\n\nANAC123 backtracking runway two seven for departure.\n\nSpeak runway numbers digit by digit: two seven, not twenty-seven.",
+    "relatedConcepts": [
+      "Vacate Runway",
+      "Line Up and Wait",
+      "Cleared for Takeoff",
+      "Hold Short",
+      "Runway Incursion",
+      "Expedite Taxi",
+      "Contact Tower"
+    ],
+    "references": [
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) 4-3-18 — Taxiing",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA JO 7110.65 — Runway Operations",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/"
+      },
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Aerodrome Operations",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Backtrack",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Runway Incursion",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0028",
+    "id": "0028",
+    "displayTerm": "Vacate Runway",
+    "term": "vacate runway",
+    "slug": "vacate-runway",
+    "category": "Airport Operations",
+    "meaningEn": "Vacate Runway instructs or requires the pilot to leave the runway surface promptly after landing and proceed to the assigned taxiway or exit point.",
+    "meaningPt": "Desocupar a pista.\n\nSair da pista rapidamente após o pouso e seguir para o ponto de saída indicado.",
+    "whenUsed": "When instructed or expected to Vacate Runway, the pilot should:",
+    "example": "Tower: ANAC123, vacate runway zero seven at taxiway Bravo.",
+    "sayPhrase": "Vacating runway zero seven at taxiway Bravo, ANAC123.",
+    "icaoQuestion": "How would you report vacating the runway after landing?",
+    "icaoSpeakText": "I would report to Tower: ANAC123 vacating runway zero nine at taxiway Charlie. I include my callsign, the word vacating, the runway designator, and the taxiway where I am exiting.",
+    "missionBrief": "Today's lesson covers one of the most time-critical instructions after landing.\n\nVacate Runway means exit the runway promptly and completely so that other aircraft may land or take off.\n\nEvery second you remain on the runway blocks traffic and increases risk.\n\nProfessional pilots plan their exit before touchdown and report vacating without being asked.",
+    "captainTeaching": "Picture a busy highway off-ramp.\n\nIf you stop in the middle of the exit lane, everyone behind you is blocked.\n\nThe runway works the same way.\n\nPlan your exit during the approach briefing.\n\nKnow which taxiway you will use before you touch down.\n\nIn helicopter operations at airports like Navegantes or Florianópolis, pilots sometimes hover-taxi after landing.\n\nYou are still on the runway until you are completely past the holding markings.\n\nReport vacating clearly — Tower may be sequencing an aircraft on short final.",
+    "operationalContext": "You have just landed your H130 at Navegantes on runway zero seven.\n\nTower has another aircraft on a two-mile final.\n\nTower: ANAC123, vacate runway zero seven at taxiway Bravo, expedite.\n\nYou roll to Bravo without delay, turn off the runway, and report:\n\nTower, ANAC123 vacating runway zero seven at taxiway Bravo.\n\nOnce clear, Ground takes over your taxi instructions.",
+    "sayItCoach": "Tower, ANAC123 vacating runway zero seven at taxiway Bravo.",
+    "icaoModelAnswer": "I would report to Tower: ANAC123 vacating runway zero nine at taxiway Charlie. I include my callsign, the word vacating, the runway designator, and the taxiway where I am exiting.",
+    "memoryTrick": "**VACATE** — **V**ehicle off the runway, **A**nnounce the taxiway, **C**lear completely, **A**llow traffic behind, **T**ower informed, **E**xpedite when told.",
+    "operationalMeaning": "When instructed or expected to Vacate Runway, the pilot should:\n\nVacate Runway applies when:",
+    "whyAtcUsesIt": [
+      "clear the runway for landing traffic behind you",
+      "protect departing aircraft waiting for runway access",
+      "maintain airport capacity and traffic flow",
+      "prevent go-arounds caused by runway occupancy",
+      "reduce runway incursion risk"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, vacate runway zero seven at taxiway Bravo.",
+      "Tower: ANAC123, expedite vacating runway one eight, traffic on short final.",
+      "Tower: ANAC123, vacate runway two seven left at the next exit.",
+      "Tower: ANAC123, turn left at Charlie and vacate runway three five.",
+      "Tower: ANAC123, unable to vacate at Bravo, vacating at Delta."
+    ],
+    "pilotReadbacks": [
+      "Vacating runway zero seven at taxiway Bravo, ANAC123.",
+      "Expediting vacating runway one eight, ANAC123.",
+      "Vacating runway two seven left at the next exit, ANAC123.",
+      "Turn left at Charlie, vacating runway three five, ANAC123.",
+      "Unable Bravo, vacating at Delta, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Stopping on the runway to complete after-landing checks.  \n  ✔ Clear the runway first, then complete checks on the taxiway.\n\n- ❌ Saying \"leaving the runway\" instead of standard phraseology.  \n  ✔ Use vacating runway XX at taxiway YY.\n\n- ❌ Reporting vacating before the aircraft is fully clear.  \n  ✔ Report only when completely past the runway holding markings.\n\n- ❌ Ignoring expedite when traffic is on final.  \n  ✔ Exit promptly when instructed to expedite vacating.",
+    "pronunciationCoaching": "**Target Phrase:** Vacating Runway Zero Seven at Taxiway Bravo\n\n**Pronunciation:** VAY-kay-ting RUN-way zero SEV-en at TAK-see-way BRAH-voh\n\n**Word Stress**\n\n- Vacate → second syllable (vay-KATE)\n- Vacating → first syllable (VAY-kay-ting)\n- Taxiway → TAK-see-way\n\nPractice:\n\nVacating... runway zero seven...\n\nTogether:\n\nTower, ANAC123 vacating runway zero seven at taxiway Bravo.",
+    "relatedConcepts": [
+      "Cleared to Land",
+      "Go Around",
+      "Cross Runway",
+      "Taxi Via",
+      "Hold Short",
+      "Backtrack",
+      "Runway Incursion"
+    ],
+    "references": [
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) 4-3-20 — Exiting the Runway",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA JO 7110.65 — Runway Operations",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/"
+      },
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Aerodrome Operations",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Vacate Runway",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Runway Excursion and Incursion",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0029",
+    "id": "0029",
+    "displayTerm": "Expedite Taxi",
+    "term": "expedite taxi",
+    "slug": "expedite-taxi",
+    "category": "Ground Operations",
+    "meaningEn": "Expedite Taxi instructs the pilot to increase taxi speed and proceed without delay to the assigned destination on the movement area.",
+    "meaningPt": "Acelere o táxi.\n\nDesloque-se sem demora até o destino indicado, mantendo segurança na superfície.",
+    "whenUsed": "When ATC issues Expedite Taxi, the pilot should:",
+    "example": "Ground: ANAC123, expedite taxi to runway three one.",
+    "sayPhrase": "Expediting taxi to runway three one, ANAC123.",
+    "icaoQuestion": "What should you do when ATC instructs you to expedite taxi?",
+    "icaoSpeakText": "I should increase taxi speed within safe limits and proceed to the assigned destination without unnecessary delay. I must still comply with hold short instructions and maintain situational awareness. If I cannot expedite safely, I should advise ATC immediately.",
+    "missionBrief": "Today's lesson covers a ground instruction that signals urgency without panic.\n\nWhen Ground says Expedite Taxi, they need you to move faster on the movement area — safely, but without unnecessary delay.\n\nThis is not permission to rush blindly.\n\nIt is a request to increase taxi pace because traffic flow, runway sequencing, or another aircraft's needs require it.\n\nProfessional pilots expedite while maintaining situational awareness and surface safety.",
+    "captainTeaching": "Imagine you are in a hospital corridor and a nurse says, \"Please hurry — the doctor is waiting.\"\n\nYou walk faster, but you do not run into other people.\n\nExpedite Taxi works the same way.\n\nMove with purpose.\n\nDo not stop for nonessential tasks.\n\nBut never sacrifice safety for speed.\n\nIn Brazil, pilots sometimes confuse expedite with emergency authority.\n\nExpedite is a normal ATC instruction for traffic flow — not a Mayday situation.\n\nIf you cannot expedite safely due to debris, construction, or a tight turn in your H130, tell Ground immediately.",
+    "operationalContext": "You are taxiing your H130 at Florianópolis for departure on runway three one.\n\nGround needs to clear the taxiway for an arriving aircraft.\n\nGround: ANAC123, expedite taxi to runway three one via Alpha.\n\nYou increase your taxi pace safely along Alpha and report:\n\nANAC123 expediting taxi to runway three one.\n\nYou reach the holding point without unnecessary stops, and Tower clears you for departure shortly after.",
+    "sayItCoach": "ANAC123 expediting taxi to runway three one.",
+    "icaoModelAnswer": "I should increase taxi speed within safe limits and proceed to the assigned destination without unnecessary delay. I must still comply with hold short instructions and maintain situational awareness. If I cannot expedite safely, I should advise ATC immediately.",
+    "memoryTrick": "**SPEED** safely — **S**ee traffic, **P**roceed directly, **E**xpedite when told, **E**xplain if unable, **D**o not skip hold shorts.",
+    "operationalMeaning": "When ATC issues Expedite Taxi, the pilot should:\n\nExpedite Taxi is commonly used when:",
+    "whyAtcUsesIt": [
+      "maintain efficient traffic flow on the surface",
+      "coordinate runway sequencing between arrivals and departures",
+      "reduce delays for following traffic",
+      "clear the movement area for priority aircraft",
+      "meet departure time constraints"
+    ],
+    "atcPhraseology": [
+      "Ground: ANAC123, expedite taxi to runway three one.",
+      "Ground: ANAC123, expedite taxi to holding point Charlie via Bravo.",
+      "Ground: ANAC123, expedite taxi to the ramp, traffic waiting.",
+      "Ground: ANAC123, expedite taxi, contact tower at holding point Delta.",
+      "Ground: ANAC123, expedite taxi to runway one eight, hold short runway two seven."
+    ],
+    "pilotReadbacks": [
+      "Expediting taxi to runway three one, ANAC123.",
+      "Expediting taxi to holding point Charlie via Bravo, ANAC123.",
+      "Expediting taxi to the ramp, ANAC123.",
+      "Expediting taxi, contact tower at Delta, ANAC123.",
+      "Expediting taxi to runway one eight, hold short runway two seven, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Ignoring expedite and continuing at normal taxi pace.  \n  ✔ Increase pace promptly when instructed, within safe limits.\n\n- ❌ Treating expedite as permission to cross a runway without clearance.  \n  ✔ Hold short instructions still apply during expedited taxi.\n\n- ❌ Saying \"going faster\" instead of standard phraseology.  \n  ✔ Use expediting taxi to runway XX.\n\n- ❌ Rushing without scanning for traffic and surface hazards.  \n  ✔ Expedite safely — awareness does not decrease.",
+    "pronunciationCoaching": "**Target Phrase:** Expediting Taxi to Runway Three One\n\n**Pronunciation:** EK-speh-dy-ting TAK-see too RUN-way three ONE\n\n**Word Stress**\n\n- Expedite → first syllable (EK-speh-dyt)\n- Expediting → second syllable (ek-SPEH-dy-ting)\n\nPractice:\n\nExpedite... taxi...\n\nTogether:\n\nANAC123 expediting taxi to runway three one.\n\nAvoid rushing the transmission — speak clearly even when expediting.",
+    "relatedConcepts": [
+      "Taxi Via",
+      "Taxi to Holding Point",
+      "Hold Short",
+      "Contact Tower",
+      "Vacate Runway",
+      "Line Up and Wait",
+      "Runway Incursion"
+    ],
+    "references": [
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) 4-3-18 — Taxiing",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA JO 7110.65 — Taxi and Ground Movement Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/"
+      },
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Ground Movement",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Expedite",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Ground Operations",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0030",
+    "id": "0030",
+    "displayTerm": "Follow Traffic",
+    "term": "follow traffic",
+    "slug": "follow-traffic",
+    "category": "ATC Phraseology",
+    "meaningEn": "Follow Traffic instructs the pilot to visually acquire specified traffic and proceed behind it while maintaining safe separation under ATC control.",
+    "meaningPt": "Siga o tráfego.\n\nMantenha contato visual com a aeronave indicada e prossiga atrás dela na sequência.",
+    "whenUsed": "When instructed to Follow Traffic, the pilot should:",
+    "example": "Approach: ANAC123, follow the traffic ahead, report traffic in sight.",
+    "sayPhrase": "Traffic in sight, following the traffic, ANAC123.",
+    "icaoQuestion": "What should you do if ATC instructs you to follow traffic but you cannot see the aircraft?",
+    "icaoSpeakText": "I should immediately advise ATC that I do not have the traffic in sight. I cannot accept a follow traffic instruction until I have positive visual contact with the specified aircraft.",
+    "missionBrief": "Today's lesson introduces visual sequencing — one of the most efficient tools ATC uses in good weather.\n\nWhen Tower or Approach says Follow Traffic, they are instructing you to maintain visual contact with another aircraft and proceed behind it in the landing or departure sequence.\n\nYou become responsible for seeing and following that traffic while still complying with all other ATC instructions.\n\nThis is not a clearance to land.\n\nIt is a sequencing instruction that requires positive visual contact.",
+    "captainTeaching": "Imagine driving on a highway behind another car.\n\nYou can see the car ahead.\n\nYou keep a safe distance.\n\nYou do not need a traffic light telling you exactly how far back to stay — but you must pay attention.\n\nFollow Traffic works the same way in the air.\n\nATC identifies the aircraft.\n\nYou confirm visual contact.\n\nYou maintain safe spacing.\n\nAt Congonhas and Florianópolis, helicopter traffic is dense on good weather days.\n\nNever accept follow traffic if you cannot see the aircraft.\n\nAnd never assume landing clearance — follow traffic is sequencing, not authorization to land.",
+    "operationalContext": "You are on approach to Florianópolis in your H130 on a clear afternoon.\n\nAnother helicopter is ahead of you on the same approach path.\n\nApproach: ANAC123, follow the traffic, report traffic in sight.\n\nYou scan ahead, acquire the traffic, and reply:\n\nTraffic in sight, ANAC123.\n\nYou maintain a safe distance behind the leading helicopter while Approach vectors you for the visual approach.\n\nTower later clears you to land after the traffic ahead has landed and vacated.",
+    "sayItCoach": "ANAC123 following traffic ahead, visual contact established.",
+    "icaoModelAnswer": "I should immediately advise ATC that I do not have the traffic in sight. I cannot accept a follow traffic instruction until I have positive visual contact with the specified aircraft.",
+    "memoryTrick": "**FOLLOW** — **F**ind the traffic, **O**bserve continuously, **L**et ATC know if lost, **L**and only when cleared, **O**wn your separation, **W**atch your spacing.",
+    "operationalMeaning": "When instructed to Follow Traffic, the pilot should:\n\nFollow Traffic is commonly used during:",
+    "whyAtcUsesIt": [
+      "sequence aircraft efficiently in visual conditions",
+      "reduce radar vectoring and controller workload",
+      "increase airport capacity in VMC",
+      "simplify visual approaches and pattern operations",
+      "manage helicopter traffic with visual separation"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, follow the traffic ahead, report traffic in sight.",
+      "Tower: ANAC123, follow the helicopter on a two-mile final.",
+      "Approach: ANAC123, follow traffic, maintain own separation.",
+      "Tower: ANAC123, number two, follow the traffic on final runway one four.",
+      "Approach: ANAC123, follow the traffic, cleared visual approach runway two seven."
+    ],
+    "pilotReadbacks": [
+      "Traffic in sight, following the traffic, ANAC123.",
+      "Following the helicopter on final, ANAC123.",
+      "Traffic in sight, maintaining own separation, ANAC123.",
+      "Number two, following the traffic on final, ANAC123.",
+      "Following the traffic, cleared visual approach runway two seven, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Accepting follow traffic without visual contact.  \n  ✔ Report traffic in sight only when you have positive identification.\n\n- ❌ Assuming follow traffic includes landing clearance.  \n  ✔ Wait for cleared to land from Tower.\n\n- ❌ Losing sight of traffic without advising ATC.  \n  ✔ Report immediately if visual contact is lost.\n\n- ❌ Reading back only \"Roger\" without confirming traffic in sight.  \n  ✔ Traffic in sight, following the traffic, ANAC123.",
+    "pronunciationCoaching": "**Target Phrase:** Following Traffic, Visual Contact Established\n\n**Pronunciation:** FOL-oh-wing TRAF-ik, VIZH-oo-ul KON-takt es-TAB-lished\n\n**Word Stress**\n\n- Follow → first syllable\n- Traffic → first syllable\n- Visual → first syllable\n\nPractice:\n\nFollowing... traffic...\n\nTogether:\n\nANAC123 following traffic ahead, visual contact established.\n\nThen in sequence:\n\nTraffic in sight, following the traffic, ANAC123.",
+    "relatedConcepts": [
+      "Maintain Own Separation",
+      "Traffic in Sight",
+      "Visual Approach",
+      "Number Two Behind Traffic",
+      "Cleared to Land",
+      "Continue Approach",
+      "See and Avoid"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Air Traffic Management",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "FAA JO 7110.65 — Visual Separation",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Visual Separation",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Visual Operations",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "SKYbrary — Visual Separation and See-and-Avoid",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0031",
+    "id": "0031",
+    "displayTerm": "Number One for Landing",
+    "term": "number one for landing",
+    "slug": "number-one-for-landing",
+    "category": "ATC Phraseology",
+    "meaningEn": "Number One for Landing indicates that the aircraft is first in the landing sequence for the specified runway.",
+    "meaningPt": "Número um para pouso.\n\nA aeronave é a primeira na sequência de pouso na pista indicada.",
+    "whenUsed": "When Number One for Landing applies, the pilot should:",
+    "example": "Tower: ANAC123, number one, runway two one, cleared to land.",
+    "sayPhrase": "Tower, ANAC123 number one for landing runway two one.",
+    "icaoQuestion": "How would you tell Tower you are number one for landing?",
+    "icaoSpeakText": "I would report: Tower, ANAC123 number one for landing runway two one. I include my callsign, number one for landing, and the runway designator.",
+    "missionBrief": "Today's lesson covers sequence position — a simple phrase that tells you where you stand in the landing queue.\n\nNumber One for Landing means you are first in line to land.\n\nYou may report this to Tower, or Tower may confirm it to you.\n\nEither way, it is an acknowledgment of your position in the sequence — not a landing clearance by itself.\n\nProfessional pilots understand the difference between being number one and being cleared to land.",
+    "captainTeaching": "Think of a bakery queue.\n\nBeing first in line does not mean you have your bread yet.\n\nYou still wait for the baker to hand it to you.\n\nNumber one for landing is your place in line.\n\nCleared to land is the baker handing you the bread.\n\nBrazilian pilots sometimes say \"first to land\" or \"primeiro da fila\" on frequency.\n\nUse standard ICAO phraseology: number one for landing runway two one.\n\nAlways include the runway designator.\n\nAnd never assume number one without Tower confirmation — they may have traffic you cannot see.",
+    "operationalContext": "You are on final approach to runway two one at Navegantes in your H130.\n\nThe preceding aircraft has vacated the runway.\n\nYou report to Tower:\n\nTower, ANAC123 number one for landing runway two one.\n\nTower replies:\n\nANAC123, number one, runway two one, cleared to land.\n\nYou read back the landing clearance and complete the approach.",
+    "sayItCoach": "Tower, ANAC123 number one for landing runway two one.",
+    "icaoModelAnswer": "I would report: Tower, ANAC123 number one for landing runway two one. I include my callsign, number one for landing, and the runway designator.",
+    "memoryTrick": "**ONE** — **O**nly report when sure, **N**ame the runway, **E**xpect Tower correction if wrong.",
+    "operationalMeaning": "When Number One for Landing applies, the pilot should:\n\nNumber One for Landing is used when:",
+    "whyAtcUsesIt": [
+      "confirm landing sequence position",
+      "reduce uncertainty in busy traffic patterns",
+      "coordinate landing clearances efficiently",
+      "prepare pilots for imminent landing authorization",
+      "manage traffic flow at airports like Congonhas and Florianópolis"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, number one, runway two one, cleared to land.",
+      "Tower: ANAC123, confirm you are number one for landing.",
+      "Tower: ANAC123, number two, follow the traffic on final.",
+      "Tower: ANAC123, extend downwind, traffic on a two-mile final.",
+      "Tower: ANAC123, wind two one zero at one two, runway two one."
+    ],
+    "pilotReadbacks": [
+      "Tower, ANAC123 number one for landing runway two one.",
+      "ANAC123, number one for landing runway two one.",
+      "ANAC123, traffic in sight, number one.",
+      "ANAC123, confirm number one for landing.",
+      "ANAC123, not number one, traffic ahead in sight."
+    ],
+    "brazilianMistakes": "- ❌ Saying \"first to land\" instead of number one for landing.  \n  ✔ Use standard phraseology: number one for landing runway XX.\n\n- ❌ Assuming number one without Tower confirmation.  \n  ✔ Wait for Tower to confirm or correct your sequence position.\n\n- ❌ Omitting the runway number in the report.  \n  ✔ Always include the runway designator.\n\n- ❌ Treating number one as landing clearance.  \n  ✔ Wait for cleared to land before landing.",
+    "pronunciationCoaching": "**Target Phrase:** Number One for Landing Runway Two One\n\n**Pronunciation:** NUM-ber ONE for LAN-ding RUN-way two ONE\n\n**Word Stress**\n\n- Number → first syllable\n- Landing → first syllable\n- Runway → RUN-way\n\nPractice:\n\nNumber one... for landing...\n\nTogether:\n\nTower, ANAC123 number one for landing runway two one.\n\nSpeak runway numbers digit by digit.",
+    "relatedConcepts": [
+      "Cleared to Land",
+      "Number Two Behind Traffic",
+      "Follow Traffic",
+      "Report Final",
+      "Continue Approach",
+      "Traffic in Sight",
+      "Visual Approach"
+    ],
+    "references": [
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Approach Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA JO 7110.65 — Arrival Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/"
+      },
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Approach and Landing",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Landing Sequence",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Landing Sequence",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0032",
+    "id": "0032",
+    "displayTerm": "Number Two Behind Traffic",
+    "term": "number two behind traffic",
+    "slug": "number-two-behind-traffic",
+    "category": "ATC Phraseology",
+    "meaningEn": "Number Two Behind Traffic indicates the aircraft is second in the landing sequence and must follow the specified traffic on final approach.",
+    "meaningPt": "Número dois atrás do tráfego.\n\nA aeronave é a segunda na sequência de pouso e deve seguir o tráfego indicado na final.",
+    "whenUsed": "When instructed Number Two Behind Traffic, the pilot should:",
+    "example": "Tower: ANAC123, number two, follow the traffic on final runway one eight.",
+    "sayPhrase": "Number two, following the traffic on final, ANAC123.",
+    "icaoQuestion": "What would you do if Tower says you are number two behind traffic on final?",
+    "icaoSpeakText": "I would acknowledge number two, confirm the traffic is in sight, and follow the traffic on final at a safe distance. I would continue the approach and wait for cleared to land after the traffic ahead has landed and vacated the runway.",
+    "missionBrief": "Today's lesson covers the second position in the landing sequence — a common instruction at busy airports.\n\nNumber Two Behind Traffic means you are second in line to land and must follow the aircraft ahead on final approach.\n\nYou are not cleared to land yet.\n\nYou must maintain visual contact with the traffic ahead and comply with any spacing or reporting instructions.\n\nProfessional pilots treat number two as a sequencing instruction that requires patience and situational awareness.",
+    "captainTeaching": "Imagine a two-person line at a single checkout counter.\n\nYou are second.\n\nYou watch the person ahead finish before you step forward.\n\nNumber two behind traffic works the same way in the air.\n\nYou see the traffic ahead.\n\nYou follow at a safe distance.\n\nYou wait your turn.\n\nBrazilian pilots sometimes get impatient on number two and descend too close to the traffic ahead.\n\nMaintain spacing.\n\nAnd remember — continue approach and number two are not cleared to land.\n\nAt Congonhas, with its short final and dense traffic, discipline on number two prevents go-arounds and conflicts.",
+    "operationalContext": "You are approaching Balneário Camboriú in your H130.\n\nAn Airbus A320 is on a two-mile final ahead of you.\n\nTower: ANAC123, number two, follow the traffic on a two-mile final. Report final runway one eight.\n\nYou reply:\n\nNumber two, following the traffic, will report final, ANAC123.\n\nYou maintain visual contact and a safe distance behind the Airbus.\n\nWhen you report final, Tower clears you to land after the traffic ahead vacates the runway.",
+    "sayItCoach": "Number two, following the traffic on final, ANAC123.",
+    "icaoModelAnswer": "I would acknowledge number two, confirm the traffic is in sight, and follow the traffic on final at a safe distance. I would continue the approach and wait for cleared to land after the traffic ahead has landed and vacated the runway.",
+    "memoryTrick": "**TWO** — **T**raffic in sight, **W**ait for clearance, **O**bserve spacing behind the leader.",
+    "operationalMeaning": "When instructed Number Two Behind Traffic, the pilot should:\n\nNumber Two Behind Traffic is commonly issued with:",
+    "whyAtcUsesIt": [
+      "sequence multiple aircraft on the same approach",
+      "maintain safe spacing between arrivals",
+      "reduce controller workload in visual conditions",
+      "prepare pilots for delayed landing clearance",
+      "manage busy patterns at airports like Congonhas and Florianópolis"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, number two, follow the traffic on final runway one eight.",
+      "Tower: ANAC123, number two behind the Boeing seven three seven, continue approach.",
+      "Tower: ANAC123, number two, follow the traffic, report final.",
+      "Tower: ANAC123, number two, maintain present speed, traffic two miles ahead.",
+      "Tower: ANAC123, extend downwind, you are number two, traffic on short final."
+    ],
+    "pilotReadbacks": [
+      "Number two, following the traffic on final, ANAC123.",
+      "Number two behind the Boeing seven three seven, continuing approach, ANAC123.",
+      "Number two, following the traffic, will report final, ANAC123.",
+      "Number two, maintaining present speed, ANAC123.",
+      "Extending downwind, number two, traffic in sight, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Landing without clearance because you are on final behind traffic.  \n  ✔ Wait for cleared to land even when number two on short final.\n\n- ❌ Losing sight of traffic without advising Tower.  \n  ✔ Report immediately if visual contact is lost.\n\n- ❌ Closing too close to the traffic ahead.  \n  ✔ Maintain safe visual separation throughout the approach.\n\n- ❌ Reading back only \"Roger\" without confirming number two.  \n  ✔ Number two, following the traffic, ANAC123.",
+    "pronunciationCoaching": "**Target Phrase:** Number Two Behind Traffic on Final\n\n**Pronunciation:** NUM-ber TOO bee-HIND TRAF-ik on FY-nul\n\n**Word Stress**\n\n- Number → first syllable\n- Behind → second syllable (bee-HIND)\n- Final → first syllable (FY-nul)\n\nPractice:\n\nNumber two... behind traffic...\n\nTogether:\n\nNumber two, following the traffic on final, ANAC123.\n\nSpeak aircraft types clearly: Boeing seven three seven.",
+    "relatedConcepts": [
+      "Number One for Landing",
+      "Follow Traffic",
+      "Continue Approach",
+      "Report Final",
+      "Cleared to Land",
+      "Maintain Own Separation",
+      "Go Around"
+    ],
+    "references": [
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Approach Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA JO 7110.65 — Arrival Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/"
+      },
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Approach and Landing",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Landing Sequence",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Landing Sequence",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0033",
+    "id": "0033",
+    "displayTerm": "Priority Landing",
+    "term": "priority landing",
+    "slug": "priority-landing",
+    "category": "ATC Phraseology",
+    "meaningEn": "Priority Landing is a pilot request for preferential ATC handling to land before other traffic due to an urgent or emergency situation.",
+    "meaningPt": "Pouso prioritário.\n\nSolicitação de tratamento preferencial para pousar antes dos demais tráfegos devido a situação urgente.",
+    "whenUsed": "When requesting Priority Landing, the pilot should:",
+    "example": "Approach: ANAC123, cleared priority approach runway two seven.",
+    "sayPhrase": "Pan Pan Pan, Approach, ANAC123, medical emergency on board. Request priority landing runway one seven right.",
+    "icaoQuestion": "What is the difference between priority landing and Mayday?",
+    "icaoSpeakText": "Mayday declares a distress situation where immediate assistance is required because the aircraft or occupants are in grave and imminent danger. Priority landing is a request for preferential sequencing to land ahead of traffic, often used with Pan Pan for urgency or Mayday for distress. Priority landing describes what you need; Mayday describes the severity of the emergency.",
+    "missionBrief": "Today's lesson covers a request that signals urgency to ATC — without always being a full distress call.\n\nPriority Landing asks ATC to sequence your aircraft ahead of other traffic because of an urgent situation.\n\nThis may involve low fuel, a medical emergency, a system malfunction, or other time-critical conditions.\n\nIt is different from Mayday, but it still requires clear communication, a stated reason, and professional cooperation with ATC.\n\nUnderstanding when and how to request priority landing is essential for ICAO Part 2 and Part 3.",
+    "captainTeaching": "Think of priority landing as asking to jump the queue because something serious is happening.\n\nYou must explain why.\n\nA controller cannot prioritize you if they do not understand the situation.\n\nPan Pan signals urgency.\n\nMayday signals distress.\n\nPriority landing is the operational request that follows.\n\nIn Brazil, pilots sometimes say \"I need to land first\" on frequency.\n\nThat is not standard phraseology.\n\nSay: request priority landing, and state the reason.\n\nPair the request with Pan Pan or Mayday when the situation warrants it.\n\nATC will do their part — but clear communication starts in your cockpit.",
+    "operationalContext": "You are inbound to Congonhas in your H130 with a passenger experiencing chest pain.\n\nYou declare urgency and request priority handling.\n\nApproach: ANAC123, say nature of emergency.\n\nYou reply:\n\nPan Pan Pan, Approach, ANAC123, medical emergency on board. Request priority landing runway one seven right.\n\nApproach: ANAC123, cleared priority approach runway one seven right, number one, all traffic hold.\n\nYou read back and proceed directly while ATC holds other traffic.\n\nEmergency services are standing by on arrival.",
+    "sayItCoach": "Pan Pan Pan, Approach, ANAC123, medical emergency on board. Request priority landing.",
+    "icaoModelAnswer": "Mayday declares a distress situation where immediate assistance is required because the aircraft or occupants are in grave and imminent danger. Priority landing is a request for preferential sequencing to land ahead of traffic, often used with Pan Pan for urgency or Mayday for distress. Priority landing describes what you need; Mayday describes the severity of the emergency.",
+    "memoryTrick": "**PRIORITY** — **P**roblem stated, **R**equest clearly, **I**nform urgency, **O**rder from ATC, **R**eady for straight-in, **I**dentify nature, **T**ouch down expeditiously, **Y**ield to ATC vectors.",
+    "operationalMeaning": "When requesting Priority Landing, the pilot should:\n\nPriority Landing is used when:",
+    "whyAtcUsesIt": [
+      "protect aircraft in urgent or emergency situations",
+      "clear traffic from the landing sequence",
+      "provide vectors to the nearest suitable airport",
+      "alert emergency services when required",
+      "minimize delay for time-critical landings"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, cleared priority approach runway two seven.",
+      "Approach: ANAC123, number one, all traffic hold.",
+      "Approach: ANAC123, say nature of emergency.",
+      "Tower: ANAC123, runway two seven cleared to land, traffic holding.",
+      "Tower: ANAC123, emergency services standing by."
+    ],
+    "pilotReadbacks": [
+      "Pan Pan Pan, Approach, ANAC123, medical emergency on board. Request priority landing runway one seven right.",
+      "Requesting priority to land due to low fuel, ANAC123.",
+      "We request priority landing, ANAC123.",
+      "Cleared priority approach runway two seven, ANAC123.",
+      "ANAC123, because of low fuel we need priority landing."
+    ],
+    "brazilianMistakes": "- ❌ Saying \"I need to land first\" instead of request priority landing.  \n  ✔ Use standard phraseology and state the reason.\n\n- ❌ Requesting priority without explaining the nature of the urgency.  \n  ✔ State medical emergency, low fuel, or the specific problem clearly.\n\n- ❌ Confusing priority landing with the emergency declaration itself.  \n  ✔ Declare Pan Pan or Mayday first, then request priority handling.\n\n- ❌ Expecting landing clearance without following ATC vectors.  \n  ✔ Comply with all ATC instructions during priority handling.",
+    "pronunciationCoaching": "**Target Phrase:** Request Priority Landing\n\n**Pronunciation:** ree-KWEST pry-OR-i-tee LAN-ding\n\n**Word Stress**\n\n- Priority → second syllable (pry-OR-i-tee)\n- Request → second syllable (ree-KWEST)\n- Emergency → second syllable (e-MER-gen-cy)\n\nPractice:\n\nRequest... priority landing...\n\nTogether:\n\nPan Pan Pan, Approach, ANAC123, medical emergency on board. Request priority landing.\n\nSpeak Pan Pan three times clearly: PAN PAN PAN.",
+    "relatedConcepts": [
+      "Mayday Distress Call",
+      "Pan Pan Urgency Call",
+      "Emergency Landing",
+      "Low Fuel",
+      "Engine Failure",
+      "Loss of Power",
+      "Cleared to Land"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Emergency Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA JO 7110.65 — Emergency Priority Handling",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Priority",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Emergency Communications",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0034",
+    "id": "0034",
+    "displayTerm": "Engine Failure",
+    "term": "engine failure",
+    "slug": "engine-failure",
+    "category": "Emergency",
+    "meaningEn": "Engine Failure is the complete or near-complete loss of engine power, requiring immediate crew action and ATC notification.",
+    "meaningPt": "Falha de motor.\n\nPerda completa ou parcial da potência do motor, exigindo ação imediata da tripulação.",
+    "whenUsed": "When Engine Failure occurs, the pilot should:",
+    "example": "Tower: ANAC123, roger Mayday, say souls on board and fuel remaining.",
+    "sayPhrase": "Mayday Mayday Mayday, Navegantes Tower, ANAC123, engine failure, request immediate return.",
+    "icaoQuestion": "What would you tell ATC immediately after an engine failure on departure?",
+    "icaoSpeakText": "After securing the aircraft, I would declare Mayday Mayday Mayday, state my callsign, report engine failure, state my intentions such as immediate return or autorotation, and provide position. I would give souls on board and fuel remaining when ATC requests.",
+    "missionBrief": "Today's lesson covers one of the most serious events a pilot can face.\n\nEngine Failure means the engine has stopped producing usable power — completely or to the extent that continued safe flight is in doubt.\n\nIn a single-engine helicopter like the H130, engine failure is immediately critical.\n\nYou must aviate first, then navigate, then communicate.\n\nYour radio call must be clear, standard, and timed — after you have secured the aircraft as much as possible.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Engine failure in an H130 is not a drill.\n\nIt is immediate.\n\nThe sequence every professional pilot learns:\n\nAviate. Navigate. Communicate.\n\nDo not transmit Mayday while the aircraft is out of control.\n\nEstablish autorotation first.\n\nThen speak — clearly, once, with standard words.\n\nBrazilian pilots sometimes say \"engine stopped\" or \"motor parou\" on frequency.\n\nUse engine failure — it is the ICAO standard term.\n\nFor multi-engine aircraft, specify which engine: lost engine number one.\n\nFor the H130, one engine means one chance.\n\nTrain your autorotation reflexes so your radio call comes from a stable aircraft, not a panicked voice.",
+    "operationalContext": "You have just departed Navegantes in your H130 on a sightseeing flight.\n\nAt three hundred feet, the engine fails.\n\nYou lower the collective and enter autorotation toward a suitable area.\n\nWhen stable, you transmit:\n\nMayday Mayday Mayday, Navegantes Tower, ANAC123, engine failure, autorotating, one mile south of the airport.\n\nTower clears all traffic and coordinates emergency services.\n\nYou complete a controlled autorotation landing and report safe on the ground.",
+    "sayItCoach": "Mayday Mayday Mayday, Navegantes Tower, ANAC123, engine failure.",
+    "icaoModelAnswer": "After securing the aircraft, I would declare Mayday Mayday Mayday, state my callsign, report engine failure, state my intentions such as immediate return or autorotation, and provide position. I would give souls on board and fuel remaining when ATC requests.",
+    "memoryTrick": "**FAIL** — **F**ly the aircraft first, **A**utorotate or secure, **I**nform ATC with Mayday, **L**and or loiter as required.",
+    "operationalMeaning": "When Engine Failure occurs, the pilot should:\n\nEngine Failure reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "clear traffic from the aircraft's route",
+      "provide vectors to the nearest suitable airport",
+      "coordinate priority landing and emergency services",
+      "request souls on board and fuel remaining",
+      "alert other aircraft and airport authorities"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, roger Mayday, say souls on board and fuel remaining.",
+      "Tower: ANAC123, all traffic cleared from your approach, runway zero seven cleared to land.",
+      "Approach: ANAC123, turn right heading zero nine zero, descend at your discretion.",
+      "Tower: ANAC123, emergency services standing by.",
+      "Departure: ANAC123, radar contact, fly direct Navegantes, say intentions."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, Navegantes Tower, ANAC123, engine failure, request immediate return.",
+      "Tower, ANAC123, lost engine, autorotating.",
+      "We have an engine failure, ANAC123, souls on board three, fuel remaining one hour.",
+      "Mayday Mayday Mayday, Departure, ANAC123, engine failure, request vectors to Florianópolis.",
+      "ANAC123, engine failure, unable to maintain altitude, descending to nearest suitable area."
+    ],
+    "brazilianMistakes": "- ❌ Declaring Mayday before establishing aircraft control.  \n  ✔ Aviate first — autorotate or secure the aircraft, then communicate.\n\n- ❌ Saying \"engine stopped\" instead of engine failure.  \n  ✔ Use standard phraseology: engine failure or lost engine.\n\n- ❌ Forgetting to state intentions after the emergency declaration.  \n  ✔ State immediate return, autorotation, or nearest suitable airport.\n\n- ❌ Omitting souls on board and fuel when ATC asks.  \n  ✔ Provide souls on board and fuel remaining promptly.",
+    "pronunciationCoaching": "**Target Phrase:** Mayday Mayday Mayday, Engine Failure\n\n**Pronunciation:** MAY-day MAY-day MAY-day, EN-jin FAIL-yur\n\n**Word Stress**\n\n- Mayday → may-DAY (say three times, clearly)\n- Engine → EN-jin\n- Failure → FAIL-yur (two syllables)\n\nPractice:\n\nMayday... Mayday... Mayday...\n\nTogether:\n\nMayday Mayday Mayday, Navegantes Tower, ANAC123, engine failure.\n\nSpeak slowly and clearly — controllers need every word.",
+    "relatedConcepts": [
+      "Mayday Distress Call",
+      "Loss of Power",
+      "Loss of Thrust",
+      "Priority Landing",
+      "Emergency Landing",
+      "Autorotation",
+      "Go Around"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Emergency Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA JO 7110.65 — Emergency and Priority Handling",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Engine Failure",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Engine Failure and Damage",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0035",
+    "id": "0035",
+    "displayTerm": "Loss of Power",
+    "term": "loss of power",
+    "slug": "loss-of-power",
+    "category": "Emergency",
+    "meaningEn": "Loss of Power is a reduction or partial loss of engine thrust output, which may or may not result in complete engine failure.",
+    "meaningPt": "Perda de potência.\n\nRedução da potência do motor — parcial ou completa — afetando a capacidade de manter altitude ou voo planejado.",
+    "whenUsed": "When Loss of Power occurs, the pilot should:",
+    "example": "Approach: ANAC123, say which engine and ability to maintain altitude.",
+    "sayPhrase": "Pan Pan Pan, ANAC123, loss of power on engine two, maintaining altitude.",
+    "icaoQuestion": "How would you describe loss of power versus complete engine failure?",
+    "icaoSpeakText": "Loss of power means reduced engine thrust — the engine may still be running but not producing enough power. Engine failure means the engine has stopped producing usable thrust. I would report loss of power when thrust is reduced, and engine failure when the engine is not producing usable power. I also state whether I can maintain altitude.",
+    "missionBrief": "Today's lesson covers a critical distinction in emergency phraseology.\n\nLoss of Power is not always the same as complete engine failure.\n\nIt may mean partial power loss — the engine is still running, but not producing enough thrust to maintain altitude or complete the flight as planned.\n\nReporting loss of power accurately helps ATC understand your situation and provide appropriate assistance.\n\nThis is essential for ICAO Part 2 vocabulary and Part 3 emergency communication — especially in helicopter operations where power margins are narrow.",
+    "captainTeaching": "Imagine your car engine sputtering on a highway hill.\n\nIt is still running — but you are slowing down.\n\nThat is loss of power.\n\nComplete engine failure is the engine stopping entirely.\n\nThe distinction matters to ATC.\n\nIf you can maintain altitude, Pan Pan may be appropriate.\n\nIf you cannot, the situation may escalate to Mayday.\n\nIn the H130, even partial power loss can become critical quickly.\n\nAlways tell ATC: able or unable to maintain altitude.\n\nBrazilian pilots sometimes confuse loss of power with electrical failure or say \"no power.\"\n\nUse loss of power — and quantify your situation.\n\nPartial or complete. Able or unable. Which engine if applicable.\n\nPrecision helps controllers help you.",
+    "operationalContext": "You are cruising at two thousand feet in your H130 near Florianópolis when engine power drops unexpectedly.\n\nThe engine is still running, but you cannot maintain altitude.\n\nYou declare urgency:\n\nPan Pan Pan, Florianópolis Approach, ANAC123, loss of power, unable to maintain altitude, descending.\n\nApproach: ANAC123, say which engine and ability to maintain altitude.\n\nYou reply:\n\nANAC123, single engine helicopter, loss of power, unable to maintain two thousand feet, descending to nearest suitable area, request vectors.\n\nApproach provides vectors and priority handling toward the airport.",
+    "sayItCoach": "Pan Pan Pan, ANAC123, loss of power, unable to maintain altitude.",
+    "icaoModelAnswer": "Loss of power means reduced engine thrust — the engine may still be running but not producing enough power. Engine failure means the engine has stopped producing usable thrust. I would report loss of power when thrust is reduced, and engine failure when the engine is not producing usable power. I also state whether I can maintain altitude.",
+    "memoryTrick": "**POWER** — **P**osition and control, **O**bserve engine indications, **W**hich engine affected, **E**xplain able or unable, **R**equest vectors or priority.",
+    "operationalMeaning": "When Loss of Power occurs, the pilot should:\n\nLoss of Power reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "assign lower altitudes or vectors as needed",
+      "clear traffic from the aircraft's route",
+      "coordinate priority landing when required",
+      "request which engine and ability to maintain altitude",
+      "alert emergency services if the situation deteriorates"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, say which engine and ability to maintain altitude.",
+      "Approach: ANAC123, descend at pilot's discretion.",
+      "Approach: ANAC123, vectors to the nearest suitable airport.",
+      "Tower: ANAC123, all traffic cleared from your route.",
+      "Tower: ANAC123, runway one four cleared to land, wind calm."
+    ],
+    "pilotReadbacks": [
+      "Pan Pan Pan, ANAC123, loss of power on engine two, maintaining altitude.",
+      "ANAC123, unable to maintain flight level two five zero, request lower.",
+      "Mayday Mayday Mayday, ANAC123, complete loss of power.",
+      "ANAC123, single-engine helicopter, loss of power, unable to maintain altitude, descending.",
+      "ANAC123, loss of power, request vectors to Navegantes."
+    ],
+    "brazilianMistakes": "- ❌ Saying \"no power\" instead of loss of power.  \n  ✔ Use standard phraseology: loss of power.\n\n- ❌ Not specifying ability to maintain altitude.  \n  ✔ Report able or unable to maintain altitude clearly.\n\n- ❌ Confusing loss of power with electrical power loss.  \n  ✔ Loss of power refers to engine thrust, not electrical systems.\n\n- ❌ Using loss of power and engine failure interchangeably.  \n  ✔ Be precise — partial loss versus complete failure.",
+    "pronunciationCoaching": "**Target Phrase:** Loss of Power, Unable to Maintain Altitude\n\n**Pronunciation:** LOSS ov POW-er, un-AY-bul too main-TAIN AL-ti-tude\n\n**Word Stress**\n\n- Loss → one syllable, clear S\n- Power → POW-er\n- Maintain → second syllable (main-TAIN)\n- Altitude → AL-ti-tude\n\nPractice:\n\nLoss of power...\n\nTogether:\n\nPan Pan Pan, ANAC123, loss of power, unable to maintain altitude.\n\nStress POWER in loss of power.",
+    "relatedConcepts": [
+      "Engine Failure",
+      "Loss of Thrust",
+      "Mayday Distress Call",
+      "Pan Pan Urgency Call",
+      "Priority Landing",
+      "Emergency Landing",
+      "Fuel Starvation"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Emergency Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA JO 7110.65 — Emergency and Priority Handling",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Engine Power Loss",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Engine Failure and Damage",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0036",
+    "id": "0036",
+    "displayTerm": "Engine Flameout",
+    "term": "engine flameout",
+    "slug": "engine-flameout",
+    "category": "Emergency",
+    "meaningEn": "Engine Flameout is the sudden loss of engine combustion, where the flame extinguishes inside the engine.",
+    "meaningPt": "Apagão de motor.\n\nPerda súbita da combustão no motor — a chama se apaga no interior do motor.",
+    "whenUsed": "When Engine Flameout occurs, the pilot should:",
+    "example": "Approach: ANAC123, roger flameout, report if able to restart.",
+    "sayPhrase": "Pan Pan Pan, Florianópolis Approach, ANAC123, engine flameout, attempting relight.",
+    "icaoQuestion": "How is an engine flameout different from engine failure in your report to ATC?",
+    "icaoSpeakText": "Engine flameout means combustion stopped and I may attempt a relight. Engine failure means the engine is not producing usable power. I would report flameout if I am attempting restart, and engine failure if power cannot be restored. I tell ATC my restart status and whether I can maintain altitude.",
+    "missionBrief": "Today's lesson covers a sudden and specific engine event.\n\nEngine Flameout means combustion has stopped in the engine — the flame has gone out.\n\nUnlike a complete mechanical failure, a flameout may be recoverable with a relight procedure.\n\nIn your H130, a flameout at altitude still demands immediate action and clear communication.\n\nYou must aviate first, attempt relight if appropriate, then inform ATC with precise phraseology.\n\nThis lesson prepares you for ICAO Part 2 vocabulary and Part 3 emergency communication.",
+    "captainTeaching": "Flameout is a word many Brazilian pilots never use on frequency.\n\nThey say motor apagou or engine stopped.\n\nUse engine flameout — it tells ATC combustion stopped, not that the engine mechanically failed.\n\nThe key difference from engine failure: flameout may be transient.\n\nKeep ATC updated every thirty seconds during a relight attempt.\n\nIf you cannot maintain altitude, upgrade from Pan Pan to Mayday immediately.\n\nIn the H130, a flameout at low altitude leaves little time for restart — prioritize rotor RPM and landing area selection.\n\nAt altitude, you have more options — but never delay the first radio call while the aircraft is unstable.",
+    "operationalContext": "You are cruising at four thousand feet in your H130 over the coast near Florianópolis.\n\nWithout warning, the engine flames out.\n\nYou lower the collective slightly, maintain rotor RPM, and begin the relight procedure.\n\nWhen stable, you transmit:\n\nPan Pan Pan, Florianópolis Approach, ANAC123, engine flameout, attempting relight, maintaining altitude at four thousand feet.\n\nApproach acknowledges and asks you to report restart status.\n\nThirty seconds later, the engine relights. You report positive restart and continue with caution.",
+    "sayItCoach": "Pan Pan Pan, Florianópolis Approach, ANAC123, engine flameout, attempting relight.",
+    "icaoModelAnswer": "Engine flameout means combustion stopped and I may attempt a relight. Engine failure means the engine is not producing usable power. I would report flameout if I am attempting restart, and engine failure if power cannot be restored. I tell ATC my restart status and whether I can maintain altitude.",
+    "memoryTrick": "**FLAME** — **F**ly the aircraft, **L**ight relight attempt, **A**nnounce to ATC, **M**onitor altitude, **E**scalate to Mayday if unable to maintain.",
+    "operationalMeaning": "When Engine Flameout occurs, the pilot should:\n\nEngine Flameout reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "provide vectors to the nearest suitable airport if restart fails",
+      "assign altitude blocks during relight attempts",
+      "clear traffic from the aircraft's route if altitude cannot be maintained",
+      "request intentions and souls on board when distress is declared",
+      "coordinate priority landing if the situation escalates"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger flameout, report if able to restart.",
+      "Approach: ANAC123, descend to flight level zero eight zero, report restart status.",
+      "Approach: ANAC123, turn right heading two seven zero, vectors to the field.",
+      "Approach: ANAC123, say intentions.",
+      "Approach: ANAC123, nearest airport is one five miles at your twelve o'clock."
+    ],
+    "pilotReadbacks": [
+      "Pan Pan Pan, Florianópolis Approach, ANAC123, engine flameout, attempting relight.",
+      "ANAC123, negative restart, request vectors to the nearest airport.",
+      "ANAC123, engine relit, maintaining altitude.",
+      "Mayday Mayday Mayday, Approach, ANAC123, engine flameout, unable to maintain altitude, descending.",
+      "ANAC123, flameout, relight unsuccessful, request immediate landing at Navegantes."
+    ],
+    "brazilianMistakes": "- ❌ Confusing flameout with engine stall — different mechanisms, same urgency to report.  \n  ✔ Use engine flameout and state whether relight is in progress.\n\n- ❌ Not telling ATC whether restart is being attempted.  \n  ✔ Report attempting relight or negative restart on every update.\n\n- ❌ Using flame out as one vague word without clear engine identification.  \n  ✔ Say engine flameout clearly — two words, standard phraseology.\n\n- ❌ Waiting until restart fails before calling ATC.  \n  ✔ Inform ATC immediately after securing the aircraft, even during relight.",
+    "pronunciationCoaching": "**Target Phrase:** Engine Flameout, Attempting Relight\n\n**Pronunciation:** EN-jin FLAME-out, a-TEMPT-ing RE-light\n\n**Word Stress**\n\n- Flameout → FLAME-out (two words)\n- Relight → RE-light (not re-lite)\n- Attempting → a-TEMPT-ing\n\nPractice:\n\nEngine flameout... attempting relight...\n\nTogether:\n\nPan Pan Pan, Florianópolis Approach, ANAC123, engine flameout, attempting relight.\n\nSpeak clearly — controllers need to know if you are recovering or descending.",
+    "relatedConcepts": [
+      "Engine Failure",
+      "Loss of Power",
+      "Loss of Thrust",
+      "Emergency Landing",
+      "Mayday Distress Call",
+      "Pan Pan Urgency Call"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Emergency Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA JO 7110.65 — Emergency and Priority Handling",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Engine Flameout",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Engine Failure and Damage",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0037",
+    "id": "0037",
+    "displayTerm": "Bird Strike",
+    "term": "bird strike",
+    "slug": "bird-strike",
+    "category": "Emergency",
+    "meaningEn": "Bird Strike is a collision between an aircraft and one or more birds during flight.",
+    "meaningPt": "Colisão com ave.\n\nImpacto entre a aeronave e uma ou mais aves durante o voo.",
+    "whenUsed": "When Bird Strike occurs, the pilot should:",
+    "example": "Departure: ANAC123, roger bird strike, say intentions.",
+    "sayPhrase": "Departure, ANAC123, we may have had a bird strike after takeoff. We are assessing the situation and would like to level off at three thousand feet while we run the checklist.",
+    "icaoQuestion": "What would you report to ATC immediately after a bird strike on takeoff?",
+    "icaoSpeakText": "I would report that we may have had a bird strike after takeoff, state that we are assessing the situation, request to level off while we run the checklist, and report any abnormal indications. I would declare Mayday only if damage is confirmed or safe flight is in doubt.",
+    "missionBrief": "Today's lesson covers one of the most common wildlife hazards in aviation.\n\nBird Strike means collision between your aircraft and one or more birds.\n\nThe impact may cause engine damage, windscreen damage, or structural concerns — or it may cause no damage at all.\n\nYour first report to ATC should be measured: assess the situation before declaring full distress.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 graded urgency communication.",
+    "captainTeaching": "Bird strike is where graded urgency matters most.\n\nBrazilian pilots often jump to Mayday on the first thump.\n\nThe ICAO Delta model teaches cautious language first: we may have had a bird strike, assessing.\n\nMayday comes when damage is confirmed — engine failure, severe vibration, or windscreen penetration.\n\nOn approach, a bird strike on final means go around first, then report.\n\nCongonhas and Santos Dumont have significant bird activity near water and green areas.\n\nState your intentions clearly: level off, return, or continue.\n\nRun the checklist before you make promises to ATC about landing.",
+    "operationalContext": "You have just departed Congonhas in your H130 on a charter flight to the coast.\n\nAt five hundred feet, you hear a loud thump on the right side.\n\nEngine parameters look normal, but you feel slight vibration.\n\nYou level off and transmit:\n\nDeparture, ANAC123, we may have had a bird strike after takeoff. We are assessing the situation and would like to level off at three thousand feet while we run the checklist.\n\nDeparture acknowledges and asks you to report any abnormal indications.\n\nAfter the checklist, vibration has stopped. You report no damage and request return to Congonhas for inspection.",
+    "sayItCoach": "Departure, ANAC123, we may have had a bird strike after takeoff. We are assessing the situation.",
+    "icaoModelAnswer": "I would report that we may have had a bird strike after takeoff, state that we are assessing the situation, request to level off while we run the checklist, and report any abnormal indications. I would declare Mayday only if damage is confirmed or safe flight is in doubt.",
+    "memoryTrick": "**BIRD** — **B**rief ATC, **I**nspect engines, **R**un checklist, **D**ecide return or continue.",
+    "operationalMeaning": "When Bird Strike occurs, the pilot should:\n\nBird Strike reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "request intentions: level off, return, or continue",
+      "alert following traffic and coordinate runway inspection",
+      "provide vectors for return or holding while assessment continues",
+      "clear traffic if emergency landing is required",
+      "document the event for airport wildlife management"
+    ],
+    "atcPhraseology": [
+      "Departure: ANAC123, roger bird strike, say intentions.",
+      "Tower: ANAC123, caution birds in the vicinity of the airport.",
+      "Tower: ANAC123, runway inspection in progress.",
+      "Tower: ANAC123, cleared to land runway three five left, wind two four zero at one zero.",
+      "Departure: ANAC123, report any abnormal indications."
+    ],
+    "pilotReadbacks": [
+      "Departure, ANAC123, we may have had a bird strike after takeoff. We are assessing the situation and would like to level off at three thousand feet while we run the checklist.",
+      "Mayday Mayday Mayday, Tower, ANAC123, bird strike, engine vibration increasing.",
+      "We had a bird strike on departure.",
+      "Tower, ANAC123, bird strike on final, going around.",
+      "ANAC123, checklist complete, no damage, continuing."
+    ],
+    "brazilianMistakes": "- ❌ Declaring Mayday before completing initial assessment.  \n  ✔ Use cautious language first: we may have had a bird strike, assessing.\n\n- ❌ Saying we hit birds only in Portuguese on frequency.  \n  ✔ Use bird strike — the ICAO standard term.\n\n- ❌ Forgetting to state intentions: level off, return, or continue.  \n  ✔ Always tell ATC what you plan to do next.\n\n- ❌ Continuing approach without reporting bird strike on final.  \n  ✔ Go around if needed, then report bird strike and intentions.",
+    "pronunciationCoaching": "**Target Phrase:** Bird Strike, Assessing the Situation\n\n**Pronunciation:** BIRD STRIKE, a-SSES-sing the sit-u-A-tion\n\n**Word Stress**\n\n- Bird strike → BIRD STRIKE (equal stress)\n- Assessing → a-SSES-sing\n- Checklist → CHECK-list\n\nPractice:\n\nWe may have had a bird strike...\n\nTogether:\n\nDeparture, ANAC123, we may have had a bird strike after takeoff. We are assessing the situation.\n\nSpeak calmly — urgency without panic shows ICAO Level 4 competence.",
+    "relatedConcepts": [
+      "Engine Failure",
+      "Go Around",
+      "Emergency Landing",
+      "Mayday Distress Call",
+      "Pan Pan Urgency Call",
+      "Windscreen Damage"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Bird Hazards",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA JO 7110.65 — Emergency and Priority Handling",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Bird Strike",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Bird Strike",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0038",
+    "id": "0038",
+    "displayTerm": "Fire on Board",
+    "term": "fire on board",
+    "slug": "fire-on-board",
+    "category": "Emergency",
+    "meaningEn": "Fire on Board is an active fire inside the aircraft structure — cabin, cockpit, or cargo compartment.",
+    "meaningPt": "Incêndio a bordo.\n\nFogo ativo no interior da aeronave — cabine, cockpit ou compartimento de carga.",
+    "whenUsed": "When Fire on Board occurs, the pilot should:",
+    "example": "Approach: ANAC123, descend at your discretion, turn right heading zero six zero.",
+    "sayPhrase": "Mayday Mayday Mayday, Manaus Approach, ANAC123, fire in the cabin, request return to Manaus.",
+    "icaoQuestion": "What is the difference between fire on board and fire in the cabin when reporting?",
+    "icaoSpeakText": "Fire on board is the general emergency declaration. Fire in the cabin specifies the location. I would declare Mayday and state fire in the cabin so ATC knows it is not engine fire. If ATC assumes engine fire, I correct with NEGATIVE and restate the cabin location.",
+    "missionBrief": "Today's lesson covers one of the most urgent emergencies in aviation.\n\nFire on Board means fire exists inside the aircraft — cabin, cockpit, or cargo area.\n\nThere is no time for hesitation. Mayday is immediate.\n\nIn your H130, a cabin fire demands descent, landing, and evacuation planning — all while maintaining aircraft control.\n\nYour radio call must be clear, specific, and immediate.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Fire on board is not a Pan Pan situation.\n\nIt is Mayday — three times, immediately, after you have basic aircraft control.\n\nThe most common Brazilian mistake: saying fire in the airplane vaguely.\n\nBe specific: fire in the cabin, fire in the cockpit, fire in the cargo.\n\nThe ICAO Delta exam tests NEGATIVE — when ATC assumes engine fire and you have cabin fire.\n\nDo not accept the wrong assumption. Correct firmly: NEGATIVE, we have fire in the cabin.\n\nIn the H130, cabin fire from passenger equipment or electrical fault is a real scenario.\n\nDescend first. Land fast. Evacuate when stopped.\n\nDo not delay Mayday to finish checklist items below ten thousand feet — you are already below that in a helicopter.",
+    "operationalContext": "You are climbing through six thousand feet in your H130 after departure from Manaus.\n\nThe passenger behind you reports smoke and flames near the rear cabin area.\n\nYou don oxygen, declare Mayday, and turn back toward Manaus.\n\nYou transmit:\n\nMayday Mayday Mayday, Manaus Approach, ANAC123, fire in the cabin, request immediate return to Manaus.\n\nApproach clears traffic and asks you to confirm engine fire.\n\nYou respond firmly:\n\nNEGATIVE, we have fire in the cabin. Descending to three thousand feet, ANAC123.\n\nYou complete an emergency landing and evacuate on the runway.",
+    "sayItCoach": "Mayday Mayday Mayday, Manaus Approach, ANAC123, fire in the cabin.",
+    "icaoModelAnswer": "Fire on board is the general emergency declaration. Fire in the cabin specifies the location. I would declare Mayday and state fire in the cabin so ATC knows it is not engine fire. If ATC assumes engine fire, I correct with NEGATIVE and restate the cabin location.",
+    "memoryTrick": "**FIRE** — **F**irst declare Mayday, **I**nform location, **R**equest return, **E**vacuate plan ready.",
+    "operationalMeaning": "When Fire on Board occurs, the pilot should:\n\nFire on Board reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "clear all traffic from the aircraft's route immediately",
+      "assign unrestricted descent and vectors to the nearest airport",
+      "alert fire and rescue services on the ground",
+      "request souls on board and fuel remaining",
+      "coordinate emergency landing and evacuation support"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, descend at your discretion, turn right heading zero six zero.",
+      "Approach: ANAC123, confirm you have an engine fire.",
+      "Tower: ANAC123, runway three six cleared to land, fire services alerted.",
+      "Approach: ANAC123, squawk seven seven zero zero.",
+      "Approach: ANAC123, say souls on board and fuel remaining."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, Manaus Approach, ANAC123, fire in the cabin, request return to Manaus.",
+      "Mayday, we have fire on board.",
+      "Emergency, fire in cabin!",
+      "NEGATIVE, we have fire in the cabin. Descending to three thousand feet, ANAC123.",
+      "Mayday Mayday Mayday, ANAC123, uncontrollable fire, request immediate landing."
+    ],
+    "brazilianMistakes": "- ❌ Saying fire in the airplane vaguely — no location given.  \n  ✔ Specify cabin, cockpit, or cargo: fire in the cabin.\n\n- ❌ Accepting ATC assumption of engine fire without correction.  \n  ✔ Use NEGATIVE firmly and restate the correct fire location.\n\n- ❌ Delaying Mayday to finish checklist items.  \n  ✔ Declare Mayday immediately after securing basic aircraft control.\n\n- ❌ Using fogo a bordo in English transmission.  \n  ✔ Use fire on board or fire in the cabin — standard ICAO phraseology.",
+    "pronunciationCoaching": "**Target Phrase:** Mayday, Fire in the Cabin\n\n**Pronunciation:** MAY-day, FYUR in the CAB-in\n\n**Word Stress**\n\n- Mayday → may-DAY (three times)\n- Cabin → CAB-in\n- NEGATIVE → NEG-a-tive (firm correction)\n\nPractice:\n\nMayday... Mayday... Mayday...\n\nTogether:\n\nMayday Mayday Mayday, Manaus Approach, ANAC123, fire in the cabin.\n\nSpeak with authority — controllers must hear every word clearly.",
+    "relatedConcepts": [
+      "Smoke in the Cabin",
+      "Fumes in the Cabin",
+      "Mayday Distress Call",
+      "Emergency Landing",
+      "Emergency Evacuation",
+      "Uncontrollable Fire"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Emergency Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA JO 7110.65 — Emergency and Priority Handling",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Fire on Board",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — In-Flight Fire",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0039",
+    "id": "0039",
+    "displayTerm": "Smoke in Cabin",
+    "term": "smoke in cabin",
+    "slug": "smoke-in-cabin",
+    "category": "Emergency",
+    "meaningEn": "Smoke in the Cabin is visible smoke present in the passenger cabin or cockpit during flight.",
+    "meaningPt": "Fumaça na cabine.\n\nPresença de fumaça visível na cabine de passageiros ou no cockpit durante o voo.",
+    "whenUsed": "When Smoke in the Cabin occurs, the pilot should:",
+    "example": "Approach: ANAC123, descend immediately, turn left heading two seven zero.",
+    "sayPhrase": "Emergency, smoke in the cabin!",
+    "icaoQuestion": "When would smoke in the cabin require Mayday versus Pan Pan?",
+    "icaoSpeakText": "I would use Pan Pan when smoke is light, source is identified, and I can maintain control. I would use Mayday when smoke is thick, source is unknown, crew is affected, or safe flight is in doubt. I always request immediate descent and vectors to the nearest runway.",
+    "missionBrief": "Today's lesson covers a visible and urgent cabin emergency.\n\nSmoke in the Cabin means visible smoke is present in the passenger area or cockpit.\n\nSmoke may indicate fire, electrical fault, or overheating — and it always demands immediate action.\n\nYour urgency call depends on severity: Pan Pan for manageable smoke, Mayday when safe flight is in doubt.\n\nIn your H130, you are never far from the ground — but smoke can incapacitate the crew within minutes.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Smoke in the cabin is not a wait-and-see event.\n\nDon oxygen first. Then descend. Then speak.\n\nBrazilian pilots sometimes say only smoke — controllers need cabin or cockpit.\n\nIf smoke is in the cockpit, say smoke in the cockpit. It changes the urgency picture.\n\nPan Pan works when smoke is light and you have control.\n\nMayday when smoke is thick, source unknown, or crew affected.\n\nThe ICAO Delta Part 3 simulado uses smoke in cockpit with Mayday and vectors — same urgency applies to cabin smoke.\n\nKeep ATC updated: smoke continuing or smoke dissipating.\n\nIn the H130, electrical smoke from avionics or passenger equipment is a realistic scenario over Rio and Guanabara Bay.",
+    "operationalContext": "You are cruising at five thousand feet in your H130 on a sightseeing flight near Rio de Janeiro.\n\nA passenger reports grey smoke rising from the floor near the rear seats.\n\nYou don oxygen, begin descent, and transmit:\n\nMayday Mayday Mayday, Rio Approach, ANAC123, smoke in the cabin, request immediate vectors to land on the nearest runway.\n\nApproach clears traffic and vectors you toward Santos Dumont.\n\nAfter checklist action, the smoke begins to dissipate. You update ATC:\n\nANAC123, smoke dissipating, request vectors to Santos Dumont for precautionary landing.",
+    "sayItCoach": "Mayday Mayday Mayday, Rio Approach, ANAC123, smoke in the cabin, request immediate vectors to land.",
+    "icaoModelAnswer": "I would use Pan Pan when smoke is light, source is identified, and I can maintain control. I would use Mayday when smoke is thick, source is unknown, crew is affected, or safe flight is in doubt. I always request immediate descent and vectors to the nearest runway.",
+    "memoryTrick": "**SMOKE** — **S**ource check if safe, **M**ask on oxygen, **O**pen descent, **K**eep ATC informed, **E**xpedite landing.",
+    "operationalMeaning": "When Smoke in the Cabin occurs, the pilot should:\n\nSmoke in the Cabin reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "assign immediate descent and priority vectors",
+      "clear traffic from the aircraft's approach path",
+      "alert fire and rescue services on the ground",
+      "request souls on board and smoke status updates",
+      "coordinate emergency landing at the nearest suitable airport"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, descend immediately, turn left heading two seven zero.",
+      "Approach: ANAC123, nearest airport one two o'clock, one five miles.",
+      "Tower: ANAC123, runway cleared to land, fire services standing by.",
+      "Approach: ANAC123, say souls on board.",
+      "Approach: ANAC123, report smoke dissipating or continuing."
+    ],
+    "pilotReadbacks": [
+      "Emergency, smoke in the cabin!",
+      "We have smoke in the cabin, request immediate descent.",
+      "Mayday Mayday Mayday, Approach, ANAC123, smoke in the cockpit, request immediate vectors to land on the nearest runway.",
+      "Pan Pan Pan, ANAC123, smoke in the cabin, descending.",
+      "ANAC123, smoke dissipating, request vectors to departure airport."
+    ],
+    "brazilianMistakes": "- ❌ Saying only smoke without specifying cabin or cockpit.  \n  ✔ State smoke in the cabin or smoke in the cockpit clearly.\n\n- ❌ Requesting descent without declaring urgency level.  \n  ✔ Declare Pan Pan or Mayday before requesting immediate descent.\n\n- ❌ Using fumaça in English transmission.  \n  ✔ Use smoke in the cabin — standard ICAO phraseology.\n\n- ❌ Not updating ATC when smoke dissipates or worsens.  \n  ✔ Report smoke dissipating or smoke continuing on every major change.",
+    "pronunciationCoaching": "**Target Phrase:** Smoke in the Cabin, Immediate Descent\n\n**Pronunciation:** SMOKE in the CAB-in, im-ME-di-ate de-SCENT\n\n**Word Stress**\n\n- Smoke → SMOKE (one syllable)\n- Immediate → im-ME-di-ate\n- Vectors → VEC-tors\n\nPractice:\n\nSmoke in the cabin... request immediate descent...\n\nTogether:\n\nMayday Mayday Mayday, Rio Approach, ANAC123, smoke in the cabin, request immediate vectors to land.\n\nSpeak steadily — do not rush and lose clarity.",
+    "relatedConcepts": [
+      "Fire on Board",
+      "Fumes in the Cabin",
+      "Emergency Landing",
+      "Mayday Distress Call",
+      "Pan Pan Urgency Call",
+      "Emergency Evacuation"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Emergency Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA JO 7110.65 — Emergency and Priority Handling",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Smoke",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — In-Flight Fire",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0040",
+    "id": "0040",
+    "displayTerm": "Fumes in Cabin",
+    "term": "fumes in cabin",
+    "slug": "fumes-in-cabin",
+    "category": "Emergency",
+    "meaningEn": "Fumes in the Cabin are unidentified vapours or odours in the cabin or cockpit without visible smoke.",
+    "meaningPt": "Vapores na cabine.\n\nOdores ou vapores não identificados na cabine ou cockpit, sem fumaça visível.",
+    "whenUsed": "When Fumes in the Cabin occurs, the pilot should:",
+    "example": "Approach: ANAC123, descend to four thousand, report fumes status.",
+    "sayPhrase": "Pan Pan Pan, strong fumes in the cockpit!",
+    "icaoQuestion": "How are fumes different from smoke in your report to ATC?",
+    "icaoSpeakText": "Smoke means visible smoke in the cabin or cockpit. Fumes mean smell or vapour without visible smoke. I report fumes in the cockpit or fumes in the cabin specifically. Fumes can be as dangerous as smoke because they can incapacitate the crew before smoke appears.",
+    "missionBrief": "Today's lesson covers an invisible but dangerous cabin emergency.\n\nFumes in the Cabin means unidentified vapours or smells without visible smoke.\n\nOil fumes, electrical odours, and unknown smells can incapacitate the crew before you see any smoke.\n\nThis is different from smoke in the cabin — and your report must reflect that distinction.\n\nPan Pan is often appropriate initially, but strong fumes demand immediate action.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Fumes versus smoke — know the difference.\n\nSmoke is visible. Fumes are smell and vapour without visible smoke.\n\nBrazilian pilots say smell bad or cheiro estranho on frequency.\n\nUse fumes in the cockpit or fumes in the cabin — standard ICAO words.\n\nThe Students material uses Pan Pan for strong fumes in the cockpit.\n\nThat is correct — but do not underestimate fumes.\n\nOil fumes from engine bleed air or electrical faults can incapacitate you in minutes.\n\nDon oxygen first. Then report.\n\nIf fumes worsen, upgrade to immediate landing without waiting for visible smoke.\n\nIn the H130, hydraulic or engine oil fumes entering the cabin through ventilation are a documented risk.\n\nSpecify cockpit versus cabin — the location tells ATC how impaired the flying pilot may be.",
+    "operationalContext": "You are at six thousand feet in your H130 on a corporate flight from Brasília to Goiânia.\n\nA strong oily smell fills the cockpit. No visible smoke — but your eyes begin to water.\n\nYou don oxygen and transmit:\n\nPan Pan Pan, Brasília Approach, ANAC123, strong fumes in the cockpit, request descent to four thousand feet.\n\nApproach assigns descent and asks you to report fumes status.\n\nThe smell intensifies. You upgrade your request:\n\nANAC123, fumes increasing, request immediate landing at Brasília.\n\nYou land safely and request medical evaluation for the crew.",
+    "sayItCoach": "Pan Pan Pan, Brasília Approach, ANAC123, strong fumes in the cockpit, request descent.",
+    "icaoModelAnswer": "Smoke means visible smoke in the cabin or cockpit. Fumes mean smell or vapour without visible smoke. I report fumes in the cockpit or fumes in the cabin specifically. Fumes can be as dangerous as smoke because they can incapacitate the crew before smoke appears.",
+    "memoryTrick": "**FUMES** — **F**ind source if safe, **U**se oxygen, **M**onitor crew, **E**xpedite if worsening, **S**ay status to ATC.",
+    "operationalMeaning": "When Fumes in the Cabin occurs, the pilot should:\n\nFumes in the Cabin reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "assign descent and priority vectors",
+      "coordinate medical support on arrival if crew is affected",
+      "request fumes status updates during descent",
+      "clear traffic for priority approach",
+      "alert ground services for possible incapacitation"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, descend to four thousand, report fumes status.",
+      "Approach: ANAC123, turn right direct Brasília.",
+      "Tower: ANAC123, medical advice available on arrival.",
+      "Approach: ANAC123, say number of crew affected.",
+      "Tower: ANAC123, cleared priority approach runway one one left."
+    ],
+    "pilotReadbacks": [
+      "Pan Pan Pan, strong fumes in the cockpit!",
+      "We smell fumes in the cockpit.",
+      "Pan Pan Pan, ANAC123, fumes in the cabin, request descent.",
+      "ANAC123, fumes increasing, request immediate landing.",
+      "ANAC123, fumes dissipated, continuing with caution."
+    ],
+    "brazilianMistakes": "- ❌ Saying smell bad instead of fumes or unknown odour.  \n  ✔ Use fumes in the cockpit or fumes in the cabin.\n\n- ❌ Underestimating fumes — treating them as minor discomfort.  \n  ✔ Don oxygen and request descent — oil fumes can incapacitate crew.\n\n- ❌ Not mentioning cockpit versus cabin location.  \n  ✔ Specify where fumes are detected — cockpit or cabin.\n\n- ❌ Waiting for visible smoke before declaring urgency.  \n  ✔ Report strong fumes with Pan Pan and upgrade if worsening.",
+    "pronunciationCoaching": "**Target Phrase:** Strong Fumes in the Cockpit\n\n**Pronunciation:** STRONG FYOOMZ in the COCK-pit\n\n**Word Stress**\n\n- Fumes → FYOOMZ (one syllable)\n- Cockpit → COCK-pit\n- Odour → OH-dur\n\nPractice:\n\nPan Pan Pan... strong fumes in the cockpit...\n\nTogether:\n\nPan Pan Pan, Brasília Approach, ANAC123, strong fumes in the cockpit, request descent.\n\nSpeak clearly — fumes are invisible, so your words carry the urgency.",
+    "relatedConcepts": [
+      "Smoke in the Cabin",
+      "Fire on Board",
+      "Pilot Incapacitation",
+      "Pan Pan Urgency Call",
+      "Emergency Landing",
+      "Cabin Air Quality"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Emergency Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA JO 7110.65 — Emergency and Priority Handling",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Fumes",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Fumes and Smoke",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0041",
+    "id": "0041",
+    "displayTerm": "Emergency Landing",
+    "term": "emergency landing",
+    "slug": "emergency-landing",
+    "category": "Emergency",
+    "meaningEn": "Emergency Landing is a landing made when the safety of the aircraft or its occupants is at serious and immediate risk.",
+    "meaningPt": "Pouso de emergência.\n\nPouso realizado quando a segurança da aeronave ou dos ocupantes está em risco sério e imediato.",
+    "whenUsed": "When Emergency Landing is required, the pilot should:",
+    "example": "Tower: ANAC123, cleared straight-in approach runway one eight.",
+    "sayPhrase": "Executing emergency landing!",
+    "icaoQuestion": "What would you request from ATC when you need an emergency landing?",
+    "icaoSpeakText": "I would declare Mayday or Pan Pan for the underlying emergency, state that I am performing an emergency landing, request the nearest suitable airport, and request the longest available runway if gear status is uncertain. I would provide position, souls on board, and fuel remaining when requested.",
+    "missionBrief": "Today's lesson covers the phraseology for one of aviation's most serious decisions.\n\nEmergency Landing means landing when the safety of the aircraft or occupants is at serious and immediate risk.\n\nThis is not a normal diversion. It is a declaration of intent to land immediately because continuing flight is unsafe.\n\nYour radio call must pair emergency landing with the underlying problem — fire, engine failure, gear malfunction.\n\nIn your H130, emergency landing may mean a field, a highway, or the nearest airport — but ATC must know your intention.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Emergency landing is an execution phrase — it tells ATC you are landing now, not later.\n\nBrazilian pilots often say emergency landing without stating why.\n\nAlways pair it with the underlying event: emergency landing due to engine failure, emergency landing due to fire in the cabin.\n\nThe ICAO Delta Students material uses executing emergency landing and performing emergency landing.\n\nBoth are correct. Speak with confidence.\n\nFor fixed-wing aircraft, longest available runway matters when gear status is uncertain.\n\nIn the H130, you may land on any suitable area — but still inform ATC of your intention clearly.\n\nDo not confuse emergency landing with go-around. Go-around means you are climbing away. Emergency landing means you are landing now.",
+    "operationalContext": "You declared Mayday after engine failure in your H130 near Salvador.\n\nAutorotation is not required — you have partial power but safe flight is in doubt.\n\nYou are five miles from Salvador International and transmit:\n\nANAC123, one five miles final, performing emergency landing, engine failure.\n\nTower clears all traffic and alerts emergency services.\n\nYou request the longest available runway:\n\nANAC123, requesting the longest available runway for emergency landing.\n\nTower clears you to land runway one zero with fire services standing by.\n\nYou complete a safe emergency landing and report all souls safe on the ground.",
+    "sayItCoach": "ANAC123, one five miles final, performing emergency landing, engine failure.",
+    "icaoModelAnswer": "I would declare Mayday or Pan Pan for the underlying emergency, state that I am performing an emergency landing, request the nearest suitable airport, and request the longest available runway if gear status is uncertain. I would provide position, souls on board, and fuel remaining when requested.",
+    "memoryTrick": "**LAND SAFE** — **L**ocate airport, **A**nnounce emergency, **N**otify services, **D**escend, **S**ecure approach, **A**pproach brief, **F**inal call, **E**vacuate if needed.",
+    "operationalMeaning": "When Emergency Landing is required, the pilot should:\n\nEmergency Landing reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "clear the nearest runway immediately",
+      "alert fire, rescue, and medical services",
+      "provide straight-in approaches and priority handling",
+      "advise on longest available runway when requested",
+      "clear all traffic from the approach path"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, cleared straight-in approach runway one eight.",
+      "Tower: ANAC123, runway three six cleared to land, fire services alerted.",
+      "Approach: ANAC123, say intentions for landing.",
+      "Tower: ANAC123, longest runway available is runway two seven.",
+      "Tower: ANAC123, emergency services standing by."
+    ],
+    "pilotReadbacks": [
+      "Executing emergency landing!",
+      "Performing emergency landing!",
+      "We need an emergency landing at the nearest airport.",
+      "Requesting the longest available runway for emergency landing.",
+      "ANAC123, one five miles final, emergency landing inbound."
+    ],
+    "brazilianMistakes": "- ❌ Saying emergency landing without stating the underlying problem.  \n  ✔ Pair with the event: emergency landing due to engine failure.\n\n- ❌ Confusing emergency landing with go-around.  \n  ✔ Go-around means climbing away; emergency landing means landing now.\n\n- ❌ Not requesting longest runway when gear status is uncertain.  \n  ✔ Request the longest available runway for emergency landing.\n\n- ❌ Using pouso de emergência in English transmission.  \n  ✔ Use emergency landing or performing emergency landing.",
+    "pronunciationCoaching": "**Target Phrase:** Performing Emergency Landing\n\n**Pronunciation:** per-FORM-ing e-MER-gen-cy LAN-ding\n\n**Word Stress**\n\n- Emergency → e-MER-gen-cy\n- Landing → LAN-ding\n- Longest available runway → speak slowly, word by word\n\nPractice:\n\nPerforming... emergency landing...\n\nTogether:\n\nANAC123, one five miles final, performing emergency landing, engine failure.\n\nSpeak with authority — ATC must sequence traffic and services immediately.",
+    "relatedConcepts": [
+      "Mayday Distress Call",
+      "Precautionary Landing",
+      "Priority Landing",
+      "Engine Failure",
+      "Fire on Board",
+      "Emergency Services"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Emergency Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA JO 7110.65 — Emergency and Priority Handling",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Emergency Landing",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Emergency Landing",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0042",
+    "id": "0042",
+    "displayTerm": "Precautionary Landing",
+    "term": "precautionary landing",
+    "slug": "precautionary-landing",
+    "category": "Emergency",
+    "meaningEn": "Precautionary Landing is a landing made when a potential emergency exists but immediate danger to the aircraft or occupants is not yet confirmed.",
+    "meaningPt": "Pouso precautório.\n\nPouso realizado quando existe uma possível emergência, mas o perigo imediato ainda não está confirmado.",
+    "whenUsed": "When Precautionary Landing is appropriate, the pilot should:",
+    "example": "Approach: ANAC123, roger precautionary landing, say nature of the problem.",
+    "sayPhrase": "Pan Pan Pan, ANAC123, abnormal vibration, requesting precautionary landing for inspection.",
+    "icaoQuestion": "What is the difference between precautionary and emergency landing?",
+    "icaoSpeakText": "Emergency landing is when safety of the aircraft or occupants is at serious and immediate risk. Precautionary landing is when a potential problem exists but immediate danger is not confirmed. I use precautionary landing to inspect the aircraft on the ground, and emergency landing when I must land immediately due to distress.",
+    "missionBrief": "Today's lesson covers a critical distinction that many pilots confuse.\n\nPrecautionary Landing means landing when a potential emergency exists, but immediate danger is not yet confirmed.\n\nThis is less urgent than emergency landing — you are choosing to land to inspect a problem on the ground.\n\nYou may use Pan Pan or simply inform ATC of your intention without declaring full distress.\n\nIn your H130, a precautionary landing might follow unusual vibration, a doubtful indication, or a bird strike assessment with no confirmed damage.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Precautionary landing is the concept many Brazilian pilots do not know in English.\n\nThey use emergency landing for every abnormal indication.\n\nThat is wrong — and it triggers full emergency response when you may not need it.\n\nPrecautionary landing means: I am not in immediate danger, but I want to land and check.\n\nEmergency landing means: I am landing now because safety is at serious risk.\n\nThe distinction matters for ATC resource allocation and for your ICAO exam.\n\nAfter a bird strike with no confirmed damage but lingering doubt — precautionary landing.\n\nWith doubtful gear indication but stable approach — precautionary landing.\n\nWith fire in the cabin — that is emergency landing, not precautionary.\n\nIn the H130, you have the flexibility to land at many suitable areas — but still use the correct phraseology.",
+    "operationalContext": "You completed a bird strike checklist in your H130 after departure from Belo Horizonte.\n\nNo engine damage confirmed, but you feel slight airframe vibration that was not present before.\n\nYou decide to land and inspect rather than continue to your destination.\n\nYou transmit:\n\nPan Pan Pan, Belo Horizonte Approach, ANAC123, abnormal vibration after bird strike assessment, requesting precautionary landing at Belo Horizonte to inspect the aircraft.\n\nApproach asks you to say the nature of the problem and assigns vectors.\n\nYou land, inspect, find minor fan blade damage, and report to maintenance.\n\nNo Mayday was required — but the precautionary landing was the right decision.",
+    "sayItCoach": "Pan Pan Pan, Belo Horizonte Approach, ANAC123, requesting precautionary landing to inspect the aircraft.",
+    "icaoModelAnswer": "Emergency landing is when safety of the aircraft or occupants is at serious and immediate risk. Precautionary landing is when a potential problem exists but immediate danger is not confirmed. I use precautionary landing to inspect the aircraft on the ground, and emergency landing when I must land immediately due to distress.",
+    "memoryTrick": "**CHECK** — **C**oncern identified, **H**ead to suitable airport, **E**xplain to ATC, **C**onfirm no immediate danger, **K**eep inspecting on the ground.",
+    "operationalMeaning": "When Precautionary Landing is appropriate, the pilot should:\n\nPrecautionary Landing reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "provide vectors to a suitable airport",
+      "assign landing sequence without full emergency alert unless requested",
+      "ask for the nature of the problem",
+      "coordinate ground inspection support if requested",
+      "maintain normal traffic flow when no distress is declared"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger precautionary landing, say nature of the problem.",
+      "Approach: ANAC123, nearest airport twelve o'clock, one zero miles.",
+      "Tower: ANAC123, cleared to land runway three zero, emergency services not required unless requested.",
+      "Approach: ANAC123, maintain present altitude, say when ready for vectors.",
+      "Tower: ANAC123, report gear down and locked."
+    ],
+    "pilotReadbacks": [
+      "Pan Pan Pan, ANAC123, abnormal vibration, requesting precautionary landing for inspection.",
+      "Approach, ANAC123, precautionary landing inbound, gear indication uncertain.",
+      "ANAC123, we would like to make a precautionary landing and inspect the aircraft on the ground.",
+      "ANAC123, no emergency declared, precautionary landing to verify indications.",
+      "ANAC123, bird strike assessment complete, requesting precautionary landing at Belo Horizonte."
+    ],
+    "brazilianMistakes": "- ❌ Using emergency landing for every abnormal indication.  \n  ✔ Use precautionary landing when you need to inspect, not when in immediate danger.\n\n- ❌ Not knowing the precautionary landing concept in English.  \n  ✔ Learn and use precautionary landing — it is an ICAO exam concept.\n\n- ❌ Declaring Mayday for a precautionary landing.  \n  ✔ Use Pan Pan or simply inform ATC — Mayday is for confirmed distress.\n\n- ❌ Confusing precautionary landing with normal diversion.  \n  ✔ Precautionary landing implies an abnormal condition requiring ground inspection.",
+    "pronunciationCoaching": "**Target Phrase:** Precautionary Landing\n\n**Pronunciation:** pre-CAU-tion-ar-y LAN-ding\n\n**Word Stress**\n\n- Precautionary → pre-CAU-tion-ar-y (five syllables)\n- Inspection → in-SPEC-tion\n- Indication → in-di-CA-tion\n\nPractice:\n\nPrecautionary... landing...\n\nTogether:\n\nPan Pan Pan, Belo Horizonte Approach, ANAC123, requesting precautionary landing to inspect the aircraft.\n\nSpeak the five syllables clearly — examiners listen for this word.",
+    "relatedConcepts": [
+      "Emergency Landing",
+      "Bird Strike",
+      "Landing Gear Malfunction",
+      "Pan Pan Urgency Call",
+      "Abnormal Indication",
+      "Diversion"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Emergency Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Precautionary Landing",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "FAA JO 7110.65 — Emergency and Priority Handling",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/"
+      },
+      {
+        "label": "SKYbrary — Emergency Landing",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0043",
+    "id": "0043",
+    "displayTerm": "Low Fuel",
+    "term": "low fuel",
+    "slug": "low-fuel",
+    "category": "Emergency",
+    "meaningEn": "Low Fuel is a fuel state where quantity is below planned reserves or minimum required for destination plus reserve.",
+    "meaningPt": "Combustível baixo.\n\nQuantidade de combustível abaixo das reservas planejadas ou do mínimo necessário para destino mais reserva.",
+    "whenUsed": "When Low Fuel occurs, the pilot should:",
+    "example": "Approach: ANAC123, exit hold now heading one three five, expect vectors to intercept final.",
+    "sayPhrase": "Pan Pan Pan, low fuel state!",
+    "icaoQuestion": "What is the difference between low fuel and fuel starvation?",
+    "icaoSpeakText": "Low fuel means fuel quantity is below reserves but fuel is still reaching the engine. Fuel starvation means fuel may be in the tanks but is not reaching the engine due to a delivery problem. Low fuel uses Pan Pan. Fuel starvation may require Mayday if engines are affected.",
+    "missionBrief": "Today's lesson covers a fuel urgency that every pilot must communicate clearly.\n\nLow Fuel means your fuel quantity is below planned reserves or minimum required for destination plus reserve.\n\nThis is not fuel starvation — fuel is reaching the engine, but you do not have enough to continue safely.\n\nPan Pan is the standard urgency call. You must state fuel remaining in time, not just quantity.\n\nIn your H130, fuel margins on long cross-country flights over Brazil require careful planning and honest reporting.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Low fuel is one of the most tested scenarios in ICAO Delta exams.\n\nThe Heathrow 24C scenario is essential: Pan Pan, land in fifteen minutes, NEGATIVE to fifty minutes.\n\nBrazilian pilots say no fuel or sem combustível — that sounds like empty tanks.\n\nLow fuel means urgency, not zero fuel. You still have fuel — just not enough.\n\nReport time remaining: three zero minutes, one five minutes.\n\nUse digits for clarity: one five minutes, not fifteen minutes casually spoken.\n\nIf ATC offers a hold extension you cannot accept, say NEGATIVE immediately.\n\nDo not be polite when your fuel clock is running.\n\nIn the H130, monitor fuel on every cross-country leg over the Amazon and central Brazil — diversion options are limited.",
+    "operationalContext": "You are holding at four thousand feet near Guarulhos in your H130 due to weather at your destination.\n\nYour fuel calculation shows thirty minutes remaining — not enough for extended holding.\n\nYou transmit:\n\nPan Pan Pan, São Paulo Approach, ANAC123, we are running low on fuel and need to land within one five minutes.\n\nApproach offers to keep you in hold for five zero minutes.\n\nYou respond firmly:\n\nNEGATIVE. I need to land in one five minutes. Request exit from hold and vectors to Guarulhos, ANAC123.\n\nApproach clears you direct and sequences you number one for landing.\n\nYou land with twenty minutes fuel remaining.",
+    "sayItCoach": "Pan Pan Pan, São Paulo Approach, ANAC123, we are running low on fuel and need to land within one five minutes.",
+    "icaoModelAnswer": "Low fuel means fuel quantity is below reserves but fuel is still reaching the engine. Fuel starvation means fuel may be in the tanks but is not reaching the engine due to a delivery problem. Low fuel uses Pan Pan. Fuel starvation may require Mayday if engines are affected.",
+    "memoryTrick": "**FUEL** — **F**igure time remaining, **U**rgency with Pan Pan, **E**xplain landing time, **L**and soon.",
+    "operationalMeaning": "When Low Fuel occurs, the pilot should:\n\nLow Fuel reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "expedite approach and clear holding",
+      "assign direct routing to the nearest suitable airport",
+      "confirm landing time requirements",
+      "clear other traffic for priority landing",
+      "request fuel remaining in hours and minutes"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, exit hold now heading one three five, expect vectors to intercept final.",
+      "Approach: ANAC123, confirm you need to land in five zero minutes.",
+      "Approach: ANAC123, cleared direct to the airport.",
+      "Tower: ANAC123, number one for landing.",
+      "Approach: ANAC123, say fuel remaining in hours."
+    ],
+    "pilotReadbacks": [
+      "Pan Pan Pan, low fuel state!",
+      "Pan Pan Pan, São Paulo Approach, ANAC123, we are running low on fuel and need to land within one five minutes.",
+      "We are low on fuel and need priority.",
+      "NEGATIVE. I need to land in one five minutes. Exiting hold heading one three five, ANAC123.",
+      "ANAC123, three zero minutes fuel remaining."
+    ],
+    "brazilianMistakes": "- ❌ Saying no fuel instead of low fuel — sounds like empty tanks.  \n  ✔ Use low fuel state — urgency, not zero quantity.\n\n- ❌ Accepting hold extension when fuel is critical.  \n  ✔ Use NEGATIVE firmly and state your maximum landing time.\n\n- ❌ Reporting fuel only in kilograms without time remaining.  \n  ✔ Report fuel remaining in hours and minutes.\n\n- ❌ Waiting until minimum fuel before declaring urgency.  \n  ✔ Declare Pan Pan when reserves are below comfort level.",
+    "pronunciationCoaching": "**Target Phrase:** Pan Pan, Low Fuel State\n\n**Pronunciation:** PAN PAN, LOW FYOO-el STATE\n\n**Word Stress**\n\n- Low fuel → LOW FYOO-el\n- One five minutes → digits, not fifteen\n- Fuel remaining → FUEL re-MAIN-ing\n\nPractice:\n\nPan Pan Pan... low fuel state...\n\nTogether:\n\nPan Pan Pan, São Paulo Approach, ANAC123, we are running low on fuel and need to land within one five minutes.\n\nSpeak time in digits — controllers record numbers, not words.",
+    "relatedConcepts": [
+      "Fuel Starvation",
+      "Fuel Dumping",
+      "Pan Pan Urgency Call",
+      "Priority Landing",
+      "Emergency Landing",
+      "Minimum Fuel"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Fuel Emergencies",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA JO 7110.65 — Emergency and Priority Handling",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Minimum Fuel",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Fuel Emergencies",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0044",
+    "id": "0044",
+    "displayTerm": "Fuel Starvation",
+    "term": "fuel starvation",
+    "slug": "fuel-starvation",
+    "category": "Emergency",
+    "meaningEn": "Fuel Starvation is a condition where engines are starved of fuel despite fuel possibly remaining in the tanks — a fuel delivery failure.",
+    "meaningPt": "Inanição de combustível.\n\nOs motores ficam sem combustível apesar de haver combustível nos tanques — falha no sistema de alimentação.",
+    "whenUsed": "When Fuel Starvation occurs, the pilot should:",
+    "example": "Approach: ANAC123, descend immediately, vectors to the field.",
+    "sayPhrase": "Mayday Mayday Mayday, fuel starvation imminent!",
+    "icaoQuestion": "How is fuel starvation different from low fuel?",
+    "icaoSpeakText": "Low fuel means fuel quantity is below reserves but fuel reaches the engine. Fuel starvation means fuel is in the tanks but not reaching the engine due to a delivery problem such as selector error or blockage. I use Pan Pan for low fuel and Mayday for fuel starvation when engines are affected.",
+    "missionBrief": "Today's lesson covers a technical fuel emergency that many pilots confuse with low fuel.\n\nFuel Starvation means the engines are starved of fuel despite fuel possibly remaining in the tanks.\n\nThe fuel is on board — but it is not reaching the engine due to selector error, crossfeed issue, or blockage.\n\nThis is a delivery failure, not a quantity problem. Mayday may be required if engines are affected.\n\nIn your H130, a fuel selector misconfiguration can cause starvation with full tanks showing on the gauge.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Fuel starvation versus low fuel — know the difference cold.\n\nLow fuel: not enough quantity, fuel is reaching the engine. Pan Pan.\n\nFuel starvation: fuel on board, not reaching the engine. Mayday if engines affected.\n\nBrazilian pilots say no fuel when they mean starvation — that confuses ATC.\n\nSay fuel starvation — it tells ATC the gauges may show fuel but engines are dying.\n\nAttempt the fuel system checklist before or during your first transmission if possible.\n\nReport selector changes and engine restart status.\n\nIn the H130, fuel selector misconfiguration after maintenance or tank switching is a documented risk.\n\nTechnical precision on the radio helps ATC understand why your gauges do not match your emergency.",
+    "operationalContext": "You are cruising at three thousand five hundred feet in your H130 near Porto Alegre.\n\nBoth engine parameters fluctuate. Fuel gauges show adequate quantity — but power is dropping.\n\nYou run the fuel system checklist and find the selector in the wrong position.\n\nYou correct it, but engine one does not recover immediately.\n\nYou transmit:\n\nMayday Mayday Mayday, Porto Alegre Approach, ANAC123, fuel starvation, both engines fluctuating, request immediate vectors to the field.\n\nApproach clears traffic and vectors you toward the airport.\n\nAfter selector correction, engine one relights. You report:\n\nANAC123, engine one relit after fuel selector change, single engine, continuing to Porto Alegre.",
+    "sayItCoach": "Mayday Mayday Mayday, Porto Alegre Approach, ANAC123, fuel starvation imminent.",
+    "icaoModelAnswer": "Low fuel means fuel quantity is below reserves but fuel reaches the engine. Fuel starvation means fuel is in the tanks but not reaching the engine due to a delivery problem such as selector error or blockage. I use Pan Pan for low fuel and Mayday for fuel starvation when engines are affected.",
+    "memoryTrick": "**STARVE** — **S**elector check, **T**ell ATC Mayday if needed, **A**ssess gauges, **R**emain calm, **V**erify crossfeed, **E**xpedite landing.",
+    "operationalMeaning": "When Fuel Starvation occurs, the pilot should:\n\nFuel Starvation reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "provide immediate vectors to the nearest suitable airport",
+      "clear all traffic from the approach path",
+      "assign any runway for landing",
+      "request souls on board and fuel status",
+      "alert fire services for possible forced landing"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, descend immediately, vectors to the field.",
+      "Tower: ANAC123, runway cleared to land any runway.",
+      "Approach: ANAC123, say souls on board.",
+      "Approach: ANAC123, all traffic cleared from your approach path.",
+      "Tower: ANAC123, fire services on standby."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, fuel starvation imminent!",
+      "We suspect fuel starvation on engine two.",
+      "Mayday Mayday Mayday, ANAC123, fuel starvation, both engines fluctuating.",
+      "ANAC123, engine one relit after fuel selector change.",
+      "ANAC123, single engine, continuing to nearest airport."
+    ],
+    "brazilianMistakes": "- ❌ Confusing fuel starvation with low fuel.  \n  ✔ Use fuel starvation when delivery fails despite fuel on board.\n\n- ❌ Saying no fuel when starvation is the technical issue.  \n  ✔ Report fuel starvation — gauges may still show quantity.\n\n- ❌ Not attempting fuel system checklist before declaring.  \n  ✔ Run checklist and report actions taken to ATC.\n\n- ❌ Not reporting engine restart status after correction.  \n  ✔ Report engine relit or negative restart after selector change.",
+    "pronunciationCoaching": "**Target Phrase:** Fuel Starvation Imminent\n\n**Pronunciation:** FYOO-el star-VA-tion IM-i-nent\n\n**Word Stress**\n\n- Starvation → star-VA-tion (four syllables)\n- Imminent → IM-i-nent\n- Selector → SE-lec-tor\n\nPractice:\n\nFuel starvation... imminent...\n\nTogether:\n\nMayday Mayday Mayday, Porto Alegre Approach, ANAC123, fuel starvation imminent.\n\nSpeak the technical term clearly — examiners test this distinction.",
+    "relatedConcepts": [
+      "Low Fuel",
+      "Engine Failure",
+      "Mayday Distress Call",
+      "Emergency Landing",
+      "Loss of Power",
+      "Fuel System Malfunction"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Fuel Emergencies",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA JO 7110.65 — Emergency and Priority Handling",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Fuel Starvation",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Fuel Emergencies",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0045",
+    "id": "0045",
+    "displayTerm": "Fuel Dumping",
+    "term": "fuel dumping",
+    "slug": "fuel-dumping",
+    "category": "Emergency",
+    "meaningEn": "Fuel Dumping is the intentional release of fuel from an aircraft to reduce weight for a safe landing.",
+    "meaningPt": "Descarte de combustível.\n\nLiberação intencional de combustível para reduzir o peso da aeronave para pouso seguro.",
+    "whenUsed": "When Fuel Dumping is required, the crew should:",
+    "example": "Departure: ANAC123, cleared to dump fuel between flight level one zero zero and flight level one five zero.",
+    "sayPhrase": "Mayday Mayday Mayday, requesting fuel dump!",
+    "icaoQuestion": "What would you request from ATC before starting fuel dump?",
+    "icaoSpeakText": "I would declare Mayday or Pan Pan for the underlying emergency, request a fuel dumping area and altitude, and wait for ATC to clear traffic before starting. I would report fuel dumping complete before requesting descent to land.",
+    "missionBrief": "Today's lesson covers intentional fuel release — a procedure common on fixed-wing aircraft but rare in helicopters.\n\nFuel Dumping means deliberately releasing fuel to reduce landing weight below maximum landing weight.\n\nLarge jets use jettison systems after emergency takeoff or early return with full tanks.\n\nThe H130 does not have a fuel jettison system — helicopters rarely dump fuel.\n\nBut ICAO phraseology for fuel dumping appears on exams, and you must understand the fixed-wing context.\n\nThis lesson prepares you for ICAO Part 2 vocabulary and Part 3 emergency communication.",
+    "captainTeaching": "Fuel dumping is fixed-wing territory.\n\nThe H130 has no jettison valves. You cannot dump fuel in a helicopter.\n\nBut the ICAO Delta exam tests this phraseology — know it even if you never use it in the H130.\n\nLarge jets departing Guarulhos or Galeão with full tanks may need to dump after early return.\n\nThe sequence: declare emergency, request fuel dumping area, wait for ATC clearance, dump in assigned block, report complete, then descend.\n\nNever dump without ATC clearance — other aircraft may be below you.\n\nThe related concept for helicopters is fuel burn in holding — circling to reduce weight, not jettisoning.\n\nThe Bogota cabin pressure scenario uses hold to burn fuel — different procedure, same goal: reduce weight for landing.\n\nFor your exam, know requesting fuel dump and fuel dumping complete.\n\nFor your H130 career, know that you will land overweight if needed — helicopters handle it differently.",
+    "operationalContext": "You are training on ICAO phraseology in a fixed-wing simulator scenario based on a departure from Guarulhos.\n\nShortly after takeoff, the aircraft must return due to a cabin pressurization issue with full fuel tanks — overweight for landing.\n\nThe captain transmits:\n\nMayday Mayday Mayday, São Paulo Departure, ANAC123, requesting fuel dump before return to Guarulhos.\n\nDeparture assigns a fuel dumping area between flight level one zero zero and flight level one five zero.\n\nAfter fifteen minutes, the captain reports:\n\nANAC123, fuel dumping complete, request descent to Guarulhos.\n\nIn your H130 operations, you would never perform this procedure — but you may hear it on frequency near major airports.",
+    "sayItCoach": "Mayday Mayday Mayday, São Paulo Departure, ANAC123, requesting fuel dump before return.",
+    "icaoModelAnswer": "I would declare Mayday or Pan Pan for the underlying emergency, request a fuel dumping area and altitude, and wait for ATC to clear traffic before starting. I would report fuel dumping complete before requesting descent to land.",
+    "memoryTrick": "**DUMP** — **D**eclare need, **U**se assigned area, **M**onitor weight, **P**roceed to land, report com**P**lete to ATC.",
+    "operationalMeaning": "When Fuel Dumping is required, the crew should:\n\nFuel Dumping reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "assign a designated fuel dumping area and altitude block",
+      "clear traffic from the dumping area",
+      "notify other aircraft in the vicinity",
+      "monitor progress and request dump complete report",
+      "clear the aircraft to descend and land after dump is complete"
+    ],
+    "atcPhraseology": [
+      "Departure: ANAC123, cleared to dump fuel between flight level one zero zero and flight level one five zero.",
+      "Departure: ANAC123, report fuel dumping complete.",
+      "Departure: ANAC123, traffic cleared from your area.",
+      "Approach: ANAC123, descend when able after dump complete.",
+      "Tower: ANAC123, runway cleared to land when ready."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, requesting fuel dump!",
+      "Requesting fuel dumping area!",
+      "We need to dump fuel before returning.",
+      "ANAC123, fuel dumping complete, request descent.",
+      "Pan Pan Pan, ANAC123, need to dump fuel before overweight landing."
+    ],
+    "brazilianMistakes": "- ❌ Not informing ATC before dumping — ATC must clear traffic.  \n  ✔ Request fuel dumping area and wait for clearance.\n\n- ❌ Saying throw fuel instead of dump fuel.  \n  ✔ Use dump fuel or fuel dumping — standard ICAO phraseology.\n\n- ❌ Forgetting to report dump complete before descent.  \n  ✔ Report fuel dumping complete, then request descent.\n\n- ❌ Assuming helicopters dump fuel like jets.  \n  ✔ Know the H130 has no jettison system — this is fixed-wing phraseology.",
+    "pronunciationCoaching": "**Target Phrase:** Requesting Fuel Dump\n\n**Pronunciation:** re-QUEST-ing FYOO-el DUMP\n\n**Word Stress**\n\n- Dumping → DUMP-ing\n- Overweight → O-ver-weight\n- Complete → com-PLETE\n\nPractice:\n\nRequesting... fuel dump...\n\nTogether:\n\nMayday Mayday Mayday, São Paulo Departure, ANAC123, requesting fuel dump before return.\n\nSpeak clearly — this phraseology is tested even for helicopter pilots.",
+    "relatedConcepts": [
+      "Low Fuel",
+      "Emergency Landing",
+      "Cabin Depressurization",
+      "Mayday Distress Call",
+      "Overweight Landing",
+      "Pan Pan Urgency Call"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Fuel Dumping",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA JO 7110.65 — Fuel Dumping Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Fuel Dumping",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Fuel Dumping",
+        "href": "https://skybrary.aero"
+      }
+    ]
   }
 ];

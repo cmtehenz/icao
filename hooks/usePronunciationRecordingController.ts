@@ -29,7 +29,7 @@ import {
   passesDailyMissionWordAttempt,
 } from "@/lib/pronunciationDailyMission";
 import { practiceTextForLevel } from "@/lib/pronunciationMission";
-import { WM_PASS_SCORE } from "@/lib/wordMission/types";
+import { WM_PASS_SCORE, WORD_MISSION_CAPTAIN_UI } from "@/lib/wordMission/types";
 import { PronunciationRecordingError } from "@/lib/pronunciation/PronunciationRecordingError";
 import {
   canStartPronunciationRecording,
@@ -84,6 +84,8 @@ type Options = {
   mission: PronunciationMission | null;
   /** Word Mission — records vocab progress and uses WM pass threshold. */
   wordMissionTermId?: string | null;
+  /** Word Mission — exact phrase on the lesson card (overrides vault context pack). */
+  wordMissionSpeakText?: string | null;
   onWordMissionRecord?: (
     assessment: import("@/lib/azure/pronunciation").AzurePronunciationResult,
     score: number,
@@ -103,6 +105,15 @@ function browserSupportsRecording(): boolean {
     typeof MediaRecorder !== "undefined" &&
     !!navigator.mediaDevices?.getUserMedia
   );
+}
+
+function recordingReferenceText(
+  activeWord: VaultWord,
+  practiceLevel: PracticeLevel,
+  wordMissionSpeakText?: string | null,
+): string {
+  if (wordMissionSpeakText?.trim()) return wordMissionSpeakText.trim();
+  return practiceTextForLevel(activeWord, practiceLevel);
 }
 
 /** Single owner of /pronunciation recording — Azure I/O + Captain registration. */
@@ -194,7 +205,11 @@ export function usePronunciationRecordingController(
 
   const speakPracticeText = useCallback(async () => {
     if (!activeWord) return;
-    const text = practiceTextForLevel(activeWord, practiceLevel);
+    const text = recordingReferenceText(
+      activeWord,
+      practiceLevel,
+      optionsRef.current.wordMissionSpeakText,
+    );
     lastReferenceRef.current = text;
     await speech.speak(text);
   }, [activeWord, practiceLevel, speech]);
@@ -218,7 +233,13 @@ export function usePronunciationRecordingController(
   const replay = useCallback(async () => {
     const text =
       lastReferenceRef.current ??
-      (activeWord ? practiceTextForLevel(activeWord, practiceLevel) : null);
+      (activeWord
+        ? recordingReferenceText(
+            activeWord,
+            practiceLevel,
+            optionsRef.current.wordMissionSpeakText,
+          )
+        : null);
     if (!text) return;
     try {
       await speech.speak(text);
@@ -258,7 +279,11 @@ export function usePronunciationRecordingController(
         return;
       }
 
-      const sentenceUsed = practiceTextForLevel(activeWord, practiceLevel);
+      const sentenceUsed = recordingReferenceText(
+        activeWord,
+        practiceLevel,
+        optionsRef.current.wordMissionSpeakText,
+      );
       let referenceText: string;
       try {
         referenceText = assertReferenceTextForRecording(sentenceUsed, {
@@ -386,25 +411,34 @@ export function usePronunciationRecordingController(
           secondaryActions: [{ id: "slow_audio", label: "🎧 Slow Audio", primary: false }],
         });
       } else {
-      const referenceText = practiceTextForLevel(activeWord, practiceLevel);
+      const isWordMission = !!optionsRef.current.wordMissionTermId;
+      const referenceText = recordingReferenceText(
+        activeWord,
+        practiceLevel,
+        optionsRef.current.wordMissionSpeakText,
+      );
       const debrief = buildCaptainAssessmentDebrief(assessment, {
         targetWord: activeWord.word,
         practiceLevel,
         referenceText,
         missionPass: !!showMissionContinue,
+        wordMission: isWordMission,
       });
-      youGlishQueryRef.current = debrief.youGlishQuery;
+      youGlishQueryRef.current = isWordMission ? null : debrief.youGlishQuery;
       setCaptainDebrief(debrief);
       setCaptainNote(debrief.message);
       emitCaptainDeltaSuggestion({
         text: debrief.message,
         speechText: debrief.speechText,
         kind: "coaching",
+        ui: isWordMission ? WORD_MISSION_CAPTAIN_UI : undefined,
         primaryAction: showMissionContinue
           ? { id: "ready", label: "Continue", primary: true }
           : { id: "try_again", label: "Try again", primary: true },
-        secondaryActions: [
-          ...(score < (optionsRef.current.wordMissionTermId ? WM_PASS_SCORE : VAULT_PASS_SCORE)
+        secondaryActions: isWordMission
+          ? []
+          : [
+          ...(score < VAULT_PASS_SCORE
             ? [{ id: "slow_audio" as const, label: "🎧 Slow Audio", primary: false }]
             : []),
           ...(debrief.showYouGlish && debrief.youGlishQuery
