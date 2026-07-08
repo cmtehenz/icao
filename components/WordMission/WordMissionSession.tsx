@@ -260,6 +260,15 @@ export default function WordMissionSession({
 
           {recordingEnabled && (
             <>
+              <div className="word-mission-record-instructions" role="status">
+                <p className="word-mission-record-instructions-title">What to do now</p>
+                <p className="word-mission-record-instructions-body">
+                  1) Tap <strong>Listen</strong> to hear the model.
+                  2) Tap <strong>Captain Recorder</strong> and speak exactly:
+                </p>
+                <p className="word-mission-record-instructions-phrase">{speakText}</p>
+              </div>
+
               <div className="word-mission-listen-row">
                 <button
                   type="button"
