@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import { usePathname } from "next/navigation";
 import CaptainDeltaCoachingCard from "@/components/CaptainDelta/CaptainDeltaCoachingCard";
 import CaptainStandbyCard from "@/components/aiPresence/CaptainStandbyCard";
 import { useAIPresence } from "@/components/aiPresence/AIPresenceProvider";
@@ -27,6 +28,9 @@ export default function CaptainDeltaFloatingAssistant() {
     startPtt,
     stopPtt,
   } = useCaptainDelta();
+
+  const pathname = usePathname();
+  const inWordMission = pathname?.startsWith("/word-mission") ?? false;
 
   const presence = useAIPresence();
   const standbyCopy = captainStandbyCopy(presence.phase);
@@ -63,11 +67,11 @@ export default function CaptainDeltaFloatingAssistant() {
   };
 
   const recording = pttActive || pronunciationRecordingActive;
-  const showStandby = open && !currentMessage;
+  const showStandby = open && !currentMessage && !inWordMission;
 
   return (
     <>
-      {open && (
+      {open && (!inWordMission || !!currentMessage) && (
         <aside className="cd-panel" aria-label="Captain Delta coaching">
           <button
             type="button"
