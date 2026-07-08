@@ -4324,50 +4324,52 @@ export const BATCH01_DEV_ENTRIES: DevKnowledgeEntry[] = [
     "term": "lost communications",
     "slug": "lost-communications",
     "category": "Radio Communication",
-    "meaningEn": "Lost Communications is the state in which two-way radio contact between aircraft and ATC cannot be established or maintained.",
-    "meaningPt": "Comunicações perdidas.\n\nSituação em que o contato bilateral de rádio entre aeronave e ATC não pode ser estabelecido ou mantido.",
-    "whenUsed": "When Lost Communications occurs, the pilot should:",
-    "example": "Approach: ANAC123, radio check, how do you read?",
-    "sayPhrase": "Mayday Mayday Mayday, ANAC123, lost radio contact, squawking seven six zero zero.",
-    "icaoQuestion": "What is the correct procedure when you lose two-way radio communication with ATC?",
-    "icaoSpeakText": "I would attempt contact on the assigned frequency and on one two one point five. If unsuccessful, I would squawk seven six zero zero on the transponder. I would follow my last received and acknowledged clearance, comply with ICAO lost communication procedures, and land at the nearest suitable airport as soon as practicable if in VMC. When communication is restored, I would inform ATC immediately.",
-    "missionBrief": "Today's lesson covers lost communications procedures — what happens when ATC and the pilot cannot communicate.\n\nLost Communications means two-way radio contact has been lost — by failure, interference, or frequency error.\n\nYou must squawk 7600, follow your last clearance, and comply with ICAO lost communication procedures.\n\nControllers will clear traffic and monitor your transponder.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
-    "captainTeaching": "Lost communications is a procedure — not a panic.\n\nThe sequence every professional pilot learns:\n\nTry. Squawk. Comply.\n\nTry assigned frequency.\n\nTry one two one point five — guard.\n\nSquawk 7600.\n\nComply with last clearance.\n\nBrazilian pilots sometimes fly the wrong frequency for minutes before noticing.\n\nCheck your radio panel before assuming failure.\n\nBrazilian pilots sometimes say \"perdi contato\" on frequency when they regain comm.\n\nUse lost radio contact or loss of radio contact — ICAO standard terms.\n\nKnow the difference:\n\nRadio Failure — equipment broken.\n\nLost Communications — two-way contact lost — may be equipment, frequency, or coverage.\n\nBoth use squawk 7600.\n\nWhen you regain contact, inform ATC and cancel 7600.\n\nState how long you were out and what you did.\n\nControllers need that information for traffic management.",
-    "operationalContext": "You are being vectored to Navegantes in your H130, callsign ANAC123, when you lose all radio contact.\n\nYou try the assigned frequency and one two one point five without response.\n\nYou squawk 7600 and continue on your last assigned heading and altitude.\n\nApproach sees the 7600 code and clears traffic from your path.\n\nYou proceed to Navegantes, join the circuit, and land runway two nine.\n\nYou report the lost communications event on the ground.",
-    "sayItCoach": "ANAC123, lost radio contact, squawking seven six zero zero.",
-    "icaoModelAnswer": "I would attempt contact on the assigned frequency and on one two one point five. If unsuccessful, I would squawk seven six zero zero on the transponder. I would follow my last received and acknowledged clearance, comply with ICAO lost communication procedures, and land at the nearest suitable airport as soon as practicable if in VMC. When communication is restored, I would inform ATC immediately.",
-    "memoryTrick": "**COMMS** — **C**heck frequency and guard, **O**ut with seven six zero zero, **M**aintain last clearance, **M**onitor radar and traffic, **S**peak when restored.",
-    "operationalMeaning": "When Lost Communications occurs, the pilot should:\n\nLost Communications procedures commonly include:",
+    "meaningEn": "Lost Communications is a situation in which two-way radio communication between the aircraft and Air Traffic Control cannot be established or maintained.",
+    "meaningPt": "Comunicações Perdidas.\n\nSituação em que a comunicação bilateral entre a aeronave e o Controle de Tráfego Aéreo deixa de existir.",
+    "whenUsed": "When communication is lost, the pilot should first determine whether the problem is caused by equipment, an incorrect frequency selection, or temporary loss of radio coverage.",
+    "example": "Approach: ANAC123, radio check.",
+    "sayPhrase": "ANAC123, radio restored.",
+    "icaoQuestion": "What would you do if you lost radio communication with ATC?",
+    "icaoSpeakText": "First, I would continue flying the aircraft and verify that the problem was not caused by an incorrect frequency or radio setting. I would attempt contact on the assigned frequency and, if appropriate, on one two one point five MHz. If communication could not be restored, I would squawk seven six zero zero and follow my last acknowledged ATC clearance together with the applicable lost communication procedures. Once communication was restored, I would advise ATC immediately.",
+    "missionBrief": "Today's lesson covers one of the most important abnormal procedures every pilot must know.\n\nCommunication with ATC is essential for maintaining an orderly and safe flow of traffic.\n\nHowever, radios can fail.\n\nA wrong frequency can be selected.\n\nElectrical problems may interrupt communications.\n\nWhen two-way communication is lost, professional pilots don't panic.\n\nThey follow a well-established procedure.\n\nToday's lesson will teach you exactly what to do if you experience Lost Communications.",
+    "captainTeaching": "Communication failures are rare.\n\nWhen they happen, professionalism is more important than speed.\n\nRemember the priority every pilot learns from the first day of flight training:\n\nAviate. Navigate. Communicate.\n\nIf communication is lost:\n\nFirst, fly the aircraft.\n\nSecond, continue navigating safely.\n\nThird, try every reasonable method to restore communications.\n\nCheck the radio.\n\nCheck the frequency.\n\nTry one two one point five MHz.\n\nIf communication cannot be restored, select 7600.\n\nThen continue according to your last acknowledged clearance and the published procedures.\n\nProfessional pilots never improvise during lost communications.\n\nThey simply execute the procedure.\n\nKnow the difference:\n\nRadio Failure — equipment broken.\n\nLost Communications — two-way contact lost — may be equipment, frequency, or coverage.\n\nBoth use squawk 7600.\n\nWhen you regain contact, inform ATC and cancel 7600.\n\nState how long you were out and what you did.\n\nControllers need that information for traffic management.",
+    "operationalContext": "You're flying your H130 IFR toward Florianópolis Airport.\n\nWhile being radar vectored, you suddenly stop hearing ATC.\n\nYou verify the radio panel.\n\nYou confirm the correct frequency.\n\nYou attempt another transmission.\n\nNo response.\n\nYou try one two one point five MHz.\n\nStill no reply.\n\nYou select 7600 on the transponder and continue in accordance with your last acknowledged clearance and the published lost communications procedures.\n\nAfter landing safely, radio communication is restored on the ground and you advise ATC about the event.",
+    "sayItCoach": "ANAC123, communications restored, cancelling squawk seven six zero zero.",
+    "icaoModelAnswer": "First, I would continue flying the aircraft and verify that the problem was not caused by an incorrect frequency or radio setting. I would attempt contact on the assigned frequency and, if appropriate, on one two one point five MHz. If communication could not be restored, I would squawk seven six zero zero and follow my last acknowledged ATC clearance together with the applicable lost communication procedures. Once communication was restored, I would advise ATC immediately.",
+    "memoryTrick": "Remember the sequence:\n\nFly. Navigate. Communicate.\n\nIf communication is lost:\n\nCheck → Try → Guard → Squawk 7600 → Follow Procedures → Report When Restored\n\nProfessional pilots don't memorize random actions.\n\nThey remember the sequence.",
+    "operationalMeaning": "When communication is lost, the pilot should first determine whether the problem is caused by equipment, an incorrect frequency selection, or temporary loss of radio coverage.\n\nImmediate actions normally include:\n\nIf operating VMC, the pilot should continue under visual meteorological conditions and land as soon as practicable at a suitable airport.\n\nIf operating IFR, the pilot should continue in accordance with the applicable lost communication procedures and the last acknowledged ATC clearance until the approach and landing can be safely completed.",
     "whyAtcUsesIt": [
-      "identifying aircraft squawking 7600 on radar",
-      "clearing traffic from the aircraft's expected route",
-      "monitoring the aircraft to the destination or alternate",
-      "coordinating with adjacent sectors without requiring radio contact",
-      "preparing for unannounced arrival and landing"
+      "identify the aircraft on radar",
+      "protect its expected route",
+      "coordinate with adjacent control sectors",
+      "separate other traffic",
+      "anticipate the aircraft's arrival",
+      "continue monitoring the flight until communication is restored or the aircraft lands"
     ],
     "atcPhraseology": [
-      "Approach: ANAC123, radio check, how do you read?",
+      "Approach: ANAC123, radio check.",
       "Tower: ANAC123, if you read, squawk ident.",
-      "Control: ANAC123, radar contact lost, attempting contact on guard frequency.",
-      "Tower: ANAC123, showing seven six zero zero, traffic cleared from your approach.",
-      "Approach: ANAC123, if you read, cleared direct Navegantes, descend three thousand."
+      "Center: ANAC123, if you read, continue present routing.",
+      "Approach: ANAC123, radar contact observed, squawking seven six zero zero.",
+      "Tower: ANAC123, if able, acknowledge by rocking your wings."
     ],
     "pilotReadbacks": [
-      "Mayday Mayday Mayday, ANAC123, lost radio contact, squawking seven six zero zero.",
-      "Pan Pan Pan Pan, ANAC123, complete radio failure, squawking seven six zero zero.",
-      "ANAC123, loss of radio contact, proceeding as cleared, squawking seven six zero zero.",
-      "Navegantes Approach, ANAC123, radio restored, cancel seven six zero zero.",
-      "ANAC123, lost communications, squawking seven six zero zero, proceeding direct Navegantes."
+      "ANAC123, radio restored.",
+      "ANAC123, communications restored, cancelling squawk seven six zero zero.",
+      "ANAC123, back on frequency.",
+      "ANAC123, communications restored after radio failure.",
+      "ANAC123, radio restored, continuing as cleared."
     ],
-    "brazilianMistakes": "- ❌ Not trying guard frequency one two one point five.  \n  ✔ Attempt one two one point five before assuming complete failure.\n\n- ❌ Forgetting to squawk 7600.  \n  ✔ Squawk seven six zero zero — ATC identifies lost comm aircraft by this code.\n\n- ❌ Deviating from last clearance without authority.  \n  ✔ Follow last received and acknowledged clearance per lost comm procedures.\n\n- ❌ Not reporting the event after regaining communication.  \n  ✔ Inform ATC when radio is restored and state actions taken during lost comm.",
-    "pronunciationCoaching": "**Target Phrase:** Lost Radio Contact, Squawking Seven Six Zero Zero\n\n**Pronunciation:** lost RAY-dee-oh KON-takt, SKWAW-king SEV-en six ZEE-roh ZEE-roh\n\n**Word Stress**\n\n- Lost → lost\n- Contact → KON-takt\n- Squawking → SKWAW-king\n\nPractice:\n\nSeven... six... zero... zero...\n\nTogether:\n\nANAC123, lost radio contact, squawking seven six zero zero.\n\nSpeak each digit clearly — seven six zero zero, not seventy-six hundred.",
+    "brazilianMistakes": "- ❌ Assuming the radio has failed before checking the frequency.  \n  ✔ Always verify frequency selection, volume, and audio panel settings first.\n\n- ❌ Forgetting to try one two one point five MHz.  \n  ✔ Guard frequency may allow communication with another ATC unit or nearby aircraft.\n\n- ❌ Forgetting to squawk 7600.  \n  ✔ This immediately alerts ATC that communications have been lost.\n\n- ❌ Deviating from the last acknowledged clearance without necessity.  \n  ✔ Continue in accordance with the applicable lost communication procedures.",
+    "pronunciationCoaching": "**Target Phrase:** Lost Communications\n\n**Pronunciation:** lost kuh-myoo-ni-KAY-shunz\n\n**Word Stress**\n\n- Lost → lost\n- Communications → kuh-myoo-ni-KAY-shunz\n\nPractice:\n\nLost...\n\nCommunications...\n\nTogether:\n\nLost Communications.\n\nThen practice:\n\nANAC123, communications restored, cancelling squawk seven six zero zero.\n\nRemember to pronounce each digit separately:\n\nSeven — Six — Zero — Zero",
     "relatedConcepts": [
       "Radio Failure",
       "Squawk 7600",
-      "Pan Pan Urgency Call",
-      "Mayday Distress Call",
       "Transponder Codes",
-      "Guard Frequency 121.5"
+      "Guard Frequency 121.5",
+      "Radar Vectors",
+      "Resume Own Navigation",
+      "Emergency Communications"
     ],
     "references": [
       {
@@ -4383,7 +4385,7 @@ export const BATCH01_DEV_ENTRIES: DevKnowledgeEntry[] = [
         "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
       },
       {
-        "label": "FAA JO 7110.65 — Lost Communication Procedures",
+        "label": "FAA JO 7110.65 — Air Traffic Control",
         "href": "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/"
       },
       {
