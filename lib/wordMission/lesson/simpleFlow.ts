@@ -53,9 +53,9 @@ export function wordMissionStepActionHint(
     case "operational_use":
       return "Listen only (no recording). Read the operational scenario, then tap Continue. Next: Say It (you will record the full readback).";
     case "say_it":
-      return "Tap Captain Recorder below and speak the highlighted readback exactly.";
+      return "Tap Record below and speak the highlighted readback exactly.";
     case "icao_practice":
-      return "Tap Captain Recorder below and speak the highlighted ICAO answer exactly.";
+      return "Tap Record below and speak the highlighted ICAO answer exactly.";
     default:
       return "";
   }

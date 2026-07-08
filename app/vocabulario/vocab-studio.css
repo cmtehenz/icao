@@ -1246,8 +1246,26 @@
   color: var(--text);
 }
 
+.word-mission-record-instructions-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+.word-mission-record-instructions-list li {
+  padding-left: 0.1rem;
+}
+
 .word-mission-record-instructions-phrase {
-  margin: 0.5rem 0 0;
+  margin: 0.65rem 0 0;
+  padding: 0.55rem 0.7rem;
+  border-radius: 0.45rem;
+  border: 1px solid color-mix(in srgb, var(--purple) 30%, var(--line));
+  background: color-mix(in srgb, var(--purple-bg) 45%, var(--card));
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 1.05rem;
   font-weight: 800;
@@ -1574,10 +1592,15 @@
   gap: 0.5rem 0.75rem;
 }
 
-.word-mission-listen-btn {
+.word-mission-listen-btn,
+.word-mission-record-btn {
   border-radius: 999px;
   min-height: 2.25rem;
   padding-inline: 1rem;
+}
+
+.word-mission-record-btn {
+  font-weight: 800;
 }
 
 .word-mission-listen-hint {

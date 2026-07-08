@@ -18,7 +18,7 @@ describe("wordMissionStepActionHint", () => {
   it("names the recording task on Say It without repeating the phrase in the hint", () => {
     const phrase = "Holding short runway one eight, ANAC123.";
     const hint = wordMissionStepActionHint("say_it", phrase);
-    expect(hint).toMatch(/Captain Recorder/i);
+    expect(hint).toMatch(/Record/i);
     expect(hint).not.toContain(phrase);
   });
 });

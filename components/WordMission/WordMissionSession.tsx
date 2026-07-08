@@ -262,10 +262,14 @@ export default function WordMissionSession({
             <>
               <div className="word-mission-record-instructions" role="status">
                 <p className="word-mission-record-instructions-title">What to do now</p>
-                <p className="word-mission-record-instructions-body">
-                  1) Tap <strong>Listen</strong> to hear the model.
-                  2) Tap <strong>Captain Recorder</strong> and speak exactly:
-                </p>
+                <ol className="word-mission-record-instructions-list">
+                  <li>
+                    Tap <strong>Listen</strong> to hear the model.
+                  </li>
+                  <li>
+                    Tap <strong>Record</strong> and speak exactly:
+                  </li>
+                </ol>
                 <p className="word-mission-record-instructions-phrase">{speakText}</p>
               </div>
 
@@ -279,6 +283,26 @@ export default function WordMissionSession({
                 >
                   Listen
                 </button>
+                {micUi.canStop ? (
+                  <button
+                    type="button"
+                    className="btn purple btn-sm word-mission-record-btn"
+                    onClick={() => void recording.stop()}
+                    aria-label="Stop recording and assess"
+                  >
+                    Stop &amp; assess
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="btn purple btn-sm word-mission-record-btn"
+                    onClick={() => void recording.start()}
+                    disabled={!micUi.canStart}
+                    aria-label="Record your readback"
+                  >
+                    Record
+                  </button>
+                )}
               </div>
 
               <div
@@ -287,7 +311,7 @@ export default function WordMissionSession({
                 aria-live="polite"
               >
                 <p className="pron-captain-recorder-line">
-                  <span className="pron-captain-recorder-label">Captain Recorder</span>
+                  <span className="pron-captain-recorder-label">Status</span>
                   <span aria-hidden> · </span>
                   <span
                     className={`pron-captain-recorder-status pron-captain-recorder-status--${micUi.visualState}`}

@@ -28,10 +28,11 @@ describe("WordMissionSession UI certification", () => {
     expect(sessionSource).not.toMatch(/WORD_MISSION_PHASE_ORDER/);
   });
 
-  it("does not mount duplicate Record buttons — Captain recorder only", () => {
+  it("shows Listen + Record controls with numbered what-to-do steps", () => {
     expect(sessionSource).not.toMatch(/PronunciationRecorder/);
-    expect(sessionSource).not.toMatch(/>Record</);
-    expect(sessionSource).toMatch(/Captain Recorder/);
+    expect(sessionSource).toMatch(/word-mission-record-instructions-list/);
+    expect(sessionSource).toMatch(/>Record</);
+    expect(sessionSource).toMatch(/Stop &amp; assess/);
   });
 
   it("shows term header with phonetic hint and lesson card", () => {
