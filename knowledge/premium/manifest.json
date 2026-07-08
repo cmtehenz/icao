@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "completedCount": 45,
-  "pendingCount": 465,
+  "completedCount": 55,
+  "pendingCount": 455,
   "concepts": [
     {
       "id": "0001",
@@ -315,6 +315,76 @@
       "id": "0045",
       "concept": "Fuel Dumping",
       "slug": "0045-fuel-dumping",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0046",
+      "concept": "Hydraulic Failure",
+      "slug": "0046-hydraulic-failure",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0047",
+      "concept": "Electrical Failure",
+      "slug": "0047-electrical-failure",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0048",
+      "concept": "GPS Inoperative",
+      "slug": "0048-gps-inoperative",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0049",
+      "concept": "Landing Gear Malfunction",
+      "slug": "0049-landing-gear-malfunction",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0050",
+      "concept": "Cabin Depressurization",
+      "slug": "0050-cabin-depressurization",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0051",
+      "concept": "Pilot Incapacitation",
+      "slug": "0051-pilot-incapacitation",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0052",
+      "concept": "Mayday",
+      "slug": "0052-mayday",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0053",
+      "concept": "Pan Pan",
+      "slug": "0053-pan-pan",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0054",
+      "concept": "Radio Failure",
+      "slug": "0054-radio-failure",
+      "status": "complete",
+      "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0055",
+      "concept": "Lost Communications",
+      "slug": "0055-lost-communications",
       "status": "complete",
       "completedAt": "2026-07-08"
     }

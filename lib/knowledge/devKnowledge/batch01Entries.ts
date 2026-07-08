@@ -3602,5 +3602,798 @@ export const BATCH01_DEV_ENTRIES: DevKnowledgeEntry[] = [
         "href": "https://skybrary.aero"
       }
     ]
+  },
+  {
+    "catalogId": "0046",
+    "id": "0046",
+    "displayTerm": "Hydraulic Failure",
+    "term": "hydraulic failure",
+    "slug": "hydraulic-failure",
+    "category": "Aircraft Systems",
+    "meaningEn": "Hydraulic Failure is the loss of hydraulic pressure or fluid, affecting aircraft systems that depend on hydraulic power.",
+    "meaningPt": "Falha hidráulica.\n\nPerda de pressão ou fluido hidráulico, afetando sistemas que dependem de energia hidráulica.",
+    "whenUsed": "When Hydraulic Failure occurs, the pilot should:",
+    "example": "Approach: ANAC123, roger Pan Pan, say nature of hydraulic problem and souls on board.",
+    "sayPhrase": "Pan Pan Pan Pan, Navegantes Approach, ANAC123, hydraulic pressure decreasing.",
+    "icaoQuestion": "What would you tell ATC if you noticed hydraulic pressure dropping during cruise?",
+    "icaoSpeakText": "After securing the aircraft, I would declare Pan Pan Pan Pan, state my callsign, report hydraulic pressure decreasing or hydraulic failure, state my position, and request vectors to the nearest suitable airport. I would upgrade to Mayday if control becomes seriously degraded. I would provide souls on board and fuel remaining when ATC requests.",
+    "missionBrief": "Today's lesson covers a critical aircraft systems emergency.\n\nHydraulic Failure means the hydraulic system has lost pressure or fluid — reducing or eliminating control assistance, landing gear operation, or other hydraulically powered functions.\n\nIn the H130, hydraulic systems support flight controls and other critical components.\n\nA total hydraulic failure can make the aircraft difficult to control and may require an immediate precautionary landing.\n\nYou must aviate first, then assess severity, then communicate with the correct urgency call.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Hydraulic failure is not always immediate catastrophe.\n\nSometimes it is a slow leak.\n\nSometimes it is sudden and total.\n\nThe sequence every professional pilot learns:\n\nAviate. Assess. Communicate.\n\nDo not declare Mayday while the aircraft is unstable.\n\nEstablish control first.\n\nThen choose your urgency call.\n\nA slow pressure drop — Pan Pan.\n\nA rapid leak or loss of control — Mayday.\n\nBrazilian pilots sometimes say \"hidráulica falhou\" or \"perdeu pressão\" on frequency.\n\nUse hydraulic failure or hydraulic pressure decreasing — ICAO standard terms.\n\nIn the H130, increased control forces mean you work harder on the cyclic and collective.\n\nTrain the assessment reflex so your radio call comes from a stable aircraft, not a panicked voice.",
+    "operationalContext": "You are cruising at two thousand five hundred feet in your H130 on a charter flight from Curitiba to Navegantes.\n\nThe hydraulic pressure gauge drops rapidly and a low-pressure warning activates.\n\nYou feel increased control forces but maintain stable flight.\n\nWhen stable, you transmit:\n\nPan Pan Pan Pan, Navegantes Approach, ANAC123, hydraulic pressure decreasing, request vectors to Navegantes.\n\nApproach clears traffic and provides direct routing.\n\nYou complete a precautionary landing and report safe on the ground.",
+    "sayItCoach": "Pan Pan Pan Pan, Navegantes Approach, ANAC123, hydraulic pressure decreasing.",
+    "icaoModelAnswer": "After securing the aircraft, I would declare Pan Pan Pan Pan, state my callsign, report hydraulic pressure decreasing or hydraulic failure, state my position, and request vectors to the nearest suitable airport. I would upgrade to Mayday if control becomes seriously degraded. I would provide souls on board and fuel remaining when ATC requests.",
+    "memoryTrick": "**FLOW** — **F**ly the aircraft first, **L**ook at pressure and control forces, **O**pen with Pan Pan or Mayday, **W**ork toward the nearest suitable airport.",
+    "operationalMeaning": "When Hydraulic Failure occurs, the pilot should:\n\nHydraulic Failure reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "clear traffic from the aircraft's route",
+      "provide vectors to the nearest suitable airport",
+      "coordinate priority landing and emergency services",
+      "request souls on board and fuel remaining",
+      "alert airport authorities and ground emergency crews"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger Pan Pan, say nature of hydraulic problem and souls on board.",
+      "Approach: ANAC123, turn left heading two seven zero, descend at your discretion, Navegantes three zero miles.",
+      "Tower: ANAC123, all traffic cleared from your approach, runway two nine cleared to land.",
+      "Tower: ANAC123, emergency services standing by, wind two seven zero at one two knots.",
+      "Departure: ANAC123, radar contact, say fuel remaining and intentions."
+    ],
+    "pilotReadbacks": [
+      "Pan Pan Pan Pan, Navegantes Approach, ANAC123, hydraulic pressure decreasing.",
+      "Mayday Mayday Mayday, Curitiba Tower, ANAC123, hydraulic fluid leak, request immediate landing.",
+      "Pan Pan Pan Pan, ANAC123, hydraulic failure, request vectors to Florianópolis.",
+      "ANAC123, hydraulic failure, souls on board four, fuel remaining forty-five minutes.",
+      "Tower, ANAC123, hydraulic pressure decreasing, unable to confirm full control authority, request priority landing."
+    ],
+    "brazilianMistakes": "- ❌ Declaring Mayday for a minor pressure fluctuation without assessing severity.  \n  ✔ Use Pan Pan for urgency; reserve Mayday for distress when safe flight is in doubt.\n\n- ❌ Saying \"perdeu pressão hidráulica\" instead of standard English.  \n  ✔ Use hydraulic failure or hydraulic pressure decreasing.\n\n- ❌ Forgetting to state intentions after the urgency declaration.  \n  ✔ State request for vectors, immediate landing, or nearest suitable airport.\n\n- ❌ Omitting souls on board and fuel when ATC asks.  \n  ✔ Provide souls on board and fuel remaining promptly.",
+    "pronunciationCoaching": "**Target Phrase:** Pan Pan Pan Pan, Hydraulic Pressure Decreasing\n\n**Pronunciation:** pan pan pan pan, hy-DRAW-lik PRESH-er dee-KREE-sing\n\n**Word Stress**\n\n- Hydraulic → hy-DRAW-lik\n- Pressure → PRESH-er\n- Decreasing → dee-KREE-sing\n\nPractice:\n\nPan... Pan... Pan... Pan...\n\nTogether:\n\nPan Pan Pan Pan, Navegantes Approach, ANAC123, hydraulic pressure decreasing.\n\nSpeak slowly and clearly — controllers need every word.",
+    "relatedConcepts": [
+      "Pan Pan Urgency Call",
+      "Mayday Distress Call",
+      "Precautionary Landing",
+      "Emergency Landing",
+      "Priority Landing",
+      "Aircraft Systems Failure"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Emergency Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA JO 7110.65 — Emergency and Priority Handling",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Hydraulic System",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Hydraulic Problems",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0047",
+    "id": "0047",
+    "displayTerm": "Electrical Failure",
+    "term": "electrical failure",
+    "slug": "electrical-failure",
+    "category": "Aircraft Systems",
+    "meaningEn": "Electrical Failure is the partial or complete loss of aircraft electrical power, requiring alternate power sources and possible emergency procedures.",
+    "meaningPt": "Falha elétrica.\n\nPerda parcial ou total da energia elétrica da aeronave, exigindo fontes alternativas de energia.",
+    "whenUsed": "When Electrical Failure occurs, the pilot should:",
+    "example": "Tower: ANAC123, roger Mayday, say souls on board and fuel remaining.",
+    "sayPhrase": "Mayday Mayday Mayday, Santos Dumont Tower, ANAC123, total electrical failure.",
+    "icaoQuestion": "What would you tell ATC after a total electrical failure on approach?",
+    "icaoSpeakText": "After securing the aircraft and switching to battery power, I would declare Mayday Mayday Mayday, state my callsign, report total electrical failure, state that I am switching to battery power or flying partial panel, and request immediate landing. I would provide souls on board and fuel remaining when ATC requests.",
+    "missionBrief": "Today's lesson covers one of the most disruptive aircraft systems emergencies.\n\nElectrical Failure means the aircraft has lost part or all of its electrical power — affecting avionics, instruments, lighting, and communication equipment.\n\nIn the H130, electrical power supports navigation, radios, and critical instruments.\n\nA total electrical failure can leave you on battery power with limited capability.\n\nYou must aviate first, switch to alternate power if available, then communicate.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Electrical failure can happen suddenly or gradually.\n\nThe sequence every professional pilot learns:\n\nAviate. Alternate. Communicate.\n\nDo not panic when instruments go dark.\n\nKnow your battery limitations.\n\nKnow your partial panel skills.\n\nBrazilian pilots sometimes say \"falta de energia\" or \"painel apagou\" on frequency.\n\nUse total electrical failure or switching to battery power — ICAO standard terms.\n\nFor total failure affecting safe flight — Mayday.\n\nFor partial failure with continued capability — Pan Pan.\n\nIn the H130, battery time is limited.\n\nMake your radio call count — state the problem once, clearly, with your intentions.",
+    "operationalContext": "You are on approach to Santos Dumont in your H130 at one thousand two hundred feet.\n\nAll electrical busses fail simultaneously.\n\nAvionics go dark.\n\nYou switch to battery power and regain partial panel operation.\n\nWhen stable, you transmit:\n\nMayday Mayday Mayday, Santos Dumont Tower, ANAC123, total electrical failure, switching to battery power, request immediate landing.\n\nTower clears all traffic and coordinates emergency services.\n\nYou complete a visual approach and report safe on the ground.",
+    "sayItCoach": "Mayday Mayday Mayday, Santos Dumont Tower, ANAC123, total electrical failure.",
+    "icaoModelAnswer": "After securing the aircraft and switching to battery power, I would declare Mayday Mayday Mayday, state my callsign, report total electrical failure, state that I am switching to battery power or flying partial panel, and request immediate landing. I would provide souls on board and fuel remaining when ATC requests.",
+    "memoryTrick": "**POWER** — **P**ilot flies first, **O**pen alternate source, **W**arn ATC with Mayday or Pan Pan, **E**valuate remaining equipment, **R**equest landing or vectors.",
+    "operationalMeaning": "When Electrical Failure occurs, the pilot should:\n\nElectrical Failure reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "clear traffic from the aircraft's route",
+      "provide vectors using whatever communication remains",
+      "coordinate priority landing and emergency services",
+      "request souls on board and fuel remaining",
+      "alert other aircraft and airport authorities"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, roger Mayday, say souls on board and fuel remaining.",
+      "Tower: ANAC123, runway zero two cleared to land, wind zero three zero at one zero knots.",
+      "Approach: ANAC123, turn right heading three six zero, descend two thousand, say equipment operational.",
+      "Tower: ANAC123, emergency services standing by.",
+      "Departure: ANAC123, radar contact, say intentions and souls on board."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, Santos Dumont Tower, ANAC123, total electrical failure.",
+      "ANAC123, switching to battery power, flying partial panel.",
+      "Pan Pan Pan Pan, Guarulhos Approach, ANAC123, partial electrical failure, request vectors to Guarulhos.",
+      "ANAC123, total electrical failure, souls on board two, fuel remaining thirty minutes.",
+      "Tower, ANAC123, electrical failure, unable to confirm all navigation equipment, request immediate landing."
+    ],
+    "brazilianMistakes": "- ❌ Saying \"painel apagou\" instead of standard English.  \n  ✔ Use total electrical failure or partial electrical failure.\n\n- ❌ Forgetting to mention switching to battery power.  \n  ✔ Report switching to battery power — it tells ATC your capability.\n\n- ❌ Declaring Mayday for a minor generator fluctuation.  \n  ✔ Assess severity — Pan Pan for urgency, Mayday for distress.\n\n- ❌ Omitting souls on board and fuel when ATC asks.  \n  ✔ Provide souls on board and fuel remaining promptly.",
+    "pronunciationCoaching": "**Target Phrase:** Mayday Mayday Mayday, Total Electrical Failure\n\n**Pronunciation:** MAY-day MAY-day MAY-day, TOH-tul ee-LEK-tri-kul FAIL-yur\n\n**Word Stress**\n\n- Total → TOH-tul\n- Electrical → ee-LEK-tri-kul\n- Failure → FAIL-yur\n\nPractice:\n\nMayday... Mayday... Mayday...\n\nTogether:\n\nMayday Mayday Mayday, Santos Dumont Tower, ANAC123, total electrical failure.\n\nSpeak slowly and clearly — controllers need every word.",
+    "relatedConcepts": [
+      "Mayday Distress Call",
+      "Pan Pan Urgency Call",
+      "Partial Panel",
+      "Battery Power",
+      "Radio Failure",
+      "Lost Communications",
+      "Precautionary Landing"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Emergency Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA JO 7110.65 — Emergency and Priority Handling",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Electrical System",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Electrical Problems",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0048",
+    "id": "0048",
+    "displayTerm": "GPS Inoperative",
+    "term": "gps inoperative",
+    "slug": "gps-inoperative",
+    "category": "Aircraft Systems",
+    "meaningEn": "GPS Inoperative is the loss of GPS navigation capability, requiring the pilot to resume conventional navigation methods.",
+    "meaningPt": "GPS inoperante.\n\nPerda da capacidade de navegação por GPS, exigindo métodos de navegação convencionais.",
+    "whenUsed": "When GPS Inoperative occurs, the pilot should:",
+    "example": "Approach: ANAC123, roger GPS inoperative, turn left heading two four zero, vectors to Florianópolis.",
+    "sayPhrase": "Florianópolis Approach, ANAC123, GPS navigation lost, resuming conventional navigation.",
+    "icaoQuestion": "What would you tell ATC if your GPS stopped working during en route flight?",
+    "icaoSpeakText": "I would inform ATC clearly: GPS inoperative or GPS navigation lost, state my callsign and position, and report that I am resuming conventional navigation. I would request vectors if needed or state my intentions to proceed using alternate navaids. I would not declare Mayday unless safe navigation is seriously compromised.",
+    "missionBrief": "Today's lesson covers a navigation systems failure every modern pilot must handle.\n\nGPS Inoperative means the Global Positioning System receiver or navigation function is no longer providing reliable position data.\n\nIn the H130, GPS is often the primary navigation source for VFR and IFR operations in Brazil.\n\nWhen GPS fails, you must revert to conventional navigation — VOR, NDB, pilotage, or dead reckoning.\n\nYou do not always need Mayday or Pan Pan — but you must inform ATC clearly.\n\nThis lesson prepares you for ICAO Part 2 phraseology and navigation communication.",
+    "captainTeaching": "GPS failure is common in the ICAO exam and in real operations.\n\nThe sequence every professional pilot learns:\n\nAviate. Navigate. Communicate.\n\nDo not declare Mayday because the GPS screen went blank.\n\nThat is not distress — it is a navigation problem.\n\nInform ATC clearly.\n\nRequest vectors if you need them.\n\nBrazilian pilots sometimes say \"GPS caiu\" or \"perdeu o GPS\" on frequency.\n\nUse GPS inoperative or GPS navigation lost — ICAO standard terms.\n\nIn the H130 over Brazilian terrain, know your VOR stations and carry current charts.\n\nGPS is a tool — not your only skill.\n\nTrain conventional navigation so a blank screen does not blank your confidence.",
+    "operationalContext": "You are en route from Porto Alegre to Florianópolis in your H130 at three thousand five hundred feet.\n\nThe GPS display goes blank and does not recover after reset.\n\nYou identify your position using VOR and pilotage.\n\nYou transmit:\n\nFlorianópolis Approach, ANAC123, GPS navigation lost, resuming conventional navigation, request vectors to Florianópolis.\n\nApproach provides radar vectors while you rejoin the published route.\n\nYou complete the approach and land without incident.",
+    "sayItCoach": "ANAC123, GPS navigation lost, resuming conventional navigation.",
+    "icaoModelAnswer": "I would inform ATC clearly: GPS inoperative or GPS navigation lost, state my callsign and position, and report that I am resuming conventional navigation. I would request vectors if needed or state my intentions to proceed using alternate navaids. I would not declare Mayday unless safe navigation is seriously compromised.",
+    "memoryTrick": "**NAV** — **N**otify ATC, **A**lternate source, **V**ectors if needed.",
+    "operationalMeaning": "When GPS Inoperative occurs, the pilot should:\n\nGPS Inoperative reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "provide radar vectors when available",
+      "issue conventional navigation clearances",
+      "coordinate with adjacent sectors for handoff",
+      "advise of available navaids in the area",
+      "monitor aircraft position when pilot navigation is degraded"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger GPS inoperative, turn left heading two four zero, vectors to Florianópolis.",
+      "Approach: ANAC123, radar contact, say position and intentions.",
+      "Tower: ANAC123, GPS unavailable noted, continue approach runway three zero.",
+      "Departure: ANAC123, resume own navigation when able, direct POA.",
+      "Approach: ANAC123, electronic navigation capability reduced, say alternate navaids available."
+    ],
+    "pilotReadbacks": [
+      "Florianópolis Approach, ANAC123, GPS navigation lost, resuming conventional navigation.",
+      "ANAC123, GPS inoperative, request vectors to nearest suitable airport.",
+      "ANAC123, electronic nav systems inoperative, proceeding VFR using pilotage.",
+      "Approach, ANAC123, GPS unavailable, position ten miles south of Navegantes, request direct.",
+      "ANAC123, resuming conventional navigation, GPS unavailable, maintaining three thousand five hundred."
+    ],
+    "brazilianMistakes": "- ❌ Saying \"GPS caiu\" or \"perdeu sinal\" instead of standard English.  \n  ✔ Use GPS inoperative or GPS navigation lost.\n\n- ❌ Declaring Mayday or Pan Pan for GPS failure alone.  \n  ✔ Inform ATC normally — urgency only if navigation safety is seriously affected.\n\n- ❌ Not informing ATC that navigation capability is reduced.  \n  ✔ Report GPS inoperative promptly so ATC can assist.\n\n- ❌ Continuing on assigned RNAV route without informing ATC.  \n  ✔ Request conventional clearance or vectors when GPS is unavailable.",
+    "pronunciationCoaching": "**Target Phrase:** GPS Inoperative, Resuming Conventional Navigation\n\n**Pronunciation:** jee-pee-ess in-AH-pruh-tiv, ree-ZOOM-ing kun-VEN-shuh-nul nav-ih-GAY-shun\n\n**Word Stress**\n\n- Inoperative → in-AH-pruh-tiv\n- Conventional → kun-VEN-shuh-nul\n- Navigation → nav-ih-GAY-shun\n\nPractice:\n\nGPS... inoperative...\n\nTogether:\n\nANAC123, GPS navigation lost, resuming conventional navigation.\n\nSpeak slowly and clearly — controllers need every word.",
+    "relatedConcepts": [
+      "Resume Own Navigation",
+      "Electronic Navigation Capability",
+      "Radar Vectors",
+      "Conventional Navigation",
+      "FMS Failure",
+      "Lost Communications"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Navigation Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Navigation Aids",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA JO 7110.65 — Navigation Services",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — GPS",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — GNSS Failure",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0049",
+    "id": "0049",
+    "displayTerm": "Landing Gear Malfunction",
+    "term": "landing gear malfunction",
+    "slug": "landing-gear-malfunction",
+    "category": "Aircraft Systems",
+    "meaningEn": "Landing Gear Malfunction is any abnormal condition of the landing gear or skid system that affects safe landing configuration.",
+    "meaningPt": "Falha no trem de pouso.\n\nCondição anormal do trem de pouso ou sistema de patins que afeta a configuração segura para pouso.",
+    "whenUsed": "When Landing Gear Malfunction occurs, the pilot should:",
+    "example": "Tower: ANAC123, roger Pan Pan, cleared low pass runway zero nine left for gear inspection.",
+    "sayPhrase": "Pan Pan Pan Pan, Guarulhos Tower, ANAC123, landing gear unsafe.",
+    "icaoQuestion": "What would you tell ATC if you received a landing gear unsafe indication on approach?",
+    "icaoSpeakText": "After maintaining aircraft control and running the emergency checklist, I would declare Pan Pan Pan Pan, state my callsign, report landing gear unsafe or main gear is stuck, and request a low pass for gear inspection or vectors to hold. I would provide souls on board and fuel remaining when ATC requests. I would upgrade to Mayday if a safe landing becomes seriously doubtful.",
+    "missionBrief": "Today's lesson covers a landing gear malfunction — adapted for helicopter operations.\n\nLanding Gear Malfunction means the landing gear or skid system does not indicate safe configuration for landing.\n\nMost H130 helicopters use fixed skids — but retractable-gear helicopters and ICAO exams still require this phraseology.\n\nYou may also report skid damage, gear unsafe indications, or landing gear stuck.\n\nYou must assess the situation, prepare for landing, then communicate with the correct urgency call.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Landing gear problems create time pressure.\n\nThe sequence every professional pilot learns:\n\nAviate. Checklist. Communicate.\n\nDo not rush the landing.\n\nRun the procedure.\n\nRequest a low pass if you need visual confirmation.\n\nBrazilian pilots sometimes say \"trem não desceu\" or \"pouso inseguro\" on frequency.\n\nUse landing gear unsafe or main gear is stuck — ICAO standard terms.\n\nIn the H130 with fixed skids, you may never face retractable gear failure.\n\nBut the ICAO exam will test this phraseology.\n\nKnow the words.\n\nKnow when Pan Pan becomes Mayday.\n\nA stuck gear is urgency.\n\nA collapsed gear on rollout is distress.",
+    "operationalContext": "You are on final approach to Guarulhos in a retractable-gear helicopter on a training flight, callsign ANAC123.\n\nThe gear unsafe warning illuminates and the main gear does not indicate down and locked.\n\nYou go around and enter the hold while running the emergency checklist.\n\nYou transmit:\n\nPan Pan Pan Pan, Guarulhos Tower, ANAC123, landing gear unsafe, request low pass for gear inspection.\n\nTower coordinates a low pass and emergency services.\n\nAfter confirming gear down, you land safely.",
+    "sayItCoach": "Pan Pan Pan Pan, Guarulhos Tower, ANAC123, landing gear unsafe.",
+    "icaoModelAnswer": "After maintaining aircraft control and running the emergency checklist, I would declare Pan Pan Pan Pan, state my callsign, report landing gear unsafe or main gear is stuck, and request a low pass for gear inspection or vectors to hold. I would provide souls on board and fuel remaining when ATC requests. I would upgrade to Mayday if a safe landing becomes seriously doubtful.",
+    "memoryTrick": "**GEAR** — **G**o around if unsafe, **E**xecute checklist, **A**nnounce Pan Pan to ATC, **R**equest low pass or emergency landing.",
+    "operationalMeaning": "When Landing Gear Malfunction occurs, the pilot should:\n\nLanding Gear Malfunction reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "clear the runway for inspection or emergency landing",
+      "coordinate low pass for visual gear check",
+      "alert emergency services and airport fire rescue",
+      "request souls on board and fuel remaining",
+      "clear traffic from the approach path"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, roger Pan Pan, cleared low pass runway zero nine left for gear inspection.",
+      "Tower: ANAC123, gear appears down, cleared to land runway zero nine left.",
+      "Approach: ANAC123, say souls on board and fuel remaining.",
+      "Tower: ANAC123, emergency services standing by, wind two seven zero at one four knots.",
+      "Tower: ANAC123, all traffic cleared from your approach, say intentions."
+    ],
+    "pilotReadbacks": [
+      "Pan Pan Pan Pan, Guarulhos Tower, ANAC123, landing gear unsafe.",
+      "Tower, ANAC123, main gear is stuck, request low pass for gear inspection.",
+      "Mayday Mayday Mayday, Congonhas Tower, ANAC123, left main gear issue, request immediate landing.",
+      "ANAC123, landing gear unsafe indication, souls on board three, fuel remaining one hour.",
+      "Pan Pan Pan Pan, ANAC123, preparing for precautionary landing, gear unsafe."
+    ],
+    "brazilianMistakes": "- ❌ Saying \"trem travado\" instead of standard English.  \n  ✔ Use landing gear unsafe or main gear is stuck.\n\n- ❌ Attempting to land without informing ATC.  \n  ✔ Declare Pan Pan and request low pass or emergency services.\n\n- ❌ Declaring Mayday for a simple unsafe indication before assessment.  \n  ✔ Use Pan Pan for urgency; Mayday when safe landing is in serious doubt.\n\n- ❌ Forgetting to request low pass for visual gear inspection.  \n  ✔ Request low pass — ATC can confirm gear position from the ground.",
+    "pronunciationCoaching": "**Target Phrase:** Pan Pan Pan Pan, Landing Gear Unsafe\n\n**Pronunciation:** pan pan pan pan, LAND-ing geer un-SAYF\n\n**Word Stress**\n\n- Landing → LAND-ing\n- Gear → geer\n- Unsafe → un-SAYF\n\nPractice:\n\nPan... Pan... Pan... Pan...\n\nTogether:\n\nPan Pan Pan Pan, Guarulhos Tower, ANAC123, landing gear unsafe.\n\nSpeak slowly and clearly — controllers need every word.",
+    "relatedConcepts": [
+      "Pan Pan Urgency Call",
+      "Mayday Distress Call",
+      "Precautionary Landing",
+      "Emergency Landing",
+      "Priority Landing",
+      "Low Pass"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Emergency Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA JO 7110.65 — Emergency and Priority Handling",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Landing Gear",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Landing Gear Problems",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0050",
+    "id": "0050",
+    "displayTerm": "Cabin Depressurization",
+    "term": "cabin depressurization",
+    "slug": "cabin-depressurization",
+    "category": "Emergency",
+    "meaningEn": "Cabin Depressurization is the loss of cabin pressure, exposing occupants to altitude-related hypoxia and requiring immediate descent.",
+    "meaningPt": "Despressurização da cabine.\n\nPerda de pressão na cabine, expondo ocupantes à hipóxia por altitude.",
+    "whenUsed": "When Cabin Depressurization occurs, the pilot should:",
+    "example": "Control: ANAC123, roger Mayday, cleared immediate descent, say souls on board.",
+    "sayPhrase": "Mayday Mayday Mayday, Brasília Control, ANAC123, rapid decompression.",
+    "icaoQuestion": "What would you tell ATC immediately after a rapid decompression?",
+    "icaoSpeakText": "I would don oxygen immediately, initiate emergency descent, and declare Mayday Mayday Mayday. I would state my callsign, report rapid decompression, state that I am descending to ten thousand feet, and request vectors to the nearest suitable airport. I would provide souls on board when ATC requests.",
+    "missionBrief": "Today's lesson covers cabin depressurization — a classic ICAO exam topic.\n\nCabin Depressurization means the pressurized cabin loses altitude equivalent pressure — rapidly or gradually.\n\nPressurized helicopters are rare, but ICAO Part 2 and Part 3 test this phraseology extensively.\n\nYou must don oxygen, descend immediately, and declare the correct urgency call.\n\nRapid decompression is distress — Mayday.\n\nGradual decompression may be urgency — Pan Pan.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Depressurization is a race against hypoxia.\n\nThe sequence every professional pilot learns:\n\nOxygen. Descend. Communicate.\n\nDo not negotiate altitude with ATC before descending.\n\nMayday first.\n\nDescend immediately.\n\nThen work the details.\n\nBrazilian pilots sometimes say \"perdeu pressurização\" or \"cabine despressurizou\" on frequency.\n\nUse rapid decompression or sudden decompression — ICAO standard terms.\n\nIn the H130, you are usually unpressurized.\n\nBut the ICAO exam will test this.\n\nKnow the words.\n\nKnow the difference between rapid and gradual.\n\nRapid — Mayday.\n\nGradual — Pan Pan.\n\nTrain the oxygen reflex before you train the radio call.",
+    "operationalContext": "You are simulating a pressurized helicopter exam scenario, callsign ANAC123, cruising at flight level two five zero over Brasília.\n\nThe cabin altitude warning sounds and masks deploy.\n\nYou don oxygen and initiate emergency descent.\n\nYou transmit:\n\nMayday Mayday Mayday, Brasília Control, ANAC123, rapid decompression, descending to ten thousand feet, request vectors to Brasília.\n\nControl clears all traffic and coordinates medical services on landing.\n\nYou level at ten thousand feet and complete a priority approach.",
+    "sayItCoach": "Mayday Mayday Mayday, Brasília Control, ANAC123, rapid decompression.",
+    "icaoModelAnswer": "I would don oxygen immediately, initiate emergency descent, and declare Mayday Mayday Mayday. I would state my callsign, report rapid decompression, state that I am descending to ten thousand feet, and request vectors to the nearest suitable airport. I would provide souls on board when ATC requests.",
+    "memoryTrick": "**DESCEND** — **D**on oxygen, **E**mergency descent, **S**ay Mayday, **C**lear altitude, **E**xecute vectors, **N**earest airport, **D**eliver souls on board count.",
+    "operationalMeaning": "When Cabin Depressurization occurs, the pilot should:\n\nCabin Depressurization reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "clear all traffic from the aircraft's altitude and route",
+      "approve immediate descent without delay",
+      "coordinate priority landing and medical services",
+      "request souls on board and nature of injuries",
+      "alert other aircraft in the area"
+    ],
+    "atcPhraseology": [
+      "Control: ANAC123, roger Mayday, cleared immediate descent, say souls on board.",
+      "Control: ANAC123, turn left heading one eight zero, descend unrestricted, Brasília in sight.",
+      "Tower: ANAC123, runway one one cleared to land, emergency services standing by.",
+      "Approach: ANAC123, all traffic cleared from your altitude, say medical assistance required.",
+      "Control: ANAC123, confirm you have donned oxygen and are descending."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, Brasília Control, ANAC123, rapid decompression.",
+      "Pan Pan Pan Pan, ANAC123, sudden decompression, requesting lower altitude.",
+      "ANAC123, requesting lower altitude, pressurization issue, descending ten thousand.",
+      "Mayday Mayday Mayday, ANAC123, rapid decompression, souls on board six, request vectors Brasília.",
+      "ANAC123, donning oxygen, emergency descent, due to pressurization problem."
+    ],
+    "brazilianMistakes": "- ❌ Requesting lower altitude before donning oxygen.  \n  ✔ Don oxygen first — hypoxia impairs judgment within seconds.\n\n- ❌ Saying \"cabine perdeu pressão\" instead of standard English.  \n  ✔ Use rapid decompression or sudden decompression.\n\n- ❌ Using Pan Pan for rapid decompression.  \n  ✔ Rapid decompression is distress — declare Mayday.\n\n- ❌ Delaying descent to complete radio calls.  \n  ✔ Descend first — communicate while descending if able.",
+    "pronunciationCoaching": "**Target Phrase:** Mayday Mayday Mayday, Rapid Decompression\n\n**Pronunciation:** MAY-day MAY-day MAY-day, RAP-id dee-kom-presh-UN\n\n**Word Stress**\n\n- Rapid → RAP-id\n- Decompression → dee-kom-presh-UN\n\nPractice:\n\nMayday... Mayday... Mayday...\n\nTogether:\n\nMayday Mayday Mayday, Brasília Control, ANAC123, rapid decompression.\n\nSpeak slowly and clearly — controllers need every word.",
+    "relatedConcepts": [
+      "Mayday Distress Call",
+      "Pan Pan Urgency Call",
+      "Emergency Descent",
+      "Priority Landing",
+      "Medical Emergency",
+      "Smoke in the Cabin"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Emergency Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA JO 7110.65 — Emergency and Priority Handling",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Depressurization",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Loss of Cabin Pressurization",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0051",
+    "id": "0051",
+    "displayTerm": "Pilot Incapacitation",
+    "term": "pilot incapacitation",
+    "slug": "pilot-incapacitation",
+    "category": "Emergency",
+    "meaningEn": "Pilot Incapacitation is the inability of a flight crew member to continue performing their duties due to medical or other emergency.",
+    "meaningPt": "Incapacitação do piloto.\n\nIncapacidade de um membro da tripulação de voo de continuar exercendo suas funções.",
+    "whenUsed": "When Pilot Incapacitation occurs, the pilot should:",
+    "example": "Approach: ANAC123, roger Mayday, say souls on board and nature of incapacitation.",
+    "sayPhrase": "Mayday Mayday Mayday, Navegantes Approach, ANAC123, captain incapacitated, first officer assuming control.",
+    "icaoQuestion": "What would you tell ATC if the captain became incapacitated during flight?",
+    "icaoSpeakText": "After taking full control of the aircraft, I would declare Mayday Mayday Mayday, state my callsign, report captain incapacitated, state that the first officer is assuming control, and request vectors to the nearest suitable airport. I would request medical assistance on landing and provide souls on board when ATC asks.",
+    "missionBrief": "Today's lesson covers one of the most serious crew emergencies.\n\nPilot Incapacitation means a flight crew member becomes unable to perform their duties — due to medical emergency, unconsciousness, or sudden illness.\n\nIn a single-pilot H130 operation, this is immediately critical.\n\nIn two-crew operations, the remaining pilot must assume full control and declare the emergency.\n\nYou must fly the aircraft first, then communicate clearly with Mayday.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Pilot incapacitation is rare but tested in every ICAO exam.\n\nThe sequence every professional pilot learns:\n\nFly. Take control. Communicate.\n\nDo not diagnose on frequency.\n\nDo not delay the Mayday to check vitals.\n\nTake the controls.\n\nDeclare Mayday.\n\nRequest vectors and medical assistance.\n\nBrazilian pilots sometimes say \"piloto passou mal\" or \"comandante desmaiou\" on frequency.\n\nUse pilot incapacitated or captain incapacitated — ICAO standard terms.\n\nState who has control: first officer assuming control.\n\nIn single-pilot H130 operations, your survival depends on training and autopilot if equipped.\n\nIn two-crew operations, the surviving pilot must act decisively.\n\nThe radio call brings help — but aircraft control saves lives.",
+    "operationalContext": "You are the first officer on a two-crew helicopter training flight, callsign ANAC123, approaching Navegantes.\n\nThe captain slumps forward and does not respond.\n\nYou take full control of the aircraft.\n\nYou transmit:\n\nMayday Mayday Mayday, Navegantes Approach, ANAC123, captain incapacitated, first officer assuming control, request vectors to Navegantes.\n\nApproach clears all traffic and coordinates medical services.\n\nYou complete a priority landing and report safe on the ground.",
+    "sayItCoach": "Mayday Mayday Mayday, Navegantes Approach, ANAC123, captain incapacitated, first officer assuming control.",
+    "icaoModelAnswer": "After taking full control of the aircraft, I would declare Mayday Mayday Mayday, state my callsign, report captain incapacitated, state that the first officer is assuming control, and request vectors to the nearest suitable airport. I would request medical assistance on landing and provide souls on board when ATC asks.",
+    "memoryTrick": "**CREW** — **C**ontrol the aircraft, **R**eport Mayday, **E**xplain who is flying, **W**ork vectors to nearest airport.",
+    "operationalMeaning": "When Pilot Incapacitation occurs, the pilot should:\n\nPilot Incapacitation reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "clear all traffic from the aircraft's route",
+      "provide vectors to the nearest suitable airport",
+      "coordinate priority landing and medical services",
+      "request souls on board and nature of emergency",
+      "alert airport authorities and ambulance services"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger Mayday, say souls on board and nature of incapacitation.",
+      "Approach: ANAC123, turn right heading zero nine zero, descend at your discretion, Navegantes in sight.",
+      "Tower: ANAC123, runway two nine cleared to land, medical services standing by.",
+      "Tower: ANAC123, emergency services alerted, wind two four zero at one zero knots.",
+      "Control: ANAC123, all traffic cleared from your approach, say assistance required on ground."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, Navegantes Approach, ANAC123, captain incapacitated, first officer assuming control.",
+      "Mayday Mayday Mayday, ANAC123, declaring emergency, pilot medical emergency.",
+      "ANAC123, pilot incapacitated, souls on board three, request medical assistance on landing.",
+      "Mayday Mayday Mayday, Congonhas Tower, ANAC123, pilot incapacitated, request immediate landing.",
+      "ANAC123, captain incapacitated, first officer assuming control, request vectors to nearest suitable airport."
+    ],
+    "brazilianMistakes": "- ❌ Saying \"piloto passou mal\" instead of standard English.  \n  ✔ Use pilot incapacitated or captain incapacitated.\n\n- ❌ Forgetting to state who has control of the aircraft.  \n  ✔ Report first officer assuming control or pilot flying identity.\n\n- ❌ Delaying Mayday to assess the medical condition.  \n  ✔ Take control and declare Mayday immediately.\n\n- ❌ Not requesting medical assistance on landing.  \n  ✔ Request medical assistance — ATC coordinates ambulances.",
+    "pronunciationCoaching": "**Target Phrase:** Mayday Mayday Mayday, Captain Incapacitated\n\n**Pronunciation:** MAY-day MAY-day MAY-day, KAP-tin in-kuh-PASS-ih-tay-ted\n\n**Word Stress**\n\n- Captain → KAP-tin\n- Incapacitated → in-kuh-PASS-ih-tay-ted\n- Assuming → uh-SOOM-ing\n\nPractice:\n\nMayday... Mayday... Mayday...\n\nTogether:\n\nMayday Mayday Mayday, Navegantes Approach, ANAC123, captain incapacitated, first officer assuming control.\n\nSpeak slowly and clearly — controllers need every word.",
+    "relatedConcepts": [
+      "Mayday Distress Call",
+      "Medical Emergency",
+      "Priority Landing",
+      "Emergency Landing",
+      "Passenger Unconscious",
+      "Heart Attack Onboard"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Emergency Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA JO 7110.65 — Emergency and Priority Handling",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Pilot Incapacitation",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Pilot Incapacitation",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0052",
+    "id": "0052",
+    "displayTerm": "Mayday",
+    "term": "mayday",
+    "slug": "mayday",
+    "category": "Radio Communication",
+    "meaningEn": "Mayday is the radiotelephony distress signal indicating grave and imminent danger requiring immediate assistance.",
+    "meaningPt": "Mayday (sinal de socorro).\n\nSinal internacional de perigo grave e iminente que requer assistência imediata.",
+    "whenUsed": "When Mayday is appropriate, the pilot should:",
+    "example": "Tower: ANAC123, roger Mayday, say souls on board and fuel remaining.",
+    "sayPhrase": "Mayday Mayday Mayday, Florianópolis Tower, ANAC123, engine failure, autorotating.",
+    "icaoQuestion": "When should you declare Mayday instead of Pan Pan?",
+    "icaoSpeakText": "I would declare Mayday when the aircraft or occupants face grave and imminent danger and require immediate assistance. Examples include engine failure, fire on board, rapid decompression, and pilot incapacitation. I would use Pan Pan when the situation is urgent but does not involve grave and imminent danger, such as low fuel state or partial system failure with continued safe flight.",
+    "missionBrief": "Today's lesson covers the most serious radio call in aviation.\n\nMayday is the international distress signal — used when an aircraft or occupants face grave and imminent danger and require immediate assistance.\n\nMayday overrides all other traffic.\n\nIt is not a general emergency word — it is reserved for distress only.\n\nYou must know when to use Mayday versus Pan Pan.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Mayday is the word that clears the sky.\n\nIt comes from the French m'aider — help me.\n\nSay it three times.\n\nNo variations.\n\nNo \"emergency\" instead of Mayday on international frequency.\n\nBrazilian pilots sometimes say \"emergência\" or \"socorro\" on frequency.\n\nUse Mayday Mayday Mayday — the ICAO standard distress signal.\n\nThe distinction matters:\n\nMayday — distress — grave and imminent danger.\n\nPan Pan — urgency — needs assistance but not immediate grave danger.\n\nWhen in doubt after securing the aircraft, lean toward Mayday if safe flight is seriously in doubt.\n\nControllers are trained to respond instantly to Mayday.\n\nGive them clear information: nature, intentions, position, souls on board.",
+    "operationalContext": "You are departing Florianópolis in your H130, callsign ANAC123, at four hundred feet when the engine fails completely.\n\nYou enter autorotation and stabilize the aircraft.\n\nYou transmit:\n\nMayday Mayday Mayday, Florianópolis Tower, ANAC123, engine failure, autorotating, one mile south of the airport.\n\nTower ceases all other traffic and coordinates emergency services.\n\nYou complete a controlled autorotation landing and report safe on the ground.",
+    "sayItCoach": "Mayday Mayday Mayday, Florianópolis Tower, ANAC123, engine failure.",
+    "icaoModelAnswer": "I would declare Mayday when the aircraft or occupants face grave and imminent danger and require immediate assistance. Examples include engine failure, fire on board, rapid decompression, and pilot incapacitation. I would use Pan Pan when the situation is urgent but does not involve grave and imminent danger, such as low fuel state or partial system failure with continued safe flight.",
+    "memoryTrick": "**SOS** — **S**ay Mayday three times, **O**verride all traffic, **S**tate nature and intentions.",
+    "operationalMeaning": "When Mayday is appropriate, the pilot should:\n\nMayday is used for distress situations including:",
+    "whyAtcUsesIt": [
+      "cease all non-emergency transmissions on the frequency",
+      "clear all traffic from the distressed aircraft's route",
+      "provide maximum assistance without delay",
+      "coordinate emergency services and priority landing",
+      "request souls on board, fuel remaining, and nature of emergency"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, roger Mayday, say souls on board and fuel remaining.",
+      "Tower: ANAC123, all traffic cleared from your approach, runway three zero cleared to land.",
+      "Approach: ANAC123, turn left heading two seven zero, descend at your discretion.",
+      "Tower: ANAC123, emergency services standing by.",
+      "Control: ANAC123, Mayday acknowledged, say nature of distress and intentions."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, Florianópolis Tower, ANAC123, engine failure, autorotating.",
+      "Mayday Mayday Mayday, ANAC123, complete loss of power, request immediate return.",
+      "Mayday Mayday Mayday, Navegantes Approach, ANAC123, hydraulic fluid leak.",
+      "Mayday Mayday Mayday, ANAC123, total electrical failure, request vectors to Congonhas.",
+      "Mayday Mayday Mayday, ANAC123, captain incapacitated, first officer assuming control."
+    ],
+    "brazilianMistakes": "- ❌ Saying \"emergência\" or \"socorro\" instead of Mayday.  \n  ✔ Use Mayday Mayday Mayday — the international distress signal.\n\n- ❌ Using Mayday for non-distress situations like low fuel advisory.  \n  ✔ Reserve Mayday for distress; use Pan Pan for urgency.\n\n- ❌ Saying Mayday only once instead of three times.  \n  ✔ Transmit Mayday three times at the start of the message.\n\n- ❌ Declaring Mayday before securing the aircraft.  \n  ✔ Aviate first — then declare Mayday from a stable aircraft.",
+    "pronunciationCoaching": "**Target Phrase:** Mayday Mayday Mayday\n\n**Pronunciation:** MAY-day MAY-day MAY-day\n\n**Word Stress**\n\n- Mayday → may-DAY (say three times, clearly and distinctly)\n\nPractice:\n\nMayday...\n\nMayday...\n\nMayday...\n\nTogether:\n\nMayday Mayday Mayday, Florianópolis Tower, ANAC123, engine failure.\n\nSpeak slowly and clearly — this word must be unmistakable.",
+    "relatedConcepts": [
+      "Pan Pan Urgency Call",
+      "Engine Failure",
+      "Fire on Board",
+      "Pilot Incapacitation",
+      "Priority Landing",
+      "Emergency Landing",
+      "Distress versus Urgency"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Distress and Urgency Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA JO 7110.65 — Emergency and Priority Handling",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Mayday",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Distress Calls",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0053",
+    "id": "0053",
+    "displayTerm": "Pan Pan",
+    "term": "pan pan",
+    "slug": "pan-pan",
+    "category": "Radio Communication",
+    "meaningEn": "Pan Pan is the radiotelephony urgency signal indicating a condition that requires assistance but does not constitute grave and imminent danger.",
+    "meaningPt": "Pan Pan (sinal de urgência).\n\nSinal internacional de urgência indicando necessidade de assistência sem perigo grave e iminente.",
+    "whenUsed": "When Pan Pan is appropriate, the pilot should:",
+    "example": "Approach: ANAC123, roger Pan Pan, say souls on board and fuel remaining.",
+    "sayPhrase": "Pan Pan Pan Pan, Curitiba Approach, ANAC123, hydraulic pressure decreasing.",
+    "icaoQuestion": "When should you use Pan Pan instead of Mayday?",
+    "icaoSpeakText": "I would use Pan Pan when the aircraft needs assistance but does not face grave and imminent danger. Examples include low fuel state, hydraulic pressure decreasing, landing gear unsafe, and passenger medical emergency. I would use Mayday when safe flight is seriously in doubt, such as engine failure, fire on board, or rapid decompression. I would upgrade to Mayday if the urgency becomes distress.",
+    "missionBrief": "Today's lesson covers the urgency call every pilot must distinguish from Mayday.\n\nPan Pan is the international urgency signal — used when an aircraft needs assistance but does not face grave and imminent danger.\n\nPan Pan does not override Mayday traffic.\n\nIt requests priority handling without declaring full distress.\n\nYou must know when Pan Pan is correct and when Mayday is required.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Pan Pan is the urgency call — one step below Mayday.\n\nSay it three times.\n\nPan Pan Pan Pan.\n\nNot Pan once.\n\nNot \"urgency urgency.\"\n\nBrazilian pilots sometimes confuse Pan Pan with Mayday.\n\nKnow the difference:\n\nMayday — distress — grave and imminent danger — engine failure, fire, rapid decompression.\n\nPan Pan — urgency — needs help — low fuel, gear unsafe, slow hydraulic leak, passenger medical.\n\nWhen the situation worsens, upgrade to Mayday without hesitation.\n\nControllers treat Pan Pan seriously.\n\nGive clear information.\n\nState nature, intentions, position.\n\nDo not minimize a developing emergency — report early with Pan Pan rather than late with Mayday.",
+    "operationalContext": "You are en route to Curitiba in your H130, callsign ANAC123, at two thousand feet when you notice hydraulic pressure slowly decreasing.\n\nControl remains normal but the trend is concerning.\n\nYou transmit:\n\nPan Pan Pan Pan, Curitiba Approach, ANAC123, hydraulic pressure decreasing, request vectors to Curitiba.\n\nApproach provides priority handling and clears traffic from your approach.\n\nYou complete a precautionary landing and report safe on the ground.",
+    "sayItCoach": "Pan Pan Pan Pan, Curitiba Approach, ANAC123, hydraulic pressure decreasing.",
+    "icaoModelAnswer": "I would use Pan Pan when the aircraft needs assistance but does not face grave and imminent danger. Examples include low fuel state, hydraulic pressure decreasing, landing gear unsafe, and passenger medical emergency. I would use Mayday when safe flight is seriously in doubt, such as engine failure, fire on board, or rapid decompression. I would upgrade to Mayday if the urgency becomes distress.",
+    "memoryTrick": "**URGENT** — **U**rgency not distress, **R**eport Pan Pan three times, **G**ive nature and intentions, **E**scalate to Mayday if worsening, **N**ever confuse with Mayday, **T**ell ATC your position.",
+    "operationalMeaning": "When Pan Pan is appropriate, the pilot should:\n\nPan Pan is used for urgency situations including:",
+    "whyAtcUsesIt": [
+      "provide priority handling over normal traffic",
+      "offer vectors and assistance without full emergency response",
+      "coordinate landing priority when appropriate",
+      "request additional information about the urgency",
+      "monitor the aircraft until the situation is resolved"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger Pan Pan, say souls on board and fuel remaining.",
+      "Approach: ANAC123, turn right heading three six zero, descend at your discretion.",
+      "Tower: ANAC123, runway one five cleared to land, wind one eight zero at one two knots.",
+      "Control: ANAC123, Pan Pan acknowledged, say nature of urgency.",
+      "Tower: ANAC123, traffic cleared from your approach, emergency services notified."
+    ],
+    "pilotReadbacks": [
+      "Pan Pan Pan Pan, Curitiba Approach, ANAC123, hydraulic pressure decreasing.",
+      "Pan Pan Pan Pan, ANAC123, landing gear unsafe, request low pass for inspection.",
+      "Pan Pan Pan Pan, Navegantes Tower, ANAC123, low fuel state, request priority landing.",
+      "Pan Pan Pan Pan, ANAC123, sudden decompression, requesting lower altitude.",
+      "Pan Pan Pan Pan, ANAC123, passenger unconscious, need medical assistance."
+    ],
+    "brazilianMistakes": "- ❌ Using Pan Pan and Mayday interchangeably.  \n  ✔ Pan Pan for urgency; Mayday for distress — know the difference.\n\n- ❌ Saying \"Pan\" only once instead of three times.  \n  ✔ Transmit Pan Pan three times at the start of the message.\n\n- ❌ Using Pan Pan for engine failure or fire on board.  \n  ✔ Those are distress — declare Mayday.\n\n- ❌ Waiting too long to declare Pan Pan when a problem is developing.  \n  ✔ Report early with Pan Pan — upgrade to Mayday if needed.",
+    "pronunciationCoaching": "**Target Phrase:** Pan Pan Pan Pan\n\n**Pronunciation:** pan pan pan pan\n\n**Word Stress**\n\n- Pan → pan (say three times, evenly spaced, clearly)\n\nPractice:\n\nPan...\n\nPan...\n\nPan...\n\nTogether:\n\nPan Pan Pan Pan, Curitiba Approach, ANAC123, hydraulic pressure decreasing.\n\nSpeak slowly and clearly — distinguish Pan Pan from Mayday.",
+    "relatedConcepts": [
+      "Mayday Distress Call",
+      "Low Fuel",
+      "Hydraulic Failure",
+      "Landing Gear Malfunction",
+      "Priority Landing",
+      "Precautionary Landing",
+      "Distress versus Urgency"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Distress and Urgency Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA JO 7110.65 — Emergency and Priority Handling",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Pan Pan",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Urgency Calls",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0054",
+    "id": "0054",
+    "displayTerm": "Radio Failure",
+    "term": "radio failure",
+    "slug": "radio-failure",
+    "category": "Radio Communication",
+    "meaningEn": "Radio Failure is the inoperative state of aircraft radio communication equipment, requiring lost communication procedures.",
+    "meaningPt": "Falha de rádio.\n\nEquipamento de comunicação por rádio inoperante, exigindo procedimentos de comunicação perdida.",
+    "whenUsed": "When Radio Failure occurs, the pilot should:",
+    "example": "Tower: ANAC123, radio check, how do you read?",
+    "sayPhrase": "Pan Pan Pan Pan, Guarulhos Approach, ANAC123, complete radio failure.",
+    "icaoQuestion": "What procedures do you follow when you experience complete radio failure?",
+    "icaoSpeakText": "I would attempt to restore communication on assigned and emergency frequencies. If unsuccessful, I would squawk seven six zero zero on the transponder. I would follow my last received ATC clearance, comply with lost communication procedures, and land at the nearest suitable airport as soon as practicable. If I regain transmit capability, I would inform ATC immediately.",
+    "missionBrief": "Today's lesson covers radio failure — when you cannot transmit or receive on assigned frequencies.\n\nRadio Failure means communication equipment is inoperative — complete or partial.\n\nYou must know lost communication procedures: squawk 7600, follow last clearance, and land as soon as practicable.\n\nIf you regain partial communication, declare Pan Pan or Mayday as appropriate.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Radio failure is frightening — but procedures exist.\n\nThe sequence every professional pilot learns:\n\nSquawk. Comply. Land.\n\nSquawk 7600 immediately.\n\nFollow your last clearance.\n\nLand as soon as practicable in VMC.\n\nIf you regain one radio, inform ATC at once.\n\nBrazilian pilots sometimes say \"rádio falhou\" or \"sem contato\" on frequency.\n\nUse complete radio failure or loss of radio contact — ICAO standard terms.\n\nKnow seven six zero zero — say each digit separately: seven six zero zero.\n\nIn the H130 over Brazil, know your destination alternates.\n\nLost comm is not always Mayday.\n\nIt becomes Mayday when the underlying emergency plus radio failure creates grave danger.\n\nPartial failure with one working radio — inform ATC with Pan Pan.",
+    "operationalContext": "You are on approach to Porto Alegre in your H130, callsign ANAC123, when both COM radios fail.\n\nYou attempt reset without success.\n\nYou squawk 7600 and continue the published approach per your last clearance.\n\nYou land on runway one one and taxi clear.\n\nOn the ground, you contact Tower by phone to report complete radio failure.",
+    "sayItCoach": "ANAC123, complete radio failure, squawking seven six zero zero.",
+    "icaoModelAnswer": "I would attempt to restore communication on assigned and emergency frequencies. If unsuccessful, I would squawk seven six zero zero on the transponder. I would follow my last received ATC clearance, comply with lost communication procedures, and land at the nearest suitable airport as soon as practicable. If I regain transmit capability, I would inform ATC immediately.",
+    "memoryTrick": "**7600** — **7** attempt restore, **6** squawk seven six zero zero, **0** obey last clearance, **0** land when practicable.",
+    "operationalMeaning": "When Radio Failure occurs, the pilot should:\n\nRadio Failure reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "identify the aircraft by transponder code 7600",
+      "clear traffic from the aircraft's expected route",
+      "monitor the aircraft visually and on radar",
+      "anticipate aircraft actions per lost communication procedures",
+      "coordinate with adjacent sectors for handoff"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, radio check, how do you read?",
+      "Approach: ANAC123, if you read, squawk ident.",
+      "Tower: ANAC123, your transmission barely readable, say again.",
+      "Control: ANAC123, radar shows seven six zero zero, traffic cleared from your approach.",
+      "Tower: ANAC123, if you read, cleared to land runway one one."
+    ],
+    "pilotReadbacks": [
+      "Pan Pan Pan Pan, Guarulhos Approach, ANAC123, complete radio failure.",
+      "Mayday Mayday Mayday, ANAC123, lost radio contact, squawking seven six zero zero.",
+      "ANAC123, complete radio failure, squawking seven six zero zero.",
+      "Pan Pan Pan Pan, ANAC123, loss of radio contact, request vectors on this frequency.",
+      "ANAC123, radio failure, your transmission readable five by five, proceeding as cleared."
+    ],
+    "brazilianMistakes": "- ❌ Saying \"sem rádio\" instead of standard English.  \n  ✔ Use complete radio failure or loss of radio contact.\n\n- ❌ Forgetting to squawk 7600.  \n  ✔ Squawk seven six zero zero immediately when radio failure is confirmed.\n\n- ❌ Declaring Mayday for radio failure alone without an underlying emergency.  \n  ✔ Follow lost comm procedures; use Pan Pan if partial comm is restored.\n\n- ❌ Saying \"squawk seventy-six hundred\" instead of digit by digit.  \n  ✔ Say squawking seven six zero zero — each digit separately.",
+    "pronunciationCoaching": "**Target Phrase:** Squawking Seven Six Zero Zero\n\n**Pronunciation:** SKWAW-king SEV-en six ZEE-roh ZEE-roh\n\n**Word Stress**\n\n- Squawking → SKWAW-king\n- Seven → SEV-en\n- Zero → ZEE-roh (say each digit: seven, six, zero, zero)\n\nPractice:\n\nSeven... six... zero... zero...\n\nTogether:\n\nANAC123, complete radio failure, squawking seven six zero zero.\n\nSpeak each digit clearly — controllers listen for 7600.",
+    "relatedConcepts": [
+      "Lost Communications",
+      "Squawk 7600",
+      "Pan Pan Urgency Call",
+      "Mayday Distress Call",
+      "Transponder Codes",
+      "Electrical Failure"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Lost Communication Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Radio Failure",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA JO 7110.65 — Lost Communication Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Radio Failure",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Loss of Communication",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0055",
+    "id": "0055",
+    "displayTerm": "Lost Communications",
+    "term": "lost communications",
+    "slug": "lost-communications",
+    "category": "Radio Communication",
+    "meaningEn": "Lost Communications is the state in which two-way radio contact between aircraft and ATC cannot be established or maintained.",
+    "meaningPt": "Comunicações perdidas.\n\nSituação em que o contato bilateral de rádio entre aeronave e ATC não pode ser estabelecido ou mantido.",
+    "whenUsed": "When Lost Communications occurs, the pilot should:",
+    "example": "Approach: ANAC123, radio check, how do you read?",
+    "sayPhrase": "Mayday Mayday Mayday, ANAC123, lost radio contact, squawking seven six zero zero.",
+    "icaoQuestion": "What is the correct procedure when you lose two-way radio communication with ATC?",
+    "icaoSpeakText": "I would attempt contact on the assigned frequency and on one two one point five. If unsuccessful, I would squawk seven six zero zero on the transponder. I would follow my last received and acknowledged clearance, comply with ICAO lost communication procedures, and land at the nearest suitable airport as soon as practicable if in VMC. When communication is restored, I would inform ATC immediately.",
+    "missionBrief": "Today's lesson covers lost communications procedures — what happens when ATC and the pilot cannot communicate.\n\nLost Communications means two-way radio contact has been lost — by failure, interference, or frequency error.\n\nYou must squawk 7600, follow your last clearance, and comply with ICAO lost communication procedures.\n\nControllers will clear traffic and monitor your transponder.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Lost communications is a procedure — not a panic.\n\nThe sequence every professional pilot learns:\n\nTry. Squawk. Comply.\n\nTry assigned frequency.\n\nTry one two one point five — guard.\n\nSquawk 7600.\n\nComply with last clearance.\n\nBrazilian pilots sometimes fly the wrong frequency for minutes before noticing.\n\nCheck your radio panel before assuming failure.\n\nBrazilian pilots sometimes say \"perdi contato\" on frequency when they regain comm.\n\nUse lost radio contact or loss of radio contact — ICAO standard terms.\n\nKnow the difference:\n\nRadio Failure — equipment broken.\n\nLost Communications — two-way contact lost — may be equipment, frequency, or coverage.\n\nBoth use squawk 7600.\n\nWhen you regain contact, inform ATC and cancel 7600.\n\nState how long you were out and what you did.\n\nControllers need that information for traffic management.",
+    "operationalContext": "You are being vectored to Navegantes in your H130, callsign ANAC123, when you lose all radio contact.\n\nYou try the assigned frequency and one two one point five without response.\n\nYou squawk 7600 and continue on your last assigned heading and altitude.\n\nApproach sees the 7600 code and clears traffic from your path.\n\nYou proceed to Navegantes, join the circuit, and land runway two nine.\n\nYou report the lost communications event on the ground.",
+    "sayItCoach": "ANAC123, lost radio contact, squawking seven six zero zero.",
+    "icaoModelAnswer": "I would attempt contact on the assigned frequency and on one two one point five. If unsuccessful, I would squawk seven six zero zero on the transponder. I would follow my last received and acknowledged clearance, comply with ICAO lost communication procedures, and land at the nearest suitable airport as soon as practicable if in VMC. When communication is restored, I would inform ATC immediately.",
+    "memoryTrick": "**COMMS** — **C**heck frequency and guard, **O**ut with seven six zero zero, **M**aintain last clearance, **M**onitor radar and traffic, **S**peak when restored.",
+    "operationalMeaning": "When Lost Communications occurs, the pilot should:\n\nLost Communications procedures commonly include:",
+    "whyAtcUsesIt": [
+      "identifying aircraft squawking 7600 on radar",
+      "clearing traffic from the aircraft's expected route",
+      "monitoring the aircraft to the destination or alternate",
+      "coordinating with adjacent sectors without requiring radio contact",
+      "preparing for unannounced arrival and landing"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, radio check, how do you read?",
+      "Tower: ANAC123, if you read, squawk ident.",
+      "Control: ANAC123, radar contact lost, attempting contact on guard frequency.",
+      "Tower: ANAC123, showing seven six zero zero, traffic cleared from your approach.",
+      "Approach: ANAC123, if you read, cleared direct Navegantes, descend three thousand."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, ANAC123, lost radio contact, squawking seven six zero zero.",
+      "Pan Pan Pan Pan, ANAC123, complete radio failure, squawking seven six zero zero.",
+      "ANAC123, loss of radio contact, proceeding as cleared, squawking seven six zero zero.",
+      "Navegantes Approach, ANAC123, radio restored, cancel seven six zero zero.",
+      "ANAC123, lost communications, squawking seven six zero zero, proceeding direct Navegantes."
+    ],
+    "brazilianMistakes": "- ❌ Not trying guard frequency one two one point five.  \n  ✔ Attempt one two one point five before assuming complete failure.\n\n- ❌ Forgetting to squawk 7600.  \n  ✔ Squawk seven six zero zero — ATC identifies lost comm aircraft by this code.\n\n- ❌ Deviating from last clearance without authority.  \n  ✔ Follow last received and acknowledged clearance per lost comm procedures.\n\n- ❌ Not reporting the event after regaining communication.  \n  ✔ Inform ATC when radio is restored and state actions taken during lost comm.",
+    "pronunciationCoaching": "**Target Phrase:** Lost Radio Contact, Squawking Seven Six Zero Zero\n\n**Pronunciation:** lost RAY-dee-oh KON-takt, SKWAW-king SEV-en six ZEE-roh ZEE-roh\n\n**Word Stress**\n\n- Lost → lost\n- Contact → KON-takt\n- Squawking → SKWAW-king\n\nPractice:\n\nSeven... six... zero... zero...\n\nTogether:\n\nANAC123, lost radio contact, squawking seven six zero zero.\n\nSpeak each digit clearly — seven six zero zero, not seventy-six hundred.",
+    "relatedConcepts": [
+      "Radio Failure",
+      "Squawk 7600",
+      "Pan Pan Urgency Call",
+      "Mayday Distress Call",
+      "Transponder Codes",
+      "Guard Frequency 121.5"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Lost Communication Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Lost Communications",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA JO 7110.65 — Lost Communication Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/atc_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Lost Communications",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Loss of Communication",
+        "href": "https://skybrary.aero"
+      }
+    ]
   }
 ];
