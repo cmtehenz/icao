@@ -6681,5 +6681,785 @@ export const BATCH01_DEV_ENTRIES: DevKnowledgeEntry[] = [
         "href": "https://skybrary.aero"
       }
     ]
+  },
+  {
+    "catalogId": "0086",
+    "id": "0086",
+    "displayTerm": "Moderate Turbulence",
+    "term": "moderate turbulence",
+    "slug": "moderate-turbulence",
+    "category": "Weather",
+    "meaningEn": "Moderate Turbulence is turbulence that causes definite strain on occupants and changes in altitude or attitude, while the aircraft remains under control.",
+    "meaningPt": "Turbulência moderada.\n\nTurbulência que causa esforço definido nos ocupantes e mudanças de altitude ou atitude, mantendo a aeronave sob controle.",
+    "whenUsed": "When Moderate Turbulence occurs, the pilot should:",
+    "example": "Approach: ANAC123, roger moderate turbulence, climb and maintain five thousand.",
+    "sayPhrase": "Florianópolis Approach, ANAC123, moderate turbulence at three thousand, request climb.",
+    "icaoQuestion": "What is moderate turbulence and how would you report it to ATC?",
+    "icaoSpeakText": "Moderate turbulence causes definite strain on occupants and changes in altitude or attitude, while the aircraft remains controllable. I would report moderate turbulence with my altitude and position, state whether it is occasional or continuous, and request climb, descent, or weather deviation if needed.",
+    "missionBrief": "Today's lesson covers moderate turbulence — definite strain on the aircraft and occupants, but still controllable.\n\nModerate Turbulence causes changes in altitude and attitude, with loose objects moving about and occupants feeling definite strain against seat belts.\n\nIn the H130, moderate turbulence is common near coastal wind gradients, convective clouds, and mountain ridges in Brazil.\n\nYou must report intensity correctly, request altitude or route change if needed, and maintain smooth control inputs.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 operational communication.",
+    "captainTeaching": "Turbulence intensity has a language.\n\nLight. Moderate. Severe. Extreme.\n\nModerate means definite strain — not violent loss of control.\n\nThe sequence:\n\nFly attitude. Report intensity. Request change if needed.\n\nBrazilian pilots sometimes say \"turbulência média\" or \"sacolejo\" on frequency.\n\nUse moderate turbulence — ICAO standard intensity term.\n\nIn the H130, report altitude and whether turbulence is occasional or continuous.\n\nTrain accurate PIREPs — other pilots depend on your words.",
+    "operationalContext": "You are cruising at three thousand feet toward Florianópolis in your H130.\n\nThe aircraft encounters definite bumps and altitude changes near coastal convective clouds.\n\nYou transmit:\n\nFlorianópolis Approach, ANAC123, moderate turbulence at three thousand feet, request climb to five thousand.\n\nApproach clears the climb.\n\nRide improves and you continue to destination.",
+    "sayItCoach": "Moderate turbulence at three thousand, request climb, ANAC123.",
+    "icaoModelAnswer": "Moderate turbulence causes definite strain on occupants and changes in altitude or attitude, while the aircraft remains controllable. I would report moderate turbulence with my altitude and position, state whether it is occasional or continuous, and request climb, descent, or weather deviation if needed.",
+    "memoryTrick": "**MOD** — **M**aintain attitude, **O**ut with a clear PIREP, **D**eviate or change level if needed.",
+    "operationalMeaning": "When Moderate Turbulence occurs, the pilot should:\n\nModerate Turbulence reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "warn other aircraft with PIREPs",
+      "offer altitude or route changes",
+      "coordinate weather deviations",
+      "update expected ride conditions on the route",
+      "prepare for possible escalation to severe turbulence reports"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger moderate turbulence, climb and maintain five thousand.",
+      "Approach: ANAC123, previous aircraft reported moderate turbulence at three thousand, advise.",
+      "Center: ANAC123, deviation approved, report ride conditions.",
+      "Approach: ANAC123, say if turbulence is continuous or occasional.",
+      "Approach: ANAC123, thank you for the PIREP."
+    ],
+    "pilotReadbacks": [
+      "Florianópolis Approach, ANAC123, moderate turbulence at three thousand, request climb.",
+      "ANAC123, moderate turbulence, request weather deviation left of course.",
+      "ANAC123, moderate turbulence occasional, ride improving at five thousand.",
+      "Approach, ANAC123, moderate turbulence continuous, request descent.",
+      "ANAC123, clear of moderate turbulence, light turbulence now."
+    ],
+    "brazilianMistakes": "- ❌ Saying \"turbulência média\" instead of the standard intensity.  \n  ✔ Use moderate turbulence.\n\n- ❌ Calling every bump \"severe.\"  \n  ✔ Reserve severe for large abrupt changes and difficult control.\n\n- ❌ Not stating altitude with the PIREP.  \n  ✔ Always include altitude and approximate location.\n\n- ❌ Not updating ATC when the ride improves.  \n  ✔ Report ride improving or clear of moderate turbulence.",
+    "pronunciationCoaching": "**Target Phrase:** Moderate Turbulence at Three Thousand\n\n**Pronunciation:** MOD-er-it TUR-byuh-lens at three THOW-zend\n\n**Word Stress**\n\n- Moderate → MOD-er-it\n- Turbulence → TUR-byuh-lens\n- Thousand → THOW-zend\n\nPractice:\n\nModerate... turbulence...\n\nTogether:\n\nModerate turbulence at three thousand, request climb, ANAC123.\n\nSpeak altitude clearly — three thousand.",
+    "relatedConcepts": [
+      "Light Turbulence",
+      "Severe Turbulence",
+      "Thunderstorm",
+      "Weather Deviation",
+      "PIREP",
+      "Windshear"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — PIREPs",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Turbulence",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Turbulence",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Turbulence"
+      },
+      {
+        "label": "SKYbrary — Turbulence",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0087",
+    "id": "0087",
+    "displayTerm": "Light Turbulence",
+    "term": "light turbulence",
+    "slug": "light-turbulence",
+    "category": "Weather",
+    "meaningEn": "Light Turbulence is turbulence that causes slight, momentary changes and slight strain on occupants, without significant effect on aircraft control.",
+    "meaningPt": "Turbulência leve.\n\nTurbulência que causa mudanças leves e momentâneas, com pequeno esforço nos ocupantes, sem efeito significativo no controle.",
+    "whenUsed": "When Light Turbulence occurs, the pilot should:",
+    "example": "Tower: ANAC123, say ride conditions on departure.",
+    "sayPhrase": "Congonhas Tower, ANAC123, light turbulence occasional below two thousand.",
+    "icaoQuestion": "What is light turbulence and when would you report it?",
+    "icaoSpeakText": "Light turbulence causes slight, momentary changes and slight strain on occupants, without significant effect on control. I would report light turbulence when ATC asks for ride conditions, when it helps other traffic, or when it is increasing toward moderate. I would include altitude and whether it is occasional or continuous.",
+    "missionBrief": "Today's lesson covers light turbulence — slight, erratic changes that do not significantly affect control.\n\nLight Turbulence causes slight strain against seat belts, with little or no change in altitude or attitude.\n\nIn the H130, light turbulence is common in daytime heating, light coastal winds, and below small cumulus clouds.\n\nYou must still report it when useful, and know when light becomes moderate.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 operational communication.",
+    "captainTeaching": "Light turbulence is the bottom of the intensity scale.\n\nSlight strain. Little altitude change. Aircraft fully controllable.\n\nThe sequence:\n\nFeel. Classify. Report if useful. Monitor.\n\nDo not inflate light into moderate.\n\nDo not ignore light when it is increasing.\n\nBrazilian pilots sometimes say \"leve\" or \"só um chop\" on frequency.\n\nUse light turbulence — ICAO standard intensity term.\n\nIn the H130, light chop on a hot afternoon is normal — but report trends.\n\nTrain yourself to use the correct word every time.",
+    "operationalContext": "You are climbing out of Congonhas in your H130 on a warm afternoon.\n\nBelow two thousand feet you feel light, occasional bumps from daytime heating.\n\nYou report when asked:\n\nCongonhas Tower, ANAC123, light turbulence occasional below two thousand, smooth above.\n\nTower passes the information to following traffic.",
+    "sayItCoach": "Light turbulence occasional below two thousand, ANAC123.",
+    "icaoModelAnswer": "Light turbulence causes slight, momentary changes and slight strain on occupants, without significant effect on control. I would report light turbulence when ATC asks for ride conditions, when it helps other traffic, or when it is increasing toward moderate. I would include altitude and whether it is occasional or continuous.",
+    "memoryTrick": "**LIGHT** — **L**ittle strain, **I**nclude altitude, **G**ive occasional or continuous, **H**erald increases early, **T**ell ATC when asked.",
+    "operationalMeaning": "When Light Turbulence occurs, the pilot should:\n\nLight Turbulence reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "build a picture of ride conditions on the route",
+      "advise other aircraft of expected light chop",
+      "detect trends toward moderate or severe conditions",
+      "refine altitude recommendations",
+      "support pilot decision-making with PIREPs"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, say ride conditions on departure.",
+      "Approach: ANAC123, previous aircraft reported light turbulence below three thousand.",
+      "Approach: ANAC123, advise if turbulence increases.",
+      "Center: ANAC123, report ride conditions at altitude.",
+      "Approach: ANAC123, thank you for the PIREP."
+    ],
+    "pilotReadbacks": [
+      "Congonhas Tower, ANAC123, light turbulence occasional below two thousand.",
+      "ANAC123, light turbulence, smooth above three thousand.",
+      "ANAC123, light turbulence continuous, still controllable.",
+      "Approach, ANAC123, light turbulence increasing to moderate.",
+      "ANAC123, ride smooth, no turbulence."
+    ],
+    "brazilianMistakes": "- ❌ Calling light bumps \"severe\" or \"muito forte.\"  \n  ✔ Use light turbulence for slight strain only.\n\n- ❌ Saying \"chop leve\" without standard intensity.  \n  ✔ Use light turbulence.\n\n- ❌ Not reporting when turbulence starts increasing.  \n  ✔ Update ATC if light becomes moderate.\n\n- ❌ Omitting altitude in the PIREP.  \n  ✔ Always state altitude with turbulence reports.",
+    "pronunciationCoaching": "**Target Phrase:** Light Turbulence Occasional Below Two Thousand\n\n**Pronunciation:** lyte TUR-byuh-lens uh-KAY-zhuh-nul bee-LOH too THOW-zend\n\n**Word Stress**\n\n- Light → lyte\n- Turbulence → TUR-byuh-lens\n- Occasional → uh-KAY-zhuh-nul\n\nPractice:\n\nLight... turbulence... occasional...\n\nTogether:\n\nLight turbulence occasional below two thousand, ANAC123.\n\nSpeak clearly — short reports still need precision.",
+    "relatedConcepts": [
+      "Moderate Turbulence",
+      "Severe Turbulence",
+      "Weather Deterioration",
+      "PIREP",
+      "Thunderstorm",
+      "Windshear"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — PIREPs",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Turbulence",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Turbulence",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Turbulence"
+      },
+      {
+        "label": "SKYbrary — Turbulence",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0088",
+    "id": "0088",
+    "displayTerm": "Windshear",
+    "term": "windshear",
+    "slug": "windshear",
+    "category": "Weather",
+    "meaningEn": "Windshear is a sudden change in wind speed or direction over a short distance, which can cause abrupt changes in airspeed and performance.",
+    "meaningPt": "Cisalhamento do vento (windshear).\n\nMudança súbita de velocidade ou direção do vento em curta distância, causando alterações abruptas de velocidade e desempenho.",
+    "whenUsed": "When Windshear is encountered, the pilot should:",
+    "example": "Tower: ANAC123, roger windshear, all aircraft advised.",
+    "sayPhrase": "Navegantes Tower, ANAC123, going around, windshear on final.",
+    "icaoQuestion": "What would you tell ATC if you encountered windshear on final approach?",
+    "icaoSpeakText": "I would go around, apply maximum available power, and establish a climb. I would report going around due windshear on final, state the approximate altitude and airspeed loss or gain, and request another approach or delay until conditions improve.",
+    "missionBrief": "Today's lesson covers windshear — a sudden change in wind speed or direction that can destroy performance on takeoff or landing.\n\nWindshear is especially dangerous for helicopters near the ground, where airspeed and altitude margins are small.\n\nIn the H130, windshear may occur near thunderstorms, frontal boundaries, and strong coastal gust fronts in Brazil.\n\nYou must recognize the signs early, go around or reject takeoff if needed, and report windshear immediately to ATC.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Windshear is a knife near the ground.\n\nSudden wind change. Sudden performance change.\n\nThe sequence:\n\nPower. Attitude. Climb. Report.\n\nDo not chase airspeed with aggressive nose-down near the ground.\n\nEscape the shear first.\n\nBrazilian pilots sometimes say \"cortante\" or \"perda de velocidade\" on frequency.\n\nUse windshear — ICAO and FAA standard term.\n\nAlways report altitude and airspeed loss or gain.\n\nIn the H130, margins are small — go around early when shear is suspected.\n\nTrain escape until power and climb attitude are automatic.",
+    "operationalContext": "You are on short final to runway two nine at Navegantes in your H130.\n\nAirspeed suddenly drops twenty knots and the aircraft sinks.\n\nYou apply maximum power, establish a climb, and go around.\n\nYou transmit:\n\nNavegantes Tower, ANAC123, going around, windshear on final, airspeed loss two zero knots at two hundred feet.\n\nTower warns following traffic and you hold for improving conditions.",
+    "sayItCoach": "Going around, windshear on final, airspeed loss two zero knots, ANAC123.",
+    "icaoModelAnswer": "I would go around, apply maximum available power, and establish a climb. I would report going around due windshear on final, state the approximate altitude and airspeed loss or gain, and request another approach or delay until conditions improve.",
+    "memoryTrick": "**SHEAR** — **S**ense airspeed change, **H**old climb attitude, **E**scape with power, **A**nnounce windshear, **R**eport altitude and loss/gain.",
+    "operationalMeaning": "When Windshear is encountered, the pilot should:\n\nWindshear reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "warn arriving and departing aircraft immediately",
+      "delay or change runway operations if needed",
+      "relay PIREPs with altitude and airspeed loss or gain",
+      "coordinate go-arounds and missed approaches",
+      "advise when windshear alerts are current"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, roger windshear, all aircraft advised.",
+      "Tower: ANAC123, windshear alert, advise intentions.",
+      "Approach: ANAC123, previous aircraft reported windshear on final, say if continuing.",
+      "Tower: ANAC123, cleared go-around, report when established.",
+      "Tower: ANAC123, say airspeed loss and altitude of windshear."
+    ],
+    "pilotReadbacks": [
+      "Navegantes Tower, ANAC123, going around, windshear on final.",
+      "ANAC123, windshear on departure, airspeed loss one five knots at one hundred feet.",
+      "ANAC123, windshear alert received, requesting delay.",
+      "Tower, ANAC123, windshear on final, airspeed gain then loss, going around.",
+      "ANAC123, unable to land due windshear, request another approach later."
+    ],
+    "brazilianMistakes": "- ❌ Continuing the approach after a significant airspeed loss near the ground.  \n  ✔ Go around immediately — escape first.\n\n- ❌ Saying \"vento cortante\" without the standard term.  \n  ✔ Use windshear.\n\n- ❌ Not reporting altitude and airspeed change.  \n  ✔ Include altitude and airspeed loss or gain in the PIREP.\n\n- ❌ Confusing windshear with ordinary gusts.  \n  ✔ Windshear is a sudden, significant change over a short distance.",
+    "pronunciationCoaching": "**Target Phrase:** Going Around, Windshear on Final\n\n**Pronunciation:** GO-ing uh-ROUND, WIND-sheer on FY-nul\n\n**Word Stress**\n\n- Windshear → WIND-sheer\n- Final → FY-nul\n- Around → uh-ROUND\n\nPractice:\n\nWindshear... on... final...\n\nTogether:\n\nGoing around, windshear on final, airspeed loss two zero knots, ANAC123.\n\nSpeak numbers clearly — two zero knots.",
+    "relatedConcepts": [
+      "Microburst",
+      "Thunderstorm",
+      "Go Around",
+      "Severe Turbulence",
+      "Cleared to Land",
+      "Missed Approach"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Wind Shear",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Windshear",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Wind Shear",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Wind Limitations"
+      },
+      {
+        "label": "SKYbrary — Wind Shear",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0089",
+    "id": "0089",
+    "displayTerm": "Microburst",
+    "term": "microburst",
+    "slug": "microburst",
+    "category": "Weather",
+    "meaningEn": "A Microburst is a concentrated, severe downdraft that spreads outward upon reaching the surface, creating extreme windshear over a small area.",
+    "meaningPt": "Microburst / microexplosão.\n\nCorrente descendente intensa e concentrada que se espalha na superfície, criando cisalhamento extremo em área pequena.",
+    "whenUsed": "When a Microburst is suspected or encountered, the pilot should:",
+    "example": "Tower: ANAC123, roger microburst, all aircraft advised, approaches suspended.",
+    "sayPhrase": "Congonhas Tower, ANAC123, going around, microburst on final.",
+    "icaoQuestion": "What is a microburst and what would you tell ATC if you encountered one on final?",
+    "icaoSpeakText": "A microburst is a severe, localized downdraft that spreads at the surface and creates extreme windshear. If I encountered one on final, I would go around with maximum power, report going around due microburst or severe downdraft, state airspeed loss if known, and request delay until conditions improve.",
+    "missionBrief": "Today's lesson covers microbursts — intense, localized downdrafts that can exceed helicopter performance.\n\nA Microburst is a powerful column of descending air that spreads outward at the surface, producing extreme windshear.\n\nIn the H130, a microburst near the ground can force an uncontrollable descent even at maximum power.\n\nYou must avoid thunderstorms and virga, escape early if a microburst is suspected, and report immediately to ATC.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "A microburst is windshear at its worst.\n\nDescending air. Outflow. Performance collapse.\n\nThe sequence:\n\nAvoid. Escape. Report. Delay.\n\nNever land under a rain shaft from a thunderstorm.\n\nNever take off into a visible microburst signature.\n\nBrazilian pilots sometimes say \"downdraft forte\" or \"rajada de tempestade\" on frequency.\n\nUse microburst or severe windshear — ICAO and FAA standard terms.\n\nIn the H130, you may not have the power to outclimb a mature microburst near the ground.\n\nTrain avoidance until rain shafts mean go around — not continue.",
+    "operationalContext": "You are on approach to Congonhas in your H130 with a rain shaft visible near the airport.\n\nOn short final, you encounter a violent downdraft and sudden airspeed loss.\n\nYou apply maximum power, pitch for climb, and go around.\n\nYou transmit:\n\nCongonhas Tower, ANAC123, going around, microburst on final, severe downdraft, airspeed loss.\n\nTower suspends approaches and warns all traffic.\n\nYou hold until the cell moves away.",
+    "sayItCoach": "Going around, microburst on final, severe downdraft, ANAC123.",
+    "icaoModelAnswer": "A microburst is a severe, localized downdraft that spreads at the surface and creates extreme windshear. If I encountered one on final, I would go around with maximum power, report going around due microburst or severe downdraft, state airspeed loss if known, and request delay until conditions improve.",
+    "memoryTrick": "**BURST** — **B**ail out — go around, **U**se max power, **R**eport microburst, **S**tay away from rain shafts, **T**ake delay until clear.",
+    "operationalMeaning": "When a Microburst is suspected or encountered, the pilot should:\n\nMicroburst reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "issue immediate warnings to all aircraft",
+      "suspend or delay arrivals and departures if needed",
+      "relay PIREPs with location and severity",
+      "coordinate go-arounds and holding",
+      "advise when conditions improve"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, roger microburst, all aircraft advised, approaches suspended.",
+      "Tower: ANAC123, microburst alert, advise intentions.",
+      "Approach: ANAC123, previous aircraft reported microburst on final, say if continuing.",
+      "Tower: ANAC123, cleared go-around, climb and maintain two thousand.",
+      "Tower: ANAC123, say altitude and airspeed loss."
+    ],
+    "pilotReadbacks": [
+      "Congonhas Tower, ANAC123, going around, microburst on final.",
+      "ANAC123, microburst, severe downdraft, request delay.",
+      "ANAC123, unable to land due microburst, holding for improving conditions.",
+      "Tower, ANAC123, microburst on departure path, rejecting takeoff.",
+      "ANAC123, clear of microburst area, request another approach when available."
+    ],
+    "brazilianMistakes": "- ❌ Continuing an approach under a thunderstorm rain shaft.  \n  ✔ Go around or delay — microburst risk is extreme.\n\n- ❌ Saying only \"vento forte\" without the hazard name.  \n  ✔ Use microburst or severe windshear.\n\n- ❌ Not warning ATC immediately after escape.  \n  ✔ Report so other aircraft are protected.\n\n- ❌ Attempting takeoff with a microburst alert active.  \n  ✔ Delay until the threat has passed.",
+    "pronunciationCoaching": "**Target Phrase:** Going Around, Microburst on Final\n\n**Pronunciation:** GO-ing uh-ROUND, MY-kroh-burst on FY-nul\n\n**Word Stress**\n\n- Microburst → MY-kroh-burst\n- Final → FY-nul\n- Downdraft → DOWN-draft\n\nPractice:\n\nMicroburst... on... final...\n\nTogether:\n\nGoing around, microburst on final, severe downdraft, ANAC123.\n\nSpeak with urgency but clearly.",
+    "relatedConcepts": [
+      "Windshear",
+      "Thunderstorm",
+      "Go Around",
+      "Severe Turbulence",
+      "Weather Deterioration",
+      "Cleared to Land"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Wind Shear",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Microbursts",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Microburst",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Wind Limitations"
+      },
+      {
+        "label": "SKYbrary — Microburst",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0090",
+    "id": "0090",
+    "displayTerm": "Icing Conditions",
+    "term": "icing conditions",
+    "slug": "icing-conditions",
+    "category": "Weather",
+    "meaningEn": "Icing Conditions are meteorological conditions in which ice can form on the aircraft due to visible moisture and freezing temperatures.",
+    "meaningPt": "Condições de gelo.\n\nCondições meteorológicas em que gelo pode se formar na aeronave devido à umidade visível e temperaturas de congelamento.",
+    "whenUsed": "When Icing Conditions are encountered, the pilot should:",
+    "example": "Approach: ANAC123, roger icing, descend and maintain three thousand, say icing intensity.",
+    "sayPhrase": "Curitiba Approach, ANAC123, moderate icing at five thousand, request descent.",
+    "icaoQuestion": "What would you tell ATC if you encountered icing in cloud?",
+    "icaoSpeakText": "I would report icing with intensity and altitude, and request climb or descent to exit the icing layer. If icing was severe or performance decreased, I would divert to the nearest suitable airport and declare Pan Pan if necessary. I would report when clear of icing.",
+    "missionBrief": "Today's lesson covers icing conditions — when ice forms on the airframe and rotor system.\n\nIcing Conditions exist when visible moisture is present and temperatures are at or below freezing, allowing ice accretion.\n\nIn the H130, icing can degrade rotor performance, increase weight, and affect visibility and antennas.\n\nYou must exit icing promptly, report icing to ATC, and divert or descend to warmer air when required.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Ice is weight, drag, and lost performance.\n\nVisible moisture. Freezing temperature. Ice forms.\n\nThe sequence:\n\nRecognize. Exit. Report. Divert if needed.\n\nDo not linger to \"see if it gets worse.\"\n\nBrazilian pilots sometimes say \"formação de gelo\" on frequency.\n\nUse icing or moderate icing — ICAO standard terms with intensity.\n\nKnow the intensities:\n\nLight — not a problem if exited promptly.\n\nModerate — rate of accretion hazardous if prolonged.\n\nSevere — rate requires immediate exit.\n\nIn the H130, treat known icing as a no-go unless specifically approved.\n\nTrain early exit and clear icing PIREPs.",
+    "operationalContext": "You are IFR at five thousand feet toward Curitiba in your H130.\n\nYou enter cloud with a temperature of minus two degrees Celsius and notice ice forming on the windscreen and airframe.\n\nYou transmit:\n\nCuritiba Approach, ANAC123, moderate icing at five thousand, request descent to three thousand to exit icing.\n\nApproach clears the descent.\n\nIce stops accreting in warmer air and you continue with caution.",
+    "sayItCoach": "Moderate icing at five thousand, request descent to three thousand, ANAC123.",
+    "icaoModelAnswer": "I would report icing with intensity and altitude, and request climb or descent to exit the icing layer. If icing was severe or performance decreased, I would divert to the nearest suitable airport and declare Pan Pan if necessary. I would report when clear of icing.",
+    "memoryTrick": "**ICE** — **I**dentify accretion, **C**hange altitude to exit, **E**xplain intensity to ATC.",
+    "operationalMeaning": "When Icing Conditions are encountered, the pilot should:\n\nIcing Conditions reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "provide altitude changes to warmer or colder exit levels",
+      "warn other aircraft with PIREPs",
+      "coordinate diversions",
+      "suggest routes clear of icing layers",
+      "assist with priority handling if performance is degraded"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger icing, descend and maintain three thousand, say icing intensity.",
+      "Approach: ANAC123, previous aircraft reported light icing at five thousand.",
+      "Center: ANAC123, advise when clear of icing.",
+      "Approach: ANAC123, say air temperature and icing type if able.",
+      "Approach: ANAC123, diversion approved, say intentions."
+    ],
+    "pilotReadbacks": [
+      "Curitiba Approach, ANAC123, moderate icing at five thousand, request descent.",
+      "ANAC123, light rime icing, requesting climb to exit.",
+      "ANAC123, severe icing, diverting to nearest suitable airport.",
+      "Approach, ANAC123, clear of icing at three thousand.",
+      "Pan Pan Pan Pan, ANAC123, severe icing, performance decreasing, request priority landing."
+    ],
+    "brazilianMistakes": "- ❌ Continuing in icing to complete the route.  \n  ✔ Exit immediately — climb, descend, or divert.\n\n- ❌ Saying \"tem gelo\" without intensity.  \n  ✔ Use light, moderate, or severe icing.\n\n- ❌ Not reporting when clear of icing.  \n  ✔ Update ATC when conditions improve.\n\n- ❌ Forgetting to state altitude.  \n  ✔ Always include altitude with icing PIREPs.",
+    "pronunciationCoaching": "**Target Phrase:** Moderate Icing at Five Thousand, Request Descent\n\n**Pronunciation:** MOD-er-it EYE-sing at fyv THOW-zend, ree-KWEST di-SENT\n\n**Word Stress**\n\n- Moderate → MOD-er-it\n- Icing → EYE-sing\n- Descent → di-SENT\n\nPractice:\n\nModerate... icing...\n\nTogether:\n\nModerate icing at five thousand, request descent to three thousand, ANAC123.\n\nSpeak intensity and altitude clearly.",
+    "relatedConcepts": [
+      "Weather Deterioration",
+      "Low Visibility",
+      "Severe Turbulence",
+      "Pan Pan Urgency Call",
+      "Diversion",
+      "Embedded Thunderstorm"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — PIREPs",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Icing",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Icing",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Icing Limitations"
+      },
+      {
+        "label": "SKYbrary — Airframe Icing",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0091",
+    "id": "0091",
+    "displayTerm": "Low Visibility",
+    "term": "low visibility",
+    "slug": "low-visibility",
+    "category": "Weather",
+    "meaningEn": "Low Visibility is a meteorological condition in which visibility is reduced below the requirements for safe continuation of the planned VFR or visual operation.",
+    "meaningPt": "Baixa visibilidade.\n\nCondição meteorológica em que a visibilidade fica abaixo do necessário para continuar com segurança a operação VFR ou visual planejada.",
+    "whenUsed": "When Low Visibility occurs, the pilot should:",
+    "example": "Approach: ANAC123, roger low visibility, say intentions.",
+    "sayPhrase": "Florianópolis Approach, ANAC123, low visibility, unable to continue VFR, request diversion.",
+    "icaoQuestion": "What would you tell ATC if visibility dropped below VFR minima in cruise?",
+    "icaoSpeakText": "I would inform ATC of low visibility and that I am unable to continue VFR. I would request diversion to the nearest suitable airport or an IFR clearance. I would state my intentions clearly and early, before entering uncontrolled IMC.",
+    "missionBrief": "Today's lesson covers low visibility — when you cannot see far enough to continue VFR safely.\n\nLow Visibility means meteorological visibility is reduced by fog, mist, rain, smoke, or haze below the values required for the intended operation.\n\nIn the H130, low visibility along the Brazilian coast and in valleys can appear quickly and trap VFR flights.\n\nYou must recognize the reduction early, divert or request IFR, and communicate clearly with ATC.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 operational communication.",
+    "captainTeaching": "Low visibility is not a challenge to push through.\n\nIt is a signal to change the plan.\n\nThe sequence:\n\nRecognize. Decide. Communicate. Divert or IFR.\n\nBrazilian pilots sometimes say \"visibilidade ruim\" or \"não dá para ver\" on frequency.\n\nUse low visibility or unable to continue VFR — ICAO standard terms.\n\nIn the H130, coastal mist can erase the shoreline in minutes.\n\nHave an alternate before visibility collapses.\n\nTrain early diversion language until it is automatic.",
+    "operationalContext": "You are VFR along the coast toward Florianópolis in your H130.\n\nVisibility drops rapidly in mist and haze.\n\nYou decide early and transmit:\n\nFlorianópolis Approach, ANAC123, low visibility, unable to continue VFR, request diversion to Navegantes.\n\nApproach provides vectors and you land safely while conditions are still workable.",
+    "sayItCoach": "Low visibility, unable to continue VFR, request diversion, ANAC123.",
+    "icaoModelAnswer": "I would inform ATC of low visibility and that I am unable to continue VFR. I would request diversion to the nearest suitable airport or an IFR clearance. I would state my intentions clearly and early, before entering uncontrolled IMC.",
+    "memoryTrick": "**SEE** — **S**top pressing VFR, **E**xplain low visibility, **E**xit via diversion or IFR.",
+    "operationalMeaning": "When Low Visibility occurs, the pilot should:\n\nLow Visibility reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "provide diversion routing",
+      "issue IFR clearances when requested and available",
+      "update visibility information for the aerodrome",
+      "sequence special VFR or IFR traffic",
+      "assist aircraft that can no longer maintain VFR"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger low visibility, say intentions.",
+      "Approach: ANAC123, cleared diversion Navegantes, descend at pilot's discretion.",
+      "Tower: ANAC123, visibility one thousand meters, runway two nine in use.",
+      "Approach: ANAC123, advise if able to maintain VFR.",
+      "Tower: ANAC123, special VFR approved, remain clear of cloud."
+    ],
+    "pilotReadbacks": [
+      "Florianópolis Approach, ANAC123, low visibility, unable to continue VFR, request diversion.",
+      "ANAC123, visibility reducing, request IFR clearance.",
+      "ANAC123, low visibility, returning to departure aerodrome.",
+      "Approach, ANAC123, request special VFR to the airport.",
+      "ANAC123, low visibility on final, going around, request vectors."
+    ],
+    "brazilianMistakes": "- ❌ Continuing VFR into deteriorating visibility.  \n  ✔ Divert or request IFR before options disappear.\n\n- ❌ Saying \"não enxergo\" instead of standard English.  \n  ✔ Use low visibility or unable to continue VFR.\n\n- ❌ Not stating intentions after reporting visibility.  \n  ✔ Always say divert, return, or request IFR.\n\n- ❌ Entering cloud without a clearance.  \n  ✔ Remain clear of cloud unless IFR or legal special VFR.",
+    "pronunciationCoaching": "**Target Phrase:** Low Visibility, Unable to Continue VFR\n\n**Pronunciation:** loh viz-uh-BIL-ih-tee, un-AY-bul too kon-TIN-yoo vee-ef-ar\n\n**Word Stress**\n\n- Visibility → viz-uh-BIL-ih-tee\n- Unable → un-AY-bul\n- Continue → kon-TIN-yoo\n\nPractice:\n\nLow... visibility...\n\nTogether:\n\nLow visibility, unable to continue VFR, request diversion, ANAC123.\n\nSpeak VFR letter by letter — V-F-R.",
+    "relatedConcepts": [
+      "Fog",
+      "Weather Deterioration",
+      "Special VFR",
+      "IFR Clearance",
+      "Diversion",
+      "Heavy Rain"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — VFR and Special VFR",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Visibility",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Visibility",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Weather Limitations"
+      },
+      {
+        "label": "SKYbrary — Low Visibility Operations",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0092",
+    "id": "0092",
+    "displayTerm": "Fog",
+    "term": "fog",
+    "slug": "fog",
+    "category": "Weather",
+    "meaningEn": "Fog is a surface-based cloud of tiny water droplets that reduces visibility, often to less than one kilometer.",
+    "meaningPt": "Nevoeiro / névoa.\n\nNuvem junto à superfície formada por gotículas de água que reduz a visibilidade, frequentemente para menos de um quilômetro.",
+    "whenUsed": "When Fog is present or forming, the pilot should:",
+    "example": "Tower: ANAC123, visibility eight hundred meters in fog, advise intentions.",
+    "sayPhrase": "Navegantes Tower, ANAC123, unable to land due fog, request diversion to Florianópolis.",
+    "icaoQuestion": "What would you tell ATC if fog made your destination unusable?",
+    "icaoSpeakText": "I would report unable to land due fog and request diversion to my alternate. I would state the alternate airport and request vectors or clearance as required. If already on approach, I would go around and then divert.",
+    "missionBrief": "Today's lesson covers fog — a cloud on the surface that can close airports and trap VFR helicopters.\n\nFog is visible moisture that reduces visibility near the ground, often forming overnight or along the Brazilian coast.\n\nIn the H130, fog can make helipads and runways unusable within minutes.\n\nYou must recognize fog formation, divert early, and use precise phraseology with ATC.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 operational communication.",
+    "captainTeaching": "Fog is patience weather.\n\nIt forms. It thickens. It lifts — sometimes slowly.\n\nThe sequence:\n\nCheck. Decide. Divert. Do not scud run.\n\nBrazilian pilots sometimes say \"nevoeiro\" or \"cerração\" on frequency.\n\nUse fog — ICAO standard term.\n\nIn the H130, a coastal fog bank can block the entire approach path.\n\nNever descend below safe altitude hoping to \"find the pad.\"\n\nTrain diversion calls for fog until they feel routine.",
+    "operationalContext": "You are inbound to Navegantes in your H130 at dawn.\n\nTower reports fog forming and visibility dropping to eight hundred meters.\n\nYou assess and transmit:\n\nNavegantes Tower, ANAC123, unable to land due fog, request diversion to Florianópolis.\n\nTower coordinates the diversion and you proceed to Florianópolis where visibility remains acceptable.",
+    "sayItCoach": "Unable to land due fog, request diversion to Florianópolis, ANAC123.",
+    "icaoModelAnswer": "I would report unable to land due fog and request diversion to my alternate. I would state the alternate airport and request vectors or clearance as required. If already on approach, I would go around and then divert.",
+    "memoryTrick": "**FOG** — **F**orecast and check trends, **O**ptions — divert early, **G**o around if fog appears on final.",
+    "operationalMeaning": "When Fog is present or forming, the pilot should:\n\nFog reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "issuing visibility and RVR updates",
+      "closing or restricting visual approaches when needed",
+      "providing diversion assistance",
+      "sequencing IFR approaches in low visibility",
+      "advising aircraft of rapid visibility changes"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, visibility eight hundred meters in fog, advise intentions.",
+      "Tower: ANAC123, fog forming rapidly, runway visual range decreasing.",
+      "Approach: ANAC123, diversion to Florianópolis approved, contact Approach.",
+      "Tower: ANAC123, fog bank on final, say if continuing.",
+      "Approach: ANAC123, destination reporting fog, say alternate."
+    ],
+    "pilotReadbacks": [
+      "Navegantes Tower, ANAC123, unable to land due fog, request diversion to Florianópolis.",
+      "ANAC123, fog on final, going around, request vectors to alternate.",
+      "ANAC123, delaying departure due fog, will advise when ready.",
+      "Approach, ANAC123, destination in fog, proceeding to alternate.",
+      "ANAC123, request current visibility in fog."
+    ],
+    "brazilianMistakes": "- ❌ Scud running under fog to find the helipad.  \n  ✔ Divert or hold — do not descend into unknown visibility.\n\n- ❌ Saying \"nevoeiro fechado\" without clear intention.  \n  ✔ Use unable to land due fog, request diversion.\n\n- ❌ Departing without an alternate when fog is possible.  \n  ✔ Always plan an alternate for fog-prone destinations.\n\n- ❌ Not going around when fog appears on final.  \n  ✔ Go around early and reassess.",
+    "pronunciationCoaching": "**Target Phrase:** Unable to Land Due Fog, Request Diversion\n\n**Pronunciation:** un-AY-bul too land doo fog, ree-KWEST dy-VER-zhun\n\n**Word Stress**\n\n- Unable → un-AY-bul\n- Fog → fog\n- Diversion → dy-VER-zhun\n\nPractice:\n\nUnable... to... land... due... fog...\n\nTogether:\n\nUnable to land due fog, request diversion to Florianópolis, ANAC123.\n\nSpeak the alternate clearly.",
+    "relatedConcepts": [
+      "Low Visibility",
+      "Weather Deterioration",
+      "Diversion",
+      "Go Around",
+      "IFR Clearance",
+      "Special VFR"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Aerodrome Weather",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Fog",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Fog",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Weather Limitations"
+      },
+      {
+        "label": "SKYbrary — Fog",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0093",
+    "id": "0093",
+    "displayTerm": "Heavy Rain",
+    "term": "heavy rain",
+    "slug": "heavy-rain",
+    "category": "Weather",
+    "meaningEn": "Heavy Rain is intense rainfall that significantly reduces visibility and may be associated with convective weather and windshear.",
+    "meaningPt": "Chuva forte.\n\nPrecipitação intensa que reduz significativamente a visibilidade e pode estar associada a tempo convectivo e windshear.",
+    "whenUsed": "When Heavy Rain is encountered, the pilot should:",
+    "example": "Tower: ANAC123, roger heavy rain, cleared go-around.",
+    "sayPhrase": "Florianópolis Tower, ANAC123, going around, heavy rain on final.",
+    "icaoQuestion": "What would you tell ATC if heavy rain made your approach unsafe?",
+    "icaoSpeakText": "I would go around and report going around due heavy rain on final, with visibility reduced. I would request delay or another approach when the shower has passed, or divert if conditions do not improve.",
+    "missionBrief": "Today's lesson covers heavy rain — intense precipitation that reduces visibility and can hide worse hazards.\n\nHeavy Rain can obscure the windscreen, reduce visual references, and conceal windshear or embedded thunderstorms.\n\nIn the H130, heavy rain showers along the Brazilian coast are common and can make approaches unsafe.\n\nYou must report heavy rain, consider go-around or diversion, and remain alert for associated convective hazards.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 operational communication.",
+    "captainTeaching": "Heavy rain is more than wet glass.\n\nIt hides things — runway lights, wires, the horizon, and sometimes a microburst.\n\nThe sequence:\n\nAssess. Go around if blind. Report. Wait or divert.\n\nBrazilian pilots sometimes say \"chuva forte\" on frequency.\n\nUse heavy rain — ICAO standard term.\n\nIn the H130, a coastal shower can erase the approach path in seconds.\n\nIf you cannot see what you need to land — go around.\n\nTrain that decision until it is automatic.",
+    "operationalContext": "You are on final to runway one four at Florianópolis in your H130.\n\nA heavy rain shower reduces visibility and washes out visual references.\n\nYou go around and transmit:\n\nFlorianópolis Tower, ANAC123, going around, heavy rain on final, visibility reduced.\n\nTower advises following traffic and you hold until the shower moves through.",
+    "sayItCoach": "Going around, heavy rain on final, visibility reduced, ANAC123.",
+    "icaoModelAnswer": "I would go around and report going around due heavy rain on final, with visibility reduced. I would request delay or another approach when the shower has passed, or divert if conditions do not improve.",
+    "memoryTrick": "**RAIN** — **R**educed visibility check, **A**bandon approach if blind, **I**nform ATC, **N**ote possible windshear.",
+    "operationalMeaning": "When Heavy Rain is encountered, the pilot should:\n\nHeavy Rain reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "update weather information for other aircraft",
+      "advise of reduced visibility on final",
+      "coordinate go-arounds and delays",
+      "warn of possible windshear associated with rain shafts",
+      "assist with diversions when needed"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, roger heavy rain, cleared go-around.",
+      "Tower: ANAC123, heavy rain shower on final, advise intentions.",
+      "Approach: ANAC123, previous aircraft reported heavy rain and reduced visibility.",
+      "Tower: ANAC123, say if able to continue the approach.",
+      "Tower: ANAC123, delay takeoff, heavy rain over the field."
+    ],
+    "pilotReadbacks": [
+      "Florianópolis Tower, ANAC123, going around, heavy rain on final.",
+      "ANAC123, heavy rain, visibility reduced, request delay.",
+      "ANAC123, unable to depart due heavy rain, will advise when ready.",
+      "Approach, ANAC123, heavy rain shower ahead, request weather deviation.",
+      "ANAC123, clear of heavy rain, request another approach."
+    ],
+    "brazilianMistakes": "- ❌ Continuing when the windscreen is opaque with rain.  \n  ✔ Go around — you need visual references to land safely.\n\n- ❌ Saying only \"chuva\" without intensity.  \n  ✔ Use heavy rain when intensity is significant.\n\n- ❌ Ignoring possible windshear in a rain shaft.  \n  ✔ Treat heavy convective rain as a windshear warning.\n\n- ❌ Not reporting after the go-around.  \n  ✔ Tell ATC so other aircraft are warned.",
+    "pronunciationCoaching": "**Target Phrase:** Going Around, Heavy Rain on Final\n\n**Pronunciation:** GO-ing uh-ROUND, HEV-ee rayn on FY-nul\n\n**Word Stress**\n\n- Heavy → HEV-ee\n- Rain → rayn\n- Final → FY-nul\n\nPractice:\n\nHeavy... rain... on... final...\n\nTogether:\n\nGoing around, heavy rain on final, visibility reduced, ANAC123.\n\nSpeak clearly — Tower needs the reason.",
+    "relatedConcepts": [
+      "Thunderstorm",
+      "Microburst",
+      "Windshear",
+      "Low Visibility",
+      "Go Around",
+      "Weather Deterioration"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Weather",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Precipitation",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Rain",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Weather Limitations"
+      },
+      {
+        "label": "SKYbrary — Heavy Precipitation",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0094",
+    "id": "0094",
+    "displayTerm": "Hail",
+    "term": "hail",
+    "slug": "hail",
+    "category": "Weather",
+    "meaningEn": "Hail is precipitation in the form of ice pellets produced by thunderstorms, capable of causing significant aircraft damage.",
+    "meaningPt": "Granizo.\n\nPrecipitação em forma de pedras de gelo produzida por tempestades, capaz de causar dano significativo à aeronave.",
+    "whenUsed": "When Hail is present or encountered, the pilot should:",
+    "example": "Approach: ANAC123, roger hail, deviation approved, say intentions.",
+    "sayPhrase": "Curitiba Approach, ANAC123, hail encountered, request weather deviation.",
+    "icaoQuestion": "What would you tell ATC if you encountered hail in flight?",
+    "icaoSpeakText": "I would report hail encountered with my altitude and position, request weather deviation or diversion, and request a precautionary landing for inspection. If damage affected safe flight, I would declare Pan Pan or Mayday and request priority landing.",
+    "missionBrief": "Today's lesson covers hail — frozen precipitation that can damage rotors, windscreens, and airframe surfaces.\n\nHail is almost always associated with thunderstorms and must be avoided.\n\nIn the H130, even small hail can damage rotor blades and force an immediate precautionary landing.\n\nYou must deviate around hail shafts, report hail to ATC, and land for inspection if hail is encountered.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Hail is frozen damage.\n\nIt comes from thunderstorms. It hits hard. It can ruin blades.\n\nThe sequence:\n\nAvoid. Deviate. Report. Land and inspect if struck.\n\nNever aim for the dark rain shaft under a CB.\n\nBrazilian pilots sometimes say \"granizo\" on frequency.\n\nUse hail — ICAO standard term.\n\nIn the H130, rotor blades and the windscreen are vulnerable.\n\nIf you hear or feel hail — exit and inspect.\n\nTrain thunderstorm avoidance until hail is something you only hear about in PIREPs — not in your cockpit.",
+    "operationalContext": "You are IFR toward Curitiba in your H130 when ATC advises a thunderstorm on your route.\n\nYou request deviation, but briefly encounter small hail at the edge of the cell.\n\nYou transmit:\n\nCuritiba Approach, ANAC123, hail encountered, request weather deviation and precautionary landing Curitiba.\n\nApproach clears you direct and you land for rotor and windscreen inspection.",
+    "sayItCoach": "Hail encountered, request precautionary landing Curitiba, ANAC123.",
+    "icaoModelAnswer": "I would report hail encountered with my altitude and position, request weather deviation or diversion, and request a precautionary landing for inspection. If damage affected safe flight, I would declare Pan Pan or Mayday and request priority landing.",
+    "memoryTrick": "**HAIL** — **H**ead away from the shaft, **A**nnounce hail to ATC, **I**nspect after any strike, **L**and precautionary if needed.",
+    "operationalMeaning": "When Hail is present or encountered, the pilot should:\n\nHail reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "warn all aircraft in the area immediately",
+      "approve weather deviations and diversions",
+      "relay hail PIREPs with location",
+      "assist damaged aircraft with priority landing",
+      "coordinate emergency services if structural damage is reported"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger hail, deviation approved, say intentions.",
+      "Approach: ANAC123, hail reported by previous aircraft, advise.",
+      "Tower: ANAC123, cleared to land, emergency services notified if required.",
+      "Center: ANAC123, say hail size and altitude if able.",
+      "Approach: ANAC123, all traffic advised of hail on your PIREP."
+    ],
+    "pilotReadbacks": [
+      "Curitiba Approach, ANAC123, hail encountered, request weather deviation.",
+      "ANAC123, hail shaft ahead, unable to continue present routing, request diversion.",
+      "ANAC123, hail encountered, possible rotor damage, request precautionary landing.",
+      "Pan Pan Pan Pan, ANAC123, hail damage, request priority landing.",
+      "Approach, ANAC123, clear of hail, proceeding direct Curitiba for inspection."
+    ],
+    "brazilianMistakes": "- ❌ Flying near thunderstorm cores where hail is likely.  \n  ✔ Deviate early — hail shafts are no-go areas.\n\n- ❌ Saying only \"granizo\" without intentions.  \n  ✔ Use hail encountered, request deviation or precautionary landing.\n\n- ❌ Continuing the flight after hail without inspection.  \n  ✔ Land and inspect rotors and windscreen before further flight.\n\n- ❌ Not warning ATC for other traffic.  \n  ✔ Report immediately — hail PIREPs save aircraft.",
+    "pronunciationCoaching": "**Target Phrase:** Hail Encountered, Request Precautionary Landing\n\n**Pronunciation:** hayl en-KOWN-terd, ree-KWEST pri-KAW-shun-air-ee LAN-ding\n\n**Word Stress**\n\n- Hail → hayl\n- Encountered → en-KOWN-terd\n- Precautionary → pri-KAW-shun-air-ee\n\nPractice:\n\nHail... encountered...\n\nTogether:\n\nHail encountered, request precautionary landing Curitiba, ANAC123.\n\nSpeak clearly — Approach needs the hazard and your plan.",
+    "relatedConcepts": [
+      "Thunderstorm",
+      "Embedded Thunderstorm",
+      "Weather Deviation",
+      "Precautionary Landing",
+      "Severe Turbulence",
+      "Main Rotor Damage"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Weather Deviation",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Hail",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Hail",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Weather Limitations"
+      },
+      {
+        "label": "SKYbrary — Hail",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0095",
+    "id": "0095",
+    "displayTerm": "Crosswind Landing",
+    "term": "crosswind landing",
+    "slug": "crosswind-landing",
+    "category": "Weather",
+    "meaningEn": "A Crosswind Landing is a landing performed with a wind component from the side of the runway or landing area, requiring correction for drift.",
+    "meaningPt": "Pouso com vento cruzado.\n\nPouso realizado com componente de vento lateral em relação à pista ou área de pouso, exigindo correção de deriva.",
+    "whenUsed": "When a Crosswind Landing is required, the pilot should:",
+    "example": "Tower: ANAC123, wind two zero zero at one eight knots, runway two nine, cleared to land.",
+    "sayPhrase": "Navegantes Tower, ANAC123, request runway one eight, more into wind.",
+    "icaoQuestion": "What would you tell ATC if the assigned runway had an excessive crosswind?",
+    "icaoSpeakText": "I would report unable to accept the crosswind on the assigned runway and request a runway more into wind. If no suitable runway was available and the crosswind exceeded limits, I would go around or divert to an alternate with a more favorable wind.",
+    "missionBrief": "Today's lesson covers crosswind landing — landing with wind from the side of the runway or helipad.\n\nCrosswind Landing requires technique to maintain alignment and avoid drift, especially near the ground.\n\nIn the H130, crosswinds are common at coastal airports like Navegantes and Florianópolis.\n\nYou must know your crosswind limits, request the most suitable runway when needed, and communicate clearly with ATC.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 operational communication.",
+    "captainTeaching": "Crosswind landing is math and technique.\n\nWind angle. Wind speed. Component. Limit.\n\nThe sequence:\n\nCheck wind. Compare to limits. Request better runway if needed. Land or go around.\n\nBrazilian pilots sometimes say \"vento cruzado forte\" on frequency.\n\nUse crosswind or request runway more into wind — clear operational English.\n\nIn the H130, coastal airports often give you a choice — ask for it.\n\nDo not accept a crosswind beyond your limit to \"help the flow.\"\n\nTrain the request for an into-wind runway until it feels normal.",
+    "operationalContext": "You are approaching Navegantes in your H130.\n\nTower reports wind two zero zero at one eight knots for runway two nine — a significant crosswind.\n\nYou assess and transmit:\n\nNavegantes Tower, ANAC123, request runway one eight, more into wind.\n\nTower reassigns runway one eight.\n\nYou land with a manageable headwind component instead of a strong crosswind.",
+    "sayItCoach": "Request runway one eight, more into wind, ANAC123.",
+    "icaoModelAnswer": "I would report unable to accept the crosswind on the assigned runway and request a runway more into wind. If no suitable runway was available and the crosswind exceeded limits, I would go around or divert to an alternate with a more favorable wind.",
+    "memoryTrick": "**WIND** — **W**ork out the component, **I**nto-wind runway if available, **N**ever exceed limits, **D**ecline and go around if unsafe.",
+    "operationalMeaning": "When a Crosswind Landing is required, the pilot should:\n\nCrosswind Landing reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "providing current wind direction and speed",
+      "assigning the most suitable runway when traffic permits",
+      "approving runway changes for wind",
+      "sequencing go-arounds when crosswind is excessive",
+      "advising gusty crosswind conditions"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, wind two zero zero at one eight knots, runway two nine, cleared to land.",
+      "Tower: ANAC123, runway one eight available, advise.",
+      "Tower: ANAC123, wind check, two one zero at two zero knots, gusting two five.",
+      "Tower: ANAC123, roger request runway change, cleared runway one eight.",
+      "Tower: ANAC123, crosswind landing in use, caution gusts."
+    ],
+    "pilotReadbacks": [
+      "Navegantes Tower, ANAC123, request runway one eight, more into wind.",
+      "ANAC123, unable to accept crosswind on runway two nine, request other runway.",
+      "ANAC123, going around due crosswind, request another approach.",
+      "Tower, ANAC123, wind check on final.",
+      "ANAC123, cleared to land runway one eight, wind copied."
+    ],
+    "brazilianMistakes": "- ❌ Accepting any runway without checking the crosswind component.  \n  ✔ Calculate or estimate the component against your limits.\n\n- ❌ Saying \"pista ruim de vento\" instead of a clear request.  \n  ✔ Use request runway more into wind or unable to accept crosswind.\n\n- ❌ Not going around when control margins disappear.  \n  ✔ Go around — do not force a crosswind landing beyond limits.\n\n- ❌ Forgetting to request a wind check on final.  \n  ✔ Ask for wind check when gusts are reported.",
+    "pronunciationCoaching": "**Target Phrase:** Request Runway More Into Wind\n\n**Pronunciation:** ree-KWEST RUN-way mor IN-too wind\n\n**Word Stress**\n\n- Request → ree-KWEST\n- Runway → RUN-way\n- Into → IN-too\n\nPractice:\n\nRequest... runway... more... into... wind...\n\nTogether:\n\nRequest runway one eight, more into wind, ANAC123.\n\nSpeak runway numbers clearly — one eight.",
+    "relatedConcepts": [
+      "Tailwind Landing",
+      "Cleared to Land",
+      "Go Around",
+      "Windshear",
+      "Maintain Runway Heading",
+      "Weather Deterioration"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Aerodrome Operations",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Crosswind",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Crosswind",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Wind Limitations"
+      },
+      {
+        "label": "SKYbrary — Crosswind Landings",
+        "href": "https://skybrary.aero"
+      }
+    ]
   }
 ];

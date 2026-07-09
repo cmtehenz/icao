@@ -127,6 +127,14 @@ function fallbackDef(item: IcaoVocabularyItem): SimpleWordDef {
 function applySkybrary(def: SimpleWordDef, term: string, item?: IcaoVocabularyItem): SimpleWordDef {
   const patch = skybraryPatchForTerm(term, item);
   if (!patch) return def;
+  // Premium lessons keep curated teaching text; only attach SKYbrary attribution.
+  if (def.missionBrief || def.captainTeaching) {
+    return {
+      ...def,
+      knowledgeSource: patch.knowledgeSource,
+      review: def.review,
+    };
+  }
   return {
     ...def,
     whenUsed: patch.whenUsed ?? def.whenUsed,
@@ -142,7 +150,7 @@ function resolveDef(term: string, item?: IcaoVocabularyItem): SimpleWordDef {
     (item?.id ? lookupDevKnowledgeById(item.id) : null) ??
     lookupDevKnowledgeByTerm(term);
   if (premium) {
-    return lessonDefFromDevEntry(premium);
+    return applySkybrary(lessonDefFromDevEntry(premium), term, item);
   }
 
   const knowledge = KnowledgeEngine.lookupVocabulary(term);

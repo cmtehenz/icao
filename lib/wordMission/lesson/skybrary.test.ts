@@ -53,8 +53,9 @@ describe("SKYbrary knowledge integration", () => {
     const lesson = buildWordMissionLesson(windshear!);
     expect(lesson.knowledgeSource?.provider).toBe("skybrary");
     expect(lesson.knowledgeSource?.topic).toBe("Weather Avoidance");
-    expect(lesson.steps[1]!.captainLine).toMatch(/brief ATC|vectors|hold/i);
-    expect(lesson.steps[3]!.captainLine).toMatch(/deteriorating weather/i);
+    // Premium Windshear lesson owns teaching copy; SKYbrary attaches attribution.
+    expect(lesson.steps[1]!.captainLine).toMatch(/windshear|airspeed|go around/i);
+    expect(lesson.steps[3]!.captainLine).toMatch(/windshear|final|ATC/i);
   });
 
   it("line up and wait maps to runway incursion topic", () => {

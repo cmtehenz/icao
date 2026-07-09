@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "completedCount": 85,
-  "pendingCount": 425,
+  "completedCount": 95,
+  "pendingCount": 415,
   "concepts": [
     {
       "id": "0001",
@@ -595,6 +595,76 @@
       "id": "0085",
       "concept": "Severe Turbulence",
       "slug": "0085-severe-turbulence",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0086",
+      "concept": "Moderate Turbulence",
+      "slug": "0086-moderate-turbulence",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0087",
+      "concept": "Light Turbulence",
+      "slug": "0087-light-turbulence",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0088",
+      "concept": "Windshear",
+      "slug": "0088-windshear",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0089",
+      "concept": "Microburst",
+      "slug": "0089-microburst",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0090",
+      "concept": "Icing Conditions",
+      "slug": "0090-icing-conditions",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0091",
+      "concept": "Low Visibility",
+      "slug": "0091-low-visibility",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0092",
+      "concept": "Fog",
+      "slug": "0092-fog",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0093",
+      "concept": "Heavy Rain",
+      "slug": "0093-heavy-rain",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0094",
+      "concept": "Hail",
+      "slug": "0094-hail",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0095",
+      "concept": "Crosswind Landing",
+      "slug": "0095-crosswind-landing",
       "status": "complete",
       "completedAt": "2026-07-09"
     }
