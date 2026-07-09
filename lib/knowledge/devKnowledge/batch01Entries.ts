@@ -7461,5 +7461,2332 @@ export const BATCH01_DEV_ENTRIES: DevKnowledgeEntry[] = [
         "href": "https://skybrary.aero"
       }
     ]
+  },
+  {
+    "catalogId": "0096",
+    "id": "0096",
+    "displayTerm": "Tailwind Landing",
+    "term": "tailwind landing",
+    "slug": "tailwind-landing",
+    "category": "Weather",
+    "meaningEn": "A Tailwind Landing is a landing performed with wind from behind the aircraft, resulting in increased groundspeed, extended landing roll, and reduced control authority near the ground.",
+    "meaningPt": "Pouso com vento em cauda (tailwind).\n\nPouso realizado com vento vindo de trás da aeronave, resultando em maior velocidade de solo, maior distância de pouso e menor autoridade de controle próximo ao solo.",
+    "whenUsed": "When a Tailwind Landing is required, the pilot should:",
+    "example": "Tower: ANAC123, wind one zero zero at one two knots, runway two seven, cleared to land.",
+    "sayPhrase": "Joinville Tower, ANAC123, request runway zero nine, into wind, tailwind on two seven.",
+    "icaoQuestion": "What would you do if ATC assigned you a runway with a significant tailwind component?",
+    "icaoSpeakText": "I would check the tailwind component against my aircraft landing limitations. If it exceeded the limit or made the landing distance insufficient, I would request a runway into wind. If no other runway was available, I would calculate whether the available runway was sufficient and either accept or go around and divert if it was not safe.",
+    "missionBrief": "Today's lesson covers tailwind landing — landing with wind from behind the aircraft, increasing groundspeed and extending stopping distance.\n\nTailwind Landing demands higher approach speeds, longer landing roll, and careful calculation of landing distance, especially on short runways.\n\nIn the H130, tailwind conditions are common when the preferred runway is active for traffic sequencing at airports like Congonhas and Joinville.\n\nYou must recognize tailwind limitations, request an into-wind runway when operationally feasible, and communicate clearly with ATC about your intentions.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 operational communication.",
+    "captainTeaching": "Tailwind landing is all about numbers and distance.\n\nWind from behind. More speed at touchdown. More runway needed.\n\nThe sequence:\n\nCheck tailwind component. Compare to limits. Request into-wind runway. Or calculate landing distance carefully.\n\nBrazilian pilots sometimes accept any assigned runway without checking the wind.\n\nKnow your limit. Five knots tailwind is a common certified limit for light aircraft.\n\nAt Joinville or Congonhas, the sequence can push you to an unfavorable runway.\n\nRequest the better runway. ATC usually cooperates when the reason is clear.\n\nTrain the request until it is automatic.",
+    "operationalContext": "You are inbound to Joinville in your H130.\n\nTower reports wind one zero zero at twelve knots and assigns runway two seven — giving you a direct tailwind.\n\nYou transmit:\n\nJoinville Tower, ANAC123, request runway zero nine, into wind, tailwind on two seven.\n\nTower checks traffic and approves runway zero nine.\n\nYou land with a clean headwind component and normal stopping distance.",
+    "sayItCoach": "Joinville Tower, ANAC123, request runway zero nine, into wind, tailwind on two seven.",
+    "icaoModelAnswer": "I would check the tailwind component against my aircraft landing limitations. If it exceeded the limit or made the landing distance insufficient, I would request a runway into wind. If no other runway was available, I would calculate whether the available runway was sufficient and either accept or go around and divert if it was not safe.",
+    "memoryTrick": "**TAIL** — **T**ailwind increases groundspeed, **A**ssess landing distance, **I**nto-wind runway preferred, **L**eave the runway if unsafe.",
+    "operationalMeaning": "When a Tailwind Landing is required, the pilot should:\n\nTailwind Landing reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "reporting wind direction and speed to arriving aircraft",
+      "assigning into-wind runways when traffic permits",
+      "approving runway changes requested for wind",
+      "advising when tailwind limits are likely exceeded",
+      "coordinating go-arounds when landing distance is a concern"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, wind one zero zero at one two knots, runway two seven, cleared to land.",
+      "Tower: ANAC123, runway zero nine available, say able to accept.",
+      "Tower: ANAC123, wind check, one one zero at one five knots, gusting two zero.",
+      "Tower: ANAC123, roger request, runway zero nine, cleared to land.",
+      "Tower: ANAC123, be advised tailwind component on runway two seven, approximately one two knots."
+    ],
+    "pilotReadbacks": [
+      "Joinville Tower, ANAC123, request runway zero nine, into wind, tailwind on two seven.",
+      "ANAC123, unable to accept tailwind on runway two seven, request other runway.",
+      "ANAC123, going around, tailwind exceeds limits, request another approach.",
+      "Tower, ANAC123, confirm wind for runway two seven.",
+      "ANAC123, cleared to land runway zero nine, thank you."
+    ],
+    "brazilianMistakes": "- ❌ Accepting any assigned runway without checking wind direction.  \n  ✔ Always calculate or estimate the tailwind component on landing.\n\n- ❌ Saying \"vento em cauda\" on frequency instead of a standard request.  \n  ✔ Use request runway into wind or unable to accept tailwind.\n\n- ❌ Underestimating the landing roll increase with tailwind.  \n  ✔ Tailwind increases groundspeed — landing distance increases significantly.\n\n- ❌ Not going around when tailwind exceeds limits.  \n  ✔ Go around or divert when the tailwind component is outside limits.",
+    "pronunciationCoaching": "**Target Phrase:** Request Runway Into Wind, Tailwind on Assigned Runway\n\n**Pronunciation:** ree-KWEST RUN-way IN-too wind, TAIL-wind on uh-SYND RUN-way\n\n**Word Stress**\n\n- Request → ree-KWEST\n- Tailwind → TAIL-wind\n- Assigned → uh-SYND\n\nPractice:\n\nTailwind... on... runway... two seven...\n\nTogether:\n\nJoinville Tower, ANAC123, request runway zero nine, into wind, tailwind on two seven.\n\nSpeak runway numbers clearly — zero nine.",
+    "relatedConcepts": [
+      "Crosswind Landing",
+      "Headwind Takeoff",
+      "Cleared to Land",
+      "Go Around",
+      "Landing Distance Assessment",
+      "Runway Change"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Aerodrome Operations",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Tailwind",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Tailwind",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Wind Limitations"
+      },
+      {
+        "label": "SKYbrary — Tailwind Operations",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0097",
+    "id": "0097",
+    "displayTerm": "Headwind Takeoff",
+    "term": "headwind takeoff",
+    "slug": "headwind-takeoff",
+    "category": "Performance",
+    "meaningEn": "A Headwind Takeoff is a departure made with wind blowing from ahead of the aircraft, reducing the takeoff ground roll and improving initial climb performance.",
+    "meaningPt": "Decolagem com vento de frente (headwind).\n\nDecolagem realizada com vento vindo de frente à aeronave, reduzindo a corrida de decolagem e melhorando o desempenho de subida inicial.",
+    "whenUsed": "When a Headwind Takeoff is planned, the pilot should:",
+    "example": "Tower: ANAC123, wind three three zero at one zero knots, runway one four, cleared for takeoff.",
+    "sayPhrase": "Florianópolis Tower, ANAC123, request runway three two, into wind, performance limited.",
+    "icaoQuestion": "What would you tell ATC if you needed a headwind runway for performance reasons?",
+    "icaoSpeakText": "I would inform ATC that I have a performance limitation and request a runway that gives a headwind component. I would state my reason clearly — for example, performance limited with tailwind on assigned runway. If no other runway was available, I would calculate whether the takeoff could be completed safely within the available distance.",
+    "missionBrief": "Today's lesson covers headwind takeoff — departing into a wind component from ahead of the aircraft, reducing ground roll, improving climb gradient, and increasing safety margins.\n\nHeadwind Takeoff is the preferred condition for all aircraft, especially in hot and humid conditions in Brazil where performance margins can be limited.\n\nIn the H130, a headwind on departure provides better initial climb, shorter ground roll, and more obstacle clearance — critical at airports like Congonhas and Florianópolis.\n\nYou must request a headwind runway when available, and communicate your performance requirements to ATC when necessary.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 performance communication.",
+    "captainTeaching": "Headwind is performance. Tailwind is a debt you pay at rotation.\n\nWind from ahead. Lower ground roll. Better climb. Safer departure.\n\nThe sequence:\n\nCheck the wind. Check assigned runway. Compare. Request change if needed.\n\nBrazilian pilots sometimes accept any runway without thinking about wind.\n\nFlorianópolis, Congonhas, Navegantes — all have preferred runways based on prevailing winds.\n\nKnow the runway direction. Know the wind. Make the request.\n\nATC will help — but only if you ask.\n\nTrain the request until it is automatic before every departure briefing.",
+    "operationalContext": "You are ready for departure at Florianópolis in your H130 on a hot afternoon.\n\nTower assigns runway one four — giving a direct tailwind with wind from three three zero at ten knots.\n\nPerformance calculations show the tailwind is marginal.\n\nYou transmit:\n\nFlorianópolis Tower, ANAC123, request runway three two, into wind, performance limited with tailwind on one four.\n\nTower approves runway three two.\n\nYou depart with a comfortable headwind and full performance margins.",
+    "sayItCoach": "Florianópolis Tower, ANAC123, request runway three two, into wind, performance limited.",
+    "icaoModelAnswer": "I would inform ATC that I have a performance limitation and request a runway that gives a headwind component. I would state my reason clearly — for example, performance limited with tailwind on assigned runway. If no other runway was available, I would calculate whether the takeoff could be completed safely within the available distance.",
+    "memoryTrick": "**HEAD** — **H**eadwind reduces ground roll, **E**xtends climb gradient, **A**sk for the right runway, **D**epart safely with margin.",
+    "operationalMeaning": "When a Headwind Takeoff is planned, the pilot should:\n\nHeadwind Takeoff reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "providing current wind direction and speed before departure",
+      "assigning the most into-wind runway when traffic permits",
+      "approving runway changes for performance or safety reasons",
+      "advising of wind gradient or windshear reports on departure",
+      "accommodating specific performance requests"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, wind three three zero at one zero knots, runway one four, cleared for takeoff.",
+      "Tower: ANAC123, runway three two available, say ready.",
+      "Tower: ANAC123, confirm runway change request, say reason.",
+      "Tower: ANAC123, roger performance limitation, runway three two, line up and wait.",
+      "Tower: ANAC123, wind three four zero at one two knots, expect headwind component on runway three two."
+    ],
+    "pilotReadbacks": [
+      "Florianópolis Tower, ANAC123, request runway three two, into wind, performance limited.",
+      "ANAC123, unable to depart with tailwind on runway one four, request other runway.",
+      "ANAC123, runway three two, line up and wait, ANAC123.",
+      "Tower, ANAC123, ready for departure, confirm current wind.",
+      "ANAC123, cleared for takeoff runway three two, headwind copied."
+    ],
+    "brazilianMistakes": "- ❌ Accepting a tailwind runway without checking performance.  \n  ✔ Always check headwind or tailwind component against your departure calculations.\n\n- ❌ Saying \"preciso de outra pista\" instead of a professional request.  \n  ✔ Use request runway into wind, performance limited.\n\n- ❌ Not mentioning the reason for the runway change request.  \n  ✔ State performance limited so ATC understands the urgency.\n\n- ❌ Forgetting to verify the full runway length is available.  \n  ✔ Confirm backtrack or full runway if performance is marginal.",
+    "pronunciationCoaching": "**Target Phrase:** Request Runway Into Wind, Performance Limited\n\n**Pronunciation:** ree-KWEST RUN-way IN-too wind, per-FOR-mance LIM-it-ted\n\n**Word Stress**\n\n- Request → ree-KWEST\n- Performance → per-FOR-mance\n- Limited → LIM-it-ted\n\nPractice:\n\nPerformance... limited...\n\nTogether:\n\nFlorianópolis Tower, ANAC123, request runway three two, into wind, performance limited.\n\nSpeak clearly and directly — ATC must understand the urgency.",
+    "relatedConcepts": [
+      "Tailwind Landing",
+      "Density Altitude",
+      "Crosswind Landing",
+      "Cleared for Takeoff",
+      "Go Around",
+      "Obstacle Departure Procedure"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Departure Operations",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Takeoff Performance",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Headwind",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Performance Limitations"
+      },
+      {
+        "label": "SKYbrary — Takeoff Performance",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0098",
+    "id": "0098",
+    "displayTerm": "Density Altitude",
+    "term": "density altitude",
+    "slug": "density-altitude",
+    "category": "Performance",
+    "meaningEn": "Density Altitude is the pressure altitude corrected for non-standard temperature. It represents the altitude in the International Standard Atmosphere at which the air density equals the actual air density at the point of operation.",
+    "meaningPt": "Altitude-densidade.\n\nAltitude de pressão corrigida para temperatura não padrão. Representa a altitude na atmosfera padrão internacional na qual a densidade do ar é igual à densidade real no local de operação.",
+    "whenUsed": "When Density Altitude is high, the pilot should:",
+    "example": "Tower: ANAC123, temperature three five degrees, altimeter one zero one three, runway one seven, cleared for takeoff.",
+    "sayPhrase": "Congonhas Tower, ANAC123, ready for departure, performance limited, request full runway.",
+    "icaoQuestion": "How would you explain to ATC that you need the full runway for departure due to high density altitude?",
+    "icaoSpeakText": "I would report to ATC that I am performance limited due to high density altitude and request the full runway available with no intersection departure. I would state the reason clearly so ATC understands and can accommodate the request. If the full runway is not sufficient, I would delay departure to cooler conditions or reduce weight.",
+    "missionBrief": "Today's lesson covers density altitude — the pressure altitude corrected for non-standard temperature, representing the actual performance altitude of the aircraft.\n\nDensity Altitude is invisible but critical. High temperature and high humidity reduce air density, which directly reduces engine power, rotor efficiency, and aircraft performance.\n\nIn the H130, hot and humid Brazilian summer days can produce density altitudes well above the field elevation at low-altitude airports like Congonhas and Navegantes.\n\nYou must calculate density altitude before every departure and landing, understand its effect on performance, and communicate limitations to ATC when necessary.\n\nThis lesson prepares you for ICAO Part 2, Part 3, and Part 4 communication.",
+    "captainTeaching": "Density altitude is the performance thief you cannot see.\n\nHot day. High humidity. Thin air. Less power. Less lift. Longer roll.\n\nThe sequence:\n\nOAT. Pressure altitude. Calculate density altitude. Check performance tables.\n\nBrazilian summer is a density altitude trap.\n\nCongonhas in January at noon — three thousand feet density altitude at a field below three thousand feet.\n\nYour H130 does not know the thermometer reading. It only feels the air density.\n\nCalculate before every hot weather flight.\n\nNever guess. Never assume standard conditions in summer.\n\nAdjust weight or wait for cooler conditions.",
+    "operationalContext": "It is a hot January afternoon in Congonhas — thirty-five degrees Celsius, humidity high.\n\nYou calculate density altitude for your H130 departure: nearly three thousand feet, despite the field being at two thousand seven hundred feet.\n\nYour performance tables show you are at maximum allowable takeoff weight.\n\nYou transmit:\n\nSão Paulo Congonhas Tower, ANAC123, ready for departure, performance limited due high density altitude, request full runway available.\n\nTower clears you with full runway length and no intersection departure.",
+    "sayItCoach": "ANAC123, performance limited due high density altitude, request full runway.",
+    "icaoModelAnswer": "I would report to ATC that I am performance limited due to high density altitude and request the full runway available with no intersection departure. I would state the reason clearly so ATC understands and can accommodate the request. If the full runway is not sufficient, I would delay departure to cooler conditions or reduce weight.",
+    "memoryTrick": "**HEAT** — **H**igh temperature raises density altitude, **E**ngine power decreases, **A**ssess performance tables, **T**ake full runway or wait.",
+    "operationalMeaning": "When Density Altitude is high, the pilot should:\n\nDensity Altitude reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "providing accurate altimeter setting and temperature",
+      "approving runway changes for performance reasons",
+      "accommodating delayed departures for performance",
+      "relaying performance-limited PIREPs to other traffic",
+      "assigning longer runways when possible for departures"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, temperature three five degrees, altimeter one zero one three, runway one seven, cleared for takeoff.",
+      "Tower: ANAC123, full runway available, line up and wait runway one seven.",
+      "Tower: ANAC123, say performance requirement for departure.",
+      "Tower: ANAC123, roger performance limited, no intersection departure approved.",
+      "Tower: ANAC123, QNH one zero one two, temperature three six, advise ready."
+    ],
+    "pilotReadbacks": [
+      "Congonhas Tower, ANAC123, ready for departure, performance limited, request full runway.",
+      "ANAC123, density altitude high, need full runway one seven, line up and wait, ANAC123.",
+      "ANAC123, request delay, density altitude limiting, will advise when ready.",
+      "Tower, ANAC123, confirm current temperature and QNH for performance calculation.",
+      "ANAC123, ready, performance confirmed with full runway, cleared for takeoff."
+    ],
+    "brazilianMistakes": "- ❌ Assuming performance tables are only for high-altitude airports.  \n  ✔ Density altitude affects performance at any field elevation in hot conditions.\n\n- ❌ Not calculating density altitude on hot summer days.  \n  ✔ Always calculate OAT, pressure altitude, and resulting density altitude before departure.\n\n- ❌ Saying \"calor demais\" on frequency instead of a professional report.  \n  ✔ Use performance limited due high density altitude.\n\n- ❌ Accepting an intersection departure without verifying the remaining runway is adequate.  \n  ✔ Request full runway when performance is marginal.",
+    "pronunciationCoaching": "**Target Phrase:** Performance Limited Due High Density Altitude\n\n**Pronunciation:** per-FOR-mance LIM-it-ted dyoo HY DEN-sit-ee AL-ti-tyood\n\n**Word Stress**\n\n- Performance → per-FOR-mance\n- Density → DEN-sit-ee\n- Altitude → AL-ti-tyood\n\nPractice:\n\nDensity... altitude... high...\n\nTogether:\n\nANAC123, performance limited due high density altitude, request full runway.\n\nSpeak all words clearly — density altitude is a technical phrase ATC must copy exactly.",
+    "relatedConcepts": [
+      "Headwind Takeoff",
+      "Density Altitude Chart",
+      "Performance Limitation",
+      "Obstacle Departure Procedure",
+      "Pressure Altitude",
+      "Mountain Flying"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 8168 (PANS-OPS) — Obstacle Clearance"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Density Altitude",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Density Altitude",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Performance"
+      },
+      {
+        "label": "SKYbrary — Density Altitude",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0099",
+    "id": "0099",
+    "displayTerm": "Mountain Flying",
+    "term": "mountain flying",
+    "slug": "mountain-flying",
+    "category": "Navigation",
+    "meaningEn": "Mountain Flying describes helicopter and aircraft operations in areas of significant terrain elevation, where orographic lift, turbulence, downdrafts, reduced performance, and limited forced landing areas demand heightened crew awareness and planning.",
+    "meaningPt": "Voo em região montanhosa.\n\nOperação de helicópteros e aeronaves em áreas de elevação de terreno significativa, onde turbulência orográfica, correntes descendentes, desempenho reduzido e opções limitadas de pouso forçado exigem maior atenção e planejamento da tripulação.",
+    "whenUsed": "When Mountain Flying is planned, the pilot should:",
+    "example": "Control: ANAC123, terrain two thousand feet within five miles, say altitude.",
+    "sayPhrase": "Curitiba Control, ANAC123, request climb to five thousand feet, mountain turbulence encountered.",
+    "icaoQuestion": "What would you tell ATC if you encountered severe turbulence and downdrafts while flying over mountainous terrain?",
+    "icaoSpeakText": "I would immediately request a climb to gain altitude above the turbulent layer and report the turbulence to ATC. I would state the location, altitude, and severity. If I was unable to climb sufficiently, I would reverse course to exit the mountain area and divert to a lower-terrain route, informing ATC of my intentions.",
+    "missionBrief": "Today's lesson covers mountain flying — operations near or over mountainous terrain, where turbulence, downdrafts, density altitude, and limited emergency landing options create elevated risk.\n\nMountain Flying requires thorough pre-flight planning, conservative weather minima, and clear ATC communication about position and intentions.\n\nIn the H130, mountain flying is relevant near the Serra do Mar escarpment close to Florianópolis and the elevated terrain surrounding Curitiba and São Paulo.\n\nYou must understand orographic effects, plan escape routes, and communicate altitude and terrain clearance intentions clearly.\n\nThis lesson prepares you for ICAO Part 2, Part 3, and Part 4 communication.",
+    "captainTeaching": "Mountains are beautiful and dangerous.\n\nUpdraft. Downdraft. Rotor turbulence. Canyon trap. No landing option.\n\nThe sequence:\n\nPlan the route carefully. Check weather. Know the escape. Cross ridgelines with margin.\n\nThe Serra do Mar between the São Paulo coast and the plateau catches pilots every year.\n\nDowndrafts on the lee side can exceed your climb capability.\n\nAlways have an escape route. Always know where you can land if the engine fails.\n\nPlan for density altitude at altitude.\n\nNever box yourself into a canyon. Keep your exit behind you until you know the route ahead is clear.",
+    "operationalContext": "You are transiting the Serra do Mar in your H130, routing from the coast toward Curitiba.\n\nAt three thousand feet, you encounter moderate turbulence and a downdraft on the lee side of the ridge.\n\nYou decide to climb for clearance and change route.\n\nYou transmit:\n\nCuritiba Control, ANAC123, request climb to five thousand feet, mountain turbulence, lee side downdraft.\n\nControl approves. You cross above the turbulent layer and reach Curitiba safely.",
+    "sayItCoach": "ANAC123, request climb to five thousand, mountain turbulence, terrain clearance.",
+    "icaoModelAnswer": "I would immediately request a climb to gain altitude above the turbulent layer and report the turbulence to ATC. I would state the location, altitude, and severity. If I was unable to climb sufficiently, I would reverse course to exit the mountain area and divert to a lower-terrain route, informing ATC of my intentions.",
+    "memoryTrick": "**RIDGE** — **R**oute over valleys, **I**ncrease altitude before the ridge, **D**owndraft on the lee side, **G**et out early if weather deteriorates, **E**scape route always planned.",
+    "operationalMeaning": "When Mountain Flying is planned, the pilot should:\n\nMountain Flying reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "providing radar traffic advisories over terrain",
+      "approving altitude changes for terrain clearance",
+      "relaying weather and turbulence PIREPs",
+      "coordinating search and rescue if contact is lost",
+      "issuing terrain clearance advisories when available"
+    ],
+    "atcPhraseology": [
+      "Control: ANAC123, terrain two thousand feet within five miles, say altitude.",
+      "Control: ANAC123, turbulence report from previous aircraft, moderate over ridgeline.",
+      "Control: ANAC123, climb to five thousand feet approved, terrain clearance confirmed.",
+      "Control: ANAC123, radar contact lost, say position.",
+      "Control: ANAC123, weather report Curitiba, visibility reducing, advise intentions."
+    ],
+    "pilotReadbacks": [
+      "Curitiba Control, ANAC123, request climb to five thousand feet, mountain turbulence encountered.",
+      "ANAC123, passing three thousand, request higher for terrain clearance.",
+      "ANAC123, diverting due to deteriorating weather over mountains, routing to Navegantes.",
+      "Control, ANAC123, encountering severe downdraft, unable to maintain altitude.",
+      "ANAC123, climbing to five thousand feet, maintaining clear of terrain."
+    ],
+    "brazilianMistakes": "- ❌ Treating Brazilian coastal mountains as benign because they are not high altitude.  \n  ✔ The Serra do Mar produces severe orographic turbulence regardless of absolute elevation.\n\n- ❌ Not filing a flight plan or notifying ATC before entering mountainous areas.  \n  ✔ Always ensure ATC or a responsible party knows your route over terrain.\n\n- ❌ Saying \"muita turbulência\" without specific location and altitude.  \n  ✔ Report turbulence with location, altitude, and severity.\n\n- ❌ Continuing into deteriorating weather over mountains hoping it will improve.  \n  ✔ Reverse course early — mountain weather traps are often one-way.",
+    "pronunciationCoaching": "**Target Phrase:** Request Climb for Terrain Clearance, Mountain Turbulence\n\n**Pronunciation:** ree-KWEST klym for tuh-RAYN KLEER-ance, MOWN-ten TUR-byoo-lance\n\n**Word Stress**\n\n- Terrain → tuh-RAYN\n- Clearance → KLEER-ance\n- Turbulence → TUR-byoo-lance\n\nPractice:\n\nMountain... turbulence... terrain...\n\nTogether:\n\nANAC123, request climb to five thousand, mountain turbulence, terrain clearance.\n\nSpeak altitude numbers clearly — five thousand.",
+    "relatedConcepts": [
+      "Density Altitude",
+      "Turbulence Report",
+      "Weather Deterioration",
+      "Divert",
+      "Obstacle Clearance",
+      "PIREP"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 8168 (PANS-OPS) — Obstacle Clearance"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Mountain Flying",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Terrain",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Performance and Terrain"
+      },
+      {
+        "label": "SKYbrary — Mountain Flying",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0100",
+    "id": "0100",
+    "displayTerm": "Offshore Operations",
+    "term": "offshore operations",
+    "slug": "offshore-operations",
+    "category": "Helicopter Operations",
+    "meaningEn": "Offshore Operations describe helicopter flights conducted over water to service oil platforms, vessels, or other maritime installations, requiring specific communication, navigation, and emergency procedures due to the absence of suitable forced landing areas.",
+    "meaningPt": "Operações offshore (em mar aberto).\n\nVoos de helicóptero realizados sobre água para atender plataformas de petróleo, embarcações ou instalações marítimas, exigindo procedimentos específicos de comunicação, navegação e emergência devido à ausência de locais adequados para pouso forçado.",
+    "whenUsed": "When Offshore Operations are conducted, the pilot should:",
+    "example": "Control: ANAC123, radar contact forty miles east, say fuel state and intentions.",
+    "sayPhrase": "Florianópolis Control, ANAC123, position four zero miles east, fuel two hours, request weather at platform.",
+    "icaoQuestion": "What would you do if you suffered an engine malfunction over open water during an offshore mission?",
+    "icaoSpeakText": "I would declare a mayday immediately, providing my position, altitude, and nature of the emergency. I would attempt to reach the nearest land or platform if within autorotation range, or prepare for a controlled ditching. I would give ATC my last known position and heading, activate all emergency equipment, and ensure passengers are briefed for ditching procedures.",
+    "missionBrief": "Today's lesson covers offshore operations — helicopter flights over open water to and from oil platforms, vessels, or offshore installations.\n\nOffshore Operations introduce unique risks: no forced landing area, long distances over water, rapidly changing weather, and often reduced radar coverage.\n\nIn the H130, offshore missions from Brazilian coastal airports such as Florianópolis and Navegantes are operationally significant for oil and gas support.\n\nYou must understand offshore communication procedures, fuel planning, position reporting, and emergency protocols over water.\n\nThis lesson prepares you for ICAO Part 2, Part 3, and Part 4 communication.",
+    "captainTeaching": "Over water — there is nothing below you.\n\nNo field. No road. No beach. Just ocean.\n\nThe sequence:\n\nFile the plan. Brief the passengers. Check survival gear. Know the nearest land. Report position. Monitor fuel.\n\nBrazilian offshore operations from Florianópolis and Santos are serious, high-demand missions.\n\nNever skip the passenger ditching brief because it feels unnecessary.\n\nKnow your nearest divert at all times.\n\nFuel is not a comfort reserve over water — it is survival margin.\n\nAt the first sign of trouble, declare early. Do not wait until the tank is empty.",
+    "operationalContext": "You are forty miles offshore from Florianópolis in your H130, routing to an oil platform.\n\nWeather ahead is deteriorating and fuel reserve is being recalculated.\n\nYou transmit:\n\nFlorianópolis Control, ANAC123, position four zero miles east, descending to five hundred feet due cloud base, fuel state two hours, advise weather at platform.\n\nControl provides updated weather and recommends a direct routing.\n\nYou confirm and proceed on the most fuel-efficient track to the platform.",
+    "sayItCoach": "Mayday, mayday, mayday, ANAC123, engine failure, position four zero miles east of Florianópolis, ditching.",
+    "icaoModelAnswer": "I would declare a mayday immediately, providing my position, altitude, and nature of the emergency. I would attempt to reach the nearest land or platform if within autorotation range, or prepare for a controlled ditching. I would give ATC my last known position and heading, activate all emergency equipment, and ensure passengers are briefed for ditching procedures.",
+    "memoryTrick": "**WATER** — **W**atch fuel continuously, **A**lways know nearest land, **T**ransmit position regularly, **E**mergency declared early, **R**escue coordination briefed before departure.",
+    "operationalMeaning": "When Offshore Operations are conducted, the pilot should:\n\nOffshore Operations reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "maintaining regular position reporting intervals",
+      "providing radar surveillance when in range",
+      "coordinating search and rescue when contact is lost",
+      "relaying weather updates for offshore areas",
+      "approving priority and direct routing for emergencies"
+    ],
+    "atcPhraseology": [
+      "Control: ANAC123, radar contact forty miles east, say fuel state and intentions.",
+      "Control: ANAC123, weather at platform, cloud base one thousand feet, visibility five kilometers.",
+      "Control: ANAC123, no radar coverage beyond sixty miles, maintain position reports every fifteen minutes.",
+      "Control: ANAC123, roger mayday, rescue coordination center notified.",
+      "Control: ANAC123, cleared direct to platform, descend pilot's discretion."
+    ],
+    "pilotReadbacks": [
+      "Florianópolis Control, ANAC123, position four zero miles east, fuel two hours, request weather at platform.",
+      "ANAC123, mayday, mayday, mayday, engine failure over water, position three zero miles east, ditching.",
+      "ANAC123, pan-pan, pan-pan, pan-pan, fuel state critical, request direct routing to nearest land.",
+      "Control, ANAC123, position five five miles east, maintaining five hundred feet, proceeding to platform.",
+      "ANAC123, diverting to Florianópolis, weather deteriorating at platform, fuel state one hour thirty."
+    ],
+    "brazilianMistakes": "- ❌ Not briefing passengers on ditching procedures before offshore departure.  \n  ✔ Always brief ditching, life jacket, and survival procedures — required by regulation.\n\n- ❌ Delaying the mayday declaration until completely unable to manage the emergency.  \n  ✔ Declare early — rescue resources take time to reach open water.\n\n- ❌ Saying \"tô com problema\" on frequency instead of a standard emergency call.  \n  ✔ Use mayday, mayday, mayday followed by position and nature of emergency.\n\n- ❌ Not monitoring fuel reserve against the nearest landing point.  \n  ✔ Continuously update your nearest-land calculation when offshore.",
+    "pronunciationCoaching": "**Target Phrase:** Mayday, Position Over Water, Engine Failure\n\n**Pronunciation:** MAY-day, puh-ZI-shun OH-ver WAH-ter, EN-jin FAYL-yer\n\n**Word Stress**\n\n- Mayday → MAY-day (say three times)\n- Position → puh-ZI-shun\n- Engine → EN-jin\n\nPractice:\n\nMayday... mayday... mayday...\n\nTogether:\n\nMayday, mayday, mayday, ANAC123, engine failure, position four zero miles east of Florianópolis, ditching.\n\nSpeak loudly and clearly — mayday must be unmistakable.",
+    "relatedConcepts": [
+      "Mayday",
+      "Pan-Pan",
+      "Emergency Over Water",
+      "Fuel State Critical",
+      "Ditching",
+      "Position Report"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Emergency Procedures Over Water",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ANAC RBAC 91 — Regras Gerais de Operação"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Water Operations"
+      },
+      {
+        "label": "SKYbrary — Offshore Helicopter Operations",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0101",
+    "id": "0101",
+    "displayTerm": "Maintain Position",
+    "term": "maintain position",
+    "slug": "maintain-position",
+    "category": "ATC Phraseology",
+    "meaningEn": "Maintain Position is an ATC ground instruction requiring the aircraft to stop and hold its current position on the taxiway or runway holding point, awaiting further clearance before proceeding.",
+    "meaningPt": "Mantenha posição (maintain position).\n\nInstrução do controle de tráfego aéreo para que a aeronave pare e mantenha sua posição atual no solo, aguardando autorização posterior antes de prosseguir.",
+    "whenUsed": "When Maintain Position is issued, the pilot should:",
+    "example": "Tower: ANAC123, maintain position, landing traffic on final.",
+    "sayPhrase": "Maintain position, ANAC123.",
+    "icaoQuestion": "What is the correct readback when ATC issues maintain position?",
+    "icaoSpeakText": "The correct readback is to repeat the instruction and add my callsign — maintain position, ANAC123. I would stop the aircraft immediately and hold until ATC issued the next clearance. If I was uncertain about the position or expected a long hold, I would advise ATC and confirm when I could proceed.",
+    "missionBrief": "Today's lesson covers maintain position — the ATC instruction to hold the aircraft's current position on the ground and not move.\n\nMaintain Position is a critical runway safety instruction. Misunderstanding or mishearing it can lead to runway incursion — one of the most dangerous events in aviation.\n\nIn the H130, maintain position is issued at busy airports like Congonhas, Curitiba, and Florianópolis when landing or departing traffic requires a hold on the ground.\n\nYou must readback maintain position with your callsign, stop immediately, and not move until ATC provides the next clearance.\n\nThis lesson prepares you for ICAO Part 2 critical phraseology.",
+    "captainTeaching": "Maintain position — two words that save lives.\n\nStop. Hold. Do not move. Wait for the next clearance.\n\nThe sequence:\n\nHear maintain position. Stop. Readback. Hold. Wait for the next instruction.\n\nBrazilian pilots sometimes slowly inch forward after a maintain position.\n\nThat is a runway incursion risk.\n\nStop means stop. Completely.\n\nAt Congonhas, runway incursion events have occurred due to partial readbacks and slow compliance.\n\nReadback every maintain position with your callsign.\n\nNever move until you have a positive clearance.",
+    "operationalContext": "You are taxiing to the runway at Curitiba in your H130.\n\nA landing aircraft is on short final for the same runway.\n\nTower transmits:\n\nANAC123, maintain position, landing traffic.\n\nYou stop immediately at the holding point and readback:\n\nMaintain position, ANAC123.\n\nAfter the landing aircraft vacates, Tower clears you to line up.",
+    "sayItCoach": "Maintain position, ANAC123.",
+    "icaoModelAnswer": "The correct readback is to repeat the instruction and add my callsign — maintain position, ANAC123. I would stop the aircraft immediately and hold until ATC issued the next clearance. If I was uncertain about the position or expected a long hold, I would advise ATC and confirm when I could proceed.",
+    "memoryTrick": "**STOP** — **S**top immediately, **T**ransmit the readback, **O**bey until cleared, **P**roceed only on positive clearance.",
+    "operationalMeaning": "When Maintain Position is issued, the pilot should:\n\nMaintain Position reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "protect the runway from traffic conflicts",
+      "sequence arriving and departing aircraft",
+      "allow maintenance or runway inspection",
+      "coordinate with vehicles on the movement area",
+      "prevent runway incursions during high-traffic periods"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, maintain position, landing traffic on final.",
+      "Tower: ANAC123, maintain position, runway inspection in progress.",
+      "Tower: ANAC123, maintain position, expect departure clearance in two minutes.",
+      "Tower: ANAC123, maintain position, vehicle crossing the runway.",
+      "Tower: ANAC123, maintain position, confirm ready for departure."
+    ],
+    "pilotReadbacks": [
+      "Maintain position, ANAC123.",
+      "Holding position, ANAC123, waiting.",
+      "Maintaining position, ANAC123, traffic on final copied.",
+      "ANAC123, maintaining position, advise when we can proceed.",
+      "Maintain position, ANAC123, ready for departure when cleared."
+    ],
+    "brazilianMistakes": "- ❌ Replying only with \"afirmativo\" or \"sim\" to maintain position.  \n  ✔ Readback the full instruction: maintain position, followed by your callsign.\n\n- ❌ Slowly rolling forward after stopping.  \n  ✔ Stop completely and hold until a positive clearance to proceed is given.\n\n- ❌ Confusing maintain position with continue taxi.  \n  ✔ Maintain position means stop and hold — not continue slowly.\n\n- ❌ Not querying ATC after an unusually long hold.  \n  ✔ If the hold is extended without explanation, ask: ANAC123, maintaining position, request clearance to proceed.",
+    "pronunciationCoaching": "**Target Phrase:** Maintain Position, ANAC123\n\n**Pronunciation:** mayn-TAYN puh-ZI-shun, AY-nak wun too three\n\n**Word Stress**\n\n- Maintain → mayn-TAYN\n- Position → puh-ZI-shun\n- Callsign → state clearly and firmly\n\nPractice:\n\nMaintain... position...\n\nTogether:\n\nMaintain position, ANAC123.\n\nShort. Clear. Confident. No extra words.",
+    "relatedConcepts": [
+      "Hold Position",
+      "Line Up and Wait",
+      "Cleared for Takeoff",
+      "Runway Incursion",
+      "Cleared to Cross",
+      "Taxi Instructions"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Ground Movement",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Runway Safety",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Hold Position",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "ANAC RBAC 91 — Operações em Solo"
+      },
+      {
+        "label": "SKYbrary — Runway Incursion",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0102",
+    "id": "0102",
+    "displayTerm": "Hold Position",
+    "term": "hold position",
+    "slug": "hold-position",
+    "category": "ATC Phraseology",
+    "meaningEn": "Hold Position is an ATC ground instruction directing the aircraft to stop immediately at its current position on the movement area and await further clearance before continuing. It is equivalent in meaning to maintain position.",
+    "meaningPt": "Mantenha posição / Aguarde (hold position).\n\nInstrução do controle de tráfego aéreo para que a aeronave pare imediatamente em sua posição atual na área de movimentação e aguarde autorização antes de prosseguir.",
+    "whenUsed": "When Hold Position is issued, the pilot should:",
+    "example": "Tower: ANAC123, hold position, aircraft backtracking on runway.",
+    "sayPhrase": "Hold position, ANAC123.",
+    "icaoQuestion": "What is the difference between hold position and maintain position?",
+    "icaoSpeakText": "Both instructions mean the aircraft must stop completely and not move. Hold position and maintain position are equivalent ground instructions. When I receive either, I stop immediately, readback the instruction with my callsign, and remain stationary until ATC provides the next clearance. The practical procedures are identical.",
+    "missionBrief": "Today's lesson covers hold position — an ATC ground instruction with the same critical effect as maintain position: stop and do not move.\n\nHold Position is used interchangeably with maintain position at many airports. Both mean stop completely and wait for clearance.\n\nIn the H130, hold position is a standard instruction at Curitiba, São Paulo, and Florianópolis during busy traffic sequences or runway protection events.\n\nYou must treat hold position with the same urgency as maintain position — stop, readback with callsign, and wait for the explicit clearance to proceed.\n\nThis lesson prepares you for ICAO Part 2 critical phraseology.",
+    "captainTeaching": "Hold position is as critical as maintain position.\n\nDifferent words. Same meaning. Stop and do not move.\n\nThe sequence:\n\nHear hold position. Stop. Readback. Stay stopped. Wait for clearance.\n\nThe confusion for Brazilian pilots is sometimes between \"aguarda\" in Portuguese and the English term.\n\nHold position — it means exactly what it says: hold. Stay. Don't move.\n\nAt Florianópolis, a busy general aviation airport, runway entries without clearance have caused serious incidents.\n\nKnow the phrase. React immediately. Readback every time.",
+    "operationalContext": "You are taxiing toward the runway at Florianópolis in your H130.\n\nAn aircraft is backtracking on the runway.\n\nTower transmits:\n\nANAC123, hold position, traffic backtracking on runway.\n\nYou stop immediately and readback:\n\nHold position, ANAC123.\n\nThe backtracking aircraft clears the runway and Tower clears you to line up and wait.",
+    "sayItCoach": "Hold position, ANAC123.",
+    "icaoModelAnswer": "Both instructions mean the aircraft must stop completely and not move. Hold position and maintain position are equivalent ground instructions. When I receive either, I stop immediately, readback the instruction with my callsign, and remain stationary until ATC provides the next clearance. The practical procedures are identical.",
+    "memoryTrick": "**HOLD** — **H**alt the aircraft, **O**bey until cleared, **L**isten for next clearance, **D**o not move without explicit instruction.",
+    "operationalMeaning": "When Hold Position is issued, the pilot should:\n\nHold Position reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "protect an active runway from traffic",
+      "sequence vehicles or aircraft on the movement area",
+      "allow a landing or departing aircraft to clear",
+      "coordinate runway crossings at towered airports",
+      "manage high-traffic ground movement"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, hold position, aircraft backtracking on runway.",
+      "Tower: ANAC123, hold position, runway not clear.",
+      "Tower: ANAC123, hold position, expect two minutes.",
+      "Tower: ANAC123, hold position short of runway two seven.",
+      "Tower: ANAC123, hold position, vehicle on the runway."
+    ],
+    "pilotReadbacks": [
+      "Hold position, ANAC123.",
+      "Holding position, ANAC123, runway not clear copied.",
+      "ANAC123, holding position short of runway two seven.",
+      "Hold position, ANAC123, standing by.",
+      "ANAC123, holding position, ready when cleared."
+    ],
+    "brazilianMistakes": "- ❌ Confusing hold position with continue slowly.  \n  ✔ Hold position means full stop — not reduced speed.\n\n- ❌ Reading back only \"tá bom\" or callsign without repeating the instruction.  \n  ✔ Always readback: hold position, ANAC123.\n\n- ❌ Moving again without receiving an explicit clearance to proceed.  \n  ✔ Wait for ATC to issue line up and wait, cleared for takeoff, or continue taxi.\n\n- ❌ Not clarifying the exact hold point when the instruction is ambiguous.  \n  ✔ If unclear, confirm: ANAC123, holding position short of runway two seven, confirm.",
+    "pronunciationCoaching": "**Target Phrase:** Hold Position, ANAC123\n\n**Pronunciation:** HOLD puh-ZI-shun, AY-nak wun too three\n\n**Word Stress**\n\n- Hold → HOLD (strong)\n- Position → puh-ZI-shun\n- Callsign → firm and clear\n\nPractice:\n\nHold... position...\n\nTogether:\n\nHold position, ANAC123.\n\nShort. Direct. No hesitation.",
+    "relatedConcepts": [
+      "Maintain Position",
+      "Line Up and Wait",
+      "Cleared for Takeoff",
+      "Runway Incursion",
+      "Taxi Instructions",
+      "Cleared to Cross"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Ground Movement",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Runway Safety",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Hold Position",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "ANAC RBAC 91 — Operações em Solo"
+      },
+      {
+        "label": "SKYbrary — Ground Movement",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0103",
+    "id": "0103",
+    "displayTerm": "Cleared Straight-In Approach",
+    "term": "cleared straight-in approach",
+    "slug": "cleared-straight-in-approach",
+    "category": "ATC Phraseology",
+    "meaningEn": "Cleared Straight-In Approach is an ATC clearance authorizing the pilot to proceed directly from the current position to a landing on the specified runway or landing area, without executing a traffic pattern or circuit entry.",
+    "meaningPt": "Autorizado aproximação direta (straight-in approach).\n\nAutorização do ATC para que o piloto prossiga diretamente de sua posição atual para pouso na pista ou área de pouso designada, sem executar um circuito de tráfego.",
+    "whenUsed": "When Cleared Straight-In Approach is issued, the pilot should:",
+    "example": "Tower: ANAC123, cleared straight-in approach runway two nine, wind two three zero at one two.",
+    "sayPhrase": "Cleared straight-in runway two nine, ANAC123.",
+    "icaoQuestion": "What would you do if ATC cleared you straight-in but you were too high for a stabilized approach?",
+    "icaoSpeakText": "I would advise ATC that I am unable to accept the straight-in due to a high and unstable approach, and request a circuit to establish properly. I would say: ANAC123, unable straight-in, request circuit, too high for stabilized approach. A go-around and circuit is always preferable to a forced unstabilized landing.",
+    "missionBrief": "Today's lesson covers cleared straight-in approach — an ATC clearance authorizing an aircraft to proceed directly to the runway or landing area from the current position without entering a traffic pattern or circuit.\n\nCleared Straight-In Approach is issued when the aircraft is already aligned on a final approach course or positioned for a direct final.\n\nIn the H130, cleared straight-in approach is common at Navegantes, Florianópolis, and Joinville during IFR arrivals or when ATC sequences you directly to final.\n\nYou must understand the clearance, readback correctly, and execute the approach to the designated runway without breaking off for a circuit.\n\nThis lesson prepares you for ICAO Part 2 critical phraseology.",
+    "captainTeaching": "Straight-in approach — no circuit. No pattern. Directly to final.\n\nATC sends you straight. You must be ready.\n\nThe sequence:\n\nHear the clearance. Check configuration. Confirm you can stabilize. Accept or decline.\n\nBrazilian pilots sometimes accept a straight-in when they are too high or too fast.\n\nDecline if not in position. Request a circuit or go around.\n\nA forced straight-in that is not stabilized is worse than a missed approach.\n\nAt Navegantes, straight-ins from the north are common when the ILS is in use.\n\nKnow the phrase. Know your stabilization criteria. Make the right call.",
+    "operationalContext": "You are inbound to Navegantes from the north in your H130, descending from two thousand feet.\n\nApproach advises you are number one and vectors you directly to final for runway two nine.\n\nTower transmits:\n\nANAC123, cleared straight-in approach runway two nine, wind two three zero at twelve, report final.\n\nYou readback:\n\nCleared straight-in runway two nine, ANAC123, wilco.\n\nYou establish on final, report final, and land.",
+    "sayItCoach": "Cleared straight-in runway two nine, ANAC123.",
+    "icaoModelAnswer": "I would advise ATC that I am unable to accept the straight-in due to a high and unstable approach, and request a circuit to establish properly. I would say: ANAC123, unable straight-in, request circuit, too high for stabilized approach. A go-around and circuit is always preferable to a forced unstabilized landing.",
+    "memoryTrick": "**FINAL** — **F**ly directly to the threshold, **I**nstability means go around, **N**o circuit required, **A**cknowledge with runway and callsign, **L**and or go around — no middle ground.",
+    "operationalMeaning": "When Cleared Straight-In Approach is issued, the pilot should:\n\nCleared Straight-In Approach reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "reduce circuit workload and improve traffic flow",
+      "sequence IFR aircraft directly to the runway",
+      "accommodate aircraft already established on final",
+      "expedite arrivals during busy traffic periods",
+      "accommodate instrument approach procedures"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, cleared straight-in approach runway two nine, wind two three zero at one two.",
+      "Tower: ANAC123, cleared straight-in, report final.",
+      "Tower: ANAC123, number one, cleared straight-in runway two nine, no delay.",
+      "Tower: ANAC123, straight-in runway two nine approved, cleared to land.",
+      "Tower: ANAC123, confirm able to accept straight-in approach."
+    ],
+    "pilotReadbacks": [
+      "Cleared straight-in runway two nine, ANAC123.",
+      "ANAC123, cleared straight-in runway two nine, wilco, will report final.",
+      "ANAC123, unable straight-in, request circuit, not stabilized.",
+      "Tower, ANAC123, final, straight-in runway two nine.",
+      "ANAC123, going around from straight-in, request another approach."
+    ],
+    "brazilianMistakes": "- ❌ Accepting a straight-in clearance when positioned too high or fast.  \n  ✔ Advise unable if not in a position for a stabilized straight-in.\n\n- ❌ Readback only with \"entendido\" or callsign without the runway.  \n  ✔ Readback: cleared straight-in runway (designation), ANAC123.\n\n- ❌ Not reporting final when required by Tower.  \n  ✔ Report final when Tower requests: ANAC123, final runway two nine.\n\n- ❌ Continuing an unstabilized straight-in rather than going around.  \n  ✔ Go around early if the approach is not stabilized by the gate altitude.",
+    "pronunciationCoaching": "**Target Phrase:** Cleared Straight-In Runway Two Niner, ANAC123\n\n**Pronunciation:** kleerd STRAYT-in RUN-way too NY-ner, AY-nak wun too three\n\n**Word Stress**\n\n- Cleared → kleerd\n- Straight-in → STRAYT-in\n- Runway → RUN-way\n\nPractice:\n\nStraight-in... runway... two nine...\n\nTogether:\n\nCleared straight-in runway two nine, ANAC123.\n\nSpeak clearly — straight-in must be distinct from other approach types.",
+    "relatedConcepts": [
+      "Cleared to Land",
+      "Go Around",
+      "Report Final",
+      "IFR Approach",
+      "Circuit Pattern",
+      "Stabilized Approach"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Approach Clearances",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Approach Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Straight-In Approach",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Approach Procedures"
+      },
+      {
+        "label": "SKYbrary — Straight-In Approach",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0104",
+    "id": "0104",
+    "displayTerm": "Cleared to Divert",
+    "term": "cleared to divert",
+    "slug": "cleared-to-divert",
+    "category": "ATC Phraseology",
+    "meaningEn": "Cleared to Divert is an ATC clearance authorizing the aircraft to proceed to an alternate aerodrome or landing area instead of the original destination, due to weather, technical, medical, or operational reasons.",
+    "meaningPt": "Autorizado desvio / alternado (cleared to divert).\n\nAutorização do ATC para que a aeronave prossiga para um aeródromo alternativo em vez do destino original, por razões meteorológicas, técnicas, médicas ou operacionais.",
+    "whenUsed": "When Cleared to Divert is issued or requested, the pilot should:",
+    "example": "Approach: ANAC123, cleared to divert Navegantes, fly heading three four zero, climb to four thousand.",
+    "sayPhrase": "Cleared to divert Navegantes, maintaining four thousand, ANAC123.",
+    "icaoQuestion": "How would you request a diversion from ATC when your destination weather is below minimums?",
+    "icaoSpeakText": "I would advise ATC that the destination is below minimums, state my current fuel state, name my intended alternate, and request clearance to divert. For example: Florianópolis Approach, ANAC123, visibility below minimums, fuel state forty-five minutes, request divert to Navegantes. I would readback the clearance with the alternate name and assigned altitude.",
+    "missionBrief": "Today's lesson covers cleared to divert — either an ATC instruction or a pilot decision to proceed to an alternate airport when the destination is unavailable.\n\nCleared to Divert involves rerouting, new clearances, and sometimes emergency communication when the divert is due to technical or weather reasons.\n\nIn the H130, diversions are real events at Brazilian coastal airports during rapid weather deterioration at Florianópolis, Navegantes, and Joinville.\n\nYou must know how to request a diversion clearly, readback a diversion clearance, and communicate your intentions and fuel state to ATC.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 operational communication.",
+    "captainTeaching": "Divert early. Not when the fuel light is on.\n\nWeather. Technical. Medical. Fuel. All valid reasons to divert.\n\nThe sequence:\n\nIdentify the problem. Calculate fuel. Choose the alternate. Request the diversion. State the reason and fuel state.\n\nBrazilian pilots sometimes hold too long at Florianópolis or Navegantes waiting for weather to lift.\n\nTime and fuel are the limits.\n\nKnow your alternate before departure. Know the route. Know the distance.\n\nWhen you decide to divert — transmit clearly. State the reason. State the fuel.\n\nATC will help you. But only if you communicate early.",
+    "operationalContext": "You are approaching Florianópolis in your H130.\n\nVisibility has dropped below minimums due to dense fog.\n\nYou have been holding for twenty minutes. Fuel is now limiting.\n\nYou transmit:\n\nFlorianópolis Approach, ANAC123, fuel state forty-five minutes, unable to continue holding, request divert to Navegantes.\n\nApproach replies:\n\nANAC123, cleared to divert Navegantes, maintain four thousand, advise ETA.\n\nYou readback and proceed to Navegantes.",
+    "sayItCoach": "Florianópolis Approach, ANAC123, request divert to Navegantes, fuel state four five minutes.",
+    "icaoModelAnswer": "I would advise ATC that the destination is below minimums, state my current fuel state, name my intended alternate, and request clearance to divert. For example: Florianópolis Approach, ANAC123, visibility below minimums, fuel state forty-five minutes, request divert to Navegantes. I would readback the clearance with the alternate name and assigned altitude.",
+    "memoryTrick": "**DIVERT** — **D**ecide early, **I**nform ATC with reason, **V**erify fuel to alternate, **E**xpect a new clearance and altitude, **R**eadback with alternate name, **T**ransmit ETA when known.",
+    "operationalMeaning": "When Cleared to Divert is issued or requested, the pilot should:\n\nCleared to Divert reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "authorize rerouting to an alternate when destination is unavailable",
+      "expedite diversions due to emergency or fuel critical situations",
+      "coordinate with the alternate airport for arrival",
+      "notify rescue coordination if the divert is due to emergency",
+      "ensure proper sequencing at the alternate aerodrome"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, cleared to divert Navegantes, fly heading three four zero, climb to four thousand.",
+      "Approach: ANAC123, destination below minimums, say fuel state and intentions.",
+      "Approach: ANAC123, cleared to divert, confirm alternate aerodrome.",
+      "Approach: ANAC123, roger divert request, cleared direct Navegantes, maintain VFR.",
+      "Approach: ANAC123, Florianópolis closed, cleared to divert, say alternate."
+    ],
+    "pilotReadbacks": [
+      "Cleared to divert Navegantes, maintaining four thousand, ANAC123.",
+      "Florianópolis Approach, ANAC123, requesting divert to Navegantes, fuel state four five minutes.",
+      "ANAC123, cleared to divert, proceeding to Navegantes, wilco.",
+      "Approach, ANAC123, technical problem, request divert to nearest suitable airport.",
+      "ANAC123, diverting Curitiba, estimating zero three five zero local, fuel state two hours."
+    ],
+    "brazilianMistakes": "- ❌ Waiting until fuel is critically low before requesting a diversion.  \n  ✔ Request divert early when holding time is consuming reserve fuel.\n\n- ❌ Not stating the reason for the divert request.  \n  ✔ Always state weather, technical problem, or medical emergency as the reason.\n\n- ❌ Not including fuel state in the divert request.  \n  ✔ Fuel state is essential — ATC needs it to prioritize your clearance.\n\n- ❌ Readback only the clearance without the alternate name.  \n  ✔ Readback: cleared to divert Navegantes, and confirm the altitude or route assigned.",
+    "pronunciationCoaching": "**Target Phrase:** Request Divert to Navegantes, Fuel State Four Five Minutes\n\n**Pronunciation:** ree-KWEST dy-VERT too nah-veh-GAN-chees, FYOOL stayt FOR-fyv MIN-its\n\n**Word Stress**\n\n- Divert → dy-VERT\n- Navegantes → nah-veh-GAN-chees\n- Fuel State → FYOOL stayt\n\nPractice:\n\nDivert... Navegantes... fuel state...\n\nTogether:\n\nFlorianópolis Approach, ANAC123, request divert to Navegantes, fuel state four five minutes.\n\nSpeak fuel state and alternate clearly — ATC must copy both correctly.",
+    "relatedConcepts": [
+      "Alternate Aerodrome",
+      "Fuel State Critical",
+      "Pan-Pan",
+      "Mayday",
+      "Cleared to Deviate",
+      "Weather Deterioration"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Diversion Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Diversions",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Alternate Aerodrome",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Fuel Management"
+      },
+      {
+        "label": "SKYbrary — Diversion",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0105",
+    "id": "0105",
+    "displayTerm": "Cleared to Deviate",
+    "term": "cleared to deviate",
+    "slug": "cleared-to-deviate",
+    "category": "ATC Phraseology",
+    "meaningEn": "Cleared to Deviate is an ATC clearance authorizing the pilot to depart from the assigned route, altitude, or flight path to avoid weather, terrain, traffic, or other hazards, with the expectation of returning to the assigned route when the hazard is clear.",
+    "meaningPt": "Autorizado desvio de rota (cleared to deviate).\n\nAutorização do ATC para que o piloto se afaste da rota, altitude ou trajetória de voo atribuída para evitar condições meteorológicas, terreno, tráfego ou outros perigos, com expectativa de retorno à rota atribuída assim que o perigo estiver livre.",
+    "whenUsed": "When Cleared to Deviate is issued or requested, the pilot should:",
+    "example": "Control: ANAC123, cleared to deviate right of track, no conflicting traffic.",
+    "sayPhrase": "Cleared to deviate right, ANAC123, wilco, will report back on track.",
+    "icaoQuestion": "How would you request a route deviation for weather avoidance?",
+    "icaoSpeakText": "I would identify the hazard and estimate the lateral deviation needed. I would transmit: Florianópolis Control, ANAC123, request deviation right of track approximately ten miles, weather ahead. After receiving clearance, I would complete the deviation, clear the hazard, and report: ANAC123, back on track, deviation complete.",
+    "missionBrief": "Today's lesson covers cleared to deviate — the ATC clearance authorizing an aircraft to depart from its assigned route or track to avoid weather, traffic, or other hazards.\n\nCleared to Deviate is distinct from cleared to divert — deviation is a lateral or vertical departure from the assigned route, not a change of destination.\n\nIn the H130, route deviations for weather avoidance are common between Florianópolis, Congonhas, and Curitiba when convective weather develops along the coast.\n\nYou must know how to request a deviation, state the direction and extent, and keep ATC informed of your intentions throughout.\n\nThis lesson prepares you for ICAO Part 2 critical phraseology.",
+    "captainTeaching": "Deviation is route flexibility. Diversion is destination change.\n\nLeft or right. Miles needed. Hazard avoided. Return to track.\n\nThe sequence:\n\nIdentify the hazard. Estimate the deviation needed. Request clearance. State direction and distance.\n\nBrazilian pilots sometimes ask for deviation without specifying direction or extent.\n\nATC cannot approve a vague deviation. Be specific.\n\nRight ten miles — clear and actionable.\n\nAt the coast between Florianópolis and Navegantes, convective weather in summer is common.\n\nRequest early — before you are forced into a sharp turn to avoid cells.\n\nReport back on track when complete. ATC is counting on that call.",
+    "operationalContext": "You are transiting south along the coast in your H130, en route from Florianópolis to Navegantes.\n\nConvective weather has built ahead of your track with heavy rain and embedded thunderstorms.\n\nYou transmit:\n\nFlorianópolis Control, ANAC123, request deviation right of track, weather ahead, estimate ten miles right.\n\nControl responds:\n\nANAC123, cleared to deviate right, no traffic, report back on track.\n\nYou deviate ten miles right, clear the weather, and return to track.",
+    "sayItCoach": "ANAC123, request deviation right of track, ten miles, weather ahead.",
+    "icaoModelAnswer": "I would identify the hazard and estimate the lateral deviation needed. I would transmit: Florianópolis Control, ANAC123, request deviation right of track approximately ten miles, weather ahead. After receiving clearance, I would complete the deviation, clear the hazard, and report: ANAC123, back on track, deviation complete.",
+    "memoryTrick": "**DEVIATE** — **D**irection stated, **E**xtent estimated, **V**erify no traffic conflict, **I**nform ATC of hazard, **A**cknowledge clearance, **T**rack resumed after, **E**stablish contact when back on route.",
+    "operationalMeaning": "When Cleared to Deviate is issued or requested, the pilot should:\n\nCleared to Deviate reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "allow weather avoidance without full re-routing",
+      "maintain traffic separation while permitting deviation",
+      "accommodate radar advisories around convective activity",
+      "respond quickly to pilot requests for flexibility",
+      "manage traffic flow while pilots avoid hazards"
+    ],
+    "atcPhraseology": [
+      "Control: ANAC123, cleared to deviate right of track, no conflicting traffic.",
+      "Control: ANAC123, cleared to deviate, say extent of deviation required.",
+      "Control: ANAC123, deviation approved, report when back on track.",
+      "Control: ANAC123, unable to approve left deviation, traffic, cleared right deviation.",
+      "Control: ANAC123, deviation approved, maintain assigned altitude."
+    ],
+    "pilotReadbacks": [
+      "Cleared to deviate right, ANAC123, wilco, will report back on track.",
+      "Florianópolis Control, ANAC123, request deviation right of track, convective activity ahead.",
+      "ANAC123, deviating right approximately ten miles, convective weather.",
+      "Control, ANAC123, back on track, deviation complete.",
+      "ANAC123, cleared to deviate right, maintaining four thousand, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Requesting deviation without stating direction or extent.  \n  ✔ Always specify direction — left or right — and approximate miles needed.\n\n- ❌ Confusing deviate with divert.  \n  ✔ Deviate is a route change. Divert is a destination change. Two different clearances.\n\n- ❌ Not reporting back on track after the deviation is complete.  \n  ✔ ATC expects the call: back on track, deviation complete.\n\n- ❌ Deviating without ATC approval in controlled airspace.  \n  ✔ Request clearance before deviating in controlled airspace — unless avoiding immediate danger.",
+    "pronunciationCoaching": "**Target Phrase:** Request Deviation Right of Track, Weather Ahead\n\n**Pronunciation:** ree-KWEST dee-vee-AY-shun RYTE uv trak, WEH-ther uh-HED\n\n**Word Stress**\n\n- Deviation → dee-vee-AY-shun\n- Track → trak\n- Weather → WEH-ther\n\nPractice:\n\nDeviation... right... of track...\n\nTogether:\n\nANAC123, request deviation right of track, ten miles, weather ahead.\n\nSpeak direction and distance clearly — right, ten miles.",
+    "relatedConcepts": [
+      "Cleared to Divert",
+      "Weather Avoidance",
+      "Convective Activity",
+      "Route Clearance",
+      "PIREP",
+      "Turbulence Avoidance"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Route Clearances",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Weather Avoidance",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Deviation",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Weather Operations"
+      },
+      {
+        "label": "SKYbrary — Weather Deviation",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0106",
+    "id": "0106",
+    "displayTerm": "Squawk Ident",
+    "term": "squawk ident",
+    "slug": "squawk-ident",
+    "category": "ATC Phraseology",
+    "meaningEn": "Squawk Ident is an ATC instruction directing the pilot to activate the IDENT function on the transponder, producing a special position identification pulse visible to the controller on radar.",
+    "meaningPt": "Aperte o botão IDENT do transponder.\n\nInstrução do controle para o piloto acionar a função IDENT do transponder, destacando o símbolo da aeronave no radar do controlador.",
+    "whenUsed": "When Squawk Ident is received, the pilot should:",
+    "example": "Approach: ANAC123, squawk ident.",
+    "sayPhrase": "Ident, ANAC123.",
+    "icaoQuestion": "What do you do when ATC instructs squawk ident and how do you confirm?",
+    "icaoSpeakText": "When ATC instructs squawk ident, I immediately press the IDENT button on the transponder and confirm by saying \"Ident\" followed by my callsign. This allows the controller to positively identify my aircraft on radar. I do not press ident unless instructed, as unauthorized activation can create confusion on the radar display.",
+    "missionBrief": "Today's lesson covers Squawk Ident — a secondary surveillance radar instruction to press the SPI button on the transponder for positive identification.\n\nSquawk Ident causes the aircraft's return to briefly highlight on the radar display, allowing ATC to confirm exactly which blip is your aircraft.\n\nIn the H130, radar identification is routine at Brazilian airports including Congonhas, Curitiba, and São Paulo area airspace.\n\nYou must respond immediately, confirm when done, and understand why the instruction matters for radar separation services.\n\nThis lesson prepares you for ICAO Part 2 phraseology and transponder operations.",
+    "captainTeaching": "Squawk Ident is one instruction with one action.\n\nPress. Report. Done.\n\nThe sequence:\n\nHear ident. Press IDENT. Say \"Ident, ANAC123.\"\n\nBrazilian pilots sometimes hesitate, unsure which button to press or when to confirm.\n\nThe IDENT button is on the transponder. Press it once. Confirm immediately.\n\nIn the H130, the transponder must be in ALT mode for Mode C altitude data to reach ATC with the ident.\n\nNever press ident on your own initiative — only when instructed.\n\nTrain the immediate response until it becomes reflex.",
+    "operationalContext": "You are climbing out of Congonhas in your H130 after departure.\n\nSão Paulo Approach calls:\n\nANAC123, radar contact, squawk ident.\n\nYou press the IDENT button and report:\n\nIdent, ANAC123.\n\nApproach confirms:\n\nANAC123, identified, five miles south of Congonhas, climb and maintain four thousand.\n\nThe exchange takes seconds — but it locks your radar identity for the entire flight.",
+    "sayItCoach": "Ident, ANAC123.",
+    "icaoModelAnswer": "When ATC instructs squawk ident, I immediately press the IDENT button on the transponder and confirm by saying \"Ident\" followed by my callsign. This allows the controller to positively identify my aircraft on radar. I do not press ident unless instructed, as unauthorized activation can create confusion on the radar display.",
+    "memoryTrick": "**IDENT** — **I**nstruction received, **D**o press now, **E**nsure ALT mode, **N**otify ATC, **T**ransfer complete.",
+    "operationalMeaning": "When Squawk Ident is received, the pilot should:\n\nSquawk Ident operations commonly include:",
+    "whyAtcUsesIt": [
+      "positively identify a specific aircraft among several returns",
+      "confirm correct squawk code was entered",
+      "establish radar identification after initial contact",
+      "re-identify aircraft after a transponder anomaly",
+      "confirm position in complex traffic environments"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, squawk ident.",
+      "Approach: ANAC123, squawk two four zero zero and ident.",
+      "Radar: ANAC123, confirm squawk, then ident.",
+      "Approach: ANAC123, re-squawk four five six zero and ident.",
+      "Approach: ANAC123, ident received, radar identified, five miles north of Congonhas."
+    ],
+    "pilotReadbacks": [
+      "Ident, ANAC123.",
+      "Squawking two four zero zero and ident, ANAC123.",
+      "Confirming squawk, ident, ANAC123.",
+      "Re-squawking four five six zero and ident, ANAC123.",
+      "Ident complete, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Pressing IDENT before receiving the instruction.  \n  ✔ Wait for ATC to say squawk ident.\n\n- ❌ Not confirming after pressing the button.  \n  ✔ Always report: Ident, ANAC123.\n\n- ❌ Saying \"Roger, ident\" without pressing the button.  \n  ✔ Press first, then confirm.\n\n- ❌ Having the transponder in STANDBY when ident is requested.  \n  ✔ Ensure transponder is in ALT mode before departure.",
+    "pronunciationCoaching": "**Target Phrase:** Ident, ANAC123\n\n**Pronunciation:** EYE-dent, AY-EN-AY-CEE WUN TOO THREE\n\n**Word Stress**\n\n- Ident → EYE-dent\n- Callsign → speak each digit clearly\n\nPractice:\n\nIdent...\n\nTogether:\n\nIdent, ANAC123.\n\nShort. Clear. Immediate. No extra words needed.",
+    "relatedConcepts": [
+      "Squawk Code",
+      "Radar Contact",
+      "Radar Identification",
+      "Transponder",
+      "Squawk Mayday",
+      "Traffic Information"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume III — Secondary Surveillance Radar",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Radar Services",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Transponder and ADS-B",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Ident",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Avionics"
+      },
+      {
+        "label": "SKYbrary — Secondary Surveillance Radar",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0107",
+    "id": "0107",
+    "displayTerm": "Exit Hold",
+    "term": "exit hold",
+    "slug": "exit-hold",
+    "category": "ATC Phraseology",
+    "meaningEn": "Exit Hold is an ATC instruction releasing an aircraft from a previously assigned holding pattern, clearing it to continue on the assigned route or a new clearance.",
+    "meaningPt": "Sair da espera.\n\nInstrução do controle liberando a aeronave da espera e autorizando o prosseguimento da rota ou do novo rumo.",
+    "whenUsed": "When Exit Hold is received, the pilot should:",
+    "example": "Approach: ANAC123, exit hold, resume own navigation, proceed direct IDAMO.",
+    "sayPhrase": "Exit hold, direct IDAMO, ANAC123.",
+    "icaoQuestion": "What do you do when ATC instructs exit hold and how do you confirm?",
+    "icaoSpeakText": "When ATC instructs exit hold, I acknowledge and read back the complete clearance including the onward routing or approach. I plan the exit at the inbound fix at the end of the current orbit, not mid-pattern. I report leaving the hold when I depart the fix, and confirm my altitude and routing before continuing toward the destination.",
+    "missionBrief": "Today's lesson covers Exit Hold — the ATC clearance that releases an aircraft from a holding pattern and restores its onward routing.\n\nExit Hold ends the waiting and resumes the flight toward the destination or next waypoint.\n\nIn the H130, holding at Brazilian airports like Florianópolis, Curitiba, and Navegantes is common during sequencing, weather, and traffic delays.\n\nYou must recognize the instruction, read it back correctly, and transition smoothly from hold to cleared routing.\n\nThis lesson prepares you for ICAO Part 2 phraseology and holding pattern operations.",
+    "captainTeaching": "Exit hold ends the waiting. Now the work begins.\n\nThe moment you hear exit hold, two things happen: you plan your exit and you read back the onward clearance.\n\nThe sequence:\n\nHear exit hold. Identify position in the hold. Plan exit at inbound fix. Read back clearance. Fly the route.\n\nBrazilian pilots sometimes rush the exit before completing the current orbit.\n\nAlways exit at the inbound fix — not mid-orbit, not on outbound.\n\nIn the H130, confirm your altitude and routing before leaving the hold.\n\nIf you receive a new clearance with exit hold, read back every element.\n\nTrain the transition from holding to cleared routing as a distinct mental phase.",
+    "operationalContext": "You are holding at IDAMO fix near Florianópolis in your H130, waiting in a holding stack.\n\nTraffic ahead clears and Approach transmits:\n\nANAC123, exit hold, expect ILS runway one four, report leaving hold.\n\nYou plan the exit at the next inbound fix and transmit:\n\nExit hold, expect ILS runway one four, ANAC123.\n\nOn departing the fix outbound, you report:\n\nLeaving hold, ANAC123.\n\nApproach sequences you for the approach and the delay is behind you.",
+    "sayItCoach": "Exit hold, cleared ILS runway one four, ANAC123.",
+    "icaoModelAnswer": "When ATC instructs exit hold, I acknowledge and read back the complete clearance including the onward routing or approach. I plan the exit at the inbound fix at the end of the current orbit, not mid-pattern. I report leaving the hold when I depart the fix, and confirm my altitude and routing before continuing toward the destination.",
+    "memoryTrick": "**EXIT** — **E**nd of orbit at inbound fix, **X**-check the onward clearance, **I**nform ATC when leaving, **T**ransition to route.",
+    "operationalMeaning": "When Exit Hold is received, the pilot should:\n\nExit Hold operations commonly include:",
+    "whyAtcUsesIt": [
+      "release a held aircraft when traffic permits",
+      "sequence the aircraft for approach after a delay",
+      "resume routing after weather or traffic clears",
+      "coordinate an aircraft to the next sector",
+      "provide a new clearance after the hold reason is resolved"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, exit hold, resume own navigation, proceed direct IDAMO.",
+      "Approach: ANAC123, exit hold, cleared ILS runway one four, report leaving hold.",
+      "Approach: ANAC123, exit hold, descend and maintain three thousand, report vacating hold.",
+      "Radar: ANAC123, exit hold, contact Florianópolis Approach on one two zero decimal niner.",
+      "Approach: ANAC123, exit hold, speed two two zero knots, vectors to final."
+    ],
+    "pilotReadbacks": [
+      "Exit hold, direct IDAMO, ANAC123.",
+      "Exit hold, cleared ILS runway one four, ANAC123. Leaving hold, ANAC123.",
+      "Exit hold, descend and maintain three thousand, ANAC123.",
+      "Exit hold, Florianópolis Approach one two zero decimal niner, ANAC123.",
+      "Exit hold, speed two two zero, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Exiting the hold mid-orbit without completing the pattern.  \n  ✔ Always exit at the inbound fix.\n\n- ❌ Saying only \"Roger\" without reading back the onward clearance.  \n  ✔ Read back the full clearance: exit hold, route, altitude, ANAC123.\n\n- ❌ Forgetting to report leaving the hold when asked.  \n  ✔ Report: Leaving hold, ANAC123.\n\n- ❌ Entering a new hold instead of the assigned route after exit.  \n  ✔ Confirm onward routing clearly before departing the fix.",
+    "pronunciationCoaching": "**Target Phrase:** Exit Hold, ANAC123\n\n**Pronunciation:** EK-sit HOHLD, AY-EN-AY-CEE WUN TOO THREE\n\n**Word Stress**\n\n- Exit → EK-sit\n- Hold → HOHLD (strong, clear)\n\nPractice:\n\nExit... hold...\n\nTogether:\n\nExit hold, cleared ILS runway one four, ANAC123.\n\nSpeak runway designation clearly — runway one four.",
+    "relatedConcepts": [
+      "Expect Hold",
+      "Holding Pattern",
+      "Cleared Approach",
+      "Resume Own Navigation",
+      "Delay Vectors",
+      "ILS Approach"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Holding Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Holding",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Hold",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Navigation"
+      },
+      {
+        "label": "SKYbrary — Holding Patterns",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0108",
+    "id": "0108",
+    "displayTerm": "Expect Hold",
+    "term": "expect hold",
+    "slug": "expect-hold",
+    "category": "ATC Phraseology",
+    "meaningEn": "Expect Hold is an ATC advisory warning the pilot that a holding clearance will likely be issued at or before a specified fix, allowing the crew to prepare for the anticipated delay.",
+    "meaningPt": "Espere pela espera.\n\nAviso do controle de que uma autorização de espera provavelmente será emitida, permitindo ao piloto planejar o combustível e a configuração com antecedência.",
+    "whenUsed": "When Expect Hold is received, the pilot should:",
+    "example": "Approach: ANAC123, expect hold at DANOL, EFC time zero nine four five.",
+    "sayPhrase": "Expect hold DANOL, EFC zero nine four five, ANAC123.",
+    "icaoQuestion": "What do you do when you receive an expect hold advisory and how do you plan for it?",
+    "icaoSpeakText": "When I receive expect hold, I acknowledge with the fix and EFC time. I immediately check my fuel and calculate my endurance at holding speed. If no EFC is given, I request one. I review the holding fix, plan the entry, and reduce to holding speed before reaching the fix. I know that expect hold is advisory only — the actual hold clearance may not come if traffic resolves.",
+    "missionBrief": "Today's lesson covers Expect Hold — the ATC advisory informing a pilot to anticipate a holding pattern before it is formally assigned.\n\nExpect Hold is advance notice. It allows the pilot to plan fuel, speed, and configuration before reaching the holding fix.\n\nIn the H130, delays are common near Florianópolis, Curitiba, and Congonhas during peak hours, instrument approaches, and adverse weather.\n\nYou must acknowledge the advisory, calculate fuel impact, and prepare your hold entry without confusion.\n\nThis lesson prepares you for ICAO Part 2 phraseology and holding contingency planning.",
+    "captainTeaching": "Expect hold is not a surprise — it is a gift.\n\nATC is giving you time to plan before the delay happens.\n\nThe sequence:\n\nHear expect hold. Check fuel. Calculate endurance. Identify the fix. Acknowledge with EFC.\n\nBrazilian pilots sometimes miss the EFC time or forget to request it.\n\nIf ATC does not give an EFC with expect hold, ask: Request EFC time, ANAC123.\n\nIn the H130, holding speed is normally below ninety knots. Plan accordingly.\n\nKnow your minimum fuel and alternate fuel before entering a hold.\n\nIf fuel becomes critical during the hold, declare minimum fuel or mayday fuel early — not late.",
+    "operationalContext": "You are inbound to Curitiba in your H130 at four thousand feet.\n\nApproach transmits:\n\nANAC123, expect hold at DANOL, EFC time zero nine four five.\n\nYou check your fuel, calculate endurance, and reduce speed slightly.\n\nYou acknowledge:\n\nExpect hold DANOL, EFC zero nine four five, ANAC123.\n\nAt zero nine four five you receive the approach clearance and no hold was needed — but you were ready if it was.",
+    "sayItCoach": "Expect hold DANOL, EFC zero nine four five, ANAC123.",
+    "icaoModelAnswer": "When I receive expect hold, I acknowledge with the fix and EFC time. I immediately check my fuel and calculate my endurance at holding speed. If no EFC is given, I request one. I review the holding fix, plan the entry, and reduce to holding speed before reaching the fix. I know that expect hold is advisory only — the actual hold clearance may not come if traffic resolves.",
+    "memoryTrick": "**HOLD** — **H**ear it early, **O**wn the fuel math, **L**ook up the fix, **D**eclare if fuel goes critical.",
+    "operationalMeaning": "When Expect Hold is received, the pilot should:\n\nExpect Hold planning commonly includes:",
+    "whyAtcUsesIt": [
+      "give advance notice of expected delays for fuel planning",
+      "allow crews to prepare hold entries before reaching the fix",
+      "reduce workload at the holding fix by pre-informing aircraft",
+      "sequence multiple aircraft into holding stacks efficiently",
+      "meet ICAO requirement to provide further clearance time"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, expect hold at DANOL, EFC time zero nine four five.",
+      "Approach: ANAC123, expect further clearance at time one zero one zero, plan hold at IDAMO.",
+      "Center: ANAC123, expect hold en route, advise fuel state.",
+      "Approach: ANAC123, expect thirty minute delay, expect hold at ORTUS.",
+      "Approach: ANAC123, cancel expect hold, cleared ILS runway one four."
+    ],
+    "pilotReadbacks": [
+      "Expect hold DANOL, EFC zero nine four five, ANAC123.",
+      "Expect further clearance one zero one zero, hold at IDAMO, ANAC123.",
+      "Advising fuel, ANAC123 endurance three hours ten minutes.",
+      "Expect hold ORTUS, thirty minutes, ANAC123.",
+      "Cancel expect hold, cleared ILS runway one four, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Treating expect hold as a formal hold clearance.  \n  ✔ It is an advisory. Wait for the actual holding clearance.\n\n- ❌ Not checking fuel after receiving expect hold.  \n  ✔ Fuel check and endurance calculation are mandatory immediately.\n\n- ❌ Forgetting to request EFC if ATC does not provide it.  \n  ✔ Ask: Request EFC, ANAC123.\n\n- ❌ Entering the hold at full cruise speed.  \n  ✔ Reduce to holding speed before reaching the fix.",
+    "pronunciationCoaching": "**Target Phrase:** Expect Hold at DANOL, EFC Zero Nine Four Five\n\n**Pronunciation:** ek-SPEKT HOHLD at DAH-nol, EE-EFF-SEE ZEE-ro NY-ner FOR FY-ev\n\n**Word Stress**\n\n- Expect → ek-SPEKT\n- Hold → HOHLD\n- EFC → spell out each letter\n\nPractice:\n\nExpect hold... at DANOL...\n\nTogether:\n\nExpect hold DANOL, EFC zero nine four five, ANAC123.\n\nState the EFC time in full — zero nine four five.",
+    "relatedConcepts": [
+      "Exit Hold",
+      "Holding Pattern",
+      "EFC Time",
+      "Minimum Fuel",
+      "Mayday Fuel",
+      "Delay Vectors"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Holding Procedures and EFC",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Holding Patterns",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Expect Further Clearance",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Fuel Planning"
+      },
+      {
+        "label": "SKYbrary — Holding Patterns",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0109",
+    "id": "0109",
+    "displayTerm": "Expect Circling",
+    "term": "expect circling",
+    "slug": "expect-circling",
+    "category": "ATC Phraseology",
+    "meaningEn": "Expect Circling is an ATC advisory indicating that the pilot should anticipate flying a visual circling maneuver after completing the instrument portion of an approach, in order to land on a different runway.",
+    "meaningPt": "Espere procedimento de circuito visual.\n\nAviso do controle de que após o segmento por instrumentos o piloto realizará uma aproximação visual em circuito para pousar em uma pista diferente da utilizada no procedimento.",
+    "whenUsed": "When Expect Circling is received, the pilot should:",
+    "example": "Approach: ANAC123, expect circling approach to runway three one.",
+    "sayPhrase": "Expect circling runway three one, ANAC123.",
+    "icaoQuestion": "What precautions do you take when expecting a circling approach?",
+    "icaoSpeakText": "When I receive expect circling, I review the circling minima including MDA and required visibility for my aircraft category. I pre-brief the circuit direction, identify the obstacle environment, and plan a go-around if visual contact is lost. During the approach I do not descend below MDA until established visually, and if I lose visual contact at any point during the circuit I execute the missed approach immediately.",
+    "missionBrief": "Today's lesson covers Expect Circling — an ATC advisory informing the pilot to anticipate a circling approach rather than a straight-in landing.\n\nExpect Circling means the instrument approach will end with a visual maneuver around the airport to align with a different runway than the one the approach was flown to.\n\nIn the H130, circling approaches are common at Florianópolis, Joinville, and Navegantes where runway layout and terrain require visual maneuvers.\n\nYou must acknowledge the advisory, plan the circling maneuver, and maintain visual contact with the runway throughout.\n\nThis lesson prepares you for ICAO Part 2 phraseology and circling approach operations.",
+    "captainTeaching": "Circling is the highest workload visual maneuver in IFR operations.\n\nYou are flying by instruments until you are not — and then everything is visual.\n\nThe sequence:\n\nReceive expect circling. Review minima. Confirm circuit direction. Fly the approach. Break out visual. Fly the circuit. Land.\n\nBrazilian pilots sometimes lose situational awareness during the circuit because the airport looks different from a non-standard angle.\n\nPre-brief the circuit before starting the approach — not when you break out.\n\nIn the H130, know your circling radius for your category. Stay within protected airspace.\n\nIf you lose visual contact with the runway at any point during circling: missed approach. No exceptions.",
+    "operationalContext": "You are inbound to Joinville in your H130 on the RNAV approach.\n\nThe landing runway is runway one three, but winds favor runway three one.\n\nApproach advises:\n\nANAC123, expect circling to runway three one after RNAV approach.\n\nYou review the circling minima, note the MDA, and plan a left circuit to runway three one.\n\nYou acknowledge:\n\nExpect circling runway three one, ANAC123.\n\nAfter breaking out visually you execute the circuit and land on three one.",
+    "sayItCoach": "Expect circling runway three one, ANAC123.",
+    "icaoModelAnswer": "When I receive expect circling, I review the circling minima including MDA and required visibility for my aircraft category. I pre-brief the circuit direction, identify the obstacle environment, and plan a go-around if visual contact is lost. During the approach I do not descend below MDA until established visually, and if I lose visual contact at any point during the circuit I execute the missed approach immediately.",
+    "memoryTrick": "**CIRCLE** — **C**heck minima, **I**dentify obstacles, **R**eview circuit direction, **C**onfirm visual before descending, **L**ost visual means missed approach, **E**xecute immediately.",
+    "operationalMeaning": "When Expect Circling is received, the pilot should:\n\nExpect Circling planning commonly includes:",
+    "whyAtcUsesIt": [
+      "pre-inform the pilot of the intended landing runway",
+      "allow time to review circling minima before the approach",
+      "coordinate the visual maneuver with other traffic",
+      "manage wind-favored or operationally preferred runways",
+      "reduce crew workload at the decision point"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, expect circling approach to runway three one.",
+      "Approach: ANAC123, expect circling, wind favoring runway zero one.",
+      "Tower: ANAC123, cleared circling approach runway three one, report final.",
+      "Approach: ANAC123, circling approved, maintain visual with runway.",
+      "Tower: ANAC123, if circling required, circuit to the left, runway zero one."
+    ],
+    "pilotReadbacks": [
+      "Expect circling runway three one, ANAC123.",
+      "Expect circling, runway zero one, ANAC123.",
+      "Cleared circling approach runway three one, ANAC123.",
+      "Circling approved, maintaining visual, ANAC123.",
+      "Circuit to the left runway zero one, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Using straight-in minima instead of circling minima.  \n  ✔ Circling minima are higher — always use the correct values.\n\n- ❌ Starting the circuit before breaking out visually.  \n  ✔ Do not descend below MDA without clear visual reference.\n\n- ❌ Not pre-briefing the circuit direction before the approach.  \n  ✔ Brief circuit direction on the ground or well before the approach.\n\n- ❌ Continuing to circle after losing visual contact.  \n  ✔ Execute missed approach immediately if visual contact is lost.",
+    "pronunciationCoaching": "**Target Phrase:** Expect Circling Runway Three One\n\n**Pronunciation:** ek-SPEKT SIR-kling RUN-way THREE WUN\n\n**Word Stress**\n\n- Expect → ek-SPEKT\n- Circling → SIR-kling\n- Runway → RUN-way\n\nPractice:\n\nExpect... circling...\n\nTogether:\n\nExpect circling runway three one, ANAC123.\n\nSpeak runway digits clearly — three one, not thirty-one.",
+    "relatedConcepts": [
+      "Circling Approach",
+      "Minimum Descent Altitude",
+      "Visual Approach",
+      "Missed Approach",
+      "Expect Vectors to Intercept",
+      "Cleared Approach"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 8168 (PANS-OPS) — Circling Approach Procedures"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Instrument Approaches",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Circling Approach",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Approach Operations"
+      },
+      {
+        "label": "SKYbrary — Circling Approach",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0110",
+    "id": "0110",
+    "displayTerm": "Expect Vectors to Intercept",
+    "term": "expect vectors to intercept",
+    "slug": "expect-vectors-to-intercept",
+    "category": "ATC Phraseology",
+    "meaningEn": "Expect Vectors to Intercept is an ATC advisory indicating that the pilot should anticipate receiving radar headings to position the aircraft for intercept of the final approach course, rather than flying the full published procedure.",
+    "meaningPt": "Espere vetores para interceptar.\n\nAviso do controle de que serão fornecidos rumos de radar para posicionar a aeronave na interceptação do eixo final da aproximação.",
+    "whenUsed": "When Expect Vectors to Intercept is received, the pilot should:",
+    "example": "Approach: ANAC123, expect vectors ILS runway one four.",
+    "sayPhrase": "Expect vectors ILS runway one four, ANAC123.",
+    "icaoQuestion": "How do you confirm you are established on the final approach course after being vectored?",
+    "icaoSpeakText": "After receiving the intercept heading I confirm I am on the correct frequency, monitor the localizer or RNAV course needle, and report established only when the course is centered and tracking stable. I transmit: Established ILS runway one four, ANAC123. If I am turned inside the final approach fix without being established, I advise ATC so they can vector me for another intercept.",
+    "missionBrief": "Today's lesson covers Expect Vectors to Intercept — an ATC advisory informing the pilot that radar vectors will be used to position the aircraft onto the final approach course.\n\nExpect Vectors to Intercept means the pilot will not fly the full published approach procedure — ATC will issue headings to intercept the localizer, RNAV final, or VOR course.\n\nIn the H130, radar vectoring is the standard sequencing method at Florianópolis, Curitiba, Congonhas, and São Paulo area airports.\n\nYou must acknowledge the advisory, remain on assigned headings until vectored onto final, and confirm intercept when established.\n\nThis lesson prepares you for ICAO Part 2 phraseology and radar vector approach operations.",
+    "captainTeaching": "Vectors to intercept means you are in ATC hands until you are on the final course.\n\nYour job on vectors: follow headings, descend as cleared, manage speed, and confirm intercept.\n\nThe sequence:\n\nReceive expect vectors. Brief approach. Report ready. Follow headings. Intercept. Report established. Continue approach.\n\nBrazilian pilots sometimes turn toward the final course before receiving the intercept instruction.\n\nWait for the instruction. ATC sees the picture — you see only your cockpit.\n\nIn the H130, manage speed on vectors so you arrive at the intercept point configured.\n\nIf ATC turns you inside the final approach course, confirm you can establish before the final approach fix.\n\nReport established only when the needle is centered and tracking stable.",
+    "operationalContext": "You are inbound to Florianópolis at three thousand feet.\n\nApproach advises:\n\nANAC123, expect vectors ILS runway one four, report ready for vectors.\n\nYou complete the approach briefing and transmit:\n\nReady for vectors, ANAC123.\n\nApproach issues a series of headings:\n\nANAC123, turn right heading two eight zero, descend and maintain two thousand.\n\nThen:\n\nANAC123, turn left heading two zero zero, intercept localizer runway one four.\n\nYou intercept and report:\n\nEstablished ILS runway one four, ANAC123.",
+    "sayItCoach": "Established ILS runway one four, ANAC123.",
+    "icaoModelAnswer": "After receiving the intercept heading I confirm I am on the correct frequency, monitor the localizer or RNAV course needle, and report established only when the course is centered and tracking stable. I transmit: Established ILS runway one four, ANAC123. If I am turned inside the final approach fix without being established, I advise ATC so they can vector me for another intercept.",
+    "memoryTrick": "**VECTOR** — **V**erify heading, **E**xpect intercept call, **C**onfirm course centered, **T**ransmit established, **O**nly then descend on glide, **R**emain on vectors until told.",
+    "operationalMeaning": "When Expect Vectors to Intercept is received, the pilot should:\n\nExpect Vectors to Intercept operations commonly include:",
+    "whyAtcUsesIt": [
+      "sequence multiple aircraft into the final approach",
+      "bypass the full published approach procedure for efficiency",
+      "optimize runway throughput at busy airports",
+      "avoid congested holding or transition areas",
+      "position aircraft at the correct intercept angle"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, expect vectors ILS runway one four.",
+      "Approach: ANAC123, vectors for ILS runway one four, report approach brief complete.",
+      "Approach: ANAC123, turn left heading one eight zero, intercept localizer.",
+      "Approach: ANAC123, you are twelve miles from touchdown, report established.",
+      "Approach: ANAC123, cleared ILS runway one four, report established."
+    ],
+    "pilotReadbacks": [
+      "Expect vectors ILS runway one four, ANAC123.",
+      "Approach brief complete, ready vectors, ANAC123.",
+      "Left heading one eight zero, ANAC123.",
+      "Report established, ANAC123.",
+      "Cleared ILS runway one four, established, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Turning toward the final course before receiving the intercept instruction.  \n  ✔ Hold the assigned vector heading until ATC clears you to intercept.\n\n- ❌ Reporting established before the needle is centered.  \n  ✔ Report established only when the course is stable and tracking.\n\n- ❌ Forgetting to report approach brief complete before vectors begin.  \n  ✔ When asked, report: Approach brief complete, ready vectors, ANAC123.\n\n- ❌ Allowing airspeed to be too high on final intercept.  \n  ✔ Manage speed on vectors to arrive configured at the intercept point.",
+    "pronunciationCoaching": "**Target Phrase:** Established ILS Runway One Four, ANAC123\n\n**Pronunciation:** es-TAB-lisht EYE-ELL-ESS RUN-way WUN FOR, AY-EN-AY-CEE WUN TOO THREE\n\n**Word Stress**\n\n- Established → es-TAB-lisht\n- ILS → spell each letter\n- Runway → RUN-way\n\nPractice:\n\nEstablished... ILS...\n\nTogether:\n\nEstablished ILS runway one four, ANAC123.\n\nSay \"one four\" — not \"fourteen.\"",
+    "relatedConcepts": [
+      "Vectors to Final",
+      "ILS Approach",
+      "Radar Contact",
+      "Cleared Approach",
+      "Expect Circling",
+      "Intercept"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Radar Vectoring",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Radar Vectors",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Vectors",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — IFR Approach"
+      },
+      {
+        "label": "SKYbrary — Radar Vectoring",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0111",
+    "id": "0111",
+    "displayTerm": "Vectors to Final",
+    "term": "vectors to final",
+    "slug": "vectors-to-final",
+    "category": "ATC Phraseology",
+    "meaningEn": "Vectors to Final are radar headings and altitude assignments issued by ATC to position an aircraft onto the final approach course, enabling intercept of the localizer, RNAV final, or visual final track.",
+    "meaningPt": "Vetores para o final.\n\nRumos e altitudes de radar fornecidos pelo controle para posicionar a aeronave no eixo final da aproximação e interceptar o localizador, RNAV ou visual.",
+    "whenUsed": "When receiving Vectors to Final, the pilot should:",
+    "example": "Approach: ANAC123, turn left heading two two zero, vectors to final ILS runway one seven left.",
+    "sayPhrase": "Left heading two two zero, vectors final, ANAC123.",
+    "icaoQuestion": "What do you do if you are vectored to final but intercept above the glide slope?",
+    "icaoSpeakText": "If I am vectored to final and intercept above the glide slope, I advise ATC that I am above glide slope and request a longer final or extended vectors to allow me to establish on the correct glide path. If I cannot establish stably, I would advise going around for another approach. A high intercept is a configuration and safety risk and should not be forced to a landing.",
+    "missionBrief": "Today's lesson covers Vectors to Final — the radar headings ATC issues to position an aircraft precisely onto the final approach course for landing.\n\nVectors to Final is the active phase: ATC is turning you, descending you, and slowing you onto the localizer, RNAV final, or visual final, ready to land.\n\nIn the H130, vectors to final are issued at every controlled airport in Brazil — Congonhas, Florianópolis, Curitiba, Joinville, Navegantes, and São Paulo area.\n\nYou must follow each vector heading precisely, confirm intercept, and transition to the approach without hesitation.\n\nThis lesson prepares you for ICAO Part 2 phraseology and radar approach sequencing.",
+    "captainTeaching": "Vectors to final is sequencing in real time.\n\nATC is painting a picture on radar. Your job is to follow the strokes.\n\nThe sequence:\n\nFollow headings exactly. Descend on instruction. Manage speed. Monitor course. Intercept on the turn. Report established.\n\nBrazilian pilots sometimes anticipate the final heading and turn early.\n\nDo not turn until the vector is given. ATC sees traffic you cannot see.\n\nIn the H130, begin configuring for approach during base leg vectors — not on final.\n\nArrive at the intercept point with gear down, speed set, approach checklist complete.\n\nIf you intercept above glide slope or above localizer, advise ATC and request a longer final or go around.\n\nTrain each vector readback until it is automatic.",
+    "operationalContext": "You are descending into Congonhas in your H130 at three thousand feet.\n\nApproach has you on a base leg and transmits:\n\nANAC123, turn left heading two two zero, descend and maintain two thousand, reduce speed one six zero knots.\n\nYou comply, then Approach turns you again:\n\nANAC123, turn left heading one seven zero, cleared ILS runway one seven left, report established.\n\nYou intercept and report:\n\nEstablished ILS runway one seven left, ANAC123.\n\nThe sequence is clean. You are on final, configured, and stable.",
+    "sayItCoach": "Left heading one seven zero, intercept localizer, ANAC123.",
+    "icaoModelAnswer": "If I am vectored to final and intercept above the glide slope, I advise ATC that I am above glide slope and request a longer final or extended vectors to allow me to establish on the correct glide path. If I cannot establish stably, I would advise going around for another approach. A high intercept is a configuration and safety risk and should not be forced to a landing.",
+    "memoryTrick": "**FINAL** — **F**ollow headings, **I**ntercept on the vector, **N**otify when established, **A**rrive configured, **L**and stabilized.",
+    "operationalMeaning": "When receiving Vectors to Final, the pilot should:\n\nVectors to Final commonly include:",
+    "whyAtcUsesIt": [
+      "sequence multiple aircraft efficiently to the active runway",
+      "optimize intercept angle and distance from touchdown",
+      "control speed and spacing between arrivals",
+      "maintain separation from other traffic on final",
+      "provide the cleared approach without the full published procedure"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, turn left heading two two zero, vectors to final ILS runway one seven left.",
+      "Approach: ANAC123, descend and maintain two thousand, speed one six zero.",
+      "Approach: ANAC123, turn left heading one seven zero, intercept localizer.",
+      "Approach: ANAC123, cleared ILS runway one seven left, report established.",
+      "Approach: ANAC123, you are eight miles from touchdown, maintain speed until five miles."
+    ],
+    "pilotReadbacks": [
+      "Left heading two two zero, vectors final, ANAC123.",
+      "Descend and maintain two thousand, speed one six zero, ANAC123.",
+      "Left heading one seven zero, intercept localizer, ANAC123.",
+      "Cleared ILS runway one seven left, ANAC123.",
+      "Established ILS runway one seven left, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Turning toward the final course before receiving the vector instruction.  \n  ✔ Wait for every heading instruction before turning.\n\n- ❌ Not configuring the aircraft during base leg vectors.  \n  ✔ Use base leg vectors to extend gear, configure flaps, set speed.\n\n- ❌ Reporting established while still intercepting or oscillating.  \n  ✔ Report established only when centered and stable on course.\n\n- ❌ Accepting a high glide slope intercept without advising ATC.  \n  ✔ Advise above glide slope and request resolution early.",
+    "pronunciationCoaching": "**Target Phrase:** Left Heading One Seven Zero, ANAC123\n\n**Pronunciation:** left HED-ing WUN SEV-en ZEE-ro, AY-EN-AY-CEE WUN TOO THREE\n\n**Word Stress**\n\n- Heading → HED-ing\n- One Seven Zero → each digit separate\n\nPractice:\n\nLeft heading... one seven zero...\n\nTogether:\n\nLeft heading one seven zero, intercept localizer, ANAC123.\n\nSay each digit clearly — one seven zero, not one seventy.",
+    "relatedConcepts": [
+      "Expect Vectors to Intercept",
+      "ILS Approach",
+      "Radar Contact",
+      "Cleared Approach",
+      "Intercept",
+      "Stabilized Approach"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Radar Vectoring for Approach",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Radar Vectors",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Final Approach",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — ILS and Approach"
+      },
+      {
+        "label": "SKYbrary — Radar Vectoring to Final",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0112",
+    "id": "0112",
+    "displayTerm": "Maintain Own Separation",
+    "term": "maintain own separation",
+    "slug": "maintain-own-separation",
+    "category": "ATC Phraseology",
+    "meaningEn": "Maintain Own Separation is an ATC instruction or advisory authorizing a pilot to be responsible for their own separation from specified traffic, typically requiring the pilot to maintain visual contact with that traffic.",
+    "meaningPt": "Manter separação própria.\n\nInstrução ou aviso do controle autorizando o piloto a assumir a responsabilidade pela própria separação em relação a um tráfego especificado, geralmente exigindo contato visual com esse tráfego.",
+    "whenUsed": "When Maintain Own Separation is received, the pilot should:",
+    "example": "Approach: ANAC123, traffic on final ahead, maintain own separation.",
+    "sayPhrase": "Traffic in sight, maintain own separation, ANAC123.",
+    "icaoQuestion": "When should you decline an instruction to maintain own separation?",
+    "icaoSpeakText": "I should decline maintain own separation if I cannot establish visual contact with the referenced traffic, if visibility or cloud prevents reliable visual contact, or if I am not confident I can maintain that visual contact throughout the procedure. I would advise ATC: Unable, traffic not in sight, ANAC123. ATC is then responsible for providing an alternative separation service and I must not compromise separation by accepting a responsibility I cannot fulfill.",
+    "missionBrief": "Today's lesson covers Maintain Own Separation — an ATC instruction authorizing a pilot to take responsibility for their own separation from specified traffic while remaining in communication with ATC.\n\nMaintain Own Separation shifts separation responsibility temporarily to the pilot, requiring visual or procedural awareness of surrounding traffic.\n\nIn Brazilian operations, this instruction appears primarily in uncontrolled or advisory airspace near Navegantes, Joinville, and coastal VFR transit areas where IFR and VFR traffic mix.\n\nYou must understand when this responsibility applies, how to accept or decline it, and what visual contact obligations it creates.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 4 interaction and communication under shared responsibility conditions.",
+    "captainTeaching": "Own separation is pilot responsibility — and responsibility requires certainty.\n\nYou accept it only when you have positive visual contact and can maintain it.\n\nThe sequence:\n\nReceive instruction. Acquire traffic visually. Confirm you can maintain visual. Accept or decline. Keep eyes on traffic.\n\nBrazilian pilots sometimes accept own separation without a clear visual acquisition — and then lose the traffic.\n\nNever say traffic in sight until you are actually looking at it.\n\nIn the H130, with a wide field of view, visual acquisition is usually achievable — but clouds, haze, and sun angle can defeat it quickly.\n\nIf you lose visual contact at any point: advise ATC immediately and request separation services.\n\nDo not wait to see if visual is recoverable. Advise now.",
+    "operationalContext": "You are on a visual approach to Navegantes in your H130.\n\nAn Embraer 120 is on a two mile final ahead.\n\nApproach transmits:\n\nANAC123, traffic Embraer one two zero on final, maintain own separation.\n\nYou acquire the traffic visually and respond:\n\nTraffic in sight, maintain own separation, ANAC123.\n\nYou maintain visual contact and sequence behind the Embraer with appropriate spacing, landing after it clears the runway.",
+    "sayItCoach": "Traffic in sight, maintain own separation, ANAC123.",
+    "icaoModelAnswer": "I should decline maintain own separation if I cannot establish visual contact with the referenced traffic, if visibility or cloud prevents reliable visual contact, or if I am not confident I can maintain that visual contact throughout the procedure. I would advise ATC: Unable, traffic not in sight, ANAC123. ATC is then responsible for providing an alternative separation service and I must not compromise separation by accepting a responsibility I cannot fulfill.",
+    "memoryTrick": "**SEE** — **S**ee the traffic clearly, **E**nsure you can maintain visual, **E**scape by declining if you cannot.",
+    "operationalMeaning": "When Maintain Own Separation is received, the pilot should:\n\nMaintain Own Separation operations commonly include:",
+    "whyAtcUsesIt": [
+      "reduce workload in advisory airspace where full ATC separation is not available",
+      "allow visual approaches when the preceding traffic is in sight",
+      "manage mixed traffic in Class G or uncontrolled airspace",
+      "authorize sequencing when visual contact is confirmed",
+      "facilitate formation operations"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, traffic on final ahead, maintain own separation.",
+      "Approach: ANAC123, Embraer one two zero, two miles ahead on final, report traffic in sight.",
+      "Advisory: ANAC123, uncontrolled airspace, suggest own separation with reported traffic at nine o'clock.",
+      "Approach: ANAC123, maintain own separation from preceding traffic, report established final.",
+      "Approach: ANAC123, maintain own separation, resume own navigation."
+    ],
+    "pilotReadbacks": [
+      "Traffic in sight, maintain own separation, ANAC123.",
+      "Traffic in sight, ANAC123.",
+      "Unable, traffic not in sight, ANAC123.",
+      "Maintaining own separation, report established final, ANAC123.",
+      "Maintaining own separation, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Saying \"traffic in sight\" without actually seeing it.  \n  ✔ Only accept when you have positive, maintained visual contact.\n\n- ❌ Not advising ATC when visual contact is lost.  \n  ✔ Immediately report: Traffic no longer in sight, ANAC123.\n\n- ❌ Accepting own separation in poor visibility or haze.  \n  ✔ If conditions prevent reliable visual, decline the instruction.\n\n- ❌ Treating maintain own separation as a permanent clearance.  \n  ✔ It applies to the specific traffic referenced and ends when that traffic is no longer a factor.",
+    "pronunciationCoaching": "**Target Phrase:** Traffic in Sight, Maintain Own Separation, ANAC123\n\n**Pronunciation:** TRA-fik in SYT, may-TAYN OWN sep-ah-RAY-shun, AY-EN-AY-CEE WUN TOO THREE\n\n**Word Stress**\n\n- Traffic → TRA-fik\n- Sight → SYT\n- Separation → sep-ah-RAY-shun\n\nPractice:\n\nTraffic in sight...\n\nTogether:\n\nTraffic in sight, maintain own separation, ANAC123.\n\nSay separation clearly — sep-ah-RAY-shun.",
+    "relatedConcepts": [
+      "Traffic Information",
+      "Visual Approach",
+      "Separation",
+      "Traffic in Sight",
+      "Radar Separation",
+      "Sequencing"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Separation and Traffic Services",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9432 — Manual of Radiotelephony"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — See and Avoid",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Operations"
+      },
+      {
+        "label": "SKYbrary — Pilot Responsibility for Separation",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0113",
+    "id": "0113",
+    "displayTerm": "Reduce Speed",
+    "term": "reduce speed",
+    "slug": "reduce-speed",
+    "category": "ATC Phraseology",
+    "meaningEn": "Reduce Speed is an ATC instruction requiring the pilot to decrease airspeed to a specified value, maintaining that speed until further advised or until a later speed restriction applies.",
+    "meaningPt": "Reduza a velocidade.\n\nInstrução do controle para o piloto diminuir a velocidade para um valor especificado, mantendo essa velocidade até nova instrução.",
+    "whenUsed": "When Reduce Speed is received, the pilot should:",
+    "example": "Approach: ANAC123, reduce speed one four zero knots.",
+    "sayPhrase": "Speed one four zero, ANAC123.",
+    "icaoQuestion": "What do you say if ATC assigns a speed below your minimum safe speed?",
+    "icaoSpeakText": "If ATC assigns a speed below my minimum safe speed I would immediately advise: Unable, minimum speed is one zero zero knots, ANAC123. I would not attempt to comply with an unsafe speed assignment. ATC would then adjust the instruction and I would comply with the revised assignment within my limits.",
+    "missionBrief": "Today's lesson covers Reduce Speed — an ATC instruction directing the pilot to decrease airspeed to a specified value or to a general reduction for separation and sequencing purposes.\n\nReduce Speed is one of the most frequently issued instructions during arrival sequencing at Brazilian airports.\n\nIn the H130, speed reductions are routine on approach to Congonhas, Florianópolis, Curitiba, and Navegantes as ATC sequences faster jets and slower helicopters together.\n\nYou must read back the assigned speed, comply promptly, and advise ATC if the instruction exceeds your operational limits.\n\nThis lesson prepares you for ICAO Part 2 phraseology and speed management in controlled airspace.",
+    "captainTeaching": "Speed management on approach is aircraft management.\n\nYou need to reduce, configure, and still remain stable.\n\nThe sequence:\n\nHear reduce speed. Check against limits. Read back. Reduce promptly. Maintain until released.\n\nBrazilian pilots sometimes reduce speed so aggressively they overshoot configuration, or so slowly they fail to meet the instruction.\n\nSmooth reductions with aircraft configuration changes together — gear, flaps, power.\n\nIn the H130, reduction to one four zero or less may require early configuration change. Plan ahead.\n\nIf the speed assigned is below your minimum safe speed: advise immediately. ATC will adjust.\n\nNever accept a speed that puts your aircraft outside safe limits.",
+    "operationalContext": "You are on a twelve-mile final to Florianópolis in your H130 behind an Embraer 195.\n\nApproach transmits:\n\nANAC123, reduce speed one four zero knots, traffic ahead.\n\nYou check your limits and respond:\n\nSpeed one four zero knots, ANAC123.\n\nAt eight miles Approach clears the speed:\n\nANAC123, cancel speed restriction, resume own speed.\n\nYou respond:\n\nCancel speed restriction, ANAC123.\n\nThe Embraer has landed and you have the separation needed.",
+    "sayItCoach": "Speed one four zero, ANAC123.",
+    "icaoModelAnswer": "If ATC assigns a speed below my minimum safe speed I would immediately advise: Unable, minimum speed is one zero zero knots, ANAC123. I would not attempt to comply with an unsafe speed assignment. ATC would then adjust the instruction and I would comply with the revised assignment within my limits.",
+    "memoryTrick": "**SLOW** — **S**ay the speed back, **L**ower promptly and configured, **O**bey until released, **W**arn ATC if below your limit.",
+    "operationalMeaning": "When Reduce Speed is received, the pilot should:\n\nReduce Speed operations commonly include:",
+    "whyAtcUsesIt": [
+      "create spacing between successive arrivals",
+      "manage separation when faster aircraft are catching up",
+      "allow preceding aircraft to clear the runway before the next arrival",
+      "optimize runway occupancy during high traffic periods",
+      "maintain safe approach sequencing at mixed-traffic airports"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, reduce speed one four zero knots.",
+      "Approach: ANAC123, reduce speed, traffic ahead.",
+      "Approach: ANAC123, maintain one six zero knots until five mile final.",
+      "Approach: ANAC123, cancel speed restriction, resume own speed.",
+      "Approach: ANAC123, your speed two two zero, reduce now."
+    ],
+    "pilotReadbacks": [
+      "Speed one four zero, ANAC123.",
+      "Reducing speed, ANAC123.",
+      "Maintain one six zero until five miles, ANAC123.",
+      "Cancel speed restriction, ANAC123.",
+      "Reducing, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Not reading back the assigned speed.  \n  ✔ Always read back: Speed one four zero, ANAC123.\n\n- ❌ Accepting a speed below minimum safe limits without advising ATC.  \n  ✔ Immediately advise: Unable, minimum speed is [X] knots, ANAC123.\n\n- ❌ Reducing speed so abruptly the aircraft becomes destabilized.  \n  ✔ Reduce with coordinated configuration changes for a stable profile.\n\n- ❌ Resuming cruise speed before ATC releases the restriction.  \n  ✔ Maintain assigned speed until ATC says cancel speed restriction.",
+    "pronunciationCoaching": "**Target Phrase:** Speed One Four Zero, ANAC123\n\n**Pronunciation:** SPEED WUN FOR ZEE-ro, AY-EN-AY-CEE WUN TOO THREE\n\n**Word Stress**\n\n- Speed → SPEED (clear and direct)\n- One Four Zero → each digit separate\n\nPractice:\n\nSpeed... one four zero...\n\nTogether:\n\nSpeed one four zero, ANAC123.\n\nSay digits clearly — one four zero, not one hundred forty.",
+    "relatedConcepts": [
+      "Maintain Speed",
+      "Increase Speed",
+      "Speed Restriction",
+      "Sequencing",
+      "Final Approach",
+      "Minimum Speed"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Speed Control",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Speed Adjustments",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Speed Adjustment",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Airspeed Limitations"
+      },
+      {
+        "label": "SKYbrary — Speed Control",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0114",
+    "id": "0114",
+    "displayTerm": "Descend at Your Discretion",
+    "term": "descend at your discretion",
+    "slug": "descend-at-your-discretion",
+    "category": "ATC Phraseology",
+    "meaningEn": "Descend at Your Discretion is an ATC clearance authorizing the pilot to commence descent at a time of their choosing, to the cleared altitude, without further ATC approval to initiate the descent.",
+    "meaningPt": "Desça a sua critério.\n\nAutorização do controle para o piloto iniciar a descida quando julgar apropriado, para a altitude autorizada, sem necessitar de nova aprovação do controle para iniciar a descida.",
+    "whenUsed": "When Descend at Your Discretion is received, the pilot should:",
+    "example": "Center: ANAC123, descend to three thousand, at your discretion.",
+    "sayPhrase": "Descend to three thousand at discretion, ANAC123.",
+    "icaoQuestion": "What restrictions remain in place when ATC clears you to descend at your discretion?",
+    "icaoSpeakText": "When ATC clears me to descend at my discretion, I choose when to begin the descent but I must not descend below the cleared altitude and I must comply with all published altitude crossing restrictions on the STAR or transition unless ATC specifically cancels them. The clearance gives me timing discretion — it does not cancel published procedure constraints. I remain responsible for terrain clearance and procedure compliance throughout the descent.",
+    "missionBrief": "Today's lesson covers Descend at Your Discretion — one of the most powerful and misunderstood clearances in aviation.\n\nDescend at Your Discretion authorizes the pilot to begin descent when the pilot judges appropriate, to a cleared lower altitude, without needing further ATC permission to start the descent.\n\nIn the H130, this clearance is issued in Brazilian en route and approach phases, particularly in Curitiba, São Paulo, and Congonhas area traffic.\n\nYou must understand what freedom it grants, what limits remain, and how to manage the descent professionally within the clearance.\n\nThis lesson prepares you for ICAO Part 2 phraseology and pilot discretion descent management.",
+    "captainTeaching": "Pilot discretion is a freedom that demands judgment.\n\nATC is handing the timing to you. Use it wisely.\n\nThe sequence:\n\nReceive clearance. Read back the altitude. Calculate top of descent. Check STAR restrictions. Descend when optimal.\n\nBrazilian pilots sometimes treat this as permission to delay indefinitely — or to disregard published crossing restrictions.\n\nBoth are wrong.\n\nDescend when operationally appropriate — not five minutes after you should have started.\n\nIn the H130, plan your descent so you arrive at the cleared altitude with energy managed.\n\nPublished STAR restrictions remain in force unless ATC specifically cancels them. Check the plate.\n\nIf ATC cancels the discretion with \"descend now\": comply immediately.",
+    "operationalContext": "You are cruising at ten thousand feet bound for Curitiba in your H130.\n\nCenter transmits:\n\nANAC123, descend to three thousand, at your discretion.\n\nYou plan a continuous descent for fuel efficiency and passenger comfort.\n\nYou read back:\n\nDescend to three thousand at discretion, ANAC123.\n\nYou begin descent when the top of descent calculation indicates, crossing all published restrictions, and arrive at three thousand as planned.\n\nYou report:\n\nANAC123, three thousand.",
+    "sayItCoach": "Descend to three thousand at discretion, ANAC123.",
+    "icaoModelAnswer": "When ATC clears me to descend at my discretion, I choose when to begin the descent but I must not descend below the cleared altitude and I must comply with all published altitude crossing restrictions on the STAR or transition unless ATC specifically cancels them. The clearance gives me timing discretion — it does not cancel published procedure constraints. I remain responsible for terrain clearance and procedure compliance throughout the descent.",
+    "memoryTrick": "**DISC** — **D**ecide when, **I**nspect STAR restrictions, **S**tart when optimal, **C**onfirm cleared altitude on arrival.",
+    "operationalMeaning": "When Descend at Your Discretion is received, the pilot should:\n\nDescend at Your Discretion commonly includes:",
+    "whyAtcUsesIt": [
+      "allow the pilot to optimize descent profile for fuel and comfort",
+      "reduce radio workload on en route sectors",
+      "allow performance-based descents such as continuous descent operations",
+      "give flexibility during low traffic periods",
+      "authorize descent without further coordination by ATC"
+    ],
+    "atcPhraseology": [
+      "Center: ANAC123, descend to three thousand, at your discretion.",
+      "Approach: ANAC123, descend to two thousand, pilot's discretion.",
+      "Center: ANAC123, when ready, descend to five thousand.",
+      "Approach: ANAC123, descend at your discretion, comply with STAR restrictions.",
+      "Center: ANAC123, cancel at your discretion, descend now to four thousand."
+    ],
+    "pilotReadbacks": [
+      "Descend to three thousand at discretion, ANAC123.",
+      "Descend to two thousand at discretion, ANAC123.",
+      "When ready, descend to five thousand, ANAC123.",
+      "Descend at discretion, STAR restrictions, ANAC123.",
+      "Descend to four thousand, leaving [current altitude], ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Treating pilot discretion as permission to ignore STAR crossing restrictions.  \n  ✔ Published restrictions remain in force unless ATC cancels them explicitly.\n\n- ❌ Delaying the descent until too late for an efficient arrival.  \n  ✔ Use the discretion operationally — descend at the optimal top of descent.\n\n- ❌ Not reading back the cleared altitude.  \n  ✔ Always confirm: Descend to [altitude] at discretion, ANAC123.\n\n- ❌ Forgetting to report when established at the cleared altitude.  \n  ✔ Report: ANAC123, [altitude] when reaching the cleared level.",
+    "pronunciationCoaching": "**Target Phrase:** Descend to Three Thousand at Discretion, ANAC123\n\n**Pronunciation:** dee-SEND too THREE THOW-zend at dis-KRESH-un, AY-EN-AY-CEE WUN TOO THREE\n\n**Word Stress**\n\n- Descend → dee-SEND\n- Discretion → dis-KRESH-un\n- Thousand → THOW-zend\n\nPractice:\n\nDescend to three thousand... at discretion...\n\nTogether:\n\nDescend to three thousand at discretion, ANAC123.\n\nSay three thousand clearly — not thirty hundred.",
+    "relatedConcepts": [
+      "Descend and Maintain",
+      "STAR Restrictions",
+      "Continuous Descent Operations",
+      "Altitude Restrictions",
+      "When Ready",
+      "Cleared Altitude"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Altitude Clearances",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9931 — Continuous Descent Operations"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Descent Clearances",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Pilot's Discretion",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Altitude Clearance",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0115",
+    "id": "0115",
+    "displayTerm": "Cleared for Immediate Takeoff",
+    "term": "cleared for immediate takeoff",
+    "slug": "cleared-for-immediate-takeoff",
+    "category": "ATC Phraseology",
+    "meaningEn": "Cleared for Immediate Takeoff is an ATC clearance authorizing the pilot to enter the runway and begin the takeoff roll without delay, used when traffic or operational urgency requires departure with no pause.",
+    "meaningPt": "Autorizado para decolagem imediata.\n\nAutorização do controle para o piloto entrar na pista e iniciar a corrida de decolagem sem atraso, utilizada quando o tráfego ou a urgência operacional exige a partida imediata.",
+    "whenUsed": "When Cleared for Immediate Takeoff is received, the pilot should:",
+    "example": "Tower: ANAC123, cleared for immediate takeoff runway one four, traffic six miles final.",
+    "sayPhrase": "Cleared immediate takeoff runway one four, ANAC123.",
+    "icaoQuestion": "When should you decline a cleared for immediate takeoff instruction?",
+    "icaoSpeakText": "I should decline a cleared for immediate takeoff instruction any time I am not fully ready to begin the takeoff roll without stopping — for example if pre-takeoff checks are incomplete, if there is a mechanical issue, if the crew is not ready, or if I have any doubt about the aircraft's readiness. I would transmit: Unable immediate, request normal departure, ANAC123. Stopping on the runway after accepting an immediate clearance is far more dangerous than a clear decline before entering the runway.",
+    "missionBrief": "Today's lesson covers Cleared for Immediate Takeoff — one of the most time-critical clearances in aviation phraseology.\n\nCleared for Immediate Takeoff means ATC is authorizing departure now, with no delay. The pilot is expected to taxi onto the runway and begin the takeoff roll without stopping.\n\nIn the H130, this clearance is issued at busy Brazilian airports including Congonhas, Florianópolis, Joinville, and Navegantes when arriving traffic or sequencing demands immediate departure or a runway vacancy.\n\nYou must know when to accept it, when to decline it, and what hazards result from hesitation or misunderstanding.\n\nThis lesson prepares you for ICAO Part 2 phraseology and time-critical runway operations.",
+    "captainTeaching": "Immediate means now. Not in thirty seconds. Not after the checklist item you forgot.\n\nImmediate means your feet are on the rudder pedals before you finish reading back.\n\nThe sequence:\n\nReceive cleared immediate takeoff. Accept if ready. Enter runway. Begin roll without stopping. Climb.\n\nBrazilian pilots sometimes accept immediate clearances when not fully ready — and then pause on the runway to complete preparations.\n\nThat pause is the worst possible outcome. It wastes the gap and creates a collision risk.\n\nIn the H130, if pre-takeoff checks are done and you are lined up, immediate is achievable.\n\nIf you are not ready — decline with confidence. ATC expects both answers. There is no shame in: Unable immediate, ANAC123.\n\nTrain the decision before you reach the holding point. Know whether you are ready.",
+    "operationalContext": "You are holding short of runway one four at Florianópolis in your H130, pre-takeoff checks complete.\n\nAn Embraer 195 is on a six-mile final.\n\nTower transmits:\n\nANAC123, cleared for immediate takeoff runway one four, traffic six miles on final.\n\nYou are ready and respond immediately:\n\nCleared immediate takeoff runway one four, ANAC123.\n\nYou taxi onto the runway without stopping and begin the takeoff roll.\n\nYou are airborne and climbing before the Embraer is at two miles.",
+    "sayItCoach": "Cleared immediate takeoff runway one four, ANAC123.",
+    "icaoModelAnswer": "I should decline a cleared for immediate takeoff instruction any time I am not fully ready to begin the takeoff roll without stopping — for example if pre-takeoff checks are incomplete, if there is a mechanical issue, if the crew is not ready, or if I have any doubt about the aircraft's readiness. I would transmit: Unable immediate, request normal departure, ANAC123. Stopping on the runway after accepting an immediate clearance is far more dangerous than a clear decline before entering the runway.",
+    "memoryTrick": "**NOW** — **N**o stopping, **O**nly accept when ready, **W**ait declined if not prepared.",
+    "operationalMeaning": "When Cleared for Immediate Takeoff is received, the pilot should:\n\nCleared for Immediate Takeoff operations commonly include:",
+    "whyAtcUsesIt": [
+      "use a short gap between arriving aircraft for a departure",
+      "maximize runway utilization at high-traffic airports",
+      "expedite a priority departure such as medevac or VIP",
+      "avoid a go-around for a landing aircraft behind",
+      "clear the runway before the next arrival reaches final"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, cleared for immediate takeoff runway one four, traffic six miles final.",
+      "Tower: ANAC123, line up and take off immediately.",
+      "Tower: ANAC123, traffic on final, immediate departure approved, runway one four.",
+      "Tower: ANAC123, if able, immediate takeoff runway one four.",
+      "Tower: ANAC123, cleared immediate takeoff, no delay."
+    ],
+    "pilotReadbacks": [
+      "Cleared immediate takeoff runway one four, ANAC123.",
+      "Lining up and taking off immediately, ANAC123.",
+      "Immediate departure, runway one four, ANAC123.",
+      "Unable immediate, request normal departure, ANAC123.",
+      "Immediate takeoff, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Accepting immediate takeoff and then stopping on the runway.  \n  ✔ Only accept when genuinely ready to roll without any pause.\n\n- ❌ Not completing pre-takeoff checks before the holding point.  \n  ✔ Finish all checks while taxiing — arrive at the hold ready.\n\n- ❌ Saying \"Roger\" instead of reading back the runway and clearance.  \n  ✔ Cleared immediate takeoff runway one four, ANAC123.\n\n- ❌ Feeling pressured to accept when not ready.  \n  ✔ Declining is safe, professional, and expected when you are not ready.",
+    "pronunciationCoaching": "**Target Phrase:** Cleared Immediate Takeoff Runway One Four, ANAC123\n\n**Pronunciation:** KLEERED ih-MEE-dee-et TAY-koff RUN-way WUN FOR, AY-EN-AY-CEE WUN TOO THREE\n\n**Word Stress**\n\n- Cleared → KLEERED\n- Immediate → ih-MEE-dee-et\n- Takeoff → TAY-koff\n\nPractice:\n\nCleared immediate... takeoff...\n\nTogether:\n\nCleared immediate takeoff runway one four, ANAC123.\n\nSpeak with urgency and clarity — this is time-critical.",
+    "relatedConcepts": [
+      "Cleared for Takeoff",
+      "Line Up and Wait",
+      "Hold Short",
+      "Go Around",
+      "Runway Incursion",
+      "Expedite"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Aerodrome Control",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Takeoff Clearances",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Immediate Takeoff",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Takeoff Procedures"
+      },
+      {
+        "label": "SKYbrary — Runway Incursion and Takeoff Clearances",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0116",
+    "id": "0116",
+    "displayTerm": "Immediate Takeoff",
+    "term": "immediate takeoff",
+    "slug": "immediate-takeoff",
+    "category": "ATC Phraseology",
+    "meaningEn": "Immediate Takeoff is the operational concept requiring a pilot to enter the active runway and begin the takeoff roll without any delay upon receiving the corresponding clearance.",
+    "meaningPt": "Decolagem imediata.\n\nO conceito operacional que exige que o piloto ingresse na pista ativa e inicie a corrida de decolagem sem qualquer atraso ao receber a autorização correspondente.",
+    "whenUsed": "When Immediate Takeoff is expected or offered, the pilot must:",
+    "example": "Tower: ANAC123, can you accept immediate departure runway one five?",
+    "sayPhrase": "Affirmative, ready immediate, ANAC123.",
+    "icaoQuestion": "How would you respond if ATC asked whether you could accept an immediate departure and you were not fully ready?",
+    "icaoSpeakText": "I would tell the controller I was unable to accept an immediate departure and request additional time to complete my before-takeoff checks. Accepting immediate when not ready creates a hazard on the runway, so the professional answer is to decline clearly and give ATC an estimate of how long I would need.",
+    "missionBrief": "Today's lesson covers Immediate Takeoff — the operational concept behind urgency at the holding point.\n\nImmediate Takeoff is not just a clearance phrase.\n\nIt is a state of readiness.\n\nWhen ATC offers or expects an immediate departure, the pilot must be fully prepared to roll without delay — before entering the runway.\n\nIn the H130, operating from busy airports like Congonhas or Joinville, this concept can determine whether you make the gap in traffic or wait several minutes.\n\nThis lesson is distinct from Cleared for Immediate Takeoff (0115), which covers the specific clearance phrase. Here, you learn the urgency concept — what it means to be ready, what to do, and when to decline.",
+    "captainTeaching": "Immediate Takeoff is a test of preparation, not boldness.\n\nConfident pilots who say yes when they are ready — that is professionalism.\n\nEqually confident pilots who say no when they are not ready — that is also professionalism.\n\nThe mistake is neither accepting nor declining.\n\nThe mistake is saying yes when you are not actually ready, then fumbling through a checklist while an arrival is on short final.\n\nPrepare everything before you reach the holding point.\n\nThat way, when Tower says \"can you accept immediate?\" your answer is already known.\n\nIn the H130, the before-takeoff checks are short. If you complete them at the run-up area, you arrive at the holding point ready for anything.\n\nBrazilian pilots sometimes feel social pressure to accept immediate to \"help the flow.\"\n\nDo not accept it to please the controller.\n\nAccept it because you are ready.",
+    "operationalContext": "You are at Joinville holding short of runway 15 in your H130.\n\nAn arrival is on a two-mile final.\n\nTower transmits:\n\nANAC123, can you accept immediate departure?\n\nYou have completed your before-takeoff checks.\n\nYou are ready.\n\nYou respond:\n\nAffirmative, ANAC123, ready immediate.\n\nTower clears you without hesitation, the departure is made in the gap, and the arrival lands normally behind you.\n\nHad you hesitated — had the checks been incomplete — you would have said:\n\nNegative, not ready for immediate, ANAC123.\n\nOne extra minute on the ground. No risk to anyone.",
+    "sayItCoach": "Affirmative, ready immediate, ANAC123.",
+    "icaoModelAnswer": "I would tell the controller I was unable to accept an immediate departure and request additional time to complete my before-takeoff checks. Accepting immediate when not ready creates a hazard on the runway, so the professional answer is to decline clearly and give ATC an estimate of how long I would need.",
+    "memoryTrick": "**PREP** — **P**repare before the hold, **R**eady means NOW, **E**ntrance is commitment, **P**olitely decline if not set.",
+    "operationalMeaning": "When Immediate Takeoff is expected or offered, the pilot must:\n\nImmediate Takeoff readiness commonly includes:",
+    "whyAtcUsesIt": [
+      "use a gap in the traffic sequence",
+      "maintain runway efficiency during peak traffic",
+      "avoid holding a departing aircraft while an arrival is on short final",
+      "sequence departures tightly when workload demands",
+      "offer an opportunity that expires in seconds"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, can you accept immediate departure runway one five?",
+      "Tower: ANAC123, immediate departure available, advise ready.",
+      "Tower: ANAC123, if immediate not possible, hold position, traffic on two-mile final.",
+      "Tower: ANAC123, immediate departure approved, traffic on short final.",
+      "Tower: ANAC123, roger, unable immediate, expect departure in four minutes."
+    ],
+    "pilotReadbacks": [
+      "Affirmative, ready immediate, ANAC123.",
+      "ANAC123, ready for immediate departure.",
+      "Negative, not ready for immediate, ANAC123.",
+      "ANAC123, unable immediate, request one minute.",
+      "Ready immediate, ANAC123, holding short runway one five."
+    ],
+    "brazilianMistakes": "- ❌ Accepting immediate without having completed the before-takeoff checklist.  \n  ✔ All checks must be complete before the holding point when immediate is possible.\n\n- ❌ Saying \"not ready\" after entering the runway.  \n  ✔ Decline before entering. Once on the runway, you are committed.\n\n- ❌ Confusing Immediate Takeoff (readiness concept) with Cleared for Immediate Takeoff (the clearance phrase).  \n  ✔ This lesson is about the urgency concept and pilot readiness, not the clearance itself.\n\n- ❌ Feeling embarrassed to say \"unable immediate.\"  \n  ✔ Declining is correct and professional when you are not ready.",
+    "pronunciationCoaching": "**Target Phrase:** Ready Immediate\n\n**Pronunciation:** REH-dee ih-MEE-dee-ut\n\n**Word Stress**\n\n- Ready → REH-dee\n- Immediate → ih-MEE-dee-ut (four syllables, stress on second)\n\nPractice:\n\nReady... Immediate... Ready Immediate.\n\nTogether:\n\nAffirmative, ready immediate, ANAC123.\n\nAvoid: *ready imediatly* — that is not a word. Say immediate.",
+    "relatedConcepts": [
+      "Cleared for Immediate Takeoff",
+      "Line Up and Wait",
+      "Departure Sequence",
+      "Traffic on Final",
+      "Rejected Takeoff",
+      "Holding Short"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Departure Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Runway Departure",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Immediate Takeoff",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Runway Incursion",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0117",
+    "id": "0117",
+    "displayTerm": "Rejected Takeoff",
+    "term": "rejected takeoff",
+    "slug": "rejected-takeoff",
+    "category": "ATC Phraseology",
+    "meaningEn": "A Rejected Takeoff is the deliberate decision to abort a takeoff during the ground roll, stopping the aircraft on the runway before it becomes airborne.",
+    "meaningPt": "Decolagem interrompida (ou abortada).\n\nDecisão deliberada de interromper a corrida de decolagem e parar a aeronave na pista antes de decolar.",
+    "whenUsed": "A Rejected Takeoff requires the pilot to:",
+    "example": "Tower: ANAC123, understand rejected takeoff, confirm stopped?",
+    "sayPhrase": "Congonhas Tower, ANAC123, rejected takeoff, runway two eight left, stopped.",
+    "icaoQuestion": "What would you say to ATC immediately after a rejected takeoff?",
+    "icaoSpeakText": "I would immediately notify ATC of the rejected takeoff, my position on the runway, and the reason if known. I would say: Tower, ANAC123, rejected takeoff, runway two eight left, stopped, engine caution indication. I would then advise whether I required emergency services and await further instructions from ATC.",
+    "missionBrief": "Today's lesson covers the Rejected Takeoff — one of the most time-critical decisions in aviation.\n\nA Rejected Takeoff, also called an RTO or Aborted Takeoff, is the decision to stop the aircraft during the takeoff roll before becoming airborne.\n\nThe decision happens in seconds.\n\nThe communication happens immediately after.\n\nIn the H130, a Rejected Takeoff may be caused by an abnormal indication, a bird strike, or an obstacle on the runway at Congonhas or Florianópolis.\n\nYou must know what to say, what to do, and why immediate ATC notification is essential.",
+    "captainTeaching": "Three words. That is all it takes.\n\nRejected takeoff. ANAC123.\n\nThen your position. Then your reason.\n\nMany pilots worry about what to say after rejecting. The answer is simple: say what happened, where you are, and what you need.\n\nDo not worry about sounding professional in that moment. You already are professional — because you stopped in time.\n\nAfter a rejected takeoff, two things are happening simultaneously: you are managing the aircraft, and ATC needs information.\n\nGive them the most important data first: you have stopped. The runway is occupied.\n\nEverything else — the reason, your status, whether you need help — can follow.\n\nBrazilian pilots sometimes freeze on the radio after an abnormal event.\n\nTrain this transmission before you ever need it.\n\nRejected takeoff, position, reason. Three elements. Ten seconds.",
+    "operationalContext": "You are departing Congonhas runway two eight left in your H130.\n\nThe takeoff roll has begun.\n\nAt approximately 40 knots, a caution light illuminates on your panel — an engine abnormality.\n\nYou immediately close the throttle and apply braking.\n\nThe aircraft decelerates rapidly.\n\nYou stop on the runway and transmit:\n\nCongonhas Tower, ANAC123, rejected takeoff, runway two eight left, stopped, engine caution indication.\n\nTower responds:\n\nANAC123, roger, all traffic hold. Are you declaring an emergency?\n\nYou assess the situation:\n\nNegative, no emergency at this time, request vacate runway.\n\nTower clears the runway and holds arrivals.\n\nOne transmission. Total clarity.",
+    "sayItCoach": "Congonhas Tower, ANAC123, rejected takeoff, runway two eight left, stopped.",
+    "icaoModelAnswer": "I would immediately notify ATC of the rejected takeoff, my position on the runway, and the reason if known. I would say: Tower, ANAC123, rejected takeoff, runway two eight left, stopped, engine caution indication. I would then advise whether I required emergency services and await further instructions from ATC.",
+    "memoryTrick": "**STOP** — **S**top the aircraft, **T**ransmit immediately, **O**ccupy position, **P**rovide reason and status.",
+    "operationalMeaning": "A Rejected Takeoff requires the pilot to:\n\nRejected Takeoff notifications to ATC commonly include:",
+    "whyAtcUsesIt": [
+      "clear the runway of arriving traffic",
+      "activate emergency services if requested",
+      "hold all other departures and arrivals",
+      "sequence go-arounds for any aircraft on final",
+      "coordinate with fire and rescue if required"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, understand rejected takeoff, confirm stopped?",
+      "Tower: ANAC123, all traffic holding, advise intentions.",
+      "Tower: ANAC123, are you declaring an emergency?",
+      "Tower: ANAC123, runway clear, vacate when able, advise when clear.",
+      "Tower: ANAC123, emergency services standing by, advise your status."
+    ],
+    "pilotReadbacks": [
+      "Congonhas Tower, ANAC123, rejected takeoff, runway two eight left, stopped.",
+      "ANAC123, rejected takeoff, engine indication, stopped on runway.",
+      "ANAC123, negative emergency at this time, request vacate runway.",
+      "ANAC123, declaring emergency, require emergency services.",
+      "ANAC123, stopped, clear of runway, will advise when able to taxi."
+    ],
+    "brazilianMistakes": "- ❌ Remaining silent on the frequency after stopping on the runway.  \n  ✔ Notify ATC immediately. The runway is occupied and arrivals may be on final.\n\n- ❌ Saying \"abortei a decolagem\" on an English-speaking frequency.  \n  ✔ Use rejected takeoff or stopped on runway.\n\n- ❌ Waiting to complete a full technical assessment before calling ATC.  \n  ✔ Call ATC first. Technical assessment follows.\n\n- ❌ Vacating the runway without confirming with ATC.  \n  ✔ Request clearance to vacate and confirm runway clear before moving.",
+    "pronunciationCoaching": "**Target Phrase:** Rejected Takeoff\n\n**Pronunciation:** reh-JEK-ted TAY-koff\n\n**Word Stress**\n\n- Rejected → reh-JEK-ted\n- Takeoff → TAY-koff\n\nPractice:\n\nRejected... Takeoff... Rejected Takeoff.\n\nTogether:\n\nCongonhas Tower, ANAC123, rejected takeoff, runway two eight left, stopped.\n\nSpeak clearly and firmly. This is not the moment for hesitation on the radio.",
+    "relatedConcepts": [
+      "Immediate Takeoff",
+      "Cleared for Immediate Takeoff",
+      "Emergency Declaration",
+      "Runway Occupancy",
+      "Engine Failure",
+      "Go Around"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency and Urgency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Emergency Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Rejected Takeoff",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Abnormal Procedures"
+      },
+      {
+        "label": "SKYbrary — Rejected Takeoff",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0118",
+    "id": "0118",
+    "displayTerm": "Direct Approach",
+    "term": "direct approach",
+    "slug": "direct-approach",
+    "category": "ATC Phraseology",
+    "meaningEn": "A Direct Approach is an ATC instruction clearing an aircraft to proceed directly toward the runway, threshold, or final approach fix, bypassing portions of the standard approach procedure.",
+    "meaningPt": "Aproximação direta.\n\nInstrução do controle de tráfego aéreo que autoriza a aeronave a prosseguir diretamente para a pista, cabeceira ou ponto de aproximação final, dispensando partes do procedimento padrão de aproximação.",
+    "whenUsed": "When cleared for a Direct Approach, the pilot should:",
+    "example": "Approach: ANAC123, direct approach runway two nine approved, report final.",
+    "sayPhrase": "Direct approach runway two nine, ANAC123.",
+    "icaoQuestion": "How would you respond if ATC offered a direct approach but you needed more distance to configure?",
+    "icaoSpeakText": "I would advise ATC that I was unable to accept the direct approach and request additional track miles to configure and stabilize. I would say: ANAC123, unable direct approach, request additional track miles. Safety of the approach takes priority over expedition.",
+    "missionBrief": "Today's lesson covers the Direct Approach — a routing instruction that shortens the inbound path and saves time, fuel, and workload.\n\nA Direct Approach means ATC clears the aircraft to proceed directly toward the runway or final approach fix without flying the full published approach procedure.\n\nIn the H130, Direct Approaches are common at Navegantes, Joinville, and Curitiba when traffic is light and conditions allow.\n\nUnderstanding this instruction allows you to accept it confidently, read it back correctly, and manage your approach profile.",
+    "captainTeaching": "A Direct Approach feels like a gift.\n\nLess flying. Less time. Less fuel.\n\nBut every gift comes with responsibility.\n\nWhen ATC says direct approach, the question is not \"should I accept?\"\n\nThe question is \"can I stabilize?\"\n\nIn the H130, direct approaches at Navegantes are common. The runway appears ahead of you, the controller offers the shortcut, and it feels easy to say yes.\n\nSay yes only when you have the distance to configure and stabilize.\n\nNever say yes because you feel you should.\n\nBrazilian pilots sometimes accept direct approaches and then descend steeply or configure late.\n\nThe correct answer when the geometry does not work is: unable direct approach, request additional track miles.\n\nOne sentence. No embarrassment. Full safety.",
+    "operationalContext": "You are inbound to Navegantes from the north at 3,000 feet in your H130.\n\nApproach advises:\n\nANAC123, traffic is light, direct approach runway two nine approved, report final.\n\nYou assess your position and altitude.\n\nYou have sufficient distance to configure and stabilize.\n\nYou respond:\n\nDirect approach runway two nine, ANAC123.\n\nYou adjust your descent, configure the aircraft, and join final stabilized by 500 feet.\n\nYou report:\n\nANAC123, final, runway two nine.\n\nTower acknowledges and clears you to land.",
+    "sayItCoach": "Direct approach runway two nine, ANAC123.",
+    "icaoModelAnswer": "I would advise ATC that I was unable to accept the direct approach and request additional track miles to configure and stabilize. I would say: ANAC123, unable direct approach, request additional track miles. Safety of the approach takes priority over expedition.",
+    "memoryTrick": "**STABLE** — **S**hortcut accepted only when **T**rack miles allow, **A**ircraft configured on time, **B**rief the profile, **L**and stabilized, **E**xtra miles if needed.",
+    "operationalMeaning": "When cleared for a Direct Approach, the pilot should:\n\nDirect Approach operations commonly include:",
+    "whyAtcUsesIt": [
+      "reduce delays in light traffic or VFR conditions",
+      "increase airport capacity by shortening approach time",
+      "accommodate a pilot's request for an expedited arrival",
+      "avoid unnecessary track miles in uncongested airspace",
+      "improve fuel efficiency during arrival"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, direct approach runway two nine approved, report final.",
+      "Approach: ANAC123, cleared direct approach, advise runway in sight.",
+      "Approach: ANAC123, direct approach available, confirm able.",
+      "Tower: ANAC123, direct approach runway one five, cleared to land.",
+      "Approach: ANAC123, direct approach approved, no delay, traffic behind."
+    ],
+    "pilotReadbacks": [
+      "Direct approach runway two nine, ANAC123.",
+      "ANAC123, direct approach, wilco.",
+      "ANAC123, unable direct approach, request additional track miles to configure.",
+      "ANAC123, direct approach accepted, will report final.",
+      "Direct approach runway one five, ANAC123, wilco."
+    ],
+    "brazilianMistakes": "- ❌ Accepting a direct approach when there is insufficient distance to stabilize.  \n  ✔ Only accept if a stable approach is achievable.\n\n- ❌ Not reading back the runway number in the readback.  \n  ✔ Include the runway: Direct approach runway two nine, ANAC123.\n\n- ❌ Saying \"direto para a pista\" on the English frequency.  \n  ✔ Use direct approach, runway [number].\n\n- ❌ Forgetting to report final after accepting a direct approach.  \n  ✔ Report as instructed: ANAC123, final, runway two nine.",
+    "pronunciationCoaching": "**Target Phrase:** Direct Approach\n\n**Pronunciation:** dih-REKT uh-PROHCH\n\n**Word Stress**\n\n- Direct → dih-REKT (stress on second syllable)\n- Approach → uh-PROHCH (stress on second syllable)\n\nPractice:\n\nDirect... Approach... Direct Approach.\n\nTogether:\n\nDirect approach runway two nine, ANAC123.\n\nAvoid: *direto proch* — this is a common Portuguese interference. Say both words fully and clearly.",
+    "relatedConcepts": [
+      "Cleared Straight-In Approach",
+      "Straight-In Approach",
+      "Expect Approach",
+      "Report Final",
+      "Runway in Sight",
+      "Cleared to Land"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Approach Control Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Approach Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Direct Approach",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Stabilized Approach",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0119",
+    "id": "0119",
+    "displayTerm": "Expect Approach",
+    "term": "expect approach",
+    "slug": "expect-approach",
+    "category": "ATC Phraseology",
+    "meaningEn": "Expect Approach is an ATC advisory that informs a pilot of the approach type anticipated for the destination, used for flight planning and crew briefing purposes before the final approach clearance is issued.",
+    "meaningPt": "Espera aproximação (tipo).\n\nInformação do controle de tráfego aéreo que antecipa o tipo de aproximação previsto para o destino, usada para planejamento e briefing da tripulação antes da autorização de aproximação final.",
+    "whenUsed": "When a pilot receives an Expect Approach advisory, they should:",
+    "example": "Approach: ANAC123, expect ILS approach runway one five, expect approach in fifteen minutes.",
+    "sayPhrase": "Expect ILS approach runway one five, ANAC123.",
+    "icaoQuestion": "What would you do after receiving an Expect Approach advisory from ATC?",
+    "icaoSpeakText": "After receiving the Expect Approach advisory, I would read it back to ATC and immediately brief the expected approach procedure. I would set navigation aids, review the minima and missed approach procedure, and ensure the aircraft was configured and ready before the clearance was issued. The advisory gives me the opportunity to prepare before reaching the initial approach fix.",
+    "missionBrief": "Today's lesson covers Expect Approach — an ATC advisory that tells you which approach type to anticipate before you receive the final clearance.\n\nExpect Approach is planning information.\n\nIt is not yet a clearance.\n\nBut it is essential for briefing, configuring, and managing fuel and time.\n\nIn the H130, flying into Curitiba or Florianópolis in reduced visibility, knowing which approach to expect allows you to brief the procedure before you reach the IAF.\n\nThis lesson prepares you to receive, read back, and use Expect Approach instructions effectively.",
+    "captainTeaching": "Expect Approach gives you a head start.\n\nThe approach clearance may come in five minutes, or twenty.\n\nBut the moment you hear \"expect ILS runway one five,\" the briefing clock starts.\n\nPull the chart. Review the procedure. Set the frequencies. Confirm the minima. Brief the missed approach.\n\nWhen ATC says \"cleared ILS runway one five,\" your only job is to fly it — because you already briefed it.\n\nBrazilian pilots sometimes wait for the clearance before opening the chart.\n\nThat is too late. Brief on the advisory.\n\nIn the H130, the avionics are straightforward. But the discipline of early briefing applies to every aircraft, every approach.\n\nIf the expected approach changes — and it sometimes does — you have time to re-brief.\n\nBut you can only re-brief what you already briefed.",
+    "operationalContext": "You are seventy miles from Curitiba, descending from cruise altitude in your H130.\n\nWeather has deteriorated.\n\nApproach transmits:\n\nANAC123, expect ILS approach runway one five, expect approach in fifteen minutes.\n\nYou immediately brief the ILS runway one five procedure:\n\nYou review the chart, set the localizer frequency, confirm the glide slope, and review the missed approach.\n\nYou respond:\n\nExpect ILS approach runway one five, ANAC123.\n\nFifteen minutes later, Approach clears you for the ILS.\n\nYou are fully briefed.\n\nNo rush. No surprise. Just professionalism.",
+    "sayItCoach": "Expect ILS approach runway one five, ANAC123.",
+    "icaoModelAnswer": "After receiving the Expect Approach advisory, I would read it back to ATC and immediately brief the expected approach procedure. I would set navigation aids, review the minima and missed approach procedure, and ensure the aircraft was configured and ready before the clearance was issued. The advisory gives me the opportunity to prepare before reaching the initial approach fix.",
+    "memoryTrick": "**BRIEF** — **B**rief on the advisory, **R**eview chart and minima, **I**nstruments set before clearance, **E**xpect may change, **F**ly when cleared.",
+    "operationalMeaning": "When a pilot receives an Expect Approach advisory, they should:\n\nExpect Approach advisories commonly include:",
+    "whyAtcUsesIt": [
+      "allow flight crews to brief the approach in advance",
+      "support planning when holds or delays are possible",
+      "improve efficiency during busy arrival sequences",
+      "ensure crew readiness before issuing the clearance",
+      "coordinate approach type across multiple inbound aircraft"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, expect ILS approach runway one five, expect approach in fifteen minutes.",
+      "Approach: ANAC123, expect visual approach runway one five, advise ready.",
+      "Approach: ANAC123, expect RNAV approach runway two seven, report reaching flight level one zero zero.",
+      "Approach: ANAC123, expect approach, stand by for type confirmation.",
+      "Approach: ANAC123, expect ILS approach, hold as published, expect approach in ten minutes."
+    ],
+    "pilotReadbacks": [
+      "Expect ILS approach runway one five, ANAC123.",
+      "ANAC123, expect visual approach runway one five, copied.",
+      "Expect RNAV approach runway two seven, ANAC123.",
+      "ANAC123, copied, expect approach in fifteen minutes.",
+      "ANAC123, expect ILS, holding as published, wilco."
+    ],
+    "brazilianMistakes": "- ❌ Treating Expect Approach as an approach clearance and beginning the procedure.  \n  ✔ Expect Approach is advisory. Wait for the formal clearance before beginning.\n\n- ❌ Waiting to brief the approach until after the clearance is received.  \n  ✔ Brief immediately upon receiving the Expect Approach advisory.\n\n- ❌ Not reading back the runway number.  \n  ✔ Include the runway in the readback: Expect ILS approach runway one five, ANAC123.\n\n- ❌ Forgetting to advise ATC if the expected approach is not acceptable.  \n  ✔ If unable to accept the expected approach type, advise ATC immediately.",
+    "pronunciationCoaching": "**Target Phrase:** Expect Approach\n\n**Pronunciation:** eks-PEKT uh-PROHCH\n\n**Word Stress**\n\n- Expect → eks-PEKT (stress on second syllable)\n- Approach → uh-PROHCH (stress on second syllable)\n\nPractice:\n\nExpect... Approach... Expect Approach.\n\nTogether:\n\nExpect ILS approach runway one five, ANAC123.\n\nAvoid: *expec aproche* — pronounce both syllables of each word fully.",
+    "relatedConcepts": [
+      "Expect ILS Approach",
+      "Expect RNAV Approach",
+      "Direct Approach",
+      "Cleared Straight-In Approach",
+      "Holding Instructions",
+      "Report Reaching"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Approach Control Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Approach Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Expected Approach Clearance",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Approach and Landing Accidents",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0120",
+    "id": "0120",
+    "displayTerm": "Expect ILS Approach",
+    "term": "expect ils approach",
+    "slug": "expect-ils-approach",
+    "category": "ATC Phraseology",
+    "meaningEn": "Expect ILS Approach is an ATC advisory indicating that the Instrument Landing System approach has been assigned for the destination runway, allowing the crew to brief and configure for the precision approach before the formal clearance is issued.",
+    "meaningPt": "Espera aproximação ILS.\n\nAviso do controle de tráfego aéreo indicando que a aproximação por sistema de pouso por instrumentos foi atribuída para a pista de destino, permitindo que a tripulação realize o briefing e configure para a aproximação de precisão antes da autorização formal.",
+    "whenUsed": "When the crew receives Expect ILS Approach, they should:",
+    "example": "Approach: ANAC123, expect ILS approach runway one four, expect vectors to final.",
+    "sayPhrase": "Expect ILS approach runway one four, ANAC123.",
+    "icaoQuestion": "Describe how you would prepare after receiving Expect ILS Approach from ATC.?",
+    "icaoSpeakText": "After reading back the advisory, I would brief the ILS approach for the assigned runway with my crew. We would confirm the localizer frequency, the final approach course, the glide slope intercept altitude, the decision height, and the full missed approach procedure including climb-out heading, altitude, and holding fix. We would cross-check the navaid identification and ensure the aircraft was configured and ready when the clearance was issued.",
+    "missionBrief": "Today's lesson covers Expect ILS Approach — ATC's advisory that an Instrument Landing System approach has been assigned for your arrival.\n\nThe ILS is the most precise and most common instrument approach in controlled airspace.\n\nFlorianópolis, Curitiba, Congonhas, and São Paulo all have ILS approaches.\n\nKnowing how to receive, read back, brief, and fly an ILS approach in ICAO English is a core professional skill.\n\nThis lesson connects Part 2 phraseology with Part 4 operational language — you must speak clearly about navigation, procedures, and system understanding.",
+    "captainTeaching": "The ILS is a beam of precision.\n\nTwo signals: one lateral, one vertical.\n\nKeep the localizer centered. Keep the glideslope centered. Land.\n\nWhen ATC says \"expect ILS approach,\" the geometry of your arrival is now defined.\n\nYour job is to brief it completely before you reach the intercept.\n\nLocalizer frequency. Course. Glideslope altitude. Decision height. Missed approach.\n\nIn the H130, the ILS is flown by reference to the CDI and glide slope indicator. There is no FMS autoflight — the discipline is your scan and your hand.\n\nBrazilian pilots sometimes skip the full missed approach brief.\n\nThat is the part you hope to never use — and the part you must know perfectly.\n\nBrief the missed approach every time, without exception.",
+    "operationalContext": "You are inbound to Florianópolis in your H130 with the destination reporting three hundred feet overcast.\n\nYou are fifty miles out.\n\nApproach transmits:\n\nANAC123, expect ILS approach runway one four, QNH one zero one three.\n\nYou respond:\n\nExpect ILS approach runway one four, QNH one zero one three, ANAC123.\n\nYour co-pilot loads the ILS 14 approach.\n\nYou brief together: localizer course, glide slope intercept, decision altitude, missed approach.\n\nFifteen minutes later, Approach clears you for the ILS runway one four.\n\nYou are briefed. You are configured. You are ready.\n\nThe approach is stable from the first intercept to touchdown.",
+    "sayItCoach": "Expect ILS approach runway one four, ANAC123.",
+    "icaoModelAnswer": "After reading back the advisory, I would brief the ILS approach for the assigned runway with my crew. We would confirm the localizer frequency, the final approach course, the glide slope intercept altitude, the decision height, and the full missed approach procedure including climb-out heading, altitude, and holding fix. We would cross-check the navaid identification and ensure the aircraft was configured and ready when the clearance was issued.",
+    "memoryTrick": "**GLIDE** — **G**lide slope from below, **L**ocalizer ident confirmed, **I**ntercept at correct altitude, **D**ecision height reviewed, **E**xecute missed approach if no visual.",
+    "operationalMeaning": "When the crew receives Expect ILS Approach, they should:\n\nExpect ILS Approach briefings commonly include:",
+    "whyAtcUsesIt": [
+      "inform the crew early enough to brief a precision approach",
+      "coordinate sequencing onto the localizer",
+      "assign a precision approach in IMC or low visibility conditions",
+      "establish the type of approach before holding or vectoring begins",
+      "ensure crew readiness when workload is high"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, expect ILS approach runway one four, expect vectors to final.",
+      "Approach: ANAC123, expect ILS approach runway two seven, hold as published, expect approach in ten minutes.",
+      "Approach: ANAC123, expect ILS approach runway one five, QNH one zero one three.",
+      "Approach: ANAC123, expect ILS approach, runway one four, cleared ILS one four.",
+      "Approach: ANAC123, expect ILS approach runway two eight left, expect approach in eight minutes."
+    ],
+    "pilotReadbacks": [
+      "Expect ILS approach runway one four, ANAC123.",
+      "ANAC123, expect ILS approach runway two seven, holding as published.",
+      "Expect ILS approach runway one five, QNH one zero one three, ANAC123.",
+      "ANAC123, expect ILS approach, copied.",
+      "Expect ILS approach runway two eight left, ANAC123, wilco."
+    ],
+    "brazilianMistakes": "- ❌ Treating Expect ILS Approach as the approach clearance.  \n  ✔ It is advisory. Wait for the formal ILS clearance before intercepting.\n\n- ❌ Setting the localizer frequency without confirming the course and ident.  \n  ✔ Always confirm localizer identification before commencing the approach.\n\n- ❌ Not briefing the missed approach.  \n  ✔ Brief the missed approach every time, even if conditions look good.\n\n- ❌ Descending below the glideslope to intercept from above.  \n  ✔ Always intercept the glideslope from below. Descend to intercept altitude first.",
+    "pronunciationCoaching": "**Target Phrase:** Expect ILS Approach\n\n**Pronunciation:** eks-PEKT eye-ELL-ESS uh-PROHCH\n\n**Word Stress**\n\n- Expect → eks-PEKT\n- ILS → each letter: I (eye), L (ell), S (ess)\n- Approach → uh-PROHCH\n\nPractice:\n\nExpect... I... L... S... Approach...\n\nTogether:\n\nExpect ILS approach runway one four, ANAC123.\n\nSay each letter of ILS clearly and separately — it is a three-letter abbreviation, not a word.",
+    "relatedConcepts": [
+      "Expect RNAV Approach",
+      "Expect Approach",
+      "Cleared ILS Approach",
+      "Decision Height",
+      "Missed Approach",
+      "Report Established"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Approach Control Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 10 Volume I — Radio Navigation Aids",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — ILS Approaches",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Instrument Flying Handbook — ILS Approach"
+      },
+      {
+        "label": "SKYbrary — Instrument Landing System (ILS)",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0121",
+    "id": "0121",
+    "displayTerm": "Expect RNAV Approach",
+    "term": "expect rnav approach",
+    "slug": "expect-rnav-approach",
+    "category": "ATC Phraseology",
+    "meaningEn": "Expect RNAV Approach is an ATC advisory indicating that an Area Navigation approach, typically GPS-based, has been assigned for the destination runway, allowing the crew to load, verify, and brief the procedure before the formal clearance.",
+    "meaningPt": "Espera aproximação RNAV.\n\nAviso do controle de tráfego aéreo indicando que uma aproximação por navegação de área, tipicamente baseada em GPS, foi atribuída para a pista de destino, permitindo que a tripulação carregue, verifique e realize o briefing antes da autorização formal.",
+    "whenUsed": "When the crew receives Expect RNAV Approach, they should:",
+    "example": "Approach: ANAC123, expect RNAV approach runway one five, advise GNSS available.",
+    "sayPhrase": "Expect RNAV approach runway one five, GNSS available, ANAC123.",
+    "icaoQuestion": "How would you confirm readiness for an RNAV approach after receiving the Expect advisory?",
+    "icaoSpeakText": "After reading back the advisory, I would confirm that the GPS or FMS showed normal operation, that RAIM was available for the approach, and that the navigation database was current. I would load and verify the correct RNAV approach procedure, brief the minima appropriate to my system capability, and complete the missed approach brief. If the system showed any degradation or RAIM fault, I would advise ATC that I was unable to accept the RNAV approach and request an alternative.",
+    "missionBrief": "Today's lesson covers Expect RNAV Approach — ATC's advisory that a satellite or area navigation approach has been assigned for your arrival.\n\nRNAV approaches are increasingly common at Brazilian airports, including Curitiba, Navegantes, Joinville, and São Paulo.\n\nUnlike the ILS, an RNAV approach uses GPS or FMS-computed guidance, which means different minima, different monitoring, and different briefing requirements.\n\nThis lesson connects Part 2 phraseology with Part 4 operational language — you must speak correctly about navigation type and approach characteristics.",
+    "captainTeaching": "The RNAV approach is modern aviation's most common approach type at regional airports.\n\nAnd yet many pilots brief it less carefully than the ILS.\n\nThat is a mistake.\n\nThe RNAV approach has its own traps: RAIM faults, database expiry, incorrect minima selection, and autopilot mode confusion.\n\nWhen ATC says \"expect RNAV approach,\" your first question to yourself is: is my system valid?\n\nCheck RAIM. Check the database date. Confirm the correct approach is loaded.\n\nIn the H130, you may be flying the approach with raw GPS data.\n\nKnow the difference between LNAV minima and LPV minima.\n\nKnow which your system can support.\n\nBrief both the approach and the missed approach as if the missed is likely.\n\nThat discipline makes the difference.",
+    "operationalContext": "You are inbound to Joinville in your H130.\n\nThe aerodrome has an RNAV (GNSS) approach to runway one five.\n\nApproach transmits:\n\nANAC123, expect RNAV approach runway one five, advise GNSS available.\n\nYou check your GPS: system normal, RAIM available.\n\nYou respond:\n\nExpect RNAV approach runway one five, GNSS available, ANAC123.\n\nYou load the approach, brief the procedure, confirm minima and missed approach.\n\nApproach later issues the clearance.\n\nYou fly the approach fully briefed, confident in the system and the procedure.",
+    "sayItCoach": "Expect RNAV approach runway one five, ANAC123.",
+    "icaoModelAnswer": "After reading back the advisory, I would confirm that the GPS or FMS showed normal operation, that RAIM was available for the approach, and that the navigation database was current. I would load and verify the correct RNAV approach procedure, brief the minima appropriate to my system capability, and complete the missed approach brief. If the system showed any degradation or RAIM fault, I would advise ATC that I was unable to accept the RNAV approach and request an alternative.",
+    "memoryTrick": "**RAIM** — **R**RAIM available confirmed, **A**pproach loaded and verified, **I**dentify correct minima, **M**issed approach briefed.",
+    "operationalMeaning": "When the crew receives Expect RNAV Approach, they should:\n\nExpect RNAV Approach briefings commonly include:",
+    "whyAtcUsesIt": [
+      "assign a non-precision or APV approach at airports without ILS",
+      "provide approach planning information in areas with GNSS infrastructure",
+      "allow the crew to verify and load the procedure before the clearance",
+      "sequence arrivals efficiently when ILS approaches are not available",
+      "specify approach type clearly when multiple RNAV variants exist"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, expect RNAV approach runway one five, advise GNSS available.",
+      "Approach: ANAC123, expect RNAV approach runway one five, expect approach in ten minutes.",
+      "Approach: ANAC123, expect RNAV approach runway two seven, QNH one zero one two.",
+      "Approach: ANAC123, expect RNAV approach, confirm able RNAV.",
+      "Approach: ANAC123, expect RNAV approach runway one five, vectors to final follow."
+    ],
+    "pilotReadbacks": [
+      "Expect RNAV approach runway one five, GNSS available, ANAC123.",
+      "ANAC123, expect RNAV approach runway one five, wilco.",
+      "Expect RNAV approach runway two seven, QNH one zero one two, ANAC123.",
+      "ANAC123, affirm able RNAV, expect RNAV approach copied.",
+      "Expect RNAV approach runway one five, ANAC123, wilco."
+    ],
+    "brazilianMistakes": "- ❌ Accepting an RNAV approach without verifying RAIM availability.  \n  ✔ Confirm RAIM and system integrity before accepting.\n\n- ❌ Using LNAV minima when LPV is available and the system supports it.  \n  ✔ Select the lowest applicable minima your system is certified for.\n\n- ❌ Treating RNAV approach advisory as an ILS advisory — same brief style.  \n  ✔ RNAV has unique considerations: system type, database, RAIM, step-downs.\n\n- ❌ Not advising ATC of GNSS unavailability until already on the approach.  \n  ✔ Advise ATC as early as possible if GNSS is degraded or RAIM unavailable.",
+    "pronunciationCoaching": "**Target Phrase:** Expect RNAV Approach\n\n**Pronunciation:** eks-PEKT AR-nav uh-PROHCH\n\n**Word Stress**\n\n- Expect → eks-PEKT\n- RNAV → AR-nav (two syllables, stress on first)\n- Approach → uh-PROHCH\n\nPractice:\n\nExpect... RNAV... Approach... Expect RNAV Approach.\n\nTogether:\n\nExpect RNAV approach runway one five, ANAC123.\n\nAvoid: *R-N-A-V* (letter by letter) — say AR-nav as two syllables in conversational context.",
+    "relatedConcepts": [
+      "Expect ILS Approach",
+      "Expect Approach",
+      "Cleared RNAV Approach",
+      "GPS Available",
+      "RAIM",
+      "Missed Approach"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Approach Control Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9613 — Performance Based Navigation (PBN) Manual"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — RNAV Approaches",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Instrument Procedures Handbook — Area Navigation Approaches"
+      },
+      {
+        "label": "SKYbrary — RNAV Approach",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0122",
+    "id": "0122",
+    "displayTerm": "Straight-In Approach",
+    "term": "straight-in approach",
+    "slug": "straight-in-approach",
+    "category": "ATC Phraseology",
+    "meaningEn": "A Straight-In Approach is an approach made on the final approach course aligned with the runway centerline, without the circling maneuver, proceeding directly to a landing from the instrument procedure or radar vectors.",
+    "meaningPt": "Aproximação com pouso direto (sem manobra de arredondamento).\n\nAproximação realizada diretamente na trajetória de final alinhada com a pista, sem manobra de circulamento, procedendo diretamente ao pouso a partir do procedimento de aproximação por instrumentos ou de vetores radar.",
+    "whenUsed": "A Straight-In Approach applies when:",
+    "example": "Approach: ANAC123, vectors to straight-in ILS runway one four.",
+    "sayPhrase": "Vectors to straight-in ILS runway one four, ANAC123.",
+    "icaoQuestion": "What is the difference between a straight-in approach and a circling approach?",
+    "icaoSpeakText": "A straight-in approach is made with the final approach course aligned with the runway, and the aircraft lands without performing a circling maneuver. A circling approach is used when the approach course is not aligned with the landing runway or when the aircraft must maneuver visually at low altitude to align with a different runway. In a straight-in approach, if the runway is not in sight at minimums, the missed approach must be executed immediately — there is no option to circle.",
+    "missionBrief": "Today's lesson covers the Straight-In Approach — the procedure and flight path concept describing an approach made directly to the runway without a circling maneuver or overhead traffic pattern.\n\nThis lesson is about the procedure concept and the leg itself, not the clearance phrase.\n\nCleared Straight-In Approach (0103) covers the specific ATC clearance.\n\nHere, you learn what a Straight-In Approach means operationally — how it differs from a circling approach, when it applies, and how to manage the flight path from the initial approach fix to the runway threshold.\n\nAt Florianópolis, Navegantes, and Joinville, straight-in approaches are the norm in instrument conditions.",
+    "captainTeaching": "The Straight-In Approach is the most natural path to landing.\n\nNo circles. No turns. Just a straight path aligned with the runway.\n\nBut many pilots confuse the concept with the clearance phrase.\n\nThe concept is the flight path and the procedure.\n\nThe clearance is the specific authorization issued by ATC.\n\nUnderstanding the concept means knowing this: you are committed to landing on that runway.\n\nIf you lose visual contact at minimums, the path does not change — you go around.\n\nYou do not circle to find another runway.\n\nYou do not detour to a better angle.\n\nYou execute the published missed approach.\n\nBrazilian pilots sometimes attempt to circle at minimums on a straight-in approach when the runway is not immediately visible.\n\nThat is incorrect and dangerous.\n\nStraight-in means land straight — or miss and go around.",
+    "operationalContext": "You are inbound to Florianópolis runway one four on the ILS.\n\nApproach has vectored you onto the localizer.\n\nThe procedure is a straight-in ILS to runway one four.\n\nYou intercept the localizer and glideslope and fly the final approach course directly to the runway.\n\nThere is no overhead pass.\n\nNo circuit.\n\nNo teardrop.\n\nJust the straight-in path from the intercept to the threshold.\n\nAt minimums, you acquire visual contact with the runway — still aligned, still descending on profile.\n\nYou continue to land.\n\nTower transmits:\n\nANAC123, continue, cleared to land runway one four.\n\nThe straight-in approach is the most efficient path to the ground.",
+    "sayItCoach": "ANAC123, straight-in approach runway one four, wilco.",
+    "icaoModelAnswer": "A straight-in approach is made with the final approach course aligned with the runway, and the aircraft lands without performing a circling maneuver. A circling approach is used when the approach course is not aligned with the landing runway or when the aircraft must maneuver visually at low altitude to align with a different runway. In a straight-in approach, if the runway is not in sight at minimums, the missed approach must be executed immediately — there is no option to circle.",
+    "memoryTrick": "**LINE** — **L**ined up with the runway, **I**nstrument course maintained, **N**o circling maneuver, **E**xecute missed approach if runway not in sight.",
+    "operationalMeaning": "A Straight-In Approach applies when:\n\nStraight-In Approach flight path management commonly includes:",
+    "whyAtcUsesIt": [
+      "improve traffic flow by eliminating circling maneuvers",
+      "reduce workload in IMC arrival sequences",
+      "provide efficient routing for aircraft inbound on final",
+      "align with published instrument approach procedures",
+      "minimize exposure to low-visibility maneuvering"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, vectors to straight-in ILS runway one four.",
+      "Approach: ANAC123, straight-in approach runway one four, report established.",
+      "Tower: ANAC123, straight-in cleared to land, runway one four.",
+      "Approach: ANAC123, expect straight-in approach, current vectors.",
+      "Approach: ANAC123, no circling, straight-in approach only."
+    ],
+    "pilotReadbacks": [
+      "Vectors to straight-in ILS runway one four, ANAC123.",
+      "ANAC123, straight-in approach runway one four, will report established.",
+      "ANAC123, straight-in, cleared to land runway one four.",
+      "ANAC123, expect straight-in, copied.",
+      "ANAC123, straight-in approach only, wilco."
+    ],
+    "brazilianMistakes": "- ❌ Attempting to circle visually when the runway is not acquired on a straight-in instrument approach.  \n  ✔ On a straight-in approach, not seeing the runway at minimums means missed approach — not a circle.\n\n- ❌ Confusing Straight-In Approach (the concept) with Cleared Straight-In Approach (the clearance in 0103).  \n  ✔ The concept describes the flight path; the clearance is the ATC authorization.\n\n- ❌ Breaking off the final approach course to maneuver to a better angle.  \n  ✔ Maintain the straight-in course. If unsafe, go around.\n\n- ❌ Not reporting established when instructed on a straight-in.  \n  ✔ Report established on final as instructed: ANAC123, established ILS runway one four.",
+    "pronunciationCoaching": "**Target Phrase:** Straight-In Approach\n\n**Pronunciation:** STRAYT-in uh-PROHCH\n\n**Word Stress**\n\n- Straight → STRAYT (rhymes with \"late\")\n- In → in (short, unstressed)\n- Approach → uh-PROHCH\n\nPractice:\n\nStraight... In... Approach... Straight-In Approach.\n\nTogether:\n\nANAC123, straight-in approach runway one four, wilco.\n\nAvoid: *estreit approach* — this is a Portuguese interference. Practice the full English phrase.",
+    "relatedConcepts": [
+      "Cleared Straight-In Approach",
+      "Circling Approach",
+      "Direct Approach",
+      "Expect Approach",
+      "Missed Approach",
+      "Report Established"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Approach Control Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 8168 (PANS-OPS) — Instrument Approach Procedures"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Approach Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Instrument Procedures Handbook — Straight-In Minimums"
+      },
+      {
+        "label": "SKYbrary — Instrument Approach Procedure",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0123",
+    "id": "0123",
+    "displayTerm": "Downwind Leg",
+    "term": "downwind leg",
+    "slug": "downwind-leg",
+    "category": "ATC Phraseology",
+    "meaningEn": "The Downwind Leg is the portion of the traffic circuit flown parallel to the runway and in the opposite direction of landing, connecting the crosswind leg to the base leg of the approach.",
+    "meaningPt": "Trecho de través (ou leg de través).\n\nA parte do circuito de tráfego voada paralelamente à pista e no sentido oposto ao pouso, conectando o trecho cruzado ao trecho base da aproximação.",
+    "whenUsed": "During the Downwind Leg, the pilot should:",
+    "example": "Tower: ANAC123, report downwind runway one five.",
+    "sayPhrase": "Tower, ANAC123, downwind, runway one five.",
+    "icaoQuestion": "What reports and tasks should be completed during the downwind leg?",
+    "icaoSpeakText": "During the downwind leg, I would report downwind to ATC when instructed, complete the before-landing checks or landing checklist, set the appropriate configuration for the approach, and maintain pattern altitude while keeping the runway in sight. I would also monitor for other circuit traffic and comply with any ATC instructions to extend downwind, adjust speed, or report my sequence. By the time I turned base, the aircraft should be fully configured and ready for the approach.",
+    "missionBrief": "Today's lesson covers the Downwind Leg — the segment of the traffic circuit that runs parallel to the runway in the direction opposite to landing.\n\nEvery VFR circuit includes a downwind leg.\n\nAt Joinville, Navegantes, and smaller aerodromes near São Paulo, circuit traffic is common in the H130.\n\nUnderstanding the downwind leg — its meaning, its position in the circuit, and how to report it — is a foundational ICAO communication skill.\n\nATC uses downwind leg instructions to sequence circuit traffic and manage separation efficiently.",
+    "captainTeaching": "The downwind leg is your preparation window.\n\nEverything that needs to happen before landing should happen on the downwind.\n\nGear down. Flaps set. Speed adjusted. Landing checklist complete. Fuel checked.\n\nWhen you turn base, you should already be configured.\n\nWhen you turn final, you should already be stabilized.\n\nMany Brazilian pilots rush the downwind because the runway looks close.\n\nThe runway is not going anywhere.\n\nUse the full leg.\n\nIn the H130, the circuit at Joinville is tight. The downwind feels short.\n\nFly it deliberately. Not fast, not slow — but prepared.\n\nIf ATC extends you, accept it gracefully. The extra distance is a gift for your checklist.",
+    "operationalContext": "You are flying circuit training in your H130 at Joinville.\n\nTower instructed you to join the circuit for runway one five.\n\nYou complete the crosswind turn and establish on the downwind leg.\n\nThe runway is on your left.\n\nYou transmit:\n\nTower, ANAC123, downwind, runway one five.\n\nTower responds:\n\nANAC123, number two, follow Cessna on base, extend downwind, I'll call your base.\n\nYou extend the downwind leg, maintaining altitude and visual separation from the Cessna.\n\nTower calls:\n\nANAC123, turn base.\n\nYou turn, descend on base, and roll out on final aligned with the runway.",
+    "sayItCoach": "Tower, ANAC123, downwind, runway one five.",
+    "icaoModelAnswer": "During the downwind leg, I would report downwind to ATC when instructed, complete the before-landing checks or landing checklist, set the appropriate configuration for the approach, and maintain pattern altitude while keeping the runway in sight. I would also monitor for other circuit traffic and comply with any ATC instructions to extend downwind, adjust speed, or report my sequence. By the time I turned base, the aircraft should be fully configured and ready for the approach.",
+    "memoryTrick": "**PREP** — **P**arallel to runway in opposite direction, **R**eport when instructed, **E**xtend when told, **P**repare landing checklist on this leg.",
+    "operationalMeaning": "During the Downwind Leg, the pilot should:\n\nDownwind Leg operations commonly include:",
+    "whyAtcUsesIt": [
+      "sequence circuit traffic efficiently",
+      "provide spacing between aircraft on final",
+      "issue number-in-sequence information",
+      "extend downwind to accommodate IFR arrivals",
+      "manage simultaneous circuit and straight-in traffic"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, report downwind runway one five.",
+      "Tower: ANAC123, number two, extend downwind, I'll call your base.",
+      "Tower: ANAC123, downwind, number one, cleared touch-and-go.",
+      "Tower: ANAC123, extend downwind, IFR traffic on final.",
+      "Tower: ANAC123, turn base, number one."
+    ],
+    "pilotReadbacks": [
+      "Tower, ANAC123, downwind, runway one five.",
+      "ANAC123, number two, extending downwind.",
+      "ANAC123, cleared touch-and-go, runway one five.",
+      "ANAC123, extending downwind, IFR traffic copied.",
+      "ANAC123, turning base, number one."
+    ],
+    "brazilianMistakes": "- ❌ Rushing through the downwind without completing the landing checklist.  \n  ✔ Complete all before-landing checks on the downwind leg.\n\n- ❌ Turning base without ATC clearance when instructed to report downwind.  \n  ✔ Wait for ATC to call your base when under circuit control instructions.\n\n- ❌ Not reporting downwind when instructed.  \n  ✔ Transmit: Tower, ANAC123, downwind, runway [number].\n\n- ❌ Forgetting to look for traffic when extending downwind.  \n  ✔ Maintain visual separation from all circuit traffic during extensions.",
+    "pronunciationCoaching": "**Target Phrase:** Downwind Leg\n\n**Pronunciation:** DOWN-wind leg\n\n**Word Stress**\n\n- Downwind → DOWN-wind (stress on first syllable)\n- Leg → leg (short, clear)\n\nPractice:\n\nDownwind... Leg... Downwind Leg.\n\nTogether:\n\nTower, ANAC123, downwind, runway one five.\n\nAvoid: *downuind* — the W in downwind is pronounced. Say DOWN-wind clearly.",
+    "relatedConcepts": [
+      "Crosswind Leg",
+      "Base Leg",
+      "Final Approach",
+      "Straight-In Approach",
+      "Traffic Circuit",
+      "Number in Sequence"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Visual Circuit Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 2 — Rules of the Air"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Traffic Patterns",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot's Handbook of Aeronautical Knowledge — Airport Traffic Pattern",
+        "href": "https://www.faa.gov/regulations_policies/handbooks_manuals/aviation/phak/"
+      },
+      {
+        "label": "SKYbrary — Visual Circuit",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0124",
+    "id": "0124",
+    "displayTerm": "Runway in Sight",
+    "term": "runway in sight",
+    "slug": "runway-in-sight",
+    "category": "ATC Phraseology",
+    "meaningEn": "Runway in Sight is a pilot report stating that the pilot has acquired sufficient visual contact with the runway to continue the approach and land, typically made at or before the applicable minima on an instrument approach.",
+    "meaningPt": "Pista à vista.\n\nReporte do piloto informando que obteve contato visual suficiente com a pista para continuar a aproximação e pousar, tipicamente feito em ou antes dos mínimos aplicáveis em uma aproximação por instrumentos.",
+    "whenUsed": "A Runway in Sight report is used when:",
+    "example": "Tower: ANAC123, report runway in sight.",
+    "sayPhrase": "ANAC123, runway in sight.",
+    "icaoQuestion": "What is the significance of the Runway in Sight report during an ILS approach?",
+    "icaoSpeakText": "The Runway in Sight report during an ILS approach indicates that I have acquired the required visual references to continue the approach and land. This report is made at or before the decision height. If the runway or its approach lighting is in sight at decision height, I continue to a landing. If the runway is not in sight by decision height, I must execute the missed approach immediately. The report transitions the approach from instrument to visual flight and is required before continuing below minimums.",
+    "missionBrief": "Today's lesson covers Runway in Sight — the pilot report confirming visual contact with the runway during an instrument approach.\n\nThese three words carry enormous operational weight.\n\nAt Florianópolis or Curitiba in reduced visibility, Runway in Sight is the transition point between instrument flight and visual landing.\n\nIt determines whether you continue the approach to land or execute the missed approach.\n\nIt is also the required report for some ATC visual approach clearances and transitions from IFR to visual.\n\nEvery instrument pilot must know when to say it, what it means, and what it commits you to.",
+    "captainTeaching": "Runway in Sight is one of the most important reports in instrument flying.\n\nIt marks the moment your eyes take over from the instruments.\n\nBefore that moment: fly the instruments. Precisely. Without looking outside prematurely.\n\nThe mistake is looking out too early, losing instrument scan, and discovering you are below minimums with no runway in sight.\n\nFly instruments until you see the runway.\n\nThen — and only then — say runway in sight and transition to visual.\n\nIn the H130, approaching Florianópolis in low visibility, resist the temptation to look out at 500 feet.\n\nFly the needles.\n\nAt decision height, if the runway is there — say it. Land it.\n\nIf not — go around immediately. Not in two seconds. Now.\n\nThe runway will be there on the next approach.",
+    "operationalContext": "You are on the ILS approach to Florianópolis runway one four.\n\nCeiling is reported at five hundred feet.\n\nVisibility is twelve hundred meters.\n\nYou are descending through the glide slope, monitoring instruments, waiting.\n\nAt three hundred feet, you look up.\n\nThe approach lights appear in the mist.\n\nAt two hundred fifty feet, you acquire the runway threshold.\n\nYou transmit:\n\nANAC123, runway in sight.\n\nTower responds:\n\nANAC123, cleared to land runway one four, wind calm.\n\nYou continue visually and land.\n\nHad the runway not appeared by decision height, you would have transmitted:\n\nGoing around, ANAC123.\n\nThe three words Runway in Sight made the difference between landing and going around.",
+    "sayItCoach": "ANAC123, runway in sight.",
+    "icaoModelAnswer": "The Runway in Sight report during an ILS approach indicates that I have acquired the required visual references to continue the approach and land. This report is made at or before the decision height. If the runway or its approach lighting is in sight at decision height, I continue to a landing. If the runway is not in sight by decision height, I must execute the missed approach immediately. The report transitions the approach from instrument to visual flight and is required before continuing below minimums.",
+    "memoryTrick": "**SEE** — **S**ight the runway at minimums, **E**nter visual flight, **E**xecute missed approach if not visible.",
+    "operationalMeaning": "A Runway in Sight report is used when:\n\nRunway in Sight operations commonly include:",
+    "whyAtcUsesIt": [
+      "transition an aircraft from IFR to a visual approach or landing",
+      "confirm visual contact before issuing a landing clearance",
+      "manage the flow between instrument and visual approaches",
+      "provide pilot-in-command responsibility confirmation",
+      "coordinate between approach and tower when visibility is marginal"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, report runway in sight.",
+      "Approach: ANAC123, advise runway in sight for visual approach.",
+      "Tower: ANAC123, runway one four in sight, cleared to land.",
+      "Tower: ANAC123, if runway in sight, cancel IFR and report final.",
+      "Approach: ANAC123, radar service terminated, maintain VFR, report runway in sight."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, runway in sight.",
+      "ANAC123, runway in sight, request visual approach.",
+      "Runway one four in sight, ANAC123.",
+      "ANAC123, runway in sight, canceling IFR, visual final.",
+      "ANAC123, runway not in sight, going around."
+    ],
+    "brazilianMistakes": "- ❌ Saying runway in sight when only the airport environment or city lights are visible.  \n  ✔ The runway, or its approach lights, must be positively identified — not just the general area.\n\n- ❌ Looking outside too early and losing the instrument scan below minimums.  \n  ✔ Fly instruments precisely until decision height, then acquire the runway.\n\n- ❌ Delaying the go-around when the runway is not in sight at minimums.  \n  ✔ If the runway is not in sight at decision height, go around immediately.\n\n- ❌ Not reporting runway in sight when asked by ATC.  \n  ✔ Respond clearly: ANAC123, runway in sight or ANAC123, runway not in sight, going around.",
+    "pronunciationCoaching": "**Target Phrase:** Runway in Sight\n\n**Pronunciation:** RUN-way in SITE\n\n**Word Stress**\n\n- Runway → RUN-way\n- In → in (short)\n- Sight → SITE (rhymes with \"night\")\n\nPractice:\n\nRunway... In... Sight... Runway in Sight.\n\nTogether:\n\nANAC123, runway in sight.\n\nAvoid: *runway in side* — the word is sight (SITE), meaning you can see it. Practice the T at the end.",
+    "relatedConcepts": [
+      "Visual Approach",
+      "Decision Height",
+      "Missed Approach",
+      "Cleared to Land",
+      "Straight-In Approach",
+      "Go Around"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Approach Control Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 8168 (PANS-OPS) — Instrument Approach Operations"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Instrument Approaches",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Instrument Flying Handbook — Visual Reference at Minimums"
+      },
+      {
+        "label": "SKYbrary — Runway Visual Range (RVR)",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0125",
+    "id": "0125",
+    "displayTerm": "At Your Discretion",
+    "term": "at your discretion",
+    "slug": "at-your-discretion",
+    "category": "ATC Phraseology",
+    "meaningEn": "At Your Discretion is an ATC phrase indicating that the pilot may execute the specified action when ready, applying their own judgment on timing, without requiring a specific ATC instruction to commence.",
+    "meaningPt": "A seu critério.\n\nFrase do controle de tráfego aéreo indicando que o piloto pode executar a ação especificada quando estiver pronto, aplicando seu próprio julgamento sobre o momento, sem necessitar de uma instrução específica do controle para iniciá-la.",
+    "whenUsed": "When ATC uses At Your Discretion, the pilot should:",
+    "example": "Approach: ANAC123, descend to altitude four thousand, at your discretion.",
+    "sayPhrase": "Descend altitude four thousand at our discretion, ANAC123.",
+    "icaoQuestion": "How would you respond if ATC said \"descend at your discretion\" and you needed two minutes before beginning the descent?",
+    "icaoSpeakText": "I would acknowledge the clearance and advise ATC when I began the descent. I would say: Descend at our discretion, ANAC123. When ready to descend, I would transmit: ANAC123, leaving flight level one two zero, descending altitude four thousand. I would begin the descent as soon as operationally appropriate — not after an unreasonable delay. Discretion means professional judgment on timing, not indefinite flexibility.",
+    "missionBrief": "Today's lesson covers At Your Discretion — an ATC phrase that returns decision-making authority to the pilot for a specific action.\n\nAt Your Discretion means: the controller is not dictating the timing — you are.\n\nIt is an invitation for pilot judgment.\n\nIn the H130, flying into Congonhas, Navegantes, or Curitiba, you may receive At Your Discretion when ATC wishes to give you flexibility on when to descend, depart, or execute a maneuver.\n\nUnderstanding this phrase — and knowing how to respond, exercise, and acknowledge discretion — is an important ICAO proficiency skill.",
+    "captainTeaching": "At Your Discretion is a phrase of trust.\n\nThe controller is saying: I trust your judgment. You decide the timing.\n\nThat trust requires a professional response.\n\nNot immediate action if the aircraft is not ready.\n\nNot indefinite delay because \"discretion\" sounds like a vacation.\n\nProfessional discretion means: I will act when it is right to act.\n\nIn the H130, descending at your discretion into Congonhas might mean waiting until after the turbulence layer, or until the passengers have finished their meal service on a longer rotation.\n\nIt might mean delaying the turn to give yourself better routing.\n\nThe key word is professional.\n\nWhen you exercise discretion, you are the pilot in command.\n\nOwn that responsibility.\n\nAct on it promptly.\n\nAdvise ATC when you commence.",
+    "operationalContext": "You are cruising at flight level one two zero inbound to Congonhas.\n\nApproach transmits:\n\nANAC123, descend to altitude four thousand, at your discretion.\n\nThis means: you may begin your descent to four thousand feet whenever you judge it appropriate.\n\nYou are currently twenty minutes out.\n\nYou assess: passenger comfort — a gradual descent is preferable. Performance — optimal descent begins in five minutes.\n\nYou wait five minutes, then begin:\n\nANAC123, leaving flight level one two zero, descending altitude four thousand.\n\nApproach acknowledges.\n\nThe descent is smooth. Fuel is optimized. Passengers notice nothing.\n\nAt Your Discretion gave you the flexibility to make that decision professionally.",
+    "sayItCoach": "Descend altitude four thousand at our discretion, ANAC123.",
+    "icaoModelAnswer": "I would acknowledge the clearance and advise ATC when I began the descent. I would say: Descend at our discretion, ANAC123. When ready to descend, I would transmit: ANAC123, leaving flight level one two zero, descending altitude four thousand. I would begin the descent as soon as operationally appropriate — not after an unreasonable delay. Discretion means professional judgment on timing, not indefinite flexibility.",
+    "memoryTrick": "**JUDGE** — **J**udgment is yours, **U**se professional timing, **D**on't delay unreasonably, **G**ive ATC notice when you commence, **E**xercise the authority responsibly.",
+    "operationalMeaning": "When ATC uses At Your Discretion, the pilot should:\n\nAt Your Discretion operations commonly include:",
+    "whyAtcUsesIt": [
+      "reduce radio congestion by delegating timing to the pilot",
+      "accommodate aircraft performance differences",
+      "allow pilots to optimize descent or departure timing",
+      "provide flexibility when traffic allows but sequencing is not critical",
+      "reduce the number of individual control instructions needed"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, descend to altitude four thousand, at your discretion.",
+      "Tower: ANAC123, depart at your discretion, no delay required.",
+      "Approach: ANAC123, proceed direct XINGU, at your discretion.",
+      "Ground: ANAC123, taxi to holding point runway one zero, at your discretion.",
+      "Approach: ANAC123, when ready descend to flight level one zero zero, at your discretion."
+    ],
+    "pilotReadbacks": [
+      "Descend altitude four thousand at our discretion, ANAC123.",
+      "ANAC123, depart at our discretion, wilco.",
+      "ANAC123, direct XINGU at our discretion, wilco.",
+      "ANAC123, taxi holding point runway one zero at our discretion.",
+      "ANAC123, descend flight level one zero zero at our discretion, wilco."
+    ],
+    "brazilianMistakes": "- ❌ Interpreting At Your Discretion as permission to delay indefinitely.  \n  ✔ Act when ready, promptly and professionally. Inform ATC when you commence.\n\n- ❌ Not reading back the cleared level or action when acknowledging.  \n  ✔ Include the cleared action in the readback: Descend altitude four thousand at our discretion, ANAC123.\n\n- ❌ Commencing the action without advising ATC when a position report is expected.  \n  ✔ Advise ATC when you begin: ANAC123, leaving flight level one two zero.\n\n- ❌ Confusing At Your Discretion with no restriction, and violating traffic sequencing.  \n  ✔ Discretion applies to timing, not to ignoring clearance limits or separation requirements.",
+    "pronunciationCoaching": "**Target Phrase:** At Your Discretion\n\n**Pronunciation:** at yor dis-KREH-shun\n\n**Word Stress**\n\n- At → at (short)\n- Your → yor (short, unstressed in natural speech)\n- Discretion → dis-KREH-shun (stress on second syllable)\n\nPractice:\n\nAt... Your... Discretion... At Your Discretion.\n\nTogether:\n\nDescend altitude four thousand at our discretion, ANAC123.\n\nNote: in readback, pilots say \"our discretion\" (speaking as crew) — \"at our discretion, ANAC123.\"",
+    "relatedConcepts": [
+      "Cleared to Descend",
+      "When Ready",
+      "No Delay",
+      "Depart When Ready",
+      "Pilot in Command Authority",
+      "Report Leaving"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — General Phraseology",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Pilot/Controller Roles",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — At Pilot's Discretion",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — ATC Instructions",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
   }
 ];

@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "completedCount": 95,
-  "pendingCount": 415,
+  "completedCount": 125,
+  "pendingCount": 385,
   "concepts": [
     {
       "id": "0001",
@@ -665,6 +665,216 @@
       "id": "0095",
       "concept": "Crosswind Landing",
       "slug": "0095-crosswind-landing",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0096",
+      "concept": "Tailwind Landing",
+      "slug": "0096-tailwind-landing",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0097",
+      "concept": "Headwind Takeoff",
+      "slug": "0097-headwind-takeoff",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0098",
+      "concept": "Density Altitude",
+      "slug": "0098-density-altitude",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0099",
+      "concept": "Mountain Flying",
+      "slug": "0099-mountain-flying",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0100",
+      "concept": "Offshore Operations",
+      "slug": "0100-offshore-operations",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0101",
+      "concept": "Maintain Position",
+      "slug": "0101-maintain-position",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0102",
+      "concept": "Hold Position",
+      "slug": "0102-hold-position",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0103",
+      "concept": "Cleared Straight-In Approach",
+      "slug": "0103-cleared-straight-in-approach",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0104",
+      "concept": "Cleared to Divert",
+      "slug": "0104-cleared-to-divert",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0105",
+      "concept": "Cleared to Deviate",
+      "slug": "0105-cleared-to-deviate",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0106",
+      "concept": "Squawk Ident",
+      "slug": "0106-squawk-ident",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0107",
+      "concept": "Exit Hold",
+      "slug": "0107-exit-hold",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0108",
+      "concept": "Expect Hold",
+      "slug": "0108-expect-hold",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0109",
+      "concept": "Expect Circling",
+      "slug": "0109-expect-circling",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0110",
+      "concept": "Expect Vectors to Intercept",
+      "slug": "0110-expect-vectors-to-intercept",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0111",
+      "concept": "Vectors to Final",
+      "slug": "0111-vectors-to-final",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0112",
+      "concept": "Maintain Own Separation",
+      "slug": "0112-maintain-own-separation",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0113",
+      "concept": "Reduce Speed",
+      "slug": "0113-reduce-speed",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0114",
+      "concept": "Descend at Your Discretion",
+      "slug": "0114-descend-at-your-discretion",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0115",
+      "concept": "Cleared for Immediate Takeoff",
+      "slug": "0115-cleared-for-immediate-takeoff",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0116",
+      "concept": "Immediate Takeoff",
+      "slug": "0116-immediate-takeoff",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0117",
+      "concept": "Rejected Takeoff",
+      "slug": "0117-rejected-takeoff",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0118",
+      "concept": "Direct Approach",
+      "slug": "0118-direct-approach",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0119",
+      "concept": "Expect Approach",
+      "slug": "0119-expect-approach",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0120",
+      "concept": "Expect ILS Approach",
+      "slug": "0120-expect-ils-approach",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0121",
+      "concept": "Expect RNAV Approach",
+      "slug": "0121-expect-rnav-approach",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0122",
+      "concept": "Straight-In Approach",
+      "slug": "0122-straight-in-approach",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0123",
+      "concept": "Downwind Leg",
+      "slug": "0123-downwind-leg",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0124",
+      "concept": "Runway in Sight",
+      "slug": "0124-runway-in-sight",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0125",
+      "concept": "At Your Discretion",
+      "slug": "0125-at-your-discretion",
       "status": "complete",
       "completedAt": "2026-07-09"
     }

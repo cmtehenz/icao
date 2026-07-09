@@ -57,7 +57,7 @@ describe("Aviation Knowledge Engine V1", () => {
   });
 
   it("falls back when no knowledge entry exists", () => {
-    const lesson = buildWordMissionLesson("vectors to final");
+    const lesson = buildWordMissionLesson("battery power");
     expect(lesson.knowledgeReview?.curated).toBe(false);
     expect(lesson.knowledgeReview?.fallbackUsed).toBe(true);
   });
