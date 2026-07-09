@@ -5173,5 +5173,740 @@ export const BATCH01_DEV_ENTRIES: DevKnowledgeEntry[] = [
         "href": "https://skybrary.aero"
       }
     ]
+  },
+  {
+    "catalogId": "0066",
+    "id": "0066",
+    "displayTerm": "Autorotation",
+    "term": "autorotation",
+    "slug": "autorotation",
+    "category": "Helicopter Operations",
+    "meaningEn": "Autorotation is an emergency flight condition where the main rotor is driven by upward airflow rather than engine power, allowing a controlled descent and landing.",
+    "meaningPt": "Autorrotação.\n\nCondição de voo de emergência em que o rotor principal é acionado pelo fluxo de ar ascendente, permitindo descida e pouso controlados sem potência do motor.",
+    "whenUsed": "When entering Autorotation, the pilot should:",
+    "example": "Tower: ANAC123, Mayday acknowledged, say souls on board and landing area.",
+    "sayPhrase": "Mayday Mayday Mayday, Florianópolis Tower, ANAC123, engine failure, entering autorotation.",
+    "icaoQuestion": "What would you tell ATC if your engine failed and you needed to enter autorotation?",
+    "icaoSpeakText": "I would lower collective immediately to enter autorotation and maintain rotor RPM. I would declare Mayday Mayday Mayday, state my callsign, report engine failure and entering autorotation, state my position and intended landing area, and provide souls on board. I would report safe on the ground after landing.",
+    "missionBrief": "Today's lesson covers autorotation — the most important emergency procedure every helicopter pilot must master.\n\nAutorotation is a state of flight in which the engine is no longer driving the main rotor, and the rotor is turned by upward airflow through the blades.\n\nIn the H130, autorotation is the emergency procedure when engine power is lost and a safe powered landing is not possible.\n\nYou must aviate first, enter autorotation immediately, then communicate with Mayday.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Autorotation is not optional training — it is survival.\n\nThe sequence every helicopter pilot learns:\n\nCollective down. Glide. Land.\n\nLower collective immediately when power is lost.\n\nMaintain rotor RPM — without RPM, you have no lift at the flare.\n\nPick your landing area early.\n\nMayday when you can speak — but collective comes first.\n\nBrazilian pilots sometimes say \"autorotação\" or \"sem motor\" on frequency.\n\nUse entering autorotation or engine failure, entering autorotation — ICAO standard terms.\n\nIn the H130, train autorotation until collective-down is reflex.\n\nThe radio does not restore engine power — autorotation does.",
+    "operationalContext": "You are at eight hundred feet over the outskirts of Florianópolis in your H130 when the engine fails without warning.\n\nYou lower collective immediately and enter autorotation.\n\nRotor RPM stabilizes in the green arc as you establish glide at sixty knots.\n\nYou select a sports field ahead and transmit:\n\nMayday Mayday Mayday, Florianópolis Tower, ANAC123, engine failure, entering autorotation, landing sports field south of the airport.\n\nTower clears traffic and dispatches emergency services.\n\nYou flare at the appropriate height and land safely in the field.",
+    "sayItCoach": "Mayday Mayday Mayday, Florianópolis Tower, ANAC123, entering autorotation.",
+    "icaoModelAnswer": "I would lower collective immediately to enter autorotation and maintain rotor RPM. I would declare Mayday Mayday Mayday, state my callsign, report engine failure and entering autorotation, state my position and intended landing area, and provide souls on board. I would report safe on the ground after landing.",
+    "memoryTrick": "**GLIDE** — **G**o collective down, **L**ocate landing area, **I**nform Mayday, **D**escend at recommended speed, **E**xecute flare and land.",
+    "operationalMeaning": "When entering Autorotation, the pilot should:\n\nAutorotation reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "clear all traffic from the aircraft's route and landing area immediately",
+      "coordinate with other sectors and airport authorities",
+      "request souls on board and position",
+      "prepare emergency services at the anticipated landing site",
+      "monitor the aircraft until landing or power restoration"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, Mayday acknowledged, say souls on board and landing area.",
+      "Tower: ANAC123, all traffic cleared, emergency services notified.",
+      "Approach: ANAC123, radar contact, say position and intentions.",
+      "Tower: ANAC123, wind calm at the field, report when safe on the ground.",
+      "Tower: ANAC123, emergency vehicles en route to your position."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, Florianópolis Tower, ANAC123, engine failure, entering autorotation.",
+      "Mayday Mayday Mayday, ANAC123, entering autorotation, landing field two miles south, souls on board three.",
+      "Pan Pan Pan Pan, ANAC123, engine failure, attempting relight, may enter autorotation.",
+      "ANAC123, entering autorotation, position five miles north Navegantes, request traffic cleared.",
+      "Tower, ANAC123, safe on the ground, autorotation complete, no injuries."
+    ],
+    "brazilianMistakes": "- ❌ Calling Mayday before lowering collective.  \n  ✔ Collective down first — enter autorotation, then transmit.\n\n- ❌ Saying \"sem potência\" instead of standard English.  \n  ✔ Use entering autorotation or engine failure, entering autorotation.\n\n- ❌ Raising collective during autorotation descent.  \n  ✔ Maintain recommended autorotative glide — collective down until flare.\n\n- ❌ Not selecting a landing area early.  \n  ✔ Choose landing area within glide range and inform ATC.",
+    "pronunciationCoaching": "**Target Phrase:** Mayday Mayday Mayday, Entering Autorotation\n\n**Pronunciation:** MAY-day MAY-day MAY-day, EN-ter-ing aw-toh-roh-TAY-shun\n\n**Word Stress**\n\n- Entering → EN-ter-ing\n- Autorotation → aw-toh-roh-TAY-shun\n\nPractice:\n\nMayday... Mayday... Mayday...\n\nTogether:\n\nMayday Mayday Mayday, Florianópolis Tower, ANAC123, entering autorotation.\n\nSpeak with urgency but clearly — every word must be understood.",
+    "relatedConcepts": [
+      "Engine Failure",
+      "Engine Flameout",
+      "Rotor RPM Low",
+      "Emergency Landing",
+      "Mayday Distress Call",
+      "Running Landing"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Helicopter Flying Handbook — Autorotation"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Autorotation",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Autorotation Procedures"
+      },
+      {
+        "label": "SKYbrary — Helicopter Autorotation",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0067",
+    "id": "0067",
+    "displayTerm": "Hover Taxi",
+    "term": "hover taxi",
+    "slug": "hover-taxi",
+    "category": "Helicopter Operations",
+    "meaningEn": "Hover Taxi is ATC authorization or pilot movement of a helicopter in ground effect at low altitude and slow speed between points on an airport or heliport.",
+    "meaningPt": "Táxi em sustentação.\n\nMovimento do helicóptero acima da superfície em baixa altitude e baixa velocidade entre pontos no aeródromo.",
+    "whenUsed": "When Hover Taxi is used, the pilot should:",
+    "example": "Ground: ANAC123, hover taxi to helipad one.",
+    "sayPhrase": "Hover taxi to helipad one, ANAC123.",
+    "icaoQuestion": "What is hover taxi and how would you request it from Ground?",
+    "icaoSpeakText": "Hover taxi is helicopter movement above the surface at low altitude and slow speed between points on the aerodrome. I would contact Ground, state my position and request hover taxi to my destination. I would read back the assigned route and any hold short instructions, comply with the clearance, and report when ready at the assigned point.",
+    "missionBrief": "Today's lesson covers hover taxi — one of the most common helicopter ground movement procedures.\n\nHover Taxi means movement of a helicopter above the surface at slow speed and low altitude, generally below one hundred feet AGL, and normally above translational lift airspeed.\n\nIn the H130, hover taxi is used to move between helipads, parking areas, and departure points at airports and heliports.\n\nYou must receive clearance, read back correctly, and maintain awareness of obstacles and other traffic.\n\nThis lesson prepares you for ICAO Part 2 radiotelephony.",
+    "captainTeaching": "Hover taxi is not flying — it is controlled surface movement in the air.\n\nThe discipline is the same as taxi in an airplane:\n\nClearance. Route. Hold short.\n\nYou do not hover across an active runway without explicit clearance.\n\nYou do not shortcut across ramps because it looks faster.\n\nBrazilian pilots sometimes say \"taxi aéreo\" or \"hover\" without the full phrase.\n\nUse hover taxi to helipad — ICAO standard phraseology.\n\nIn the H130 at Congonhas or Navegantes, know your airport diagram before you hover.\n\nLow and slow does not mean low discipline.",
+    "operationalContext": "You have just shut down at the general aviation ramp at Congonhas.\n\nAfter startup, you contact Ground:\n\nGround: ANAC123, hover taxi to helipad two via the north taxi route, hold short of runway one seven.\n\nYou read back the clearance and hover taxi at fifty feet along the assigned route.\n\nAt the hold short point, you stop and contact Tower for departure clearance.",
+    "sayItCoach": "Hover taxi to helipad one, ANAC123.",
+    "icaoModelAnswer": "Hover taxi is helicopter movement above the surface at low altitude and slow speed between points on the aerodrome. I would contact Ground, state my position and request hover taxi to my destination. I would read back the assigned route and any hold short instructions, comply with the clearance, and report when ready at the assigned point.",
+    "memoryTrick": "**HOVER** — **H**old clearance first, **O**bey the route, **V**erify hold shorts, **E**xecute low and slow, **R**eport at destination.",
+    "operationalMeaning": "When Hover Taxi is used, the pilot should:\n\nHover Taxi clearances commonly include:",
+    "whyAtcUsesIt": [
+      "route helicopters safely on the movement area",
+      "separate helicopter traffic from fixed-wing taxi routes",
+      "prevent conflicts at helipads and parking areas",
+      "coordinate departures and arrivals at busy heliports",
+      "maintain orderly traffic flow at congested airports"
+    ],
+    "atcPhraseology": [
+      "Ground: ANAC123, hover taxi to helipad one.",
+      "Ground: ANAC123, hover taxi via north ramp, hold short of runway three five.",
+      "Tower: ANAC123, hover taxi to the departure helipad, report ready.",
+      "Ground: ANAC123, hover taxi to parking via Bravo helipad route.",
+      "Tower: ANAC123, hover taxi behind the departing helicopter, hold short of the active helipad."
+    ],
+    "pilotReadbacks": [
+      "Hover taxi to helipad one, ANAC123.",
+      "Hover taxi via north ramp, hold short of runway three five, ANAC123.",
+      "Hover taxi to departure helipad, will report ready, ANAC123.",
+      "Hover taxi to parking via Bravo helipad route, ANAC123.",
+      "Hover taxi behind departing traffic, hold short active helipad, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Hover taxiing without clearance.  \n  ✔ Obtain hover taxi clearance from Ground or Tower first.\n\n- ❌ Saying \"vou de hover\" instead of standard English.  \n  ✔ Use hover taxi to helipad or hover taxi via route.\n\n- ❌ Crossing active areas without hold short compliance.  \n  ✔ Hold short as instructed — same discipline as fixed-wing taxi.\n\n- ❌ Omitting readback of hold short instructions.  \n  ✔ Read back full route and hold short points.",
+    "pronunciationCoaching": "**Target Phrase:** Hover Taxi to Helipad One\n\n**Pronunciation:** HUV-er TAK-see too HEL-ih-pad wun\n\n**Word Stress**\n\n- Hover → HUV-er\n- Taxi → TAK-see\n- Helipad → HEL-ih-pad\n\nPractice:\n\nHover... taxi... to... helipad... one...\n\nTogether:\n\nHover taxi to helipad one, ANAC123.\n\nSpeak clearly — Ground needs the destination and your callsign.",
+    "relatedConcepts": [
+      "Air Taxi",
+      "Taxi Via",
+      "Hold Short",
+      "Cleared for Takeoff",
+      "Congonhas Heliport Operations"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Surface Movement",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Helicopter Operations",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Hover Taxi",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Ground Operations"
+      },
+      {
+        "label": "SKYbrary — Helicopter Ground Operations",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0068",
+    "id": "0068",
+    "displayTerm": "Air Taxi",
+    "term": "air taxi",
+    "slug": "air-taxi",
+    "category": "Helicopter Operations",
+    "meaningEn": "Air Taxi is helicopter movement above the surface at speeds above translational lift and at altitudes typically above one hundred feet, in the airport vicinity.",
+    "meaningPt": "Táxi aéreo.\n\nMovimento do helicóptero acima da superfície em velocidade e altitude maiores que o táxi em sustentação, na vizinhança do aeródromo.",
+    "whenUsed": "When Air Taxi is used, the pilot should:",
+    "example": "Tower: ANAC123, air taxi to helipad two, remain below four hundred feet.",
+    "sayPhrase": "Air taxi to helipad two, remain below four hundred feet, ANAC123.",
+    "icaoQuestion": "What is the difference between hover taxi and air taxi?",
+    "icaoSpeakText": "Hover taxi is helicopter movement at low altitude and slow speed, generally below translational lift airspeed. Air taxi is movement at higher speed, typically above twenty knots and above one hundred feet AGL, in the airport vicinity. Both require ATC clearance. I would read back the assigned route, altitude restrictions, and hold instructions for either procedure.",
+    "missionBrief": "Today's lesson covers air taxi — helicopter movement at higher speed and altitude than hover taxi.\n\nAir Taxi means movement of a helicopter above the surface at more than twenty knots and above one hundred feet AGL, typically between points on or in the vicinity of an airport.\n\nIn the H130, air taxi is used to reposition quickly between helipads or to depart the airport traffic area efficiently.\n\nYou must obtain clearance, state your route and altitude, and read back correctly.\n\nThis lesson prepares you for ICAO Part 2 radiotelephony.",
+    "captainTeaching": "Air taxi is the helicopter's fast reposition on the airport.\n\nFaster than hover taxi.\n\nHigher than hover taxi.\n\nSame clearance discipline.\n\nYou are not departing until Tower says cleared for takeoff.\n\nYou are not landing until cleared to land.\n\nBrazilian pilots sometimes say \"taxi aéreo rápido\" or just \"air taxi\" without the full clearance readback.\n\nRead back altitude restrictions and remain clear instructions — they matter for separation.\n\nIn the H130, know the difference:\n\nHover taxi — low, slow, close to the ground.\n\nAir taxi — faster, higher, still on the airport.",
+    "operationalContext": "You are at the maintenance helipad at Florianópolis Airport in your H130.\n\nTower clears you:\n\nTower: ANAC123, air taxi to departure helipad via the south route, remain below five hundred feet, report ready.\n\nYou read back, depart the maintenance pad at sixty knots, and follow the south route at three hundred feet.\n\nYou report ready at the departure helipad and receive takeoff clearance.",
+    "sayItCoach": "Air taxi to helipad two, remain below four hundred feet, ANAC123.",
+    "icaoModelAnswer": "Hover taxi is helicopter movement at low altitude and slow speed, generally below translational lift airspeed. Air taxi is movement at higher speed, typically above twenty knots and above one hundred feet AGL, in the airport vicinity. Both require ATC clearance. I would read back the assigned route, altitude restrictions, and hold instructions for either procedure.",
+    "memoryTrick": "**AIR** — **A**ltitude restriction — read back, **I**n the airport area, **R**eport ready at destination.",
+    "operationalMeaning": "When Air Taxi is used, the pilot should:\n\nAir Taxi clearances commonly include:",
+    "whyAtcUsesIt": [
+      "reposition helicopters efficiently on the airport",
+      "separate helicopter traffic from fixed-wing patterns",
+      "maintain traffic flow at busy heliports",
+      "clear helicopters from active runway areas quickly",
+      "coordinate simultaneous fixed-wing and helicopter operations"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, air taxi to helipad two, remain below four hundred feet.",
+      "Tower: ANAC123, air taxi via north, remain clear of runway one four traffic.",
+      "Ground: ANAC123, air taxi to the fuel pad, report when ready.",
+      "Tower: ANAC123, air taxi to departure point, contact tower on this frequency.",
+      "Tower: ANAC123, air taxi behind the landing helicopter, remain one thousand feet south of the runway."
+    ],
+    "pilotReadbacks": [
+      "Air taxi to helipad two, remain below four hundred feet, ANAC123.",
+      "Air taxi via north, remain clear of runway one four traffic, ANAC123.",
+      "Air taxi to fuel pad, will report ready, ANAC123.",
+      "Air taxi to departure point, ANAC123.",
+      "Air taxi behind landing traffic, remain one thousand feet south of runway, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Treating air taxi as a departure clearance.  \n  ✔ Air taxi is repositioning — you still need takeoff clearance to depart.\n\n- ❌ Ignoring altitude restrictions in the clearance.  \n  ✔ Read back and comply with remain below or remain at altitude instructions.\n\n- ❌ Saying \"voo baixo\" instead of air taxi.  \n  ✔ Use air taxi to helipad with route and altitude as cleared.\n\n- ❌ Not reporting ready at the departure point.  \n  ✔ Report ready when positioned for departure.",
+    "pronunciationCoaching": "**Target Phrase:** Air Taxi to Helipad Two, Remain Below Four Hundred Feet\n\n**Pronunciation:** air TAK-see too HEL-ih-pad too, ri-MAYN bee-LOH FOR hun-dred feet\n\n**Word Stress**\n\n- Air → air\n- Remain → ri-MAYN\n- Below → bee-LOH\n\nPractice:\n\nAir... taxi... to... helipad... two...\n\nTogether:\n\nAir taxi to helipad two, remain below four hundred feet, ANAC123.\n\nSpeak each altitude digit clearly — four hundred, not four zero zero.",
+    "relatedConcepts": [
+      "Hover Taxi",
+      "Cleared for Takeoff",
+      "Maintain Altitude",
+      "Radar Vectors",
+      "Florianópolis Heliport Operations"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Surface Movement",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Helicopter Operations",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Air Taxi",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Ground Operations"
+      },
+      {
+        "label": "SKYbrary — Helicopter Ground Operations",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0069",
+    "id": "0069",
+    "displayTerm": "Running Landing",
+    "term": "running landing",
+    "slug": "running-landing",
+    "category": "Helicopter Operations",
+    "meaningEn": "Running Landing is a helicopter landing technique with forward speed at touchdown, used when hover capability is limited or unavailable.",
+    "meaningPt": "Pouso com velocidade.\n\nTécnica de pouso do helicóptero com velocidade de avanço no toque, usada quando a capacidade de sustentação estacionária é limitada.",
+    "whenUsed": "When a Running Landing is planned or executed, the pilot should:",
+    "example": "Tower: ANAC123, Mayday acknowledged, say landing area and souls on board.",
+    "sayPhrase": "Mayday Mayday Mayday, ANAC123, executing running landing, field two miles east.",
+    "icaoQuestion": "When would you use a running landing and what would you tell ATC?",
+    "icaoSpeakText": "I would use a running landing when hover capability is insufficient, such as in autorotation, high density altitude, or maximum weight conditions. I would inform ATC of my intentions, state executing running landing, describe the landing area, and report safe on the ground after touchdown. In an emergency, I would declare Mayday first.",
+    "missionBrief": "Today's lesson covers the running landing — a technique used when a normal hover landing is not possible or advisable.\n\nRunning Landing means a landing with forward ground speed, where the helicopter touches down while still moving forward and may slide or roll to a stop.\n\nIn the H130, running landings are used in autorotation, high-density altitude conditions, or when power is insufficient for a hover.\n\nYou must inform ATC when executing a non-standard landing and report safe on the ground.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Not every landing is a hover.\n\nSometimes power, weight, or altitude means you must land with forward speed.\n\nThe sequence:\n\nPick the surface. Flare. Touch down rolling. Stop.\n\nA running landing is not a crash — it is a controlled technique.\n\nIn autorotation, it is often the only option.\n\nBrazilian pilots sometimes say \"pouso corrido\" or \"pouso com velocidade\" on frequency.\n\nUse executing running landing — ICAO standard phraseology.\n\nIn the H130, train running landings in a safe environment before you need one for real.\n\nInform ATC when they need to clear traffic or send help.",
+    "operationalContext": "You are completing an autorotation after engine failure near Joinville in your H130.\n\nYou selected a level field with sufficient length for a running landing.\n\nDuring the approach, you transmitted:\n\nMayday Mayday Mayday, Joinville Tower, ANAC123, engine failure, autorotation, executing running landing field two miles east.\n\nYou touch down at thirty knots, slide briefly on the grass, and come to a stop.\n\nYou report safe on the ground.",
+    "sayItCoach": "Executing running landing, field two miles east, ANAC123.",
+    "icaoModelAnswer": "I would use a running landing when hover capability is insufficient, such as in autorotation, high density altitude, or maximum weight conditions. I would inform ATC of my intentions, state executing running landing, describe the landing area, and report safe on the ground after touchdown. In an emergency, I would declare Mayday first.",
+    "memoryTrick": "**ROLL** — **R**oute and surface selected, **O**n speed at touchdown, **L**and and decelerate, **L**et ATC know you are safe.",
+    "operationalMeaning": "When a Running Landing is planned or executed, the pilot should:\n\nRunning Landing reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "clear traffic from the landing area",
+      "coordinate with ground services if emergency landing",
+      "anticipate non-standard landing geometry at heliports",
+      "request position and souls on board in emergency cases",
+      "monitor until safe on the ground is reported"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, Mayday acknowledged, say landing area and souls on board.",
+      "Tower: ANAC123, all traffic cleared, report safe on the ground.",
+      "Tower: ANAC123, cleared to land helipad, wind calm, caution light tailwind.",
+      "Ground: ANAC123, report when clear of the landing area.",
+      "Tower: ANAC123, running landing approved at your selected area, emergency services notified."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, ANAC123, executing running landing, field two miles east.",
+      "ANAC123, executing running landing, souls on board two, will report safe on the ground.",
+      "ANAC123, running landing at helipad, request traffic cleared.",
+      "Tower, ANAC123, safe on the ground, running landing complete.",
+      "ANAC123, unable hover landing due density altitude, executing running landing runway edge."
+    ],
+    "brazilianMistakes": "- ❌ Attempting hover landing when power is insufficient.  \n  ✔ Recognize when running landing is the safer option.\n\n- ❌ Saying \"pouso corrido\" instead of standard English.  \n  ✔ Use executing running landing.\n\n- ❌ Not informing ATC in controlled airspace.  \n  ✔ Report intentions so Tower can clear traffic.\n\n- ❌ Forgetting to report safe on the ground.  \n  ✔ Always confirm landing complete to ATC.",
+    "pronunciationCoaching": "**Target Phrase:** Executing Running Landing\n\n**Pronunciation:** ek-SKYOO-ting RUN-ning LAN-ding\n\n**Word Stress**\n\n- Executing → ek-SKYOO-ting\n- Running → RUN-ning\n- Landing → LAN-ding\n\nPractice:\n\nExecuting... running... landing...\n\nTogether:\n\nExecuting running landing, field two miles east, ANAC123.\n\nSpeak clearly — Tower needs to know this is not a standard hover landing.",
+    "relatedConcepts": [
+      "Autorotation",
+      "Confined Area Landing",
+      "Pinnacle Landing",
+      "Emergency Landing",
+      "Mayday Distress Call"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "FAA Helicopter Flying Handbook — Running Landing"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Running Landing",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Landing Techniques"
+      },
+      {
+        "label": "SKYbrary — Helicopter Landing Techniques",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0070",
+    "id": "0070",
+    "displayTerm": "Confined Area Landing",
+    "term": "confined area landing",
+    "slug": "confined-area-landing",
+    "category": "Helicopter Operations",
+    "meaningEn": "Confined Area Landing is a helicopter landing in a limited space with surrounding obstacles requiring precise approach and departure techniques.",
+    "meaningPt": "Pouso em área confinada.\n\nPouso de helicóptero em espaço limitado com obstáculos ao redor, exigindo técnicas precisas de aproximação e decolagem.",
+    "whenUsed": "When conducting a Confined Area Landing, the pilot should:",
+    "example": "Approach: ANAC123, roger confined area landing, report final and safe on the ground.",
+    "sayPhrase": "Landing confined area construction site five miles north, ANAC123.",
+    "icaoQuestion": "How do you prepare for a confined area landing and what would you tell ATC?",
+    "icaoSpeakText": "I would conduct a reconnaissance orbit to assess obstacles, wind, and escape routes. I would inform ATC of my intention to land at a confined area, state my position and description of the site, and request traffic advisory. I would execute a steep approach if required, go around if unsafe, and report safe on the ground after landing.",
+    "missionBrief": "Today's lesson covers confined area landing — one of the most demanding helicopter skills.\n\nConfined Area Landing means landing in a restricted space surrounded by obstacles such as trees, buildings, wires, or terrain.\n\nIn the H130, confined area operations are common in Brazilian offshore support, construction sites, and hospital helipads in urban areas.\n\nYou must assess wind, obstacles, and escape routes before committing, then inform ATC of your intentions.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 operational communication.",
+    "captainTeaching": "Confined area landing is where experience matters most.\n\nYou cannot land what you have not assessed.\n\nThe sequence:\n\nReconnaissance. Wind. Escape route. Commit or go around.\n\nOne orbit minimum — often two.\n\nIdentify wires last — they kill more helicopter pilots than engine failures.\n\nBrazilian pilots sometimes say \"pouso em local restrito\" on frequency.\n\nUse landing confined area — ICAO standard phraseology.\n\nIn the H130, always have a go-around plan before you descend below your escape altitude.\n\nInform ATC — even VFR — so someone knows where you are.",
+    "operationalContext": "You are ferrying personnel to a construction site in a valley near Joinville in your H130.\n\nThe site is surrounded by cranes and trees with a twenty-meter landing pad.\n\nYou orbit once to assess wind and obstacles, then call:\n\nJoinville Approach, ANAC123, landing confined area construction site five miles north of the airport, request traffic advisory.\n\nApproach acknowledges and clears traffic from your area.\n\nYou execute a steep approach and land safely on the pad.\n\nYou report safe on the ground.",
+    "sayItCoach": "Landing confined area construction site five miles north, ANAC123.",
+    "icaoModelAnswer": "I would conduct a reconnaissance orbit to assess obstacles, wind, and escape routes. I would inform ATC of my intention to land at a confined area, state my position and description of the site, and request traffic advisory. I would execute a steep approach if required, go around if unsafe, and report safe on the ground after landing.",
+    "memoryTrick": "**SPACE** — **S**urvey the area, **P**lan escape route, **A**nnounce to ATC, **C**ommit or go around, **E**xecute steep approach if needed.",
+    "operationalMeaning": "When conducting a Confined Area Landing, the pilot should:\n\nConfined Area Landing reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "clear traffic from the approach and departure paths",
+      "coordinate with other aircraft in the vicinity",
+      "maintain awareness of non-standard landing sites",
+      "request position reports during approach",
+      "prepare for possible go-around calls"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger confined area landing, report final and safe on the ground.",
+      "Tower: ANAC123, no reported traffic in your area, cleared to land at your discretion.",
+      "Approach: ANAC123, say position and description of landing site.",
+      "Tower: ANAC123, wind two seven zero at one two knots, report go-around if unable.",
+      "Approach: ANAC123, traffic two miles south, remain clear of your landing area."
+    ],
+    "pilotReadbacks": [
+      "Landing confined area construction site five miles north, ANAC123.",
+      "ANAC123, landing confined area hospital helipad, will report final.",
+      "ANAC123, unable confined area landing, going around, will reattempt.",
+      "Tower, ANAC123, safe on the ground confined area landing complete.",
+      "ANAC123, confined area landing site clear, request departure in five minutes."
+    ],
+    "brazilianMistakes": "- ❌ Landing without reconnaissance orbit.  \n  ✔ Always assess obstacles and wind before committing.\n\n- ❌ Saying \"pouso difícil\" instead of standard English.  \n  ✔ Use landing confined area.\n\n- ❌ Not having a planned go-around escape route.  \n  ✔ Identify escape path before descending below point of no return.\n\n- ❌ Forgetting to report safe on the ground.  \n  ✔ Confirm landing complete to ATC or company frequency.",
+    "pronunciationCoaching": "**Target Phrase:** Landing Confined Area Construction Site\n\n**Pronunciation:** LAN-ding kon-FYND air-ee-uh kon-struk-shun syte\n\n**Word Stress**\n\n- Confined → kon-FYND\n- Construction → kon-struk-shun\n- Landing → LAN-ding\n\nPractice:\n\nLanding... confined... area...\n\nTogether:\n\nLanding confined area construction site five miles north, ANAC123.\n\nSpeak clearly — Approach needs position and site type.",
+    "relatedConcepts": [
+      "Pinnacle Landing",
+      "Slope Landing",
+      "Go Around",
+      "Hover Taxi",
+      "Dynamic Rollover"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "FAA Helicopter Flying Handbook — Confined Area Operations"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Confined Area",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Confined Area Landing"
+      },
+      {
+        "label": "SKYbrary — Helicopter Confined Area Operations",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0071",
+    "id": "0071",
+    "displayTerm": "Pinnacle Landing",
+    "term": "pinnacle landing",
+    "slug": "pinnacle-landing",
+    "category": "Helicopter Operations",
+    "meaningEn": "Pinnacle Landing is a helicopter landing on a peak or elevated area with significant terrain drop-off, requiring specialized approach and departure techniques.",
+    "meaningPt": "Pouso em pináculo.\n\nPouso de helicóptero no topo de elevação com declive acentuado em pelo menos um lado.",
+    "whenUsed": "When conducting a Pinnacle Landing, the pilot should:",
+    "example": "Approach: ANAC123, roger pinnacle landing, no traffic reported, report safe on the ground.",
+    "sayPhrase": "Landing pinnacle rescue site two zero miles west, elevation four five hundred feet, ANAC123.",
+    "icaoQuestion": "What are the main hazards of pinnacle landing and what would you tell ATC?",
+    "icaoSpeakText": "Main hazards include unpredictable wind on the ridge, downwash over steep terrain, limited escape routes, and power limitations on departure. I would inform ATC of landing pinnacle, state position and elevation, request traffic advisory, assess wind on site, and report safe on the ground or go-around if conditions are unsafe.",
+    "missionBrief": "Today's lesson covers pinnacle landing — landing on a peak or elevated point with dropping terrain on at least one side.\n\nPinnacle Landing requires special technique because downwash, wind, and limited escape routes create unique hazards.\n\nIn the H130, pinnacle operations are common in Brazilian mountain rescue, offshore platform transfers, and remote site operations.\n\nYou must assess wind, vortex behavior, and departure path before landing, then inform ATC.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 operational communication.",
+    "captainTeaching": "Pinnacle landing is not a normal helipad.\n\nThe ground falls away.\n\nDownwash goes down the mountain — not into open air.\n\nWind on the ridge can be violent and different from the valley report.\n\nThe sequence:\n\nWind assessment. Approach into wind. Escape over the drop. Power check for departure.\n\nNever land on a pinnacle without knowing how you will depart.\n\nBrazilian pilots sometimes say \"pouso no topo\" on frequency.\n\nUse landing pinnacle — ICAO standard phraseology.\n\nIn the H130, calculate power required for departure at pinnacle elevation before you touch down.",
+    "operationalContext": "You are supporting a rescue operation on a mountain ridge near Curitiba in your H130.\n\nThe landing point is a narrow ridge with steep drop-off on the east side.\n\nYou orbit to assess wind — it is from the west, favoring an approach from the east over the drop-off.\n\nYou call:\n\nCuritiba Approach, ANAC123, landing pinnacle rescue site two zero miles west of Curitiba, elevation four thousand five hundred feet, request traffic advisory.\n\nYou land on the ridge and report safe on the ground.\n\nAfter the rescue, you assess power for departure into the wind over the drop-off.",
+    "sayItCoach": "Landing pinnacle rescue site two zero miles west, ANAC123.",
+    "icaoModelAnswer": "Main hazards include unpredictable wind on the ridge, downwash over steep terrain, limited escape routes, and power limitations on departure. I would inform ATC of landing pinnacle, state position and elevation, request traffic advisory, assess wind on site, and report safe on the ground or go-around if conditions are unsafe.",
+    "memoryTrick": "**PEAK** — **P**ower check for departure, **E**valuate wind on site, **A**pproach into wind, **K**now your escape route over the drop.",
+    "operationalMeaning": "When conducting a Pinnacle Landing, the pilot should:\n\nPinnacle Landing reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "provide traffic advisories in the area",
+      "coordinate with search and rescue if applicable",
+      "maintain awareness of non-standard landing sites",
+      "request position and altitude reports",
+      "prepare for possible go-around or delay reports"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger pinnacle landing, no traffic reported, report safe on the ground.",
+      "Approach: ANAC123, say wind at the site if able.",
+      "Tower: ANAC123, report go-around if unable to land.",
+      "Approach: ANAC123, traffic helicopter five miles east, remain clear of your area.",
+      "Approach: ANAC123, report departure when clear of the pinnacle."
+    ],
+    "pilotReadbacks": [
+      "Landing pinnacle rescue site two zero miles west, elevation four five hundred feet, ANAC123.",
+      "ANAC123, landing pinnacle, will report safe on the ground.",
+      "ANAC123, unable pinnacle landing due wind, going around.",
+      "Tower, ANAC123, safe on the ground pinnacle landing complete.",
+      "ANAC123, departing pinnacle into the wind, will report clear of the ridge."
+    ],
+    "brazilianMistakes": "- ❌ Using valley wind report without assessing ridge wind.  \n  ✔ Orbit and assess actual wind at the pinnacle before landing.\n\n- ❌ Saying \"pouso em montanha\" instead of standard English.  \n  ✔ Use landing pinnacle.\n\n- ❌ Landing without verifying departure power margin.  \n  ✔ Calculate power required for departure at elevation before landing.\n\n- ❌ Approaching with tailwind over the drop-off.  \n  ✔ Approach into wind when possible with escape route planned.",
+    "pronunciationCoaching": "**Target Phrase:** Landing Pinnacle Rescue Site\n\n**Pronunciation:** LAN-ding PIN-uh-kul RES-kyoo syte\n\n**Word Stress**\n\n- Pinnacle → PIN-uh-kul\n- Rescue → RES-kyoo\n- Landing → LAN-ding\n\nPractice:\n\nLanding... pinnacle... rescue... site...\n\nTogether:\n\nLanding pinnacle rescue site two zero miles west, ANAC123.\n\nSpeak elevation clearly — four thousand five hundred feet.",
+    "relatedConcepts": [
+      "Confined Area Landing",
+      "Slope Landing",
+      "Go Around",
+      "High Density Altitude Operations",
+      "Running Landing"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "FAA Helicopter Flying Handbook — Pinnacle and Ridge Operations"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Pinnacle",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Pinnacle Landing"
+      },
+      {
+        "label": "SKYbrary — Helicopter Mountain Operations",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0072",
+    "id": "0072",
+    "displayTerm": "Slope Landing",
+    "term": "slope landing",
+    "slug": "slope-landing",
+    "category": "Helicopter Operations",
+    "meaningEn": "Slope Landing is a helicopter landing on inclined terrain, requiring technique to maintain control during touchdown and shutdown.",
+    "meaningPt": "Pouso em declive.\n\nPouso de helicóptero em terreno inclinado, exigindo técnica para manter controle durante o toque e o desligamento.",
+    "whenUsed": "When conducting a Slope Landing, the pilot should:",
+    "example": "Approach: ANAC123, roger slope landing, no traffic reported, report safe on the ground.",
+    "sayPhrase": "Landing slope remote site eight miles southeast, ANAC123.",
+    "icaoQuestion": "What are the risks of slope landing and what would you tell ATC?",
+    "icaoSpeakText": "Risks include dynamic rollover if slope exceeds limits, tail rotor contact with terrain, and difficulty securing the aircraft. I would assess slope angle before landing, inform ATC of landing slope with position, approach upslope when possible, and report safe on the ground or go-around if the slope is unsafe.",
+    "missionBrief": "Today's lesson covers slope landing — landing on inclined terrain.\n\nSlope Landing requires technique to manage collective, cyclic, and tail rotor clearance on uneven ground.\n\nIn the H130, slope landings are used in remote operations, military support, and emergency landings away from prepared surfaces.\n\nYou must assess slope angle, wind, and rollover risk before committing, then inform ATC.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 operational communication.",
+    "captainTeaching": "Slope landing is about patience on the collective.\n\nRush the touchdown and you risk dynamic rollover.\n\nThe sequence:\n\nAssess angle. Approach upslope. Upslope skid first. Lower collective slowly.\n\nNever exceed your flight manual slope limit.\n\nNever land with tail rotor toward uphill slope without clearance.\n\nBrazilian pilots sometimes say \"pouso em rampa\" on frequency.\n\nUse landing slope — ICAO standard phraseology.\n\nIn the H130, know your maximum slope angle cold.\n\nIf in doubt — go around and find flatter ground.",
+    "operationalContext": "You are conducting a remote site survey near Navegantes in your H130.\n\nThe only suitable landing point is a moderate grass slope facing northwest.\n\nYou orbit, assess the slope at approximately ten degrees, and call:\n\nNavegantes Approach, ANAC123, landing slope remote site eight miles southeast of the airport, will report safe on the ground.\n\nYou approach upslope, touch down smoothly on the uphill skid, and lower collective gradually.\n\nYou report safe on the ground and secure the aircraft.",
+    "sayItCoach": "Landing slope remote site eight miles southeast, ANAC123.",
+    "icaoModelAnswer": "Risks include dynamic rollover if slope exceeds limits, tail rotor contact with terrain, and difficulty securing the aircraft. I would assess slope angle before landing, inform ATC of landing slope with position, approach upslope when possible, and report safe on the ground or go-around if the slope is unsafe.",
+    "memoryTrick": "**SLOPE** — **S**urvey the angle, **L**and upslope first, **O**nly within limits, **P**atience on collective, **E**scape route planned.",
+    "operationalMeaning": "When conducting a Slope Landing, the pilot should:\n\nSlope Landing reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "provide traffic advisories in the area",
+      "coordinate search and rescue if emergency landing",
+      "maintain awareness of non-standard landing sites",
+      "request position reports",
+      "prepare for possible delay or go-around reports"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger slope landing, no traffic reported, report safe on the ground.",
+      "Approach: ANAC123, say slope angle if able and souls on board.",
+      "Tower: ANAC123, report go-around if unable to land safely.",
+      "Approach: ANAC123, wind northwest at one zero knots at the airport.",
+      "Approach: ANAC123, report departure when clear of the slope site."
+    ],
+    "pilotReadbacks": [
+      "Landing slope remote site eight miles southeast, ANAC123.",
+      "ANAC123, landing slope, slope approximately ten degrees, will report safe on the ground.",
+      "ANAC123, unable slope landing, slope too steep, going around.",
+      "Tower, ANAC123, safe on the ground slope landing complete.",
+      "ANAC123, departing slope site, will report clear of the area."
+    ],
+    "brazilianMistakes": "- ❌ Landing on slopes beyond flight manual limits.  \n  ✔ Know maximum slope angle and go around if exceeded.\n\n- ❌ Saying \"pouso em inclinação\" instead of standard English.  \n  ✔ Use landing slope.\n\n- ❌ Lowering collective too quickly on touchdown.  \n  ✔ Lower collective smoothly — upslope contact first.\n\n- ❌ Ignoring tail rotor clearance on uphill slope.  \n  ✔ Ensure tail rotor clearance from terrain and obstacles.",
+    "pronunciationCoaching": "**Target Phrase:** Landing Slope Remote Site\n\n**Pronunciation:** LAN-ding slohp ri-MOHT syte\n\n**Word Stress**\n\n- Slope → slohp\n- Remote → ri-MOHT\n- Landing → LAN-ding\n\nPractice:\n\nLanding... slope... remote... site...\n\nTogether:\n\nLanding slope remote site eight miles southeast, ANAC123.\n\nSpeak clearly — Approach needs position and site description.",
+    "relatedConcepts": [
+      "Dynamic Rollover",
+      "Pinnacle Landing",
+      "Confined Area Landing",
+      "Running Landing",
+      "Go Around"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "FAA Helicopter Flying Handbook — Slope Operations"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Slope Landing",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Slope Landing"
+      },
+      {
+        "label": "SKYbrary — Helicopter Slope Operations",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0073",
+    "id": "0073",
+    "displayTerm": "Brownout",
+    "term": "brownout",
+    "slug": "brownout",
+    "category": "Helicopter Operations",
+    "meaningEn": "Brownout is a visibility condition caused by rotor downwash lifting dust or sand, obscuring visual references during landing or takeoff.",
+    "meaningPt": "Brownout.\n\nCondição de visibilidade em que a ressaca do rotor levanta poeira ou areia, obscurecendo referências visuais no pouso ou decolagem.",
+    "whenUsed": "When Brownout conditions exist, the pilot should:",
+    "example": "Approach: ANAC123, roger brownout caution, report safe on the ground.",
+    "sayPhrase": "Landing construction site, caution brownout conditions, ANAC123.",
+    "icaoQuestion": "What is brownout and how do you manage it during landing?",
+    "icaoSpeakText": "Brownout is when rotor downwash lifts dust or sand and obscures visual references during landing or takeoff. I would identify the risk before approach, inform ATC of caution brownout conditions, use a stabilized approach with defined hover references, maintain control using instruments and peripheral cues, go around if disoriented, and report safe on the ground after landing.",
+    "missionBrief": "Today's lesson covers brownout — one of the most dangerous visibility conditions in helicopter operations.\n\nBrownout occurs when rotor downwash recirculates dust, sand, or snow, reducing visibility to zero during landing or takeoff.\n\nIn the H130, brownout is a serious risk at unpaved sites, construction areas, and dry Brazilian terrain.\n\nYou must use technique, reference points, and clear communication when operating in brownout conditions.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Brownout is when the ground disappears in dust.\n\nYou are not IFR — but you may have no outside visual reference for seconds.\n\nThe sequence:\n\nIdentify risk. Stabilized approach. Hover reference points. Instruments and periphery. Commit or go around.\n\nNever let brownout surprise you — if the surface is dry and loose, expect it.\n\nBrazilian pilots sometimes say \"poeira\" or \"perdi referência\" on frequency.\n\nUse brownout conditions or caution brownout — ICAO standard terms.\n\nIn the H130, train at a safe site with loose material before you need it at a real job.\n\nGo around if disoriented — Pan Pan is appropriate.",
+    "operationalContext": "You are landing at an unpaved construction site near Brasília in your H130.\n\nThe surface is dry red dust — classic brownout conditions.\n\nBefore approach, you transmit:\n\nBrasília Approach, ANAC123, landing construction site one zero miles north, caution brownout conditions expected, will report safe on the ground.\n\nOn final, downwash engulfs the cockpit in dust at fifty feet.\n\nYou maintain hover reference using the pad markers and peripheral cues.\n\nYou touch down and report safe on the ground when dust settles.",
+    "sayItCoach": "Landing construction site, caution brownout conditions expected, ANAC123.",
+    "icaoModelAnswer": "Brownout is when rotor downwash lifts dust or sand and obscures visual references during landing or takeoff. I would identify the risk before approach, inform ATC of caution brownout conditions, use a stabilized approach with defined hover references, maintain control using instruments and peripheral cues, go around if disoriented, and report safe on the ground after landing.",
+    "memoryTrick": "**DUST** — **D**etect loose surface, **U**se stabilized approach, **S**tate brownout caution to ATC, **T**ouch down using references or go around.",
+    "operationalMeaning": "When Brownout conditions exist, the pilot should:\n\nBrownout reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "clear traffic from the landing area",
+      "maintain awareness of delayed landing or departure reports",
+      "coordinate if aircraft becomes disoriented",
+      "request position reports when visual contact is lost",
+      "prepare for possible Pan Pan or emergency reports"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger brownout caution, report safe on the ground.",
+      "Tower: ANAC123, no traffic in your area, cleared to land at your discretion.",
+      "Approach: ANAC123, say if you have visual reference.",
+      "Tower: ANAC123, report go-around if unable to land.",
+      "Approach: ANAC123, traffic advise when clear of the brownout area."
+    ],
+    "pilotReadbacks": [
+      "Landing construction site, caution brownout conditions, ANAC123.",
+      "ANAC123, brownout on final, maintaining hover reference, will report touchdown.",
+      "Pan Pan Pan Pan, ANAC123, brownout, disoriented, going around.",
+      "Tower, ANAC123, safe on the ground, brownout landing complete.",
+      "ANAC123, departing site, brownout expected, will report clear."
+    ],
+    "brazilianMistakes": "- ❌ Not anticipating brownout on dry unpaved surfaces.  \n  ✔ Identify brownout risk before approach — inform ATC.\n\n- ❌ Saying \"não vejo nada\" instead of standard English.  \n  ✔ Use brownout conditions or caution brownout.\n\n- ❌ Continuing descent when completely disoriented.  \n  ✔ Go around and declare Pan Pan if visual reference is lost.\n\n- ❌ Not using stabilized approach technique.  \n  ✔ Stabilized approach with hover reference points reduces brownout risk.",
+    "pronunciationCoaching": "**Target Phrase:** Caution Brownout Conditions Expected\n\n**Pronunciation:** KAW-shun BROWN-out kon-DISH-unz ek-SPEK-ted\n\n**Word Stress**\n\n- Caution → KAW-shun\n- Brownout → BROWN-out\n- Conditions → kon-DISH-unz\n\nPractice:\n\nCaution... brownout... conditions...\n\nTogether:\n\nLanding construction site, caution brownout conditions expected, ANAC123.\n\nSpeak clearly — ATC needs to know you may delay touchdown report.",
+    "relatedConcepts": [
+      "Whiteout",
+      "Confined Area Landing",
+      "Go Around",
+      "Pan Pan Urgency Call",
+      "Dynamic Rollover"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "FAA Helicopter Flying Handbook — Brownout Conditions"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Brownout",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Landing in Degraded Visual Environment"
+      },
+      {
+        "label": "SKYbrary — Helicopter Brownout",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0074",
+    "id": "0074",
+    "displayTerm": "Whiteout",
+    "term": "whiteout",
+    "slug": "whiteout",
+    "category": "Helicopter Operations",
+    "meaningEn": "Whiteout is a visibility condition where snow or ice particles obscure visual references, eliminating contrast between surface and sky during helicopter operations.",
+    "meaningPt": "Whiteout.\n\nCondição de visibilidade em que partículas de neve ou gelo obscurecem referências visuais, eliminando contraste entre superfície e céu.",
+    "whenUsed": "When Whiteout conditions exist, the pilot should:",
+    "example": "Approach: ANAC123, roger whiteout caution, report safe on the ground.",
+    "sayPhrase": "Landing snow-covered helipad, caution whiteout conditions, ANAC123.",
+    "icaoQuestion": "What is whiteout and how does it differ from brownout?",
+    "icaoSpeakText": "Whiteout occurs when snow or ice particles obscure visual references, eliminating contrast between surface and sky. Brownout is the same phenomenon with dust or sand. Both require stabilized approach technique, hover references, and readiness to go around. I would inform ATC of caution whiteout conditions, maintain instrument reference, and declare Pan Pan if disoriented.",
+    "missionBrief": "Today's lesson covers whiteout — a visibility condition as dangerous as brownout, but in snow and ice environments.\n\nWhiteout occurs when snow or ice particles suspended by rotor downwash eliminate visual contrast with the horizon and surface.\n\nIn the H130, whiteout risk exists in southern Brazilian highland operations and any snow-covered landing site.\n\nYou must recognize whiteout risk, use instruments, and communicate clearly with ATC.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Whiteout is brownout in snow — and equally deadly.\n\nThe horizon disappears.\n\nThe surface disappears.\n\nYou may feel level when you are not.\n\nThe sequence:\n\nIdentify snow risk. Inform ATC. Instruments and references. Go around if lost.\n\nNever descend into whiteout without a go-around plan at every altitude.\n\nBrazilian pilots sometimes say \"neve\" or \"perdi o horizonte\" on frequency.\n\nUse whiteout conditions or caution whiteout — ICAO standard terms.\n\nIn the H130, trust your instruments when the world turns white.\n\nPan Pan if disoriented — do not press on blind.",
+    "operationalContext": "You are landing at a snow-covered helipad in the southern highlands near Curitiba in your H130.\n\nFresh snow covers the pad and surrounding area.\n\nBefore approach, you transmit:\n\nCuritiba Approach, ANAC123, landing snow-covered helipad one five miles south, caution whiteout conditions, will report safe on the ground.\n\nOn final, downwash lifts snow and visual references disappear.\n\nYou maintain control using the pad edge markers and instruments.\n\nYou touch down and report safe when visibility improves.",
+    "sayItCoach": "Landing snow-covered helipad, caution whiteout conditions, ANAC123.",
+    "icaoModelAnswer": "Whiteout occurs when snow or ice particles obscure visual references, eliminating contrast between surface and sky. Brownout is the same phenomenon with dust or sand. Both require stabilized approach technique, hover references, and readiness to go around. I would inform ATC of caution whiteout conditions, maintain instrument reference, and declare Pan Pan if disoriented.",
+    "memoryTrick": "**SNOW** — **S**tate whiteout caution, **N**ever lose instrument scan, **O**nly continue if references visible, **W**go around if disoriented.",
+    "operationalMeaning": "When Whiteout conditions exist, the pilot should:\n\nWhiteout reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "clear traffic from the landing area",
+      "coordinate if aircraft goes around or becomes disoriented",
+      "maintain awareness of delayed reports in whiteout conditions",
+      "request position and intentions",
+      "prepare for possible urgency or distress declarations"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger whiteout caution, report safe on the ground.",
+      "Tower: ANAC123, no traffic reported, cleared to land at your discretion.",
+      "Approach: ANAC123, say if maintaining visual reference.",
+      "Tower: ANAC123, report go-around if unable to land.",
+      "Approach: ANAC123, traffic advise when clear of the whiteout area."
+    ],
+    "pilotReadbacks": [
+      "Landing snow-covered helipad, caution whiteout conditions, ANAC123.",
+      "ANAC123, whiteout on final, maintaining instrument reference, will report touchdown.",
+      "Pan Pan Pan Pan, ANAC123, whiteout, disoriented, going around.",
+      "Tower, ANAC123, safe on the ground, whiteout landing complete.",
+      "ANAC123, unable landing due whiteout, going around for reattempt."
+    ],
+    "brazilianMistakes": "- ❌ Treating snow landing like a normal helipad approach.  \n  ✔ Identify whiteout risk and inform ATC before approach.\n\n- ❌ Saying \"nevoeiro branco\" instead of standard English.  \n  ✔ Use whiteout conditions or caution whiteout.\n\n- ❌ Continuing descent when horizon and surface are invisible.  \n  ✔ Go around immediately if spatial disorientation occurs.\n\n- ❌ Not trusting instruments when visual references are lost.  \n  ✔ Use instruments and defined hover references in whiteout.",
+    "pronunciationCoaching": "**Target Phrase:** Caution Whiteout Conditions\n\n**Pronunciation:** KAW-shun WYTE-out kon-DISH-unz\n\n**Word Stress**\n\n- Whiteout → WYTE-out\n- Caution → KAW-shun\n- Conditions → kon-DISH-unz\n\nPractice:\n\nCaution... whiteout... conditions...\n\nTogether:\n\nLanding snow-covered helipad, caution whiteout conditions, ANAC123.\n\nSpeak clearly — Approach needs to know touchdown may be delayed.",
+    "relatedConcepts": [
+      "Brownout",
+      "Go Around",
+      "Pan Pan Urgency Call",
+      "Confined Area Landing",
+      "Spatial Disorientation"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "FAA Helicopter Flying Handbook — Whiteout Conditions"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Whiteout",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Degraded Visual Environment"
+      },
+      {
+        "label": "SKYbrary — Helicopter Whiteout",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0075",
+    "id": "0075",
+    "displayTerm": "Dynamic Rollover",
+    "term": "dynamic rollover",
+    "slug": "dynamic-rollover",
+    "category": "Helicopter Operations",
+    "meaningEn": "Dynamic Rollover is an accident sequence where the helicopter rolls about a fixed point on the landing gear while the rotor produces thrust, leading to catastrophic rollover.",
+    "meaningPt": "Capotagem dinâmica.\n\nSequência de acidente em que o helicóptero capota sobre um ponto fixo do trem de pouso enquanto o rotor produz empuxo.",
+    "whenUsed": "When Dynamic Rollover risk exists, the pilot should:",
+    "example": "Tower: ANAC123, Mayday acknowledged, say souls on board and injuries.",
+    "sayPhrase": "Mayday Mayday Mayday, ANAC123, dynamic rollover, aircraft on its side, request emergency services.",
+    "icaoQuestion": "What causes dynamic rollover and how do you prevent it?",
+    "icaoSpeakText": "Dynamic rollover occurs when the helicopter pivots about a fixed point on the landing gear while the rotor produces thrust. Causes include excessive slope angle, one skid on a fixed object, or sideward drift during hover. Prevention includes staying within slope limits, avoiding hover on unsecured surfaces, and lowering collective immediately if roll tendency is felt. If rollover occurs, declare Mayday and request emergency services.",
+    "missionBrief": "Today's lesson covers dynamic rollover — one of the most insidious helicopter accidents.\n\nDynamic Rollover occurs when the helicopter pivots about one skid or wheel while the rotor still produces thrust, rolling the aircraft onto its side.\n\nIn the H130, dynamic rollover risk exists on slopes, uneven ground, and during hover with one skid on a fixed object.\n\nYou must recognize the conditions and inform ATC immediately if a rollover occurs or is imminent.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Dynamic rollover is silent until it is catastrophic.\n\nIt starts with one skid on something that moves — or a slope too steep.\n\nThe only recovery: lower collective immediately.\n\nNot gently. Immediately.\n\nIf you feel roll tendency — collective down now.\n\nBrazilian pilots rarely report near-misses — but near-misses are training gold.\n\nUse dynamic rollover tendency or aircraft unstable — ICAO standard terms.\n\nIn the H130, slope limits and hover surface condition are not suggestions.\n\nTrain on slopes with an instructor before solo remote operations.\n\nIf rollover occurs — Mayday, souls on board, injuries, fuel leak.",
+    "operationalContext": "You are hover taxiing to a helipad at a construction site near São Paulo in your H130.\n\nOne skid contacts a wooden plank that shifts under weight.\n\nYou feel the aircraft begin to roll right and lower collective immediately.\n\nThe roll stops but the aircraft is unstable.\n\nYou transmit:\n\nMayday Mayday Mayday, São Paulo Tower, ANAC123, dynamic rollover tendency on helipad, aircraft stable, request emergency services standby.\n\nTower dispatches fire and rescue.\n\nYou shut down safely and report no injuries.",
+    "sayItCoach": "Mayday Mayday Mayday, ANAC123, dynamic rollover tendency, aircraft stable, request emergency services standby.",
+    "icaoModelAnswer": "Dynamic rollover occurs when the helicopter pivots about a fixed point on the landing gear while the rotor produces thrust. Causes include excessive slope angle, one skid on a fixed object, or sideward drift during hover. Prevention includes staying within slope limits, avoiding hover on unsecured surfaces, and lowering collective immediately if roll tendency is felt. If rollover occurs, declare Mayday and request emergency services.",
+    "memoryTrick": "**ROLL** — **R**ecognize slope and surface risk, **O**ne skid fixed means danger, **L**ower collective immediately if rolling, **L**and Mayday if event occurs.",
+    "operationalMeaning": "When Dynamic Rollover risk exists, the pilot should:\n\nDynamic Rollover reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "dispatch emergency services immediately",
+      "clear the area of other traffic",
+      "request souls on board and injuries",
+      "coordinate with airport fire and rescue",
+      "notify authorities of accident location"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, Mayday acknowledged, say souls on board and injuries.",
+      "Tower: ANAC123, emergency services dispatched, remain clear of the aircraft.",
+      "Ground: ANAC123, fire rescue en route, say if fuel leak present.",
+      "Tower: ANAC123, report when area is safe.",
+      "Approach: ANAC123, accident location noted, all traffic cleared from your area."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, ANAC123, dynamic rollover, aircraft on its side, request emergency services.",
+      "Mayday Mayday Mayday, ANAC123, rollover tendency, aircraft stable, souls on board two, no injuries.",
+      "Pan Pan Pan Pan, ANAC123, unstable on slope, request assistance on the ground.",
+      "Tower, ANAC123, dynamic rollover event, shut down complete, no fuel leak.",
+      "ANAC123, emergency services requested, position construction helipad São Paulo."
+    ],
+    "brazilianMistakes": "- ❌ Hovering on unsecured or sloped surfaces without assessment.  \n  ✔ Assess surface and slope before touchdown — stay within limits.\n\n- ❌ Raising collective when roll tendency is felt.  \n  ✔ Lower collective immediately — raising collective worsens rollover.\n\n- ❌ Saying \"quase capotou\" instead of standard English.  \n  ✔ Use dynamic rollover tendency or aircraft unstable.\n\n- ❌ Not declaring Mayday after a rollover event.  \n  ✔ Mayday immediately — request emergency services and report injuries.",
+    "pronunciationCoaching": "**Target Phrase:** Mayday Mayday Mayday, Dynamic Rollover Tendency\n\n**Pronunciation:** MAY-day MAY-day MAY-day, dy-NAM-ik ROHL-oh-ver TEN-den-see\n\n**Word Stress**\n\n- Dynamic → dy-NAM-ik\n- Rollover → ROHL-oh-ver\n- Tendency → TEN-den-see\n\nPractice:\n\nMayday... Mayday... Mayday...\n\nTogether:\n\nMayday Mayday Mayday, ANAC123, dynamic rollover tendency, aircraft stable, request emergency services standby.\n\nSpeak clearly — Tower needs souls on board and injury status.",
+    "relatedConcepts": [
+      "Slope Landing",
+      "Confined Area Landing",
+      "Brownout",
+      "Mayday Distress Call",
+      "Emergency Landing"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "FAA Helicopter Flying Handbook — Dynamic Rollover"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Dynamic Rollover",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Slope and Rollover Limitations"
+      },
+      {
+        "label": "SKYbrary — Helicopter Dynamic Rollover",
+        "href": "https://skybrary.aero"
+      }
+    ]
   }
 ];

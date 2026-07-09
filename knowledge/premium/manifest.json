@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "completedCount": 65,
-  "pendingCount": 445,
+  "completedCount": 75,
+  "pendingCount": 435,
   "concepts": [
     {
       "id": "0001",
@@ -457,6 +457,76 @@
       "slug": "0065-rotor-rpm-low",
       "status": "complete",
       "completedAt": "2026-07-08"
+    },
+    {
+      "id": "0066",
+      "concept": "Autorotation",
+      "slug": "0066-autorotation",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0067",
+      "concept": "Hover Taxi",
+      "slug": "0067-hover-taxi",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0068",
+      "concept": "Air Taxi",
+      "slug": "0068-air-taxi",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0069",
+      "concept": "Running Landing",
+      "slug": "0069-running-landing",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0070",
+      "concept": "Confined Area Landing",
+      "slug": "0070-confined-area-landing",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0071",
+      "concept": "Pinnacle Landing",
+      "slug": "0071-pinnacle-landing",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0072",
+      "concept": "Slope Landing",
+      "slug": "0072-slope-landing",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0073",
+      "concept": "Brownout",
+      "slug": "0073-brownout",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0074",
+      "concept": "Whiteout",
+      "slug": "0074-whiteout",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0075",
+      "concept": "Dynamic Rollover",
+      "slug": "0075-dynamic-rollover",
+      "status": "complete",
+      "completedAt": "2026-07-09"
     }
   ]
 }
