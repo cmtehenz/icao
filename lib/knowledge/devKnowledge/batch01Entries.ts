@@ -9788,5 +9788,2315 @@ export const BATCH01_DEV_ENTRIES: DevKnowledgeEntry[] = [
         "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
       }
     ]
+  },
+  {
+    "catalogId": "0126",
+    "id": "0126",
+    "displayTerm": "Read Back",
+    "term": "read back",
+    "slug": "read-back",
+    "category": "Radio Communication",
+    "meaningEn": "Read Back is the procedure by which a receiving station repeats received information back to the transmitting station to confirm correct receipt. In aviation, it refers specifically to the pilot repeating ATC clearances, instructions, and safety-related information verbatim or in ICAO-standard abbreviated form.",
+    "meaningPt": "Leitura de volta / Readback.\n\nProcedimento pelo qual a estação receptora repete as informações recebidas para confirmar o recebimento correto. Na aviação, refere-se ao piloto repetindo instruções e autorizações do controle de tráfego aéreo de forma fiel ou em forma abreviada ICAO-padrão.",
+    "whenUsed": "When ATC issues an instruction requiring readback, the pilot should:",
+    "example": "Approach: ANAC123, descend to altitude three thousand, QNH one zero one three.",
+    "sayPhrase": "Descend altitude three thousand, QNH one zero one three, ANAC123.",
+    "icaoQuestion": "Why is it insufficient to reply only \"Roger\" when ATC issues a runway clearance?",
+    "icaoSpeakText": "Roger confirms receipt of a message but does not demonstrate that the specific content was correctly understood. ICAO requires a readback of runway assignments, altitudes, and other safety-critical instructions so that ATC can verify the correct information was received. If I read back the wrong runway, ATC can correct me before I take action. Roger alone gives ATC no way to detect a miscommunication.",
+    "missionBrief": "Today's lesson covers Read Back — one of the most fundamental safety procedures in aviation radio communication.\n\nRead Back is not optional. It is required.\n\nICAO mandates that pilots read back specific ATC clearances and instructions to confirm correct receipt. When ATC hears a correct readback, it closes the communication loop and confirms the pilot has understood.\n\nIn the H130, flying between Congonhas, Navegantes, and Curitiba, you will issue and receive dozens of readbacks per flight. Errors in readback — or failure to read back — are among the most cited ICAO Level 4 deficiencies in Brazilian pilot assessments.\n\nThis lesson builds the habit of precise, complete, professional readback.",
+    "captainTeaching": "Read Back is not a formality — it is a safety system.\n\nICAO designed it as a cross-check between two human beings communicating in a noisy, high-workload environment.\n\nThe controller issues. You read back. They verify. If something is wrong, they correct before you act.\n\nBrazilian pilots often shorten readbacks under pressure. The frequency is busy. There is workload. It feels faster to say \"Roger, ANAC123\" and get back to flying.\n\nThat shortcut is the readback failure mode.\n\nTrain the full readback. Runway number. Altitude. QNH. Taxi route. All of it.\n\nIt takes three extra seconds.\n\nThose three seconds may one day prevent a runway incursion, an altitude bust, or a traffic conflict.\n\nRead Back is not bureaucracy — it is your last safety net before the aircraft moves.",
+    "operationalContext": "You are inbound to Congonhas in your H130.\n\nApproach transmits:\n\nANAC123, descend to altitude three thousand, QNH one zero one three.\n\nYou must read back:\n\nDescend altitude three thousand, QNH one zero one three, ANAC123.\n\nApproach then clears you to land:\n\nANAC123, cleared to land runway one seven right.\n\nYou read back:\n\nCleared to land runway one seven right, ANAC123.\n\nIf you had said only \"Roger\" after either transmission, Approach could not confirm you received the correct altitude or runway. A confusion between runway one seven left and one seven right could result in a conflict with departing traffic.\n\nRead Back closes the loop. It saves lives.",
+    "sayItCoach": "Cleared to land runway two eight left, ANAC123.",
+    "icaoModelAnswer": "Roger confirms receipt of a message but does not demonstrate that the specific content was correctly understood. ICAO requires a readback of runway assignments, altitudes, and other safety-critical instructions so that ATC can verify the correct information was received. If I read back the wrong runway, ATC can correct me before I take action. Roger alone gives ATC no way to detect a miscommunication.",
+    "memoryTrick": "**LOOP** — **L**isten completely, **O**utput the key values, **O**mit nothing critical, **P**ause for ATC acknowledgement.",
+    "operationalMeaning": "When ATC issues an instruction requiring readback, the pilot should:\n\nRead Back operations commonly include:",
+    "whyAtcUsesIt": [
+      "confirm the pilot received the correct clearance",
+      "detect mis-hearings before they become incidents",
+      "verify the readback contains the right altitude, runway, or routing",
+      "satisfy ICAO safety standards for safety-critical information",
+      "maintain separation assurance through communication confirmation"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, descend to altitude three thousand, QNH one zero one three.",
+      "Tower: ANAC123, cleared to land runway two eight left, wind two seven zero at one two knots.",
+      "Ground: ANAC123, taxi to holding point runway two eight left via taxiway bravo.",
+      "Approach: ANAC123, fly heading two four zero, intercept localizer.",
+      "Control: ANAC123, squawk four four five two."
+    ],
+    "pilotReadbacks": [
+      "Descend altitude three thousand, QNH one zero one three, ANAC123.",
+      "Cleared to land runway two eight left, ANAC123.",
+      "Taxi holding point runway two eight left via taxiway bravo, ANAC123.",
+      "Fly heading two four zero, intercept localizer, ANAC123.",
+      "Squawk four four five two, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Replacing the readback with only \"Roger, ANAC123.\"  \n  ✔ Repeat the specific instruction: Cleared to land runway two eight left, ANAC123.\n\n- ❌ Paraphrasing or summarizing instead of repeating key elements.  \n  ✔ Use ICAO-standard terminology and repeat the critical values verbatim.\n\n- ❌ Omitting the callsign from the readback.  \n  ✔ Include your callsign at the start or end of every readback.\n\n- ❌ Reading back altitude in meters when ATC issued feet, or vice versa.  \n  ✔ Use the same units ATC used, or confirm the units explicitly.",
+    "pronunciationCoaching": "**Target Phrase:** Cleared to land runway two eight left, ANAC123.\n\n**Pronunciation:** KLEERD too land RUN-way too AYT left, ay-NAK wun too three.\n\n**Word Stress**\n\n- Cleared → KLEERD (strong)\n- Runway → RUN-way\n- Numbers → individual digits — two eight (not twenty-eight)\n\nPractice:\n\nCleared... to land... runway... two eight left...\n\nTogether:\n\nCleared to land runway two eight left, ANAC123.\n\nSpeak runway digits individually — two eight, not twenty-eight.",
+    "relatedConcepts": [
+      "Roger",
+      "Wilco",
+      "Affirm",
+      "Negative",
+      "Say Again",
+      "Correction"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures, Chapter 5",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Read Back Requirements",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Radio Communications",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Read Back",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Read-Back/Hear-Back Errors",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0127",
+    "id": "0127",
+    "displayTerm": "Say Again",
+    "term": "say again",
+    "slug": "say-again",
+    "category": "Radio Communication",
+    "meaningEn": "Say Again is the ICAO-standard phrase used to request that all or part of a previous transmission be repeated. It replaces the word \"repeat\" in aviation radio communication and is used when a message was not received clearly, was partially lost, or needs to be confirmed.",
+    "meaningPt": "Repita / Diga novamente.\n\nFrase ICAO padrão para solicitar que toda ou parte de uma transmissão anterior seja repetida. Substitui a palavra \"repeat\" nas comunicações de rádio aeronáutico e é usada quando a mensagem não foi recebida claramente, foi parcialmente perdida ou precisa ser confirmada.",
+    "whenUsed": "When a transmission is unclear, the pilot should:",
+    "example": "Approach: ANAC123, say again your altitude.",
+    "sayPhrase": "Say again, ANAC123.",
+    "icaoQuestion": "What is the correct ICAO phrase to use when you did not clearly receive an ATC transmission? Why is \"repeat\" avoided in aviation?",
+    "icaoSpeakText": "The correct phrase is Say Again. In aviation, repeat has a historical military association meaning \"fire again\" and could be misinterpreted on a frequency shared by military and civil traffic. ICAO standardized Say Again to eliminate this ambiguity. If I only missed part of the message, I can say Say Again all after the last word I understood, or request the specific element I missed, such as Say Again the runway.",
+    "missionBrief": "Today's lesson covers Say Again — the correct ICAO phrase to request a repetition of an ATC transmission.\n\nIn aviation, you never say \"repeat.\" Repeat has a military meaning (fire again) and is avoided on aviation frequencies.\n\nSay Again is the standard phrase. It is short, clear, and internationally understood.\n\nIn the H130, operating into Florianópolis or Joinville where radio frequency congestion is common, you will regularly encounter transmissions you did not fully receive. Knowing when and how to request Say Again — including partial Say Again for specific elements — is a core ICAO Level 4 skill.",
+    "captainTeaching": "Say Again is a professional tool, not an admission of failure.\n\nBrazilian pilots sometimes hesitate to ask for Say Again because they feel it reveals a weakness. They hear a partial message, guess, and press on.\n\nThat is the dangerous path.\n\nThe professional path is: I did not fully receive that transmission. I will not act on incomplete data. I will request Say Again.\n\nThere is no shame in a Say Again request. There is great risk in not making one.\n\nIn the H130, flying single-pilot in busy Brazilian terminal areas, radio congestion will step on transmissions. This is normal. Request Say Again without hesitation.\n\nUse partial Say Again when only one element was lost:\n\nSay again the runway, ANAC123.\n\nSay again altitude, ANAC123.\n\nSay again all after \"cleared to,\" ANAC123.\n\nThese are precise, professional tools.\n\nUse them.",
+    "operationalContext": "You are departing Florianópolis in your H130.\n\nDeparture transmits and you hear only part of the message:\n\nANAC123, climb... [static]... four zero, fly heading...\n\nYou missed the altitude and heading. You transmit:\n\nANAC123, say again.\n\nDeparture repeats:\n\nANAC123, climb to flight level one four zero, fly heading zero three five.\n\nNow you have complete information. You read back:\n\nClimb flight level one four zero, fly heading zero three five, ANAC123.\n\nIf you had guessed \"maybe they said one two zero\" and climbed to the wrong level, you could have violated a traffic restriction.\n\nSay Again prevented that.",
+    "sayItCoach": "ANAC123, say again the altitude.",
+    "icaoModelAnswer": "The correct phrase is Say Again. In aviation, repeat has a historical military association meaning \"fire again\" and could be misinterpreted on a frequency shared by military and civil traffic. ICAO standardized Say Again to eliminate this ambiguity. If I only missed part of the message, I can say Say Again all after the last word I understood, or request the specific element I missed, such as Say Again the runway.",
+    "memoryTrick": "**AGAIN** — **A**sk before acting, **G**uessing is dangerous, **A**viation never says repeat, **I**solate the specific element if possible, **N**ever assume you heard correctly.",
+    "operationalMeaning": "When a transmission is unclear, the pilot should:\n\nSay Again operations commonly include:",
+    "whyAtcUsesIt": [
+      "radio interference and frequency congestion are normal",
+      "stepped transmissions occur regularly",
+      "safety depends on clear information exchange",
+      "it is far better to ask than to act on incorrect information",
+      "ICAO explicitly authorizes and encourages Say Again requests"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, say again your altitude.",
+      "Tower: ANAC123, say again request.",
+      "Approach: ANAC123, say again all after \"climb to.\"",
+      "Ground: ANAC123, say again last transmission, you were broken.",
+      "Control: ANAC123, say again squawk code."
+    ],
+    "pilotReadbacks": [
+      "Say again, ANAC123.",
+      "ANAC123, say again altitude clearance.",
+      "ANAC123, say again all after \"descend to.\"",
+      "ANAC123, say again — you were blocked.",
+      "ANAC123, say again the runway, please."
+    ],
+    "brazilianMistakes": "- ❌ Using \"repeat\" instead of the ICAO-standard phrase.  \n  ✔ Use Say Again — always, without exception, on aviation frequencies.\n\n- ❌ Guessing at an unclear altitude or runway instead of requesting Say Again.  \n  ✔ Never act on incomplete information. Request Say Again before acting.\n\n- ❌ Saying \"Can you say again?\" with unnecessary words.  \n  ✔ Keep it concise: Say again, ANAC123. Or Say again the altitude, ANAC123.\n\n- ❌ Not specifying which part was missed, requiring a full retransmission.  \n  ✔ Use Say Again all after [word] or Say Again [specific element] to save frequency time.",
+    "pronunciationCoaching": "**Target Phrase:** Say Again\n\n**Pronunciation:** SAY uh-GEN\n\n**Word Stress**\n\n- Say → SAY (clear, strong)\n- Again → uh-GEN (stress on second syllable)\n\nPractice:\n\nSay... Again... Say Again...\n\nTogether:\n\nANAC123, say again the altitude.\n\nSay the phrase firmly and clearly — do not rush it.",
+    "relatedConcepts": [
+      "Read Back",
+      "Roger",
+      "Correction",
+      "Confirm",
+      "Verify",
+      "Words Twice"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures, Chapter 5",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Communication Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Radio Communications",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Say Again",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Radiotelephony",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0128",
+    "id": "0128",
+    "displayTerm": "Roger",
+    "term": "roger",
+    "slug": "roger",
+    "category": "Radio Communication",
+    "meaningEn": "Roger is the ICAO-standard word used to indicate that a received message has been received in full. It does not indicate compliance, agreement, or action. It is a receipt confirmation only.",
+    "meaningPt": "Recebido / Entendido (no sentido de \"recebi\").\n\nPalavra ICAO padrão para indicar que a mensagem recebida foi recebida integralmente. Não indica conformidade, concordância ou ação. É apenas uma confirmação de recebimento.",
+    "whenUsed": "When to use Roger:",
+    "example": "Approach: ANAC123, roger, continue approach, report outer marker.",
+    "sayPhrase": "Roger, wilco, ANAC123.",
+    "icaoQuestion": "What does Roger mean in ICAO radio communication? How is it different from Wilco?",
+    "icaoSpeakText": "Roger means I have received your last transmission in full. It confirms receipt only — not compliance and not understanding of specific values. Wilco means I have received the message and I will comply. If ATC instructs me to contact approach on a new frequency, I might say Wilco to indicate I will take the action. If ATC tells me traffic information that requires no compliance, I say Roger to confirm I received it.",
+    "missionBrief": "Today's lesson covers Roger — one of the most used and most misused words in aviation radio communication.\n\nRoger means: I have received all of your last transmission.\n\nThat is its complete meaning. Nothing more.\n\nRoger does not mean I will comply. It does not mean I agree. It does not mean the action is done. It simply confirms receipt of a message.\n\nIn the H130, operating into Congonhas, Curitiba, or São Paulo, understanding the precise meaning of Roger — and knowing when to use it versus Wilco, Affirm, or a full readback — is fundamental to ICAO Level 4 proficiency and to safe operations.",
+    "captainTeaching": "Roger is the simplest word in aviation radio.\n\nAnd the most misused.\n\nBrazilian pilots often say \"Roger, ANAC123\" after every ATC transmission — including runway clearances, altitudes, and taxi instructions — because it feels like an acknowledgement.\n\nIt is an acknowledgement. But it is not a readback.\n\nATC does not know what you heard when you say Roger.\n\nThey know the message arrived. They do not know if you wrote down the right altitude. They do not know if you heard runway one seven left or one seven right.\n\nOnly a readback tells them that.\n\nRoger and readback are different tools:\n\nRoger — confirms the message arrived.\n\nReadback — confirms the message arrived with the correct content.\n\nUse Roger for information and advisory messages.\n\nUse a readback for clearances, instructions, and safety-critical values.\n\nMaster this distinction. It is a key ICAO Level 4 differentiator.",
+    "operationalContext": "You are operating over the coast inbound to Florianópolis in your H130.\n\nApproach asks if you have the weather information:\n\nANAC123, do you have ATIS information bravo?\n\nYou reply:\n\nAffirm, information bravo, ANAC123.\n\nApproach responds:\n\nRoger, ANAC123.\n\nThat Roger means: I received your confirmation. Nothing more.\n\nNow Approach clears you for the approach:\n\nANAC123, cleared ILS runway two eight, descend to altitude two thousand.\n\nYou must read back — Roger alone is insufficient:\n\nCleared ILS runway two eight, descend altitude two thousand, ANAC123.\n\nApproach confirms:\n\nRoger, ANAC123 — that readback was correct.\n\nRoger in Approach's response is acknowledging the readback was received.",
+    "sayItCoach": "Roger, ANAC123.",
+    "icaoModelAnswer": "Roger means I have received your last transmission in full. It confirms receipt only — not compliance and not understanding of specific values. Wilco means I have received the message and I will comply. If ATC instructs me to contact approach on a new frequency, I might say Wilco to indicate I will take the action. If ATC tells me traffic information that requires no compliance, I say Roger to confirm I received it.",
+    "memoryTrick": "**ROGER = Receipt Only** — Roger confirms the radio message **R**eached you. It says nothing about what you will **O**r will not do. Never replace a **G**enuine readback with just **E**xtra Roger **R**esponses.",
+    "operationalMeaning": "When to use Roger:\n\nWhen NOT to use Roger alone:\n\nRoger operations commonly include:",
+    "whyAtcUsesIt": [
+      "acknowledging a pilot report received with no further action needed",
+      "confirming a request has been noted and is being worked",
+      "acknowledging position or status information from the pilot",
+      "closing a routine exchange that requires no specific ATC action"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger, continue approach, report outer marker.",
+      "Tower: ANAC123, roger your request, standby.",
+      "Approach: ANAC123, roger, traffic information, Airbus in your two o'clock, five miles.",
+      "Control: ANAC123, roger, position noted.",
+      "Ground: ANAC123, roger, taxi clearance to follow shortly."
+    ],
+    "pilotReadbacks": [
+      "Roger, wilco, ANAC123.",
+      "ANAC123, roger, continuing approach.",
+      "Roger, ANAC123 — traffic in sight.",
+      "ANAC123, roger, standing by.",
+      "Roger, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Using \"Roger, ANAC123\" in place of a readback after a runway or altitude clearance.  \n  ✔ Read back the specific values: Cleared to land runway two eight, ANAC123.\n\n- ❌ Confusing Roger with Affirm — using Roger to answer a yes/no question.  \n  ✔ Use Affirm for yes and Negative for no. Roger is for general receipt confirmation.\n\n- ❌ Using Roger to indicate compliance — saying \"Roger\" when you mean \"I will do it.\"  \n  ✔ Use Wilco to indicate compliance with an instruction.\n\n- ❌ Adding filler words: \"OK, Roger, understood, ANAC123.\"  \n  ✔ Keep it clean: Roger, ANAC123. — or provide the required readback.",
+    "pronunciationCoaching": "**Target Phrase:** Roger\n\n**Pronunciation:** RAH-jer\n\n**Word Stress**\n\n- Roger → RAH-jer (stress on first syllable)\n\nPractice:\n\nRog... Rog-er... Roger...\n\nTogether:\n\nRoger, ANAC123.\n\nClear, short, confident. Not drawn out.",
+    "relatedConcepts": [
+      "Wilco",
+      "Affirm",
+      "Negative",
+      "Read Back",
+      "Confirm",
+      "Say Again"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures, Chapter 5",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Standard Words and Phrases",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Phonetic Alphabet and Standard Words",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Roger",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Radiotelephony Standard Words",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0129",
+    "id": "0129",
+    "displayTerm": "Wilco",
+    "term": "wilco",
+    "slug": "wilco",
+    "category": "Radio Communication",
+    "meaningEn": "Wilco is an ICAO-standard word meaning I have received your message and will comply with it. It is a contraction of will comply. It indicates both receipt and the pilot's commitment to execute the instruction as issued.",
+    "meaningPt": "Executarei / Cumprirei.\n\nPalavra ICAO padrão que significa \"recebi a mensagem e cumprirei a instrução.\" É uma contração de will comply (cumprirei). Indica tanto o recebimento quanto o compromisso do piloto de executar a instrução.",
+    "whenUsed": "When to use Wilco:",
+    "example": "Approach: ANAC123, contact Joinville Tower on one one nine decimal seven.",
+    "sayPhrase": "Wilco, ANAC123. (frequency change accepted)",
+    "icaoQuestion": "When should a pilot use Wilco rather than Roger? Can you use them together?",
+    "icaoSpeakText": "Wilco should be used when ATC issues an instruction and the pilot intends to comply. Roger only confirms receipt, while Wilco confirms both receipt and commitment to action. For example, if ATC says \"contact Tower when established,\" I would say Wilco, not Roger, because compliance is expected. ICAO states that Roger and Wilco should not be combined, because Wilco already implies the message was received. Saying \"Roger Wilco\" is redundant and non-standard.",
+    "missionBrief": "Today's lesson covers Wilco — a critical ICAO standard word that every professional pilot must use correctly.\n\nWilco is a contraction of will comply. It means: I have received your message and I will carry out the instruction.\n\nWilco is stronger than Roger. Roger confirms receipt. Wilco confirms receipt AND commitment to action.\n\nIn the H130, flying into Curitiba, Joinville, or Congonhas, knowing exactly when Wilco is the right word — and why it is different from Roger, Affirm, and a full readback — is an essential ICAO Level 4 proficiency marker.",
+    "captainTeaching": "Wilco is a commitment.\n\nWhen you say Wilco, you are telling ATC: I received your instruction and I will carry it out.\n\nThat is a professional contract between pilot and controller.\n\nBrazilian pilots sometimes confuse Roger and Wilco, using them interchangeably. They are not interchangeable.\n\nRoger: I received the message.\n\nWilco: I received the message and I will do it.\n\nThe difference matters when ATC issues instructions like \"report ready,\" \"contact Tower,\" or \"advise when you have information.\" These are action items. ATC expects compliance. Wilco signals that compliance.\n\nAlso critical: never say \"Roger, Wilco.\" ICAO specifically prohibits this combination because it is redundant. Wilco already implies receipt. Choose one or the other based on whether compliance is expected.\n\nIn the H130, flying single-pilot, these distinctions keep you sounding professional, crisp, and in command.\n\nSay what you mean. Use the right word.",
+    "operationalContext": "You are tracking inbound to Curitiba in your H130.\n\nApproach transmits:\n\nANAC123, contact Curitiba Tower on one one eight decimal one when established on localizer.\n\nYou do not need to read back a specific value — this is an instruction to change frequency at a specific point. You respond:\n\nWilco, ANAC123.\n\nThis tells Approach: I received the instruction and I will contact Tower when established.\n\nNow Approach adds:\n\nANAC123, report outer marker inbound.\n\nYou respond:\n\nANAC123, wilco.\n\nBoth uses confirm receipt and commitment to action — without requiring a full readback of specific numeric values.\n\nIf instead Approach had given you an altitude: ANAC123, descend to altitude four thousand — you would read back the altitude. Wilco alone would be insufficient because ATC needs to hear the altitude to verify it was received correctly.",
+    "sayItCoach": "Wilco, ANAC123.",
+    "icaoModelAnswer": "Wilco should be used when ATC issues an instruction and the pilot intends to comply. Roger only confirms receipt, while Wilco confirms both receipt and commitment to action. For example, if ATC says \"contact Tower when established,\" I would say Wilco, not Roger, because compliance is expected. ICAO states that Roger and Wilco should not be combined, because Wilco already implies the message was received. Saying \"Roger Wilco\" is redundant and non-standard.",
+    "memoryTrick": "**WILCO = Will Comply** — When you say **W**ilco you are making a **I**CAO-standard **L**ive commitment to **C**arry **O**ut the instruction.",
+    "operationalMeaning": "When to use Wilco:\n\nWhen NOT to use Wilco alone:\n\nWilco operations commonly include:",
+    "whyAtcUsesIt": [
+      "confirm the pilot will execute the instruction",
+      "close communication loops on action items",
+      "differentiate compliance from simple receipt",
+      "ensure critical actions will be performed"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, contact Joinville Tower on one one nine decimal seven.",
+      "Tower: ANAC123, report when ready for departure.",
+      "Approach: ANAC123, report abeam the field.",
+      "Control: ANAC123, advise when you have ATIS information.",
+      "Ground: ANAC123, call ready for taxi when fueling is complete."
+    ],
+    "pilotReadbacks": [
+      "Wilco, ANAC123. (frequency change accepted)",
+      "ANAC123, wilco — will report ready.",
+      "ANAC123, wilco — will report abeam.",
+      "Wilco, ANAC123 — will advise when we have ATIS.",
+      "ANAC123, wilco — will call when fueling complete."
+    ],
+    "brazilianMistakes": "- ❌ Using \"Roger, Wilco\" together.  \n  ✔ Choose one: Roger for receipt only, Wilco for receipt plus compliance.\n\n- ❌ Using Wilco in place of a readback when specific values were issued.  \n  ✔ If ATC issues an altitude, you must read it back — Wilco alone is not sufficient.\n\n- ❌ Using Roger when compliance is expected, leaving ATC unsure if you will act.  \n  ✔ Use Wilco when the instruction requires a specific action from you.\n\n- ❌ Adding \"OK, Wilco, OK\" with filler words.  \n  ✔ Wilco, ANAC123. — clean, complete, professional.",
+    "pronunciationCoaching": "**Target Phrase:** Wilco\n\n**Pronunciation:** WIL-koh\n\n**Word Stress**\n\n- Wilco → WIL-koh (stress on first syllable)\n\nPractice:\n\nWil... Wil-co... Wilco...\n\nTogether:\n\nWilco, ANAC123.\n\nShort, clear, confident. One breath.",
+    "relatedConcepts": [
+      "Roger",
+      "Unable",
+      "Affirm",
+      "Negative",
+      "Read Back",
+      "Confirm"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures, Chapter 5",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Standard Words and Phrases",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Radiotelephony",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Wilco",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Standard Radiotelephony Words",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0130",
+    "id": "0130",
+    "displayTerm": "Unable",
+    "term": "unable",
+    "slug": "unable",
+    "category": "Radio Communication",
+    "meaningEn": "Unable is the ICAO-standard word used to inform ATC that the pilot cannot comply with an ATC clearance, instruction, or request. It is used when compliance is not possible due to aircraft performance, equipment limitations, weather, regulations, or safety concerns.",
+    "meaningPt": "Impossível / Não consigo cumprir.\n\nPalavra ICAO padrão utilizada para informar ao controle que o piloto não pode cumprir uma autorização, instrução ou solicitação do ATC. É usada quando o cumprimento não é possível devido ao desempenho da aeronave, limitações de equipamento, condições meteorológicas, regulamentos ou preocupações de segurança.",
+    "whenUsed": "When to use Unable:",
+    "example": "Approach: ANAC123, unable to approve request, traffic.",
+    "sayPhrase": "ANAC123, unable flight level one eight zero, request flight level one four zero.",
+    "icaoQuestion": "A controller clears you to an altitude your aircraft cannot reach today due to performance. What do you say, and why is it important to respond immediately?",
+    "icaoSpeakText": "I would transmit: ANAC123, unable [altitude], maximum today [my limit], request [my limit]. It is essential to respond immediately because ATC is planning separation and sequencing based on the assumption that I will reach the assigned altitude. If I say nothing and begin climbing while unable to comply, ATC may issue conflicting instructions to other traffic believing I will reach the assigned level. Immediate communication of Unable allows ATC to reroute or resequence safely.",
+    "missionBrief": "Today's lesson covers Unable — one of the most important and most underused words in aviation radio communication.\n\nUnable means: I cannot comply with your instruction or clearance.\n\nIt is simple, direct, and required when a pilot genuinely cannot execute what ATC has assigned.\n\nBrazilian pilots are often reluctant to say Unable. There is a cultural tendency to accept ATC instructions without question, even when compliance would compromise safety or exceed aircraft limitations.\n\nIn the H130, flying into Congonhas, Florianópolis, or Joinville, knowing when and how to say Unable — and what to offer in its place — is a critical ICAO Part 2 and Part 3 skill. It may be the most important word you ever transmit.",
+    "captainTeaching": "Unable is your most important safety word.\n\nIt is also the word Brazilian pilots are most reluctant to use.\n\nThe cultural bias in Brazil toward acceptance — toward not inconveniencing the controller or the sequence — sometimes overrides a pilot's professional judgment.\n\nThis is the wrong bias to carry in the flight deck.\n\nATC issues instructions based on available information. They do not always know your performance ceiling. They do not know your equipment status. They do not know your passenger situation.\n\nYou do.\n\nWhen an instruction exceeds what you can safely execute, Unable is the professional response.\n\nIt is not disobedience. It is communication.\n\nAfter Unable, offer what you can:\n\nUnable flight level one eight zero, request flight level one four zero.\n\nUnable ILS, request RNAV approach.\n\nUnable immediate takeoff, ready in two minutes.\n\nGive ATC something to work with.\n\nIn the H130, performance limitations and equipment specifics will regularly produce situations where ATC's default clearance does not fit. Train Unable until it feels as natural as Wilco.\n\nThe day you need it, it must come out immediately.",
+    "operationalContext": "You are climbing out of Joinville in your H130.\n\nDeparture transmits:\n\nANAC123, climb to flight level one eight zero.\n\nYour H130 performance in current conditions limits you to flight level one four zero. You transmit:\n\nANAC123, unable flight level one eight zero, H130 maximum today flight level one four zero, request flight level one four zero.\n\nDeparture responds immediately:\n\nANAC123, roger, climb flight level one four zero, report reaching.\n\nYou read back and climb:\n\nClimb flight level one four zero, wilco, ANAC123.\n\nYou operated safely, professionally, and in full compliance with your aircraft limitations.\n\nIf you had said nothing and attempted to climb to flight level one eight zero, you would have accepted a clearance you could not safely execute. That is the scenario Unable prevents.",
+    "sayItCoach": "ANAC123, unable flight level one eight zero, request flight level one four zero.",
+    "icaoModelAnswer": "I would transmit: ANAC123, unable [altitude], maximum today [my limit], request [my limit]. It is essential to respond immediately because ATC is planning separation and sequencing based on the assumption that I will reach the assigned altitude. If I say nothing and begin climbing while unable to comply, ATC may issue conflicting instructions to other traffic believing I will reach the assigned level. Immediate communication of Unable allows ATC to reroute or resequence safely.",
+    "memoryTrick": "**UNABLE = Act Now** — **U**nexpected clearance beyond limits, **N**otify ATC immediately, **A**lways offer an alternative, **B**e specific about the limitation, **L**imit delay to zero, **E**xpect a revised clearance.",
+    "operationalMeaning": "When to use Unable:\n\nAfter transmitting Unable, the pilot should:\n\nUnable operations commonly include:",
+    "whyAtcUsesIt": [
+      "issuing a revised clearance or instruction",
+      "requesting the reason for inability",
+      "coordinating an alternative routing or level",
+      "accommodating the pilot's limitation in the sequence",
+      "treating the response as safety-critical information"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, unable to approve request, traffic.",
+      "Tower: ANAC123, unable immediate takeoff, hold position.",
+      "Approach: ANAC123, roger your Unable, fly heading zero nine zero, rejoin sequence.",
+      "Control: ANAC123, say reason for Unable, if able.",
+      "Approach: ANAC123, Unable accepted, cleared new routing via XINGU."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, unable flight level one eight zero, request flight level one four zero.",
+      "ANAC123, unable ILS — equipment unserviceable, request RNAV approach.",
+      "ANAC123, unable assigned speed, minimum clean speed is one six zero knots.",
+      "ANAC123, unable immediate takeoff — not ready, request two minutes.",
+      "ANAC123, unable to comply, request alternative routing."
+    ],
+    "brazilianMistakes": "- ❌ Accepting a clearance beyond aircraft limits to avoid inconveniencing ATC.  \n  ✔ Unable is a professional obligation. Transmit it clearly and immediately.\n\n- ❌ Saying only \"Unable, ANAC123\" without reason or alternative.  \n  ✔ State the limitation and offer an alternative: Unable flight level one eight zero, request one four zero.\n\n- ❌ Delaying the Unable transmission hoping the situation resolves.  \n  ✔ Transmit Unable as soon as you determine compliance is not possible.\n\n- ❌ Using \"Unable\" for preference rather than genuine limitation.  \n  ✔ Unable is for genuine inability — not inconvenience or personal preference.",
+    "pronunciationCoaching": "**Target Phrase:** Unable\n\n**Pronunciation:** un-AY-bul\n\n**Word Stress**\n\n- Unable → un-AY-bul (stress on second syllable)\n\nPractice:\n\nUn... AY... bul... Unable...\n\nTogether:\n\nANAC123, unable flight level one eight zero, request flight level one four zero.\n\nSpeak it firmly. Unable should sound decisive, not apologetic.",
+    "relatedConcepts": [
+      "Wilco",
+      "Roger",
+      "Affirm",
+      "Negative",
+      "Minimum Fuel",
+      "Pilot in Command Authority"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures, Chapter 5",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Standard Phraseology",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9432 — Manual of Radiotelephony"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Pilot Responsibility",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "SKYbrary — PIC Authority",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0131",
+    "id": "0131",
+    "displayTerm": "Stand By",
+    "term": "stand by",
+    "slug": "stand-by",
+    "category": "Radio Communication",
+    "meaningEn": "Stand By is an ICAO-standard phrase meaning do not call me — I will call you. It indicates that the addressed station should wait for a transmission on the same frequency without reinitiating contact. It does not grant any clearance or permission. It requests a brief pause in communication only.",
+    "meaningPt": "Aguarde / Espere.\n\nFrase ICAO padrão que significa \"não me chame — eu chamarei você.\" Indica que a estação destinatária deve aguardar uma transmissão na mesma frequência sem reiniciar o contato. Não concede nenhuma autorização. Solicita apenas uma breve pausa na comunicação.",
+    "whenUsed": "When ATC transmits Stand By, the pilot should:",
+    "example": "Tower: ANAC123, stand by — I have traffic on short final.",
+    "sayPhrase": "ANAC123, standing by.",
+    "icaoQuestion": "ATC says \"Stand By\" after you request a departure clearance. What does this mean, and what do you do?",
+    "icaoSpeakText": "Stand By means ATC has received my request and I should wait on the frequency for a response without re-calling. It does not grant a clearance. I would stop transmitting and wait on the frequency for ATC to come back. I would not begin my takeoff roll or move the aircraft. Only an explicit clearance authorizes action. I would re-call only if a safety issue developed or after an unreasonably long time with no response.",
+    "missionBrief": "Today's lesson covers Stand By — an ICAO-standard phrase used to request a brief pause in communication.\n\nStand By means: wait. I will call you.\n\nIt is issued by ATC when the controller needs time to handle another priority, look up information, or coordinate before responding. Pilots can also use Stand By when they need a moment before responding to a non-urgent ATC inquiry.\n\nIn the H130, flying into congested Brazilian terminal areas like Congonhas or São Paulo, Stand By is a common phrase — and understanding it correctly prevents unnecessary re-calls and frequency congestion.",
+    "captainTeaching": "Stand By is a professional pause.\n\nWhen you receive Stand By, the frequency discipline required is to go quiet.\n\nMany pilots — especially newer ones — re-call after thirty or sixty seconds because they are anxious or unsure if ATC heard them.\n\nThat re-call clogs the frequency.\n\nIf ATC said Stand By, ATC heard you. ATC is working on your request. Wait.\n\nThe exception: if a genuine safety need arises while you are standing by — another aircraft on final, an incursion developing, a mayday — you call immediately.\n\nBut for routine requests, Stand By means: be patient, stay on frequency, wait for the call.\n\nIn the H130, single-pilot operations in busy Brazilian terminal areas mean you will receive Stand By regularly. Use the time productively:\n\nCheck performance data. Review the approach plate. Confirm the ATIS. Be ready.\n\nWhen ATC returns, have your read back prepared.",
+    "operationalContext": "You are on the ground at Congonhas, holding short of runway one seven right, ready for departure.\n\nYou transmit:\n\nCongonhas Tower, ANAC123, holding short runway one seven right, ready for departure.\n\nTower is handling an arriving aircraft on short final. Tower responds:\n\nANAC123, stand by.\n\nThis means: I heard you, I am busy, do not call again, I will come back to you.\n\nYou continue to hold position and monitor the frequency.\n\nThirty seconds later:\n\nANAC123, runway one seven right, cleared for takeoff, wind one eight zero at ten.\n\nNow you have a clearance. You read back:\n\nCleared for takeoff runway one seven right, ANAC123.\n\nIf you had interpreted Stand By as permission to line up or begin your takeoff roll, that would have been a serious runway incursion error. Stand By is a pause — nothing more.",
+    "sayItCoach": "ANAC123, standing by.",
+    "icaoModelAnswer": "Stand By means ATC has received my request and I should wait on the frequency for a response without re-calling. It does not grant a clearance. I would stop transmitting and wait on the frequency for ATC to come back. I would not begin my takeoff roll or move the aircraft. Only an explicit clearance authorizes action. I would re-call only if a safety issue developed or after an unreasonably long time with no response.",
+    "memoryTrick": "**STAND BY = Silent Wait** — **S**top transmitting, **T**une in and listen, **A**wait the call-back, **N**o re-calls unless safety, **D**o not act without a clearance.",
+    "operationalMeaning": "When ATC transmits Stand By, the pilot should:\n\nStand By operations commonly include:",
+    "whyAtcUsesIt": [
+      "manage high-workload moments on frequency",
+      "hold a pilot's request while coordinating with adjacent sectors",
+      "acknowledge receipt of a request without yet answering it",
+      "prevent unnecessary re-calls that clutter the frequency",
+      "signal that a response is coming"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, stand by — I have traffic on short final.",
+      "Ground: ANAC123, stand by for start clearance.",
+      "Approach: ANAC123, stand by — coordinating your request.",
+      "Delivery: ANAC123, stand by for your clearance.",
+      "Control: ANAC123, stand by — frequency congestion."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, standing by.",
+      "Standing by, ANAC123.",
+      "ANAC123, wilco, standing by.",
+      "ANAC123, roger, standing by.",
+      "Standing by on this frequency, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Interpreting Stand By as approval to proceed with the requested action.  \n  ✔ Stand By is a pause only. Wait for an explicit clearance before acting.\n\n- ❌ Re-calling ATC after thirty seconds because you are impatient.  \n  ✔ Wait on frequency. ATC heard you. They will return when able.\n\n- ❌ Responding \"Stand By, wilco\" — using Wilco with a pause instruction.  \n  ✔ Respond with Standing by, ANAC123 — not Wilco, which implies compliance with an action.\n\n- ❌ Switching frequency while standing by, missing the ATC response.  \n  ✔ Stay on the frequency ATC told you to stand by on until they return.",
+    "pronunciationCoaching": "**Target Phrase:** Stand By\n\n**Pronunciation:** STAND bye\n\n**Word Stress**\n\n- Stand → STAND (strong first syllable)\n- By → BYE (clear and distinct)\n\nPractice:\n\nStand... By... Stand By...\n\nTogether:\n\nANAC123, standing by.\n\nBrief, clean, unhurried.",
+    "relatedConcepts": [
+      "Roger",
+      "Wilco",
+      "Unable",
+      "Cleared for Takeoff",
+      "Hold Position",
+      "Frequency Change"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures, Chapter 5",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Standard Words",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Radiotelephony Standards",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Stand By",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Radiotelephony",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0132",
+    "id": "0132",
+    "displayTerm": "Affirm",
+    "term": "affirm",
+    "slug": "affirm",
+    "category": "Radio Communication",
+    "meaningEn": "Affirm is the ICAO-standard word meaning yes. It is used to provide a positive answer to a question. It replaces the word \"yes\" in all aviation radio communications. It confirms that the stated condition, information, or action is correct or that the answer to a yes/no question is positive.",
+    "meaningPt": "Afirmativo / Sim.\n\nPalavra ICAO padrão que significa \"sim.\" É usada para fornecer uma resposta positiva a uma pergunta. Substitui a palavra \"yes\" (sim) em todas as comunicações de rádio aeronáutico. Confirma que a condição, informação ou ação declarada é correta, ou que a resposta a uma pergunta é positiva.",
+    "whenUsed": "When to use Affirm:",
+    "example": "Approach: ANAC123, confirm you have ATIS information bravo?",
+    "sayPhrase": "Affirm, information bravo, ANAC123.",
+    "icaoQuestion": "Why does ICAO use Affirm instead of Yes? What is the difference between Affirm and Roger?",
+    "icaoSpeakText": "ICAO uses Affirm because \"yes\" can sound similar to other words in radio communication, particularly with noise, accents, and frequency distortion. Affirm is standardized and internationally recognized, reducing the chance of confusion. Affirm and Roger have different meanings: Affirm is a positive answer to a yes/no question. Roger confirms receipt of a general message. If ATC asks \"Do you have the weather?\" I say Affirm. If ATC gives me a weather report and no action is required, I say Roger.",
+    "missionBrief": "Today's lesson covers Affirm — the correct ICAO word for yes in aviation radio communication.\n\nIn ICAO standard phraseology, the word \"yes\" is never used. Affirm replaces it.\n\nThe reason is clarity: in high-noise radio environments, \"yes\" is easily confused with similar sounds. Affirm is unambiguous, internationally recognizable, and standardized.\n\nIn the H130, flying in and out of Brazilian airports like Florianópolis, Navegantes, and Joinville, you will be asked yes/no questions by ATC regularly. Knowing when to say Affirm — and understanding how it differs from Roger, Wilco, and Confirm — is core ICAO Level 4 proficiency.",
+    "captainTeaching": "Affirm is a precision tool.\n\nIt answers yes — cleanly, clearly, and in ICAO-standard form.\n\nBrazilian pilots often mix Affirm with Roger, or use \"affirmativo\" on English frequencies, or simply say \"sim\" when excited.\n\nNone of these are ICAO standard English.\n\nAffirm is two syllables. Clear. Unmistakable. Internationally standardized.\n\nTrain yourself: whenever you would naturally say \"yes\" on the radio, say Affirm.\n\nAnd notice the distinction:\n\nATC: Do you have the field in sight?\n\nYou: Affirm. (yes)\n\nATC: Descend to altitude three thousand.\n\nYou: Descend altitude three thousand, ANAC123. (readback)\n\nATC: Report when ready.\n\nYou: Wilco, ANAC123. (compliance)\n\nATC: Traffic information, Cessna to your north.\n\nYou: Roger, ANAC123. (receipt)\n\nFour different situations. Four different words.\n\nAffirm answers yes/no questions.\n\nRoger, Wilco, and readbacks serve their own distinct roles.",
+    "operationalContext": "You are inbound to Florianópolis in your H130.\n\nApproach asks:\n\nANAC123, do you have information delta?\n\nYou have the ATIS. You reply:\n\nAffirm, information delta, ANAC123.\n\nApproach then asks:\n\nANAC123, runway two eight, cleared for visual approach. Traffic in sight?\n\nYou have the traffic. You reply:\n\nAffirm, traffic in sight, ANAC123.\n\nBoth uses of Affirm are precise, professional, and compliant with ICAO standards.\n\nIf you had said \"Yes, I have it\" or \"Sim, tenho\" on the English frequency, you would sound unprofessional and potentially unclear on a noisy frequency.\n\nAffirm is the standard. Use it every time.",
+    "sayItCoach": "Affirm, information bravo, ANAC123.",
+    "icaoModelAnswer": "ICAO uses Affirm because \"yes\" can sound similar to other words in radio communication, particularly with noise, accents, and frequency distortion. Affirm is standardized and internationally recognized, reducing the chance of confusion. Affirm and Roger have different meanings: Affirm is a positive answer to a yes/no question. Roger confirms receipt of a general message. If ATC asks \"Do you have the weather?\" I say Affirm. If ATC gives me a weather report and no action is required, I say Roger.",
+    "memoryTrick": "**AFFIRM = Absolute YES** — When ATC asks a direct question and the answer is positive, **A**lways use **F**irm, **F**ocused **I**CAO **R**adio-**M**essage \"Affirm.\"",
+    "operationalMeaning": "When to use Affirm:\n\nWhen NOT to use Affirm:\n\nAffirm operations commonly include:",
+    "whyAtcUsesIt": [
+      "pilot has current ATIS information before issuing clearances",
+      "aircraft equipment matches the assigned approach procedure",
+      "pilot confirms traffic in sight before continuing",
+      "pilot is ready for a specific action or clearance",
+      "crew is aware of a specific condition or restriction"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, confirm you have ATIS information bravo?",
+      "Tower: ANAC123, runway in sight?",
+      "Approach: ANAC123, confirm you are RNAV equipped?",
+      "Ground: ANAC123, confirm you are ready for push and start?",
+      "Approach: ANAC123, confirm you can accept the visual approach?"
+    ],
+    "pilotReadbacks": [
+      "Affirm, information bravo, ANAC123.",
+      "Affirm, runway in sight, ANAC123.",
+      "Affirm, RNAV equipped, ANAC123.",
+      "Affirm, ready for push and start, ANAC123.",
+      "Affirm, visual approach acceptable, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Saying \"affirmativo\" or \"sim\" on English-language frequencies.  \n  ✔ Use Affirm — the standard ICAO English word.\n\n- ❌ Using Affirm to indicate compliance with an instruction.  \n  ✔ Affirm answers a yes/no question. Use Wilco to indicate you will comply.\n\n- ❌ Using Affirm when a readback is required.  \n  ✔ If ATC asks \"Confirm cleared to land runway two eight?\" respond with the readback: Cleared to land runway two eight, ANAC123.\n\n- ❌ Confusing Affirm with Roger after receiving an instruction that required no yes/no answer.  \n  ✔ Roger for general receipt. Affirm for positive yes/no answers only.",
+    "pronunciationCoaching": "**Target Phrase:** Affirm\n\n**Pronunciation:** uh-FIRM\n\n**Word Stress**\n\n- Affirm → uh-FIRM (stress on second syllable)\n\nPractice:\n\nAf... Af-firm... Affirm...\n\nTogether:\n\nAffirm, information bravo, ANAC123.\n\nStress the second syllable — uh-FIRM. Do not rush it.",
+    "relatedConcepts": [
+      "Negative",
+      "Roger",
+      "Wilco",
+      "Confirm",
+      "Verify",
+      "Read Back"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures, Chapter 5",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Standard Words and Phrases",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9432 — Manual of Radiotelephony"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Standard Phraseology",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "SKYbrary — Radiotelephony Words",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0133",
+    "id": "0133",
+    "displayTerm": "Negative",
+    "term": "negative",
+    "slug": "negative",
+    "category": "Radio Communication",
+    "meaningEn": "Negative is the ICAO-standard word meaning no. It is used to provide a negative answer to a question, to correct an incorrect readback by ATC, to refuse an instruction you cannot or should not accept, or to deny a request. It replaces the word \"no\" in all aviation radio communications.",
+    "meaningPt": "Negativo / Não.\n\nPalavra ICAO padrão que significa \"não.\" É usada para fornecer uma resposta negativa a uma pergunta, corrigir um readback incorreto do ATC, recusar uma instrução que não se pode ou não se deve aceitar, ou negar uma solicitação. Substitui a palavra \"no\" (não) em todas as comunicações de rádio aeronáutico.",
+    "whenUsed": "When to use Negative:",
+    "example": "Approach: ANAC123, negative, altitude is five thousand, not four thousand.",
+    "sayPhrase": "Negative, ANAC123 — I do not have the traffic in sight.",
+    "icaoQuestion": "How should a pilot respond if ATC reads back the wrong altitude after issuing a clearance?",
+    "icaoSpeakText": "I would immediately transmit: Negative, [correct altitude], ANAC123. Then wait for ATC to confirm the correction. For example, if ATC cleared me to altitude four thousand but read back three thousand in my reply, I would say: Negative, altitude four thousand, not three thousand, ANAC123. It is critical to correct readback errors immediately, before either the pilot or the controller acts on the wrong value. Uncorrected altitude errors are a leading cause of altitude deviations.",
+    "missionBrief": "Today's lesson covers Negative — the ICAO-standard word for no in aviation radio communication.\n\nIn ICAO standard phraseology, the word \"no\" is never used on the radio. Negative replaces it.\n\nNegative is clear, unambiguous, and internationally standardized. It cannot be confused with other words in a noisy radio environment the way \"no\" might be.\n\nIn the H130, operating into São Paulo, Curitiba, or Congonhas, you will regularly need to decline requests, correct misunderstandings, and refuse clearances that are not appropriate. Negative is the word for all of those situations — and using it confidently and correctly is a mark of ICAO Level 4 proficiency.",
+    "captainTeaching": "Negative is the most underused safety word in Brazilian aviation.\n\nThe cultural tendency is to avoid saying no — to try to find a way to say yes, to accept, to comply.\n\nIn operational communication, however, Negative is essential.\n\nNegative traffic in sight prevents a controller from issuing a visual approach clearance into unseen traffic.\n\nNegative, altitude four thousand corrects a readback error before the aircraft descends to the wrong level.\n\nNegative, unable that runway prevents an approach on a runway beyond crosswind limits.\n\nEach of these is a safety intervention.\n\nIn the H130, single-pilot, you are responsible for catching errors — including errors in ATC's readback of your request, or errors in your own readback of ATC's clearance.\n\nWhen you hear something wrong — say Negative and state the correction immediately.\n\nDo not let an error stand to avoid awkwardness.\n\nNegative is professional. It is precise. It is safe.",
+    "operationalContext": "You are approaching Congonhas in your H130.\n\nApproach asks:\n\nANAC123, traffic in your two o'clock, five miles — do you have it in sight?\n\nYou scan but cannot see the traffic:\n\nNegative, ANAC123, traffic not in sight.\n\nApproach issues separation instructions instead of a visual approach clearance.\n\nLater, you read back your cleared altitude:\n\nDescend altitude three thousand, ANAC123.\n\nApproach corrects:\n\nNegative, ANAC123 — altitude four thousand, not three thousand. Say again altitude four thousand.\n\nYou correct:\n\nDescend altitude four thousand, ANAC123.\n\nIn both examples, Negative delivered critical safety information directly and clearly. If you had said \"Yes, traffic in sight\" when you did not see it, Approach might have cleared you for a visual approach into unconfirmed traffic. If Approach had not corrected your altitude misread, you would have descended to the wrong level.\n\nNegative is a safety word.",
+    "sayItCoach": "Negative, ANAC123, traffic not in sight.",
+    "icaoModelAnswer": "I would immediately transmit: Negative, [correct altitude], ANAC123. Then wait for ATC to confirm the correction. For example, if ATC cleared me to altitude four thousand but read back three thousand in my reply, I would say: Negative, altitude four thousand, not three thousand, ANAC123. It is critical to correct readback errors immediately, before either the pilot or the controller acts on the wrong value. Uncorrected altitude errors are a leading cause of altitude deviations.",
+    "memoryTrick": "**NEGATIVE = No Error Passes** — When ATC or you state something wrong, **N**egative is the **E**xact word to **G**ive a correction, **A**lways **T**ransmit it **I**mmediately, **V**erify the corrected value, **E**nsure acknowledgement.",
+    "operationalMeaning": "When to use Negative:\n\nWhen NOT to use Negative:\n\nNegative operations commonly include:",
+    "whyAtcUsesIt": [
+      "correct a pilot readback that contains an error",
+      "decline a pilot request that cannot be accommodated",
+      "clarify that a condition stated by the pilot is incorrect",
+      "deny permission for an action not yet cleared",
+      "close a safety loop when the pilot's information is wrong"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, negative, altitude is five thousand, not four thousand.",
+      "Tower: ANAC123, negative, runway two eight — not runway three three.",
+      "Approach: ANAC123, negative, not cleared for approach yet, stand by.",
+      "Ground: ANAC123, negative, hold short of taxiway delta, not cleared to cross.",
+      "Approach: ANAC123, negative on the direct routing, fly radar vectors."
+    ],
+    "pilotReadbacks": [
+      "Negative, ANAC123 — I do not have the traffic in sight.",
+      "ANAC123, negative, ATIS information not received.",
+      "Negative, ANAC123 — unable to accept runway three three, crosswind exceeds limits.",
+      "ANAC123, correcting — altitude four thousand, not three thousand.",
+      "Negative ATIS, request information, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Saying \"não\" or \"no\" on English-language frequencies instead of Negative.  \n  ✔ Use Negative — always. \"No\" is not ICAO standard radio phraseology.\n\n- ❌ Staying silent when ATC reads back an incorrect value, hoping it will work out.  \n  ✔ Correct immediately: Negative, [correct value], ANAC123.\n\n- ❌ Using Negative to refuse a valid clearance without providing a reason.  \n  ✔ If you are declining due to a genuine limitation, use Unable with a reason.\n\n- ❌ Confusing Negative with Unable — using Negative when you mean you cannot comply.  \n  ✔ Negative answers a yes/no question. Unable addresses inability to comply with an instruction.",
+    "pronunciationCoaching": "**Target Phrase:** Negative\n\n**Pronunciation:** NEG-uh-tiv\n\n**Word Stress**\n\n- Negative → NEG-uh-tiv (stress on first syllable)\n\nPractice:\n\nNeg... Neg-a... Negative...\n\nTogether:\n\nNegative, ANAC123, traffic not in sight.\n\nSay it clearly and firmly — not as a question. Negative is a statement.",
+    "relatedConcepts": [
+      "Affirm",
+      "Unable",
+      "Roger",
+      "Correction",
+      "Say Again",
+      "Confirm"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures, Chapter 5",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Standard Words",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9432 — Manual of Radiotelephony"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Standard Phraseology",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "SKYbrary — Radiotelephony",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0134",
+    "id": "0134",
+    "displayTerm": "Confirm",
+    "term": "confirm",
+    "slug": "confirm",
+    "category": "Radio Communication",
+    "meaningEn": "Confirm is an ICAO-standard word used to request verification of a message, clearance, value, or condition. It asks the addressed station to verify and restate a specific piece of information. It is used when the requesting station needs to ensure that a value or instruction is correct before acting on it.",
+    "meaningPt": "Confirme / Confirmar.\n\nPalavra ICAO padrão usada para solicitar a verificação de uma mensagem, autorização, valor ou condição. Pede à estação destinatária que verifique e reafirme uma informação específica. É usada quando a estação solicitante precisa garantir que um valor ou instrução está correto antes de agir.",
+    "whenUsed": "When to use Confirm:",
+    "example": "Approach: ANAC123, confirm your altitude — you appear high.",
+    "sayPhrase": "ANAC123, confirm cleared altitude four thousand?",
+    "icaoQuestion": "What is the difference between Confirm and Say Again?",
+    "icaoSpeakText": "Confirm is used when you have received information and want ATC to verify that it is correct. For example: Confirm altitude cleared two thousand. Say Again is used when you did not receive the transmission clearly and need a repetition. For example: Say Again — you were broken. Confirm checks a value already held. Say Again requests a fresh transmission of a message that was not properly received. Both are verification tools, but they serve different moments in the communication process.",
+    "missionBrief": "Today's lesson covers Confirm — an ICAO-standard phrase used to request verification of information already exchanged.\n\nConfirm means: I want to verify that what I think I heard (or what you have) is correct.\n\nIt is a safety phrase. It is used to double-check critical information — altitudes, runways, squawk codes, clearances — before acting on them.\n\nIn the H130, operating into busy Brazilian airports like Congonhas, São Paulo, and Florianópolis, using Confirm correctly and confidently is an important ICAO Level 4 skill and a key tool for catching communication errors before they become operational errors.",
+    "captainTeaching": "Confirm is your verification tool.\n\nUse it any time you are not fully certain about a critical value before acting.\n\nThis is not weakness. This is airmanship.\n\nBrazilian pilots sometimes hesitate to use Confirm because they think it signals a mistake or uncertainty that might make them look unprofessional.\n\nThe opposite is true.\n\nAsking Confirm before descending to an uncertain altitude is professional.\n\nDescending without confirming, then busting an altitude restriction, is not professional — and it is potentially dangerous.\n\nThe sequence for Confirm is:\n\nYou received information. You are not fully certain. You ask Confirm. ATC restates the value. You read back the confirmed value. You act.\n\nThat sequence is thorough, safe, and ICAO-compliant.\n\nIn the H130, single-pilot in busy airspace, do not let uncertainty go unresolved.\n\nIf in doubt, Confirm.\n\nIf you missed a value, Say Again.\n\nThese two tools together eliminate most communication errors before they matter.",
+    "operationalContext": "You are on approach to Florianópolis in your H130.\n\nIn workload, you believe you were cleared to altitude two thousand, but you want to verify before descending.\n\nYou transmit:\n\nANAC123, confirm cleared altitude two thousand?\n\nApproach responds:\n\nANAC123, affirm, cleared altitude two thousand, QNH one zero one two.\n\nYou read back:\n\nAltitude two thousand, QNH one zero one two, ANAC123.\n\nYour confirmation request prevented you from descending on a clearance you were not fully certain about.\n\nLater, ATC asks:\n\nANAC123, confirm squawk four four five two?\n\nYou check the transponder and reply:\n\nAffirm, squawk four four five two, ANAC123.\n\nConfirm works in both directions — pilot to ATC and ATC to pilot — to verify critical operational information.",
+    "sayItCoach": "ANAC123, confirm cleared altitude four thousand?",
+    "icaoModelAnswer": "Confirm is used when you have received information and want ATC to verify that it is correct. For example: Confirm altitude cleared two thousand. Say Again is used when you did not receive the transmission clearly and need a repetition. For example: Say Again — you were broken. Confirm checks a value already held. Say Again requests a fresh transmission of a message that was not properly received. Both are verification tools, but they serve different moments in the communication process.",
+    "memoryTrick": "**CONFIRM = Check Before Act** — **C**ritical value uncertain? **O**pen the radio, **N**ame the element, **F**ocus on the answer, **I**nclude the readback, **R**eceive ATC's affirmation, **M**ove only after.",
+    "operationalMeaning": "When to use Confirm:\n\nWhen NOT to use Confirm:\n\nConfirm operations commonly include:",
+    "whyAtcUsesIt": [
+      "verify the pilot's understanding of a specific clearance element",
+      "ensure a pilot has the correct QNH or altitude before a critical phase",
+      "double-check a readback contains the right values",
+      "request verification of pilot-reported information (position, altitude)",
+      "confirm the pilot's intentions match the issued clearance"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, confirm your altitude — you appear high.",
+      "Tower: ANAC123, confirm you are cleared to land runway two eight?",
+      "Approach: ANAC123, confirm QNH set one zero one five?",
+      "Ground: ANAC123, confirm holding short runway one seven right?",
+      "Control: ANAC123, confirm squawk four five three two?"
+    ],
+    "pilotReadbacks": [
+      "ANAC123, confirm cleared altitude four thousand?",
+      "Confirming cleared to land runway two eight, ANAC123.",
+      "ANAC123, confirm QNH — we have one zero one four, is that correct?",
+      "ANAC123, confirm squawk code — we have four four five two.",
+      "ANAC123, confirm routing via XINGU, then direct ROMEO?"
+    ],
+    "brazilianMistakes": "- ❌ Using Confirm when you have no information on the topic — you need to Request.  \n  ✔ Confirm checks existing information. For new information, use Request.\n\n- ❌ Saying \"confirm\" casually mid-transmission without specifying what to confirm.  \n  ✔ Always state exactly what you are confirming: Confirm altitude four thousand?\n\n- ❌ Treating ATC's \"Confirm\" question as a readback request — responding with Wilco.  \n  ✔ Answer a Confirm question with Affirm or Negative plus the relevant information.\n\n- ❌ Not waiting for ATC's confirmation before acting on an uncertain value.  \n  ✔ Ask Confirm, wait for ATC's affirm or correction, then read back and act.",
+    "pronunciationCoaching": "**Target Phrase:** Confirm\n\n**Pronunciation:** kun-FIRM\n\n**Word Stress**\n\n- Confirm → kun-FIRM (stress on second syllable)\n\nPractice:\n\nCon... Con-firm... Confirm...\n\nTogether:\n\nANAC123, confirm cleared altitude four thousand?\n\nEnd with a slight upward inflection — it is a question.",
+    "relatedConcepts": [
+      "Verify",
+      "Say Again",
+      "Affirm",
+      "Negative",
+      "Read Back",
+      "Roger"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures, Chapter 5",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Standard Words",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9432 — Manual of Radiotelephony"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Radiotelephony",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "SKYbrary — Communication Errors",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0135",
+    "id": "0135",
+    "displayTerm": "Verify",
+    "term": "verify",
+    "slug": "verify",
+    "category": "Radio Communication",
+    "meaningEn": "Verify is an ICAO-standard word instructing the addressed station to check a specific value, setting, or condition and report back. It is typically used by ATC to prompt a pilot to check whether a value they are transmitting or displaying matches what was assigned or is correct.",
+    "meaningPt": "Verifique / Confirme verificando.\n\nPalavra ICAO padrão que instrui a estação destinatária a verificar um valor, configuração ou condição específica e relatar de volta. É tipicamente usada pelo ATC para solicitar ao piloto que verifique se um valor que está transmitindo ou exibindo corresponde ao que foi atribuído ou está correto.",
+    "whenUsed": "When ATC uses Verify, the pilot should:",
+    "example": "Approach: ANAC123, verify altitude — you are indicating one one thousand.",
+    "sayPhrase": "ANAC123, verifying altitude — we are at one two thousand, flight level one two zero.",
+    "icaoQuestion": "What should a pilot do when ATC transmits \"Verify altitude\"?",
+    "icaoSpeakText": "I would immediately check my altimeter and crosscheck with the VSI and any backup instruments. I would report back what I see: ANAC123, verifying — altitude is [current altitude]. If there is a discrepancy from my cleared altitude, I would report it and ask for guidance. If my altimeter setting appears incorrect, I would report the QNH I have set and ask for the correct one. Verify is a prompt to check immediately and report honestly — not to reassure ATC that everything is fine without checking.",
+    "missionBrief": "Today's lesson covers Verify — an ICAO-standard phrase requesting that a specific value, setting, or condition be checked and confirmed.\n\nVerify is used when ATC has reason to question whether a pilot has a correct value set — for example, a wrong altitude read on radar, a squawk code that does not match, or an altimeter setting that appears off.\n\nIn the H130, flying in and out of Brazilian airports like Curitiba, Congonhas, or São Paulo, ATC will occasionally use Verify to prompt you to check a specific setting. Responding to Verify correctly — and understanding how it differs from Confirm and Say Again — is a core ICAO Level 4 radio skill.",
+    "captainTeaching": "Verify is ATC telling you: something does not look right on my radar. Check your systems.\n\nWhen you receive a Verify call, treat it as a priority.\n\nStop other tasks. Check the referenced system immediately. Report back what you see.\n\nDo not say \"we are fine\" without actually checking.\n\nVerify is a prompt for action and reporting — not a reassurance request.\n\nIn the H130, single-pilot operations mean you are the only person to check the altimeter, transponder, or course. When ATC says Verify, you are the entire quality control system for that check.\n\nCommon scenarios in Brazilian operations:\n\nQNH transition errors — especially around the São Paulo TMA where the QNH can change rapidly between ATIS updates.\n\nTransponder code errors — after a frequency change, the squawk may not have been updated.\n\nAltitude deviations — turbulence or autopilot disconnect causing unnoticed altitude change.\n\nAll of these are caught early by a Verify call. Respond professionally: check, report, correct.",
+    "operationalContext": "You are cruising at flight level one two zero inbound to Curitiba.\n\nApproach transmits:\n\nANAC123, verify altitude — you are showing one one five hundred.\n\nATC's radar shows you lower than cleared. You check your altimeter and instruments:\n\nANAC123, verifying... altitude one one five hundred — we may have a QNH error. QNH one zero one six set.\n\nApproach responds:\n\nANAC123, QNH one zero zero eight, not one zero one six — correct your altimeter.\n\nYou correct:\n\nANAC123, correcting, QNH one zero zero eight, now passing altitude one two zero.\n\nThe Verify exchange caught an altimetry discrepancy before it developed into an altitude deviation. Your altimeter was set to the wrong QNH. ATC's radar data alerted them. Verify opened the check.",
+    "sayItCoach": "ANAC123, verifying altitude — we are at one two thousand.",
+    "icaoModelAnswer": "I would immediately check my altimeter and crosscheck with the VSI and any backup instruments. I would report back what I see: ANAC123, verifying — altitude is [current altitude]. If there is a discrepancy from my cleared altitude, I would report it and ask for guidance. If my altimeter setting appears incorrect, I would report the QNH I have set and ask for the correct one. Verify is a prompt to check immediately and report honestly — not to reassure ATC that everything is fine without checking.",
+    "memoryTrick": "**VERIFY = Vision Check** — **V**iew the instrument, **E**xamine the value, **R**eport back to ATC, **I**dentify discrepancies, **F**ix errors immediately, **Y**ield the corrected value.",
+    "operationalMeaning": "When ATC uses Verify, the pilot should:\n\nWhen pilots use Verify:\n\nVerify operations commonly include:",
+    "whyAtcUsesIt": [
+      "radar shows a pilot at an altitude different from their clearance",
+      "the transponder code does not match the assigned squawk",
+      "the aircraft track appears inconsistent with the clearance",
+      "a pilot reports a condition that contradicts ATC data",
+      "altimetry discrepancy is detected between pilot report and radar"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, verify altitude — you are indicating one one thousand.",
+      "Control: ANAC123, verify squawk — you are showing four five zero zero, not four four five two.",
+      "Approach: ANAC123, verify QNH setting.",
+      "Tower: ANAC123, verify you are holding short of runway one seven right.",
+      "Approach: ANAC123, verify you are tracking the correct ILS course."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, verifying altitude — we are at one two thousand, flight level one two zero.",
+      "ANAC123, verifying squawk — we have four four five two set.",
+      "ANAC123, verifying QNH — we have one zero one six. Is that correct?",
+      "ANAC123, affirm, holding short runway one seven right.",
+      "ANAC123, verifying — we are tracking localizer, course correct."
+    ],
+    "brazilianMistakes": "- ❌ Responding to Verify with \"affirm, all correct\" without actually checking.  \n  ✔ Check the referenced system immediately. Report what you find, accurately.\n\n- ❌ Confusing Verify and Confirm — using them interchangeably.  \n  ✔ Verify prompts a system check and report. Confirm requests verification of a specific known value.\n\n- ❌ Delaying the response to a Verify call while continuing other tasks.  \n  ✔ Verify is a priority call. Check immediately and respond promptly.\n\n- ❌ Saying only \"verifying\" without reporting the result.  \n  ✔ Complete the check and report the value: Verifying — altitude one two thousand, ANAC123.",
+    "pronunciationCoaching": "**Target Phrase:** Verify\n\n**Pronunciation:** VEH-ruh-fye\n\n**Word Stress**\n\n- Verify → VEH-ruh-fye (stress on first syllable)\n\nPractice:\n\nVer... Ver-i... Verify...\n\nTogether:\n\nANAC123, verifying altitude — we are at one two thousand.\n\nThe response starts with \"ANAC123, verifying\" — then the specific result of the check.",
+    "relatedConcepts": [
+      "Confirm",
+      "Say Again",
+      "Affirm",
+      "Negative",
+      "Correction",
+      "Read Back"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures, Chapter 5",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Surveillance and Communication Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9432 — Manual of Radiotelephony"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Transponder and Altimeter Operations",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "SKYbrary — Altimetry Errors and Communication",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0136",
+    "id": "0136",
+    "displayTerm": "Monitor",
+    "term": "monitor",
+    "slug": "monitor",
+    "category": "Radio Communication",
+    "meaningEn": "Monitor is an ATC instruction directing the pilot to listen on a specified frequency without initiating two-way communications unless the broadcast contains information affecting the flight.",
+    "meaningPt": "Monitore.\n\nInstrução do controle para o piloto sintonizar e escutar uma frequência específica sem a necessidade de estabelecer contato bidirecional, a menos que a transmissão contenha informação relevante para o voo.",
+    "whenUsed": "When Monitor is received, the pilot should:",
+    "example": "Approach: ANAC123, monitor ATIS on one two seven decimal seven.",
+    "sayPhrase": "Monitoring ATIS one two seven decimal seven, ANAC123.",
+    "icaoQuestion": "What is the difference between Monitor and Contact in ATC radio procedures?",
+    "icaoSpeakText": "Monitor means I tune a frequency and listen without transmitting, unless required by a broadcast. Contact means I am expected to initiate two-way communication with a specified unit. If ATC says monitor ATIS, I listen to the recorded broadcast. If ATC says contact Approach, I call Approach and establish a two-way radio exchange. The two instructions have different expectations and require different pilot actions.",
+    "missionBrief": "Today's lesson covers Monitor — an ATC instruction directing the pilot to listen on a specified frequency without the requirement to establish two-way contact.\n\nMonitor is a passive listening instruction.\n\nIt tells you to tune a frequency and pay attention — but it does not require you to call the station.\n\nIn the H130, operating around Navegantes, Florianópolis, or Joinville, you may be asked to monitor ATIS, a guard frequency, or an advisory frequency while remaining in contact with your current controller.\n\nUnderstanding the difference between Monitor and Contact is essential for professional radio management.",
+    "captainTeaching": "Monitor is a one-word instruction with one clear expectation: listen.\n\nNot call. Not check in. Not confirm you are there.\n\nJust listen.\n\nMany Brazilian pilots confuse Monitor with Contact and immediately call the monitored frequency.\n\nThis clutters a broadcast channel or wakes up a station that did not expect a call.\n\nIf ATC wants you to call someone, they will say Contact.\n\nIf they say Monitor, tune in and wait.\n\nThe practical skill is dual-channel management: maintain your primary frequency for ATC communications while silently monitoring the second frequency for information.\n\nIn the H130, your audio panel allows you to monitor a secondary frequency with the intercom split. Use that capability.",
+    "operationalContext": "You are descending toward Florianópolis in your H130, currently with Approach on 119.0.\n\nApproach transmits:\n\nANAC123, monitor ATIS on one two seven decimal seven.\n\nYou tune 127.7 on your second radio and begin listening.\n\nThe ATIS gives you the current weather, runway in use, and QNH.\n\nYou note runway three two is in use, QNH 1018, visibility ten kilometres.\n\nYou do not call the ATIS station — you simply absorb the information.\n\nWhen Approach asks: ANAC123, confirm you have information Bravo?\n\nYou reply: Affirm, information Bravo, ANAC123.\n\nMonitor gave you the data before ATC needed to read it to you. Efficient and professional.",
+    "sayItCoach": "Monitoring one two seven decimal seven, ANAC123.",
+    "icaoModelAnswer": "Monitor means I tune a frequency and listen without transmitting, unless required by a broadcast. Contact means I am expected to initiate two-way communication with a specified unit. If ATC says monitor ATIS, I listen to the recorded broadcast. If ATC says contact Approach, I call Approach and establish a two-way radio exchange. The two instructions have different expectations and require different pilot actions.",
+    "memoryTrick": "**LISTEN** — **L**isten on the frequency, **I**gnore the urge to call, **S**econd radio tuned, **T**ransmit only if broadcast requires, **E**xpect information not contact, **N**ote what you hear.",
+    "operationalMeaning": "When Monitor is received, the pilot should:\n\nMonitor instructions commonly apply to:",
+    "whyAtcUsesIt": [
+      "ensure pilots receive ATIS or advisory broadcasts independently",
+      "reduce radio congestion on primary frequencies",
+      "maintain pilot awareness on guard or emergency frequencies",
+      "prepare pilots for an imminent frequency transfer",
+      "allow passive monitoring without tying up the frequency"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, monitor ATIS on one two seven decimal seven.",
+      "Control: ANAC123, monitor guard one two one decimal five.",
+      "Approach: ANAC123, monitor Florianópolis information on one two six decimal eight.",
+      "Control: ANAC123, monitor frequency one one nine decimal zero, expect further clearance shortly.",
+      "Approach: ANAC123, monitor advisory frequency one three zero decimal zero in that area."
+    ],
+    "pilotReadbacks": [
+      "Monitoring ATIS one two seven decimal seven, ANAC123.",
+      "Monitoring guard one two one decimal five, ANAC123.",
+      "Monitoring Florianópolis information one two six decimal eight, ANAC123.",
+      "Monitoring one one nine decimal zero, ANAC123.",
+      "Monitoring advisory one three zero decimal zero, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Calling the monitored frequency to confirm monitoring.  \n  ✔ Monitor means listen only. Do not transmit unless required.\n\n- ❌ Confusing Monitor with Contact and expecting a two-way exchange.  \n  ✔ Monitor is passive. Contact is active.\n\n- ❌ Not readback the frequency when acknowledging the monitor instruction.  \n  ✔ Include the frequency: Monitoring one two seven decimal seven, ANAC123.\n\n- ❌ Failing to actually tune the frequency after acknowledging.  \n  ✔ Tune immediately. Monitoring means active listening, not just acknowledgment.",
+    "pronunciationCoaching": "**Target Phrase:** Monitoring one two seven decimal seven, ANAC123\n\n**Pronunciation:** MON-it-er-ing WUN TOO SEV-en DEH-sih-mal SEV-en\n\n**Word Stress**\n\n- Monitor → MON-it-er\n- Decimal → DEH-sih-mal (never say \"point\" in aviation)\n- Callsign → speak each element clearly\n\nPractice:\n\nMonitor... Monitoring... Monitoring one two seven decimal seven...\n\nTogether:\n\nMonitoring one two seven decimal seven, ANAC123.",
+    "relatedConcepts": [
+      "Contact",
+      "Frequency Change",
+      "ATIS",
+      "Guard Frequency",
+      "Radio Communication",
+      "Dual-Channel Operations"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — General Phraseology",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Radio Communications",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Monitor",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Radiotelephony",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0137",
+    "id": "0137",
+    "displayTerm": "Contact",
+    "term": "contact",
+    "slug": "contact",
+    "category": "Radio Communication",
+    "meaningEn": "Contact is an ATC instruction directing the pilot to establish two-way radio communication with a specified ATC unit, usually on a stated frequency, as part of a sector handoff or service transfer.",
+    "meaningPt": "Chame / Entre em contato.\n\nInstrução do controle para o piloto estabelecer comunicação bidirecional com uma unidade ATC específica, geralmente em uma frequência determinada, como parte de uma transferência de setor ou de serviço.",
+    "whenUsed": "When Contact is received, the pilot should:",
+    "example": "Control: ANAC123, contact Curitiba Approach on one one nine decimal seven.",
+    "sayPhrase": "Contact Curitiba Approach one one nine decimal seven, ANAC123.",
+    "icaoQuestion": "What is the correct procedure when ATC says \"contact Approach on 119.7\"?",
+    "icaoSpeakText": "When ATC instructs me to contact Approach on 119.7, I readback the instruction: Contact Approach one one nine decimal seven, ANAC123. I then switch to that frequency and call: Approach, ANAC123, with you, altitude and routing details. I include my callsign, current altitude, and intention. I do not switch without reading back, and I call the new unit promptly after switching.",
+    "missionBrief": "Today's lesson covers Contact — the ATC instruction directing a pilot to establish two-way communication with a specified unit on a given frequency.\n\nContact is the most common handoff instruction in aviation.\n\nIt transfers you from one controller to the next.\n\nIn the H130, flying between Congonhas, Navegantes, Florianópolis, and Curitiba, you will receive Contact multiple times every flight as you pass through different sectors and control areas.\n\nExecuting Contact correctly — with the right readback, the right callsign, and the right opening transmission — is a fundamental ICAO Part 2 skill.",
+    "captainTeaching": "Contact is the most repeated handoff phrase in aviation.\n\nYou will hear it dozens of times in a single IFR flight.\n\nThe trap is routine: because you hear it so often, you stop paying attention to the frequency.\n\nMisread the frequency. Miss a digit. Tune the wrong channel.\n\nNow you are talking to a frequency no one is on — and the controller waiting for your call is holding your clearance.\n\nThe discipline is: read back every digit. Verify before you switch. Call promptly.\n\nIn the H130 between Congonhas and Florianópolis, you may receive four or five Contact instructions per sector. Treat each one as its own discipline moment.\n\nWhen you call the new unit, include altitude, routing, and intentions. Do not say \"ANAC123, hello.\" Say who you are, where you are, and where you are going.",
+    "operationalContext": "You are cruising at flight level nine zero inbound to Navegantes in your H130.\n\nCuritiba Control transmits:\n\nANAC123, contact Navegantes Approach on one one nine decimal one.\n\nYou readback:\n\nContact Navegantes Approach one one nine decimal one, ANAC123.\n\nYou switch frequencies and call:\n\nNavegantes Approach, ANAC123, flight level nine zero, inbound, estimating Navegantes one five.\n\nApproach replies:\n\nANAC123, Navegantes Approach, radar contact, descend to altitude five thousand, QNH one zero one eight.\n\nThe handoff is complete.\n\nOne readback. One opening call. You are in the new sector.",
+    "sayItCoach": "Contact Navegantes Approach one one nine decimal one, ANAC123.",
+    "icaoModelAnswer": "When ATC instructs me to contact Approach on 119.7, I readback the instruction: Contact Approach one one nine decimal seven, ANAC123. I then switch to that frequency and call: Approach, ANAC123, with you, altitude and routing details. I include my callsign, current altitude, and intention. I do not switch without reading back, and I call the new unit promptly after switching.",
+    "memoryTrick": "**SWITCH** — **S**ay the frequency back, **W**ait for handoff acknowledgment, **I**mmediately tune the new frequency, **T**ransmit a full opening call, **C**onfirm radar contact, **H**old until acknowledged.",
+    "operationalMeaning": "When Contact is received, the pilot should:\n\nContact instructions commonly occur during:",
+    "whyAtcUsesIt": [
+      "transfer service responsibility to the next sector",
+      "ensure the pilot checks in on the correct frequency",
+      "maintain continuous ATC coverage along the route",
+      "sequence the aircraft into the receiving sector's traffic flow",
+      "terminate responsibility on the current frequency"
+    ],
+    "atcPhraseology": [
+      "Control: ANAC123, contact Curitiba Approach on one one nine decimal seven.",
+      "Approach: ANAC123, contact Florianópolis Tower on one one eight decimal one.",
+      "Control: ANAC123, contact São Paulo Control on one three two decimal three.",
+      "Tower: ANAC123, contact Congonhas Ground on one two one decimal nine.",
+      "Approach: ANAC123, contact Joinville Information on one two two decimal eight."
+    ],
+    "pilotReadbacks": [
+      "Contact Curitiba Approach one one nine decimal seven, ANAC123.",
+      "Contact Florianópolis Tower one one eight decimal one, ANAC123.",
+      "Contact São Paulo Control one three two decimal three, ANAC123.",
+      "Contact Congonhas Ground one two one decimal nine, ANAC123.",
+      "Contact Joinville Information one two two decimal eight, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Switching frequency without reading back the instruction.  \n  ✔ Always readback: Contact [unit] [frequency], ANAC123.\n\n- ❌ Calling the new unit with only a callsign and no position information.  \n  ✔ Include altitude and routing: ANAC123, flight level nine zero, inbound Navegantes.\n\n- ❌ Delaying the switch to finish a task in the cockpit.  \n  ✔ Switch promptly. The receiving controller is expecting your call.\n\n- ❌ Reading back the wrong frequency after mishearing a digit.  \n  ✔ If uncertain, ask for a repeat: Say again frequency, ANAC123.",
+    "pronunciationCoaching": "**Target Phrase:** Contact Navegantes Approach one one nine decimal one, ANAC123\n\n**Pronunciation:** KON-takt nah-veh-GAN-tes ah-PROACH WUN WUN NINER DEH-sih-mal WUN\n\n**Word Stress**\n\n- Contact → KON-takt\n- Approach → ah-PROACH\n- Nine → NINER (ICAO standard)\n- Decimal → DEH-sih-mal (not \"point\")\n\nPractice:\n\nContact... Approach... Contact Approach...\n\nTogether:\n\nContact Navegantes Approach one one nine decimal one, ANAC123.",
+    "relatedConcepts": [
+      "Monitor",
+      "Frequency Change",
+      "Radar Contact",
+      "Sector Handoff",
+      "Opening Call",
+      "Leaving Your Frequency"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — General Phraseology",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Radio Communications",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Contact",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Radiotelephony",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0138",
+    "id": "0138",
+    "displayTerm": "Frequency Change",
+    "term": "frequency change",
+    "slug": "frequency-change",
+    "category": "Radio Communication",
+    "meaningEn": "Frequency Change is the procedure by which a pilot transfers radio contact from one ATC frequency to another, either at ATC direction or by standard procedure, including readback, acknowledgment, and initial contact on the new frequency.",
+    "meaningPt": "Mudança de frequência.\n\nProcedimento pelo qual o piloto transfere o contato de rádio de uma frequência ATC para outra, seja por instrução do controle ou por procedimento padrão, incluindo readback, reconhecimento e contato inicial na nova frequência.",
+    "whenUsed": "When executing a Frequency Change, the pilot should:",
+    "example": "Control: ANAC123, contact Florianópolis Approach on one one nine decimal zero, good day.",
+    "sayPhrase": "Contact Florianópolis Approach one one nine decimal zero, ANAC123, good day.",
+    "icaoQuestion": "How do you professionally execute a frequency change when ATC instructs contact on a new frequency?",
+    "icaoSpeakText": "I read back the unit and frequency, acknowledge the releasing controller with a good day if appropriate, then switch promptly. On the new frequency I transmit a full opening call with my callsign, current altitude, routing, and intention. I do not say just my callsign. I give the receiving controller sufficient information to identify and service my aircraft immediately.",
+    "missionBrief": "Today's lesson covers Frequency Change — the procedure and phraseology used when a pilot changes from one ATC frequency to another.\n\nA Frequency Change may be initiated by ATC with a Contact or Monitor instruction, or by the pilot when leaving a frequency to check in with another unit.\n\nIn the H130, flying through Brazilian airspace between Florianópolis, Joinville, Navegantes, and São Paulo, frequency changes are a constant part of every IFR flight.\n\nExecuting frequency changes professionally — with correct readbacks, proper departure announcements, and immediate check-in procedures — is a fundamental ICAO Part 2 skill.",
+    "captainTeaching": "The frequency change is where many pilots lose professionalism.\n\nThey get the Contact instruction, say \"Roger\", switch, and call the new frequency with just their callsign.\n\nNo altitude. No routing. No position.\n\nThe receiving controller now has an anonymous blip and a callsign.\n\nThey must ask: ANAC123, say altitude?\n\nThat is an extra transmission caused by an incomplete opening call.\n\nTrain the full opening call: callsign, altitude, routing.\n\nAlso train the farewell: read back correctly, say good day if the controller did, then switch.\n\nIn the H130 operating into Congonhas or Florianópolis, approach sectors are busy. An incomplete check-in can delay your sequencing.\n\nGive the new controller everything they need in one call.",
+    "operationalContext": "You are at flight level eight zero, twenty minutes from Joinville, talking to Curitiba Control.\n\nControl transmits:\n\nANAC123, contact Joinville Approach on one two one decimal three, good day.\n\nYou reply:\n\nContact Joinville Approach one two one decimal three, ANAC123, good day.\n\nYou set your secondary radio to 121.3, confirm the frequency, and switch primary.\n\nYou call:\n\nJoinville Approach, ANAC123, flight level eight zero, descending, inbound Joinville, estimating one five.\n\nApproach responds:\n\nANAC123, Joinville Approach, radar contact, expect ILS runway two seven, descend to altitude four thousand.\n\nYou reply:\n\nExpect ILS runway two seven, descend altitude four thousand, ANAC123.\n\nFrequency change complete. Professional, fast, unambiguous.",
+    "sayItCoach": "Contact Joinville Approach one two one decimal three, ANAC123.",
+    "icaoModelAnswer": "I read back the unit and frequency, acknowledge the releasing controller with a good day if appropriate, then switch promptly. On the new frequency I transmit a full opening call with my callsign, current altitude, routing, and intention. I do not say just my callsign. I give the receiving controller sufficient information to identify and service my aircraft immediately.",
+    "memoryTrick": "**SWITCH** — **S**ay the frequency back completely, **W**ait for acknowledgment, **I**mmediately tune and verify, **T**ransmit full opening call, **C**heck in received, **H**old ready for further instructions.",
+    "operationalMeaning": "When executing a Frequency Change, the pilot should:\n\nStandard Frequency Change scenarios include:",
+    "whyAtcUsesIt": [
+      "transfer jurisdiction to the appropriate sector",
+      "ensure continuity of radar service and separation",
+      "prevent aircraft from operating in a sector without check-in",
+      "avoid frequency congestion by distributing traffic across sectors",
+      "maintain coordination between adjacent control units"
+    ],
+    "atcPhraseology": [
+      "Control: ANAC123, contact Florianópolis Approach on one one nine decimal zero, good day.",
+      "Approach: ANAC123, contact Florianópolis Tower one one eight decimal one, good day.",
+      "Tower: ANAC123, contact Congonhas Ground one two one decimal nine.",
+      "Control: ANAC123, leaving our frequency, squawk VFR, frequency change approved.",
+      "Approach: ANAC123, contact Navegantes Tower one one eight decimal three, cleared to land."
+    ],
+    "pilotReadbacks": [
+      "Contact Florianópolis Approach one one nine decimal zero, ANAC123, good day.",
+      "Contact Florianópolis Tower one one eight decimal one, ANAC123.",
+      "Contact Congonhas Ground one two one decimal nine, ANAC123.",
+      "ANAC123, leaving your frequency, good day.",
+      "Contact Navegantes Tower one one eight decimal three, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Saying \"Roger\" and switching without reading back the frequency.  \n  ✔ Always read back: Contact [unit] [frequency], ANAC123.\n\n- ❌ Opening on the new frequency with only a callsign.  \n  ✔ Include altitude and routing: ANAC123, flight level eight zero, inbound Joinville.\n\n- ❌ Switching frequency before the current controller acknowledges the readback.  \n  ✔ Wait for the acknowledgment or \"good day\" before switching.\n\n- ❌ Not announcing departure when leaving a frequency without explicit release.  \n  ✔ Transmit: ANAC123, leaving your frequency. Especially in uncontrolled or advisory airspace.",
+    "pronunciationCoaching": "**Target Phrase:** Contact Joinville Approach one two one decimal three, ANAC123\n\n**Pronunciation:** KON-takt ZHOIN-vil ah-PROACH WUN TOO WUN DEH-sih-mal THREE\n\n**Word Stress**\n\n- Contact → KON-takt\n- Joinville → ZHOIN-vil (Portuguese proper noun — use natural Brazilian pronunciation)\n- Decimal → DEH-sih-mal\n- Three → THREE (not \"tree\" in Brazilian Portuguese accented English — but both acceptable in ICAO)\n\nPractice:\n\nContact Joinville... Contact Joinville Approach...\n\nTogether:\n\nContact Joinville Approach one two one decimal three, ANAC123.",
+    "relatedConcepts": [
+      "Contact",
+      "Monitor",
+      "Opening Call",
+      "Radar Contact",
+      "Sector Handoff",
+      "Leaving Frequency"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — General Phraseology",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Radio Communications",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Frequency Change",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Radiotelephony Best Practices",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0139",
+    "id": "0139",
+    "displayTerm": "Squawk",
+    "term": "squawk",
+    "slug": "squawk",
+    "category": "ATC Phraseology",
+    "meaningEn": "Squawk is an ATC instruction directing the pilot to set a specified four-digit octal code on the aircraft's transponder for secondary surveillance radar identification and tracking.",
+    "meaningPt": "Transponha / Sintonize o transponder no código.\n\nInstrução do controle para o piloto inserir um código de quatro dígitos no transponder da aeronave, permitindo sua identificação e rastreamento no radar secundário de vigilância.",
+    "whenUsed": "When Squawk is received, the pilot should:",
+    "example": "Delivery: ANAC123, squawk two four zero five.",
+    "sayPhrase": "Squawking two four zero five, ANAC123.",
+    "icaoQuestion": "What do you do when ATC assigns a new squawk code during flight?",
+    "icaoSpeakText": "When ATC assigns a new squawk code, I enter the four-digit code on the transponder, verify each digit is correct, then read back the code: Re-squawking [code], ANAC123. I confirm the transponder remains in ALT mode. I do not change the code without ATC instruction, and I am careful to avoid accidentally selecting 7500, 7600, or 7700 when dialing through the code range.",
+    "missionBrief": "Today's lesson covers Squawk — the ATC instruction to set a specific four-digit transponder code.\n\nSquawk is the everyday transponder code assignment.\n\nThis lesson is distinct from Squawk Ident (0106), which covers the IDENT button function. Squawk is about setting the correct discrete code that makes your aircraft identifiable and traceable on secondary surveillance radar.\n\nIn the H130, operating in Brazilian controlled airspace — Congonhas, Florianópolis, Curitiba, Joinville — you will be assigned a squawk code by ATC before or shortly after departure.\n\nUnderstanding the instruction, setting the code correctly, and reading it back are non-negotiable precision skills.",
+    "captainTeaching": "Squawk is a precision task.\n\nFour digits. Each one matters.\n\nA single wrong digit creates a conflict — your radar return belongs to another squawk code, another flight, possibly another sector.\n\nBrazilian pilots sometimes rush the code entry during a busy clearance delivery phase.\n\nSlow down. Enter. Verify. Then readback.\n\nThe readback is your confirmation, but it only works if you verify the panel before you speak.\n\nCommon trap: ATC says squawk two four zero five. You enter two four five zero. You read back the correct code from memory. ATC hears the correct readback. But your transponder shows the wrong code.\n\nThe error does not surface until radar contact — and by then, you are identified under someone else's squawk.\n\nEnter. Verify. Readback.\n\nIn the H130, the transponder is panel-mounted. Make code entry part of your before-takeoff flow.",
+    "operationalContext": "You are taxiing at Congonhas for departure in your H130.\n\nClearance Delivery transmits:\n\nANAC123, cleared to Florianópolis as filed, flight level eight zero, squawk two four zero five.\n\nYou enter 2405 on the transponder, verify each digit, then transmit:\n\nCleared Florianópolis as filed, flight level eight zero, squawking two four zero five, ANAC123.\n\nAfter takeoff, São Paulo Approach confirms:\n\nANAC123, radar contact, squawk confirmed, two miles south of Congonhas, climb flight level eight zero.\n\nYour discrete code is now your radar identity for the entire flight.",
+    "sayItCoach": "Squawking two four zero five, ANAC123.",
+    "icaoModelAnswer": "When ATC assigns a new squawk code, I enter the four-digit code on the transponder, verify each digit is correct, then read back the code: Re-squawking [code], ANAC123. I confirm the transponder remains in ALT mode. I do not change the code without ATC instruction, and I am careful to avoid accidentally selecting 7500, 7600, or 7700 when dialing through the code range.",
+    "memoryTrick": "**CODE** — **C**heck the instruction digits, **O**pen the transponder panel, **D**ial carefully digit by digit, **E**nsure ALT mode before readback.",
+    "operationalMeaning": "When Squawk is received, the pilot should:\n\nCommon Squawk code assignments include:",
+    "whyAtcUsesIt": [
+      "individually identify each aircraft on radar",
+      "track position, altitude, and routing",
+      "distinguish conflicting radar returns",
+      "coordinate between sectors during handoffs",
+      "enable Mode C altitude readout alongside the code"
+    ],
+    "atcPhraseology": [
+      "Delivery: ANAC123, squawk two four zero five.",
+      "Approach: ANAC123, squawk three three six zero.",
+      "Control: ANAC123, squawk four five one two, climb flight level one zero zero.",
+      "Approach: ANAC123, re-squawk two one zero four, confirm when set.",
+      "Control: ANAC123, squawk two zero zero zero, leaving controlled airspace."
+    ],
+    "pilotReadbacks": [
+      "Squawking two four zero five, ANAC123.",
+      "Squawking three three six zero, ANAC123.",
+      "Squawking four five one two, ANAC123.",
+      "Re-squawking two one zero four, ANAC123.",
+      "Squawking two zero zero zero, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Reading back the code from memory without verifying the transponder display.  \n  ✔ Enter, verify on the panel, then read back.\n\n- ❌ Leaving the transponder in STANDBY after entering the new code.  \n  ✔ Ensure ALT mode is selected so Mode C altitude is transmitted.\n\n- ❌ Abbreviating the readback — saying \"squawk set\" instead of the four digits.  \n  ✔ Always read back the full code: Squawking two four zero five, ANAC123.\n\n- ❌ Confusing Squawk with Squawk Ident — entering a code when ident was requested.  \n  ✔ Squawk = set a code. Squawk Ident = press the IDENT button. Two different actions.",
+    "pronunciationCoaching": "**Target Phrase:** Squawking two four zero five, ANAC123\n\n**Pronunciation:** SKWOK-ing TOO FOR ZE-ro FIFE\n\n**Word Stress**\n\n- Squawking → SKWOK-ing\n- Zero → ZE-ro (not \"oh\" — in ICAO, say \"zero\")\n- Five → FIFE (ICAO standard for digit five)\n\nPractice:\n\nTwo... Four... Zero... Five...\n\nTogether:\n\nSquawking two four zero five, ANAC123.",
+    "relatedConcepts": [
+      "Squawk Ident (0106)",
+      "Ident (0141)",
+      "Transponder Failure (0140)",
+      "Radar Contact",
+      "Secondary Surveillance Radar",
+      "Squawk Mayday"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume III — Secondary Surveillance Radar",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Radar Services",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Transponder and ADS-B Operations",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Squawk",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Avionics"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0140",
+    "id": "0140",
+    "displayTerm": "Transponder Failure",
+    "term": "transponder failure",
+    "slug": "transponder-failure",
+    "category": "Aircraft Systems",
+    "meaningEn": "Transponder Failure is the loss of transponder function in flight, requiring the pilot to notify ATC, follow applicable procedures for transponder-mandatory airspace, and coordinate continuation, diversion, or priority landing as appropriate.",
+    "meaningPt": "Falha do transponder.\n\nPerda da função do transponder em voo, exigindo que o piloto notifique o controle, siga os procedimentos aplicáveis ao espaço aéreo com transponder obrigatório e coordene a continuação, desvio ou pouso prioritário conforme necessário.",
+    "whenUsed": "When a transponder failure occurs, the pilot should:",
+    "example": "Control: ANAC123, confirm squawk. No return observed.",
+    "sayPhrase": "ANAC123, no transponder return, attempting reset, standby.",
+    "icaoQuestion": "What would you say to ATC if your transponder failed in controlled airspace?",
+    "icaoSpeakText": "I would immediately notify ATC: Control, ANAC123, transponder failure, unable Mode C, squawk was [code], current altitude [altitude], position [position]. I would advise my intentions and ask whether priority handling or diversion is required. I would follow ATC instructions for procedural separation and confirm my altitude verbally at each call until the transponder is restored or I land.",
+    "missionBrief": "Today's lesson covers Transponder Failure — the situation where the aircraft's transponder becomes unserviceable in flight, and the procedures and phraseology required to inform ATC and manage the resulting loss of radar identification.\n\nA transponder failure removes your Mode C altitude data and, in some cases, your entire secondary radar return.\n\nIn controlled airspace around Congonhas, Curitiba, or São Paulo, operating without a transponder requires immediate coordination with ATC.\n\nIn the H130, the transponder is your radar presence. Without it, you are a primary return at best — or invisible at worst.\n\nKnowing what to say, what ATC needs, and what options exist is a critical operational skill.",
+    "captainTeaching": "A transponder failure is not an emergency.\n\nBut it must be treated with the same urgency of communication.\n\nThe moment you lose the transponder return, ATC loses your altitude data.\n\nIn busy airspace like the São Paulo TMA, an unidentified primary return at flight level eight zero is a problem for every controller in the sector.\n\nYour job: notify immediately. Give your position, your altitude, your last assigned code, and your intention.\n\nDo not reset quietly and hope no one notices.\n\nDo not delay the call while you troubleshoot.\n\nCall first. Troubleshoot second.\n\nIn the H130, the transponder is relatively simple — a power cycle often restores function. But you make the call before the reset, not after.\n\nIf the reset works, you tell ATC: ANAC123, transponder restored, squawking two four zero five. The issue is closed.\n\nIf it does not, ATC has already begun protecting your airspace.",
+    "operationalContext": "You are cruising at flight level eight zero en route to Florianópolis in your H130.\n\nYou notice the transponder display has gone dark — no reply light, no code displayed.\n\nYou attempt a reset. No response.\n\nYou transmit:\n\nCuritiba Control, ANAC123, transponder failure, unable Mode C, squawk was two four zero five, flight level eight zero, sixty miles north of Florianópolis.\n\nControl responds:\n\nANAC123, roger, will provide procedural separation, advise intentions. Do you require priority?\n\nYou assess the route:\n\nANAC123, no priority required, requesting continue to Florianópolis, VMC on top, estimate Florianópolis in three five minutes.\n\nControl clears you to continue with revised separation and coordinates with Florianópolis Approach.\n\nOne clear transmission opened the door to a managed, safe solution.",
+    "sayItCoach": "ANAC123, transponder failure, unable Mode C, squawk was two four zero five.",
+    "icaoModelAnswer": "I would immediately notify ATC: Control, ANAC123, transponder failure, unable Mode C, squawk was [code], current altitude [altitude], position [position]. I would advise my intentions and ask whether priority handling or diversion is required. I would follow ATC instructions for procedural separation and confirm my altitude verbally at each call until the transponder is restored or I land.",
+    "memoryTrick": "**REPORT** — **R**eset attempted, **E**nunciate the failure to ATC, **P**osition and altitude stated, **O**rder of priority assessed, **R**equest continued clearance, **T**ransponder restored — notify ATC.",
+    "operationalMeaning": "When a transponder failure occurs, the pilot should:\n\nATC may respond by:",
+    "whyAtcUsesIt": [
+      "apply appropriate separation standards without Mode C",
+      "advise adjacent sectors of the non-transponding aircraft",
+      "coordinate priority handling if required",
+      "prevent conflicts with other transponder-equipped traffic",
+      "document the event for airspace safety records"
+    ],
+    "atcPhraseology": [
+      "Control: ANAC123, confirm squawk. No return observed.",
+      "Control: ANAC123, transponder failure noted, advise intentions.",
+      "Control: ANAC123, cleared to continue, procedural separation applied.",
+      "Approach: ANAC123, expect radar advisory only, confirm altitude at each call.",
+      "Tower: ANAC123, no transponder, cleared visual approach runway three two, report final."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, no transponder return, attempting reset, standby.",
+      "Curitiba Control, ANAC123, transponder failure, unable Mode C, squawk was two four zero five.",
+      "ANAC123, continue to Florianópolis, request priority handling on arrival.",
+      "ANAC123, confirming altitude flight level eight zero, no transponder.",
+      "ANAC123, no transponder, cleared visual approach runway three two, report final, wilco."
+    ],
+    "brazilianMistakes": "- ❌ Resetting the transponder quietly without notifying ATC.  \n  ✔ Notify ATC first. If reset is successful, advise: Transponder restored, squawking [code].\n\n- ❌ Continuing to operate as if nothing changed.  \n  ✔ ATC has lost your Mode C data. Separation standards change. They need to know.\n\n- ❌ Not stating the last assigned squawk code in the notification.  \n  ✔ Include the code: squawk was two four zero five. ATC can use the primary return with that reference.\n\n- ❌ Declaring an emergency unnecessarily for a transponder failure alone.  \n  ✔ A transponder failure is not an emergency unless combined with other factors. Request priority, not emergency, if needed.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, transponder failure, unable Mode C\n\n**Pronunciation:** AY-EN-AY-SEE WUN TOO THREE, trans-PON-der FAIL-yer, un-AY-bul MODE SEE\n\n**Word Stress**\n\n- Transponder → trans-PON-der\n- Failure → FAIL-yer\n- Unable → un-AY-bul\n- Mode C → MODE SEE\n\nPractice:\n\nTransponder failure... Unable Mode C...\n\nTogether:\n\nANAC123, transponder failure, unable Mode C, squawk was two four zero five.",
+    "relatedConcepts": [
+      "Squawk (0139)",
+      "Squawk Ident (0106)",
+      "Ident (0141)",
+      "Radar Contact",
+      "Secondary Surveillance Radar",
+      "ADS-B",
+      "Squawk 7600 (Radio Failure)"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume III — Secondary Surveillance Radar",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Radar Services and Equipment Failures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Transponder Operation",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Transponder",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Avionics Systems"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0141",
+    "id": "0141",
+    "displayTerm": "Ident",
+    "term": "ident",
+    "slug": "ident",
+    "category": "ATC Phraseology",
+    "meaningEn": "Ident is the pilot's verbal confirmation that the IDENT button on the transponder has been pressed, producing a Special Position Identification (SPI) pulse visible to ATC on radar. It is both an action and a one-word transmission.",
+    "meaningPt": "Ident.\n\nConfirmação verbal do piloto de que o botão IDENT do transponder foi acionado, produzindo um pulso especial de identificação de posição visível ao controlador no radar. É tanto uma ação física quanto uma transmissão de uma palavra.",
+    "whenUsed": "Ident as a pilot response involves:",
+    "example": "Approach: ANAC123, squawk ident.",
+    "sayPhrase": "Ident, ANAC123.",
+    "icaoQuestion": "Explain the Ident function and how a pilot confirms it to ATC.?",
+    "icaoSpeakText": "Ident refers to pressing the IDENT button on the transponder, which causes the aircraft's radar return to highlight on the controller's display with a Special Position Identification pulse. When instructed by ATC to ident, I press the button and confirm with the transmission: Ident, ANAC123. I do not press IDENT unless instructed. The confirmation tells ATC the action was taken, and they then acknowledge by confirming radar identification.",
+    "missionBrief": "Today's lesson covers Ident — the pilot's response and the transponder function itself when the IDENT button is pressed following an ATC instruction.\n\nThis lesson is distinct from Squawk Ident (0106), which teaches the full ATC instruction \"Squawk Ident.\" This lesson focuses on the word Ident as the pilot's action, confirmation, and the meaning of the IDENT function in secondary radar operations.\n\nIn the H130, operating into Navegantes, Florianópolis, or Curitiba, \"Ident\" is the one-word pilot response that confirms you pressed the IDENT button — crisp, immediate, and unambiguous.\n\nKnowing when to say it, why it matters, and how to use it professionally completes your transponder communication picture.",
+    "captainTeaching": "Ident is a one-word transmission with one physical action.\n\nThe two must happen together.\n\nPress. Then speak.\n\nNot speak then press. Not press without speaking.\n\nThe discipline is: when you hear \"squawk ident,\" your hand moves to the IDENT button before your mouth opens.\n\nAction first. Confirmation second.\n\nIn the H130, the IDENT button is on the transponder control head. It is a dedicated button — not a menu selection, not a soft key. One press. One pulse.\n\nMany Brazilian pilots say \"Roger\" when instructed to ident. That is incorrect.\n\n\"Roger\" tells ATC you heard the instruction.\n\n\"Ident, ANAC123\" tells ATC you executed it.\n\nATC is looking for your blip to highlight on radar. \"Roger\" does not highlight anything.\n\nPress. Report. Done.",
+    "operationalContext": "You have just checked in with Florianópolis Approach inbound from Navegantes in your H130.\n\nApproach transmits:\n\nANAC123, squawk ident.\n\nYou press the IDENT button on the transponder.\n\nYou transmit:\n\nIdent, ANAC123.\n\nApproach responds:\n\nANAC123, identified, thirty miles north of Florianópolis, descend to altitude five thousand, QNH one zero one seven.\n\nThe entire exchange is three seconds.\n\nThat one button press and one word gave the controller your exact position among a dozen radar returns.",
+    "sayItCoach": "Ident, ANAC123.",
+    "icaoModelAnswer": "Ident refers to pressing the IDENT button on the transponder, which causes the aircraft's radar return to highlight on the controller's display with a Special Position Identification pulse. When instructed by ATC to ident, I press the button and confirm with the transmission: Ident, ANAC123. I do not press IDENT unless instructed. The confirmation tells ATC the action was taken, and they then acknowledge by confirming radar identification.",
+    "memoryTrick": "**PRESS** — **P**ush the IDENT button, **R**eport immediately, **E**xpect ATC confirmation, **S**hort transmission only, **S**top — do not repeat unless asked.",
+    "operationalMeaning": "Ident as a pilot response involves:\n\nThe IDENT function works because:",
+    "whyAtcUsesIt": [
+      "positively identify an aircraft among multiple radar returns",
+      "confirm the aircraft is transmitting on the correct squawk code",
+      "re-establish identification after a transponder anomaly",
+      "verify position in a complex traffic environment",
+      "complete the radar identification process at initial contact"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, squawk ident.",
+      "Approach: ANAC123, ident received, radar identified, twenty miles north.",
+      "Approach: ANAC123, re-ident, not received.",
+      "Control: ANAC123, squawk two four zero zero and ident.",
+      "Approach: ANAC123, confirm squawk, ident when ready."
+    ],
+    "pilotReadbacks": [
+      "Ident, ANAC123.",
+      "Identified, ANAC123, wilco descent.",
+      "Re-ident, ANAC123.",
+      "Squawking two four zero zero and ident, ANAC123.",
+      "Confirming squawk two four zero zero, ident, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Saying \"Roger\" instead of \"Ident\" when instructed to ident.  \n  ✔ Ident, ANAC123 — confirms the action, not just acknowledgment.\n\n- ❌ Pressing IDENT without transmitting a confirmation.  \n  ✔ Always say: Ident, ANAC123 immediately after pressing.\n\n- ❌ Pressing IDENT spontaneously without ATC instruction.  \n  ✔ Only press IDENT when instructed. Unauthorized ident can confuse radar displays.\n\n- ❌ Confusing Ident with Squawk — thinking \"ident\" means set a code.  \n  ✔ Ident = IDENT button. Squawk = transponder code setting. Different actions.",
+    "pronunciationCoaching": "**Target Phrase:** Ident, ANAC123\n\n**Pronunciation:** EYE-dent, AY-EN-AY-SEE WUN TOO THREE\n\n**Word Stress**\n\n- Ident → EYE-dent (stress on first syllable)\n- Callsign → each element spoken clearly\n\nPractice:\n\nIdent...\n\nTogether:\n\nIdent, ANAC123.\n\nNote: short, confident, immediate. No filler words. No \"I am ident-ing\" or \"pressing ident now.\" Just: Ident, ANAC123.",
+    "relatedConcepts": [
+      "Squawk Ident (0106)",
+      "Squawk (0139)",
+      "Transponder Failure (0140)",
+      "Radar Contact",
+      "Secondary Surveillance Radar",
+      "SPI — Special Position Identification"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume III — Secondary Surveillance Radar",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Radar Services",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Transponder and ADS-B",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Ident",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Avionics"
+      },
+      {
+        "label": "SKYbrary — Secondary Surveillance Radar",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0142",
+    "id": "0142",
+    "displayTerm": "Traffic in Sight",
+    "term": "traffic in sight",
+    "slug": "traffic-in-sight",
+    "category": "ATC Phraseology",
+    "meaningEn": "Traffic in Sight is the pilot's verbal confirmation that the aircraft or vehicles described in an ATC traffic advisory have been visually acquired by the flight crew.",
+    "meaningPt": "Tráfego à vista.\n\nConfirmação verbal do piloto de que a aeronave ou veículos descritos em um aviso de tráfego do controle foram visualmente adquiridos pela tripulação.",
+    "whenUsed": "When Traffic in Sight is reported, the pilot should:",
+    "example": "Approach: ANAC123, traffic, twelve o'clock, four miles, opposite direction, altitude five thousand.",
+    "sayPhrase": "Traffic in sight, ANAC123.",
+    "icaoQuestion": "What does Traffic in Sight mean operationally, and what responsibilities does it carry?",
+    "icaoSpeakText": "Traffic in Sight means I have visually acquired the traffic ATC described. Reporting it confirms to ATC that I can see the conflicting aircraft. After this report, ATC may instruct me to maintain visual separation — which transfers responsibility for collision avoidance from ATC to me. I must only say Traffic in Sight if I have actually seen the traffic. If I lose visual contact, I immediately advise ATC: ANAC123, lost traffic.",
+    "missionBrief": "Today's lesson covers Traffic in Sight — the pilot's response when ATC issues a traffic advisory and the pilot visually acquires the reported traffic.\n\nTraffic in Sight is a short, unambiguous phrase that closes the loop on a traffic call.\n\nWhen ATC says \"traffic, twelve o'clock, five miles,\" they are giving you information and expecting a response.\n\nIn the H130, flying in and out of Congonhas, Joinville, or São Paulo area, traffic advisories are common — especially in busy terminal airspace.\n\nKnowing how to respond — and what your response means operationally — is a fundamental Part 2 skill.",
+    "captainTeaching": "Traffic in Sight is not a formality.\n\nIt is a declaration that you have eyes on the conflicting traffic.\n\nWhen you say it, ATC may delegate visual separation to you — meaning the responsibility for avoiding that aircraft shifts to the flight deck.\n\nThat is a significant operational consequence.\n\nBrazilian pilots sometimes say Traffic in Sight before they actually see the traffic — to avoid the follow-up conversation or because they expect to see it soon.\n\nDo not do this.\n\nIf you have not seen it, say: Negative contact, ANAC123 — or: Looking, ANAC123.\n\nATC will continue the advisory.\n\nOnce you say Traffic in Sight, monitor it. If you lose it: ANAC123, lost traffic, request advisory.\n\nIn the H130, visual scanning around Congonhas requires discipline. Traffic density is high. Head-down time is fatal.\n\nLook first. Report what you see. Mean what you say.",
+    "operationalContext": "You are on a visual approach to Joinville runway two seven in your H130.\n\nJoinville Approach transmits:\n\nANAC123, traffic, eleven o'clock, three miles, westbound, altitude three thousand, unknown type.\n\nYou scan the area. Eleven o'clock left, three miles.\n\nYou see a small aircraft tracking westbound.\n\nYou transmit:\n\nTraffic in sight, ANAC123.\n\nApproach responds:\n\nANAC123, maintain visual separation from that traffic, continue approach.\n\nYou monitor the traffic, keep it in sight, and land normally.\n\nThree words. Traffic awareness. Approach maintained.",
+    "sayItCoach": "Traffic in sight, ANAC123.",
+    "icaoModelAnswer": "Traffic in Sight means I have visually acquired the traffic ATC described. Reporting it confirms to ATC that I can see the conflicting aircraft. After this report, ATC may instruct me to maintain visual separation — which transfers responsibility for collision avoidance from ATC to me. I must only say Traffic in Sight if I have actually seen the traffic. If I lose visual contact, I immediately advise ATC: ANAC123, lost traffic.",
+    "memoryTrick": "**SEE** — **S**can the area first, **E**yes confirm the traffic, **E**nunciate clearly and include callsign.",
+    "operationalMeaning": "When Traffic in Sight is reported, the pilot should:\n\nTraffic in Sight applies to:",
+    "whyAtcUsesIt": [
+      "alert pilots to potential conflicting traffic",
+      "allow pilots to apply visual separation",
+      "satisfy separation requirements with visual confirmation",
+      "enhance situational awareness in complex terminal areas",
+      "support sequencing during approach"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, traffic, twelve o'clock, four miles, opposite direction, altitude five thousand.",
+      "Tower: ANAC123, traffic, left base, Cessna, report traffic in sight.",
+      "Approach: ANAC123, traffic, ten o'clock, two miles, crossing left to right, altitude four thousand.",
+      "Control: ANAC123, traffic, two o'clock, ten miles, same direction, same altitude.",
+      "Approach: ANAC123, traffic in sight, maintain own separation, continue approach."
+    ],
+    "pilotReadbacks": [
+      "Traffic in sight, ANAC123.",
+      "Traffic in sight, ANAC123.",
+      "Traffic in sight, maintaining visual separation, ANAC123.",
+      "Traffic in sight, ANAC123.",
+      "Maintaining visual separation, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Reporting Traffic in Sight without actually having visual contact.  \n  ✔ Only report when confirmed visually. A false report removes ATC protection.\n\n- ❌ Not monitoring the traffic after reporting it in sight.  \n  ✔ Continue to monitor. If lost, report immediately.\n\n- ❌ Saying \"Roger\" instead of \"Traffic in sight.\"  \n  ✔ The specific phrase closes the ATC advisory loop. \"Roger\" does not confirm visual acquisition.\n\n- ❌ Forgetting to include callsign in the report.  \n  ✔ Traffic in sight, ANAC123 — always include your callsign.",
+    "pronunciationCoaching": "**Target Phrase:** Traffic in sight, ANAC123\n\n**Pronunciation:** TRAF-ik in SYTE, AY-EN-AY-SEE WUN TOO THREE\n\n**Word Stress**\n\n- Traffic → TRAF-ik\n- Sight → SYTE (clear and distinct — not \"site\" or \"side\")\n- Callsign → each element clear\n\nPractice:\n\nTraffic... In sight... Traffic in sight...\n\nTogether:\n\nTraffic in sight, ANAC123.",
+    "relatedConcepts": [
+      "No Traffic in Sight (0143)",
+      "Traffic Alert (0144)",
+      "TCAS Resolution Advisory (0145)",
+      "Visual Separation",
+      "Traffic Information",
+      "Traffic Advisory"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Traffic Information",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 11 — Air Traffic Services"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Traffic Advisories",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Traffic in Sight",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Traffic Information Broadcasts",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0143",
+    "id": "0143",
+    "displayTerm": "No Traffic in Sight",
+    "term": "no traffic in sight",
+    "slug": "no-traffic-in-sight",
+    "category": "ATC Phraseology",
+    "meaningEn": "No Traffic in Sight is the pilot's verbal report that the traffic described in an ATC advisory has not been visually acquired, directing ATC to maintain the advisory and continue providing separation service.",
+    "meaningPt": "Tráfego não localizado visualmente.\n\nInforme verbal do piloto de que o tráfego descrito em um aviso ATC não foi adquirido visualmente, indicando ao controlador que mantenha o aviso e continue fornecendo serviço de separação.",
+    "whenUsed": "When No Traffic in Sight is reported, the pilot should:",
+    "example": "Approach: ANAC123, traffic, ten o'clock, three miles, descending, report traffic in sight.",
+    "sayPhrase": "No traffic in sight, ANAC123.",
+    "icaoQuestion": "What should you say if ATC issues a traffic advisory and you cannot see the traffic?",
+    "icaoSpeakText": "I would report honestly: No traffic in sight, ANAC123. This tells ATC I have scanned for the traffic but have not acquired it visually. ATC then retains separation responsibility and continues the advisory. I continue scanning. If I acquire the traffic later, I report: Traffic in sight, ANAC123. I would never report traffic in sight if I have not actually seen it, as a false report would remove ATC separation protection.",
+    "missionBrief": "Today's lesson covers No Traffic in Sight — the pilot's response when ATC issues a traffic advisory and the pilot is unable to visually acquire the reported traffic.\n\nNo Traffic in Sight is an honest report that keeps ATC in the separation game.\n\nWhen you cannot see the traffic, you say so. ATC remains responsible. ATC continues the advisory.\n\nIn the H130, operating into Florianópolis, Curitiba, or São Paulo, not every traffic call results in a visual. Low visibility, cloud, terrain, or workload can prevent acquisition.\n\nKnowing how to report — and what happens next — is as important as the Traffic in Sight lesson.",
+    "captainTeaching": "No Traffic in Sight is the brave transmission.\n\nMany pilots hesitate to say it because they feel it sounds incompetent.\n\nThey scan for two seconds. See nothing. Say Traffic in Sight anyway.\n\nThat is the wrong choice.\n\nWhen you say No Traffic in Sight, you are telling ATC: I looked. I did not find it. You are still responsible.\n\nThat is professional aviation.\n\nWhen you say Traffic in Sight falsely, you are telling ATC: I've got it. Stand down.\n\nAnd ATC does.\n\nAnd you do not have it.\n\nAnd the separation gap closes.\n\nIn the H130 around Florianópolis or Congonhas, cloud layers at two thousand to four thousand feet are common. Traffic below cloud is frequently invisible from above.\n\nScan thoroughly. Report honestly. Trust ATC to handle what you cannot see.",
+    "operationalContext": "You are on a visual approach to Florianópolis runway three two in your H130, broken cloud layer below you.\n\nApproach transmits:\n\nANAC123, traffic, nine o'clock, two miles, northbound, altitude two thousand five hundred, unknown type.\n\nYou scan nine o'clock. Cloud layer obscures the lower airspace. You see nothing.\n\nYou transmit:\n\nNo traffic in sight, ANAC123.\n\nApproach responds:\n\nANAC123, roger, that traffic now turning away, no factor, continue approach.\n\nYour honest report kept ATC responsible.\n\nThey tracked it. They assessed it. They resolved it.\n\nAll you had to do was look and report honestly.",
+    "sayItCoach": "No traffic in sight, ANAC123.",
+    "icaoModelAnswer": "I would report honestly: No traffic in sight, ANAC123. This tells ATC I have scanned for the traffic but have not acquired it visually. ATC then retains separation responsibility and continues the advisory. I continue scanning. If I acquire the traffic later, I report: Traffic in sight, ANAC123. I would never report traffic in sight if I have not actually seen it, as a false report would remove ATC separation protection.",
+    "memoryTrick": "**LOOK** — **L**ook thoroughly before responding, **O**nly report what is confirmed, **O**pen the loop for ATC to maintain separation, **K**eep scanning and advise if acquired.",
+    "operationalMeaning": "When No Traffic in Sight is reported, the pilot should:\n\nNo Traffic in Sight is appropriate when:",
+    "whyAtcUsesIt": [
+      "maintains radar separation and continues the advisory",
+      "may issue a revised traffic description or updated position",
+      "does not delegate visual separation to the pilot",
+      "may issue instructions to avoid the traffic area",
+      "continues monitoring the situation until separation is assured"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, traffic, ten o'clock, three miles, descending, report traffic in sight.",
+      "Approach: ANAC123, roger, no traffic in sight, maintaining separation, continue approach.",
+      "Control: ANAC123, traffic, twelve o'clock, eight miles, opposite direction, advise traffic in sight.",
+      "Tower: ANAC123, traffic on final, Cessna, report when in sight.",
+      "Approach: ANAC123, no traffic in sight, cleared visual approach, maintain own terrain separation."
+    ],
+    "pilotReadbacks": [
+      "No traffic in sight, ANAC123.",
+      "No traffic in sight, ANAC123, continuing scan.",
+      "Negative contact, ANAC123.",
+      "No traffic in sight, ANAC123, advise when no factor.",
+      "No traffic in sight, ANAC123, will advise."
+    ],
+    "brazilianMistakes": "- ❌ Saying \"Traffic in sight\" when the traffic has not been visually acquired.  \n  ✔ Report honestly. No traffic in sight, ANAC123 keeps ATC responsible.\n\n- ❌ Not continuing to scan after the initial report.  \n  ✔ Continue scanning. If traffic is subsequently acquired, report: Traffic in sight, ANAC123.\n\n- ❌ Remaining silent when the traffic advisory is not responded to.  \n  ✔ Always respond to a traffic advisory. If you cannot see it, say so.\n\n- ❌ Saying \"Negative\" alone without the full phrase.  \n  ✔ Use: No traffic in sight, ANAC123 — or: Negative contact, ANAC123. Both are acceptable but include your callsign.",
+    "pronunciationCoaching": "**Target Phrase:** No traffic in sight, ANAC123\n\n**Pronunciation:** NOH TRAF-ik in SYTE, AY-EN-AY-SEE WUN TOO THREE\n\n**Word Stress**\n\n- No → NOH (firm and clear)\n- Traffic → TRAF-ik\n- Sight → SYTE\n- Callsign → each element clear\n\nPractice:\n\nNo traffic... No traffic in sight...\n\nTogether:\n\nNo traffic in sight, ANAC123.\n\nNote: Speak with confidence. This is not an apology. It is an accurate operational report.",
+    "relatedConcepts": [
+      "Traffic in Sight (0142)",
+      "Traffic Alert (0144)",
+      "TCAS Resolution Advisory (0145)",
+      "Visual Separation",
+      "Traffic Advisory",
+      "Traffic Information"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Traffic Information",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 11 — Air Traffic Services"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Traffic Advisories",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Traffic in Sight",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Traffic Information",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0144",
+    "id": "0144",
+    "displayTerm": "Traffic Alert",
+    "term": "traffic alert",
+    "slug": "traffic-alert",
+    "category": "ATC Phraseology",
+    "meaningEn": "A Traffic Alert is an urgent ATC advisory warning the pilot of potentially conflicting traffic that poses an immediate collision threat, requiring immediate pilot attention and possible evasive action.",
+    "meaningPt": "Alerta de tráfego.\n\nAviso urgente do controle alertando o piloto sobre tráfego potencialmente conflitante que representa uma ameaça iminente de colisão, exigindo atenção imediata e possível ação evasiva do piloto.",
+    "whenUsed": "When a Traffic Alert is received, the pilot should:",
+    "example": "Approach: ANAC123, traffic alert, traffic twelve o'clock, two miles, opposite direction, climb immediately.",
+    "sayPhrase": "ANAC123, climbing, traffic alert acknowledged.",
+    "icaoQuestion": "How do you respond to an ATC Traffic Alert, and what information do you give after taking action?",
+    "icaoSpeakText": "When ATC issues a Traffic Alert, I acknowledge immediately, scan urgently for the traffic, and take evasive action if the conflict is imminent. I advise ATC of my action: ANAC123, turning right, traffic in sight — or: ANAC123, climbing, traffic in sight. After the conflict passes, I report my position and altitude and request clearance to resume my routing. I do not wait for ATC to ask — I report spontaneously.",
+    "missionBrief": "Today's lesson covers Traffic Alert — an urgent ATC transmission issued when a potentially conflicting aircraft poses an immediate or imminent collision risk that requires prompt pilot action.\n\nA Traffic Alert is not a routine traffic advisory.\n\nIt is an urgent warning.\n\nIn the H130, operating in the dense terminal airspace around Congonhas, São Paulo, or Florianópolis, a Traffic Alert can be issued when a radar separation violation is developing or when ATC detects a potential collision scenario.\n\nYour response must be immediate: acknowledge, look, and take action if required.\n\nThis lesson covers both ICAO Part 2 phraseology and Part 3 emergency response.",
+    "captainTeaching": "Traffic Alert is urgent language for an urgent situation.\n\nWhen you hear it, one thing stops: routine procedure.\n\nWhat starts: immediate action.\n\nAcknowledge. Look. Act if required.\n\nThe key error Brazilian pilots make is treating a Traffic Alert like a normal traffic advisory — scanning leisurely, reporting methodically.\n\nThe Traffic Alert is the controller saying: there is no time for normal procedure.\n\nAct now.\n\nIn the H130, your maneuverability is an asset in a Traffic Alert. You can turn sharply, climb quickly, and reduce risk before a larger aircraft could.\n\nUse that performance.\n\nAfter the maneuver, report your action to ATC: ANAC123, turned right, now heading zero nine zero.\n\nDo not leave ATC guessing where you went.\n\nIf TCAS also activates at the same time, follow TCAS. See lesson 0145.",
+    "operationalContext": "You are climbing through three thousand feet out of Congonhas in your H130.\n\nSão Paulo Approach transmits urgently:\n\nANAC123, traffic alert, traffic twelve o'clock, one mile, opposite direction, altitude three thousand five hundred, turn right immediately.\n\nYou look up. You see a light aircraft descending directly ahead.\n\nYou bank right and climb.\n\nYou transmit:\n\nANAC123, traffic in sight, turning right, climbing.\n\nApproach confirms:\n\nANAC123, roger, clear of traffic, traffic alert cancelled, resume own navigation, report altitude.\n\nYou report:\n\nANAC123, turning to heading zero six zero, altitude three thousand five hundred, resuming.\n\nTotal time: fifteen seconds.\n\nThe Traffic Alert and your immediate response prevented a collision.",
+    "sayItCoach": "ANAC123, traffic alert acknowledged, turning right, climbing.",
+    "icaoModelAnswer": "When ATC issues a Traffic Alert, I acknowledge immediately, scan urgently for the traffic, and take evasive action if the conflict is imminent. I advise ATC of my action: ANAC123, turning right, traffic in sight — or: ANAC123, climbing, traffic in sight. After the conflict passes, I report my position and altitude and request clearance to resume my routing. I do not wait for ATC to ask — I report spontaneously.",
+    "memoryTrick": "**ACT** — **A**cknowledge immediately, **C**heck for traffic urgently, **T**ake evasive action and transmit your move.",
+    "operationalMeaning": "When a Traffic Alert is received, the pilot should:\n\nTraffic Alerts are issued when:",
+    "whyAtcUsesIt": [
+      "urgently warn of imminent collision risk",
+      "prompt immediate pilot action before ATC-directed separation can be established",
+      "cover situations where radar separation has already been compromised",
+      "complement the TCAS traffic advisory system",
+      "comply with Safety Alert requirements per ICAO and DECEA regulations"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, traffic alert, traffic twelve o'clock, two miles, opposite direction, climb immediately.",
+      "Approach: ANAC123, traffic alert, traffic, nine o'clock, one mile, same altitude, turn right immediately.",
+      "Control: ANAC123, traffic alert, unknown traffic, two o'clock, three miles, altitude unconfirmed.",
+      "Tower: ANAC123, traffic alert, aircraft on runway, go around immediately.",
+      "Approach: ANAC123, traffic alert cancelled, traffic clear, resume own navigation."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, climbing, traffic alert acknowledged.",
+      "ANAC123, turning right, traffic in sight.",
+      "ANAC123, traffic alert, looking, ANAC123.",
+      "ANAC123, going around, traffic on runway.",
+      "ANAC123, resuming own navigation, passing three thousand."
+    ],
+    "brazilianMistakes": "- ❌ Treating a Traffic Alert like a routine advisory and responding slowly.  \n  ✔ A Traffic Alert is urgent. Respond immediately. Act if required.\n\n- ❌ Not reporting evasive action to ATC after deviating.  \n  ✔ Always advise ATC: ANAC123, turning right, now heading zero nine zero.\n\n- ❌ Waiting for ATC instructions before taking evasive action.  \n  ✔ If the conflict is imminent and ATC says \"turn right immediately,\" turn right. Do not wait for further explanation.\n\n- ❌ Confusing Traffic Alert with TCAS — following verbal ATC instead of TCAS if both activate.  \n  ✔ If TCAS activates with ATC Traffic Alert, follow TCAS. See 0145.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, traffic alert acknowledged, turning right, climbing\n\n**Pronunciation:** AY-EN-AY-SEE WUN TOO THREE, TRAF-ik ah-LERT ak-NOL-ijd, TER-ning RYTE, KLY-ming\n\n**Word Stress**\n\n- Alert → ah-LERT (stress on second syllable)\n- Acknowledged → ak-NOL-ijd\n- Turning → TER-ning\n- Climbing → KLY-ming\n\nPractice:\n\nTraffic alert... Acknowledged... Turning right...\n\nTogether:\n\nANAC123, traffic alert acknowledged, turning right, climbing.",
+    "relatedConcepts": [
+      "Traffic in Sight (0142)",
+      "No Traffic in Sight (0143)",
+      "TCAS Resolution Advisory (0145)",
+      "Safety Alert",
+      "Visual Separation",
+      "Go Around"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Safety Alerts",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 11 — Air Traffic Services"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Safety Alerts",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Safety Alert",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "SKYbrary — Safety Alert",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0145",
+    "id": "0145",
+    "displayTerm": "TCAS Resolution Advisory",
+    "term": "tcas resolution advisory",
+    "slug": "tcas-resolution-advisory",
+    "category": "Emergency",
+    "meaningEn": "A TCAS Resolution Advisory is an automated guidance command issued by the airborne collision avoidance system directing the pilot to immediately execute a specific vertical maneuver — climb, descend, or maintain — to resolve a mid-air collision threat.",
+    "meaningPt": "Aviso de resolução TCAS (RA).\n\nComando de orientação automático emitido pelo sistema aerotransportado de prevenção de colisão, instruindo o piloto a executar imediatamente uma manobra vertical específica — subir, descer ou manter — para resolver uma ameaça de colisão.",
+    "whenUsed": "When a TCAS Resolution Advisory is received, the pilot must:",
+    "example": "Control: ANAC123, roger, TCAS RA. Report clear of conflict.",
+    "sayPhrase": "São Paulo Control, ANAC123, TCAS RA, climbing.",
+    "icaoQuestion": "What do you do if TCAS issues a Resolution Advisory while ATC is giving you a conflicting instruction?",
+    "icaoSpeakText": "I follow the TCAS Resolution Advisory immediately and notify ATC: ANAC123, TCAS RA, climbing — or descending. I do not follow ATC instructions that conflict with the RA. ICAO requires pilots to comply with TCAS RA even when ATC instructions differ, because TCAS has computed the maneuver to maintain separation based on real-time geometry. When TCAS issues clear-of-conflict, I report to ATC and return to my cleared altitude.",
+    "missionBrief": "Today's lesson covers TCAS Resolution Advisory — the automated collision avoidance instruction issued by the Traffic Collision Avoidance System, and the pilot procedures and phraseology required to respond correctly.\n\nA TCAS Resolution Advisory (RA) is the highest-priority traffic conflict alert in modern aviation.\n\nWhen a TCAS RA activates, one rule overrides all others: follow TCAS, not ATC.\n\nIn the H130, if equipped with TCAS II, the system may issue an RA while operating in the São Paulo TMA, the Curitiba terminal area, or any congested airspace.\n\nThe correct ICAO response — immediate compliance and ATC notification — is the subject of this critical lesson.",
+    "captainTeaching": "TCAS Resolution Advisory is the highest-authority command in the cockpit.\n\nHigher than ATC.\n\nHigher than your cleared altitude.\n\nHigher than standard operating procedure.\n\nWhen the box says CLIMB — you climb.\n\nWhen the box says DESCEND — you descend.\n\nYou transmit simultaneously: ANAC123, TCAS RA, climbing — or descending.\n\nYou do not ask ATC for permission.\n\nYou do not wait.\n\nYou do not second-guess.\n\nThe RA was computed using the threat aircraft's position and your position simultaneously. Both aircraft receive coordinated commands. If you deviate from the RA, the geometry breaks. The collision risk increases.\n\nBrazilian pilots sometimes hesitate because they feel they are violating the ATC clearance.\n\nYou are. That is correct. ICAO mandates it.\n\nICAO Doc 4444 states that pilots must follow TCAS RA even if it conflicts with ATC instructions.\n\nFollow TCAS. Notify ATC. Return when clear.\n\nIn the H130 at lower altitudes, TCAS TAs are more common than RAs. But an RA can activate even at three thousand feet if the geometry demands it.\n\nTrain this response until it is automatic.",
+    "operationalContext": "You are at flight level eight zero between São Paulo and Curitiba in your H130.\n\nTCAS activates: auditory alert — \"CLIMB, CLIMB, CLIMB.\"\n\nThe vertical speed indicator commands a climb.\n\nYou immediately advance the collective and climb.\n\nYou transmit:\n\nSão Paulo Control, ANAC123, TCAS RA, climbing.\n\nControl responds:\n\nANAC123, roger, TCAS RA.\n\nTCAS announces: \"Clear of conflict.\"\n\nYou level off and transmit:\n\nANAC123, clear of conflict, returning flight level eight zero.\n\nControl: ANAC123, roger, resume flight level eight zero, advise when established.\n\nFrom RA to clear-of-conflict: approximately twenty-five seconds.\n\nYour compliance kept both aircraft separated. The other aircraft received a complementary descent RA.",
+    "sayItCoach": "São Paulo Control, ANAC123, TCAS RA, climbing.",
+    "icaoModelAnswer": "I follow the TCAS Resolution Advisory immediately and notify ATC: ANAC123, TCAS RA, climbing — or descending. I do not follow ATC instructions that conflict with the RA. ICAO requires pilots to comply with TCAS RA even when ATC instructions differ, because TCAS has computed the maneuver to maintain separation based on real-time geometry. When TCAS issues clear-of-conflict, I report to ATC and return to my cleared altitude.",
+    "memoryTrick": "**FLY** — **F**ollow TCAS immediately, **L**et ATC know now, **Y**ield to clear-of-conflict before returning.",
+    "operationalMeaning": "When a TCAS Resolution Advisory is received, the pilot must:\n\nThe TCAS RA sequence:\n\n1. TCAS issues RA — auditory and visual command on EFIS or VSI\n\n2. Pilot executes immediately — no hesitation\n\n3. Pilot notifies ATC — ANAC123, TCAS RA\n\n4. ATC acknowledges — does not countermand the RA\n\n5. TCAS issues clear-of-conflict — pilot returns to cleared altitude\n\n6. Pilot advises ATC — ANAC123, clear of conflict, returning flight level eight zero",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Control: ANAC123, roger, TCAS RA. Report clear of conflict.",
+      "Control: ANAC123, roger, maintain own separation, advise returning cleared altitude.",
+      "Control: ANAC123, TCAS RA acknowledged, confirm returning flight level eight zero.",
+      "Control: ANAC123, roger, what altitude are you now?",
+      "Control: ANAC123, resume flight level eight zero, cleared."
+    ],
+    "pilotReadbacks": [
+      "São Paulo Control, ANAC123, TCAS RA, climbing.",
+      "ANAC123, TCAS RA, descending.",
+      "ANAC123, clear of conflict, returning flight level eight zero.",
+      "ANAC123, passing flight level eight five, returning to flight level eight zero.",
+      "ANAC123, established flight level eight zero, TCAS RA complete."
+    ],
+    "brazilianMistakes": "- ❌ Hesitating to climb or descend because the RA conflicts with ATC clearance.  \n  ✔ Follow TCAS immediately. Notify ATC simultaneously. TCAS has priority.\n\n- ❌ Asking ATC for permission before executing the RA maneuver.  \n  ✔ Execute first. Notify simultaneously. Do not wait for ATC approval.\n\n- ❌ Not notifying ATC after following the RA.  \n  ✔ Always transmit: ANAC123, TCAS RA, climbing — the moment you begin the maneuver.\n\n- ❌ Returning to cleared altitude before TCAS issues clear-of-conflict.  \n  ✔ Maintain the RA until TCAS says clear. Then return and advise ATC.",
+    "pronunciationCoaching": "**Target Phrase:** São Paulo Control, ANAC123, TCAS RA, climbing\n\n**Pronunciation:** TOWN PAW-loo kon-TROHL, AY-EN-AY-SEE WUN TOO THREE, TEE-KAS AR-AY, KLY-ming\n\n**Word Stress**\n\n- TCAS → TEE-KAS (not \"tee-kas\" — both syllables clear)\n- RA → AR-AY (spell out: Resolution Advisory initialism)\n- Climbing → KLY-ming (firm and clear)\n\nPractice:\n\nTCAS RA... Climbing... TCAS RA, climbing...\n\nTogether:\n\nSão Paulo Control, ANAC123, TCAS RA, climbing.",
+    "relatedConcepts": [
+      "Traffic Alert (0144)",
+      "Traffic in Sight (0142)",
+      "No Traffic in Sight (0143)",
+      "Transponder Failure (0140)",
+      "Emergency Declaration",
+      "Squawk 7700"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — ACAS/TCAS Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 10 Volume IV — Surveillance Radar and Collision Avoidance",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Circular 314 — ACAS II"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — TCAS",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Advisory Circular 120-55 — Air Carrier Operational Approval of TCAS II"
+      },
+      {
+        "label": "SKYbrary — TCAS Resolution Advisory",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0146",
+    "id": "0146",
+    "displayTerm": "TCAS Traffic Advisory",
+    "term": "tcas traffic advisory",
+    "slug": "tcas-traffic-advisory",
+    "category": "Emergency",
+    "meaningEn": "TCAS Traffic Advisory is an automated audio and visual alert generated by the Traffic Collision Avoidance System indicating that conflicting traffic has been detected within a defined range and altitude band, requiring the crew to acquire the traffic visually and monitor for a possible Resolution Advisory.",
+    "meaningPt": "Alerta de tráfego TCAS.\n\nAlerta automatizado gerado pelo Sistema de Prevenção de Colisão de Tráfego Aéreo indicando que um tráfego conflitante foi detectado dentro de uma faixa definida de alcance e altitude, exigindo que a tripulação localize o tráfego visualmente e monitore a possibilidade de uma Instrução de Resolução.",
+    "whenUsed": "When a TCAS Traffic Advisory activates, the crew should:",
+    "example": "Approach: ANAC123, traffic alert, traffic twelve o'clock, five miles, same altitude, type unknown.",
+    "sayPhrase": "ANAC123, TCAS traffic advisory, traffic in sight, two o'clock, same level.",
+    "icaoQuestion": "What is the difference between a TCAS Traffic Advisory and a Resolution Advisory, and how do you communicate each to ATC?",
+    "icaoSpeakText": "A Traffic Advisory is a warning that conflicting traffic has been detected, requiring visual acquisition and monitoring. A Resolution Advisory is a command to maneuver vertically — climb or descend — to resolve the conflict. When a TA activates, I advise ATC: ANAC123, TCAS traffic advisory, acquiring traffic. If an RA follows, I transmit: ANAC123, TCAS RA, climbing, leaving four thousand. I comply with the RA immediately and return to my ATC clearance when TCAS indicates clear of conflict.",
+    "missionBrief": "Today's lesson covers the TCAS Traffic Advisory — the first level of automated conflict alert generated by the Traffic Collision Avoidance System when conflicting traffic is detected.\n\nA Traffic Advisory, or TA, is a warning. It does not command a maneuver. It tells you: traffic is near and closing. Watch. Be ready.\n\nIn Brazilian airspace around busy terminals like Congonhas, Florianópolis, and Curitiba, TA events can occur during vectoring, approach transitions, and departure climbs.\n\nThis lesson prepares you to respond correctly to a TA, communicate with ATC, and manage the transition to a potential Resolution Advisory — in clear, professional ICAO English.",
+    "captainTeaching": "TCAS is your second pair of eyes in the sky.\n\nBut TCAS has two voices. Learn the difference.\n\nThe Traffic Advisory says: look. Find the traffic. Prepare to act.\n\nThe Resolution Advisory says: act now. Climb or descend as directed.\n\nToo many pilots panic on a TA and begin maneuvering without an RA.\n\nThat is wrong.\n\nA TA alone: eyes outside, traffic display, advise ATC. Do not maneuver.\n\nWhen the RA comes: follow it immediately. Forget the ATC clearance until the RA clears.\n\nIn the H130, the TCAS display is your best friend in busy Brazilian terminal areas.\n\nKnow the symbology: filled diamond is proximate. Open diamond is other traffic. Amber circle with arrow is TA. Red square with arrow is RA.\n\nKnow which is which before the event happens.",
+    "operationalContext": "You are climbing out of Florianópolis in your H130, passing through four thousand feet.\n\nTCAS announces: Traffic. Traffic.\n\nThe TCAS display shows an intruder aircraft at your level, two miles, closing from the right.\n\nYour co-pilot calls: TCAS Traffic Advisory.\n\nYou scan right and visually acquire a turboprop on a converging heading.\n\nYou transmit to Approach:\n\nANAC123, TCAS traffic advisory, traffic in sight, two o'clock, same level.\n\nApproach responds:\n\nANAC123, roger, identified traffic is BRAVO XY, maintaining radar separation, advise if RA.\n\nYou continue the climb on clearance. The traffic diverges. The TA clears.\n\nYou transmit:\n\nANAC123, TA resolved, continuing climb, no RA.\n\nProfessional communication throughout. No surprise. No confusion.",
+    "sayItCoach": "ANAC123, TCAS traffic advisory, traffic in sight.",
+    "icaoModelAnswer": "A Traffic Advisory is a warning that conflicting traffic has been detected, requiring visual acquisition and monitoring. A Resolution Advisory is a command to maneuver vertically — climb or descend — to resolve the conflict. When a TA activates, I advise ATC: ANAC123, TCAS traffic advisory, acquiring traffic. If an RA follows, I transmit: ANAC123, TCAS RA, climbing, leaving four thousand. I comply with the RA immediately and return to my ATC clearance when TCAS indicates clear of conflict.",
+    "memoryTrick": "**ALERT** — **A**cquire traffic visually, **L**ook at the TCAS display, **E**valuate range and altitude, **R**eport to ATC, **T**ransition to RA if commanded.",
+    "operationalMeaning": "When a TCAS Traffic Advisory activates, the crew should:\n\nTraffic Advisories commonly precede:",
+    "whyAtcUsesIt": [
+      "advise ATC when a TA occurs and is not resolved visually",
+      "inform ATC when maneuvering in response to an RA",
+      "report back on frequency after any TCAS event",
+      "give ATC the information needed to restore separation",
+      "a concise advisory call when TCAS activates",
+      "clear communication if an RA maneuver follows",
+      "a return to clearance as soon as the event is resolved"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, traffic alert, traffic twelve o'clock, five miles, same altitude, type unknown.",
+      "Approach: ANAC123, radar contact, advise TCAS indication.",
+      "Approach: ANAC123, roger TCAS RA, when able advise clear of conflict.",
+      "Approach: ANAC123, traffic advisory, traffic two o'clock, three miles, opposite direction, one thousand above.",
+      "Approach: ANAC123, confirm TCAS RA resolved, cleared to resume own navigation."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, TCAS traffic advisory, traffic in sight, two o'clock, same level.",
+      "ANAC123, TCAS advisory active, searching for traffic.",
+      "ANAC123, TCAS RA, climbing, leaving three thousand.",
+      "ANAC123, traffic in sight, maintaining clearance.",
+      "ANAC123, TA resolved, no RA, continuing climb flight level eight zero."
+    ],
+    "brazilianMistakes": "- ❌ Maneuvering based on a TA without waiting for an RA.  \n  ✔ A TA is a watch-and-prepare alert only. Do not maneuver without an RA.\n\n- ❌ Not advising ATC when TCAS activates.  \n  ✔ Inform ATC promptly: ANAC123, TCAS traffic advisory.\n\n- ❌ Ignoring an RA to comply with an ATC instruction.  \n  ✔ An RA takes priority over ATC clearance. Comply with the RA and inform ATC.\n\n- ❌ Not reporting clear of conflict after the event.  \n  ✔ Always close the loop: ANAC123, TA resolved, no RA, resuming clearance.",
+    "pronunciationCoaching": "**Target Phrase:** TCAS Traffic Advisory\n\n**Pronunciation:** TEE-kas TRA-fik ad-VY-zer-ee\n\n**Word Stress**\n\n- TCAS → TEE-kas (two syllables, stress on first)\n- Traffic → TRA-fik\n- Advisory → ad-VY-zer-ee (stress on second syllable)\n\nPractice:\n\nTCAS... Traffic... Advisory...\n\nTogether:\n\nANAC123, TCAS traffic advisory, traffic in sight.\n\nSay TCAS as TEE-kas — not as individual letters T-C-A-S in most operational contexts.",
+    "relatedConcepts": [
+      "TCAS Resolution Advisory",
+      "Traffic in Sight",
+      "Maintain Own Separation",
+      "Traffic Information",
+      "Radar Separation",
+      "Report Clear of Conflict"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Airborne Collision Avoidance Systems",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 10 Volume IV — Surveillance and Collision Avoidance",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — TCAS",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Advisory Circular AC 120-55 — TCAS Operations"
+      },
+      {
+        "label": "SKYbrary — Traffic Collision Avoidance System (TCAS)",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0147",
+    "id": "0147",
+    "displayTerm": "Cleared ILS Approach",
+    "term": "cleared ils approach",
+    "slug": "cleared-ils-approach",
+    "category": "ATC Phraseology",
+    "meaningEn": "Cleared ILS Approach is an ATC authorization for the pilot to commence the Instrument Landing System approach to the specified runway, intercepting the localizer and descending on the glideslope to the decision height, where the crew must execute either a landing or a missed approach.",
+    "meaningPt": "Autorizado aproximação ILS.\n\nAutorização do controle de tráfego aéreo para o piloto iniciar a aproximação ILS para a pista especificada, interceptando o localizador e descendo no glide slope até a altura de decisão, onde a tripulação deve executar o pouso ou a arremetida.",
+    "whenUsed": "When the crew receives Cleared ILS Approach, they should:",
+    "example": "Approach: ANAC123, cleared ILS approach runway one four, report established.",
+    "sayPhrase": "Cleared ILS approach runway one four, ANAC123.",
+    "icaoQuestion": "Explain the difference between Expect ILS Approach and Cleared ILS Approach.?",
+    "icaoSpeakText": "Expect ILS Approach is an advisory from ATC that the ILS has been assigned for the destination runway. It allows the crew to brief the approach and configure the aircraft before the formal clearance. Cleared ILS Approach is the authorization to commence the approach, meaning the crew may intercept the localizer and descend on the glideslope. Without the cleared instruction, the crew must not begin the approach even if the localizer is tuned and the aircraft is aligned. The cleared instruction is the legal and operational authorization — the expect advisory is preparation only.",
+    "missionBrief": "Today's lesson covers Cleared ILS Approach — the formal ATC authorization to commence and fly the Instrument Landing System approach to the assigned runway.\n\nCleared ILS Approach is not an advisory. It is not preparation. It is authorization.\n\nThe moment you receive this clearance, you are authorized to intercept the localizer, follow the glideslope, and proceed to the runway threshold.\n\nThis is the most critical clearance in instrument approach operations. Florianópolis, Curitiba, Congonhas, and São Paulo all have ILS procedures active in IMC conditions.\n\nKnowing the difference between Expect ILS Approach and Cleared ILS Approach is non-negotiable ICAO knowledge.\n\nThis lesson connects Part 2 phraseology with Part 4 operational precision required at ICAO Level 4.",
+    "captainTeaching": "There are two phrases you must never confuse in instrument flying.\n\nExpect ILS Approach — advisory. Brief the procedure. Wait.\n\nCleared ILS Approach — authorization. Fly the procedure. Now.\n\nThe difference is everything.\n\nWhen you hear \"cleared ILS approach,\" the glideslope is yours to descend. The localizer is yours to track. The runway is at the end of those two beams.\n\nIn the H130, the ILS is raw data. No AFCS coupling. The scan is yours.\n\nCross-check the CDI and the glideslope indicator on every cycle.\n\nLocalizer: keep the needle centered. One dot displacement means a correction is needed.\n\nGlideslope: always intercept from below. Never intercept from above — you risk a false glideslope.\n\nAt decision height: three words guide you — land or go around.\n\nThere is no third option.",
+    "operationalContext": "You are inbound to Florianópolis in your H130 after holding at IDAMO.\n\nYou briefed the ILS runway one four twenty minutes ago. You are ready.\n\nApproach transmits:\n\nANAC123, turn right heading one seven zero, intercept localizer runway one four, cleared ILS approach runway one four.\n\nYou are now authorized to fly the approach.\n\nYou respond:\n\nHeading one seven zero, intercept localizer, cleared ILS approach runway one four, ANAC123.\n\nYou select approach mode. The localizer comes alive at ten miles. You intercept from level flight.\n\nGlideslope alive at three thousand feet. Gear down. Flaps set. Checks complete.\n\nFull intercept. Stable descent. Decision height — runway in sight.\n\nCleared. Briefed. Professional.",
+    "sayItCoach": "Cleared ILS approach runway one four, ANAC123.",
+    "icaoModelAnswer": "Expect ILS Approach is an advisory from ATC that the ILS has been assigned for the destination runway. It allows the crew to brief the approach and configure the aircraft before the formal clearance. Cleared ILS Approach is the authorization to commence the approach, meaning the crew may intercept the localizer and descend on the glideslope. Without the cleared instruction, the crew must not begin the approach even if the localizer is tuned and the aircraft is aligned. The cleared instruction is the legal and operational authorization — the expect advisory is preparation only.",
+    "memoryTrick": "**CLEAR** — **C**learance received, **L**ocalizer ident confirmed, **E**stablish from level flight, **A**lways intercept glideslope from below, **R**unway or go-around at DH.",
+    "operationalMeaning": "When the crew receives Cleared ILS Approach, they should:\n\nCleared ILS Approach operations require:",
+    "whyAtcUsesIt": [
+      "formally authorize descent on the precision approach path",
+      "sequence the aircraft for landing after vectoring or hold",
+      "provide clearance once the aircraft is established in the approach sector",
+      "confirm the runway assignment and approach type simultaneously",
+      "allow the crew to commence and complete the precision approach"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, cleared ILS approach runway one four, report established.",
+      "Approach: ANAC123, turn left heading two three zero, cleared ILS approach runway two eight.",
+      "Approach: ANAC123, cleared ILS approach runway one four, cross IDAMO at or above three thousand.",
+      "Approach: ANAC123, intercept localizer, cleared ILS approach runway two seven, QNH one zero one two.",
+      "Approach: ANAC123, maintain three thousand until established, cleared ILS approach runway one four."
+    ],
+    "pilotReadbacks": [
+      "Cleared ILS approach runway one four, ANAC123.",
+      "Heading two three zero, cleared ILS approach runway two eight, ANAC123.",
+      "Cleared ILS approach runway one four, cross IDAMO at or above three thousand, ANAC123.",
+      "Intercept localizer, cleared ILS approach runway two seven, QNH one zero one two, ANAC123.",
+      "Maintain three thousand until established, cleared ILS approach runway one four, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Beginning the approach descent after hearing Expect ILS Approach.  \n  ✔ Expect is advisory. Wait for the Cleared instruction before intercepting.\n\n- ❌ Intercepting the glideslope from above.  \n  ✔ Always intercept from below. Fly to intercept altitude, then capture the glideslope.\n\n- ❌ Not reading back the runway designation in the clearance.  \n  ✔ Always include the runway: Cleared ILS approach runway one four, ANAC123.\n\n- ❌ Omitting the restriction if ATC assigns a crossing altitude.  \n  ✔ Read back all restrictions: cross IDAMO at or above three thousand.",
+    "pronunciationCoaching": "**Target Phrase:** Cleared ILS Approach Runway One Four\n\n**Pronunciation:** kleerd eye-ELL-ESS uh-PROHCH RUN-way WUN FOR\n\n**Word Stress**\n\n- Cleared → kleerd (one syllable, strong)\n- ILS → eye-ELL-ESS (each letter individually)\n- Approach → uh-PROHCH\n- Runway → RUN-way\n- One Four → WUN FOR\n\nPractice:\n\nCleared... ILS... Approach... Runway... One Four.\n\nTogether:\n\nCleared ILS approach runway one four, ANAC123.\n\nSay each ILS letter separately and clearly — it is never a single word.",
+    "relatedConcepts": [
+      "Expect ILS Approach",
+      "Report Established",
+      "Decision Height",
+      "Missed Approach",
+      "Localizer Intercept",
+      "Glideslope"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Approach Control Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 10 Volume I — Radio Navigation Aids",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — ILS Approaches",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Instrument Flying Handbook — ILS Approach"
+      },
+      {
+        "label": "SKYbrary — Instrument Landing System (ILS)",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0148",
+    "id": "0148",
+    "displayTerm": "Cleared RNAV Approach",
+    "term": "cleared rnav approach",
+    "slug": "cleared-rnav-approach",
+    "category": "ATC Phraseology",
+    "meaningEn": "Cleared RNAV Approach is an ATC authorization for the pilot to commence the Area Navigation approach to the specified runway, following the FMS or GPS-computed lateral and vertical guidance to the applicable minima, where the crew must execute either a landing or a missed approach.",
+    "meaningPt": "Autorizado aproximação RNAV.\n\nAutorização do controle de tráfego aéreo para o piloto iniciar a aproximação RNAV para a pista especificada, seguindo a guia lateral e vertical calculada pelo FMS ou GPS até os mínimos aplicáveis, onde a tripulação deve executar o pouso ou a arremetida.",
+    "whenUsed": "When the crew receives Cleared RNAV Approach, they should:",
+    "example": "Approach: ANAC123, cleared RNAV approach runway one five, report established.",
+    "sayPhrase": "Cleared RNAV approach runway one five, ANAC123.",
+    "icaoQuestion": "Explain the difference between Expect RNAV Approach and Cleared RNAV Approach and what action each requires.?",
+    "icaoSpeakText": "Expect RNAV Approach is an advisory issued by ATC before the clearance, allowing the crew to load the approach into the FMS, verify GPS integrity and RAIM, select the correct minima, and brief the procedure. No approach maneuver is authorized by the advisory. Cleared RNAV Approach is the formal authorization to commence the procedure. When the crew receives the clearance, they may activate the approach mode and fly the FMS-computed path to the applicable minima. If GNSS or RAIM is unavailable when the clearance is issued, the crew must advise ATC and request an alternate approach rather than accepting a clearance they cannot safely execute.",
+    "missionBrief": "Today's lesson covers Cleared RNAV Approach — the formal ATC authorization to commence and fly the Area Navigation approach to the assigned runway.\n\nRNAV approaches are the most common instrument approach type at Brazilian regional airports, including Navegantes, Joinville, and Florianópolis.\n\nCleared RNAV Approach is authorization to fly. Expect RNAV Approach was preparation. The distinction is as important here as it is for any precision approach.\n\nFlying an RNAV approach requires verified GPS integrity, a current navigation database, and a fully briefed crew — all completed before this clearance is issued.\n\nThis lesson links Part 2 phraseology with the Part 4 technical language needed to discuss RNAV system requirements at ICAO Level 4.",
+    "captainTeaching": "Two phrases. Same approach type. Completely different status.\n\nExpect RNAV Approach: ATC is telling you to prepare. Load the procedure. Check the system. Brief the crew.\n\nCleared RNAV Approach: ATC is telling you to fly. The authorization is issued. You may commence.\n\nThat transition — from advisory to clearance — is the critical moment in every RNAV arrival.\n\nIn the H130, the RNAV approach relies entirely on GPS. There is no glideslope beam. No localizer antenna. The guidance comes from satellites.\n\nSo you must verify that guidance before you need it.\n\nRAIM check: confirm it before the approach, not during.\n\nDatabase currency: check it before departure, not at the destination.\n\nMinima selection: know which minima your aircraft and avionics system qualify for.\n\nLNAV only, or LNAV/VNAV, or LPV — the difference in decision altitude can be significant.\n\nKnow your system. Trust it when it is verified. Refuse it when it is not.",
+    "operationalContext": "You are inbound to Joinville in your H130 on a day with low cloud and reduced visibility.\n\nYou briefed the RNAV approach runway one five earlier in the flight. GPS is normal. RAIM is available. The FMS shows the approach loaded and active.\n\nApproach transmits:\n\nANAC123, proceed direct JUINA, cleared RNAV approach runway one five, report final.\n\nYou are now authorized to fly the procedure.\n\nYou respond:\n\nDirect JUINA, cleared RNAV approach runway one five, ANAC123.\n\nYou select approach mode. The FMS sequences through the intermediate fix and turns onto final.\n\nThe vertical path guidance shows on the attitude indicator. Step-down altitudes verified.\n\nAt minimums — runway in sight. Continue for landing.\n\nReady before the clearance. Precise during the approach. Safe at the end.",
+    "sayItCoach": "Cleared RNAV approach runway one five, ANAC123.",
+    "icaoModelAnswer": "Expect RNAV Approach is an advisory issued by ATC before the clearance, allowing the crew to load the approach into the FMS, verify GPS integrity and RAIM, select the correct minima, and brief the procedure. No approach maneuver is authorized by the advisory. Cleared RNAV Approach is the formal authorization to commence the procedure. When the crew receives the clearance, they may activate the approach mode and fly the FMS-computed path to the applicable minima. If GNSS or RAIM is unavailable when the clearance is issued, the crew must advise ATC and request an alternate approach rather than accepting a clearance they cannot safely execute.",
+    "memoryTrick": "**VALID** — **V**erify RAIM before the clearance, **A**ctivate the correct approach procedure, **L**oad and confirm the minima, **I**dentify step-down or vertical path, **D**ecide at MDA or DA — land or go around.",
+    "operationalMeaning": "When the crew receives Cleared RNAV Approach, they should:\n\nCleared RNAV Approach operations require:",
+    "whyAtcUsesIt": [
+      "authorize the commencement of a non-precision or APV approach",
+      "sequence the aircraft when no ILS is available on the assigned runway",
+      "confirm the approach type at airports with multiple RNAV variants",
+      "allow the crew to fly FMS-computed guidance to the applicable minima",
+      "provide approach clearance after holding or vectoring is complete"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, cleared RNAV approach runway one five, report established.",
+      "Approach: ANAC123, proceed direct JUINA, cleared RNAV approach runway one five.",
+      "Approach: ANAC123, cleared RNAV approach runway two seven, cross GUARA at or above two thousand.",
+      "Approach: ANAC123, cleared RNAV approach runway one five, QNH one zero one two.",
+      "Approach: ANAC123, confirm able RNAV, cleared RNAV approach runway one five."
+    ],
+    "pilotReadbacks": [
+      "Cleared RNAV approach runway one five, ANAC123.",
+      "Direct JUINA, cleared RNAV approach runway one five, ANAC123.",
+      "Cleared RNAV approach runway two seven, cross GUARA at or above two thousand, ANAC123.",
+      "Cleared RNAV approach runway one five, QNH one zero one two, ANAC123.",
+      "Affirm able RNAV, cleared RNAV approach runway one five, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Beginning the RNAV approach descent after Expect RNAV Approach.  \n  ✔ Expect is advisory only. Wait for the formal cleared instruction.\n\n- ❌ Accepting Cleared RNAV Approach when RAIM is unavailable.  \n  ✔ Advise ATC: ANAC123, unable RNAV, GNSS not available, request alternate approach.\n\n- ❌ Using LNAV minima when the system qualifies for LPV.  \n  ✔ Always select the lowest applicable minima your avionics system supports.\n\n- ❌ Not verifying navigation database currency before the approach.  \n  ✔ Check the database expiry before departure — not after receiving the clearance.",
+    "pronunciationCoaching": "**Target Phrase:** Cleared RNAV Approach Runway One Five\n\n**Pronunciation:** kleerd AR-nav uh-PROHCH RUN-way WUN FYVE\n\n**Word Stress**\n\n- Cleared → kleerd (strong, one syllable)\n- RNAV → AR-nav (two syllables, stress on first)\n- Approach → uh-PROHCH\n- One Five → WUN FYVE\n\nPractice:\n\nCleared... RNAV... Approach... Runway... One Five.\n\nTogether:\n\nCleared RNAV approach runway one five, ANAC123.\n\nRNAV is two syllables in operational speech: AR-nav. Not spelled out as R-N-A-V.",
+    "relatedConcepts": [
+      "Expect RNAV Approach",
+      "Cleared ILS Approach",
+      "RAIM",
+      "GPS Available",
+      "Minimum Descent Altitude",
+      "Missed Approach"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Approach Control Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9613 — Performance Based Navigation (PBN) Manual"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — RNAV Approaches",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Instrument Procedures Handbook — Area Navigation Approaches"
+      },
+      {
+        "label": "SKYbrary — RNAV Approach",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0149",
+    "id": "0149",
+    "displayTerm": "Cleared VOR Approach",
+    "term": "cleared vor approach",
+    "slug": "cleared-vor-approach",
+    "category": "ATC Phraseology",
+    "meaningEn": "Cleared VOR Approach is an ATC authorization for the pilot to commence the VHF Omnidirectional Range approach to the specified runway, tracking the VOR radial as the lateral guidance and using published step-down altitudes to descend to the Minimum Descent Altitude, where the crew must acquire visual reference and land or execute the missed approach.",
+    "meaningPt": "Autorizado aproximação VOR.\n\nAutorização do controle de tráfego aéreo para o piloto iniciar a aproximação VOR para a pista especificada, rastreando o radial VOR como guia lateral e usando as altitudes de step-down publicadas para descer até a Altitude Mínima de Descida, onde a tripulação deve adquirir referência visual e pousar ou executar a arremetida.",
+    "whenUsed": "When the crew receives Cleared VOR Approach, they should:",
+    "example": "Approach: ANAC123, cleared VOR approach runway one five, report FAF inbound.",
+    "sayPhrase": "Cleared VOR approach runway one five, ANAC123.",
+    "icaoQuestion": "Describe the key difference between a VOR approach and an ILS approach in terms of vertical guidance and crew responsibility.?",
+    "icaoSpeakText": "The ILS provides both lateral guidance via the localizer and vertical guidance via the glideslope, with a Decision Height at which the crew must have visual reference to land. The VOR approach provides only lateral guidance through the VOR radial. There is no vertical guidance. The crew must manage their own descent using published step-down altitudes and level off at the Minimum Descent Altitude. At MDA they fly level until visual contact with the runway is established or until the missed approach point, at which point they must execute the missed approach if visual reference has not been achieved.",
+    "missionBrief": "Today's lesson covers Cleared VOR Approach — the ATC authorization to fly a VHF Omnidirectional Range instrument approach to the assigned runway.\n\nThe VOR approach is a non-precision approach. There is no glideslope. Descent is managed by the crew using step-down altitudes published on the chart until the Minimum Descent Altitude.\n\nAt airports like Curitiba, Navegantes, and Congonhas, VOR approaches remain valid alternatives when ILS or RNAV systems are unavailable, under NOTAM, or not certified for the aircraft type.\n\nUnderstanding how to receive, read back, and fly a VOR approach in ICAO English — including its key differences from ILS — is essential for professional operations.\n\nThis lesson connects Part 2 phraseology with Part 4 navigation knowledge required at ICAO Level 4.",
+    "captainTeaching": "The VOR approach is the original instrument approach.\n\nBefore ILS. Before GPS. Before RNAV. Pilots flew VOR approaches.\n\nAnd many still do.\n\nThe difference from a precision approach is fundamental: there is no vertical guidance.\n\nYou manage your own descent using the published step-down altitudes.\n\nAt MDA, you stop descending. You fly level.\n\nYou look for the runway. If you see it — land. If you do not — at the missed approach point, go around.\n\nThat discipline — stopping at MDA, flying level, committing at the missed approach point — is what separates a professional from a hazardous pilot.\n\nIn the H130, the VOR approach requires solid raw-data navigation. Track the radial precisely. Monitor your DME if available. Cross-check your timing on each step-down.\n\nOne common mistake: rushing the descent below MDA in marginal conditions.\n\nThat is the mistake that kills.\n\nMDA is a floor. Not a suggestion. A hard floor.",
+    "operationalContext": "You are inbound to Curitiba in your H130. The ILS is out of service under NOTAM.\n\nYou have already briefed the VOR approach to runway one five. The VOR frequency is set and identified. Step-down altitudes reviewed. MDA confirmed and set.\n\nApproach transmits:\n\nANAC123, cleared VOR approach runway one five, report FAF inbound.\n\nYou respond:\n\nCleared VOR approach runway one five, ANAC123.\n\nYou track the inbound radial. At the FAF you report:\n\nANAC123, FAF inbound, runway one five.\n\nYou descend following the step-down altitudes published on the plate.\n\nAt MDA — visual contact with the runway. Continue for landing.\n\nProfessionally executed. Non-precision. Fully professional.",
+    "sayItCoach": "Cleared VOR approach runway one five, ANAC123.",
+    "icaoModelAnswer": "The ILS provides both lateral guidance via the localizer and vertical guidance via the glideslope, with a Decision Height at which the crew must have visual reference to land. The VOR approach provides only lateral guidance through the VOR radial. There is no vertical guidance. The crew must manage their own descent using published step-down altitudes and level off at the Minimum Descent Altitude. At MDA they fly level until visual contact with the runway is established or until the missed approach point, at which point they must execute the missed approach if visual reference has not been achieved.",
+    "memoryTrick": "**STEPS** — **S**et VOR frequency and ident, **T**rack the inbound radial, **E**xecute step-down altitudes precisely, **P**lateau at MDA — no lower, **S**ee the runway or go around at MAP.",
+    "operationalMeaning": "When the crew receives Cleared VOR Approach, they should:\n\nVOR approach operations commonly include:",
+    "whyAtcUsesIt": [
+      "assign an approach when the ILS is not available or not suitable",
+      "sequence arrivals at airports with VOR approaches as the primary procedure",
+      "provide a non-precision approach alternative when GNSS is restricted",
+      "assign an approach type clearly when multiple procedures exist on the same runway",
+      "allow the crew to use the published VOR procedure for final approach"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, cleared VOR approach runway one five, report FAF inbound.",
+      "Approach: ANAC123, cleared VOR approach runway two eight, maintain four thousand until established on final.",
+      "Approach: ANAC123, cleared VOR approach runway one zero, QNH one zero one five.",
+      "Approach: ANAC123, proceed direct VCB VOR, cleared VOR approach runway one five.",
+      "Approach: ANAC123, cleared VOR approach runway one five, report VOR overhead."
+    ],
+    "pilotReadbacks": [
+      "Cleared VOR approach runway one five, ANAC123.",
+      "Cleared VOR approach runway two eight, maintain four thousand until established on final, ANAC123.",
+      "Cleared VOR approach runway one zero, QNH one zero one five, ANAC123.",
+      "Direct VCB VOR, cleared VOR approach runway one five, ANAC123.",
+      "Cleared VOR approach runway one five, wilco report VOR overhead, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Descending below MDA without visual reference.  \n  ✔ MDA is a hard floor. Level off and maintain until visual or missed approach point.\n\n- ❌ Not briefing all step-down altitudes before the approach.  \n  ✔ Review every step-down altitude on the plate during the approach brief.\n\n- ❌ Not identifying the VOR navaid before commencing the approach.  \n  ✔ Always confirm the VOR Morse code identification before using the navaid.\n\n- ❌ Confusing the missed approach point with the MDA.  \n  ✔ MDA is an altitude. The missed approach point is a position fix or time. Both matter.",
+    "pronunciationCoaching": "**Target Phrase:** Cleared VOR Approach Runway One Five\n\n**Pronunciation:** kleerd VEE-OH-AR uh-PROHCH RUN-way WUN FYVE\n\n**Word Stress**\n\n- Cleared → kleerd\n- VOR → VEE-OH-AR (three letters, each spoken separately)\n- Approach → uh-PROHCH\n- One Five → WUN FYVE\n\nPractice:\n\nCleared... V... O... R... Approach... Runway... One Five.\n\nTogether:\n\nCleared VOR approach runway one five, ANAC123.\n\nSpeak each letter of VOR distinctly — VEE, OH, AR — not as a single word \"VOR.\"",
+    "relatedConcepts": [
+      "Cleared ILS Approach",
+      "Cleared RNAV Approach",
+      "Minimum Descent Altitude",
+      "Final Approach Fix",
+      "Missed Approach Point",
+      "Step-Down Altitude"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Approach Control Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 10 Volume I — Radio Navigation Aids",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — VOR Approaches",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Instrument Flying Handbook — Non-Precision Approaches"
+      },
+      {
+        "label": "SKYbrary — VOR Approach",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0150",
+    "id": "0150",
+    "displayTerm": "Hold at Fix",
+    "term": "hold at fix",
+    "slug": "hold-at-fix",
+    "category": "ATC Phraseology",
+    "meaningEn": "Hold at Fix is an ATC instruction directing the pilot to enter and maintain a holding pattern at a designated navigational fix, where ATC specifies the inbound course, direction of turns, and leg length or timing as part of the clearance.",
+    "meaningPt": "Espere no fix.\n\nInstrução do controle de tráfego aéreo determinando que a aeronave entre e mantenha uma espera em um fix de navegação designado, com o controle especificando o curso de entrada, a direção das curvas e o comprimento do trecho ou o tempo como parte da autorização.",
+    "whenUsed": "When the crew receives Hold at Fix, they should:",
+    "example": "Approach: ANAC123, hold at IDAMO, inbound course zero three six, right turns, one minute legs.",
+    "sayPhrase": "Hold at IDAMO, inbound course zero three six, right turns, one minute legs, ANAC123.",
+    "icaoQuestion": "What are the parameters ATC must specify in a Hold at Fix clearance, and what is the difference from Hold as Published?",
+    "icaoSpeakText": "A Hold at Fix clearance must include the fix name, the inbound course or direction, the direction of turns — right or left — and the leg length in minutes or nautical miles. Optionally ATC may include an expect further clearance time. The crew flies exactly the parameters given in the clearance. In a Hold as Published instruction, ATC does not re-specify the parameters because the crew is expected to use the holding pattern as printed on the applicable approach or navigation chart. Hold at Fix is a complete explicit instruction; Hold as Published is a reference to the published procedure.",
+    "missionBrief": "Today's lesson covers Hold at Fix — the ATC instruction to enter and maintain a holding pattern at a specific named navigational fix.\n\nHold at Fix is an explicit instruction. ATC specifies the exact fix, the inbound course or direction, the turn direction, and the leg length or time. Nothing is assumed from published charts.\n\nAt Brazilian airports and en-route fixes around Florianópolis, Curitiba, and Navegantes, holding patterns are used daily for traffic sequencing, weather delays, and fuel planning.\n\nKnowing the difference between Hold at Fix and Hold as Published is a core ICAO knowledge requirement — one is fully specified by ATC, the other references published charts.\n\nThis lesson prepares you for ICAO Part 2 phraseology and the holding pattern skills required in professional operations.",
+    "captainTeaching": "A Hold at Fix clearance is a complete set of instructions.\n\nThe fix. The inbound course. The turn direction. The leg length.\n\nATC gives you all four. You fly all four exactly as specified.\n\nThe only decision left to you is the entry type — direct, teardrop, or parallel — based on your heading when you reach the fix.\n\nIn the H130, holding in Brazilian airspace means managing fuel carefully.\n\nWhen you receive a Hold at Fix, the first thing after the readback is mental fuel arithmetic.\n\nHow long can we hold?\n\nAt what endurance limit do we need to declare minimum fuel?\n\nAt what endurance limit do we declare emergency?\n\nKnow those numbers before entering the hold.\n\nBrief your co-pilot. Monitor the fuel. State your endurance to ATC proactively if the delay is extended.\n\nHold at Fix is also your opportunity to think ahead.\n\nUse the hold to brief the approach.\n\nA holding pattern is not a delay — it is preparation time.",
+    "operationalContext": "You are inbound to Florianópolis in your H130 and traffic ahead has caused a sequencing delay.\n\nApproach transmits:\n\nANAC123, hold at IDAMO, inbound course zero three six, right turns, one minute legs, expect further clearance time zero five three zero.\n\nYou identify IDAMO on the GPS, determine the entry type, and respond:\n\nHold at IDAMO, inbound course zero three six, right turns, one minute legs, expect further clearance zero five three zero, ANAC123.\n\nYou enter the hold with a direct entry, turn right after crossing IDAMO outbound, and maintain the assigned altitude.\n\nAfter two orbits, Approach transmits the onward clearance.\n\nYou held. You were precise. You were professional.",
+    "sayItCoach": "Hold at IDAMO, inbound course zero three six, right turns, one minute legs, ANAC123.",
+    "icaoModelAnswer": "A Hold at Fix clearance must include the fix name, the inbound course or direction, the direction of turns — right or left — and the leg length in minutes or nautical miles. Optionally ATC may include an expect further clearance time. The crew flies exactly the parameters given in the clearance. In a Hold as Published instruction, ATC does not re-specify the parameters because the crew is expected to use the holding pattern as printed on the applicable approach or navigation chart. Hold at Fix is a complete explicit instruction; Hold as Published is a reference to the published procedure.",
+    "memoryTrick": "**FIXED** — **F**ix name confirmed, **I**nbound course set, **X**-check entry type, **E**ndurance calculated, **D**irection of turns noted.",
+    "operationalMeaning": "When the crew receives Hold at Fix, they should:\n\nHold at Fix clearances commonly include:",
+    "whyAtcUsesIt": [
+      "assign a holding pattern at a fix that does not have a published hold",
+      "modify an existing published hold with different parameters",
+      "sequence arriving aircraft at a specific fix before approach",
+      "manage traffic flow during weather or runway restrictions",
+      "provide an explicit clearance when the standard published procedure is not appropriate"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, hold at IDAMO, inbound course zero three six, right turns, one minute legs.",
+      "Approach: ANAC123, hold at ARMIN, northeast bound, right turns, ten mile legs, expect approach in fifteen minutes.",
+      "Radar: ANAC123, hold at GUARA, inbound course two two zero, left turns, one minute legs, maintain seven thousand.",
+      "Approach: ANAC123, hold at XINGO, inbound course one five zero, right turns, one minute legs, expect further clearance time one four zero zero.",
+      "Control: ANAC123, hold at BRASA fix, westbound, right turns, one minute legs, flight level one two zero."
+    ],
+    "pilotReadbacks": [
+      "Hold at IDAMO, inbound course zero three six, right turns, one minute legs, ANAC123.",
+      "Hold at ARMIN, northeast bound, right turns, ten mile legs, expect approach fifteen minutes, ANAC123.",
+      "Hold at GUARA, inbound course two two zero, left turns, one minute legs, maintain seven thousand, ANAC123.",
+      "Hold at XINGO, inbound course one five zero, right turns, one minute legs, expect further clearance one four zero zero, ANAC123.",
+      "Hold at BRASA, westbound, right turns, one minute legs, flight level one two zero, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Not reading back the inbound course in the Hold at Fix clearance.  \n  ✔ Always include the inbound course: hold at IDAMO, inbound course zero three six.\n\n- ❌ Using the published hold parameters when ATC specified different ones.  \n  ✔ Fly exactly what ATC specified in the clearance — not what the chart shows.\n\n- ❌ Not considering fuel endurance when entering a hold.  \n  ✔ Calculate endurance immediately on receiving the hold clearance. Advise ATC proactively.\n\n- ❌ Confusing the leg length with the total hold circuit time.  \n  ✔ One minute legs means one minute outbound. The full circuit is approximately four minutes.",
+    "pronunciationCoaching": "**Target Phrase:** Hold at IDAMO, Inbound Course Zero Three Six\n\n**Pronunciation:** HOHLD at eye-DAH-moh, IN-bound CORS ZE-ro THREE SIX\n\n**Word Stress**\n\n- Hold → HOHLD (strong)\n- Inbound → IN-bound\n- Course → CORS\n- Zero Three Six → ZE-ro THREE SIX (each digit spoken individually)\n\nPractice:\n\nHold at IDAMO... inbound course... zero three six...\n\nTogether:\n\nHold at IDAMO, inbound course zero three six, right turns, one minute legs, ANAC123.\n\nSpeak fix names clearly and at a measured pace — ATC must copy the exact designation.",
+    "relatedConcepts": [
+      "Hold as Published",
+      "Expect Hold",
+      "Exit Hold",
+      "Fuel Endurance",
+      "Entry Procedures",
+      "Expect Further Clearance"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Holding Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 2 — Rules of the Air"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Holding",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Instrument Flying Handbook — Holding Patterns"
+      },
+      {
+        "label": "SKYbrary — Holding Patterns",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0151",
+    "id": "0151",
+    "displayTerm": "Hold as Published",
+    "term": "hold as published",
+    "slug": "hold-as-published",
+    "category": "ATC Phraseology",
+    "meaningEn": "Hold as Published is an ATC instruction directing the pilot to enter and maintain the holding pattern as depicted on the published instrument chart for the specified fix, without ATC re-stating the individual parameters of the holding pattern.",
+    "meaningPt": "Espere conforme publicado.\n\nInstrução do controle de tráfego aéreo determinando que a aeronave entre e mantenha a espera conforme representada na carta de instrumentos publicada para o fix especificado, sem que o controle repita os parâmetros individuais da espera.",
+    "whenUsed": "When the crew receives Hold as Published, they should:",
+    "example": "Approach: ANAC123, hold as published at ARUCU, expect approach in twenty minutes.",
+    "sayPhrase": "Hold as published at ARUCU, expect approach twenty minutes, ANAC123.",
+    "icaoQuestion": "What is the difference between Hold at Fix and Hold as Published, and when would you request clarification on a Hold as Published clearance?",
+    "icaoSpeakText": "Hold at Fix is a complete explicit clearance in which ATC specifies every parameter: the fix, the inbound course, the direction of turns, and the leg length. The crew flies exactly what ATC stated. Hold as Published is an abbreviated clearance in which ATC expects the crew to use the parameters as depicted on the published instrument chart for the designated fix. The crew must have the correct chart and know the published parameters before entering the hold. If I did not have the relevant chart or was uncertain of the published parameters, I would request clarification: ANAC123, request published hold parameters for ARUCU. Guessing is never acceptable.",
+    "missionBrief": "Today's lesson covers Hold as Published — the ATC instruction to enter and maintain a holding pattern using the parameters that are already printed on the published chart for that fix or approach procedure.\n\nHold as Published is the shorthand clearance. ATC does not re-specify the fix, the inbound course, the turn direction, or the leg length. They expect you to know the published procedure and fly it correctly.\n\nAt Brazilian instrument airports like Florianópolis, Curitiba, and Navegantes, holds are often published on approach plates and terminal area charts. When ATC says \"hold as published,\" you must have the correct chart, know the published parameters, and fly them precisely.\n\nThis lesson clarifies the critical distinction between Hold at Fix and Hold as Published — and prepares you to respond professionally at ICAO Level 4.",
+    "captainTeaching": "Hold as Published is the confidence test.\n\nWhen ATC says these three words, they assume you know the chart.\n\nThe published inbound course. The turn direction. The leg length. The altitude.\n\nIf you do not know the chart, you are not ready.\n\nThis is why chart preparation before every flight matters.\n\nBefore you fly into Curitiba or Florianópolis, review the approach plate. Note the published holds. Know where they are and what their parameters are.\n\nWhen Hold as Published comes over the frequency — you should not need to ask.\n\nIn the H130, flying without an FMS means you must fly the hold manually: heading reference for the outbound, timer for the leg, VOR tracking for the inbound.\n\nKnow the entry type: direct, teardrop, or parallel.\n\nIf your heading is within thirty degrees of the inbound course when you cross the fix — direct entry. If it is between thirty and a hundred and ten degrees on the non-holding side — teardrop. Otherwise — parallel.\n\nHold as Published requires that knowledge to already be in your head.",
+    "operationalContext": "You are inbound to Curitiba in your H130. Weather at the destination has deteriorated and arrivals are being held.\n\nYou have the Curitiba ILS runway one five approach plate open. The published hold at the IAF shows: inbound course one three six, right turns, one minute legs, at five thousand feet.\n\nApproach transmits:\n\nANAC123, hold as published at ARUCU, expect approach in twenty minutes.\n\nYou have the chart. You know the parameters.\n\nYou respond:\n\nHold as published at ARUCU, expect approach twenty minutes, ANAC123.\n\nYou cross ARUCU, turn right, fly the outbound leg for one minute, turn right again, track inbound on course one three six, and cross ARUCU.\n\nTwo orbits. Precise. Professional.\n\nTwenty minutes later — approach clearance issued.",
+    "sayItCoach": "Hold as published at ARUCU, expect approach twenty minutes, ANAC123.",
+    "icaoModelAnswer": "Hold at Fix is a complete explicit clearance in which ATC specifies every parameter: the fix, the inbound course, the direction of turns, and the leg length. The crew flies exactly what ATC stated. Hold as Published is an abbreviated clearance in which ATC expects the crew to use the parameters as depicted on the published instrument chart for the designated fix. The crew must have the correct chart and know the published parameters before entering the hold. If I did not have the relevant chart or was uncertain of the published parameters, I would request clarification: ANAC123, request published hold parameters for ARUCU. Guessing is never acceptable.",
+    "memoryTrick": "**CHART** — **C**heck the published chart immediately, **H**old parameters are on the plate, **A**lways brief before reaching the fix, **R**ight turns unless left is specified, **T**imer set for the outbound leg.",
+    "operationalMeaning": "When the crew receives Hold as Published, they should:\n\nHold as Published operations require:",
+    "whyAtcUsesIt": [
+      "reduce radio transmission length when a standard published hold exists",
+      "maintain efficient communication in busy terminal sectors",
+      "sequence arrivals using the established published holding stack",
+      "assign a hold at an approach fix that has a defined published procedure",
+      "instruct a hold when all pilots on frequency are expected to have the same chart"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, hold as published at ARUCU, expect approach in twenty minutes.",
+      "Approach: ANAC123, hold as published, expect further clearance time one four three zero.",
+      "Radar: ANAC123, proceed direct IDAMO, hold as published, maintain six thousand.",
+      "Approach: ANAC123, hold as published at XINGU, QNH one zero one four.",
+      "Approach: ANAC123, enter holding pattern as published, expect approach in fifteen minutes."
+    ],
+    "pilotReadbacks": [
+      "Hold as published at ARUCU, expect approach twenty minutes, ANAC123.",
+      "ANAC123, hold as published, expect further clearance one four three zero.",
+      "Direct IDAMO, hold as published, maintain six thousand, ANAC123.",
+      "Hold as published at XINGU, QNH one zero one four, ANAC123.",
+      "ANAC123, hold as published, expect approach fifteen minutes, wilco."
+    ],
+    "brazilianMistakes": "- ❌ Flying the wrong hold because the crew did not have the correct chart.  \n  ✔ Review approach plates before arrival. Know the published hold parameters.\n\n- ❌ Requesting all hold parameters from ATC when Hold as Published is issued.  \n  ✔ Use the published chart. Request clarification only if the chart is not available.\n\n- ❌ Not monitoring fuel endurance during an extended hold.  \n  ✔ Calculate endurance immediately and advise ATC: ANAC123, fuel endurance thirty minutes.\n\n- ❌ Confusing Hold as Published with Hold at Fix by checking the chart but flying ATC-specified parameters.  \n  ✔ Hold as Published means fly the chart. Hold at Fix means fly what ATC said.",
+    "pronunciationCoaching": "**Target Phrase:** Hold as Published at ARUCU\n\n**Pronunciation:** HOHLD az PUB-lisht at ah-ROO-koo\n\n**Word Stress**\n\n- Hold → HOHLD\n- As → az (short, unstressed)\n- Published → PUB-lisht (stress on first syllable)\n- ARUCU → ah-ROO-koo (Brazilian fix name, stress on second syllable)\n\nPractice:\n\nHold... as... published... at ARUCU.\n\nTogether:\n\nHold as published at ARUCU, expect approach twenty minutes, ANAC123.\n\nSpeak the fix name clearly — fix designations must be unambiguous on the frequency.",
+    "relatedConcepts": [
+      "Hold at Fix",
+      "Expect Hold",
+      "Exit Hold",
+      "Approach Plate",
+      "Inbound Course",
+      "Entry Procedure"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Holding Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO PANS-OPS Doc 8168 — Instrument Flight Procedures"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Holding",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Instrument Flying Handbook — Holding Patterns"
+      },
+      {
+        "label": "SKYbrary — Holding Patterns",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0152",
+    "id": "0152",
+    "displayTerm": "Standard Terminal Arrival",
+    "term": "standard terminal arrival",
+    "slug": "standard-terminal-arrival",
+    "category": "Navigation",
+    "meaningEn": "A Standard Terminal Arrival Route is a published instrument flight procedure that routes arriving IFR traffic from the en-route phase of flight to the initial approach fix of the destination airport, providing coded lateral routing, altitude restrictions, and speed constraints published on the applicable chart.",
+    "meaningPt": "Rota de chegada padrão para área terminal.\n\nProcedimento de voo por instrumentos publicado que conduz o tráfego IFR em chegada da fase de rota até o fix de aproximação inicial do aeródromo de destino, fornecendo roteamento lateral codificado, restrições de altitude e limitações de velocidade publicadas na carta correspondente.",
+    "whenUsed": "When flying a STAR, the crew should:",
+    "example": "Control: ANAC123, cleared SAMOS TWO arrival, expect ILS runway one five.",
+    "sayPhrase": "Cleared SAMOS TWO arrival, ANAC123.",
+    "icaoQuestion": "What is a STAR and how does receiving a STAR clearance differ from receiving a descent clearance?",
+    "icaoSpeakText": "A Standard Terminal Arrival Route is a published procedure that routes arriving IFR traffic from the en-route structure to the terminal area of the destination airport, with coded lateral routing, altitude restrictions, and speed constraints. Receiving a STAR clearance authorizes the crew to follow the published lateral routing. However, it does not automatically authorize descent to the published altitudes. ATC must issue a separate altitude clearance, or specifically clear the crew to descend via the STAR, before the altitude restrictions become binding. The crew must maintain their last cleared altitude until ATC assigns a new level, even after receiving the STAR clearance.",
+    "missionBrief": "Today's lesson covers the Standard Terminal Arrival Route — the STAR — the published instrument procedure that guides arriving aircraft from the en-route structure down into the terminal area of an airport.\n\nThe STAR connects the airways to the approach. It defines routing, altitudes, and speeds for the descent into the terminal area.\n\nBrazilian airports including Congonhas, Curitiba, Florianópolis, and São Paulo all have published STARs that pilots must know, brief, and fly.\n\nUnderstanding STARs — and how to discuss them in clear ICAO English — is fundamental to professional IFR operations.\n\nThis lesson bridges Part 2 phraseology with the Part 4 navigational knowledge required at ICAO Level 4.",
+    "captainTeaching": "The STAR is the handshake between the en-route world and the terminal world.\n\nIt says: here is your path from the airways to the approach. Fly it.\n\nBut there is a trap that catches many pilots.\n\nA STAR clearance is not a descent clearance.\n\nYou receive the STAR. You know the routing. But until ATC assigns you an altitude — you stay at your cleared altitude.\n\nUnless ATC says \"descend via\" — which is a separate, more powerful instruction — published STAR altitudes are for guidance only until ATC assigns them.\n\nIn Brazilian practice, controllers commonly issue the STAR clearance and a separate descent instruction. Read back both.\n\nIn the H130, loading the STAR into the GPS gives you lateral guidance. But altitude management is yours — guided by ATC clearances, not solely by the published chart.\n\nBrief the full STAR before top of descent. Know every waypoint. Know every restriction.\n\nThat way, when ATC says \"cleared to cross SAMOS at or above flight level one zero zero,\" you already know where SAMOS is and what the restriction means.",
+    "operationalContext": "You are cruising at flight level one two zero inbound to Curitiba in your H130.\n\nApproach assigns you the STAR for runway one five.\n\nRadar: ANAC123, cleared SAMOS TWO arrival, runway one five, descend and maintain flight level eight zero.\n\nYou load SAMOS TWO in the navigation display and brief the routing with your co-pilot: waypoints, altitude restrictions, the transition to the approach fix.\n\nYou respond:\n\nCleared SAMOS TWO arrival, runway one five, descend and maintain flight level eight zero, ANAC123.\n\nYou begin the descent, following the STAR routing toward Curitiba.\n\nAt each fix, you cross-check the published altitudes.\n\nAt the initial approach fix — the STAR is complete. The approach phase begins.",
+    "sayItCoach": "Cleared SAMOS TWO arrival, descend and maintain flight level eight zero, ANAC123.",
+    "icaoModelAnswer": "A Standard Terminal Arrival Route is a published procedure that routes arriving IFR traffic from the en-route structure to the terminal area of the destination airport, with coded lateral routing, altitude restrictions, and speed constraints. Receiving a STAR clearance authorizes the crew to follow the published lateral routing. However, it does not automatically authorize descent to the published altitudes. ATC must issue a separate altitude clearance, or specifically clear the crew to descend via the STAR, before the altitude restrictions become binding. The crew must maintain their last cleared altitude until ATC assigns a new level, even after receiving the STAR clearance.",
+    "memoryTrick": "**ROUTE** — **R**ead the STAR plate fully before descent, **O**wn the lateral routing, **U**nconfirmed altitudes need ATC clearance, **T**ransition to approach fix at the end, **E**xpect vectors or approach after the STAR.",
+    "operationalMeaning": "When flying a STAR, the crew should:\n\nSTAR operations commonly include:",
+    "whyAtcUsesIt": [
+      "standardize and simplify arrival routing in complex terminal areas",
+      "reduce controller workload by using pre-defined coded routes",
+      "allow efficient transition from en-route airspace to approach control",
+      "ensure structured descent profiles and speed management",
+      "facilitate sequencing of multiple arrivals from different directions"
+    ],
+    "atcPhraseology": [
+      "Control: ANAC123, cleared SAMOS TWO arrival, expect ILS runway one five.",
+      "Control: ANAC123, cleared MANDU ONE arrival, descend and maintain flight level one zero zero.",
+      "Radar: ANAC123, STAR is cancelled, expect vectors to final, descend and maintain six thousand.",
+      "Approach: ANAC123, resume own navigation, cleared IDAMO ONE arrival, runway one four.",
+      "Control: ANAC123, cleared BRASA THREE arrival, advise ready to copy restrictions."
+    ],
+    "pilotReadbacks": [
+      "Cleared SAMOS TWO arrival, ANAC123.",
+      "Cleared MANDU ONE arrival, descend and maintain flight level one zero zero, ANAC123.",
+      "STAR cancelled, vectors to final, descend and maintain six thousand, ANAC123.",
+      "Own navigation, cleared IDAMO ONE arrival, runway one four, ANAC123.",
+      "ANAC123, ready to copy restrictions."
+    ],
+    "brazilianMistakes": "- ❌ Descending to STAR published altitudes immediately after receiving the STAR clearance.  \n  ✔ Maintain cleared altitude until ATC issues a descent clearance or Descend Via clearance.\n\n- ❌ Not briefing STAR waypoints and restrictions before top of descent.  \n  ✔ Brief the full STAR during cruise, before descent begins.\n\n- ❌ Failing to advise ATC when unable to comply with a STAR restriction.  \n  ✔ Advise ATC promptly: ANAC123, unable to comply with SAMOS restriction, request amended clearance.\n\n- ❌ Accepting a STAR without loading it into the navigation system.  \n  ✔ Load and activate the STAR immediately after clearance receipt.",
+    "pronunciationCoaching": "**Target Phrase:** Cleared SAMOS TWO Arrival\n\n**Pronunciation:** kleerd SAY-mos TOO uh-RY-val\n\n**Word Stress**\n\n- Cleared → kleerd\n- SAMOS → SAY-mos (fix name, two syllables)\n- TWO → TOO\n- Arrival → uh-RY-val (stress on second syllable)\n\nPractice:\n\nCleared... SAMOS TWO... Arrival.\n\nTogether:\n\nCleared SAMOS TWO arrival, descend and maintain flight level eight zero, ANAC123.\n\nSpeak the arrival designator clearly — both the fix name and the number.",
+    "relatedConcepts": [
+      "STAR Clearance",
+      "Descend Via STAR",
+      "Initial Approach Fix",
+      "SID Clearance",
+      "En-Route Descent",
+      "Radar Vectors"
+    ],
+    "references": [
+      {
+        "label": "ICAO PANS-OPS Doc 8168 Volume I — Instrument Flight Procedures"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Arrival Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — STARs",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Instrument Procedures Handbook — STARs"
+      },
+      {
+        "label": "SKYbrary — Standard Terminal Arrival Route",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0153",
+    "id": "0153",
+    "displayTerm": "SID Clearance",
+    "term": "sid clearance",
+    "slug": "sid-clearance",
+    "category": "Navigation",
+    "meaningEn": "A SID Clearance is an ATC authorization for the departing aircraft to fly the Standard Instrument Departure procedure, following the published lateral routing from the runway to the en-route structure, subject to any altitude and speed instructions issued separately by ATC.",
+    "meaningPt": "Autorização de SID.\n\nAutorização do controle de tráfego aéreo para a aeronave em partida voar o procedimento de saída por instrumentos padrão, seguindo o roteamento lateral publicado da pista para a estrutura de rota, sujeito às instruções de altitude e velocidade emitidas separadamente pelo controle.",
+    "whenUsed": "When the crew receives a SID clearance, they should:",
+    "example": "Clearance: ANAC123, cleared to Curitiba, BRASA THREE departure, runway one seven, squawk zero two three five, climb and maintain three thousand.",
+    "sayPhrase": "Cleared to Curitiba, BRASA THREE departure, runway one seven, squawk zero two three five, climb and maintain three thousand, ANAC123.",
+    "icaoQuestion": "What is the difference between a SID Clearance and a Climb Via SID clearance?",
+    "icaoSpeakText": "A SID Clearance authorizes the crew to fly the Standard Instrument Departure lateral routing. The crew climbs to the altitude assigned by ATC in the clearance, not to the SID published altitude restrictions, unless specifically told otherwise. A Climb Via SID clearance authorizes the crew to follow both the lateral routing and the altitude restrictions as published on the SID chart simultaneously. It is a combined clearance for both routing and altitude profile. Without the Climb Via instruction, the crew must comply with ATC altitude assignments and may not use SID altitude restrictions as climb targets.",
+    "missionBrief": "Today's lesson covers SID Clearance — the ATC instruction authorizing a departing aircraft to fly a Standard Instrument Departure route from the departure runway.\n\nThe SID is the departure equivalent of the STAR. It codes the route from the runway into the en-route structure, providing lateral routing and, in some cases, altitude restrictions.\n\nBrazilian airports including Congonhas, São Paulo, Curitiba, and Florianópolis have published SIDs that pilots must brief, load, and fly in IFR conditions.\n\nCritically: receiving a SID clearance authorizes the lateral routing but does not automatically authorize the crew to climb to the SID's published altitude restrictions. That requires a separate altitude clearance — or a Climb Via SID instruction.\n\nUnderstanding the distinction between SID Clearance and Climb Via SID is essential ICAO knowledge.",
+    "captainTeaching": "There are two ways to depart on a SID.\n\nThe standard way: you fly the SID lateral routing and climb to your ATC-assigned altitude.\n\nThe Climb Via way: you fly the SID lateral routing AND comply with the published altitude restrictions.\n\nMost pilots in Brazil encounter the standard SID clearance daily.\n\nThe SID gives you the road out of the terminal area.\n\nATC gives you the altitude ceiling for now.\n\nThat ceiling may be lower than any SID published altitude restriction — and that is intentional. ATC is managing separation below you.\n\nNever climb above your assigned altitude based on the SID chart.\n\nIn the H130, loading the SID into the GPS means you have lateral guidance. But your climb target is always the ATC-assigned altitude until you are cleared higher.\n\nBrief the SID fully: the initial turn direction, the first waypoint, any mandatory turn altitudes, and where the SID ends and the en-route begins.\n\nA well-briefed SID departure is invisible — smooth, professional, efficient.",
+    "operationalContext": "You are departing Congonhas in your H130 bound for Curitiba on an IFR flight plan.\n\nClearance Delivery transmits:\n\nANAC123, cleared to Curitiba, BRASA THREE departure, runway one seven, squawk zero two three five, climb and maintain three thousand, expect flight level eight zero ten minutes after departure.\n\nYou brief the BRASA THREE SID with your co-pilot: the initial turn, the routing waypoints, the transition to the airway.\n\nYou respond:\n\nCleared to Curitiba, BRASA THREE departure, runway one seven, squawk zero two three five, climb and maintain three thousand, ANAC123.\n\nYou note: climb target is three thousand. Not the published SID altitudes. Three thousand.\n\nAfter takeoff, you follow the BRASA THREE lateral routing. You climb to three thousand and level off awaiting further clearance.\n\nATC later clears you higher. The SID routing continues as filed.",
+    "sayItCoach": "Cleared to Curitiba, BRASA THREE departure, runway one seven, ANAC123.",
+    "icaoModelAnswer": "A SID Clearance authorizes the crew to fly the Standard Instrument Departure lateral routing. The crew climbs to the altitude assigned by ATC in the clearance, not to the SID published altitude restrictions, unless specifically told otherwise. A Climb Via SID clearance authorizes the crew to follow both the lateral routing and the altitude restrictions as published on the SID chart simultaneously. It is a combined clearance for both routing and altitude profile. Without the Climb Via instruction, the crew must comply with ATC altitude assignments and may not use SID altitude restrictions as climb targets.",
+    "memoryTrick": "**DEPART** — **D**eparture clearance confirms SID name, **E**ntry fix and routing loaded in FMS, **P**ilot climbs to ATC altitude only, **A**ltitude restrictions need Climb Via clearance, **R**ead back squawk and initial climb, **T**ransition to en-route when SID ends.",
+    "operationalMeaning": "When the crew receives a SID clearance, they should:\n\nSID clearance operations commonly include:",
+    "whyAtcUsesIt": [
+      "standardize and simplify departure routing from complex terminal areas",
+      "reduce clearance delivery radio time with coded routing designators",
+      "coordinate departure traffic with terminal and en-route sectors",
+      "separate departing traffic from arrivals using defined corridors",
+      "optimize noise abatement and terrain clearance routes"
+    ],
+    "atcPhraseology": [
+      "Clearance: ANAC123, cleared to Curitiba, BRASA THREE departure, runway one seven, squawk zero two three five, climb and maintain three thousand.",
+      "Clearance: ANAC123, cleared to Florianópolis, GUARA TWO departure, runway two eight, climb and maintain four thousand.",
+      "Tower: ANAC123, after departure fly runway heading, join MANDU ONE SID.",
+      "Clearance: ANAC123, XINGO THREE departure, runway one five, squawk one two zero four, initial climb three thousand.",
+      "Approach: ANAC123, cleared direct GUARA, join GUARA TWO departure routing, climb and maintain flight level six zero."
+    ],
+    "pilotReadbacks": [
+      "Cleared to Curitiba, BRASA THREE departure, runway one seven, squawk zero two three five, climb and maintain three thousand, ANAC123.",
+      "Cleared to Florianópolis, GUARA TWO departure, runway two eight, climb and maintain four thousand, ANAC123.",
+      "Runway heading, join MANDU ONE SID, ANAC123.",
+      "XINGO THREE departure, runway one five, squawk one two zero four, initial climb three thousand, ANAC123.",
+      "Direct GUARA, GUARA TWO departure routing, climb and maintain flight level six zero, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Climbing to SID published altitudes after receiving a standard SID clearance.  \n  ✔ Climb to the ATC-assigned altitude only. Published SID altitudes require Climb Via.\n\n- ❌ Not reading back the SID name and runway in the departure clearance.  \n  ✔ Always include the SID designation: BRASA THREE departure, runway one seven.\n\n- ❌ Forgetting to set the squawk code received in the departure clearance.  \n  ✔ Read back and set the squawk code before departure: squawk zero two three five.\n\n- ❌ Not loading the SID before takeoff.  \n  ✔ Load and brief the SID during the gate phase — not after becoming airborne.",
+    "pronunciationCoaching": "**Target Phrase:** BRASA THREE Departure\n\n**Pronunciation:** BRAH-za THREE deh-PAR-chur\n\n**Word Stress**\n\n- BRASA → BRAH-za (two syllables, stress on first; Brazilian fix name)\n- THREE → THREE\n- Departure → deh-PAR-chur (stress on second syllable)\n\nPractice:\n\nBRASA... THREE... Departure.\n\nTogether:\n\nCleared to Curitiba, BRASA THREE departure, runway one seven, ANAC123.\n\nSpeak the SID name and number clearly — both elements must be unambiguous.",
+    "relatedConcepts": [
+      "Climb Via SID",
+      "Departure Clearance",
+      "STAR Clearance",
+      "Initial Climb",
+      "Squawk Code",
+      "Transition Altitude"
+    ],
+    "references": [
+      {
+        "label": "ICAO PANS-OPS Doc 8168 Volume I — Instrument Flight Procedures"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Departure Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — SIDs",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Instrument Procedures Handbook — SIDs"
+      },
+      {
+        "label": "SKYbrary — Standard Instrument Departure",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0154",
+    "id": "0154",
+    "displayTerm": "STAR Clearance",
+    "term": "star clearance",
+    "slug": "star-clearance",
+    "category": "Navigation",
+    "meaningEn": "A STAR Clearance is an ATC authorization for the arriving aircraft to fly the Standard Terminal Arrival Route procedure, following the published lateral routing from the en-route structure to the terminal area of the destination airport, with altitude descent remaining under separate ATC clearance unless Descend Via is specified.",
+    "meaningPt": "Autorização de STAR.\n\nAutorização do controle de tráfego aéreo para a aeronave em chegada voar o procedimento de chegada padrão para área terminal, seguindo o roteamento lateral publicado da estrutura de rota até a área terminal do aeródromo de destino, com o descenso de altitude permanecendo sob autorização separada do controle, salvo se Descend Via for especificado.",
+    "whenUsed": "When the crew receives a STAR clearance, they should:",
+    "example": "Control: ANAC123, cleared IDAMO ONE arrival, runway one four, descend and maintain flight level eight zero.",
+    "sayPhrase": "Cleared IDAMO ONE arrival, runway one four, descend and maintain flight level eight zero, ANAC123.",
+    "icaoQuestion": "What does a STAR clearance authorize and what does it not authorize?",
+    "icaoSpeakText": "A STAR clearance authorizes the crew to fly the published lateral routing of the Standard Terminal Arrival Route from the en-route structure to the terminal area of the destination. It does not automatically authorize descent to the published altitude restrictions on the STAR. The crew must maintain their last assigned altitude until ATC issues a separate descent clearance. The altitude restrictions on the STAR plate become active only when ATC issues a Descend Via clearance, which is a specific instruction authorizing both the lateral routing and the published altitude profile simultaneously. Without that instruction, ATC controls descent through sequential altitude assignments.",
+    "missionBrief": "Today's lesson covers STAR Clearance — the ATC authorization for an arriving aircraft to fly a Standard Terminal Arrival Route procedure into the destination airport terminal area.\n\nThe STAR defines the lateral routing from the en-route structure to the terminal area. A STAR clearance tells the crew which published procedure to follow.\n\nAt Brazilian airports including Congonhas, São Paulo, Curitiba, and Florianópolis, STAR clearances are routine IFR arrival instructions that pilots must brief, load, and execute correctly.\n\nCrucially: a STAR clearance authorizes the lateral routing but does not automatically authorize descent to the STAR's published altitude restrictions. Altitude clearances remain under ATC control unless Descend Via is explicitly issued.\n\nUnderstanding STAR Clearance — and the concept behind it — is essential for ICAO Level 4 speaking and professional IFR operations.",
+    "captainTeaching": "A STAR clearance and a descent clearance are not the same thing.\n\nThis confuses pilots from every country. Not only in Brazil.\n\nThe STAR gives you the road.\n\nATC gives you the altitude.\n\nWhen you receive \"cleared IDAMO ONE arrival\" — you know where to go.\n\nBut you stay at your cruise altitude until ATC assigns a descent level.\n\nThe published altitude restrictions on the STAR? Those are for reference and planning.\n\nThey do not become active until ATC specifically authorizes Descend Via — which is a more powerful instruction that covers both routing and altitude profile simultaneously.\n\nIn Brazilian IFR practice, most STAR clearances come with a separate descent instruction: cleared IDAMO ONE arrival, descend and maintain flight level eight zero.\n\nRead back both. Fly both. Precisely.\n\nBrief the full STAR before top of descent. Know every waypoint. Know every restriction.\n\nThat way, when ATC issues a crossing clearance for one of the STAR fixes, you already have the answer in your head.",
+    "operationalContext": "You are cruising at flight level one two zero inbound to Florianópolis from Curitiba in your H130.\n\nControl transmits:\n\nANAC123, cleared IDAMO ONE arrival, runway one four, descend and maintain flight level eight zero.\n\nYou load the IDAMO ONE STAR in the GPS. You brief the routing with your co-pilot: the waypoints from the en-route sector to the approach fix.\n\nYou respond:\n\nCleared IDAMO ONE arrival, runway one four, descend and maintain flight level eight zero, ANAC123.\n\nYou begin descent to flight level eight zero, following the IDAMO ONE lateral routing.\n\nAt flight level eight zero, you level off. ATC clears you lower through sequential altitude assignments as you approach the terminal area.\n\nAt the approach fix, the STAR is complete. The approach phase begins.\n\nThe STAR delivered you to the doorstep of the approach. ATC managed your descent through it.",
+    "sayItCoach": "Cleared IDAMO ONE arrival, runway one four, descend and maintain flight level eight zero, ANAC123.",
+    "icaoModelAnswer": "A STAR clearance authorizes the crew to fly the published lateral routing of the Standard Terminal Arrival Route from the en-route structure to the terminal area of the destination. It does not automatically authorize descent to the published altitude restrictions on the STAR. The crew must maintain their last assigned altitude until ATC issues a separate descent clearance. The altitude restrictions on the STAR plate become active only when ATC issues a Descend Via clearance, which is a specific instruction authorizing both the lateral routing and the published altitude profile simultaneously. Without that instruction, ATC controls descent through sequential altitude assignments.",
+    "memoryTrick": "**ARRIVE** — **A**ssigned STAR name confirmed in readback, **R**ead back runway designation, **R**emain at cruise altitude until descent is cleared, **I**nstrument restrictions need Descend Via, **V**erify FMS STAR loaded, **E**xpect sequential descent clearances.",
+    "operationalMeaning": "When the crew receives a STAR clearance, they should:\n\nSTAR clearance operations commonly include:",
+    "whyAtcUsesIt": [
+      "standardize the routing of arrivals from multiple en-route fixes into the terminal area",
+      "reduce controller communication load through pre-coded routing designators",
+      "coordinate with the approach sector by assigning a known, defined arrival route",
+      "sequence multiple arrivals from different sectors onto a common arrival flow",
+      "ensure consistent separation between aircraft on the same arrival procedure"
+    ],
+    "atcPhraseology": [
+      "Control: ANAC123, cleared IDAMO ONE arrival, runway one four, descend and maintain flight level eight zero.",
+      "Control: ANAC123, cleared ARMIN TWO arrival, Curitiba, descend and maintain flight level one zero zero.",
+      "Radar: ANAC123, cleared GUARA THREE arrival, runway two seven, expect vectors after GUARA.",
+      "Control: ANAC123, STAR is cancelled, radar vectors to final, descend and maintain six thousand.",
+      "Approach: ANAC123, cleared SAMOS ONE arrival, runway one five, QNH one zero one four."
+    ],
+    "pilotReadbacks": [
+      "Cleared IDAMO ONE arrival, runway one four, descend and maintain flight level eight zero, ANAC123.",
+      "Cleared ARMIN TWO arrival, Curitiba, descend and maintain flight level one zero zero, ANAC123.",
+      "Cleared GUARA THREE arrival, runway two seven, ANAC123.",
+      "STAR cancelled, radar vectors, descend and maintain six thousand, ANAC123.",
+      "Cleared SAMOS ONE arrival, runway one five, QNH one zero one four, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Descending to the first STAR restriction immediately after receiving the STAR clearance.  \n  ✔ Maintain cruise altitude until ATC issues a descent clearance or Descend Via.\n\n- ❌ Not loading the STAR before the en-route descent begins.  \n  ✔ Load the STAR as soon as clearance is received — well before top of descent.\n\n- ❌ Not reading back the STAR name and runway designation.  \n  ✔ Always include both in the readback: cleared IDAMO ONE arrival, runway one four.\n\n- ❌ Continuing on the STAR when ATC cancels it and assigns vectors.  \n  ✔ Acknowledge immediately: STAR cancelled, radar vectors, descend and maintain six thousand, ANAC123.",
+    "pronunciationCoaching": "**Target Phrase:** Cleared IDAMO ONE Arrival\n\n**Pronunciation:** kleerd eye-DAH-moh WUN uh-RY-val\n\n**Word Stress**\n\n- Cleared → kleerd\n- IDAMO → eye-DAH-moh (three syllables, stress on second; Brazilian fix name)\n- ONE → WUN\n- Arrival → uh-RY-val (stress on second syllable)\n\nPractice:\n\nCleared... IDAMO ONE... Arrival.\n\nTogether:\n\nCleared IDAMO ONE arrival, runway one four, descend and maintain flight level eight zero, ANAC123.\n\nSpeak the STAR name and number as a unit — IDAMO ONE — clearly and without rushing.",
+    "relatedConcepts": [
+      "Standard Terminal Arrival",
+      "Descend Via STAR",
+      "SID Clearance",
+      "STAR Cancelled",
+      "Initial Approach Fix",
+      "Radar Vectors"
+    ],
+    "references": [
+      {
+        "label": "ICAO PANS-OPS Doc 8168 Volume I — Instrument Flight Procedures"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Arrival Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — STARs",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Instrument Procedures Handbook — STARs"
+      },
+      {
+        "label": "SKYbrary — Standard Terminal Arrival Route",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
+  },
+  {
+    "catalogId": "0155",
+    "id": "0155",
+    "displayTerm": "Climb Via SID",
+    "term": "climb via sid",
+    "slug": "climb-via-sid",
+    "category": "ATC Phraseology",
+    "meaningEn": "Climb Via SID is an ATC clearance authorizing the departing aircraft to follow the lateral routing of the Standard Instrument Departure and to comply with all published altitude restrictions of that procedure, climbing through the SID altitude profile without requiring individual altitude instructions from ATC for each step.",
+    "meaningPt": "Suba via SID.\n\nAutorização do controle de tráfego aéreo para a aeronave em partida seguir o roteamento lateral da saída por instrumentos padrão e cumprir todas as restrições de altitude publicadas desse procedimento, subindo pelo perfil de altitude do SID sem necessitar de instruções individuais de altitude do controle para cada etapa.",
+    "whenUsed": "When the crew receives Climb Via SID, they should:",
+    "example": "Clearance: ANAC123, climb via SID, BRASA THREE departure, runway one seven, except maintain flight level one zero zero, squawk zero two three five.",
+    "sayPhrase": "Climb via SID, BRASA THREE departure, runway one seven, except maintain flight level one zero zero, squawk zero two three five, ANAC123.",
+    "icaoQuestion": "Explain what Climb Via SID authorizes and how it differs from a standard SID clearance with an assigned altitude.?",
+    "icaoSpeakText": "A standard SID clearance authorizes the lateral routing of the Standard Instrument Departure. The crew climbs to the specific altitude assigned by ATC and does not follow the SID published altitude restrictions unless separately cleared. Climb Via SID is a combined clearance authorizing both the lateral routing and the published altitude profile of the SID. The crew climbs through the SID's altitude restrictions at each fix without requiring individual altitude clearances. Often a top altitude is assigned: for example, climb via SID except maintain flight level one zero zero means the crew follows the SID altitude profile up to flight level one zero zero and levels off there. The crew is responsible for complying with every published restriction between the runway and that top altitude.",
+    "missionBrief": "Today's lesson covers Climb Via SID — the ATC clearance that authorizes a departing aircraft to follow both the lateral routing and the published altitude restrictions of a Standard Instrument Departure procedure simultaneously.\n\nClimb Via SID is more powerful than a standard SID clearance.\n\nA standard SID clearance gives you the lateral routing. ATC still controls your altitude separately.\n\nClimb Via SID gives you both: fly the SID route and climb through the SID's published altitude restrictions without requiring individual altitude clearances for each step.\n\nThis clearance is increasingly used at busy Brazilian departure airports including São Paulo and Congonhas, where SID altitude profiles are designed to optimize departure flow.\n\nUnderstanding the precise difference between SID Clearance and Climb Via SID is critical ICAO knowledge — and a common source of deviation when pilots confuse the two.",
+    "captainTeaching": "Climb Via SID is the complete departure package.\n\nRoute: the SID.\n\nAltitude: the SID restrictions, plus the assigned top altitude.\n\nSpeed: the SID constraints.\n\nAll three. One clearance.\n\nWhen you hear \"climb via SID\" — every altitude restriction on that SID plate is now an active clearance.\n\nYou do not need to call ATC for each step. You climb through them.\n\nThe trap that catches pilots: hearing \"climb via\" and still waiting for individual altitude clearances.\n\nOr worse: hearing a standard SID clearance and climbing through published restrictions as if Climb Via was issued.\n\nIn Brazilian airspace, controllers increasingly use Climb Via SID at the larger airports. Know the phrase. Know the responsibility it carries.\n\nIn the H130, brief every altitude restriction on the SID before takeoff.\n\nThey are not optional reference points. With Climb Via clearance active, they are your authorized altitude targets.\n\nIf you cannot comply with any restriction — advise ATC before departure.",
+    "operationalContext": "You are departing Congonhas in your H130 on an IFR flight to Florianópolis.\n\nClearance Delivery transmits:\n\nANAC123, cleared to Florianópolis, BRASA THREE departure, runway one seven, climb via SID except maintain flight level one zero zero, squawk zero two three five.\n\nYou load BRASA THREE in the GPS.\n\nYou brief with your co-pilot: the SID routing, and every published altitude restriction — three thousand at ARCOS, six thousand at BRASA, nine thousand at NEXUS. Top altitude: flight level one zero zero.\n\nYou respond:\n\nCleared to Florianópolis, BRASA THREE departure, runway one seven, climb via SID except maintain flight level one zero zero, squawk zero two three five, ANAC123.\n\nAfter takeoff, you climb through the SID altitude profile — three thousand at ARCOS, six thousand at BRASA, nine thousand at NEXUS, level at flight level one zero zero.\n\nNo intermediate altitude calls to ATC. The SID profile was your clearance.\n\nClean. Efficient. Professional.",
+    "sayItCoach": "Climb via SID except maintain flight level one zero zero, BRASA THREE departure, runway one seven, ANAC123.",
+    "icaoModelAnswer": "A standard SID clearance authorizes the lateral routing of the Standard Instrument Departure. The crew climbs to the specific altitude assigned by ATC and does not follow the SID published altitude restrictions unless separately cleared. Climb Via SID is a combined clearance authorizing both the lateral routing and the published altitude profile of the SID. The crew climbs through the SID's altitude restrictions at each fix without requiring individual altitude clearances. Often a top altitude is assigned: for example, climb via SID except maintain flight level one zero zero means the crew follows the SID altitude profile up to flight level one zero zero and levels off there. The crew is responsible for complying with every published restriction between the runway and that top altitude.",
+    "memoryTrick": "**CLIMB** — **C**learance covers both route and altitude, **L**ist all SID altitude restrictions before takeoff, **I**ntegrate the top altitude exception, **M**eet each published restriction at each fix, **B**rief the transition to en-route at the SID end.",
+    "operationalMeaning": "When the crew receives Climb Via SID, they should:\n\nClimb Via SID operations commonly include:",
+    "whyAtcUsesIt": [
+      "reduce radio communication during busy departure flows by using published profiles",
+      "allow the crew to manage their own altitude within the coded SID profile",
+      "optimize departure flow through complex terminal airspace",
+      "coordinate departure traffic with en-route sectors using pre-defined profiles",
+      "streamline clearances when the SID altitude profile is consistent with the separation plan"
+    ],
+    "atcPhraseology": [
+      "Clearance: ANAC123, climb via SID, BRASA THREE departure, runway one seven, except maintain flight level one zero zero, squawk zero two three five.",
+      "Clearance: ANAC123, GUARA TWO departure, climb via SID, runway two eight, except maintain six thousand.",
+      "Departure: ANAC123, climb via SID as filed, cancel altitude restriction at ARCOS.",
+      "Control: ANAC123, climb via SID, amended top altitude flight level one two zero.",
+      "Clearance: ANAC123, XINGO THREE departure, runway one five, climb via SID."
+    ],
+    "pilotReadbacks": [
+      "Climb via SID, BRASA THREE departure, runway one seven, except maintain flight level one zero zero, squawk zero two three five, ANAC123.",
+      "GUARA TWO departure, climb via SID, runway two eight, except maintain six thousand, ANAC123.",
+      "Climb via SID as filed, restriction at ARCOS cancelled, ANAC123.",
+      "ANAC123, climb via SID, amended top altitude flight level one two zero.",
+      "XINGO THREE departure, runway one five, climb via SID, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Waiting for individual altitude clearances after receiving Climb Via SID.  \n  ✔ Climb Via SID authorizes the entire published altitude profile. Climb through it.\n\n- ❌ Climbing through SID restrictions after receiving a standard SID clearance.  \n  ✔ Standard SID clearance: climb to ATC-assigned altitude only. Climb Via is required for the profile.\n\n- ❌ Not reading back the top altitude exception in the Climb Via clearance.  \n  ✔ Always read back the exception: climb via SID except maintain flight level one zero zero.\n\n- ❌ Not briefing all SID altitude restrictions before departure.  \n  ✔ With Climb Via active, every published restriction is a target. Brief them all before takeoff.",
+    "pronunciationCoaching": "**Target Phrase:** Climb Via SID Except Maintain Flight Level One Zero Zero\n\n**Pronunciation:** klym VY-uh SID eks-EPT men-TAYN flyt LEV-ul WUN ZE-ro ZE-ro\n\n**Word Stress**\n\n- Climb → klym\n- Via → VY-uh (two syllables)\n- SID → SID (one word, not spelled out)\n- Except → eks-EPT\n- Maintain → men-TAYN\n- Flight Level → flyt LEV-ul\n- One Zero Zero → WUN ZE-ro ZE-ro\n\nPractice:\n\nClimb via SID... except maintain... flight level one zero zero.\n\nTogether:\n\nClimb via SID except maintain flight level one zero zero, BRASA THREE departure, runway one seven, ANAC123.\n\nSID is spoken as one word — not S-I-D — in operational phraseology.",
+    "relatedConcepts": [
+      "SID Clearance",
+      "STAR Clearance",
+      "Descend Via STAR",
+      "Departure Clearance",
+      "Altitude Restriction",
+      "Initial Climb"
+    ],
+    "references": [
+      {
+        "label": "ICAO PANS-OPS Doc 8168 Volume I — Instrument Flight Procedures"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Departure Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Climb Via",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Instrument Procedures Handbook — SIDs"
+      },
+      {
+        "label": "SKYbrary — Standard Instrument Departure",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      }
+    ]
   }
 ];

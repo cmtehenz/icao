@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "completedCount": 125,
-  "pendingCount": 385,
+  "completedCount": 155,
+  "pendingCount": 355,
   "concepts": [
     {
       "id": "0001",
@@ -875,6 +875,216 @@
       "id": "0125",
       "concept": "At Your Discretion",
       "slug": "0125-at-your-discretion",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0126",
+      "concept": "Read Back",
+      "slug": "0126-read-back",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0127",
+      "concept": "Say Again",
+      "slug": "0127-say-again",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0128",
+      "concept": "Roger",
+      "slug": "0128-roger",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0129",
+      "concept": "Wilco",
+      "slug": "0129-wilco",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0130",
+      "concept": "Unable",
+      "slug": "0130-unable",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0131",
+      "concept": "Stand By",
+      "slug": "0131-stand-by",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0132",
+      "concept": "Affirm",
+      "slug": "0132-affirm",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0133",
+      "concept": "Negative",
+      "slug": "0133-negative",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0134",
+      "concept": "Confirm",
+      "slug": "0134-confirm",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0135",
+      "concept": "Verify",
+      "slug": "0135-verify",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0136",
+      "concept": "Monitor",
+      "slug": "0136-monitor",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0137",
+      "concept": "Contact",
+      "slug": "0137-contact",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0138",
+      "concept": "Frequency Change",
+      "slug": "0138-frequency-change",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0139",
+      "concept": "Squawk",
+      "slug": "0139-squawk",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0140",
+      "concept": "Transponder Failure",
+      "slug": "0140-transponder-failure",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0141",
+      "concept": "Ident",
+      "slug": "0141-ident",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0142",
+      "concept": "Traffic in Sight",
+      "slug": "0142-traffic-in-sight",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0143",
+      "concept": "No Traffic in Sight",
+      "slug": "0143-no-traffic-in-sight",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0144",
+      "concept": "Traffic Alert",
+      "slug": "0144-traffic-alert",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0145",
+      "concept": "TCAS Resolution Advisory",
+      "slug": "0145-tcas-resolution-advisory",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0146",
+      "concept": "TCAS Traffic Advisory",
+      "slug": "0146-tcas-traffic-advisory",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0147",
+      "concept": "Cleared ILS Approach",
+      "slug": "0147-cleared-ils-approach",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0148",
+      "concept": "Cleared RNAV Approach",
+      "slug": "0148-cleared-rnav-approach",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0149",
+      "concept": "Cleared VOR Approach",
+      "slug": "0149-cleared-vor-approach",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0150",
+      "concept": "Hold at Fix",
+      "slug": "0150-hold-at-fix",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0151",
+      "concept": "Hold as Published",
+      "slug": "0151-hold-as-published",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0152",
+      "concept": "Standard Terminal Arrival",
+      "slug": "0152-standard-terminal-arrival",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0153",
+      "concept": "SID Clearance",
+      "slug": "0153-sid-clearance",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0154",
+      "concept": "STAR Clearance",
+      "slug": "0154-star-clearance",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0155",
+      "concept": "Climb Via SID",
+      "slug": "0155-climb-via-sid",
       "status": "complete",
       "completedAt": "2026-07-09"
     }
