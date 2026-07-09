@@ -5908,5 +5908,778 @@ export const BATCH01_DEV_ENTRIES: DevKnowledgeEntry[] = [
         "href": "https://skybrary.aero"
       }
     ]
+  },
+  {
+    "catalogId": "0076",
+    "id": "0076",
+    "displayTerm": "LTE (Loss of Tail Rotor Effectiveness)",
+    "term": "lte (loss of tail rotor effectiveness)",
+    "slug": "lte-loss-of-tail-rotor-effectiveness",
+    "category": "Helicopter Operations",
+    "meaningEn": "LTE (Loss of Tail Rotor Effectiveness) is an uncommanded yaw caused by insufficient tail rotor thrust to counteract main rotor torque in certain wind and power conditions.",
+    "meaningPt": "Perda de efetividade do rotor de cauda (LTE).\n\nGuinada não comandada causada por empuxo insuficiente do rotor de cauda para contrapor o torque do rotor principal.",
+    "whenUsed": "When LTE occurs, the pilot should:",
+    "example": "Tower: ANAC123, roger Pan Pan, say nature of problem and souls on board.",
+    "sayPhrase": "Pan Pan Pan Pan, Joinville Tower, ANAC123, loss of tail rotor effectiveness, recovering.",
+    "icaoQuestion": "What is LTE and what would you tell ATC if it occurred?",
+    "icaoSpeakText": "LTE is loss of tail rotor effectiveness — an uncommanded yaw when the tail rotor cannot counteract main rotor torque. I would apply full left pedal, reduce power if altitude permits, and accelerate into forward flight. I would declare Pan Pan or Mayday depending on severity, report loss of tail rotor effectiveness, state my position and souls on board, and request immediate landing.",
+    "missionBrief": "Today's lesson covers LTE — Loss of Tail Rotor Effectiveness.\n\nLTE is an uncommanded yaw that occurs when the tail rotor cannot produce enough thrust to counteract main rotor torque.\n\nIn the H130, LTE is most likely in high-power, low-airspeed flight with a left crosswind or during a right turn at the hover.\n\nYou must recognize the early yaw, apply recovery technique immediately, then communicate with Mayday if control is lost.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "LTE is a trap at the hover.\n\nHigh power. Low airspeed. Wrong wind.\n\nThe sequence every professional pilot learns:\n\nPedal. Power. Airspeed.\n\nFull left pedal immediately.\n\nReduce power if altitude allows.\n\nAccelerate into forward flight.\n\nRelative airflow restores tail rotor effectiveness.\n\nBrazilian pilots sometimes say \"perdeu o pedal\" or \"girando\" on frequency.\n\nUse loss of tail rotor effectiveness or uncommanded yaw — ICAO standard terms.\n\nKnow the difference:\n\nLTE — aerodynamic loss of effectiveness — often recoverable.\n\nTail rotor failure — mechanical drive loss — Mayday and procedure.\n\nIn the H130, avoid prolonged high-power hover with left crosswind when possible.\n\nTrain recognition until the first yaw twitch triggers pedal — not panic.",
+    "operationalContext": "You are hovering at fifty feet near a construction site outside Joinville in your H130.\n\nA left crosswind develops and the helicopter begins an uncommanded right yaw.\n\nYou apply full left pedal, reduce collective slightly, and accelerate into forward flight.\n\nYaw control returns as airspeed increases.\n\nYou transmit:\n\nPan Pan Pan Pan, Joinville Tower, ANAC123, loss of tail rotor effectiveness, recovering, request landing helipad.\n\nTower clears traffic and you land safely for inspection.",
+    "sayItCoach": "Pan Pan Pan Pan, Joinville Tower, ANAC123, loss of tail rotor effectiveness, recovering.",
+    "icaoModelAnswer": "LTE is loss of tail rotor effectiveness — an uncommanded yaw when the tail rotor cannot counteract main rotor torque. I would apply full left pedal, reduce power if altitude permits, and accelerate into forward flight. I would declare Pan Pan or Mayday depending on severity, report loss of tail rotor effectiveness, state my position and souls on board, and request immediate landing.",
+    "memoryTrick": "**LTE** — **L**eft pedal full, **T**hrust reduce if able, **E**nter forward flight to restore airflow.",
+    "operationalMeaning": "When LTE occurs, the pilot should:\n\nLTE reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "clear traffic from the aircraft's route immediately",
+      "provide vectors to the nearest suitable landing area",
+      "coordinate emergency services on the ground",
+      "request souls on board and exact position",
+      "prepare for possible uncontrolled yaw or emergency landing"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, roger Pan Pan, say nature of problem and souls on board.",
+      "Tower: ANAC123, cleared direct helipad, all traffic cleared.",
+      "Approach: ANAC123, radar contact, say intentions.",
+      "Tower: ANAC123, wind two seven zero at one five knots, cleared to land any area.",
+      "Tower: ANAC123, emergency services standing by."
+    ],
+    "pilotReadbacks": [
+      "Pan Pan Pan Pan, Joinville Tower, ANAC123, loss of tail rotor effectiveness, recovering.",
+      "Mayday Mayday Mayday, ANAC123, LTE, unable to control yaw, request immediate landing.",
+      "Pan Pan Pan Pan, ANAC123, uncommanded yaw, recovering with forward flight.",
+      "ANAC123, loss of tail rotor effectiveness, souls on board three, request priority landing.",
+      "Tower, ANAC123, LTE recovered, proceeding to helipad for precautionary landing."
+    ],
+    "brazilianMistakes": "- ❌ Confusing LTE with complete tail rotor drive failure.  \n  ✔ LTE is often recoverable with pedal, power reduction, and forward flight.\n\n- ❌ Saying \"perdeu o rotor de cauda\" for LTE.  \n  ✔ Use loss of tail rotor effectiveness — different from tail rotor failure.\n\n- ❌ Raising collective when yaw begins.  \n  ✔ Reduce power if altitude permits — more power worsens the yaw.\n\n- ❌ Delaying the radio call until after recovery.  \n  ✔ Declare Pan Pan or Mayday as soon as you can speak from a stable aircraft.",
+    "pronunciationCoaching": "**Target Phrase:** Pan Pan Pan Pan, Loss of Tail Rotor Effectiveness\n\n**Pronunciation:** pan pan pan pan, loss uv tayl ROH-ter ih-FEK-tiv-ness\n\n**Word Stress**\n\n- Tail → tayl\n- Rotor → ROH-ter\n- Effectiveness → ih-FEK-tiv-ness\n\nPractice:\n\nPan... Pan... Pan... Pan...\n\nTogether:\n\nPan Pan Pan Pan, Joinville Tower, ANAC123, loss of tail rotor effectiveness, recovering.\n\nSpeak L-T-E clearly if you use the abbreviation — or say the full phrase.",
+    "relatedConcepts": [
+      "Tail Rotor Failure",
+      "Dynamic Rollover",
+      "Hover Taxi",
+      "Mayday Distress Call",
+      "Pan Pan Urgency Call",
+      "Uncommanded Yaw"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Helicopter Flying Handbook — Loss of Tail Rotor Effectiveness"
+      },
+      {
+        "label": "FAA Advisory Circular 90-95 — Unanticipated Right Yaw"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Tail Rotor Operations"
+      },
+      {
+        "label": "SKYbrary — Loss of Tail Rotor Effectiveness",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0077",
+    "id": "0077",
+    "displayTerm": "Vortex Ring State",
+    "term": "vortex ring state",
+    "slug": "vortex-ring-state",
+    "category": "Helicopter Operations",
+    "meaningEn": "Vortex Ring State is an aerodynamic condition in which the helicopter descends into its own rotor downwash, resulting in loss of lift and a high rate of descent.",
+    "meaningPt": "Estado de anel de vórtice.\n\nCondição aerodinâmica em que o helicóptero desce dentro da própria ressaca do rotor, resultando em perda de sustentação e alta taxa de descida.",
+    "whenUsed": "When Vortex Ring State occurs, the pilot should:",
+    "example": "Tower: ANAC123, roger Pan Pan, say altitude and intentions.",
+    "sayPhrase": "Pan Pan Pan Pan, Florianópolis Tower, ANAC123, vortex ring state, recovering, going around.",
+    "icaoQuestion": "What is vortex ring state and how do you recover?",
+    "icaoSpeakText": "Vortex ring state occurs when the helicopter descends into its own downwash, causing loss of lift and a high rate of descent. I would apply forward cyclic to increase airspeed, reduce collective if altitude permits, and exit the downwash. I would declare Pan Pan or Mayday depending on altitude remaining, report vortex ring state, and request go-around or immediate landing.",
+    "missionBrief": "Today's lesson covers vortex ring state — a critical aerodynamic condition every helicopter pilot must recognize.\n\nVortex Ring State occurs when the helicopter descends into its own downwash, causing a sudden loss of lift and a rapid rate of descent.\n\nIn the H130, vortex ring state is most likely during steep approaches with low airspeed and high rate of descent.\n\nYou must recognize the buffet and sink, apply recovery technique immediately, then communicate if control is threatened.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Vortex ring state is the helicopter falling into its own wake.\n\nSteep. Slow. High descent rate.\n\nThe sequence every professional pilot learns:\n\nCyclic forward. Collective down. Airspeed.\n\nDo not pull collective alone — that feeds the vortex.\n\nPush the nose forward.\n\nExit the downwash.\n\nRegain airspeed.\n\nThen climb if needed.\n\nBrazilian pilots sometimes say \"caiu no vórtice\" or \"settling\" on frequency.\n\nUse vortex ring state or settling with power — ICAO standard terms.\n\nIn the H130, avoid steep approaches with low airspeed and high descent rate.\n\nTrain recognition until buffet means cyclic forward — not more collective.",
+    "operationalContext": "You are on a steep approach to a confined helipad near Florianópolis in your H130.\n\nAirspeed decays below translational lift and rate of descent increases rapidly.\n\nThe aircraft buffets and sinks despite collective input.\n\nYou apply forward cyclic, reduce collective slightly, and accelerate out of the vortex.\n\nWhen stable, you transmit:\n\nPan Pan Pan Pan, Florianópolis Tower, ANAC123, vortex ring state, recovering, going around.\n\nTower clears traffic and you reattempt a shallower approach.",
+    "sayItCoach": "Pan Pan Pan Pan, Florianópolis Tower, ANAC123, vortex ring state, recovering, going around.",
+    "icaoModelAnswer": "Vortex ring state occurs when the helicopter descends into its own downwash, causing loss of lift and a high rate of descent. I would apply forward cyclic to increase airspeed, reduce collective if altitude permits, and exit the downwash. I would declare Pan Pan or Mayday depending on altitude remaining, report vortex ring state, and request go-around or immediate landing.",
+    "memoryTrick": "**SINK** — **S**ense buffet and descent, **I**ncrease airspeed with cyclic, **N**ever pull collective alone, **K**eep going around if needed.",
+    "operationalMeaning": "When Vortex Ring State occurs, the pilot should:\n\nVortex Ring State reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "clear traffic from the aircraft's route immediately",
+      "provide vectors to the nearest suitable landing area",
+      "coordinate emergency services if altitude is critical",
+      "request souls on board and position",
+      "prepare for possible hard landing or go-around"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, roger Pan Pan, say altitude and intentions.",
+      "Tower: ANAC123, cleared go-around, report when established.",
+      "Approach: ANAC123, radar contact, say souls on board.",
+      "Tower: ANAC123, wind calm, cleared to land when ready.",
+      "Tower: ANAC123, emergency services standing by if required."
+    ],
+    "pilotReadbacks": [
+      "Pan Pan Pan Pan, Florianópolis Tower, ANAC123, vortex ring state, recovering, going around.",
+      "Mayday Mayday Mayday, ANAC123, vortex ring state, unable to arrest descent, request immediate landing.",
+      "Pan Pan Pan Pan, ANAC123, settling with power, recovering with forward flight.",
+      "ANAC123, vortex ring state recovered, request another approach.",
+      "Tower, ANAC123, vortex ring state, souls on board four, going around."
+    ],
+    "brazilianMistakes": "- ❌ Raising collective alone when the aircraft sinks.  \n  ✔ Forward cyclic first — more collective deepens the vortex.\n\n- ❌ Saying \"vórtice\" without standard English.  \n  ✔ Use vortex ring state or settling with power.\n\n- ❌ Continuing a steep slow approach into confined areas.  \n  ✔ Maintain airspeed and a manageable descent rate.\n\n- ❌ Confusing vortex ring state with engine failure.  \n  ✔ Power is available — the problem is aerodynamic recirculation.",
+    "pronunciationCoaching": "**Target Phrase:** Pan Pan Pan Pan, Vortex Ring State, Recovering\n\n**Pronunciation:** pan pan pan pan, VOR-teks ring stayt, ri-KUV-er-ing\n\n**Word Stress**\n\n- Vortex → VOR-teks\n- Ring → ring\n- State → stayt\n\nPractice:\n\nPan... Pan... Pan... Pan...\n\nTogether:\n\nPan Pan Pan Pan, Florianópolis Tower, ANAC123, vortex ring state, recovering, going around.\n\nSpeak slowly — controllers need every word.",
+    "relatedConcepts": [
+      "Settling With Power",
+      "Confined Area Landing",
+      "Go Around",
+      "Autorotation",
+      "Pan Pan Urgency Call",
+      "Mayday Distress Call"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Helicopter Flying Handbook — Vortex Ring State"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Vortex Ring State",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Settling With Power"
+      },
+      {
+        "label": "SKYbrary — Vortex Ring State",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0078",
+    "id": "0078",
+    "displayTerm": "Settling With Power",
+    "term": "settling with power",
+    "slug": "settling-with-power",
+    "category": "Helicopter Operations",
+    "meaningEn": "Settling With Power is a condition in which a powered helicopter descends at a rate that the rotor system cannot arrest, often associated with vortex ring state.",
+    "meaningPt": "Descida com potência (settling with power).\n\nCondição em que o helicóptero com potência desce a uma taxa que o sistema de rotor não consegue interromper.",
+    "whenUsed": "When Settling With Power occurs, the pilot should:",
+    "example": "Approach: ANAC123, roger Pan Pan, say altitude and intentions.",
+    "sayPhrase": "Pan Pan Pan Pan, Curitiba Approach, ANAC123, settling with power, recovering, going around.",
+    "icaoQuestion": "What is settling with power and how would you report it to ATC?",
+    "icaoSpeakText": "Settling with power is when a powered helicopter descends at a rate the rotor cannot arrest, often linked to vortex ring state. I would apply forward cyclic to gain airspeed, reduce collective if altitude permits, and go around. I would declare Pan Pan or Mayday depending on altitude, report settling with power, and request another approach or immediate landing.",
+    "missionBrief": "Today's lesson covers settling with power — closely related to vortex ring state.\n\nSettling With Power means the helicopter is descending under power into conditions where the rotor cannot produce enough lift to arrest the descent.\n\nIn the H130, settling with power often appears during steep approaches, downwind approaches, or high-density altitude operations with low airspeed.\n\nYou must recognize the sink, recover with forward cyclic and airspeed, then communicate clearly.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Settling with power sounds like a contradiction.\n\nYou have power — but you are still sinking.\n\nThat is the trap.\n\nThe sequence:\n\nRecognize. Cyclic forward. Airspeed. Go around.\n\nDo not pull more collective alone.\n\nMore power into the vortex makes it worse.\n\nBrazilian pilots sometimes say \"não segura\" or \"está caindo com potência\" on frequency.\n\nUse settling with power — ICAO and FAA standard term.\n\nIn the H130, watch density altitude, steep approaches, and downwind approaches.\n\nIf the aircraft settles — exit forward, then climb.\n\nTrain the recovery until cyclic forward is automatic.",
+    "operationalContext": "You are approaching a mountain helipad near Curitiba in your H130 on a hot afternoon.\n\nDensity altitude is high and you attempt a steep approach with low airspeed.\n\nThe aircraft settles despite full available power.\n\nYou push cyclic forward, gain airspeed, and climb away.\n\nWhen stable, you transmit:\n\nPan Pan Pan Pan, Curitiba Approach, ANAC123, settling with power, recovering, going around, request another approach.\n\nApproach clears traffic and you reattempt with a shallower profile.",
+    "sayItCoach": "Pan Pan Pan Pan, Curitiba Approach, ANAC123, settling with power, going around.",
+    "icaoModelAnswer": "Settling with power is when a powered helicopter descends at a rate the rotor cannot arrest, often linked to vortex ring state. I would apply forward cyclic to gain airspeed, reduce collective if altitude permits, and go around. I would declare Pan Pan or Mayday depending on altitude, report settling with power, and request another approach or immediate landing.",
+    "memoryTrick": "**POWER** — **P**ush cyclic forward, **O**ut of the vortex, **W**atch descent rate, **E**xit with airspeed, **R**equest go-around.",
+    "operationalMeaning": "When Settling With Power occurs, the pilot should:\n\nSettling With Power reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "clear traffic from the go-around path",
+      "provide vectors for another approach",
+      "coordinate priority handling if altitude is critical",
+      "request souls on board and intentions",
+      "prepare emergency services if a hard landing is possible"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger Pan Pan, say altitude and intentions.",
+      "Approach: ANAC123, climb and maintain three thousand, report when ready for another approach.",
+      "Tower: ANAC123, cleared go-around, wind two seven zero at one two knots.",
+      "Approach: ANAC123, say souls on board.",
+      "Tower: ANAC123, cleared to land when ready, emergency services notified."
+    ],
+    "pilotReadbacks": [
+      "Pan Pan Pan Pan, Curitiba Approach, ANAC123, settling with power, recovering, going around.",
+      "Mayday Mayday Mayday, ANAC123, settling with power, unable to arrest descent.",
+      "Pan Pan Pan Pan, ANAC123, settling with power, request another approach.",
+      "ANAC123, settling with power recovered, souls on board two, request vectors.",
+      "Tower, ANAC123, settling with power, going around for shallower approach."
+    ],
+    "brazilianMistakes": "- ❌ Pulling more collective when the aircraft settles.  \n  ✔ Forward cyclic and airspeed — more collective alone worsens the condition.\n\n- ❌ Saying \"não segura a descida\" instead of standard English.  \n  ✔ Use settling with power.\n\n- ❌ Continuing a steep approach at high density altitude.  \n  ✔ Use a shallower profile and maintain translational lift airspeed.\n\n- ❌ Not going around after recovery.  \n  ✔ Go around and reattempt with a safer approach path.",
+    "pronunciationCoaching": "**Target Phrase:** Pan Pan Pan Pan, Settling With Power, Going Around\n\n**Pronunciation:** pan pan pan pan, SET-ling with POW-er, GO-ing uh-ROUND\n\n**Word Stress**\n\n- Settling → SET-ling\n- Power → POW-er\n- Around → uh-ROUND\n\nPractice:\n\nPan... Pan... Pan... Pan...\n\nTogether:\n\nPan Pan Pan Pan, Curitiba Approach, ANAC123, settling with power, going around.\n\nSpeak clearly — controllers need the condition and your intention.",
+    "relatedConcepts": [
+      "Vortex Ring State",
+      "Go Around",
+      "Confined Area Landing",
+      "Pinnacle Landing",
+      "Pan Pan Urgency Call",
+      "High Density Altitude"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Helicopter Flying Handbook — Settling With Power"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Settling With Power",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Performance and Settling"
+      },
+      {
+        "label": "SKYbrary — Settling With Power",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0079",
+    "id": "0079",
+    "displayTerm": "Mast Bumping",
+    "term": "mast bumping",
+    "slug": "mast-bumping",
+    "category": "Helicopter Operations",
+    "meaningEn": "Mast Bumping is contact between the rotor hub and the mast, typically during low-G flight in teetering-rotor helicopters, which can cause catastrophic mast failure.",
+    "meaningPt": "Batida no mastro (mast bumping).\n\nContato entre o cubo do rotor e o mastro, tipicamente em voo de baixo G em helicópteros de rotor teetering, podendo causar falha catastrófica do mastro.",
+    "whenUsed": "When Mast Bumping risk exists, the pilot should:",
+    "example": "Approach: ANAC123, Mayday acknowledged, say souls on board and nature of damage.",
+    "sayPhrase": "Mayday Mayday Mayday, Florianópolis Approach, ANAC123, suspected mast bumping, request immediate landing.",
+    "icaoQuestion": "What is mast bumping and what would you tell ATC if you suspected it?",
+    "icaoSpeakText": "Mast bumping is contact between the rotor hub and the mast, usually during low-G flight in teetering-rotor helicopters. If I suspected mast bumping, I would declare Mayday Mayday Mayday, report suspected mast bumping or low-G event with abnormal vibration, state my position and souls on board, and request immediate landing for inspection.",
+    "missionBrief": "Today's lesson covers mast bumping — a catastrophic risk in teetering-rotor helicopters.\n\nMast Bumping occurs when the rotor hub contacts the mast during low-G or extreme flapping conditions, which can sever the mast.\n\nIn the H130, the rotor system design differs from classic teetering systems, but low-G awareness and smooth control remain essential for all helicopter pilots.\n\nYou must avoid low-G maneuvers, recover smoothly if low-G is encountered, and communicate if structural damage is suspected.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Mast bumping is a teetering-rotor nightmare.\n\nLow G. Hub hits mast. Mast can fail.\n\nThe sequence every professional pilot learns:\n\nAvoid low G. Recover gently. Land and inspect.\n\nNever push over abruptly.\n\nNever apply abrupt lateral cyclic in low G.\n\nGentle aft cyclic restores positive load.\n\nBrazilian pilots sometimes say \"bateu no mastro\" or \"low G\" on frequency.\n\nUse suspected mast bumping or low-G event — ICAO-compatible operational English.\n\nEven if your H130 rotor design differs from classic teetering systems, low-G discipline still matters.\n\nTrain smooth control inputs until abrupt pushovers never happen.\n\nIf you suspect contact — Mayday and land. Do not continue the flight.",
+    "operationalContext": "You are descending through light turbulence near Florianópolis in your H130.\n\nAn abrupt forward cyclic input produces a brief low-G sensation.\n\nYou gently apply aft cyclic and restore positive G without lateral inputs.\n\nYou feel unusual vibration afterward.\n\nYou transmit:\n\nMayday Mayday Mayday, Florianópolis Approach, ANAC123, suspected mast bumping after low-G event, request immediate landing.\n\nApproach clears traffic and vectors you direct to the airport.\n\nYou land for immediate inspection.",
+    "sayItCoach": "Mayday Mayday Mayday, Florianópolis Approach, ANAC123, suspected mast bumping, request immediate landing.",
+    "icaoModelAnswer": "Mast bumping is contact between the rotor hub and the mast, usually during low-G flight in teetering-rotor helicopters. If I suspected mast bumping, I would declare Mayday Mayday Mayday, report suspected mast bumping or low-G event with abnormal vibration, state my position and souls on board, and request immediate landing for inspection.",
+    "memoryTrick": "**MAST** — **M**aintain positive G, **A**void abrupt pushovers, **S**mooth aft cyclic if low G, **T**ouch down immediately if suspected.",
+    "operationalMeaning": "When Mast Bumping risk exists, the pilot should:\n\nMast Bumping reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "clear all traffic from the aircraft's route immediately",
+      "provide vectors to the nearest suitable landing area",
+      "coordinate emergency services on the ground",
+      "request souls on board and nature of the problem",
+      "prepare for possible catastrophic structural failure"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, Mayday acknowledged, say souls on board and nature of damage.",
+      "Approach: ANAC123, turn left heading one eight zero, nearest airport five miles, all traffic cleared.",
+      "Tower: ANAC123, cleared direct runway, emergency services standing by.",
+      "Tower: ANAC123, wind calm, cleared to land any area.",
+      "Approach: ANAC123, radar contact, say intentions."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, Florianópolis Approach, ANAC123, suspected mast bumping, request immediate landing.",
+      "Mayday Mayday Mayday, ANAC123, low-G event, abnormal vibration, souls on board three.",
+      "Pan Pan Pan Pan, ANAC123, low-G encounter, requesting precautionary landing.",
+      "ANAC123, suspected mast bumping, position five miles north Florianópolis.",
+      "Tower, ANAC123, mast bumping suspected, executing immediate landing."
+    ],
+    "brazilianMistakes": "- ❌ Continuing flight after a low-G event with vibration.  \n  ✔ Land immediately for inspection — structural damage may be developing.\n\n- ❌ Saying \"bateu no mastro\" without standard English.  \n  ✔ Use suspected mast bumping or low-G event.\n\n- ❌ Applying abrupt lateral cyclic during low G.  \n  ✔ Recover with gentle aft cyclic only.\n\n- ❌ Treating mast bumping as Pan Pan.  \n  ✔ Suspected mast bumping is distress — Mayday.",
+    "pronunciationCoaching": "**Target Phrase:** Mayday Mayday Mayday, Suspected Mast Bumping\n\n**Pronunciation:** MAY-day MAY-day MAY-day, suh-SPEK-ted mast BUM-ping\n\n**Word Stress**\n\n- Suspected → suh-SPEK-ted\n- Mast → mast\n- Bumping → BUM-ping\n\nPractice:\n\nMayday... Mayday... Mayday...\n\nTogether:\n\nMayday Mayday Mayday, Florianópolis Approach, ANAC123, suspected mast bumping, request immediate landing.\n\nSpeak with urgency but clearly — every word must be understood.",
+    "relatedConcepts": [
+      "Main Rotor Damage",
+      "Severe Turbulence",
+      "Mayday Distress Call",
+      "Emergency Landing",
+      "Low-G Flight",
+      "Rotor System Failure"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Helicopter Flying Handbook — Mast Bumping"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Mast Bumping",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Manufacturer Flight Manual — Rotor System Limitations"
+      },
+      {
+        "label": "SKYbrary — Mast Bumping",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0080",
+    "id": "0080",
+    "displayTerm": "Wire Strike",
+    "term": "wire strike",
+    "slug": "wire-strike",
+    "category": "Helicopter Operations",
+    "meaningEn": "Wire Strike is contact between the helicopter and power lines, cables, or wires, often resulting in catastrophic damage or loss of control.",
+    "meaningPt": "Colisão com fios (wire strike).\n\nContato do helicóptero com linhas de energia, cabos ou fios, frequentemente resultando em dano catastrófico ou perda de controle.",
+    "whenUsed": "When Wire Strike occurs or is imminent, the pilot should:",
+    "example": "Tower: ANAC123, Mayday acknowledged, say souls on board and nature of damage.",
+    "sayPhrase": "Mayday Mayday Mayday, Joinville Tower, ANAC123, wire strike, request immediate landing.",
+    "icaoQuestion": "What would you tell ATC if you struck power lines during approach?",
+    "icaoSpeakText": "I would maintain aircraft control and declare Mayday Mayday Mayday. I would state my callsign, report wire strike or struck power lines, describe any known damage, state my position and souls on board, and request immediate landing at the nearest suitable area. I would report safe on the ground after landing.",
+    "missionBrief": "Today's lesson covers wire strike — one of the leading causes of fatal helicopter accidents.\n\nWire Strike means the helicopter contacts power lines, cables, or wires during low-level flight.\n\nIn the H130, wire strike risk is high during confined area approaches, pipeline patrol, and operations near rural Brazilian power lines.\n\nYou must see and avoid wires, use wire-strike protection if installed, and declare Mayday immediately if contact occurs.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Wires kill helicopter pilots.\n\nThey are thin. They blend with the background. They appear late.\n\nThe sequence every professional pilot learns:\n\nSee. Avoid. Reconnoiter.\n\nOrbit confined areas before committing.\n\nLook for poles, towers, and shadows of wires.\n\nAssume wires exist near roads, rivers, and buildings.\n\nBrazilian pilots sometimes say \"bateu no fio\" or \"linha de alta tensão\" on frequency.\n\nUse wire strike or struck power lines — ICAO standard terms.\n\nIn the H130, wire-strike protection helps — but it is not a license to fly blind.\n\nIf you strike — Mayday immediately. Assess control. Land now.\n\nTrain your eyes to find poles before you find wires.",
+    "operationalContext": "You are approaching a confined construction site near Joinville in your H130.\n\nOn short final, you see unmarked power lines too late.\n\nThe wire cutter engages and the aircraft yaws violently.\n\nYou maintain control and transmit:\n\nMayday Mayday Mayday, Joinville Tower, ANAC123, wire strike, request immediate landing field ahead.\n\nTower clears traffic and emergency services respond.\n\nYou land in the field and shut down for inspection.",
+    "sayItCoach": "Mayday Mayday Mayday, Joinville Tower, ANAC123, wire strike, request immediate landing.",
+    "icaoModelAnswer": "I would maintain aircraft control and declare Mayday Mayday Mayday. I would state my callsign, report wire strike or struck power lines, describe any known damage, state my position and souls on board, and request immediate landing at the nearest suitable area. I would report safe on the ground after landing.",
+    "memoryTrick": "**WIRE** — **W**atch for poles first, **I**dentify cables early, **R**econnoiter before descent, **E**mergency Mayday if strike occurs.",
+    "operationalMeaning": "When Wire Strike occurs or is imminent, the pilot should:\n\nWire Strike reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "clear all traffic from the aircraft's route immediately",
+      "provide vectors to the nearest suitable landing area",
+      "coordinate emergency services and power company notification",
+      "request souls on board and nature of damage",
+      "prepare for possible crash landing or autorotation"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, Mayday acknowledged, say souls on board and nature of damage.",
+      "Tower: ANAC123, all traffic cleared, emergency services standing by.",
+      "Approach: ANAC123, radar contact, say position and intentions.",
+      "Tower: ANAC123, cleared to land any area, wind calm.",
+      "Tower: ANAC123, fire rescue en route to your position."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, Joinville Tower, ANAC123, wire strike, request immediate landing.",
+      "Mayday Mayday Mayday, ANAC123, struck power lines, souls on board four, landing field ahead.",
+      "Mayday Mayday Mayday, Florianópolis Approach, ANAC123, wire strike, possible rotor damage.",
+      "ANAC123, wire strike, position three miles south Joinville, request emergency services.",
+      "Tower, ANAC123, wire strike, safe on the ground, no injuries."
+    ],
+    "brazilianMistakes": "- ❌ Descending into confined areas without a reconnaissance orbit.  \n  ✔ Orbit and look for poles, towers, and wires before committing.\n\n- ❌ Saying \"bateu no fio\" instead of standard English.  \n  ✔ Use wire strike or struck power lines.\n\n- ❌ Continuing to destination after a wire strike.  \n  ✔ Land immediately — structural damage may be critical.\n\n- ❌ Not declaring Mayday after contact.  \n  ✔ Wire strike is always distress — Mayday.",
+    "pronunciationCoaching": "**Target Phrase:** Mayday Mayday Mayday, Wire Strike, Request Immediate Landing\n\n**Pronunciation:** MAY-day MAY-day MAY-day, wyer stryk, ree-KWEST im-MEE-dee-it LAN-ding\n\n**Word Stress**\n\n- Wire → wyer\n- Strike → stryk\n- Immediate → im-MEE-dee-it\n\nPractice:\n\nMayday... Mayday... Mayday...\n\nTogether:\n\nMayday Mayday Mayday, Joinville Tower, ANAC123, wire strike, request immediate landing.\n\nSpeak with urgency but clearly — every word must be understood.",
+    "relatedConcepts": [
+      "Obstacle Avoidance",
+      "Confined Area Landing",
+      "Main Rotor Damage",
+      "Tail Rotor Failure",
+      "Mayday Distress Call",
+      "Emergency Landing"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Helicopter Flying Handbook — Wire Strike Avoidance"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Wire Strike",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Wire Strike Protection"
+      },
+      {
+        "label": "SKYbrary — Helicopter Wire Strikes",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0081",
+    "id": "0081",
+    "displayTerm": "Obstacle Avoidance",
+    "term": "obstacle avoidance",
+    "slug": "obstacle-avoidance",
+    "category": "Helicopter Operations",
+    "meaningEn": "Obstacle Avoidance is the process of detecting, assessing, and remaining clear of terrain and man-made obstacles during helicopter flight.",
+    "meaningPt": "Evitação de obstáculos.\n\nProcesso de detectar, avaliar e permanecer afastado de terreno e obstáculos artificiais durante o voo de helicóptero.",
+    "whenUsed": "When Obstacle Avoidance is required, the pilot should:",
+    "example": "Tower: ANAC123, roger go-around, report when ready for another approach.",
+    "sayPhrase": "Going around, obstacle on approach path, ANAC123.",
+    "icaoQuestion": "What would you tell ATC if you saw an unexpected obstacle on final approach?",
+    "icaoSpeakText": "I would go around if the obstacle made the approach unsafe. I would transmit going around, obstacle on approach path, describe the obstacle if able, and request another approach or an alternate path. I would remain clear of the obstacle and confirm when ready for the next approach.",
+    "missionBrief": "Today's lesson covers obstacle avoidance — essential language and technique for low-level helicopter operations.\n\nObstacle Avoidance means detecting and remaining clear of terrain, buildings, towers, cranes, trees, and other hazards during flight.\n\nIn the H130, obstacle avoidance is critical during confined area approaches, urban operations, and coastal flights near Brazilian cities.\n\nYou must see and avoid, communicate traffic and obstacle concerns clearly, and go around when the approach is unsafe.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 operational communication.",
+    "captainTeaching": "Obstacle avoidance is not only seeing — it is deciding early.\n\nThe sequence:\n\nLook. Assess. Go around if needed. Communicate.\n\nA late go-around is better than a wire strike or crane strike.\n\nBrazilian pilots sometimes say \"tem obstáculo\" or \"tem guindaste\" on frequency.\n\nUse obstacle on approach path or going around due obstacles — ICAO standard terms.\n\nIn the H130, urban Brazil means cranes, antennas, and unmarked wires.\n\nNever assume yesterday's approach is clear today.\n\nTrain yourself to call the go-around early and clearly.",
+    "operationalContext": "You are approaching a hospital helipad in São Paulo in your H130.\n\nOn final, you see a construction crane that was not on your previous briefing.\n\nYou go around and transmit:\n\nSão Paulo Tower, ANAC123, going around, obstacle on approach path, construction crane, request another approach.\n\nTower acknowledges and provides an alternate approach path clear of the crane.\n\nYou land safely on the second attempt.",
+    "sayItCoach": "Going around, obstacle on approach path, construction crane, ANAC123.",
+    "icaoModelAnswer": "I would go around if the obstacle made the approach unsafe. I would transmit going around, obstacle on approach path, describe the obstacle if able, and request another approach or an alternate path. I would remain clear of the obstacle and confirm when ready for the next approach.",
+    "memoryTrick": "**LOOK** — **L**ocate hazards early, **O**rbit if unsure, **O**ut — go around when unsafe, **K**now and report to ATC.",
+    "operationalMeaning": "When Obstacle Avoidance is required, the pilot should:\n\nObstacle Avoidance reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "providing traffic and known obstacle advisories",
+      "clearing go-around paths",
+      "coordinating with other aircraft in the area",
+      "updating pilots on temporary obstacles when known",
+      "sequencing approaches to avoid conflicts near obstacles"
+    ],
+    "atcPhraseology": [
+      "Tower: ANAC123, roger go-around, report when ready for another approach.",
+      "Tower: ANAC123, traffic advisory, crane reported north of the helipad.",
+      "Approach: ANAC123, say intentions.",
+      "Tower: ANAC123, cleared to land, remain clear of the construction area.",
+      "Tower: ANAC123, no reported obstacles on the south approach."
+    ],
+    "pilotReadbacks": [
+      "Going around, obstacle on approach path, ANAC123.",
+      "ANAC123, unable to land due obstacles, request another approach.",
+      "ANAC123, request traffic and obstacle advisory for hospital helipad.",
+      "Tower, ANAC123, obstacle clear, continuing approach.",
+      "ANAC123, going around due crane on final, will reattempt from the south."
+    ],
+    "brazilianMistakes": "- ❌ Continuing an approach toward an unexpected crane or tower.  \n  ✔ Go around early — communicate the obstacle to ATC.\n\n- ❌ Saying \"tem coisa na final\" instead of standard English.  \n  ✔ Use obstacle on approach path or going around due obstacles.\n\n- ❌ Not reporting obstacles that could affect other aircraft.  \n  ✔ Report temporary obstacles so ATC can advise others.\n\n- ❌ Waiting until short final to decide.  \n  ✔ Assess early — late decisions reduce options.",
+    "pronunciationCoaching": "**Target Phrase:** Going Around, Obstacle on Approach Path\n\n**Pronunciation:** GO-ing uh-ROUND, OB-stuh-kul on uh-PROHCH path\n\n**Word Stress**\n\n- Obstacle → OB-stuh-kul\n- Approach → uh-PROHCH\n- Around → uh-ROUND\n\nPractice:\n\nGoing... around...\n\nTogether:\n\nGoing around, obstacle on approach path, construction crane, ANAC123.\n\nSpeak clearly — Tower needs the reason for the go-around.",
+    "relatedConcepts": [
+      "Wire Strike",
+      "Confined Area Landing",
+      "Go Around",
+      "Traffic Advisory",
+      "Brownout",
+      "Pinnacle Landing"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Aerodrome Operations",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Helicopter Flying Handbook — Obstacle Avoidance"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Obstacle",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Confined Area Operations"
+      },
+      {
+        "label": "SKYbrary — Helicopter Obstacle Strikes",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0082",
+    "id": "0082",
+    "displayTerm": "Weather Deterioration",
+    "term": "weather deterioration",
+    "slug": "weather-deterioration",
+    "category": "Weather",
+    "meaningEn": "Weather Deterioration is a progressive worsening of meteorological conditions that may require diversion, return, or a change of flight plan.",
+    "meaningPt": "Deterioração do tempo.\n\nPiora progressiva das condições meteorológicas que pode exigir desvio, retorno ou mudança de plano de voo.",
+    "whenUsed": "When Weather Deterioration occurs, the pilot should:",
+    "example": "Approach: ANAC123, roger weather deteriorating, say intentions.",
+    "sayPhrase": "Florianópolis Approach, ANAC123, weather deteriorating, request diversion to Navegantes.",
+    "icaoQuestion": "What would you tell ATC if weather deteriorated below VFR minima during cruise?",
+    "icaoSpeakText": "I would assess whether I could maintain VFR or needed an IFR clearance or diversion. I would inform ATC that weather is deteriorating, state that I am unable to continue VFR if applicable, and request diversion to the nearest suitable airport or an IFR clearance. I would state my intentions clearly and early.",
+    "missionBrief": "Today's lesson covers weather deterioration — when conditions worsen in flight.\n\nWeather Deterioration means visibility, ceiling, wind, or precipitation changes beyond what was forecast or briefed.\n\nIn the H130, weather deterioration along the Brazilian coast can develop quickly — fog, rain showers, and low ceilings are common.\n\nYou must recognize the change early, decide divert or return, and communicate clearly with ATC.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 operational communication.",
+    "captainTeaching": "Weather deterioration is a decision problem — not a bravery test.\n\nThe sequence:\n\nRecognize. Decide. Communicate. Divert.\n\nDo not wait until you are inside the weather to call ATC.\n\nBrazilian pilots sometimes say \"o tempo piorou\" on frequency.\n\nUse weather deteriorating or conditions deteriorating — ICAO standard terms.\n\nIn the H130 along the coast, showers and fog can close options in minutes.\n\nHave an alternate before you need it.\n\nTrain yourself to divert early and speak clearly.",
+    "operationalContext": "You are cruising VFR along the coast from Navegantes to Florianópolis in your H130.\n\nVisibility drops rapidly in rain showers and the ceiling lowers.\n\nYou decide early and transmit:\n\nFlorianópolis Approach, ANAC123, weather deteriorating, unable to continue VFR to destination, request diversion to Navegantes.\n\nApproach provides vectors and you land safely at Navegantes before conditions worsen further.",
+    "sayItCoach": "Weather deteriorating, request diversion to Navegantes, ANAC123.",
+    "icaoModelAnswer": "I would assess whether I could maintain VFR or needed an IFR clearance or diversion. I would inform ATC that weather is deteriorating, state that I am unable to continue VFR if applicable, and request diversion to the nearest suitable airport or an IFR clearance. I would state my intentions clearly and early.",
+    "memoryTrick": "**EARLY** — **E**valuate minima, **A**nnounce weather deteriorating, **R**equest diversion or IFR, **L**eave options open, **Y**ou divert before trapped.",
+    "operationalMeaning": "When Weather Deterioration occurs, the pilot should:\n\nWeather Deterioration reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "provide diversion routing and alternate airports",
+      "issue weather updates and pilot reports",
+      "coordinate IFR clearances if VFR becomes impossible",
+      "sequence traffic around weather cells",
+      "assist with priority handling when conditions become critical"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger weather deteriorating, say intentions.",
+      "Approach: ANAC123, cleared diversion Navegantes, turn left heading zero nine zero.",
+      "Approach: ANAC123, weather update, visibility reducing to two kilometers south.",
+      "Tower: ANAC123, runway two nine cleared to land, wind two seven zero at one five knots.",
+      "Approach: ANAC123, advise if able to continue VFR."
+    ],
+    "pilotReadbacks": [
+      "Florianópolis Approach, ANAC123, weather deteriorating, request diversion to Navegantes.",
+      "ANAC123, weather deteriorating, unable to continue VFR, request IFR clearance.",
+      "Pan Pan Pan Pan, ANAC123, weather deteriorating, request vectors to nearest suitable airport.",
+      "ANAC123, conditions deteriorating, returning to departure aerodrome.",
+      "Approach, ANAC123, weather deteriorating ahead, request vectors around the shower."
+    ],
+    "brazilianMistakes": "- ❌ Continuing into worsening weather hoping it improves.  \n  ✔ Divert early — communicate intentions before options disappear.\n\n- ❌ Saying \"o tempo fechou\" instead of standard English.  \n  ✔ Use weather deteriorating or conditions deteriorating.\n\n- ❌ Not stating intentions after reporting weather.  \n  ✔ Always state divert, return, or request IFR.\n\n- ❌ Waiting until inside IMC without a clearance.  \n  ✔ Request IFR or divert before entering uncontrolled IMC.",
+    "pronunciationCoaching": "**Target Phrase:** Weather Deteriorating, Request Diversion\n\n**Pronunciation:** WETH-er dee-TEER-ee-uh-ray-ting, ree-KWEST dy-VER-zhun\n\n**Word Stress**\n\n- Weather → WETH-er\n- Deteriorating → dee-TEER-ee-uh-ray-ting\n- Diversion → dy-VER-zhun\n\nPractice:\n\nWeather... deteriorating...\n\nTogether:\n\nWeather deteriorating, request diversion to Navegantes, ANAC123.\n\nSpeak clearly — Approach needs the problem and your plan.",
+    "relatedConcepts": [
+      "Thunderstorm",
+      "Embedded Thunderstorm",
+      "Severe Turbulence",
+      "Pan Pan Urgency Call",
+      "Diversion",
+      "IFR Clearance"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Weather Deviation",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Weather",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Weather",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Weather Limitations"
+      },
+      {
+        "label": "SKYbrary — Weather Deterioration",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0083",
+    "id": "0083",
+    "displayTerm": "Thunderstorm",
+    "term": "thunderstorm",
+    "slug": "thunderstorm",
+    "category": "Weather",
+    "meaningEn": "A Thunderstorm is a convective weather system producing lightning, thunder, and often severe turbulence, hail, and heavy precipitation.",
+    "meaningPt": "Tempestade / trovoada.\n\nSistema convectivo que produz raios, trovões e frequentemente turbulência severa, granizo e precipitação intensa.",
+    "whenUsed": "When a Thunderstorm is present, the pilot should:",
+    "example": "Approach: ANAC123, deviation approved, remain clear of weather, report when back on course.",
+    "sayPhrase": "Navegantes Approach, ANAC123, thunderstorm ahead, request weather deviation left of course.",
+    "icaoQuestion": "What would you tell ATC if a thunderstorm blocked your route?",
+    "icaoSpeakText": "I would request weather deviation left or right of course, or request vectors around the weather. I would state thunderstorm ahead and that I am unable to continue present routing. If deviation was not possible, I would divert to a suitable alternate and inform ATC of my intentions.",
+    "missionBrief": "Today's lesson covers thunderstorms — one of the most hazardous weather phenomena for helicopters.\n\nA Thunderstorm produces lightning, severe turbulence, hail, heavy rain, and strong wind gusts.\n\nIn the H130, thunderstorms along the Brazilian coast and inland can develop rapidly in the afternoon.\n\nYou must avoid thunderstorms by a wide margin, request weather deviation from ATC, and never attempt to penetrate a cell.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 operational communication.",
+    "captainTeaching": "Thunderstorms are not negotiable.\n\nYou do not go through. You go around.\n\nThe sequence:\n\nSee. Deviate early. Tell ATC. Remain clear.\n\nTwenty miles of avoidance is better than twenty seconds of hail.\n\nBrazilian pilots sometimes say \"tempestade na frente\" or \"cumulonimbus\" on frequency.\n\nUse thunderstorm ahead or request weather deviation — ICAO standard terms.\n\nIn the H130, you have less margin than a jet — respect the cell.\n\nTrain yourself to call the deviation before you are trapped between cells.",
+    "operationalContext": "You are IFR from Curitiba to Navegantes in your H130.\n\nA thunderstorm builds across your route.\n\nYou transmit early:\n\nNavegantes Approach, ANAC123, thunderstorm ahead, request weather deviation twenty degrees left of course.\n\nApproach approves the deviation and provides vectors around the cell.\n\nYou remain clear of the storm and continue to Navegantes.",
+    "sayItCoach": "Thunderstorm ahead, request weather deviation left of course, ANAC123.",
+    "icaoModelAnswer": "I would request weather deviation left or right of course, or request vectors around the weather. I would state thunderstorm ahead and that I am unable to continue present routing. If deviation was not possible, I would divert to a suitable alternate and inform ATC of my intentions.",
+    "memoryTrick": "**AVOID** — **A**sk for deviation early, **V**ector around the cell, **O**ut — never penetrate, **I**nform when clear, **D**ivert if trapped.",
+    "operationalMeaning": "When a Thunderstorm is present, the pilot should:\n\nThunderstorm reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "approve weather deviations when traffic permits",
+      "provide weather radar information when available",
+      "coordinate alternate routing around cells",
+      "sequence traffic clear of convective weather",
+      "assist with diversion to suitable airports"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, deviation approved, remain clear of weather, report when back on course.",
+      "Approach: ANAC123, weather radar shows cells ahead, advise intentions.",
+      "Approach: ANAC123, turn left heading zero four five, vectors around weather.",
+      "Center: ANAC123, cleared weather deviation as requested, report clear of weather.",
+      "Approach: ANAC123, thunderstorm reported by previous aircraft, say if able to continue."
+    ],
+    "pilotReadbacks": [
+      "Navegantes Approach, ANAC123, thunderstorm ahead, request weather deviation left of course.",
+      "ANAC123, unable to continue present routing due thunderstorm, request vectors around weather.",
+      "ANAC123, weather deviation twenty degrees left, will report back on course.",
+      "Approach, ANAC123, clear of thunderstorm, resuming own navigation.",
+      "ANAC123, diverting to Florianópolis due thunderstorm on route."
+    ],
+    "brazilianMistakes": "- ❌ Attempting to fly under or through a thunderstorm.  \n  ✔ Avoid by a wide margin — request weather deviation early.\n\n- ❌ Saying \"tempestade\" without clear intention.  \n  ✔ Use thunderstorm ahead, request weather deviation.\n\n- ❌ Waiting until inside the rain shaft to call ATC.  \n  ✔ Deviate early while options still exist.\n\n- ❌ Not reporting when clear of weather.  \n  ✔ Report clear of weather and resume navigation as cleared.",
+    "pronunciationCoaching": "**Target Phrase:** Thunderstorm Ahead, Request Weather Deviation\n\n**Pronunciation:** THUN-der-storm uh-HED, ree-KWEST WETH-er dee-vee-AY-shun\n\n**Word Stress**\n\n- Thunderstorm → THUN-der-storm\n- Ahead → uh-HED\n- Deviation → dee-vee-AY-shun\n\nPractice:\n\nThunderstorm... ahead...\n\nTogether:\n\nThunderstorm ahead, request weather deviation left of course, ANAC123.\n\nSpeak clearly — Approach needs direction and reason.",
+    "relatedConcepts": [
+      "Embedded Thunderstorm",
+      "Weather Deterioration",
+      "Severe Turbulence",
+      "Weather Deviation",
+      "Diversion",
+      "Wind Shear"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Weather Deviation",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Thunderstorms",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Thunderstorm",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Weather Limitations"
+      },
+      {
+        "label": "SKYbrary — Thunderstorms",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0084",
+    "id": "0084",
+    "displayTerm": "Embedded Thunderstorm",
+    "term": "embedded thunderstorm",
+    "slug": "embedded-thunderstorm",
+    "category": "Weather",
+    "meaningEn": "An Embedded Thunderstorm is a thunderstorm obscured by cloud or precipitation, making visual detection difficult or impossible.",
+    "meaningPt": "Tempestade embutida.\n\nTempestade oculta por nuvens ou precipitação, dificultando ou impossibilitando a detecção visual.",
+    "whenUsed": "When an Embedded Thunderstorm is suspected, the pilot should:",
+    "example": "Approach: ANAC123, roger embedded thunderstorm, turn right heading one two zero, vectors around weather.",
+    "sayPhrase": "Florianópolis Approach, ANAC123, embedded thunderstorm suspected, request radar vectors.",
+    "icaoQuestion": "What is an embedded thunderstorm and what would you tell ATC if you encountered one?",
+    "icaoSpeakText": "An embedded thunderstorm is a thunderstorm hidden inside cloud or precipitation. If I encountered unexplained severe turbulence or heavy convective precipitation in IMC, I would report embedded thunderstorm suspected, request weather deviation or radar vectors, and divert if a safe path was not available. I would report when clear of weather.",
+    "missionBrief": "Today's lesson covers embedded thunderstorms — convective cells hidden inside cloud layers or IMC.\n\nAn Embedded Thunderstorm is a thunderstorm that cannot be seen visually because it is obscured by surrounding clouds or precipitation.\n\nIn the H130, embedded thunderstorms are especially dangerous on IFR coastal and mountain routes in Brazil when radar or visual cues are limited.\n\nYou must use all available weather information, request ATC assistance, and deviate early when turbulence or precipitation suggests a hidden cell.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Embedded thunderstorms hide inside the cloud.\n\nYou may not see lightning. You may not see the cell.\n\nYou feel it — turbulence, hail, torrential rain.\n\nThe sequence:\n\nReport. Deviate. Vector. Divert if needed.\n\nDo not wait for visual confirmation in IMC.\n\nBrazilian pilots sometimes say \"tempestade escondida\" or \"cumulonimbus embutido\" on frequency.\n\nUse embedded thunderstorm — ICAO and FAA standard term.\n\nIn the H130, you have less structural and performance margin than a transport jet.\n\nTreat unexplained severe turbulence in cloud as a threat until proven otherwise.\n\nTrain early deviation and clear PIREPs.",
+    "operationalContext": "You are IFR in IMC between Curitiba and Florianópolis in your H130.\n\nWithout visual cues, you encounter rapidly increasing turbulence and heavy rain.\n\nYou transmit immediately:\n\nFlorianópolis Approach, ANAC123, embedded thunderstorm suspected, encountering severe turbulence, request weather deviation and radar vectors.\n\nApproach provides vectors clear of the cell.\n\nYou divert slightly and continue when clear of weather.",
+    "sayItCoach": "Embedded thunderstorm suspected, request radar vectors, ANAC123.",
+    "icaoModelAnswer": "An embedded thunderstorm is a thunderstorm hidden inside cloud or precipitation. If I encountered unexplained severe turbulence or heavy convective precipitation in IMC, I would report embedded thunderstorm suspected, request weather deviation or radar vectors, and divert if a safe path was not available. I would report when clear of weather.",
+    "memoryTrick": "**HIDE** — **H**eavy turbulence in IMC, **I**nform ATC immediately, **D**eviate or divert, **E**xit and report clear of weather.",
+    "operationalMeaning": "When an Embedded Thunderstorm is suspected, the pilot should:\n\nEmbedded Thunderstorm reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "provide radar vectors around known convective cells",
+      "approve weather deviations when traffic permits",
+      "relay pilot reports to other aircraft",
+      "coordinate diversions to suitable airports",
+      "sequence traffic clear of convective weather"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger embedded thunderstorm, turn right heading one two zero, vectors around weather.",
+      "Approach: ANAC123, weather radar shows cells ahead, advise intentions.",
+      "Center: ANAC123, deviation approved, report clear of weather.",
+      "Approach: ANAC123, say ride conditions and altitude.",
+      "Approach: ANAC123, previous aircraft reported embedded thunderstorm, request your PIREP."
+    ],
+    "pilotReadbacks": [
+      "Florianópolis Approach, ANAC123, embedded thunderstorm suspected, request radar vectors.",
+      "ANAC123, encountering severe turbulence in IMC, request weather deviation.",
+      "ANAC123, unable to continue present routing due embedded thunderstorm, request diversion.",
+      "Approach, ANAC123, clear of weather, moderate turbulence, resuming as cleared.",
+      "ANAC123, embedded thunderstorm, souls on board three, request priority vectors."
+    ],
+    "brazilianMistakes": "- ❌ Continuing in IMC through increasing convective turbulence.  \n  ✔ Request radar vectors or weather deviation immediately.\n\n- ❌ Saying \"tempestade escondida\" instead of standard English.  \n  ✔ Use embedded thunderstorm.\n\n- ❌ Waiting to see the cell visually before acting.  \n  ✔ In IMC, feel and instruments may be your only warning.\n\n- ❌ Not filing a PIREP after the encounter.  \n  ✔ Report conditions to help ATC and other aircraft.",
+    "pronunciationCoaching": "**Target Phrase:** Embedded Thunderstorm Suspected, Request Radar Vectors\n\n**Pronunciation:** em-BED-ed THUN-der-storm suh-SPEK-ted, ree-KWEST RAY-dar VEK-terz\n\n**Word Stress**\n\n- Embedded → em-BED-ed\n- Thunderstorm → THUN-der-storm\n- Suspected → suh-SPEK-ted\n\nPractice:\n\nEmbedded... thunderstorm... suspected...\n\nTogether:\n\nEmbedded thunderstorm suspected, request radar vectors, ANAC123.\n\nSpeak clearly — Approach needs urgency and your request.",
+    "relatedConcepts": [
+      "Thunderstorm",
+      "Severe Turbulence",
+      "Weather Deterioration",
+      "Weather Deviation",
+      "Radar Vectors",
+      "Pan Pan Urgency Call"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Weather Deviation",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Embedded Thunderstorms",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Embedded Thunderstorms",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Weather Limitations"
+      },
+      {
+        "label": "SKYbrary — Embedded Thunderstorms",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0085",
+    "id": "0085",
+    "displayTerm": "Severe Turbulence",
+    "term": "severe turbulence",
+    "slug": "severe-turbulence",
+    "category": "Weather",
+    "meaningEn": "Severe Turbulence is turbulence that causes large, abrupt changes in altitude and attitude, making aircraft control difficult and causing occupants to be forced violently against restraints.",
+    "meaningPt": "Turbulência severa.\n\nTurbulência que causa grandes e abruptas mudanças de altitude e atitude, dificultando o controle da aeronave.",
+    "whenUsed": "When Severe Turbulence occurs, the pilot should:",
+    "example": "Approach: ANAC123, roger severe turbulence, climb and maintain six thousand, say ride conditions.",
+    "sayPhrase": "São Paulo Approach, ANAC123, severe turbulence at four thousand, request climb.",
+    "icaoQuestion": "What would you tell ATC if you encountered severe turbulence?",
+    "icaoSpeakText": "I would maintain aircraft control, reduce to turbulence speed if applicable, and report severe turbulence with my altitude and position. I would request climb, descent, or weather deviation to exit the area. If structural damage or loss of control occurred, I would declare Pan Pan or Mayday and request immediate landing.",
+    "missionBrief": "Today's lesson covers severe turbulence — when the aircraft is violently tossed and control becomes difficult.\n\nSevere Turbulence causes large, abrupt changes in altitude and attitude, with the aircraft momentarily out of control at times.\n\nIn the H130, severe turbulence may occur near thunderstorms, mountain waves, and strong coastal wind gradients in Brazil.\n\nYou must secure the aircraft, reduce speed to turbulence penetration speed if applicable, and report to ATC immediately.\n\nThis lesson prepares you for ICAO Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Severe turbulence is not uncomfortable — it is dangerous.\n\nThe sequence:\n\nFly attitude. Reduce speed. Report. Exit.\n\nDo not chase altitude with abrupt cyclic.\n\nHold attitude and let the aircraft ride.\n\nBrazilian pilots sometimes say \"turbulência forte\" or \"sacolejo demais\" on frequency.\n\nUse severe turbulence — ICAO standard intensity term.\n\nKnow the scale:\n\nLight — slight strain.\n\nModerate — definite strain, loose objects move.\n\nSevere — large abrupt changes, control difficult.\n\nExtreme — aircraft practically impossible to control.\n\nIn the H130, report early so others avoid your altitude.\n\nIf damage is suspected after severe turbulence — land and inspect.",
+    "operationalContext": "You are cruising at four thousand feet near the Serra do Mar toward São Paulo in your H130.\n\nWithout warning, the aircraft is slammed by severe mountain-related turbulence.\n\nYou reduce speed, maintain attitude, and transmit:\n\nSão Paulo Approach, ANAC123, severe turbulence at four thousand feet, request climb to six thousand and weather deviation.\n\nApproach clears the climb and provides vectors.\n\nTurbulence decreases and you continue with caution.",
+    "sayItCoach": "Severe turbulence at four thousand, request climb to six thousand, ANAC123.",
+    "icaoModelAnswer": "I would maintain aircraft control, reduce to turbulence speed if applicable, and report severe turbulence with my altitude and position. I would request climb, descent, or weather deviation to exit the area. If structural damage or loss of control occurred, I would declare Pan Pan or Mayday and request immediate landing.",
+    "memoryTrick": "**RIDE** — **R**educe speed, **I**nform ATC with altitude, **D**eviate or change level, **E**xit and update the PIREP.",
+    "operationalMeaning": "When Severe Turbulence occurs, the pilot should:\n\nSevere Turbulence reporting commonly includes:",
+    "whyAtcUsesIt": [
+      "warn other aircraft with PIREPs",
+      "offer altitude or route changes",
+      "coordinate weather deviations",
+      "clear traffic from the affected area if needed",
+      "prepare for possible emergency declarations if damage occurs"
+    ],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger severe turbulence, climb and maintain six thousand, say ride conditions.",
+      "Approach: ANAC123, previous aircraft reported severe turbulence at four thousand, advise intentions.",
+      "Center: ANAC123, deviation approved, report when smooth.",
+      "Approach: ANAC123, say if able to maintain altitude.",
+      "Approach: ANAC123, thank you for the PIREP, traffic advised."
+    ],
+    "pilotReadbacks": [
+      "São Paulo Approach, ANAC123, severe turbulence at four thousand, request climb.",
+      "ANAC123, severe turbulence, request weather deviation and lower altitude.",
+      "Pan Pan Pan Pan, ANAC123, severe turbulence, possible structural damage, request immediate landing.",
+      "ANAC123, severe turbulence, souls on board three, requesting vectors clear of weather.",
+      "Approach, ANAC123, moderate turbulence now, clear of severe, continuing."
+    ],
+    "brazilianMistakes": "- ❌ Saying \"turbulência forte\" instead of the standard intensity.  \n  ✔ Use severe turbulence — ICAO intensity terminology.\n\n- ❌ Not reporting altitude and location with the PIREP.  \n  ✔ State altitude and position so ATC can warn others.\n\n- ❌ Making abrupt control inputs to chase altitude.  \n  ✔ Maintain attitude — smooth inputs only.\n\n- ❌ Continuing without requesting an exit from the area.  \n  ✔ Request climb, descent, or deviation immediately.",
+    "pronunciationCoaching": "**Target Phrase:** Severe Turbulence at Four Thousand, Request Climb\n\n**Pronunciation:** suh-VEER TUR-byuh-lens at for THOW-zend, ree-KWEST klym\n\n**Word Stress**\n\n- Severe → suh-VEER\n- Turbulence → TUR-byuh-lens\n- Thousand → THOW-zend\n\nPractice:\n\nSevere... turbulence...\n\nTogether:\n\nSevere turbulence at four thousand, request climb to six thousand, ANAC123.\n\nSpeak altitude clearly — four thousand, not forty hundred.",
+    "relatedConcepts": [
+      "Moderate Turbulence",
+      "Light Turbulence",
+      "Thunderstorm",
+      "Embedded Thunderstorm",
+      "Weather Deviation",
+      "Pan Pan Urgency Call"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 10 Volume II — Radiotelephony Procedures",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — PIREPs and Weather",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA Aeronautical Information Manual (AIM) — Turbulence",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "FAA Pilot/Controller Glossary — Turbulence",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/pcg_html/"
+      },
+      {
+        "label": "Airbus Helicopters H130 Flight Manual — Turbulence Penetration"
+      },
+      {
+        "label": "SKYbrary — Turbulence",
+        "href": "https://skybrary.aero"
+      }
+    ]
   }
 ];

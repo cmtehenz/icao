@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "completedCount": 75,
-  "pendingCount": 435,
+  "completedCount": 85,
+  "pendingCount": 425,
   "concepts": [
     {
       "id": "0001",
@@ -525,6 +525,76 @@
       "id": "0075",
       "concept": "Dynamic Rollover",
       "slug": "0075-dynamic-rollover",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0076",
+      "concept": "LTE (Loss of Tail Rotor Effectiveness)",
+      "slug": "0076-lte-loss-of-tail-rotor-effectiveness",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0077",
+      "concept": "Vortex Ring State",
+      "slug": "0077-vortex-ring-state",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0078",
+      "concept": "Settling With Power",
+      "slug": "0078-settling-with-power",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0079",
+      "concept": "Mast Bumping",
+      "slug": "0079-mast-bumping",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0080",
+      "concept": "Wire Strike",
+      "slug": "0080-wire-strike",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0081",
+      "concept": "Obstacle Avoidance",
+      "slug": "0081-obstacle-avoidance",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0082",
+      "concept": "Weather Deterioration",
+      "slug": "0082-weather-deterioration",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0083",
+      "concept": "Thunderstorm",
+      "slug": "0083-thunderstorm",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0084",
+      "concept": "Embedded Thunderstorm",
+      "slug": "0084-embedded-thunderstorm",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0085",
+      "concept": "Severe Turbulence",
+      "slug": "0085-severe-turbulence",
       "status": "complete",
       "completedAt": "2026-07-09"
     }
