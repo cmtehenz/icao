@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "completedCount": 155,
-  "pendingCount": 355,
+  "completedCount": 185,
+  "pendingCount": 325,
   "concepts": [
     {
       "id": "0001",
@@ -1085,6 +1085,216 @@
       "id": "0155",
       "concept": "Climb Via SID",
       "slug": "0155-climb-via-sid",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0156",
+      "concept": "Descend Via STAR",
+      "slug": "0156-descend-via-star",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0157",
+      "concept": "Speed Restriction",
+      "slug": "0157-speed-restriction",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0158",
+      "concept": "Altitude Restriction",
+      "slug": "0158-altitude-restriction",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0159",
+      "concept": "Crossing Restriction",
+      "slug": "0159-crossing-restriction",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0160",
+      "concept": "Procedure Turn",
+      "slug": "0160-procedure-turn",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0161",
+      "concept": "Circling Approach",
+      "slug": "0161-circling-approach",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0162",
+      "concept": "Contact Approach",
+      "slug": "0162-contact-approach",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0163",
+      "concept": "Localizer Approach",
+      "slug": "0163-localizer-approach",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0164",
+      "concept": "Glideslope Unreliable",
+      "slug": "0164-glideslope-unreliable",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0165",
+      "concept": "RVR Report",
+      "slug": "0165-rvr-report",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0166",
+      "concept": "Braking Action",
+      "slug": "0166-braking-action",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0167",
+      "concept": "Runway Condition",
+      "slug": "0167-runway-condition",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0168",
+      "concept": "Runway Wet",
+      "slug": "0168-runway-wet",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0169",
+      "concept": "Runway Contaminated",
+      "slug": "0169-runway-contaminated",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0170",
+      "concept": "Winds Reported",
+      "slug": "0170-winds-reported",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0171",
+      "concept": "Altimeter Setting",
+      "slug": "0171-altimeter-setting",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0172",
+      "concept": "Proceed to VOR",
+      "slug": "0172-proceed-to-vor",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0173",
+      "concept": "Resume Conventional Navigation",
+      "slug": "0173-resume-conventional-navigation",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0174",
+      "concept": "Fly En Route",
+      "slug": "0174-fly-en-route",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0175",
+      "concept": "Left-Hand Pattern",
+      "slug": "0175-left-hand-pattern",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0176",
+      "concept": "Pattern Work",
+      "slug": "0176-pattern-work",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0177",
+      "concept": "Drift Down Procedure",
+      "slug": "0177-drift-down-procedure",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0178",
+      "concept": "Maximum Altitude Capability",
+      "slug": "0178-maximum-altitude-capability",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0179",
+      "concept": "Level at Flight Level",
+      "slug": "0179-level-at-flight-level",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0180",
+      "concept": "Steep Descent",
+      "slug": "0180-steep-descent",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0181",
+      "concept": "Runway Incursion",
+      "slug": "0181-runway-incursion",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0182",
+      "concept": "Longest Available Runway",
+      "slug": "0182-longest-available-runway",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0183",
+      "concept": "Visual Meteorological Conditions",
+      "slug": "0183-visual-meteorological-conditions",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0184",
+      "concept": "Instrument Meteorological Conditions",
+      "slug": "0184-instrument-meteorological-conditions",
+      "status": "complete",
+      "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0185",
+      "concept": "Top of Descent",
+      "slug": "0185-top-of-descent",
       "status": "complete",
       "completedAt": "2026-07-09"
     }
