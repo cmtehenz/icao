@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "completedCount": 275,
-  "pendingCount": 235,
+  "completedCount": 305,
+  "pendingCount": 205,
   "concepts": [
     {
       "id": "0001",
@@ -1925,6 +1925,216 @@
       "id": "0275",
       "concept": "Pressurization Problem",
       "slug": "0275-pressurization-problem",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0276",
+      "concept": "Fire in the Hold",
+      "slug": "0276-fire-in-the-hold",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0277",
+      "concept": "Fire in the Wheel Well",
+      "slug": "0277-fire-in-the-wheel-well",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0278",
+      "concept": "Galley Fire",
+      "slug": "0278-galley-fire",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0279",
+      "concept": "Uncontrollable Fire",
+      "slug": "0279-uncontrollable-fire",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0280",
+      "concept": "Cargo Door Separated",
+      "slug": "0280-cargo-door-separated",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0281",
+      "concept": "Windshield Damage",
+      "slug": "0281-windshield-damage",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0282",
+      "concept": "Forward Cargo Door Open",
+      "slug": "0282-forward-cargo-door-open",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0283",
+      "concept": "Aft Cargo Door Open",
+      "slug": "0283-aft-cargo-door-open",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0284",
+      "concept": "Lightning Strike",
+      "slug": "0284-lightning-strike",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0285",
+      "concept": "Emergency Evacuation",
+      "slug": "0285-emergency-evacuation",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0286",
+      "concept": "Emergency Services",
+      "slug": "0286-emergency-services",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0287",
+      "concept": "Escape Slide Deployed",
+      "slug": "0287-escape-slide-deployed",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0288",
+      "concept": "Dangerous Goods on Board",
+      "slug": "0288-dangerous-goods-on-board",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0289",
+      "concept": "Hazmat on Board",
+      "slug": "0289-hazmat-on-board",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0290",
+      "concept": "Human Organ Transport",
+      "slug": "0290-human-organ-transport",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0291",
+      "concept": "Ditching",
+      "slug": "0291-ditching",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0292",
+      "concept": "Forced Landing",
+      "slug": "0292-forced-landing",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0293",
+      "concept": "Overweight Landing",
+      "slug": "0293-overweight-landing",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0294",
+      "concept": "Overrun Evacuation",
+      "slug": "0294-overrun-evacuation",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0295",
+      "concept": "Fuel Leak",
+      "slug": "0295-fuel-leak",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0296",
+      "concept": "Fuel Imbalance",
+      "slug": "0296-fuel-imbalance",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0297",
+      "concept": "Fuel Transfer Failure",
+      "slug": "0297-fuel-transfer-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0298",
+      "concept": "Crossfeed Failure",
+      "slug": "0298-crossfeed-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0299",
+      "concept": "APU Fire",
+      "slug": "0299-apu-fire",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0300",
+      "concept": "APU Failure",
+      "slug": "0300-apu-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0301",
+      "concept": "Engine Fire",
+      "slug": "0301-engine-fire",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0302",
+      "concept": "Radar Contact Lost",
+      "slug": "0302-radar-contact-lost",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0303",
+      "concept": "Transmission Readable",
+      "slug": "0303-transmission-readable",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0304",
+      "concept": "Poor Readability",
+      "slug": "0304-poor-readability",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0305",
+      "concept": "Blocked Transmission",
+      "slug": "0305-blocked-transmission",
       "status": "complete",
       "completedAt": "2026-07-10"
     }

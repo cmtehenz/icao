@@ -20594,5 +20594,2073 @@ export const BATCH01_DEV_ENTRIES: DevKnowledgeEntry[] = [
         "label": "AFM — Pressurization / Emergency Descent (type-specific; H130 normally unpressurized)"
       }
     ]
+  },
+  {
+    "catalogId": "0276",
+    "id": "0276",
+    "displayTerm": "Fire in the Hold",
+    "term": "fire in the hold",
+    "slug": "fire-in-the-hold",
+    "category": "Emergency",
+    "meaningEn": "Fire in the Hold is an active fire or confirmed fire indication in a cargo hold or baggage compartment, requiring immediate emergency procedures, possible fire suppression, declaration of distress, and landing at the nearest suitable airport with fire services alerted.",
+    "meaningPt": "Fogo no porão / Fire in the Hold.\n\nFogo ativo ou indicação confirmada de fogo em um porão de carga ou compartimento de bagagem, exigindo procedimentos de emergência imediatos, possível extinção, declaração de emergência e pouso no aeroporto adequado mais próximo com serviços de combate a incêndio alertados.",
+    "whenUsed": "When fire in the hold is indicated or confirmed, the crew should:",
+    "example": "Control: ANAC123, roger Mayday fire in the hold, turn left heading two seven zero, descend immediately.",
+    "sayPhrase": "Mayday Mayday Mayday, ANAC123, fire in the hold, request immediate landing.",
+    "icaoQuestion": "A cargo hold fire warning activates in cruise. What do you do and what do you say?",
+    "icaoSpeakText": "I would apply the fire checklist immediately, discharge suppression if equipped, declare Mayday stating fire in the hold, and request immediate vectors to the nearest suitable airport. When able I would report souls and fuel, whether suppression was discharged, and whether smoke or fire indications continue. After landing I would stop as required and evacuate if the fire is not confirmed extinguished.",
+    "missionBrief": "Today's lesson covers Fire in the Hold — fire or confirmed combustion in a cargo hold or baggage compartment, requiring immediate emergency checklist action, distress communication, and priority landing. On transport-category aircraft this is a classic ICAO exam scenario; on the H130 you adapt the same English to baggage or cabin cargo fire.\n\nFire in the hold is time-critical. Suppress if equipped, land immediately, and tell ATC nature, location, and intentions. Do not stay at cruise debating whether the warning is real.\n\nFor H130 helicopter ICAO Delta academy operations in Brazil, master the exam phraseology — fire in the hold, cargo fire, request immediate landing — then relate it to the helicopter's actual baggage or cabin cargo configuration when asked about your type.",
+    "captainTeaching": "Fire in the hold is a landing emergency with a systems name.\n\nChecklist. Suppress if equipped. Mayday. Land. Evacuate if needed.\n\nBrazilian pilots often say \"fogo no porão.\" Prefer fire in the hold or cargo fire in ICAO English — then the action: request immediate landing, fire services standing by.\n\nIn the H130 you may not have a Class C cargo hold with bottles. That does not excuse weak exam English. Know the calls. Know that ATC needs location, intentions, souls, and fuel.\n\nNever continue to destination with an unresolved hold fire indication. Nearest suitable airport. Now.",
+    "operationalContext": "Training scenario for exam English: you are in cruise when a hold fire warning triggers. You run the checklist and discharge suppression as equipped.\n\nYou transmit:\n\nMayday Mayday Mayday, Control, ANAC123, fire in the hold, request immediate vectors to nearest suitable airport to land.\n\nControl: ANAC123, turn left heading two seven zero, descend, nearest airport Guarulhos, say souls, fuel, and dangerous goods if any.\n\nYou provide the data and continue:\n\nANAC123, hold fire suppression discharged, continuing Mayday, request shortest approach.\n\nFor an H130 with fire in cabin baggage, keep the same urgency and landing request — change only the location words.",
+    "sayItCoach": "Mayday Mayday Mayday, ANAC123, fire in the hold, request immediate landing, fire services standing by.",
+    "icaoModelAnswer": "I would apply the fire checklist immediately, discharge suppression if equipped, declare Mayday stating fire in the hold, and request immediate vectors to the nearest suitable airport. When able I would report souls and fuel, whether suppression was discharged, and whether smoke or fire indications continue. After landing I would stop as required and evacuate if the fire is not confirmed extinguished.",
+    "memoryTrick": "**HOLD** — **H**andle checklist now, **O**ut to nearest airport, **L**and with Mayday, **D**eclare fire location clearly.",
+    "operationalMeaning": "When fire in the hold is indicated or confirmed, the crew should:\n\nFire in the hold reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Control: ANAC123, roger Mayday fire in the hold, turn left heading two seven zero, descend immediately.",
+      "Approach: ANAC123, say souls on board, fuel remaining, and dangerous goods.",
+      "Tower: ANAC123, runway cleared, fire services standing by for aircraft fire.",
+      "Approach: ANAC123, report if fire or smoke indications continue.",
+      "Tower: ANAC123, after landing stop on the runway if required, evacuate when able."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, ANAC123, fire in the hold, request immediate landing.",
+      "ANAC123, turning left two seven zero, descending, fire in the hold.",
+      "ANAC123, souls six, fuel one hour thirty, no dangerous goods.",
+      "ANAC123, fire suppression discharged, continuing Mayday.",
+      "ANAC123, will stop on the runway, prepare to evacuate, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Saying only \"fogo no porão\" without Mayday or landing request.  \n  ✔ Mayday, fire in the hold, request immediate landing.\n\n- ❌ Staying at cruise to \"confirm\" the warning for too long.  \n  ✔ Checklist and land — treat as fire until proven otherwise.\n\n- ❌ Not specifying hold versus cabin versus engine.  \n  ✔ State location clearly so ATC alerts the right services.\n\n- ❌ Inventing H130 hold-suppression drills the type does not have.  \n  ✔ Teach exam English; keep type systems factual.",
+    "pronunciationCoaching": "**Target Phrase:** Mayday Mayday Mayday, ANAC123, Fire in the Hold, Request Immediate Landing\n\n**Pronunciation:** MAY-day MAY-day MAY-day, AY-nak WUN TOO THREE, FY-er in thuh HOLD, reh-KWEST ih-MEE-dee-it LAN-ding\n\n**Word Stress**\n\n- Fire → FY-er\n- Hold → HOLD\n- Immediate → ih-MEE-dee-it\n- Landing → LAN-ding\n- Suppression → suh-PRESH-un\n\nPractice:\n\nFire in the hold... request immediate landing... fire services standing by.\n\nTogether:\n\nMayday Mayday Mayday, ANAC123, fire in the hold, request immediate landing, fire services standing by.",
+    "relatedConcepts": [
+      "Cargo Smoke",
+      "Fire on Board",
+      "Uncontrollable Fire",
+      "Mayday",
+      "Emergency Evacuation",
+      "Fire Services Standing By"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress and Urgency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Cargo Compartment Fire",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Aircraft Fire / Emergency Landing",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Annex 6 — Operation of Aircraft"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "AFM — Cargo / Hold Fire Procedures (type-specific; H130 baggage/cabin as applicable)"
+      }
+    ]
+  },
+  {
+    "catalogId": "0277",
+    "id": "0277",
+    "displayTerm": "Fire in the Wheel Well",
+    "term": "fire in the wheel well",
+    "slug": "fire-in-the-wheel-well",
+    "category": "Emergency",
+    "meaningEn": "Fire in the Wheel Well is a fire or overheat condition in the landing gear bay or wheel-well area, typically indicated by a warning after gear retraction or associated with hot brakes or bay systems, requiring abnormal or emergency procedures, ATC notification, and often an immediate return or diversion with fire services alerted.",
+    "meaningPt": "Fogo no compartimento do trem / Fire in the Wheel Well.\n\nCondição de fogo ou superaquecimento no compartimento do trem de pouso, tipicamente indicada por um alerta após a retração do trem ou associada a freios quentes ou sistemas do compartimento, exigindo procedimentos anormais ou de emergência, notificação ao ATC e frequentemente retorno ou desvio imediato com serviços de combate a incêndio alertados.",
+    "whenUsed": "When fire in the wheel well is indicated, the crew should:",
+    "example": "Tower: ANAC123, roger Mayday fire in the wheel well, cleared to return, runway three five left.",
+    "sayPhrase": "Mayday Mayday Mayday, ANAC123, fire in the wheel well, gear down, request immediate return.",
+    "icaoQuestion": "After takeoff a wheel-well fire warning activates. What do you do and what do you say?",
+    "icaoSpeakText": "I would apply the checklist immediately, extend the gear if required, declare Mayday stating fire in the wheel well, and request an immediate return or diversion with fire services standing by. I would report gear position, souls and fuel when able, and whether fire or smoke indications continue. After landing I would stop as required and evacuate if necessary.",
+    "missionBrief": "Today's lesson covers Fire in the Wheel Well — fire or overheat indication associated with the landing gear bay, often after takeoff or during climb, requiring checklist action, possible gear extension, distress or urgency communication, and priority return or diversion.\n\nOn airliners this is a classic exam topic: wheel-well fire after gear retraction, hot brakes, or hydraulic/electrical fire in the bay. For H130 helicopter ICAO Delta academy operations, the type has no retractable wheel well like a jet — but you must speak the concept fluently for Part 2 and Part 3, and relate overheat or brake fire language to skid/wheel gear realities when useful.\n\nMaster the English: fire in the wheel well, gear down, request immediate return, fire services standing by.",
+    "captainTeaching": "Wheel-well fire is often a takeoff-and-return emergency.\n\nChecklist first — especially gear extension if required. Then Mayday. Then land with fire services ready.\n\nBrazilian pilots may say \"fogo no trem\" or \"freio quente.\" Prefer fire in the wheel well or wheel-well overheat in ICAO English when that is the exam concept — then state gear position and intentions.\n\nIn the H130 you do not retract into a classic jet bay. Still learn the calls. ATC needs to know if you have a gear or brake fire risk on landing.\n\nDo not delay the return to \"see if it goes out\" at altitude with a fire warning active.",
+    "operationalContext": "Training scenario: shortly after takeoff from Congonhas, a wheel-well fire warning activates. You run the checklist and extend the gear as required.\n\nYou transmit:\n\nMayday Mayday Mayday, Tower, ANAC123, fire in the wheel well, gear down, request immediate return to land.\n\nTower: ANAC123, roger Mayday, left turn approved, runway three five left available, fire services alerted, say souls and fuel when able.\n\nYou continue:\n\nANAC123, turning left, gear down and locked, fire in the wheel well, souls four, fuel two hours, request shortest approach.\n\nFor H130 training, keep the urgency structure; use brake fire or gear fire wording when describing the actual helicopter.",
+    "sayItCoach": "Mayday Mayday Mayday, ANAC123, fire in the wheel well, gear down, request immediate return.",
+    "icaoModelAnswer": "I would apply the checklist immediately, extend the gear if required, declare Mayday stating fire in the wheel well, and request an immediate return or diversion with fire services standing by. I would report gear position, souls and fuel when able, and whether fire or smoke indications continue. After landing I would stop as required and evacuate if necessary.",
+    "memoryTrick": "**WELL** — **W**arning means checklist now, **E**xtend gear if required, **L**and immediately with Mayday, **L**et fire services know.",
+    "operationalMeaning": "When fire in the wheel well is indicated, the crew should:\n\nWheel-well fire reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Tower: ANAC123, roger Mayday fire in the wheel well, cleared to return, runway three five left.",
+      "Approach: ANAC123, say gear position and fire status.",
+      "Tower: ANAC123, fire services standing by for possible gear fire.",
+      "Approach: ANAC123, report if smoke or fire indications continue.",
+      "Tower: ANAC123, after landing stop on the runway, evacuate if required."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, ANAC123, fire in the wheel well, gear down, request immediate return.",
+      "ANAC123, cleared to return runway three five left, gear down.",
+      "ANAC123, gear down and locked, fire indications continuing.",
+      "ANAC123, souls four, fuel two hours, request fire services.",
+      "ANAC123, will stop on the runway, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Leaving gear up when the checklist requires extension.  \n  ✔ Follow the AFM — extend if required, then report gear down.\n\n- ❌ Calling only \"problem with the gear\" without fire language.  \n  ✔ Say fire in the wheel well or wheel-well overheat clearly.\n\n- ❌ Continuing the departure without priority return.  \n  ✔ Request immediate return; treat as fire until resolved.\n\n- ❌ Describing H130 as having a jet-style wheel well.  \n  ✔ Exam English yes; type systems factual.",
+    "pronunciationCoaching": "**Target Phrase:** Mayday Mayday Mayday, ANAC123, Fire in the Wheel Well, Gear Down, Request Immediate Return\n\n**Pronunciation:** MAY-day MAY-day MAY-day, AY-nak WUN TOO THREE, FY-er in thuh WEEL WEL, GEER down, reh-KWEST ih-MEE-dee-it ree-TURN\n\n**Word Stress**\n\n- Wheel → WEEL\n- Well → WEL\n- Gear → GEER\n- Immediate → ih-MEE-dee-it\n- Return → ree-TURN\n\nPractice:\n\nFire in the wheel well... gear down... request immediate return.\n\nTogether:\n\nMayday Mayday Mayday, ANAC123, fire in the wheel well, gear down, request immediate return.",
+    "relatedConcepts": [
+      "Fire on Board",
+      "Hot Brakes",
+      "Landing Gear Unsafe Indication",
+      "Mayday",
+      "Fire Services Standing By",
+      "Emergency Evacuation"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress and Urgency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Wheel Well Fire / Overheat",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Aircraft Fire Emergencies",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Annex 6 — Operation of Aircraft"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "AFM — Wheel Well Fire / Gear Procedures (type-specific; H130 gear/brake as applicable)"
+      }
+    ]
+  },
+  {
+    "catalogId": "0278",
+    "id": "0278",
+    "displayTerm": "Galley Fire",
+    "term": "galley fire",
+    "slug": "galley-fire",
+    "category": "Emergency",
+    "meaningEn": "Galley Fire is an active fire in the galley or catering service area of an aircraft, requiring immediate firefighting by crew, possible passenger relocation, declaration of distress or urgency as appropriate, and landing at the nearest suitable airport with fire services alerted.",
+    "meaningPt": "Fogo na galley / Galley Fire.\n\nFogo ativo na área da galley ou de serviço de bordo da aeronave, exigindo combate imediato pela tripulação, possível realocação de passageiros, declaração de emergência conforme a gravidade, e pouso no aeroporto adequado mais próximo com serviços de combate a incêndio alertados.",
+    "whenUsed": "When a galley fire occurs, the crew should:",
+    "example": "Control: ANAC123, roger Mayday galley fire, turn right heading zero niner zero, descend.",
+    "sayPhrase": "Mayday Mayday Mayday, ANAC123, galley fire, request immediate diversion.",
+    "icaoQuestion": "Cabin crew reports a fire in the galley. What do you do and what do you say?",
+    "icaoSpeakText": "I would ensure the fire is fought per procedure, isolate galley power if required, declare Mayday stating galley fire, and request immediate diversion to the nearest suitable airport. I would update ATC when the fire is under control or if it becomes uncontrollable, report smoke if present, and provide souls and fuel. After landing I would decide on evacuation based on fire and smoke status.",
+    "missionBrief": "Today's lesson covers Galley Fire — fire in the aircraft galley or catering area, a classic airliner cabin emergency on ICAO exams. Crews fight the fire with extinguishers, protect passengers, declare distress, and land with priority while cabin crew manage smoke and evacuation readiness.\n\nFor H130 helicopter ICAO Delta academy operations in Brazil, there is no airline galley. Teach the exam English — galley fire, cabin fire, fire under control / not under control — and relate it to cabin or electrical fire in the helicopter cabin when useful. Same radio structure: location, severity, intentions, landing.\n\nMaster Mayday, galley fire, request immediate landing, and clear updates on whether the fire is extinguished.",
+    "captainTeaching": "Galley fire is a cabin fire with a precise location word.\n\nFight it. Isolate power if required. Mayday. Land. Update whether it is under control.\n\nBrazilian pilots may say \"fogo na cozinha\" or \"fogo na galley.\" Prefer galley fire in ICAO exam English. For the H130, say cabin fire or electrical fire when that is the truth — but still know galley fire for the test.\n\nNever treat \"fire under control\" as permission to continue to destination. Land, assess, evacuate if smoke or heat remains dangerous.\n\nCabin crew fight; flight crew fly and communicate. Both jobs matter.",
+    "operationalContext": "Training scenario (airliner exam English): cabin crew reports fire in the galley. Flight crew coordinates checklist and diversion.\n\nYou transmit:\n\nMayday Mayday Mayday, Control, ANAC123, galley fire, request immediate diversion to nearest suitable airport.\n\nControl: ANAC123, roger Mayday, turn right heading zero niner zero, descend, say if fire is under control, souls and fuel when able.\n\nAfter extinguishing:\n\nANAC123, galley fire under control, smoke in cabin, continuing Mayday, request shortest approach, fire services standing by.\n\nFor H130 cabin fire training, keep Mayday, location, status, and landing request — swap \"galley\" for the real fire location.",
+    "sayItCoach": "Mayday Mayday Mayday, ANAC123, galley fire, request immediate diversion, fire under control.",
+    "icaoModelAnswer": "I would ensure the fire is fought per procedure, isolate galley power if required, declare Mayday stating galley fire, and request immediate diversion to the nearest suitable airport. I would update ATC when the fire is under control or if it becomes uncontrollable, report smoke if present, and provide souls and fuel. After landing I would decide on evacuation based on fire and smoke status.",
+    "memoryTrick": "**GALLY** — **G**et extinguishers on it, **A**dvise Mayday with location, **L**and nearest suitable, **L**et ATC know under control or not, **Y**ield to evacuation if smoke remains.",
+    "operationalMeaning": "When a galley fire occurs, the crew should:\n\nGalley fire reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Control: ANAC123, roger Mayday galley fire, turn right heading zero niner zero, descend.",
+      "Approach: ANAC123, say if the fire is under control.",
+      "Approach: ANAC123, say souls on board and fuel remaining.",
+      "Tower: ANAC123, runway cleared, fire services standing by for cabin fire.",
+      "Tower: ANAC123, after landing advise if evacuation is required."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, ANAC123, galley fire, request immediate diversion.",
+      "ANAC123, turning right zero niner zero, descending, galley fire.",
+      "ANAC123, galley fire under control, smoke remaining, continuing Mayday.",
+      "ANAC123, souls one hundred eighty, fuel two hours.",
+      "ANAC123, will advise evacuation after landing, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Saying only \"problem in the cabin\" without galley/fire location.  \n  ✔ State galley fire (or cabin fire) clearly.\n\n- ❌ Cancelling Mayday the moment flames are out while smoke remains.  \n  ✔ Update status; continue priority landing if still a threat.\n\n- ❌ Not telling ATC whether the fire is under control.  \n  ✔ Report under control or not under control when known.\n\n- ❌ Claiming the H130 has an airline galley.  \n  ✔ Exam vocabulary yes; type configuration factual.",
+    "pronunciationCoaching": "**Target Phrase:** Mayday Mayday Mayday, ANAC123, Galley Fire, Request Immediate Diversion\n\n**Pronunciation:** MAY-day MAY-day MAY-day, AY-nak WUN TOO THREE, GAL-ee FY-er, reh-KWEST ih-MEE-dee-it dy-VER-zhun\n\n**Word Stress**\n\n- Galley → GAL-ee\n- Fire → FY-er\n- Immediate → ih-MEE-dee-it\n- Diversion → dy-VER-zhun\n- Under control → UN-der kun-TROL\n\nPractice:\n\nGalley fire... fire under control... request immediate diversion.\n\nTogether:\n\nMayday Mayday Mayday, ANAC123, galley fire, request immediate diversion, fire under control.",
+    "relatedConcepts": [
+      "Fire on Board",
+      "Cabin Smoke",
+      "Uncontrollable Fire",
+      "Mayday",
+      "Emergency Evacuation",
+      "Fire Under Control"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress and Urgency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Cabin / Galley Fire",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Cabin Fire Emergencies",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Annex 6 — Operation of Aircraft"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "AFM / Cabin Safety — Galley Fire (airliner); H130 cabin fire as applicable"
+      }
+    ]
+  },
+  {
+    "catalogId": "0279",
+    "id": "0279",
+    "displayTerm": "Uncontrollable Fire",
+    "term": "uncontrollable fire",
+    "slug": "uncontrollable-fire",
+    "category": "Emergency",
+    "meaningEn": "Uncontrollable Fire is an active fire that cannot be extinguished or contained with the aircraft's available firefighting equipment and procedures, requiring immediate landing or forced landing, continuous distress communication, and preparation for emergency evacuation upon stopping.",
+    "meaningPt": "Fogo incontrolável / Uncontrollable Fire.\n\nFogo ativo que não pode ser extinto ou contido com o equipamento e os procedimentos de combate a incêndio disponíveis na aeronave, exigindo pouso imediato ou pouso forçado, comunicação contínua de emergência e preparação para evacuação de emergência ao parar.",
+    "whenUsed": "When the fire is uncontrollable, the crew should:",
+    "example": "Control: ANAC123, roger Mayday uncontrollable fire, nearest airport twelve miles, turn left heading two four zero.",
+    "sayPhrase": "Mayday Mayday Mayday, ANAC123, uncontrollable fire in the cabin, request immediate landing.",
+    "icaoQuestion": "The cabin fire cannot be extinguished. What do you do and what do you say?",
+    "icaoSpeakText": "I would declare or update Mayday stating uncontrollable fire and the location, request immediate landing at the nearest suitable place, and prepare for emergency evacuation after stopping. I would report souls and fuel when able and advise that we will evacuate after landing. If the airport cannot be reached in time, I would request or execute an off-airport landing as required for survival.",
+    "missionBrief": "Today's lesson covers Uncontrollable Fire — fire that cannot be extinguished with available means, requiring immediate landing or forced landing, clear distress communication, and preparation for emergency evacuation. This is among the most critical ICAO Part 2 and Part 3 fire scenarios.\n\nWhether the fire is in cabin, hold, engine, or electrical systems, \"uncontrollable\" means time has run out for troubleshooting in the air. Land now. Evacuate as soon as the aircraft is stopped and safe to leave.\n\nFor H130 helicopter ICAO Delta academy operations in Brazil, the same principle applies: if the fire cannot be put out, get on the ground and get out. Master the English: uncontrollable fire, fire not under control, request immediate landing, evacuate.",
+    "captainTeaching": "Uncontrollable fire means the aircraft is on a clock measured in minutes, not checklists.\n\nYou still fly the aircraft. You still communicate. But the destination is the nearest place you can stop and get people out — not the filed destination, not a convenient alternate an hour away.\n\nSay uncontrollable fire or fire not under control. Do not hide severity behind vague \"smoke\" language when flames are winning.\n\nIn the H130, off-airport landing may be the correct answer sooner than on a jet. Terrain, wires, and rotor clearance matter — but so does fire. Choose the survivable option fastest.\n\nEvacuate when stopped and safe. Do not taxi to the gate with an uncontrollable fire.",
+    "operationalContext": "Training scenario: cabin fire fought with all available extinguishers. Flames continue. Smoke increases.\n\nYou transmit:\n\nMayday Mayday Mayday, Control, ANAC123, uncontrollable fire in the cabin, request immediate landing, will evacuate after landing.\n\nControl: ANAC123, nearest airport twelve miles, turn left heading two four zero, descend at pilot's discretion, fire services full response, say souls and fuel when able.\n\nYou reply:\n\nANAC123, turning left two four zero, uncontrollable fire, souls six, fuel one hour, evacuating after landing.\n\nIn the H130, if fire spreads in the cabin, the same words apply — land immediately, even off-airport if required by time.",
+    "sayItCoach": "Mayday Mayday Mayday, ANAC123, uncontrollable fire, request immediate landing, will evacuate after landing.",
+    "icaoModelAnswer": "I would declare or update Mayday stating uncontrollable fire and the location, request immediate landing at the nearest suitable place, and prepare for emergency evacuation after stopping. I would report souls and fuel when able and advise that we will evacuate after landing. If the airport cannot be reached in time, I would request or execute an off-airport landing as required for survival.",
+    "memoryTrick": "**FIRE** — **F**ight while you can, **I**nform Mayday uncontrollable, **R**each nearest landing now, **E**vacuate when stopped.",
+    "operationalMeaning": "When the fire is uncontrollable, the crew should:\n\nUncontrollable fire reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Control: ANAC123, roger Mayday uncontrollable fire, nearest airport twelve miles, turn left heading two four zero.",
+      "Approach: ANAC123, fire services full response, say souls and fuel.",
+      "Tower: ANAC123, runway cleared, stop on the runway, evacuate when able.",
+      "Approach: ANAC123, report if you require off-airport landing.",
+      "Tower: ANAC123, wind calm, cleared to land, evacuate after stopping."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, ANAC123, uncontrollable fire in the cabin, request immediate landing.",
+      "ANAC123, turning left two four zero, descending, uncontrollable fire.",
+      "ANAC123, souls six, fuel one hour, will evacuate after landing.",
+      "ANAC123, stopping on the runway, evacuating, ANAC123.",
+      "ANAC123, requesting off-airport landing if unable to reach the field."
+    ],
+    "brazilianMistakes": "- ❌ Saying only \"fire on board\" without \"uncontrollable\" when extinguishers failed.  \n  ✔ State uncontrollable fire or fire not under control.\n\n- ❌ Continuing toward a distant preferred airport.  \n  ✔ Nearest suitable — or off-airport if time demands it.\n\n- ❌ Planning to taxi clear with active uncontrollable fire.  \n  ✔ Stop and evacuate; tell ATC you will evacuate.\n\n- ❌ Softening the call to avoid \"alarming\" ATC.  \n  ✔ ATC needs the truth for full fire response.",
+    "pronunciationCoaching": "**Target Phrase:** Mayday Mayday Mayday, ANAC123, Uncontrollable Fire, Request Immediate Landing, Will Evacuate\n\n**Pronunciation:** MAY-day MAY-day MAY-day, AY-nak WUN TOO THREE, un-kun-TROL-uh-bul FY-er, reh-KWEST ih-MEE-dee-it LAN-ding, wil ih-VAK-yoo-ayt\n\n**Word Stress**\n\n- Uncontrollable → un-kun-TROL-uh-bul\n- Fire → FY-er\n- Immediate → ih-MEE-dee-it\n- Evacuate → ih-VAK-yoo-ayt\n- Landing → LAN-ding\n\nPractice:\n\nUncontrollable fire... request immediate landing... will evacuate after landing.\n\nTogether:\n\nMayday Mayday Mayday, ANAC123, uncontrollable fire, request immediate landing, will evacuate after landing.",
+    "relatedConcepts": [
+      "Fire on Board",
+      "Fire in the Hold",
+      "Galley Fire",
+      "Emergency Evacuation",
+      "Mayday",
+      "Forced Landing"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress and Urgency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Aircraft Fire / Evacuation",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Landing and Evacuation",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Annex 6 — Operation of Aircraft"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "AFM — Fire / Emergency Evacuation (type-specific)"
+      }
+    ]
+  },
+  {
+    "catalogId": "0280",
+    "id": "0280",
+    "displayTerm": "Cargo Door Separated",
+    "term": "cargo door separated",
+    "slug": "cargo-door-separated",
+    "category": "Emergency",
+    "meaningEn": "Cargo Door Separated is the complete detachment of a cargo door from the aircraft during flight, creating structural damage risk, possible cabin or hold pressure effects on pressurized types, aerodynamic disturbance, and requiring immediate assessment of controllability, ATC notification, and landing at the nearest suitable airport.",
+    "meaningPt": "Porta de carga separada / Cargo Door Separated.\n\nDesprendimento completo de uma porta de carga da aeronave em voo, criando risco de dano estrutural, possíveis efeitos de pressão em tipos pressurizados, distúrbio aerodinâmico, e exigindo avaliação imediata da controlabilidade, notificação ao ATC e pouso no aeroporto adequado mais próximo.",
+    "whenUsed": "When a cargo door separates, the crew should:",
+    "example": "Departure: ANAC123, roger Mayday cargo door separated, turn left heading two seven zero, cleared to return.",
+    "sayPhrase": "Mayday Mayday Mayday, ANAC123, cargo door separated, aircraft controllable, request immediate return.",
+    "icaoQuestion": "A cargo door separates after takeoff. The aircraft is still controllable. What do you do and what do you say?",
+    "icaoSpeakText": "I would maintain control, reduce speed if required, declare Mayday stating cargo door separated and that the aircraft is controllable, and request an immediate return or diversion. I would advise ATC of possible debris on the departure path, report souls and fuel when able, and land with emergency services standing by. I would not continue the flight with unknown structural damage.",
+    "missionBrief": "Today's lesson covers Cargo Door Separated — complete separation of a cargo door from the aircraft in flight, a structural and aerodynamic emergency requiring immediate control assessment, possible emergency descent, distress communication, and priority landing. This is classic airliner ICAO exam English.\n\nFor H130 helicopter ICAO Delta academy operations in Brazil, you may not have a transport-category cargo door, but you must speak the concept fluently. Relate it to door or panel separation, baggage door loss, or external load hardware failure using the same radio structure: what happened, aircraft controllability, intentions.\n\nMaster: cargo door separated, request immediate landing, aircraft controllable / not fully controllable.",
+    "captainTeaching": "Cargo door separated is structural until proven otherwise.\n\nFly the aircraft. Slow if required. Mayday. Return. Tell ATC about debris.\n\nBrazilian pilots may say \"porta de carga saiu\" or \"perdeu a porta.\" Prefer cargo door separated in ICAO English — then controllability and intentions.\n\nIn the H130, doors and panels can still depart. Use accurate location words. Do not invent jet cargo-door systems you do not have — but do not fail the exam for not knowing the phrase.\n\nNever continue the flight to \"see how it feels\" at cruise with a missing door and unknown structural damage.",
+    "operationalContext": "Training scenario: after takeoff, a loud bang and the cargo door is gone. Aircraft remains controllable with vibration.\n\nYou transmit:\n\nMayday Mayday Mayday, Departure, ANAC123, cargo door separated, aircraft controllable, request immediate return to land.\n\nDeparture: ANAC123, roger Mayday, turn left heading two seven zero, descend, runway available, say souls and fuel when able. Possible debris on departure path — we will inspect.\n\nYou continue:\n\nANAC123, turning left two seven zero, cargo door separated, mild vibration, souls eight, fuel two hours, request shortest approach.\n\nFor H130, same structure if a door or panel separates — state what separated and that you are returning.",
+    "sayItCoach": "Mayday Mayday Mayday, ANAC123, cargo door separated, aircraft controllable, request immediate return.",
+    "icaoModelAnswer": "I would maintain control, reduce speed if required, declare Mayday stating cargo door separated and that the aircraft is controllable, and request an immediate return or diversion. I would advise ATC of possible debris on the departure path, report souls and fuel when able, and land with emergency services standing by. I would not continue the flight with unknown structural damage.",
+    "memoryTrick": "**DOOR** — **D**eclare Mayday, **O**bserve controllability, **O**ffer debris warning to ATC, **R**eturn immediately.",
+    "operationalMeaning": "When a cargo door separates, the crew should:\n\nCargo door separated reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Departure: ANAC123, roger Mayday cargo door separated, turn left heading two seven zero, cleared to return.",
+      "Approach: ANAC123, say if the aircraft is fully controllable.",
+      "Tower: ANAC123, runway cleared, emergency services standing by.",
+      "Departure: ANAC123, confirm possible debris location if known.",
+      "Approach: ANAC123, say souls on board and fuel remaining."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, ANAC123, cargo door separated, aircraft controllable, request immediate return.",
+      "ANAC123, turning left two seven zero, descending, returning.",
+      "ANAC123, aircraft controllable, mild vibration, cargo door separated.",
+      "ANAC123, souls eight, fuel two hours.",
+      "ANAC123, possible debris on departure path after takeoff, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Saying only \"door problem\" without \"separated.\"  \n  ✔ State cargo door separated clearly.\n\n- ❌ Not reporting controllability.  \n  ✔ Say aircraft controllable or describe the difficulty.\n\n- ❌ Forgetting possible debris for other traffic.  \n  ✔ Advise ATC if debris may be on the airport or departure path.\n\n- ❌ Treating H130 as if it has a jet cargo hold door system.  \n  ✔ Exam English yes; type systems factual.",
+    "pronunciationCoaching": "**Target Phrase:** Mayday Mayday Mayday, ANAC123, Cargo Door Separated, Aircraft Controllable, Request Immediate Return\n\n**Pronunciation:** MAY-day MAY-day MAY-day, AY-nak WUN TOO THREE, KAR-go DOR SEP-uh-ray-tid, AIR-kraft kun-TROL-uh-bul, reh-KWEST ih-MEE-dee-it ree-TURN\n\n**Word Stress**\n\n- Cargo → KAR-go\n- Door → DOR\n- Separated → SEP-uh-ray-tid\n- Controllable → kun-TROL-uh-bul\n- Immediate → ih-MEE-dee-it\n\nPractice:\n\nCargo door separated... aircraft controllable... request immediate return.\n\nTogether:\n\nMayday Mayday Mayday, ANAC123, cargo door separated, aircraft controllable, request immediate return.",
+    "relatedConcepts": [
+      "Forward Cargo Door Open",
+      "Aft Cargo Door Open",
+      "Structural Damage",
+      "Mayday",
+      "Immediate Return",
+      "Controllability"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress and Urgency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Door Separation / Structural Failure",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — In-Flight Structural Emergencies",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Annex 6 — Operation of Aircraft"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "AFM — Door / Structural Emergency Procedures (type-specific)"
+      }
+    ]
+  },
+  {
+    "catalogId": "0281",
+    "id": "0281",
+    "displayTerm": "Windshield Damage",
+    "term": "windshield damage",
+    "slug": "windshield-damage",
+    "category": "Emergency",
+    "meaningEn": "Windshield Damage is any cracking, delamination, shattering, or impact damage to the aircraft windshield that may reduce visibility, compromise structural integrity, or both, requiring abnormal or emergency procedures, ATC notification, and often diversion or priority landing.",
+    "meaningPt": "Dano no para-brisa / Windshield Damage.\n\nQualquer rachadura, delaminação, estilhaçamento ou dano por impacto no para-brisa da aeronave que possa reduzir a visibilidade, comprometer a integridade estrutural, ou ambos, exigindo procedimentos anormais ou de emergência, notificação ao ATC e frequentemente desvio ou pouso prioritário.",
+    "whenUsed": "When windshield damage occurs, the crew should:",
+    "example": "Approach: ANAC123, roger Pan Pan windshield damage, expect straight-in runway one four.",
+    "sayPhrase": "Pan Pan Pan Pan Pan Pan, ANAC123, windshield damage, limited visibility, request priority landing.",
+    "icaoQuestion": "A bird strike cracks the windshield. You still have usable visibility on one side. What do you do and what do you say?",
+    "icaoSpeakText": "I would maintain control, reduce speed if required, transfer flying duties to the pilot with clear visibility, and declare Pan Pan stating windshield damage after bird strike with limited visibility on the damaged side. I would request priority landing or diversion and a simple approach. If the windshield shattered and I could not see, I would declare Mayday and request immediate landing.",
+    "missionBrief": "Today's lesson covers Windshield Damage — cracking, shattering, or impact damage to the windshield, requiring immediate assessment of visibility and structural integrity, possible speed reduction, urgency or distress communication, and diversion or priority landing as required.\n\nBird strike, hail, foreign object impact, or thermal cracking can all produce windshield damage. For H130 helicopter ICAO Delta academy operations in Brazil, this is highly relevant — helicopter windshields and chin bubbles are exposed in low-level and approach environments. Master ICAO English: windshield damage, cracked windshield, limited visibility, request diversion.\n\nPart 2 phraseology and Part 3 speaking both expect clear description of visibility and intentions.",
+    "captainTeaching": "Windshield damage is a visibility and structure problem.\n\nSlow if required. Fly from the clear side. Tell ATC what you can and cannot see.\n\nBrazilian pilots often say \"rachou o para-brisa\" or \"quebra do windshield.\" Prefer windshield damage, cracked windshield, or shattered windshield in ICAO English — then limited visibility and intentions.\n\nIn the H130 this is real operational risk, not only exam theory. Bird strikes and FOD happen low. Brief who flies if one side is blinded.\n\nPan Pan when manageable. Mayday when you cannot see or structure is failing. Do not pride your way through an approach you cannot see.",
+    "operationalContext": "You are approaching Florianópolis in the H130 when a bird strike cracks the right windshield. Visibility on the left is still good. You transfer control to the left seat.\n\nYou transmit:\n\nPan Pan Pan Pan Pan Pan, Approach, ANAC123, windshield damage after bird strike, limited visibility right side, request priority landing runway one four.\n\nApproach: ANAC123, roger Pan Pan, cleared present position for runway one four, say if you require assistance on landing.\n\nYou reply:\n\nANAC123, left seat flying, visibility OK left side, request straight-in, no emergency services required at this time.\n\nIf the windshield shatters and you cannot see, upgrade to Mayday and request immediate landing.",
+    "sayItCoach": "Pan Pan Pan Pan Pan Pan, ANAC123, windshield damage, limited visibility, request priority landing.",
+    "icaoModelAnswer": "I would maintain control, reduce speed if required, transfer flying duties to the pilot with clear visibility, and declare Pan Pan stating windshield damage after bird strike with limited visibility on the damaged side. I would request priority landing or diversion and a simple approach. If the windshield shattered and I could not see, I would declare Mayday and request immediate landing.",
+    "memoryTrick": "**CRACK** — **C**ontrol the aircraft, **R**educe speed if needed, **A**ssess visibility both sides, **C**all Pan Pan or Mayday, **K**eep the clear-side pilot flying.",
+    "operationalMeaning": "When windshield damage occurs, the crew should:\n\nWindshield damage reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger Pan Pan windshield damage, expect straight-in runway one four.",
+      "Approach: ANAC123, say visibility and which pilot is flying.",
+      "Tower: ANAC123, cleared to land, wind one four zero at eight, say if services required.",
+      "Center: ANAC123, roger cracked windshield, say diversion request.",
+      "Approach: ANAC123, vectors for longest runway, report field in sight when able."
+    ],
+    "pilotReadbacks": [
+      "Pan Pan Pan Pan Pan Pan, ANAC123, windshield damage, limited visibility, request priority landing.",
+      "ANAC123, straight-in runway one four, left seat flying.",
+      "ANAC123, visibility OK left side, cracked windshield right.",
+      "Mayday Mayday Mayday, ANAC123, shattered windshield, unable to see, request immediate landing.",
+      "ANAC123, diverting Florianópolis, windshield damage, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Saying only \"bird strike\" without windshield/visibility status.  \n  ✔ State windshield damage and whether visibility is limited.\n\n- ❌ Continuing a visual approach from the damaged side.  \n  ✔ Transfer control to the clear side or divert.\n\n- ❌ Using Mayday for a small crack with full visibility — or Pan Pan when blind.  \n  ✔ Match urgency to visibility and structural risk.\n\n- ❌ Using only Portuguese \"para-brisa\" on the ICAO exam.  \n  ✔ Prefer windshield damage / cracked windshield.",
+    "pronunciationCoaching": "**Target Phrase:** Pan Pan Pan Pan Pan Pan, ANAC123, Windshield Damage, Limited Visibility, Request Priority Landing\n\n**Pronunciation:** PAN pan PAN pan PAN pan, AY-nak WUN TOO THREE, WIND-sheeld DAM-ij, LIM-it-id viz-ih-BIL-ih-tee, reh-KWEST pry-OR-ih-tee LAN-ding\n\n**Word Stress**\n\n- Windshield → WIND-sheeld\n- Damage → DAM-ij\n- Limited → LIM-it-id\n- Visibility → viz-ih-BIL-ih-tee\n- Priority → pry-OR-ih-tee\n\nPractice:\n\nWindshield damage... limited visibility... request priority landing.\n\nTogether:\n\nPan Pan Pan Pan Pan Pan, ANAC123, windshield damage, limited visibility, request priority landing.",
+    "relatedConcepts": [
+      "Bird Strike",
+      "Limited Visibility",
+      "Pan Pan",
+      "Mayday",
+      "Priority Landing",
+      "Structural Damage"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress and Urgency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Windshield Failure / Bird Strike",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — In-Flight Contingenies / Bird Strike",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Annex 6 — Operation of Aircraft"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "H130 AFM — Emergency Procedures, Windshield / Bird Strike as applicable"
+      }
+    ]
+  },
+  {
+    "catalogId": "0282",
+    "id": "0282",
+    "displayTerm": "Forward Cargo Door Open",
+    "term": "forward cargo door open",
+    "slug": "forward-cargo-door-open",
+    "category": "Emergency",
+    "meaningEn": "Forward Cargo Door Open is an indication or confirmation that the forward cargo door is not closed and locked as required, occurring on the ground, during takeoff, or in flight, and requiring abnormal or emergency procedures, ATC notification, and often rejected takeoff or immediate return / diversion.",
+    "meaningPt": "Porta de carga dianteira aberta / Forward Cargo Door Open.\n\nIndicação ou confirmação de que a porta de carga dianteira não está fechada e travada como necessário, ocorrendo no solo, durante a decolagem ou em voo, e exigindo procedimentos anormais ou de emergência, notificação ao ATC e frequentemente rejeição de decolagem ou retorno / desvio imediato.",
+    "whenUsed": "When forward cargo door open is indicated, the crew should:",
+    "example": "Departure: ANAC123, roger Pan Pan forward cargo door open, cleared to return, turn left heading three six zero.",
+    "sayPhrase": "Pan Pan Pan Pan Pan Pan, ANAC123, forward cargo door open, request immediate return.",
+    "icaoQuestion": "After takeoff you get a forward cargo door open warning. The aircraft is controllable. What do you do and what do you say?",
+    "icaoSpeakText": "I would apply the checklist, declare Pan Pan stating forward cargo door open and that the aircraft is controllable, and request an immediate return. I would report souls and fuel when able and land with emergency services standing by. If the door separated or control became difficult, I would upgrade to Mayday and report cargo door separated or the control problem.",
+    "missionBrief": "Today's lesson covers Forward Cargo Door Open — an unsafe or open indication for the forward cargo door in flight or after takeoff, requiring checklist action, possible return, and clear ATC communication. On airliners this is a frequent ICAO exam item distinct from aft cargo door open and from door separated.\n\nFor H130 helicopter ICAO Delta academy operations in Brazil, teach the exam English — forward cargo door open, door unsafe, request return — and relate it to any forward baggage or cabin door unsafe indication on the helicopter. Location words matter: forward versus aft changes inspection and fire-service expectations on the ground.\n\nMaster precise location: forward cargo door open.",
+    "captainTeaching": "Forward cargo door open is a location-specific door emergency.\n\nChecklist. Return. Say forward. Say open — not separated — unless it has left the aircraft.\n\nBrazilian pilots may say \"porta dianteira aberta.\" Prefer forward cargo door open in ICAO English. If ATC hears only \"door,\" they may assume passenger door or aft cargo — correct them.\n\nIn the H130, map the concept to your actual forward baggage or cabin door. Do not invent a jet forward hold — but do not miss the exam phrase either.\n\nIf handling changes or the door departs, upgrade urgency immediately.",
+    "operationalContext": "Training scenario: shortly after takeoff, forward cargo door open warning. Aircraft controllable. You elect to return.\n\nYou transmit:\n\nPan Pan Pan Pan Pan Pan, Departure, ANAC123, forward cargo door open, aircraft controllable, request immediate return to land.\n\nDeparture: ANAC123, roger Pan Pan, turn left heading three six zero, descend, runway three two left available, say souls and fuel when able.\n\nYou continue:\n\nANAC123, turning left three six zero, forward cargo door open, souls twelve, fuel three hours, request shortest approach.\n\nIf the door separates, upgrade to Mayday and report cargo door separated.",
+    "sayItCoach": "Pan Pan Pan Pan Pan Pan, ANAC123, forward cargo door open, aircraft controllable, request immediate return.",
+    "icaoModelAnswer": "I would apply the checklist, declare Pan Pan stating forward cargo door open and that the aircraft is controllable, and request an immediate return. I would report souls and fuel when able and land with emergency services standing by. If the door separated or control became difficult, I would upgrade to Mayday and report cargo door separated or the control problem.",
+    "memoryTrick": "**FWD** — **F**lag Pan Pan with location, **W**atch controllability, **D**ivert/return now — say forward.",
+    "operationalMeaning": "When forward cargo door open is indicated, the crew should:\n\nForward cargo door open reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Departure: ANAC123, roger Pan Pan forward cargo door open, cleared to return, turn left heading three six zero.",
+      "Approach: ANAC123, say if the aircraft is fully controllable.",
+      "Tower: ANAC123, runway cleared, emergency services standing by.",
+      "Approach: ANAC123, report door status on final if able.",
+      "Tower: ANAC123, after landing remain on the runway for inspection if required."
+    ],
+    "pilotReadbacks": [
+      "Pan Pan Pan Pan Pan Pan, ANAC123, forward cargo door open, request immediate return.",
+      "ANAC123, turning left three six zero, descending, returning.",
+      "ANAC123, aircraft controllable, forward cargo door open.",
+      "ANAC123, souls twelve, fuel three hours.",
+      "ANAC123, will remain on the runway for inspection, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Saying only \"cargo door open\" without forward/aft.  \n  ✔ Specify forward cargo door open.\n\n- ❌ Confusing open/unsafe with separated.  \n  ✔ Open means indication/unsafe; separated means the door is gone.\n\n- ❌ Continuing the flight with an unresolved door open warning.  \n  ✔ Return or divert; do not press on to destination.\n\n- ❌ Describing H130 jet-style forward cargo holds inaccurately.  \n  ✔ Exam English yes; type systems factual.",
+    "pronunciationCoaching": "**Target Phrase:** Pan Pan Pan Pan Pan Pan, ANAC123, Forward Cargo Door Open, Request Immediate Return\n\n**Pronunciation:** PAN pan PAN pan PAN pan, AY-nak WUN TOO THREE, FOR-wurd KAR-go DOR OH-pen, reh-KWEST ih-MEE-dee-it ree-TURN\n\n**Word Stress**\n\n- Forward → FOR-wurd\n- Cargo → KAR-go\n- Door → DOR\n- Open → OH-pen\n- Immediate → ih-MEE-dee-it\n\nPractice:\n\nForward cargo door open... aircraft controllable... request immediate return.\n\nTogether:\n\nPan Pan Pan Pan Pan Pan, ANAC123, forward cargo door open, aircraft controllable, request immediate return.",
+    "relatedConcepts": [
+      "Aft Cargo Door Open",
+      "Cargo Door Separated",
+      "Door Unsafe",
+      "Pan Pan",
+      "Immediate Return",
+      "Controllability"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress and Urgency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Cargo Door Warnings",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Abnormal / Emergency Returns",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Annex 6 — Operation of Aircraft"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "AFM — Cargo Door Open Procedures (type-specific)"
+      }
+    ]
+  },
+  {
+    "catalogId": "0283",
+    "id": "0283",
+    "displayTerm": "Aft Cargo Door Open",
+    "term": "aft cargo door open",
+    "slug": "aft-cargo-door-open",
+    "category": "Emergency",
+    "meaningEn": "Aft Cargo Door Open is an indication or confirmation that the aft cargo door is not closed and locked as required, occurring on the ground, during takeoff, or in flight, and requiring abnormal or emergency procedures, ATC notification, and often rejected takeoff or immediate return / diversion.",
+    "meaningPt": "Porta de carga traseira aberta / Aft Cargo Door Open.\n\nIndicação ou confirmação de que a porta de carga traseira não está fechada e travada como necessário, ocorrendo no solo, durante a decolagem ou em voo, e exigindo procedimentos anormais ou de emergência, notificação ao ATC e frequentemente rejeição de decolagem ou retorno / desvio imediato.",
+    "whenUsed": "When aft cargo door open is indicated, the crew should:",
+    "example": "Departure: ANAC123, roger Pan Pan aft cargo door open, turn right heading one eight zero, cleared to return.",
+    "sayPhrase": "Pan Pan Pan Pan Pan Pan, ANAC123, aft cargo door open, request immediate return.",
+    "icaoQuestion": "You receive an aft cargo door open warning after takeoff. What do you do and what do you say?",
+    "icaoSpeakText": "I would apply the checklist, declare Pan Pan stating aft cargo door open and that the aircraft is controllable, and request an immediate return. I would correct ATC if they read back forward instead of aft, report souls and fuel when able, and land with services standing by. If the door separated, I would declare Mayday and report cargo door separated.",
+    "missionBrief": "Today's lesson covers Aft Cargo Door Open — an unsafe or open indication for the aft cargo door, requiring checklist action, possible rejected takeoff or airborne return, and precise ATC communication. ICAO exams often contrast aft with forward cargo door open; using the wrong location is a common speaking error.\n\nFor H130 helicopter ICAO Delta academy operations in Brazil, teach aft cargo door open as exam English, then relate it to aft baggage or cabin door unsafe indications on the helicopter. Same radio structure as forward: location, controllability, intentions, return.\n\nMaster the distinction: aft versus forward — both are cargo door open, but ATC and maintenance need the correct end of the aircraft.",
+    "captainTeaching": "Aft means rear. Forward means front. On the exam, that single word separates a good answer from a confused one.\n\nChecklist. Pan Pan. Return. Say aft cargo door open. Correct wrong readbacks.\n\nBrazilian pilots may say \"porta traseira aberta.\" Prefer aft cargo door open in ICAO English. Avoid \"after door\" or \"back door\" on the exam.\n\nIn the H130, map aft to your real aft baggage or cabin door. Keep systems honest. Keep phraseology sharp.\n\nIf the door leaves the aircraft, it is no longer \"open\" — it is separated. Change the words. Upgrade the urgency.",
+    "operationalContext": "Training scenario: climb-out from Confins, aft cargo door open warning. Aircraft controllable.\n\nYou transmit:\n\nPan Pan Pan Pan Pan Pan, Departure, ANAC123, aft cargo door open, aircraft controllable, request immediate return.\n\nDeparture: ANAC123, roger Pan Pan, turn right heading one eight zero, descend, expect runway one six, say souls and fuel when able.\n\nYou continue:\n\nANAC123, turning right one eight zero, aft cargo door open, souls ten, fuel two hours thirty, request shortest approach.\n\nIf ATC reads back \"forward,\" correct immediately:\n\nANAC123, negative, aft cargo door open — aft.",
+    "sayItCoach": "Pan Pan Pan Pan Pan Pan, ANAC123, aft cargo door open, aircraft controllable, request immediate return.",
+    "icaoModelAnswer": "I would apply the checklist, declare Pan Pan stating aft cargo door open and that the aircraft is controllable, and request an immediate return. I would correct ATC if they read back forward instead of aft, report souls and fuel when able, and land with services standing by. If the door separated, I would declare Mayday and report cargo door separated.",
+    "memoryTrick": "**AFT** — **A**nnounce aft clearly, **F**ly the return, **T**ell ATC if they say forward — correct them.",
+    "operationalMeaning": "When aft cargo door open is indicated, the crew should:\n\nAft cargo door open reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Departure: ANAC123, roger Pan Pan aft cargo door open, turn right heading one eight zero, cleared to return.",
+      "Approach: ANAC123, confirm aft cargo door, say controllability.",
+      "Tower: ANAC123, runway cleared, services standing by for aft fuselage.",
+      "Approach: ANAC123, say souls on board and fuel remaining.",
+      "Tower: ANAC123, after landing hold position for inspection."
+    ],
+    "pilotReadbacks": [
+      "Pan Pan Pan Pan Pan Pan, ANAC123, aft cargo door open, request immediate return.",
+      "ANAC123, turning right one eight zero, descending, returning.",
+      "ANAC123, negative, aft cargo door open — aft, aircraft controllable.",
+      "ANAC123, souls ten, fuel two hours thirty.",
+      "ANAC123, will hold on the runway for inspection, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Saying \"after cargo door\" instead of aft.  \n  ✔ Aft cargo door open — aft means rear.\n\n- ❌ Omitting aft/forward so ATC assumes the wrong door.  \n  ✔ Always specify aft or forward.\n\n- ❌ Not correcting a wrong ATC readback.  \n  ✔ Negative, aft cargo door open — aft.\n\n- ❌ Inventing H130 aft jet cargo holds.  \n  ✔ Exam English yes; type systems factual.",
+    "pronunciationCoaching": "**Target Phrase:** Pan Pan Pan Pan Pan Pan, ANAC123, Aft Cargo Door Open, Request Immediate Return\n\n**Pronunciation:** PAN pan PAN pan PAN pan, AY-nak WUN TOO THREE, AFT KAR-go DOR OH-pen, reh-KWEST ih-MEE-dee-it ree-TURN\n\n**Word Stress**\n\n- Aft → AFT (one syllable, clear final T)\n- Cargo → KAR-go\n- Door → DOR\n- Open → OH-pen\n- Negative → NEG-uh-tiv (for corrections)\n\nPractice:\n\nAft cargo door open... negative, aft... request immediate return.\n\nTogether:\n\nPan Pan Pan Pan Pan Pan, ANAC123, aft cargo door open, aircraft controllable, request immediate return.",
+    "relatedConcepts": [
+      "Forward Cargo Door Open",
+      "Cargo Door Separated",
+      "Door Unsafe",
+      "Pan Pan",
+      "Immediate Return",
+      "Readback Correction"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress and Urgency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Cargo Door Warnings",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Abnormal / Emergency Returns",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Annex 6 — Operation of Aircraft"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "AFM — Cargo Door Open Procedures (type-specific)"
+      }
+    ]
+  },
+  {
+    "catalogId": "0284",
+    "id": "0284",
+    "displayTerm": "Lightning Strike",
+    "term": "lightning strike",
+    "slug": "lightning-strike",
+    "category": "Emergency",
+    "meaningEn": "Lightning Strike is an atmospheric electrical discharge that contacts the aircraft, potentially affecting electrical systems, instruments, compass, radios, or structure, and requiring immediate flight-path and systems assessment, ATC notification when operations are affected, and diversion or priority landing if damage or unreliability is present.",
+    "meaningPt": "Descarga atmosférica / Lightning Strike.\n\nDescarga elétrica atmosférica que atinge a aeronave, podendo afetar sistemas elétricos, instrumentos, bússola, rádios ou estrutura, e exigindo avaliação imediata da trajetória e dos sistemas, notificação ao ATC quando as operações forem afetadas, e desvio ou pouso prioritário se houver dano ou falta de confiabilidade.",
+    "whenUsed": "When a lightning strike occurs, the crew should:",
+    "example": "Control: ANAC123, roger Pan Pan lightning strike, say systems status.",
+    "sayPhrase": "Pan Pan Pan Pan Pan Pan, ANAC123, lightning strike, compass unreliable, request diversion.",
+    "icaoQuestion": "You experience a lightning strike. The magnetic compass is unreliable but flight instruments are normal. What do you do and what do you say?",
+    "icaoSpeakText": "I would maintain control using primary flight instruments, check electrical and navigation systems, exit convective weather, and declare Pan Pan stating lightning strike with magnetic compass unreliable. I would request vectors clear of weather and diversion to a suitable airport if needed. If critical systems failed, I would declare Mayday and request immediate landing.",
+    "missionBrief": "Today's lesson covers Lightning Strike — an electrical discharge striking the aircraft in flight, requiring immediate assessment of systems, instruments, and structural or electrical damage, plus clear ATC communication for diversion or priority handling when needed.\n\nLightning strikes are common ICAO exam topics and real Brazilian weather events in convective seasons. Effects range from a loud bang and temporary flash blindness to compass errors, electrical anomalies, or — rarely — structural damage. For H130 helicopter ICAO Delta academy operations, avoid known thunderstorm cells; if struck, fly the aircraft, check systems, and report.\n\nMaster: lightning strike, systems normal / systems affected, request diversion, compass unreliable.",
+    "captainTeaching": "Lightning strike is weather discipline first — and systems English second.\n\nAvoid the cell. If you are struck anyway: fly attitude, check systems, tell ATC what failed.\n\nBrazilian pilots often say \"tomou raio\" or \"descarga.\" Prefer lightning strike in ICAO English — then compass unreliable, electrical problems, or systems normal.\n\nIn the H130, convective weather is a serious threat at helicopter altitudes. Do not treat a strike as \"nothing\" until you have checked instruments and electrics. Do not declare Mayday for a bang with all systems green — but do not hide a failed compass either.\n\nReport. Divert if unreliable. Stay clear of the next cell.",
+    "operationalContext": "You are IFR in the H130 near Campinas when a bright flash and bang — lightning strike. Attitude instruments remain OK. Magnetic compass spins. GPS remains available.\n\nYou transmit:\n\nPan Pan Pan Pan Pan Pan, Control, ANAC123, lightning strike, magnetic compass unreliable, aircraft controllable, request vectors clear of weather and diversion Campinas.\n\nControl: ANAC123, roger Pan Pan, turn left heading two two zero, radar vectors Campinas, say other systems status when able.\n\nYou update:\n\nANAC123, flight instruments normal, compass unreliable, continuing diversion Campinas.\n\nIf radios or primary flight instruments fail, upgrade urgency and say what is lost.",
+    "sayItCoach": "Pan Pan Pan Pan Pan Pan, ANAC123, lightning strike, compass unreliable, request diversion.",
+    "icaoModelAnswer": "I would maintain control using primary flight instruments, check electrical and navigation systems, exit convective weather, and declare Pan Pan stating lightning strike with magnetic compass unreliable. I would request vectors clear of weather and diversion to a suitable airport if needed. If critical systems failed, I would declare Mayday and request immediate landing.",
+    "memoryTrick": "**STRIKE** — **S**teady on attitude, **T**est systems and compass, **R**eport lightning strike, **I**nform what failed, **K**eep clear of cells, **E**xit / divert as needed.",
+    "operationalMeaning": "When a lightning strike occurs, the crew should:\n\nLightning strike reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Control: ANAC123, roger Pan Pan lightning strike, say systems status.",
+      "Control: ANAC123, turn left heading two two zero, vectors clear of weather.",
+      "Approach: ANAC123, roger compass unreliable, expect ILS, say if GPS available.",
+      "Center: ANAC123, say diversion request after lightning strike.",
+      "Approach: ANAC123, emergency services optional — say if required."
+    ],
+    "pilotReadbacks": [
+      "Pan Pan Pan Pan Pan Pan, ANAC123, lightning strike, compass unreliable, request diversion.",
+      "ANAC123, turning left two two zero, vectors clear of weather.",
+      "ANAC123, flight instruments normal, compass unreliable, GPS available.",
+      "ANAC123, systems normal after lightning strike, continuing, request weather deviation.",
+      "Mayday Mayday Mayday, ANAC123, lightning strike, electrical failure, request immediate landing."
+    ],
+    "brazilianMistakes": "- ❌ Saying only \"tomou raio\" without systems status.  \n  ✔ Lightning strike — then systems normal or what failed.\n\n- ❌ Continuing into the same thunderstorm cell after a strike.  \n  ✔ Request vectors clear of weather; divert if needed.\n\n- ❌ Declaring Mayday for a strike with all systems normal.  \n  ✔ Match urgency to effects; Pan Pan when systems are unreliable.\n\n- ❌ Not mentioning compass or navigation unreliability.  \n  ✔ Say compass unreliable so ATC understands navigation limits.",
+    "pronunciationCoaching": "**Target Phrase:** Pan Pan Pan Pan Pan Pan, ANAC123, Lightning Strike, Compass Unreliable, Request Diversion\n\n**Pronunciation:** PAN pan PAN pan PAN pan, AY-nak WUN TOO THREE, LYT-ning STRYK, KUM-pus un-ree-LY-uh-bul, reh-KWEST dy-VER-zhun\n\n**Word Stress**\n\n- Lightning → LYT-ning\n- Strike → STRYK\n- Compass → KUM-pus\n- Unreliable → un-ree-LY-uh-bul\n- Diversion → dy-VER-zhun\n\nPractice:\n\nLightning strike... compass unreliable... request vectors clear of weather.\n\nTogether:\n\nPan Pan Pan Pan Pan Pan, ANAC123, lightning strike, compass unreliable, request diversion.",
+    "relatedConcepts": [
+      "Weather Deviation",
+      "Compass Unreliable",
+      "Electrical Failure",
+      "Pan Pan",
+      "Thunderstorm Avoidance",
+      "Instrument Failure"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress and Urgency / Weather Deviation",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Lightning Strike",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Thunderstorms / Lightning",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Annex 6 — Operation of Aircraft"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "H130 AFM — Electrical / Emergency Procedures as applicable"
+      }
+    ]
+  },
+  {
+    "catalogId": "0285",
+    "id": "0285",
+    "displayTerm": "Emergency Evacuation",
+    "term": "emergency evacuation",
+    "slug": "emergency-evacuation",
+    "category": "Emergency",
+    "meaningEn": "Emergency Evacuation is the immediate, ordered exit of all crew and passengers from the aircraft using available exits when remaining on board is more dangerous than leaving — typically due to fire, smoke, structural damage, or other ground emergencies — coordinated with ATC and airport fire services.",
+    "meaningPt": "Evacuação de emergência / Emergency Evacuation.\n\nSaída imediata e ordenada de toda a tripulação e passageiros da aeronave pelas saídas disponíveis quando permanecer a bordo é mais perigoso do que sair — tipicamente devido a fogo, fumaça, dano estrutural ou outras emergências no solo — coordenada com o ATC e os serviços de combate a incêndio do aeroporto.",
+    "whenUsed": "When emergency evacuation is required, the crew should:",
+    "example": "Tower: ANAC123, roger, stop on the runway, evacuate, fire services rolling.",
+    "sayPhrase": "ANAC123, stopping on the runway, emergency evacuation, request fire services.",
+    "icaoQuestion": "You land with an uncontrollable cabin fire. What do you do after landing and what do you say?",
+    "icaoSpeakText": "I would stop on the runway, secure the aircraft per procedure, command an emergency evacuation, and advise ATC that we are evacuating and request fire services. When able I would report all souls clear. I would not taxi to the gate with an uncontrollable fire, and I would not re-enter the aircraft for personal items.",
+    "missionBrief": "Today's lesson covers Emergency Evacuation — the rapid egress of all occupants from the aircraft after an emergency landing, rejected takeoff, fire, or other life-threatening condition on the ground. ICAO exams expect clear English for the decision, the command, and the radio call to ATC and fire services.\n\nOn airliners this includes slides, exits, and cabin crew commands. For H130 helicopter ICAO Delta academy operations in Brazil, evacuation still applies — rotors, doors, fire, and getting clear of the aircraft — without inventing escape slides the type does not have. Teach exam slide/exit language where required, then map to helicopter egress.\n\nMaster: emergency evacuation, evacuating, remain seated, fire services, slides armed (exam) / doors open (H130).",
+    "captainTeaching": "Emergency evacuation is a ground decision with airborne preparation.\n\nIf you know you will evacuate — brief it before landing. Tell cabin. Tell ATC you will evacuate after landing. Then stop, secure, command, get out.\n\nBrazilian pilots may say \"evacuação\" only. Prefer emergency evacuation or evacuating the aircraft in ICAO English — plus the reason: fire, smoke, structural damage.\n\nOn airliner exams, know escape slide and exit language. In the H130, know rotor hazard, door egress, and getting clear of the disc. Do not claim slides on a helicopter. Do not fail the exam for not knowing slide vocabulary when the question is airliner-based.\n\nNever delay evacuation to finish a long radio monologue while fire grows. Secure. Evacuate. Transmit when you can.",
+    "operationalContext": "Training scenario: after landing with a cabin fire not fully extinguished, you stop on the runway.\n\nYou transmit:\n\nANAC123, stopping on the runway, emergency evacuation, request fire services.\n\nTower: ANAC123, roger, evacuate, fire services rolling, advise when all souls are clear.\n\nYou command the cabin evacuation. On an airliner exam item you may reference slides and exits. In the H130 you shut down as required, open doors, and move clear of the rotor disc.\n\nWhen able:\n\nANAC123, all souls clear of the aircraft, fire in cabin continuing.\n\nThe radio call supports the evacuation — it does not replace it.",
+    "sayItCoach": "ANAC123, stopping on the runway, emergency evacuation, request fire services.",
+    "icaoModelAnswer": "I would stop on the runway, secure the aircraft per procedure, command an emergency evacuation, and advise ATC that we are evacuating and request fire services. When able I would report all souls clear. I would not taxi to the gate with an uncontrollable fire, and I would not re-enter the aircraft for personal items.",
+    "memoryTrick": "**EXIT** — **E**ngine/rotor secure, **X** out through available exits, **I**nform ATC evacuating, **T**rucks (fire services) to the aircraft.",
+    "operationalMeaning": "When emergency evacuation is required, the crew should:\n\nEmergency evacuation reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Tower: ANAC123, roger, stop on the runway, evacuate, fire services rolling.",
+      "Tower: ANAC123, advise when all souls are clear.",
+      "Ground: ANAC123, fire services at your position, say if still evacuating.",
+      "Tower: ANAC123, confirm emergency evacuation in progress.",
+      "Tower: ANAC123, remain clear of the runway after evacuation, do not re-enter."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, stopping on the runway, emergency evacuation, request fire services.",
+      "ANAC123, evacuating now, cabin fire.",
+      "ANAC123, all souls clear of the aircraft.",
+      "ANAC123, evacuation complete, fire services on scene.",
+      "ANAC123, will not re-enter, all souls clear, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Taxiing to the apron with active fire before deciding to evacuate.  \n  ✔ Stop, evacuate, tell ATC — fire services to the aircraft.\n\n- ❌ Using only \"we leave the airplane\" on the ICAO exam.  \n  ✔ Say emergency evacuation / evacuating the aircraft.\n\n- ❌ Claiming escape slides on the H130.  \n  ✔ Exam slide language for airliners; helicopter doors and rotor clearance for the type.\n\n- ❌ Long radio calls before commanding evacuation.  \n  ✔ Evacuate first; update ATC as soon as practicable.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Stopping on the Runway, Emergency Evacuation, Request Fire Services\n\n**Pronunciation:** AY-nak WUN TOO THREE, STOP-ing on thuh RUN-way, ee-MER-jen-see ih-vak-yoo-AY-shun, reh-KWEST FY-er SUR-vis-iz\n\n**Word Stress**\n\n- Emergency → ee-MER-jen-see\n- Evacuation → ih-vak-yoo-AY-shun\n- Evacuating → ih-VAK-yoo-ay-ting\n- Fire services → FY-er SUR-vis-iz\n- Souls clear → SOHLZ KLEER\n\nPractice:\n\nEmergency evacuation... evacuating now... all souls clear.\n\nTogether:\n\nANAC123, stopping on the runway, emergency evacuation, request fire services.",
+    "relatedConcepts": [
+      "Uncontrollable Fire",
+      "Fire on Board",
+      "Fire Services Standing By",
+      "Mayday",
+      "Rejected Takeoff",
+      "Souls on Board"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress / Aerodrome Emergency",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Emergency Evacuation",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Aircraft Evacuation",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Annex 6 — Operation of Aircraft"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "AFM / Cabin Safety — Evacuation (airliner slides/exits); H130 egress / rotor safety as applicable"
+      }
+    ]
+  },
+  {
+    "catalogId": "0286",
+    "id": "0286",
+    "displayTerm": "Emergency Services",
+    "term": "emergency services",
+    "slug": "emergency-services",
+    "category": "Emergency",
+    "meaningEn": "Emergency Services are the rescue, fire fighting, medical, and related ground response units alerted by ATC or aerodrome authorities when an aircraft declares an emergency or requests assistance, positioned to support landing, evacuation, fire suppression, and medical care as required by the nature of the emergency.",
+    "meaningPt": "Serviços de emergência / Emergency Services.\n\nUnidades de resgate, combate a incêndio, atendimento médico e apoio em solo alertadas pelo ATC ou pela autoridade do aeródromo quando uma aeronave declara emergência ou solicita assistência, posicionadas para apoiar o pouso, a evacuação, a extinção de fogo e o atendimento médico conforme a natureza da emergência.",
+    "whenUsed": "When emergency services are required, the crew should:",
+    "example": "Approach: ANAC123, roger Mayday, emergency services alerted, expect runway one seven left.",
+    "sayPhrase": "ANAC123, runway one seven left, emergency services alerted, ANAC123.",
+    "icaoQuestion": "You have smoke in the cabin and will land shortly. What do you request from ATC regarding ground support?",
+    "icaoSpeakText": "I would declare the emergency, state the nature of the problem, and request priority landing with emergency services — specifically firefighters and an ambulance if passengers may need medical check. I would provide souls on board and fuel remaining when asked, and after landing I would update ATC whether there is fire, whether we are evacuating, and whether we remain on the runway or helipad.",
+    "missionBrief": "Today's lesson covers Emergency Services — the airport rescue and fire fighting (RFF), medical, and support units that ATC alerts when an aircraft declares an emergency, requests assistance, or reports a condition that may require ground response on landing. For H130 helicopter operations in Brazil, emergency services may meet you at a helipad, airport apron, or off-airport landing site coordinated through ATC and local responders.\n\nEmergency services is a High Part 2 and Part 3 topic. Examiners expect you to request the right support clearly: firefighters, ambulance, or both — and to update ATC when the situation changes.\n\nFor ICAO Delta / Captain Delta training, master the phraseology that gets RFF and medical assets positioned before you land, then transfer the same clarity to helicopter ops over cities, offshore, and remote terrain.\n\nUnderstanding how to discuss emergency services in ICAO-standard English is essential for Part 2 and Part 3 proficiency.",
+    "captainTeaching": "Emergency services are not automatic just because you said Mayday.\n\nMayday gets priority. Naming firefighters, ambulance, or both gets the right trucks moving.\n\nBe specific. Smoke without fire still often needs RFF. A medical passenger needs an ambulance. A hard landing may need both.\n\nGive souls and fuel when asked — RFF plans foam and response around that information.\n\nAfter landing, update. \"No fire, remaining on runway\" or \"evacuating\" changes what the trucks do next.\n\nIn the H130, you may land at a helipad or a field. Still request emergency services through ATC when you need them. Local responders still need a clear picture.\n\nRequest early. Update honestly. Do not leave the ground guessing.",
+    "operationalContext": "You are inbound to Congonhas with a cabin smoke smell after an electrical anomaly. You declare and request priority.\n\nYou transmit:\n\nMayday Mayday Mayday, Approach, ANAC123, smoke in cabin, requesting priority landing and emergency services, firefighters and ambulance.\n\nApproach confirms RFF alerted and vectors you for a short final. Tower advises emergency services are standing by on the runway.\n\nAfter landing you stop, shut down as required, and report:\n\nANAC123, landed, smoke decreasing, no fire visible, remaining on runway, request ambulance for passenger check.\n\nFor H130 ops to a city helipad, the same structure applies — nature, request services, souls and fuel, update after landing.",
+    "sayItCoach": "ANAC123, Mayday, requesting emergency services, firefighters and ambulance.",
+    "icaoModelAnswer": "I would declare the emergency, state the nature of the problem, and request priority landing with emergency services — specifically firefighters and an ambulance if passengers may need medical check. I would provide souls on board and fuel remaining when asked, and after landing I would update ATC whether there is fire, whether we are evacuating, and whether we remain on the runway or helipad.",
+    "memoryTrick": "**SERVICES** — **S**tate the emergency, **E**xplicitly name firefighters/ambulance, **R**eport souls and fuel, **V**ector for priority landing, **I**nform after touchdown, **C**onfirm fire or no fire, **E**vacuate if required, **S**tay on frequency until released.",
+    "operationalMeaning": "When emergency services are required, the crew should:\n\nEmergency services reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger Mayday, emergency services alerted, expect runway one seven left.",
+      "Tower: ANAC123, firefighters standing by, wind calm, cleared to land runway one seven left.",
+      "Tower: ANAC123, say souls on board and fuel remaining.",
+      "Ground: ANAC123, remain on runway, emergency services approaching from the left.",
+      "Tower: ANAC123, ambulance standing by at the helipad, report when shut down."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, runway one seven left, emergency services alerted, ANAC123.",
+      "ANAC123, cleared to land one seven left, firefighters standing by.",
+      "ANAC123, souls on board eight, fuel remaining one hour.",
+      "ANAC123, remaining on runway, emergency services approaching.",
+      "ANAC123, wilco, will report when shut down, ambulance standing by."
+    ],
+    "brazilianMistakes": "- ❌ Saying only \"I need help on ground\" without naming firefighters or ambulance.  \n  ✔ Request emergency services and specify firefighters and/or ambulance.\n\n- ❌ Assuming Mayday automatically positions RFF without stating the need.  \n  ✔ Declare and request emergency services explicitly.\n\n- ❌ Not updating after landing when smoke stops or evacuation starts.  \n  ✔ Report status: no fire, evacuating, or remaining on runway.\n\n- ❌ Forgetting souls and fuel when ATC asks.  \n  ✔ Answer immediately with numbers.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Requesting Emergency Services, Firefighters and Ambulance\n\n**Pronunciation:** AY-nak WUN TOO THREE, rih-KWEST-ing ih-MUR-jen-see SUR-vis-iz, FYR-fy-terz and AM-byoo-lans\n\n**Word Stress**\n\n- Emergency → ih-MUR-jen-see\n- Services → SUR-vis-iz\n- Firefighters → FYR-fy-terz\n- Ambulance → AM-byoo-lans\n\nPractice:\n\nRequesting emergency services... firefighters and ambulance.\n\nTogether:\n\nANAC123, Mayday, requesting emergency services, firefighters and ambulance.",
+    "relatedConcepts": [
+      "Mayday",
+      "Priority Landing",
+      "Evacuation",
+      "Airport Rescue and Fire Fighting",
+      "Souls on Board",
+      "Fuel Remaining"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress and Urgency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9137 — Airport Services Manual (RFF)"
+      },
+      {
+        "label": "SKYbrary — Aerodrome Emergency Services",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Communications",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "H130 AFM — Emergency Procedures as applicable"
+      }
+    ]
+  },
+  {
+    "catalogId": "0287",
+    "id": "0287",
+    "displayTerm": "Escape Slide Deployed",
+    "term": "escape slide deployed",
+    "slug": "escape-slide-deployed",
+    "category": "Emergency",
+    "meaningEn": "Escape Slide Deployed means an aircraft escape slide has inflated — either intentionally for emergency evacuation or inadvertently on the ground — creating an immediate need to report the condition to ATC, protect persons and vehicles near the aircraft, and coordinate evacuation or slide disarming and recovery with emergency and ground services.",
+    "meaningPt": "Escorrega de emergência acionado / Escape Slide Deployed.\n\nSignifica que um escorrega de evacuação da aeronave foi inflado — intencionalmente para evacuação de emergência ou inadvertidamente no solo — criando necessidade imediata de informar o ATC, proteger pessoas e veículos próximos à aeronave e coordenar a evacuação ou o desarmamento e a recuperação do escorrega com os serviços de emergência e de solo.",
+    "whenUsed": "When an escape slide is deployed, the crew should:",
+    "example": "Tower: ANAC123, roger evacuation, firefighters rolling, remain on frequency.",
+    "sayPhrase": "ANAC123, wilco, remaining on frequency, firefighters rolling.",
+    "icaoQuestion": "After landing with a cabin fire indication you evacuate and the escape slides deploy. What do you tell ATC?",
+    "icaoSpeakText": "I would declare the emergency if not already declared, report that we are evacuating, state that escape slides are deployed, and request firefighters. I would remain on frequency, provide souls on board when asked, and advise when evacuation is complete or if anyone is injured.",
+    "missionBrief": "Today's lesson covers Escape Slide Deployed — the inflation and use of an aircraft escape slide for emergency evacuation, or an inadvertent slide deployment on the ground that creates a hazard and requires ATC and ground coordination. The H130 does not use airline-style escape slides; this lesson still teaches Medium-priority ICAO exam English and maps the same evacuation-communication logic to helicopter egress and ground hazards.\n\nEscape slide deployed appears in ICAO speaking and radiotelephony scenarios for transport aircraft. Examiners expect you to report the event, state whether evacuation is in progress, and request emergency services as required.\n\nFor ICAO Delta / Captain Delta training in Brazil, master the standard phraseology for the exam, then transfer the structure to any evacuation or ground-obstruction report on the H130.\n\nUnderstanding escape slide deployed in ICAO-standard English is essential for Part 2 and Part 3 proficiency.",
+    "captainTeaching": "Escape slide deployed is two different problems with one radio rule: say what happened and what you are doing.\n\nIntentional deployment means evacuation. Declare. Request firefighters. Report when complete.\n\nInadvertent deployment means a ground hazard. Stop if moving. Tell ATC which door. Keep people clear.\n\nDo not mix the messages. \"Slide deployed\" alone is incomplete. Add evacuating or inadvertent — and the side if you know it.\n\nFor the ICAO exam, speak the airline scenario cleanly. For the H130, never invent slides that do not exist — transfer the communication pattern to real egress and ground-obstruction calls.\n\nClear. Specific. Immediate.",
+    "operationalContext": "Exam-style scenario: after a rejected take-off with smoke, you stop on the runway and order evacuation. Slides deploy.\n\nYou transmit:\n\nMayday Mayday Mayday, Tower, ANAC123, evacuating on the runway, escape slides deployed, request firefighters.\n\nTower holds all traffic and confirms RFF rolling.\n\nAlternate scenario: during pushback an inadvertent slide deploys at the gate.\n\nYou report:\n\nANAC123, inadvertent escape slide deployment, left forward door, request remain clear, request ground assistance.\n\nFor H130 reality, you will not deploy slides — but you will still report evacuation in progress or a ground hazard that blocks movement with the same clarity.",
+    "sayItCoach": "ANAC123, escape slides deployed, evacuating, request firefighters.",
+    "icaoModelAnswer": "I would declare the emergency if not already declared, report that we are evacuating, state that escape slides are deployed, and request firefighters. I would remain on frequency, provide souls on board when asked, and advise when evacuation is complete or if anyone is injured.",
+    "memoryTrick": "**SLIDE** — **S**ay deployed clearly, **L**ocate the door/side, **I**ndicate evacuating or inadvertent, **D**emand firefighters if evacuating, **E**nd with status when complete.",
+    "operationalMeaning": "When an escape slide is deployed, the crew should:\n\nEscape slide reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Tower: ANAC123, roger evacuation, firefighters rolling, remain on frequency.",
+      "Tower: ANAC123, confirm escape slides deployed, say which side.",
+      "Ground: ANAC123, all traffic stopped, emergency services approaching from behind.",
+      "Ground: ANAC123, inadvertent slide noted, remain in position, assistance on the way.",
+      "Tower: ANAC123, say souls on board and if evacuation complete."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, wilco, remaining on frequency, firefighters rolling.",
+      "ANAC123, escape slides deployed both sides, evacuating.",
+      "ANAC123, roger, emergency services approaching from behind.",
+      "ANAC123, remaining in position, inadvertent slide left forward door.",
+      "ANAC123, souls eight, evacuation in progress / evacuation complete."
+    ],
+    "brazilianMistakes": "- ❌ Saying only \"slide open\" without evacuating or inadvertent.  \n  ✔ State escape slide deployed and whether you are evacuating.\n\n- ❌ Continuing to taxi with an inadvertent slide inflated.  \n  ✔ Stop and advise ATC immediately; protect ground personnel.\n\n- ❌ Not requesting firefighters during an evacuation.  \n  ✔ Request emergency services as part of the first clear call.\n\n- ❌ Treating the phrase as irrelevant to helicopters and skipping the lesson.  \n  ✔ Learn exam English; transfer evacuation radio logic to the H130.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Escape Slides Deployed, Evacuating\n\n**Pronunciation:** AY-nak WUN TOO THREE, es-KAYP SLYDZ dih-PLOYD, ih-VAK-yoo-ay-ting\n\n**Word Stress**\n\n- Escape → es-KAYP\n- Slides → SLYDZ\n- Deployed → dih-PLOYD\n- Evacuating → ih-VAK-yoo-ay-ting\n\nPractice:\n\nEscape slides deployed... evacuating on the runway.\n\nTogether:\n\nANAC123, escape slides deployed, evacuating, request firefighters.",
+    "relatedConcepts": [
+      "Evacuation",
+      "Emergency Services",
+      "Rejected Take-Off",
+      "Cabin Fire",
+      "Overrun Evacuation",
+      "Airport Rescue and Fire Fighting"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Aerodrome Emergencies",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9137 — Airport Services (RFF / Evacuation Support)"
+      },
+      {
+        "label": "SKYbrary — Emergency Evacuation / Escape Slides",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Communications",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Aircraft AFM — Emergency Evacuation; H130 AFM — Emergency Egress as applicable"
+      }
+    ]
+  },
+  {
+    "catalogId": "0288",
+    "id": "0288",
+    "displayTerm": "Dangerous Goods on Board",
+    "term": "dangerous goods on board",
+    "slug": "dangerous-goods-on-board",
+    "category": "Emergency",
+    "meaningEn": "Dangerous Goods on Board means regulated dangerous goods are being carried on the aircraft in accordance with applicable regulations, and this information must be communicated to ATC and emergency services during an emergency, diversion, or abnormal situation so that fire fighting and handling procedures account for the hazard class and quantity.",
+    "meaningPt": "Artigos perigosos a bordo / Dangerous Goods on Board.\n\nSignifica que artigos perigosos regulamentados estão sendo transportados na aeronave conforme a regulamentação aplicável, e essa informação deve ser comunicada ao ATC e aos serviços de emergência durante uma emergência, desvio ou situação anormal para que o combate a incêndio e o manuseio considerem a classe de risco e a quantidade.",
+    "whenUsed": "When dangerous goods are relevant to an emergency, the crew should:",
+    "example": "Approach: ANAC123, roger Pan Pan, confirm dangerous goods on board, say class if known.",
+    "sayPhrase": "ANAC123, affirmative, dangerous goods on board, class three flammable liquid.",
+    "icaoQuestion": "You divert with smoke and you are carrying dangerous goods. What do you tell ATC?",
+    "icaoSpeakText": "I would declare the appropriate urgency, state the nature of the problem such as smoke, report that I am diverting, and clearly advise that dangerous goods are on board. I would request priority landing and firefighters, provide class or UN number if known, and after landing update whether there is fire, leak, or smoke near the cargo.",
+    "missionBrief": "Today's lesson covers Dangerous Goods on Board — the presence of regulated dangerous goods (DG) carried as cargo or company material under ICAO Technical Instructions, and the need to declare that fact clearly to ATC when an emergency, diversion, or fire risk requires special ground handling. Related to hazmat, but taught here as a distinct exam phrase: say \"dangerous goods on board\" when that is the standard wording for the scenario.\n\nDangerous goods on board is a High Part 2 and Part 3 topic. Controllers and RFF need to know what is in the aircraft before they approach after a landing, leak, or fire.\n\nFor ICAO Delta / Captain Delta training on the H130 in Brazil — including offshore and utility ops that may carry regulated items — master the phrase and the information ATC will ask for.\n\nUnderstanding dangerous goods on board in ICAO-standard English is essential for Part 2 and Part 3 proficiency.",
+    "captainTeaching": "Dangerous goods on board is information that protects the people who run toward your aircraft.\n\nLead with the emergency. Then add the DG fact. Then the details you actually have.\n\nIf you have a NOTOC, use it. If you only know \"dangerous goods on board, details unknown,\" say that. Guessing a UN number helps nobody.\n\nKeep \"dangerous goods\" and \"hazmat\" as separate exam phrases in this academy. Related hazard. Distinct wording. Use the one the question asks for.\n\nIn Brazilian H130 ops, regulated cargo still exists. The radio rule is the same: clear, early, factual.",
+    "operationalContext": "You divert to Florianópolis with an electrical smell and known dangerous goods in the cargo compartment.\n\nYou transmit:\n\nPan Pan Pan Pan Pan Pan, Approach, ANAC123, electrical smell, diverting Florianópolis, dangerous goods on board, request priority landing and firefighters.\n\nApproach asks for details. You reply with class and UN number from the NOTOC if available.\n\nAfter landing:\n\nANAC123, landed, no smoke visible, dangerous goods on board, request remain clear until firefighters inspect.\n\nFor H130 offshore or utility flights carrying regulated items, the same structure applies — primary problem first, then dangerous goods on board.",
+    "sayItCoach": "ANAC123, Pan Pan, dangerous goods on board, request firefighters.",
+    "icaoModelAnswer": "I would declare the appropriate urgency, state the nature of the problem such as smoke, report that I am diverting, and clearly advise that dangerous goods are on board. I would request priority landing and firefighters, provide class or UN number if known, and after landing update whether there is fire, leak, or smoke near the cargo.",
+    "memoryTrick": "**DG BOARD** — **D**eclare the primary emergency, **G**ive \"dangerous goods on board,\" **B**ring class/UN if known, **O**ffer souls and fuel, **A**sk for firefighters, **R**emain clear after landing, **D**on't invent details.",
+    "operationalMeaning": "When dangerous goods are relevant to an emergency, the crew should:\n\nDangerous goods reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger Pan Pan, confirm dangerous goods on board, say class if known.",
+      "Approach: ANAC123, priority approved, emergency services alerted for dangerous goods.",
+      "Tower: ANAC123, firefighters standing by, cleared to land, remain on runway after landing.",
+      "Tower: ANAC123, say UN number and quantity if available.",
+      "Ground: ANAC123, remain in position, RFF approaching, keep passengers on board until advised."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, affirmative, dangerous goods on board, class three flammable liquid.",
+      "ANAC123, priority, emergency services for dangerous goods, ANAC123.",
+      "ANAC123, cleared to land, will remain on runway.",
+      "ANAC123, UN one two zero three, quantity two hundred liters.",
+      "ANAC123, remaining in position, passengers on board until advised."
+    ],
+    "brazilianMistakes": "- ❌ Declaring the emergency but never mentioning dangerous goods.  \n  ✔ Add \"dangerous goods on board\" as soon as practicable.\n\n- ❌ Using \"hazmat\" and \"dangerous goods\" as if examiners treat them as identical answers.  \n  ✔ Treat them as related but distinct exam phrases; use the required wording.\n\n- ❌ Inventing UN numbers when the NOTOC is not available.  \n  ✔ Say details unknown; provide what you can confirm.\n\n- ❌ Letting passengers deplane into a DG fire zone without ATC/RFF guidance.  \n  ✔ Follow checklist and remain clear instructions from ATC and RFF.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Dangerous Goods on Board, Request Firefighters\n\n**Pronunciation:** AY-nak WUN TOO THREE, DAYN-jer-us GOODZ on BORD, reh-KWEST FYR-fy-terz\n\n**Word Stress**\n\n- Dangerous → DAYN-jer-us\n- Goods → GOODZ\n- Board → BORD\n- Firefighters → FYR-fy-terz\n\nPractice:\n\nDangerous goods on board... request firefighters.\n\nTogether:\n\nANAC123, Pan Pan, dangerous goods on board, request firefighters.",
+    "relatedConcepts": [
+      "Hazmat on Board",
+      "Emergency Services",
+      "Cabin Fire",
+      "Priority Landing",
+      "Diversion",
+      "NOTOC / Dangerous Goods Documentation"
+    ],
+    "references": [
+      {
+        "label": "ICAO Technical Instructions for the Safe Transport of Dangerous Goods by Air"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress / Urgency",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Dangerous Goods",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "ANAC / Brazilian DG regulations as applicable"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "H130 AFM / Operator DG procedures as applicable"
+      }
+    ]
+  },
+  {
+    "catalogId": "0289",
+    "id": "0289",
+    "displayTerm": "Hazmat on Board",
+    "term": "hazmat on board",
+    "slug": "hazmat-on-board",
+    "category": "Emergency",
+    "meaningEn": "Hazmat on Board means hazardous materials are present on the aircraft, and this fact must be reported to ATC and emergency services during an abnormal or emergency situation so that ground response applies hazmat procedures, protective equipment, and isolation as required by the material and the event.",
+    "meaningPt": "Material perigoso (hazmat) a bordo / Hazmat on Board.\n\nSignifica que materiais perigosos estão presentes na aeronave, e esse fato deve ser reportado ao ATC e aos serviços de emergência durante uma situação anormal ou de emergência para que a resposta em solo aplique procedimentos de hazmat, equipamento de proteção e isolamento conforme o material e o evento.",
+    "whenUsed": "When hazmat is relevant to an emergency, the crew should:",
+    "example": "Control: ANAC123, roger Mayday, confirm hazmat on board, say nature of material if known.",
+    "sayPhrase": "ANAC123, affirmative, hazmat on board, corrosive liquid, details from documentation.",
+    "icaoQuestion": "You have chemical fumes and hazardous materials in the aircraft. What do you report to ATC?",
+    "icaoSpeakText": "I would declare the emergency, report chemical fumes, state that hazmat is on board, and request priority landing with hazmat response or firefighters. I would give the material identity if known, provide souls and fuel when asked, and after landing advise whether there is a leak or fire and follow instructions to remain clear or keep doors closed.",
+    "missionBrief": "Today's lesson covers Hazmat on Board — reporting hazardous materials carried on the aircraft when an emergency, leak, fire, or diversion requires ATC and emergency services to treat the arrival as a hazmat event. Related to dangerous goods, but taught as a distinct exam phrase: say \"hazmat on board\" when that is the wording expected in the scenario or by the examiner.\n\nHazmat on board is a High Part 2 and Part 3 topic. RFF response, isolation distance, and passenger handling change when hazardous materials are involved.\n\nFor ICAO Delta / Captain Delta training with H130 Brazilian operations, master both DG and hazmat phrasing as separate tools, then use the one the situation and exam require.\n\nUnderstanding hazmat on board in ICAO-standard English is essential for Part 2 and Part 3 proficiency.",
+    "captainTeaching": "Hazmat on board tells RFF to change their approach.\n\nIt is not a casual synonym for every cargo flight. Use it when hazardous materials are part of the emergency picture.\n\nLead with the threat: fumes, leak, fire. Then: hazmat on board. Then: what you know about the material.\n\nIn ICAO Delta, keep this lesson separate from Dangerous Goods on Board. Same family of risk. Different exam phrase. Answer with the words you are asked for.\n\nOn the H130, a battery fire or chemical spill still needs this clarity. Responders cannot guess what is in the cabin.\n\nSay hazmat when that is the correct phrase. Protect the people on the ground.",
+    "operationalContext": "You smell strong chemical fumes after a container shift in the cabin area. You declare and divert.\n\nYou transmit:\n\nMayday Mayday Mayday, Control, ANAC123, chemical fumes, hazmat on board, diverting, request priority landing and hazmat response.\n\nTower clears you and holds traffic. After landing you stop on the runway:\n\nANAC123, landed, hazmat on board, fumes continuing, request remain clear, passengers on board pending instructions.\n\nFor H130 utility work with chemicals or batteries as regulated cargo, the same call structure protects the responders who approach the aircraft.",
+    "sayItCoach": "ANAC123, Mayday, hazmat on board, request hazmat response.",
+    "icaoModelAnswer": "I would declare the emergency, report chemical fumes, state that hazmat is on board, and request priority landing with hazmat response or firefighters. I would give the material identity if known, provide souls and fuel when asked, and after landing advise whether there is a leak or fire and follow instructions to remain clear or keep doors closed.",
+    "memoryTrick": "**HAZMAT** — **H**erald the emergency first, **A**nnounce hazmat on board, **Z**ero guessing on UN numbers, **M**aterial ID if known, **A**sk for hazmat response, **T**ell leak/fire status after landing.",
+    "operationalMeaning": "When hazmat is relevant to an emergency, the crew should:\n\nHazmat reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Control: ANAC123, roger Mayday, confirm hazmat on board, say nature of material if known.",
+      "Approach: ANAC123, priority approved, hazmat response alerted, expect runway one zero.",
+      "Tower: ANAC123, cleared to land, remain on runway, emergency services standing by.",
+      "Tower: ANAC123, say if leak or fire, souls on board and fuel remaining.",
+      "Ground: ANAC123, remain in position, hazmat team approaching, keep doors closed until advised."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, affirmative, hazmat on board, corrosive liquid, details from documentation.",
+      "ANAC123, priority runway one zero, hazmat response alerted.",
+      "ANAC123, cleared to land, will remain on runway.",
+      "ANAC123, fumes, no fire visible, souls six, fuel one hour thirty.",
+      "ANAC123, remaining in position, doors closed until advised."
+    ],
+    "brazilianMistakes": "- ❌ Saying only \"I have a chemical problem\" without \"hazmat on board.\"  \n  ✔ Use the standard phrase when hazmat is present.\n\n- ❌ Swapping \"dangerous goods\" into every hazmat question automatically.  \n  ✔ Use \"hazmat on board\" when that is the taught/exam phrase required.\n\n- ❌ Opening doors into a fume cloud without RFF guidance.  \n  ✔ Report status; follow checklist and remain-clear instructions.\n\n- ❌ Omitting leak versus fire in the update.  \n  ✔ State fumes, leak, fire, or no fire clearly.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Hazmat on Board, Request Hazmat Response\n\n**Pronunciation:** AY-nak WUN TOO THREE, HAZ-mat on BORD, reh-KWEST HAZ-mat rih-SPONS\n\n**Word Stress**\n\n- Hazmat → HAZ-mat\n- Board → BORD\n- Request → reh-KWEST\n- Response → rih-SPONS\n\nPractice:\n\nHazmat on board... request hazmat response.\n\nTogether:\n\nANAC123, Mayday, hazmat on board, request hazmat response.",
+    "relatedConcepts": [
+      "Dangerous Goods on Board",
+      "Emergency Services",
+      "Fuel Leak",
+      "Cabin Fire",
+      "Priority Landing",
+      "Evacuation"
+    ],
+    "references": [
+      {
+        "label": "ICAO Technical Instructions for Dangerous Goods by Air"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress / Urgency",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Hazardous Materials / Dangerous Goods",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Hazardous Materials (as applicable to phraseology context)",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Operator hazmat / DG procedures; H130 AFM as applicable"
+      }
+    ]
+  },
+  {
+    "catalogId": "0290",
+    "id": "0290",
+    "displayTerm": "Human Organ Transport",
+    "term": "human organ transport",
+    "slug": "human-organ-transport",
+    "category": "Emergency",
+    "meaningEn": "Human Organ Transport is the carriage of human organs for transplant, requiring time-critical handling, clear notification to ATC of the medical priority cargo, and coordination for expeditious routing, approach, landing, and ground transfer while maintaining normal flight safety standards.",
+    "meaningPt": "Transporte de órgão humano / Human Organ Transport.\n\nTransporte de órgãos humanos para transplante, exigindo tratamento com criticidade de tempo, notificação clara ao ATC da carga médica prioritária e coordenação para roteamento, aproximação, pouso e transferência em solo de forma expedita, mantendo os padrões normais de segurança de voo.",
+    "whenUsed": "When transporting a human organ, the crew should:",
+    "example": "Approach: ANAC123, roger Pan Pan organ transport, priority approved, proceed direct.",
+    "sayPhrase": "ANAC123, priority approved, proceeding direct, organ on board.",
+    "icaoQuestion": "You are carrying a human organ for transplant and need priority handling. What do you say to ATC?",
+    "icaoSpeakText": "I would advise ATC that I have a human organ on board for transplant and request priority routing or priority approach as needed. If time is critical I would use Pan Pan, state organ transport, and give destination and estimate. I would still fly a safe approach and coordinate for ambulance transfer after landing.",
+    "missionBrief": "Today's lesson covers Human Organ Transport — carriage of human organs for transplant, often under time-critical priority handling, with clear ATC coordination for expeditious routing, approach, and ground transfer. For H130 helicopter operations in Brazil, organ transfer flights between hospitals and airports are highly realistic: short sectors, urban helipads, and priority requests are part of the mission profile.\n\nHuman organ transport is a Medium Part 2 and Part 3 topic. Examiners expect polite, precise priority language — usually Pan Pan or a priority request, not dramatic Mayday unless the flight itself is in distress.\n\nFor ICAO Delta / Captain Delta training, master the phraseology that gets you sequenced without blocking true emergencies, then apply it to H130 hospital and inter-airport organ runs.\n\nUnderstanding human organ transport in ICAO-standard English is essential for Part 2 and Part 3 proficiency.",
+    "captainTeaching": "Human organ transport is urgency with discipline.\n\nTell ATC early. Use Pan Pan when the organ timeline justifies urgency. Request priority routing and approach. Give a useful ETA.\n\nDo not shout Mayday because the cooler is on board and the aircraft is fine. Save Mayday for aircraft distress.\n\nIn the H130, this mission is real: rooftops, helipads, short hops, ambulance waiting. Your English must be as clean as your landing.\n\nPriority from ATC. Safety from you. Transfer on time because both worked.",
+    "operationalContext": "You depart a hospital helipad in São Paulo with a transplant organ for Campinas. Time is critical.\n\nYou call:\n\nPan Pan Pan Pan Pan Pan, Approach, ANAC123, human organ on board, request priority routing to Campinas, organ transport.\n\nApproach gives direct tracking and expedite. Nearing destination:\n\nANAC123, human organ on board, request priority approach, ambulance standing by on the ground.\n\nAfter landing at the helipad you report on deck so the transfer can start immediately.\n\nThis is core H130 Brazilian mission English — calm, precise, time-aware.",
+    "sayItCoach": "ANAC123, Pan Pan, human organ on board, request priority.",
+    "icaoModelAnswer": "I would advise ATC that I have a human organ on board for transplant and request priority routing or priority approach as needed. If time is critical I would use Pan Pan, state organ transport, and give destination and estimate. I would still fly a safe approach and coordinate for ambulance transfer after landing.",
+    "memoryTrick": "**ORGAN** — **O**pen with Pan Pan if time-critical, **R**eport human organ on board, **G**ive destination and ETA, **A**sk priority routing/approach, **N**ever break safety minima for the cooler.",
+    "operationalMeaning": "When transporting a human organ, the crew should:\n\nHuman organ transport reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger Pan Pan organ transport, priority approved, proceed direct.",
+      "Approach: ANAC123, expedite descent, traffic permitting, report field in sight.",
+      "Tower: ANAC123, priority landing approved, ambulance advised, wind calm, cleared to land.",
+      "Tower: ANAC123, after landing remain clear of the ambulance access point.",
+      "Approach: ANAC123, say souls on board and estimated time of arrival."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, priority approved, proceeding direct, organ on board.",
+      "ANAC123, expediting descent, will report field in sight.",
+      "ANAC123, cleared to land, ambulance advised, ANAC123.",
+      "ANAC123, wilco, will remain clear of ambulance access.",
+      "ANAC123, souls four, estimating Campinas in one five minutes."
+    ],
+    "brazilianMistakes": "- ❌ Declaring Mayday only because an organ is on board and the aircraft is normal.  \n  ✔ Use Pan Pan or a clear priority request unless the aircraft is in distress.\n\n- ❌ Waiting until short final to mention the organ.  \n  ✔ Notify early so ATC can sequence and alert ground.\n\n- ❌ Accepting an unstable approach \"because the organ cannot wait.\"  \n  ✔ Organ priority never overrides safe flight path and minima.\n\n- ❌ Not giving ETA for the ambulance/hospital transfer.  \n  ✔ Pass a realistic estimate when useful.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Human Organ on Board, Request Priority\n\n**Pronunciation:** AY-nak WUN TOO THREE, HYOO-mun OR-gun on BORD, reh-KWEST pry-OR-ih-tee\n\n**Word Stress**\n\n- Human → HYOO-mun\n- Organ → OR-gun\n- Board → BORD\n- Priority → pry-OR-ih-tee\n\nPractice:\n\nHuman organ on board... request priority approach.\n\nTogether:\n\nANAC123, Pan Pan, human organ on board, request priority.",
+    "relatedConcepts": [
+      "Priority Landing",
+      "Pan Pan",
+      "Expedite",
+      "Direct Routing",
+      "Emergency Services",
+      "Helipad Operations"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Urgency Procedures / Priority",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Medical Priority Flights",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Priority Handling (as applicable)",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Operator organ transport SOPs"
+      },
+      {
+        "label": "H130 AFM — Normal / Helipad Procedures as applicable"
+      }
+    ]
+  },
+  {
+    "catalogId": "0291",
+    "id": "0291",
+    "displayTerm": "Ditching",
+    "term": "ditching",
+    "slug": "ditching",
+    "category": "Emergency",
+    "meaningEn": "Ditching is a controlled emergency landing on water, performed when continued flight to a land landing site is impossible or more dangerous, requiring immediate Mayday declaration, position report, preparation for water impact and evacuation, and coordination with ATC and search and rescue services.",
+    "meaningPt": "Amerissagem / Ditching.\n\nPouso de emergência controlado na água, realizado quando o voo continuado até um local de pouso em terra é impossível ou mais perigoso, exigindo declaração imediata de Mayday, reporte de posição, preparação para o impacto na água e evacuação, e coordenação com o ATC e os serviços de busca e salvamento.",
+    "whenUsed": "When ditching is required, the crew should:",
+    "example": "Control: ANAC123, roger Mayday ditching, SAR alerted, confirm position and souls on board.",
+    "sayPhrase": "ANAC123, position two zero miles offshore Santos, souls six, ditching.",
+    "icaoQuestion": "You must ditch following engine failure over water. What do you say to ATC and what do you do?",
+    "icaoSpeakText": "I would declare Mayday, state engine failure and that I am ditching, give my position, and report souls on board. I would request SAR, prepare the aircraft and passengers for water landing, ditch according to procedures, then evacuate to life rafts and activate emergency beacons. If able I would report after ditching that we are in the rafts.",
+    "missionBrief": "Today's lesson covers Ditching — a controlled emergency landing on water when landing on land is impossible or more hazardous. For H130 helicopter operations over water — offshore, coastal, and river crossings in Brazil — ditching is a Critical Part 2 and Part 3 skill: Mayday, position, intentions, and survival actions must be spoken clearly under extreme pressure.\n\nDitching is highly relevant for helicopters. Examiners and real operations both expect immediate distress communication, accurate position, and confirmation of emergency services or SAR alert.\n\nFor ICAO Delta / Captain Delta training, master Mayday ditching phraseology, brace and evacuation language, and post-ditching status reports.\n\nUnderstanding ditching in ICAO-standard English is essential for Part 2 and Part 3 proficiency.",
+    "captainTeaching": "Ditching is a water landing you plan in seconds and fly with discipline.\n\nMayday. Position. Souls. Ditching. That is the core call.\n\nThen fly the profile. Into wind when you can. Flotation armed if installed. Brace. Evacuate.\n\nFor H130 crews over Brazilian coastal and offshore routes, this is not theoretical. Over-water flight means ditching English must be automatic.\n\nDo not wait for a perfect sentence. Position saves lives. Transmit early.\n\nAfter impact, if the radio still works, say ditched and evacuating. Then survive.",
+    "operationalContext": "You are an H130 offshore from Santos when engine indications force a water landing. Land is beyond glide.\n\nYou transmit:\n\nMayday Mayday Mayday, Control, ANAC123, engine failure, ditching, position twenty miles offshore Santos, souls six, request SAR.\n\nYou brief brace, prepare flotation, and ditch into wind and swell as trained.\n\nIf able after impact:\n\nANAC123, ditched, evacuating to rafts, position same.\n\nATC confirms SAR airborne. Your English bought the rescue clock minutes.",
+    "sayItCoach": "Mayday Mayday Mayday, ANAC123, ditching, request SAR.",
+    "icaoModelAnswer": "I would declare Mayday, state engine failure and that I am ditching, give my position, and report souls on board. I would request SAR, prepare the aircraft and passengers for water landing, ditch according to procedures, then evacuate to life rafts and activate emergency beacons. If able I would report after ditching that we are in the rafts.",
+    "memoryTrick": "**DITCH** — **D**eclare Mayday, **I**dentify position, **T**ell souls on board, **C**onfigure for water, **H**it the rafts and report if able.",
+    "operationalMeaning": "When ditching is required, the crew should:\n\nDitching reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Control: ANAC123, roger Mayday ditching, SAR alerted, confirm position and souls on board.",
+      "Control: ANAC123, squawk seven seven zero zero, radar contact, rescue coordinating.",
+      "Control: ANAC123, say fuel remaining and life rafts available.",
+      "Rescue coord: ANAC123, ditching acknowledged, vessels and helicopter SAR en route.",
+      "Control: ANAC123, if able report after ditching, remain on frequency."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, position two zero miles offshore Santos, souls six, ditching.",
+      "ANAC123, squawking seven seven zero zero, ditching imminent.",
+      "ANAC123, fuel three zero minutes, life rafts available.",
+      "ANAC123, roger SAR en route, preparing to ditch.",
+      "ANAC123, ditched, evacuating to rafts, will remain on frequency if able."
+    ],
+    "brazilianMistakes": "- ❌ Saying only \"going to the water\" without Mayday and position.  \n  ✔ Mayday, ditching, position, souls.\n\n- ❌ Delaying the call until after impact.  \n  ✔ Transmit before ditching whenever possible.\n\n- ❌ Treating ditching as fixed-wing only and under-preparing helicopter English.  \n  ✔ For H130 over water, ditching phraseology is Critical.\n\n- ❌ Forgetting life rafts / flotation status when asked.  \n  ✔ Answer clearly: available, inflated, or not installed.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Ditching, Request SAR\n\n**Pronunciation:** AY-nak WUN TOO THREE, DICH-ing, reh-KWEST ESS-AY-AR\n\n**Word Stress**\n\n- Ditching → DICH-ing\n- Request → reh-KWEST\n- SAR → ESS-AY-AR (each letter clear)\n\nPractice:\n\nDitching... position twenty miles offshore... request SAR.\n\nTogether:\n\nMayday Mayday Mayday, ANAC123, ditching, request SAR.",
+    "relatedConcepts": [
+      "Forced Landing",
+      "Mayday",
+      "Engine Failure",
+      "Search and Rescue",
+      "Emergency Services",
+      "Squawk 7700"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 12 — Search and Rescue"
+      },
+      {
+        "label": "SKYbrary — Ditching",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Ditching Procedures / Emergency Communications",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "H130 AFM — Ditching / Emergency Landing on Water"
+      }
+    ]
+  },
+  {
+    "catalogId": "0292",
+    "id": "0292",
+    "displayTerm": "Forced Landing",
+    "term": "forced landing",
+    "slug": "forced-landing",
+    "category": "Emergency",
+    "meaningEn": "Forced Landing is an emergency landing performed when the aircraft cannot continue safe flight to a planned aerodrome, requiring immediate selection of a suitable landing site, Mayday declaration with nature of emergency and intentions, and coordination with ATC for emergency services and possible SAR if the site is remote.",
+    "meaningPt": "Pouso forçado / Forced Landing.\n\nPouso de emergência realizado quando a aeronave não pode continuar o voo seguro até um aeródromo planejado, exigindo seleção imediata de um local adequado, declaração de Mayday com a natureza da emergência e as intenções, e coordenação com o ATC para serviços de emergência e possível SAR se o local for remoto.",
+    "whenUsed": "When a forced landing is required, the crew should:",
+    "example": "Control: ANAC123, roger Mayday forced landing, confirm position and souls on board.",
+    "sayPhrase": "ANAC123, position one five miles west Sorocaba, souls four, forced landing.",
+    "icaoQuestion": "You have an engine failure over terrain and will make a forced landing. Describe your actions and radio calls.?",
+    "icaoSpeakText": "I would fly the forced landing or autorotation profile, select the best available landing site, and declare Mayday with the nature of the failure, that I am making a forced landing, and my position and souls on board. After landing I would secure the aircraft, check for fire and injuries, and report status to ATC requesting assistance if needed.",
+    "missionBrief": "Today's lesson covers Forced Landing — an immediate landing off-airport or at the nearest suitable site when continued flight is impossible or unsafe, typically after engine failure, fire, or critical systems loss. For H130 helicopter operations over Brazilian terrain — cities, mountains, jungle, and offshore approaches — forced landing is a Critical Part 2 and Part 3 skill tightly linked to autorotation and site selection.\n\nForced landing is highly relevant for helicopters. Examiners expect Mayday, nature of failure, intentions, and position — then a clear post-landing status.\n\nFor ICAO Delta / Captain Delta training, master the radio structure that runs in parallel with flying the forced landing profile.\n\nUnderstanding forced landing in ICAO-standard English is essential for Part 2 and Part 3 proficiency.",
+    "captainTeaching": "Forced landing is the helicopter captain's core emergency: site, profile, radio.\n\nEnter the procedure. Pick the field. Then speak.\n\nMayday. Failure. Forced landing. Position. Souls.\n\nAfter landing: status. Fire or no fire. Injuries or okay. Assistance required.\n\nDo not confuse forced landing with ditching. Forced landing is the land/off-airport case. Ditching is water. Know both phrases. Use the correct one.\n\nIn Brazilian H130 ops — terrain, wires, confined areas — forced landing English must be as sharp as your autorotation.\n\nFly it. Say it. Survive it.",
+    "operationalContext": "You are an H130 en route over rural São Paulo state when the engine fails. You enter autorotation and pick a field.\n\nYou transmit:\n\nMayday Mayday Mayday, Control, ANAC123, engine failure, forced landing, position fifteen miles west of Sorocaba, souls four.\n\nYou complete the autorotation into the field. After touchdown:\n\nANAC123, forced landing complete, no fire, all souls okay, request assistance.\n\nATC vectors local responders. Your call turned a silent crash into a located emergency.\n\nOver water the parallel skill is ditching; over terrain it is forced landing. Both are Critical for the H130.",
+    "sayItCoach": "Mayday Mayday Mayday, ANAC123, engine failure, forced landing.",
+    "icaoModelAnswer": "I would fly the forced landing or autorotation profile, select the best available landing site, and declare Mayday with the nature of the failure, that I am making a forced landing, and my position and souls on board. After landing I would secure the aircraft, check for fire and injuries, and report status to ATC requesting assistance if needed.",
+    "memoryTrick": "**FORCED** — **F**ly the profile first, **O**pen the Mayday, **R**eport failure type, **C**all forced landing and position, **E**xit after landing with status, **D**emand assistance if needed.",
+    "operationalMeaning": "When a forced landing is required, the crew should:\n\nForced landing reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Control: ANAC123, roger Mayday forced landing, confirm position and souls on board.",
+      "Control: ANAC123, SAR and emergency services coordinating, squawk seven seven zero zero.",
+      "Control: ANAC123, say nature of failure and landing site if known.",
+      "Approach: ANAC123, radar contact last position, rescue advised.",
+      "Control: ANAC123, report when landed if able."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, position one five miles west Sorocaba, souls four, forced landing.",
+      "ANAC123, squawking seven seven zero zero, engine failure.",
+      "ANAC123, engine failure, landing in open field, forced landing.",
+      "ANAC123, roger rescue advised, continuing forced landing.",
+      "ANAC123, landed, no fire, all souls okay, request assistance."
+    ],
+    "brazilianMistakes": "- ❌ Making a long radio speech during autorotation instead of flying.  \n  ✔ Short Mayday; aviate first.\n\n- ❌ Saying \"ditching\" when landing in a field.  \n  ✔ Use forced landing for land; ditching for water.\n\n- ❌ Not giving position, hoping radar will \"see everything.\"  \n  ✔ Give the best position you can — distance and bearing from a known point.\n\n- ❌ Going silent after a successful touchdown.  \n  ✔ Report landed, status, and assistance required.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Engine Failure, Forced Landing\n\n**Pronunciation:** AY-nak WUN TOO THREE, EN-jin FAYL-yer, FORST LAN-ding\n\n**Word Stress**\n\n- Engine → EN-jin\n- Failure → FAYL-yer\n- Forced → FORST\n- Landing → LAN-ding\n\nPractice:\n\nEngine failure... forced landing... position fifteen miles west.\n\nTogether:\n\nMayday Mayday Mayday, ANAC123, engine failure, forced landing.",
+    "relatedConcepts": [
+      "Ditching",
+      "Engine Failure",
+      "Autorotation",
+      "Mayday",
+      "Search and Rescue",
+      "Emergency Services"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 12 — Search and Rescue"
+      },
+      {
+        "label": "SKYbrary — Forced Landing / Engine Failure",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Landings",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "H130 AFM — Autorotation / Emergency Landing"
+      }
+    ]
+  },
+  {
+    "catalogId": "0293",
+    "id": "0293",
+    "displayTerm": "Overweight Landing",
+    "term": "overweight landing",
+    "slug": "overweight-landing",
+    "category": "Emergency",
+    "meaningEn": "Overweight Landing is a landing performed above the aircraft's maximum certified landing weight, typically after an emergency return or diversion when fuel cannot be reduced sufficiently, requiring ATC notification, possible emergency services standby, a careful landing technique, and post-landing inspection of the landing gear and structure as required by the AFM and operator procedures.",
+    "meaningPt": "Pouso com peso acima do máximo / Overweight Landing.\n\nPouso realizado acima do peso máximo certificado de pouso da aeronave, tipicamente após retorno de emergência ou desvio quando o combustível não pode ser reduzido o suficiente, exigindo notificação ao ATC, possível prontidão dos serviços de emergência, técnica de pouso cuidadosa e inspeção pós-pouso do trem de pouso e da estrutura conforme o AFM e os procedimentos do operador.",
+    "whenUsed": "When an overweight landing is required, the crew should:",
+    "example": "Approach: ANAC123, roger Pan Pan overweight landing, expect runway two eight left, emergency services alerted.",
+    "sayPhrase": "ANAC123, runway two eight left, overweight landing, emergency services alerted.",
+    "icaoQuestion": "You must return and land above maximum landing weight. What do you tell ATC?",
+    "icaoSpeakText": "I would advise ATC that I am returning and will make an overweight landing, request a suitable runway and firefighters standing by if required, then after landing request a runway or aircraft inspection as per procedures and remain on the runway until cleared to taxi.",
+    "missionBrief": "Today's lesson covers Overweight Landing — landing above the maximum certified landing weight, usually after an early return, diversion, or emergency when fuel dumping or burn-off is impossible or incomplete. For H130 operations, strict airline-style overweight landings are less common than on large jets, but the ICAO English, ATC coordination, and inspection-after-landing logic remain High-priority exam and professional skills — and heavy returns with limited fuel burn still apply.\n\nOverweight landing is a High Part 2 and Part 3 topic. Controllers need to know you will land heavy so RFF can stand by and the runway can be inspected after rollout.\n\nFor ICAO Delta / Captain Delta training in Brazil, master the phraseology, then transfer the same clear \"landing overweight, request inspection\" structure to helicopter heavy returns when relevant.\n\nUnderstanding overweight landing in ICAO-standard English is essential for Part 2 and Part 3 proficiency.",
+    "captainTeaching": "Overweight landing is honesty about weight and risk.\n\nIf you will land heavy, say so early. Ask for the suitable runway. Ask for firefighters if procedure calls for it.\n\nFly smooth. Do not float forever chasing a perfect touchdown while eating runway.\n\nAfter landing, request inspection when required. Do not taxi away from a possible gear problem because you are embarrassed about the weight.\n\nFor ICAO exams, speak the classic overweight return cleanly. For the H130, transfer the same discipline to any landing that needs RFF standby and post-landing check.\n\nWeight is a number. Communication is the safety net.",
+    "operationalContext": "Exam-style scenario: you return shortly after departure with a systems problem. Landing weight is above maximum landing weight. No fuel dump system.\n\nYou transmit:\n\nPan Pan Pan Pan Pan Pan, Approach, ANAC123, returning, overweight landing, request longest runway and firefighters standing by.\n\nApproach sequences you. Tower confirms RFF ready. You fly a smooth touchdown.\n\nAfter landing:\n\nANAC123, overweight landing complete, request runway inspection, remaining on runway.\n\nFor H130 reality, you may not quote jet landing weights — but you still report abnormal landing conditions and request inspection when the AFM or event requires it.",
+    "sayItCoach": "ANAC123, overweight landing complete, request runway inspection.",
+    "icaoModelAnswer": "I would advise ATC that I am returning and will make an overweight landing, request a suitable runway and firefighters standing by if required, then after landing request a runway or aircraft inspection as per procedures and remain on the runway until cleared to taxi.",
+    "memoryTrick": "**HEAVY** — **H**erald return early, **E**xplain overweight landing, **A**sk suitable runway/RFF, **V**erify stable approach, **Y**ield to inspection before taxi.",
+    "operationalMeaning": "When an overweight landing is required, the crew should:\n\nOverweight landing reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger Pan Pan overweight landing, expect runway two eight left, emergency services alerted.",
+      "Tower: ANAC123, firefighters standing by, wind three zero zero at eight, cleared to land.",
+      "Tower: ANAC123, after landing remain on the runway for inspection.",
+      "Tower: ANAC123, say souls on board and fuel remaining.",
+      "Ground: ANAC123, runway inspection in progress, hold position."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, runway two eight left, overweight landing, emergency services alerted.",
+      "ANAC123, cleared to land, firefighters standing by.",
+      "ANAC123, wilco, remaining on the runway for inspection.",
+      "ANAC123, souls eight, fuel two hours.",
+      "ANAC123, holding position, runway inspection in progress."
+    ],
+    "brazilianMistakes": "- ❌ Landing overweight without telling ATC until after touchdown.  \n  ✔ Advise overweight landing on the approach frequency early.\n\n- ❌ Taxiing clear immediately when inspection is required.  \n  ✔ Remain on the runway until inspection is complete if so instructed.\n\n- ❌ Flying an unstable approach because \"we are heavy and in a hurry.\"  \n  ✔ Heavy landings need the most stable approach you can fly.\n\n- ❌ Treating the topic as irrelevant to helicopters and skipping the English.  \n  ✔ Learn exam phraseology; transfer inspection logic to H130 abnormal landings.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Overweight Landing, Request Runway Inspection\n\n**Pronunciation:** AY-nak WUN TOO THREE, OH-ver-wayt LAN-ding, reh-KWEST RUN-way in-SPEK-shun\n\n**Word Stress**\n\n- Overweight → OH-ver-wayt\n- Landing → LAN-ding\n- Runway → RUN-way\n- Inspection → in-SPEK-shun\n\nPractice:\n\nOverweight landing... request runway inspection.\n\nTogether:\n\nANAC123, overweight landing complete, request runway inspection.",
+    "relatedConcepts": [
+      "Priority Landing",
+      "Emergency Services",
+      "Diversion",
+      "Rejected Take-Off",
+      "Hard Landing",
+      "Runway Inspection"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Urgency / Aerodrome Operations",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Overweight Landing",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Overweight Landings (as applicable)",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "Aircraft AFM — Overweight Landing / Inspection"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "H130 AFM — Landing Limitations as applicable"
+      }
+    ]
+  },
+  {
+    "catalogId": "0294",
+    "id": "0294",
+    "displayTerm": "Overrun Evacuation",
+    "term": "overrun evacuation",
+    "slug": "overrun-evacuation",
+    "category": "Emergency",
+    "meaningEn": "Overrun Evacuation is the emergency evacuation of an aircraft after it has overrun the runway end or stopway during take-off or landing, requiring immediate notification to ATC, fire fighting response, passenger evacuation away from fire and hazards, and accountability of souls on board.",
+    "meaningPt": "Evacuação após overrun / Overrun Evacuation.\n\nEvacuação de emergência de uma aeronave após ultrapassar o fim da pista ou stopway durante decolagem ou pouso, exigindo notificação imediata ao ATC, resposta de combate a incêndio, evacuação dos passageiros para longe de fogo e riscos, e prestação de contas das almas a bordo.",
+    "whenUsed": "When an overrun leads to evacuation, the crew should:",
+    "example": "Tower: ANAC123, roger Mayday overrun, firefighters rolling to the overrun area.",
+    "sayPhrase": "ANAC123, roger, firefighters to the overrun, evacuating.",
+    "icaoQuestion": "You overrun the runway on landing and must evacuate because of smoke. What do you tell ATC?",
+    "icaoSpeakText": "I would declare Mayday, report runway overrun, state that we are evacuating, mention smoke or fire status, and request firefighters. When evacuation is complete I would report that all persons are clear of the aircraft and whether there is fire.",
+    "missionBrief": "Today's lesson covers Overrun Evacuation — emergency evacuation after the aircraft overruns the runway end during take-off or landing, often with possible fire, obstacles, or soft ground. For H130 operations, classic high-speed runway overruns are less common than on jets, but the ICAO English for overrun, stop, and evacuate remains High-priority exam material — and helicopter rejected take-off or landing excursions still need the same clear status calls.\n\nOverrun evacuation is a High Part 2 and Part 3 topic. ATC must stop other traffic, alert RFF, and know whether people are leaving the aircraft into the overrun area.\n\nFor ICAO Delta / Captain Delta training in Brazil, master the phraseology, then map it to any excursion and evacuation scenario on airport surfaces.\n\nUnderstanding overrun evacuation in ICAO-standard English is essential for Part 2 and Part 3 proficiency.",
+    "captainTeaching": "Overrun evacuation is two facts in one call: you left the runway, and people are leaving the aircraft.\n\nSay overrun. Say evacuating. Say fire or no fire. Request firefighters.\n\nDo not only say \"we had a problem at the end.\" RFF needs the overrun location and the evacuation state.\n\nAfter people are out, report evacuation complete and souls if you can account for them.\n\nFor the H130, you may never do a jet-style high-speed overrun — but excursion and evacuate English still belongs in your toolkit for airport operations and exams.\n\nLocation. Evacuation. Fire status. That is the order.",
+    "operationalContext": "Exam-style scenario: landing long and fast, you overrun the end of the runway into the RESA. Smoke appears from the brakes or gear.\n\nYou transmit:\n\nMayday Mayday Mayday, Tower, ANAC123, runway overrun, evacuating, request firefighters.\n\nTower stops arrivals. RFF rolls to the overrun. You evacuate away from smoke.\n\nWhen clear:\n\nANAC123, evacuation complete, no fire visible, all souls accounted for.\n\nFor H130 training, a rejected take-off excursion or landing roll problem uses the same radio skeleton: where you are, evacuating or not, fire or not, firefighters.",
+    "sayItCoach": "Mayday Mayday Mayday, ANAC123, runway overrun, evacuating.",
+    "icaoModelAnswer": "I would declare Mayday, report runway overrun, state that we are evacuating, mention smoke or fire status, and request firefighters. When evacuation is complete I would report that all persons are clear of the aircraft and whether there is fire.",
+    "memoryTrick": "**OVERRUN** — **O**ut past the end, **V**oice Mayday, **E**vacuating stated clearly, **R**equest firefighters, **R**eport fire/smoke, **U**pdate when complete, **N**umber the souls if known.",
+    "operationalMeaning": "When an overrun leads to evacuation, the crew should:\n\nOverrun evacuation reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Tower: ANAC123, roger Mayday overrun, firefighters rolling to the overrun area.",
+      "Tower: ANAC123, confirm evacuating, say if fire.",
+      "Tower: ANAC123, all traffic stopped, remain on frequency if able.",
+      "Tower: ANAC123, say souls on board and evacuation status.",
+      "Ground: ANAC123, RFF on scene, report when all persons clear of the aircraft."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, roger, firefighters to the overrun, evacuating.",
+      "ANAC123, evacuating, smoke, no open fire visible.",
+      "ANAC123, wilco, remaining on frequency.",
+      "ANAC123, souls one two zero, evacuation in progress.",
+      "ANAC123, evacuation complete, all persons clear of the aircraft."
+    ],
+    "brazilianMistakes": "- ❌ Saying only \"we went off the runway\" without \"evacuating.\"  \n  ✔ State overrun and evacuating so RFF knows people are outside.\n\n- ❌ Evacuating toward visible fire or into active traffic without direction.  \n  ✔ Command exits away from fire and hazards; follow CRM.\n\n- ❌ Not updating when evacuation is complete.  \n  ✔ Report evacuation complete and souls if accounted for.\n\n- ❌ Ignoring the topic because H130 overruns are rare.  \n  ✔ Learn exam English; transfer to any surface excursion.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Runway Overrun, Evacuating\n\n**Pronunciation:** AY-nak WUN TOO THREE, RUN-way OH-ver-run, ih-VAK-yoo-ay-ting\n\n**Word Stress**\n\n- Runway → RUN-way\n- Overrun → OH-ver-run\n- Evacuating → ih-VAK-yoo-ay-ting\n\nPractice:\n\nRunway overrun... evacuating... request firefighters.\n\nTogether:\n\nMayday Mayday Mayday, ANAC123, runway overrun, evacuating.",
+    "relatedConcepts": [
+      "Evacuation",
+      "Escape Slide Deployed",
+      "Rejected Take-Off",
+      "Emergency Services",
+      "Landing Gear Collapse",
+      "Mayday"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Aerodrome Emergencies",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9137 — Airport Services (RFF)"
+      },
+      {
+        "label": "SKYbrary — Runway Overrun / Evacuation",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Communications",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Aircraft AFM — Evacuation; H130 AFM — Emergency Egress as applicable"
+      }
+    ]
+  },
+  {
+    "catalogId": "0295",
+    "id": "0295",
+    "displayTerm": "Fuel Leak",
+    "term": "fuel leak",
+    "slug": "fuel-leak",
+    "category": "Emergency",
+    "meaningEn": "Fuel Leak is an unintended escape of fuel from the aircraft fuel system, requiring immediate assessment of fire risk and remaining endurance, appropriate urgency declaration to ATC, diversion or precautionary landing as required, and coordination with emergency services to manage fire hazard on arrival.",
+    "meaningPt": "Vazamento de combustível / Fuel Leak.\n\nEscape não intencional de combustível do sistema de combustível da aeronave, exigindo avaliação imediata do risco de fogo e da autonomia restante, declaração apropriada de urgência ao ATC, desvio ou pouso preventivo conforme necessário, e coordenação com os serviços de emergência para gerenciar o risco de fogo na chegada.",
+    "whenUsed": "When a fuel leak is detected, the crew should:",
+    "example": "Approach: ANAC123, roger Mayday fuel leak, priority approved, emergency services alerted.",
+    "sayPhrase": "ANAC123, priority approved, fuel leak, emergency services alerted.",
+    "icaoQuestion": "You discover a fuel leak in flight. What do you do and what do you say to ATC?",
+    "icaoSpeakText": "I would assess fire risk and remaining fuel, declare the appropriate urgency, report fuel leak, and state that I am diverting or making a precautionary landing. I would request priority and firefighters, advise whether there is fire, and after landing report status and request that vehicles remain clear until firefighters secure the area.",
+    "missionBrief": "Today's lesson covers Fuel Leak — an unintended loss of fuel from tanks, lines, or vents, creating fire risk, endurance loss, and possible environmental hazard. For H130 helicopter operations in Brazil — including offshore and remote sectors — a fuel leak is a Critical Part 2 and Part 3 emergency: declare early, land as soon as practicable, and keep ignition sources and RFF in the picture.\n\nFuel leak is Critical vocabulary. Examiners expect clear nature of emergency, intentions to land or divert, and requests for firefighters when landing with a known leak.\n\nFor ICAO Delta / Captain Delta training, master Mayday or Pan Pan fuel-leak phraseology and the post-landing \"remain clear / no smoking / firefighters\" updates.\n\nUnderstanding fuel leak in ICAO-standard English is essential for Part 2 and Part 3 proficiency.",
+    "captainTeaching": "Fuel leak is fire waiting for a spark — treat the radio that way.\n\nSay fuel leak. Say where you are going. Request firefighters. Say fire or no fire.\n\nMayday when fire risk or endurance is critical. Pan Pan only if the leak is minor and fully controlled by procedure — when in doubt, escalate.\n\nAfter landing, keep people and vehicles away until RFF says otherwise. Do not be polite and wave a follow-me into a fuel puddle.\n\nFor H130 crews in Brazil, fuel is life over water and terrain. A leak shortens both the flight and the options. Speak early.\n\nLand. Secure. Remain clear. That is the sequence.",
+    "operationalContext": "You smell fuel strongly in an H130 after a pump or line anomaly. Quantity is dropping faster than burn. You are near Florianópolis.\n\nYou transmit:\n\nMayday Mayday Mayday, Approach, ANAC123, fuel leak, diverting Florianópolis, request priority landing and firefighters.\n\nApproach clears you. On short final:\n\nANAC123, fuel leak, no fire, request firefighters standing by.\n\nAfter landing you shut down as required and report:\n\nANAC123, landed, fuel leak continuing, no fire, request remain clear, firefighters.\n\nOver water, the same call may precede a precautionary landing or ditching decision if endurance collapses — Critical English either way.",
+    "sayItCoach": "Mayday Mayday Mayday, ANAC123, fuel leak, request firefighters.",
+    "icaoModelAnswer": "I would assess fire risk and remaining fuel, declare the appropriate urgency, report fuel leak, and state that I am diverting or making a precautionary landing. I would request priority and firefighters, advise whether there is fire, and after landing report status and request that vehicles remain clear until firefighters secure the area.",
+    "memoryTrick": "**LEAK** — **L**oud Mayday/Pan as required, **E**xplain fuel leak and fire status, **A**im for nearest suitable landing, **K**eep RFF ready and area clear after landing.",
+    "operationalMeaning": "When a fuel leak is detected, the crew should:\n\nFuel leak reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger Mayday fuel leak, priority approved, emergency services alerted.",
+      "Tower: ANAC123, firefighters standing by, cleared to land, wind calm.",
+      "Tower: ANAC123, confirm no fire, say fuel remaining and souls on board.",
+      "Tower: ANAC123, after landing remain on the runway, RFF approaching.",
+      "Ground: ANAC123, remain in position, no vehicles approaching until firefighters secure the area."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, priority approved, fuel leak, emergency services alerted.",
+      "ANAC123, cleared to land, firefighters standing by.",
+      "ANAC123, no fire, fuel remaining two zero minutes, souls four.",
+      "ANAC123, wilco, remaining on the runway, RFF approaching.",
+      "ANAC123, remaining in position, no vehicles, fuel leak, no fire."
+    ],
+    "brazilianMistakes": "- ❌ Continuing to destination with a confirmed leak to \"save the schedule.\"  \n  ✔ Land as soon as practicable; declare and divert.\n\n- ❌ Saying only \"I have a fuel problem\" without \"fuel leak.\"  \n  ✔ Use the standard phrase: fuel leak.\n\n- ❌ Not requesting firefighters for landing with a known leak.  \n  ✔ Request firefighters standing by.\n\n- ❌ Allowing ground vehicles near pooled fuel after landing.  \n  ✔ Request remain clear until RFF secures the area.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Fuel Leak, Request Firefighters\n\n**Pronunciation:** AY-nak WUN TOO THREE, FYOO-ul LEEK, reh-KWEST FYR-fy-terz\n\n**Word Stress**\n\n- Fuel → FYOO-ul\n- Leak → LEEK\n- Request → reh-KWEST\n- Firefighters → FYR-fy-terz\n\nPractice:\n\nFuel leak... no fire... request firefighters.\n\nTogether:\n\nMayday Mayday Mayday, ANAC123, fuel leak, request firefighters.",
+    "relatedConcepts": [
+      "Emergency Services",
+      "Mayday",
+      "Priority Landing",
+      "Engine Fire",
+      "Hazmat on Board",
+      "Ditching / Forced Landing"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress and Urgency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Fuel Leak / Fuel System Failures",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Communications",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Aircraft QRH — Fuel Leak; H130 AFM — Fuel System Emergencies"
+      },
+      {
+        "label": "Operator SOPs — Precautionary Landing with Fuel Leak"
+      }
+    ]
+  },
+  {
+    "catalogId": "0296",
+    "id": "0296",
+    "displayTerm": "Fuel Imbalance",
+    "term": "fuel imbalance",
+    "slug": "fuel-imbalance",
+    "category": "Aircraft Systems",
+    "meaningEn": "Fuel Imbalance is a significant difference in fuel quantity between tanks or sides of the aircraft that may affect lateral balance, usable fuel, and range, requiring crew monitoring, published transfer or balancing procedures when available, and prompt notification to ATC if the imbalance limits performance, requires diversion, or becomes an urgency situation.",
+    "meaningPt": "Desbalanceamento de combustível / Fuel Imbalance.\n\nDiferença significativa de quantidade de combustível entre tanques ou lados da aeronave que pode afetar o equilíbrio lateral, o combustível utilizável e o alcance, exigindo monitoramento pela tripulação, procedimentos publicados de transferência ou balanceamento quando disponíveis, e notificação rápida ao ATC se o desbalanceamento limitar o desempenho, exigir desvio ou se tornar uma situação de urgência.",
+    "whenUsed": "When fuel imbalance is detected, the crew should:",
+    "example": "Control: ANAC123, roger Pan Pan fuel imbalance, say intentions and fuel remaining.",
+    "sayPhrase": "Pan Pan Pan, Control, ANAC123, fuel imbalance, request return to land.",
+    "icaoQuestion": "You notice a significant fuel imbalance during cruise. What do you do, and what do you say to ATC?",
+    "icaoSpeakText": "I would confirm the fuel quantities, apply the fuel imbalance or transfer procedure from the checklist, and assess whether I can continue safely. If the imbalance affects handling or usable fuel, I would declare Pan Pan, report fuel imbalance, and request return or diversion as required. If usable fuel becomes critically low, I would upgrade to Mayday and request immediate priority landing. I would provide souls and fuel when asked. On a helicopter, I would use the same structure for asymmetric tank quantities or unusable fuel affecting endurance.",
+    "missionBrief": "Today's lesson covers Fuel Imbalance — an unequal fuel quantity between tanks that can affect lateral balance, range planning, and system management, requiring monitoring, possible transfer or crossfeed procedures, and clear ATC communication if performance or diversion becomes necessary. Multi-tank imbalance language is common on ICAO exams; for H130 crews, map the same English to fuel-quantity asymmetry, unusable fuel, and range or center-of-gravity concerns you may actually face.\n\nFuel imbalance is High priority because it can degrade handling, reduce usable fuel, and force an early return if transfer is unavailable.\n\nFor ICAO Delta / Captain Delta training in Brazil, master ICAO phraseology for fuel imbalance, then transfer the reporting structure to helicopter fuel-system anomalies under DECEA operations.\n\nUnderstanding how to discuss fuel imbalance in ICAO-standard English is essential for Part 2 and Part 3 proficiency.",
+    "captainTeaching": "Fuel imbalance is a systems problem that becomes a handling and range problem if you ignore it.\n\nConfirm the gauges. Apply the published balancing or transfer steps. Then decide: continue, return, or divert. Do not wait until the aircraft feels wrong in cruise to tell ATC.\n\nSay \"fuel imbalance\" — not only \"fuel problem.\" Controllers and examiners need the precise picture.\n\nIn the H130, your fuel system may be simpler than a transport jet, but asymmetric quantity and unusable fuel still change your plan. Honest English buys you options.\n\nBrazilian examiners want procedure plus vocabulary. Give them both.",
+    "operationalContext": "Exam-style scenario: en route toward Florianópolis, left tank reads significantly lower than right. Lateral trim feels off. Transfer is attempted per procedure.\n\nYou assess that continuation to destination is no longer prudent and transmit:\n\nPan Pan Pan, Control, ANAC123, fuel imbalance, requesting return to land.\n\nIf usable fuel becomes critically low because of the imbalance:\n\nMayday Mayday Mayday, ANAC123, fuel imbalance, low usable fuel, request immediate priority landing.\n\nFor H130 reality, replace twin-tank jet language with your actual tank layout — keep the urgency logic identical: name the problem, state the effect, ask for what you need.",
+    "sayItCoach": "Pan Pan Pan, ANAC123, fuel imbalance, request return to land.",
+    "icaoModelAnswer": "I would confirm the fuel quantities, apply the fuel imbalance or transfer procedure from the checklist, and assess whether I can continue safely. If the imbalance affects handling or usable fuel, I would declare Pan Pan, report fuel imbalance, and request return or diversion as required. If usable fuel becomes critically low, I would upgrade to Mayday and request immediate priority landing. I would provide souls and fuel when asked. On a helicopter, I would use the same structure for asymmetric tank quantities or unusable fuel affecting endurance.",
+    "memoryTrick": "**BALANCE** — **B**rief quantities early, **A**pply transfer checklist, **L**imit continuation if unsafe, **A**dvise ATC with Pan Pan, **N**ame fuel imbalance clearly, **C**hoose return or divert, **E**ndurance first — land with margin.",
+    "operationalMeaning": "When fuel imbalance is detected, the crew should:\n\nFuel imbalance reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Control: ANAC123, roger Pan Pan fuel imbalance, say intentions and fuel remaining.",
+      "Control: ANAC123, return approved, turn left heading two seven zero, descend four thousand.",
+      "Approach: ANAC123, priority handling approved, expect runway one seven.",
+      "Approach: ANAC123, say souls on board and fuel remaining.",
+      "Tower: ANAC123, equipment standing by, advise if lateral control is affected."
+    ],
+    "pilotReadbacks": [
+      "Pan Pan Pan, Control, ANAC123, fuel imbalance, request return to land.",
+      "Mayday Mayday Mayday, ANAC123, fuel imbalance, low usable fuel, request immediate priority landing.",
+      "ANAC123, left heading two seven zero, descending four thousand, returning.",
+      "ANAC123, souls four, fuel forty minutes usable.",
+      "ANAC123, continuing priority approach runway one seven, request emergency services."
+    ],
+    "brazilianMistakes": "- ❌ Saying only \"problem with fuel\" without naming imbalance.  \n  ✔ Prefer \"fuel imbalance\" plus effect on range or control.\n\n- ❌ Continuing to destination without telling ATC when usable fuel is reduced.  \n  ✔ Request return or diversion early if the plan is no longer safe.\n\n- ❌ Confusing fuel imbalance with fuel leak without clarifying.  \n  ✔ If quantity drops abnormally, say imbalance and suspected leak if applicable.\n\n- ❌ Ignoring the topic because H130 tank layout differs from jets.  \n  ✔ Learn exam English; transfer quantity and endurance reporting to the helicopter.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Fuel Imbalance, Request Return to Land\n\n**Pronunciation:** AY-nak WUN TOO THREE, FYOOL IM-bal-ans, reh-KWEST rih-TURN too LAND\n\n**Word Stress**\n\n- Fuel → FYOOL\n- Imbalance → IM-bal-ans (stress on first syllable of imbalance)\n- Return → rih-TURN\n- Land → LAND\n\nPractice:\n\nFuel imbalance... request return to land.\n\nTogether:\n\nPan Pan Pan, ANAC123, fuel imbalance, request return to land.",
+    "relatedConcepts": [
+      "Fuel Transfer Failure",
+      "Crossfeed Failure",
+      "Low Fuel",
+      "Pan Pan / Mayday",
+      "Diversion",
+      "Priority Landing"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress and Urgency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Fuel Management / Fuel Imbalance",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Communications",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Aircraft QRH — Fuel Imbalance; H130 AFM — Fuel System Procedures"
+      }
+    ]
+  },
+  {
+    "catalogId": "0297",
+    "id": "0297",
+    "displayTerm": "Fuel Transfer Failure",
+    "term": "fuel transfer failure",
+    "slug": "fuel-transfer-failure",
+    "category": "Aircraft Systems",
+    "meaningEn": "Fuel Transfer Failure is the inability of the fuel system to transfer fuel between tanks as required, which may leave fuel unusable, create imbalance, or reduce endurance below the planned destination requirement, requiring checklist actions and clear notification to ATC of the malfunction, remaining usable fuel, and intentions.",
+    "meaningPt": "Falha de transferência de combustível / Fuel Transfer Failure.\n\nIncapacidade do sistema de combustível de transferir combustível entre tanques conforme necessário, o que pode deixar combustível inutilizável, criar desbalanceamento ou reduzir a autonomia abaixo do necessário para o destino planejado, exigindo ações de checklist e notificação clara ao ATC sobre a pane, o combustível utilizável restante e as intenções.",
+    "whenUsed": "When fuel transfer fails, the crew should:",
+    "example": "Control: ANAC123, roger Pan Pan fuel transfer failure, say usable fuel and intentions.",
+    "sayPhrase": "Pan Pan Pan, Control, ANAC123, fuel transfer failure, usable fuel limited, request diversion.",
+    "icaoQuestion": "Fuel transfer fails during cruise and usable fuel for destination is no longer assured. What do you do, and what do you say to ATC?",
+    "icaoSpeakText": "I would apply the fuel transfer failure checklist, stop ineffective transfer attempts as published, and recalculate usable fuel and range. I would declare Pan Pan, report fuel transfer failure with limited usable fuel, and request diversion or return to a suitable aerodrome. If usable fuel becomes critically low, I would declare Mayday and request immediate priority landing. I would provide souls and fuel when asked. On a helicopter, I would use the same structure whenever planned fuel cannot be used from a tank.",
+    "missionBrief": "Today's lesson covers Fuel Transfer Failure — inability to move fuel between tanks as required by procedure, which can leave usable fuel trapped, create or worsen imbalance, and force a change of destination or early landing. Transfer-failure vocabulary appears in ICAO systems and speaking tests; for H130 crews, treat this as essential exam English and map it to any inability to use or move fuel as planned.\n\nFuel transfer failure is Medium priority because the aircraft may still fly normally while the fuel plan quietly becomes unsafe.\n\nFor ICAO Delta / Captain Delta training in Brazil, master ICAO phraseology for fuel transfer failure, then transfer the same reporting structure to helicopter fuel-system limitations under Brazilian ops.\n\nUnderstanding fuel transfer failure in ICAO-standard English is essential for Part 2 and Part 3 proficiency.",
+    "captainTeaching": "Fuel transfer failure is quiet until it is not. The gauges may still show fuel — but not fuel you can burn where you need it.\n\nRecalculate usable fuel immediately. Do not protect the original destination out of habit.\n\nTell ATC \"fuel transfer failure\" and \"usable fuel limited.\" That combination explains why you need a shorter plan without sounding like an engine emergency.\n\nIn the H130, your transfer architecture may be limited or different from a jet. The English still matters for ICAO — and the decision logic still matters for line flying: if you cannot use the fuel, you do not have the fuel.",
+    "operationalContext": "Exam-style scenario: you attempt to transfer fuel to correct an imbalance. Transfer does not occur. Destination fuel is no longer assured.\n\nYou transmit:\n\nPan Pan Pan, Control, ANAC123, fuel transfer failure, usable fuel limited, request diversion to nearest suitable.\n\nIf endurance becomes critical:\n\nMayday Mayday Mayday, ANAC123, fuel transfer failure, low usable fuel, request immediate priority landing.\n\nFor H130 reality, keep the same logic — trapped or unusable fuel changes the plan even when the engine is running normally.",
+    "sayItCoach": "Pan Pan Pan, ANAC123, fuel transfer failure, usable fuel limited, request diversion.",
+    "icaoModelAnswer": "I would apply the fuel transfer failure checklist, stop ineffective transfer attempts as published, and recalculate usable fuel and range. I would declare Pan Pan, report fuel transfer failure with limited usable fuel, and request diversion or return to a suitable aerodrome. If usable fuel becomes critically low, I would declare Mayday and request immediate priority landing. I would provide souls and fuel when asked. On a helicopter, I would use the same structure whenever planned fuel cannot be used from a tank.",
+    "memoryTrick": "**TRANSFER** — **T**ry checklist once as published, **R**ecalculate usable fuel, **A**dvise ATC clearly, **N**ever count trapped fuel, **S**elect diversion early, **F**uel status in the call, **E**ndurance drives the plan, **R**eturn or divert — do not hope.",
+    "operationalMeaning": "When fuel transfer fails, the crew should:\n\nFuel transfer failure reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Control: ANAC123, roger Pan Pan fuel transfer failure, say usable fuel and intentions.",
+      "Control: ANAC123, diversion approved, turn right heading zero niner zero, nearest airport one two miles.",
+      "Approach: ANAC123, priority handling approved, expect runway two five.",
+      "Approach: ANAC123, say souls on board and fuel remaining.",
+      "Tower: ANAC123, equipment standing by, advise if fuel critical."
+    ],
+    "pilotReadbacks": [
+      "Pan Pan Pan, Control, ANAC123, fuel transfer failure, usable fuel limited, request diversion.",
+      "Mayday Mayday Mayday, ANAC123, fuel transfer failure, low usable fuel, request immediate priority landing.",
+      "ANAC123, right heading zero niner zero, diverting, twelve miles.",
+      "ANAC123, souls four, usable fuel twenty-five minutes.",
+      "ANAC123, continuing priority approach runway two five, request emergency services."
+    ],
+    "brazilianMistakes": "- ❌ Reporting only \"fuel imbalance\" when the root problem is transfer failure.  \n  ✔ Say \"fuel transfer failure\" and mention imbalance only if it is also present.\n\n- ❌ Continuing to destination because total fuel quantity still looks high.  \n  ✔ Plan on usable fuel, not trapped fuel.\n\n- ❌ Using vague \"fuel system problem\" without the standard term.  \n  ✔ Prefer \"fuel transfer failure\" plus usable-fuel status.\n\n- ❌ Skipping the topic because H130 transfer options are limited.  \n  ✔ Learn exam English; transfer unusable-fuel logic to the helicopter.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Fuel Transfer Failure, Request Diversion\n\n**Pronunciation:** AY-nak WUN TOO THREE, FYOOL TRANZ-fer FAYL-yer, reh-KWEST di-VER-zhun\n\n**Word Stress**\n\n- Fuel → FYOOL\n- Transfer → TRANZ-fer\n- Failure → FAYL-yer\n- Diversion → di-VER-zhun\n\nPractice:\n\nFuel transfer failure... request diversion.\n\nTogether:\n\nPan Pan Pan, ANAC123, fuel transfer failure, usable fuel limited, request diversion.",
+    "relatedConcepts": [
+      "Fuel Imbalance",
+      "Crossfeed Failure",
+      "Low Fuel",
+      "Diversion",
+      "Pan Pan / Mayday",
+      "Priority Landing"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress and Urgency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Fuel System Malfunctions",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Communications",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Aircraft QRH — Fuel Transfer; H130 AFM — Fuel System Procedures"
+      }
+    ]
+  },
+  {
+    "catalogId": "0298",
+    "id": "0298",
+    "displayTerm": "Crossfeed Failure",
+    "term": "crossfeed failure",
+    "slug": "crossfeed-failure",
+    "category": "Aircraft Systems",
+    "meaningEn": "Crossfeed Failure is the inability of the fuel crossfeed system to supply an engine from an alternate tank or to balance fuel between sides as designed, which may leave fuel unusable, worsen imbalance, or reduce options after an engine failure, requiring checklist actions and clear notification to ATC of the malfunction, usable fuel, and intentions.",
+    "meaningPt": "Falha de crossfeed / Crossfeed Failure.\n\nIncapacidade do sistema de crossfeed de abastecer um motor a partir de um tanque alternativo ou de balancear combustível entre os lados conforme projetado, o que pode deixar combustível inutilizável, agravar o desbalanceamento ou reduzir opções após falha de motor, exigindo ações de checklist e notificação clara ao ATC sobre a pane, o combustível utilizável e as intenções.",
+    "whenUsed": "When crossfeed fails, the crew should:",
+    "example": "Control: ANAC123, roger Pan Pan crossfeed failure, say intentions and usable fuel.",
+    "sayPhrase": "Pan Pan Pan, Control, ANAC123, crossfeed failure, fuel unusable on one side, request return.",
+    "icaoQuestion": "Crossfeed fails and fuel on one side becomes unusable for the planned flight. What do you do, and what do you say to ATC?",
+    "icaoSpeakText": "I would apply the crossfeed failure checklist, determine which fuel remains usable, and recalculate range. I would declare Pan Pan, report crossfeed failure with unusable fuel on one side, and request return or diversion as required. If usable fuel becomes critically low, I would declare Mayday and request immediate priority landing. I would provide souls and fuel when asked. On a helicopter, I would use the same structure for any fuel-feed failure that traps usable fuel.",
+    "missionBrief": "Today's lesson covers Crossfeed Failure — inability to feed an engine from the opposite tank or to balance fuel through the crossfeed system, which can leave fuel unusable on one side and complicate single-engine or imbalance scenarios. Crossfeed language is classic ICAO systems English; for H130 crews, APU and multi-engine jet crossfeed may not match your airframe — still learn the exam vocabulary and map it to any inability to feed usable fuel where needed.\n\nCrossfeed failure is Medium priority because the aircraft may continue normally until an engine or imbalance event makes crossfeed essential.\n\nFor ICAO Delta / Captain Delta training in Brazil, master ICAO phraseology for crossfeed failure, then transfer the reporting structure to helicopter fuel-feed limitations under DECEA operations.\n\nUnderstanding crossfeed failure in ICAO-standard English is essential for Part 2 and Part 3 proficiency.",
+    "captainTeaching": "Crossfeed is a backup path. When it fails, you lose options you hoped you would never need.\n\nDo not wait for an engine failure to discover you cannot crossfeed. If the valve fails in normal balancing, treat it as a plan-changer now.\n\nSay \"crossfeed failure\" clearly. Examiners listen for that exact term. Then add the operational effect: unusable fuel, imbalance, or limited endurance.\n\nIn the H130, classic crossfeed may be limited or absent — that does not excuse weak exam English. Learn the word. Transfer the decision: if you cannot feed usable fuel where you need it, change the destination early.",
+    "operationalContext": "Exam-style scenario: after selecting crossfeed to balance tanks, the valve fails to open. Fuel remains trapped on one side. You decide not to continue to destination.\n\nYou transmit:\n\nPan Pan Pan, Control, ANAC123, crossfeed failure, fuel unusable on one side, request return to land.\n\nIf the situation combines with low usable fuel:\n\nMayday Mayday Mayday, ANAC123, crossfeed failure, low usable fuel, request immediate priority landing.\n\nFor H130 reality, keep the same urgency structure for any feed failure that changes your fuel plan.",
+    "sayItCoach": "Pan Pan Pan, ANAC123, crossfeed failure, fuel unusable on one side, request return.",
+    "icaoModelAnswer": "I would apply the crossfeed failure checklist, determine which fuel remains usable, and recalculate range. I would declare Pan Pan, report crossfeed failure with unusable fuel on one side, and request return or diversion as required. If usable fuel becomes critically low, I would declare Mayday and request immediate priority landing. I would provide souls and fuel when asked. On a helicopter, I would use the same structure for any fuel-feed failure that traps usable fuel.",
+    "memoryTrick": "**CROSSFEED** — **C**onfirm valve status, **R**ecalculate usable fuel, **O**ffer ATC a clear report, **S**ay crossfeed failure exactly, **S**elect return early, **F**uel effect in the call, **E**ndurance drives urgency, **E**scalate to Mayday if critical, **D**ivert with margin.",
+    "operationalMeaning": "When crossfeed fails, the crew should:\n\nCrossfeed failure reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Control: ANAC123, roger Pan Pan crossfeed failure, say intentions and usable fuel.",
+      "Control: ANAC123, return approved, turn left heading two four zero, descend five thousand.",
+      "Approach: ANAC123, priority handling approved, expect runway one zero.",
+      "Approach: ANAC123, say souls on board and fuel remaining.",
+      "Tower: ANAC123, equipment standing by, advise if imbalance affects control."
+    ],
+    "pilotReadbacks": [
+      "Pan Pan Pan, Control, ANAC123, crossfeed failure, fuel unusable on one side, request return.",
+      "Mayday Mayday Mayday, ANAC123, crossfeed failure, low usable fuel, request immediate priority landing.",
+      "ANAC123, left heading two four zero, descending five thousand, returning.",
+      "ANAC123, souls four, usable fuel thirty-five minutes.",
+      "ANAC123, continuing priority approach runway one zero, request emergency services."
+    ],
+    "brazilianMistakes": "- ❌ Pronouncing \"crossfeed\" unclearly or avoiding the term.  \n  ✔ Practice \"CROSS-feed failure\" as a standard systems phrase.\n\n- ❌ Continuing as planned because total fuel quantity still looks adequate.  \n  ✔ Plan on usable, feedable fuel only.\n\n- ❌ Mixing crossfeed failure with transfer failure without clarifying.  \n  ✔ Use the correct system name; add effect if both apply.\n\n- ❌ Ignoring the topic because H130 may lack jet-style crossfeed.  \n  ✔ Learn exam English; transfer feed-path logic to the helicopter.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Crossfeed Failure, Request Return to Land\n\n**Pronunciation:** AY-nak WUN TOO THREE, CROSS-feed FAYL-yer, reh-KWEST rih-TURN too LAND\n\n**Word Stress**\n\n- Crossfeed → CROSS-feed\n- Failure → FAYL-yer\n- Return → rih-TURN\n- Land → LAND\n\nPractice:\n\nCrossfeed failure... request return to land.\n\nTogether:\n\nPan Pan Pan, ANAC123, crossfeed failure, fuel unusable on one side, request return.",
+    "relatedConcepts": [
+      "Fuel Imbalance",
+      "Fuel Transfer Failure",
+      "Engine Failure",
+      "Low Fuel",
+      "Diversion",
+      "Pan Pan / Mayday"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress and Urgency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Fuel System / Crossfeed",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Communications",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Aircraft QRH — Crossfeed; H130 AFM — Fuel System Procedures"
+      }
+    ]
+  },
+  {
+    "catalogId": "0299",
+    "id": "0299",
+    "displayTerm": "APU Fire",
+    "term": "apu fire",
+    "slug": "apu-fire",
+    "category": "Emergency",
+    "meaningEn": "APU Fire is a fire warning or confirmed fire involving the auxiliary power unit, requiring immediate crew actions per the fire checklist — typically APU shutdown, fire agent discharge if available, and prompt Mayday notification to ATC of the nature of the emergency and intentions for immediate landing or evacuation as required.",
+    "meaningPt": "Fogo no APU / APU Fire.\n\nAlerta de fogo ou fogo confirmado envolvendo a unidade auxiliar de potência (APU), exigindo ações imediatas da tripulação conforme o checklist de fogo — tipicamente desligamento do APU, descarga do agente extintor se disponível, e notificação Mayday rápida ao ATC sobre a natureza da emergência e as intenções de pouso imediato ou evacuação conforme necessário.",
+    "whenUsed": "When an APU fire occurs, the crew should:",
+    "example": "Tower: ANAC123, roger Mayday APU fire, cleared to land any runway, emergency services rolling.",
+    "sayPhrase": "Mayday Mayday Mayday, Tower, ANAC123, APU fire, request immediate landing, emergency services.",
+    "icaoQuestion": "You have an APU fire warning. What do you do, and what do you say to ATC?",
+    "icaoSpeakText": "I would immediately apply the APU fire checklist — shut down the APU and discharge the fire agent as published — while maintaining control of the aircraft. I would declare Mayday, report APU fire, and request immediate priority landing with emergency services. I would provide souls and fuel when asked and advise if smoke continues or evacuation is required after landing. On a helicopter without a typical APU, I would use the same Mayday structure for an auxiliary or compartment fire.",
+    "missionBrief": "Today's lesson covers APU Fire — fire warning or confirmed fire associated with the auxiliary power unit, requiring immediate checklist actions, possible APU shutdown and fire extinguishing, and clear Mayday communication to ATC. The H130 may have limited or no APU compared with transport jets — still teach ICAO exam English for APU fire, then transfer the same urgency structure to any auxiliary-power or compartment fire scenario you may face.\n\nAPU fire is Critical because fire on or near the airframe demands immediate action and unambiguous radio calls.\n\nFor ICAO Delta / Captain Delta training in Brazil, master ICAO phraseology for APU fire, then map the structure to helicopter fire emergencies under DECEA operations.\n\nUnderstanding APU fire in ICAO-standard English is essential for Part 2 and Part 3 proficiency.",
+    "captainTeaching": "APU fire is not a discussion topic — it is a Mayday topic.\n\nFly or secure the aircraft. Kill the APU per checklist. Discharge agent if published. Then say Mayday, APU fire, request immediate landing and emergency services.\n\nDo not downgrade fire language to \"APU problem\" or \"small smoke.\" If the checklist is APU fire, the radio call is APU fire.\n\nIn the H130, you may never see a classic APU fire warning. That does not remove the exam requirement. Learn the phrase. Transfer the Critical logic to any fire that threatens the airframe.\n\nBrazilian examiners expect Mayday discipline and precise fire vocabulary. Give them both.",
+    "operationalContext": "Exam-style scenario: on the ground or shortly after departure, APU fire warning illuminates. Checklist completed — APU shut down, agent discharged. Warning persists or smoke is present.\n\nYou transmit:\n\nMayday Mayday Mayday, Tower, ANAC123, APU fire, request immediate landing, emergency services.\n\nIf already airborne and returning:\n\nMayday Mayday Mayday, Departure, ANAC123, APU fire, returning immediately, request priority vectors and emergency services.\n\nFor H130 reality, use the same Mayday skeleton for any confirmed fire involving auxiliary equipment or a compartment — name the fire, ask for landing and services now.",
+    "sayItCoach": "Mayday Mayday Mayday, ANAC123, APU fire, request immediate landing, emergency services.",
+    "icaoModelAnswer": "I would immediately apply the APU fire checklist — shut down the APU and discharge the fire agent as published — while maintaining control of the aircraft. I would declare Mayday, report APU fire, and request immediate priority landing with emergency services. I would provide souls and fuel when asked and advise if smoke continues or evacuation is required after landing. On a helicopter without a typical APU, I would use the same Mayday structure for an auxiliary or compartment fire.",
+    "memoryTrick": "**APU FIRE** — **A**pply fire checklist now, **P**ull/shut APU as published, **U**se agent if required, **F**irst call is Mayday, **I**mmediate landing requested, **R**escue services asked for, **E**vacuate plan ready after landing.",
+    "operationalMeaning": "When an APU fire occurs, the crew should:\n\nAPU fire reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Tower: ANAC123, roger Mayday APU fire, cleared to land any runway, emergency services rolling.",
+      "Departure: ANAC123, turn left heading two seven zero, descend three thousand, priority return approved.",
+      "Approach: ANAC123, runway one seven, wind calm, emergency services standing by.",
+      "Approach: ANAC123, say souls on board and fuel remaining.",
+      "Tower: ANAC123, after landing vacate if able, advise if evacuating on the runway."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, Tower, ANAC123, APU fire, request immediate landing, emergency services.",
+      "Mayday Mayday Mayday, Departure, ANAC123, APU fire, returning immediately, request priority vectors.",
+      "ANAC123, left heading two seven zero, descending three thousand, returning.",
+      "ANAC123, souls four, fuel one hour.",
+      "ANAC123, cleared to land runway one seven, will advise if evacuating."
+    ],
+    "brazilianMistakes": "- ❌ Using Pan Pan for a confirmed APU fire.  \n  ✔ Fire on the aircraft is Mayday unless procedure and situation clearly say otherwise.\n\n- ❌ Saying only \"fire\" without locating APU.  \n  ✔ Prefer \"APU fire\" so ATC and rescue know the zone.\n\n- ❌ Delaying the radio call until after lengthy troubleshooting.  \n  ✔ Checklist and Mayday in parallel — do not wait to \"see if it goes out.\"\n\n- ❌ Skipping APU fire study because H130 APU is limited.  \n  ✔ Learn exam English; transfer fire Mayday logic to the helicopter.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, APU Fire, Request Immediate Landing\n\n**Pronunciation:** AY-nak WUN TOO THREE, AY-PEE-YOO FY-er, reh-KWEST ih-MEE-dee-ut LAND-ing\n\n**Word Stress**\n\n- APU → AY-PEE-YOO (spell each letter clearly)\n- Fire → FY-er\n- Immediate → ih-MEE-dee-ut\n- Landing → LAND-ing\n\nPractice:\n\nAPU fire... request immediate landing, emergency services.\n\nTogether:\n\nMayday Mayday Mayday, ANAC123, APU fire, request immediate landing, emergency services.",
+    "relatedConcepts": [
+      "APU Failure",
+      "Engine Fire",
+      "Mayday",
+      "Emergency Services",
+      "Priority Landing",
+      "Evacuation"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — APU Fire / Aircraft Fire",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Communications",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Aircraft QRH — APU Fire; H130 AFM — Fire Emergency Procedures"
+      }
+    ]
+  },
+  {
+    "catalogId": "0300",
+    "id": "0300",
+    "displayTerm": "APU Failure",
+    "term": "apu failure",
+    "slug": "apu-failure",
+    "category": "Aircraft Systems",
+    "meaningEn": "APU Failure is the loss of normal auxiliary power unit operation, which may remove electrical and/or pneumatic support used for engine start, air conditioning, or backup power, requiring checklist actions and clear notification to ATC or ground services when the failure affects start, taxi, departure delay, or need for external power.",
+    "meaningPt": "Falha do APU / APU Failure.\n\nPerda do funcionamento normal da unidade auxiliar de potência, o que pode remover suporte elétrico e/ou pneumático usado para partida de motor, ar-condicionado ou energia de reserva, exigindo ações de checklist e notificação clara ao ATC ou serviços de solo quando a falha afetar a partida, o táxi, o atraso na decolagem ou a necessidade de energia externa.",
+    "whenUsed": "When the APU fails, the crew should:",
+    "example": "Ground: ANAC123, roger APU failure, hold position, ground power arranged.",
+    "sayPhrase": "Ground, ANAC123, APU failure, request ground power, expect delay.",
+    "icaoQuestion": "The APU fails before engine start and you need external power. What do you do, and what do you say to ATC?",
+    "icaoSpeakText": "I would apply the APU failure checklist and determine whether ground power or an air start unit is required. I would advise ground control of APU failure, request ground power, and report an expected delay. If already taxiing, I would request return to stand. I would not declare Mayday for a simple APU failure unless it creates a genuine in-flight emergency. On a helicopter with limited or no APU, I would use the same clear structure when external power or start support is required.",
+    "missionBrief": "Today's lesson covers APU Failure — loss of auxiliary power unit function affecting electrical or pneumatic support on the ground or in flight, requiring checklist actions and clear ATC communication when the failure changes start capability, systems availability, or dispatch plans. The H130 may have limited or no APU compared with transport aircraft — still teach ICAO exam English for APU failure, then transfer the reporting structure to loss of auxiliary power or ground-power dependence.\n\nAPU failure is High priority because it can strand you on the ground, complicate engine start, or reduce electrical/bleed options before departure or after landing.\n\nFor ICAO Delta / Captain Delta training in Brazil, master ICAO phraseology for APU failure, then map the same clarity to helicopter systems limitations under Brazilian ops.\n\nUnderstanding APU failure in ICAO-standard English is essential for Part 2 and Part 3 proficiency.",
+    "captainTeaching": "APU failure is usually an operational problem, not a Mayday — unless it cascades into a real in-flight emergency.\n\nSay \"APU failure\" or \"APU inoperative.\" Then say what you need: ground power, air start, return to stand, or delay.\n\nDo not dramatize a failed APU into a fire call. Do not hide a failed APU when it blocks departure and occupies a taxiway.\n\nIn the H130, classic APU dependence may be rare. ICAO still expects the vocabulary. Learn it. Transfer the communication pattern: name the system loss, state the operational effect, ask for support.\n\nBrazilian examiners separate APU failure from APU fire. You must too.",
+    "operationalContext": "Exam-style scenario: at Congonhas, APU fails before engine start. You need ground power.\n\nYou transmit:\n\nGround, ANAC123, APU failure, request ground power and expect delay.\n\nIf already taxiing and unable to continue without APU support for systems:\n\nANAC123, APU failure, request return to stand for ground power.\n\nIf in flight the APU was providing backup electrical support and load shedding becomes necessary, advise ATC of the systems limitation and intentions — without inventing a fire.\n\nFor H130 reality, use the same clarity when you need external power or cannot complete a start as planned.",
+    "sayItCoach": "Ground, ANAC123, APU failure, request ground power, expect delay.",
+    "icaoModelAnswer": "I would apply the APU failure checklist and determine whether ground power or an air start unit is required. I would advise ground control of APU failure, request ground power, and report an expected delay. If already taxiing, I would request return to stand. I would not declare Mayday for a simple APU failure unless it creates a genuine in-flight emergency. On a helicopter with limited or no APU, I would use the same clear structure when external power or start support is required.",
+    "memoryTrick": "**APU FAIL** — **A**ssess start and power impact, **P**lain English not Mayday, **U**se ground power request, **F**lag delay early, **A**sk return to stand if taxiing, **I**solate from APU fire language, **L**earn it for ICAO even on H130.",
+    "operationalMeaning": "When the APU fails, the crew should:\n\nAPU failure reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Ground: ANAC123, roger APU failure, hold position, ground power arranged.",
+      "Ground: ANAC123, taxi via Alpha, return to stand two four approved.",
+      "Tower: ANAC123, roger delay for ground power, report ready for departure.",
+      "Approach: ANAC123, roger APU inoperative, say if any systems limitation for arrival.",
+      "Tower: ANAC123, after landing expect ground power on stand, advise if electrical limited."
+    ],
+    "pilotReadbacks": [
+      "Ground, ANAC123, APU failure, request ground power, expect delay.",
+      "ANAC123, APU failure, request return to stand for ground power.",
+      "ANAC123, taxi via Alpha, returning stand two four.",
+      "ANAC123, APU inoperative, no systems limitation for approach, will need ground power after landing.",
+      "ANAC123, ready for departure after ground power connected."
+    ],
+    "brazilianMistakes": "- ❌ Declaring Mayday for a routine APU failure on the ground.  \n  ✔ Use plain operational English unless fire or real distress exists.\n\n- ❌ Confusing APU failure with APU fire on the oral.  \n  ✔ Failure = systems loss; fire = Mayday emergency.\n\n- ❌ Occupying the taxiway without telling ATC you cannot depart.  \n  ✔ Request return to stand or hold and state APU failure early.\n\n- ❌ Skipping APU failure study because H130 APU is limited.  \n  ✔ Learn exam English; transfer external-power and delay language.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, APU Failure, Request Ground Power\n\n**Pronunciation:** AY-nak WUN TOO THREE, AY-PEE-YOO FAYL-yer, reh-KWEST GROUND POW-er\n\n**Word Stress**\n\n- APU → AY-PEE-YOO\n- Failure → FAYL-yer\n- Ground → GROUND\n- Power → POW-er\n\nPractice:\n\nAPU failure... request ground power, expect delay.\n\nTogether:\n\nGround, ANAC123, APU failure, request ground power, expect delay.",
+    "relatedConcepts": [
+      "APU Fire",
+      "Ground Power",
+      "Electrical Failure",
+      "Engine Start",
+      "Delay",
+      "Return to Stand"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Aerodrome Ground Movement",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — APU Malfunction",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Ground Operations Communications",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Aircraft AFM/QRH — APU Failure; H130 AFM — Electrical / Start Procedures"
+      }
+    ]
+  },
+  {
+    "catalogId": "0301",
+    "id": "0301",
+    "displayTerm": "Engine Fire",
+    "term": "engine fire",
+    "slug": "engine-fire",
+    "category": "Emergency",
+    "meaningEn": "Engine Fire is a fire warning or confirmed fire involving an aircraft engine, requiring immediate crew actions per the engine fire checklist — typically thrust idle or shutdown, fuel shutoff, and fire agent discharge as published — and prompt Mayday notification to ATC of the nature of the emergency and intentions for immediate landing.",
+    "meaningPt": "Fogo no motor / Engine Fire.\n\nAlerta de fogo ou fogo confirmado envolvendo um motor da aeronave, exigindo ações imediatas da tripulação conforme o checklist de fogo no motor — tipicamente redução ou corte de potência, fechamento de combustível e descarga do agente extintor conforme publicado — e notificação Mayday rápida ao ATC sobre a natureza da emergência e as intenções de pouso imediato.",
+    "whenUsed": "When an engine fire occurs, the crew should:",
+    "example": "Departure: ANAC123, roger Mayday engine fire, turn left heading two five zero, descend three thousand, nearest airport approved.",
+    "sayPhrase": "Mayday Mayday Mayday, Departure, ANAC123, engine fire, returning immediately, request priority landing and emergency services.",
+    "icaoQuestion": "You have an engine fire during climb. What do you do, and what do you say to ATC?",
+    "icaoSpeakText": "I would maintain control of the aircraft, apply the engine fire memory items and checklist — shut down the affected engine and discharge the fire agent as published — and declare Mayday. I would report engine fire, state that I am returning or landing immediately, and request priority landing with emergency services. I would provide souls and fuel when asked and advise if smoke continues or evacuation is required. On a helicopter, I would use the same Mayday structure with immediate landing urgency for a single-engine fire.",
+    "missionBrief": "Today's lesson covers Engine Fire — fire warning or confirmed fire associated with an engine, requiring immediate memory items and checklist actions, possible engine shutdown and fire extinguishing, and unambiguous Mayday communication to ATC. Highly relevant to H130 operations: engine fire is a Critical single-engine emergency for a helicopter, and ICAO English must state the fire, the engine, and the intention to land immediately.\n\nEngine fire is Critical because seconds matter for checklist discipline and for getting emergency services moving.\n\nFor ICAO Delta / Captain Delta training in Brazil, master ICAO phraseology for engine fire, then apply it directly to H130 turbine fire emergencies under DECEA operations.\n\nUnderstanding engine fire in ICAO-standard English is essential for Part 2 and Part 3 proficiency.",
+    "captainTeaching": "Engine fire is the call that must be clean under stress.\n\nFly first. Memory items second. Mayday third — but do not wait for a perfect checklist before the first Mayday if you can transmit while securing the engine.\n\nSay \"engine fire,\" not \"possible fire warning maybe.\" If you are running the engine fire checklist, ATC needs engine fire.\n\nIn the H130, one engine is the whole story. Power loss and fire share the same landing urgency. Keep the radio short so your hands stay on the flying.\n\nBrazilian examiners listen for Mayday, the malfunction name, and a clear landing intention. Deliver all three.",
+    "operationalContext": "Operational scenario: climbing out of Congonhas, engine fire warning. Memory items complete — engine secured, agent discharged.\n\nYou transmit:\n\nMayday Mayday Mayday, Departure, ANAC123, engine fire, returning immediately, request priority landing and emergency services.\n\nIf fire indications persist:\n\nMayday Mayday Mayday, ANAC123, engine fire, fire continuing, request immediate landing, emergency services.\n\nFor H130 reality, the same call applies with single-engine urgency — protect the landing site, keep the Mayday short, and fly the profile.",
+    "sayItCoach": "Mayday Mayday Mayday, ANAC123, engine fire, returning immediately, request priority landing and emergency services.",
+    "icaoModelAnswer": "I would maintain control of the aircraft, apply the engine fire memory items and checklist — shut down the affected engine and discharge the fire agent as published — and declare Mayday. I would report engine fire, state that I am returning or landing immediately, and request priority landing with emergency services. I would provide souls and fuel when asked and advise if smoke continues or evacuation is required. On a helicopter, I would use the same Mayday structure with immediate landing urgency for a single-engine fire.",
+    "memoryTrick": "**FIRE** — **F**ly the aircraft first, **I**tems of memory next, **R**adio Mayday engine fire, **E**mergency services and immediate landing.",
+    "operationalMeaning": "When an engine fire occurs, the crew should:\n\nEngine fire reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Departure: ANAC123, roger Mayday engine fire, turn left heading two five zero, descend three thousand, nearest airport approved.",
+      "Approach: ANAC123, priority landing runway one seven, emergency services rolling.",
+      "Approach: ANAC123, say souls on board and fuel remaining.",
+      "Tower: ANAC123, cleared to land runway one seven, wind calm, equipment standing by.",
+      "Tower: ANAC123, after landing vacate if able, advise if evacuating."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, Departure, ANAC123, engine fire, returning immediately, request priority landing and emergency services.",
+      "Mayday Mayday Mayday, ANAC123, engine fire, fire continuing, request immediate landing.",
+      "ANAC123, left heading two five zero, descending three thousand, returning.",
+      "ANAC123, souls four, fuel fifty minutes.",
+      "ANAC123, cleared to land runway one seven, will advise if evacuating."
+    ],
+    "brazilianMistakes": "- ❌ Using Pan Pan for a confirmed engine fire.  \n  ✔ Engine fire is Mayday.\n\n- ❌ Saying \"problem in the engine\" instead of \"engine fire.\"  \n  ✔ Use the standard term so rescue response matches the threat.\n\n- ❌ Long radio narratives while the fire checklist is incomplete.  \n  ✔ Short Mayday first; details when flying allows.\n\n- ❌ Forgetting to request emergency services.  \n  ✔ Ask for fire and rescue in the first or second transmission.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Engine Fire, Request Immediate Landing\n\n**Pronunciation:** AY-nak WUN TOO THREE, EN-jin FY-er, reh-KWEST ih-MEE-dee-ut LAND-ing\n\n**Word Stress**\n\n- Engine → EN-jin\n- Fire → FY-er\n- Immediate → ih-MEE-dee-ut\n- Landing → LAND-ing\n\nPractice:\n\nEngine fire... request immediate landing, emergency services.\n\nTogether:\n\nMayday Mayday Mayday, ANAC123, engine fire, returning immediately, request priority landing and emergency services.",
+    "relatedConcepts": [
+      "APU Fire",
+      "Engine Failure",
+      "Engine Stall",
+      "Mayday",
+      "Emergency Services",
+      "Priority Landing"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Engine Fire",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Communications",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Aircraft QRH — Engine Fire; H130 AFM — Engine Fire Emergency Procedures"
+      }
+    ]
+  },
+  {
+    "catalogId": "0302",
+    "id": "0302",
+    "displayTerm": "Radar Contact Lost",
+    "term": "radar contact lost",
+    "slug": "radar-contact-lost",
+    "category": "Radio Communication",
+    "meaningEn": "Radar Contact Lost is the loss of radar identification of an aircraft by ATC, requiring the crew to continue on the last clearance, make position reports as instructed, squawk as directed, and maintain two-way communication until radar contact is re-established or alternative separation is applied.",
+    "meaningPt": "Contato radar perdido / Radar Contact Lost.\n\nPerda da identificação radar de uma aeronave pelo ATC, exigindo que a tripulação continue na última autorização, faça reports de posição conforme instruído, squawk conforme determinado e mantenha comunicação bidirecional até o restabelecimento do contato radar ou a aplicação de separação alternativa.",
+    "whenUsed": "When radar contact is lost, the crew should:",
+    "example": "Radar: ANAC123, radar contact lost, report position, altitude and estimate Florianópolis.",
+    "sayPhrase": "ANAC123, radar contact lost, position thirty miles north of Florianópolis, flight level seven zero, estimate Florianópolis two five.",
+    "icaoQuestion": "ATC advises radar contact lost and asks for your position and altitude. What do you do, and what do you say?",
+    "icaoSpeakText": "I would continue on the last clearance, then report my position, altitude, and estimate as requested in a clear, structured call. I would squawk or ident if instructed and maintain listening watch until radar contact is re-established. I would not change route or altitude without a new clearance. On a helicopter at low level, I would expect this more often and keep position reports short and accurate.",
+    "missionBrief": "Today's lesson covers Radar Contact Lost — the situation in which ATC no longer has radar identification of the aircraft, requiring position reports, possible squawk changes, and disciplined radiotelephony until radar contact is re-established. Core Part 2 skill for Brazilian IFR and VFR controlled operations; for H130 crews, radar contact lost is common at low altitude, in mountainous areas, and near the edge of radar coverage.\n\nRadar contact lost is High priority because separation and traffic information may change the moment the controller loses your blip.\n\nFor ICAO Delta / Captain Delta training in Brazil, master ICAO/DECEA phraseology for radar contact lost, position reporting, and re-identification.\n\nUnderstanding radar contact lost in ICAO-standard English is essential for Part 2 and Part 3 proficiency.",
+    "captainTeaching": "Radar contact lost means the controller's picture changed — not that your aircraft disappeared from the sky.\n\nContinue the last clearance. Answer position and altitude cleanly. Ident when asked. Do not freestyle a shortcut.\n\nIn the H130, you will hear this more than jet crews at high flight levels. Low-level routes and terrain eat radar coverage. Expect it. Brief it. Sound bored and competent when it happens.\n\nPart 2 examiners love this topic because it tests whether you can report position without radar babysitting. Practice the report structure until it is automatic.",
+    "operationalContext": "Operational scenario: IFR cruise toward Florianópolis in the H130. Radar says contact lost — possible low altitude or coverage gap.\n\nRadar transmits:\n\nANAC123, radar contact lost, report position and altitude.\n\nYou respond with a clear position report and continue the clearance. Later:\n\nANAC123, radar contact re-established, identified, continue present heading.\n\nYou acknowledge and resume normal radar environment discipline — shorter calls, vectors as assigned.\n\nFor Brazilian mountain and coastal routes, treat radar contact lost as routine professionalism, not panic.",
+    "sayItCoach": "ANAC123, radar contact lost, position thirty miles north of Florianópolis, flight level seven zero.",
+    "icaoModelAnswer": "I would continue on the last clearance, then report my position, altitude, and estimate as requested in a clear, structured call. I would squawk or ident if instructed and maintain listening watch until radar contact is re-established. I would not change route or altitude without a new clearance. On a helicopter at low level, I would expect this more often and keep position reports short and accurate.",
+    "memoryTrick": "**LOST** — **L**ast clearance continues, **O**ffer position and altitude, **S**quawk/ident as told, **T**rack re-established — then resume normal radar talk.",
+    "operationalMeaning": "When radar contact is lost, the crew should:\n\nRadar contact lost exchanges commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Radar: ANAC123, radar contact lost, report position, altitude and estimate Florianópolis.",
+      "Radar: ANAC123, squawk two one zero four, ident.",
+      "Radar: ANAC123, radar contact re-established, identified.",
+      "Control: ANAC123, radar contact lost, continue present heading, report reaching flight level six zero.",
+      "Approach: ANAC123, radar contact lost due to low altitude, report field in sight."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, radar contact lost, position thirty miles north of Florianópolis, flight level seven zero, estimate Florianópolis two five.",
+      "ANAC123, squawk two one zero four, ident.",
+      "ANAC123, radar contact re-established, identified, continuing.",
+      "ANAC123, continuing present heading, will report flight level six zero.",
+      "ANAC123, wilco, will report field in sight."
+    ],
+    "brazilianMistakes": "- ❌ Treating radar contact lost as lost communication and going silent.  \n  ✔ Keep two-way radio; only the radar track is missing.\n\n- ❌ Changing heading or altitude without clearance because \"radar is gone.\"  \n  ✔ Fly the last clearance until ATC amends it.\n\n- ❌ Giving a long story instead of position, altitude, estimate.  \n  ✔ Structured report: place, level, time estimate.\n\n- ❌ Panicking on the oral when the phrase appears.  \n  ✔ It is routine IFR English — acknowledge and report.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Radar Contact Lost, Report Position and Altitude\n\n**Pronunciation:** AY-nak WUN TOO THREE, RAY-dar KON-takt LOST, rih-PORT puh-ZISH-un and AL-ti-tood\n\n**Word Stress**\n\n- Radar → RAY-dar\n- Contact → KON-takt\n- Position → puh-ZISH-un\n- Altitude → AL-ti-tood\n\nPractice:\n\nRadar contact lost... report position and altitude.\n\nTogether:\n\nANAC123, radar contact lost, position thirty miles north of Florianópolis, flight level seven zero.",
+    "relatedConcepts": [
+      "Radar Vectors",
+      "Position Report",
+      "Ident",
+      "Squawk",
+      "Lost Communication",
+      "Procedural Separation"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Radar Procedures / Position Reporting",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9432 — Manual of Radiotelephony"
+      },
+      {
+        "label": "FAA AIM — Radar Services and Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "DECEA ICA 100-37 — Serviços de Tráfego Aéreo"
+      }
+    ]
+  },
+  {
+    "catalogId": "0303",
+    "id": "0303",
+    "displayTerm": "Transmission Readable",
+    "term": "transmission readable",
+    "slug": "transmission-readable",
+    "category": "Radio Communication",
+    "meaningEn": "Transmission Readable describes the degree to which a radiotelephony message can be understood by the receiving station, commonly expressed with the ICAO readability scale (one to five) or plain phrases such as \"readable,\" \"readable with difficulty,\" \"broken,\" or \"unreadable,\" prompting the sender to adjust technique, repeat, or change frequency as required.",
+    "meaningPt": "Transmissão legível / Transmission Readable (escala de legibilidade).\n\nGrau em que uma mensagem radiotelefônica pode ser compreendida pela estação receptora, comumente expresso pela escala de legibilidade da OACI (um a cinco) ou por frases como \"readable,\" \"readable with difficulty,\" \"broken\" ou \"unreadable,\" levando o emissor a ajustar a técnica, repetir ou mudar de frequência conforme necessário.",
+    "whenUsed": "When dealing with transmission readability, the crew should:",
+    "example": "Approach: ANAC123, how do you read?",
+    "sayPhrase": "ANAC123, reading you five.",
+    "icaoQuestion": "ATC asks \"how do you read?\" and later says you are readable with difficulty. What do you do?",
+    "icaoSpeakText": "I would answer with a readability assessment such as reading you five, or reading you three if reception is difficult. If ATC says I am readable with difficulty, I would speak more slowly, shorten my transmissions, check microphone position and volume, and repeat essential information clearly. I would not acknowledge a clearance I did not fully understand — I would request say again.",
+    "missionBrief": "Today's lesson covers Transmission Readable — the ICAO readability scale used to describe how well a radio transmission can be understood, typically reported as \"readable,\" \"readable with difficulty,\" or with a readability number from one to five. Core Part 2 radiotelephony skill for every H130 crew in Brazilian airspace: you must understand readability reports and respond when ATC says your transmission is weak, broken, or unreadable.\n\nTransmission readable is Medium priority as a catalog item and High importance in daily radio work — without mutual readability, clearances fail.\n\nFor ICAO Delta / Captain Delta training in Brazil, master ICAO readability phraseology and the habit of adjusting speech, microphone technique, and frequency when readability drops.\n\nUnderstanding transmission readability in ICAO-standard English is essential for Part 2 proficiency.",
+    "captainTeaching": "Readability is the quality check on every clearance.\n\nIf you cannot hear, say \"say again.\" If they cannot hear you, slow down, shorten the call, check the mic. Do not pretend you copied a clearance you only half heard.\n\n\"Reading you five\" means perfectly readable. \"Reading you three\" means difficulty — expect repeats. Use the scale when asked \"how do you read?\"\n\nIn the H130, rotor and cabin noise destroy lazy microphone technique. Hold the mic properly. Pause before keying. Speak like a professional, not like a passenger on a phone.\n\nPart 2 is built on this. Master it early.",
+    "operationalContext": "Operational scenario: approaching Congonhas in the H130. Approach asks how you read.\n\nApproach: ANAC123, how do you read?\n\nYou respond:\n\nANAC123, reading you five / reading you loud and clear.\n\nIf Approach says your transmission is broken:\n\nANAC123, say again, you are broken.\n\nOr Approach reports:\n\nANAC123, readable with difficulty, speak slower.\n\nYou slow down, shorten the next call, and confirm the clearance with a clean readback.",
+    "sayItCoach": "ANAC123, reading you five. ANAC123, say again, you are broken.",
+    "icaoModelAnswer": "I would answer with a readability assessment such as reading you five, or reading you three if reception is difficult. If ATC says I am readable with difficulty, I would speak more slowly, shorten my transmissions, check microphone position and volume, and repeat essential information clearly. I would not acknowledge a clearance I did not fully understand — I would request say again.",
+    "memoryTrick": "**READ** — **R**ate one to five when asked, **E**nunciate slower if weak, **A**sk say again if broken, **D**o not accept half-heard clearances.",
+    "operationalMeaning": "When dealing with transmission readability, the crew should:\n\nReadability exchanges commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, how do you read?",
+      "Approach: ANAC123, readable, continue.",
+      "Approach: ANAC123, readable with difficulty, speak slower.",
+      "Tower: ANAC123, you are broken, say again altitude.",
+      "Ground: ANAC123, readability five, taxi via Alpha."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, reading you five.",
+      "ANAC123, reading you three, readable with difficulty.",
+      "ANAC123, say again, you are broken.",
+      "ANAC123, wilco, speaking slower.",
+      "ANAC123, altitude two thousand, how do you read?"
+    ],
+    "brazilianMistakes": "- ❌ Answering \"how do you read?\" with \"yes\" or \"ok.\"  \n  ✔ Use readability: reading you five / readable.\n\n- ❌ Accepting clearances when the transmission was broken.  \n  ✔ Say again until the clearance is complete.\n\n- ❌ Speaking faster when readability is poor.  \n  ✔ Speak slower and clearer, not faster.\n\n- ❌ Ignoring microphone technique in the noisy H130 cabin.  \n  ✔ Mic position and keying discipline are part of readability.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Reading You Five / Readable with Difficulty\n\n**Pronunciation:** AY-nak WUN TOO THREE, REED-ing yoo FYV / REED-uh-bul with DIF-ih-kul-tee\n\n**Word Stress**\n\n- Reading → REED-ing\n- Five → FYV\n- Readable → REED-uh-bul\n- Difficulty → DIF-ih-kul-tee\n\nPractice:\n\nReading you five... readable with difficulty... say again.\n\nTogether:\n\nANAC123, reading you five. ANAC123, say again, you are broken.",
+    "relatedConcepts": [
+      "Poor Readability",
+      "Blocked Transmission",
+      "Say Again",
+      "How Do You Read",
+      "Readback",
+      "Frequency Change"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 9432 — Manual of Radiotelephony (Readability Scale)"
+      },
+      {
+        "label": "ICAO Annex 10 — Aeronautical Telecommunications",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "FAA AIM — Radio Communications Phraseology",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Communication Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      }
+    ]
+  },
+  {
+    "catalogId": "0304",
+    "id": "0304",
+    "displayTerm": "Poor Readability",
+    "term": "poor readability",
+    "slug": "poor-readability",
+    "category": "Radio Communication",
+    "meaningEn": "Poor Readability is a condition in which radio transmissions are difficult to understand — partially copied, broken, distorted, or weak — requiring the crew and ATC to slow down, repeat, simplify, check equipment and frequency, and confirm critical clearances before acting on incomplete information.",
+    "meaningPt": "Má legibilidade / Poor Readability.\n\nCondição em que as transmissões de rádio são difíceis de compreender — parcialmente recebidas, cortadas, distorcidas ou fracas — exigindo que a tripulação e o ATC reduzam a velocidade da fala, repitam, simplifiquem, verifiquem equipamento e frequência, e confirmem autorizações críticas antes de agir com informação incompleta.",
+    "whenUsed": "When readability is poor, the crew should:",
+    "example": "Approach: ANAC123, you are unreadable, check your microphone.",
+    "sayPhrase": "ANAC123, say again, you are broken.",
+    "icaoQuestion": "ATC issues a clearance but the transmission is broken and you miss the altitude. What do you do?",
+    "icaoSpeakText": "I would not change altitude based on a partial copy. I would advise that the transmission was broken or readable with difficulty and request say again, specifically asking for the altitude if needed. I would speak clearly and slowly on my next call, then read back the complete clearance once understood. If readability remains poor, I would request a frequency change or further repeats until the clearance is confirmed.",
+    "missionBrief": "Today's lesson covers Poor Readability — radiotelephony reception that is difficult, broken, or only partially understandable, requiring slower speech, shorter messages, repeats, frequency checks, and refusal to accept incomplete clearances. Core Part 2 skill for H130 operations in Brazil, where terrain, distance, cabin noise, and congested frequencies regularly degrade readability.\n\nPoor readability is High priority because a misunderstood altitude or runway instruction is a safety event, not a language inconvenience.\n\nFor ICAO Delta / Captain Delta training in Brazil, master ICAO phraseology for poor readability, \"say again,\" and recovery techniques until mutual understanding is restored.\n\nUnderstanding poor readability in ICAO-standard English is essential for Part 2 proficiency.",
+    "captainTeaching": "Poor readability is a stop sign for assumptions.\n\nYou either copy the clearance or you do not. There is no \"I think it was four thousand.\"\n\nUse the tools: say again, speak slower, shorter calls, mic check, frequency change. Then give a full readback of what you finally understood.\n\nIn the H130, cabin noise will tempt you to accept garbage audio. Do not. Key deliberately. Pause. Talk across the noise, not into it.\n\nPart 2 examiners fail candidates who invent clearances. Poor readability is where that trap appears. Be the pilot who asks again.",
+    "operationalContext": "Operational scenario: descending toward Curitiba in the H130. Approach clearance comes through broken.\n\nYou hear only fragments. You transmit:\n\nANAC123, say again, you are broken.\n\nApproach repeats slower. Still marginal:\n\nANAC123, readable with difficulty, request say again altitude.\n\nWhen you finally copy \"descend and maintain four thousand,\" you read back fully. You do not descend on a guess.\n\nFor Brazilian terminal areas at busy times, poor readability is normal — your discipline must be better than the frequency noise.",
+    "sayItCoach": "ANAC123, say again, you are broken. ANAC123, readable with difficulty, request say again altitude.",
+    "icaoModelAnswer": "I would not change altitude based on a partial copy. I would advise that the transmission was broken or readable with difficulty and request say again, specifically asking for the altitude if needed. I would speak clearly and slowly on my next call, then read back the complete clearance once understood. If readability remains poor, I would request a frequency change or further repeats until the clearance is confirmed.",
+    "memoryTrick": "**POOR** — **P**ause before guessing, **O**wn the say-again call, **O**nly fly confirmed clearances, **R**educe speed and length of speech.",
+    "operationalMeaning": "When readability is poor, the crew should:\n\nPoor readability exchanges commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, you are unreadable, check your microphone.",
+      "Approach: ANAC123, readable with difficulty, speak slower.",
+      "Tower: ANAC123, say again, you were broken.",
+      "Approach: ANAC123, transmit shorter, frequency congested.",
+      "Control: ANAC123, if unable to copy, standby for frequency change."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, say again, you are broken.",
+      "ANAC123, readable with difficulty, request say again altitude.",
+      "ANAC123, wilco, speaking slower.",
+      "ANAC123, descending four thousand, ANAC123.",
+      "ANAC123, request frequency change, poor readability."
+    ],
+    "brazilianMistakes": "- ❌ Saying \"ok\" after a broken clearance.  \n  ✔ Say again until the full clearance is copied.\n\n- ❌ Reading back an altitude you are not sure about.  \n  ✔ Only read back what you actually heard.\n\n- ❌ Blaming only ATC instead of checking your own mic and volume.  \n  ✔ Check both ends — technique and equipment.\n\n- ❌ Speaking louder and faster when nervous.  \n  ✔ Slower and shorter improves readability.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Say Again, You Are Broken / Readable with Difficulty\n\n**Pronunciation:** AY-nak WUN TOO THREE, say uh-GEN, yoo ar BROH-ken / REED-uh-bul with DIF-ih-kul-tee\n\n**Word Stress**\n\n- Again → uh-GEN\n- Broken → BROH-ken\n- Readable → REED-uh-bul\n- Difficulty → DIF-ih-kul-tee\n\nPractice:\n\nSay again, you are broken... readable with difficulty... request say again altitude.\n\nTogether:\n\nANAC123, say again, you are broken. ANAC123, readable with difficulty, request say again altitude.",
+    "relatedConcepts": [
+      "Transmission Readable",
+      "Blocked Transmission",
+      "Say Again",
+      "Readback",
+      "Frequency Change",
+      "How Do You Read"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 9432 — Manual of Radiotelephony"
+      },
+      {
+        "label": "ICAO Annex 10 — Aeronautical Telecommunications",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "FAA AIM — Radio Communications",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Communication Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      }
+    ]
+  },
+  {
+    "catalogId": "0305",
+    "id": "0305",
+    "displayTerm": "Blocked Transmission",
+    "term": "blocked transmission",
+    "slug": "blocked-transmission",
+    "category": "Radio Communication",
+    "meaningEn": "Blocked Transmission is a radiotelephony message that cannot be understood because another transmission overlaps it, or because a continuous carrier from a stuck microphone occupies the frequency, requiring stations to wait, retransmit, and, when appropriate, advise that the frequency is blocked.",
+    "meaningPt": "Transmissão bloqueada / Blocked Transmission.\n\nMensagem radiotelefônica que não pode ser compreendida porque outra transmissão se sobrepõe a ela, ou porque uma portadora contínua de um microfone travado ocupa a frequência, exigindo que as estações aguardem, retransmitam e, quando apropriado, avisem que a frequência está bloqueada.",
+    "whenUsed": "When a transmission is blocked, the crew should:",
+    "example": "Approach: ANAC123, blocked, say again.",
+    "sayPhrase": "ANAC123, say again, you were blocked.",
+    "icaoQuestion": "Your request to ATC is blocked by another aircraft, and later the frequency appears blocked by a stuck microphone. What do you do?",
+    "icaoSpeakText": "If my transmission was blocked, I would wait for a break and retransmit the message clearly, or request say again if ATC's reply was blocked. I would not assume the clearance was received. If the frequency is blocked by a continuous carrier, I would check my own microphone and audio panel immediately, remain silent if I am not the cause, and wait until the frequency is clear before calling again.",
+    "missionBrief": "Today's lesson covers Blocked Transmission — a radio transmission that is stepped on, covered, or made unreadable because two stations transmit at the same time, or because a stuck microphone blocks the frequency. Core Part 2 skill for every H130 crew in Brazilian airspace: recognize a blocked call, wait, retransmit, and help free a blocked frequency when a stuck mic is suspected.\n\nBlocked transmission is High priority because critical clearances disappear under overlapping carriers, and a stuck microphone can silence an entire frequency.\n\nFor ICAO Delta / Captain Delta training in Brazil, master ICAO phraseology for blocked transmissions, retransmits, and stuck-microphone advisories.\n\nUnderstanding blocked transmission in ICAO-standard English is essential for Part 2 proficiency.",
+    "captainTeaching": "Blocked transmission is almost always a listening failure before a talking failure.\n\nListen. Pause. Then key. If two of you talk, both messages die.\n\nWhen ATC says you were blocked, do not argue — retransmit. When the frequency is blocked by a stuck mic, check yourself first. The stuck microphone is often the aircraft that does not know it is transmitting.\n\nIn the H130, cyclic and collective workload can leave a transmit switch trapped or a hand lingering on the PTT. Build a habit: after every call, confirm you are not still keyed.\n\nPart 2 examiners watch whether you recover cleanly. Blocked is normal. Guessing the blocked clearance is not.",
+    "operationalContext": "Operational scenario: busy São Paulo approach frequency. You call for descent; another aircraft keys at the same time.\n\nApproach: ANAC123, you were blocked, say again.\n\nYou wait one second, then retransmit cleanly:\n\nANAC123, request descent.\n\nLater, a continuous carrier blocks everyone. You hear:\n\nAll stations, frequency blocked, possible stuck microphone.\n\nYou immediately check your own push-to-talk and audio panel. When the frequency clears, you resume normal calls — shorter and with better listening discipline.\n\nBlocked transmissions are a daily Part 2 reality in Brazilian terminal airspace.",
+    "sayItCoach": "ANAC123, say again, you were blocked. ANAC123, checking microphone.",
+    "icaoModelAnswer": "If my transmission was blocked, I would wait for a break and retransmit the message clearly, or request say again if ATC's reply was blocked. I would not assume the clearance was received. If the frequency is blocked by a continuous carrier, I would check my own microphone and audio panel immediately, remain silent if I am not the cause, and wait until the frequency is clear before calling again.",
+    "memoryTrick": "**BLOCK** — **B**reathe and listen first, **L**et the overlap finish, **O**ffer one clean retransmit, **C**heck your own mic if stuck, **K**eep clearances unconfirmed until copied.",
+    "operationalMeaning": "When a transmission is blocked, the crew should:\n\nBlocked transmission exchanges commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, blocked, say again.",
+      "Approach: ANAC123, you were stepped on, retransmit.",
+      "Control: All stations, frequency blocked, check your microphones.",
+      "Tower: ANAC123, transmission blocked, say again intentions.",
+      "Ground: ANAC123, frequency clear now, go ahead."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, say again, you were blocked.",
+      "ANAC123, request descent — retransmitting.",
+      "ANAC123, checking microphone.",
+      "ANAC123, frequency was blocked, say again clearance.",
+      "ANAC123, go ahead, request taxi."
+    ],
+    "brazilianMistakes": "- ❌ Immediately keying again on top of the overlapping call.  \n  ✔ Wait for silence, then retransmit once.\n\n- ❌ Assuming ATC heard your blocked request.  \n  ✔ No acknowledgment means retransmit or confirm.\n\n- ❌ Never checking your own PTT during a stuck-mic event.  \n  ✔ Always verify you are not blocking the frequency.\n\n- ❌ Giving a long retransmit on a congested frequency.  \n  ✔ Short, clear, one idea per transmission.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Say Again, You Were Blocked / Frequency Blocked\n\n**Pronunciation:** AY-nak WUN TOO THREE, say uh-GEN, yoo wer BLOKT / FREE-kwen-see BLOKT\n\n**Word Stress**\n\n- Again → uh-GEN\n- Blocked → BLOKT\n- Frequency → FREE-kwen-see\n- Microphone → MY-kruh-fohn\n\nPractice:\n\nSay again, you were blocked... frequency blocked, checking microphone.\n\nTogether:\n\nANAC123, say again, you were blocked. ANAC123, checking microphone.",
+    "relatedConcepts": [
+      "Poor Readability",
+      "Transmission Readable",
+      "Say Again",
+      "Stuck Microphone",
+      "Frequency Congestion",
+      "Readback"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 9432 — Manual of Radiotelephony"
+      },
+      {
+        "label": "ICAO Annex 10 — Aeronautical Telecommunications",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "FAA AIM — Radio Communications Phraseology and Techniques",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Communication Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      }
+    ]
   }
 ];
