@@ -52,3 +52,13 @@ export function markShadowPeelScored(blockKey: string): void {
     blockKeys: [...store.blockKeys, blockKey],
   });
 }
+
+export function clearShadowPeelScoredForCards(cardNums: string[]): void {
+  if (typeof window === "undefined" || !cardNums.length) return;
+  const store = loadStore();
+  const prefixes = cardNums.map((n) => `${n.padStart(2, "0")}:`);
+  saveStore({
+    date: todayKey(),
+    blockKeys: store.blockKeys.filter((key) => !prefixes.some((prefix) => key.startsWith(prefix))),
+  });
+}

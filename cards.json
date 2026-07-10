@@ -2,30 +2,33 @@
   {
     "num": "01",
     "question": "In your opinion, what makes a briefing effective?",
-    "memory": "Clear → Information → Risk → Team",
-    "opener": "In my opinion, an effective helicopter briefing is clear, complete and focused on safety.",
+    "memory": "Clear → Conditions → Risk → CRM",
+    "opener": "In my opinion, an effective helicopter briefing is structured, interactive and focused on building a shared mental model for safety.",
     "ideas": [
-      "1 - INFORMATION: First of all, it must include weather, wind, landing site conditions, aircraft status, fuel, passengers and route limitations.",
-      "2 - RISK AWARENESS: Additionally, it should discuss power margins, obstacles, emergency landing areas and abnormal procedures before departure.",
-      "3 - TEAM COORDINATION: Finally, it aligns the crew and gives everyone the chance to clarify doubts before helicopter operations."
+      "1 - OPERATIONAL CONTENT: First of all, it should cover flight conditions — weather, terrain, obstacles, landing site, aircraft status, fuel, performance margins and any route limitations.",
+      "2 - RISK MANAGEMENT: Additionally, the crew should discuss threats such as fatigue or time pressure, emergency procedures, alternate landing areas and how to mitigate risks before departure.",
+      "3 - CRM: Finally, it must be interactive — roles are clear, questions are welcome and everyone confirms the plan, in line with crew resource management."
     ],
-    "example": "For example, if wind or visibility may affect the landing site, the crew should discuss alternate options and decision points before takeoff.",
-    "conclusion": "Overall, an effective briefing improves coordination, reduces uncertainty and enhances helicopter flight safety.",
+    "example": "For example, if wind or visibility may affect the landing site, the crew should agree alternate options and decision points before takeoff, not after getting airborne.",
+    "conclusion": "Overall, an effective briefing improves coordination, reduces uncertainty and supports safer helicopter operations.",
     "verbs": [
       "brief",
       "clarify",
       "coordinate",
       "anticipate",
-      "prepare"
+      "mitigate"
     ],
     "vocab": [
       "briefing",
       "landing site",
       "weather",
-      "power margin",
+      "performance margin",
+      "crew resource management",
+      "risk mitigation",
+      "shared mental model",
       "helicopter"
     ],
-    "answer": "In my opinion, an effective helicopter briefing is clear, complete and focused on safety. 1 - INFORMATION: First of all, it must include weather, wind, landing site conditions, aircraft status, fuel, passengers and route limitations. 2 - RISK AWARENESS: Additionally, it should discuss power margins, obstacles, emergency landing areas and abnormal procedures before departure. 3 - TEAM COORDINATION: Finally, it aligns the crew and gives everyone the chance to clarify doubts before helicopter operations. For example, if wind or visibility may affect the landing site, the crew should discuss alternate options and decision points before takeoff. Overall, an effective briefing improves coordination, reduces uncertainty and enhances helicopter flight safety.",
+    "answer": "In my opinion, an effective helicopter briefing is structured, interactive and focused on building a shared mental model for safety. 1 - OPERATIONAL CONTENT: First of all, it should cover flight conditions — weather, terrain, obstacles, landing site, aircraft status, fuel, performance margins and any route limitations. 2 - RISK MANAGEMENT: Additionally, the crew should discuss threats such as fatigue or time pressure, emergency procedures, alternate landing areas and how to mitigate risks before departure. 3 - CRM: Finally, it must be interactive — roles are clear, questions are welcome and everyone confirms the plan, in line with crew resource management. For example, if wind or visibility may affect the landing site, the crew should agree alternate options and decision points before takeoff, not after getting airborne. Overall, an effective briefing improves coordination, reduces uncertainty and supports safer helicopter operations.",
     "difficulty": "Easy",
     "category": "helicopter",
     "tags": [
@@ -35,16 +38,16 @@
     ],
     "memoryLabels": [
       "Clear",
-      "Information",
+      "Conditions",
       "Risk",
-      "Team"
+      "CRM"
     ],
     "targetWords": 109,
     "keywords": [
       "Clear",
-      "Information",
+      "Conditions",
       "Risk",
-      "Team"
+      "CRM"
     ],
     "memoryIcons": [
       "📋",
@@ -52,28 +55,28 @@
       "⚠️",
       "👥"
     ],
-    "answerLevel4": "In my opinion, an effective briefing is clear, complete and focused on safety. It must include weather, landing site conditions, fuel and aircraft status. It should also discuss risks, obstacles and emergency options. As a result, the whole crew is aligned before departure.",
-    "answerLevel5": "In my opinion, an effective helicopter briefing is clear, complete and focused on safety. First of all, it must include weather, wind, landing site conditions, aircraft status, fuel and route limitations. Additionally, it should discuss power margins, obstacles, emergency landing areas and abnormal procedures. Finally, it aligns the crew and gives everyone the chance to clarify doubts before operations. For example, if wind or visibility may affect the landing site, the crew should discuss alternate options before takeoff. Overall, an effective briefing improves coordination and enhances flight safety.",
-    "level4Example": "For example, if wind or visibility may affect the landing site, the crew should discuss alternate options before takeoff.",
+    "answerLevel4": "In my opinion, an effective briefing is structured and focused on safety. It should cover weather, landing site, fuel, aircraft status and performance. It should also discuss risks, emergencies and alternate options. Finally, the crew aligns roles and questions — CRM before departure.",
+    "answerLevel5": "In my opinion, an effective helicopter briefing is structured, interactive and focused on building a shared mental model for safety. First of all, it should cover flight conditions — weather, terrain, obstacles, landing site, aircraft status, fuel and performance margins. Additionally, the crew should discuss threats, emergency procedures, alternate landing areas and risk mitigation. Finally, roles are clear, questions are welcome and everyone confirms the plan — crew resource management. For example, if wind may affect the landing site, the crew should agree alternates before takeoff. Overall, an effective briefing improves coordination and supports safer helicopter operations.",
+    "level4Example": "For example, if wind may affect the landing site, the crew should agree alternate options before takeoff.",
     "level4Steps": [
       {
         "label": "Clear",
-        "sentence": "An effective briefing is clear, complete and focused on safety."
+        "sentence": "An effective briefing is structured and focused on safety."
       },
       {
-        "label": "Information",
-        "sentence": "It must include weather, landing site conditions, fuel and aircraft status."
+        "label": "Conditions",
+        "sentence": "It should cover weather, landing site, fuel, aircraft status and performance."
       },
       {
         "label": "Risk",
-        "sentence": "It should also discuss risks, obstacles and emergency options."
+        "sentence": "It should also discuss risks, emergencies and alternate options."
       },
       {
-        "label": "Team",
-        "sentence": "As a result, the whole crew is aligned before departure."
+        "label": "CRM",
+        "sentence": "Finally, the crew aligns roles and questions before departure."
       }
     ],
-    "studyTips": "Palavras-chave para decorar: Clear → Information → Risk → Team\n\nSequência lógica:\n\n• O que é? → Briefing claro e completo.\n• O que inclui? → Weather, site, fuel, aircraft.\n• O que antecipa? → Riscos e emergências.\n• Qual o resultado? → Crew alinhada.\n\nConectores fáceis: Also, / It also / As a result,\n\nCom essas quatro ideias você fala 45–60 segundos sem decorar texto inteiro."
+    "studyTips": "Palavras-chave: Clear → Conditions → Risk → CRM\n\nSequência operacional (FAA / SKYbrary):\n\n• Estrutura — briefing interativo, mental model compartilhado.\n• Conteúdo — weather, site, fuel, performance, limitações.\n• Risco — fatores humanos, emergências, alternates, mitigação.\n• CRM — papéis claros, perguntas, confirmação do plano.\n\nConectores: First of all, / Additionally, / Finally, / For example,\n\nCom essas quatro ideias você fala 45–60 segundos sem decorar texto inteiro."
   },
   {
     "num": "02",

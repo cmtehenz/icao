@@ -62,7 +62,7 @@ export function part1AssistanceDefaults(level: AssistanceLevel): Part1Assistance
         showAnswer: false,
         preferredTab: "shadow",
         coachShowKeywords: true,
-        coachBasicOpen: true,
+        coachBasicOpen: false,
         hideModelAnswers: false,
       };
     case "blocks":

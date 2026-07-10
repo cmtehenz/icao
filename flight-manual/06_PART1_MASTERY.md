@@ -21,8 +21,8 @@ The student must answer **naturally under light pressure**, with structure and a
 Evidence-based techniques used:
 
 1. **Story pegs (anchor)** — `memory` + `memoryLabels` fix four ideas before any script
-2. **Chunking (shadow)** — one PEEL block at a time via Azure shadow scoring
-3. **Retrieval practice (keywords)** — speak from keywords only; no model on screen
+2. **Anchor build (shadow)** — four short `level4Steps` sentences; paraphrase, not full PEEL script
+3. **Story connect (keywords)** — one anchor section at a time, then full answer from keywords
 4. **Self-explanation (coach)** — full answer + Flight Instructor debrief
 5. **Spaced interleaving** — daily flight rotates 3 questions; full bank in 4 days
 6. **Faded guidance** — assistance level from `StudentTrainingProfile` (RFC-004 Phase 4)
@@ -35,10 +35,10 @@ Every Part 1 card in today's flight runs the same six steps:
 
 | Step | Technique | Student action |
 |------|-----------|----------------|
-| **Brief** | Priming | Read exam question + operational frame only |
+| **Brief** | Priming | Read exam question + watch curated FAA/SKYbrary references |
 | **Anchor** | Story pegs | Say the four memory anchors aloud (no script) |
-| **Shadow** | Chunking | Shadow each PEEL block until all pass ≥70% |
-| **Keywords** | Retrieval | Speak from keywords only — structure, not script |
+| **Shadow** | One idea at a time | Speak each of 4 anchors — short starter, paraphrase OK |
+| **Keywords** | Guided retrieval | Connect anchors section by section, then full answer |
 | **Coach** | Self-explanation | Record full answer; Flight Instructor debrief |
 | **Ready** | Mastery gate | All PEEL blocks + coach ≥ ICAO 4 band |
 
@@ -55,7 +55,9 @@ Captain Delta coaches each step. The student never picks the next step — the p
 | 25C | 07–09 | Emergencies, decisions |
 | 26C | 10–12 | Experience, leadership, exam depth |
 
-**Exam ready** = every PEEL block passed + coach best ≥75% or ICAO level ≥4.
+**Exam ready** = every anchor build passed + coach best ≥75% or ICAO level ≥4.
+
+**Daily leg complete** = coach debrief received once per question (score does not block progression).
 
 Home and Part 1 show **X/12 exam ready**. Browse mode (`/part1?browse=1`) remains for open review — not the daily flight.
 
@@ -75,6 +77,7 @@ Home and Part 1 show **X/12 exam ready**. Browse mode (`/part1?browse=1`) remain
 ## Anti-patterns
 
 - Showing the full model answer before Keywords step (except Foundation assistance level)
+- Showing written model answers while the student is recording in Coach
 - Letting the student pick cards during a mission leg
 - Marking Part 1 complete without coach attempt
 - Treating Part 1 as a flashcard deck for the daily flight

@@ -100,7 +100,7 @@ vi.mock("@/lib/part1DailyMission", () => ({
   }),
   part1DailyMissionProgress: () => state.part1Progress,
   part1CardPeelProgress: () => ({ done: 0, total: 4 }),
-  part1MissionLink: (num: string, mode: string) => `/part1?card=${num}&mode=${mode}`,
+  part1MissionLink: (num: string) => `/part1?card=${num}`,
 }));
 
 vi.mock("@/lib/part2DailyMission", () => ({

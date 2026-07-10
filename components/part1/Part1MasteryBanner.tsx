@@ -31,7 +31,7 @@ export default function Part1MasteryBanner() {
         <strong>{summary.examReady}</strong>/{summary.total} exam ready
       </p>
       <p className="part1-mastery-method sub">
-        Method: Brief → Memory anchors → PEEL shadow → Keywords speak → Solo coach. Retrieval,
+        Method: Brief → Memory anchors → Build anchors → Connect story → Solo coach. Retrieval,
         not memorization.
       </p>
     </section>

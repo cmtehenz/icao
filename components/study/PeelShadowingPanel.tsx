@@ -1,10 +1,11 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import YouGlishLink from "@/components/YouGlishLink";
 import WordPhoneticHint from "@/components/WordPhoneticHint";
 import AudioCompareReplay from "@/components/study/AudioCompareReplay";
 import { useAzureSpeech } from "@/hooks/useAzureSpeech";
+import { useSpeechRecognition } from "@/hooks/useSpeechRecognition";
 import {
   SHADOW_PEEL_PASS_SCORE,
   studyActivityRejectReason,
@@ -20,6 +21,7 @@ import { peelBlockActivityKey } from "@/lib/shadowPeelDedup";
 import { getPeelBlockHistory, recordPeelBlockAttempt } from "@/lib/peelBlockHistory";
 import { addWordsToVault, VAULT_PASS_SCORE } from "@/lib/pronunciationVault";
 import type { Card } from "@/lib/types";
+import { speakText } from "@/lib/tts";
 import { highlightConnectors } from "@/utils/highlightConnectors";
 
 type Phase = "idle" | "listening" | "waiting" | "recording" | "result";
@@ -51,6 +53,9 @@ export default function PeelShadowingPanel({
 }: Props) {
   const blocks = useMemo(() => getPeelBlocks(card), [card]);
   const azure = useAzureSpeech();
+  const speech = useSpeechRecognition("en-US");
+  const [usesAzure, setUsesAzure] = useState(true);
+  const recordingModeRef = useRef<"azure" | "browser">("azure");
   const [open, setOpen] = useState(embedded || initialOpen);
   const [activeId, setActiveId] = useState<PeelBlockId | null>(null);
   const [phase, setPhase] = useState<Phase>("idle");
@@ -59,6 +64,32 @@ export default function PeelShadowingPanel({
   const [activityNote, setActivityNote] = useState<string | null>(null);
   const [lastAudioBlob, setLastAudioBlob] = useState<Blob | null>(null);
   const [runAllIndex, setRunAllIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    fetch("/api/azure-speech-token")
+      .then((r) => r.json())
+      .then((d: { configured?: boolean }) => setUsesAzure(Boolean(d.configured)))
+      .catch(() => setUsesAzure(false));
+  }, []);
+
+  const speakModel = useCallback(
+    async (text: string) => {
+      if (usesAzure) {
+        try {
+          await azure.speak(text);
+          return;
+        } catch {
+          /* browser TTS fallback */
+        }
+      }
+      await new Promise<void>((resolve) => {
+        if (!speakText(text, resolve)) resolve();
+      });
+    },
+    [azure, usesAzure],
+  );
+
+  const canRecord = usesAzure || speech.supported;
 
   useEffect(() => {
     if (embedded || initialOpen) setOpen(true);
@@ -122,19 +153,58 @@ export default function PeelShadowingPanel({
     return candidates;
   };
 
+  const applyBlockScore = (
+    block: PeelBlock,
+    accuracy: number,
+    heard: string,
+    weakWords: VaultWordCandidate[] = [],
+    fluency = 0,
+    completeness = 0,
+  ) => {
+    recordPeelBlockAttempt(card.num, block.id, accuracy);
+    setScores((prev) => ({
+      ...prev,
+      [block.id]: { accuracy, fluency, completeness, heard, weakWords },
+    }));
+    const ctx = {
+      accuracy,
+      recognizedText: heard,
+      peelBlockKey: peelBlockActivityKey(card.num, block.id),
+      cardNum: card.num,
+    };
+    const counted = tryRecordStudyActivity("shadow", ctx);
+    if (!counted) {
+      setActivityNote(studyActivityRejectReason("shadow", ctx));
+    } else {
+      setActivityNote(null);
+    }
+  };
+
   const startBlock = async (block: PeelBlock, indexForRunAll: number | null = null) => {
+    if (!canRecord) return;
     setVaultNote(null);
     setActivityNote(null);
     setActiveId(block.id);
     setRunAllIndex(indexForRunAll);
     await azure.clear();
+    speech.clear();
     setPhase("listening");
     try {
-      await azure.speak(block.text);
+      await speakModel(block.text);
       setPhase("waiting");
       await new Promise((r) => setTimeout(r, WAIT_MS));
       setPhase("recording");
-      await azure.startRecording(block.text);
+      if (usesAzure) {
+        try {
+          await azure.startRecording(block.text);
+          recordingModeRef.current = "azure";
+          return;
+        } catch {
+          /* browser speech fallback */
+        }
+      }
+      speech.start();
+      recordingModeRef.current = "browser";
     } catch {
       setPhase("idle");
       setRunAllIndex(null);
@@ -143,46 +213,40 @@ export default function PeelShadowingPanel({
 
   const stopBlock = async () => {
     if (!activeBlock || phase !== "recording") return;
-    const { assessment, audioBlob } = await azure.stopRecording();
-    setLastAudioBlob(audioBlob);
-    const accuracy = assessment?.accuracyScore ?? 0;
 
-    if (assessment) {
-      const weakWords = saveWeakWords(activeBlock, assessment);
-      recordPeelBlockAttempt(card.num, activeBlock.id, accuracy);
-      setScores((prev) => ({
-        ...prev,
-        [activeBlock.id]: {
+    if (recordingModeRef.current === "azure") {
+      const { assessment, audioBlob } = await azure.stopRecording();
+      setLastAudioBlob(audioBlob);
+      const accuracy = assessment?.accuracyScore ?? 0;
+
+      if (assessment) {
+        const weakWords = saveWeakWords(activeBlock, assessment);
+        applyBlockScore(
+          activeBlock,
           accuracy,
-          fluency: assessment.fluencyScore ?? 0,
-          completeness: assessment.completenessScore ?? 0,
-          heard: assessment.recognizedText,
+          assessment.recognizedText,
           weakWords,
-        },
-      }));
-      const ctx = {
-        accuracy,
-        recognizedText: assessment.recognizedText,
-        peelBlockKey: peelBlockActivityKey(card.num, activeBlock.id),
-        cardNum: card.num,
-      };
-      const counted = tryRecordStudyActivity("shadow", ctx);
-      if (!counted) {
-        setActivityNote(studyActivityRejectReason("shadow", ctx));
+          assessment.fluencyScore ?? 0,
+          assessment.completenessScore ?? 0,
+        );
       } else {
-        setActivityNote(null);
+        setScores((prev) => ({
+          ...prev,
+          [activeBlock.id]: { accuracy: 0, fluency: 0, completeness: 0 },
+        }));
+        setActivityNote("Não ouvimos este bloco — grave de novo com o microfone mais perto.");
       }
-    } else {
-      setScores((prev) => ({
-        ...prev,
-        [activeBlock.id]: {
-          accuracy: 0,
-          fluency: 0,
-          completeness: 0,
-        },
-      }));
-      setActivityNote("Azure não avaliou este bloco — grave de novo com o microfone mais perto.");
+      setPhase("result");
+      return;
     }
+
+    speech.stop();
+    await new Promise((r) => setTimeout(r, 400));
+    const heard = speech.transcript.trim();
+    const compare = compareTranscriptToModel(heard, activeBlock.text);
+    const accuracy = compare.overlapPercent;
+    applyBlockScore(activeBlock, accuracy, heard, [], accuracy, accuracy);
+    setLastAudioBlob(null);
     setPhase("result");
   };
 
@@ -233,15 +297,14 @@ export default function PeelShadowingPanel({
         </div>
       )}
 
-      {!azure.configured ? (
-        <p className="voice-coach-warn">
-          Configure <code>AZURE_SPEECH_KEY</code> e <code>AZURE_SPEECH_REGION</code> para ouvir e
-          avaliar cada bloco.
-        </p>
-      ) : (
+      <p className="peel-shadowing-sub">
+        Ouça o bloco → espere 1s → repita em voz alta → veja a nota. Cada bloco com ≥
+        {SHADOW_PEEL_PASS_SCORE}% conta na meta (máx. 1× por bloco/dia).
+      </p>
+
+      {!canRecord && (
         <p className="peel-shadowing-sub">
-          Ouça o bloco (Azure) → espere 1s → repita em voz alta → veja a nota de pronúncia. Cada
-          bloco com ≥{SHADOW_PEEL_PASS_SCORE}% conta +1 pt na meta (máx. 1× por bloco/dia).
+          Use Chrome ou Edge no desktop para gravar e avaliar cada bloco.
         </p>
       )}
 
@@ -249,7 +312,7 @@ export default function PeelShadowingPanel({
         <button
           type="button"
           className="btn purple btn-sm"
-          disabled={!azure.configured || phase === "listening" || phase === "recording"}
+          disabled={!canRecord || phase === "listening" || phase === "recording"}
           onClick={startRunAll}
         >
           Treinar todos ({blocks.length})
@@ -291,7 +354,7 @@ export default function PeelShadowingPanel({
                 <button
                   type="button"
                   className="btn secondary btn-sm"
-                  disabled={!azure.configured || phase === "listening" || phase === "recording"}
+                  disabled={!canRecord || phase === "listening" || phase === "recording"}
                   onClick={() => void startBlock(block)}
                 >
                   Treinar este bloco
@@ -336,7 +399,7 @@ export default function PeelShadowingPanel({
               {activeScore.heard && (
                 <>
                   <p className="voice-coach-transcript">
-                    <strong>Azure ouviu:</strong> {activeScore.heard}
+                    <strong>Ouvimos:</strong> {activeScore.heard}
                   </p>
                   {(() => {
                     const compare = compareTranscriptToModel(activeScore.heard!, activeBlock.text);

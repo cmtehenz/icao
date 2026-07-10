@@ -60,3 +60,13 @@ export function markPart1AnchorDone(cardNum: string): Part1CardStudyProgress {
 export function markPart1KeywordsDone(cardNum: string): Part1CardStudyProgress {
   return patchCard(cardNum, { keywordsDone: true });
 }
+
+export function clearPart1CardStudyProgress(cardNums: string[]): void {
+  const store = loadPart1MasteryProgress();
+  for (const raw of cardNums) {
+    const padded = raw.padStart(2, "0");
+    delete store[padded];
+    delete store[raw];
+  }
+  save(store);
+}

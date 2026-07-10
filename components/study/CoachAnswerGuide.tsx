@@ -81,6 +81,7 @@ export default function CoachAnswerGuide({
 }: {
   guide: Part1CoachGuide;
   showKeywords?: boolean;
+  /** Foundation only — default closed so students try memory first. */
   basicDefaultOpen?: boolean;
 }) {
   const showElaborate =

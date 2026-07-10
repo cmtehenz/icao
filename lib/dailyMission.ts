@@ -158,19 +158,19 @@ export function getNextMissionAction(): DailyMissionNextAction | null {
     if (!card.shadowDone) {
       const peel = part1CardPeelProgress(card.cardNum);
       return {
-        href: part1MissionLink(card.cardNum, "shadow"),
-        title: `Part 1 · Q${card.cardNum} Shadow`,
+        href: part1MissionLink(card.cardNum),
+        title: `Part 1 · Q${card.cardNum}`,
         hint:
-          peel.total > 0
-            ? `Complete PEEL blocks (${peel.done}/${peel.total})`
-            : "Shadow the PEEL blocks for this question",
+          peel.total > 0 && peel.done > 0
+            ? `Anchor build (${peel.done}/${peel.total} points)`
+            : "Build four anchor points for this question",
       };
     }
     if (!card.coachDone) {
       return {
-        href: part1MissionLink(card.cardNum, "coach"),
+        href: part1MissionLink(card.cardNum),
         title: `Part 1 · Q${card.cardNum} Coach`,
-        hint: "Record your answer in voice coach",
+        hint: "Keywords speak, then record your solo answer",
       };
     }
   }

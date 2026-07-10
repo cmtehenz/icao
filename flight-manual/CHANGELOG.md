@@ -9,6 +9,9 @@ Manual version history only. Sprint and audit details belong in Git history.
 **Part 1 mission reform — anti-memorization mastery pipeline.**
 
 - Default `/part1` is mission mode: brief → anchors → PEEL shadow → keywords → coach
+- Mission CTA and deep links never skip brief or anchor steps
+- Card #01 model answer aligned with FAA Rotorcraft Collective, SKYbrary OGHFA, CRM
+- Brief step includes curated reference videos (FAA) and links (SKYbrary)
 - Flight Manual §06 documents study techniques and 12-question bank
 - Browse mode at `/part1?browse=1` for library review only
 

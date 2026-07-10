@@ -77,8 +77,8 @@ export default function CaptainDeltaCoachingCard({
       )}
 
       <div className="cd-coach-card-body">
-        {message.text.split("\n").map((line) => (
-          <p key={`${message.id}-${line}`} className="cd-coach-line">
+        {message.text.split("\n").map((line, index) => (
+          <p key={`${message.id}-${index}`} className="cd-coach-line">
             {line}
           </p>
         ))}

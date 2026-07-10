@@ -1,9 +1,10 @@
 import { ALL_PART1_CARD_NUMS } from "@/data/exams/part1";
 import { CARDS } from "@/lib/cards";
 import { getPart1CoachHistory } from "@/lib/part1CoachHistory";
-import { getPeelBlocks } from "@/lib/peelBlocks";
-import { getPeelBlockHistory } from "@/lib/peelBlockHistory";
-import { SHADOW_PEEL_PASS_SCORE } from "@/lib/studyActivityRecord";
+import {
+  part1AnchorBuildComplete,
+  part1AnchorBuildProgress,
+} from "@/lib/part1Mastery/anchorBuild";
 
 export const PART1_MASTERY_TOTAL = ALL_PART1_CARD_NUMS.length;
 export const PART1_COACH_PASS_SCORE = 75;
@@ -28,19 +29,19 @@ export type Part1MasterySummary = {
   cards: Part1CardMastery[];
 };
 
-function peelBlocksReady(cardNum: string): { done: number; total: number; ready: boolean } {
+function anchorBuildReady(cardNum: string): { done: number; total: number; ready: boolean } {
   const card = CARDS.find((c) => c.num === cardNum);
   if (!card) return { done: 0, total: 0, ready: false };
-  const blocks = getPeelBlocks(card);
-  const done = blocks.filter(
-    (b) => (getPeelBlockHistory(cardNum)[b.id]?.bestAccuracy ?? 0) >= SHADOW_PEEL_PASS_SCORE,
-  ).length;
-  return { done, total: blocks.length, ready: blocks.length > 0 && done >= blocks.length };
+  const progress = part1AnchorBuildProgress(cardNum, card);
+  return {
+    ...progress,
+    ready: part1AnchorBuildComplete(cardNum, card),
+  };
 }
 
-/** One card is exam-ready when every PEEL block scored and coach reached ICAO 4 band. */
+/** One card is exam-ready when anchor build + coach reached ICAO 4 band. */
 export function part1CardMastery(cardNum: string): Part1CardMastery {
-  const peel = peelBlocksReady(cardNum);
+  const peel = anchorBuildReady(cardNum);
   const coach = getPart1CoachHistory(cardNum);
   const coachBest = coach?.bestOverall ?? null;
   const coachLevel = coach?.bestIcaoLevel ?? null;
@@ -80,7 +81,7 @@ export function part1MasteryStageLabel(stage: Part1MasteryStage): string {
     case "new":
       return "Not started";
     case "shadowing":
-      return "Shadowing PEEL";
+      return "Building anchors";
     case "coaching":
       return "Coach practice";
     case "examReady":

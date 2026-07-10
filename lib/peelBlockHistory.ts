@@ -63,6 +63,15 @@ export function getPeelBlockHistory(cardNum: string): Partial<Record<PeelBlockId
   return loadPeelBlockHistory()[cardNum] ?? {};
 }
 
+export function clearPeelBlockHistoryForCards(cardNums: string[]): void {
+  const store = loadPeelBlockHistory();
+  for (const raw of cardNums) {
+    delete store[raw.padStart(2, "0")];
+    delete store[raw];
+  }
+  savePeelBlockHistory(store);
+}
+
 export function getWeakPeelBlockIds(
   cardNum: string,
   threshold = SHADOW_PEEL_PASS_SCORE,

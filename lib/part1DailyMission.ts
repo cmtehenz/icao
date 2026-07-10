@@ -1,5 +1,6 @@
 import { getTodayPart1CardNums, getTodayExamVersion } from "@/lib/dailyExamRotation";
 import { CARDS } from "@/lib/cards";
+import { part1AnchorBuildComplete, part1AnchorBuildProgress } from "@/lib/part1Mastery/anchorBuild";
 import { getPeelBlocks } from "@/lib/peelBlocks";
 import { hasShadowPeelScoredToday, peelBlockActivityKey } from "@/lib/shadowPeelDedup";
 import { syncDailyMissionLog } from "@/lib/dailyMissionLog";
@@ -105,16 +106,24 @@ function updateCard(
 export function part1CardPeelProgress(cardNum: string): { done: number; total: number } {
   const card = CARDS.find((c) => c.num === cardNum);
   if (!card) return { done: 0, total: 0 };
+  return part1AnchorBuildProgress(cardNum, card);
+}
+
+export function part1CardAllPeelBlocksDoneToday(cardNum: string): boolean {
+  const card = CARDS.find((c) => c.num === cardNum);
+  if (!card) return false;
+  return part1AnchorBuildComplete(cardNum, card);
+}
+
+/** Full PEEL block progress (browse / deep practice). */
+export function part1CardFullPeelProgress(cardNum: string): { done: number; total: number } {
+  const card = CARDS.find((c) => c.num === cardNum);
+  if (!card) return { done: 0, total: 0 };
   const blocks = getPeelBlocks(card);
   const done = blocks.filter((b) =>
     hasShadowPeelScoredToday(peelBlockActivityKey(cardNum, b.id)),
   ).length;
   return { done, total: blocks.length };
-}
-
-export function part1CardAllPeelBlocksDoneToday(cardNum: string): boolean {
-  const { done, total } = part1CardPeelProgress(cardNum);
-  return total > 0 && done >= total;
 }
 
 export function markPart1ShadowDone(cardNum: string): Part1DailyMissionState | null {
@@ -161,9 +170,29 @@ export function part1DailyMissionProgress(mission = getOrCreatePart1DailyMission
   };
 }
 
-export function part1MissionLink(cardNum: string, mode: "shadow" | "coach"): string {
-  const params = new URLSearchParams({ card: cardNum });
+export function part1CardLink(cardNum: string): string {
+  return `/part1?card=${cardNum.padStart(2, "0")}`;
+}
+
+/** Resume a card at the correct pipeline step (no step skipping). */
+export function part1MissionLink(cardNum: string): string {
+  return part1CardLink(cardNum);
+}
+
+export function part1MissionDeepLink(cardNum: string, mode: "shadow" | "coach"): string {
+  const params = new URLSearchParams({ card: cardNum.padStart(2, "0") });
   if (mode === "shadow") params.set("shadow", "1");
   else params.set("coach", "1");
   return `/part1?${params.toString()}`;
+}
+
+/** Reset today's three cards — shadow/coach flags only (Mission Engine leg). */
+export function resetPart1DailyMissionProgress(): Part1DailyMissionState {
+  const mission = getOrCreatePart1DailyMission();
+  const next: Part1DailyMissionState = {
+    ...mission,
+    cards: mission.cards.map((c) => ({ ...c, shadowDone: false, coachDone: false })),
+  };
+  savePart1DailyMission(next);
+  return next;
 }

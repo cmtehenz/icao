@@ -61,3 +61,12 @@ export function recordPart1CoachAttempt(
 export function getPart1CoachHistory(cardNum: string): Part1CoachRecord | null {
   return loadPart1CoachHistory()[cardNum] ?? null;
 }
+
+export function clearPart1CoachHistoryForCards(cardNums: string[]): void {
+  const store = loadPart1CoachHistory();
+  for (const raw of cardNums) {
+    delete store[raw.padStart(2, "0")];
+    delete store[raw];
+  }
+  savePart1CoachHistory(store);
+}

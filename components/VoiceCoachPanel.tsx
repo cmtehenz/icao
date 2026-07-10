@@ -18,7 +18,7 @@ import { recordPart2RecordingScore } from "@/lib/part2Warmup";
 import { tryRecordStudyActivity, studyActivityRejectReason } from "@/lib/studyActivityRecord";
 import { addManualWordsToVault, addWordsToVault } from "@/lib/pronunciationVault";
 import Link from "next/link";
-import { markPart1CoachDone, isPart1CardInTodayMission } from "@/lib/part1DailyMission";
+import { markPart1CoachDone, isPart1CardInTodayMission, tryMarkPart1ShadowComplete } from "@/lib/part1DailyMission";
 import { recordPart1CoachAttempt } from "@/lib/part1CoachHistory";
 import type { Part2MissionKind } from "@/lib/part2DailyMission";
 import { tryMarkPart2DailyMissionPractice } from "@/lib/part2MissionComplete";
@@ -86,6 +86,10 @@ type Props = {
   recordingBlocked?: boolean;
   recordingBlockedMessage?: string;
   embedded?: boolean;
+  /** Daily Part 1 flight — one debrief completes the leg; no multi-turn HEX loop. */
+  missionLegMode?: boolean;
+  missionContinueHref?: string;
+  missionContinueLabel?: string;
 };
 
 function buildAzureExtras(
@@ -123,6 +127,9 @@ export default function VoiceCoachPanel({
   recordingBlocked = false,
   recordingBlockedMessage,
   embedded = false,
+  missionLegMode = false,
+  missionContinueHref,
+  missionContinueLabel,
 }: Props) {
   const speech = useSpeechRecognition("en-US");
   const azure = useAzurePronunciation();
@@ -153,9 +160,10 @@ export default function VoiceCoachPanel({
   const guideRef = useRef<HTMLDivElement>(null);
   const thinkingTimerRef = useRef<number | null>(null);
 
-  const isHexPart1 = evaluateType === "part1" && !!cardNum;
+  const isHexPart1 = evaluateType === "part1" && !!cardNum && !missionLegMode;
   const hexExamining = isHexPart1 && !!hexConversation && !hexConversation.complete;
   const showHexPresence = isHexPart1 && (hexExamining || closingActive);
+  const speakingActive = speech.listening || azure.assessing;
   const hexCtx = cardNum ? resolveQuestionContext(cardNum) : null;
   const hexProgress =
     hexConversation && hexCtx
@@ -302,6 +310,7 @@ export default function VoiceCoachPanel({
       setFeedback(data);
 
       let skipCaptainDebrief = false;
+      let hexCompleteThisTurn = false;
       if (isHexPart1 && cardNum) {
         const ctx = resolveQuestionContext(cardNum);
         if (ctx) {
@@ -330,6 +339,7 @@ export default function VoiceCoachPanel({
             }
             tryAgain(true);
           } else {
+            hexCompleteThisTurn = true;
             const closingLine =
               hexResult.examinerLine ?? "Thank you. Let's move to the next question.";
             setDisplayExaminerLine(closingLine);
@@ -440,15 +450,19 @@ export default function VoiceCoachPanel({
         );
       }
 
-      if (
-        azureResult &&
+      const shouldMarkPart1LegComplete =
         evaluateType === "part1" &&
         cardNum &&
         isPart1CardInTodayMission(cardNum) &&
-        data.scores.overall >= 50 &&
-        !skipCaptainDebrief
-      ) {
+        !skipCaptainDebrief &&
+        (missionLegMode ||
+          (data.scores.overall >= 50 &&
+            (!!azureResult || !!data.transcript.trim()) &&
+            (!isHexPart1 || hexCompleteThisTurn)));
+
+      if (shouldMarkPart1LegComplete) {
         markPart1CoachDone(cardNum);
+        tryMarkPart1ShadowComplete(cardNum);
       }
 
       if (user) {
@@ -651,21 +665,26 @@ export default function VoiceCoachPanel({
             ? " (Part 1: fala livre — avalia ideias e keywords, não texto idêntico)"
             : " (compara com a resposta modelo)"}
         </p>
-      ) : (
-        <p className="voice-coach-warn">
-          Azure não configurado — usando transcrição do navegador. Adicione{" "}
-          <code>AZURE_SPEECH_KEY</code> e <code>AZURE_SPEECH_REGION</code> no <code>.env.local</code>.
-        </p>
-      )}
+      ) : null}
 
       {evaluateType === "part1" && part1Guide ? (
-        <div ref={guideRef}>
-          <CoachAnswerGuide
-            guide={part1Guide}
-            showKeywords={coachShowKeywords}
-            basicDefaultOpen={coachBasicOpen}
-          />
-        </div>
+        speakingActive ? (
+          <div className="voice-coach-speaking-mode" aria-live="polite">
+            <p className="voice-coach-speaking-kicker">● Speaking — scripts hidden</p>
+            <p className="voice-coach-speaking-hint">
+              Answer from memory. Structure:{" "}
+              {part1Guide.memoryLabels?.join(" → ") ?? keywords.join(" → ")}
+            </p>
+          </div>
+        ) : (
+          <div ref={guideRef}>
+            <CoachAnswerGuide
+              guide={part1Guide}
+              showKeywords={coachShowKeywords}
+              basicDefaultOpen={coachBasicOpen}
+            />
+          </div>
+        )
       ) : null}
 
       <div className="voice-coach-actions">
@@ -790,6 +809,17 @@ export default function VoiceCoachPanel({
           followUpBanner={followUpContext?.followUpQuestion ?? null}
           suppressFollowUp={isHexPart1}
         />
+        {missionLegMode && missionContinueHref ? (
+          <div className="part1-coach-continue-bar">
+            <Link href={missionContinueHref} className="btn purple btn-large">
+              {missionContinueLabel ?? "Continue flight"}
+            </Link>
+            <p className="sub">
+              Today&apos;s leg is complete for this question. You can record again to improve, or
+              continue the flight.
+            </p>
+          </div>
+        ) : null}
         </>
       )}
 

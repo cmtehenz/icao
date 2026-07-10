@@ -8,6 +8,7 @@ import {
   markShadowPart2Scored,
 } from "@/lib/shadowPart2Dedup";
 import { markPart1ShadowDone, isPart1CardInTodayMission, tryMarkPart1ShadowComplete } from "@/lib/part1DailyMission";
+import { ANCHOR_BUILD_PASS_SCORE } from "@/lib/part1Mastery/anchorBuild";
 import type { Part2MissionKind } from "@/lib/part2DailyMission";
 import { syncDailyMissionLog } from "@/lib/dailyMissionLog";
 import {
@@ -59,6 +60,10 @@ export type StudyActivityNearMissDetail = {
   label: string;
 };
 
+function shadowPassScore(peelBlockKey?: string): number {
+  return peelBlockKey?.includes(":build-") ? ANCHOR_BUILD_PASS_SCORE : SHADOW_PEEL_PASS_SCORE;
+}
+
 export function canRecordStudyActivity(
   activity: StudyActivity,
   ctx: StudyActivityRecordContext,
@@ -75,7 +80,7 @@ export function canRecordStudyActivity(
 
   switch (activity) {
     case "shadow":
-      return accuracy >= SHADOW_PEEL_PASS_SCORE;
+      return accuracy >= shadowPassScore(ctx.peelBlockKey);
     case "shadowPart2":
       return heard.length > 0 && accuracy > 0;
     case "pronunciation":
@@ -104,7 +109,7 @@ export function studyActivityRejectReason(
 
   switch (activity) {
     case "shadow":
-      return `Precisa de pelo menos ${SHADOW_PEEL_PASS_SCORE}% de accuracy no bloco.`;
+      return `Precisa de pelo menos ${shadowPassScore(ctx.peelBlockKey)}% de overlap — paraphrase counts for anchor points.`;
     case "shadowPart2":
       return heardRequired(ctx) ? "Fale o readback com mais clareza." : "Nenhuma fala detectada.";
     case "pronunciation":

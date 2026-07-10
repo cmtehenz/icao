@@ -1,13 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import MemoryFlow from "@/components/study/MemoryFlow";
-import KeywordsPanel from "@/components/study/KeywordsPanel";
-import PeelShadowingPanel from "@/components/study/PeelShadowingPanel";
 import VoiceCoachPanel from "@/components/VoiceCoachPanel";
 import Part1MasteryBanner from "@/components/part1/Part1MasteryBanner";
+import Part1BriefResources from "@/components/part1/Part1BriefResources";
+import Part1AnchorBuildPanel from "@/components/part1/Part1AnchorBuildPanel";
+import Part1StoryConnectPanel from "@/components/part1/Part1StoryConnectPanel";
 import { emitCaptainDeltaSuggestion } from "@/lib/captainDelta/events";
 import { CARDS } from "@/lib/cards";
 import { CATEGORIES } from "@/lib/categories";
@@ -29,12 +30,13 @@ import {
   PART1_MASTERY_PROGRESS_EVENT,
 } from "@/lib/part1Mastery/progress";
 import {
-  part1PipelineIndex,
+  isPart1PipelineStepComplete,
   part1PipelineStepMeta,
   resolvePart1PipelineStep,
   type Part1PipelineStepId,
 } from "@/lib/part1Mastery/pipeline";
 import { buildPart1MasterySummary } from "@/lib/part1Mastery/summary";
+import { PART1_RESET_EVENT, resetPart1Today } from "@/lib/part1Mastery/reset";
 import { DEFAULT_PROFILE, loadProfile } from "@/lib/profile";
 import { loadConnectorSet, type ConnectorSetId } from "@/lib/connectors";
 import { personalizeCard } from "@/lib/personalize";
@@ -46,6 +48,7 @@ function cardByNum(num: string) {
 
 export default function Part1MissionApp() {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const [tick, setTick] = useState(0);
   const [profile, setProfile] = useState(DEFAULT_PROFILE);
   const [connectorSet, setConnectorSet] = useState<ConnectorSetId>("level4");
@@ -57,11 +60,20 @@ export default function Part1MissionApp() {
   }, []);
 
   useEffect(() => {
+    if (searchParams.get("reset") !== "1") return;
+    const firstCard = resetPart1Today();
+    refresh();
+    router.replace(`/part1?card=${firstCard}`);
+  }, [searchParams, router, refresh]);
+
+  useEffect(() => {
     window.addEventListener(PART1_DAILY_MISSION_EVENT, refresh);
     window.addEventListener(PART1_MASTERY_PROGRESS_EVENT, refresh);
+    window.addEventListener(PART1_RESET_EVENT, refresh);
     return () => {
       window.removeEventListener(PART1_DAILY_MISSION_EVENT, refresh);
       window.removeEventListener(PART1_MASTERY_PROGRESS_EVENT, refresh);
+      window.removeEventListener(PART1_RESET_EVENT, refresh);
     };
   }, [refresh]);
 
@@ -115,6 +127,24 @@ export default function Part1MissionApp() {
     return getNextMissionAction();
   }, [tick]);
 
+  const missionContinue = useMemo(() => {
+    void tick;
+    if (!card) return null;
+    const idx = mission.cards.findIndex((c) => c.cardNum === card.num);
+    if (idx >= 0 && idx < mission.cards.length - 1) {
+      const nextCard = mission.cards[idx + 1]!.cardNum;
+      return {
+        href: `/part1?card=${nextCard}`,
+        label: `Next question · #${nextCard}`,
+      };
+    }
+    const next = getNextMissionAction();
+    return {
+      href: next?.href ?? "/",
+      label: next ? `Ready — ${next.title}` : "Continue flight",
+    };
+  }, [card, mission.cards, tick]);
+
   useEffect(() => {
     if (!card || stepId === "complete") return;
     emitCaptainDeltaSuggestion({
@@ -158,6 +188,16 @@ export default function Part1MissionApp() {
     refresh();
   };
 
+  const restartToday = () => {
+    const ok = window.confirm(
+      "Restart today's Part 1? You will go back to Brief on question 1. Today's shadow and coach progress will reset.",
+    );
+    if (!ok) return;
+    const firstCard = resetPart1Today();
+    refresh();
+    router.replace(`/part1?card=${firstCard}`);
+  };
+
   return (
     <div className="part1-mission-page">
       <header className="part1-mission-head wrap">
@@ -173,8 +213,12 @@ export default function Part1MissionApp() {
       <div className="wrap part1-mission-body">
         <nav className="part1-pipeline-strip" aria-label="Study pipeline">
           {["brief", "anchor", "shadow", "keywords", "coach"].map((id) => {
-            const active = stepId === id;
-            const done = part1PipelineIndex(stepId) > part1PipelineIndex(id as Part1PipelineStepId);
+            const pipelineId = id as Part1PipelineStepId;
+            const active = stepId === pipelineId;
+            const done = isPart1PipelineStepComplete(pipelineId, {
+              cardNum: card.num,
+              missionCard: mission.cards.find((c) => c.cardNum === card.num),
+            });
             return (
               <span
                 key={id}
@@ -203,6 +247,7 @@ export default function Part1MissionApp() {
                 Picture a real operational situation. You will build the answer in steps — no
                 memorizing the script.
               </p>
+              <Part1BriefResources cardNum={card.num} />
               <button
                 type="button"
                 className="btn purple btn-large"
@@ -242,47 +287,28 @@ export default function Part1MissionApp() {
 
           {stepId === "shadow" && (
             <div className="part1-step-panel">
-              <PeelShadowingPanel
-                embedded
-                card={card}
-                question={card.question}
-                initialOpen
-                initialBlockId={searchParams.get("block") as import("@/lib/peelBlocks").PeelBlockId | null}
-              />
+              <Part1AnchorBuildPanel card={card} onProgress={refresh} />
               <button
                 type="button"
                 className="btn purple btn-large"
                 disabled={!peelReady}
                 onClick={advanceFromShadow}
               >
-                {peelReady ? "Continue — keywords speak" : "Complete all PEEL blocks first"}
+                {peelReady ? "Continue — connect your story" : "Speak all 4 anchor points first"}
               </button>
             </div>
           )}
 
           {stepId === "keywords" && (
             <div className="part1-step-panel">
-              <KeywordsPanel keywords={keywords} hidden={false} />
-              <p className="keywords-only-banner">
-                Retrieval practice — speak a full answer using only these keywords. No model on
-                screen.
-              </p>
-              {!part1Assist.hideModelAnswers && (
-                <p className="sub">
-                  Foundation assistance: open Coach below if you need the basic example after you
-                  try.
-                </p>
-              )}
-              <button
-                type="button"
-                className="btn purple btn-large"
-                onClick={() => {
+              <Part1StoryConnectPanel
+                card={card}
+                keywords={keywords}
+                onComplete={() => {
                   markPart1KeywordsDone(card.num);
                   refresh();
                 }}
-              >
-                I spoke from keywords — solo coach
-              </button>
+              />
             </div>
           )}
 
@@ -290,6 +316,9 @@ export default function Part1MissionApp() {
             <div className="part1-step-panel">
               <VoiceCoachPanel
                 embedded
+                missionLegMode
+                missionContinueHref={missionContinue?.href}
+                missionContinueLabel={missionContinue?.label}
                 question={card.question}
                 modelAnswer={card.answer}
                 evaluateType="part1"
@@ -303,7 +332,8 @@ export default function Part1MissionApp() {
                 coachBasicOpen={part1Assist.coachBasicOpen}
               />
               <p className="sub">
-                Record your full answer. Paraphrase is fine — structure and ops language matter.
+                Record your full answer. Use the sentence skeleton above if you need it — paraphrase
+                is fine.
               </p>
             </div>
           )}
@@ -336,6 +366,10 @@ export default function Part1MissionApp() {
         <p className="part1-browse-link sub">
           <Link href="/part1?browse=1">Browse all 12 questions</Link> (review mode — not today&apos;s
           flight)
+          {" · "}
+          <button type="button" className="part1-restart-link" onClick={restartToday}>
+            Restart today&apos;s Part 1
+          </button>
         </p>
       </div>
     </div>

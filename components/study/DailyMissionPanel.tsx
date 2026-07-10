@@ -13,7 +13,7 @@ import { MISSION_RECALL_EVENT } from "@/lib/missionRecall/missionRecallProgress"
 import {
   getOrCreatePart1DailyMission,
   part1CardPeelProgress,
-  part1MissionLink,
+  part1MissionDeepLink,
   PART1_DAILY_MISSION_EVENT,
 } from "@/lib/part1DailyMission";
 import {
@@ -187,12 +187,12 @@ export default function DailyMissionPanel() {
                 {!(c.shadowDone && c.coachDone) && (
                   <span className="daily-mission-links">
                     {!c.shadowDone && (
-                      <Link href={part1MissionLink(c.cardNum, "shadow")} className="btn secondary btn-sm">
+                      <Link href={part1MissionDeepLink(c.cardNum, "shadow")} className="btn secondary btn-sm">
                         Shadow
                       </Link>
                     )}
                     {!c.coachDone && (
-                      <Link href={part1MissionLink(c.cardNum, "coach")} className="btn secondary btn-sm">
+                      <Link href={part1MissionDeepLink(c.cardNum, "coach")} className="btn secondary btn-sm">
                         Coach
                       </Link>
                     )}

@@ -36,15 +36,15 @@ export const PART1_PIPELINE: Part1PipelineStep[] = [
   },
   {
     id: "shadow",
-    label: "PEEL shadow",
-    technique: "Chunking",
-    captainHint: "One block at a time. Shadow until each chunk is clear.",
+    label: "Build anchors",
+    technique: "One idea at a time",
+    captainHint: "Four short points — paraphrase each anchor. No full script.",
   },
   {
     id: "keywords",
-    label: "Keywords speak",
-    technique: "Retrieval practice",
-    captainHint: "Keywords only. Build the answer in your own words.",
+    label: "Connect story",
+    technique: "Guided retrieval",
+    captainHint: "One section at a time, then the full answer from keywords.",
   },
   {
     id: "coach",
@@ -68,21 +68,49 @@ export type Part1PipelineContext = {
   forceCoach?: boolean;
 };
 
-export function resolvePart1PipelineStep(ctx: Part1PipelineContext): Part1PipelineStepId {
-  if (ctx.forceCoach) return "coach";
-  if (ctx.forceShadow) return "shadow";
-
+function pipelineContext(ctx: Part1PipelineContext) {
   const missionCard =
     ctx.missionCard ??
     getOrCreatePart1DailyMission().cards.find((c) => c.cardNum === ctx.cardNum);
   const study = ctx.study ?? getPart1CardStudyProgress(ctx.cardNum);
+  const shadowComplete =
+    part1CardAllPeelBlocksDoneToday(ctx.cardNum) || !!missionCard?.shadowDone;
+  return { missionCard, study, shadowComplete };
+}
+
+/** Deep links (?shadow=1 / ?coach=1) never skip brief or anchors — Flight Manual §06. */
+export function resolvePart1PipelineStep(ctx: Part1PipelineContext): Part1PipelineStepId {
+  const { missionCard, study, shadowComplete } = pipelineContext(ctx);
 
   if (!study.briefSeen) return "brief";
   if (!study.anchorDone) return "anchor";
-  if (!part1CardAllPeelBlocksDoneToday(ctx.cardNum) && !missionCard?.shadowDone) return "shadow";
+  if (!shadowComplete) return "shadow";
   if (!study.keywordsDone) return "keywords";
   if (!missionCard?.coachDone) return "coach";
   return "complete";
+}
+
+export function isPart1PipelineStepComplete(
+  stepId: Part1PipelineStepId,
+  ctx: Part1PipelineContext,
+): boolean {
+  const { missionCard, study, shadowComplete } = pipelineContext(ctx);
+  switch (stepId) {
+    case "brief":
+      return study.briefSeen;
+    case "anchor":
+      return study.anchorDone;
+    case "shadow":
+      return shadowComplete;
+    case "keywords":
+      return study.keywordsDone;
+    case "coach":
+      return !!missionCard?.coachDone;
+    case "complete":
+      return resolvePart1PipelineStep(ctx) === "complete";
+    default:
+      return false;
+  }
 }
 
 export function part1PipelineStepMeta(id: Part1PipelineStepId): Part1PipelineStep {
