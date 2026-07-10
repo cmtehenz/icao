@@ -14373,5 +14373,2064 @@ export const BATCH01_DEV_ENTRIES: DevKnowledgeEntry[] = [
         "label": "H130 AFM — Normal Procedures, Descent"
       }
     ]
+  },
+  {
+    "catalogId": "0186",
+    "id": "0186",
+    "displayTerm": "Weather Deviation",
+    "term": "weather deviation",
+    "slug": "weather-deviation",
+    "category": "Navigation",
+    "meaningEn": "Weather Deviation is a deliberate lateral or vertical departure from the ATC-cleared route, track, or altitude, initiated by the flight crew to avoid hazardous meteorological conditions, coordinated with ATC when communications permit, and followed by a return to the cleared route once the weather hazard is clear of the flight path.",
+    "meaningPt": "Desvio por condições meteorológicas / Weather Deviation.\n\nAfastamento lateral ou vertical deliberado da rota, trilha ou altitude autorizada pelo controle, iniciado pela tripulação para evitar condições meteorológicas perigosas, coordenado com o ATC sempre que as comunicações permitirem, e seguido do retorno à rota autorizada assim que o perigo meteorológico estiver fora da trajetória de voo.",
+    "whenUsed": "When planning or executing a weather deviation, the crew should:",
+    "example": "Radar: ANAC123, weather deviation approved left of track, report when clear.",
+    "sayPhrase": "ANAC123, weather deviation left of track approved, will report clear.",
+    "icaoQuestion": "You are on an IFR route and weather radar shows a thunderstorm directly ahead. ATC has not yet issued a deviation clearance. Describe what you do.?",
+    "icaoSpeakText": "I would assess the safest direction of deviation using weather radar and visual cues if available. I would request weather deviation early, stating left or right of track and the approximate distance needed. If ATC cannot approve immediately and the cell is an immediate hazard, I would deviate as necessary for safety and advise ATC as soon as practicable of my heading, offset, and intentions. Once clear of weather, I would report clear and request to resume own navigation or rejoin the cleared route. Safety of flight comes first, but communication must follow without delay.",
+    "missionBrief": "Today's lesson covers Weather Deviation — the intentional departure from the cleared route or track to avoid hazardous weather, typically thunderstorms, severe turbulence, hail, or embedded convective cells.\n\nWeather deviation is not a casual heading change. It is a safety-critical navigation action that must be coordinated with ATC whenever possible, executed with clear communication of direction and distance, and closed with a return-to-route report when the hazard is clear.\n\nFor H130 helicopter training academy operations in Brazilian airspace — Congonhas, Guarulhos, Santos Dumont, Curitiba, Florianópolis — convective weather is a frequent summer and afternoon threat. The H130 can often divert around cells at lower altitudes and shorter distances than jets, but the phraseology and discipline remain the same: request, advise, deviate, and report back on course.\n\nUnderstanding how to request weather deviation, report the extent of the offset, and resume the cleared route in ICAO-standard English is essential for Part 2 and Part 3 proficiency.",
+    "captainTeaching": "Weather deviation is a negotiation between safety and traffic.\n\nYou see the cell. You know you cannot continue on track. ATC knows the traffic picture. Your job is to state what you need — left or right, how far — early enough for ATC to protect you.\n\nDo not wait until you are inside the rain shaft to call. Request when the cell is still twenty to thirty miles ahead. That gives ATC time to coordinate.\n\nIf ATC says unable left due traffic, accept right — or request an altitude change if lateral options are blocked. Do not argue with a thunderstorm.\n\nIn the H130, you can often take a tighter offset than a jet. That helps in busy terminal areas around Congonhas and Guarulhos. Still report the offset. ATC cannot protect what they cannot see in your intentions.\n\nWhen clear of weather, say so. Resume own navigation only when cleared. Closing the loop is as important as opening it.",
+    "operationalContext": "You are en route from Congonhas to Florianópolis at flight level nine zero. Ahead, a line of embedded thunderstorms blocks the direct track. Weather radar paints a solid cell twenty miles ahead, with a clearer corridor to the left.\n\nYou call radar and request weather deviation left of track. Radar clears you left of track, report when clear of weather.\n\nYou turn left twenty degrees, offset approximately fifteen miles, and remain clear of the cell. Once past the weather, you report clear and request to resume own navigation to Florianópolis.\n\nRadar: ANAC123, resume own navigation, direct Florianópolis, report established on course.\n\nYou rejoin the route. Deviation complete. Traffic protected. Weather avoided.\n\nThat is professional weather deviation — requested early, flown deliberately, closed with a clear report.",
+    "sayItCoach": "ANAC123, request weather deviation left of track due to thunderstorm, approximately fifteen miles.",
+    "icaoModelAnswer": "I would assess the safest direction of deviation using weather radar and visual cues if available. I would request weather deviation early, stating left or right of track and the approximate distance needed. If ATC cannot approve immediately and the cell is an immediate hazard, I would deviate as necessary for safety and advise ATC as soon as practicable of my heading, offset, and intentions. Once clear of weather, I would report clear and request to resume own navigation or rejoin the cleared route. Safety of flight comes first, but communication must follow without delay.",
+    "memoryTrick": "**DEVIATE** — **D**etect the cell early, **E**stimate left or right offset, **V**oice the request before you need it, **I**nitiate only with clearance or for safety, **A**dvise heading and distance, **T**ell ATC when clear, **E**stablish back on route when cleared.",
+    "operationalMeaning": "When planning or executing a weather deviation, the crew should:\n\nWeather deviation operations commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Radar: ANAC123, weather deviation approved left of track, report when clear.",
+      "Control: ANAC123, unable left due traffic, deviate right of track, advise distance.",
+      "Radar: ANAC123, fly heading one eight zero for weather avoidance, expect further vectors.",
+      "Approach: ANAC123, cleared to deviate as necessary for weather, remain outside restricted area bravo.",
+      "Radar: ANAC123, when clear of weather, resume own navigation, direct Florianópolis."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, weather deviation left of track approved, will report clear.",
+      "ANAC123, unable left, will deviate right of track, will advise distance.",
+      "ANAC123, heading one eight zero for weather avoidance, standing by for further vectors.",
+      "ANAC123, cleared to deviate as necessary for weather, remaining outside restricted area bravo.",
+      "ANAC123, when clear of weather, resume own navigation, direct Florianópolis."
+    ],
+    "brazilianMistakes": "- ❌ Saying only \"request deviation\" without left/right or distance.  \n  ✔ State direction and extent: request weather deviation left of track, fifteen miles.\n\n- ❌ Deviating silently and reporting only after returning to route.  \n  ✔ Advise ATC as soon as practicable when leaving the cleared track.\n\n- ❌ Remaining on the offset indefinitely after weather is clear.  \n  ✔ Report clear of weather and request resume own navigation.\n\n- ❌ Flying into the cell because ATC said \"stand by.\"  \n  ✔ If safety requires immediate action, deviate and advise — do not penetrate the storm.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Request Weather Deviation Left of Track\n\n**Pronunciation:** AY-nak WUN TOO THREE, reh-KWEST WEH-ther dee-vee-AY-shun LEFT uv TRAK\n\n**Word Stress**\n\n- Weather → WEH-ther (stress on first)\n- Deviation → dee-vee-AY-shun (stress on third)\n- Left → LEFT\n- Track → TRAK\n\nPractice:\n\nRequest weather deviation... left of track... fifteen miles.\n\nTogether:\n\nANAC123, request weather deviation left of track due to thunderstorm, approximately fifteen miles.",
+    "relatedConcepts": [
+      "SIGMET",
+      "Thunderstorm Avoidance",
+      "Resume Own Navigation",
+      "Heading Assignment",
+      "Restricted Area",
+      "PIREP"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Special Procedures, Weather Deviation",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 8896 — Manual of Aeronautical Meteorological Practice"
+      },
+      {
+        "label": "SKYbrary — Weather Avoidance / Thunderstorms",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "DECEA AIP Brasil — En-Route and Weather Procedures"
+      },
+      {
+        "label": "H130 AFM — Adverse Weather / Operating Limitations"
+      }
+    ]
+  },
+  {
+    "catalogId": "0187",
+    "id": "0187",
+    "displayTerm": "Restricted Area",
+    "term": "restricted area",
+    "slug": "restricted-area",
+    "category": "Navigation",
+    "meaningEn": "A Restricted Area is a defined volume of airspace, published on aeronautical charts and in AIP documentation, within which flight of aircraft is restricted in accordance with certain specified conditions, or prohibited except for authorized aircraft, typically due to military, security, or hazardous activities.",
+    "meaningPt": "Área Restrita / Restricted Area.\n\nVolume definido de espaço aéreo, publicado em cartas aeronáuticas e na documentação AIP, dentro do qual o voo de aeronaves é restrito de acordo com condições específicas, ou proibido exceto para aeronaves autorizadas, tipicamente devido a atividades militares, de segurança ou perigosas.",
+    "whenUsed": "When operating near or toward a restricted area, the crew should:",
+    "example": "Approach: ANAC123, restricted area ahead is active, remain clear, turn right heading two seven zero.",
+    "sayPhrase": "ANAC123, restricted area active, remaining clear, right heading two seven zero.",
+    "icaoQuestion": "Your cleared route passes through a restricted area that NOTAMs show as active. Describe what you do before and during the flight.?",
+    "icaoSpeakText": "During preflight I would identify the restricted area on the chart, confirm activation status and vertical limits in the NOTAM and AIP, and plan an alternate route that remains clear. Before departure or en route, I would confirm with ATC that the area is active and request vectors or a reroute around it. If ATC later advises the area is cold and clears me through, I would read back the transit clearance and comply with any reporting instructions. I would not enter an active restricted area without an explicit clearance.",
+    "missionBrief": "Today's lesson covers Restricted Area — designated airspace where flight is not permitted, or is permitted only under specified conditions, usually due to military activity, security, or other hazards to aviation.\n\nA restricted area is not a suggestion. It is a published airspace constraint. Entering without authorization can create conflict with military operations, endanger the aircraft, and result in serious regulatory consequences.\n\nFor H130 helicopter training academy flights in Brazilian airspace, restricted areas appear on charts near major cities, coastal zones, and military installations. Routes between Congonhas, Santos Dumont, Guarulhos, Curitiba, and Florianópolis may require lateral or altitude planning to remain clear — or to obtain a clearance through when the area is cold or transit is authorized.\n\nUnderstanding how to discuss restricted areas, request transit, and confirm remaining clear in ICAO English supports Part 2 radiotelephony and Part 4 interaction skills.",
+    "captainTeaching": "Restricted areas are published for a reason — usually something inside that does not mix well with civil traffic.\n\nYour first defense is the chart and the NOTAM. Know where the areas sit relative to your route before you start the engines.\n\nYour second defense is ATC. If they say remain clear, do not edge the boundary to save two minutes. Give yourself margin — especially in the H130 at low level, where a small navigation error becomes a boundary penetration quickly.\n\nIf the area is cold and transit is cleared, read back the clearance and report exiting if requested. Transit is a privilege, not a default.\n\nIf weather forces you toward a restricted area, say so early. Request an alternative heading or altitude. Do not choose between a thunderstorm and an unauthorized penetration without talking to ATC.\n\nPart 4 interaction matters here: you may need to clarify status, request transit, or confirm you are clear. Keep the language simple and precise.",
+    "operationalContext": "You are flying from Santos Dumont toward Curitiba. Along the planned track, a restricted area is active from the surface to flight level one zero zero according to the day's NOTAM.\n\nApproach advises that the restricted area is hot and instructs you to remain clear. You request a heading to the east to circumnavigate.\n\nApproach issues a vector clear of the area and later clears you direct to a fix beyond the boundary.\n\nYou remain outside. No penetration. No conflict with the activity inside.\n\nThat is how restricted area awareness works in real Brazilian ops — chart knowledge, NOTAM check, ATC instruction, and a clean lateral plan.",
+    "sayItCoach": "ANAC123, remaining clear of restricted area, request vectors around.",
+    "icaoModelAnswer": "During preflight I would identify the restricted area on the chart, confirm activation status and vertical limits in the NOTAM and AIP, and plan an alternate route that remains clear. Before departure or en route, I would confirm with ATC that the area is active and request vectors or a reroute around it. If ATC later advises the area is cold and clears me through, I would read back the transit clearance and comply with any reporting instructions. I would not enter an active restricted area without an explicit clearance.",
+    "memoryTrick": "**RESTRICT** — **R**ead the chart and NOTAM, **E**stablish if hot or cold, **S**tay outside unless cleared, **T**alk to ATC early for transit or vectors, **R**ead back any through clearance, **I**dentify exits and fixes beyond, **C**omply with remain-clear instructions, **T**ell ATC when exiting if required.",
+    "operationalMeaning": "When operating near or toward a restricted area, the crew should:\n\nRestricted area operations commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, restricted area ahead is active, remain clear, turn right heading two seven zero.",
+      "Radar: ANAC123, unable direct due restricted area, expect vectors around.",
+      "Control: ANAC123, restricted area bravo is cold, cleared through, report exiting.",
+      "Approach: ANAC123, remain outside restricted area, traffic military activity in progress.",
+      "Radar: ANAC123, when clear of restricted area, resume own navigation, direct Curitiba."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, restricted area active, remaining clear, right heading two seven zero.",
+      "ANAC123, unable direct due restricted area, standing by for vectors around.",
+      "ANAC123, restricted area bravo cold, cleared through, will report exiting.",
+      "ANAC123, remaining outside restricted area, copy military activity.",
+      "ANAC123, when clear of restricted area, resume own navigation, direct Curitiba."
+    ],
+    "brazilianMistakes": "- ❌ Assuming the area is inactive because it is often cold.  \n  ✔ Check NOTAMs every flight and confirm with ATC if status is unclear.\n\n- ❌ Flying close to the boundary to \"cut the corner.\"  \n  ✔ Remain clearly outside unless cleared through; build lateral margin.\n\n- ❌ Entering because GPS shows a shorter path.  \n  ✔ Navigation shortcuts do not authorize restricted area penetration.\n\n- ❌ Failing to report exiting when transit was cleared with a report request.  \n  ✔ Report exiting as instructed so ATC can release the coordination.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Remaining Clear of Restricted Area\n\n**Pronunciation:** AY-nak WUN TOO THREE, rih-MAY-ning KLEER uv rih-STRIK-tid AIR-ee-uh\n\n**Word Stress**\n\n- Remaining → rih-MAY-ning (stress on second)\n- Clear → KLEER\n- Restricted → rih-STRIK-tid (stress on second)\n- Area → AIR-ee-uh\n\nPractice:\n\nRemaining clear... of restricted area... standing by for vectors.\n\nTogether:\n\nANAC123, remaining clear of restricted area, request vectors around.",
+    "relatedConcepts": [
+      "Prohibited Area",
+      "Danger Area",
+      "Military Activity",
+      "NOTAM",
+      "Resume Own Navigation",
+      "Airspace Classification"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Airspace Restrictions",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 15 — Aeronautical Information Services"
+      },
+      {
+        "label": "SKYbrary — Restricted Areas / Airspace Restrictions",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "DECEA AIP Brasil — ENR Restricted, Danger and Prohibited Areas"
+      },
+      {
+        "label": "H130 AFM — Operating Limitations (as applicable to route planning)"
+      }
+    ]
+  },
+  {
+    "catalogId": "0188",
+    "id": "0188",
+    "displayTerm": "Military Activity",
+    "term": "military activity",
+    "slug": "military-activity",
+    "category": "Navigation",
+    "meaningEn": "Military Activity is any military flight operation or ground-based exercise that occupies or affects a volume of airspace used by civil aviation, requiring ATC to advise civil aircraft, impose routing or altitude restrictions, or activate temporary airspace measures to maintain separation and safety.",
+    "meaningPt": "Atividade Militar / Military Activity.\n\nQualquer operação de voo militar ou exercício em solo que ocupe ou afete um volume de espaço aéreo utilizado pela aviação civil, exigindo que o ATC informe as aeronaves civis, imponha restrições de rota ou altitude, ou ative medidas temporárias de espaço aéreo para manter separação e segurança.",
+    "whenUsed": "When ATC advises military activity affecting your route, the crew should:",
+    "example": "Approach: ANAC123, military activity in progress west of Florianópolis, expect vectors east of course.",
+    "sayPhrase": "ANAC123, copy military activity west of Florianópolis, expecting vectors east of course.",
+    "icaoQuestion": "ATC advises military activity on your route and issues a long vector that will significantly increase flight time. Your fuel is limited. Describe what you say and do.?",
+    "icaoSpeakText": "I would acknowledge the military activity and the vector, then advise ATC that I am unable to accept an extended reroute due to fuel state if that is the case. I would request a shorter alternative routing, an altitude that remains clear, or priority handling as appropriate. I would not enter the activity area. If no shorter route is available, I would divert to a suitable alternate while remaining clear of the military activity and coordinating the diversion with ATC.",
+    "missionBrief": "Today's lesson covers Military Activity — operations by military aircraft or units that affect civil traffic, including exercises, intercepts practice, formation flights, and temporary airspace activation that may require civil aircraft to reroute, hold, or accept altitude changes.\n\nMilitary activity is not always confined to a published restricted area. It may be temporary, mobile, or announced by NOTAM and ATC advisory. Civil crews must understand the phraseology, comply with remain-clear or reroute instructions, and communicate clearly if weather or fuel state limits their options.\n\nFor H130 helicopter training academy flights in Brazil, military activity can affect coastal corridors, areas near major bases, and routes connecting Congonhas, Santos Dumont, Guarulhos, Curitiba, and Florianópolis. Coordination with ATC is the civil pilot's primary tool.\n\nUnderstanding how to acknowledge military activity advisories, request alternative routing, and confirm clear of the activity supports Part 2 and Part 4 proficiency.",
+    "captainTeaching": "Military activity is ATC's problem to coordinate — and your problem to comply with cleanly.\n\nWhen you hear the advisory, the correct response is acknowledgment and readiness for vectors or reroute. Do not ask for details that do not affect your clearance. Do not complain on frequency about the delay.\n\nIf the reroute burns fuel or pushes you toward weather, say that professionally: unable extended vectors due fuel, request shorter alternative or priority. That is Part 4 interaction done correctly — clear need, clear request.\n\nIn the H130 near Brazilian coastal and training areas, military activity may appear with little notice via ATC. Keep charts and NOTAMs current, but trust the live instruction over your assumption that the corridor is free.\n\nWhen activity is terminated and normal routing resumes, read back and rejoin cleanly. Do not cut back through the former activity area until cleared.",
+    "operationalContext": "You are inbound to Florianópolis from Curitiba. Approach advises military activity in progress west of the field and instructs you to expect vectors east of the normal arrival track.\n\nYou acknowledge. Approach issues a heading to remain clear and later sequences you for the approach from the east.\n\nYou never enter the activity area. You accept a slightly longer track. You land without conflict.\n\nThat is the civil side of military activity: hear the advisory, comply with the vector, keep the frequency professional, and let ATC manage the coordination.",
+    "sayItCoach": "ANAC123, remaining clear of military activity, right heading zero nine zero.",
+    "icaoModelAnswer": "I would acknowledge the military activity and the vector, then advise ATC that I am unable to accept an extended reroute due to fuel state if that is the case. I would request a shorter alternative routing, an altitude that remains clear, or priority handling as appropriate. I would not enter the activity area. If no shorter route is available, I would divert to a suitable alternate while remaining clear of the military activity and coordinating the diversion with ATC.",
+    "memoryTrick": "**MILITARY** — **M**onitor the advisory, **I**dentify required action, **L**ateral plan around the area, **I**nform ATC if fuel or weather limits options, **T**ake the vector without debate, **A**void the activity volume, **R**esume normal routing only when cleared, **Y**ield curiosity — fly the clearance.",
+    "operationalMeaning": "When ATC advises military activity affecting your route, the crew should:\n\nMilitary activity scenarios commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, military activity in progress west of Florianópolis, expect vectors east of course.",
+      "Radar: ANAC123, remain clear of military activity, turn right heading zero nine zero.",
+      "Control: ANAC123, due military activity, unable direct, cleared via alternate route.",
+      "Approach: ANAC123, military activity terminated, resume normal routing, direct to the VOR.",
+      "Radar: ANAC123, hold at present position, military traffic crossing your route, expect further clearance."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, copy military activity west of Florianópolis, expecting vectors east of course.",
+      "ANAC123, remaining clear of military activity, right heading zero nine zero.",
+      "ANAC123, unable direct due military activity, cleared via alternate route.",
+      "ANAC123, military activity terminated, resume normal routing, direct to the VOR.",
+      "ANAC123, holding present position, standing by for further clearance."
+    ],
+    "brazilianMistakes": "- ❌ Asking detailed questions about the military exercise on the civil frequency.  \n  ✔ Acknowledge the advisory and comply; request only what you need for routing and fuel.\n\n- ❌ Cutting through the activity area after it \"looks quiet.\"  \n  ✔ Remain clear until ATC terminates the restriction or clears you through.\n\n- ❌ Accepting a fuel-critical reroute without advising ATC.  \n  ✔ State fuel limitation early and request an alternative or diversion.\n\n- ❌ Maneuvering toward observed military traffic for a better look.  \n  ✔ Maintain separation mindset and follow ATC; lookout is for avoidance, not sightseeing.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Remaining Clear of Military Activity\n\n**Pronunciation:** AY-nak WUN TOO THREE, rih-MAY-ning KLEER uv MIL-ih-teh-ree ak-TIV-ih-tee\n\n**Word Stress**\n\n- Military → MIL-ih-teh-ree (stress on first)\n- Activity → ak-TIV-ih-tee (stress on second)\n- Remaining → rih-MAY-ning\n- Clear → KLEER\n\nPractice:\n\nRemaining clear... of military activity... request vectors east.\n\nTogether:\n\nANAC123, remaining clear of military activity, right heading zero nine zero.",
+    "relatedConcepts": [
+      "Restricted Area",
+      "Danger Area",
+      "NOTAM",
+      "Holding",
+      "Resume Own Navigation",
+      "Diversion"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Coordination with Military Units",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Circular 330 — Civil/Military Cooperation in ATM"
+      },
+      {
+        "label": "SKYbrary — Military Operations / Airspace Management",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "DECEA AIP Brasil — ENR Military Operations / Temporary Airspace"
+      },
+      {
+        "label": "H130 AFM — Emergency and Diversion considerations (fuel planning)"
+      }
+    ]
+  },
+  {
+    "catalogId": "0189",
+    "id": "0189",
+    "displayTerm": "Rate of Descent",
+    "term": "rate of descent",
+    "slug": "rate-of-descent",
+    "category": "Navigation",
+    "meaningEn": "Rate of Descent is the vertical speed of an aircraft during descent, measured in feet per minute, representing how quickly altitude is being lost, and used by crews and ATC to plan profile compliance, traffic separation, and expedited or reduced descent as required by the traffic situation.",
+    "meaningPt": "Taxa de Descida / Rate of Descent.\n\nVelocidade vertical de uma aeronave durante a descida, medida em pés por minuto, representando a rapidez com que a altitude está sendo perdida, e usada por tripulações e ATC para planejar o cumprimento do perfil, a separação de tráfego e a descida acelerada ou reduzida conforme a situação de tráfego.",
+    "whenUsed": "When managing rate of descent, the crew should:",
+    "example": "Approach: ANAC123, expedite descent through six thousand.",
+    "sayPhrase": "ANAC123, expediting descent through six thousand.",
+    "icaoQuestion": "ATC asks you to expedite descent through a flight level, then later asks you to reduce rate because of traffic below. Describe how you manage this.?",
+    "icaoSpeakText": "I would increase my rate of descent to pass through the requested flight level promptly, monitoring airspeed and rotor limits in the H130. After clearing that level, if ATC asks me to reduce rate due to traffic below, I would shallow the descent immediately and prepare for a smooth capture of the next assigned altitude. If I were unable to meet either request due to aircraft or weather limits, I would advise unable and state the rate I can maintain. The priority is compliance when able, clear communication when not, and no altitude bust at level-off.",
+    "missionBrief": "Today's lesson covers Rate of Descent — the vertical speed at which an aircraft loses altitude, typically expressed in feet per minute, and the ATC and operational language used to assign, report, or adjust that rate.\n\nRate of descent is not only an instrument reading. It is a control tool for meeting altitude constraints, sequencing traffic, and maintaining a stable path into the terminal area. Too steep creates passenger discomfort, high workload, and approach instability. Too shallow leaves you high and late.\n\nFor H130 helicopter operations, rate of descent is highly adjustable. That flexibility is an advantage in Brazilian IFR and VFR training routes into Congonhas, Santos Dumont, Curitiba, and Florianópolis — but only when the crew communicates capability and compliance clearly with ATC.\n\nUnderstanding how to acknowledge expedite descent, report actual rate when asked, and advise unable when performance or comfort limits apply is essential Part 2 phraseology.",
+    "captainTeaching": "Rate of descent is how you spend altitude against time and distance.\n\nATC uses it as a separation tool. You use it as a profile tool. When those needs meet, the radio call is short: expedite, reduce, or say your rate.\n\nIn the H130, you can often say affirmative to an expedite request that a jet might struggle with. That is useful around Congonhas and Guarulhos. Still protect the level-off. A fast descent that overshoots the altitude creates a new problem.\n\nIf you are asked for rate of descent, give a clear number in feet per minute. Do not answer with \"normal\" or \"steep\" when ATC wants a figure.\n\nIf you cannot comply — turbulence, icing, aircraft limitation — say unable and offer what you can do. Silence followed by a missed restriction is worse than an early unable.",
+    "operationalContext": "You are descending into Florianópolis from flight level nine zero. Approach needs you through six thousand quickly for traffic above, then wants a reduced rate below four thousand for spacing.\n\nApproach: ANAC123, expedite descent through six thousand.\n\nYou increase rate of descent, report leaving, and pass six thousand cleanly.\n\nLater: ANAC123, reduce rate of descent, traffic below.\n\nYou shallow the descent, capture the next altitude smoothly, and continue the approach without a level bust.\n\nThat is rate-of-descent discipline — flexible in the H130, always communicated, always capped by a clean level-off.",
+    "sayItCoach": "ANAC123, expediting descent through six thousand, will reduce rate below.",
+    "icaoModelAnswer": "I would increase my rate of descent to pass through the requested flight level promptly, monitoring airspeed and rotor limits in the H130. After clearing that level, if ATC asks me to reduce rate due to traffic below, I would shallow the descent immediately and prepare for a smooth capture of the next assigned altitude. If I were unable to meet either request due to aircraft or weather limits, I would advise unable and state the rate I can maintain. The priority is compliance when able, clear communication when not, and no altitude bust at level-off.",
+    "memoryTrick": "**RATE** — **R**ead the altitude to lose and distance left, **A**djust feet per minute to the profile, **T**ell ATC your actual rate when asked, **E**xpedite or reduce on request — but never bust the level-off.",
+    "operationalMeaning": "When managing rate of descent, the crew should:\n\nRate of descent operations commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, expedite descent through six thousand.",
+      "Radar: ANAC123, reduce rate of descent, traffic one thousand feet below.",
+      "Control: ANAC123, say rate of descent.",
+      "Approach: ANAC123, descend and maintain three thousand, expedite until reaching.",
+      "Radar: ANAC123, able to increase rate of descent? Need you at four thousand in two minutes."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, expediting descent through six thousand.",
+      "ANAC123, reducing rate of descent, traffic below.",
+      "ANAC123, rate of descent one thousand five hundred feet per minute.",
+      "ANAC123, descending three thousand, expediting until reaching.",
+      "ANAC123, affirmative, able to increase rate of descent, will be at four thousand in two minutes."
+    ],
+    "brazilianMistakes": "- ❌ Saying \"expediting\" but not actually increasing vertical speed.  \n  ✔ Change the rate promptly and monitor until through the requested level.\n\n- ❌ Reporting rate of descent vaguely (\"more or less one thousand\").  \n  ✔ Give a clear figure: one thousand five hundred feet per minute.\n\n- ❌ Expediting so aggressively that you bust the level-off altitude.  \n  ✔ Plan the capture early; expedite through, then reduce to level off cleanly.\n\n- ❌ Saying nothing when unable to meet an expedite request.  \n  ✔ Advise unable and state the maximum rate you can provide.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Expediting Descent Through Six Thousand\n\n**Pronunciation:** AY-nak WUN TOO THREE, EK-spuh-dy-ting deh-SENT throo SIX THOW-zund\n\n**Word Stress**\n\n- Expediting → EK-spuh-dy-ting (stress on first)\n- Descent → deh-SENT (stress on second)\n- Through → throo\n- Thousand → THOW-zund\n\nPractice:\n\nExpediting descent... through six thousand... reducing rate now.\n\nTogether:\n\nANAC123, expediting descent through six thousand, will reduce rate below.",
+    "relatedConcepts": [
+      "Steep Descent",
+      "Top of Descent",
+      "Descend and Maintain",
+      "Crossing Restriction",
+      "Expedite",
+      "Level Off"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Level Changes and Rate of Climb/Descent",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO PANS-OPS Doc 8168 — Instrument Procedures"
+      },
+      {
+        "label": "SKYbrary — Descent Rate / Energy Management",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "H130 AFM — Normal Procedures, Descent Performance"
+      }
+    ]
+  },
+  {
+    "catalogId": "0190",
+    "id": "0190",
+    "displayTerm": "Altimeter Disagreement",
+    "term": "altimeter disagreement",
+    "slug": "altimeter-disagreement",
+    "category": "Aircraft Systems",
+    "meaningEn": "Altimeter Disagreement is a discrepancy between altitude indications from independent altimeter systems or between the altimeter and another altitude reference, exceeding normal tolerance, which may result from incorrect altimeter setting, instrument failure, static system fault, or environmental factors, and which requires crew cross-check and, when necessary, ATC notification.",
+    "meaningPt": "Discordância de Altímetros / Altimeter Disagreement.\n\nDiscrepância entre indicações de altitude de sistemas de altímetro independentes ou entre o altímetro e outra referência de altitude, excedendo a tolerância normal, que pode resultar de ajuste incorreto do altímetro, falha de instrumento, falha do sistema estático ou fatores ambientais, e que exige verificação cruzada pela tripulação e, quando necessário, notificação ao ATC.",
+    "whenUsed": "When altimeter disagreement is detected, the crew should:",
+    "example": "Approach: ANAC123, QNH one zero one niner, report level at four thousand.",
+    "sayPhrase": "ANAC123, QNH one zero one niner, will report level at four thousand.",
+    "icaoQuestion": "During descent, your primary and standby altimeters disagree by more than the normal tolerance. Describe your actions.?",
+    "icaoSpeakText": "I would immediately cross-check both altimeter settings and confirm the correct QNH or standard pressure for the phase of flight. If the settings are correct and the disagreement remains, I would identify the most reliable altitude source using AFM procedures and consistency checks. I would advise ATC of the altimeter disagreement and state which altimeter I am using. If altitude becomes unreliable, I would request vectors or a diversion and avoid continuing a terrain-critical approach until I have a trustworthy altitude reference.",
+    "missionBrief": "Today's lesson covers Altimeter Disagreement — a condition in which two or more altitude indications on the aircraft do not agree within acceptable limits, creating uncertainty about true altitude and requiring cross-check, troubleshooting, and clear communication with ATC when altitude integrity is in doubt.\n\nAltimeter disagreement is not a minor instrument annoyance. Altitude is the primary vertical separation tool in IFR airspace. If you cannot trust the altitude you are flying, you must resolve the discrepancy or declare the limitation to ATC.\n\nFor H130 helicopter training academy operations — IFR cruise between Congonhas, Guarulhos, Curitiba, and Florianópolis, and approaches into Santos Dumont — crews rely on primary and standby altimetry. Understanding how to identify disagreement, apply the correct altimeter setting, and report altitude problems in ICAO English is essential for Part 2 and Part 3.",
+    "captainTeaching": "Altitude trust is non-negotiable.\n\nWhen two altimeters disagree, your first action is not panic — it is method. Check the setting. Check both instruments. Check against known references.\n\nMost disagreements in training are QNH errors. Fix the setting and the problem disappears. If the split remains, decide which source is reliable using the AFM and consistency. Then tell ATC what you are using.\n\nDo not silently fly an approach with unresolved altimetry near Congonhas or Santos Dumont terrain and traffic. Say the problem. Request confirmation of QNH. Request vectors if you need time.\n\nPart 3 speaking should describe the problem clearly: what disagreed, what you checked, what you decided, and what you told ATC. Keep it factual.",
+    "operationalContext": "You are descending into Congonhas. Approach issues the local QNH. You set both altimeters, but one reads two hundred feet higher than the other in level flight.\n\nYou cross-check the setting — both show the same QNH. The split remains. You identify the standby as the outlier using consistency with previous readings and AFM guidance, and you advise Approach that you have an altimeter disagreement and are using the primary altimeter.\n\nApproach confirms QNH again and continues the approach clearance. You brief the limitation, monitor closely, and complete a stable approach with heightened cross-check.\n\nThat is how altimeter disagreement is handled — verify setting, identify the reliable source, tell ATC, continue only if safe.",
+    "sayItCoach": "ANAC123, altimeter disagreement, two hundred foot split, using primary altimeter.",
+    "icaoModelAnswer": "I would immediately cross-check both altimeter settings and confirm the correct QNH or standard pressure for the phase of flight. If the settings are correct and the disagreement remains, I would identify the most reliable altitude source using AFM procedures and consistency checks. I would advise ATC of the altimeter disagreement and state which altimeter I am using. If altitude becomes unreliable, I would request vectors or a diversion and avoid continuing a terrain-critical approach until I have a trustworthy altitude reference.",
+    "memoryTrick": "**SPLIT** — **S**ettings first (QNH/standard), **P**rimary vs standby cross-check, **L**ook up AFM abnormal procedure, **I**nform ATC of the limitation, **T**rust one source — never average.",
+    "operationalMeaning": "When altimeter disagreement is detected, the crew should:\n\nAltimeter disagreement scenarios commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, QNH one zero one niner, report level at four thousand.",
+      "Radar: ANAC123, confirm altimeter setting, QNH one zero two one.",
+      "Approach: ANAC123, roger altimeter disagreement, continue approach, report any further problems.",
+      "Control: ANAC123, radar indicates you are level, confirm altitude.",
+      "Approach: ANAC123, if unable reliable altitude, advise intentions, vectors available."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, QNH one zero one niner, will report level at four thousand.",
+      "ANAC123, confirming altimeter setting, QNH one zero two one set.",
+      "ANAC123, continuing approach, will report any further problems, using primary altimeter.",
+      "ANAC123, maintaining four thousand on primary altimeter, standby disagrees by two hundred feet.",
+      "ANAC123, altitude indication unreliable, request vectors, intending to divert if required."
+    ],
+    "brazilianMistakes": "- ❌ Assuming disagreement is always instrument failure without checking QNH.  \n  ✔ Verify altimeter setting first on both instruments.\n\n- ❌ Continuing an approach without telling ATC about unreliable altitude.  \n  ✔ Advise ATC early and request assistance if needed.\n\n- ❌ Averaging two disagreeing altimeters as a \"compromise\" altitude.  \n  ✔ Select the reliable source per procedure; do not invent a midpoint.\n\n- ❌ Reporting altitude from the failed instrument out of habit.  \n  ✔ Brief which instrument is primary for the remainder of the flight and stick to it.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Altimeter Disagreement, Using Primary Altimeter\n\n**Pronunciation:** AY-nak WUN TOO THREE, al-TIM-ih-ter dis-uh-GREE-munt, YOO-zing PRY-mah-ree al-TIM-ih-ter\n\n**Word Stress**\n\n- Altimeter → al-TIM-ih-ter (stress on second)\n- Disagreement → dis-uh-GREE-munt (stress on third)\n- Primary → PRY-mah-ree\n- Using → YOO-zing\n\nPractice:\n\nAltimeter disagreement... using primary altimeter... QNH confirmed.\n\nTogether:\n\nANAC123, altimeter disagreement, two hundred foot split, using primary altimeter.",
+    "relatedConcepts": [
+      "QNH / QNE",
+      "Static System Failure",
+      "Altitude Alert",
+      "Instrument Failure",
+      "Minimum Safe Altitude",
+      "Go-Around"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Altitude Reporting / Level Verification",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 6 — Operation of Aircraft (instrument procedures context)"
+      },
+      {
+        "label": "SKYbrary — Altimeter / Static System Failures",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "H130 AFM — Instruments, Abnormal Procedures (Altimeter / Static)"
+      }
+    ]
+  },
+  {
+    "catalogId": "0191",
+    "id": "0191",
+    "displayTerm": "RNAV Failure",
+    "term": "rnav failure",
+    "slug": "rnav-failure",
+    "category": "Aircraft Systems",
+    "meaningEn": "RNAV Failure is the loss, degradation, or unavailability of area navigation performance required for the cleared RNAV route or procedure, caused by GNSS problems, FMS or navigation computer fault, database issues, or integrity alerts, such that the aircraft can no longer meet the navigation accuracy required and must revert to alternative navigation or ATC assistance.",
+    "meaningPt": "Falha de RNAV / RNAV Failure.\n\nPerda, degradação ou indisponibilidade do desempenho de navegação de área exigido para a rota ou procedimento RNAV autorizado, causada por problemas de GNSS, falha do FMS ou computador de navegação, problemas de banco de dados ou alertas de integridade, de modo que a aeronave não pode mais atender à precisão de navegação exigida e deve reverter para navegação alternativa ou assistência do ATC.",
+    "whenUsed": "When RNAV capability is lost or degraded, the crew should:",
+    "example": "Approach: ANAC123, roger unable RNAV, fly heading one eight zero, vectors for ILS runway one four.",
+    "sayPhrase": "ANAC123, unable RNAV, heading one eight zero, vectors for ILS one four.",
+    "icaoQuestion": "You are cleared for an RNAV STAR when a GNSS integrity alert makes RNAV navigation unreliable. Describe what you do.?",
+    "icaoSpeakText": "I would stop using RNAV guidance for the arrival, maintain a safe heading or last assigned track as appropriate, and advise ATC immediately that I am unable RNAV and request radar vectors or a conventional procedure. I would not continue the RNAV STAR without the required navigation performance. Once ATC issues vectors or an alternate clearance such as an ILS, I would comply, brief the new procedure, and continue the approach with the available navigation sources.",
+    "missionBrief": "Today's lesson covers RNAV Failure — loss or degradation of area navigation capability that prevents the aircraft from accurately flying an RNAV route, SID, STAR, or approach as cleared, requiring reversion to conventional navigation or ATC radar vectors.\n\nRNAV failure is not only a cockpit message. It is a clearance problem. If you can no longer navigate the RNAV procedure you were cleared for, ATC must know immediately so they can provide an alternative — vectors, conventional aids, or a different procedure.\n\nFor H130 helicopter training academy IFR operations in Brazil, RNAV procedures are increasingly common into and out of Congonhas, Guarulhos, Curitiba, Florianópolis, and Santos Dumont. Crews must be ready to declare RNAV inability, accept vectors, and continue safely on raw data or radar.\n\nUnderstanding the phraseology for RNAV failure and the speaking skills to explain the situation supports Part 2 and Part 3 proficiency.",
+    "captainTeaching": "RNAV is a capability clearance. When the capability fails, the clearance must change.\n\nThe moment you know you cannot fly the RNAV procedure, say unable RNAV. Do not wait until you are off track and ATC asks why.\n\nIn Brazilian ops, vectors are the normal backup. Conventional aids may also be available. Ask for what you need: vectors for ILS, clearance via the VOR, or a visual approach if conditions permit.\n\nDo not try to hand-fly an approximate RNAV path from memory. That creates a navigation bust and a separation risk.\n\nPart 3 answers should explain recognition, immediate ATC notification, reversion method, and continuation plan. Keep the language operational and calm.",
+    "operationalContext": "You are cleared for an RNAV arrival into Florianópolis. Approaching the initial segments, a GNSS integrity alert appears and RNAV accuracy is no longer assured.\n\nYou disconnect from RNAV lateral guidance for the procedure, maintain present heading, and call Approach: unable RNAV, request radar vectors for the approach.\n\nApproach acknowledges, issues vectors for sequencing, and later clears you for an ILS approach.\n\nYou never attempt to \"guess\" the RNAV track. You told ATC. You received vectors. You continued safely.\n\nThat is the correct RNAV failure response — immediate declaration, alternative clearance, stable continuation.",
+    "sayItCoach": "ANAC123, unable RNAV, request radar vectors for ILS runway one four.",
+    "icaoModelAnswer": "I would stop using RNAV guidance for the arrival, maintain a safe heading or last assigned track as appropriate, and advise ATC immediately that I am unable RNAV and request radar vectors or a conventional procedure. I would not continue the RNAV STAR without the required navigation performance. Once ATC issues vectors or an alternate clearance such as an ILS, I would comply, brief the new procedure, and continue the approach with the available navigation sources.",
+    "memoryTrick": "**RNAV** — **R**ecognize the integrity loss, **N**otify ATC unable RNAV, **A**ccept vectors or conventional aids, **V**erify you are no longer pretending to fly the RNAV path.",
+    "operationalMeaning": "When RNAV capability is lost or degraded, the crew should:\n\nRNAV failure scenarios commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger unable RNAV, fly heading one eight zero, vectors for ILS runway one four.",
+      "Radar: ANAC123, unable RNAV SID, cleared heading two seven zero, radar vectors departure.",
+      "Control: ANAC123, RNAV not available, expect conventional route via the VOR.",
+      "Approach: ANAC123, cancel RNAV arrival, radar vectors for sequencing.",
+      "Radar: ANAC123, confirm RNAV capability restored or still unable."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, unable RNAV, heading one eight zero, vectors for ILS one four.",
+      "ANAC123, unable RNAV SID, heading two seven zero, radar vectors departure.",
+      "ANAC123, RNAV not available, expecting conventional route via the VOR.",
+      "ANAC123, RNAV arrival cancelled, standing by for radar vectors.",
+      "ANAC123, still unable RNAV, request continued vectors."
+    ],
+    "brazilianMistakes": "- ❌ Continuing the RNAV procedure \"approximately\" after an integrity alert.  \n  ✔ Declare unable RNAV and request vectors or a conventional clearance.\n\n- ❌ Waiting for ATC to notice you are off the RNAV track.  \n  ✔ Report the failure as soon as it affects your ability to comply.\n\n- ❌ Saying only \"navigation problem\" without specifying RNAV.  \n  ✔ Be specific: unable RNAV, request radar vectors.\n\n- ❌ Rejecting vectors because you hoped GNSS would recover in one minute.  \n  ✔ Accept the safe alternative; you can report capability restored later if it returns.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Unable RNAV, Request Radar Vectors\n\n**Pronunciation:** AY-nak WUN TOO THREE, un-AY-bul AR-nav, reh-KWEST RAY-dar VEK-terz\n\n**Word Stress**\n\n- Unable → un-AY-bul (stress on second)\n- RNAV → AR-nav\n- Radar → RAY-dar\n- Vectors → VEK-terz\n\nPractice:\n\nUnable RNAV... request radar vectors... for the ILS.\n\nTogether:\n\nANAC123, unable RNAV, request radar vectors for ILS runway one four.",
+    "relatedConcepts": [
+      "GNSS Integrity",
+      "Radar Vectors",
+      "ILS Approach",
+      "VOR Failure",
+      "SID / STAR",
+      "Conventional Navigation"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — RNAV Operations / Contingencies",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9613 — Performance-Based Navigation Manual"
+      },
+      {
+        "label": "SKYbrary — RNAV / GNSS Failure",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "DECEA AIP Brasil — PBN / RNAV Procedures"
+      },
+      {
+        "label": "H130 AFM — Navigation Systems / Abnormal Procedures"
+      }
+    ]
+  },
+  {
+    "catalogId": "0192",
+    "id": "0192",
+    "displayTerm": "VOR Failure",
+    "term": "vor failure",
+    "slug": "vor-failure",
+    "category": "Aircraft Systems",
+    "meaningEn": "VOR Failure is the inability to receive or use valid VHF Omnidirectional Range guidance for navigation or approach, indicated by warning flags, loss of bearing information, abnormal course indications, or ground station unserviceability, requiring the crew to discontinue VOR-dependent tracking and obtain an alternative clearance or navigation method.",
+    "meaningPt": "Falha de VOR / VOR Failure.\n\nIncapacidade de receber ou utilizar orientação válida de VHF Omnidirectional Range para navegação ou aproximação, indicada por bandeiras de aviso, perda de informação de rumo, indicações anormais de curso ou inoperância da estação no solo, exigindo que a tripulação interrompa o seguimento dependente de VOR e obtenha uma autorização ou método de navegação alternativo.",
+    "whenUsed": "When VOR failure occurs or is identified, the crew should:",
+    "example": "Approach: ANAC123, roger VOR failure, climb via missed approach, fly heading zero niner zero.",
+    "sayPhrase": "ANAC123, VOR failure, climbing via missed approach, heading zero niner zero.",
+    "icaoQuestion": "You lose VOR guidance on final approach segment of a VOR approach in IMC. Describe your actions.?",
+    "icaoSpeakText": "I would discontinue the approach, execute the missed approach procedure immediately, and advise ATC that I am going missed due to VOR failure. I would not continue to minimums without valid course guidance in IMC. After completing the missed approach, I would request radar vectors for an alternate approach such as ILS or RNAV if available, brief the new procedure, and continue only with a valid navigation source.",
+    "missionBrief": "Today's lesson covers VOR Failure — loss of usable VOR navigation information due to airborne receiver failure, ground station unserviceability, or flag indications that make VOR-based tracking or approach guidance unreliable.\n\nVOR failure matters whenever your clearance or approach depends on that aid. If the needle is flagged or the station is NOTAMed out, you cannot pretend the procedure is still available. You must advise ATC and request an alternative.\n\nFor H130 helicopter training academy operations in Brazil, VOR remains a key conventional backup around Congonhas, Guarulhos, Curitiba, Florianópolis, and Santos Dumont — especially when RNAV is unavailable or as a cross-check. Crews must know how to report VOR failure and transition to radar vectors, another aid, or a different approach.\n\nUnderstanding VOR failure phraseology and explanation skills supports Part 2 and Part 3 proficiency.",
+    "captainTeaching": "A flagged VOR is not a suggestion to try harder. It is a stop sign for that guidance source.\n\nIdentify first. If the ident is gone or the flag is in view, the aid is unusable for primary navigation.\n\nIf you are established on a VOR approach and guidance fails, missed approach is usually the correct path unless you have another approved way to continue and are in a safe position to do so. Tell ATC why you went missed: VOR failure.\n\nIn Brazilian training ops, treat VOR as a valued conventional tool — and treat its failure as routine contingency, not drama. Ask for ILS, RNAV, or vectors. Brief the new plan. Continue.\n\nPart 3 answers should cover recognition, missed approach if required, ATC notification, and alternate approach selection.",
+    "operationalContext": "You are cleared for a VOR approach into Curitiba. On intermediate segment, the VOR flag appears and the bearing becomes unreliable. You confirm loss of ident.\n\nYou execute the missed approach as published, climb, and report: missed approach, VOR failure, request radar vectors for an alternate approach.\n\nApproach acknowledges, vectors you for the ILS, and sequences you again.\n\nYou did not continue to minimums on a dead needle. You went missed, declared the failure, and accepted the alternative.\n\nThat is professional contingency management on conventional aids.",
+    "sayItCoach": "ANAC123, missed approach, VOR failure, request radar vectors for ILS.",
+    "icaoModelAnswer": "I would discontinue the approach, execute the missed approach procedure immediately, and advise ATC that I am going missed due to VOR failure. I would not continue to minimums without valid course guidance in IMC. After completing the missed approach, I would request radar vectors for an alternate approach such as ILS or RNAV if available, brief the new procedure, and continue only with a valid navigation source.",
+    "memoryTrick": "**VOR** — **V**erify ident and flags, **O**bey a missed approach if guidance dies in IMC, **R**equest an alternate approach or vectors immediately.",
+    "operationalMeaning": "When VOR failure occurs or is identified, the crew should:\n\nVOR failure scenarios commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger VOR failure, climb via missed approach, fly heading zero niner zero.",
+      "Radar: ANAC123, VOR unserviceable, expect radar vectors, ILS available.",
+      "Control: ANAC123, unable VOR routing, cleared via RNAV route, or radar vectors.",
+      "Approach: ANAC123, confirm able ILS or request another approach.",
+      "Radar: ANAC123, VOR back in service, advise if you require it."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, VOR failure, climbing via missed approach, heading zero niner zero.",
+      "ANAC123, VOR unserviceable, expecting radar vectors, ILS available.",
+      "ANAC123, unable VOR routing, cleared via RNAV route.",
+      "ANAC123, able ILS, request ILS approach.",
+      "ANAC123, copy VOR back in service, still requesting ILS vectors."
+    ],
+    "brazilianMistakes": "- ❌ Continuing the approach with a flagged VOR because \"almost there.\"  \n  ✔ Go missed in IMC without valid guidance; declare VOR failure.\n\n- ❌ Using a VOR without confirming the morse ident.  \n  ✔ Identify the station before tracking or descending on the procedure.\n\n- ❌ Saying \"navigation failure\" without specifying VOR.  \n  ✔ State VOR failure so ATC can plan the correct alternative.\n\n- ❌ Holding on a VOR radial after the receiver has flagged.  \n  ✔ Advise unable and request a published alternate hold or radar vectors.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Missed Approach, VOR Failure\n\n**Pronunciation:** AY-nak WUN TOO THREE, MIST uh-PROCH, VEE-oh-AR FAYL-yer\n\n**Word Stress**\n\n- Missed → MIST\n- Approach → uh-PROCH (stress on second)\n- VOR → VEE-oh-AR\n- Failure → FAYL-yer\n\nPractice:\n\nMissed approach... VOR failure... request radar vectors.\n\nTogether:\n\nANAC123, missed approach, VOR failure, request radar vectors for ILS.",
+    "relatedConcepts": [
+      "RNAV Failure",
+      "ILS Failure",
+      "Missed Approach",
+      "Radar Vectors",
+      "Station Identification",
+      "Conventional Navigation"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Instrument Approach Procedures / Contingencies",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO PANS-OPS Doc 8168 — VOR Procedures"
+      },
+      {
+        "label": "SKYbrary — VOR / Navigation Aid Failure",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "DECEA AIP Brasil — Radio Navigation Aids"
+      },
+      {
+        "label": "H130 AFM — Navigation Receivers / Abnormal Procedures"
+      }
+    ]
+  },
+  {
+    "catalogId": "0193",
+    "id": "0193",
+    "displayTerm": "ILS Failure",
+    "term": "ils failure",
+    "slug": "ils-failure",
+    "category": "Aircraft Systems",
+    "meaningEn": "ILS Failure is the loss of valid localizer and/or glideslope guidance required for an Instrument Landing System approach, caused by airborne equipment fault, ground transmitter unserviceability, interference, or warning flags, such that the approach can no longer be continued using ILS guidance and an alternate course of action is required.",
+    "meaningPt": "Falha de ILS / ILS Failure.\n\nPerda de orientação válida de localizador e/ou glide slope exigida para uma aproximação por Instrument Landing System, causada por falha do equipamento de bordo, inoperância do transmissor no solo, interferência ou bandeiras de aviso, de modo que a aproximação não pode mais continuar com orientação ILS e uma ação alternativa é necessária.",
+    "whenUsed": "When ILS failure occurs, the crew should:",
+    "example": "Approach: ANAC123, roger missed approach ILS failure, climb via missed approach, heading three four zero.",
+    "sayPhrase": "ANAC123, missed approach ILS failure, climbing via missed approach, heading three four zero.",
+    "icaoQuestion": "On ILS final in IMC, the glideslope warning flag appears. Describe your actions.?",
+    "icaoSpeakText": "I would discontinue the precision approach and execute the missed approach immediately if I am not visual and cannot legally continue by another approved method. I would advise ATC that I am going missed due to ILS glideslope failure. I would fly the published missed approach track and altitude, then request an alternate approach such as another ILS, RNAV, or visual if conditions permit. I would fully brief the next approach before accepting the subsequent clearance.",
+    "missionBrief": "Today's lesson covers ILS Failure — loss of usable Instrument Landing System guidance, whether from airborne receiver failure, ground facility unserviceability, or flag indications on localizer or glideslope, requiring missed approach or transition to an alternate approach.\n\nILS failure on final is time-critical. In IMC, a flagged localizer or glideslope means you no longer have the precision path you were cleared to fly. The professional response is decisive: discontinue the approach if required, declare the failure, and accept an alternate.\n\nFor H130 helicopter training academy operations into Congonhas, Guarulhos, Curitiba, Florianópolis, and Santos Dumont, ILS remains a primary precision approach option where published. Crews must communicate ILS failure clearly and manage the missed approach without hesitation.\n\nUnderstanding ILS failure phraseology and ICAO speaking explanations supports Part 2 and Part 3 proficiency.",
+    "captainTeaching": "ILS failure on final is a go-around decision more often than a troubleshooting exercise.\n\nFlags mean the precision path is gone. In IMC, missed approach is the default. Say why: ILS failure — glideslope or localizer if you can specify quickly.\n\nDo not troubleshoot buttons while descending below a safe altitude on an invalid path. Fly the missed approach first. Talk second. Diagnose on the downwind or vectors.\n\nIf ATC already knows the ground ILS is out, do not accept an ILS clearance hoping it will work. Request the alternate from the start.\n\nIn Brazilian busy terminals — Guarulhos, Congonhas — a clean missed approach call helps ATC protect everyone. Be concise. Be early. Be decisive.",
+    "operationalContext": "You are on ILS final into Guarulhos in IMC. At approximately one thousand feet AGL, the glideslope flags. Localizer remains, but you are not authorized for a localizer-only procedure on this approach today.\n\nYou call missed approach, ILS glideslope failure, and fly the published missed approach.\n\nApproach: ANAC123, roger, climb via missed approach, fly heading three four zero, expect vectors for RNAV approach.\n\nYou climb, clean up, brief the RNAV, and come back for a stable second approach.\n\nNo attempt to dive for the runway on a dead glideslope. Clear declaration. Clean missed. Alternate plan.",
+    "sayItCoach": "ANAC123, missed approach, ILS glideslope failure, request radar vectors for RNAV.",
+    "icaoModelAnswer": "I would discontinue the precision approach and execute the missed approach immediately if I am not visual and cannot legally continue by another approved method. I would advise ATC that I am going missed due to ILS glideslope failure. I would fly the published missed approach track and altitude, then request an alternate approach such as another ILS, RNAV, or visual if conditions permit. I would fully brief the next approach before accepting the subsequent clearance.",
+    "memoryTrick": "**ILS** — **I**dentify the flag (localizer or glideslope), **L**eave the approach via missed approach in IMC, **S**ay ILS failure and request the alternate.",
+    "operationalMeaning": "When ILS failure occurs, the crew should:\n\nILS failure scenarios commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger missed approach ILS failure, climb via missed approach, heading three four zero.",
+      "Tower: ANAC123, ILS unserviceable, expect RNAV or visual approach.",
+      "Approach: ANAC123, confirm glideslope failure or localizer failure.",
+      "Radar: ANAC123, radar vectors for ILS runway one zero Right, other ILS available.",
+      "Approach: ANAC123, unable ILS, cleared RNAV approach runway two seven Left."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, missed approach ILS failure, climbing via missed approach, heading three four zero.",
+      "ANAC123, ILS unserviceable, expecting RNAV or visual approach.",
+      "ANAC123, glideslope failure, localizer flagged as well / localizer still available.",
+      "ANAC123, heading as assigned, vectors for ILS runway one zero Right.",
+      "ANAC123, unable ILS, cleared RNAV approach runway two seven Left."
+    ],
+    "brazilianMistakes": "- ❌ Continuing below decision altitude on a flagged glideslope \"to see the runway.\"  \n  ✔ Go missed in IMC without valid guidance; do not push for a sighting.\n\n- ❌ Staying silent during the missed approach.  \n  ✔ Declare missed approach and ILS failure as soon as workload allows.\n\n- ❌ Accepting the same ILS again without confirming the failure mode.  \n  ✔ Confirm whether airborne or ground; request a different approach if the ILS is unreliable.\n\n- ❌ Troubleshooting the receiver instead of flying the missed approach.  \n  ✔ Aircraft control and missed approach path come first; diagnose after.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Missed Approach, ILS Glideslope Failure\n\n**Pronunciation:** AY-nak WUN TOO THREE, MIST uh-PROCH, EYE-EL-ES GLYD-slop FAYL-yer\n\n**Word Stress**\n\n- Missed Approach → MIST uh-PROCH\n- ILS → EYE-EL-ES\n- Glideslope → GLYD-slop\n- Failure → FAYL-yer\n\nPractice:\n\nMissed approach... ILS glideslope failure... request vectors.\n\nTogether:\n\nANAC123, missed approach, ILS glideslope failure, request radar vectors for RNAV.",
+    "relatedConcepts": [
+      "Missed Approach",
+      "Glideslope",
+      "Localizer",
+      "RNAV Failure",
+      "VOR Failure",
+      "Decision Altitude"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Instrument Approach / Missed Approach",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO PANS-OPS Doc 8168 — ILS Procedures"
+      },
+      {
+        "label": "SKYbrary — ILS Failure / Go-Around",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "DECEA AIP Brasil — ILS Facilities / Approach Charts"
+      },
+      {
+        "label": "H130 AFM — Navigation Receivers / Abnormal Procedures / Go-Around"
+      }
+    ]
+  },
+  {
+    "catalogId": "0194",
+    "id": "0194",
+    "displayTerm": "Autopilot Failure",
+    "term": "autopilot failure",
+    "slug": "autopilot-failure",
+    "category": "Aircraft Systems",
+    "meaningEn": "Autopilot Failure is the unintended disengagement, malfunction, or unavailability of the aircraft's automatic flight control system, requiring the pilot to assume manual control of the aircraft and, when the failure affects navigation compliance or workload management, to advise ATC and request an amended clearance if necessary.",
+    "meaningPt": "Falha do Piloto Automático / Autopilot Failure.\n\nDesconexão involuntária, mau funcionamento ou indisponibilidade do sistema automático de controle de voo da aeronave, exigindo que o piloto assuma o controle manual e, quando a falha afetar o cumprimento da navegação ou a gestão de carga de trabalho, informe o ATC e solicite uma autorização alterada se necessário.",
+    "whenUsed": "When the autopilot fails or disconnects unexpectedly, the crew should:",
+    "example": "Radar: ANAC123, roger autopilot failure, maintain present altitude, fly heading one eight zero.",
+    "sayPhrase": "ANAC123, autopilot failure, maintaining present altitude, heading one eight zero.",
+    "icaoQuestion": "The autopilot disconnects unexpectedly in IMC during arrival. Describe your priorities and what you tell ATC.?",
+    "icaoSpeakText": "My first priority is to assume manual control and stabilize attitude, altitude, heading, and airspeed. I would acknowledge the disconnect warning and follow the AFM procedure. Once the aircraft is stable, I would advise ATC that the autopilot is inoperative and that I am continuing manually. If workload is high or I cannot safely fly a complex RNAV arrival, I would request radar vectors for a simpler approach. I would not make lengthy radio calls before the aircraft is under control.",
+    "missionBrief": "Today's lesson covers Autopilot Failure — unexpected disengagement or unavailability of the automatic flight control system, requiring immediate transition to manual flight and, when relevant, clear communication with ATC if the failure affects ability to comply with the clearance.\n\nAutopilot failure is first a handling event, then a communication event. Fly the aircraft. Stabilize attitude, altitude, and heading. Then assess whether you need ATC assistance — altitude deviation, inability to accept an RNAV procedure that assumed automation, or a request for simplified clearances.\n\nFor H130 helicopter operations, autopilot (when installed and engaged) reduces workload in IFR cruise and approaches between Congonhas, Guarulhos, Curitiba, Florianópolis, and Santos Dumont. Sudden disconnect in IMC raises workload quickly. Crews must hand-fly competently and speak clearly if the clearance must change.\n\nUnderstanding how to report autopilot failure and manage the operational consequences supports Part 2 and Part 3 proficiency.",
+    "captainTeaching": "Autopilot failure is a stick-and-rudder moment before it is a radio moment.\n\nFly the aircraft. Cross-check attitude instruments in IMC. Trim. Breathe. Then decide what ATC needs to know.\n\nIf you stayed on altitude and track, a simple advisory may be enough: autopilot inoperative, continuing manually. If you lost altitude or need a simpler arrival, say so and ask for vectors.\n\nDo not be embarrassed to request workload relief. Hand-flying an H130 in IMC into Guarulhos weather is honest work. ATC would rather give you vectors than watch you struggle through a complex RNAV STAR.\n\nPart 3 answers should emphasize control first, communication second, and clearance amendment when needed — not a long systems lecture on frequency.",
+    "operationalContext": "You are in IMC cruise toward Florianópolis with the autopilot engaged. The autopilot disconnects with a warning. The nose pitches slightly. You take manual control, stabilize at flight level nine zero on heading, and cancel the warning.\n\nYou assess: unable to re-engage. Workload is manageable. You are still on clearance.\n\nYou advise Radar that autopilot is inoperative and you are continuing manually. Radar offers vectors for a straight-in ILS to reduce complexity. You accept.\n\nNo drama. Aircraft first. Then a concise report. Then a simpler plan if helpful.",
+    "sayItCoach": "ANAC123, autopilot failure, continuing manually, request radar vectors for ILS.",
+    "icaoModelAnswer": "My first priority is to assume manual control and stabilize attitude, altitude, heading, and airspeed. I would acknowledge the disconnect warning and follow the AFM procedure. Once the aircraft is stable, I would advise ATC that the autopilot is inoperative and that I am continuing manually. If workload is high or I cannot safely fly a complex RNAV arrival, I would request radar vectors for a simpler approach. I would not make lengthy radio calls before the aircraft is under control.",
+    "memoryTrick": "**A-P-FAIL** — **A**ssume manual control, **P**ath stabilize (attitude/altitude/heading), **F**ollow AFM warning procedure, **A**dvise ATC if needed, **I**f workload high request vectors, **L**imit troubleshooting until stable.",
+    "operationalMeaning": "When the autopilot fails or disconnects unexpectedly, the crew should:\n\nAutopilot failure scenarios commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Radar: ANAC123, roger autopilot failure, maintain present altitude, fly heading one eight zero.",
+      "Approach: ANAC123, understand hand-flying, radar vectors for ILS, reduce cockpit workload.",
+      "Control: ANAC123, confirm able to maintain altitude manually, traffic nearby.",
+      "Approach: ANAC123, if unable complex RNAV arrival, expect vectors.",
+      "Radar: ANAC123, roger continuing manually, report any further problems."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, autopilot failure, maintaining present altitude, heading one eight zero.",
+      "ANAC123, hand-flying, vectors for ILS accepted.",
+      "ANAC123, affirmative, able to maintain altitude manually.",
+      "ANAC123, unable complex RNAV arrival, requesting vectors.",
+      "ANAC123, continuing manually, will report any further problems."
+    ],
+    "brazilianMistakes": "- ❌ Calling ATC immediately while the aircraft is still pitching or off altitude.  \n  ✔ Aviate first; communicate after the flight path is stable.\n\n- ❌ Saying nothing after a disconnect that caused an altitude deviation.  \n  ✔ Advise ATC if you left the cleared altitude or need assistance.\n\n- ❌ Insisting on a complex RNAV STAR while hand-flying in hard IMC.  \n  ✔ Request vectors to reduce workload when appropriate.\n\n- ❌ Attempting repeated re-engagement instead of flying the aircraft.  \n  ✔ Stabilize manually first; troubleshoot only when safe.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Autopilot Failure, Continuing Manually\n\n**Pronunciation:** AY-nak WUN TOO THREE, AW-toh-py-lut FAYL-yer, kun-TIN-yoo-ing MAN-yoo-uh-lee\n\n**Word Stress**\n\n- Autopilot → AW-toh-py-lut (stress on first)\n- Failure → FAYL-yer\n- Continuing → kun-TIN-yoo-ing (stress on second)\n- Manually → MAN-yoo-uh-lee\n\nPractice:\n\nAutopilot failure... continuing manually... request vectors.\n\nTogether:\n\nANAC123, autopilot failure, continuing manually, request radar vectors for ILS.",
+    "relatedConcepts": [
+      "Manual Flight",
+      "Attitude Instrument Flying",
+      "RNAV Failure",
+      "Workload Management",
+      "Altitude Deviation",
+      "Yaw Damper Failure"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Special Aircraft Operations / Contingencies",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 8168 (PANS-OPS) — Approach Operations context"
+      },
+      {
+        "label": "SKYbrary — Autopilot Malfunction / Manual Flight",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "H130 AFM — Automatic Flight Control System / Abnormal Procedures"
+      }
+    ]
+  },
+  {
+    "catalogId": "0195",
+    "id": "0195",
+    "displayTerm": "Yaw Damper Failure",
+    "term": "yaw damper failure",
+    "slug": "yaw-damper-failure",
+    "category": "Aircraft Systems",
+    "meaningEn": "Yaw Damper Failure is the malfunction or disengagement of the yaw damping system that normally reduces unwanted yaw oscillations, resulting in degraded directional stability characteristics, possible AFM operating limitations, and the need for increased pilot compensation and, when operationally relevant, notification to ATC.",
+    "meaningPt": "Falha do Amortecedor de Guinada / Yaw Damper Failure.\n\nMau funcionamento ou desconexão do sistema de amortecimento de guinada que normalmente reduz oscilações indesejadas de guinada, resultando em características degradadas de estabilidade direcional, possíveis limitações operacionais do AFM, e a necessidade de maior compensação pelo piloto e, quando operacionalmente relevante, notificação ao ATC.",
+    "whenUsed": "When yaw damper failure occurs, the crew should:",
+    "example": "Approach: ANAC123, roger yaw damper failure, expect extended final, fly heading one four zero.",
+    "sayPhrase": "ANAC123, yaw damper failure, expecting extended final, heading one four zero.",
+    "icaoQuestion": "Your yaw damper fails in turbulence during arrival. Handling is manageable but you want to avoid tight maneuvering on short final. Describe what you do and say.?",
+    "icaoSpeakText": "I would control the aircraft smoothly, apply AFM limitations for yaw damper inoperative, and stabilize the flight path. I would advise ATC that the yaw damper is inoperative and request an extended final or radar vectors for a stable, low-maneuvering approach. I would avoid aggressive pedal inputs and last-minute tight turns. If handling became unacceptable, I would request priority or divert as required. The radio call should state the limitation and the operational request, not a detailed technical explanation.",
+    "missionBrief": "Today's lesson covers Yaw Damper Failure — loss of the yaw damper function that normally dampens Dutch roll or yaw oscillations, requiring manual yaw control compensation, possible speed or configuration limitations per the AFM, and ATC communication when the failure affects handling, comfort, or ability to comply with the clearance.\n\nYaw damper failure is often subtle compared with engine or hydraulic failures. The aircraft may develop uncomfortable yaw oscillation, especially in turbulence or at certain speed/altitude combinations. The crew must recognize the change, apply AFM limitations, and decide whether ATC needs to know — for example, if you need a longer final, reduced maneuvering, or priority to land.\n\nFor H130 helicopter training academy operations, yaw stability augmentation (where fitted as part of the automatic flight control system) supports smoother IFR flight on routes serving Congonhas, Guarulhos, Curitiba, Florianópolis, and Santos Dumont. Understanding how to describe the failure and any operational limitation in ICAO English supports Part 2 and Part 3.",
+    "captainTeaching": "Yaw damper failure is about smoothness and limitations — not drama.\n\nControl the yaw. Read the AFM. Decide if the approach geometry needs to change.\n\nIf you can continue normally, you may only need a brief advisory. If turbulence and oscillation make a tight circling approach a bad idea, say what you need: extended final, vectors, or a more straightforward approach.\n\nDo not give ATC a systems class on Dutch roll. Give them the operational request.\n\nIn H130 ops near Santos Dumont or Congonhas, a long final request is often the difference between a stable arrival and a high-workload mess. Ask early — before you are inside the turn to final.",
+    "operationalContext": "You are descending toward Santos Dumont. In light turbulence, the yaw damper disconnects. The helicopter develops a mild yaw oscillation that you control with smooth pedal work. The AFM allows continuation with the autopilot limited or disengaged as applicable.\n\nYou advise Approach: yaw damper inoperative, request extended final for a stable approach.\n\nApproach gives you a longer vector to final and avoids late heading changes. You brief a stable manual approach and land without forcing tight S-turns on short final.\n\nThat is appropriate use of the radio after a yaw damper failure — operational need stated clearly, ATC helps with geometry.",
+    "sayItCoach": "ANAC123, yaw damper inoperative, request extended final for stable approach.",
+    "icaoModelAnswer": "I would control the aircraft smoothly, apply AFM limitations for yaw damper inoperative, and stabilize the flight path. I would advise ATC that the yaw damper is inoperative and request an extended final or radar vectors for a stable, low-maneuvering approach. I would avoid aggressive pedal inputs and last-minute tight turns. If handling became unacceptable, I would request priority or divert as required. The radio call should state the limitation and the operational request, not a detailed technical explanation.",
+    "memoryTrick": "**YAW** — **Y**oke/pedals smooth (control the oscillation), **A**pply AFM limits, **W**arn ATC with a clear request (extended final / vectors).",
+    "operationalMeaning": "When yaw damper failure occurs, the crew should:\n\nYaw damper failure scenarios commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger yaw damper failure, expect extended final, fly heading one four zero.",
+      "Radar: ANAC123, understand handling limitation, radar vectors for long final.",
+      "Approach: ANAC123, confirm able to accept visual approach with normal maneuvering.",
+      "Control: ANAC123, roger continuing with yaw damper inoperative, advise if you require priority.",
+      "Approach: ANAC123, turn final now or request more track miles?"
+    ],
+    "pilotReadbacks": [
+      "ANAC123, yaw damper failure, expecting extended final, heading one four zero.",
+      "ANAC123, handling limitation, vectors for long final accepted.",
+      "ANAC123, request extended final, prefer minimal maneuvering on short final.",
+      "ANAC123, continuing yaw damper inoperative, will advise if priority required.",
+      "ANAC123, request more track miles for stable final."
+    ],
+    "brazilianMistakes": "- ❌ Ignoring mild yaw oscillation until short final becomes unstable.  \n  ✔ Recognize early, apply AFM limits, and request approach geometry that helps.\n\n- ❌ Giving a long technical explanation of Dutch roll on frequency.  \n  ✔ State: yaw damper inoperative, request extended final.\n\n- ❌ Accepting tight S-turns to final when handling is degraded.  \n  ✔ Request more track miles; do not accept geometry you cannot fly smoothly.\n\n- ❌ Fighting oscillations with large pedal inputs.  \n  ✔ Use smooth, measured corrections per training and AFM guidance.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Yaw Damper Inoperative, Request Extended Final\n\n**Pronunciation:** AY-nak WUN TOO THREE, YAW DAM-per in-OP-er-uh-tiv, reh-KWEST ek-STEN-did FY-nul\n\n**Word Stress**\n\n- Yaw → YAW\n- Damper → DAM-per\n- Inoperative → in-OP-er-uh-tiv (stress on second)\n- Extended → ek-STEN-did (stress on second)\n- Final → FY-nul\n\nPractice:\n\nYaw damper inoperative... request extended final... minimal maneuvering.\n\nTogether:\n\nANAC123, yaw damper inoperative, request extended final for stable approach.",
+    "relatedConcepts": [
+      "Autopilot Failure",
+      "Dutch Roll",
+      "Manual Flight",
+      "Extended Final",
+      "Workload Management",
+      "Turbulence"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Phraseology for Abnormal Operations",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Yaw Damper / Dutch Roll",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA / Manufacturer guidance on yaw damper inoperative operations (general)"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "H130 AFM — Automatic Flight Control / Stability Augmentation Abnormal Procedures"
+      }
+    ]
+  },
+  {
+    "catalogId": "0196",
+    "id": "0196",
+    "displayTerm": "Flight Management System Failure",
+    "term": "flight management system failure",
+    "slug": "flight-management-system-failure",
+    "category": "Aircraft Systems",
+    "meaningEn": "Flight Management System Failure is the loss or significant degradation of the aircraft's flight management computer or integrated navigation management function, requiring the crew to discontinue FMS-guided navigation and performance management and to continue the flight using alternate navigation sources, raw data, and manual procedures.",
+    "meaningPt": "Falha do sistema de gerenciamento de voo / Flight Management System (FMS) Failure.\n\nPerda ou degradação significativa do computador de gerenciamento de voo ou da função integrada de navegação, exigindo que a tripulação abandone a navegação guiada pelo FMS e continue o voo com fontes alternativas de navegação, dados brutos e procedimentos manuais.",
+    "whenUsed": "When FMS failure occurs, the crew should:",
+    "example": "Approach: ANAC123, roger FMS failure, radar contact, say intentions.",
+    "sayPhrase": "ANAC123, FMS failure, request vectors, standing by for intentions.",
+    "icaoQuestion": "You are cleared for an RNAV approach when your flight management system fails and lateral guidance is lost. Describe what you do and what you tell ATC.?",
+    "icaoSpeakText": "I would maintain aircraft control using primary flight instruments and discontinue the RNAV approach if FMS guidance is required and no longer available. I would assess remaining navigation sources such as raw GPS, VOR, or ILS. I would inform ATC that the flight management system has failed, that RNAV capability is lost, and that I request radar vectors or a conventional approach. I would not continue an RNAV procedure that I can no longer fly to the required standard. After receiving a revised clearance, I would rebrief the approach and continue with the available systems.",
+    "missionBrief": "Today's lesson covers Flight Management System Failure — the loss or degradation of the FMS that manages navigation, performance, and flight-plan guidance.\n\nAn FMS failure is not the same as losing the aircraft. It is the loss of automated route and performance management. The pilot must revert to raw data, conventional navaids, and manual flight-path management while keeping ATC informed.\n\nIn H130 helicopter training academy operations, FMS capability may be limited compared with transport-category jets, but many IFR-equipped H130s use integrated GPS/FMS-style navigation for RNAV routes, approaches, and performance cues. When that system fails, the crew must fly the aircraft, navigate with remaining instruments, and communicate clearly.\n\nUnderstanding how to report FMS failure, request vectors or conventional clearances, and describe the situation in ICAO-standard English is essential for Part 2 radiotelephony and Part 3 speaking proficiency.",
+    "captainTeaching": "FMS failure is an automation problem, not an aircraft problem — until you treat it as one.\n\nThe first action is always the same: fly the helicopter. Attitude. Altitude. Heading. Then diagnose. Then talk.\n\nDo not chase a frozen flight plan. If the FMS is not sequencing, it is not managing. You are.\n\nIn Brazilian IFR operations into Florianópolis, Curitiba, or Congonhas, ATC expects a clear capability statement: what failed, what you can still do, and what you need. \"FMS failure, request vectors\" is better than a long technical story.\n\nIf you were cleared for an RNAV approach and the FMS cannot support it, say so early. Do not continue hoping the box will recover at the final approach fix.\n\nIn the H130, you may have less FMS complexity than a jet — but the communication standard is the same. Report the failure. State remaining capability. Accept the simpler clearance.\n\nAutomation is a tool. When the tool fails, the pilot remains the system.",
+    "operationalContext": "You are IFR from Congonhas to Florianópolis in the H130 at flight level nine zero.\n\nApproaching the terminal area, the FMS freezes. Waypoints stop sequencing. Lateral guidance drops. Raw GPS position remains, but the managed flight plan is gone.\n\nYou maintain heading and altitude on primary instruments. You identify your approximate position relative to Florianópolis using remaining GPS and VOR.\n\nYou transmit:\n\nANAC123, flight management system failure, navigation capability reduced, request radar vectors to Florianópolis.\n\nApproach: ANAC123, roger FMS failure, turn left heading one eight zero, vectors for ILS runway one four.\n\nYou read back the heading and prepare the conventional approach. The aircraft is still fully flyable. The automation is not.",
+    "sayItCoach": "ANAC123, flight management system failure, navigation capability reduced, request radar vectors to Florianópolis.",
+    "icaoModelAnswer": "I would maintain aircraft control using primary flight instruments and discontinue the RNAV approach if FMS guidance is required and no longer available. I would assess remaining navigation sources such as raw GPS, VOR, or ILS. I would inform ATC that the flight management system has failed, that RNAV capability is lost, and that I request radar vectors or a conventional approach. I would not continue an RNAV procedure that I can no longer fly to the required standard. After receiving a revised clearance, I would rebrief the approach and continue with the available systems.",
+    "memoryTrick": "**FMS FAIL** — **F**ly the aircraft first, **M**ode to raw/alternate nav, **S**ay the failure clearly to ATC, **F**lag RNAV if unable, **A**sk for vectors or conventional approach, **I**dentify remaining capability, **L**imit technical talk on frequency.",
+    "operationalMeaning": "When FMS failure occurs, the crew should:\n\nFMS failure management includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger FMS failure, radar contact, say intentions.",
+      "Control: ANAC123, unable RNAV, expect vectors for conventional approach.",
+      "Approach: ANAC123, turn right heading two seven zero, vectors to ILS runway one four.",
+      "Radar: ANAC123, confirm navigation capability, able VOR and ILS?",
+      "Approach: ANAC123, cleared ILS runway one four, report established."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, FMS failure, request vectors, standing by for intentions.",
+      "ANAC123, unable RNAV, expect vectors for conventional approach, ANAC123.",
+      "ANAC123, right heading two seven zero, vectors ILS one four.",
+      "ANAC123, able VOR and ILS, navigation capability reduced, FMS failed.",
+      "ANAC123, cleared ILS runway one four, will report established."
+    ],
+    "brazilianMistakes": "- ❌ Saying only \"computer problem\" without stating navigation impact.  \n  ✔ Report: FMS failure, navigation capability reduced, request vectors.\n\n- ❌ Continuing an RNAV approach after FMS lateral guidance is lost.  \n  ✔ Discontinue RNAV if required guidance is unavailable; request conventional approach.\n\n- ❌ Declaring Mayday for an FMS failure with remaining navaids and radar available.  \n  ✔ Report the failure and request assistance; escalate only if safe navigation is compromised.\n\n- ❌ Giving a long technical explanation on frequency.  \n  ✔ Keep it short: what failed, what you can do, what you need.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Flight Management System Failure, Request Radar Vectors\n\n**Pronunciation:** AY-nak WUN TOO THREE, FLITE MAN-ij-ment SIS-tem FAYL-yer, reh-KWEST RAY-dar VEK-terz\n\n**Word Stress**\n\n- Flight → FLITE\n- Management → MAN-ij-ment (stress on first)\n- System → SIS-tem\n- Failure → FAYL-yer\n- Vectors → VEK-terz\n\nPractice:\n\nFlight management system failure... request radar vectors.\n\nTogether:\n\nANAC123, flight management system failure, navigation capability reduced, request radar vectors to Florianópolis.",
+    "relatedConcepts": [
+      "Electronic Navigation Failure",
+      "GPS RAIM Failure",
+      "GPS Inoperative",
+      "RNAV Approach",
+      "Radar Vectors",
+      "Conventional Navigation"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Radiotelephony and Contingency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9613 — Performance-Based Navigation Manual"
+      },
+      {
+        "label": "ICAO Doc 9830 — Manual on Airborne Navigation Systems"
+      },
+      {
+        "label": "SKYbrary — Flight Management System",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "H130 AFM / Avionics Supplement — Abnormal Procedures, Navigation"
+      }
+    ]
+  },
+  {
+    "catalogId": "0197",
+    "id": "0197",
+    "displayTerm": "Electronic Navigation Failure",
+    "term": "electronic navigation failure",
+    "slug": "electronic-navigation-failure",
+    "category": "Aircraft Systems",
+    "meaningEn": "Electronic Navigation Failure is the loss or significant degradation of one or more electronic navigation systems used for position fixing and course guidance, requiring the pilot to use alternate navigation methods and to advise ATC of reduced navigation capability.",
+    "meaningPt": "Falha de navegação eletrônica / Electronic Navigation Failure.\n\nPerda ou degradação significativa de um ou mais sistemas eletrônicos de navegação usados para determinação de posição e orientação de curso, exigindo métodos alternativos de navegação e comunicação ao controle sobre a capacidade reduzida.",
+    "whenUsed": "When electronic navigation failure occurs, the pilot should:",
+    "example": "Approach: ANAC123, roger electronic navigation failure, radar contact, turn left heading two four zero.",
+    "sayPhrase": "ANAC123, left heading two four zero, electronic navigation failure, ANAC123.",
+    "icaoQuestion": "Your primary electronic navigation system fails while IFR. You still have VOR available and radar contact. What do you do?",
+    "icaoSpeakText": "I would maintain control of the aircraft and continue on the last assigned heading and altitude. I would identify remaining navigation sources and inform ATC of electronic navigation failure, stating that I am able to use VOR and that I request radar vectors. I would accept a conventional clearance or approach and avoid procedures that depend on the failed electronic system. I would keep communications short and update ATC if capability changes.",
+    "missionBrief": "Today's lesson covers Electronic Navigation Failure — the loss or serious degradation of electronic navigation sources used to determine position and track, including GPS, VOR, DME, or integrated electronic nav displays.\n\nThis is broader than a single GPS failure. Electronic navigation failure means the electronic means you were using to navigate are no longer reliable, and you must revert to remaining navaids, radar assistance, pilotage, or dead reckoning.\n\nFor H130 helicopter operations in Brazil — Congonhas, Guarulhos, Santos Dumont, Curitiba, Florianópolis — electronic navigation is often primary for IFR and for precise VFR routing in busy terminal areas. When it fails, ATC needs a clear report of capability and intentions.\n\nThis lesson prepares you for Part 2 phraseology: reporting the failure, requesting vectors, and accepting conventional clearances without cluttering the frequency.",
+    "captainTeaching": "Electronic navigation failure is a capability problem. Speak in capabilities.\n\nATC does not need the serial number of the failed box. ATC needs: what you lost, what you still have, and what you want.\n\n\"Electronic navigation failure, request vectors\" is the core message. Add \"able VOR\" or \"unable RNAV\" when it changes the clearance.\n\nIn Brazilian terminal airspace around Guarulhos or Congonhas, radar is often available. Use it. Do not invent a complex self-navigation plan while you are still diagnosing the failure.\n\nIn the H130, keep the scan simple: attitude, altitude, heading, then navigation. Electronic displays can fail; the helicopter still flies.\n\nIf you are VFR with good visual references, say so. If you are IFR with only partial navaids, say that too. Matching the report to the actual situation is professional radiotelephony.",
+    "operationalContext": "You are en route from Santos Dumont to Curitiba in the H130 at four thousand feet.\n\nYour primary electronic navigation display fails. GPS and CDI guidance go blank. The VOR receiver still powers up on a standby unit, but you are temporarily uncertain of exact track.\n\nYou hold heading by compass and attitude. You fix approximate position by coastline and known landmarks, then confirm with the standby VOR.\n\nYou transmit:\n\nANAC123, electronic navigation failure, primary nav display lost, able VOR, request radar vectors to Curitiba.\n\nApproach provides headings. You rejoin the arrival with conventional guidance and land normally.",
+    "sayItCoach": "ANAC123, electronic navigation failure, able VOR, request radar vectors to Curitiba.",
+    "icaoModelAnswer": "I would maintain control of the aircraft and continue on the last assigned heading and altitude. I would identify remaining navigation sources and inform ATC of electronic navigation failure, stating that I am able to use VOR and that I request radar vectors. I would accept a conventional clearance or approach and avoid procedures that depend on the failed electronic system. I would keep communications short and update ATC if capability changes.",
+    "memoryTrick": "**E-NAV** — **E**valuate what still works, **N**otify ATC with capability, **A**sk for vectors or conventional clearance, **V**erify heading/altitude while you reconfigure.",
+    "operationalMeaning": "When electronic navigation failure occurs, the pilot should:\n\nElectronic navigation failure management includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger electronic navigation failure, radar contact, turn left heading two four zero.",
+      "Control: ANAC123, confirm remaining navigation capability.",
+      "Approach: ANAC123, vectors for VOR runway one five, report established on final.",
+      "Radar: ANAC123, traffic information, maintain present heading, radar service.",
+      "Approach: ANAC123, cleared VOR approach runway one five, report field in sight if able."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, left heading two four zero, electronic navigation failure, ANAC123.",
+      "ANAC123, able VOR and compass, primary electronic nav lost.",
+      "ANAC123, vectors VOR one five, will report established on final.",
+      "ANAC123, maintaining present heading, radar service, ANAC123.",
+      "ANAC123, cleared VOR approach runway one five, will report field in sight."
+    ],
+    "brazilianMistakes": "- ❌ Reporting \"navigation problem\" without saying what still works.  \n  ✔ State remaining capability: able VOR, request vectors.\n\n- ❌ Trying to continue an RNAV route after electronic nav required for RNAV is lost.  \n  ✔ Request amended clearance; do not continue procedures you cannot fly.\n\n- ❌ Overloading the frequency with troubleshooting details.  \n  ✔ Report failure, capability, and request — then fly the clearance.\n\n- ❌ Ignoring radar service when available after nav degradation.  \n  ✔ Request and use radar vectors until navigation is stable again.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Electronic Navigation Failure, Request Radar Vectors\n\n**Pronunciation:** AY-nak WUN TOO THREE, ee-lek-TRON-ik nav-ih-GAY-shun FAYL-yer, reh-KWEST RAY-dar VEK-terz\n\n**Word Stress**\n\n- Electronic → ee-lek-TRON-ik (stress on third)\n- Navigation → nav-ih-GAY-shun (stress on third)\n- Failure → FAYL-yer\n- Radar → RAY-dar\n- Vectors → VEK-terz\n\nPractice:\n\nElectronic navigation failure... request radar vectors.\n\nTogether:\n\nANAC123, electronic navigation failure, able VOR, request radar vectors to Curitiba.",
+    "relatedConcepts": [
+      "Flight Management System Failure",
+      "GPS Inoperative",
+      "GPS RAIM Failure",
+      "Radar Vectors",
+      "VOR Approach",
+      "Conventional Navigation"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Navigation Contingencies",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 10 — Aeronautical Telecommunications",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "ICAO Doc 8168 (PANS-OPS) — Instrument Procedures"
+      },
+      {
+        "label": "SKYbrary — Navigation System Failure",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "H130 AFM / Avionics Supplement — Navigation Abnormal Procedures"
+      }
+    ]
+  },
+  {
+    "catalogId": "0198",
+    "id": "0198",
+    "displayTerm": "GPS RAIM Failure",
+    "term": "gps raim failure",
+    "slug": "gps-raim-failure",
+    "category": "Aircraft Systems",
+    "meaningEn": "GPS RAIM Failure is the condition in which Receiver Autonomous Integrity Monitoring cannot provide the integrity assurance required for the intended GPS/RNAV operation, meaning the GPS position may be available but is not integrity-monitored to the standard needed for that phase of flight, particularly for RNAV approach.",
+    "meaningPt": "Falha de RAIM do GPS / GPS RAIM Failure.\n\nCondição em que o monitoramento autônomo de integridade do receptor (RAIM) não consegue fornecer a garantia de integridade exigida para a operação GPS/RNAV pretendida — a posição GPS pode estar disponível, mas sem integridade monitorada no padrão necessário, especialmente para aproximação RNAV.",
+    "whenUsed": "When GPS RAIM failure or RAIM unavailable occurs, the crew should:",
+    "example": "Approach: ANAC123, roger RAIM unavailable, unable RNAV, say intentions.",
+    "sayPhrase": "ANAC123, RAIM unavailable, unable RNAV, request vectors for ILS.",
+    "icaoQuestion": "You are on an RNAV approach when RAIM becomes unavailable. GPS position is still displayed. What do you do?",
+    "icaoSpeakText": "I would not continue the RNAV approach to the published minima without the required integrity. I would maintain safe flight path control, discontinue the RNAV procedure as required, and inform ATC that RAIM is unavailable and that I am unable to continue the RNAV approach. I would request radar vectors or a conventional approach such as ILS or VOR. Even if GPS position remains displayed, without required RAIM integrity the RNAV approach is not acceptable. I would execute the missed approach if already at a point where discontinuing requires it, then accept the revised clearance.",
+    "missionBrief": "Today's lesson covers GPS RAIM Failure — the loss of Receiver Autonomous Integrity Monitoring integrity or availability required for GPS-based navigation, especially for RNAV approaches.\n\nThis is distinct from GPS Inoperative. GPS may still show a position, but RAIM may be unavailable or indicate that integrity is insufficient for the phase of flight. For RNAV (GNSS) approaches, that distinction matters: without required RAIM/integrity, you must not continue the approach to the published minima.\n\nIn H130 IFR training and Brazilian operations into Florianópolis, Curitiba, Congonhas, and similar airports, RNAV approaches are common. RAIM prediction before departure and RAIM status in flight are part of professional GNSS operations.\n\nThis lesson focuses on integrity and availability for RNAV — how to recognize the problem, what to tell ATC, and how to describe the decision in ICAO speaking terms.",
+    "captainTeaching": "RAIM is the integrity watchdog for GPS.\n\nGPS can lie quietly. RAIM is how the receiver tells you it can no longer guarantee the position for the procedure you are flying.\n\nFor RNAV approaches, integrity is not optional language in the manual — it is the gate. No required RAIM, no RNAV approach to minima.\n\nDo not confuse this with GPS Inoperative. GPS Inoperative means you lost GPS navigation. RAIM failure means integrity monitoring or availability failed for the required operation. The screen may still look useful. That is exactly when pilots make the wrong decision.\n\nIn Brazilian ops, say the operational fact: \"RAIM unavailable, unable RNAV, request ILS\" or \"request vectors.\" That sentence moves ATC immediately.\n\nIn the H130, brief the backup approach before you start the RNAV. When RAIM fails, you execute a plan you already own — not a plan you invent at the final approach fix.",
+    "operationalContext": "You are cleared RNAV approach runway one four at Florianópolis in the H130.\n\nOn intermediate approach, the avionics annunciate RAIM unavailable. GPS position remains, but integrity for approach is lost.\n\nYou do not continue to minima on RNAV. You level as appropriate, prepare for missed approach or vectors, and transmit:\n\nANAC123, RAIM unavailable, unable RNAV approach, request vectors for ILS runway one four.\n\nApproach: ANAC123, roger, climb and maintain three thousand, turn left heading three six zero, vectors for ILS runway one four.\n\nYou execute the revised clearance. The GPS still shows a picture. The integrity required for the RNAV approach does not. That is the decision point.",
+    "sayItCoach": "ANAC123, RAIM unavailable, unable RNAV approach, request vectors for ILS runway one four.",
+    "icaoModelAnswer": "I would not continue the RNAV approach to the published minima without the required integrity. I would maintain safe flight path control, discontinue the RNAV procedure as required, and inform ATC that RAIM is unavailable and that I am unable to continue the RNAV approach. I would request radar vectors or a conventional approach such as ILS or VOR. Even if GPS position remains displayed, without required RAIM integrity the RNAV approach is not acceptable. I would execute the missed approach if already at a point where discontinuing requires it, then accept the revised clearance.",
+    "memoryTrick": "**RAIM** — **R**equired integrity for RNAV, **A**bort RNAV if integrity lost, **I**nform ATC clearly, **M**ove to ILS/VOR/vectors.",
+    "operationalMeaning": "When GPS RAIM failure or RAIM unavailable occurs, the crew should:\n\nRAIM-related management includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger RAIM unavailable, unable RNAV, say intentions.",
+      "Approach: ANAC123, climb and maintain three thousand, vectors for ILS runway one four.",
+      "Control: ANAC123, expect conventional approach, RNAV not available for your equipment status.",
+      "Approach: ANAC123, turn right heading two seven zero, intercept localizer runway one four.",
+      "Approach: ANAC123, cleared ILS runway one four, report established."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, RAIM unavailable, unable RNAV, request vectors for ILS.",
+      "ANAC123, climbing three thousand, vectors ILS runway one four.",
+      "ANAC123, expect conventional approach, ANAC123.",
+      "ANAC123, right heading two seven zero, intercept localizer one four.",
+      "ANAC123, cleared ILS runway one four, will report established."
+    ],
+    "brazilianMistakes": "- ❌ Continuing RNAV to minima because \"GPS still works.\"  \n  ✔ Without required RAIM/integrity, discontinue RNAV approach procedures.\n\n- ❌ Reporting only \"GPS problem\" when the issue is RAIM integrity.  \n  ✔ Say RAIM unavailable or integrity lost, unable RNAV.\n\n- ❌ Confusing RAIM failure with total GPS inoperative in every case.  \n  ✔ Distinguish integrity/availability failure from complete GPS loss.\n\n- ❌ Having no backup approach briefed before commencing RNAV.  \n  ✔ Always brief ILS/VOR/visual options before RNAV in IMC.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, RAIM Unavailable, Unable RNAV Approach\n\n**Pronunciation:** AY-nak WUN TOO THREE, RAYM un-uh-VAYL-uh-bul, un-AY-bul AR-nav uh-PROACH\n\n**Word Stress**\n\n- RAIM → RAYM (one syllable)\n- Unavailable → un-uh-VAYL-uh-bul (stress on third)\n- Unable → un-AY-bul\n- RNAV → AR-nav\n- Approach → uh-PROACH\n\nPractice:\n\nRAIM unavailable... unable RNAV approach... request vectors.\n\nTogether:\n\nANAC123, RAIM unavailable, unable RNAV approach, request vectors for ILS runway one four.",
+    "relatedConcepts": [
+      "GPS Inoperative",
+      "Electronic Navigation Failure",
+      "Flight Management System Failure",
+      "RNAV Approach",
+      "Missed Approach",
+      "Conventional Approach"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 9613 — Performance-Based Navigation Manual"
+      },
+      {
+        "label": "ICAO Doc 8168 (PANS-OPS) — GNSS / RNAV Procedures"
+      },
+      {
+        "label": "ICAO Annex 10 — GNSS Integrity Concepts",
+        "href": "https://www.icao.int/publications/pages/publication.aspx?docnum=101"
+      },
+      {
+        "label": "SKYbrary — RAIM",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "H130 GNSS/AFM Supplement — RAIM and RNAV Approach Limitations"
+      }
+    ]
+  },
+  {
+    "catalogId": "0199",
+    "id": "0199",
+    "displayTerm": "Magnetic Compass Failure",
+    "term": "magnetic compass failure",
+    "slug": "magnetic-compass-failure",
+    "category": "Aircraft Systems",
+    "meaningEn": "Magnetic Compass Failure is the loss, jamming, or unreliable indication of the magnetic compass, reducing or removing a fundamental heading reference and requiring the pilot to use alternate heading sources and to advise ATC when heading-keeping capability is affected.",
+    "meaningPt": "Falha da bússola magnética / Magnetic Compass Failure.\n\nPerda, travamento ou indicação não confiável da bússola magnética, reduzindo ou eliminando uma referência fundamental de proa e exigindo fontes alternativas de direção, com comunicação ao controle quando a capacidade de manter proa estiver afetada.",
+    "whenUsed": "When magnetic compass failure occurs, the pilot should:",
+    "example": "Approach: ANAC123, roger magnetic compass failure, confirm heading reference available.",
+    "sayPhrase": "ANAC123, magnetic compass failed, primary heading available, ANAC123.",
+    "icaoQuestion": "Your magnetic compass fails in flight. Your electronic heading indicator still works. What do you do and what do you tell ATC?",
+    "icaoSpeakText": "I would continue using the electronic heading indicator as my primary heading reference and treat the magnetic compass as failed. I would inform ATC of magnetic compass failure and confirm that primary heading is still available. I would request radar vectors if operating in IMC or complex airspace, and I would avoid relying on the failed compass for any heading cross-check. If the electronic heading system later became unreliable, I would report reduced heading capability immediately and request priority radar assistance to land.",
+    "missionBrief": "Today's lesson covers Magnetic Compass Failure — the loss or unreliability of the magnetic compass used as a primary or backup heading reference.\n\nIn modern cockpits the magnetic compass is often a standby instrument. When the primary heading system fails, or when you must cross-check heading, the magnetic compass becomes critical. If the compass itself fails — stuck, unreadable, or erratic — heading reference may be degraded.\n\nFor H130 helicopter operations, heading awareness remains essential for IFR, night VFR, and ATC-assigned headings in busy Brazilian terminal areas such as Congonhas, Guarulhos, and Santos Dumont.\n\nThis lesson trains Part 2 reports and Part 3 explanations: how to tell ATC you have limited heading reference, how to request vectors or a simpler clearance, and how to manage the aircraft safely.",
+    "captainTeaching": "The magnetic compass is old technology — and still part of the safety net.\n\nWhen it fails, ask one question: do I still have a reliable heading reference?\n\nIf yes, report the failure as a system degradation and continue with care. If no, you have a heading problem, not a trivia problem. Tell ATC you need radar vectors and a simple path to land.\n\nDo not pretend precision you do not have. If you cannot reliably hold an assigned heading, say so. Controllers would rather give you continuous radar service than discover you drifted through a final approach course.\n\nIn the H130, vibration and maneuvering can make compass reading harder even when the instrument is healthy. Know the difference between a hard-to-read compass and a failed one.\n\nFor ICAO speaking, describe the operational effect: limited heading reference, request radar assistance, continue with remaining instruments. That is Level 4 clarity.",
+    "operationalContext": "You are VFR from Santos Dumont toward Congonhas in the H130 under special VFR in marginal visibility.\n\nYour magnetic compass card sticks and will not turn. Primary heading from the electronic system still works, but you have lost the standby compass.\n\nYou continue with electronic heading and transmit when appropriate:\n\nANAC123, magnetic compass failure, primary heading available, request continued vectors to Congonhas.\n\nApproach monitors you on radar and issues headings to the circuit. You land without using the failed standby compass.\n\nIf both electronic heading and magnetic compass were unreliable, you would declare a more urgent navigation limitation and request immediate radar assistance to land.",
+    "sayItCoach": "ANAC123, magnetic compass failure, primary heading available, request radar vectors to Congonhas.",
+    "icaoModelAnswer": "I would continue using the electronic heading indicator as my primary heading reference and treat the magnetic compass as failed. I would inform ATC of magnetic compass failure and confirm that primary heading is still available. I would request radar vectors if operating in IMC or complex airspace, and I would avoid relying on the failed compass for any heading cross-check. If the electronic heading system later became unreliable, I would report reduced heading capability immediately and request priority radar assistance to land.",
+    "memoryTrick": "**COMPASS** — **C**heck remaining heading source, **O**wn the aircraft attitude, **M**essage ATC with capability, **P**refer radar vectors if uncertain, **A**void unverified turns, **S**tand by for simple clearance, **S**afe landing is the goal.",
+    "operationalMeaning": "When magnetic compass failure occurs, the pilot should:\n\nMagnetic compass failure management includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger magnetic compass failure, confirm heading reference available.",
+      "Approach: ANAC123, turn left heading two seven zero, radar vectors to Congonhas.",
+      "Control: ANAC123, report if unable to maintain assigned heading.",
+      "Tower: ANAC123, make left traffic runway one seven Right, report downwind.",
+      "Approach: ANAC123, radar contact, present heading approved to the field."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, magnetic compass failed, primary heading available, ANAC123.",
+      "ANAC123, left heading two seven zero, vectors Congonhas.",
+      "ANAC123, wilco, will report if unable to maintain assigned heading.",
+      "ANAC123, left traffic runway one seven Right, will report downwind.",
+      "ANAC123, present heading approved to the field, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Ignoring compass failure because \"the GPS shows track.\"  \n  ✔ Track is not heading; report compass failure and use proper heading sources.\n\n- ❌ Not telling ATC when both compass and primary heading are degraded.  \n  ✔ Report limited heading reference and request radar vectors early.\n\n- ❌ Making large unverified turns after compass failure in IMC.  \n  ✔ Use remaining heading instruments; request radar confirmation if uncertain.\n\n- ❌ Using vague language like \"instrument problem\" only.  \n  ✔ Specify magnetic compass failure and remaining heading capability.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Magnetic Compass Failure, Primary Heading Available\n\n**Pronunciation:** AY-nak WUN TOO THREE, mag-NET-ik KUM-pus FAYL-yer, PRY-mair-ee HED-ing uh-VAYL-uh-bul\n\n**Word Stress**\n\n- Magnetic → mag-NET-ik\n- Compass → KUM-pus\n- Failure → FAYL-yer\n- Primary → PRY-mair-ee\n- Heading → HED-ing\n\nPractice:\n\nMagnetic compass failure... primary heading available.\n\nTogether:\n\nANAC123, magnetic compass failure, primary heading available, request radar vectors to Congonhas.",
+    "relatedConcepts": [
+      "Electronic Navigation Failure",
+      "Radar Vectors",
+      "Gyroscopic Instruments",
+      "Unusual Attitude Recovery",
+      "Partial Panel",
+      "Instrument Failure"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Radiotelephony",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 8168 (PANS-OPS) — Instrument Flying Principles"
+      },
+      {
+        "label": "FAA AFM / Pilot Handbook — Magnetic Compass Errors and Failures"
+      },
+      {
+        "label": "SKYbrary — Heading Reference Systems",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "H130 AFM — Flight Instruments, Abnormal Procedures"
+      }
+    ]
+  },
+  {
+    "catalogId": "0200",
+    "id": "0200",
+    "displayTerm": "Taxi with Caution",
+    "term": "taxi with caution",
+    "slug": "taxi-with-caution",
+    "category": "Ground Operations",
+    "meaningEn": "Taxi with Caution is an ATC instruction or advisory directing the pilot to proceed on the taxi clearance while exercising increased care due to a hazard, surface condition, vehicle, work in progress, or other risk on or near the taxi route.",
+    "meaningPt": "Taxi with caution / Táxi com cautela.\n\nInstrução ou aviso do controle para prosseguir no táxi autorizado exercendo atenção redobrada devido a perigo, condição de superfície, veículo, obras ou outro risco na rota de táxi ou próximo a ela.",
+    "whenUsed": "When instructed to taxi with caution, the pilot should:",
+    "example": "Tower: ANAC123, taxi via Alpha to the apron, taxi with caution, works in progress left of Alpha.",
+    "sayPhrase": "ANAC123, taxi via Alpha to the apron, taxi with caution, works in progress.",
+    "icaoQuestion": "ATC clears you to taxi and adds \"taxi with caution, vehicle on the taxiway.\" What does this mean and what do you do?",
+    "icaoSpeakText": "It means I am cleared to taxi on the assigned route, but I must proceed carefully because there is a vehicle hazard on or near the taxiway. I would reduce taxi speed, keep the vehicle in sight, maintain safe clearance, and be ready to stop if needed. I would still comply with all route and hold-short instructions. If I could not continue safely, I would stop and advise ATC.",
+    "missionBrief": "Today's lesson covers Taxi with Caution — an ATC instruction or advisory telling the pilot to taxi carefully because of a hazard, restriction, or condition that requires extra attention on the movement area.\n\n\"Taxi with caution\" is not a clearance to ignore other instructions. It is a warning layered onto a taxi clearance: proceed, but be alert for the stated or implied hazard — vehicles, wet surface, construction, birds, jet blast, or limited wingtip clearance.\n\nFor H130 helicopter operations at Congonhas, Guarulhos, Santos Dumont, Curitiba, and Florianópolis, taxi may be ground taxi or hover taxi. The caution still applies: rotor clearance, FOD, vehicles, and other aircraft matter.\n\nThis lesson builds Part 2 proficiency in hearing, reading back, and acting on cautionary taxi instructions in DECEA/ICAO phraseology.",
+    "captainTeaching": "Taxi with caution means: the clearance is still valid, but the environment is not routine.\n\nSlow down. Look outside. Identify the hazard ATC named — or scan harder if they did not specify.\n\nIn helicopters, \"caution\" often means people, vehicles, and loose objects in the downwash zone. A caution that is minor for a light airplane can be serious for rotorcraft.\n\nNever let a caution phrase replace a hold-short. If you were told to hold short, you hold short — cautiously or not.\n\nRead back the caution when it is part of the instruction. It confirms you heard the risk, not only the route.\n\nAt busy Brazilian airports, ground hazards change by the hour. Treat every \"taxi with caution\" as real-time intelligence.",
+    "operationalContext": "You have landed at Congonhas in the H130 and are cleared to taxi to the ramp.\n\nTower: ANAC123, taxi to the apron via Alpha, taxi with caution, vehicle on the left side of Alpha.\n\nYou read back the route and the caution. You slow the taxi, keep the vehicle in sight, and maintain rotor clearance. You do not assume the vehicle will move — you assume you must protect the aircraft.\n\nAt the apron you report ramp and shut down or park as cleared. The caution did its job: you arrived aware, not surprised.",
+    "sayItCoach": "ANAC123, taxi via Alpha to the apron, taxi with caution, vehicle on the left.",
+    "icaoModelAnswer": "It means I am cleared to taxi on the assigned route, but I must proceed carefully because there is a vehicle hazard on or near the taxiway. I would reduce taxi speed, keep the vehicle in sight, maintain safe clearance, and be ready to stop if needed. I would still comply with all route and hold-short instructions. If I could not continue safely, I would stop and advise ATC.",
+    "memoryTrick": "**CAUTION** — **C**learance still applies, **A**lert lookout, **U**se lower speed, **T**hreat identified, **I**nclude caution in readback, **O**bey hold-shorts, **N**otify ATC if unable.",
+    "operationalMeaning": "When instructed to taxi with caution, the pilot should:\n\nTaxi with caution commonly relates to:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Tower: ANAC123, taxi via Alpha to the apron, taxi with caution, works in progress left of Alpha.",
+      "Ground: ANAC123, taxi to holding point runway one seven Right via Bravo, taxi with caution, vehicle ahead.",
+      "Tower: ANAC123, continue taxi, taxi with caution, wet surface.",
+      "Ground: ANAC123, taxi via Charlie, taxi with caution, opposite direction traffic.",
+      "Tower: ANAC123, air-taxi to the helipad, taxi with caution, personnel on the right."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, taxi via Alpha to the apron, taxi with caution, works in progress.",
+      "ANAC123, taxi holding point runway one seven Right via Bravo, taxi with caution, vehicle ahead.",
+      "ANAC123, continue taxi, taxi with caution, wet surface.",
+      "ANAC123, taxi via Charlie, taxi with caution, opposite direction traffic.",
+      "ANAC123, air-taxi to the helipad, taxi with caution, personnel on the right."
+    ],
+    "brazilianMistakes": "- ❌ Reading back only the route and omitting \"taxi with caution.\"  \n  ✔ Include the caution in the readback when it is part of the instruction.\n\n- ❌ Treating caution as permission to ignore hold-short points.  \n  ✔ Caution adds awareness; it does not cancel restrictions.\n\n- ❌ Continuing at normal taxi speed near the stated hazard.  \n  ✔ Slow down, increase lookout, protect clearance.\n\n- ❌ For helicopters, ignoring downwash effects near personnel/vehicles.  \n  ✔ Adjust hover/taxi technique to protect people and equipment.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Taxi Via Alpha, Taxi with Caution\n\n**Pronunciation:** AY-nak WUN TOO THREE, TAK-see VYE-uh AL-fuh, TAK-see with KAW-shun\n\n**Word Stress**\n\n- Taxi → TAK-see\n- Via → VYE-uh\n- Alpha → AL-fuh\n- Caution → KAW-shun\n\nPractice:\n\nTaxi via Alpha... taxi with caution... vehicle on the left.\n\nTogether:\n\nANAC123, taxi via Alpha to the apron, taxi with caution, vehicle on the left.",
+    "relatedConcepts": [
+      "Taxi Via",
+      "Approved Taxi",
+      "Taxi to Gate",
+      "Taxi to Ramp",
+      "Hover Taxi",
+      "Air-Taxi"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Aerodrome Control Phraseology",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9432 — Manual of Radiotelephony"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "DECEA AIC / Airport NOTAMs — Temporary Hazards"
+      },
+      {
+        "label": "SKYbrary — Runway and Taxiway Incursions",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "H130 AFM — Ground Operations / Hover Taxi"
+      }
+    ]
+  },
+  {
+    "catalogId": "0201",
+    "id": "0201",
+    "displayTerm": "Taxi to Gate",
+    "term": "taxi to gate",
+    "slug": "taxi-to-gate",
+    "category": "Ground Operations",
+    "meaningEn": "Taxi to Gate is an ATC clearance instructing the pilot to taxi to a specified gate or parking stand, usually including the taxi route and any hold-short or caution restrictions required to reach that position.",
+    "meaningPt": "Taxi to gate / Táxi para o gate (posição de estacionamento).\n\nAutorização do controle instruindo o piloto a taxiar até um gate ou stand especificado, geralmente incluindo a rota de táxi e quaisquer restrições de hold short ou cautela necessárias para chegar à posição.",
+    "whenUsed": "When cleared to taxi to a gate, the pilot should:",
+    "example": "Ground: ANAC123, taxi to gate fourteen via Alpha and Delta.",
+    "sayPhrase": "ANAC123, taxi to gate fourteen via Alpha and Delta.",
+    "icaoQuestion": "ATC says taxi to gate fourteen via Alpha. What must you include in the readback, and what must you still watch for?",
+    "icaoSpeakText": "I would read back the gate and the taxi route: taxi to gate fourteen via Alpha. I would still watch for hold-short points, runway crossings that need explicit clearance, other traffic, and obstacles on the apron. Arriving at the gate does not allow me to ignore runway protection or conflicting traffic. If the gate were occupied, I would stop and request further instructions.",
+    "missionBrief": "Today's lesson covers Taxi to Gate — the ATC clearance directing an aircraft to taxi to a specific gate or stand for arrival parking.\n\n\"Gate\" language is common in airline and mixed-traffic airports. For helicopter academy operations, the assigned parking may be a stand, spot, or apron position described as a gate in ATC phraseology. The communication standard remains the same: read back the gate and the taxi route, hold short where required, and report when appropriate.\n\nAt Guarulhos, Congonhas, and Santos Dumont, taxi to gate instructions organize arriving traffic into the terminal or general aviation parking flow. Mishearing a gate number creates wrong-stand arrivals, blocked taxiways, and ground conflict.\n\nThis lesson builds Part 2 skill for clear readbacks and disciplined taxi to the assigned gate.",
+    "captainTeaching": "Gate numbers are easy to mishear. Read them back. Confirm them on the chart. Then move.\n\nWrong gate is not a small error at Guarulhos or Congonhas — it creates apron conflict and radio congestion while you sort it out.\n\nIn the H130, your \"gate\" may be a smaller stand than airline phraseology suggests. Still use the exact number ATC gave you. If local apron control uses different words — stand, spot, position — follow the clearance you received and clarify if unsure.\n\nNever cross a runway because you are \"going to the gate.\" The destination does not authorize the crossing.\n\nIf the gate is blocked, stop and ask. Pushing into an occupied stand helps no one.",
+    "operationalContext": "You land on runway two seven Left at Guarulhos in the H130 and vacate as instructed.\n\nGround: ANAC123, taxi to gate fourteen via Alpha and Delta.\n\nYou read back gate fourteen and the route. You confirm gate fourteen on the chart, taxi via Alpha and Delta, hold short of any runway if required, and approach the stand only when clear.\n\nIf gate fourteen is blocked by a vehicle, you stop short and report:\n\nANAC123, gate fourteen occupied, request instructions.\n\nGround reassigns you. You do not invent a new stand.",
+    "sayItCoach": "ANAC123, taxi to gate fourteen via Alpha and Delta.",
+    "icaoModelAnswer": "I would read back the gate and the taxi route: taxi to gate fourteen via Alpha. I would still watch for hold-short points, runway crossings that need explicit clearance, other traffic, and obstacles on the apron. Arriving at the gate does not allow me to ignore runway protection or conflicting traffic. If the gate were occupied, I would stop and request further instructions.",
+    "memoryTrick": "**GATE** — **G**et the number right in readback, **A**ssigned route only, **T**axi hold-shorts respected, **E**xplain to ATC if gate blocked.",
+    "operationalMeaning": "When cleared to taxi to a gate, the pilot should:\n\nTaxi to gate operations include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Ground: ANAC123, taxi to gate fourteen via Alpha and Delta.",
+      "Ground: ANAC123, taxi to gate twenty-two, hold short of runway one zero Left.",
+      "Ground: ANAC123, gate fourteen occupied, taxi to gate sixteen via Bravo.",
+      "Tower: ANAC123, vacate next right, contact Ground one two one decimal niner, taxi to gate.",
+      "Ground: ANAC123, continue to gate fourteen, give way to company on your right."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, taxi to gate fourteen via Alpha and Delta.",
+      "ANAC123, taxi to gate twenty-two, hold short runway one zero Left.",
+      "ANAC123, taxi to gate sixteen via Bravo, gate fourteen occupied.",
+      "ANAC123, vacating next right, Ground one two one decimal niner, taxi to gate.",
+      "ANAC123, continue gate fourteen, giving way to company on the right."
+    ],
+    "brazilianMistakes": "- ❌ Reading back only \"taxi to the gate\" without the gate number.  \n  ✔ Always include the specific gate number in the readback.\n\n- ❌ Crossing a runway without explicit clearance while taxiing to gate.  \n  ✔ Request and receive runway crossing clearance separately.\n\n- ❌ Taxiing to a familiar stand instead of the assigned gate.  \n  ✔ Follow the assigned gate; request change if needed.\n\n- ❌ Entering an occupied gate without advising ATC.  \n  ✔ Hold short, report occupied, request new instructions.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Taxi to Gate Fourteen Via Alpha\n\n**Pronunciation:** AY-nak WUN TOO THREE, TAK-see too GAYT FOR-teen VYE-uh AL-fuh\n\n**Word Stress**\n\n- Taxi → TAK-see\n- Gate → GAYT\n- Fourteen → FOR-teen\n- Via → VYE-uh\n- Alpha → AL-fuh\n\nPractice:\n\nTaxi to gate fourteen... via Alpha and Delta.\n\nTogether:\n\nANAC123, taxi to gate fourteen via Alpha and Delta.",
+    "relatedConcepts": [
+      "Taxi to Ramp",
+      "Taxi Via",
+      "Approved Taxi",
+      "Hold Short",
+      "Taxi with Caution",
+      "Apron Operations"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Taxi Clearances",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9432 — Manual of Radiotelephony"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Airport Diagrams — Guarulhos / Congonhas / Santos Dumont"
+      },
+      {
+        "label": "SKYbrary — Ground Movement",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "H130 AFM — Ground / Apron Operations"
+      }
+    ]
+  },
+  {
+    "catalogId": "0202",
+    "id": "0202",
+    "displayTerm": "Taxi to Ramp",
+    "term": "taxi to ramp",
+    "slug": "taxi-to-ramp",
+    "category": "Ground Operations",
+    "meaningEn": "Taxi to Ramp is an ATC clearance instructing the pilot to taxi to the ramp or apron area, typically including the taxiway route and any restrictions required to reach the parking or handling area.",
+    "meaningPt": "Taxi to ramp / Táxi para o pátio (ramp/apron).\n\nAutorização do controle instruindo o piloto a taxiar até o pátio ou área de estacionamento, normalmente incluindo a rota de táxi e quaisquer restrições necessárias para chegar à área de pátio.",
+    "whenUsed": "When cleared to taxi to the ramp, the pilot should:",
+    "example": "Tower: ANAC123, taxi to the ramp via Alpha.",
+    "sayPhrase": "ANAC123, taxi to the ramp via Alpha.",
+    "icaoQuestion": "After landing, ATC says taxi to the ramp via Alpha. What do you do?",
+    "icaoSpeakText": "I would read back the clearance, taxi via Alpha only, and comply with any hold-short instructions on the way. Approaching the ramp I would reduce speed, watch for personnel, vehicles, and parked aircraft, and for a helicopter I would manage rotor wash carefully. I would park clear of active taxi routes and advise ATC if the ramp were blocked or unsafe to enter.",
+    "missionBrief": "Today's lesson covers Taxi to Ramp — the ATC clearance directing an aircraft to taxi to the ramp or apron area for parking, fueling, or passenger operations.\n\n\"Ramp\" and \"apron\" are often used for general aviation, helicopter, and non-gate parking areas. In Brazilian aerodrome operations, you may hear taxi to the apron, taxi to the ramp, or taxi to the helipad apron. The pilot task is the same: read back the destination and route, protect runways, and enter the ramp only when clear and authorized.\n\nFor H130 academy flights at Congonhas, Florianópolis, Curitiba, and Santos Dumont, taxi to ramp is one of the most common post-landing clearances. Hover taxi or ground taxi may be used depending on surface and local procedures.\n\nThis lesson strengthens Part 2 phraseology for arrival taxi to the ramp.",
+    "captainTeaching": "Taxi to ramp sounds simple. The apron is where simple becomes crowded.\n\nPeople walk. Doors open. Light airplanes park close. Your H130 downwash can move equipment that a fixed-wing taxi never disturbs.\n\nSo the clearance gets you there. Your technique keeps the ramp safe.\n\nRead back the route. Do not cut corners across unmarked pavement unless that is the cleared path.\n\nIf you need hover taxi instead of ground taxi, make sure that matches local procedure and ATC expectation. If unsure, ask: request hover taxi to the ramp.\n\nWhen you arrive, park clear of taxi lanes. Leaving the helicopter half on the movement line creates the next conflict for someone else.",
+    "operationalContext": "You land at Florianópolis in the H130 and vacate runway one four.\n\nTower: ANAC123, taxi to the ramp via Alpha.\n\nYou read back and taxi via Alpha. Approaching the apron you slow, scan for parked aircraft and a fuel truck, then enter the ramp and park in the assigned or customary academy spot.\n\nIf Tower had said taxi to the ramp with caution, works in progress, you would add that caution to your scan and possibly request an alternate path if clearance looked marginal for rotor diameter.",
+    "sayItCoach": "ANAC123, taxi to the ramp via Alpha, will report ramp.",
+    "icaoModelAnswer": "I would read back the clearance, taxi via Alpha only, and comply with any hold-short instructions on the way. Approaching the ramp I would reduce speed, watch for personnel, vehicles, and parked aircraft, and for a helicopter I would manage rotor wash carefully. I would park clear of active taxi routes and advise ATC if the ramp were blocked or unsafe to enter.",
+    "memoryTrick": "**RAMP** — **R**ead back route, **A**pron hazards expected, **M**anage rotor wash, **P**ark clear of taxi lanes.",
+    "operationalMeaning": "When cleared to taxi to the ramp, the pilot should:\n\nTaxi to ramp considerations include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Tower: ANAC123, taxi to the ramp via Alpha.",
+      "Ground: ANAC123, taxi to the apron via Bravo and Charlie, hold short of runway one seven.",
+      "Tower: ANAC123, taxi to the ramp, taxi with caution, vehicle on the apron.",
+      "Ground: ANAC123, continue to the ramp, give way to helicopter air-taxiing on your left.",
+      "Tower: ANAC123, air-taxi to the ramp, report ramp."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, taxi to the ramp via Alpha.",
+      "ANAC123, taxi to the apron via Bravo and Charlie, hold short runway one seven.",
+      "ANAC123, taxi to the ramp, taxi with caution, vehicle on the apron.",
+      "ANAC123, continue to the ramp, giving way to helicopter on the left.",
+      "ANAC123, air-taxi to the ramp, will report ramp."
+    ],
+    "brazilianMistakes": "- ❌ Saying only \"taxi to ramp\" without the via route in the readback.  \n  ✔ Include the taxiway route when ATC assigns one.\n\n- ❌ Hover-taxiing across the apron without considering downwash on light aircraft.  \n  ✔ Adjust height/speed; request alternate routing if needed.\n\n- ❌ Blocking the taxi lane after reaching the ramp.  \n  ✔ Park clear; leave movement paths open.\n\n- ❌ Assuming ramp entry cancels frequency monitoring.  \n  ✔ Stay on frequency until parked or instructed to switch.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Taxi to the Ramp Via Alpha\n\n**Pronunciation:** AY-nak WUN TOO THREE, TAK-see too thuh RAMP VYE-uh AL-fuh\n\n**Word Stress**\n\n- Taxi → TAK-see\n- Ramp → RAMP\n- Via → VYE-uh\n- Alpha → AL-fuh\n\nPractice:\n\nTaxi to the ramp... via Alpha... report ramp.\n\nTogether:\n\nANAC123, taxi to the ramp via Alpha, will report ramp.",
+    "relatedConcepts": [
+      "Taxi to Gate",
+      "Taxi with Caution",
+      "Approved Taxi",
+      "Hover Taxi",
+      "Air-Taxi",
+      "Apron Operations"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Aerodrome Surface Movement",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9432 — Manual of Radiotelephony"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Local Aerodrome Charts — Apron / Helipad Layouts"
+      },
+      {
+        "label": "SKYbrary — Apron Safety",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "H130 AFM — Ground and Hover Taxi Procedures"
+      }
+    ]
+  },
+  {
+    "catalogId": "0203",
+    "id": "0203",
+    "displayTerm": "Approved Taxi",
+    "term": "approved taxi",
+    "slug": "approved-taxi",
+    "category": "Ground Operations",
+    "meaningEn": "Approved Taxi is ATC authorization confirming that a requested taxi route, taxi maneuver, or taxi intention is approved, allowing the pilot to proceed as requested or as restated by ATC, including any attached restrictions.",
+    "meaningPt": "Approved taxi / Táxi aprovado.\n\nAutorização do controle confirmando que a rota de táxi, a manobra ou a intenção solicitada está aprovada, permitindo ao piloto prosseguir conforme solicitado ou conforme reafirmado pelo controle, incluindo quaisquer restrições associadas.",
+    "whenUsed": "When taxi is approved, the pilot should:",
+    "example": "Ground: ANAC123, taxi via Alpha approved, hold short runway one seven Right.",
+    "sayPhrase": "ANAC123, taxi via Alpha approved, hold short runway one seven Right.",
+    "icaoQuestion": "You request taxi via Alpha because Bravo has works. ATC says taxi via Alpha approved, hold short of the runway. What does this mean?",
+    "icaoSpeakText": "It means my requested route via Alpha is authorized, but I must hold short of the runway and must not cross without further clearance. I would read back both the approved route and the hold-short restriction, then taxi only via Alpha. If I became unable to continue on Alpha, I would stop and request a new clearance.",
+    "missionBrief": "Today's lesson covers Approved Taxi — confirmation that a requested or proposed taxi route or maneuver is approved by ATC, or phraseology indicating the taxi movement is authorized as stated.\n\nPilots sometimes request a specific taxi route, backtrack, intersection departure taxi, or apron exit. ATC responds with approval, amendment, or denial. \"Approved\" means the requested movement is authorized — still subject to any conditions ATC adds, such as hold short or give way.\n\nFor H130 operations at Congonhas, Santos Dumont, Guarulhos, Curitiba, and Florianópolis, approved taxi may include ground taxi, hover taxi, or a specific path around congested aprons. The key skill is requesting clearly and reading back the approval with all conditions.\n\nThis lesson builds Part 2 proficiency for request-and-approval taxi exchanges in DECEA/ICAO phraseology.",
+    "captainTeaching": "Approved taxi is a contract.\n\nYou asked for something. ATC agreed — sometimes with changes. Your job is to fly the contract on the ground: exact route, exact restrictions.\n\nIf ATC says negative on your request but approves an alternate, the alternate is the clearance. Do not silently return to your original idea.\n\nIn helicopter operations, be explicit when the mode matters. \"Request hover taxi to the ramp\" is clearer than \"request taxi\" if you cannot ground-taxi safely.\n\nNever treat a previous approval as permanent. Each movement needs a current clearance. Yesterday's approved shortcut is today's runway incursion risk.\n\nAt dense Brazilian airports, good requests help ATC. Bad assumptions create go-arounds on the ground.",
+    "operationalContext": "You are at the Congonhas apron in the H130 ready to depart.\n\nYou: ANAC123, request taxi via Alpha due to works on Bravo.\n\nGround: ANAC123, taxi via Alpha approved, hold short of runway one seven Right.\n\nYou read back the approved route and the hold short. You taxi only via Alpha. You do not decide that Charlie looks empty and switch routes.\n\nLater, if you need hover taxi instead of wheel taxi on a soft edge, you request it. You move that way only when approved.",
+    "sayItCoach": "ANAC123, taxi via Alpha approved, hold short runway one seven Right.",
+    "icaoModelAnswer": "It means my requested route via Alpha is authorized, but I must hold short of the runway and must not cross without further clearance. I would read back both the approved route and the hold-short restriction, then taxi only via Alpha. If I became unable to continue on Alpha, I would stop and request a new clearance.",
+    "memoryTrick": "**APPROVED** — **A**sk clearly, **P**ause for ATC answer, **P**ick up all conditions, **R**ead back fully, **O**bey exact route, **V**erify hold-shorts, **E**scalate if unable, **D**on't assume silence means yes.",
+    "operationalMeaning": "When taxi is approved, the pilot should:\n\nApproved taxi situations include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Ground: ANAC123, taxi via Alpha approved, hold short runway one seven Right.",
+      "Ground: ANAC123, request approved, taxi to holding point runway two eight via Charlie.",
+      "Tower: ANAC123, backtrack approved, report ready for departure.",
+      "Ground: ANAC123, negative Alpha, taxi via Bravo approved.",
+      "Ground: ANAC123, hover taxi to the helipad approved, taxi with caution."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, taxi via Alpha approved, hold short runway one seven Right.",
+      "ANAC123, taxi holding point runway two eight via Charlie.",
+      "ANAC123, backtrack approved, will report ready for departure.",
+      "ANAC123, negative Alpha, taxi via Bravo approved.",
+      "ANAC123, hover taxi to the helipad approved, taxi with caution."
+    ],
+    "brazilianMistakes": "- ❌ Moving after a request without hearing a clear approval.  \n  ✔ Wait for explicit approval; ask again if unsure.\n\n- ❌ Reading back only \"approved\" without route and hold-short conditions.  \n  ✔ Read back the full approved clearance with restrictions.\n\n- ❌ Switching to a different taxiway after approval of another route.  \n  ✔ Follow the approved path or request a change.\n\n- ❌ Assuming hover taxi is included in a generic taxi approval.  \n  ✔ Request hover taxi specifically when required.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Taxi Via Alpha Approved, Hold Short Runway One Seven Right\n\n**Pronunciation:** AY-nak WUN TOO THREE, TAK-see VYE-uh AL-fuh uh-PROOVD, HOLD short RUN-way WUN SEV-un RIGHT\n\n**Word Stress**\n\n- Approved → uh-PROOVD\n- Hold → HOLD\n- Short → short\n- Runway → RUN-way\n\nPractice:\n\nTaxi via Alpha approved... hold short runway one seven Right.\n\nTogether:\n\nANAC123, taxi via Alpha approved, hold short runway one seven Right.",
+    "relatedConcepts": [
+      "Taxi Via",
+      "Taxi with Caution",
+      "Taxi to Ramp",
+      "Taxi to Gate",
+      "Hold Short",
+      "Hover Taxi"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Taxi Instructions and Approvals",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9432 — Manual of Radiotelephony"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Local Ground Movement Procedures — Brazilian Aerodromes"
+      },
+      {
+        "label": "SKYbrary — Taxiway Incursions",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "H130 AFM — Ground Operations"
+      }
+    ]
+  },
+  {
+    "catalogId": "0204",
+    "id": "0204",
+    "displayTerm": "Pushback",
+    "term": "pushback",
+    "slug": "pushback",
+    "category": "Ground Operations",
+    "meaningEn": "Pushback is the authorized rearward movement of an aircraft from a parking stand using a ground tug or tractor, performed only with ATC (and where required apron) approval, to position the aircraft for engine start completion and taxi.",
+    "meaningPt": "Pushback / Empurrão (saída de stand com tractor).\n\nMovimento autorizado da aeronave para trás a partir da posição de estacionamento, realizado com tractor ou reboque, somente com aprovação do controle (e do pátio, quando aplicável), para posicionar a aeronave para partida e táxi.",
+    "whenUsed": "When pushback is required, the crew should:",
+    "example": "Ground: ANAC123, pushback approved.",
+    "sayPhrase": "ANAC123, pushback approved.",
+    "icaoQuestion": "Explain the difference between pushback approval and taxi clearance. How does this apply to helicopter operations?",
+    "icaoSpeakText": "Pushback approval authorizes rearward movement from the stand with tug assistance. It does not authorize taxi. After pushback is complete, the crew must request and receive a taxi clearance before moving under the aircraft's own power on the maneuvering area. In helicopter operations, pushback is uncommon because helicopters usually taxi or hover-taxi from the parking position. Helicopter crews should still understand pushback phraseology for exams and for situational awareness in mixed traffic, while normally requesting taxi or hover taxi instead of pushback.",
+    "missionBrief": "Today's lesson covers Pushback — the ground maneuver in which an aircraft is pushed backward from a parking stand by a tug or pushback tractor so it can start taxi from a clear position.\n\nPushback is classic fixed-wing airline phraseology. For H130 helicopter operations it is uncommon: helicopters usually ground-taxi, hover-taxi, or depart from the spot. You still must know pushback phraseology for ICAO exams, mixed-traffic airports, and situations where a helicopter or other aircraft on frequency uses pushback clearances.\n\nAt Guarulhos, Congonhas, and Santos Dumont, you will hear pushback requests and approvals constantly on Ground. Understanding them prevents confusion and prepares you for Part 2 radiotelephony standards.\n\nThis lesson teaches the request, approval, readback, and operational meaning of pushback — with helicopter context noted where relevant.",
+    "captainTeaching": "Pushback is a controlled reverse move into a live taxi environment.\n\nEven if you fly an H130 that rarely needs a tug, ICAO expects you to understand the phraseology: request, approval, direction, and the critical separation between pushback complete and taxi clearance.\n\nTwo clearances. Two moments. Do not blend them.\n\nFor helicopters, the operational equivalent is often: start, request taxi or hover taxi, leave the spot forward or laterally as cleared. If a lesson or exam scenario gives you pushback language, answer with standard pushback phraseology — then, in real H130 line flying, use the helicopter-appropriate request.\n\nWhen you hear pushback on frequency at Congonhas or Guarulhos, build a mental picture: that stand is about to occupy the alley. It makes you a better traffic partner on the ground.",
+    "operationalContext": "You are monitoring Ground at Guarulhos while another aircraft prepares to depart.\n\nPilot: ANAC456, stand twenty-one, request pushback.\n\nGround: ANAC456, pushback approved, face west.\n\nAfter the push: ANAC456, pushback complete, request taxi.\n\nGround: ANAC456, taxi to holding point runway two seven Left via Alpha.\n\nIn your H130 on the same airport, you would typically say request taxi or request hover taxi from the stand — not pushback — unless a specific local procedure required tug assistance. You still understand every pushback call on frequency so you know when the taxi lane behind a gate is about to become occupied.",
+    "sayItCoach": "ANAC123, pushback approved, face east.",
+    "icaoModelAnswer": "Pushback approval authorizes rearward movement from the stand with tug assistance. It does not authorize taxi. After pushback is complete, the crew must request and receive a taxi clearance before moving under the aircraft's own power on the maneuvering area. In helicopter operations, pushback is uncommon because helicopters usually taxi or hover-taxi from the parking position. Helicopter crews should still understand pushback phraseology for exams and for situational awareness in mixed traffic, while normally requesting taxi or hover taxi instead of pushback.",
+    "memoryTrick": "**PUSH** — **P**ermit from ATC first, **U**nder tug control only as cleared, **S**tate facing direction in readback, **H**old for separate taxi clearance after complete.",
+    "operationalMeaning": "When pushback is required, the crew should:\n\nPushback operations commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Ground: ANAC123, pushback approved.",
+      "Ground: ANAC123, pushback approved, face east.",
+      "Ground: ANAC123, expect pushback delay due to traffic, hold position.",
+      "Ground: ANAC123, pushback approved, after pushback expect taxi via Bravo.",
+      "Ground: ANAC123, negative pushback, traffic behind, hold position."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, pushback approved.",
+      "ANAC123, pushback approved, face east.",
+      "ANAC123, holding position, expect pushback delay.",
+      "ANAC123, pushback approved, expect taxi via Bravo.",
+      "ANAC123, holding position, negative pushback."
+    ],
+    "brazilianMistakes": "- ❌ Treating pushback approval as permission to taxi away.  \n  ✔ After pushback complete, request taxi and wait for clearance.\n\n- ❌ Starting pushback before ATC approval.  \n  ✔ Request and receive approval first; coordinate with ground crew.\n\n- ❌ Omitting facing direction when ATC includes it.  \n  ✔ Read back face east/west/north/south as issued.\n\n- ❌ Helicopter pilots ignoring pushback calls on frequency.  \n  ✔ Use them for traffic awareness even when you do not push back.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Pushback Approved, Face East\n\n**Pronunciation:** AY-nak WUN TOO THREE, PUSH-bak uh-PROOVD, FAYS EEST\n\n**Word Stress**\n\n- Pushback → PUSH-bak\n- Approved → uh-PROOVD\n- Face → FAYS\n- East → EEST\n\nPractice:\n\nPushback approved... face east... pushback complete, request taxi.\n\nTogether:\n\nANAC123, pushback approved, face east.",
+    "relatedConcepts": [
+      "Tow Truck",
+      "Taxi to Gate",
+      "Approved Taxi",
+      "Taxi to Ramp",
+      "Hold Position",
+      "Engine Start"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Pushback Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9432 — Manual of Radiotelephony"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Airport Ground Operations Manuals — Gate Pushback"
+      },
+      {
+        "label": "SKYbrary — Pushback",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "H130 AFM — Ground Movement (hover/ground taxi context)"
+      }
+    ]
+  },
+  {
+    "catalogId": "0205",
+    "id": "0205",
+    "displayTerm": "Tow Truck",
+    "term": "tow truck",
+    "slug": "tow-truck",
+    "category": "Ground Operations",
+    "meaningEn": "Tow Truck is a ground support vehicle used to tow or push aircraft on the aerodrome; in radiotelephony it refers both to the vehicle itself and to ATC instructions or advisories related to tow movements and conflicts with taxiing aircraft.",
+    "meaningPt": "Tow truck / Caminhão de reboque (tractor/tug).\n\nVeículo de solo usado para rebocar ou empurrar aeronaves no aeródromo; na fraseologia, refere-se ao veículo e às instruções ou avisos do controle relacionados a movimentos de reboque e conflitos com aeronaves em táxi.",
+    "whenUsed": "When tow truck activity affects you, the pilot should:",
+    "example": "Ground: ANAC123, taxi via Alpha, taxi with caution, tow truck ahead.",
+    "sayPhrase": "ANAC123, taxi via Alpha, taxi with caution, tow truck ahead.",
+    "icaoQuestion": "ATC tells you to taxi with caution, tow truck ahead. What do you do?",
+    "icaoSpeakText": "I would read back the caution, reduce taxi speed, and locate the tow truck visually. I would maintain safe clearance and be prepared to hold if the path is blocked. If I could not continue safely, I would stop and advise ATC that I am holding due to the tow truck, then wait for further instructions or for the vehicle to clear.",
+    "missionBrief": "Today's lesson covers Tow Truck — the ground vehicle used to tow or push aircraft on the apron and, when authorized, on parts of the maneuvering area, and the ATC phraseology associated with tow operations.\n\nPilots encounter tow trucks as traffic to avoid, as assistance after a disabled aircraft event, or as the tug connected for pushback. Controllers may advise \"tow truck ahead,\" approve tow movements, or coordinate holding for a tow in progress.\n\nFor H130 helicopter academy operations, you may rarely be towed, but you will share Congonhas, Guarulhos, Santos Dumont, Curitiba, and Florianópolis aprons with tow trucks serving other aircraft. Rotor clearance, downwash, and see-and-avoid around ground vehicles are part of safe taxi.\n\nThis lesson builds Part 2 communication for tow-truck advisories, requests, and readbacks.",
+    "captainTeaching": "Tow trucks do not fly, but they create real traffic conflicts.\n\nOn the frequency, treat a tow advisory like any other hazard call: hear it, read it back, see it, then move.\n\nIn the H130, the danger is often clearance and downwash. A tow crew on foot beside a tug is vulnerable. If you must hover-taxi near them, rethink the plan — hold or request another route.\n\nDo not pass a tow combination in a tight alley because \"there is room on the chart.\" Charts do not measure your rotor disk against a moving fuselage.\n\nIf ATC says hold for tow in progress, hold. The tow may be committed to a path it cannot easily reverse.\n\nSituational awareness on Brazilian aprons includes vehicles, not only aircraft.",
+    "operationalContext": "You are taxiing to the ramp at Congonhas in the H130.\n\nGround: ANAC123, taxi to the ramp via Alpha, taxi with caution, tow truck ahead on Alpha.\n\nYou slow, see the tow truck pulling a light airplane toward a hangar, and hold short until the path is clear or ATC amends the route.\n\nYou: ANAC123, holding on Alpha, tow truck ahead.\n\nGround: ANAC123, hold position, tow truck will clear, then continue to the ramp.\n\nWhen the tow is clear, you continue. No rush. No squeeze past the tug.\n\nIf you ever needed tow assistance after a ground incident, you would advise ATC of the situation and request coordination — not drag the helicopter across the maneuvering area without approval.",
+    "sayItCoach": "ANAC123, taxi via Alpha, taxi with caution, tow truck ahead.",
+    "icaoModelAnswer": "I would read back the caution, reduce taxi speed, and locate the tow truck visually. I would maintain safe clearance and be prepared to hold if the path is blocked. If I could not continue safely, I would stop and advise ATC that I am holding due to the tow truck, then wait for further instructions or for the vehicle to clear.",
+    "memoryTrick": "**TOW** — **T**axi slower, **O**bserve the vehicle and crew, **W**ait or give way before forcing past.",
+    "operationalMeaning": "When tow truck activity affects you, the pilot should:\n\nTow truck related communications include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Ground: ANAC123, taxi via Alpha, taxi with caution, tow truck ahead.",
+      "Ground: ANAC123, give way to tow truck on your right.",
+      "Ground: ANAC123, hold position, tow in progress on Bravo.",
+      "Ground: ANAC123, tow truck clear, continue taxi to the ramp.",
+      "Ground: ANAC123, roger request for tow assistance, expect vehicle, hold position."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, taxi via Alpha, taxi with caution, tow truck ahead.",
+      "ANAC123, giving way to tow truck on the right.",
+      "ANAC123, holding position, tow in progress on Bravo.",
+      "ANAC123, tow truck clear, continuing taxi to the ramp.",
+      "ANAC123, holding position, expecting tow assistance."
+    ],
+    "brazilianMistakes": "- ❌ Continuing at normal speed after a tow truck caution.  \n  ✔ Slow down, acquire visual contact, hold if needed.\n\n- ❌ Squeezing past a tow and aircraft combination in a narrow taxi lane.  \n  ✔ Hold and request alternate routing if clearance is doubtful.\n\n- ❌ Ignoring tow advisories because \"it is only a vehicle.\"  \n  ✔ Tow combinations are traffic; treat them as conflict traffic.\n\n- ❌ For helicopters, hover-taxiing close enough to blast the tow crew.  \n  ✔ Hold or reroute; protect personnel from downwash.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Taxi with Caution, Tow Truck Ahead\n\n**Pronunciation:** AY-nak WUN TOO THREE, TAK-see with KAW-shun, TOH TRUK uh-HED\n\n**Word Stress**\n\n- Caution → KAW-shun\n- Tow → TOH\n- Truck → TRUK\n- Ahead → uh-HED\n\nPractice:\n\nTaxi with caution... tow truck ahead... holding position.\n\nTogether:\n\nANAC123, taxi via Alpha, taxi with caution, tow truck ahead.",
+    "relatedConcepts": [
+      "Pushback",
+      "Taxi with Caution",
+      "Approved Taxi",
+      "Taxi to Ramp",
+      "Hold Position",
+      "Ground Vehicles"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Aerodrome Vehicle and Tow Operations",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9432 — Manual of Radiotelephony"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Aerodrome Manual — Vehicle Control on the Maneuvering Area"
+      },
+      {
+        "label": "SKYbrary — Ground Operations Safety",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "H130 AFM — Ground / Hover Taxi Near Vehicles"
+      }
+    ]
+  },
+  {
+    "catalogId": "0206",
+    "id": "0206",
+    "displayTerm": "Tow Bar",
+    "term": "tow bar",
+    "slug": "tow-bar",
+    "category": "Ground Operations",
+    "meaningEn": "A tow bar is a rigid or articulated metal bar that connects a ground tug to an aircraft's nose gear or designated tow point, allowing the aircraft to be pushed or pulled on the ground without engine power.",
+    "meaningPt": "Barra de reboque / tow bar.\n\nBarra rígida ou articulada que conecta um trator de pátio ao trem de nariz ou ponto de reboque da aeronave, permitindo empurrar ou puxar a aeronave no solo sem usar a potência dos motores.",
+    "whenUsed": "When a tow bar is involved in ground operations, the crew or ground staff should:",
+    "example": "Ground: ANAC123, hold position, aircraft under tow crossing Alpha with tow bar connected.",
+    "sayPhrase": "ANAC123, holding position, traffic under tow in sight.",
+    "icaoQuestion": "You are ready to start engines on the apron. Ground staff signal that the tow bar is still connected to a neighboring aircraft blocking your path. Explain what you do and what you communicate.?",
+    "icaoSpeakText": "I would not start engines or request taxi until the tow is clear. I would hold position, keep the parking brake set, and advise Ground that I am ready but delayed because an aircraft under tow is blocking my path. I would wait for confirmation that the tow bar is disconnected and the tug is clear of the taxi route. Only then would I request startup and hover taxi clearance. Safety on the apron comes before schedule.",
+    "missionBrief": "Today's lesson covers Tow Bar — the ground equipment used to connect a tug or tow vehicle to an aircraft so it can be moved on the apron or hangar area without using its own power.\n\nA tow bar is not a flight procedure. It is ground-handling vocabulary that appears in ICAO English exams, ramp coordination, and maintenance conversations. Pilots must understand it, report when it is connected or disconnected, and communicate clearly when towing is in progress.\n\nFor H130 helicopter training academy operations, the H130 is more often repositioned by hover taxi or ground handling with rotor blades secured. Tow bars are still used for hangar moves, maintenance repositioning, and fixed-wing traffic sharing the same Brazilian airport. Knowing the English keeps you professional on a mixed apron.\n\nUnderstanding how to discuss tow bar status in ICAO-standard English — including advisories to Ground and coordination with ramp staff — is useful for Part 2 proficiency and ramp safety awareness.",
+    "captainTeaching": "Tow bar is simple vocabulary with serious consequences.\n\nIf the bar is connected, the aircraft is a towed object — not a taxiing aircraft. Engines off. Rotors stopped. Brakes as directed by the tug crew.\n\nIn the H130 world you may not use a tow bar every day. You will still share ramps with aircraft that do. You will hear Ground say an aircraft is under tow. You will be told to hold for a tug crossing your path.\n\nTreat that like any surface conflict. Hold. Look. Confirm clear. Then move.\n\nBefore every startup, part of your scan is: chocks, covers, and tow bar — gone. If anything is still attached, you are not ready.\n\nICAO English exams love this word because it tests whether you understand ground-handling English, not only airborne phraseology. Know it. Use it correctly. Never rush past it.",
+    "operationalContext": "You are on the ramp at Florianópolis after an H130 training sortie. Maintenance needs to move a fixed-wing trainer from the hangar to stand four. The tug is connected with the tow bar.\n\nGround staff advise the academy operations desk that the aircraft is under tow across the apron.\n\nYou are preparing your H130 for the next lesson. Before you request startup, you look left and see the tow in progress across your planned hover-taxi path.\n\nYou hold. You wait until the tow is clear. Then you call Ground for startup and hover taxi to the helipad.\n\nOn the radio, when Ground needs the status of the towed aircraft, the tug crew reports that the tow bar is connected and the move is in progress. When the aircraft reaches stand four, they disconnect the tow bar and report ready for parking brake set.\n\nYou never start with a tow bar in the way. You never hover taxi across an active tow without clearance and visual confirmation.",
+    "sayItCoach": "ANAC123, tow bar removed, ready for startup, request hover taxi to the helipad.",
+    "icaoModelAnswer": "I would not start engines or request taxi until the tow is clear. I would hold position, keep the parking brake set, and advise Ground that I am ready but delayed because an aircraft under tow is blocking my path. I would wait for confirmation that the tow bar is disconnected and the tug is clear of the taxi route. Only then would I request startup and hover taxi clearance. Safety on the apron comes before schedule.",
+    "memoryTrick": "**TOW BAR** — **T**ug only moves with bar connected, **O**ff engines while connected, **W**ait for disconnect before start, **B**rakes set during tow, **A**dvise Ground when under tow, **R**emove bar before any rotor turn.",
+    "operationalMeaning": "When a tow bar is involved in ground operations, the crew or ground staff should:\n\nTow bar operations commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Ground: ANAC123, hold position, aircraft under tow crossing Alpha with tow bar connected.",
+      "Ground: ANAC123, tow bar disconnect complete, cleared to start engines.",
+      "Apron: ANAC123, confirm tow bar removed before startup.",
+      "Ground: ANAC123, aircraft towed to stand four, tow bar clear, taxiway Alpha available.",
+      "Ground: ANAC123, delay startup, tug and tow bar still on the apron near your position."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, holding position, traffic under tow in sight.",
+      "ANAC123, tow bar disconnect confirmed, cleared to start.",
+      "ANAC123, tow bar removed, ready for startup.",
+      "ANAC123, roger, Alpha available, request hover taxi to helipad.",
+      "ANAC123, delaying startup, standing by for tow bar clear."
+    ],
+    "brazilianMistakes": "- ❌ Saying \"barra de reboque\" on the English frequency instead of tow bar.  \n  ✔ Use ICAO English: tow bar connected / tow bar removed / under tow.\n\n- ❌ Requesting startup while the tow bar is still attached or nearby.  \n  ✔ Confirm tow bar disconnected and clear before requesting startup.\n\n- ❌ Ignoring a tug under tow because \"it is only ground equipment.\"  \n  ✔ Treat towed aircraft as traffic. Hold and give way as instructed.\n\n- ❌ Assuming hover taxi can pass over a tow in progress.  \n  ✔ Hold short of the tow path until Ground confirms clear.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Tow Bar Removed, Ready for Startup\n\n**Pronunciation:** AY-nak WUN TOO THREE, TOH BAR ree-MOOVD, REH-dee for START-up\n\n**Word Stress**\n\n- Tow → TOH\n- Bar → BAR\n- Removed → ree-MOOVD (stress on second syllable)\n- Startup → START-up\n\nPractice:\n\nTow bar removed... ready for startup.\n\nTogether:\n\nANAC123, tow bar removed, ready for startup, request hover taxi to the helipad.",
+    "relatedConcepts": [
+      "Aircraft Towed",
+      "Startup Clearance",
+      "Return to Parking",
+      "Give Way to Aircraft",
+      "Pushback",
+      "Apron / Ramp Operations"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Aerodrome Surface Movements",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9432 — Manual of Radiotelephony"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "SKYbrary — Ground Handling / Pushback",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "H130 AFM — Normal Procedures, Ground Handling Notes"
+      },
+      {
+        "label": "Airport Ground Operations Manual — Towing Procedures"
+      }
+    ]
+  },
+  {
+    "catalogId": "0207",
+    "id": "0207",
+    "displayTerm": "Startup Clearance",
+    "term": "startup clearance",
+    "slug": "startup-clearance",
+    "category": "Ground Operations",
+    "meaningEn": "Startup clearance is ATC authorization for an aircraft to start engines at the parking position or designated start area, usually issued by Ground or Apron Control before taxi clearance.",
+    "meaningPt": "Autorização de partida dos motores / startup clearance.\n\nAutorização do controle para a aeronave ligar os motores na posição de estacionamento ou área designada, geralmente emitida pelo Solo ou Apron antes da autorização de táxi.",
+    "whenUsed": "When requesting and executing startup clearance, the crew should:",
+    "example": "Ground: ANAC123, startup approved, runway three one, report ready for taxi.",
+    "sayPhrase": "ANAC123, startup approved, runway three one, wilco, report ready for taxi.",
+    "icaoQuestion": "You have completed the pre-start checklist at the parking stand. Explain how you obtain startup clearance and what you do if Ground delays the start.?",
+    "icaoSpeakText": "I would contact Ground, state my parking position, confirm ATIS information received, and request startup. If startup is approved, I would read back the clearance and any runway or taxi expectations, then start engines. If Ground delays startup due to traffic or flow control, I would acknowledge, keep the engine shut down, and stand by until approved. I would not start without clearance, and after start I would still request a separate taxi or hover taxi clearance before leaving the stand.",
+    "missionBrief": "Today's lesson covers Startup Clearance — ATC authorization to start engines on the apron or parking stand before taxi or hover taxi.\n\nStartup clearance is not a takeoff clearance. It is permission to bring the aircraft to life on the ground under controlled conditions. At many Brazilian airports, especially busy training fields, you must request and receive startup before turning the engine.\n\nFor H130 helicopter training academy operations, startup clearance is highly relevant on every sortie. The H130 starts on the ramp, builds rotor RPM, completes checks, then requests hover taxi or air taxi to the departure point. Starting without clearance can create jet blast or rotor wash hazards, radio congestion, and apron conflicts.\n\nUnderstanding how to request, receive, and read back startup clearance in ICAO-standard English is essential for Part 2 proficiency and daily academy operations under DECEA procedures.",
+    "captainTeaching": "Startup is the first radio contract of the flight.\n\nYou ask. ATC decides. You read back. Then you start.\n\nIn training academies, students sometimes treat startup as automatic — checklist done, engine on. That habit fails on a controlled Brazilian aerodrome. Ground may delay you for traffic, flow, or apron congestion.\n\nIn the H130, startup also means rotor wash. People walking behind the tail, open hangar doors, light trainers nearby — all are reasons ATC and the academy want controlled starts.\n\nRequest startup with position and information. Read back the runway or restrictions. Start only when cleared. When ready to move, request taxi or hover taxi as a separate clearance.\n\nTwo clearances. Two readbacks. Zero assumptions.",
+    "operationalContext": "You are in the H130 at the ICAO Delta training stand at Florianópolis. Pre-start checklist is complete. Blades are clear. Students are briefed.\n\nYou call Ground with ATIS information and request startup.\n\nGround approves startup and tells you to expect runway three one, hover taxi via Alpha when ready.\n\nYou start the engine, bring rotors to flight RPM, complete after-start checks, then call again ready for hover taxi.\n\nGround clears you to hover taxi to the holding point. Only then do you leave the stand.\n\nIf Ground had said startup delayed due to inbound traffic, you would keep the engine shut down, save fuel, and stand by. That is why startup is a controlled step — not an automatic habit.",
+    "sayItCoach": "ANAC123, at training stand two, information Charlie, request startup.",
+    "icaoModelAnswer": "I would contact Ground, state my parking position, confirm ATIS information received, and request startup. If startup is approved, I would read back the clearance and any runway or taxi expectations, then start engines. If Ground delays startup due to traffic or flow control, I would acknowledge, keep the engine shut down, and stand by until approved. I would not start without clearance, and after start I would still request a separate taxi or hover taxi clearance before leaving the stand.",
+    "memoryTrick": "**START** — **S**ay position and ATIS, **T**ell Ground you request startup, **A**wait clearance before ignition, **R**ead back runway and restrictions, **T**axi only after a second clearance.",
+    "operationalMeaning": "When requesting and executing startup clearance, the crew should:\n\nStartup clearance commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Ground: ANAC123, startup approved, runway three one, report ready for taxi.",
+      "Ground: ANAC123, cleared for startup, expect hover taxi via Alpha.",
+      "Apron: ANAC123, startup approved, hold position, contact Ground on one two one decimal niner.",
+      "Ground: ANAC123, startup delayed due to inbound traffic, stand by.",
+      "Ground: ANAC123, startup approved, QNH one zero one niner, advise ready for departure."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, startup approved, runway three one, wilco, report ready for taxi.",
+      "ANAC123, cleared for startup, expect hover taxi via Alpha.",
+      "ANAC123, startup approved, holding position, contacting Ground one two one decimal niner.",
+      "ANAC123, startup delayed, standing by.",
+      "ANAC123, startup approved, QNH one zero one niner, will advise ready."
+    ],
+    "brazilianMistakes": "- ❌ Starting engines before receiving startup clearance.  \n  ✔ Request and receive clearance first, then start.\n\n- ❌ Treating startup clearance as permission to taxi.  \n  ✔ Startup only authorizes engine start. Request taxi or hover taxi separately.\n\n- ❌ Incomplete readback: saying only \"startup\" without runway or restrictions.  \n  ✔ Read back full clearance: startup approved, runway, and any hold instructions.\n\n- ❌ Calling Tower for startup when Ground or Apron owns the frequency.  \n  ✔ Use the correct agency — usually Ground or Apron on Brazilian aerodromes.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Request Startup, Information Charlie\n\n**Pronunciation:** AY-nak WUN TOO THREE, reh-KWEST START-up, in-for-MAY-shun CHAR-lee\n\n**Word Stress**\n\n- Request → reh-KWEST (stress on second)\n- Startup → START-up\n- Information → in-for-MAY-shun (stress on third)\n- Charlie → CHAR-lee\n\nPractice:\n\nRequest startup... information Charlie.\n\nTogether:\n\nANAC123, at training stand two, information Charlie, request startup.",
+    "relatedConcepts": [
+      "Taxi Clearance",
+      "Hover Taxi",
+      "Air Taxi",
+      "Return to Parking",
+      "ATIS / Information Letter",
+      "Pushback Clearance"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Start-up Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9432 — Manual of Radiotelephony"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "DECEA AIC / Local Aerodrome Procedures — Startup Requirements"
+      },
+      {
+        "label": "SKYbrary — Engine Start / Apron Safety",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "H130 AFM — Normal Procedures, Engine Starting"
+      }
+    ]
+  },
+  {
+    "catalogId": "0208",
+    "id": "0208",
+    "displayTerm": "Return to Parking",
+    "term": "return to parking",
+    "slug": "return-to-parking",
+    "category": "Ground Operations",
+    "meaningEn": "Return to parking is an ATC instruction or pilot request for an aircraft to proceed from the taxiway, holding point, or departure area back to its assigned parking stand, ramp, or helipad.",
+    "meaningPt": "Retornar ao estacionamento / return to parking.\n\nInstrução do controle ou solicitação do piloto para a aeronave deixar a área de manobras ou ponto de espera e voltar à posição de estacionamento, rampa ou heliponto designado.",
+    "whenUsed": "When returning to parking, the crew should:",
+    "example": "Ground: ANAC123, return to parking via Alpha, stand two.",
+    "sayPhrase": "ANAC123, return to parking via Alpha, stand two.",
+    "icaoQuestion": "You are at the holding point after startup. You must cancel the flight for a technical reason. Explain what you say and how you return to the stand.?",
+    "icaoSpeakText": "I would advise Ground that I need to cancel departure for a technical reason and request return to parking, stating my stand if known. I would wait for a taxi or hover taxi clearance with a route, read it back completely, then proceed only on that clearance. On arrival at the stand I would shut down as required and report on blocks if asked. I would not turn around without clearance or re-enter the departure sequence.",
+    "missionBrief": "Today's lesson covers Return to Parking — the instruction or pilot request to leave the active movement area and go back to the assigned stand, ramp, or helipad parking position.\n\nReturn to parking happens when a departure is cancelled, a technical issue appears after startup, weather closes the departure, or ATC needs the aircraft off the taxiway. It is a controlled reverse of the outbound taxi plan.\n\nFor H130 helicopter training academy operations, return to parking is highly relevant. Training sorties are cancelled for weather, student limits, or maintenance write-ups discovered after start. The H130 may hover taxi or air taxi back to the academy stand. Clear radio English keeps Ground informed and protects other traffic.\n\nUnderstanding how to request, acknowledge, and execute return to parking in ICAO-standard English is essential for Part 2 proficiency and safe Brazilian apron operations.",
+    "captainTeaching": "Plans change. Parking is always available — if you ask correctly.\n\nWhen you abort a departure, say so early. Ground needs time to re-sequence traffic behind you. Silence at the holding point blocks everyone.\n\nIn the H130 academy, returning to parking is normal training reality: weather, student overload, caution lights, fuel planning. Treat it as a standard procedure, not a failure.\n\nRequest return to parking with your stand if known. Read back the full route. Watch for opposite traffic that was expecting you to depart. Report when you are in and shut down.\n\nNever assume you can reverse along the same path you used outbound without a new clearance. The surface picture changes every minute.",
+    "operationalContext": "You have started the H130 and hover taxied to the holding point at Florianópolis for a training departure on runway three one.\n\nThe student reports an unusual vibration indication during hover checks. You decide to cancel the sortie and return.\n\nYou call Ground: request return to parking, training stand two, technical check required.\n\nGround clears you to hover taxi via Alpha back to stand two and to report arrival.\n\nYou read back the route, leave the holding point, and return carefully along Alpha. On the ramp you set down, complete shutdown, and report on blocks if required.\n\nThe departure slot is gone. The apron is safe. Maintenance can inspect. That is a professional return to parking — not an improvised U-turn.",
+    "sayItCoach": "ANAC123, request return to parking stand two, technical reason.",
+    "icaoModelAnswer": "I would advise Ground that I need to cancel departure for a technical reason and request return to parking, stating my stand if known. I would wait for a taxi or hover taxi clearance with a route, read it back completely, then proceed only on that clearance. On arrival at the stand I would shut down as required and report on blocks if asked. I would not turn around without clearance or re-enter the departure sequence.",
+    "memoryTrick": "**PARK** — **P**ilot cancels or ATC instructs, **A**sk for return clearance, **R**ead back route and stand, **K**eep holding until cleared to move back.",
+    "operationalMeaning": "When returning to parking, the crew should:\n\nReturn to parking commonly occurs when:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Ground: ANAC123, return to parking via Alpha, stand two.",
+      "Ground: ANAC123, cancel departure, taxi back to the ramp, parking as required.",
+      "Tower: ANAC123, vacate holding point, contact Ground for return to parking.",
+      "Ground: ANAC123, return to parking stand five via Bravo, give way to inbound helicopter.",
+      "Ground: ANAC123, after landing taxi to parking, stand three, report on blocks."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, return to parking via Alpha, stand two.",
+      "ANAC123, cancel departure, taxi back to the ramp.",
+      "ANAC123, vacating holding point, contacting Ground for return to parking.",
+      "ANAC123, return to parking stand five via Bravo, give way to inbound helicopter.",
+      "ANAC123, taxi to parking stand three, wilco, report on blocks."
+    ],
+    "brazilianMistakes": "- ❌ Turning back on the taxiway without a new clearance.  \n  ✔ Request return to parking and wait for route clearance.\n\n- ❌ Saying only \"going back\" without stand or reason when useful.  \n  ✔ Request return to parking, stand number, and brief reason if needed.\n\n- ❌ Forgetting to read back hold-short instructions on the return route.  \n  ✔ Read back every restriction — return routes still cross active areas.\n\n- ❌ Remaining on Tower frequency after leaving the holding point.  \n  ✔ Contact Ground when instructed for return to parking coordination.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Request Return to Parking, Stand Two\n\n**Pronunciation:** AY-nak WUN TOO THREE, reh-KWEST ree-TURN too PAR-king, STAND TOO\n\n**Word Stress**\n\n- Request → reh-KWEST\n- Return → ree-TURN (stress on second)\n- Parking → PAR-king\n- Stand → STAND\n\nPractice:\n\nRequest return to parking... stand two.\n\nTogether:\n\nANAC123, request return to parking stand two, technical reason.",
+    "relatedConcepts": [
+      "Startup Clearance",
+      "Taxi Clearance",
+      "Hover Taxi",
+      "Vacate Runway",
+      "Disembark Passengers",
+      "Holding Point"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Aerodrome Surface Movements",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9432 — Manual of Radiotelephony"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "SKYbrary — Taxiway Operations / Cancelled Departure",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "Local Aerodrome Manual — Parking Stand Assignment"
+      },
+      {
+        "label": "H130 AFM — Normal Procedures, Shutdown"
+      }
+    ]
+  },
+  {
+    "catalogId": "0209",
+    "id": "0209",
+    "displayTerm": "Disembark Passengers",
+    "term": "disembark passengers",
+    "slug": "disembark-passengers",
+    "category": "Ground Operations",
+    "meaningEn": "Disembark passengers means to allow passengers to leave the aircraft after arrival or during a ground stop, normally after the aircraft is parked, secured, and the area is safe for people to walk clear of rotors, propellers, and jet blast.",
+    "meaningPt": "Desembarque de passageiros / disembark passengers.\n\nPermitir que os passageiros deixem a aeronave após a chegada ou durante uma parada no solo, normalmente depois que a aeronave está estacionada, assegurada e a área está segura para circulação fora do alcance de rotores, hélices e jato dos motores.",
+    "whenUsed": "When passengers must disembark, the crew should:",
+    "example": "Ground: ANAC123, park on stand two, report when passengers disembarked.",
+    "sayPhrase": "ANAC123, parking stand two, wilco, report passengers disembarked.",
+    "icaoQuestion": "You have landed and parked. Passengers need to leave before you can accept the next taxi clearance. Explain what you communicate to Ground.?",
+    "icaoSpeakText": "I would advise Ground that I need time on the stand to disembark passengers and that I am not ready to taxi. I would keep the aircraft secured according to procedure, ensure a safe path clear of the rotors, and only report ready when all passengers are clear of the aircraft and the apron path. If Ground asks for status, I would say passengers disembarking or passengers clear, ready to continue. I would not move the aircraft while people are still near the rotor disc.",
+    "missionBrief": "Today's lesson covers Disembark Passengers — the process and radio English for allowing passengers to leave the aircraft after landing or when a flight is interrupted on the ground.\n\nDisembarkation is not only cabin service language. Pilots coordinate with ATC and apron when passengers must leave at a non-standard time, during a diversion, after an aborted departure, or when rotors are still turning and safety conditions must be confirmed.\n\nFor H130 helicopter training academy and passenger transfer operations, disembark passengers is highly relevant. The H130 often lands at helipads, hospital pads, and busy Brazilian aprons where passengers step out under rotor wash risk. Clear English protects people on the ground.\n\nUnderstanding how to request time to disembark, report passengers clear, and coordinate with Ground in ICAO-standard English is essential for Part 2 proficiency and real academy operations.",
+    "captainTeaching": "Passengers are not clear until they are outside the danger area — not merely outside the cabin.\n\nIn airplanes, jet blast and propellers matter. In the H130, the main rotor disc and tail rotor define a lethal circle. Disembarkation English must match that reality.\n\nTell Ground when you need time. Tell Ground when people are clear. Do not accept a taxi or startup clearance into a passenger stream.\n\nIf ATC asks whether passengers have disembarked, answer precisely: passengers disembarking, or passengers clear. Vague answers create apron conflicts.\n\nHot disembarkation is a trained procedure, not a shortcut. If your academy SOP requires shutdown, shut down. Schedule pressure never beats a tail-rotor strike on a passenger.",
+    "operationalContext": "You land the H130 at the academy helipad in Florianópolis after a passenger familiarization flight. Ground clears you to the pad and asks you to report when passengers are clear.\n\nYou set down, reduce to idle as per SOP, and with a marshaller in place you disembark the passengers along the briefed safe path away from the tail rotor.\n\nWhen everyone is clear of the rotor disc and walking to the terminal, you report passengers disembarked, ready for shutdown — or ready for the next training lift if that is the plan.\n\nIf you had diverted to Congonhas with passengers still on board and needed time on a remote stand, you would request time to disembark and hold taxi clearances until people were safely off and clear of the apron path.",
+    "sayItCoach": "ANAC123, passengers disembarked, ready for shutdown on stand two.",
+    "icaoModelAnswer": "I would advise Ground that I need time on the stand to disembark passengers and that I am not ready to taxi. I would keep the aircraft secured according to procedure, ensure a safe path clear of the rotors, and only report ready when all passengers are clear of the aircraft and the apron path. If Ground asks for status, I would say passengers disembarking or passengers clear, ready to continue. I would not move the aircraft while people are still near the rotor disc.",
+    "memoryTrick": "**CLEAR** — **C**abin open only when parked, **L**eave rotors safe (stop or briefed hot), **E**xit along the safe arc, **A**dvise Ground of status, **R**eport passengers clear before any movement.",
+    "operationalMeaning": "When passengers must disembark, the crew should:\n\nDisembark passengers coordination commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Ground: ANAC123, park on stand two, report when passengers disembarked.",
+      "Ground: ANAC123, time approved to disembark passengers, advise ready to taxi.",
+      "Apron: ANAC123, hold position, passengers disembarking on stand four.",
+      "Ground: ANAC123, confirm passengers clear before startup.",
+      "Tower: ANAC123, after landing proceed to the pad, disembark as required, contact Ground."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, parking stand two, wilco, report passengers disembarked.",
+      "ANAC123, time approved to disembark, will advise ready to taxi.",
+      "ANAC123, holding position, passengers disembarking in sight.",
+      "ANAC123, passengers clear, ready for startup.",
+      "ANAC123, proceeding to the pad, disembark as required, contacting Ground."
+    ],
+    "brazilianMistakes": "- ❌ Saying \"passengers going down\" instead of disembark.  \n  ✔ Use standard English: disembark passengers / passengers disembarked / passengers clear.\n\n- ❌ Reporting ready to taxi while passengers are still walking near the aircraft.  \n  ✔ Report ready only when passengers are clear of the danger area.\n\n- ❌ Allowing unbriefed hot disembarkation under turning rotors.  \n  ✔ Follow SOP — shut down if hot disembarkation is not approved and briefed.\n\n- ❌ Blocking the taxiway to disembark instead of using the stand or pad.  \n  ✔ Request parking or pad position; do not disembark on an active taxiway.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Passengers Disembarked, Ready for Shutdown\n\n**Pronunciation:** AY-nak WUN TOO THREE, PAS-en-jerz dis-em-BARKT, REH-dee for SHUT-down\n\n**Word Stress**\n\n- Passengers → PAS-en-jerz (stress on first)\n- Disembarked → dis-em-BARKT (stress on third)\n- Ready → REH-dee\n- Shutdown → SHUT-down\n\nPractice:\n\nPassengers disembarked... ready for shutdown.\n\nTogether:\n\nANAC123, passengers disembarked, ready for shutdown on stand two.",
+    "relatedConcepts": [
+      "Return to Parking",
+      "Startup Clearance",
+      "Hover Taxi",
+      "Apron Safety",
+      "Rotor Wash / Downwash",
+      "On Blocks / Shutdown"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Aerodrome Operations",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9432 — Manual of Radiotelephony"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "ICAO Heliport Manual — Passenger Movement Safety"
+      },
+      {
+        "label": "SKYbrary — Rotorcraft Ground Operations",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "H130 AFM / Company SOP — Passenger Embark / Disembark"
+      }
+    ]
+  },
+  {
+    "catalogId": "0210",
+    "id": "0210",
+    "displayTerm": "Give Way to Aircraft",
+    "term": "give way to aircraft",
+    "slug": "give-way-to-aircraft",
+    "category": "Ground Operations",
+    "meaningEn": "Give way to aircraft instructs a pilot to yield priority to another specified aircraft and not proceed until that aircraft has passed or is clear of the conflicting route.",
+    "meaningPt": "Dê passagem à aeronave / give way to aircraft.\n\nInstrução para o piloto ceder prioridade a outra aeronave especificada e não prosseguir até que essa aeronave tenha passado ou esteja livre da rota em conflito.",
+    "whenUsed": "When ATC says give way to an aircraft, the crew should:",
+    "example": "Ground: ANAC123, give way to the Boeing vacating runway three one.",
+    "sayPhrase": "ANAC123, giving way to the Boeing vacating three one.",
+    "icaoQuestion": "While taxiing, Ground tells you to give way to another aircraft on your right. Explain what you do.?",
+    "icaoSpeakText": "I would read back the give-way instruction, identify the aircraft on my right, and stop or hold position so that aircraft can pass clear of my route. I would not proceed into the intersection until the traffic is clear and it is safe. If I cannot see the traffic, I would advise Ground that traffic is not in sight and request further assistance. After the aircraft has passed, I would continue on my cleared taxi or hover taxi route.",
+    "missionBrief": "Today's lesson covers Give Way to Aircraft — the ATC instruction to yield priority on the apron, taxiway, or intersection so another aircraft can proceed first.\n\nGive way is surface traffic management in plain English. It prevents two aircraft from occupying the same piece of pavement or hover path at the same time. The pilot who receives the instruction holds, slows, or waits until the other aircraft is clear.\n\nFor H130 helicopter training academy operations, give way is highly relevant. Hover taxi and air taxi paths cross fixed-wing taxi routes on Brazilian airports. Students must hear the instruction, identify the traffic, hold correctly, and continue only when clear.\n\nUnderstanding give-way phraseology and readbacks in ICAO-standard English is essential for Part 2 proficiency and daily mixed-traffic apron safety.",
+    "captainTeaching": "Give way is the surface version of see and avoid — with ATC naming the traffic for you.\n\nYour job is identification, yield, and continuation. Not negotiation. Not racing to the intersection.\n\nIn the H130, you may be more maneuverable than the airplane you are yielding to. That does not give you priority. Priority is what ATC assigns.\n\nIf traffic is not in sight, say so immediately. Holding blind at an intersection is dangerous. Ask for the traffic's position or request progressive taxi.\n\nWhen the other aircraft is clear, continue without waiting for a second invitation unless Ground told you to hold for further clearance. Read the instruction carefully: give way then continue is different from hold short and wait.",
+    "operationalContext": "You are hover taxiing the H130 via Alpha toward the holding point at Florianópolis.\n\nGround calls and tells you to give way to a Boeing vacating runway three one onto Alpha.\n\nYou hold your hover short of the intersection, confirm the Boeing in sight, and wait until it passes and turns toward the terminal.\n\nWhen Alpha is clear, you continue hover taxi and report if required.\n\nIf you had not given way, rotor wash and wingtip geometry on a narrow Brazilian taxiway could become an incident in seconds. Yielding is not hesitation — it is controlled sequencing.",
+    "sayItCoach": "ANAC123, giving way to the Boeing vacating runway three one, traffic in sight.",
+    "icaoModelAnswer": "I would read back the give-way instruction, identify the aircraft on my right, and stop or hold position so that aircraft can pass clear of my route. I would not proceed into the intersection until the traffic is clear and it is safe. If I cannot see the traffic, I would advise Ground that traffic is not in sight and request further assistance. After the aircraft has passed, I would continue on my cleared taxi or hover taxi route.",
+    "memoryTrick": "**YIELD** — **Y**ou stop or hold, **E**yes on the named traffic, **I**dentify before moving, **L**et them pass clear, **D**epart the hold and continue when safe.",
+    "operationalMeaning": "When ATC says give way to an aircraft, the crew should:\n\nGive way instructions commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Ground: ANAC123, give way to the Boeing vacating runway three one.",
+      "Ground: ANAC123, give way to helicopter on Bravo, then continue via Alpha.",
+      "Ground: ANAC123, hold short of Charlie, give way to aircraft taxiing from the ramp.",
+      "Apron: ANAC123, give way to company traffic pushing back from stand five.",
+      "Ground: ANAC123, give way to ANAC456 on your left, then taxi to holding point Delta."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, giving way to the Boeing vacating three one.",
+      "ANAC123, give way to helicopter on Bravo, then continue via Alpha.",
+      "ANAC123, holding short Charlie, giving way to traffic from the ramp.",
+      "ANAC123, giving way to company traffic pushing back stand five.",
+      "ANAC123, give way to ANAC456 on the left, then taxi holding point Delta."
+    ],
+    "brazilianMistakes": "- ❌ Continuing slowly into the intersection while \"giving way.\"  \n  ✔ Stop or hold clear — giving way means the other aircraft goes first.\n\n- ❌ Saying \"OK\" instead of a proper give-way readback.  \n  ✔ Read back: giving way to [traffic], then continue as cleared.\n\n- ❌ Assuming helicopter maneuverability grants automatic priority.  \n  ✔ Follow ATC priority. Give way when instructed.\n\n- ❌ Forgetting to continue after the traffic is clear.  \n  ✔ When clear, proceed on the remaining clearance unless told to hold.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Giving Way to the Boeing, Traffic in Sight\n\n**Pronunciation:** AY-nak WUN TOO THREE, GIV-ing WAY too thuh BOH-ing, TRAF-ik in SITE\n\n**Word Stress**\n\n- Giving → GIV-ing\n- Way → WAY\n- Boeing → BOH-ing\n- Traffic → TRAF-ik\n\nPractice:\n\nGiving way to the Boeing... traffic in sight.\n\nTogether:\n\nANAC123, giving way to the Boeing vacating runway three one, traffic in sight.",
+    "relatedConcepts": [
+      "Follow Traffic",
+      "Hold Short",
+      "Expedite Taxi",
+      "Hover Taxi",
+      "Aircraft Towed",
+      "Traffic in Sight"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Surface Movement Priority",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9432 — Manual of Radiotelephony"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "SKYbrary — Taxiway Conflict / Apron Safety",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "Local Aerodrome Manual — Taxi Priority Rules"
+      },
+      {
+        "label": "H130 AFM — Ground / Hover Taxi Limitations"
+      }
+    ]
+  },
+  {
+    "catalogId": "0211",
+    "id": "0211",
+    "displayTerm": "Aircraft Towed",
+    "term": "aircraft towed",
+    "slug": "aircraft-towed",
+    "category": "Ground Operations",
+    "meaningEn": "Aircraft towed means an aircraft is being pushed or pulled on the ground by a tug or towing vehicle, normally with engines shut down, and is not taxiing under its own power.",
+    "meaningPt": "Aeronave rebocada / aircraft towed / under tow.\n\nAeronave sendo empurrada ou puxada no solo por um trator de reboque, normalmente com motores desligados, sem táxi sob potência própria.",
+    "whenUsed": "When an aircraft is towed, or when you operate near a tow, crews should:",
+    "example": "Ground: ANAC123, hold position, aircraft under tow crossing Alpha to stand six.",
+    "sayPhrase": "ANAC123, holding position, aircraft under tow in sight.",
+    "icaoQuestion": "Ground advises that an aircraft is being towed across your taxi route. Explain what you do.?",
+    "icaoSpeakText": "I would hold position or give way as instructed, keep the towed aircraft in sight, and not proceed into the conflicting route until Ground confirms the tow is clear or I can see that it is safely past. I would read back the hold or give-way instruction. After the towed aircraft is clear, I would continue on my taxi or hover taxi clearance. I would allow extra space because a tug cannot expedite like a normal taxiing aircraft.",
+    "missionBrief": "Today's lesson covers Aircraft Towed — the status and phraseology used when an aircraft is being moved on the ground by a tug, without using its own engine power for taxi.\n\nAn aircraft under tow is traffic. It occupies taxiways, crosses aprons, and may have limited ability to stop or maneuver quickly. Pilots and controllers must treat towed movements with the same respect as powered taxi — often with more caution.\n\nFor H130 helicopter training academy operations, you may rarely tow the H130 itself, but you will share Brazilian airports with towed fixed-wing trainers and airline aircraft. ICAO exam English also tests this concept. Learn it with H130 context: hold for the tow, give way, and never start into a tug path.\n\nUnderstanding how to report, acknowledge, and sequence around an aircraft being towed is important for Part 2 proficiency and apron situational awareness.",
+    "captainTeaching": "Under tow means under someone else's control — the tug crew — but still under ATC's surface plan.\n\nYou do not overtake a tow for convenience. You do not hover close to \"sneak past.\" You hold until clear.\n\nFor ICAO speaking and listening exams, expect phrases like aircraft being towed, under tow, and tow complete. Answer with hold, give way, or continue after the tow.\n\nIn H130 operations, your threat is rotor wash on the tug and misjudged clearance at intersections. Slow traffic needs more space, not less.\n\nIf you are the one coordinating a tow for maintenance, make sure Ground knows before the tug enters the movement area. Surprise tows create surprise conflicts.",
+    "operationalContext": "You are ready to hover taxi the H130 from the academy ramp at Curitiba. Ground advises that an aircraft is being towed from the hangar across your planned route to stand six.\n\nYou hold on the ramp. You watch the tug, the tow bar, and the towed trainer crawl across the apron.\n\nWhen Ground reports the towed aircraft clear of Alpha, you receive hover taxi clearance and proceed.\n\nLater, if your own academy needs an H130 moved into the hangar with blades folded and a ground handling team, operations may coordinate a ground move. Even then, Ground must know when any aircraft occupies the movement area under tow or under handling.\n\nThe key English is simple: aircraft under tow, route, and clear when done.",
+    "sayItCoach": "ANAC123, holding position, aircraft under tow crossing Alpha, traffic in sight.",
+    "icaoModelAnswer": "I would hold position or give way as instructed, keep the towed aircraft in sight, and not proceed into the conflicting route until Ground confirms the tow is clear or I can see that it is safely past. I would read back the hold or give-way instruction. After the towed aircraft is clear, I would continue on my taxi or hover taxi clearance. I would allow extra space because a tug cannot expedite like a normal taxiing aircraft.",
+    "memoryTrick": "**TOWED** — **T**ug is moving the aircraft, **O**wn engines normally off, **W**ait and give way when told, **E**xtra space for slow movement, **D**epart your hold only when clear.",
+    "operationalMeaning": "When an aircraft is towed, or when you operate near a tow, crews should:\n\nAircraft towed operations commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Ground: ANAC123, hold position, aircraft under tow crossing Alpha to stand six.",
+      "Ground: ANAC123, give way to aircraft being towed on Bravo.",
+      "Apron: ANAC123, towed aircraft clear of the ramp, cleared to start.",
+      "Ground: ANAC123, caution, aircraft towed from hangar to maintenance area.",
+      "Ground: ANAC123, after the towed traffic, taxi via Alpha to holding point Charlie."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, holding position, aircraft under tow in sight.",
+      "ANAC123, giving way to aircraft being towed on Bravo.",
+      "ANAC123, towed aircraft clear, cleared to start.",
+      "ANAC123, roger, caution towed aircraft hangar to maintenance.",
+      "ANAC123, after towed traffic, taxi via Alpha to holding point Charlie."
+    ],
+    "brazilianMistakes": "- ❌ Treating a towed aircraft as \"not real traffic.\"  \n  ✔ Treat under tow as surface traffic with priority as assigned by ATC.\n\n- ❌ Trying to pass closely in a hover to save time.  \n  ✔ Hold clear. Rotor wash and wingtip clearance matter.\n\n- ❌ Confusing pushback with a long hangar tow.  \n  ✔ Both are ground moves without taxi power — follow the specific clearance given.\n\n- ❌ Continuing after \"hold for tow\" without hearing clear.  \n  ✔ Wait for clear confirmation or visual pass, then continue as cleared.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Holding Position, Aircraft Under Tow in Sight\n\n**Pronunciation:** AY-nak WUN TOO THREE, HOHL-ding puh-ZISH-un, AIR-kraft UN-der TOH in SITE\n\n**Word Stress**\n\n- Holding → HOHL-ding\n- Position → puh-ZISH-un (stress on second)\n- Aircraft → AIR-kraft\n- Tow → TOH\n\nPractice:\n\nHolding position... aircraft under tow in sight.\n\nTogether:\n\nANAC123, holding position, aircraft under tow crossing Alpha, traffic in sight.",
+    "relatedConcepts": [
+      "Tow Bar",
+      "Give Way to Aircraft",
+      "Startup Clearance",
+      "Pushback",
+      "Maintenance on the Way",
+      "Hold Position"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Towing on the Movement Area",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9432 — Manual of Radiotelephony"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "SKYbrary — Aircraft Towing / Pushback",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "Airport Ground Operations Manual — Tow Procedures"
+      },
+      {
+        "label": "H130 Ground Handling Manual — Hangar Movement Notes"
+      }
+    ]
+  },
+  {
+    "catalogId": "0212",
+    "id": "0212",
+    "displayTerm": "Aircraft Stuck on Taxiway",
+    "term": "aircraft stuck on taxiway",
+    "slug": "aircraft-stuck-on-taxiway",
+    "category": "Ground Operations",
+    "meaningEn": "Aircraft stuck on taxiway describes an aircraft that is immobilized on a taxiway or intersection and unable to continue under its own power or normal taxi procedures, requiring assistance, towing, or an alternate routing for other traffic.",
+    "meaningPt": "Aeronave parada / imobilizada na taxiway / aircraft stuck on taxiway.\n\nAeronave imobilizada em uma taxiway ou interseção, incapaz de continuar com potência própria ou procedimentos normais de táxi, exigindo assistência, reboque ou roteamento alternativo para o demais tráfego.",
+    "whenUsed": "When an aircraft becomes stuck on a taxiway, the crew should:",
+    "example": "Ground: ANAC123, hold position, taxiway Bravo blocked, aircraft stuck, expect reroute via Charlie.",
+    "sayPhrase": "ANAC123, holding position, expect reroute via Charlie.",
+    "icaoQuestion": "An aircraft ahead of you becomes stuck on the taxiway and blocks your route. Describe your actions and what you expect from ATC.?",
+    "icaoSpeakText": "I would hold position as instructed and keep clear of the blocked taxiway. I would expect Ground to advise that the taxiway is closed, to send assistance to the immobilized aircraft, and to issue an alternate taxi route if available. I would read back any reroute clearance carefully and continue only on the new route. If a long delay is expected, I would manage fuel and, if necessary, request return to parking. I would not attempt to pass the stuck aircraft without clearance.",
+    "missionBrief": "Today's lesson covers Aircraft Stuck on Taxiway — the abnormal ground situation where an aircraft cannot continue taxi due to nose-gear issues, soft ground, brake problems, tug failure, or other immobilization on the movement area.\n\nA stuck aircraft blocks routes, delays departures and arrivals, and may require maintenance, towing, or runway changes. Pilots must report the situation clearly, keep passengers and crew safe, and help ATC build a new surface plan.\n\nFor H130 helicopter training academy operations, becoming \"stuck\" on a paved taxiway is less common than for airplanes, but soft shoulders, muddy helipad edges, or a technical inability to hover taxi still create equivalent blockages. ICAO exams test the English. Use H130 context notes while learning the standard phraseology.\n\nUnderstanding how to declare, describe, and resolve an aircraft stuck on the taxiway supports Part 2 radiotelephony and Part 3 speaking scenarios.",
+    "captainTeaching": "Stuck is a status report, not a shame report.\n\nSay where you are. Say you cannot move. Say what you need. Then stop making it worse.\n\nPart 3 speaking questions often ask what you would do if an aircraft is stuck ahead or if you become unable to taxi. Structure the answer: safety, communication, assistance, alternate plan.\n\nIn the H130, immobilization may look different — unable to rise to hover, hydraulic caution, or soft ground at a pad edge. The English pattern is the same: unable to continue, position, request assistance.\n\nWhile you wait as the other aircraft, manage time: fuel, rotor RPM policy, passenger briefing, and readiness for a sudden reroute clearance.\n\nNever enter a taxiway ATC has closed for a disabled aircraft just because it \"looks empty.\"",
+    "operationalContext": "A light twin ahead of you on taxiway Bravo at Congonhas reports unable to taxi — nose wheel steering failure. The aircraft is stuck on the taxiway short of the holding point.\n\nGround stops your H130 hover taxi, tells you to hold on Alpha, and advises that Bravo is blocked by a disabled aircraft.\n\nMaintenance and a tug are dispatched. Other departures are rerouted via Charlie. Arrivals continue on the runway because the stuck aircraft is clear of the strip.\n\nYou hold, manage fuel and rotor time, and wait for a new clearance. When Bravo is cleared, Ground reopens the route.\n\nIf it had been your H130 unable to move from a taxi position, you would have made the same style of call: position, nature of problem, request assistance — without blocking the frequency with panic.",
+    "sayItCoach": "ANAC123, on taxiway Bravo short of holding point, unable to taxi, request assistance.",
+    "icaoModelAnswer": "I would hold position as instructed and keep clear of the blocked taxiway. I would expect Ground to advise that the taxiway is closed, to send assistance to the immobilized aircraft, and to issue an alternate taxi route if available. I would read back any reroute clearance carefully and continue only on the new route. If a long delay is expected, I would manage fuel and, if necessary, request return to parking. I would not attempt to pass the stuck aircraft without clearance.",
+    "memoryTrick": "**STUCK** — **S**top damaging attempts, **T**ell ATC position and problem, **U**se lights and secure aircraft, **C**all for tug or maintenance, **K**eep frequency open for reroutes.",
+    "operationalMeaning": "When an aircraft becomes stuck on a taxiway, the crew should:\n\nStuck-on-taxiway handling commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Ground: ANAC123, hold position, taxiway Bravo blocked, aircraft stuck, expect reroute via Charlie.",
+      "Ground: ANAC123, confirm able to taxi via Charlie, Bravo closed disabled aircraft.",
+      "Tower: ANAC123, expect departure delay, aircraft immobilized on taxiway Alpha.",
+      "Ground: ANAC123, tug proceeding to the stuck aircraft, remain clear of Bravo.",
+      "Ground: ANAC123, Bravo reopened, continue taxi via Bravo to holding point."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, holding position, expect reroute via Charlie.",
+      "ANAC123, able to taxi via Charlie, Bravo closed.",
+      "ANAC123, roger, departure delay, aircraft immobilized on Alpha.",
+      "ANAC123, remaining clear of Bravo, tug in sight.",
+      "ANAC123, Bravo reopened, taxi via Bravo to holding point."
+    ],
+    "brazilianMistakes": "- ❌ Delaying the call hoping the aircraft will free itself.  \n  ✔ Report unable to taxi immediately with position and assistance needed.\n\n- ❌ Using only Portuguese on the frequency during the emergency ground stop.  \n  ✔ Use clear ICAO English: unable to taxi, immobilized, request tug.\n\n- ❌ Following the original route into a closed taxiway.  \n  ✔ Wait for reroute clearance; closed means closed.\n\n- ❌ Shutting down communications while stuck.  \n  ✔ Stay on frequency for tug coordination and further instructions.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Unable to Taxi, Request Assistance on Bravo\n\n**Pronunciation:** AY-nak WUN TOO THREE, un-AY-bul too TAK-see, reh-KWEST uh-SIS-tans on BRAH-voh\n\n**Word Stress**\n\n- Unable → un-AY-bul (stress on second)\n- Taxi → TAK-see\n- Assistance → uh-SIS-tans (stress on second)\n- Bravo → BRAH-voh\n\nPractice:\n\nUnable to taxi... request assistance on Bravo.\n\nTogether:\n\nANAC123, on taxiway Bravo short of holding point, unable to taxi, request assistance.",
+    "relatedConcepts": [
+      "Aircraft Towed",
+      "Return to Parking",
+      "Give Way to Aircraft",
+      "Maintenance on the Way",
+      "Unable",
+      "Expedite Taxi (opposite pressure when routes reopen)"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Disabled Aircraft on Movement Area",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9432 — Manual of Radiotelephony"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "SKYbrary — Disabled Aircraft Removal",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "Aerodrome Emergency / Contingency Plan — Taxiway Closure"
+      },
+      {
+        "label": "H130 AFM — Ground Emergencies / Unable to Taxi Notes"
+      }
+    ]
+  },
+  {
+    "catalogId": "0213",
+    "id": "0213",
+    "displayTerm": "Maintenance on the Way",
+    "term": "maintenance on the way",
+    "slug": "maintenance-on-the-way",
+    "category": "Ground Operations",
+    "meaningEn": "Maintenance on the way means maintenance personnel or vehicles are proceeding to a specified aircraft or location to perform inspection, repair, or technical assistance, and other movements may need to wait until they arrive or clear.",
+    "meaningPt": "Manutenção a caminho / maintenance on the way.\n\nSignifica que pessoal ou veículos de manutenção estão se deslocando até uma aeronave ou local especificado para inspeção, reparo ou assistência técnica, e outros movimentos podem precisar aguardar até a chegada ou liberação da área.",
+    "whenUsed": "When you hear or request maintenance on the way, the crew should:",
+    "example": "Ground: ANAC123, hold position, maintenance on the way to your stand.",
+    "sayPhrase": "ANAC123, holding position, maintenance on the way.",
+    "icaoQuestion": "You report a technical problem on the stand. Operations says maintenance is on the way. Explain what you do until they finish.?",
+    "icaoSpeakText": "I would hold on the stand with the parking brake set and keep the engines and rotors in a safe condition according to procedure. I would not request startup or taxi until maintenance has completed the inspection and is clear of the aircraft. I would acknowledge Ground advisories about maintenance vehicles and give way as instructed. When the technicians are finished and clear, I would report ready to continue or request return to the hangar if the defect remains.",
+    "missionBrief": "Today's lesson covers Maintenance on the Way — the advisory that maintenance personnel or a maintenance vehicle is proceeding to an aircraft, stand, or location on the apron or movement area.\n\nThis phrase tells pilots that technicians are en route. It may mean you must hold startup, delay taxi, keep rotors at idle, or wait before moving so staff can approach safely. It is coordination English between ATC, apron, and the aircraft.\n\nFor H130 helicopter training academy operations, maintenance on the way is common after caution lights, hard landings, or scheduled inspections between lessons. Technicians walking toward an H130 with rotors turning is a serious hazard. Clear radio status protects them.\n\nUnderstanding this concept in ICAO-standard English supports Part 2 proficiency and daily academy ground coordination under Brazilian procedures.",
+    "captainTeaching": "Maintenance on the way means humans are walking toward your machine.\n\nYour priority shifts from schedule to people protection. Brakes set. Rotors safe. No surprise movement.\n\nIn an academy, this call happens between lessons constantly. Treat it with the same seriousness as give way to aircraft. A technician is more vulnerable than a Boeing.\n\nIf you requested maintenance, say so on the frequency when useful so Ground can protect the approach path. If Ground advises maintenance on the way, acknowledge and hold.\n\nWhen work is done, get a clear handoff: maintenance clear, ready for startup. Do not assume silence means finished.",
+    "operationalContext": "You shut down the H130 on stand two after a training flight. A chip detector caution needs inspection before the next lesson.\n\nOperations advise that maintenance is on the way. You stay on the headset, keep the area clear, and do not request startup.\n\nGround tells a departing helicopter to give way because a maintenance vehicle is crossing Alpha to your stand.\n\nTechnicians arrive, inspect, and clear the aircraft. You report ready for startup only after they are clear of the rotor disc and Ground releases you.\n\nThe phrase bought time and space for people on foot. That is its purpose.",
+    "sayItCoach": "ANAC123, holding position, maintenance on the way to stand two.",
+    "icaoModelAnswer": "I would hold on the stand with the parking brake set and keep the engines and rotors in a safe condition according to procedure. I would not request startup or taxi until maintenance has completed the inspection and is clear of the aircraft. I would acknowledge Ground advisories about maintenance vehicles and give way as instructed. When the technicians are finished and clear, I would report ready to continue or request return to the hangar if the defect remains.",
+    "memoryTrick": "**MAINT** — **M**otion stopped on the stand, **A**cknowledge the advisory, **I**solate rotors/engines as required, **N**ever start into approaching staff, **T**ell ready only after maintenance clear.",
+    "operationalMeaning": "When you hear or request maintenance on the way, the crew should:\n\nMaintenance on the way commonly appears when:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Ground: ANAC123, hold position, maintenance on the way to your stand.",
+      "Ground: ANAC123, maintenance vehicle crossing Alpha, give way.",
+      "Apron: ANAC123, confirm parking brake set, maintenance on the way.",
+      "Ground: ANAC123, maintenance complete at stand two, report ready for startup when able.",
+      "Ground: ANAC123, delay taxi, maintenance still on the way to the disabled aircraft on Bravo."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, holding position, maintenance on the way.",
+      "ANAC123, giving way, maintenance vehicle crossing Alpha.",
+      "ANAC123, parking brake set, maintenance on the way.",
+      "ANAC123, roger, maintenance complete, will report ready for startup.",
+      "ANAC123, delaying taxi, standing by for maintenance clear on Bravo."
+    ],
+    "brazilianMistakes": "- ❌ Starting up while technicians are still approaching.  \n  ✔ Hold safe condition until maintenance is clear and you are released.\n\n- ❌ Translating literally as \"maintenance in the way\" meaning blocked forever.  \n  ✔ \"On the way\" means en route / coming — then they work, then they clear.\n\n- ❌ Not telling Ground that people are around the aircraft.  \n  ✔ Keep Ground informed so taxi traffic is held clear of your stand.\n\n- ❌ Moving the aircraft slightly to \"make space\" while maintenance approaches.  \n  ✔ Hold position unless specifically cleared to reposition.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Holding Position, Maintenance on the Way\n\n**Pronunciation:** AY-nak WUN TOO THREE, HOHL-ding puh-ZISH-un, MAIN-te-nans on thuh WAY\n\n**Word Stress**\n\n- Holding → HOHL-ding\n- Maintenance → MAIN-te-nans (stress on first)\n- On → on\n- Way → WAY\n\nPractice:\n\nHolding position... maintenance on the way.\n\nTogether:\n\nANAC123, holding position, maintenance on the way to stand two.",
+    "relatedConcepts": [
+      "Ground Staff on the Way",
+      "Firefighters on the Way",
+      "Startup Clearance",
+      "Aircraft Stuck on Taxiway",
+      "Return to Parking",
+      "Aircraft Towed"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Apron Management",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9432 — Manual of Radiotelephony"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "SKYbrary — Ground Personnel Safety / Rotor Wash",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "Company / Academy SOP — Maintenance Callout Procedures"
+      },
+      {
+        "label": "H130 AFM — Maintenance Practices / Safety Precautions"
+      }
+    ]
+  },
+  {
+    "catalogId": "0214",
+    "id": "0214",
+    "displayTerm": "Ground Staff on the Way",
+    "term": "ground staff on the way",
+    "slug": "ground-staff-on-the-way",
+    "category": "Ground Operations",
+    "meaningEn": "Ground staff on the way means apron or ground personnel are proceeding to a specified aircraft or stand to perform handling, marshalling, chocking, or related ground services, and pilots must protect them from blast, rotor wash, and unexpected movement.",
+    "meaningPt": "Equipe de solo a caminho / ground staff on the way.\n\nSignifica que pessoal de pátio ou de solo está se deslocando até uma aeronave ou posição para handling, sinalização, calços ou serviços relacionados, e os pilotos devem protegê-los de jato, downwash de rotor e movimentos inesperados.",
+    "whenUsed": "When ground staff are on the way or around the aircraft, the crew should:",
+    "example": "Ground: ANAC123, hold position, ground staff on the way to your stand.",
+    "sayPhrase": "ANAC123, holding position, ground staff on the way.",
+    "icaoQuestion": "Apron advises that ground staff are on the way to marshall you onto the helipad. Explain how you continue the arrival.?",
+    "icaoSpeakText": "I would reduce speed or hold as instructed and look for the marshaller. I would not complete the landing onto the pad until ground staff are in a safe position or I am cleared to proceed. Once I have the marshaller in sight and receive landing or set-down clearance, I would follow the signals to the landing spot. After landing I would keep rotors and controls stable until staff are clear or chocks are in place according to procedure.",
+    "missionBrief": "Today's lesson covers Ground Staff on the Way — the advisory that apron personnel, marshallers, handlers, or other ground staff are proceeding to an aircraft or location on the ramp.\n\nUnlike maintenance technicians, ground staff may be connecting GPUs, placing chocks, guiding parking, handling bags, or marshalling the H130 onto a pad. The safety principle is identical: people are approaching, so aircraft movement and rotor energy must be controlled.\n\nFor H130 helicopter training academy operations, ground staff on the way is highly relevant on every arrival and departure. Marshallers walk into the hover taxi path. Handlers approach after set-down. Clear English and disciplined holds prevent apron injuries.\n\nUnderstanding this phraseology in ICAO-standard English is essential for Part 2 proficiency and daily Brazilian heliport and airport ramp coordination.",
+    "captainTeaching": "Ground staff on the way is the human version of traffic on the apron.\n\nYou would not hover taxi through an airplane. Do not hover taxi through people.\n\nIn the H130 academy, marshallers are part of every well-run arrival. Wait for them. See them. Follow them. If they are late, hold a stable position and tell Apron — do not invent a parking spot that traps staff behind the tail boom.\n\nOutbound, chocks and tools left near skids are startup killers. Confirm staff clear before you request start.\n\nICAO English here is simple, but the discipline behind it separates professional crews from dangerous ones.",
+    "operationalContext": "You inbound to the academy pad at Florianópolis. Tower clears you to the pad and Apron advises that ground staff are on the way for marshalling.\n\nYou approach slowly, establish hover, and wait for the marshaller to take position at the briefed spot. You do not set down on top of empty pavement while people are still jogging across Alpha.\n\nOnce the marshaller is in place and signals, you land, reduce power as required, and wait for chocks if that is the procedure.\n\nOutbound, before startup, Ground may say ground staff still on the way to remove equipment from your stand. You hold the start until they are clear.\n\nPeople first. Clearance second. Lift third.",
+    "sayItCoach": "ANAC123, ground staff in sight, ready to set down on the pad.",
+    "icaoModelAnswer": "I would reduce speed or hold as instructed and look for the marshaller. I would not complete the landing onto the pad until ground staff are in a safe position or I am cleared to proceed. Once I have the marshaller in sight and receive landing or set-down clearance, I would follow the signals to the landing spot. After landing I would keep rotors and controls stable until staff are clear or chocks are in place according to procedure.",
+    "memoryTrick": "**STAFF** — **S**top or hold movement, **T**rack people visually, **A**wait marshaller position, **F**ollow signals, **F**ree to start only when staff clear.",
+    "operationalMeaning": "When ground staff are on the way or around the aircraft, the crew should:\n\nGround staff on the way commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Ground: ANAC123, hold position, ground staff on the way to your stand.",
+      "Apron: ANAC123, ground staff crossing Alpha, delay hover taxi.",
+      "Ground: ANAC123, marshaller on the way, report staff in sight.",
+      "Apron: ANAC123, ground staff in position, cleared to land on the pad.",
+      "Ground: ANAC123, ground staff clear of stand two, cleared for startup."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, holding position, ground staff on the way.",
+      "ANAC123, delaying hover taxi, ground staff crossing Alpha.",
+      "ANAC123, wilco, report marshaller in sight.",
+      "ANAC123, ground staff in position, cleared to land on the pad.",
+      "ANAC123, ground staff clear, cleared for startup."
+    ],
+    "brazilianMistakes": "- ❌ Landing or lifting while staff are still crossing the approach path.  \n  ✔ Hold until staff are in position or clear as required.\n\n- ❌ Using only gestures without radio confirmation when ATC asked for a report.  \n  ✔ Report staff in sight or staff clear when requested.\n\n- ❌ Starting engines with handlers still removing equipment near the skids.  \n  ✔ Confirm ground staff clear before startup clearance is used.\n\n- ❌ Assuming \"on the way\" means they are already safely in the marshalling spot.  \n  ✔ On the way means coming — wait for in position or in sight.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Ground Staff in Sight, Ready to Set Down\n\n**Pronunciation:** AY-nak WUN TOO THREE, GROUND STAFF in SITE, REH-dee too SET DOWN\n\n**Word Stress**\n\n- Ground → GROUND\n- Staff → STAFF\n- Sight → SITE\n- Ready → REH-dee\n\nPractice:\n\nGround staff in sight... ready to set down.\n\nTogether:\n\nANAC123, ground staff in sight, ready to set down on the pad.",
+    "relatedConcepts": [
+      "Maintenance on the Way",
+      "Disembark Passengers",
+      "Startup Clearance",
+      "Hover Taxi",
+      "Firefighters on the Way",
+      "Marshalling Signals"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Apron Management Services",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9432 — Manual of Radiotelephony"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "ICAO Heliport Manual — Ground Personnel / Marshalling"
+      },
+      {
+        "label": "SKYbrary — Rotorcraft Apron Safety",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "H130 / Academy SOP — Marshalling and Ground Handling"
+      }
+    ]
+  },
+  {
+    "catalogId": "0215",
+    "id": "0215",
+    "displayTerm": "Firefighters on the Way",
+    "term": "firefighters on the way",
+    "slug": "firefighters-on-the-way",
+    "category": "Ground Operations",
+    "meaningEn": "Firefighters on the way means airport rescue and firefighting services have been dispatched and are proceeding to a specified location to assist an aircraft or handle a fire, smoke, leak, crash, or other emergency on the aerodrome.",
+    "meaningPt": "Bombeiros a caminho / firefighters on the way / RFF responding.\n\nSignifica que o serviço de salvamento e combate a incendio do aeródromo (SCI/ARFF) foi acionado e está se deslocando até um local especificado para assistir uma aeronave ou lidar com fogo, fumaça, vazamento, acidente ou outra emergência no aeródromo.",
+    "whenUsed": "When firefighters are on the way, the crew should:",
+    "example": "Tower: ANAC123, firefighters on the way, report souls on board and fuel on board.",
+    "sayPhrase": "ANAC123, firefighters on the way, souls on board three, fuel on board two hours.",
+    "icaoQuestion": "After landing you have smoke in the cabin. Tower says firefighters are on the way and asks for souls and fuel on board. Explain your actions and radio response.?",
+    "icaoSpeakText": "I would secure the aircraft according to the smoke or fire checklist, including engine shutdown if required, and keep the crew and passengers briefed. On the radio I would report the number of souls on board and the fuel on board in a clear, short transmission. I would state whether we are remaining on board or evacuating. I would stay on the assigned frequency, follow further Tower instructions, and cooperate with the firefighters when they arrive. I would not taxi away unless specifically instructed and safe to do so.",
+    "missionBrief": "Today's lesson covers Firefighters on the Way — the advisory that airport rescue and firefighting (ARFF) vehicles and personnel are proceeding to an aircraft, runway, taxiway, or stand in response to an emergency or precautionary event.\n\nThis is high-priority ground language. When firefighters are rolling, other traffic holds, runways may close, and the affected crew must communicate clearly: nature of the problem, souls on board, fuel on board, and hazardous materials if any.\n\nFor H130 helicopter training academy operations, firefighters on the way may follow a precautionary landing, smoke smell, hard landing, fuel leak, or declared emergency. Rotorcraft incidents on Brazilian aerodromes still bring the RFF category response. Part 2 phraseology and Part 3 speaking both test this scenario.\n\nUnderstanding how to acknowledge, coordinate, and speak calmly while firefighters are on the way is essential for ICAO proficiency and real emergency discipline.",
+    "captainTeaching": "When firefighters are rolling, your voice must get smaller and clearer — not louder and longer.\n\nSay what is burning or smelling. Say how many people. Say how much fuel. Say if you are evacuating. Then work the checklist.\n\nPart 3 questions love this scenario. Structure answers: fly or secure the aircraft, communicate, evacuate if needed, cooperate with RFF.\n\nIn the H130 academy, even a precautionary standby after a hard landing may bring firefighters on the way. Treat standby with respect. Do not wave them off casually if the checklist is incomplete.\n\nOther traffic must give absolute priority to RFF. If you are not the emergency aircraft, hold clear and keep the frequency clean.\n\nNever block the response road with a hover taxi \"to get out of the way\" without clearance. Ask Ground where to go.",
+    "operationalContext": "You land the H130 on the academy pad after smelling smoke in the cabin during final. You declare intentions, shut down, and request assistance.\n\nTower advises that firefighters are on the way and asks for souls on board and fuel on board.\n\nYou answer clearly. You keep the crew and any passengers briefed. You do not reopen doors into smoke without checklist guidance.\n\nGround holds a departing trainer short because RFF vehicles are crossing Alpha to your pad.\n\nFirefighters arrive, assess, and either clear the aircraft or manage evacuation. You stay on frequency until Tower or the fire chief releases you.\n\nThe phrase told everyone the priority had changed from traffic flow to rescue response.",
+    "sayItCoach": "ANAC123, firefighters on the way, souls on board three, fuel on board two hours, smoke in cabin, shutting down.",
+    "icaoModelAnswer": "I would secure the aircraft according to the smoke or fire checklist, including engine shutdown if required, and keep the crew and passengers briefed. On the radio I would report the number of souls on board and the fuel on board in a clear, short transmission. I would state whether we are remaining on board or evacuating. I would stay on the assigned frequency, follow further Tower instructions, and cooperate with the firefighters when they arrive. I would not taxi away unless specifically instructed and safe to do so.",
+    "memoryTrick": "**FIRE** — **F**requency stay assigned, **I**tems: souls and fuel, **R**FF gets priority on the surface, **E**vacuate only per checklist and need.",
+    "operationalMeaning": "When firefighters are on the way, the crew should:\n\nFirefighters on the way commonly follows:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Tower: ANAC123, firefighters on the way, report souls on board and fuel on board.",
+      "Ground: ANAC123, hold position, RFF vehicles crossing Alpha, firefighters on the way to stand two.",
+      "Tower: ANAC123, firefighters on the way, evacuate if required, advise intentions.",
+      "Ground: All stations, taxiway Bravo closed, firefighters on the way to disabled aircraft.",
+      "Tower: ANAC123, firefighters on scene, contact them on the interphone if able, remain this frequency."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, firefighters on the way, souls on board three, fuel on board two hours.",
+      "ANAC123, holding position, RFF crossing Alpha.",
+      "ANAC123, firefighters on the way, evacuating, will advise when clear.",
+      "ANAC123, roger, Bravo closed, standing by.",
+      "ANAC123, firefighters on scene, remaining this frequency."
+    ],
+    "brazilianMistakes": "- ❌ Giving a long story instead of souls on board and fuel on board.  \n  ✔ Answer the items asked first: souls, fuel, then brief problem status.\n\n- ❌ Leaving the frequency to call company while RFF is responding.  \n  ✔ Stay on the ATC frequency until released.\n\n- ❌ Taxiing or hover-taxiing across the path of approaching fire trucks.  \n  ✔ Hold position; give RFF absolute priority.\n\n- ❌ Saying \"bombeiros\" only and freezing in English.  \n  ✔ Use: firefighters on the way / RFF on the way / souls on board / fuel on board.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Souls on Board Three, Fuel on Board Two Hours\n\n**Pronunciation:** AY-nak WUN TOO THREE, SOHLZ on BOARD THREE, FYOOL on BOARD TOO OW-erz\n\n**Word Stress**\n\n- Souls → SOHLZ\n- Board → BOARD\n- Fuel → FYOOL\n- Hours → OW-erz\n\nPractice:\n\nSouls on board three... fuel on board two hours.\n\nTogether:\n\nANAC123, firefighters on the way, souls on board three, fuel on board two hours, smoke in cabin, shutting down.",
+    "relatedConcepts": [
+      "MAYDAY / PAN PAN",
+      "Smoke in Cabin",
+      "Ground Staff on the Way",
+      "Maintenance on the Way",
+      "Aircraft Stuck on Taxiway",
+      "Precautionary Landing",
+      "Evacuate Aircraft"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Aerodrome Emergency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9137 — Airport Services Manual (RFF)"
+      },
+      {
+        "label": "ICAO Doc 9432 — Manual of Radiotelephony"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "DECEA / Airport Emergency Plan — SCI Response"
+      },
+      {
+        "label": "H130 AFM — Emergency Procedures, Smoke / Fire"
+      }
+    ]
   }
 ];

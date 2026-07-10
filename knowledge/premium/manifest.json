@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "completedCount": 185,
-  "pendingCount": 325,
+  "completedCount": 215,
+  "pendingCount": 295,
   "concepts": [
     {
       "id": "0001",
@@ -1297,6 +1297,216 @@
       "slug": "0185-top-of-descent",
       "status": "complete",
       "completedAt": "2026-07-09"
+    },
+    {
+      "id": "0186",
+      "concept": "Weather Deviation",
+      "slug": "0186-weather-deviation",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0187",
+      "concept": "Restricted Area",
+      "slug": "0187-restricted-area",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0188",
+      "concept": "Military Activity",
+      "slug": "0188-military-activity",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0189",
+      "concept": "Rate of Descent",
+      "slug": "0189-rate-of-descent",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0190",
+      "concept": "Altimeter Disagreement",
+      "slug": "0190-altimeter-disagreement",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0191",
+      "concept": "RNAV Failure",
+      "slug": "0191-rnav-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0192",
+      "concept": "VOR Failure",
+      "slug": "0192-vor-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0193",
+      "concept": "ILS Failure",
+      "slug": "0193-ils-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0194",
+      "concept": "Autopilot Failure",
+      "slug": "0194-autopilot-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0195",
+      "concept": "Yaw Damper Failure",
+      "slug": "0195-yaw-damper-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0196",
+      "concept": "Flight Management System Failure",
+      "slug": "0196-flight-management-system-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0197",
+      "concept": "Electronic Navigation Failure",
+      "slug": "0197-electronic-navigation-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0198",
+      "concept": "GPS RAIM Failure",
+      "slug": "0198-gps-raim-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0199",
+      "concept": "Magnetic Compass Failure",
+      "slug": "0199-magnetic-compass-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0200",
+      "concept": "Taxi with Caution",
+      "slug": "0200-taxi-with-caution",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0201",
+      "concept": "Taxi to Gate",
+      "slug": "0201-taxi-to-gate",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0202",
+      "concept": "Taxi to Ramp",
+      "slug": "0202-taxi-to-ramp",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0203",
+      "concept": "Approved Taxi",
+      "slug": "0203-approved-taxi",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0204",
+      "concept": "Pushback",
+      "slug": "0204-pushback",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0205",
+      "concept": "Tow Truck",
+      "slug": "0205-tow-truck",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0206",
+      "concept": "Tow Bar",
+      "slug": "0206-tow-bar",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0207",
+      "concept": "Startup Clearance",
+      "slug": "0207-startup-clearance",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0208",
+      "concept": "Return to Parking",
+      "slug": "0208-return-to-parking",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0209",
+      "concept": "Disembark Passengers",
+      "slug": "0209-disembark-passengers",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0210",
+      "concept": "Give Way to Aircraft",
+      "slug": "0210-give-way-to-aircraft",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0211",
+      "concept": "Aircraft Towed",
+      "slug": "0211-aircraft-towed",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0212",
+      "concept": "Aircraft Stuck on Taxiway",
+      "slug": "0212-aircraft-stuck-on-taxiway",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0213",
+      "concept": "Maintenance on the Way",
+      "slug": "0213-maintenance-on-the-way",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0214",
+      "concept": "Ground Staff on the Way",
+      "slug": "0214-ground-staff-on-the-way",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0215",
+      "concept": "Firefighters on the Way",
+      "slug": "0215-firefighters-on-the-way",
+      "status": "complete",
+      "completedAt": "2026-07-10"
     }
   ]
 }
