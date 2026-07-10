@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "completedCount": 305,
-  "pendingCount": 205,
+  "completedCount": 510,
+  "pendingCount": 0,
   "concepts": [
     {
       "id": "0001",
@@ -2135,6 +2135,1441 @@
       "id": "0305",
       "concept": "Blocked Transmission",
       "slug": "0305-blocked-transmission",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0306",
+      "concept": "Garbled Message",
+      "slug": "0306-garbled-message",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0307",
+      "concept": "Confirm ETA",
+      "slug": "0307-confirm-eta",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0308",
+      "concept": "Confirm Diversion",
+      "slug": "0308-confirm-diversion",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0309",
+      "concept": "Confirm Deviation",
+      "slug": "0309-confirm-deviation",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0310",
+      "concept": "Confirm Detour for Weather",
+      "slug": "0310-confirm-detour-for-weather",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0311",
+      "concept": "Confirm Fuel Remaining",
+      "slug": "0311-confirm-fuel-remaining",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0312",
+      "concept": "Confirm Souls on Board",
+      "slug": "0312-confirm-souls-on-board",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0313",
+      "concept": "Need Assistance",
+      "slug": "0313-need-assistance",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0314",
+      "concept": "Assistance upon Arrival",
+      "slug": "0314-assistance-upon-arrival",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0315",
+      "concept": "Confirm Intentions",
+      "slug": "0315-confirm-intentions",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0316",
+      "concept": "Confirm Approach Adequate",
+      "slug": "0316-confirm-approach-adequate",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0317",
+      "concept": "Be Advised",
+      "slug": "0317-be-advised",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0318",
+      "concept": "Say Indicated Airspeed",
+      "slug": "0318-say-indicated-airspeed",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0319",
+      "concept": "Say Altitude",
+      "slug": "0319-say-altitude",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0320",
+      "concept": "Say Heading",
+      "slug": "0320-say-heading",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0321",
+      "concept": "Report Leaving Altitude",
+      "slug": "0321-report-leaving-altitude",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0322",
+      "concept": "Report Reaching Altitude",
+      "slug": "0322-report-reaching-altitude",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0323",
+      "concept": "Report Established",
+      "slug": "0323-report-established",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0324",
+      "concept": "Report Airborne",
+      "slug": "0324-report-airborne",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0325",
+      "concept": "Report Passing Fix",
+      "slug": "0325-report-passing-fix",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0326",
+      "concept": "Report Level",
+      "slug": "0326-report-level",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0327",
+      "concept": "Passenger Passed Out",
+      "slug": "0327-passenger-passed-out",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0328",
+      "concept": "Flight Attendant Fainted",
+      "slug": "0328-flight-attendant-fainted",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0329",
+      "concept": "Heart Attack",
+      "slug": "0329-heart-attack",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0330",
+      "concept": "Seizure",
+      "slug": "0330-seizure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0331",
+      "concept": "Food Poisoning",
+      "slug": "0331-food-poisoning",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0332",
+      "concept": "Unruly Passenger",
+      "slug": "0332-unruly-passenger",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0333",
+      "concept": "Unaccompanied Minor",
+      "slug": "0333-unaccompanied-minor",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0334",
+      "concept": "Persons on Board",
+      "slug": "0334-persons-on-board",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0335",
+      "concept": "Loose Animal on Board",
+      "slug": "0335-loose-animal-on-board",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0336",
+      "concept": "Medical Emergency",
+      "slug": "0336-medical-emergency",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0337",
+      "concept": "In-Flight Childbirth",
+      "slug": "0337-in-flight-childbirth",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0338",
+      "concept": "Allergic Reaction",
+      "slug": "0338-allergic-reaction",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0339",
+      "concept": "Diabetic Emergency",
+      "slug": "0339-diabetic-emergency",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0340",
+      "concept": "Hypoxia Symptoms",
+      "slug": "0340-hypoxia-symptoms",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0341",
+      "concept": "Hyperventilation",
+      "slug": "0341-hyperventilation",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0342",
+      "concept": "Flight Attendant",
+      "slug": "0342-flight-attendant",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0343",
+      "concept": "Flight Purser",
+      "slug": "0343-flight-purser",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0344",
+      "concept": "Cabin Crew",
+      "slug": "0344-cabin-crew",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0345",
+      "concept": "First Officer",
+      "slug": "0345-first-officer",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0346",
+      "concept": "Captain",
+      "slug": "0346-captain",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0347",
+      "concept": "Relief Pilot",
+      "slug": "0347-relief-pilot",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0348",
+      "concept": "Check Pilot",
+      "slug": "0348-check-pilot",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0349",
+      "concept": "System Assessment",
+      "slug": "0349-system-assessment",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0350",
+      "concept": "Smoke Evacuation Procedure",
+      "slug": "0350-smoke-evacuation-procedure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0351",
+      "concept": "Fire Suppression",
+      "slug": "0351-fire-suppression",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0352",
+      "concept": "Brace Position",
+      "slug": "0352-brace-position",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0353",
+      "concept": "Evacuation Command",
+      "slug": "0353-evacuation-command",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0354",
+      "concept": "Gusty Wind on Final",
+      "slug": "0354-gusty-wind-on-final",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0355",
+      "concept": "Shower Over the Field",
+      "slug": "0355-shower-over-the-field",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0356",
+      "concept": "Expect Moderate Turbulence",
+      "slug": "0356-expect-moderate-turbulence",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0357",
+      "concept": "Expect Severe Turbulence",
+      "slug": "0357-expect-severe-turbulence",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0358",
+      "concept": "Hot Air Balloon Traffic",
+      "slug": "0358-hot-air-balloon-traffic",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0359",
+      "concept": "Volcanic Ash",
+      "slug": "0359-volcanic-ash",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0360",
+      "concept": "Sandstorm",
+      "slug": "0360-sandstorm",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0361",
+      "concept": "Dust Storm",
+      "slug": "0361-dust-storm",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0362",
+      "concept": "Freezing Rain",
+      "slug": "0362-freezing-rain",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0363",
+      "concept": "Freezing Drizzle",
+      "slug": "0363-freezing-drizzle",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0364",
+      "concept": "Supercooled Large Droplets",
+      "slug": "0364-supercooled-large-droplets",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0365",
+      "concept": "Clear Ice",
+      "slug": "0365-clear-ice",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0366",
+      "concept": "Rime Ice",
+      "slug": "0366-rime-ice",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0367",
+      "concept": "Structural Icing",
+      "slug": "0367-structural-icing",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0368",
+      "concept": "Carburetor Icing",
+      "slug": "0368-carburetor-icing",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0369",
+      "concept": "Anti-Ice System Failure",
+      "slug": "0369-anti-ice-system-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0370",
+      "concept": "Windshield Icing",
+      "slug": "0370-windshield-icing",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0371",
+      "concept": "Low-Level Wind Shear",
+      "slug": "0371-low-level-wind-shear",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0372",
+      "concept": "Mountain Wave",
+      "slug": "0372-mountain-wave",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0373",
+      "concept": "Lee Side Turbulence",
+      "slug": "0373-lee-side-turbulence",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0374",
+      "concept": "Convective SIGMET",
+      "slug": "0374-convective-sigmet",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0375",
+      "concept": "AIRMET",
+      "slug": "0375-airmet",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0376",
+      "concept": "SIGMET",
+      "slug": "0376-sigmet",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0377",
+      "concept": "METAR",
+      "slug": "0377-metar",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0378",
+      "concept": "TAF",
+      "slug": "0378-taf",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0379",
+      "concept": "Ceiling Below Minimums",
+      "slug": "0379-ceiling-below-minimums",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0380",
+      "concept": "Visibility Below Minimums",
+      "slug": "0380-visibility-below-minimums",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0381",
+      "concept": "Alternate Required",
+      "slug": "0381-alternate-required",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0382",
+      "concept": "Fuel Reserve",
+      "slug": "0382-fuel-reserve",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0383",
+      "concept": "Takeoff Performance",
+      "slug": "0383-takeoff-performance",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0384",
+      "concept": "Landing Performance",
+      "slug": "0384-landing-performance",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0385",
+      "concept": "Weight and Balance",
+      "slug": "0385-weight-and-balance",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0386",
+      "concept": "Center of Gravity Limits",
+      "slug": "0386-center-of-gravity-limits",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0387",
+      "concept": "Maximum Takeoff Weight",
+      "slug": "0387-maximum-takeoff-weight",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0388",
+      "concept": "Maximum Landing Weight",
+      "slug": "0388-maximum-landing-weight",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0389",
+      "concept": "Runway Length Limitation",
+      "slug": "0389-runway-length-limitation",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0390",
+      "concept": "Obstacle Clearance",
+      "slug": "0390-obstacle-clearance",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0391",
+      "concept": "Single-Engine Performance",
+      "slug": "0391-single-engine-performance",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0392",
+      "concept": "Critical Engine Failure",
+      "slug": "0392-critical-engine-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0393",
+      "concept": "V1 Decision Speed",
+      "slug": "0393-v1-decision-speed",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0394",
+      "concept": "V2 Takeoff Safety Speed",
+      "slug": "0394-v2-takeoff-safety-speed",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0395",
+      "concept": "Vref Landing Reference Speed",
+      "slug": "0395-vref-landing-reference-speed",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0396",
+      "concept": "Stall Warning",
+      "slug": "0396-stall-warning",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0397",
+      "concept": "Stick Shaker",
+      "slug": "0397-stick-shaker",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0398",
+      "concept": "Stick Pusher",
+      "slug": "0398-stick-pusher",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0399",
+      "concept": "Windshear Escape Maneuver",
+      "slug": "0399-windshear-escape-maneuver",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0400",
+      "concept": "GPWS Warning",
+      "slug": "0400-gpws-warning",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0401",
+      "concept": "GPWS Pull Up",
+      "slug": "0401-gpws-pull-up",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0402",
+      "concept": "Terrain Awareness Warning",
+      "slug": "0402-terrain-awareness-warning",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0403",
+      "concept": "Minimum Safe Altitude",
+      "slug": "0403-minimum-safe-altitude",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0404",
+      "concept": "Helicopter Emergency Medical Services",
+      "slug": "0404-helicopter-emergency-medical-services",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0405",
+      "concept": "Search and Rescue",
+      "slug": "0405-search-and-rescue",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0406",
+      "concept": "Sling Load Operations",
+      "slug": "0406-sling-load-operations",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0407",
+      "concept": "External Load Jettison",
+      "slug": "0407-external-load-jettison",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0408",
+      "concept": "Deck Landing",
+      "slug": "0408-deck-landing",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0409",
+      "concept": "Helideck Operations",
+      "slug": "0409-helideck-operations",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0410",
+      "concept": "Helideck Winching",
+      "slug": "0410-helideck-winching",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0411",
+      "concept": "Night Vision Goggle Operations",
+      "slug": "0411-night-vision-goggle-operations",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0412",
+      "concept": "NVG Failure",
+      "slug": "0412-nvg-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0413",
+      "concept": "Rotor Brake Engagement",
+      "slug": "0413-rotor-brake-engagement",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0414",
+      "concept": "Rotor Brake Failure",
+      "slug": "0414-rotor-brake-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0415",
+      "concept": "Collective Failure",
+      "slug": "0415-collective-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0416",
+      "concept": "Cyclic Failure",
+      "slug": "0416-cyclic-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0417",
+      "concept": "Pedal Failure",
+      "slug": "0417-pedal-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0418",
+      "concept": "Governor Failure",
+      "slug": "0418-governor-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0419",
+      "concept": "Dual Engine Failure",
+      "slug": "0419-dual-engine-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0420",
+      "concept": "Single Engine Operation",
+      "slug": "0420-single-engine-operation",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0421",
+      "concept": "OEI Training",
+      "slug": "0421-oei-training",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0422",
+      "concept": "Translational Lift",
+      "slug": "0422-translational-lift",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0423",
+      "concept": "Effective Translational Lift",
+      "slug": "0423-effective-translational-lift",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0424",
+      "concept": "Ground Effect",
+      "slug": "0424-ground-effect",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0425",
+      "concept": "High Hover",
+      "slug": "0425-high-hover",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0426",
+      "concept": "Low Hover",
+      "slug": "0426-low-hover",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0427",
+      "concept": "Hover Out of Ground Effect",
+      "slug": "0427-hover-out-of-ground-effect",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0428",
+      "concept": "Hover In Ground Effect",
+      "slug": "0428-hover-in-ground-effect",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0429",
+      "concept": "Quick Stop",
+      "slug": "0429-quick-stop",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0430",
+      "concept": "Steep Approach",
+      "slug": "0430-steep-approach",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0431",
+      "concept": "Steep Turn",
+      "slug": "0431-steep-turn",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0432",
+      "concept": "Low-G Condition",
+      "slug": "0432-low-g-condition",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0433",
+      "concept": "Retreating Blade Stall",
+      "slug": "0433-retreating-blade-stall",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0434",
+      "concept": "Ground Resonance",
+      "slug": "0434-ground-resonance",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0435",
+      "concept": "Blade Sail",
+      "slug": "0435-blade-sail",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0436",
+      "concept": "Fenestron Blockage",
+      "slug": "0436-fenestron-blockage",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0437",
+      "concept": "Tail Rotor Pedal Input",
+      "slug": "0437-tail-rotor-pedal-input",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0438",
+      "concept": "Swirl on Helideck",
+      "slug": "0438-swirl-on-helideck",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0439",
+      "concept": "Hot Refueling",
+      "slug": "0439-hot-refueling",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0440",
+      "concept": "Cold Refueling",
+      "slug": "0440-cold-refueling",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0441",
+      "concept": "Fuel Contamination",
+      "slug": "0441-fuel-contamination",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0442",
+      "concept": "Fuel Filter Bypass",
+      "slug": "0442-fuel-filter-bypass",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0443",
+      "concept": "MGB Temperature High",
+      "slug": "0443-mgb-temperature-high",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0444",
+      "concept": "MGB Chip Detector",
+      "slug": "0444-mgb-chip-detector",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0445",
+      "concept": "MGB Oil Pressure Low",
+      "slug": "0445-mgb-oil-pressure-low",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0446",
+      "concept": "Tail Rotor Drive Failure",
+      "slug": "0446-tail-rotor-drive-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0447",
+      "concept": "Hydraulic Boost Failure",
+      "slug": "0447-hydraulic-boost-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0448",
+      "concept": "Flight Control Hydraulic Failure",
+      "slug": "0448-flight-control-hydraulic-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0449",
+      "concept": "AFCS Failure",
+      "slug": "0449-afcs-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0450",
+      "concept": "Trim Release Runaway",
+      "slug": "0450-trim-release-runaway",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0451",
+      "concept": "Cyclic Trim Runaway",
+      "slug": "0451-cyclic-trim-runaway",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0452",
+      "concept": "Collective Trim Runaway",
+      "slug": "0452-collective-trim-runaway",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0453",
+      "concept": "Engine Overtemp",
+      "slug": "0453-engine-overtemp",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0454",
+      "concept": "Engine Overtorque",
+      "slug": "0454-engine-overtorque",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0455",
+      "concept": "Crew Resource Management",
+      "slug": "0455-crew-resource-management",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0456",
+      "concept": "Situational Awareness",
+      "slug": "0456-situational-awareness",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0457",
+      "concept": "Threat and Error Management",
+      "slug": "0457-threat-and-error-management",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0458",
+      "concept": "Decision Making",
+      "slug": "0458-decision-making",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0459",
+      "concept": "Workload Management",
+      "slug": "0459-workload-management",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0460",
+      "concept": "Communication Loop Closure",
+      "slug": "0460-communication-loop-closure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0461",
+      "concept": "Cross-Checking",
+      "slug": "0461-cross-checking",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0462",
+      "concept": "Challenge and Response",
+      "slug": "0462-challenge-and-response",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0463",
+      "concept": "Standard Operating Procedures",
+      "slug": "0463-standard-operating-procedures",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0464",
+      "concept": "Sterile Cockpit",
+      "slug": "0464-sterile-cockpit",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0465",
+      "concept": "Fatigue Management",
+      "slug": "0465-fatigue-management",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0466",
+      "concept": "Stress Management",
+      "slug": "0466-stress-management",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0467",
+      "concept": "Startle Effect",
+      "slug": "0467-startle-effect",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0468",
+      "concept": "Surprise Response",
+      "slug": "0468-surprise-response",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0469",
+      "concept": "Automation Complacency",
+      "slug": "0469-automation-complacency",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0470",
+      "concept": "Automation Bias",
+      "slug": "0470-automation-bias",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0471",
+      "concept": "Mode Confusion",
+      "slug": "0471-mode-confusion",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0472",
+      "concept": "Confirmation Bias",
+      "slug": "0472-confirmation-bias",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0473",
+      "concept": "Plan Continuation Bias",
+      "slug": "0473-plan-continuation-bias",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0474",
+      "concept": "Channelized Attention",
+      "slug": "0474-channelized-attention",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0475",
+      "concept": "Distraction",
+      "slug": "0475-distraction",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0476",
+      "concept": "Interruption Management",
+      "slug": "0476-interruption-management",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0477",
+      "concept": "Spatial Disorientation",
+      "slug": "0477-spatial-disorientation",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0478",
+      "concept": "Vestibular Illusion",
+      "slug": "0478-vestibular-illusion",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0479",
+      "concept": "Somatogravic Illusion",
+      "slug": "0479-somatogravic-illusion",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0480",
+      "concept": "Leans",
+      "slug": "0480-leans",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0481",
+      "concept": "Black Hole Approach",
+      "slug": "0481-black-hole-approach",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0482",
+      "concept": "Controlled Flight Into Terrain",
+      "slug": "0482-controlled-flight-into-terrain",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0483",
+      "concept": "Loss of Control In Flight",
+      "slug": "0483-loss-of-control-in-flight",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0484",
+      "concept": "Unstable Approach",
+      "slug": "0484-unstable-approach",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0485",
+      "concept": "Go-Around Decision",
+      "slug": "0485-go-around-decision",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0486",
+      "concept": "Just Culture",
+      "slug": "0486-just-culture",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0487",
+      "concept": "Assertiveness",
+      "slug": "0487-assertiveness",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0488",
+      "concept": "Leadership",
+      "slug": "0488-leadership",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0489",
+      "concept": "Team Coordination",
+      "slug": "0489-team-coordination",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0490",
+      "concept": "Briefing",
+      "slug": "0490-briefing",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0491",
+      "concept": "Debriefing",
+      "slug": "0491-debriefing",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0492",
+      "concept": "Risk Assessment",
+      "slug": "0492-risk-assessment",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0493",
+      "concept": "Hazard Identification",
+      "slug": "0493-hazard-identification",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0494",
+      "concept": "Safety Culture",
+      "slug": "0494-safety-culture",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0495",
+      "concept": "Aviation English Proficiency",
+      "slug": "0495-aviation-english-proficiency",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0496",
+      "concept": "Pronunciation",
+      "slug": "0496-pronunciation",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0497",
+      "concept": "Structure",
+      "slug": "0497-structure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0498",
+      "concept": "Vocabulary",
+      "slug": "0498-vocabulary",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0499",
+      "concept": "Fluency",
+      "slug": "0499-fluency",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0500",
+      "concept": "Comprehension",
+      "slug": "0500-comprehension",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0501",
+      "concept": "Interactions",
+      "slug": "0501-interactions",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0502",
+      "concept": "Describing a Picture",
+      "slug": "0502-describing-a-picture",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0503",
+      "concept": "Describing an Unusual Situation",
+      "slug": "0503-describing-an-unusual-situation",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0504",
+      "concept": "Role Play ATC Communication",
+      "slug": "0504-role-play-atc-communication",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0505",
+      "concept": "Giving Opinions",
+      "slug": "0505-giving-opinions",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0506",
+      "concept": "Explaining Procedures",
+      "slug": "0506-explaining-procedures",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0507",
+      "concept": "Comparing Options",
+      "slug": "0507-comparing-options",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0508",
+      "concept": "Hypothetical Scenarios",
+      "slug": "0508-hypothetical-scenarios",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0509",
+      "concept": "Past Experience Narrative",
+      "slug": "0509-past-experience-narrative",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0510",
+      "concept": "Future Plans Discussion",
+      "slug": "0510-future-plans-discussion",
       "status": "complete",
       "completedAt": "2026-07-10"
     }
