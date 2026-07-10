@@ -32,6 +32,7 @@ import {
   CAPTAIN_DELTA_DEBRIEF,
   CAPTAIN_DELTA_SUGGESTION,
   emitCaptainDeltaMessageDelivered,
+  emitCaptainDeltaVoiceEnded,
   emitClearPronunciationRecordError,
 } from "@/lib/captainDelta/events";
 import { warnCaptain } from "@/lib/captainDelta/devLog";
@@ -263,18 +264,39 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
 
       if (!isCaptainDeltaVoiceEnabled()) {
         setVoiceStatusLabel(CAPTAIN_VOICE_TEXT_MODE_LABEL);
+        emitCaptainDeltaVoiceEnded({
+          ok: false,
+          messageId: msg.id,
+          eventId: options?.eventId,
+          source: options?.source,
+        });
         return;
       }
 
       setVoiceStatusLabel(null);
 
-      if (!wantSpeech) return;
+      if (!wantSpeech) {
+        emitCaptainDeltaVoiceEnded({
+          ok: false,
+          messageId: msg.id,
+          eventId: options?.eventId,
+          source: options?.source,
+        });
+        return;
+      }
 
       void voice.speak(msg.speechText ?? msg.text).then((result) => {
         if (!result.ok && result.error !== "stale") {
           setVoiceStatusLabel(CAPTAIN_VOICE_TEXT_MODE_LABEL);
           warnCaptain("deliverMessage", result.error ?? "Voice output failed");
         }
+        if (result.error === "stale") return;
+        emitCaptainDeltaVoiceEnded({
+          ok: result.ok,
+          messageId: msg.id,
+          eventId: options?.eventId,
+          source: options?.source,
+        });
       });
     },
     [lesson, routeContext, voice],
@@ -652,8 +674,11 @@ export function CaptainDeltaProvider({ children }: { children: ReactNode }) {
           ui: detail.ui,
         },
       );
+      // Captain-led: speak whenever speechText is present for coaching/mission/debrief.
+      const kind = detail.kind ?? "suggestion";
+      const speakKinds = new Set(["coaching", "mission", "debrief", "briefing", "context"]);
       deliverMessage(msg, {
-        autoSpeak: !!(detail.speechText?.trim() && (detail.kind ?? "suggestion") === "coaching"),
+        autoSpeak: !!(detail.speechText?.trim() && speakKinds.has(kind)),
         source: detail.source ?? "suggestion",
         eventId: detail.eventId,
       });

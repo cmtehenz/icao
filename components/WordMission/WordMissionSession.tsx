@@ -5,7 +5,11 @@ import WordPhoneticHint from "@/components/WordPhoneticHint";
 import { usePronunciationRecordingController } from "@/hooks/usePronunciationRecordingController";
 import type { IcaoVocabularyItem } from "@/data/icaoVocabulary";
 import { errorTypeLabel } from "@/lib/azure/pronunciation";
-import { emitCaptainDeltaSuggestion } from "@/lib/captainDelta/events";
+import {
+  CAPTAIN_DELTA_VOICE_ENDED,
+  emitCaptainDeltaSuggestion,
+  type CaptainDeltaVoiceEndedPayload,
+} from "@/lib/captainDelta/events";
 import { publishActivePronunciationWord } from "@/lib/captainDelta/lessonContext";
 import { missionCardStatusLine } from "@/lib/pronunciation/missionCardStatusLine";
 import { isPronunciationRecordingActive } from "@/lib/pronunciation/pronunciationRecordingController";
@@ -130,11 +134,6 @@ export default function WordMissionSession({
     });
   }, [item.id, practiceLevel, recordingEnabled, captainDebrief, step]);
 
-  useEffect(() => {
-    if (recorderState.phase !== "success" || recorderState.score == null) return;
-    setLastScore(recorderState.score);
-  }, [recorderState.phase, recorderState.score]);
-
   const continueStep = useCallback(() => {
     if (practiceLevel > 2) return;
     markWordMissionStepViewed(item.id, practiceLevel as 1 | 2);
@@ -143,6 +142,39 @@ export default function WordMissionSession({
     onPracticeLevelChange(next);
     onLevelAdvanced(practiceLevel);
   }, [item.id, onLevelAdvanced, onPracticeLevelChange, onProgressRefresh, practiceLevel]);
+
+  // Captain-led: after listen-step TTS ends, advance without requiring "Continue".
+  useEffect(() => {
+    if (recordingEnabled || termComplete) return;
+    const eventId = `wm:${item.id}:L${practiceLevel}`;
+    let advanced = false;
+    let advanceTimer: number | null = null;
+    const advance = () => {
+      if (advanced) return;
+      advanced = true;
+      continueStep();
+    };
+
+    const onVoiceEnded = (e: Event) => {
+      const detail = (e as CustomEvent<CaptainDeltaVoiceEndedPayload>).detail;
+      if (detail?.eventId !== eventId) return;
+      // Voice played: advance shortly after. Voice off/failed: give reading time first.
+      const delayMs = detail.ok ? 600 : 5500;
+      if (advanceTimer != null) window.clearTimeout(advanceTimer);
+      advanceTimer = window.setTimeout(advance, delayMs);
+    };
+
+    window.addEventListener(CAPTAIN_DELTA_VOICE_ENDED, onVoiceEnded);
+    return () => {
+      window.removeEventListener(CAPTAIN_DELTA_VOICE_ENDED, onVoiceEnded);
+      if (advanceTimer != null) window.clearTimeout(advanceTimer);
+    };
+  }, [continueStep, item.id, practiceLevel, recordingEnabled, termComplete]);
+
+  useEffect(() => {
+    if (recorderState.phase !== "success" || recorderState.score == null) return;
+    setLastScore(recorderState.score);
+  }, [recorderState.phase, recorderState.score]);
 
   useEffect(() => {
     if (!termComplete || !missionLegActive) return;
@@ -172,6 +204,7 @@ export default function WordMissionSession({
     practiceLevel === 3 ? "Your pilot readback" : "Your ICAO answer";
   const continueLabel =
     practiceLevel === 1 ? "Continue to Operational Use" : "Continue to Say It";
+  // Manual Continue remains as fallback if auto-advance misses (voice cancelled, etc.).
 
   const termProgress = vocabTermMissionProgress(progress);
   const termsRemaining = Math.max(0, missionTotal - missionDone);

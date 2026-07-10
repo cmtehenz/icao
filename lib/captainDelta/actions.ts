@@ -22,7 +22,7 @@ export function resolvePrimaryAction(
 ): CaptainDeltaAction {
   if (kind === "followup") return mic("Explain It", "explain_it");
   if (kind === "debrief") return mic("Explain It", "explain_it");
-  if (kind === "briefing") return mic("Start Training", "ready");
+  if (kind === "briefing") return mic("Ready", "ready");
   if (kind === "context") return primaryForRoute(route, lesson);
 
   if (kind === "coaching" || lesson.hasFeedback) {
@@ -49,7 +49,7 @@ function primaryForRoute(
 ): CaptainDeltaAction {
   switch (route) {
     case "dashboard":
-      return mic("Start Training", "ready");
+      return mic("Ready", "ready");
     case "part1":
       return mic("Explain It", "explain_your_way");
     case "part2":

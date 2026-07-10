@@ -6,6 +6,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import WordMissionSession from "@/components/WordMission/WordMissionSession";
 import type { IcaoVocabularyItem } from "@/data/icaoVocabulary";
 import { useVocabularyProgress } from "@/hooks/useVocabularyProgress";
+import { getNextMissionAction } from "@/lib/dailyMission";
 import { CAPTAIN_VOCAB_FLIGHT_DEBRIEF } from "@/lib/vocabCoach";
 import {
   isVocabMissionTermComplete,
@@ -53,6 +54,10 @@ export default function WordMissionMode({ initialTermId }: { initialTermId?: str
   }, [syncMissionProgress]);
 
   const debrief = useMemo(() => buildVocabMissionDebrief(), [missionProgress.done, showDebrief]);
+  const nextAfterWordMission = useMemo(
+    () => (showDebrief ? getNextMissionAction() : null),
+    [showDebrief, missionProgress.done],
+  );
 
   const selectTerm = useCallback(
     (item: IcaoVocabularyItem) => {
@@ -197,8 +202,10 @@ export default function WordMissionMode({ initialTermId }: { initialTermId?: str
           </ul>
           <p className="vocab-mission-quote">&ldquo;{CAPTAIN_VOCAB_FLIGHT_DEBRIEF}&rdquo;</p>
           <div className="vocab-debrief-actions">
-            <Link href="/part1" className="btn purple">
-              Continue Flight — Part 1
+            <Link href={nextAfterWordMission?.href ?? "/part1"} className="btn purple">
+              {nextAfterWordMission
+                ? `Ready — ${nextAfterWordMission.title}`
+                : "Ready — Continue Flight"}
             </Link>
           </div>
         </section>

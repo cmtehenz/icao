@@ -114,8 +114,8 @@ export default function CaptainDeltaFloatingAssistant() {
       <button
         type="button"
         className={`cd-fab cd-avatar-${avatarState} ${open ? "open" : ""} ${recording ? "recording" : ""} ${presence.hexActive ? "cd-fab-standby" : ""}`}
-        aria-label="Captain Delta — segure para falar"
-        title="Segure para falar · Toque para abrir o card"
+        aria-label="Captain Delta — toque para o card, segure para dúvida"
+        title="Toque para o card · Segure para dúvida rápida"
         onPointerDown={onFabPointerDown}
         onPointerUp={onFabPointerUp}
         onPointerLeave={() => {

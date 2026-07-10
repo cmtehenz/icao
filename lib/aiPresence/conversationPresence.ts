@@ -189,8 +189,8 @@ export function captainStandbyCopy(phase: ConversationSessionPhase): CaptainStan
   }
   return {
     title: "Captain Delta",
-    body: "I'm here for today's flight. Hold the button to ask a question, or continue your mission.",
-    hint: "Monitoring today's mission",
+    body: "I'm leading today's flight. Follow my next instruction — or hold the button if you need a quick question.",
+    hint: "Continue your mission",
   };
 }
 

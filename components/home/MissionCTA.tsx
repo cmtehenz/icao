@@ -38,7 +38,7 @@ export default function MissionCTA() {
   }
 
   const label =
-    summary.completedSections > 0 ? "Continue Flight" : "Begin Flight";
+    summary.completedSections > 0 ? "Ready — Continue Flight" : "Ready — Begin Flight";
 
   return (
     <section className="mission-cta" aria-label="Today's flight">

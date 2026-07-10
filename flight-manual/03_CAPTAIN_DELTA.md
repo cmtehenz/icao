@@ -121,6 +121,21 @@ On mission routes, Captain FAB triggers the **recording controller** for that le
 
 Route entry and term changes may trigger brief context tips — deduplicated, never overwhelming.
 
+### Captain-led conversation
+
+Captain Delta **initiates** coaching turns and mission handoffs. The student responds and executes — they should not need to ask what comes next.
+
+| Pattern | Behavior |
+|---------|----------|
+| Mission milestones | Spoken (`speechText` + TTS) with a Ready CTA from `getNextMissionAction()` |
+| Home briefing | Captain speaks today's plan; primary action is Ready |
+| Listen-only Word Mission steps | Captain speaks, then advances the step — Continue is fallback only |
+| Standby / FAB | Default copy: continue the mission. PTT hold = secondary channel for a quick question |
+
+**ADR-009 still holds:** Captain coaches and navigates via Ready CTAs. Mission Engine owns leg completion and next-leg computation. Captain never writes mission state.
+
+PTT (hold-to-talk) remains available for student questions — it is not the primary way the lesson progresses.
+
 ### Examiner mode
 
 During mock exam, Captain speaks as examiner. Simulado runner owns exam state. Debrief returns to instructor persona.

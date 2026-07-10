@@ -4,6 +4,17 @@ Manual version history only. Sprint and audit details belong in Git history.
 
 ---
 
+## 3.1 — July 2026
+
+**Captain-led conversation.** Captain initiates coaching turns and mission handoffs; student responds and flies.
+
+- Mission milestones speak via TTS with Ready CTAs from `getNextMissionAction()`
+- Word Mission listen steps auto-advance after Captain finishes speaking
+- Standby / FAB copy prioritizes continuing the mission over “ask a question”
+- ADR-009 unchanged: Captain coaches; Mission Engine owns state
+
+---
+
 ## 3.0 — July 2026
 
 **Flight Manual reset.** Consolidated 100+ documents into eight chapters + decisions.

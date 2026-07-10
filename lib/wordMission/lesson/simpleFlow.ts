@@ -42,16 +42,16 @@ export function isLessonComplete(ctx: WordMissionLessonContext): boolean {
   return ctx.currentStepId === "icao_practice" && ctx.stepIndex === WORD_MISSION_STEP_ORDER.length - 1;
 }
 
-/** What the student should do on this step — shown on card and spoken by Captain Delta. */
+/** What the student should do on this step — shown on card; Captain leads listen steps. */
 export function wordMissionStepActionHint(
   stepId: WordMissionStepId,
   speakText: string,
 ): string {
   switch (stepId) {
     case "meaning":
-      return "Listen only (no recording). When Captain Delta is done, tap Continue.";
+      return "Listen only (no recording). Captain Delta will continue when he finishes speaking.";
     case "operational_use":
-      return "Listen only (no recording). Read the operational scenario, then tap Continue. Next: Say It (you will record the full readback).";
+      return "Listen only (no recording). Read the operational scenario while Captain speaks. Next: Say It (you will record the full readback).";
     case "say_it":
       return "Tap Record below and speak the highlighted readback exactly.";
     case "icao_practice":
