@@ -11,7 +11,6 @@ import {
   needsCheckride,
   TRAINING_PROFILE_EVENT,
 } from "@/lib/trainingProfile/store";
-import { phaseLabel } from "@/lib/trainingProfile/types";
 
 export default function CaptainBriefing() {
   const { user } = useAuth();
@@ -44,9 +43,9 @@ export default function CaptainBriefing() {
   const awaitingCheckride = needsCheckride(profile);
 
   return (
-    <header className="cda-hero home-captain-briefing" aria-label="Captain briefing">
-      <div className="cda-captain-badge" aria-hidden>
-        👨‍✈️
+    <header className="cda-hero home-captain-briefing academy-briefing" aria-label="Captain briefing">
+      <div className="academy-captain-mark" aria-hidden>
+        <span>CD</span>
       </div>
       <div className="cda-hero-copy">
         <p className="cda-hero-label">Captain Delta · Flight Briefing</p>
@@ -57,20 +56,17 @@ export default function CaptainBriefing() {
             training phase.
           </p>
         ) : (
-          <>
-            <p className="cda-hero-welcome">Phase · {phaseLabel(profile.phase)}</p>
-            {briefing.text.split("\n").map((line) => (
-              <p key={line} className="cda-hero-welcome">
-                {line}
-              </p>
-            ))}
-          </>
+          briefing.text.split("\n").map((line) => (
+            <p key={line} className="cda-hero-welcome">
+              {line}
+            </p>
+          ))
         )}
       </div>
-      <div className="cda-exam-countdown">
+      <div className="cda-exam-countdown academy-exam-countdown">
         <span>ICAO Exam</span>
-        <strong>{daysLeft} days</strong>
-        <span>remaining</span>
+        <strong>{daysLeft}</strong>
+        <span>days remaining</span>
       </div>
     </header>
   );

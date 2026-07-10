@@ -106,7 +106,7 @@ Update `01_PRODUCT.md`, `04_LEARNING_ENGINE.md`, `07_UI_UX.md`, `CHANGELOG.md` w
 - Phase-based load (Foundation lighter)
 - Home CTA surfaces `planHint` from adaptive plan
 
-### Phase 3 — UX shell refresh
+### Phase 3 — UX shell refresh ✅
 
 - Home: phase badge, plan strip, Ready
 - Checkride UI polish

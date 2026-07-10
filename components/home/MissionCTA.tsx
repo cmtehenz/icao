@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import MissionPlanStrip from "@/components/home/MissionPlanStrip";
+import PhaseBadge from "@/components/training/PhaseBadge";
 import {
   getDailyMissionSummary,
   getNextMissionAction,
@@ -13,7 +15,6 @@ import {
   needsCheckride,
   TRAINING_PROFILE_EVENT,
 } from "@/lib/trainingProfile/store";
-import { phaseBrief, phaseLabel } from "@/lib/trainingProfile/types";
 
 export default function MissionCTA() {
   const [tick, setTick] = useState(0);
@@ -41,10 +42,10 @@ export default function MissionCTA() {
   if (checkrideNeeded) {
     return (
       <section className="mission-cta academy-cta" aria-label="Speaking checkride">
-        <p className="mission-cta-phase">Before today&apos;s flight</p>
-        <p className="sub mission-cta-phase-brief">
-          A short speaking checkride so Captain Delta can build your training plan. About five
-          minutes. You can skip and start in Foundation.
+        <p className="mission-cta-kicker">Before today&apos;s flight</p>
+        <p className="mission-cta-lead">
+          A short speaking checkride so Captain Delta can set your training phase. About five
+          minutes.
         </p>
         <Link href="/checkride" className="btn academy-primary btn-large mission-cta-btn">
           Start Checkride
@@ -60,8 +61,11 @@ export default function MissionCTA() {
   if (complete) {
     return (
       <section className="mission-cta academy-cta" aria-label="Today's flight">
-        <p className="mission-cta-complete">✓ Today&apos;s flight mission is complete.</p>
-        <p className="sub">Exam {summary.examLabel} — all legs finished. See you tomorrow, pilot.</p>
+        <PhaseBadge phase={profile.phase} />
+        <p className="mission-cta-complete">Today&apos;s flight mission is complete.</p>
+        <p className="mission-cta-lead">
+          Exam {summary.examLabel} — all legs finished. See you tomorrow, pilot.
+        </p>
       </section>
     );
   }
@@ -71,13 +75,18 @@ export default function MissionCTA() {
 
   return (
     <section className="mission-cta academy-cta" aria-label="Today's flight">
-      <p className="mission-cta-phase">
-        Phase · {phaseLabel(profile.phase)}
-      </p>
-      <p className="sub mission-cta-phase-brief">{phaseBrief(profile.phase)}</p>
-      {next && summary.planHint ? (
-        <p className="sub mission-cta-phase-brief">{summary.planHint}</p>
-      ) : null}
+      <div className="mission-cta-top">
+        <PhaseBadge phase={profile.phase} />
+        <span className="mission-cta-exam-chip">{summary.examLabel}</span>
+      </div>
+
+      <MissionPlanStrip
+        completed={summary.completedSections}
+        total={summary.totalSections}
+        hint={summary.planHint}
+        nextTitle={next?.title}
+      />
+
       <Link
         href={next?.href ?? "/word-mission"}
         className="btn academy-primary btn-large mission-cta-btn"
@@ -85,6 +94,7 @@ export default function MissionCTA() {
       >
         {label}
       </Link>
+
       {next && (
         <p id="mission-cta-desc" className="mission-cta-hint">
           <span className="mission-cta-next">{next.title}</span>

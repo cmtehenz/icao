@@ -4,6 +4,16 @@ Manual version history only. Sprint and audit details belong in Git history.
 
 ---
 
+## 3.3 — July 2026
+
+**Adaptive training redesign (RFC-004) — Phase 3 UX shell.**
+
+- Home: phase badge, plan strip (leg progress + hint), Ready CTA
+- Checkride polish: kind chips, recording pulse, quieter skip, phase result badge
+- Token refresh: academy slate/mist, dark-theme academy vars, spacing rhythm
+
+---
+
 ## 3.2 — July 2026
 
 **Adaptive training redesign (RFC-004) — Phase 0–2.**

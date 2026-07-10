@@ -2,13 +2,19 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import PhaseBadge from "@/components/training/PhaseBadge";
 import { emitCaptainDeltaSuggestion } from "@/lib/captainDelta/events";
 import { CHECKRIDE_STEPS, checkrideProgressLabel } from "@/lib/trainingProfile/checkride";
 import {
   completeCheckride,
   skipCheckrideToFoundation,
 } from "@/lib/trainingProfile/store";
-import { phaseBrief, phaseLabel, type CheckrideProbeResult } from "@/lib/trainingProfile/types";
+import {
+  phaseBrief,
+  phaseLabel,
+  type CheckrideProbeResult,
+  type TrainingPhase,
+} from "@/lib/trainingProfile/types";
 
 type RecPhase = "idle" | "recording" | "assessing" | "done" | "error";
 
@@ -27,7 +33,7 @@ export default function CheckrideSession() {
   const [notice, setNotice] = useState<string | null>(null);
   const [lastScore, setLastScore] = useState<number | null>(null);
   const [finished, setFinished] = useState(false);
-  const [resultPhase, setResultPhase] = useState<string | null>(null);
+  const [resultPhase, setResultPhase] = useState<TrainingPhase | null>(null);
   const [resultBrief, setResultBrief] = useState<string | null>(null);
   const probesRef = useRef<CheckrideProbeResult[]>([]);
   const mediaRef = useRef<MediaRecorder | null>(null);
@@ -64,7 +70,7 @@ export default function CheckrideSession() {
       const next = stepIndex + 1;
       if (next >= total) {
         const profile = completeCheckride(probesRef.current);
-        setResultPhase(phaseLabel(profile.phase));
+        setResultPhase(profile.phase);
         setResultBrief(phaseBrief(profile.phase));
         setFinished(true);
         emitCaptainDeltaSuggestion({
@@ -195,7 +201,7 @@ export default function CheckrideSession() {
 
   const onSkip = () => {
     const profile = skipCheckrideToFoundation();
-    setResultPhase(phaseLabel(profile.phase));
+    setResultPhase(profile.phase);
     setResultBrief(phaseBrief(profile.phase));
     setFinished(true);
     emitCaptainDeltaSuggestion({
@@ -210,13 +216,15 @@ export default function CheckrideSession() {
     });
   };
 
-  if (finished) {
+  if (finished && resultPhase) {
     return (
       <section className="checkride-panel checkride-result academy-surface" aria-live="polite">
         <p className="checkride-badge">Captain Delta · Checkride</p>
         <h1>Your training phase</h1>
-        <p className="checkride-phase">{resultPhase}</p>
-        <p className="sub">{resultBrief}</p>
+        <div className="checkride-result-phase">
+          <PhaseBadge phase={resultPhase} compact />
+        </div>
+        <p className="checkride-result-brief">{resultBrief}</p>
         <button
           type="button"
           className="btn academy-primary btn-large"
@@ -230,8 +238,18 @@ export default function CheckrideSession() {
 
   if (!step) return null;
 
+  const kindLabel =
+    step.kind === "word"
+      ? "Word clarity"
+      : step.kind === "readback"
+        ? "Readback"
+        : "Operational answer";
+
   return (
-    <section className="checkride-panel academy-surface" aria-label="Speaking checkride">
+    <section
+      className={`checkride-panel academy-surface${phase === "recording" ? " is-recording" : ""}`}
+      aria-label="Speaking checkride"
+    >
       <header className="checkride-head">
         <p className="checkride-badge">Captain Delta · Checkride</p>
         <p className="checkride-progress">{checkrideProgressLabel(stepIndex, total)}</p>
@@ -241,10 +259,8 @@ export default function CheckrideSession() {
       </header>
 
       <div className="checkride-body">
-        <p className="checkride-kind">
-          {step.kind === "word" && "Word clarity"}
-          {step.kind === "readback" && "Readback"}
-          {step.kind === "oral" && "Operational answer"}
+        <p className="checkride-kind" data-kind={step.kind}>
+          {kindLabel}
         </p>
         <p className="checkride-prompt">{step.prompt}</p>
         {step.kind !== "oral" ? (
@@ -253,6 +269,11 @@ export default function CheckrideSession() {
           <p className="checkride-oral-hint">Speak naturally — one or two clear sentences.</p>
         )}
 
+        {phase === "recording" && (
+          <p className="checkride-live" role="status">
+            Recording — speak now
+          </p>
+        )}
         {lastScore != null && (
           <p className="checkride-score" role="status">
             Clarity ~{Math.round(lastScore)}%
@@ -280,7 +301,7 @@ export default function CheckrideSession() {
             {phase === "assessing" ? "Assessing…" : "Record"}
           </button>
         )}
-        <button type="button" className="btn secondary" onClick={onSkip}>
+        <button type="button" className="checkride-skip" onClick={onSkip}>
           Skip — start Foundation
         </button>
       </footer>

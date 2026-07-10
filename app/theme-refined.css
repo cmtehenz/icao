@@ -1194,7 +1194,7 @@ h1 {
   color: var(--blue);
 }
 
-/* ── Flight academy premium + checkride (RFC-004) ── */
+/* ── Flight academy premium + checkride (RFC-004 Phase 3) ── */
 
 .btn.academy-primary,
 .btn.purple.mission-cta-btn,
@@ -1225,11 +1225,156 @@ h1 {
   padding: 1.35rem 1.4rem 1.5rem;
 }
 
+.academy-captain-mark {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(145deg, var(--academy-navy), color-mix(in srgb, var(--academy-navy) 70%, #000));
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--academy-navy) 30%, transparent);
+}
+
+.academy-exam-countdown strong {
+  color: var(--academy-navy);
+}
+
+.phase-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  background: var(--academy-mist);
+  color: var(--academy-navy);
+}
+
+.phase-badge[data-phase="foundation"] {
+  background: color-mix(in srgb, var(--academy-amber) 14%, var(--card));
+  border-color: color-mix(in srgb, var(--academy-amber) 35%, var(--border));
+  color: color-mix(in srgb, var(--academy-amber) 70%, var(--academy-ink));
+}
+
+.phase-badge[data-phase="operational"] {
+  background: color-mix(in srgb, var(--blue) 12%, var(--card));
+  border-color: color-mix(in srgb, var(--blue) 28%, var(--border));
+  color: var(--blue);
+}
+
+.phase-badge[data-phase="exam"] {
+  background: color-mix(in srgb, var(--academy-navy) 12%, var(--card));
+  border-color: color-mix(in srgb, var(--academy-navy) 30%, var(--border));
+  color: var(--academy-navy);
+}
+
+.mission-cta-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.mission-cta-exam-chip {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--academy-slate);
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+  background: var(--bg-subtle);
+}
+
+.mission-cta-kicker {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--academy-amber);
+  margin: 0 0 0.4rem;
+}
+
+.mission-cta-lead {
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.mission-plan-strip {
+  margin: 0 0 1.1rem;
+  padding: 0.85rem 0.95rem;
+  border-radius: var(--radius-md);
+  background: var(--academy-mist);
+  border: 1px solid color-mix(in srgb, var(--academy-navy) 10%, var(--border));
+}
+
+.mission-plan-strip-meter {
+  display: flex;
+  gap: 0.28rem;
+  margin-bottom: 0.55rem;
+}
+
+.mission-plan-strip-meter > span {
+  flex: 1;
+  height: 4px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--academy-slate) 22%, transparent);
+}
+
+.mission-plan-strip-meter > span.is-done {
+  background: linear-gradient(90deg, var(--academy-navy), var(--academy-amber));
+}
+
+.mission-plan-strip-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.75rem;
+  margin: 0 0 0.25rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.mission-plan-strip-count {
+  color: var(--academy-navy);
+}
+
+.mission-plan-strip-next {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.mission-plan-strip-hint {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
 .checkride-wrap {
   max-width: 560px;
   margin: 0 auto;
   padding-top: 1rem;
   padding-bottom: 5rem;
+}
+
+.checkride-wrap.academy-page {
+  background:
+    radial-gradient(90% 60% at 0% 0%, color-mix(in srgb, var(--academy-amber) 10%, transparent), transparent 55%),
+    radial-gradient(70% 50% at 100% 10%, color-mix(in srgb, var(--academy-navy) 8%, transparent), transparent 50%);
+  border-radius: var(--radius-xl);
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .checkride-badge {
@@ -1264,12 +1409,21 @@ h1 {
 }
 
 .checkride-kind {
-  font-size: 0.75rem;
+  display: inline-flex;
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--muted);
-  margin: 0 0 0.4rem;
+  color: var(--academy-slate);
+  margin: 0 0 0.55rem;
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+  background: var(--bg-subtle);
+}
+
+.checkride-kind[data-kind="oral"] {
+  background: color-mix(in srgb, var(--academy-amber) 14%, var(--card));
+  color: color-mix(in srgb, var(--academy-amber) 75%, var(--academy-ink));
 }
 
 .checkride-prompt {
@@ -1294,6 +1448,48 @@ h1 {
   margin: 0 0 1rem;
 }
 
+.checkride-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0 0 0.65rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--red);
+}
+
+.checkride-live::before {
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--red);
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--red) 55%, transparent);
+  animation: checkride-pulse 1.2s ease-out infinite;
+}
+
+@keyframes checkride-pulse {
+  70% {
+    box-shadow: 0 0 0 10px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .checkride-live::before {
+    animation: none;
+  }
+}
+
+.checkride-panel.is-recording {
+  border-color: color-mix(in srgb, var(--red) 35%, var(--border));
+  box-shadow:
+    var(--shadow-md),
+    0 0 0 1px color-mix(in srgb, var(--red) 12%, transparent);
+}
+
 .checkride-score {
   font-weight: 700;
   color: var(--green);
@@ -1312,12 +1508,38 @@ h1 {
   margin-top: 1.25rem;
 }
 
-.checkride-phase {
-  font-size: clamp(1.75rem, 5vw, 2.25rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
+.checkride-skip {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--academy-slate);
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.55rem;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.checkride-skip:hover {
   color: var(--academy-navy);
-  margin: 0.35rem 0 0.5rem;
+}
+
+.checkride-result-phase {
+  margin: 0.75rem 0 0.5rem;
+}
+
+.checkride-result-phase .phase-badge {
+  font-size: 0.95rem;
+  padding: 0.45rem 0.95rem;
+  letter-spacing: 0.05em;
+}
+
+.checkride-result-brief {
+  margin: 0 0 1.25rem;
+  color: var(--muted);
+  line-height: 1.45;
 }
 
 .checkride-result h1 {
@@ -1345,10 +1567,17 @@ h1 {
     radial-gradient(120% 80% at 100% 0%, color-mix(in srgb, var(--academy-amber) 12%, transparent), transparent 55%),
     linear-gradient(165deg, color-mix(in srgb, var(--card) 88%, var(--blue-bg)) 0%, var(--card) 60%);
   border-color: color-mix(in srgb, var(--academy-navy) 12%, var(--border));
+  gap: var(--academy-space, 1.25rem);
+  padding: 1.35rem 1.4rem 1.45rem;
 }
 
 .home-captain-briefing .cda-hero-label {
   color: var(--academy-amber, var(--accent));
+}
+
+.home-captain-briefing .cda-hero-copy h1 {
+  letter-spacing: -0.02em;
+  font-size: clamp(1.2rem, 3.5vw, 1.4rem);
 }
 
 .btn.purple {

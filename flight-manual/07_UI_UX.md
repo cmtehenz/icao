@@ -10,6 +10,17 @@ Reference feeling: senior helicopter instructor + modern flight academy + premiu
 
 **Visual direction (RFC-004):** flight academy premium — cool slate surfaces, navy primary actions, amber accents, DM Sans typography, generous spacing. Not Duolingo, not purple SaaS, not newspaper layout.
 
+### Home shell (Phase 3)
+
+Home primary block is one composition:
+
+1. Captain briefing (mark + mission title + exam countdown)
+2. Phase badge + exam chip
+3. Plan strip (leg segments + adaptive hint)
+4. One Ready CTA
+
+No duplicate phase copy. Records stay collapsed under the primary flight block.
+
 Never feel like: Duolingo, generic AI chatbot, PDF reader, flashcard app.
 
 ---
