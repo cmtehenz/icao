@@ -36,7 +36,7 @@ function estimatedIcao(): number {
 }
 
 export function buildExamReadiness(): ExamReadiness {
-  const insights = buildDifficultyInsights(5);
+  const insights = buildDifficultyInsights(5, "recent");
   const trends = buildAllTrends(14);
   const part1Trend = trends.find((t) => t.area === "part1");
   const practicedCards = Object.keys(loadPart1CoachHistory()).length;

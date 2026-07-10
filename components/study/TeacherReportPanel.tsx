@@ -80,8 +80,8 @@ export default function TeacherReportPanel() {
         <div>
           <h3>Relatório para o professor</h3>
           <p className="teacher-report-sub">
-            Copie e envie por WhatsApp ou e-mail — pronúncia, Part 1, Part 2 speaking e vocabulário
-            com base nas suas gravações reais.
+            Copie e envie por WhatsApp ou e-mail — focos de hoje vêm das gravações de hoje; detalhes
+            abaixo usam os últimos 7 dias.
           </p>
         </div>
         <div className="teacher-report-actions">
@@ -97,6 +97,11 @@ export default function TeacherReportPanel() {
       {report.focusSummary.length > 0 && (
         <div className="teacher-report-summary">
           <strong>Focos principais hoje</strong>
+          {report.todayEmpty ? (
+            <p className="teacher-report-scope-note">
+              Nenhuma gravação registrada hoje ainda. Os blocos abaixo mostram os últimos 7 dias.
+            </p>
+          ) : null}
           <ol>
             {report.focusSummary.map((line) => (
               <li key={line}>{line}</li>
@@ -104,6 +109,11 @@ export default function TeacherReportPanel() {
           </ol>
         </div>
       )}
+
+      <p className="teacher-report-scope-note">
+        Prática recente (últimos 7 dias) — palavras antigas do banco de pronúncia não entram se você
+        não gravou hoje.
+      </p>
 
       <div className="teacher-report-grid">
         <ReportSection title="Pronúncia" lines={report.pronunciation} />

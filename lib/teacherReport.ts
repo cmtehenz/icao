@@ -1,5 +1,9 @@
 import { CARDS } from "@/lib/cards";
-import { buildDifficultyInsights } from "@/lib/difficultyInsights";
+import {
+  buildDifficultyInsights,
+  withinInsightScope,
+  type InsightScope,
+} from "@/lib/difficultyInsights";
 import { getPart1CoachHistory } from "@/lib/part1CoachHistory";
 import { getWeakPeelBlockIds, peelBlockLabel } from "@/lib/peelBlockHistory";
 import { loadVault } from "@/lib/pronunciationVault";
@@ -19,6 +23,8 @@ export type TeacherReport = {
   part2: TeacherReportLine[];
   vocabulary: TeacherReportLine[];
   focusSummary: string[];
+  /** True when the student has no recordings today — sections use recent window. */
+  todayEmpty: boolean;
   plainText: string;
 };
 
@@ -52,10 +58,13 @@ function genericLines(items: DifficultyItem[]): TeacherReportLine[] {
   }));
 }
 
-function pronunciationLines(limit: number): TeacherReportLine[] {
+function pronunciationLines(limit: number, scope: InsightScope): TeacherReportLine[] {
   const vault = loadVault();
   return vault
     .filter((w) => w.lastAccuracy > 0)
+    .filter((w) =>
+      withinInsightScope(w.lastPracticedAt ?? w.lastSeenAt, scope),
+    )
     .sort((a, b) => {
       const aW = a.lastAccuracy + a.returnCount * 3;
       const bW = b.lastAccuracy + b.returnCount * 3;
@@ -134,10 +143,14 @@ function buildFocusSummary(
   }
 
   if (!lines.length) {
-    lines.push("Ainda poucos dados de gravação — complete Coach Part 1, simulação Part 2 e pronúncia Azure.");
+    lines.push("Ainda sem gravações hoje — complete Coach, Part 2 ou pronúncia para gerar focos.");
   }
 
   return lines;
+}
+
+function hasTodayPractice(): boolean {
+  return buildDifficultyInsights(1, "today").some((area) => area.items.length > 0);
 }
 
 function formatSection(title: string, lines: TeacherReportLine[]): string {
@@ -159,6 +172,9 @@ export function formatTeacherReportPlainText(report: TeacherReport): string {
     year: "numeric",
   });
   const name = report.studentName ? `Aluno: ${report.studentName}\n` : "";
+  const scopeNote = report.todayEmpty
+    ? "Focos de hoje: nenhuma gravação registrada ainda. Seções abaixo = últimos 7 dias."
+    : "Focos de hoje = gravações de hoje. Seções abaixo = últimos 7 dias.";
 
   const summary = report.focusSummary.map((s, i) => `${i + 1}. ${s}`).join("\n");
 
@@ -166,13 +182,14 @@ export function formatTeacherReportPlainText(report: TeacherReport): string {
     "RELATÓRIO ICAO — SDEA Part 1 & Part 2",
     `Data: ${date}`,
     name.trim(),
-    "Baseado em gravações reais (Azure Speech + Coach). Itens não praticados não aparecem.",
+    "Baseado em gravações reais (Azure Speech + Coach). Itens não praticados no período não aparecem.",
+    scopeNote,
     "",
-    formatSection("PRONÚNCIA — palavras mais difíceis", report.pronunciation),
-    formatSection("PART 1 — perguntas mais fracas (Coach)", report.part1),
-    formatSection("PART 2 — speaking (readback / interaction / reported)", report.part2),
-    formatSection("VOCABULÁRIO — termos com menor domínio", report.vocabulary),
-    "RESUMO PARA O PROFESSOR",
+    formatSection("PRONÚNCIA — palavras mais difíceis (7 dias)", report.pronunciation),
+    formatSection("PART 1 — perguntas mais fracas (7 dias)", report.part1),
+    formatSection("PART 2 — speaking (7 dias)", report.part2),
+    formatSection("VOCABULÁRIO — termos com menor domínio (7 dias)", report.vocabulary),
+    report.todayEmpty ? "FOCOS PRINCIPAIS HOJE" : "FOCOS PRINCIPAIS HOJE (gravações de hoje)",
     summary,
     "",
     "— Gerado pelo app ICAO (treino SDEA)",
@@ -182,12 +199,20 @@ export function formatTeacherReportPlainText(report: TeacherReport): string {
 }
 
 export function buildTeacherReport(studentName?: string, itemLimit = 8): TeacherReport {
-  const insights = buildDifficultyInsights(itemLimit);
-  const pronunciation = pronunciationLines(itemLimit);
-  const part1 = part1Lines(insights.find((i) => i.area === "part1")?.items ?? []);
-  const part2 = genericLines(insights.find((i) => i.area === "part2")?.items ?? []);
-  const vocabulary = genericLines(insights.find((i) => i.area === "vocabulary")?.items ?? []);
-  const focusSummary = buildFocusSummary(pronunciation, part1, part2, vocabulary);
+  const todayEmpty = !hasTodayPractice();
+  const todayInsights = buildDifficultyInsights(itemLimit, "today");
+  const recentInsights = buildDifficultyInsights(itemLimit, "recent");
+  const pronunciation = pronunciationLines(itemLimit, "recent");
+  const part1 = part1Lines(recentInsights.find((i) => i.area === "part1")?.items ?? []);
+  const part2 = genericLines(recentInsights.find((i) => i.area === "part2")?.items ?? []);
+  const vocabulary = genericLines(recentInsights.find((i) => i.area === "vocabulary")?.items ?? []);
+
+  const todayPron = pronunciationLines(itemLimit, "today");
+  const todayPart1 = part1Lines(todayInsights.find((i) => i.area === "part1")?.items ?? []);
+  const todayPart2 = genericLines(todayInsights.find((i) => i.area === "part2")?.items ?? []);
+  const todayVocab = genericLines(todayInsights.find((i) => i.area === "vocabulary")?.items ?? []);
+
+  const focusSummary = buildFocusSummary(todayPron, todayPart1, todayPart2, todayVocab);
 
   const generatedAt = new Date().toISOString();
   const base = {
@@ -198,6 +223,7 @@ export function buildTeacherReport(studentName?: string, itemLimit = 8): Teacher
     part2,
     vocabulary,
     focusSummary,
+    todayEmpty,
     plainText: "",
   };
 

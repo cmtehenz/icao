@@ -67,7 +67,10 @@ export function buildFlightDebrief(dateKey = todayKey()): FlightDebriefSummary {
     legs.push({ id: "simulate", label: "Mock Exam", complete: simulate.complete });
   }
 
-  const insights = buildDifficultyInsights(5);
+  const todayInsights = buildDifficultyInsights(5, "today");
+  const insights = todayInsights.some((area) => area.items.length)
+    ? todayInsights
+    : buildDifficultyInsights(5, "recent");
   const scored = insights.filter((i) => i.score != null);
   const strongest =
     [...scored].sort((a, b) => (b.score ?? 0) - (a.score ?? 0))[0] ?? null;

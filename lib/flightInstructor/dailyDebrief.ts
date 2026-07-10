@@ -6,7 +6,10 @@ import { todayKey } from "@/lib/studyTime";
 
 export function buildLocalDailyDebrief(date = todayKey()): DailyDebrief {
   const sessions = sessionsForDate(date);
-  const insights = buildDifficultyInsights(4);
+  const todayInsights = buildDifficultyInsights(4, "today");
+  const insights = todayInsights.some((area) => area.items.length)
+    ? todayInsights
+    : buildDifficultyInsights(4, "recent");
   const next = getNextMissionAction();
 
   const strengths: string[] = [];

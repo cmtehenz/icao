@@ -4,6 +4,15 @@ Manual version history only. Sprint and audit details belong in Git history.
 
 ---
 
+## 3.8 — July 2026
+
+**Teacher report and insights use real practice dates.**
+
+- Difficulty insights filter by today or last 7 days — stale vault words (e.g. old mis-hears) no longer appear as "today's focus"
+- Teacher report: focus summary = today's recordings; detail sections = last 7 days with explicit copy
+
+---
+
 ## 3.7 — July 2026
 
 **Home secondary training strip.**

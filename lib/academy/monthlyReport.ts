@@ -24,7 +24,7 @@ export function buildMonthlyAcademyReport(): MonthlyAcademyReport {
   const improved = trends
     .filter((t) => t.direction === "up")
     .sort((a, b) => (b.delta ?? 0) - (a.delta ?? 0))[0];
-  const insights = buildDifficultyInsights(4);
+  const insights = buildDifficultyInsights(4, "all");
   const weakest = insights.filter((i) => i.score != null).sort((a, b) => (a.score ?? 0) - (b.score ?? 0))[0];
 
   const icaoHist = loadCaptainDeltaMemory().estimatedIcaoHistory.filter((h) =>

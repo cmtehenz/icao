@@ -34,14 +34,14 @@ export default function HomeTrainingInsights() {
     };
   }, [refresh]);
 
-  const insights = useMemo(() => buildDifficultyInsights(3), [tick]);
+  const insights = useMemo(() => buildDifficultyInsights(3, "recent"), [tick]);
 
   return (
     <div className="home-training-insights" aria-label="Training insights">
       <section className="difficulty-insights">
         <h3>Where to focus next</h3>
         <p className="difficulty-insights-sub">
-          Based on your real recordings — unpracticed items are not shown with artificial 0%.
+          Based on your real recordings (last 7 days) — unpracticed items are not shown with artificial 0%.
         </p>
         <div className="difficulty-insights-grid">
           {insights.map((area) => (

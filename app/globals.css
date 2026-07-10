@@ -2605,6 +2605,13 @@ input {
   line-height: 1.45;
 }
 
+.teacher-report-scope-note {
+  margin: 0 0 0.75rem;
+  font-size: 0.74rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
 .teacher-report-actions {
   display: flex;
   flex-wrap: wrap;
