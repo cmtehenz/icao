@@ -16432,5 +16432,2082 @@ export const BATCH01_DEV_ENTRIES: DevKnowledgeEntry[] = [
         "label": "H130 AFM — Emergency Procedures, Smoke / Fire"
       }
     ]
+  },
+  {
+    "catalogId": "0216",
+    "id": "0216",
+    "displayTerm": "Airport Authority",
+    "term": "airport authority",
+    "slug": "airport-authority",
+    "category": "Ground Operations",
+    "meaningEn": "Airport Authority is the organization that operates and manages the aerodrome, including aprons, stands, ground access, and local aerodrome rules; in radiotelephony it refers to that operator when ATC directs the pilot to contact, await, or follow advice from the airport authority rather than from ATC alone.",
+    "meaningPt": "Airport authority / Autoridade aeroportuária (operador do aeródromo).\n\nOrganização que opera e administra o aeródromo, incluindo pátios, posições de estacionamento, acesso de solo e regras locais; na fraseologia, refere-se a esse operador quando o controle orienta o piloto a contatar, aguardar ou seguir orientação da autoridade aeroportuária.",
+    "whenUsed": "When ATC refers you to the airport authority, the pilot should:",
+    "example": "Ground: ANAC123, taxi to the apron, contact airport authority for parking.",
+    "sayPhrase": "ANAC123, taxi to the apron, will contact airport authority for parking.",
+    "icaoQuestion": "After landing, Ground clears you to the apron but tells you to contact airport authority for parking. Explain what you do and why.?",
+    "icaoSpeakText": "I would read back the taxi clearance and the instruction to contact airport authority. I would taxi to the apron as cleared, then contact the airport authority for the parking assignment before occupying a stand. ATC controls the taxi movement, but the airport authority assigns the stand. If I am unsure whether I may enter a specific apron sector, I would hold position and confirm rather than assume. After receiving the parking position, I would advise Ground of my final parking so traffic awareness remains shared.",
+    "missionBrief": "Today's lesson covers Airport Authority — the aerodrome operator responsible for airport infrastructure, apron management, ground access, and operational permissions that sit outside ATC clearances alone.\n\nAirport Authority is not the tower. Controllers manage air traffic; the airport authority manages the aerodrome as a facility — stands, gates, cargo areas, construction permits, and local operating rules. Pilots often hear \"contact airport authority,\" \"await airport authority,\" or \"airport authority advises\" when a ground issue needs the operator, not a taxi clearance.\n\nFor H130 helicopter training academy operations at Congonhas, Guarulhos, Santos Dumont, Curitiba, and Florianópolis, you may need airport authority for parking assignment, apron access after hours, temporary helipad use, or coordination when a stand is blocked. Understanding the distinction between ATC and airport authority keeps radio work clean and avoids asking tower for decisions they do not own.\n\nThis lesson builds Part 2 proficiency in recognizing, acknowledging, and correctly routing communications that involve the airport authority.",
+    "captainTeaching": "Airport authority is the landlord of the aerodrome.\n\nATC owns the sky and the maneuvering area clearances. The airport authority owns how the facility is used — which stand is open, which apron sector is closed, which temporary pad is available for a helicopter.\n\nBrazilian pilots sometimes treat tower as the answer to every ground question. That creates friction. Tower cannot invent a stand that the operator has closed. Tower cannot authorize overnight parking against local rules.\n\nWhen you hear \"contact airport authority,\" treat it as part of the clearance chain, not as optional paperwork. Complete the coordination, then update ATC with your status.\n\nIn academy operations, you will often park at known training stands. Still listen. Temporary works, VIP movements, or cargo overflow can change the plan at Congonhas or Guarulhos without warning.\n\nClear roles. Clear radio. Clear parking.",
+    "operationalContext": "You have landed at Santos Dumont in the H130 after a training sector. Ground clears you to the apron via Alpha.\n\nGround: ANAC123, taxi to the apron via Alpha, contact airport authority for parking assignment.\n\nYou read back the taxi route and the instruction to contact airport authority. You taxi carefully, hold short of the unmarked stand area if needed, and obtain the parking position from the operator. Then you advise Ground you are parking as assigned.\n\nTower managed the movement. Airport authority managed the stand. Both pieces were required.",
+    "sayItCoach": "ANAC123, taxi to the apron, will contact airport authority for parking.",
+    "icaoModelAnswer": "I would read back the taxi clearance and the instruction to contact airport authority. I would taxi to the apron as cleared, then contact the airport authority for the parking assignment before occupying a stand. ATC controls the taxi movement, but the airport authority assigns the stand. If I am unsure whether I may enter a specific apron sector, I would hold position and confirm rather than assume. After receiving the parking position, I would advise Ground of my final parking so traffic awareness remains shared.",
+    "memoryTrick": "**AUTHORITY** — **A**TC clears movement, **U**se operator for stands, **T**axi only as cleared, **H**old if parking unsure, **O**bey apron restrictions, **R**eport final parking to Ground, **I**dentify closed stands early, **T**reat tower and authority as different roles, **Y**ou need both for a complete arrival.",
+    "operationalMeaning": "When ATC refers you to the airport authority, the pilot should:\n\nAirport authority involvement commonly covers:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Ground: ANAC123, taxi to the apron, contact airport authority for parking.",
+      "Tower: ANAC123, hold position, await airport authority approval for stand occupancy.",
+      "Ground: ANAC123, airport authority advises stand Bravo two closed, expect reassignment.",
+      "Apron: ANAC123, contact airport authority on one two one decimal seven for handling.",
+      "Ground: ANAC123, taxi via Charlie, airport authority reports works on the east apron."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, taxi to the apron, will contact airport authority for parking.",
+      "ANAC123, holding position, awaiting airport authority approval.",
+      "ANAC123, stand Bravo two closed, standing by for reassignment.",
+      "ANAC123, contacting airport authority one two one decimal seven.",
+      "ANAC123, taxi via Charlie, works on the east apron copied."
+    ],
+    "brazilianMistakes": "- ❌ Asking tower to assign a stand when told to contact airport authority.  \n  ✔ Follow the instruction: contact the operator for parking, then update ATC.\n\n- ❌ Occupying any free-looking stand after a taxi-to-apron clearance.  \n  ✔ Wait for parking assignment when airport authority coordination is required.\n\n- ❌ Leaving Ground frequency without acknowledging the authority contact.  \n  ✔ Read back both the taxi route and the contact instruction.\n\n- ❌ Treating airport authority advice as optional local information.  \n  ✔ Treat operator restrictions as binding for apron and stand use.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Contact Airport Authority for Parking\n\n**Pronunciation:** AY-nak WUN TOO THREE, KON-takt AIR-port uh-THOR-ih-tee for PARK-ing\n\n**Word Stress**\n\n- Contact → KON-takt\n- Airport → AIR-port\n- Authority → uh-THOR-ih-tee (stress on second syllable)\n- Parking → PARK-ing\n\nPractice:\n\nContact airport authority... for parking.\n\nTogether:\n\nANAC123, taxi to the apron, will contact airport authority for parking.",
+    "relatedConcepts": [
+      "Taxi to Ramp",
+      "Taxi to Gate",
+      "Approved Taxi",
+      "Return to Parking",
+      "Work in Progress",
+      "Airport Operations Closed"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Aerodrome Control and Apron Management",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 14 — Aerodromes"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Airport/Apron Management Local Procedures — Congonhas, Guarulhos, SDU"
+      },
+      {
+        "label": "H130 AFM — Normal Procedures, Ground Operations"
+      },
+      {
+        "label": "SKYbrary — Apron Management",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0217",
+    "id": "0217",
+    "displayTerm": "Work in Progress",
+    "term": "work in progress",
+    "slug": "work-in-progress",
+    "category": "Ground Operations",
+    "meaningEn": "Work in Progress is an aerodrome condition in which construction, maintenance, or temporary works are active on or adjacent to the movement area; in radiotelephony it is an advisory or restriction warning pilots of workers, vehicles, displaced routes, or unavailable surfaces.",
+    "meaningPt": "Work in progress / Obras em andamento (WIP).\n\nCondição do aeródromo em que construção, manutenção ou trabalhos temporários estão ativos na área de movimento ou adjacente a ela; na fraseologia, é aviso ou restrição alertando sobre trabalhadores, veículos, rotas deslocadas ou superfícies indisponíveis.",
+    "whenUsed": "When WIP is advised, the pilot should:",
+    "example": "Ground: ANAC123, taxi via Alpha, work in progress left of Alpha, taxi with caution.",
+    "sayPhrase": "ANAC123, taxi via Alpha, work in progress, taxi with caution.",
+    "icaoQuestion": "Ground clears you via Alpha with work in progress left of the taxiway. What do you do operationally and on the radio?",
+    "icaoSpeakText": "I would read back the taxi clearance including the work-in-progress caution. I would reduce taxi speed, keep clear of the works side, and watch for vehicles and personnel. I would stay strictly on the cleared taxiway and not pass barriers or cones. If the works make the route unclear or unsafe for rotor clearance, I would stop and request an alternate route from Ground. I would not invent a shortcut around the construction area.",
+    "missionBrief": "Today's lesson covers Work in Progress — ATC and aerodrome advice that construction, maintenance, or temporary works are active on or near a taxiway, apron, runway strip, or other movement area.\n\nWork in Progress (WIP) changes the picture you briefed from the charts. Painted lines may be displaced, shoulders may be soft, vehicles and workers may be present, and published taxi routes may be unavailable. The phrase is a hazard alert and often a route constraint.\n\nFor H130 helicopter training academy operations at Congonhas, Florianópolis, Curitiba, Santos Dumont, and Guarulhos, WIP near taxiways and aprons demands extra rotor clearance, reduced taxi speed, and strict compliance with revised routes. Hover taxi near works can throw debris and endanger personnel.\n\nThis lesson builds Part 2 proficiency in hearing WIP advisories, reading them back, and adjusting taxi plans without improvising through closed areas.",
+    "captainTeaching": "Work in progress is temporary — and temporary is where crews get complacent.\n\nYou briefed the airport yesterday. Today Alpha has cones. The chart in your head is already wrong.\n\nListen for WIP on first contact and on taxi clearance. Pair it with \"taxi with caution\" when both are given. The caution is the attitude; the WIP is the reason.\n\nBrazilian aerodromes under renovation can change weekly. Congonhas and Guarulhos often run parallel works. Do not assume yesterday's route is today's route.\n\nFor helicopters, the danger is not only collision with a barrier. Downwash can lift gravel into the rotor system and toward workers. Stay on hard surface. Stay on the clearance.\n\nIf the works make your route ambiguous, stop and ask. Ambiguity on the ground is cheaper to fix by radio than by metal.",
+    "operationalContext": "You are ready to taxi at Congonhas after startup in the H130.\n\nGround: ANAC123, taxi to holding point runway one seven Left via Alpha and Bravo, work in progress left of Alpha, taxi with caution.\n\nYou read back the full route and the WIP caution. You keep left-side clearance, slow the taxi, and watch for vehicles exiting the works area. You do not drift toward the cones to \"save distance.\"\n\nAt the holding point you are ready, informed, and still on the cleared pavement.",
+    "sayItCoach": "ANAC123, taxi via Alpha, work in progress, taxi with caution.",
+    "icaoModelAnswer": "I would read back the taxi clearance including the work-in-progress caution. I would reduce taxi speed, keep clear of the works side, and watch for vehicles and personnel. I would stay strictly on the cleared taxiway and not pass barriers or cones. If the works make the route unclear or unsafe for rotor clearance, I would stop and request an alternate route from Ground. I would not invent a shortcut around the construction area.",
+    "memoryTrick": "**WIP** — **W**atch workers and vehicles, **I**nsist on the cleared route only, **P**rotect rotors from debris and downwash hazards.",
+    "operationalMeaning": "When WIP is advised, the pilot should:\n\nWork in Progress commonly involves:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Ground: ANAC123, taxi via Alpha, work in progress left of Alpha, taxi with caution.",
+      "Tower: ANAC123, hold short of Bravo, work in progress, vehicles crossing.",
+      "Ground: ANAC123, Alpha closed due work in progress, taxi via Charlie to the apron.",
+      "Tower: ANAC123, air-taxi to the helipad, work in progress east side, remain west.",
+      "Ground: ANAC123, continue taxi, work in progress near stand five, give way to vehicles."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, taxi via Alpha, work in progress, taxi with caution.",
+      "ANAC123, holding short of Bravo, work in progress, vehicles crossing.",
+      "ANAC123, Alpha closed, taxi via Charlie to the apron.",
+      "ANAC123, air-taxi to the helipad, remain west of works.",
+      "ANAC123, continue taxi, give way to vehicles near stand five."
+    ],
+    "brazilianMistakes": "- ❌ Reading back the route but omitting the WIP caution when it was part of the instruction.  \n  ✔ Include work in progress or taxi with caution when ATC included it.\n\n- ❌ Crossing cones or temporary barriers to reach a familiar stand.  \n  ✔ Request a revised clearance; never self-clear through works.\n\n- ❌ Hover-taxiing close to gravel and open works with strong downwash.  \n  ✔ Use ground taxi or a wider path; protect personnel and the rotor system.\n\n- ❌ Assuming a NOTAM from last week still matches today's WIP location.  \n  ✔ Treat real-time ATC advice as the current truth.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Taxi via Alpha, Work in Progress, Taxi with Caution\n\n**Pronunciation:** AY-nak WUN TOO THREE, TAK-see VY-uh AL-fuh, WURK in PRO-gress, TAK-see with KAW-shun\n\n**Word Stress**\n\n- Work → WURK\n- Progress → PRO-gress (noun stress on first)\n- Caution → KAW-shun\n- Taxi → TAK-see\n\nPractice:\n\nWork in progress... taxi with caution.\n\nTogether:\n\nANAC123, taxi via Alpha, work in progress, taxi with caution.",
+    "relatedConcepts": [
+      "Taxi with Caution",
+      "Airport Authority",
+      "Airport Operations Closed",
+      "Debris on Taxiway",
+      "FOD Reported",
+      "Approved Taxi"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Aerodrome Control",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 14 — Aerodromes, Works on the Movement Area"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "AIP/NOTAM Brazil — Temporary Aerodrome Works"
+      },
+      {
+        "label": "SKYbrary — Aerodrome Works / WIP",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "H130 AFM — Ground Operations, Rotor Clearance"
+      }
+    ]
+  },
+  {
+    "catalogId": "0218",
+    "id": "0218",
+    "displayTerm": "Airport Operations Closed",
+    "term": "airport operations closed",
+    "slug": "airport-operations-closed",
+    "category": "Ground Operations",
+    "meaningEn": "Airport Operations Closed means the aerodrome or its normal aircraft operations are unavailable for landing, takeoff, or ground movement as published or as advised by ATC/airport authority, requiring pilots to hold, divert, delay, or await reopening.",
+    "meaningPt": "Airport operations closed / Operações do aeroporto encerradas / aeródromo fechado.\n\nSignifica que o aeródromo ou suas operações normais de aeronaves estão indisponíveis para pouso, decolagem ou movimento de solo conforme publicado ou avisado pelo controle/autoridade aeroportuária, exigindo espera, desvio, atraso ou aguardo da reabertura.",
+    "whenUsed": "When airport operations are closed, the pilot should:",
+    "example": "Approach: ANAC123, airport operations closed, advise intentions.",
+    "sayPhrase": "ANAC123, airport operations closed, standing by with intentions.",
+    "icaoQuestion": "You are inbound and ATC advises airport operations closed. What do you communicate and what do you decide?",
+    "icaoSpeakText": "I would acknowledge that airport operations are closed and immediately review fuel, alternate aerodromes, and whether holding is realistic. I would advise ATC of my intentions clearly — for example request diversion to the alternate, or request holding only if fuel allows and a reopening time is known. I would not continue an approach into a closed airport for training purposes. If the situation became urgent due to fuel, I would declare the appropriate emergency and request priority assistance.",
+    "missionBrief": "Today's lesson covers Airport Operations Closed — the condition or advisory that the aerodrome, or a significant part of its operations, is not available for normal aircraft movements.\n\n\"Airport operations closed\" is stronger than a single taxiway WIP notice. It may mean the airport is closed, the runway complex is unavailable, night operations have ended, or a temporary total stop of movements is in force. Pilots must not treat it as a soft suggestion.\n\nFor H130 helicopter training academy flights into Congonhas, Guarulhos, Santos Dumont, Curitiba, and Florianópolis, closure can follow weather below minima, an incident, VIP restriction, or published operating hours. Helicopters sometimes have more flexibility with alternate pads — but only with clearance and a legal destination. Closed means closed until ATC or the authority says otherwise.\n\nThis lesson builds Part 2 proficiency in understanding closure advisories, requesting intentions, and communicating diversion or delay plans clearly.",
+    "captainTeaching": "Closed is a hard word. Treat it as hard.\n\nStudents sometimes hear \"closed\" and still ask for a visual approach \"to take a look.\" That wastes frequency time and reveals weak decision-making.\n\nWhen operations are closed, your job is intentions: hold, divert, return, or shut down plans for departure. Say it cleanly. Give fuel state if relevant. Give souls on board if the situation is abnormal.\n\nBrazilian coastal weather and busy terminals like Congonhas can flip from open to restricted quickly. Build alternates into every academy cross-country. The H130's range is finite — closure plus indecision equals fuel pressure.\n\nIf ATC says reopening in thirty minutes, that is information, not a clearance to arrive in twenty-nine. Plan margins. Fuel, alternate, and passenger plan come before hope.\n\nWhen the field closes on a training day, the professional move is an early divert call — not a long silence while you wait for a miracle reopen.\n\nProfessional pilots respect closed. Amateurs argue with it.",
+    "operationalContext": "You are inbound to Florianópolis in the H130 after a cross-country training leg. Weather has deteriorated and an incident has stopped movements.\n\nApproach: ANAC123, Florianópolis airport operations closed, expect further delay, advise intentions.\n\nYou acknowledge. You check fuel and alternates. You do not continue the approach hoping for a last-minute opening.\n\nYou reply with a clear intention: divert to Curitiba or hold only if fuel and ATC allow. The closed status forced an early, professional decision.",
+    "sayItCoach": "ANAC123, airport operations closed, request diversion to Curitiba.",
+    "icaoModelAnswer": "I would acknowledge that airport operations are closed and immediately review fuel, alternate aerodromes, and whether holding is realistic. I would advise ATC of my intentions clearly — for example request diversion to the alternate, or request holding only if fuel allows and a reopening time is known. I would not continue an approach into a closed airport for training purposes. If the situation became urgent due to fuel, I would declare the appropriate emergency and request priority assistance.",
+    "memoryTrick": "**CLOSED** — **C**onfirm the advisory, **L**ist fuel and alternates, **O**ffer clear intentions, **S**top hoping for a training look, **E**xecute divert or hold early, **D**o not self-exempt the helicopter.",
+    "operationalMeaning": "When airport operations are closed, the pilot should:\n\nAirport operations closed may result from:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, airport operations closed, advise intentions.",
+      "Tower: ANAC123, negative, airport operations closed, remain clear of the control zone if unable to hold.",
+      "Ground: ANAC123, airport operations closed until further notice, expect no departure.",
+      "Approach: ANAC123, Florianópolis closed due incident, divert approved to Curitiba as requested.",
+      "Tower: ANAC123, airport reopening in three zero minutes, expect delay."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, airport operations closed, standing by with intentions.",
+      "ANAC123, roger, airport closed, remaining clear, request diversion.",
+      "ANAC123, airport operations closed, cancelling departure, request taxi to parking.",
+      "ANAC123, diverting to Curitiba, request vectors / flight plan change as required.",
+      "ANAC123, reopening in three zero minutes copied, request hold."
+    ],
+    "brazilianMistakes": "- ❌ Continuing the approach after hearing the airport is closed \"to see the runway.\"  \n  ✔ Acknowledge closure and state hold or divert intentions.\n\n- ❌ Assuming helicopters are exempt from aerodrome closure.  \n  ✔ Confirm any helipad exception explicitly; do not self-exempt.\n\n- ❌ Delaying the diversion decision until fuel is critical.  \n  ✔ Decide early while options and fuel margins still exist.\n\n- ❌ Asking repeatedly for landing clearance instead of stating intentions.  \n  ✔ One clear intention update beats multiple hopeful requests.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Airport Operations Closed, Request Diversion\n\n**Pronunciation:** AY-nak WUN TOO THREE, AIR-port op-uh-RAY-shunz KLOHZD, reh-KWEST dye-VUR-zhun\n\n**Word Stress**\n\n- Airport → AIR-port\n- Operations → op-uh-RAY-shunz\n- Closed → KLOHZD\n- Diversion → dye-VUR-zhun\n\nPractice:\n\nAirport operations closed... request diversion.\n\nTogether:\n\nANAC123, airport operations closed, request diversion to Curitiba.",
+    "relatedConcepts": [
+      "Airport Authority",
+      "Work in Progress",
+      "Wreckage on Runway",
+      "Runway Excursion",
+      "Diversion",
+      "Holding"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Aerodrome Closure / Diversion",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 11 / Annex 14 — ATS and Aerodrome Availability"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "AIP Brazil — Aerodrome Operating Hours and NOTAMs"
+      },
+      {
+        "label": "SKYbrary — Diversion",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "H130 AFM — Fuel Planning, Emergency Procedures"
+      }
+    ]
+  },
+  {
+    "catalogId": "0219",
+    "id": "0219",
+    "displayTerm": "Cargo Apron",
+    "term": "cargo apron",
+    "slug": "cargo-apron",
+    "category": "Ground Operations",
+    "meaningEn": "Cargo Apron is the aerodrome apron area designated for cargo and freighter operations and associated ground handling; in radiotelephony it identifies that location in taxi clearances, hold instructions, and traffic advisories.",
+    "meaningPt": "Cargo apron / Pátio de carga.\n\nÁrea de pátio do aeródromo destinada a operações de carga e freighters e ao handling associado; na fraseologia, identifica esse local em autorizações de táxi, instruções de espera e avisos de tráfego.",
+    "whenUsed": "When the cargo apron appears in your clearance or advisory, the pilot should:",
+    "example": "Ground: ANAC123, taxi to the cargo apron via Alpha and Delta.",
+    "sayPhrase": "ANAC123, taxi to the cargo apron via Alpha and Delta.",
+    "icaoQuestion": "Ground tells you to remain clear of the cargo apron and taxi via Bravo to GA parking. What does that mean and how do you respond?",
+    "icaoSpeakText": "It means I must not enter the cargo apron area and must follow Bravo to general aviation parking. I would read back remaining clear of the cargo apron and the taxi route via Bravo. Operationally I would keep the cargo sector boundary in sight, watch for freighter and vehicle traffic, and not use the cargo apron as a shortcut even if it looks empty. If Bravo became blocked, I would stop and request a new clearance instead of entering the cargo apron on my own.",
+    "missionBrief": "Today's lesson covers Cargo Apron — the apron area dedicated to cargo aircraft, freighter stands, and freight handling, and the ATC phraseology used when taxiing to, via, or clear of that area.\n\nThe cargo apron is often separate from the passenger terminal apron. It may have different taxi routes, heavier ground vehicle traffic, high loaders, and freighter wingspans that change your see-and-avoid picture. Pilots may be cleared to the cargo apron, told to give way to traffic from the cargo apron, or instructed to remain clear of it.\n\nFor H130 helicopter training academy operations, you will rarely park on a cargo apron for freight work, but you will share Guarulhos, Congonhas-area complexes, and other Brazilian airports where cargo sectors sit beside general aviation and training routes. Knowing the phrase keeps taxi clearances precise.\n\nThis lesson builds Part 2 proficiency for cargo-apron clearances, advisories, and readbacks.",
+    "captainTeaching": "Cargo apron is geography with consequences.\n\nFreighters are large. Their tugs are busy. Their stands attract vehicles that do not always see a small helicopter the way tower sees you on radar.\n\nWhen ATC says cargo apron, paint that sector on your mental map. When ATC says remain clear, treat the boundary like a hold-short line.\n\nAcademy pilots sometimes translate every apron word as \"pátio\" and lose the specificity. Cargo apron is not the passenger ramp. Say the full phrase in the readback.\n\nIn the H130, downwash near loose freight and empty pallets is a real FOD and injury risk. If you must air-taxi near that sector, keep height and distance disciplined — or request ground taxi.\n\nPrecision in place names is Part 2 maturity.",
+    "operationalContext": "You are taxiing at Guarulhos after a positioning flight in the H130. Ground needs you clear of a freighter pushback.\n\nGround: ANAC123, hold short of the cargo apron, traffic pushing from stand six.\n\nYou hold. You watch the freighter and the tug. When cleared, you continue to your assigned GA parking without cutting through the cargo sector.\n\nThe words \"cargo apron\" kept you out of a conflict you might not have seen early enough from the helicopter cockpit.",
+    "sayItCoach": "ANAC123, holding short of the cargo apron, freighter traffic in sight.",
+    "icaoModelAnswer": "It means I must not enter the cargo apron area and must follow Bravo to general aviation parking. I would read back remaining clear of the cargo apron and the taxi route via Bravo. Operationally I would keep the cargo sector boundary in sight, watch for freighter and vehicle traffic, and not use the cargo apron as a shortcut even if it looks empty. If Bravo became blocked, I would stop and request a new clearance instead of entering the cargo apron on my own.",
+    "memoryTrick": "**CARGO** — **C**lear of freighter stands unless cleared in, **A**cknowledge the full place name, **R**espect vehicle density, **G**ive way when advised, **O**mit shortcuts through the cargo sector.",
+    "operationalMeaning": "When the cargo apron appears in your clearance or advisory, the pilot should:\n\nCargo apron communications commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Ground: ANAC123, taxi to the cargo apron via Alpha and Delta.",
+      "Ground: ANAC123, hold short of the cargo apron, freighter traffic pushing.",
+      "Tower: ANAC123, give way to traffic from the cargo apron.",
+      "Ground: ANAC123, remain clear of the cargo apron, taxi via Bravo to GA parking.",
+      "Apron: ANAC123, continue to stand Charlie, cargo apron vehicles crossing ahead."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, taxi to the cargo apron via Alpha and Delta.",
+      "ANAC123, holding short of the cargo apron.",
+      "ANAC123, giving way to traffic from the cargo apron.",
+      "ANAC123, remaining clear of the cargo apron, taxi via Bravo to GA parking.",
+      "ANAC123, continue to stand Charlie, vehicles crossing copied."
+    ],
+    "brazilianMistakes": "- ❌ Reading back only \"taxi to the apron\" when ATC said \"cargo apron.\"  \n  ✔ Repeat cargo apron — the destination type matters.\n\n- ❌ Cutting through the cargo apron to shorten the route to GA parking.  \n  ✔ Remain clear when instructed; request a revised route if needed.\n\n- ❌ Ignoring freighter pushback advisories near the cargo sector.  \n  ✔ Hold short and give way as cleared; freighter geometry needs space.\n\n- ❌ Air-taxiing low over cargo handling with strong downwash.  \n  ✔ Protect ground staff and loose materials; request a safer taxi method.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Hold Short of the Cargo Apron\n\n**Pronunciation:** AY-nak WUN TOO THREE, HOHLD SHORT uv thuh KAR-goh AY-prun\n\n**Word Stress**\n\n- Hold → HOHLD\n- Short → SHORT\n- Cargo → KAR-goh\n- Apron → AY-prun\n\nPractice:\n\nHold short... of the cargo apron.\n\nTogether:\n\nANAC123, holding short of the cargo apron, freighter traffic in sight.",
+    "relatedConcepts": [
+      "Taxi to Ramp",
+      "Taxi to Gate",
+      "Give Way to Aircraft",
+      "Airport Authority",
+      "Approved Taxi",
+      "Tow Truck"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Apron and Taxi Phraseology",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 14 — Aprons"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Local Apron Management — Guarulhos / Congonhas"
+      },
+      {
+        "label": "SKYbrary — Apron Safety",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "H130 AFM — Ground Taxi / Air Taxi"
+      }
+    ]
+  },
+  {
+    "catalogId": "0220",
+    "id": "0220",
+    "displayTerm": "Debris on Taxiway",
+    "term": "debris on taxiway",
+    "slug": "debris-on-taxiway",
+    "category": "Airport Operations",
+    "meaningEn": "Debris on Taxiway means loose objects, fragments, or materials are present on a taxiway surface in a way that may damage aircraft, injure personnel, or require taxiway avoidance, inspection, or closure until the area is cleared.",
+    "meaningPt": "Debris on taxiway / Detritos / objetos na taxiway.\n\nSignifica que objetos soltos, fragmentos ou materiais estão presentes na superfície de uma taxiway de forma que podem danificar aeronaves, ferir pessoas ou exigir desvio, inspeção ou interdição até a área ser limpa.",
+    "whenUsed": "When debris is reported or observed on a taxiway, the pilot should:",
+    "example": "Ground: ANAC123, Alpha closed, debris on taxiway, taxi via Bravo.",
+    "sayPhrase": "ANAC123, Alpha closed, taxi via Bravo.",
+    "icaoQuestion": "While taxiing you see a piece of metal on the taxiway centerline. What do you do and what do you say?",
+    "icaoSpeakText": "I would stop the aircraft immediately and avoid taxiing over the object. I would report to Ground with my position and a short description — for example metal debris on the taxiway centerline abeam a known reference. I would request an alternate taxi route and would not use hover taxi over the debris because downwash could lift it into the rotors or toward people. I would wait for ATC instructions and continue only on a cleared route.",
+    "missionBrief": "Today's lesson covers Debris on Taxiway — the report or advisory that foreign objects, loose materials, or other debris are present on a taxiway and may damage aircraft or endanger ground operations.\n\nDebris on a taxiway is an immediate ground hazard. It can puncture tires, damage skids or wheels, and — for helicopters — become lethal FOD in the rotor system. ATC may advise debris, close a taxiway, or ask you to report whether the path is clear. Pilots must also know how to report debris they see first.\n\nFor H130 helicopter training academy operations at Congonhas, Santos Dumont, Curitiba, Florianópolis, and Guarulhos, taxiway debris is high priority: downwash can lift objects you did not notice at idle. Part 2 phraseology and Part 3 speaking both test clear hazard reporting and safe decision-making.\n\nUnderstanding how to report, avoid, and respond to debris on the taxiway is essential for ICAO proficiency and real apron safety.",
+    "captainTeaching": "Debris is small until it is inside your aircraft.\n\nOn a jet, it is often tires and engines. On the H130, it is the entire rotor system and anything downwash can throw.\n\nIf you see it, report it with location and a short description: metal strip, plastic bag, gravel pile. Do not write a novel. Do not stay silent.\n\nIf ATC advises debris, treat the taxiway as contaminated until told clear. Revised routing is not an inconvenience — it is the fix.\n\nPart 3 examiners like this topic because it tests plain English under operational pressure: what you saw, where, and what you did. Keep structure: observe, stop, report, comply with new clearance.\n\nNever blow debris away with collective. That is how one problem becomes many.",
+    "operationalContext": "You are taxiing via Alpha at Congonhas in the H130 toward the holding point.\n\nAhead you see a metal strip on the centerline. You stop.\n\nYou call Ground and report debris on Alpha abeam the fire station. Ground stops other traffic, sends a vehicle, and clears you via Bravo.\n\nYou did not hover over it. You did not pretend it was \"probably nothing.\" You protected the rotorcraft and the airport.",
+    "sayItCoach": "ANAC123, debris on taxiway Alpha centerline, holding position, request alternate taxi.",
+    "icaoModelAnswer": "I would stop the aircraft immediately and avoid taxiing over the object. I would report to Ground with my position and a short description — for example metal debris on the taxiway centerline abeam a known reference. I would request an alternate taxi route and would not use hover taxi over the debris because downwash could lift it into the rotors or toward people. I would wait for ATC instructions and continue only on a cleared route.",
+    "memoryTrick": "**DEBRIS** — **D**etect and stop, **E**xplain location briefly, **B**lock the urge to hover over it, **R**equest alternate route, **I**nform ATC immediately, **S**tay clear until inspected.",
+    "operationalMeaning": "When debris is reported or observed on a taxiway, the pilot should:\n\nDebris on taxiway commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Ground: ANAC123, Alpha closed, debris on taxiway, taxi via Bravo.",
+      "Tower: ANAC123, taxi with caution, debris reported on Charlie, inspection in progress.",
+      "Ground: ANAC123, hold position, debris on taxiway ahead, vehicle en route.",
+      "Ground: ANAC123, confirm taxiway Alpha clear of debris from your position.",
+      "Tower: ANAC123, vacate via Delta, Alpha closed due debris."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, Alpha closed, taxi via Bravo.",
+      "ANAC123, taxi with caution, debris on Charlie copied.",
+      "ANAC123, holding position, debris ahead.",
+      "ANAC123, Alpha not clear, debris on centerline abeam fire station.",
+      "ANAC123, vacating via Delta, Alpha closed."
+    ],
+    "brazilianMistakes": "- ❌ Seeing debris and continuing because \"it looks light.\"  \n  ✔ Stop, report, and request another route.\n\n- ❌ Trying to blow debris aside with rotor downwash.  \n  ✔ Never use downwash as a broom; it creates uncontrolled FOD.\n\n- ❌ Reporting \"something on the taxiway\" with no location.  \n  ✔ Give taxiway name and a clear position reference.\n\n- ❌ Hover-taxiing across a debris advisory area to save time.  \n  ✔ Ground taxi or reroute; protect the rotor system.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Debris on Taxiway Alpha, Holding Position\n\n**Pronunciation:** AY-nak WUN TOO THREE, deh-BREE on TAK-see-way AL-fuh, HOHL-ding puh-ZISH-un\n\n**Word Stress**\n\n- Debris → deh-BREE (stress on second)\n- Taxiway → TAK-see-way\n- Holding → HOHL-ding\n- Position → puh-ZISH-un\n\nPractice:\n\nDebris on taxiway Alpha... holding position.\n\nTogether:\n\nANAC123, debris on taxiway Alpha centerline, holding position, request alternate taxi.",
+    "relatedConcepts": [
+      "FOD Reported",
+      "Taxi with Caution",
+      "Work in Progress",
+      "Wreckage on Runway",
+      "Aircraft Stuck on Taxiway",
+      "Airport Authority"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Aerodrome Hazards / Pilot Reports",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 14 — Movement Area Condition"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "SKYbrary — FOD (Foreign Object Debris)",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Ground Operations / FOD",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "H130 AFM — Ground Operations, Rotor Safety"
+      }
+    ]
+  },
+  {
+    "catalogId": "0221",
+    "id": "0221",
+    "displayTerm": "Wreckage on Runway",
+    "term": "wreckage on runway",
+    "slug": "wreckage-on-runway",
+    "category": "Airport Operations",
+    "meaningEn": "Wreckage on Runway means aircraft wreckage or major accident-related debris is present on the runway surface, rendering the runway unsafe or closed for landing and takeoff until rescue, investigation, and removal allow reopening.",
+    "meaningPt": "Wreckage on runway / Destroços / destroços na pista.\n\nSignifica que destroços de aeronave ou grandes detritos relacionados a um acidente estão na superfície da pista, tornando-a insegura ou fechada para pouso e decolagem até que o resgate, a investigação e a remoção permitam a reabertura.",
+    "whenUsed": "When wreckage is reported on the runway, the pilot should:",
+    "example": "Tower: ANAC123, go around, wreckage on the runway, runway closed.",
+    "sayPhrase": "ANAC123, going around, runway closed.",
+    "icaoQuestion": "On final, tower tells you there is wreckage on the runway and to go around. What do you do and how do you continue the communication?",
+    "icaoSpeakText": "I would execute an immediate go-around and follow the missed approach procedure or ATC vectors. I would read back going around and that the runway is closed. After cleaning up the aircraft and establishing a safe climb, I would advise intentions based on fuel and alternates — for example request holding if a short delay is realistic, or request diversion if the runway will remain closed. I would not continue toward the wreckage for a closer look and I would stay clear of the emergency response area.",
+    "missionBrief": "Today's lesson covers Wreckage on Runway — the critical advisory that aircraft wreckage, major debris from an accident, or related obstruction is on the runway, making the runway unusable until inspected and cleared.\n\nThis is critical language. Wreckage on the runway stops landings and takeoffs. Go-arounds, holds, diversions, and runway closures follow immediately. There is no \"continue and have a look\" for training traffic.\n\nFor H130 helicopter training academy operations into Congonhas, Guarulhos, Santos Dumont, Curitiba, and Florianópolis, a wreckage event may close the runway while helipads or alternate aerodromes remain options — only with ATC clearance. Part 2 phraseology and Part 3 speaking both demand calm, precise communication under pressure.\n\nUnderstanding how to acknowledge, go around, divert, and describe intentions when wreckage is on the runway is essential for ICAO Level 4 performance and real emergency discipline.",
+    "captainTeaching": "Wreckage on the runway is a red-line event.\n\nThe landing is over. The takeoff is over. The plan rebuilds from fuel, weather, and ATC capacity.\n\nSay the readback short: going around, runway closed. Then think. Then state intentions.\n\nPart 3 wants structure under stress: what happened, what you did, what you will do next. Keep emotion out of the microphone. Keep passengers informed later on the cabin side — not by blocking tower with long stories.\n\nBrazilian major airports can close one runway and keep another — or close everything. Listen for which. Do not assume the parallel is open.\n\nIn the H130 you may be offered a helipad. Ask whether the approach path conflicts with RFF. Accept only a clear, authorized option.\n\nCritical English is short English.",
+    "operationalContext": "You are on final for runway one seven Left at Congonhas in the H130.\n\nTower: ANAC123, go around, wreckage on the runway, runway closed.\n\nYou go around immediately. You do not continue to \"confirm visually.\"\n\nTower asks intentions. You have fuel for Curitiba. You request diversion. Approach vectors you away from the emergency site. RFF is on the runway. Your job is to leave them the sky they need.",
+    "sayItCoach": "ANAC123, going around, runway closed, request vectors for diversion.",
+    "icaoModelAnswer": "I would execute an immediate go-around and follow the missed approach procedure or ATC vectors. I would read back going around and that the runway is closed. After cleaning up the aircraft and establishing a safe climb, I would advise intentions based on fuel and alternates — for example request holding if a short delay is realistic, or request diversion if the runway will remain closed. I would not continue toward the wreckage for a closer look and I would stay clear of the emergency response area.",
+    "memoryTrick": "**WRECK** — **W**ithdraw from the approach now, **R**ead back go-around short, **E**valuate fuel and alternate, **C**ommunicate intentions clearly, **K**eep clear of the emergency site.",
+    "operationalMeaning": "When wreckage is reported on the runway, the pilot should:\n\nWreckage on runway commonly follows:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Tower: ANAC123, go around, wreckage on the runway, runway closed.",
+      "Approach: ANAC123, Congonhas runway closed due wreckage, advise intentions.",
+      "Tower: ANAC123, cancel takeoff clearance, wreckage on runway, hold position.",
+      "Approach: ANAC123, expect vectors for holding, runway closed, wreckage on the strip.",
+      "Tower: ANAC123, runway one seven Left closed, wreckage, request alternate intentions."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, going around, runway closed.",
+      "ANAC123, runway closed due wreckage, request diversion to Curitiba.",
+      "ANAC123, cancel takeoff, holding position.",
+      "ANAC123, vectors for holding, runway closed copied.",
+      "ANAC123, one seven Left closed, request alternate runway or diversion."
+    ],
+    "brazilianMistakes": "- ❌ Continuing final to \"have a look\" after a wreckage go-around order.  \n  ✔ Go around immediately; visual curiosity is not authorized.\n\n- ❌ Giving a long story on tower frequency during the go-around.  \n  ✔ Short readback first; intentions when level and stable.\n\n- ❌ Assuming a parallel runway or helipad is automatically available.  \n  ✔ Request and confirm; do not self-clear to another surface.\n\n- ❌ Overflying the wreckage site low for better viewing.  \n  ✔ Remain clear unless ATC specifically requires a path.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Going Around, Wreckage on the Runway\n\n**Pronunciation:** AY-nak WUN TOO THREE, GOH-ing uh-ROUND, REK-ij on thuh RUN-way\n\n**Word Stress**\n\n- Going → GOH-ing\n- Around → uh-ROUND\n- Wreckage → REK-ij\n- Runway → RUN-way\n\nPractice:\n\nGoing around... wreckage on the runway.\n\nTogether:\n\nANAC123, going around, runway closed, request vectors for diversion.",
+    "relatedConcepts": [
+      "Runway Excursion",
+      "Airport Operations Closed",
+      "Firefighters on the Way",
+      "Debris on Taxiway",
+      "FOD Reported",
+      "Go Around"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Go-Around / Runway Closure",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 13 / Annex 14 — Accident / Aerodrome"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "SKYbrary — Runway Excursion / Runway Closure",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency / Go-Around",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "H130 AFM — Go-Around, Emergency Procedures"
+      }
+    ]
+  },
+  {
+    "catalogId": "0222",
+    "id": "0222",
+    "displayTerm": "FOD Reported",
+    "term": "fod reported",
+    "slug": "fod-reported",
+    "category": "Airport Operations",
+    "meaningEn": "FOD Reported means foreign object debris has been observed or notified on the aerodrome movement area, indicating a risk of aircraft damage or injury and typically requiring avoidance, inspection, removal, and possible surface closure or restriction.",
+    "meaningPt": "FOD reported / FOD reportado (Foreign Object Debris).\n\nSignifica que detritos de objetos estranhos foram observados ou notificados na área de movimento do aeródromo, indicando risco de dano à aeronave ou lesão e normalmente exigindo desvio, inspeção, remoção e possível interdição ou restrição da superfície.",
+    "whenUsed": "When FOD is reported, the pilot should:",
+    "example": "Tower: ANAC123, hold position, FOD reported on the runway, inspection in progress.",
+    "sayPhrase": "ANAC123, holding position, FOD on the runway, inspection in progress.",
+    "icaoQuestion": "ATC reports FOD on the runway as you are about to take off. What do you do?",
+    "icaoSpeakText": "I would reject the takeoff plan immediately, hold position, and acknowledge that FOD is reported and inspection is in progress. I would not attempt to take off over or around the reported debris. For a helicopter, I would also avoid any hover that could move the FOD. I would wait for ATC to confirm the runway is clear or to issue a new plan such as runway change or delay. If I saw the object myself, I would add a short position report to help the inspection team.",
+    "missionBrief": "Today's lesson covers FOD Reported — the advisory or pilot report that foreign object debris has been observed on a runway, taxiway, or apron, creating a damage and safety hazard until inspected and removed.\n\nFOD Reported is the formal hazard language of the movement area. It may come from ATC, airport operations, or from you as the first aircraft to see it. The response is the same: avoid, report, inspect, clear — not ignore.\n\nFor H130 helicopter training academy operations, FOD is especially dangerous. Rotor downwash can loft objects into the main or tail rotor, into engines of nearby aircraft, or toward personnel. Congonhas, Guarulhos, Santos Dumont, Curitiba, and Florianópolis all demand strict FOD discipline during taxi and hover. Part 2 and Part 3 both test this vocabulary.\n\nUnderstanding how to report FOD, acknowledge FOD advisories, and change the taxi or takeoff plan is essential for ICAO proficiency and real aircraft protection.",
+    "captainTeaching": "FOD is the invisible exam you take every taxi.\n\nYou pass by looking. You pass by reporting. You fail by assuming someone else already did.\n\nWhen ATC says FOD reported, freeze the takeoff or the taxi into that surface. When you see FOD first, you become the reporter — short, specific, located.\n\nPart 3 answers should show decision logic: stop, avoid hover over the area, report, wait for clearance. Examiners listen for whether you understand helicopter-specific risk, not only tire damage.\n\nBrazilian busy aprons collect FOD from works, freighters, and wind. Guarulhos and Congonhas are not empty deserts. Eyes outside. Collective disciplined.\n\nIf cleared after inspection, still look. Inspection reduces risk; it does not invent perfection.",
+    "operationalContext": "You are lining up at Curitiba in the H130 for a training departure.\n\nTower: ANAC123, hold position, FOD reported on the runway, inspection in progress.\n\nYou hold. You do not ask to \"depart from the intersection beyond the FOD\" unless ATC offers a assessed-safe option. A vehicle inspects and removes a metal piece. Tower reopens the runway and clears you for takeoff.\n\nFive minutes of patience protected the aircraft and the next student sortie.",
+    "sayItCoach": "ANAC123, holding position, FOD reported on the runway, standing by for inspection.",
+    "icaoModelAnswer": "I would reject the takeoff plan immediately, hold position, and acknowledge that FOD is reported and inspection is in progress. I would not attempt to take off over or around the reported debris. For a helicopter, I would also avoid any hover that could move the FOD. I would wait for ATC to confirm the runway is clear or to issue a new plan such as runway change or delay. If I saw the object myself, I would add a short position report to help the inspection team.",
+    "memoryTrick": "**FOD** — **F**reeze the movement into that surface, **O**bserve and report precisely, **D**o not hover it away — wait for removal.",
+    "operationalMeaning": "When FOD is reported, the pilot should:\n\nFOD Reported commonly involves:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Tower: ANAC123, hold position, FOD reported on the runway, inspection in progress.",
+      "Ground: ANAC123, Bravo closed, FOD reported, taxi via Alpha.",
+      "Tower: ANAC123, cancel takeoff clearance, FOD reported ahead on the runway.",
+      "Ground: ANAC123, taxi with caution, FOD reported near stand four, vehicle en route.",
+      "Tower: ANAC123, confirm runway clear of FOD from your position."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, holding position, FOD on the runway, inspection in progress.",
+      "ANAC123, Bravo closed, taxi via Alpha.",
+      "ANAC123, cancel takeoff, holding position.",
+      "ANAC123, taxi with caution, FOD near stand four copied.",
+      "ANAC123, runway not clear, possible FOD left side near abeam taxiway Charlie."
+    ],
+    "brazilianMistakes": "- ❌ Asking to depart anyway because the FOD \"is on the far end.\"  \n  ✔ Hold until the runway is assessed clear or a safe alternative is issued.\n\n- ❌ Using hover downwash to move FOD off the centerline.  \n  ✔ Never relocate FOD with the rotor; report and wait for removal.\n\n- ❌ Vague reports: \"there is FOD somewhere.\"  \n  ✔ Give surface name and a precise position reference.\n\n- ❌ Cancelling lookout after \"runway clear of FOD\" is announced.  \n  ✔ Continue visual scan during lineup and takeoff roll or lift-off.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Holding Position, FOD Reported on the Runway\n\n**Pronunciation:** AY-nak WUN TOO THREE, HOHL-ding puh-ZISH-un, ef-oh-DEE ree-PORT-ed on thuh RUN-way\n\n**Word Stress**\n\n- FOD → ef-oh-DEE (spell or say as acronym clearly)\n- Reported → ree-PORT-ed\n- Holding → HOHL-ding\n- Runway → RUN-way\n\nPractice:\n\nFOD reported... on the runway... holding position.\n\nTogether:\n\nANAC123, holding position, FOD reported on the runway, standing by for inspection.",
+    "relatedConcepts": [
+      "Debris on Taxiway",
+      "Wreckage on Runway",
+      "Taxi with Caution",
+      "Work in Progress",
+      "Runway Excursion",
+      "Airport Authority"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Movement Area Condition Reports",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 14 — Aerodrome Safety / FOD Control"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "SKYbrary — Foreign Object Debris (FOD)",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — FOD Prevention",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "H130 AFM — Ground Operations, Rotor Safety"
+      }
+    ]
+  },
+  {
+    "catalogId": "0223",
+    "id": "0223",
+    "displayTerm": "Drone Near Airport",
+    "term": "drone near airport",
+    "slug": "drone-near-airport",
+    "category": "Airport Operations",
+    "meaningEn": "Drone Near Airport means an unmanned aircraft is reported or observed in the vicinity of the aerodrome or its approach and departure paths, creating a potential collision hazard and often requiring traffic advisories, delays, missed approaches, or temporary suspension of operations.",
+    "meaningPt": "Drone near airport / Drone / VANT próximo ao aeroporto.\n\nSignifica que uma aeronave não tripulada foi reportada ou observada nas proximidades do aeródromo ou das trajetórias de aproximação e decolagem, criando risco de colisão e frequentemente exigindo avisos de tráfego, atrasos, arremetidas ou suspensão temporária das operações.",
+    "whenUsed": "When a drone is reported near the airport, the pilot should:",
+    "example": "Tower: ANAC123, drone reported north of the field, advise if in sight.",
+    "sayPhrase": "ANAC123, looking for drone north of the field.",
+    "icaoQuestion": "Tower reports a drone near the airport while you are on final. What do you do?",
+    "icaoSpeakText": "I would be prepared to go around immediately if instructed or if I assess a collision risk. I would acknowledge the drone advisory and increase my visual scan along the approach path. If I see the drone, I would report its position, approximate altitude, and direction of movement in a short transmission. I would not continue the approach into a conflict and I would not maneuver toward the drone to observe it more closely. After the go-around or delay, I would follow ATC vectors and continue reports if the drone remains in sight.",
+    "missionBrief": "Today's lesson covers Drone Near Airport — the advisory or report that an unmanned aircraft system (UAS/drone) is operating or sighted near the aerodrome, creating a collision and disruption hazard for manned aircraft.\n\nDrone near airport is high-priority traffic conflict language. ATC may suspend arrivals and departures, issue traffic advisories, or ask pilots to report drone sightings. Pilots must know how to report position, altitude estimate, and direction of flight without cluttering the frequency.\n\nFor H130 helicopter training academy operations at Congonhas, Santos Dumont, Guarulhos, Curitiba, and Florianópolis, drones are a real urban risk — especially at low level where helicopters train and transit. Rotorcraft often share the same altitude band as unauthorized drones. Part 2 phraseology and Part 3 speaking both test calm, precise reporting.\n\nUnderstanding how to acknowledge drone advisories, report sightings, and change approach or departure plans is essential for ICAO proficiency and collision avoidance.",
+    "captainTeaching": "Drones turned low-level flying into a new see-and-avoid problem.\n\nHelicopters live in the drone band. That means your scan is not optional on Brazilian city circuits — Santos Dumont and Congonhas especially.\n\nWhen tower says drone reported, answer with eyes, not opinions. In sight or not in sight. If in sight: where, how high roughly, which way it moves. Then fly the clearance — go around, extend, hold.\n\nPart 3 loves this scenario because it mixes traffic English with decision English. Keep the answer ordered: receive advisory, scan, report, comply with go-around or delay, avoid chasing the drone.\n\nNever assume a drone will give way. Assume you must separate.\n\nUnauthorized drones are illegal; your job is not enforcement. Your job is survival and clear radio.",
+    "operationalContext": "You are on downwind for Santos Dumont in the H130 on a VFR training circuit.\n\nTower: ANAC123, traffic information, drone reported northeast of the field at low altitude, advise if in sight.\n\nYou scan. You see a small quadcopter off the northeast approach path.\n\nYou report the drone in sight, northeast, estimated below circuit altitude, moving west. Tower stops departures and extends your downwind. The drone descends behind buildings. Operations resume only after reports go cold.\n\nYour short report gave tower the picture they needed.",
+    "sayItCoach": "ANAC123, drone in sight, northeast of the field, low altitude, moving west.",
+    "icaoModelAnswer": "I would be prepared to go around immediately if instructed or if I assess a collision risk. I would acknowledge the drone advisory and increase my visual scan along the approach path. If I see the drone, I would report its position, approximate altitude, and direction of movement in a short transmission. I would not continue the approach into a conflict and I would not maneuver toward the drone to observe it more closely. After the go-around or delay, I would follow ATC vectors and continue reports if the drone remains in sight.",
+    "memoryTrick": "**DRONE** — **D**etect with a deliberate scan, **R**eport position and movement briefly, **O**bey go-around or hold, **N**ever chase it, **E**xtend separation — especially in the helicopter band.",
+    "operationalMeaning": "When a drone is reported near the airport, the pilot should:\n\nDrone near airport situations commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Tower: ANAC123, drone reported north of the field, advise if in sight.",
+      "Approach: ANAC123, delay vectors, drone near the airport, expect holding.",
+      "Tower: ANAC123, go around, drone reported on final.",
+      "Tower: ANAC123, report any drone activity on downwind.",
+      "Ground: ANAC123, hold position, departures suspended, drone near airport."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, looking for drone north of the field.",
+      "ANAC123, delay vectors, drone near airport copied, ready to hold.",
+      "ANAC123, going around, drone on final.",
+      "ANAC123, wilco, will report drone activity.",
+      "ANAC123, holding position, departures suspended."
+    ],
+    "brazilianMistakes": "- ❌ Continuing final after a drone-on-final go-around instruction.  \n  ✔ Go around immediately; argue later if at all — never on short final.\n\n- ❌ Long emotional reports about \"irresponsible people flying drones.\"  \n  ✔ Give position, height estimate, and movement only.\n\n- ❌ Climbing or turning toward the drone without ATC.  \n  ✔ Maintain assigned path or cleared missed approach; prioritize separation.\n\n- ❌ Saying \"negative contact\" once and stopping the scan.  \n  ✔ Keep looking; drones are small and intermittent visually.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Drone in Sight, Northeast of the Field, Low Altitude\n\n**Pronunciation:** AY-nak WUN TOO THREE, DROHN in SITE, north-EEST uv thuh FEELD, LOH AL-ti-tood\n\n**Word Stress**\n\n- Drone → DROHN\n- Sight → SITE\n- Northeast → north-EEST\n- Altitude → AL-ti-tood\n\nPractice:\n\nDrone in sight... northeast of the field... low altitude.\n\nTogether:\n\nANAC123, drone in sight, northeast of the field, low altitude, moving west.",
+    "relatedConcepts": [
+      "Traffic Information",
+      "Go Around",
+      "Airport Operations Closed",
+      "Debris on Taxiway",
+      "FOD Reported",
+      "Holding"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Traffic Information / UAS Hazards",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO UAS Guidance / Circular material on drones near aerodromes"
+      },
+      {
+        "label": "DECEA regulations — RPAS/VANT near aerodromes"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "SKYbrary — Drones / UAS",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "H130 AFM — See and Avoid, Emergency Maneuvering"
+      }
+    ]
+  },
+  {
+    "catalogId": "0224",
+    "id": "0224",
+    "displayTerm": "Tow Truck Collision",
+    "term": "tow truck collision",
+    "slug": "tow-truck-collision",
+    "category": "Ground Operations",
+    "meaningEn": "Tow Truck Collision is an occurrence in which a tow truck or aircraft tug strikes an aircraft, vehicle, person, or object on the aerodrome; in radiotelephony it is reported as a ground incident requiring ATC notification, possible RFF response, and movement restrictions.",
+    "meaningPt": "Tow truck collision / Colisão com caminhão de reboque (trator/tug).\n\nOcorrência em que um caminhão de reboque ou trator de aeronave colide com aeronave, veículo, pessoa ou objeto no aeródromo; na fraseologia, é reportada como incidente de solo exigindo aviso ao controle, possível resposta do SCI e restrições de movimento.",
+    "whenUsed": "When a tow truck collision occurs or is observed, the pilot should:",
+    "example": "Ground: ANAC123, hold position, tow truck collision on the apron, RFF responding.",
+    "sayPhrase": "ANAC123, holding position, tow truck collision on the apron copied.",
+    "icaoQuestion": "While taxiing you see a tow truck collide with a parked aircraft. What do you say and what do you do?",
+    "icaoSpeakText": "I would stop immediately and keep clear of the incident area. I would report to Ground with my position, that a tow truck collided with a parked aircraft, and whether I see fire, smoke, fuel leak, or injuries — or say if that is unknown. I would request that other traffic be held if the taxiway is blocked and I would wait for instructions. In a helicopter I would avoid directing downwash toward the scene and personnel. I would not enter the area to inspect the damage unless specifically coordinated.",
+    "missionBrief": "Today's lesson covers Tow Truck Collision — the ground incident in which a tow truck / tug collides with an aircraft, vehicle, or structure on the apron or maneuvering area, and the radiotelephony used to report, contain, and respond to that event.\n\nA tow truck collision is a high-priority ground emergency. It can disable an aircraft, spill fuel, injure personnel, and block taxiways or stands. ATC needs an immediate, clear report: what happened, where, whether there is fire, injuries, or fuel leak, and whether the movement area is blocked.\n\nFor H130 helicopter training academy operations, you may be the aircraft involved, a nearby witness, or traffic that must hold while RFF and maintenance respond. Brazilian hubs — Guarulhos, Congonhas, Santos Dumont, Curitiba, Florianópolis — run dense tug traffic. Part 2 and Part 3 both test structured emergency ground English.\n\nUnderstanding how to report a tow truck collision and how to keep rotors, passengers, and taxi traffic safe afterward is essential for ICAO proficiency.",
+    "captainTeaching": "Ground collisions sound slow. They are not slow for the people inside them.\n\nYour radio must be faster than your curiosity. Location. What hit what. Fire or leak. Blocked or not. Then stop talking and follow instructions.\n\nIf you are involved: checklist memory items, passengers, and short updates. If you are a witness: be the clean reporter ATC needs.\n\nPart 3 answers should show priority order — safety of people, stop movement, inform ATC, avoid making FOD or downwash worse with the helicopter.\n\nBrazilian aprons are crowded with tugs. See-and-avoid on the ground is as real as in the circuit. Give way early. Hold when unsure. Never squeeze between a tug and a fuselage.\n\nHigh-priority ground English is emergency English without the drama.",
+    "operationalContext": "You are taxiing behind a freighter pushback at Guarulhos in the H130.\n\nAhead, a tow truck strikes a wingtip of a parked aircraft on the cargo apron. You stop.\n\nYou call Ground with position, tow truck collision, parked aircraft struck, no fire observed, taxiway partially blocked. Ground holds all traffic, rolls firefighters, and reroutes you via another taxiway.\n\nYou never entered the scene. Your report started the response.",
+    "sayItCoach": "ANAC123, tow truck collision on the apron abeam stand five, no fire observed, holding position.",
+    "icaoModelAnswer": "I would stop immediately and keep clear of the incident area. I would report to Ground with my position, that a tow truck collided with a parked aircraft, and whether I see fire, smoke, fuel leak, or injuries — or say if that is unknown. I would request that other traffic be held if the taxiway is blocked and I would wait for instructions. In a helicopter I would avoid directing downwash toward the scene and personnel. I would not enter the area to inspect the damage unless specifically coordinated.",
+    "memoryTrick": "**COLLIDE** — **C**all ATC now, **O**bserve fire/leak/injuries, **L**ocation first, **L**eave the scene clear, **I**solate downwash, **D**o not sightseeing-taxi closer, **E**xpect RFF and reroutes.",
+    "operationalMeaning": "When a tow truck collision occurs or is observed, the pilot should:\n\nTow truck collision scenarios commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Ground: ANAC123, hold position, tow truck collision on the apron, RFF responding.",
+      "Tower: ANAC123, confirm your position, report if involved in the tow truck collision.",
+      "Ground: ANAC123, Alpha blocked due tow truck collision, taxi via Bravo.",
+      "Apron: ANAC123, remain clear of stand five, tow truck collision, fuel spill possible.",
+      "Ground: ANAC123, firefighters on the way, hold short of the cargo apron."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, holding position, tow truck collision on the apron copied.",
+      "ANAC123, not involved, holding on Charlie, collision in sight.",
+      "ANAC123, Alpha blocked, taxi via Bravo.",
+      "ANAC123, remaining clear of stand five.",
+      "ANAC123, holding short of the cargo apron, firefighters on the way."
+    ],
+    "brazilianMistakes": "- ❌ Taxiing closer to \"see how bad it is\" before reporting.  \n  ✔ Stop, report first, remain clear.\n\n- ❌ Long story without location or fire/leak status.  \n  ✔ Position + event + fire/leak/injuries + blockage.\n\n- ❌ Hover-taxiing past the scene with strong downwash.  \n  ✔ Hold or accept a wide reroute; protect responders.\n\n- ❌ Assuming RFF was already called because \"everyone saw it.\"  \n  ✔ Report anyway; ATC coordinates the official response.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Tow Truck Collision on the Apron, Holding Position\n\n**Pronunciation:** AY-nak WUN TOO THREE, TOH TRUK kuh-LIH-zhun on thuh AY-prun, HOHL-ding puh-ZISH-un\n\n**Word Stress**\n\n- Tow → TOH\n- Truck → TRUK\n- Collision → kuh-LIH-zhun\n- Apron → AY-prun\n\nPractice:\n\nTow truck collision... on the apron... holding position.\n\nTogether:\n\nANAC123, tow truck collision on the apron abeam stand five, no fire observed, holding position.",
+    "relatedConcepts": [
+      "Tow Truck",
+      "Firefighters on the Way",
+      "Aircraft Stuck on Taxiway",
+      "Maintenance on the Way",
+      "Debris on Taxiway",
+      "Give Way to Aircraft"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Ground Incidents / Emergency Phraseology",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 14 — Apron Safety"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "SKYbrary — Ground Operations / Ground Collision",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "Airport Apron Safety Management guidance"
+      },
+      {
+        "label": "H130 AFM — Emergency Procedures, Ground Operations"
+      }
+    ]
+  },
+  {
+    "catalogId": "0225",
+    "id": "0225",
+    "displayTerm": "Runway Excursion",
+    "term": "runway excursion",
+    "slug": "runway-excursion",
+    "category": "Airport Operations",
+    "meaningEn": "Runway Excursion is an occurrence in which an aircraft unintentionally leaves the runway surface during takeoff or landing, either by veering off the side or overrunning the end, often resulting in runway closure, emergency response, and disruption to other aerodrome traffic.",
+    "meaningPt": "Runway excursion / Saída de pista / overrun / veer-off.\n\nOcorrência em que uma aeronave deixa involuntariamente a superfície da pista durante decolagem ou pouso, seja saindo pela lateral ou ultrapassando o fim da pista, frequentemente resultando em interdição da pista, resposta de emergência e interrupção do demais tráfego do aeródromo.",
+    "whenUsed": "When a runway excursion is reported or observed, the pilot should:",
+    "example": "Tower: ANAC123, go around, runway excursion, runway closed.",
+    "sayPhrase": "ANAC123, going around, runway closed.",
+    "icaoQuestion": "On final, ATC reports a runway excursion and instructs a go-around. What do you do next?",
+    "icaoSpeakText": "I would execute the go-around immediately and follow the missed approach or ATC vectors. I would read back going around and that the runway is closed. After the aircraft is stable, I would review fuel and alternates and advise intentions — request holding only if a short reopening is realistic, or request diversion if the runway will remain blocked. I would remain clear of the excursion site and RFF operations and I would not request a visual pass over the accident area.",
+    "missionBrief": "Today's lesson covers Runway Excursion — an event in which an aircraft veers off or overruns the runway during takeoff or landing, and the critical ATC and pilot phraseology used when an excursion closes the runway or requires emergency response.\n\nRunway excursion is a critical aerodrome emergency. The runway may be blocked by the aircraft, wreckage, or debris. Other traffic go around, hold, or divert. RFF responds. The involved crew must communicate state of aircraft, injuries, evacuation needs, and hazards such as fire or smoke.\n\nFor H130 helicopter training academy operations, excursions are less common than for fixed-wing aircraft, but helicopters share airports where fixed-wing excursions close runways — Congonhas, Guarulhos, Santos Dumont, Curitiba, Florianópolis. You must handle the radio as traffic affected by the closure, and understand the language if ever involved in an off-surface event. Part 2 and Part 3 both treat this as critical.\n\nUnderstanding how to go around, divert, and speak clearly when a runway excursion has occurred is essential for ICAO Level 4 performance under pressure.",
+    "captainTeaching": "Runway excursion is one of the phrases that deletes your landing clearance instantly.\n\nThe runway is no longer a runway. It is an emergency scene.\n\nYour job as other traffic: go around, get clean, then intentions. Short. Fuel-honest. No sightseeing.\n\nIf you were ever the aircraft off the pavement: survival first, then radio essentials — position if able, souls, fuel, fire, evacuation. That is Part 3 gold because it is real priority language.\n\nBrazilian wet-runway and short-field environments make excursion a living risk for fixed-wing traffic at places like Santos Dumont and Congonhas. Academy helicopter crews must be ready for sudden closure on every inbound.\n\nCritical English is not dramatic English. It is ordered English.",
+    "operationalContext": "You are number two on approach to Congonhas in the H130. Ahead, a jet lands long and veers off the side of the runway.\n\nTower: ANAC123, go around, runway excursion, runway closed.\n\nYou go around. You climb on the missed approach. Approach asks intentions. Fuel supports Curitiba. You request diversion.\n\nBehind you, firefighters roll to the excursion site. Your clean go-around and early diversion kept the frequency and the sky usable for the emergency.",
+    "sayItCoach": "ANAC123, going around, runway closed due excursion, request vectors for diversion.",
+    "icaoModelAnswer": "I would execute the go-around immediately and follow the missed approach or ATC vectors. I would read back going around and that the runway is closed. After the aircraft is stable, I would review fuel and alternates and advise intentions — request holding only if a short reopening is realistic, or request diversion if the runway will remain blocked. I would remain clear of the excursion site and RFF operations and I would not request a visual pass over the accident area.",
+    "memoryTrick": "**EXCURSION** — **E**xit the approach now, **X** out the landing plan, **C**all intentions after stable, **U**se alternate fuel wisely, **R**emain clear of RFF, **S**hort radio only, **I**gnore sightseeing urges, **O**bey closure fully, **N**avigate to the alternate.",
+    "operationalMeaning": "When a runway excursion is reported or observed, the pilot should:\n\nRunway excursion commonly involves:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Tower: ANAC123, go around, runway excursion, runway closed.",
+      "Approach: ANAC123, runway closed due runway excursion, advise intentions.",
+      "Tower: ANAC123, cancel takeoff clearance, runway excursion on the field, hold position.",
+      "Approach: ANAC123, expect holding, Congonhas closed, runway excursion in progress.",
+      "Tower: ANAC123, firefighters on the way, remain clear of the runway."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, going around, runway closed.",
+      "ANAC123, runway closed due excursion, request diversion to Curitiba.",
+      "ANAC123, cancel takeoff, holding position.",
+      "ANAC123, expecting holding, airport closed copied.",
+      "ANAC123, remaining clear of the runway, firefighters on the way."
+    ],
+    "brazilianMistakes": "- ❌ Delaying the go-around to see the aircraft off the runway.  \n  ✔ Go around on instruction; visual curiosity is not a plan.\n\n- ❌ Holding until fuel is critical hoping the runway reopens.  \n  ✔ Divert while alternate fuel is intact.\n\n- ❌ Blocking tower with long descriptions during the missed approach.  \n  ✔ Short readback first; intentions when stable.\n\n- ❌ Self-clearing to a parallel runway or helipad without approval.  \n  ✔ Request and confirm; the whole complex may be restricted.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Going Around, Runway Excursion, Runway Closed\n\n**Pronunciation:** AY-nak WUN TOO THREE, GOH-ing uh-ROUND, RUN-way ek-SKUR-zhun, RUN-way KLOHZD\n\n**Word Stress**\n\n- Going → GOH-ing\n- Around → uh-ROUND\n- Excursion → ek-SKUR-zhun (stress on second)\n- Closed → KLOHZD\n\nPractice:\n\nGoing around... runway excursion... runway closed.\n\nTogether:\n\nANAC123, going around, runway closed due excursion, request vectors for diversion.",
+    "relatedConcepts": [
+      "Wreckage on Runway",
+      "Airport Operations Closed",
+      "Firefighters on the Way",
+      "Go Around",
+      "FOD Reported",
+      "Diversion"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Go-Around / Aerodrome Emergencies",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO / SKYbrary — Runway Excursion",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "FAA AIM — Emergency Procedures / Go-Around",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Annex 14 — Aerodrome Emergency Planning"
+      },
+      {
+        "label": "H130 AFM — Go-Around, Emergency Procedures"
+      }
+    ]
+  },
+  {
+    "catalogId": "0226",
+    "id": "0226",
+    "displayTerm": "Runway Overrun",
+    "term": "runway overrun",
+    "slug": "runway-overrun",
+    "category": "Airport Operations",
+    "meaningEn": "A Runway Overrun is an occurrence in which an aircraft fails to stop or become airborne before reaching the end of the runway, and continues beyond the runway end onto the overrun area, RESA, or terrain beyond the paved surface, during landing, rejected takeoff, or takeoff roll.",
+    "meaningPt": "Ultrapassagem de pista / Runway Overrun.\n\nOcorrência em que a aeronave não consegue parar ou decolar antes de atingir o fim da pista e continua além da extremidade da pista para a área de overrun, RESA ou terreno além da superfície pavimentada, durante o pouso, decolagem rejeitada ou corrida de decolagem.",
+    "whenUsed": "When discussing or managing runway overrun risk, the crew should:",
+    "example": "Tower: ANAC123, runway one seven Left, braking action Medium, wet, caution possible overrun risk for long landing.",
+    "sayPhrase": "ANAC123, runway one seven Left, braking action Medium, wet, wilco.",
+    "icaoQuestion": "Explain the difference between a runway overrun and a runway excursion, and describe how you would prevent an overrun on a wet runway.?",
+    "icaoSpeakText": "A runway excursion is any departure from the runway surface, including sideways veer-off or going beyond the end. A runway overrun is specifically continuing past the runway end during landing or takeoff. To prevent an overrun on a wet runway, I would check landing performance against available length, note braking action and contamination, brief a firm touchdown in the touchdown zone, and commit to a go-around if the approach is unstable or I am floating long. I would not attempt to salvage a high-energy landing into the last portion of the runway.",
+    "missionBrief": "Today's lesson covers Runway Overrun — an event in which an aircraft continues past the end of the runway during takeoff or landing, departing the paved surface beyond the departure or arrival threshold.\n\nRunway overrun is a specific type of runway excursion. Excursion is the broader term for leaving the runway sideways or longitudinally. Overrun means going beyond the runway end — past the stop end on landing, or past the departure end on a rejected or continued takeoff that fails to get airborne in time.\n\nFor H130 helicopter training academy operations in Brazil, overrun risk is lower than for fixed-wing jets because of shorter landing distances and the ability to stop or lift off vertically. Still, academy crews must understand the concept: contaminated runways, late go-around decisions, rejected takeoffs, and runway end safety areas (RESA) appear in briefings, incident reports, and ICAO speaking scenarios.\n\nUnderstanding how to discuss runway overrun, report related hazards, and describe prevention in ICAO-standard English is essential for Part 2 radiotelephony and Part 3 speaking proficiency.",
+    "captainTeaching": "Overrun is energy past the end of the pavement.\n\nLanding long, landing fast, or rejecting late turns runway length into a trap. The RESA is a last buffer — not a planned stopping zone.\n\nDistinguish the vocabulary. If the aircraft leaves the side of the runway, say excursion or veer-off. If it goes past the stop end, say overrun. Precision matters in reports and ICAO speaking.\n\nIn the H130, you often have options fixed-wing crews do not: hover, vertical landing, short-field technique. Use them when runway length or contamination makes a long ground roll unsafe. Do not treat every runway like a jet runway.\n\nPerformance first. Brief the go-around. Touch down where you planned. If the approach is unstable, go around early — not after you have floated into the last third of the runway.\n\nWet Brazilian runways after afternoon storms are classic overrun setups for any aircraft that lands long. Respect braking action reports. They exist because stopping distance grows when the surface is compromised.",
+    "operationalContext": "You are on final to runway one seven Left at Congonhas in the H130 after a training circuit. The runway is wet. Tower reports Medium braking action.\n\nYou brief: touchdown in the touchdown zone, firm collective reduction, be ready to go around if the approach is unstable. You do not plan to use the full length for a long float.\n\nOn short final the approach becomes unstable — high and fast. You go around. Tower acknowledges. You climb away cleanly.\n\nThat decision prevented a potential overrun scenario. Wet runway, late touchdown, and residual energy beyond the stop end are how overruns begin. The go-around ended the risk before the wheels committed to a long roll.\n\nLater, in the debrief, you discuss overrun versus side excursion: today the threat was longitudinal energy past the end, not lateral drift.",
+    "sayItCoach": "ANAC123, going around, unable to complete landing safely on wet runway.",
+    "icaoModelAnswer": "A runway excursion is any departure from the runway surface, including sideways veer-off or going beyond the end. A runway overrun is specifically continuing past the runway end during landing or takeoff. To prevent an overrun on a wet runway, I would check landing performance against available length, note braking action and contamination, brief a firm touchdown in the touchdown zone, and commit to a go-around if the approach is unstable or I am floating long. I would not attempt to salvage a high-energy landing into the last portion of the runway.",
+    "memoryTrick": "**OVERRUN** — **O**ver the end only (not the side), **V**erify landing distance vs LDA, **E**xit the approach if unstable, **R**espect wet and braking reports, **R**ESA is buffer not plan, **U**se go-around early, **N**ame it precisely in reports.",
+    "operationalMeaning": "When discussing or managing runway overrun risk, the crew should:\n\nRunway overrun risk factors include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Tower: ANAC123, runway one seven Left, braking action Medium, wet, caution possible overrun risk for long landing.",
+      "Tower: ANAC123, go around, aircraft overrun reported beyond runway two eight, runway closed.",
+      "Approach: ANAC123, expect runway one seven Right, runway one seven Left closed due to overrun inspection.",
+      "Tower: ANAC123, wind one seven zero at one two, runway one seven Left cleared to land, advise if unable due to performance.",
+      "Ground: ANAC123, hold position, rescue vehicles proceeding to runway end overrun area."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, runway one seven Left, braking action Medium, wet, wilco.",
+      "ANAC123, going around, runway two eight closed.",
+      "ANAC123, expect runway one seven Right, runway one seven Left closed.",
+      "ANAC123, cleared to land runway one seven Left, will advise if unable.",
+      "ANAC123, holding position."
+    ],
+    "brazilianMistakes": "- ❌ Using \"runway excursion\" and \"runway overrun\" as if they mean exactly the same thing.  \n  ✔ Overrun is beyond the end; excursion is the broader category including side departure.\n\n- ❌ Continuing an unstable approach because \"the helicopter can stop quickly.\"  \n  ✔ Go around early. Short stopping distance is not a reason to land long and fast.\n\n- ❌ Ignoring Medium or Poor braking action on a wet runway.  \n  ✔ Factor braking action into landing distance and go-around decision points.\n\n- ❌ Treating the RESA as usable landing distance in performance planning.  \n  ✔ Plan to stop on the runway. RESA is emergency margin, not declared LDA.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Going Around, Unable to Stop Before Runway End\n\n**Pronunciation:** AY-nak WUN TOO THREE, GO-ing uh-ROUND, un-AY-bul too STOP bih-FOR RUN-way END\n\n**Word Stress**\n\n- Overrun → OH-ver-run (stress on first)\n- Runway → RUN-way\n- Going around → GO-ing uh-ROUND\n- Unable → un-AY-bul\n\nPractice:\n\nRunway overrun... beyond the runway end.\n\nTogether:\n\nANAC123, going around, unable to complete landing safely on wet runway.",
+    "relatedConcepts": [
+      "Runway Excursion",
+      "Braking Action",
+      "Runway Contaminated",
+      "Go Around",
+      "Rejected Takeoff",
+      "Landing Distance Available"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 9870 — Manual on the Prevention of Runway Incursions (related runway safety)"
+      },
+      {
+        "label": "ICAO Annex 14 — Aerodrome Design (RESA / stopway)"
+      },
+      {
+        "label": "SKYbrary — Runway Overrun / Runway Excursion",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "H130 AFM — Performance, Landing and Takeoff"
+      },
+      {
+        "label": "ANAC / airport AIP — Declared distances and RESA data"
+      }
+    ]
+  },
+  {
+    "catalogId": "0227",
+    "id": "0227",
+    "displayTerm": "Runway Closure",
+    "term": "runway closure",
+    "slug": "runway-closure",
+    "category": "Airport Operations",
+    "meaningEn": "A Runway Closure is the formal status in which a runway is withdrawn from use for aircraft landing and takeoff operations, temporarily or for a published period, due to maintenance, inspection, contamination, equipment failure, incident, or other aerodrome restriction, and is notified through NOTAM, ATIS, and ATC.",
+    "meaningPt": "Fechamento de pista / Runway Closure.\n\nStatus formal em que uma pista é retirada de uso para operações de pouso e decolagem, temporariamente ou por período publicado, devido a manutenção, inspeção, contaminação, falha de equipamento, incidente ou outra restrição do aeródromo, e é notificado por NOTAM, ATIS e ATC.",
+    "whenUsed": "When a runway is closed, the crew should:",
+    "example": "Approach: ANAC123, runway one seven Left closed due to maintenance, expect runway one seven Right.",
+    "sayPhrase": "ANAC123, runway one seven Left closed, expect runway one seven Right.",
+    "icaoQuestion": "ATIS reports your preferred runway is closed for maintenance. Describe how you prepare for arrival and what you confirm with ATC.?",
+    "icaoSpeakText": "I would note the closed runway from the ATIS and NOTAM, identify the expected active runway, and rebrief the approach, minima, missed approach, and landing performance for that runway. On first contact I would confirm the active runway with ATC and request any preferred alternative if wind or performance makes the assigned runway unsuitable. I would not plan to use the closed runway under any circumstance until ATC advises it is reopened.",
+    "missionBrief": "Today's lesson covers Runway Closure — the temporary or planned unavailability of a runway for takeoff and landing, communicated by ATC, ATIS, NOTAM, or airport authority, requiring crews to use an alternate runway or divert.\n\nA closed runway is not available. Crossing it may still be authorized under specific clearance, but landing and takeoff on it are prohibited until it is reopened. Closures happen for maintenance, inspection after an incident, snow or debris removal, lighting failure, or VIP and security operations.\n\nFor H130 helicopter training academy flights at Congonhas, Guarulhos, Santos Dumont, Curitiba, and Florianópolis, runway closure often means a change of active runway, a longer taxi, or use of a helipad or alternate landing area. Crews must hear the closure, read it back when instructed, and replan approach and departure without assuming the familiar runway is open.\n\nUnderstanding runway closure phraseology and speaking about alternate plans in ICAO English supports Part 2 and Part 3 proficiency.",
+    "captainTeaching": "Closed means closed. The runway is not a backup option because you prefer the wind or the shorter taxi.\n\nBuild the habit: ATIS and NOTAM before you brief the approach. If the familiar runway is closed, rebuild the brief — minima, missed approach, taxi plan, performance.\n\nCrossing a closed runway still needs a clearance. Workers may be on the pavement. Hold short until Ground or Tower explicitly clears the crossing.\n\nIn the H130 academy environment, closures often appear with little notice after FOD or bird inspection. Stay flexible. Ask for the alternate runway early if fuel or weather makes the long way around a problem.\n\nNever line up or land on a runway ATC has closed. Visual emptiness is not authorization.\n\nWhen a closure forces a longer approach or a different missed approach, update fuel and alternate thinking before you accept the clearance. Flexibility without fuel awareness is incomplete professionalism.",
+    "operationalContext": "You are inbound to Curitiba in the H130. ATIS states runway one five is closed due to maintenance. Expect runway three three.\n\nApproach clears you for the approach to runway three three. You brief the new runway, winds, and missed approach. You do not continue planning runway one five because \"it looked open on the last flight.\"\n\nOn the ground after landing, Ground says taxi via Alpha, hold short of runway one five — runway closed, works in progress. You hold short until cleared to cross. Workers and vehicles are on the closed runway. Your hold-short protects them.\n\nThat is runway closure in Brazilian ops: NOTAM and ATIS first, ATC assignment second, never assume availability from appearance alone.",
+    "sayItCoach": "ANAC123, runway one seven Left closed, expect runway one seven Right.",
+    "icaoModelAnswer": "I would note the closed runway from the ATIS and NOTAM, identify the expected active runway, and rebrief the approach, minima, missed approach, and landing performance for that runway. On first contact I would confirm the active runway with ATC and request any preferred alternative if wind or performance makes the assigned runway unsuitable. I would not plan to use the closed runway under any circumstance until ATC advises it is reopened.",
+    "memoryTrick": "**CLOSED** — **C**heck ATIS and NOTAM, **L**isten for unexpected closures, **O**bey hold-short at closed runways, **S**elect and brief the open runway, **E**xpect workers on closed pavement, **D**ivert or replan if no suitable runway remains.",
+    "operationalMeaning": "When a runway is closed, the crew should:\n\nRunway closure commonly involves:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, runway one seven Left closed due to maintenance, expect runway one seven Right.",
+      "Tower: ANAC123, runway two eight closed, inspection in progress, enter left downwind runway one zero.",
+      "ATIS / Tower: ANAC123, information Charlie, runway one five closed, works in progress.",
+      "Ground: ANAC123, taxi via Bravo, hold short of runway one seven Left, runway closed.",
+      "Tower: ANAC123, runway one seven Left reopened, cleared to land runway one seven Left."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, runway one seven Left closed, expect runway one seven Right.",
+      "ANAC123, runway two eight closed, left downwind runway one zero.",
+      "ANAC123, information Charlie, runway one five closed.",
+      "ANAC123, taxi via Bravo, holding short runway one seven Left, closed.",
+      "ANAC123, cleared to land runway one seven Left."
+    ],
+    "brazilianMistakes": "- ❌ Briefing the usual runway without checking ATIS or NOTAM for closure.  \n  ✔ Check runway status every flight before the approach brief.\n\n- ❌ Crossing a closed runway without a specific clearance because \"it is closed anyway.\"  \n  ✔ Closed runways often have people and vehicles. Hold short until cleared.\n\n- ❌ Asking to land on a closed runway because wind favors it.  \n  ✔ Request another open runway or divert. Closed is not negotiable for landing.\n\n- ❌ Missing the ATIS update when a runway reopens or closes mid-flight.  \n  ✔ Monitor ATIS changes and ATC advisories on arrival.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Runway One Seven Left Closed, Expect Runway One Seven Right\n\n**Pronunciation:** AY-nak WUN TOO THREE, RUN-way WUN SEV-en LEFT KLOHZD, ik-SPEKT RUN-way WUN SEV-en RIGHT\n\n**Word Stress**\n\n- Closure → KLOH-zher\n- Closed → KLOHZD\n- Expect → ik-SPEKT\n- Maintenance → MAYN-tuh-nans\n\nPractice:\n\nRunway closed... expect the other runway.\n\nTogether:\n\nANAC123, runway one seven Left closed, expect runway one seven Right.",
+    "relatedConcepts": [
+      "Taxiway Closure",
+      "NOTAM",
+      "Hold Short",
+      "ATIS",
+      "Alternate Airport",
+      "Works in Progress"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Aerodrome Operations",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 14 — Aerodrome Operations / Unserviceability"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "AIP Brazil — Aerodrome NOTAMs and runway status"
+      },
+      {
+        "label": "SKYbrary — Runway Closure / Aerodrome Unserviceability",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "H130 AFM — Normal Procedures, Landing"
+      }
+    ]
+  },
+  {
+    "catalogId": "0228",
+    "id": "0228",
+    "displayTerm": "Taxiway Closure",
+    "term": "taxiway closure",
+    "slug": "taxiway-closure",
+    "category": "Airport Operations",
+    "meaningEn": "A Taxiway Closure is the formal withdrawal of a taxiway, or a defined portion of a taxiway, from use for aircraft taxi operations due to maintenance, construction, surface damage, equipment, or other restriction, notified by NOTAM, ATIS, and ATC, with alternate taxi routes provided as required.",
+    "meaningPt": "Fechamento de taxiway / Taxiway Closure.\n\nRetirada formal de uma taxiway, ou de uma porção definida dela, do uso para operações de táxi devido a manutenção, construção, dano de superfície, equipamento ou outra restrição, notificada por NOTAM, ATIS e ATC, com rotas alternativas de táxi fornecidas conforme necessário.",
+    "whenUsed": "When a taxiway is closed, the crew should:",
+    "example": "Ground: ANAC123, taxi to the apron via Charlie and Delta, taxiway Alpha closed, works in progress.",
+    "sayPhrase": "ANAC123, taxi apron via Charlie and Delta, Alpha closed.",
+    "icaoQuestion": "Ground advises that your usual taxiway is closed and issues a longer alternate route. Describe what you do before you move the aircraft.?",
+    "icaoSpeakText": "I would read back the full alternate taxi route, identify the closed taxiway segment on the airport diagram, and confirm I understand where I must not enter. If the route is complex, I would request progressive taxi. Only after I am oriented would I begin taxi, remaining clear of the closed portion and complying with any hold-short or give-way instructions along the new route.",
+    "missionBrief": "Today's lesson covers Taxiway Closure — the temporary or planned unavailability of a taxiway or portion of a taxiway for aircraft movement, requiring alternate taxi routing issued by ATC and published by NOTAM or ATIS when applicable.\n\nA closed taxiway changes the ground picture. The yellow line you always use may be blocked by cones, barriers, or works. ATC will issue a revised route. Your job is to read it back correctly, follow the cleared route, and not enter the closed segment.\n\nFor H130 helicopter operations at Brazilian airports, taxiway closures affect ground taxi and air-taxi routes, hover-taxi corridors, and access to ramps and helipads. Rotor clearance near works and barriers matters. Academy crews must treat closures as hard boundaries unless ATC issues a specific routing around or across an authorized segment.\n\nThis lesson builds Part 2 proficiency in taxiway closure phraseology, readbacks, and safe alternate routing.",
+    "captainTeaching": "Taxiway closure is a routing problem, not a debate.\n\nCopy the whole clearance. Partial closures have boundaries — between which intersections matters. If you are unsure, ask for progressive taxi. Confusion on the ground creates runway incursions and conflict with works.\n\nIn the H130, barriers and cranes near a closed taxiway are rotor hazards. Slow the taxi. Widen the scan. Do not hover-taxi across a closed segment to save time.\n\nBuild the diagram into the brief after landing or before taxi out. If ATIS or NOTAM listed a closure, expect Ground to route you around it. If Ground's route surprises you, stop and clarify before you move.\n\nClosed pavement is not a shortcut. It is a boundary.\n\nAfter landing, expect Ground to change the route you briefed in cruise. Listen fully before you release the brakes. A partial hear-back of \"taxi to the apron\" without the via-points is how crews wander into closed Alpha.",
+    "operationalContext": "You have landed at Guarulhos and expect the usual route: vacate via Bravo, taxi Alpha to the apron.\n\nGround: taxi to the apron via Charlie and Delta, taxiway Alpha closed between Bravo and the apron, works in progress.\n\nYou read back the full route. You open the airport diagram, find the closed segment, and taxi only where cleared. You see cones on Alpha. You do not cut through.\n\nAt the apron you shut down. The closure added two minutes and removed ambiguity. That is how taxiway closures work when the crew treats the diagram and the clearance as one plan.",
+    "sayItCoach": "ANAC123, taxi via Charlie and Delta, taxiway Alpha closed, works in progress.",
+    "icaoModelAnswer": "I would read back the full alternate taxi route, identify the closed taxiway segment on the airport diagram, and confirm I understand where I must not enter. If the route is complex, I would request progressive taxi. Only after I am oriented would I begin taxi, remaining clear of the closed portion and complying with any hold-short or give-way instructions along the new route.",
+    "memoryTrick": "**TAXIWAY** — **T**race the alternate route on the diagram, **A**cknowledge the full clearance, **X** out the closed segment mentally, **I**gnore shortcuts across works, **W**atch for cones and cranes, **A**sk for progressive taxi if unsure, **Y**ou do not enter closed pavement.",
+    "operationalMeaning": "When a taxiway is closed, the crew should:\n\nTaxiway closure commonly involves:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Ground: ANAC123, taxi to the apron via Charlie and Delta, taxiway Alpha closed, works in progress.",
+      "Ground: ANAC123, taxi holding point runway one seven Right via Bravo, taxiway Charlie closed between Alpha and Bravo.",
+      "Tower: ANAC123, vacate via Delta, Alpha unavailable, taxiway closed.",
+      "Ground: ANAC123, give way to opposite traffic on Echo, taxiway Foxtrot closed.",
+      "Ground: ANAC123, air-taxi to the helipad via the eastern taxi lane, western taxiway closed."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, taxi apron via Charlie and Delta, Alpha closed.",
+      "ANAC123, taxi holding point runway one seven Right via Bravo, Charlie closed between Alpha and Bravo.",
+      "ANAC123, vacating via Delta, Alpha closed.",
+      "ANAC123, giving way on Echo, Foxtrot closed.",
+      "ANAC123, air-taxi helipad via eastern taxi lane, western taxiway closed."
+    ],
+    "brazilianMistakes": "- ❌ Entering a closed taxiway because the cones are only on one side.  \n  ✔ Treat any marked or stated closure as a hard no-entry unless cleared otherwise.\n\n- ❌ Reading back the destination but omitting the alternate route.  \n  ✔ Read back the full routing, including the closed-taxiway element when given.\n\n- ❌ Missing partial closure limits (\"between Bravo and Charlie\").  \n  ✔ Note the exact segment. Other parts of the same taxiway may remain open.\n\n- ❌ Air-taxiing over closed works as a shortcut in the helicopter.  \n  ✔ Follow the cleared route. Closure protects people and equipment below.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Taxi Via Charlie and Delta, Taxiway Alpha Closed\n\n**Pronunciation:** AY-nak WUN TOO THREE, TAK-see VY-uh CHAR-lee and DEL-tuh, TAK-see-way AL-fuh KLOHZD\n\n**Word Stress**\n\n- Taxiway → TAK-see-way\n- Closure → KLOH-zher\n- Closed → KLOHZD\n- Works in progress → WERKS in PROG-ress\n\nPractice:\n\nTaxiway Alpha closed... taxi via Charlie and Delta.\n\nTogether:\n\nANAC123, taxi via Charlie and Delta, taxiway Alpha closed, works in progress.",
+    "relatedConcepts": [
+      "Runway Closure",
+      "Taxi with Caution",
+      "Progressive Taxi",
+      "Hold Short",
+      "Works in Progress",
+      "NOTAM"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Taxi Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 14 — Taxiway Operations / Unserviceability"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "AIP Brazil — Aerodrome taxiway NOTAMs"
+      },
+      {
+        "label": "SKYbrary — Ground Operations / Taxiway",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "H130 AFM — Ground Operations / Air Taxi"
+      }
+    ]
+  },
+  {
+    "catalogId": "0229",
+    "id": "0229",
+    "displayTerm": "NOTAM",
+    "term": "notam",
+    "slug": "notam",
+    "category": "Navigation",
+    "meaningEn": "A NOTAM is an official notice distributed by means of telecommunication containing information concerning the establishment, condition, or change in any aeronautical facility, service, procedure, or hazard, the timely knowledge of which is essential to personnel concerned with flight operations.",
+    "meaningPt": "NOTAM (Notice to Airmen / Notice to Air Missions).\n\nAviso oficial distribuído por telecomunicação contendo informações sobre o estabelecimento, condição ou mudança em qualquer instalação, serviço, procedimento ou perigo aeronáutico, cujo conhecimento oportuno é essencial para o pessoal envolvido nas operações de voo.",
+    "whenUsed": "When using NOTAMs in flight planning and operations, the crew should:",
+    "example": "Approach: ANAC123, ILS runway one four unserviceable as published by NOTAM, expect VOR runway one four.",
+    "sayPhrase": "ANAC123, ILS one four unserviceable, expect VOR one four.",
+    "icaoQuestion": "Describe how you use NOTAMs when planning a flight and what you do if a NOTAM affects your destination approach.?",
+    "icaoSpeakText": "During preflight I would obtain current NOTAMs for departure, destination, alternates, and the route. I would identify items that affect runways, taxiways, navaids, airspace, and approach procedures, and brief those to the crew. If a NOTAM makes the planned approach unserviceable, I would select and brief an alternate procedure or runway, adjust fuel if needed, and confirm the expectation with ATC on first contact. I would not rely only on memory of yesterday's NOTAMs.",
+    "missionBrief": "Today's lesson covers NOTAM — Notice to Airmen (Notice to Air Missions) — a time-critical aeronautical information notice that alerts crews to temporary or permanent changes affecting flight operations, including airspace, aerodromes, navaids, procedures, and hazards.\n\nNOTAMs are not optional reading. They close runways, activate restricted areas, remove navaids from service, and warn of obstacles and laser activity. A crew that skips NOTAMs flies yesterday's airport into today's reality.\n\nFor H130 helicopter training academy operations in Brazilian airspace under DECEA, NOTAMs shape VFR training routes, IFR approaches, helipad availability, and temporary restricted areas near cities and coastal zones. Preflight briefing must include a current NOTAM review for departure, destination, alternates, and route.\n\nUnderstanding how to discuss NOTAMs, confirm status with ATC, and integrate NOTAM information into ICAO English supports Part 2 radiotelephony and Part 4 interaction skills.",
+    "captainTeaching": "NOTAMs are the difference between the published world and the real world today.\n\nDo not print them and ignore them. Decode the ones that change your runway, approach, route, or altitude. Brief those. Leave trivia for the package, not for the critical brief.\n\nIn Brazilian ops, temporary restricted areas and aerodrome works appear constantly. The H130 at low level meets obstacles and temporary airspace that high cruise traffic never sees. Your NOTAM filter must match your profile.\n\nIf ATC says something conflicts with your NOTAM brief — for example, a navaid you thought was out is in use — clarify. Information can be updated. Ask.\n\nNOTAM review is preflight professionalism. It is also Part 4 interaction: explaining how information affected your plan.",
+    "operationalContext": "You plan a training flight from Congonhas to Florianópolis in the H130. During briefing you pull NOTAMs.\n\nOne NOTAM: ILS runway one four Florianópolis unserviceable. Another: temporary restricted area active along the coastal route below three thousand feet until 2200 UTC.\n\nYou rebrief: expect VOR or RNAV approach at destination. Plan the coastal leg above the temporary restriction or laterally clear. You note both items on the pad.\n\nEn route, Approach confirms the ILS remains out of service. Your NOTAM brief matches live ATC. No surprise on the approach chart at the last minute.\n\nThat is NOTAM discipline: read, decode, brief what matters, confirm with ATC when it affects the clearance.",
+    "sayItCoach": "ANAC123, confirm current NOTAM, ILS runway one four unserviceable, expect VOR.",
+    "icaoModelAnswer": "During preflight I would obtain current NOTAMs for departure, destination, alternates, and the route. I would identify items that affect runways, taxiways, navaids, airspace, and approach procedures, and brief those to the crew. If a NOTAM makes the planned approach unserviceable, I would select and brief an alternate procedure or runway, adjust fuel if needed, and confirm the expectation with ATC on first contact. I would not rely only on memory of yesterday's NOTAMs.",
+    "memoryTrick": "**NOTAM** — **N**ote time-critical changes, **O**btain for route and airports, **T**riage what affects your flight, **A**pply to brief and fuel plan, **M**atch with ATIS and ATC in flight.",
+    "operationalMeaning": "When using NOTAMs in flight planning and operations, the crew should:\n\nNOTAMs commonly cover:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, ILS runway one four unserviceable as published by NOTAM, expect VOR runway one four.",
+      "Radar: ANAC123, temporary restricted area active as NOTAMed, remain clear, vector for deviation.",
+      "Tower: ANAC123, runway one seven Left closed, NOTAM in force, expect runway one seven Right.",
+      "Clearance: ANAC123, note NOTAM, navaid Alpha unserviceable, cleared as filed via the alternate route.",
+      "Approach: ANAC123, confirm you have current NOTAM for crane three miles final runway two eight."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, ILS one four unserviceable, expect VOR one four.",
+      "ANAC123, remaining clear of temporary restricted area, accepting vectors.",
+      "ANAC123, runway one seven Left closed, expect runway one seven Right.",
+      "ANAC123, Alpha unserviceable, cleared via alternate route.",
+      "ANAC123, affirmative, current NOTAM for crane on final copied."
+    ],
+    "brazilianMistakes": "- ❌ Skipping NOTAM review because \"the route is familiar.\"  \n  ✔ Familiar routes still get temporary closures and restrictions. Check every flight.\n\n- ❌ Reading all NOTAMs without highlighting operationally critical items.  \n  ✔ Filter for runway, approach, airspace, and navaid items that change the plan.\n\n- ❌ Assuming ATIS replaces NOTAM review.  \n  ✔ ATIS is complementary. NOTAMs cover route and destination items ATIS may not list in full.\n\n- ❌ Not confirming an unclear NOTAM status with ATC when it affects the clearance.  \n  ✔ Ask: confirm ILS status, restricted area activity, or runway availability.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Confirm Current NOTAM, ILS Unserviceable\n\n**Pronunciation:** AY-nak WUN TOO THREE, kun-FERM KER-ent NO-tam, EYE-el-es un-SER-vis-uh-bul\n\n**Word Stress**\n\n- NOTAM → NO-tam ( comms: NO-TAM )\n- Unserviceable → un-SER-vis-uh-bul\n- Confirm → kun-FERM\n- Current → KER-ent\n\nPractice:\n\nCurrent NOTAM... ILS unserviceable... expect VOR.\n\nTogether:\n\nANAC123, confirm current NOTAM, ILS runway one four unserviceable, expect VOR.",
+    "relatedConcepts": [
+      "Temporary Restricted Area",
+      "Runway Closure",
+      "Taxiway Closure",
+      "ATIS",
+      "Restricted Area",
+      "AIP Supplement"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 15 — Aeronautical Information Services"
+      },
+      {
+        "label": "ICAO Doc 8126 — AIS Manual"
+      },
+      {
+        "label": "DECEA — Sistema de Informações Aeronáuticas / NOTAM Brazil"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "AIP Brazil — NOTAM decoding guidance"
+      },
+      {
+        "label": "SKYbrary — NOTAM",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0230",
+    "id": "0230",
+    "displayTerm": "Temporary Restricted Area",
+    "term": "temporary restricted area",
+    "slug": "temporary-restricted-area",
+    "category": "Navigation",
+    "meaningEn": "A Temporary Restricted Area is a defined volume of airspace activated for a specified period by NOTAM or similar aeronautical information, within which flight of aircraft is restricted under stated conditions or prohibited except for authorized flights, due to temporary military, security, public event, or hazardous activity.",
+    "meaningPt": "Área Restrita Temporária / Temporary Restricted Area.\n\nVolume definido de espaço aéreo ativado por período especificado mediante NOTAM ou informação aeronáutica similar, dentro do qual o voo de aeronaves é restrito sob condições estabelecidas ou proibido exceto para voos autorizados, devido a atividade militar, de segurança, evento público ou perigosa temporária.",
+    "whenUsed": "When operating near a temporary restricted area, the crew should:",
+    "example": "Radar: ANAC123, temporary restricted area active, remain clear, turn left heading one eight zero.",
+    "sayPhrase": "ANAC123, remaining clear, left heading one eight zero.",
+    "icaoQuestion": "A NOTAM activates a temporary restricted area across your planned VFR route. Describe how you plan and what you say to ATC if the area is active when you approach it.?",
+    "icaoSpeakText": "I would note the lateral and vertical limits and the active times from the NOTAM, and plan a lateral or vertical route that remains clear. Approaching the area, I would confirm with ATC that it is still active and request vectors or a reroute around it. If ATC instructs me to remain clear, I would comply and read back the heading or routing. I would not enter the area without an explicit transit clearance.",
+    "missionBrief": "Today's lesson covers Temporary Restricted Area — a defined volume of airspace activated for a limited period by NOTAM or AIP supplement, within which flight is restricted or prohibited except for authorized aircraft, usually due to military exercises, security events, airshows, or other temporary hazards.\n\nA temporary restricted area is not on every chart as a permanent fixture. It appears for hours or days, then disappears. Crews who only memorize permanent restricted areas will fly into temporary ones. The defense is current NOTAMs and ATC advisories.\n\nFor H130 helicopter training academy flights in Brazilian airspace, temporary restricted areas frequently affect coastal corridors, major-city events, and military exercise zones. Low-level VFR training is especially exposed. Routes between Congonhas, Santos Dumont, Curitiba, and Florianópolis may need lateral or vertical deviation when a temporary area goes hot.\n\nUnderstanding how to remain clear, request deviation, and discuss temporary restrictions in ICAO English supports Part 2 and Part 4 proficiency.",
+    "captainTeaching": "Temporary restricted areas punish outdated briefs.\n\nPermanent restricted areas are on the chart. Temporary ones live in the NOTAM and in ATC's mouth. Both can stop your route.\n\nKnow the times. An area hot until 1800 UTC is cold after that — unless extended. Do not guess. Ask ATC if status is unclear.\n\nIn the H130 near Brazilian coasts and cities, temporary activations for exercises and events are common. Build NOTAM review into every academy sortie, not only cross-country IFR.\n\nRemain clear means remain clear. Transit requires an explicit clearance. Weather is not a free pass — if you cannot remain clear, declare the problem and request help early.\n\nWhen the area goes cold, confirm before you slide back onto the old track. Extensions happen. A quick confirmation with ATC costs seconds and prevents an airspace bust.",
+    "operationalContext": "You are flying the H130 from Santos Dumont toward Florianópolis along a familiar coastal VFR route. Preflight NOTAM showed a temporary restricted area active from the surface to four thousand feet until 1800 UTC for a military exercise.\n\nRadar: remain clear of the temporary restricted area, turn right heading two two zero for deviation.\n\nYou turn, stay outside the boundary, and continue when clear. You do not cut the corner to save fuel. Temporary restricted means temporary — but while it is hot, it is as real as a permanent restricted area.\n\nAfter 1800 UTC, ATC advises the area is cold. Your return route can use the normal corridor again. NOTAM times matter.",
+    "sayItCoach": "ANAC123, remaining clear of temporary restricted area, request vectors around.",
+    "icaoModelAnswer": "I would note the lateral and vertical limits and the active times from the NOTAM, and plan a lateral or vertical route that remains clear. Approaching the area, I would confirm with ATC that it is still active and request vectors or a reroute around it. If ATC instructs me to remain clear, I would comply and read back the heading or routing. I would not enter the area without an explicit transit clearance.",
+    "memoryTrick": "**TEMP** — **T**imes and limits from the NOTAM, **E**xclude the volume unless cleared through, **M**argin outside the boundary, **P**rove status with ATC when unsure.",
+    "operationalMeaning": "When operating near a temporary restricted area, the crew should:\n\nTemporary restricted area operations commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Radar: ANAC123, temporary restricted area active, remain clear, turn left heading one eight zero.",
+      "Control: ANAC123, cleared via flight planned route, temporary restricted area cold.",
+      "Radar: ANAC123, unable direct due temporary restricted area, expect vectors around.",
+      "Approach: ANAC123, remain at or above five thousand, temporary restricted area below active.",
+      "Radar: ANAC123, temporary restricted area now cold, resume own navigation."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, remaining clear, left heading one eight zero.",
+      "ANAC123, cleared flight planned route, temporary restricted area cold.",
+      "ANAC123, expecting vectors around temporary restricted area.",
+      "ANAC123, maintaining at or above five thousand, restricted area below noted.",
+      "ANAC123, temporary restricted area cold, resuming own navigation."
+    ],
+    "brazilianMistakes": "- ❌ Checking only permanent restricted areas on the chart and ignoring temporary NOTAMs.  \n  ✔ Temporary activations are NOTAM-driven. Review them every flight.\n\n- ❌ Entering because \"it was cold yesterday\" or \"the exercise usually ends early.\"  \n  ✔ Confirm status with NOTAM times and ATC. Do not assume.\n\n- ❌ Cutting the corner of the boundary to shorten the route.  \n  ✔ Remain clear of the published or ATC-stated boundary with margin.\n\n- ❌ Climbing into cloud or terrain while trying to stay above a temporary block without a plan.  \n  ✔ Brief a safe lateral alternative, not only a vertical squeeze.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Remaining Clear of Temporary Restricted Area\n\n**Pronunciation:** AY-nak WUN TOO THREE, rih-MAY-ning KLEER uv TEM-puh-rair-ee rih-STRIK-tid AIR-ee-uh\n\n**Word Stress**\n\n- Temporary → TEM-puh-rair-ee\n- Restricted → rih-STRIK-tid\n- Area → AIR-ee-uh\n- Remain clear → rih-MAYN KLEER\n\nPractice:\n\nTemporary restricted area... remain clear... request vectors.\n\nTogether:\n\nANAC123, remaining clear of temporary restricted area, request vectors around.",
+    "relatedConcepts": [
+      "Restricted Area",
+      "NOTAM",
+      "Military Activity",
+      "Remain Clear",
+      "Vectors",
+      "Danger Area"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 15 — Aeronautical Information Services (temporary airspace)"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Special Use Airspace",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "DECEA — NOTAM and AIP Supplements for temporary areas"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "AIP Brazil — Special Use Airspace"
+      },
+      {
+        "label": "SKYbrary — Restricted Area / Temporary Airspace",
+        "href": "https://skybrary.aero"
+      }
+    ]
+  },
+  {
+    "catalogId": "0231",
+    "id": "0231",
+    "displayTerm": "Hot Spot",
+    "term": "hot spot",
+    "slug": "hot-spot",
+    "category": "Airport Operations",
+    "meaningEn": "A Hot Spot is a location on an aerodrome movement area identified in aerodrome charts as presenting a history or risk of collision or runway incursion, requiring increased attention by pilots and vehicle drivers when taxiing through or operating near that location.",
+    "meaningPt": "Hot Spot / Ponto crítico do aeródromo.\n\nLocalização na área de movimento do aeródromo identificada nas cartas como apresentando histórico ou risco de colisão ou incursão em pista, exigindo atenção redobrada de pilotos e motoristas ao taxiar ou operar próximo a esse local.",
+    "whenUsed": "When operating near a hot spot, the crew should:",
+    "example": "Ground: ANAC123, taxi holding point runway one seven Left via Alpha, caution hot spot.",
+    "sayPhrase": "ANAC123, taxi holding point runway one seven Left via Alpha, caution hot spot.",
+    "icaoQuestion": "Explain what an aerodrome hot spot is and how you prepare for taxi through one.?",
+    "icaoSpeakText": "A hot spot is a charted location on the movement area with a history or risk of collision or runway incursion. Before taxi I would identify hot spots on the airport diagram, brief the specific risk at that location, and plan to reduce speed and confirm hold-short or crossing clearances before entering any runway. If I became unsure of my position near a hot spot, I would stop and request progressive taxi rather than continue guessing.",
+    "missionBrief": "Today's lesson covers Hot Spot — a location on an aerodrome movement area with a history of potential risk of collision or runway incursion, and where heightened attention by pilots and drivers is necessary.\n\nHot spots are charted. They are not surprises invented by ATC on the day. Airport diagrams mark them because taxiway geometry, runway crossings, or confusing intersections have produced incidents before. Your job is to know where they are before you taxi, brief them, and move through them with deliberate attention.\n\nFor H130 helicopter training academy operations at Congonhas, Guarulhos, Santos Dumont, Curitiba, and Florianópolis, hot spots often sit at complex runway/taxiway intersections and short taxi segments near active runways. Ground taxi and air-taxi both require the same discipline: slow down, verify clearance, confirm you are where you think you are.\n\nThis lesson builds Part 2 proficiency in hot spot awareness, cautionary taxi phraseology, and runway incursion prevention.",
+    "captainTeaching": "Hot spots are where runway incursions are born.\n\nThey exist because other crews already made the expensive mistake at that intersection. The chart is trying to save you from repeating it.\n\nBrief the hot spot before taxi. Say the risk out loud: wrong turn onto the runway, confusing hold-short, short distance from exit to crossing. Then fly the brief — slow down when you get there.\n\nNever let familiarity erase the pause. Congonhas and Santos Dumont hot spots do not care that you have taxied there a hundred times.\n\nIn the H130, position awareness includes rotor clearance and hover direction. A rushed pedal turn near a hot spot can point you at the runway before you meant to enter. Stop. Verify. Then move on clearance.\n\nIf you are lost near a hot spot, say so. Progressive taxi is cheaper than an incursion.",
+    "operationalContext": "You are taxiing for departure at Congonhas in the H130. The airport diagram shows a hot spot where taxiway Alpha meets the runway holding point — a place where crews have mistakenly lined up or crossed without clearance.\n\nGround: taxi to holding point runway one seven Left via Alpha, caution hot spot at the holding point.\n\nYou read back the route. Approaching the hot spot you slow down, confirm the hold-short marking, and stop at the holding point. You do not edge onto the runway. Tower later clears you to line up. Only then do you enter.\n\nThe hot spot did its job: it put the risk in your brief before the wheels moved.",
+    "sayItCoach": "ANAC123, taxi holding point runway one seven Left via Alpha, caution hot spot.",
+    "icaoModelAnswer": "A hot spot is a charted location on the movement area with a history or risk of collision or runway incursion. Before taxi I would identify hot spots on the airport diagram, brief the specific risk at that location, and plan to reduce speed and confirm hold-short or crossing clearances before entering any runway. If I became unsure of my position near a hot spot, I would stop and request progressive taxi rather than continue guessing.",
+    "memoryTrick": "**HOTSPOT** — **H**ighlight it on the diagram before taxi, **O**bey hold-short markings exactly, **T**hrottle back / slow the taxi, **S**ay the risk in the brief, **P**ause if unsure of position, **O**nly enter runway when cleared, **T**ell Ground if you need progressive taxi.",
+    "operationalMeaning": "When operating near a hot spot, the crew should:\n\nHot spot risk typically involves:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Ground: ANAC123, taxi holding point runway one seven Left via Alpha, caution hot spot.",
+      "Ground: ANAC123, hold short of runway two eight, hot spot ahead, give way to landing traffic.",
+      "Tower: ANAC123, cross runway one seven Right at Charlie, caution hot spot, report vacated.",
+      "Ground: ANAC123, taxi via Bravo, caution hot spot at Bravo and Delta intersection.",
+      "Ground: ANAC123, request confirm position, hot spot vicinity, progressive taxi available."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, taxi holding point runway one seven Left via Alpha, caution hot spot.",
+      "ANAC123, holding short runway two eight, hot spot noted.",
+      "ANAC123, crossing runway one seven Right at Charlie, will report vacated.",
+      "ANAC123, taxi via Bravo, caution hot spot Bravo Delta.",
+      "ANAC123, position on Bravo approaching Delta, request progressive taxi."
+    ],
+    "brazilianMistakes": "- ❌ Ignoring hot spot symbols on the airport diagram because the airport is familiar.  \n  ✔ Brief hot spots every departure and arrival at that aerodrome.\n\n- ❌ Taxiing at normal speed through a hot spot while copying a new clearance.  \n  ✔ Slow down. Finish the clearance. Confirm position. Then move.\n\n- ❌ Crossing the hold-short line slightly while \"almost cleared.\"  \n  ✔ Hold short means stop before the marking. Clearance must be explicit.\n\n- ❌ Feeling embarrassed to request progressive taxi near a hot spot.  \n  ✔ Progressive taxi prevents incursions. Ask early.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Taxi Holding Point, Caution Hot Spot\n\n**Pronunciation:** AY-nak WUN TOO THREE, TAK-see HOHL-ding POYNT, KAW-shun HOT SPOT\n\n**Word Stress**\n\n- Hot spot → HOT SPOT (equal stress, clear separation)\n- Caution → KAW-shun\n- Holding point → HOHL-ding POYNT\n- Incursion → in-KER-zhun\n\nPractice:\n\nCaution hot spot... holding point... hold short.\n\nTogether:\n\nANAC123, taxi holding point runway one seven Left via Alpha, caution hot spot.",
+    "relatedConcepts": [
+      "Stop Bar",
+      "Hold Short",
+      "Runway Incursion",
+      "Progressive Taxi",
+      "Taxi with Caution",
+      "Airport Diagram"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 9870 — Manual on the Prevention of Runway Incursions"
+      },
+      {
+        "label": "ICAO Annex 14 — Aerodrome Hot Spots"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "AIP Brazil — Aerodrome charts / hot spot legends"
+      },
+      {
+        "label": "SKYbrary — Hot Spot / Runway Incursion",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "H130 AFM — Ground Operations"
+      }
+    ]
+  },
+  {
+    "catalogId": "0232",
+    "id": "0232",
+    "displayTerm": "Stop Bar",
+    "term": "stop bar",
+    "slug": "stop-bar",
+    "category": "Airport Operations",
+    "meaningEn": "A Stop Bar is a row of red unidirectional lights installed across the taxiway at a runway holding position, which when illuminated requires aircraft and vehicles to stop and hold, and which is extinguished in conjunction with ATC clearance to proceed onto or across the runway.",
+    "meaningPt": "Stop Bar / Barra de parada.\n\nFila de luzes vermelhas unidirecionais instaladas transversalmente na taxiway na posição de espera da pista, que quando acesas exigem que aeronaves e veículos parem e aguardem, e que são apagadas em conjunto com a autorização do ATC para prosseguir para a pista ou cruzá-la.",
+    "whenUsed": "When approaching a stop bar, the crew should:",
+    "example": "Tower: ANAC123, hold at the stop bar, runway one seven Left.",
+    "sayPhrase": "ANAC123, holding at the stop bar, runway one seven Left.",
+    "icaoQuestion": "You are cleared to line up but the stop bar remains illuminated. Describe what you do and what you say.?",
+    "icaoSpeakText": "I would not cross the stop bar. I would hold position short of the red lights and advise Tower that the stop bar is still illuminated. I would wait until the stop bar is extinguished and I have a clear lineup or crossing clearance before proceeding onto the runway. The lights and the clearance must both allow me to proceed.",
+    "missionBrief": "Today's lesson covers Stop Bar — a row of red lights across the taxiway at a runway holding position, used to reinforce the hold-short point and, when illuminated, to prohibit aircraft and vehicles from proceeding beyond the bar onto the runway until the stop bar is switched off and ATC clearance is received.\n\nStop bars are a runway incursion defense. Red lights mean stop. Crossing an illuminated stop bar without clearance is a serious breach — even if you think you heard a lineup clearance. In low visibility, stop bars are critical. In good visibility, they still mean what they say.\n\nFor H130 helicopter training academy operations at equipped Brazilian airports, stop bars appear at runway holding points on instrument runways. Ground taxi and air-taxi crews must treat an illuminated stop bar as a hard stop. Academy discipline here prevents runway incursions during training tempo and busy tower sequences.\n\nThis lesson builds Part 2 proficiency in stop bar phraseology, compliance, and runway safety communications.",
+    "captainTeaching": "Stop bar red is not a suggestion. It is a wall of light across the taxiway.\n\nPainted hold-short lines can be missed in fog. Red stop bars are designed to be unmistakable. Cross them only when they are off and you have a clearance.\n\nIf the clearance comes and the lights stay on, you stop and tell Tower. Lighting and clearance must match. One without the other is a trap.\n\nIn the H130, hover-taxi makes it easy to creep forward without noticing. Set a hard mental gate: illuminated stop bar equals hold. No creeping.\n\nLow visibility is when stop bars earn their keep. Good visibility is when discipline is proven. Same rule both days.\n\nRunway safety is often a single decision at a holding point. Make the stop bar part of that decision every time.",
+    "operationalContext": "You taxi to the holding point for runway one seven Left at Guarulhos in the H130. Low visibility procedures are in force. The stop bar is illuminated — a line of red lights across the taxiway.\n\nYou stop. You do not edge forward. Tower: cleared to line up runway one seven Left. The stop bar extinguishes. You confirm the lights are off, then taxi onto the runway and line up.\n\nOn another day, Tower clears you to cross but the stop bar stays red. You hold and report: stop bar still illuminated. Tower corrects the lighting and re-clears you. You prevented an incursion by trusting the lights as well as the radio.\n\nThat is stop bar discipline: red means stop until both clearance and lights agree.",
+    "sayItCoach": "ANAC123, holding short, stop bar still illuminated.",
+    "icaoModelAnswer": "I would not cross the stop bar. I would hold position short of the red lights and advise Tower that the stop bar is still illuminated. I would wait until the stop bar is extinguished and I have a clear lineup or crossing clearance before proceeding onto the runway. The lights and the clearance must both allow me to proceed.",
+    "memoryTrick": "**STOPBAR** — **S**top when red lights are on, **T**ell ATC if lights stay on after clearance, **O**nly proceed when lights are off, **P**aint markings still apply, **B**oth clearance and lights must agree, **A**ir-taxi does not exempt you, **R**unway entry only then.",
+    "operationalMeaning": "When approaching a stop bar, the crew should:\n\nStop bar operations commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Tower: ANAC123, hold at the stop bar, runway one seven Left.",
+      "Tower: ANAC123, stop bar extinguished, cleared to line up runway one seven Left.",
+      "Tower: ANAC123, cross runway two eight, stop bar off.",
+      "Ground: ANAC123, taxi to holding point, hold short, stop bar illuminated.",
+      "Tower: ANAC123, confirm holding short, stop bar remains on, standby for lineup."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, holding at the stop bar, runway one seven Left.",
+      "ANAC123, stop bar extinguished, lining up runway one seven Left.",
+      "ANAC123, crossing runway two eight, stop bar off.",
+      "ANAC123, taxi holding point, holding short, stop bar illuminated.",
+      "ANAC123, holding short, stop bar on, standing by."
+    ],
+    "brazilianMistakes": "- ❌ Crossing an illuminated stop bar because Tower already said \"line up.\"  \n  ✔ Hold and report if the stop bar remains on. Do not cross red lights.\n\n- ❌ Creeping past the stop bar while waiting for the lights to go out.  \n  ✔ Stop fully short. Proceed only after lights off and clearance confirmed.\n\n- ❌ Ignoring stop bars in good visibility as \"only for LVP.\"  \n  ✔ Illuminated stop bars apply whenever they are on.\n\n- ❌ Not reporting a stop bar that fails to extinguish after clearance.  \n  ✔ Report immediately so ATC can correct lighting and protect the runway.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Holding Short, Stop Bar Still Illuminated\n\n**Pronunciation:** AY-nak WUN TOO THREE, HOHL-ding SHORT, STOP BAR stil ih-LOO-muh-nay-tid\n\n**Word Stress**\n\n- Stop bar → STOP BAR\n- Illuminated → ih-LOO-muh-nay-tid\n- Extinguished → ik-STING-gwisht\n- Holding short → HOHL-ding SHORT\n\nPractice:\n\nStop bar illuminated... holding short... stop bar extinguished.\n\nTogether:\n\nANAC123, holding short, stop bar still illuminated.",
+    "relatedConcepts": [
+      "Hot Spot",
+      "Hold Short",
+      "Runway Incursion",
+      "Low Visibility Procedures",
+      "Line Up and Wait",
+      "Cleared to Cross"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 9870 — Manual on the Prevention of Runway Incursions"
+      },
+      {
+        "label": "ICAO Annex 14 — Stop Bars / A-SMGCS related lighting"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Low Visibility Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "SKYbrary — Stop Bar / Runway Incursion",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "H130 AFM — Ground Operations / Taxi"
+      }
+    ]
+  },
+  {
+    "catalogId": "0233",
+    "id": "0233",
+    "displayTerm": "Follow Me Vehicle",
+    "term": "follow me vehicle",
+    "slug": "follow-me-vehicle",
+    "category": "Ground Operations",
+    "meaningEn": "A Follow Me Vehicle is an aerodrome vehicle, conspicuously marked and lit, assigned to lead an aircraft on a specified route on the apron or maneuvering area to provide positional guidance when routing is complex, visibility is reduced, or ATC requires guided taxi.",
+    "meaningPt": "Veículo Follow Me / Follow Me Vehicle.\n\nVeículo do aeródromo, conspicuamente sinalizado e iluminado, designado para conduzir uma aeronave em rota especificada no pátio ou na área de manobras, fornecendo orientação de posição quando o roteamento é complexo, a visibilidade está reduzida ou o ATC exige táxi guiado.",
+    "whenUsed": "When instructed to follow a follow-me vehicle, the crew should:",
+    "example": "Ground: ANAC123, taxi via Alpha, follow the follow-me vehicle to stand two four.",
+    "sayPhrase": "ANAC123, taxi via Alpha, following follow-me to stand two four.",
+    "icaoQuestion": "ATC instructs you to follow a follow-me vehicle to your stand. Describe your responsibilities while following.?",
+    "icaoSpeakText": "I would read back the instruction, acquire the vehicle visually, and taxi behind at a safe distance along the guided route. I would still comply with any hold-short or crossing clearances and would not enter a runway without ATC authorization even if the vehicle proceeds. If I lost visual contact with the vehicle, I would stop and advise ATC. I remain responsible for obstacle and rotor clearance throughout.",
+    "missionBrief": "Today's lesson covers Follow Me Vehicle — a specially marked airport vehicle that leads an aircraft along a designated route on the maneuvering area or apron when the crew needs guidance due to complex layout, low visibility, temporary works, unfamiliar routing, or ATC instruction.\n\n\"Follow me\" is not a suggestion to chase casually. It is a guided taxi: you follow the vehicle's path, maintain safe spacing, and remain responsible for obstacle clearance and ATC clearances such as hold-short. The vehicle shows the way; you still fly — or taxi — the aircraft safely.\n\nFor H130 helicopter training academy operations at Brazilian airports, follow-me guidance appears for unfamiliar aprons, night arrivals, works in progress, and sometimes for air-taxi to remote helipads. Rotor wash, spacing behind the vehicle, and clear communication with Ground matter.\n\nThis lesson builds Part 2 proficiency in follow-me phraseology, readbacks, and safe guided taxi technique.",
+    "captainTeaching": "Follow-me means guided eyes on the ground — not autopilot for taxi.\n\nYou still own wingtip and rotor clearance. You still own hold-short. The vehicle leads; you decide whether the path is safe for the H130.\n\nKeep spacing. If you lose the vehicle in rain or darkness, stop and say so. Do not invent the rest of the route.\n\nAt Brazilian majors, follow-me often appears with works and night arrivals. Expect it. Brief who is looking outside. In a two-crew situation, one pilot monitors the vehicle while the other monitors ATC and the diagram.\n\nNever cross a runway just because the follow-me did. Your clearance is yours.\n\nAt night, confirm the vehicle identity early — markings, lights, and Ground's description. Following the wrong vehicle is rare but expensive. When in doubt, hold and ask Ground to confirm.",
+    "operationalContext": "You land at Guarulhos at night in the H130. The apron routing to the training stand is complex, and works have changed the usual path.\n\nGround: taxi via Alpha, follow the follow-me vehicle to stand two four.\n\nYou spot the vehicle with the distinctive markings and lights. You taxi behind at a safe distance. At a runway crossing the vehicle stops. You stop. Tower clears the crossing. The vehicle proceeds. You follow only after you also have the crossing clearance and are ready.\n\nAt the stand the vehicle stops and signals the position. You park as marshalled or cleared. Guided, but still PIC-responsible.",
+    "sayItCoach": "ANAC123, following follow-me vehicle to stand two four.",
+    "icaoModelAnswer": "I would read back the instruction, acquire the vehicle visually, and taxi behind at a safe distance along the guided route. I would still comply with any hold-short or crossing clearances and would not enter a runway without ATC authorization even if the vehicle proceeds. If I lost visual contact with the vehicle, I would stop and advise ATC. I remain responsible for obstacle and rotor clearance throughout.",
+    "memoryTrick": "**FOLLOW** — **F**ind the vehicle before you move, **O**bey spacing behind it, **L**isten for hold-short still in force, **L**ose sight = stop and report, **O**bstacle and rotor clearance remain yours, **W**ait for your own runway clearance.",
+    "operationalMeaning": "When instructed to follow a follow-me vehicle, the crew should:\n\nFollow-me operations commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Ground: ANAC123, taxi via Alpha, follow the follow-me vehicle to stand two four.",
+      "Ground: ANAC123, follow-me vehicle ahead, follow to the apron.",
+      "Tower: ANAC123, vacate right, follow-me vehicle will lead you to the helipad.",
+      "Ground: ANAC123, hold position, follow-me vehicle approaching from your left.",
+      "Ground: ANAC123, follow-me to stand one two, give way to opposite traffic on Bravo."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, taxi via Alpha, following follow-me to stand two four.",
+      "ANAC123, follow-me ahead, following to the apron.",
+      "ANAC123, vacating right, will follow follow-me to the helipad.",
+      "ANAC123, holding position, looking for follow-me on the left.",
+      "ANAC123, following follow-me to stand one two, giving way on Bravo."
+    ],
+    "brazilianMistakes": "- ❌ Overtaking the follow-me vehicle to \"get to the stand faster.\"  \n  ✔ Stay behind. The vehicle sets the path and pace.\n\n- ❌ Crossing a runway because the follow-me crossed.  \n  ✔ You need your own ATC clearance to cross or enter.\n\n- ❌ Losing the vehicle in low visibility and continuing from memory.  \n  ✔ Stop and report lost visual contact. Request further guidance.\n\n- ❌ Ignoring rotor wash effects on the vehicle and nearby equipment.  \n  ✔ Manage hover height and distance so downwash does not hazard the guide.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Following Follow-Me Vehicle to Stand Two Four\n\n**Pronunciation:** AY-nak WUN TOO THREE, FOL-oh-ing FOL-oh MEE VEE-ih-kul too STAND TOO FOR\n\n**Word Stress**\n\n- Follow-me → FOL-oh-mee\n- Vehicle → VEE-ih-kul\n- Stand → STAND\n- Following → FOL-oh-ing\n\nPractice:\n\nFollow-me vehicle ahead... following to the stand.\n\nTogether:\n\nANAC123, following follow-me vehicle to stand two four.",
+    "relatedConcepts": [
+      "Marshalling Signals",
+      "Taxi with Caution",
+      "Progressive Taxi",
+      "Taxiway Closure",
+      "Apron Management",
+      "Low Visibility Procedures"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 9476 — Surface Movement Guidance and Control Systems"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Taxi / Apron Guidance",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "AIP Brazil — Aerodrome ground operations notes"
+      },
+      {
+        "label": "SKYbrary — Follow Me / Ground Operations",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "H130 AFM — Ground Operations / Air Taxi"
+      }
+    ]
+  },
+  {
+    "catalogId": "0234",
+    "id": "0234",
+    "displayTerm": "Marshalling Signals",
+    "term": "marshalling signals",
+    "slug": "marshalling-signals",
+    "category": "Ground Operations",
+    "meaningEn": "Marshalling Signals are the standardized visual signals given by a marshaller, using hands or illuminated wands, to guide an aircraft during ground movement on the apron, including directions to proceed, turn, slow, stop, shut down engines, and other parking and departure-related instructions.",
+    "meaningPt": "Sinais de Marshalling / Marshalling Signals.\n\nSinais visuais padronizados dados por um sinalizador (marshaller), com as mãos ou bastões iluminados, para orientar uma aeronave durante o movimento no solo no pátio, incluindo instruções para prosseguir, virar, reduzir, parar, cortar motores e outras orientações de estacionamento e partida.",
+    "whenUsed": "When under marshalling guidance, the crew should:",
+    "example": "Ground: ANAC123, taxi to stand two four, marshaller ahead.",
+    "sayPhrase": "ANAC123, taxi stand two four, looking for marshaller.",
+    "icaoQuestion": "Describe your responsibilities when a marshaller is guiding you onto a stand.?",
+    "icaoSpeakText": "I would follow standardized marshalling signals for direction, speed, and stop while keeping responsibility for obstacle and rotor clearance. I would stop immediately if I did not understand a signal or if following it would be unsafe. After stopping on the spot, I would complete parking checks and shut down according to the marshaller's signals and company procedure. The marshaller guides; I remain responsible for the aircraft.",
+    "missionBrief": "Today's lesson covers Marshalling Signals — standardized hand and wand signals used by ground personnel to direct aircraft on the apron during arrival to stand, parking, engine start, and departure push or taxi, ensuring safe movement relative to equipment, buildings, and other aircraft.\n\nMarshalling is a visual language. In noise, on crowded aprons, and when radio is secondary to the marshaller in front of you, those signals keep the aircraft aligned with the stand and clear of obstacles. Misreading a signal can mean jet blast — or rotor wash — into equipment, or a collision with a blast fence.\n\nFor H130 helicopter training academy operations, marshalling is especially important: hover-taxi to the spot, rotor clearance, and shutdown signals differ in feel from fixed-wing parking, but ICAO-standard signals remain the common framework. Academy crews must recognize standard signals and know when to stop if the signal is unclear.\n\nThis lesson builds Part 2 proficiency in discussing marshalling, coordinating with Ground, and operating safely under marshaller guidance.",
+    "captainTeaching": "Marshalling is precision parking with a human in the loop.\n\nLearn the standard signals well enough that a stop is unmistakable and a turn is not confused with proceed. At night, wands help — but only if you are looking outside.\n\nYou may refuse a signal that puts the rotor disk into a blast fence or another aircraft. Stop. Make it safe. Then continue when the path is clear.\n\nIn the H130 academy, briefing who watches the marshaller matters. One set of eyes on the wands, one on instruments and clearances as needed. Do not both stare inside while the marshaller is working.\n\nRadio clearances get you to the apron. Marshalling finishes the last meters. Both matter.\n\nNight marshalling with wands is clearer than bare hands — still, do not fixate so hard on the lights that you lose the tail rotor and nearby equipment in your scan. Outside scan first, signals second, ego never.",
+    "operationalContext": "You air-taxi to the training apron at Congonhas in the H130. Ground clears you to the stand. A marshaller waits with wands.\n\nYou follow the proceed and turn signals, slow on the slow-down signal, and stop cleanly on the stop signal over the spot. You do not continue past the stop because you \"know the parking.\" The marshaller owns the final meters of alignment; you own the decision to refuse an unsafe signal.\n\nAfter landing the skids on the spot, you wait for the signal before reducing to idle shutdown as briefed. Rotor wash is controlled. Equipment stays clear.\n\nThat is marshalling done professionally: standard signals, clear stop, PIC override if something is wrong.",
+    "sayItCoach": "ANAC123, following marshalling signals to stand two four.",
+    "icaoModelAnswer": "I would follow standardized marshalling signals for direction, speed, and stop while keeping responsibility for obstacle and rotor clearance. I would stop immediately if I did not understand a signal or if following it would be unsafe. After stopping on the spot, I would complete parking checks and shut down according to the marshaller's signals and company procedure. The marshaller guides; I remain responsible for the aircraft.",
+    "memoryTrick": "**SIGNAL** — **S**top means stop immediately, **I**dentify that the marshaller is for you, **G**uide follows standard ICAO signals, **N**ever accept an unsafe path, **A**lways keep rotor clearance, **L**eave the stand only with clearance.",
+    "operationalMeaning": "When under marshalling guidance, the crew should:\n\nMarshalling commonly covers:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Ground: ANAC123, taxi to stand two four, marshaller ahead.",
+      "Apron: ANAC123, follow marshalling signals to the helipad spot.",
+      "Ground: ANAC123, hold position, marshaller not in position, standby.",
+      "Ground: ANAC123, after marshalling complete, contact Ground on one two one decimal niner.",
+      "Apron: ANAC123, marshaller reports parking complete, shutdown at your discretion."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, taxi stand two four, looking for marshaller.",
+      "ANAC123, following marshalling signals to the helipad spot.",
+      "ANAC123, holding position, standing by for marshaller.",
+      "ANAC123, wilco, will contact Ground after marshalling.",
+      "ANAC123, parking complete, shutdown at discretion."
+    ],
+    "brazilianMistakes": "- ❌ Continuing past a stop signal because the stand \"looks close enough.\"  \n  ✔ Stop on the stop signal. Final alignment is the marshaller's job to indicate.\n\n- ❌ Moving toward a marshaller who is facing another aircraft.  \n  ✔ Confirm you are the aircraft being marshalled before you move.\n\n- ❌ Ignoring rotor clearance while focusing only on the wands.  \n  ✔ Scan blades, tail rotor, and obstacles as well as the signals.\n\n- ❌ Starting to taxi away without clearance after marshalling, assuming apron freedom.  \n  ✔ Obtain the required ATC or apron clearance before moving again.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Following Marshalling Signals to Stand Two Four\n\n**Pronunciation:** AY-nak WUN TOO THREE, FOL-oh-ing MAR-shuh-ling SIG-nulz too STAND TOO FOR\n\n**Word Stress**\n\n- Marshalling → MAR-shuh-ling\n- Signals → SIG-nulz\n- Marshaller → MAR-shuh-ler\n- Stand → STAND\n\nPractice:\n\nMarshalling signals... marshaller ahead... stop signal.\n\nTogether:\n\nANAC123, following marshalling signals to stand two four.",
+    "relatedConcepts": [
+      "Follow Me Vehicle",
+      "Taxi to Gate",
+      "Taxi to Ramp",
+      "Startup Clearance",
+      "Apron Management",
+      "Rotor Clearance"
+    ],
+    "references": [
+      {
+        "label": "ICAO Annex 2 — Appendix (Marshalling Signals)"
+      },
+      {
+        "label": "ICAO Doc 7251 / related aerodrome manuals — Ground signals"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "AIP Brazil — Aerodrome ground operations"
+      },
+      {
+        "label": "SKYbrary — Marshalling / Apron Safety",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "H130 AFM — Ground Operations / Rotor Safety"
+      }
+    ]
+  },
+  {
+    "catalogId": "0235",
+    "id": "0235",
+    "displayTerm": "De-Icing",
+    "term": "de-icing",
+    "slug": "de-icing",
+    "category": "Ground Operations",
+    "meaningEn": "De-Icing is the process of removing frost, ice, or snow from an aircraft's critical surfaces, typically using heated fluids or mechanical means, to restore a clean aircraft condition before flight; it is often followed by anti-icing treatment and limited by a published holdover time under prevailing weather.",
+    "meaningPt": "Degelo / De-Icing.\n\nProcesso de remoção de geada, gelo ou neve das superfícies críticas da aeronave, tipicamente com fluidos aquecidos ou meios mecânicos, para restaurar a condição de aeronave limpa antes do voo; frequentemente seguido de tratamento anti-gelo e limitado por um holdover time publicado sob as condições meteorológicas vigentes.",
+    "whenUsed": "When de-icing is required, the crew should:",
+    "example": "Ground: ANAC123, taxi to de-icing pad via Bravo, report when de-icing complete.",
+    "sayPhrase": "ANAC123, taxi de-icing pad via Bravo, will report de-icing complete.",
+    "icaoQuestion": "You find frost on the rotor blades during preflight. Describe what you do before departure and how you communicate with ATC.?",
+    "icaoSpeakText": "I would not depart with frost on the blades. I would request de-icing according to airport procedure, configure the aircraft as required, and ensure all critical surfaces are clean after treatment. I would note any anti-icing holdover time and taxi without unnecessary delay. Before takeoff I would confirm the aircraft is still clean. If holdover expired or ice re-formed, I would return for further de-icing and advise ATC that I am unable to take off until the aircraft is clean again.",
+    "missionBrief": "Today's lesson covers De-Icing — the process of removing frost, ice, or snow from critical aircraft surfaces before takeoff, and the related anti-icing protection that prevents re-accumulation, conducted according to holdover time and clean aircraft concept procedures.\n\nIce on wings, rotors, or flight controls destroys lift and can make the aircraft uncontrollable after liftoff. The clean aircraft concept is simple: do not take off with frost, ice, or snow adhering to critical surfaces. De-icing makes the aircraft clean; anti-icing fluid and holdover time try to keep it clean until takeoff.\n\nFor H130 helicopter training academy operations in Brazilian winters and cold highland conditions — and for ICAO English proficiency regardless of climate — crews must master de-icing phraseology: request, report completion, holdover, and inability to depart if contamination returns. Helicopter-specific notes matter: main and tail rotor blades, stabilizers, and engine inlets are critical. Blade ice is not a minor inconvenience.\n\nUnderstanding de-icing in ICAO-standard English supports Part 2 radiotelephony and Part 3 speaking about ground contamination and takeoff decisions.",
+    "captainTeaching": "De-icing is not cosmetic. It is control of the aircraft after liftoff.\n\nFrost that looks light on a blade can be enough. The clean aircraft concept does not have a \"mostly clean\" exception.\n\nKnow your critical surfaces on the H130: main rotor, tail rotor, horizontal surfaces, inlets. Inspect them. Treat them. Re-inspect before takeoff.\n\nHoldover time is a clock, not a hope. If precipitation continues and time expires, go back. Launching contaminated because students are waiting is how accidents are built.\n\nPhraseology matters: request de-icing, report complete, confirm clean, report if you must return. Controllers cannot see your blades. You must say the status clearly.\n\nEven in Brazil, cold mornings and highland frost happen. And ICAO speaking will ask about ice. Know the words. Know the decision.\n\nAfter de-icing, minimize delay to takeoff without rushing checks. Holdover is a window. Use it. If Ground holds you and the clock runs out, say so early — before you are number one at the holding point with contaminated blades.",
+    "operationalContext": "Early morning at Curitiba. Temperature near freezing. You find frost on the H130 rotor blades and stabilizers during preflight.\n\nYou request de-icing. Ground sends you to the de-icing pad. After treatment and inspection, blades and surfaces are clean. You note the time and any anti-ice holdover if applied.\n\nGround: taxi to holding point when ready. You taxi without delay. Before lineup you re-check critical surfaces in the precipitation. Still clean. You depart.\n\nIf snow had started and holdover expired before takeoff, you would not launch. You would return for another treatment. Clean aircraft concept — not schedule pressure — decides.",
+    "sayItCoach": "ANAC123, de-icing complete, aircraft clean, ready for taxi.",
+    "icaoModelAnswer": "I would not depart with frost on the blades. I would request de-icing according to airport procedure, configure the aircraft as required, and ensure all critical surfaces are clean after treatment. I would note any anti-icing holdover time and taxi without unnecessary delay. Before takeoff I would confirm the aircraft is still clean. If holdover expired or ice re-formed, I would return for further de-icing and advise ATC that I am unable to take off until the aircraft is clean again.",
+    "memoryTrick": "**DEICE** — **D**etect frost ice or snow on critical surfaces, **E**xecute approved de-icing, **I**nspect blades and surfaces again, **C**lock the holdover, **E**xit to takeoff only while still clean.",
+    "operationalMeaning": "When de-icing is required, the crew should:\n\nDe-icing operations commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Ground: ANAC123, taxi to de-icing pad via Bravo, report when de-icing complete.",
+      "Apron: ANAC123, de-icing approved on stand, advise ready for taxi after treatment.",
+      "Ground: ANAC123, after de-icing, taxi holding point runway one five via Alpha.",
+      "Tower: ANAC123, confirm de-icing complete and aircraft clean before lineup.",
+      "Ground: ANAC123, holdover time expired, return to de-icing pad."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, taxi de-icing pad via Bravo, will report de-icing complete.",
+      "ANAC123, de-icing on stand approved, will advise ready for taxi.",
+      "ANAC123, after de-icing, taxi holding point runway one five via Alpha.",
+      "ANAC123, de-icing complete, aircraft clean, ready for lineup.",
+      "ANAC123, holdover expired, returning to de-icing pad."
+    ],
+    "brazilianMistakes": "- ❌ Brushing off frost by hand incompletely and launching anyway.  \n  ✔ Use approved de-icing methods and verify all critical surfaces are clean.\n\n- ❌ Ignoring holdover time because \"it is only light snow.\"  \n  ✔ Holdover limits apply. Re-treat if time expires or surfaces contaminate.\n\n- ❌ Not telling ATC you need to return to the pad after holdover expires.  \n  ✔ Report: unable to take off, returning for de-icing.\n\n- ❌ Checking only the fuselage and forgetting rotor blades on the helicopter.  \n  ✔ Blades and tail rotor are critical. Inspect them specifically.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, De-Icing Complete, Aircraft Clean, Ready for Taxi\n\n**Pronunciation:** AY-nak WUN TOO THREE, dee-EYE-sing kum-PLEET, AIR-kraft KLEEN, REE-dee for TAK-see\n\n**Word Stress**\n\n- De-icing → dee-EYE-sing\n- Anti-icing → AN-tee-EYE-sing\n- Holdover → HOHLD-oh-ver\n- Contaminated → kun-TAM-ih-nay-tid\n\nPractice:\n\nDe-icing complete... aircraft clean... holdover time.\n\nTogether:\n\nANAC123, de-icing complete, aircraft clean, ready for taxi.",
+    "relatedConcepts": [
+      "Holdover Time",
+      "Clean Aircraft Concept",
+      "Contaminated Runway",
+      "Startup Clearance",
+      "Return to Parking",
+      "Anti-Icing"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 9640 — Manual of Aircraft Ground De-icing/Anti-icing Operations"
+      },
+      {
+        "label": "ICAO Annex 6 — Clean aircraft concept (operator responsibilities)"
+      },
+      {
+        "label": "SAE / holdover time guidelines — Fluid holdover tables"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "SKYbrary — Ground De-icing / Airframe Icing",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "H130 AFM — Cold Weather Operations / Ice and Frost"
+      }
+    ]
+  },
+  {
+    "catalogId": "0236",
+    "id": "0236",
+    "displayTerm": "Anti-Icing",
+    "term": "anti-icing",
+    "slug": "anti-icing",
+    "category": "Ground Operations",
+    "meaningEn": "Anti-Icing is the preventive treatment or system operation intended to stop ice, frost, or snow from forming or adhering to aircraft surfaces that have already been cleaned, typically by applying Type II, III, or IV anti-icing fluid on the ground or by activating aircraft anti-ice systems in flight, as opposed to de-icing which removes ice already present.",
+    "meaningPt": "Anti-gelo / Anti-icing.\n\nTratamento preventivo ou operação de sistema destinado a impedir que gelo, geada ou neve se formem ou adiram às superfícies da aeronave que já foram limpas, tipicamente pela aplicação de fluido anti-gelo Tipo II, III ou IV no solo ou pela ativação dos sistemas anti-gelo da aeronave em voo, em contraste com o de-icing, que remove o gelo já existente.",
+    "whenUsed": "When anti-icing is required or discussed, the crew should:",
+    "example": "Ground: ANAC123, taxi to de-icing pad via Alpha, hold short of the pad.",
+    "sayPhrase": "ANAC123, taxiing to de-icing pad via Alpha, will hold short of the pad.",
+    "icaoQuestion": "Your aircraft has been cleaned of frost. Freezing drizzle is expected during a fifteen-minute taxi. Explain the difference between anti-icing and de-icing and what you would request.?",
+    "icaoSpeakText": "De-icing removes ice, frost, or snow that is already on the aircraft. Anti-icing is preventive protection applied to a clean surface so ice does not form again before takeoff. Because the aircraft is already clean and freezing drizzle is expected, I would request anti-icing, note the fluid type and start of application, calculate holdover time, and plan to depart before the fluid fails. If contamination were still present, I would request de-icing first, then anti-icing if continued protection were required.",
+    "missionBrief": "Today's lesson covers Anti-Icing — the preventive application of fluid or the use of aircraft systems to stop ice from forming on critical surfaces before takeoff or during flight, as distinct from de-icing, which removes ice that has already formed.\n\nAnti-icing is not the same as de-icing. De-icing removes existing contamination. Anti-icing protects clean surfaces so ice does not form again. Mixing the two concepts in radio calls or briefings confuses ATC, ground crews, and examiners.\n\nFor H130 helicopter training academy operations in Brazilian winter and cold-front conditions — Congonhas, Guarulhos, Curitiba, Florianópolis — crews must know when anti-icing is required on the ground, how it relates to holdover time, and how to discuss anti-icing clearly in ICAO English. Many light helicopters have limited or no certified flight-into-known-icing capability; ground anti-icing and timely departure remain critical.\n\nUnderstanding anti-icing for Part 2 phraseology and Part 3 speaking is essential professional vocabulary.",
+    "captainTeaching": "Anti-icing prevents. De-icing removes. Say the right word.\n\nIf the aircraft already has ice, frost, or snow, you need de-icing first. Anti-icing alone on a contaminated surface is the wrong mental model and the wrong request.\n\nAfter the surface is clean, anti-icing fluid buys you time — holdover time — until the fluid fails under precipitation. That clock starts at the beginning of the final anti-icing application. Know it. Brief it. Depart inside it.\n\nIn the H130 academy environment, you may not always have airline-style Type IV pads. You may have limited ground support. The English still matters for exams and for professional coordination: request anti-icing, report complete, advise holdover status, and never take off with contaminated critical surfaces.\n\nIn flight, if your aircraft has anti-ice systems and you are approved to use them, follow the AFM. If you are not certified for known icing, do not treat \"anti-ice on\" as permission to stay in ice. Exit. Report. Divert if needed.\n\nClear words on the radio save minutes on the ground and arguments in the oral exam.",
+    "operationalContext": "You are on the ramp at Guarulhos before an IFR training departure to Curitiba. Overnight frost has been removed. Light freezing drizzle is forecast during taxi.\n\nGround reports the aircraft is clean. You need protection before takeoff.\n\nYou call Ground:\n\nANAC123, request anti-icing, Type IV, for departure runway one zero Left.\n\nGround: ANAC123, taxi to de-icing pad, expect anti-icing in five minutes.\n\nAfter treatment, ground gives start of application and fluid type. You note holdover time and brief the departure window.\n\nYou advise:\n\nANAC123, anti-icing complete, ready for taxi, holdover valid.\n\nGround sequences you for an early departure so you remain within holdover. You take off with clean, protected surfaces — and a clear distinction between what was removed and what was prevented.",
+    "sayItCoach": "ANAC123, request anti-icing, Type Four, ready to taxi to the pad.",
+    "icaoModelAnswer": "De-icing removes ice, frost, or snow that is already on the aircraft. Anti-icing is preventive protection applied to a clean surface so ice does not form again before takeoff. Because the aircraft is already clean and freezing drizzle is expected, I would request anti-icing, note the fluid type and start of application, calculate holdover time, and plan to depart before the fluid fails. If contamination were still present, I would request de-icing first, then anti-icing if continued protection were required.",
+    "memoryTrick": "**ANTI** — **A**lready clean surfaces only, **N**ever confuse with de-icing removal, **T**ime-limited by holdover, **I**nform ATC/ground of status before departure.",
+    "operationalMeaning": "When anti-icing is required or discussed, the crew should:\n\nAnti-icing planning includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Ground: ANAC123, taxi to de-icing pad via Alpha, hold short of the pad.",
+      "Ground: ANAC123, anti-icing in progress, report when complete and ready to taxi.",
+      "Tower: ANAC123, advise holdover time remaining before departure.",
+      "Ground: ANAC123, expect departure delay five minutes, confirm anti-icing still valid.",
+      "Approach: ANAC123, previous departure reported light icing at three thousand, say intentions."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, taxiing to de-icing pad via Alpha, will hold short of the pad.",
+      "ANAC123, anti-icing complete, ready to taxi.",
+      "ANAC123, holdover approximately twenty minutes remaining, ready for departure.",
+      "ANAC123, anti-icing still valid, able to accept five-minute delay.",
+      "ANAC123, roger light icing report, will activate anti-ice as required and advise."
+    ],
+    "brazilianMistakes": "- ❌ Saying \"request de-icing\" when the aircraft is already clean and only protection is needed.  \n  ✔ Say \"request anti-icing\" for preventive treatment on a clean aircraft.\n\n- ❌ Treating anti-icing fluid as unlimited protection with no time limit.  \n  ✔ Track holdover time from start of final application until takeoff.\n\n- ❌ Taking off after holdover expires because \"the fluid is still visible.\"  \n  ✔ If holdover has expired or is uncertain, return for re-treatment.\n\n- ❌ Confusing aircraft anti-ice systems with ground anti-icing fluid.  \n  ✔ Distinguish ground fluid protection from in-flight system operation in briefings and reports.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Request Anti-Icing, Type Four\n\n**Pronunciation:** AY-nak WUN TOO THREE, reh-KWEST AN-tee EYE-sing, type FOR\n\n**Word Stress**\n\n- Anti → AN-tee (stress on first)\n- Icing → EYE-sing\n- Request → reh-KWEST (stress on second)\n- Type → TYPE\n\nPractice:\n\nRequest anti-icing... Type Four... holdover time noted.\n\nTogether:\n\nANAC123, request anti-icing, Type Four, ready to taxi to the pad.",
+    "relatedConcepts": [
+      "De-Icing",
+      "Holdover Time",
+      "Icing Conditions",
+      "Contaminated Surfaces",
+      "Takeoff Performance",
+      "Ground Operations"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 9640 — Manual of Aircraft Ground De-icing/Anti-icing Operations"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Ground Movement / Departure Coordination",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA AC 120-60 — Ground Deicing and Anti-icing Program"
+      },
+      {
+        "label": "SKYbrary — Aircraft Ground De-icing / Anti-icing",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "H130 AFM — Limitations, Icing, Ground Operations"
+      }
+    ]
+  },
+  {
+    "catalogId": "0237",
+    "id": "0237",
+    "displayTerm": "Holdover Time",
+    "term": "holdover time",
+    "slug": "holdover-time",
+    "category": "Ground Operations",
+    "meaningEn": "Holdover Time is the estimated period of protection against ice, frost, or snow accretion provided by anti-icing fluid, beginning at the start of the final anti-icing fluid application and ending when the fluid is no longer effective under the prevailing precipitation and temperature conditions, as published in holdover time guidelines for the fluid type and intensity.",
+    "meaningPt": "Tempo de proteção / Holdover Time (HOT).\n\nPeríodo estimado de proteção contra acúmulo de gelo, geada ou neve proporcionado pelo fluido anti-gelo, começando no início da aplicação final do fluido anti-gelo e terminando quando o fluido deixa de ser eficaz nas condições de precipitação e temperatura prevalecentes, conforme tabelas de holdover para o tipo de fluido e a intensidade.",
+    "whenUsed": "When holdover time applies, the crew should:",
+    "example": "Ground: ANAC123, advise holdover time remaining.",
+    "sayPhrase": "ANAC123, holdover approximately one five minutes remaining.",
+    "icaoQuestion": "Anti-icing is complete. Holdover is twenty minutes. ATC advises a twenty-five-minute departure delay. What do you do and what do you say?",
+    "icaoSpeakText": "I would not accept a delay that exceeds holdover time. I would advise ATC that holdover would expire before departure and request either immediate or priority departure within the remaining protection, or clearance to return to the pad for re-treatment. I would not take off after holdover expiration. If precipitation intensity increased, I would treat the original holdover as no longer valid and return for treatment even earlier.",
+    "missionBrief": "Today's lesson covers Holdover Time — the estimated time of protection provided by anti-icing fluid, measured from the start of the final anti-icing application until the fluid is no longer effective, after which takeoff on contaminated or unprotected surfaces is not acceptable.\n\nHoldover time is not a suggestion. It is the operational window between treatment and takeoff. When it expires, the fluid has failed or is assumed to have failed. Continuing to depart without re-treatment is a contamination risk and a decision error.\n\nFor H130 helicopter training academy operations in Brazil — especially Curitiba, Guarulhos, and São Paulo winter mornings — crews may face freezing drizzle, frost, or light snow with limited pad capacity and busy ground frequencies. Knowing how to obtain holdover information, brief it, and communicate expiration or urgency to ATC is essential for Part 2 and Part 3.\n\nHoldover time links de-icing, anti-icing, and the takeoff decision into one clear English concept.",
+    "captainTeaching": "Holdover time is a takeoff decision tool, not a paperwork detail.\n\nThe clock starts at the beginning of the final anti-icing application — not when you leave the pad, not when you start engines, not when you feel ready. Know the start. Know the table. Know the weather.\n\nIf ATC offers a delay that burns your holdover, you have two professional options: request priority departure, or return for re-treatment. Sitting in line past expiration is not a third option.\n\nBrazilian winter ops can compress everything: short pads, busy Ground, changing precipitation. Your English must be calm and specific: holdover remaining, holdover expiring, request priority, request re-treatment.\n\nIn the H130 academy, you may not always see formal holdover paperwork like a major airline. The concept still owns the decision. Contaminated or unprotected departure after failed fluid is unacceptable — in operations and in the ICAO exam answer.\n\nProtect. Time. Decide. Depart or return. Never invent protection that the fluid no longer provides.",
+    "operationalContext": "You complete anti-icing at Guarulhos. Ground gives Type IV, start of application time, and light snow. Your holdover from the table is twenty-five minutes.\n\nYou brief: takeoff no later than that time. You call for taxi with margin.\n\nDuring taxi, Ground advises a ten-minute delay for sequencing.\n\nYou check the clock. Only eight minutes of holdover would remain at the new takeoff time — too tight if snow intensifies.\n\nYou transmit:\n\nANAC123, holdover expiring, request priority departure or return to pad for re-treatment.\n\nGround: ANAC123, expect immediate departure, continue to holding point runway one zero Left.\n\nYou depart inside holdover. Clean decision. Clear English. No gamble on expired fluid.",
+    "sayItCoach": "ANAC123, holdover expiring, request priority departure or return to pad for re-treatment.",
+    "icaoModelAnswer": "I would not accept a delay that exceeds holdover time. I would advise ATC that holdover would expire before departure and request either immediate or priority departure within the remaining protection, or clearance to return to the pad for re-treatment. I would not take off after holdover expiration. If precipitation intensity increased, I would treat the original holdover as no longer valid and return for treatment even earlier.",
+    "memoryTrick": "**HOT** — **H**oldover starts at final application, **O**bey the table and weather changes, **T**ake off inside time or return for re-treatment.",
+    "operationalMeaning": "When holdover time applies, the crew should:\n\nHoldover time decision-making includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Ground: ANAC123, advise holdover time remaining.",
+      "Tower: ANAC123, expect departure delay one zero minutes, say if holdover still valid.",
+      "Ground: ANAC123, taxi via Bravo, hold short runway two seven Right, report holdover status.",
+      "Tower: ANAC123, unable immediate departure, say intentions.",
+      "Ground: ANAC123, cleared back to de-icing pad via Alpha for re-treatment."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, holdover approximately one five minutes remaining.",
+      "ANAC123, holdover still valid for short delay, ready for departure.",
+      "ANAC123, taxiing via Bravo, will hold short two seven Right, holdover one two minutes remaining.",
+      "ANAC123, unable further delay, holdover expiring, request immediate departure or return for re-treatment.",
+      "ANAC123, cleared back to de-icing pad via Alpha for re-treatment."
+    ],
+    "brazilianMistakes": "- ❌ Starting the holdover clock when leaving the pad instead of at final application start.  \n  ✔ Start holdover at the beginning of the final anti-icing application.\n\n- ❌ Accepting unlimited taxi delay because \"fluid still looks wet.\"  \n  ✔ Use published holdover guidance; return if expired or uncertain.\n\n- ❌ Saying only \"we need to go now\" without explaining holdover.  \n  ✔ State: holdover expiring, request priority departure or re-treatment.\n\n- ❌ Continuing takeoff after holdover expires to avoid another pad visit.  \n  ✔ Expired holdover means re-treat — departure is not optional convenience.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Holdover Expiring, Request Priority Departure\n\n**Pronunciation:** AY-nak WUN TOO THREE, HOLD-oh-ver ek-SPY-ring, reh-KWEST pry-OR-ih-tee dee-PAR-cher\n\n**Word Stress**\n\n- Holdover → HOLD-oh-ver (stress on first)\n- Expiring → ek-SPY-ring (stress on second)\n- Priority → pry-OR-ih-tee (stress on second)\n- Departure → dee-PAR-cher (stress on second)\n\nPractice:\n\nHoldover expiring... request priority departure... or return for re-treatment.\n\nTogether:\n\nANAC123, holdover expiring, request priority departure or return to pad for re-treatment.",
+    "relatedConcepts": [
+      "Anti-Icing",
+      "De-Icing",
+      "Contaminated Surfaces",
+      "Departure Delay",
+      "Takeoff Decision",
+      "Ground Operations"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 9640 — Manual of Aircraft Ground De-icing/Anti-icing Operations"
+      },
+      {
+        "label": "FAA Holdover Time Guidelines — Fluid Protection Tables"
+      },
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Departure Sequencing",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Holdover Time",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "H130 AFM — Limitations / Ground Operations (contamination context)"
+      }
+    ]
+  },
+  {
+    "catalogId": "0238",
+    "id": "0238",
+    "displayTerm": "De-Icing System Failure",
+    "term": "de-icing system failure",
+    "slug": "de-icing-system-failure",
+    "category": "Aircraft Systems",
+    "meaningEn": "De-Icing System Failure is a malfunction or loss of capability of aircraft equipment designed to remove or prevent ice accretion on critical surfaces or sensors in flight, which may leave the aircraft unprotected in icing conditions and require exit from icing, application of abnormal procedures, and notification to ATC when operational capability is limited.",
+    "meaningPt": "Falha do sistema de de-icing / De-Icing System Failure.\n\nMalfuncionamento ou perda de capacidade do equipamento da aeronave destinado a remover ou impedir o acúmulo de gelo em superfícies ou sensores críticos em voo, o que pode deixar a aeronave desprotegida em condições de gelo e exigir saída do gelo, aplicação de procedimentos anormais e notificação ao ATC quando a capacidade operacional estiver limitada.",
+    "whenUsed": "When a de-icing or anti-ice system fails, the crew should:",
+    "example": "Approach: ANAC123, roger system failure, descend and maintain four thousand, say icing intensity.",
+    "sayPhrase": "ANAC123, descending four thousand, light to moderate icing, de-icing system failed.",
+    "icaoQuestion": "Your anti-ice or de-icing system fails in cloud at freezing temperature. What do you do and how do you communicate with ATC?",
+    "icaoSpeakText": "I would apply the AFM abnormal procedure, assess icing, and exit icing conditions as soon as practicable by requesting climb, descent, or diversion. I would advise ATC of the system failure, report icing intensity if known, and state my intentions. If performance became critically degraded or safe flight were in doubt, I would declare an urgency or distress message and request priority vectors to the nearest suitable airport.",
+    "missionBrief": "Today's lesson covers De-Icing System Failure — loss or malfunction of aircraft systems that remove or prevent ice on critical surfaces in flight, requiring immediate assessment of icing exposure, AFM abnormal procedures, and clear communication with ATC when continued flight in icing is unsafe.\n\nThis is an aircraft systems failure, not ground fluid treatment. Ground de-icing/anti-icing removes or prevents ice on the ramp. Airborne de-icing or anti-ice systems protect the aircraft in flight. When those systems fail, the operational answer is usually: exit icing, land if required, and tell ATC what you have lost and what you need.\n\nFor H130 helicopter training academy operations, many aircraft have limited ice protection compared with transport jets. A system failure — or the absence of certification for known icing — makes exiting icing and reporting even more important. ICAO exams still expect precise English for system failure and icing avoidance.",
+    "captainTeaching": "Airborne system failure and ground de-icing are different worlds. Keep them separate in your English.\n\nIf the system that protects you in icing fails, your first operational job is not a long technical lecture on the radio. It is: are we in icing? If yes — exit. Then tell ATC what failed and what altitude or routing you need.\n\nIn the H130, you may have little certified ice protection to begin with. A failure makes the rule simpler: do not stay in icing. Descend, climb, or turn — whatever exits the conditions — with clearance.\n\nExaminers listen for structure: nature of the problem, effect on flight, intention, and request. \"System problem\" is weak. \"De-icing system failure, requesting descent to exit icing\" is professional.\n\nIf ice continues and performance degrades, upgrade urgency. Pan Pan or Mayday is about whether safe flight is in doubt — not about pride.\n\nExit icing. Apply the checklist. Speak clearly. Land if the aircraft is no longer suitable for the weather ahead.",
+    "operationalContext": "You are IFR at seven thousand feet toward Florianópolis in cloud. Outside air temperature is minus three. You notice the anti-ice or de-ice system caption and confirm failure per checklist.\n\nIce begins to form on unprotected areas. You must leave the icing layer.\n\nYou transmit:\n\nANAC123, de-icing system failure, moderate icing, request descent to four thousand to exit icing.\n\nApproach: ANAC123, descend and maintain four thousand, report clear of icing.\n\nYou descend into warmer air. Ice stops accreting. You update:\n\nANAC123, clear of icing, requesting vectors to Florianópolis for precautionary landing.\n\nYou land with a failed system, not with an unexplained performance problem in cloud.",
+    "sayItCoach": "ANAC123, de-icing system failure, moderate icing, request descent to exit icing.",
+    "icaoModelAnswer": "I would apply the AFM abnormal procedure, assess icing, and exit icing conditions as soon as practicable by requesting climb, descent, or diversion. I would advise ATC of the system failure, report icing intensity if known, and state my intentions. If performance became critically degraded or safe flight were in doubt, I would declare an urgency or distress message and request priority vectors to the nearest suitable airport.",
+    "memoryTrick": "**EXIT** — **E**valuate system failure via AFM, **X**out of icing now, **I**nform ATC with clear limitation, **T**erminate exposure — divert if still icing.",
+    "operationalMeaning": "When a de-icing or anti-ice system fails, the crew should:\n\nDe-icing system failure scenarios commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger system failure, descend and maintain four thousand, say icing intensity.",
+      "Center: ANAC123, advise when clear of icing, say intentions.",
+      "Approach: ANAC123, diversion approved, expect vectors to Congonhas.",
+      "Approach: ANAC123, previous aircraft reported icing five to seven thousand, say altitude request.",
+      "Approach: ANAC123, say souls on board and fuel remaining if diverting."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, descending four thousand, light to moderate icing, de-icing system failed.",
+      "ANAC123, will advise clear of icing, intentions to continue if clear.",
+      "ANAC123, diversion to Congonhas, requesting vectors.",
+      "ANAC123, request descent to three thousand to exit icing, anti-ice inoperative.",
+      "ANAC123, souls four, fuel one hour thirty minutes, diverting."
+    ],
+    "brazilianMistakes": "- ❌ Staying in icing to \"see if the system comes back.\"  \n  ✔ Exit icing immediately when unprotected; troubleshoot while clear if able.\n\n- ❌ Reporting only \"system failure\" without saying icing or intentions.  \n  ✔ State: de-icing system failure, icing, request descent/diversion.\n\n- ❌ Confusing a request for ground de-icing with an airborne system failure call.  \n  ✔ Specify airborne system failure and the ATC service you need.\n\n- ❌ Continuing the original IFR cruise through known icing after protection is lost.  \n  ✔ Change altitude or route; divert if you cannot remain clear of icing.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, De-Icing System Failure, Request Descent to Exit Icing\n\n**Pronunciation:** AY-nak WUN TOO THREE, dee-EYE-sing SIS-tem FAYL-yer, reh-KWEST deh-SENT too eg-ZIT EYE-sing\n\n**Word Stress**\n\n- De-icing → dee-EYE-sing\n- System → SIS-tem\n- Failure → FAYL-yer\n- Exit → EG-zit\n\nPractice:\n\nDe-icing system failure... request descent... exit icing.\n\nTogether:\n\nANAC123, de-icing system failure, moderate icing, request descent to exit icing.",
+    "relatedConcepts": [
+      "Icing Conditions",
+      "Anti-Icing",
+      "Pitot Heat Failure",
+      "Bleed Air Failure",
+      "Weather Deviation",
+      "Precautionary Landing"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Urgency / Weather Deviation",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 6 — Operation of Aircraft (icing / system context)"
+      },
+      {
+        "label": "SKYbrary — Airframe Icing / Ice Protection Systems",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Icing / PIREPs",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "H130 AFM — Ice Protection, Abnormal Procedures, Limitations"
+      }
+    ]
+  },
+  {
+    "catalogId": "0239",
+    "id": "0239",
+    "displayTerm": "Pitot Heat Failure",
+    "term": "pitot heat failure",
+    "slug": "pitot-heat-failure",
+    "category": "Aircraft Systems",
+    "meaningEn": "Pitot Heat Failure is a malfunction in which heating of the pitot probe is lost or inoperative, increasing the risk of pitot icing and erroneous airspeed indications in visible moisture or freezing conditions, and requiring abnormal procedures, attitude-based flight, and ATC notification when airspeed becomes unreliable or operational capability is limited.",
+    "meaningPt": "Falha do aquecimento do pitot / Pitot Heat Failure.\n\nMalfuncionamento em que o aquecimento da sonda pitot é perdido ou inoperante, aumentando o risco de gelo no pitot e indicações errôneas de velocidade em umidade visível ou condições de congelamento, e exigindo procedimentos anormais, voo baseado em atitude e notificação ao ATC quando a velocidade se torna não confiável ou a capacidade operacional fica limitada.",
+    "whenUsed": "When pitot heat fails, the crew should:",
+    "example": "Approach: ANAC123, roger pitot heat failure, say intentions.",
+    "sayPhrase": "ANAC123, pitot heat failure, requesting vectors clear of icing, return to Guarulhos.",
+    "icaoQuestion": "Pitot heat fails before you enter a cloud layer at freezing level. Airspeed is still normal. What do you do?",
+    "icaoSpeakText": "I would apply the AFM procedure and avoid entering icing or conditions likely to block the pitot. I would advise ATC of the pitot heat failure and request an altitude or routing to remain clear of icing, or a return or diversion if I cannot continue safely. If airspeed later became unreliable, I would fly attitude and power, report unreliable airspeed, and request priority vectors for landing.",
+    "missionBrief": "Today's lesson covers Pitot Heat Failure — loss of heating to the pitot system, which can allow ice to block the pitot tube in icing or moisture conditions and produce unreliable airspeed indications, requiring cross-check, AFM procedures, and clear ATC communication when airspeed is unreliable.\n\nPitot heat failure is not a minor caption. Airspeed is a primary control and performance reference. In cloud, rain, or icing, an unheated pitot can ice over quickly. Unreliable airspeed has caused serious accidents when crews chased false indications.\n\nFor H130 helicopter training academy IFR operations across Brazilian routes — Congonhas, Curitiba, Florianópolis — crews must recognize the failure, secure reliable references, exit icing if needed, and report the limitation in ICAO English for Part 2 and Part 3.",
+    "captainTeaching": "Pitot heat keeps the airspeed system honest in moisture and ice. When it fails, honesty moves to attitude and power.\n\nDo not wait for a dramatic airspeed failure before acting. If you must enter icing or heavy cloud without pitot heat, you are accepting a known risk. In the H130 training world, the better decision is often: stay clear, return, or divert.\n\nIf the airspeed lies, believe the instruments that still agree — attitude, power, altitude trend, and rotor/engine parameters as applicable. Chase the false airspeed and you invent a second emergency.\n\nOn the radio, be specific. \"Instrument problem\" is weak. \"Pitot heat failure\" or \"unreliable airspeed\" tells ATC what not to assign and how urgently to help.\n\nBrazilian IFR weather can stack rain, cloud, and cold air on the same route. Say the limitation early. Request simple clearances. Land while the situation is still a system failure — not a loss of control story.",
+    "operationalContext": "You are climbing through five thousand feet in rain toward Curitiba. The pitot heat fails. Temperature is near freezing in the cloud layer ahead.\n\nYou apply the checklist and decide not to enter known icing without pitot heat.\n\nYou transmit:\n\nANAC123, pitot heat failure, request maintain present altitude, vectors to remain clear of icing, precautionary return to Guarulhos.\n\nApproach: ANAC123, turn left heading two four zero, descend and maintain three thousand, expect vectors Guarulhos.\n\nLater, airspeed begins to fluctuate. You update:\n\nANAC123, unreliable airspeed, flying attitude and power, request priority vectors for landing.\n\nYou stop chasing the needle. You fly the aircraft. You land with a known limitation.",
+    "sayItCoach": "ANAC123, pitot heat failure, unreliable airspeed, request priority vectors for landing.",
+    "icaoModelAnswer": "I would apply the AFM procedure and avoid entering icing or conditions likely to block the pitot. I would advise ATC of the pitot heat failure and request an altitude or routing to remain clear of icing, or a return or diversion if I cannot continue safely. If airspeed later became unreliable, I would fly attitude and power, report unreliable airspeed, and request priority vectors for landing.",
+    "memoryTrick": "**PITOT** — **P**rocedure from AFM first, **I**cing avoidance mandatory, **T**rust attitude and power, **O**wn the radio call early, **T**erminate with diversion if airspeed lies.",
+    "operationalMeaning": "When pitot heat fails, the crew should:\n\nPitot heat failure scenarios commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger pitot heat failure, say intentions.",
+      "Approach: ANAC123, unable speed assignment, fly present speed, expect vectors.",
+      "Center: ANAC123, advise if airspeed reliable, say altitude request.",
+      "Approach: ANAC123, priority handling approved, expect straight-in runway two eight Left.",
+      "Approach: ANAC123, say souls on board and fuel remaining."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, pitot heat failure, requesting vectors clear of icing, return to Guarulhos.",
+      "ANAC123, unable assigned speed, maintaining attitude and power, unreliable airspeed.",
+      "ANAC123, airspeed unreliable, request priority vectors for landing.",
+      "ANAC123, straight-in two eight Left, priority handling, ANAC123.",
+      "ANAC123, souls three, fuel one hour fifteen minutes."
+    ],
+    "brazilianMistakes": "- ❌ Entering known icing after pitot heat failure because airspeed still looks normal.  \n  ✔ Avoid icing; pitot blockage can develop quickly once moisture freezes.\n\n- ❌ Chasing a decreasing airspeed with aggressive pitch changes.  \n  ✔ Cross-check attitude and power; treat as unreliable airspeed per procedure.\n\n- ❌ Accepting precise speed control instructions with a failed pitot system.  \n  ✔ Advise unable assigned speed; request simplified clearances.\n\n- ❌ Delaying the radio call until airspeed has already failed completely.  \n  ✔ Report pitot heat failure early and state intentions.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Pitot Heat Failure, Unreliable Airspeed\n\n**Pronunciation:** AY-nak WUN TOO THREE, PEE-toh HEET FAYL-yer, un-reh-LY-uh-bul AIR-speed\n\n**Word Stress**\n\n- Pitot → PEE-toh\n- Heat → HEET\n- Failure → FAYL-yer\n- Unreliable → un-reh-LY-uh-bul (stress on LY)\n\nPractice:\n\nPitot heat failure... unreliable airspeed... request priority vectors.\n\nTogether:\n\nANAC123, pitot heat failure, unreliable airspeed, request priority vectors for landing.",
+    "relatedConcepts": [
+      "Unreliable Airspeed",
+      "Icing Conditions",
+      "De-Icing System Failure",
+      "Instrument Failure",
+      "Precautionary Landing",
+      "Weather Deviation"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Urgency Communications",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Pitot / Static System Blockage / Unreliable Airspeed",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Instrument Failure / Icing",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Annex 6 — Operation of Aircraft (instrument context)"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "H130 AFM — Pitot Heat, Abnormal Procedures, Limitations"
+      }
+    ]
+  },
+  {
+    "catalogId": "0240",
+    "id": "0240",
+    "displayTerm": "Windshield Heat Failure",
+    "term": "windshield heat failure",
+    "slug": "windshield-heat-failure",
+    "category": "Aircraft Systems",
+    "meaningEn": "Windshield Heat Failure is a malfunction in which heating of the windshield is lost or inadequate, allowing ice, frost, or condensation to form on the windshield and reduce forward visibility, which may require abnormal procedures, reduced approach minima considerations where applicable, diversion, and notification to ATC when visual references are compromised.",
+    "meaningPt": "Falha do aquecimento do para-brisa / Windshield Heat Failure.\n\nMalfuncionamento em que o aquecimento do para-brisa é perdido ou inadequado, permitindo que gelo, geada ou condensação se formem no para-brisa e reduzam a visibilidade frontal, o que pode exigir procedimentos anormais, considerações de mínimos de aproximação quando aplicável, desvio e notificação ao ATC quando as referências visuais estiverem comprometidas.",
+    "whenUsed": "When windshield heat fails, the crew should:",
+    "example": "Approach: ANAC123, roger windshield heat failure, say forward visibility and intentions.",
+    "sayPhrase": "ANAC123, windshield heat failure, reduced forward visibility, requesting immediate approach.",
+    "icaoQuestion": "Windshield heat fails on approach. Ice is forming and you may not see the runway at minima. What do you tell ATC and what might you do?",
+    "icaoSpeakText": "I would advise ATC of windshield heat failure with reduced forward visibility and request an immediate approach to the best available conditions or a diversion to an alternate with warmer or clearer weather. If I reached minima without sufficient forward visual reference, I would go around and request vectors for diversion. I would not continue to land without the visual references required for a safe landing.",
+    "missionBrief": "Today's lesson covers Windshield Heat Failure — loss of windshield heating that can allow ice, frost, or fogging to obscure forward vision, especially in icing, rain, or cold-soak conditions, requiring AFM procedures, possible diversion, and clear ATC communication when visibility through the windshield is reduced.\n\nWindshield heat failure is a vision problem before it is a systems trivia question. If you cannot see the approach lights, the hover reference, or the landing area, the approach is not safe — regardless of how good the instruments are.\n\nFor H130 helicopter operations in Brazil — coastal approaches into Santos Dumont, winter arrivals into Curitiba, rain and mist around Congonhas — forward visibility through the windshield is critical for the visual segment and for VFR segments of training flights. ICAO Part 2 and Part 3 expect precise language for the failure and the intention.",
+    "captainTeaching": "Windshield heat failure is about whether you can see what you must see.\n\nIn cruise, you may continue with instruments while you plan. In the visual segment of an approach — or in a helicopter hover and landing — a frozen or fogged windshield can end the maneuver safely only one way: discontinue.\n\nDo not negotiate with a white windshield at fifty feet. Go around. Tell ATC why. Divert to conditions where ice is not winning.\n\nIn Brazilian humidity and temperature swings, fogging can be as dangerous as external ice. Use every AFM option. If vision is still inadequate, the radio call must include the operational effect: reduced forward visibility — not only the system name.\n\nExaminers want the link: failure → effect → intention → request. Practice that chain until it is automatic.\n\nThe H130 lands where you can see the references. No windshield vision, no landing — unless it is a declared emergency with no better option, and even then you manage risk deliberately.",
+    "operationalContext": "You are inbound to Curitiba in light freezing drizzle. Windshield heat fails. Ice begins to build on the screen. Forward vision is deteriorating.\n\nYou transmit:\n\nANAC123, windshield heat failure, ice on windshield, reduced forward visibility, request vectors for immediate approach or diversion to warmer conditions.\n\nApproach: ANAC123, turn right heading three six zero, descend three thousand, expect ILS runway one five, advise visual status.\n\nOn final, you still cannot see enough of the runway environment.\n\nYou go around:\n\nANAC123, going around, insufficient forward visibility due windshield ice, request vectors for diversion to Congonhas.\n\nYou refuse a blind landing. That is professionalism, not failure.",
+    "sayItCoach": "ANAC123, windshield heat failure, reduced forward visibility, request vectors for diversion.",
+    "icaoModelAnswer": "I would advise ATC of windshield heat failure with reduced forward visibility and request an immediate approach to the best available conditions or a diversion to an alternate with warmer or clearer weather. If I reached minima without sufficient forward visual reference, I would go around and request vectors for diversion. I would not continue to land without the visual references required for a safe landing.",
+    "memoryTrick": "**SEE** — **S**ystem checklist first, **E**valuate forward vision honestly, **E**xit approach or divert if you cannot see.",
+    "operationalMeaning": "When windshield heat fails, the crew should:\n\nWindshield heat failure scenarios commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger windshield heat failure, say forward visibility and intentions.",
+      "Approach: ANAC123, expect ILS runway one five, report runway in sight.",
+      "Tower: ANAC123, go around, climb two thousand, fly runway heading.",
+      "Approach: ANAC123, diversion approved, expect vectors Congonhas.",
+      "Approach: ANAC123, advise if windshield still obscured."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, windshield heat failure, reduced forward visibility, requesting immediate approach.",
+      "ANAC123, expecting ILS one five, will report runway in sight.",
+      "ANAC123, going around, insufficient forward visibility, climbing two thousand, runway heading.",
+      "ANAC123, diverting Congonhas, requesting vectors.",
+      "ANAC123, windshield still partially obscured, request longer final if available."
+    ],
+    "brazilianMistakes": "- ❌ Reporting only \"system failure\" without mentioning visibility.  \n  ✔ State windshield heat failure and reduced forward visibility.\n\n- ❌ Continuing below minima hoping the windshield will clear.  \n  ✔ Go around if visual references are insufficient.\n\n- ❌ Holding in icing while windshield ice increases.  \n  ✔ Request immediate approach or exit icing / divert.\n\n- ❌ Forcing a helicopter landing with obscured hover references.  \n  ✔ Discontinue and divert; vision is part of the landing system.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Windshield Heat Failure, Reduced Forward Visibility\n\n**Pronunciation:** AY-nak WUN TOO THREE, WIND-sheeld HEET FAYL-yer, reh-DOOST FOR-ward viz-uh-BIL-ih-tee\n\n**Word Stress**\n\n- Windshield → WIND-sheeld\n- Heat → HEET\n- Reduced → reh-DOOST\n- Visibility → viz-uh-BIL-ih-tee (stress on BIL)\n\nPractice:\n\nWindshield heat failure... reduced forward visibility... request diversion.\n\nTogether:\n\nANAC123, windshield heat failure, reduced forward visibility, request vectors for diversion.",
+    "relatedConcepts": [
+      "Icing Conditions",
+      "Go-Around",
+      "Precautionary Landing",
+      "De-Icing System Failure",
+      "Approach Minima",
+      "Weather Deviation"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Missed Approach / Diversion",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 8168 (PANS-OPS) — Approach Procedures / Visual Reference"
+      },
+      {
+        "label": "SKYbrary — Windshield Ice / Obscured Vision",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Approach and Landing (visual references)",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "H130 AFM — Windshield Heat, Abnormal Procedures, Limitations"
+      }
+    ]
+  },
+  {
+    "catalogId": "0241",
+    "id": "0241",
+    "displayTerm": "Bleed Air Failure",
+    "term": "bleed air failure",
+    "slug": "bleed-air-failure",
+    "category": "Aircraft Systems",
+    "meaningEn": "Bleed Air Failure is a malfunction involving loss or abnormal operation of engine or APU bleed air supply to aircraft systems, which may disable or degrade environmental control, air conditioning, wing or engine anti-ice, or related services, and which requires abnormal procedures and ATC notification when flight capability or safety margins are reduced.",
+    "meaningPt": "Falha de sangria / Bleed Air Failure.\n\nMalfuncionamento envolvendo perda ou operação anormal do suprimento de ar de sangria do motor ou APU para sistemas da aeronave, o que pode desativar ou degradar o controle ambiental, ar-condicionado, anti-gelo de asa ou motor, ou serviços relacionados, e que exige procedimentos anormais e notificação ao ATC quando a capacidade de voo ou as margens de segurança forem reduzidas.",
+    "whenUsed": "When bleed air fails, the crew should:",
+    "example": "Center: ANAC123, roger bleed air failure, say operational effect and intentions.",
+    "sayPhrase": "ANAC123, bleed air failure, anti-ice inoperative, requesting descent clear of icing.",
+    "icaoQuestion": "Bleed air fails and you lose anti-ice capability while approaching icing conditions. What do you do?",
+    "icaoSpeakText": "I would apply the AFM abnormal procedure, avoid or exit icing immediately, and advise ATC of bleed air failure with anti-ice inoperative. I would request an altitude or routing to remain clear of icing and plan a precautionary landing or diversion if I could not continue safely without ice protection. I would state my intentions clearly and upgrade to urgency if performance or safety became critical.",
+    "missionBrief": "Today's lesson covers Bleed Air Failure — loss or malfunction of bleed air supply used for systems such as heating, environmental control, or ice protection on aircraft that rely on bleed air, requiring AFM abnormal procedures, assessment of lost capabilities, and clear ATC communication when pressurization, anti-ice, or cabin environment is affected.\n\nBleed air failure is a systems cascade risk. Losing bleed may mean losing heat, losing anti-ice capability, or losing environmental control — depending on the aircraft. The radio call must name the failure and the operational effect, not only the word \"bleed.\"\n\nFor H130 helicopter training academy operations, bleed-air architecture differs from transport jets; some environmental or anti-ice functions may be electrical or otherwise configured. The ICAO English concept remains essential for exams and for multi-type careers: report the failure, state what you lost, and request what you need — altitude change, diversion, or priority landing.",
+    "captainTeaching": "Bleed air failure is a label. The mission is the lost service.\n\nAsk yourself: what can I no longer do? Heat? Anti-ice? Environmental control? Then fly the airplane for the services you still have, and tell ATC the limitation that matters for the clearance they might issue.\n\nIn icing, lost anti-ice is urgent. Exit. In cold high cruise with no heat, diversion may be the professional choice before the crew is impaired. In the H130, verify what \"bleed\" means on your specific aircraft — but keep exam English sharp for the generic concept used across types.\n\nNever hide a cascade. If bleed failure leads to smoke, you are in a smoke event. If it leads to icing exposure, you are in an icing exit event. Name the active threat.\n\nBrazilian IFR routes give you options — lower altitudes, coastal airports, short diversions — if you speak early.\n\nFailure. Effect. Intention. Request. That sequence keeps bleed problems manageable.",
+    "operationalContext": "You are IFR at nine thousand feet toward Florianópolis. A bleed air failure caption appears. Checklist shows associated anti-ice capability is lost. You are approaching a cloud layer at freezing level.\n\nYou transmit:\n\nANAC123, bleed air failure, anti-ice inoperative, request descent to five thousand to remain clear of icing, precautionary landing Florianópolis.\n\nRadar: ANAC123, descend and maintain five thousand, expect vectors Florianópolis Approach.\n\nYou stay out of ice. You land with a known system limitation instead of discovering performance loss in cloud.\n\nIf cabin heat is also lost and conditions are severe, you shorten the flight plan the same way: clear limitation, clear intention, clear request.",
+    "sayItCoach": "ANAC123, bleed air failure, anti-ice inoperative, request descent to exit icing.",
+    "icaoModelAnswer": "I would apply the AFM abnormal procedure, avoid or exit icing immediately, and advise ATC of bleed air failure with anti-ice inoperative. I would request an altitude or routing to remain clear of icing and plan a precautionary landing or diversion if I could not continue safely without ice protection. I would state my intentions clearly and upgrade to urgency if performance or safety became critical.",
+    "memoryTrick": "**BLEED** — **B**rief the lost services, **L**eave icing if unprotected, **E**xplain effect to ATC, **E**xecute AFM checklist, **D**ivert if the flight is no longer suitable.",
+    "operationalMeaning": "When bleed air fails, the crew should:\n\nBleed air failure scenarios commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Center: ANAC123, roger bleed air failure, say operational effect and intentions.",
+      "Approach: ANAC123, descend and maintain four thousand, report clear of icing.",
+      "Approach: ANAC123, diversion approved, expect straight-in runway one eight.",
+      "Center: ANAC123, unable higher altitude, say if heat or anti-ice required.",
+      "Approach: ANAC123, say souls on board and fuel remaining."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, bleed air failure, anti-ice inoperative, requesting descent clear of icing.",
+      "ANAC123, descending four thousand, will report clear of icing.",
+      "ANAC123, diverting, expecting straight-in one eight.",
+      "ANAC123, require lower altitude, cabin heat and anti-ice lost.",
+      "ANAC123, souls four, fuel one hour twenty minutes."
+    ],
+    "brazilianMistakes": "- ❌ Reporting \"bleed failure\" without saying what capability was lost.  \n  ✔ Add the effect: anti-ice inoperative, cabin heat lost, requesting descent.\n\n- ❌ Entering icing after losing bleed-dependent anti-ice.  \n  ✔ Exit or avoid icing; divert if necessary.\n\n- ❌ Continuing a long IFR sector with severe cabin cold and no plan.  \n  ✔ Shorten the flight; request diversion before crew performance drops.\n\n- ❌ Ignoring associated smoke or abnormal smell as \"just bleed.\"  \n  ✔ If smoke is present, treat as smoke emergency with checklist and landing.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Bleed Air Failure, Anti-Ice Inoperative\n\n**Pronunciation:** AY-nak WUN TOO THREE, BLEED AIR FAYL-yer, AN-tee-ice in-OP-er-uh-tiv\n\n**Word Stress**\n\n- Bleed → BLEED\n- Failure → FAYL-yer\n- Anti-ice → AN-tee-ice\n- Inoperative → in-OP-er-uh-tiv (stress on OP)\n\nPractice:\n\nBleed air failure... anti-ice inoperative... request descent.\n\nTogether:\n\nANAC123, bleed air failure, anti-ice inoperative, request descent to exit icing.",
+    "relatedConcepts": [
+      "De-Icing System Failure",
+      "Air Conditioning Smoke",
+      "Icing Conditions",
+      "Precautionary Landing",
+      "Cabin Environment",
+      "System Failure Reporting"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Urgency / Diversion Coordination",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Bleed Air Systems / Ice Protection",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — System Malfunctions / PIREPs",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Annex 6 — Operation of Aircraft"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "H130 AFM — Environmental / Bleed-related Systems, Abnormal Procedures"
+      }
+    ]
+  },
+  {
+    "catalogId": "0242",
+    "id": "0242",
+    "displayTerm": "Air Conditioning Smoke",
+    "term": "air conditioning smoke",
+    "slug": "air-conditioning-smoke",
+    "category": "Emergency",
+    "meaningEn": "Air Conditioning Smoke is smoke, haze, or fumes originating from or distributed by the air conditioning or environmental control system into the cockpit or cabin, indicating possible overheating, oil contamination, electrical fault, or bleed-source problems, and requiring immediate protective action, abnormal or emergency procedures, and priority landing.",
+    "meaningPt": "Fumaça do ar-condicionado / Air Conditioning Smoke.\n\nFumaça, névoa ou vapores originados ou distribuídos pelo sistema de ar-condicionado ou controle ambiental para o cockpit ou cabine, indicando possível superaquecimento, contaminação por óleo, falha elétrica ou problemas na fonte de sangria, e exigindo ação protetora imediata, procedimentos anormais ou de emergência e pouso prioritário.",
+    "whenUsed": "When air conditioning smoke occurs, the crew should:",
+    "example": "Approach: ANAC123, roger Mayday, turn left heading one five zero, descend immediately.",
+    "sayPhrase": "Mayday Mayday Mayday, Approach, ANAC123, air conditioning smoke in the cockpit, request immediate vectors to land.",
+    "icaoQuestion": "You detect smoke coming from the air conditioning vents in flight. What do you do and what do you say?",
+    "icaoSpeakText": "I would immediately protect myself with oxygen or smoke equipment as available, apply the smoke checklist, and declare an emergency. I would report air conditioning smoke, specify cockpit or cabin, and request immediate vectors to the nearest suitable airport. When asked, I would give souls on board and fuel remaining, and I would update ATC whether smoke is continuing or dissipating after checklist actions.",
+    "missionBrief": "Today's lesson covers Air Conditioning Smoke — smoke or fumes associated with the air conditioning or environmental control system, which may fill the cabin or cockpit with contaminated air, requiring immediate crew protection, checklist action, and a clear emergency radio report with nature, location, intentions, and souls/fuel when asked.\n\nAir conditioning smoke is not \"just a smell.\" Contaminated bleed or pack air can incapacitate a crew quickly. The priority is oxygen or smoke protection as equipped, isolate the source per AFM, land as soon as practicable, and communicate with ATC in structured ICAO English.\n\nFor H130 helicopter training academy operations, environmental systems differ from airliners, but cabin/cockpit smoke and fume events remain highly relevant. Brazilian IFR and VFR training flights near Congonhas, Santos Dumont, and coastal routes demand fast diversion language for Part 2 and Part 3.",
+    "captainTeaching": "Smoke from the air conditioning system is an atmosphere attack on the crew.\n\nProtect yourself first. Checklist second. Radio third — but do not delay the radio if you need priority now.\n\nThe best emergency call answers four questions: how bad (Pan Pan or Mayday), what it is, where it is, and what you want. \"Air conditioning smoke in the cockpit, request immediate vectors to land\" is complete. \"We have smoke\" is not.\n\nIn helicopters, cabin and cockpit are often the same small volume. Contamination spreads fast. Do not wait for flames. Land.\n\nBrazilian controllers will ask souls and fuel. Know the numbers before you need them. Update smoke status when it changes — dissipating or continuing guides rescue response.\n\nIf the checklist isolates the source and smoke clears, say so. If it does not, say so and keep priority. Either way, land as soon as practicable.",
+    "operationalContext": "You are cruising at six thousand feet toward Santos Dumont. A hot electrical smell becomes visible haze from the air conditioning vents. Your eyes sting.\n\nYou don oxygen, begin the checklist, and transmit:\n\nMayday Mayday Mayday, Approach, ANAC123, air conditioning smoke in the cockpit, request immediate vectors to land nearest suitable airport.\n\nApproach: ANAC123, turn left heading one five zero, descend three thousand, nearest airport Santos Dumont, twelve o'clock, one zero miles, say souls and fuel.\n\nYou reply with souls and fuel, continue the checklist, and update if smoke decreases after isolation.\n\nYou land with fire services standing by. Nature, location, intentions — all clear on the first call.",
+    "sayItCoach": "Mayday Mayday Mayday, ANAC123, air conditioning smoke in the cockpit, request immediate vectors to land.",
+    "icaoModelAnswer": "I would immediately protect myself with oxygen or smoke equipment as available, apply the smoke checklist, and declare an emergency. I would report air conditioning smoke, specify cockpit or cabin, and request immediate vectors to the nearest suitable airport. When asked, I would give souls on board and fuel remaining, and I would update ATC whether smoke is continuing or dissipating after checklist actions.",
+    "memoryTrick": "**SMOKE** — **S**hield with oxygen first, **M**emory-item / checklist next, **O**wn the Mayday or Pan Pan, **K**ey facts: nature, location, intentions, **E**xit to nearest suitable landing.",
+    "operationalMeaning": "When air conditioning smoke occurs, the crew should:\n\nAir conditioning smoke reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger Mayday, turn left heading one five zero, descend immediately.",
+      "Approach: ANAC123, nearest airport twelve o'clock, one zero miles, say souls on board and fuel remaining.",
+      "Tower: ANAC123, runway cleared to land, fire services standing by.",
+      "Approach: ANAC123, report smoke dissipating or continuing.",
+      "Approach: ANAC123, after landing vacate when able, emergency services will approach."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, Approach, ANAC123, air conditioning smoke in the cockpit, request immediate vectors to land.",
+      "ANAC123, turning left one five zero, descending, Mayday.",
+      "ANAC123, souls four, fuel one hour ten minutes.",
+      "ANAC123, smoke dissipating after checklist, continuing approach.",
+      "ANAC123, smoke continuing, request shortest vectors to land."
+    ],
+    "brazilianMistakes": "- ❌ Saying only \"smoke\" without location or source.  \n  ✔ Say air conditioning smoke in the cockpit or cabin.\n\n- ❌ Delaying the urgency call to finish the entire checklist first.  \n  ✔ Protect, start checklist, declare early for priority vectors.\n\n- ❌ Forgetting souls and fuel when ATC asks.  \n  ✔ Prepare souls and fuel as part of the emergency brief.\n\n- ❌ Cancelling urgency too early because the smell improved slightly.  \n  ✔ Continue to land; update status but keep priority until safe on ground.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Air Conditioning Smoke in the Cockpit, Request Immediate Vectors\n\n**Pronunciation:** AY-nak WUN TOO THREE, AIR kun-DISH-un-ing SMOHK in thuh KOK-pit, reh-KWEST ih-MEE-dee-ut VEK-terz\n\n**Word Stress**\n\n- Conditioning → kun-DISH-un-ing (stress on DISH)\n- Smoke → SMOHK\n- Cockpit → KOK-pit\n- Immediate → ih-MEE-dee-ut\n\nPractice:\n\nAir conditioning smoke... in the cockpit... request immediate vectors to land.\n\nTogether:\n\nMayday Mayday Mayday, ANAC123, air conditioning smoke in the cockpit, request immediate vectors to land.",
+    "relatedConcepts": [
+      "Avionics Smoke",
+      "Smoke in the Cabin",
+      "Bleed Air Failure",
+      "Mayday / Pan Pan",
+      "Precautionary Landing",
+      "Souls on Board / Fuel Remaining"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress and Urgency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Annex 6 — Emergency Procedures context"
+      },
+      {
+        "label": "SKYbrary — Smoke / Fumes in Cockpit / Cabin",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Communications",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "H130 AFM — Smoke / Environmental System Emergency Procedures"
+      }
+    ]
+  },
+  {
+    "catalogId": "0243",
+    "id": "0243",
+    "displayTerm": "Avionics Smoke",
+    "term": "avionics smoke",
+    "slug": "avionics-smoke",
+    "category": "Emergency",
+    "meaningEn": "Avionics Smoke is smoke or electrical fumes produced by overheating or failing avionics, electrical, or instrument equipment, typically detected by smell, haze, or visible smoke near the instrument panel or avionics bay, and requiring immediate protective action, emergency checklists, possible electrical isolation, and priority landing.",
+    "meaningPt": "Fumaça de aviônicos / Avionics Smoke.\n\nFumaça ou vapores elétricos produzidos por superaquecimento ou falha de equipamentos de aviônicos, elétricos ou instrumentos, tipicamente detectados por cheiro, névoa ou fumaça visível perto do painel de instrumentos ou baía de aviônicos, e exigindo ação protetora imediata, checklists de emergência, possível isolamento elétrico e pouso prioritário.",
+    "whenUsed": "When avionics smoke occurs, the crew should:",
+    "example": "Approach: ANAC123, roger Mayday avionics smoke, turn right heading three three zero, descend immediately.",
+    "sayPhrase": "Mayday Mayday Mayday, Approach, ANAC123, avionics smoke in the cockpit, request immediate vectors to land.",
+    "icaoQuestion": "You smell electrical smoke from the avionics and see haze on the panel. What is your plan and radio message structure?",
+    "icaoSpeakText": "I would don oxygen immediately, apply the avionics or electrical smoke checklist, and declare Mayday. I would report avionics smoke in the cockpit and request immediate vectors to the nearest suitable airport. I would give souls and fuel when asked, update whether smoke is dissipating or continuing, and land as soon as practicable, expecting possible further electrical or radio degradation.",
+    "missionBrief": "Today's lesson covers Avionics Smoke — smoke or fumes originating from avionics, electrical, or instrument equipment, often with a distinctive electrical smell, requiring immediate crew protection, electrical load shedding per AFM, and a clear distress or urgency call stating nature, location, and intentions.\n\nAvionics smoke is one of the most relevant smoke scenarios for H130 helicopter operations. Training helicopters may not have airline cargo holds or lavatories, but they do have avionics bays, radio stacks, and electrical equipment close to the crew. Smoke here can disable navigation and communication while impairing the pilots.\n\nBrazilian academy IFR — Congonhas, Guarulhos, Curitiba, Florianópolis — demands Part 2 phraseology and Part 3 speaking that names avionics smoke specifically and requests immediate landing.",
+    "captainTeaching": "Avionics smoke is the helicopter smoke emergency you must own.\n\nIt sits in front of you. It can kill the radios. It can kill the screens. It can kill the crew if you breathe it long enough.\n\nOxygen first. Checklist. Mayday while the transmitter works. Do not wait for confirmed flames.\n\nOn the radio, \"avionics smoke\" is better than \"electrical problem\" and better than bare \"smoke.\" Controllers and examiners hear the precision. Add location and the request for immediate landing.\n\nIf equipment isolation helps, say smoke dissipating. If it does not, say smoke continuing. Either way, land.\n\nIn Brazilian dense terminal airspace, priority exists for declared emergencies — but only after you declare. Silent troubleshooting over Congonhas helps no one.\n\nMake the call early. Fly the simplest path to the ground. After landing, shut down and get clear as the AFM and emergency services require.",
+    "operationalContext": "You are IFR at five thousand feet inbound to Congonhas. An acrid electrical smell rises from behind the instrument panel. Light smoke appears.\n\nYou don oxygen, start the checklist, and call while the radio still works:\n\nMayday Mayday Mayday, São Paulo Approach, ANAC123, avionics smoke in the cockpit, request immediate vectors to Congonhas for landing.\n\nApproach: ANAC123, turn right heading three three zero, descend two thousand, Congonhas twelve miles, say souls and fuel.\n\nYou give souls and fuel. After shedding equipment, smoke reduces. You update:\n\nANAC123, smoke dissipating after electrical isolation, continuing Mayday, request straight-in.\n\nYou land with a working plan — because the first call was complete and early.",
+    "sayItCoach": "Mayday Mayday Mayday, ANAC123, avionics smoke in the cockpit, request immediate vectors to land.",
+    "icaoModelAnswer": "I would don oxygen immediately, apply the avionics or electrical smoke checklist, and declare Mayday. I would report avionics smoke in the cockpit and request immediate vectors to the nearest suitable airport. I would give souls and fuel when asked, update whether smoke is dissipating or continuing, and land as soon as practicable, expecting possible further electrical or radio degradation.",
+    "memoryTrick": "**RADIO** — **R**espirator/oxygen on, **A**pply checklist, **D**eclare Mayday early, **I**dentify avionics smoke location, **O**btain immediate landing vectors.",
+    "operationalMeaning": "When avionics smoke occurs, the crew should:\n\nAvionics smoke reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger Mayday avionics smoke, turn right heading three three zero, descend immediately.",
+      "Approach: ANAC123, say souls on board and fuel remaining.",
+      "Approach: ANAC123, expect straight-in runway one seven Right, fire services alerted.",
+      "Approach: ANAC123, report radio if degrading, squawk emergency if able.",
+      "Tower: ANAC123, cleared to land, roll to the end, emergency services standing by."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, Approach, ANAC123, avionics smoke in the cockpit, request immediate vectors to land.",
+      "ANAC123, souls three, fuel fifty minutes.",
+      "ANAC123, smoke dissipating, continuing approach, still Mayday.",
+      "ANAC123, electrical equipment isolated, request straight-in.",
+      "ANAC123, cleared to land, will roll to the end."
+    ],
+    "brazilianMistakes": "- ❌ Troubleshooting silently for several minutes before calling ATC.  \n  ✔ Declare early — avionics smoke can take communications next.\n\n- ❌ Saying \"electrical failure\" when the primary threat is smoke.  \n  ✔ Lead with avionics smoke; mention electrical isolation as secondary.\n\n- ❌ Cancelling Mayday in the air because smoke reduced slightly.  \n  ✔ Continue priority landing; update status; cancel only when safe on ground per procedure.\n\n- ❌ Forgetting that H130 avionics bay smoke is more relevant than airline lavatory examples.  \n  ✔ Train this scenario as primary helicopter smoke English.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Avionics Smoke in the Cockpit, Request Immediate Vectors\n\n**Pronunciation:** AY-nak WUN TOO THREE, ay-vee-ON-iks SMOHK in thuh KOK-pit, reh-KWEST ih-MEE-dee-ut VEK-terz\n\n**Word Stress**\n\n- Avionics → ay-vee-ON-iks (stress on ON)\n- Smoke → SMOHK\n- Cockpit → KOK-pit\n- Immediate → ih-MEE-dee-ut\n\nPractice:\n\nAvionics smoke... in the cockpit... request immediate vectors to land.\n\nTogether:\n\nMayday Mayday Mayday, ANAC123, avionics smoke in the cockpit, request immediate vectors to land.",
+    "relatedConcepts": [
+      "Air Conditioning Smoke",
+      "Smoke in the Cabin",
+      "Electrical Failure",
+      "Mayday / Pan Pan",
+      "Radio Failure",
+      "Precautionary Landing"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress and Urgency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Smoke in the Cockpit / Electrical Smoke",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Communications / Electrical Fire",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Annex 6 — Emergency Procedures context"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "H130 AFM — Smoke / Electrical Emergency Procedures"
+      }
+    ]
+  },
+  {
+    "catalogId": "0244",
+    "id": "0244",
+    "displayTerm": "Cargo Smoke",
+    "term": "cargo smoke",
+    "slug": "cargo-smoke",
+    "category": "Emergency",
+    "meaningEn": "Cargo Smoke is the detection of smoke or fire indications in a cargo compartment, indicating possible combustion of cargo or compartment systems, and requiring immediate emergency procedures, possible fire suppression, declaration of distress, and landing at the nearest suitable airport.",
+    "meaningPt": "Fumaça no porão de carga / Cargo Smoke.\n\nDetecção de indicações de fumaça ou fogo em um compartimento de carga, indicando possível combustão da carga ou de sistemas do compartimento, e exigindo procedimentos de emergência imediatos, possível extinção de fogo, declaração de emergência e pouso no aeroporto adequado mais próximo.",
+    "whenUsed": "When cargo smoke is indicated, the crew should:",
+    "example": "Control: ANAC123, roger Mayday cargo smoke, turn left heading two seven zero, descend immediately.",
+    "sayPhrase": "Mayday Mayday Mayday, Control, ANAC123, cargo smoke, request immediate vectors to land.",
+    "icaoQuestion": "A cargo smoke warning activates in flight. What do you do and what do you transmit?",
+    "icaoSpeakText": "I would immediately apply the cargo smoke checklist, discharge fire suppression if equipped, and declare Mayday. I would report cargo smoke and request immediate vectors to the nearest suitable airport. When asked, I would provide souls on board, fuel remaining, and dangerous goods information if any. I would land as soon as possible and prepare for emergency evacuation. On a helicopter without a cargo hold, I would use the same structure for baggage or cabin cargo smoke.",
+    "missionBrief": "Today's lesson covers Cargo Smoke — smoke or fire warning associated with a cargo compartment, requiring immediate emergency checklist action, a clear distress call, and priority landing. Even when flying an H130 without a transport-category cargo hold, ICAO exam English still expects you to handle cargo smoke phraseology professionally.\n\nCargo smoke on airliners is a time-critical fire event: suppress if equipped, land immediately, and communicate nature, location, and intentions. For helicopter academy pilots, treat this as essential Part 2/Part 3 vocabulary, and relate it to more common H130 realities — cabin baggage fire, external load issues, or baggage compartment smoke — using the same radio structure.\n\nBrazilian ops language must stay ICAO-standard: Mayday, cargo smoke, request immediate vectors, souls, fuel.",
+    "captainTeaching": "Cargo smoke is a fire until you are on the ground and rescue says otherwise.\n\nThe exam wants the template: Mayday, cargo smoke, immediate landing, souls and fuel. Learn it cold.\n\nThen translate it to the H130 you actually fly. You may not have a Class C cargo hold. You may have cabin baggage, a baggage compartment, or an external load. If that burns or smokes, the English structure does not change — only the location phrase does: smoke in the cabin baggage area, request immediate landing.\n\nNever sound academic while the aircraft is on fire. Sound clear. Nature. Location. Intentions. Request.\n\nBrazilian controllers will mobilize fire services fast when they hear cargo smoke or aircraft fire. Give them souls and fuel. After landing, follow evacuation discipline.\n\nMaster the airliner phrase for the test. Master the cabin/baggage version for the helicopter. Same professionalism either way.",
+    "operationalContext": "Training scenario for exam English: you are in cruise when a cargo smoke warning triggers. You run the checklist and discharge suppression as equipped.\n\nYou transmit:\n\nMayday Mayday Mayday, Control, ANAC123, cargo smoke, request immediate vectors to nearest suitable airport to land.\n\nControl: ANAC123, turn left heading two seven zero, descend, nearest airport Guarulhos, say souls, fuel, and dangerous goods if any.\n\nYou provide the data and continue:\n\nANAC123, cargo fire suppression discharged, continuing Mayday, request shortest approach.\n\nFor an H130 with smoke from baggage in the cabin, the structure is identical — change location words, keep the urgency and landing request.",
+    "sayItCoach": "Mayday Mayday Mayday, ANAC123, cargo smoke, request immediate vectors to land.",
+    "icaoModelAnswer": "I would immediately apply the cargo smoke checklist, discharge fire suppression if equipped, and declare Mayday. I would report cargo smoke and request immediate vectors to the nearest suitable airport. When asked, I would provide souls on board, fuel remaining, and dangerous goods information if any. I would land as soon as possible and prepare for emergency evacuation. On a helicopter without a cargo hold, I would use the same structure for baggage or cabin cargo smoke.",
+    "memoryTrick": "**FIRE** — **F**ollow cargo smoke checklist, **I**nitiate Mayday now, **R**equest nearest landing, **E**vacuate plan ready after touchdown.",
+    "operationalMeaning": "When cargo smoke is indicated, the crew should:\n\nCargo smoke reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Control: ANAC123, roger Mayday cargo smoke, turn left heading two seven zero, descend immediately.",
+      "Approach: ANAC123, say souls on board, fuel remaining, and dangerous goods.",
+      "Tower: ANAC123, runway cleared, fire services standing by for aircraft fire.",
+      "Approach: ANAC123, report if smoke or fire indications continue.",
+      "Tower: ANAC123, after landing stop on the runway if required, evacuate when able."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, Control, ANAC123, cargo smoke, request immediate vectors to land.",
+      "ANAC123, souls one five zero, fuel two hours, no dangerous goods.",
+      "ANAC123, cargo suppression discharged, smoke warning continues, request shortest approach.",
+      "ANAC123, cleared to land, will stop on the runway for emergency services.",
+      "ANAC123, evacuating after landing."
+    ],
+    "brazilianMistakes": "- ❌ Treating a cargo smoke warning as a possible false alarm at cruise.  \n  ✔ Checklist and land — treat as fire until confirmed otherwise on the ground.\n\n- ❌ Omitting location: saying only \"we have a warning.\"  \n  ✔ Say cargo smoke / smoke in cargo compartment.\n\n- ❌ Forgetting dangerous goods when ATC asks.  \n  ✔ Know if DG is aboard; answer clearly yes/no and details if required.\n\n- ❌ Using only airline cargo language with no helicopter transfer skill.  \n  ✔ Also practice cabin baggage smoke calls for H130 relevance.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Cargo Smoke, Request Immediate Vectors to Land\n\n**Pronunciation:** AY-nak WUN TOO THREE, KAR-go SMOHK, reh-KWEST ih-MEE-dee-ut VEK-terz too LAND\n\n**Word Stress**\n\n- Cargo → KAR-go\n- Smoke → SMOHK\n- Immediate → ih-MEE-dee-ut\n- Vectors → VEK-terz\n\nPractice:\n\nCargo smoke... request immediate vectors... nearest suitable airport.\n\nTogether:\n\nMayday Mayday Mayday, ANAC123, cargo smoke, request immediate vectors to land.",
+    "relatedConcepts": [
+      "Avionics Smoke",
+      "Air Conditioning Smoke",
+      "Lavatory Smoke",
+      "Mayday / Pan Pan",
+      "Emergency Evacuation",
+      "Dangerous Goods"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9481 — Emergency Response Guidance (cabin/cargo fire context)"
+      },
+      {
+        "label": "SKYbrary — Cargo Compartment Fire / Smoke",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Communications",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Aircraft AFM/QRH — Cargo Smoke / Fire Procedures (type-specific); H130 AFM — Cabin/Electrical Smoke as applicable"
+      }
+    ]
+  },
+  {
+    "catalogId": "0245",
+    "id": "0245",
+    "displayTerm": "Lavatory Smoke",
+    "term": "lavatory smoke",
+    "slug": "lavatory-smoke",
+    "category": "Emergency",
+    "meaningEn": "Lavatory Smoke is the detection of smoke or fire indications in an aircraft lavatory, commonly involving a waste receptacle or electrical component, requiring immediate firefighting by cabin crew, flight crew emergency assessment, possible diversion or priority landing, and clear notification to ATC of the nature and status of the event.",
+    "meaningPt": "Fumaça no toalete / Lavatory Smoke.\n\nDetecção de indicações de fumaça ou fogo em um toalete da aeronave, comumente envolvendo o recipiente de lixo ou um componente elétrico, exigindo combate imediato ao fogo pela tripulação de cabine, avaliação de emergência pela tripulação de voo, possível desvio ou pouso prioritário, e notificação clara ao ATC sobre a natureza e o estado do evento.",
+    "whenUsed": "When lavatory smoke occurs, the crew should:",
+    "example": "Approach: ANAC123, roger Pan Pan lavatory smoke, say if fire is under control.",
+    "sayPhrase": "Pan Pan Pan, Approach, ANAC123, lavatory smoke, request priority landing.",
+    "icaoQuestion": "Cabin crew reports smoke in the lavatory. What do you say to ATC, and how does urgency change if the fire is not extinguished?",
+    "icaoSpeakText": "I would coordinate with cabin crew, apply procedures, and advise ATC of lavatory smoke with our intentions. If the fire were being fought or already extinguished, I would likely declare Pan Pan and request priority landing for precautionary landing and inspection. If the fire were not extinguished, I would declare Mayday and request immediate vectors to the nearest suitable airport. I would provide souls and fuel when asked and update whether the fire is extinguished or continuing. On a helicopter without a lavatory, I would use the same structure for cabin smoke.",
+    "missionBrief": "Today's lesson covers Lavatory Smoke — smoke detected in a lavatory, often from a waste-bin fire or electrical fault in transport aircraft, requiring immediate cabin crew action, flight crew emergency procedures, and clear ATC communication. The H130 typically has no airline lavatory; this lesson still teaches ICAO exam English and maps the same radio structure to helicopter-relevant smoke locations such as cabin or baggage areas.\n\nLavatory smoke is frequently associated with waste container fires. On airliners, cabin crew fight the fire while the flight crew plans priority landing if the fire is not immediately confirmed out. Your English must state nature, location, and intentions without delay.\n\nFor ICAO Delta / Captain Delta training in Brazil, master the standard phraseology, then always be ready to transfer the template to avionics or cabin smoke — the events you are more likely to see in the H130.",
+    "captainTeaching": "Lavatory smoke is exam vocabulary with real airline blood behind it — waste-bin fires are classic.\n\nYour job on the radio is status honesty: is the fire out, or not? That single fact chooses Pan Pan versus Mayday and chooses precautionary priority versus immediate emergency landing.\n\nDo not use vague \"we had a small problem in the back.\" Say lavatory smoke. Say fire extinguished or fire continuing. Say what you need from ATC.\n\nThen — for the aircraft you fly — transfer the skill. The H130 has no lavatory aisle. It has a cabin the size of a closet and avionics in your face. Cabin smoke and avionics smoke are your operational twins. Same oxygen priority. Same checklist discipline. Same clear English.\n\nBrazilian examiners may ask lavatory smoke even in a helicopter oral. Answer with standard ICAO phrasing, then show you understand applicability to your type.\n\nStatus. Urgency level. Landing plan. No ego. No delay.",
+    "operationalContext": "Exam-style scenario: cabin crew reports smoke in the aft lavatory. They fight the waste-bin fire with the appropriate extinguisher.\n\nYou transmit while assessing:\n\nPan Pan Pan, Approach, ANAC123, lavatory smoke, cabin crew fighting fire, request priority vectors for precautionary landing.\n\nCabin crew then reports fire extinguished, smoke clearing.\n\nYou update:\n\nANAC123, lavatory fire extinguished, smoke clearing, still request priority landing for inspection.\n\nIf the fire were not out:\n\nMayday Mayday Mayday, ANAC123, lavatory smoke, fire not extinguished, request immediate vectors to land.\n\nFor H130 reality, replace \"lavatory\" with \"cabin\" or \"avionics\" — keep the urgency logic identical.",
+    "sayItCoach": "Pan Pan Pan, ANAC123, lavatory smoke, fire extinguished, request priority landing.",
+    "icaoModelAnswer": "I would coordinate with cabin crew, apply procedures, and advise ATC of lavatory smoke with our intentions. If the fire were being fought or already extinguished, I would likely declare Pan Pan and request priority landing for precautionary landing and inspection. If the fire were not extinguished, I would declare Mayday and request immediate vectors to the nearest suitable airport. I would provide souls and fuel when asked and update whether the fire is extinguished or continuing. On a helicopter without a lavatory, I would use the same structure for cabin smoke.",
+    "memoryTrick": "**LAV** — **L**ocate the smoke (lavatory/cabin), **A**ssess fire out or not, **V**ector priority — Pan Pan if controlled, Mayday if not.",
+    "operationalMeaning": "When lavatory smoke occurs, the crew should:\n\nLavatory smoke reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger Pan Pan lavatory smoke, say if fire is under control.",
+      "Approach: ANAC123, priority handling approved, expect straight-in runway two seven.",
+      "Approach: ANAC123, say souls on board and fuel remaining.",
+      "Tower: ANAC123, fire services standing by, advise if evacuation required.",
+      "Approach: ANAC123, report fire extinguished or continuing."
+    ],
+    "pilotReadbacks": [
+      "Pan Pan Pan, Approach, ANAC123, lavatory smoke, request priority landing.",
+      "Mayday Mayday Mayday, ANAC123, lavatory fire not extinguished, request immediate vectors to land.",
+      "ANAC123, lavatory fire extinguished, smoke clearing, continuing priority approach.",
+      "ANAC123, souls one four zero, fuel one hour forty minutes.",
+      "ANAC123, request emergency services on arrival, no evacuation planned at this time."
+    ],
+    "brazilianMistakes": "- ❌ Saying \"smoke in the bathroom\" instead of standard \"lavatory smoke.\"  \n  ✔ Use ICAO-standard \"lavatory smoke\" in exams and international phraseology.\n\n- ❌ Keeping Pan Pan when the fire is clearly not under control.  \n  ✔ Upgrade to Mayday if fire continues or safe flight is in doubt.\n\n- ❌ Failing to update ATC when the fire is extinguished.  \n  ✔ Report fire extinguished, smoke clearing, and revised intentions.\n\n- ❌ Memorizing lavatory smoke without linking to H130 cabin/avionics smoke.  \n  ✔ Keep exam term + operational transfer ready.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Lavatory Smoke, Fire Extinguished, Request Priority Landing\n\n**Pronunciation:** AY-nak WUN TOO THREE, LAV-uh-tor-ee SMOHK, FYR ek-STING-gwisht, reh-KWEST pry-OR-ih-tee LAND-ing\n\n**Word Stress**\n\n- Lavatory → LAV-uh-tor-ee (stress on LAV)\n- Smoke → SMOHK\n- Extinguished → ek-STING-gwisht (stress on STING)\n- Priority → pry-OR-ih-tee\n\nPractice:\n\nLavatory smoke... fire extinguished... request priority landing.\n\nTogether:\n\nPan Pan Pan, ANAC123, lavatory smoke, fire extinguished, request priority landing.",
+    "relatedConcepts": [
+      "Cargo Smoke",
+      "Avionics Smoke",
+      "Air Conditioning Smoke",
+      "Smoke in the Cabin",
+      "Mayday / Pan Pan",
+      "Emergency Evacuation"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress and Urgency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9481 — Emergency Response Guidance for Aircraft Incidents"
+      },
+      {
+        "label": "SKYbrary — Lavatory Fire / Cabin Fire",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Communications",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Aircraft QRH — Lavatory Smoke / Fire; H130 AFM — Cabin Smoke Procedures as applicable"
+      }
+    ]
   }
 ];

@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "completedCount": 215,
-  "pendingCount": 295,
+  "completedCount": 245,
+  "pendingCount": 265,
   "concepts": [
     {
       "id": "0001",
@@ -1505,6 +1505,216 @@
       "id": "0215",
       "concept": "Firefighters on the Way",
       "slug": "0215-firefighters-on-the-way",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0216",
+      "concept": "Airport Authority",
+      "slug": "0216-airport-authority",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0217",
+      "concept": "Work in Progress",
+      "slug": "0217-work-in-progress",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0218",
+      "concept": "Airport Operations Closed",
+      "slug": "0218-airport-operations-closed",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0219",
+      "concept": "Cargo Apron",
+      "slug": "0219-cargo-apron",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0220",
+      "concept": "Debris on Taxiway",
+      "slug": "0220-debris-on-taxiway",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0221",
+      "concept": "Wreckage on Runway",
+      "slug": "0221-wreckage-on-runway",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0222",
+      "concept": "FOD Reported",
+      "slug": "0222-fod-reported",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0223",
+      "concept": "Drone Near Airport",
+      "slug": "0223-drone-near-airport",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0224",
+      "concept": "Tow Truck Collision",
+      "slug": "0224-tow-truck-collision",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0225",
+      "concept": "Runway Excursion",
+      "slug": "0225-runway-excursion",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0226",
+      "concept": "Runway Overrun",
+      "slug": "0226-runway-overrun",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0227",
+      "concept": "Runway Closure",
+      "slug": "0227-runway-closure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0228",
+      "concept": "Taxiway Closure",
+      "slug": "0228-taxiway-closure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0229",
+      "concept": "NOTAM",
+      "slug": "0229-notam",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0230",
+      "concept": "Temporary Restricted Area",
+      "slug": "0230-temporary-restricted-area",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0231",
+      "concept": "Hot Spot",
+      "slug": "0231-hot-spot",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0232",
+      "concept": "Stop Bar",
+      "slug": "0232-stop-bar",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0233",
+      "concept": "Follow Me Vehicle",
+      "slug": "0233-follow-me-vehicle",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0234",
+      "concept": "Marshalling Signals",
+      "slug": "0234-marshalling-signals",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0235",
+      "concept": "De-Icing",
+      "slug": "0235-de-icing",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0236",
+      "concept": "Anti-Icing",
+      "slug": "0236-anti-icing",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0237",
+      "concept": "Holdover Time",
+      "slug": "0237-holdover-time",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0238",
+      "concept": "De-Icing System Failure",
+      "slug": "0238-de-icing-system-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0239",
+      "concept": "Pitot Heat Failure",
+      "slug": "0239-pitot-heat-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0240",
+      "concept": "Windshield Heat Failure",
+      "slug": "0240-windshield-heat-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0241",
+      "concept": "Bleed Air Failure",
+      "slug": "0241-bleed-air-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0242",
+      "concept": "Air Conditioning Smoke",
+      "slug": "0242-air-conditioning-smoke",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0243",
+      "concept": "Avionics Smoke",
+      "slug": "0243-avionics-smoke",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0244",
+      "concept": "Cargo Smoke",
+      "slug": "0244-cargo-smoke",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0245",
+      "concept": "Lavatory Smoke",
+      "slug": "0245-lavatory-smoke",
       "status": "complete",
       "completedAt": "2026-07-10"
     }
