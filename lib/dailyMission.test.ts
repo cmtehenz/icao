@@ -4,6 +4,16 @@ type StudyMode = "standard" | "intense";
 
 const state = {
   mode: "standard" as StudyMode,
+  adaptivePlan: {
+    phase: "exam" as const,
+    wordMissionTermCount: 4,
+    wordMissionMinExamTerms: 2,
+    wordMissionMaxReviewTerms: 2,
+    pronunciationFirst: false,
+    pronunciationWordCount: 5,
+    preferFoundationTerms: false,
+    hint: "Exam phase — full Word Mission load.",
+  },
   pronMission: {
     words: ["alpha", "bravo", "charlie", "delta", "echo"],
     completedWords: [] as string[],
@@ -37,6 +47,12 @@ const state = {
 
 vi.mock("@/lib/studyTime", () => ({
   loadStudyPlanMode: () => state.mode,
+}));
+
+vi.mock("@/lib/trainingProfile/adaptivePlan", () => ({
+  getAdaptiveDailyPlan: () => state.adaptivePlan,
+  adaptivePlanHint: () => state.adaptivePlan.hint,
+  FOUNDATION_BOOTSTRAP_WORDS: ["turbulence", "approach", "altitude", "hold short", "go around"],
 }));
 
 vi.mock("@/lib/dailyExamRotation", () => ({
@@ -157,6 +173,16 @@ function completeBaseLegs() {
 
 function resetState() {
   state.mode = "standard";
+  state.adaptivePlan = {
+    phase: "exam",
+    wordMissionTermCount: 4,
+    wordMissionMinExamTerms: 2,
+    wordMissionMaxReviewTerms: 2,
+    pronunciationFirst: false,
+    pronunciationWordCount: 5,
+    preferFoundationTerms: false,
+    hint: "Exam phase — full Word Mission load.",
+  };
   state.pronMission.completedWords = [];
   state.pronProgress = { done: 0, total: 5, complete: false, currentWord: "alpha" };
   state.vocabMission.completedIds = [];
@@ -190,6 +216,17 @@ describe("getDailyMissionSummary", () => {
     expect(summary.examLabel).toBe("Prova 23C");
     expect(summary.complete).toBe(false);
     expect(summary.wordMission).toEqual(state.vocabProgress);
+  });
+
+  it("foundation with pronunciation counts six sections in standard mode", () => {
+    state.adaptivePlan = {
+      ...state.adaptivePlan,
+      phase: "foundation",
+      pronunciationFirst: true,
+    };
+    const summary = getDailyMissionSummary();
+    expect(summary.pronunciationRequired).toBe(true);
+    expect(summary.totalSections).toBe(6);
   });
 
   it("intense mode includes simulate as sixth section before debrief", () => {
@@ -230,6 +267,18 @@ describe("getNextMissionAction", () => {
     expect(next).not.toBeNull();
     expect(next!.href).toContain("/word-mission");
     expect(next!.title).toContain("Word Mission");
+  });
+
+  it("foundation phase returns pronunciation warm-up first", () => {
+    state.adaptivePlan = {
+      ...state.adaptivePlan,
+      phase: "foundation",
+      pronunciationFirst: true,
+      wordMissionTermCount: 2,
+    };
+    const next = getNextMissionAction();
+    expect(next!.title).toContain("Pronunciation");
+    expect(next!.hint).toMatch(/warm-up/i);
   });
 
   it("returns mission recall after base legs are complete", () => {

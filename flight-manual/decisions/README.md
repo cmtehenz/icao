@@ -27,5 +27,6 @@ Irreversible or high-impact design decisions. Read before changing mission flow,
 | [RFC-001](./RFC-001-educational-intelligence-architecture.md) | Educational Intelligence Architecture |
 | [RFC-002](./RFC-002-training-programs-architecture.md) | Training Programs Architecture |
 | [RFC-003](./RFC-003-architecture-stress-test-platform-freeze.md) | Platform freeze |
+| [RFC-004](./RFC-004-adaptive-training-redesign.md) | Adaptive training + checkride + UX |
 
 When an ADR conflicts with a chapter, the **chapter describes product intent**; the **ADR describes engineering ownership**. Resolve conflicts with product owner.

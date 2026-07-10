@@ -6,7 +6,9 @@ ICAO Delta is a **digital flight academy** — not a language app.
 
 Every screen should feel like professional aviation training: calm, focused, instructor-led.
 
-Reference feeling: senior helicopter instructor + modern glass cockpit + premium training center.
+Reference feeling: senior helicopter instructor + modern flight academy + premium training center.
+
+**Visual direction (RFC-004):** flight academy premium — cool slate surfaces, navy primary actions, amber accents, DM Sans typography, generous spacing. Not Duolingo, not purple SaaS, not newspaper layout.
 
 Never feel like: Duolingo, generic AI chatbot, PDF reader, flashcard app.
 
@@ -35,7 +37,7 @@ Mission routes share one layout pattern:
 - Captain FAB as primary mic on speaking legs
 - No choice paralysis — Mission Engine drives navigation
 
-Mission-focus routes: home dashboard, pronunciation, vocabulary, Part 1, Part 2, mission recall, flight debrief, mock exam.
+Mission-focus routes: home dashboard, checkride, pronunciation, vocabulary, Part 1, Part 2, mission recall, flight debrief, mock exam.
 
 ---
 

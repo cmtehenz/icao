@@ -1,6 +1,7 @@
 /** Routes that use Mission Focus Layout (no sidebar / bottom nav). */
 
 const MISSION_FOCUS_PREFIXES = [
+  "/checkride",
   "/word-mission",
   "/part1",
   "/part2",

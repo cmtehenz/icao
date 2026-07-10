@@ -18,6 +18,15 @@ import {
   part2MissionLink,
 } from "@/lib/part2DailyMission";
 import {
+  getOrCreatePronunciationDailyMission,
+  pronunciationDailyMissionProgress,
+  pronunciationMissionLink,
+} from "@/lib/pronunciationDailyMission";
+import {
+  adaptivePlanHint,
+  getAdaptiveDailyPlan,
+} from "@/lib/trainingProfile/adaptivePlan";
+import {
   getOrCreateWordDailyMission,
   wordDailyMissionProgress,
   wordMissionLink,
@@ -38,6 +47,7 @@ export type DailyMissionNextAction = {
 
 export type DailyMissionSummary = {
   examLabel: string;
+  pronunciation: ReturnType<typeof pronunciationDailyMissionProgress>;
   wordMission: ReturnType<typeof wordDailyMissionProgress>;
   part1: ReturnType<typeof part1DailyMissionProgress>;
   part2: ReturnType<typeof part2DailyMissionProgress>;
@@ -45,12 +55,25 @@ export type DailyMissionSummary = {
   simulate: ReturnType<typeof simulateMissionProgress>;
   debrief: ReturnType<typeof flightDebriefProgress>;
   simulateRequired: boolean;
+  pronunciationRequired: boolean;
   complete: boolean;
   completedSections: number;
   totalSections: number;
+  planHint: string;
 };
 
+function pronunciationLegActive(): boolean {
+  const plan = getAdaptiveDailyPlan();
+  if (!plan.pronunciationFirst) return false;
+  const progress = pronunciationDailyMissionProgress(getOrCreatePronunciationDailyMission());
+  return progress.total > 0;
+}
+
 export function areBaseMissionLegsComplete(): boolean {
+  if (pronunciationLegActive()) {
+    const pron = pronunciationDailyMissionProgress(getOrCreatePronunciationDailyMission());
+    if (!pron.complete) return false;
+  }
   const wordMission = wordDailyMissionProgress(getOrCreateWordDailyMission());
   const part1 = part1DailyMissionProgress(getOrCreatePart1DailyMission());
   const part2 = part2DailyMissionProgress(getOrCreatePart2DailyMission());
@@ -59,6 +82,9 @@ export function areBaseMissionLegsComplete(): boolean {
 
 export function getDailyMissionSummary(): DailyMissionSummary {
   const mode = loadStudyPlanMode();
+  const plan = getAdaptiveDailyPlan();
+  const pronunciation = pronunciationDailyMissionProgress(getOrCreatePronunciationDailyMission());
+  const pronunciationRequired = plan.pronunciationFirst && pronunciation.total > 0;
   const wordMission = wordDailyMissionProgress(getOrCreateWordDailyMission());
   const part1 = part1DailyMissionProgress(getOrCreatePart1DailyMission());
   const part2 = part2DailyMissionProgress(getOrCreatePart2DailyMission());
@@ -67,12 +93,9 @@ export function getDailyMissionSummary(): DailyMissionSummary {
   const debrief = flightDebriefProgress();
   const simulateRequired = isSimulateMissionRequired(mode);
 
-  const sections = [
-    wordMission.complete,
-    part1.complete,
-    part2.complete,
-    recall.complete,
-  ];
+  const sections: boolean[] = [];
+  if (pronunciationRequired) sections.push(pronunciation.complete);
+  sections.push(wordMission.complete, part1.complete, part2.complete, recall.complete);
   if (simulateRequired) sections.push(simulate.complete);
   sections.push(debrief.complete);
 
@@ -81,6 +104,7 @@ export function getDailyMissionSummary(): DailyMissionSummary {
 
   return {
     examLabel: todayExamLabel(),
+    pronunciation,
     wordMission,
     part1,
     part2,
@@ -88,9 +112,11 @@ export function getDailyMissionSummary(): DailyMissionSummary {
     simulate,
     debrief,
     simulateRequired,
+    pronunciationRequired,
     complete,
     completedSections,
     totalSections: sections.length,
+    planHint: adaptivePlanHint(plan),
   };
 }
 
@@ -106,6 +132,19 @@ export function isDailyMissionComplete(): boolean {
 export function getNextMissionAction(): DailyMissionNextAction | null {
   const summary = getDailyMissionSummary();
   if (summary.complete) return null;
+
+  const plan = getAdaptiveDailyPlan();
+
+  if (plan.pronunciationFirst) {
+    const pron = pronunciationDailyMissionProgress(getOrCreatePronunciationDailyMission());
+    if (pron.total > 0 && !pron.complete) {
+      return {
+        href: pronunciationMissionLink(pron.currentWord ?? undefined),
+        title: `Pronunciation · ${summary.examLabel}`,
+        hint: `${pron.done}/${pron.total} warm-up words — speak clearly`,
+      };
+    }
+  }
 
   const wordMission = getOrCreateWordDailyMission();
   const nextTermId = wordMission.termIds.find((id) => !wordMission.completedIds.includes(id));

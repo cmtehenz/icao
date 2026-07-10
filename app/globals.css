@@ -1,29 +1,33 @@
 :root {
-  --bg: #f4f6fa;
-  --bg-subtle: #eceff4;
-  --text: #111827;
-  --muted: #6b7280;
+  /* Flight academy premium — cool slate linen + navy + amber (RFC-004) */
+  --bg: #eef1f5;
+  --bg-subtle: #e2e7ee;
+  --text: #152033;
+  --muted: #5a6578;
   --card: #ffffff;
-  --line: #e5e7eb;
-  --border: #e5e7eb;
-  --blue: #3b82f6;
-  --blue-bg: #eff6ff;
-  --orange: #ea580c;
-  --orange-bg: #fff7ed;
-  --purple: #7c3aed;
-  --purple-bg: #f5f3ff;
-  --green: #16a34a;
-  --green-bg: #f0fdf4;
-  --red: #dc2626;
-  --yellow: #ca8a04;
-  --accent: #3b82f6;
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 20px;
-  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
-  --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.07);
-  --shadow-lg: 0 20px 48px rgba(15, 23, 42, 0.1);
+  --line: #d5dbe6;
+  --border: #d5dbe6;
+  --blue: #1a4a7a;
+  --blue-bg: #e7eef6;
+  --orange: #b86e00;
+  --orange-bg: #f8f0e3;
+  --purple: #1a4a7a;
+  --purple-bg: #e7eef6;
+  --green: #2a6b3c;
+  --green-bg: #e6f3ea;
+  --red: #b42318;
+  --yellow: #a16207;
+  --accent: #b86e00;
+  --academy-navy: #152a4a;
+  --academy-amber: #b86e00;
+  --academy-ink: #152033;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 22px;
+  --shadow-sm: 0 1px 2px rgba(21, 32, 51, 0.05);
+  --shadow-md: 0 10px 28px rgba(21, 32, 51, 0.07);
+  --shadow-lg: 0 22px 50px rgba(21, 32, 51, 0.1);
   --shadow: var(--shadow-md);
 }
 

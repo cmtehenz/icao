@@ -52,6 +52,26 @@ Captain Delta always knows. Captain Delta always guides.
 
 Each day follows one exam rotation by weekday (**Mon → 23C**, **Tue → 24C**, **Wed → 25C**, **Thu → 26C**, then repeats). Captain Delta presents a single mission — like a training flight with briefing, legs, and debrief.
 
+### Entry checkride (RFC-004)
+
+Before the first daily flight (or until completed / skipped), Captain Delta runs a **~5 minute speaking checkride**:
+
+- Word clarity probes (Azure pronunciation)
+- Short readbacks
+- One light operational oral answer
+
+**Skip** → assume **Foundation** phase. Result persists as `StudentTrainingProfile` and drives phase + weak areas.
+
+### Training phases
+
+| Phase | Goal |
+|-------|------|
+| **Foundation** | Clear speech first — lighter load, more scaffolding |
+| **Operational** | Context and structure — Word Mission + Part 1 |
+| **Exam** | Pressure and exam shape — full legs, mock when ready |
+
+Mission Engine reads phase when building today's flight. Captain narrates; Engine routes (ADR-009).
+
 ### Study modes
 
 | Mode | Purpose |

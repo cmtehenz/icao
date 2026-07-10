@@ -52,7 +52,8 @@ function isValidPremiumMission(parsed: unknown, date: string): parsed is VocabDa
     m.examVersion === examVersion &&
     Array.isArray(m.termIds) &&
     Array.isArray(m.completedIds) &&
-    m.termIds.length === WORD_DAILY_MISSION_TERM_COUNT &&
+    m.termIds.length >= 2 &&
+    m.termIds.length <= 4 &&
     m.termIds.every((id) => Boolean(findWordMissionVocabItem(id))) &&
     m.completedIds.every((id) => m.termIds.includes(id))
   );

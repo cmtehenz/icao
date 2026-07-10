@@ -1,4 +1,25 @@
 import { describe, expect, it, beforeEach, vi } from "vitest";
+
+const adaptiveState = {
+  plan: {
+    phase: "exam" as const,
+    wordMissionTermCount: 4,
+    wordMissionMinExamTerms: 2,
+    wordMissionMaxReviewTerms: 2,
+    pronunciationFirst: false,
+    pronunciationWordCount: 5,
+    preferFoundationTerms: false,
+  },
+};
+
+vi.mock("@/lib/trainingProfile/adaptivePlan", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@/lib/trainingProfile/adaptivePlan")>();
+  return {
+    ...actual,
+    getAdaptiveDailyPlan: () => adaptiveState.plan,
+  };
+});
+
 import {
   getOrCreateWordDailyMission,
   markWordMissionTermComplete,
@@ -8,6 +29,15 @@ import {
 
 describe("word daily mission persistence", () => {
   beforeEach(() => {
+    adaptiveState.plan = {
+      phase: "exam",
+      wordMissionTermCount: 4,
+      wordMissionMinExamTerms: 2,
+      wordMissionMaxReviewTerms: 2,
+      pronunciationFirst: false,
+      pronunciationWordCount: 5,
+      preferFoundationTerms: false,
+    };
     vi.stubGlobal("window", {
       dispatchEvent: vi.fn(),
       localStorage: {
@@ -46,5 +76,20 @@ describe("word daily mission persistence", () => {
     const progress = wordDailyMissionProgress(getOrCreateWordDailyMission());
     expect(progress.done).toBe(2);
     expect(progress.total).toBe(WORD_DAILY_MISSION_TERM_COUNT);
+  });
+
+  it("foundation phase creates a lighter two-term mission", () => {
+    adaptiveState.plan = {
+      ...adaptiveState.plan,
+      phase: "foundation",
+      wordMissionTermCount: 2,
+      wordMissionMinExamTerms: 1,
+      wordMissionMaxReviewTerms: 1,
+      preferFoundationTerms: true,
+      pronunciationFirst: true,
+    };
+    (window.localStorage as { store: Record<string, string> }).store = {};
+    const mission = getOrCreateWordDailyMission();
+    expect(mission.termIds).toHaveLength(2);
   });
 });

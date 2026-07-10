@@ -7,6 +7,18 @@ The Learning Engine defines **how every lesson runs inside a leg** — from miss
 The **Mission Engine** (see [01_PRODUCT.md](./01_PRODUCT.md)) decides *which leg* is next.  
 The Learning Engine defines *what happens inside* each leg.
 
+## Adaptive daily load (RFC-004 Phase 2)
+
+`getAdaptiveDailyPlan()` shapes today's flight from `StudentTrainingProfile`:
+
+| Phase | Word Mission terms | Pronunciation first |
+|-------|--------------------|---------------------|
+| Foundation | 2 | Always (bootstrap words if vault empty) |
+| Operational | 3 | If pronunciation/rhythm weak |
+| Exam | 4 | If pronunciation/rhythm weak |
+
+Mission Engine (`dailyMission.ts`) reads the plan for leg order and completion. Word Mission picker uses phase term counts and Foundation prefers newer/easier terms.
+
 ---
 
 ## Universal lesson pipeline

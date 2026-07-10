@@ -17,7 +17,32 @@ vi.mock("@/lib/studyTime", () => ({
   todayKey: () => "2026-07-05",
 }));
 
+vi.mock("@/lib/trainingProfile/adaptivePlan", () => ({
+  FOUNDATION_BOOTSTRAP_WORDS: ["turbulence", "approach", "altitude", "hold short", "go around"],
+  getAdaptiveDailyPlan: () => ({
+    phase: "foundation",
+    wordMissionTermCount: 2,
+    wordMissionMinExamTerms: 1,
+    wordMissionMaxReviewTerms: 1,
+    pronunciationFirst: true,
+    pronunciationWordCount: 5,
+    preferFoundationTerms: true,
+  }),
+}));
+
+vi.mock("@/lib/trainingProfile/store", () => ({
+  getTrainingProfile: () => ({
+    version: 1,
+    checkrideStatus: "skipped",
+    phase: "foundation",
+    weakAreas: ["pronunciation"],
+    focusSounds: ["turbulence"],
+    probeResults: [],
+  }),
+}));
+
 import {
+  getOrCreatePronunciationDailyMission,
   passesDailyMissionWordAttempt,
   pronunciationDailyMissionProgress,
 } from "@/lib/pronunciationDailyMission";
@@ -49,5 +74,33 @@ describe("passesDailyMissionWordAttempt", () => {
     expect(passesDailyMissionWordAttempt(90, true)).toBe(true);
     expect(passesDailyMissionWordAttempt(79, true)).toBe(false);
     expect(passesDailyMissionWordAttempt(90, false)).toBe(false);
+  });
+});
+
+describe("getOrCreatePronunciationDailyMission bootstrap", () => {
+  beforeEach(() => {
+    vi.stubGlobal("window", {
+      dispatchEvent: vi.fn(),
+      localStorage: {
+        store: {} as Record<string, string>,
+        getItem(key: string) {
+          return this.store[key] ?? null;
+        },
+        setItem(key: string, value: string) {
+          this.store[key] = value;
+        },
+        removeItem(key: string) {
+          delete this.store[key];
+        },
+      },
+    });
+    vi.stubGlobal("localStorage", window.localStorage);
+  });
+
+  it("bootstraps foundation words when vault is empty", () => {
+    const mission = getOrCreatePronunciationDailyMission();
+    expect(mission.words.length).toBe(5);
+    expect(mission.words[0]!.toLowerCase()).toBe("turbulence");
+    expect(mission.words).toContain("approach");
   });
 });

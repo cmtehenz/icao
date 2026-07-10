@@ -6,6 +6,12 @@ import { buildTodayBriefing } from "@/lib/captainDelta/briefing";
 import { daysUntilExam } from "@/lib/captainDelta/examDate";
 import { MISSION_REFRESH_EVENTS } from "@/lib/home/missionRefreshEvents";
 import { todayKey } from "@/lib/studyTime";
+import {
+  getTrainingProfile,
+  needsCheckride,
+  TRAINING_PROFILE_EVENT,
+} from "@/lib/trainingProfile/store";
+import { phaseLabel } from "@/lib/trainingProfile/types";
 
 export default function CaptainBriefing() {
   const { user } = useAuth();
@@ -16,10 +22,12 @@ export default function CaptainBriefing() {
     for (const ev of MISSION_REFRESH_EVENTS) {
       window.addEventListener(ev, refresh);
     }
+    window.addEventListener(TRAINING_PROFILE_EVENT, refresh);
     return () => {
       for (const ev of MISSION_REFRESH_EVENTS) {
         window.removeEventListener(ev, refresh);
       }
+      window.removeEventListener(TRAINING_PROFILE_EVENT, refresh);
     };
   }, [refresh]);
 
@@ -32,6 +40,8 @@ export default function CaptainBriefing() {
   );
 
   const daysLeft = useMemo(() => daysUntilExam(), [tick]);
+  const profile = useMemo(() => getTrainingProfile(), [tick]);
+  const awaitingCheckride = needsCheckride(profile);
 
   return (
     <header className="cda-hero home-captain-briefing" aria-label="Captain briefing">
@@ -40,12 +50,22 @@ export default function CaptainBriefing() {
       </div>
       <div className="cda-hero-copy">
         <p className="cda-hero-label">Captain Delta · Flight Briefing</p>
-        <h1>Today&apos;s Flight Mission</h1>
-        {briefing.text.split("\n").map((line) => (
-          <p key={line} className="cda-hero-welcome">
-            {line}
+        <h1>{awaitingCheckride ? "Speaking Checkride" : "Today's Flight Mission"}</h1>
+        {awaitingCheckride ? (
+          <p className="cda-hero-welcome">
+            Before we fly, I need to hear you speak — a short checkride so I can set your
+            training phase.
           </p>
-        ))}
+        ) : (
+          <>
+            <p className="cda-hero-welcome">Phase · {phaseLabel(profile.phase)}</p>
+            {briefing.text.split("\n").map((line) => (
+              <p key={line} className="cda-hero-welcome">
+                {line}
+              </p>
+            ))}
+          </>
+        )}
       </div>
       <div className="cda-exam-countdown">
         <span>ICAO Exam</span>

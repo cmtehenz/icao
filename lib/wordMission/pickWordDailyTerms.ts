@@ -3,6 +3,7 @@ import { examCorpus, termExamBoost } from "@/lib/examVocabPool";
 import type { ExamVersion } from "@/lib/exams/types";
 import { lookupDevKnowledgeById } from "@/lib/knowledge/devKnowledge";
 import { pickDailySlice } from "@/lib/dailyRotation";
+import { getAdaptiveDailyPlan } from "@/lib/trainingProfile/adaptivePlan";
 import { getWordMissionVocabulary } from "@/lib/wordMission/wordMissionCatalog";
 import {
   getItemProgress,
@@ -12,10 +13,10 @@ import {
   type VocabProgressStore,
 } from "@/utils/spacedRepetition";
 
-/** ~15 min daily leg target (4 levels × ~3–4 min active work). */
+/** Default ~15 min daily leg (exam phase). Adaptive plan may lower this. */
 export const WORD_DAILY_MISSION_TERM_COUNT = 4;
 
-/** At least this many terms must match today's exam corpus. */
+/** At least this many terms must match today's exam corpus (exam/operational). */
 export const WORD_DAILY_MIN_EXAM_TERMS = 2;
 
 /** Cap review/difficult slots so the rest rotate to future days. */
@@ -64,7 +65,11 @@ function premiumTermExamBoost(corpus: string, item: IcaoVocabularyItem): number 
   return boost;
 }
 
-function rankPremiumTerms(examVersion: ExamVersion, store: VocabProgressStore): RankedTerm[] {
+function rankPremiumTerms(
+  examVersion: ExamVersion,
+  store: VocabProgressStore,
+  preferFoundation: boolean,
+): RankedTerm[] {
   const corpus = examCorpus(examVersion);
   return getWordMissionVocabulary()
     .map((item) => ({
@@ -73,12 +78,20 @@ function rankPremiumTerms(examVersion: ExamVersion, store: VocabProgressStore): 
       examBoost: premiumTermExamBoost(corpus, item),
       reviewPriority: reviewPriority(store, item.id),
     }))
-    .sort(
-      (a, b) =>
+    .sort((a, b) => {
+      if (preferFoundation) {
+        return (
+          b.difficultyRank - a.difficultyRank ||
+          a.examBoost - b.examBoost ||
+          a.id.localeCompare(b.id)
+        );
+      }
+      return (
         a.difficultyRank - b.difficultyRank ||
         b.examBoost - a.examBoost ||
-        a.id.localeCompare(b.id),
-    );
+        a.id.localeCompare(b.id)
+      );
+    });
 }
 
 function isEligibleForDailyPick(store: VocabProgressStore, id: string): boolean {
@@ -91,20 +104,39 @@ function countExamTerms(result: string[], examIds: Set<string>): number {
   return result.filter((id) => examIds.has(id)).length;
 }
 
+export type PickWordDailyOptions = {
+  count?: number;
+  minExamTerms?: number;
+  maxReviewTerms?: number;
+  preferFoundationTerms?: boolean;
+  store?: VocabProgressStore;
+};
+
 /**
- * Daily Word Mission queue — exam-aligned, difficulty-aware, capped for ~15 min.
- *
- * 1. Up to MAX_REVIEW_TERMS from marked difficult / low score / due review
- * 2. At least MIN_EXAM_TERMS from today's exam corpus (23C–26C by weekday)
- * 3. Remaining slots filled from ranked + rotated pool; mastered terms skipped
+ * Daily Word Mission queue — exam-aligned, difficulty-aware, phase-adaptive (RFC-004).
+ * Omit count to use `getAdaptiveDailyPlan().wordMissionTermCount`.
  */
 export function pickWordDailyTermIds(
   date: string,
   examVersion: ExamVersion,
-  count = WORD_DAILY_MISSION_TERM_COUNT,
-  store: VocabProgressStore = loadVocabProgressStore(),
+  countOrOptions?: number | PickWordDailyOptions,
+  storeArg?: VocabProgressStore,
 ): string[] {
-  const ranked = rankPremiumTerms(examVersion, store);
+  const plan = getAdaptiveDailyPlan();
+  const options: PickWordDailyOptions =
+    countOrOptions === undefined
+      ? { store: storeArg }
+      : typeof countOrOptions === "number"
+        ? { count: countOrOptions, store: storeArg }
+        : countOrOptions;
+
+  const count = options.count ?? plan.wordMissionTermCount;
+  const minExam = options.minExamTerms ?? plan.wordMissionMinExamTerms;
+  const maxReview = options.maxReviewTerms ?? plan.wordMissionMaxReviewTerms;
+  const preferFoundation = options.preferFoundationTerms ?? plan.preferFoundationTerms;
+  const store = options.store ?? storeArg ?? loadVocabProgressStore();
+
+  const ranked = rankPremiumTerms(examVersion, store, preferFoundation);
   const eligible = ranked.filter((r) => isEligibleForDailyPick(store, r.id));
   const examIds = new Set(eligible.filter((r) => r.examBoost > 0).map((r) => r.id));
   const picked = new Set<string>();
@@ -116,25 +148,31 @@ export function pickWordDailyTermIds(
     result.push(id);
   };
 
-  const reviewCandidates = eligible
-    .filter((r) => reviewPriority(store, r.id) < 3)
-    .sort((a, b) => a.reviewPriority - b.reviewPriority || a.difficultyRank - b.difficultyRank);
+  if (!preferFoundation) {
+    const reviewCandidates = eligible
+      .filter((r) => reviewPriority(store, r.id) < 3)
+      .sort((a, b) => a.reviewPriority - b.reviewPriority || a.difficultyRank - b.difficultyRank);
 
-  for (const entry of reviewCandidates) {
-    if (result.length >= WORD_DAILY_MAX_REVIEW_TERMS) break;
-    push(entry.id);
+    for (const entry of reviewCandidates) {
+      if (result.length >= maxReview) break;
+      push(entry.id);
+    }
   }
 
   const examCandidates = eligible
     .filter((r) => r.examBoost > 0)
-    .sort((a, b) => b.examBoost - a.examBoost || a.difficultyRank - b.difficultyRank);
+    .sort((a, b) =>
+      preferFoundation
+        ? a.difficultyRank - b.difficultyRank || b.examBoost - a.examBoost
+        : b.examBoost - a.examBoost || a.difficultyRank - b.difficultyRank,
+    );
 
   for (const entry of examCandidates) {
     if (result.length >= count) break;
     push(entry.id);
   }
 
-  while (countExamTerms(result, examIds) < WORD_DAILY_MIN_EXAM_TERMS) {
+  while (countExamTerms(result, examIds) < minExam) {
     const nextExam = examCandidates.find((e) => !picked.has(e.id));
     if (!nextExam) break;
     push(nextExam.id);

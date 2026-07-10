@@ -1,5 +1,10 @@
 import { buildDailyPronunciationMission } from "@/lib/pronunciationMission";
 import { loadVault, VAULT_PASS_SCORE } from "@/lib/pronunciationVault";
+import {
+  FOUNDATION_BOOTSTRAP_WORDS,
+  getAdaptiveDailyPlan,
+} from "@/lib/trainingProfile/adaptivePlan";
+import { getTrainingProfile } from "@/lib/trainingProfile/store";
 import { resolveVocabTermIdForWord, wordMissionLink } from "@/lib/wordMission/wordDailyMission";
 import { syncDailyMissionLog } from "@/lib/dailyMissionLog";
 import { todayKey } from "@/lib/studyTime";
@@ -54,10 +59,25 @@ export function getOrCreatePronunciationDailyMission(): PronunciationDailyMissio
   const existing = loadPronunciationDailyMission();
   if (existing) return existing;
 
+  const plan = getAdaptiveDailyPlan();
   const built = buildDailyPronunciationMission(loadVault());
+  let words = built.words.map((w) => w.word.word);
+
+  // Foundation / pronunciation-first: bootstrap when vault is empty (RFC-004).
+  if (words.length === 0 && plan.pronunciationFirst) {
+    const focus = getTrainingProfile().focusSounds.filter(Boolean);
+    const bootstrap = [
+      ...focus,
+      ...FOUNDATION_BOOTSTRAP_WORDS,
+    ].filter((w, i, arr) => arr.findIndex((x) => x.toLowerCase() === w.toLowerCase()) === i);
+    words = bootstrap.slice(0, plan.pronunciationWordCount);
+  } else if (words.length > plan.pronunciationWordCount) {
+    words = words.slice(0, plan.pronunciationWordCount);
+  }
+
   const state: PronunciationDailyMissionState = {
     date: todayKey(),
-    words: built.words.map((w) => w.word.word),
+    words,
     completedWords: [],
   };
   savePronunciationDailyMission(state);

@@ -41,7 +41,8 @@ describe("word mission levels", () => {
 describe("legacy mission links", () => {
   it("pronunciationMissionLink resolves to word mission", () => {
     expect(pronunciationMissionLink("go around")).toBe(wordMissionLink("0007"));
-    expect(pronunciationMissionLink()).toBe("/word-mission");
+    // No word → today's warm-up current word when pronunciation-first, else browse.
+    expect(pronunciationMissionLink()).toMatch(/^\/word-mission/);
   });
 });
 

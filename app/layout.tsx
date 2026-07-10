@@ -1,12 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import AppShell from "@/components/AppShell";
 import { AuthProvider } from "@/components/AuthProvider";
 import ServiceWorkerRegister from "@/components/ServiceWorkerRegister";
 import "./globals.css";
 import "./theme-refined.css";
 
-const inter = Inter({
+const dmSans = DM_Sans({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-sans",
@@ -17,15 +17,15 @@ export const viewport: Viewport = {
   initialScale: 1,
   viewportFit: "cover",
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#2563eb" },
+    { media: "(prefers-color-scheme: light)", color: "#1a3358" },
     { media: "(prefers-color-scheme: dark)", color: "#0f172a" },
   ],
 };
 
 export const metadata: Metadata = {
-  title: "ICAO Delta — Helicopter Part 1 Trainer",
+  title: "ICAO Delta — Digital Flight Academy",
   description:
-    "Train ICAO Part 1 answers daily. Keywords, exam mode, and ICAO 4/5 structures for helicopter pilots.",
+    "Captain Delta trains ICAO English for helicopter pilots — checkride, daily mission, and exam-ready speech.",
   appleWebApp: {
     capable: true,
     title: "ICAO Delta",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning className={inter.variable}>
+    <html lang="en" suppressHydrationWarning className={dmSans.variable}>
       <body>
         <AuthProvider>
           <AppShell>{children}</AppShell>

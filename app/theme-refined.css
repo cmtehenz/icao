@@ -1193,3 +1193,166 @@ h1 {
   font-weight: 600;
   color: var(--blue);
 }
+
+/* ── Flight academy premium + checkride (RFC-004) ── */
+
+.btn.academy-primary,
+.btn.purple.mission-cta-btn,
+.mission-cta-btn.academy-primary {
+  background: var(--academy-navy, #152a4a);
+  border-color: var(--academy-navy, #152a4a);
+  color: #fff;
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--academy-navy, #152a4a) 28%, transparent);
+}
+
+.btn.academy-primary:hover,
+.mission-cta-btn.academy-primary:hover {
+  filter: brightness(1.06);
+}
+
+.btn.academy-danger {
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
+}
+
+.academy-surface,
+.checkride-panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  padding: 1.35rem 1.4rem 1.5rem;
+}
+
+.checkride-wrap {
+  max-width: 560px;
+  margin: 0 auto;
+  padding-top: 1rem;
+  padding-bottom: 5rem;
+}
+
+.checkride-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--academy-amber, var(--accent));
+  margin: 0 0 0.35rem;
+}
+
+.checkride-progress {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 0 0 0.65rem;
+}
+
+.checkride-meter {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--bg-subtle);
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+}
+
+.checkride-meter > span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--academy-navy), var(--academy-amber));
+  border-radius: inherit;
+  transition: width 0.25s ease;
+}
+
+.checkride-kind {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 0.4rem;
+}
+
+.checkride-prompt {
+  font-size: 1.05rem;
+  line-height: 1.45;
+  margin: 0 0 0.75rem;
+  color: var(--text);
+}
+
+.checkride-target {
+  font-size: clamp(1.35rem, 4vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--academy-navy, var(--blue));
+  margin: 0 0 1rem;
+  line-height: 1.25;
+}
+
+.checkride-oral-hint {
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin: 0 0 1rem;
+}
+
+.checkride-score {
+  font-weight: 700;
+  color: var(--green);
+  margin: 0 0 0.5rem;
+}
+
+.checkride-notice {
+  color: var(--orange);
+  font-size: 0.9rem;
+}
+
+.checkride-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-top: 1.25rem;
+}
+
+.checkride-phase {
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--academy-navy);
+  margin: 0.35rem 0 0.5rem;
+}
+
+.checkride-result h1 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin: 0;
+}
+
+.mission-cta-phase {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--academy-amber, var(--accent));
+  margin: 0 0 0.35rem;
+}
+
+.mission-cta-phase-brief {
+  margin: 0 0 1rem;
+}
+
+.home-flight-primary {
+  background:
+    radial-gradient(120% 80% at 100% 0%, color-mix(in srgb, var(--academy-amber) 12%, transparent), transparent 55%),
+    linear-gradient(165deg, color-mix(in srgb, var(--card) 88%, var(--blue-bg)) 0%, var(--card) 60%);
+  border-color: color-mix(in srgb, var(--academy-navy) 12%, var(--border));
+}
+
+.home-captain-briefing .cda-hero-label {
+  color: var(--academy-amber, var(--accent));
+}
+
+.btn.purple {
+  background: var(--academy-navy, #152a4a);
+  border-color: var(--academy-navy, #152a4a);
+  color: #fff;
+}

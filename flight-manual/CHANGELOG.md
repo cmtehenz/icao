@@ -4,6 +4,18 @@ Manual version history only. Sprint and audit details belong in Git history.
 
 ---
 
+## 3.2 — July 2026
+
+**Adaptive training redesign (RFC-004) — Phase 0–2.**
+
+- Entry speaking checkride (`/checkride`) with skip → Foundation
+- `StudentTrainingProfile` stores phase, weak areas, probe results
+- Home gates on checkride before Begin Flight
+- Mission Engine reads adaptive plan: pronunciation-first + phase term counts
+- Visual refresh: flight academy premium (navy/amber, DM Sans)
+
+---
+
 ## 3.1 — July 2026
 
 **Captain-led conversation.** Captain initiates coaching turns and mission handoffs; student responds and flies.

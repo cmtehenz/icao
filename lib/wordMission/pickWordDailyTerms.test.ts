@@ -67,4 +67,15 @@ describe("pickWordDailyTermIds", () => {
     const b = pickWordDailyTermIds("2026-07-08", "24C", WORD_DAILY_MISSION_TERM_COUNT, emptyStore());
     expect(a).toEqual(b);
   });
+
+  it("respects explicit phase-adaptive count (Foundation = 2)", () => {
+    const ids = pickWordDailyTermIds("2026-07-08", "25C", {
+      count: 2,
+      minExamTerms: 1,
+      maxReviewTerms: 1,
+      preferFoundationTerms: true,
+      store: emptyStore(),
+    });
+    expect(ids).toHaveLength(2);
+  });
 });
