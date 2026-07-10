@@ -18509,5 +18509,2090 @@ export const BATCH01_DEV_ENTRIES: DevKnowledgeEntry[] = [
         "label": "Aircraft QRH — Lavatory Smoke / Fire; H130 AFM — Cabin Smoke Procedures as applicable"
       }
     ]
+  },
+  {
+    "catalogId": "0246",
+    "id": "0246",
+    "displayTerm": "Oxygen Mask Deployment",
+    "term": "oxygen mask deployment",
+    "slug": "oxygen-mask-deployment",
+    "category": "Emergency",
+    "meaningEn": "Oxygen Mask Deployment is the automatic or crew-initiated release of oxygen masks in the cabin and/or flight deck when cabin altitude rises above a safe limit, requiring immediate use of oxygen, emergency descent if applicable, checklist completion, and clear notification to ATC of the nature of the emergency and intentions.",
+    "meaningPt": "Acionamento / liberação das máscaras de oxigênio / Oxygen Mask Deployment.\n\nLiberação automática ou iniciada pela tripulação das máscaras de oxigênio na cabine e/ou no cockpit quando a altitude de cabine sobe acima de um limite seguro, exigindo uso imediato de oxigênio, descida de emergência se aplicável, cumprimento de checklist e notificação clara ao ATC sobre a natureza da emergência e as intenções.",
+    "whenUsed": "When oxygen masks deploy, the crew should:",
+    "example": "Control: ANAC123, roger Mayday oxygen masks deployed, descend immediately flight level one zero zero, say intentions.",
+    "sayPhrase": "Mayday Mayday Mayday, Control, ANAC123, oxygen masks deployed, commencing emergency descent, request priority.",
+    "icaoQuestion": "Passenger oxygen masks have deployed in cruise. What are your immediate actions, and what do you say to ATC?",
+    "icaoSpeakText": "I would don the crew oxygen mask immediately, establish crew communication, and check cabin altitude and pressurization. If cabin altitude were high and uncontrolled, I would commence an emergency descent and declare Mayday, stating that oxygen masks have deployed and requesting priority vectors to the nearest suitable airport. I would provide souls and fuel when asked and update ATC when cabin altitude is under control. On a helicopter without automatic passenger mask deployment, I would use the same structure for any hypoxia or cabin-altitude related emergency.",
+    "missionBrief": "Today's lesson covers Oxygen Mask Deployment — the automatic or manual release of passenger and crew oxygen masks when cabin altitude exceeds a safe threshold, typically after pressurization failure or rapid decompression on pressurized aircraft. The H130 is not a high-altitude pressurized airliner; this lesson still teaches ICAO exam English and maps the same urgency logic to cabin altitude awareness, hypoxia risk, and clear ATC communication during any oxygen-related emergency.\n\nOxygen mask deployment is a classic ICAO speaking and radiotelephony topic. Examiners expect you to name the event, state crew actions, and declare the appropriate urgency level with intentions for descent and landing.\n\nFor ICAO Delta / Captain Delta training in Brazil, master the standard phraseology, then transfer the structure to any situation where oxygen, cabin altitude, or hypoxia becomes a factor — including engine anomalies that affect environmental systems.\n\nUnderstanding how to discuss oxygen mask deployment in ICAO-standard English is essential for Part 2 and Part 3 proficiency.",
+    "captainTeaching": "Oxygen mask deployment is exam vocabulary with real airline blood behind it — cabin altitude kills quietly if you delay.\n\nYour first action is oxygen for the crew. Then communicate. Then descend if the cabin is not controlled. The radio must name the event: oxygen masks deployed. Not \"we have a problem with the air.\"\n\nATC needs three things: what happened, what you are doing, what you need. Masks deployed. Emergency descent. Priority to nearest suitable airport.\n\nDo not use vague language. Do not delay the Mayday while you finish a long checklist discussion. Don masks, fly the aircraft, declare, descend.\n\nBrazilian examiners may ask oxygen mask deployment even in a helicopter oral. Answer with standard ICAO phrasing, then show you understand applicability: H130 crews still manage hypoxia risk, cabin environment, and clear emergency English.\n\nName it. Oxygen on. Descend if required. Land with priority.",
+    "operationalContext": "Exam-style scenario: you are in cruise when the cabin altitude warning activates and passenger oxygen masks deploy.\n\nYou don crew masks, establish communication, and begin emergency descent procedures while transmitting:\n\nMayday Mayday Mayday, Control, ANAC123, oxygen masks deployed, cabin altitude high, commencing emergency descent, request priority vectors to nearest suitable airport.\n\nATC clears the altitude block below and vectors you for landing. You update when cabin altitude is under control and when you are established on approach.\n\nFor H130 reality, replace automatic mask deployment with cabin altitude or hypoxia awareness — keep the urgency and radio structure identical.",
+    "sayItCoach": "Mayday Mayday Mayday, ANAC123, oxygen masks deployed, commencing emergency descent, request priority.",
+    "icaoModelAnswer": "I would don the crew oxygen mask immediately, establish crew communication, and check cabin altitude and pressurization. If cabin altitude were high and uncontrolled, I would commence an emergency descent and declare Mayday, stating that oxygen masks have deployed and requesting priority vectors to the nearest suitable airport. I would provide souls and fuel when asked and update ATC when cabin altitude is under control. On a helicopter without automatic passenger mask deployment, I would use the same structure for any hypoxia or cabin-altitude related emergency.",
+    "memoryTrick": "**MASK** — **M**asks on first for the crew, **A**dvise ATC with Mayday, **S**tart emergency descent if cabin high, **K**eep priority landing as the plan.",
+    "operationalMeaning": "When oxygen masks deploy, the crew should:\n\nOxygen mask deployment reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Control: ANAC123, roger Mayday oxygen masks deployed, descend immediately flight level one zero zero, say intentions.",
+      "Control: ANAC123, emergency descent approved, traffic cleared below, report leaving each flight level.",
+      "Approach: ANAC123, priority handling approved, expect straight-in runway one five.",
+      "Approach: ANAC123, say souls on board and fuel remaining.",
+      "Tower: ANAC123, emergency services standing by, advise if medical assistance required."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, Control, ANAC123, oxygen masks deployed, commencing emergency descent, request priority.",
+      "ANAC123, descending flight level one zero zero, leaving flight level three five zero.",
+      "ANAC123, priority vectors accepted, runway one five.",
+      "ANAC123, souls one six eight, fuel two hours ten minutes.",
+      "ANAC123, request medical assistance on arrival, cabin altitude now under control."
+    ],
+    "brazilianMistakes": "- ❌ Saying \"the masks fell\" or \"máscaras caíram\" instead of \"oxygen masks deployed.\"  \n  ✔ Use ICAO-standard \"oxygen masks deployed\" in exams and international phraseology.\n\n- ❌ Declaring the emergency only after completing the full checklist.  \n  ✔ Don oxygen, fly the aircraft, declare early, then continue procedures.\n\n- ❌ Not stating that emergency descent has commenced.  \n  ✔ Report commencing emergency descent so ATC can clear traffic below.\n\n- ❌ Memorizing mask deployment without linking to hypoxia and cabin altitude.  \n  ✔ Keep exam term + operational transfer ready for H130 and pressurized types.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Oxygen Masks Deployed, Commencing Emergency Descent\n\n**Pronunciation:** AY-nak WUN TOO THREE, OK-si-jen MASKS dee-PLOYD, kuh-MEN-sing ih-MUR-jen-see dee-SENT\n\n**Word Stress**\n\n- Oxygen → OK-si-jen (stress on OK)\n- Masks → MASKS\n- Deployed → dee-PLOYD (stress on PLOYD)\n- Emergency → ih-MUR-jen-see\n\nPractice:\n\nOxygen masks deployed... commencing emergency descent.\n\nTogether:\n\nMayday Mayday Mayday, ANAC123, oxygen masks deployed, commencing emergency descent, request priority.",
+    "relatedConcepts": [
+      "Passenger Oxygen On",
+      "Crew Oxygen On",
+      "Emergency Descent",
+      "Rapid Decompression",
+      "Cabin Altitude Warning",
+      "Mayday / Pan Pan"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress and Urgency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 8168 — Emergency Descent Procedures"
+      },
+      {
+        "label": "SKYbrary — Cabin Depressurization / Oxygen Systems",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Communications",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Aircraft QRH — Cabin Altitude / Oxygen; H130 AFM — Environmental / Oxygen as applicable"
+      }
+    ]
+  },
+  {
+    "catalogId": "0247",
+    "id": "0247",
+    "displayTerm": "Passenger Oxygen On",
+    "term": "passenger oxygen on",
+    "slug": "passenger-oxygen-on",
+    "category": "Emergency",
+    "meaningEn": "Passenger Oxygen On is the confirmation that the passenger oxygen system is activated and delivering oxygen to cabin occupants following mask deployment or system selection, usually associated with high cabin altitude, requiring continued emergency procedures, ATC updates on oxygen and cabin status, and priority handling as required.",
+    "meaningPt": "Oxigênio dos passageiros ligado / Passenger Oxygen On.\n\nConfirmação de que o sistema de oxigênio dos passageiros está ativado e fornecendo oxigênio aos ocupantes da cabine após a liberação das máscaras ou seleção do sistema, geralmente associado a altitude de cabine elevada, exigindo continuidade dos procedimentos de emergência, atualizações ao ATC sobre oxigênio e estado da cabine, e tratamento prioritário conforme necessário.",
+    "whenUsed": "When passenger oxygen is on, the crew should:",
+    "example": "Control: ANAC123, roger, confirm passenger oxygen on and say cabin altitude status.",
+    "sayPhrase": "ANAC123, passenger oxygen on, cabin altitude high, continuing emergency descent.",
+    "icaoQuestion": "After oxygen masks deploy, how do you update ATC regarding passenger oxygen, and what other information should you include?",
+    "icaoSpeakText": "I would confirm that the passenger oxygen system is activated and then update ATC that passenger oxygen is on. I would also report cabin altitude status — high, decreasing, or under control — and state whether we are continuing an emergency descent and requesting priority landing. I would provide souls and fuel when asked. On a helicopter without a passenger oxygen drop system, I would use the same clear status structure for crew oxygen or cabin environmental emergencies.",
+    "missionBrief": "Today's lesson covers Passenger Oxygen On — the confirmation that the passenger oxygen system is supplying oxygen after mask deployment or manual activation, typically during cabin altitude emergencies on pressurized transport aircraft. The H130 does not carry airline-style passenger oxygen drop systems; this lesson still teaches ICAO exam English and maps the same radio discipline to reporting oxygen status, cabin condition, and intentions.\n\n\"Passenger oxygen on\" is a status phrase examiners and ATC expect after masks deploy. It tells the controller that the cabin is being protected while the crew manages descent and diversion.\n\nFor ICAO Delta / Captain Delta training in Brazil, master the phrase, then always be ready to transfer the template to crew oxygen status and any cabin environmental emergency you may face in helicopter operations.\n\nUnderstanding how to report passenger oxygen status in ICAO-standard English is essential for Part 2 and Part 3 proficiency.",
+    "captainTeaching": "Passenger oxygen on is a status sentence. It tells ATC the cabin is protected while you fly the emergency.\n\nAfter masks deploy, do not go silent. Confirm oxygen is flowing. Say passenger oxygen on. Say whether cabin altitude is high, decreasing, or under control. Say what you need next.\n\nSilence after a Mayday is dangerous. Controllers plan around your updates. A short, clear oxygen status keeps the whole system working with you.\n\nOn the oral exam, examiners listen for exact vocabulary. On the line in an H130, they listen for the same discipline applied to whatever system is actually failing.\n\nStatus. Trend. Intention. That is professional emergency English.",
+    "operationalContext": "Exam-style scenario: after oxygen masks deploy, you confirm the passenger oxygen system is supplying oxygen and continue the emergency descent.\n\nYou update ATC:\n\nANAC123, passenger oxygen on, cabin altitude decreasing, continuing emergency descent, request priority vectors.\n\nApproach acknowledges and clears you for a straight-in. You later report cabin altitude under control and continue for landing with emergency services standing by.\n\nFor H130 reality, you may report crew oxygen or cabin condition instead — keep the clear status-update structure identical.",
+    "sayItCoach": "ANAC123, passenger oxygen on, cabin altitude decreasing, continuing emergency descent.",
+    "icaoModelAnswer": "I would confirm that the passenger oxygen system is activated and then update ATC that passenger oxygen is on. I would also report cabin altitude status — high, decreasing, or under control — and state whether we are continuing an emergency descent and requesting priority landing. I would provide souls and fuel when asked. On a helicopter without a passenger oxygen drop system, I would use the same clear status structure for crew oxygen or cabin environmental emergencies.",
+    "memoryTrick": "**PON** — **P**assenger oxygen confirmed, **O**utcome trend for cabin altitude, **N**otify ATC with intentions.",
+    "operationalMeaning": "When passenger oxygen is on, the crew should:\n\nPassenger oxygen reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Control: ANAC123, roger, confirm passenger oxygen on and say cabin altitude status.",
+      "Control: ANAC123, continue emergency descent, report passenger oxygen and cabin under control.",
+      "Approach: ANAC123, priority handling approved, expect runway two seven straight-in.",
+      "Approach: ANAC123, say souls on board and fuel remaining.",
+      "Tower: ANAC123, medical services advised, report if any passengers require assistance."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, passenger oxygen on, cabin altitude high, continuing emergency descent.",
+      "ANAC123, passenger oxygen on, cabin altitude decreasing, leaving flight level two zero zero.",
+      "ANAC123, priority runway two seven accepted, continuing descent.",
+      "ANAC123, souls one five five, fuel one hour fifty minutes.",
+      "ANAC123, passenger oxygen on, cabin under control, request medical standby on arrival."
+    ],
+    "brazilianMistakes": "- ❌ Saying \"oxygen of passengers is working\" instead of \"passenger oxygen on.\"  \n  ✔ Use ICAO-standard \"passenger oxygen on.\"\n\n- ❌ Reporting oxygen status without cabin altitude trend.  \n  ✔ Pair oxygen status with cabin altitude high / decreasing / under control.\n\n- ❌ Treating \"passenger oxygen on\" as the end of communication.  \n  ✔ Continue updates through descent and approach.\n\n- ❌ Ignoring the phrase because the H130 has no passenger mask system.  \n  ✔ Learn it for ICAO exams; transfer the status habit to real helicopter emergencies.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Passenger Oxygen On, Cabin Altitude Decreasing\n\n**Pronunciation:** AY-nak WUN TOO THREE, PAS-en-jer OK-si-jen ON, KAB-in AL-ti-tood dee-KREE-sing\n\n**Word Stress**\n\n- Passenger → PAS-en-jer (stress on PAS)\n- Oxygen → OK-si-jen\n- Cabin → KAB-in\n- Decreasing → dee-KREE-sing (stress on KREE)\n\nPractice:\n\nPassenger oxygen on... cabin altitude decreasing.\n\nTogether:\n\nANAC123, passenger oxygen on, cabin altitude decreasing, continuing emergency descent.",
+    "relatedConcepts": [
+      "Oxygen Mask Deployment",
+      "Crew Oxygen On",
+      "Emergency Descent",
+      "Rapid Decompression",
+      "Cabin Altitude Warning",
+      "Priority Landing"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress and Urgency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Cabin Depressurization / Oxygen Systems",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Communications",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Doc 9481 — Emergency Response Guidance"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Aircraft QRH — Passenger Oxygen; H130 AFM — Oxygen / Environmental as applicable"
+      }
+    ]
+  },
+  {
+    "catalogId": "0248",
+    "id": "0248",
+    "displayTerm": "Crew Oxygen On",
+    "term": "crew oxygen on",
+    "slug": "crew-oxygen-on",
+    "category": "Emergency",
+    "meaningEn": "Crew Oxygen On is the confirmation that flight crew members have donned oxygen masks and are receiving oxygen from the crew system, enabling protected breathing and crew communication while managing cabin altitude, smoke, fumes, or related emergencies, and supporting clear ATC notification of status and intentions.",
+    "meaningPt": "Oxigênio da tripulação ligado / Crew Oxygen On.\n\nConfirmação de que os membros da tripulação de voo colocaram as máscaras de oxigênio e estão recebendo oxigênio do sistema da tripulação, permitindo respiração protegida e comunicação entre a tripulação ao gerenciar altitude de cabine, fumaça, vapores ou emergências relacionadas, e apoiando notificação clara ao ATC sobre estado e intenções.",
+    "whenUsed": "When crew oxygen is required, the crew should:",
+    "example": "Control: ANAC123, roger Mayday, confirm crew on oxygen and say intentions.",
+    "sayPhrase": "Mayday Mayday Mayday, Control, ANAC123, smoke in cockpit, crew oxygen on, request immediate landing.",
+    "icaoQuestion": "There is smoke in the cockpit and cabin altitude is rising. What do you do first, and what do you say to ATC?",
+    "icaoSpeakText": "I would don the crew oxygen mask immediately, select oxygen as required, and establish crew communication. Then I would declare the emergency — typically Mayday for cockpit smoke — stating the nature of the problem, that crew oxygen is on, and requesting priority vectors for immediate landing. I would continue the applicable checklist, update smoke and cabin status, and provide souls and fuel when asked. The same protect-communicate-declare sequence applies in helicopter operations.",
+    "missionBrief": "Today's lesson covers Crew Oxygen On — confirmation that flight crew oxygen masks are donned and the crew oxygen system is supplying oxygen, restoring protected breathing and interphone communication during cabin altitude, smoke, or other oxygen-related emergencies. This concept is highly relevant to ICAO exams and remains operationally meaningful for H130 crews whenever smoke, fumes, or hypoxia risk requires oxygen and clear crew coordination.\n\nCrew oxygen on is both a checklist item and a radio-status concept. Without crew oxygen and communication, the rest of the emergency procedure collapses.\n\nFor ICAO Delta / Captain Delta training in Brazil, master the phraseology for reporting crew oxygen status, then apply the same discipline to smoke, decompression, and any event where the crew must protect themselves first.\n\nUnderstanding how to discuss crew oxygen in ICAO-standard English is essential for Part 2 and Part 3 proficiency.",
+    "captainTeaching": "Crew oxygen on means the pilots are still in the fight.\n\nIn smoke or high cabin altitude, the first professional act is selfish in the right way: protect your brain. Then talk to each other. Then talk to ATC.\n\nIf you transmit before you can think, you transmit garbage. If you delay oxygen to finish a perfect sentence, you may not finish the sentence.\n\nSay the emergency. Say crew oxygen on when it helps ATC understand you are protected and communicating. Say what you need: priority landing, vectors, descent.\n\nIn the H130, smoke in a small cabin reaches you fast. The principle does not change. Protect. Communicate. Declare. Land.\n\nBrazilian examiners love this logic. Show it in English without drama and without delay.",
+    "operationalContext": "Exam-style scenario: cabin altitude warning with smoke in the cockpit. You don crew masks, select oxygen, and establish communication.\n\nYou transmit:\n\nMayday Mayday Mayday, Control, ANAC123, smoke in the cockpit, crew oxygen on, requesting priority vectors for immediate landing.\n\nATC acknowledges. You fly the procedure, update when smoke is decreasing, and continue for priority landing with emergency services standing by.\n\nFor H130 operations, the same sequence applies to cabin or avionics smoke: oxygen if available and required, communication, declaration, landing plan.",
+    "sayItCoach": "Mayday Mayday Mayday, ANAC123, crew oxygen on, request immediate landing.",
+    "icaoModelAnswer": "I would don the crew oxygen mask immediately, select oxygen as required, and establish crew communication. Then I would declare the emergency — typically Mayday for cockpit smoke — stating the nature of the problem, that crew oxygen is on, and requesting priority vectors for immediate landing. I would continue the applicable checklist, update smoke and cabin status, and provide souls and fuel when asked. The same protect-communicate-declare sequence applies in helicopter operations.",
+    "memoryTrick": "**CREW** — **C**over face with oxygen first, **R**estore interphone communication, **E**xplain emergency to ATC, **W**in priority landing.",
+    "operationalMeaning": "When crew oxygen is required, the crew should:\n\nCrew oxygen reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Control: ANAC123, roger Mayday, confirm crew on oxygen and say intentions.",
+      "Control: ANAC123, priority handling approved, descend flight level one two zero, report able to continue.",
+      "Approach: ANAC123, expect straight-in runway one one, emergency services alerted.",
+      "Approach: ANAC123, say souls on board and fuel remaining.",
+      "Tower: ANAC123, fire services standing by, advise if evacuation required."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, Control, ANAC123, smoke in cockpit, crew oxygen on, request immediate landing.",
+      "ANAC123, crew oxygen on, descending flight level one two zero, continuing.",
+      "ANAC123, runway one one straight-in, crew oxygen on, smoke decreasing.",
+      "ANAC123, souls four, fuel one hour twenty minutes.",
+      "ANAC123, request emergency services, no evacuation planned at this time."
+    ],
+    "brazilianMistakes": "- ❌ Calling ATC before donning oxygen in smoke or high cabin altitude.  \n  ✔ Protect the crew first, then transmit clearly.\n\n- ❌ Saying \"we put the mask\" instead of \"crew oxygen on.\"  \n  ✔ Use ICAO-standard \"crew oxygen on\" / \"crew on oxygen.\"\n\n- ❌ Forgetting that mask microphone discipline affects readbacks.  \n  ✔ Speak slowly and clearly; confirm ATC has understood critical items.\n\n- ❌ Treating crew oxygen as airline-only knowledge.  \n  ✔ Transfer the priority sequence to H130 smoke and fumes scenarios.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Crew Oxygen On, Request Immediate Landing\n\n**Pronunciation:** AY-nak WUN TOO THREE, KROO OK-si-jen ON, reh-KWEST ih-MEE-dee-it LAND-ing\n\n**Word Stress**\n\n- Crew → KROO\n- Oxygen → OK-si-jen\n- Immediate → ih-MEE-dee-it (stress on MEE)\n- Landing → LAND-ing\n\nPractice:\n\nCrew oxygen on... request immediate landing.\n\nTogether:\n\nMayday Mayday Mayday, ANAC123, crew oxygen on, request immediate landing.",
+    "relatedConcepts": [
+      "Oxygen Mask Deployment",
+      "Passenger Oxygen On",
+      "Avionics Smoke",
+      "Air Conditioning Smoke",
+      "Emergency Descent",
+      "Mayday / Pan Pan"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress and Urgency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Smoke in the Cockpit / Oxygen Systems",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Communications",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Doc 9481 — Emergency Response Guidance"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Aircraft QRH — Crew Oxygen / Smoke; H130 AFM — Smoke / Oxygen as applicable"
+      }
+    ]
+  },
+  {
+    "catalogId": "0249",
+    "id": "0249",
+    "displayTerm": "Emergency Descent",
+    "term": "emergency descent",
+    "slug": "emergency-descent",
+    "category": "Emergency",
+    "meaningEn": "Emergency Descent is a rapid descent initiated by the flight crew to reach a safe altitude as quickly as practicable, typically due to loss of cabin pressurization, rapid decompression, fire, or another critical condition, requiring immediate ATC notification, traffic clearance below, and priority handling to a suitable landing airport when required.",
+    "meaningPt": "Descida de emergência / Emergency Descent.\n\nDescida rápida iniciada pela tripulação de voo para alcançar uma altitude segura o mais rápido possível, tipicamente devido à perda de pressurização da cabine, descompressão rápida, fogo ou outra condição crítica, exigindo notificação imediata ao ATC, liberação de tráfego abaixo e tratamento prioritário para um aeródromo adequado quando necessário.",
+    "whenUsed": "When an emergency descent is required, the crew should:",
+    "example": "Control: ANAC123, roger Mayday emergency descent, descend unrestricted, traffic cleared below.",
+    "sayPhrase": "Mayday Mayday Mayday, Control, ANAC123, commencing emergency descent, request traffic cleared below.",
+    "icaoQuestion": "You experience a rapid decompression in cruise. Describe your actions and what you say to ATC.?",
+    "icaoSpeakText": "I would don the oxygen mask, establish crew communication, and commence an emergency descent according to procedures. I would declare Mayday, state rapid decompression, report that I am commencing emergency descent, and request that traffic below be cleared and priority vectors to the nearest suitable airport. I would update ATC while descending, provide souls and fuel when asked, and advise when leveling at a safe altitude. In helicopter operations, I would use the same clear structure for any rapid descent required by fire or critical failure.",
+    "missionBrief": "Today's lesson covers Emergency Descent — a rapid, controlled descent to a safe altitude, most commonly after cabin pressurization failure or rapid decompression on pressurized aircraft, and also used when fire, smoke, or other critical failures require getting the aircraft down quickly. For H130 operations, full airline-style emergency descents from high flight levels are less common, but the ICAO English, ATC coordination, and decision logic remain essential exam and professional skills — and rapid descents for fire or systems failures still apply.\n\nEmergency descent is a Critical Part 2 and Part 3 topic. Controllers must clear traffic below you. Your English must be immediate, precise, and continuously updated.\n\nFor ICAO Delta / Captain Delta training in Brazil, master Mayday emergency descent phraseology, then transfer the same clarity to any rapid descent required in helicopter operations.\n\nUnderstanding emergency descent in ICAO-standard English is essential for Part 2 and Part 3 proficiency.",
+    "captainTeaching": "Emergency descent is where altitude becomes time.\n\nEvery second at an unsafe cabin altitude costs cognitive performance. Every second of radio silence costs ATC the chance to move traffic out of your way.\n\nFly the profile. Declare Mayday. Say commencing emergency descent. Ask for traffic cleared below. Then update.\n\nDo not invent poetry. Do not explain the whole system failure on the first call. Nature, action, request.\n\nIn the H130 you may never leave flight level three five zero in airline fashion — but you will still need rapid descent English for fire and critical failures. Examiners know this. Show both the exam scenario and the transferable logic.\n\nSmooth is fast. Clear is safe. Silent is dangerous.",
+    "operationalContext": "Exam-style scenario: rapid decompression at flight level three five zero. Masks deploy. You begin emergency descent.\n\nYou transmit:\n\nMayday Mayday Mayday, Control, ANAC123, rapid decompression, commencing emergency descent, request clear traffic below, diverting to nearest suitable airport.\n\nControl clears the block and issues:\n\nANAC123, roger Mayday, descend unrestricted, traffic cleared, report passing flight level two zero zero.\n\nYou update levels as you descend and transition to approach for priority landing.\n\nFor H130 reality, a rapid descent for cabin smoke or engine fire uses the same declaration and traffic-protection logic.",
+    "sayItCoach": "Mayday Mayday Mayday, ANAC123, commencing emergency descent, request traffic cleared below.",
+    "icaoModelAnswer": "I would don the oxygen mask, establish crew communication, and commence an emergency descent according to procedures. I would declare Mayday, state rapid decompression, report that I am commencing emergency descent, and request that traffic below be cleared and priority vectors to the nearest suitable airport. I would update ATC while descending, provide souls and fuel when asked, and advise when leveling at a safe altitude. In helicopter operations, I would use the same clear structure for any rapid descent required by fire or critical failure.",
+    "memoryTrick": "**DESCEND** — **D**eclare Mayday, **E**stablish oxygen, **S**tart the profile, **C**lear traffic request, **E**nunciate leaving levels, **N**earest airport plan, **D**on't go silent.",
+    "operationalMeaning": "When an emergency descent is required, the crew should:\n\nEmergency descent reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Control: ANAC123, roger Mayday emergency descent, descend unrestricted, traffic cleared below.",
+      "Control: ANAC123, report leaving each ten thousand feet, say intentions.",
+      "Approach: ANAC123, priority handling approved, expect runway one five, emergency services alerted.",
+      "Approach: ANAC123, say souls on board and fuel remaining.",
+      "Control: ANAC123, stop descent at flight level one zero zero if able, terrain considerations, advise."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, Control, ANAC123, commencing emergency descent, request traffic cleared below.",
+      "ANAC123, descending unrestricted, leaving flight level three five zero, will report passing two zero zero.",
+      "ANAC123, priority runway one five, continuing emergency descent.",
+      "ANAC123, souls one seven two, fuel two hours five minutes.",
+      "ANAC123, leveling flight level one zero zero, cabin altitude under control, request vectors for landing."
+    ],
+    "brazilianMistakes": "- ❌ Saying \"I am going down fast\" instead of \"commencing emergency descent.\"  \n  ✔ Use ICAO-standard \"commencing emergency descent.\"\n\n- ❌ Descending without declaring, hoping ATC will notice the altitude change.  \n  ✔ Declare Mayday immediately so traffic below can be cleared.\n\n- ❌ Giving a long technical explanation on the first call.  \n  ✔ Nature, action, request — then details if asked.\n\n- ❌ Treating emergency descent as fixed-wing only.  \n  ✔ Keep exam scenario + transfer the radio logic to H130 rapid descents.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Commencing Emergency Descent, Request Traffic Cleared Below\n\n**Pronunciation:** AY-nak WUN TOO THREE, kuh-MEN-sing ih-MUR-jen-see dee-SENT, reh-KWEST TRAF-ik KLEERD bih-LOH\n\n**Word Stress**\n\n- Commencing → kuh-MEN-sing (stress on MEN)\n- Emergency → ih-MUR-jen-see\n- Descent → deh-SENT\n- Cleared → KLEERD\n\nPractice:\n\nCommencing emergency descent... request traffic cleared below.\n\nTogether:\n\nMayday Mayday Mayday, ANAC123, commencing emergency descent, request traffic cleared below.",
+    "relatedConcepts": [
+      "Rapid Decompression",
+      "Oxygen Mask Deployment",
+      "Cabin Altitude Warning",
+      "Mayday",
+      "Priority Landing",
+      "Squawk 7700"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress Procedures / Emergency Descent",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 8168 — Emergency Descent"
+      },
+      {
+        "label": "SKYbrary — Emergency Descent / Depressurization",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Communications",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Aircraft QRH — Emergency Descent; H130 AFM — Emergency Procedures as applicable"
+      }
+    ]
+  },
+  {
+    "catalogId": "0250",
+    "id": "0250",
+    "displayTerm": "Rapid Decompression",
+    "term": "rapid decompression",
+    "slug": "rapid-decompression",
+    "category": "Emergency",
+    "meaningEn": "Rapid Decompression is a sudden and significant loss of cabin pressurization, creating an immediate risk of hypoxia and requiring crew oxygen, passenger oxygen if installed, emergency descent to a safe altitude, and immediate distress communication with ATC including nature of the emergency and intentions.",
+    "meaningPt": "Descompressão rápida / Rapid Decompression.\n\nPerda súbita e significativa da pressurização da cabine, criando risco imediato de hipóxia e exigindo oxigênio da tripulação, oxigênio dos passageiros se instalado, descida de emergência para uma altitude segura e comunicação imediata de socorro com o ATC, incluindo a natureza da emergência e as intenções.",
+    "whenUsed": "When rapid decompression occurs, the crew should:",
+    "example": "Control: ANAC123, roger Mayday rapid decompression, descend unrestricted, traffic cleared below.",
+    "sayPhrase": "Mayday Mayday Mayday, Control, ANAC123, rapid decompression, commencing emergency descent, request traffic cleared below.",
+    "icaoQuestion": "Describe what rapid decompression is and what you would say to ATC if it occurred in cruise.?",
+    "icaoSpeakText": "Rapid decompression is a sudden loss of cabin pressurization with immediate hypoxia risk. I would don oxygen, commence an emergency descent, and declare Mayday, stating rapid decompression, that oxygen masks have deployed if applicable, that I am commencing emergency descent, and that I request traffic cleared below and priority to the nearest suitable airport. I would update cabin altitude status and provide souls and fuel when asked. Even on a helicopter without typical airliner pressurization, I would keep the same time-critical communication structure for equivalent emergencies.",
+    "missionBrief": "Today's lesson covers Rapid Decompression — a sudden loss of cabin pressure that can cause fog, flying debris, ear and sinus pain, and immediate hypoxia risk, requiring oxygen, emergency descent, and urgent ATC communication. The H130 is not typically operated as a high-altitude pressurized airliner; this lesson still teaches Critical ICAO exam English and notes cabin-altitude and environmental awareness where useful for helicopter crews.\n\nRapid decompression is a classic ICAO oral and radiotelephony scenario. Examiners expect Mayday, oxygen actions, emergency descent, and clear intentions.\n\nFor ICAO Delta / Captain Delta training in Brazil, master the standard phraseology exactly, then show you can transfer urgency management to any time-critical systems emergency on the H130.\n\nUnderstanding rapid decompression in ICAO-standard English is essential for Part 2 and Part 3 proficiency.",
+    "captainTeaching": "Rapid decompression is violence in the cabin — then silence in the brain if you delay oxygen.\n\nMask. Communicate. Descend. Declare. In that spirit, even if the exact order flexes with your checklist, oxygen and aircraft control come before storytelling.\n\nOn the radio, \"rapid decompression\" is the correct ICAO label. Not \"the cabin broke.\" Not \"we lost pressure a little.\"\n\nATC will move mountains of traffic if you give them a clean Mayday. Give them that Mayday early.\n\nFor the H130 oral: answer the decompression scenario correctly, then add one sentence of transfer — you understand hypoxia time pressure and emergency descent English even if your daily machine differs.\n\nCritical means no improvisation on the key words.",
+    "operationalContext": "Exam-style scenario: a bang, cabin fog, and masks drop at flight level three three zero.\n\nYou don oxygen, start the emergency descent, and call:\n\nMayday Mayday Mayday, Control, ANAC123, rapid decompression, oxygen masks deployed, commencing emergency descent, request clear traffic below, diverting nearest suitable.\n\nControl clears traffic and issues unrestricted descent. You report passing key levels and later advise cabin altitude under control while continuing for priority landing.\n\nFor H130 reality, keep the Mayday structure for any equally time-critical failure — the exam word remains \"rapid decompression.\"",
+    "sayItCoach": "Mayday Mayday Mayday, ANAC123, rapid decompression, commencing emergency descent.",
+    "icaoModelAnswer": "Rapid decompression is a sudden loss of cabin pressurization with immediate hypoxia risk. I would don oxygen, commence an emergency descent, and declare Mayday, stating rapid decompression, that oxygen masks have deployed if applicable, that I am commencing emergency descent, and that I request traffic cleared below and priority to the nearest suitable airport. I would update cabin altitude status and provide souls and fuel when asked. Even on a helicopter without typical airliner pressurization, I would keep the same time-critical communication structure for equivalent emergencies.",
+    "memoryTrick": "**RAPID** — **R**eport Mayday now, **A**pply oxygen, **P**ush emergency descent, **I**nform traffic-below need, **D**ivert nearest suitable.",
+    "operationalMeaning": "When rapid decompression occurs, the crew should:\n\nRapid decompression reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Control: ANAC123, roger Mayday rapid decompression, descend unrestricted, traffic cleared below.",
+      "Control: ANAC123, report cabin altitude status when able.",
+      "Approach: ANAC123, priority vectors approved, expect runway two eight, medical services advised.",
+      "Approach: ANAC123, say souls on board and fuel remaining.",
+      "Tower: ANAC123, emergency services standing by, advise passenger condition on arrival."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, Control, ANAC123, rapid decompression, commencing emergency descent, request traffic cleared below.",
+      "ANAC123, descending unrestricted, leaving flight level three three zero, oxygen masks deployed.",
+      "ANAC123, cabin altitude decreasing, continuing emergency descent, priority runway two eight.",
+      "ANAC123, souls one six zero, fuel one hour forty-five minutes.",
+      "ANAC123, cabin altitude under control, leveling flight level one zero zero, request vectors for landing."
+    ],
+    "brazilianMistakes": "- ❌ Saying \"fast depressurization\" or mixing Portuguese structure into the call.  \n  ✔ Use ICAO-standard \"rapid decompression.\"\n\n- ❌ Delaying the Mayday until after a long technical diagnosis.  \n  ✔ Declare early: nature, emergency descent, request.\n\n- ❌ Forgetting to request traffic cleared below.  \n  ✔ Explicitly ask ATC to clear traffic during unrestricted descent.\n\n- ❌ Dismissing the topic as irrelevant to helicopters.  \n  ✔ Learn it for ICAO Critical items; transfer the urgency logic.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Rapid Decompression, Commencing Emergency Descent\n\n**Pronunciation:** AY-nak WUN TOO THREE, RAP-id dee-kum-PRESH-un, kuh-MEN-sing ih-MUR-jen-see dee-SENT\n\n**Word Stress**\n\n- Rapid → RAP-id\n- Decompression → dee-kum-PRESH-un (stress on PRESH)\n- Commencing → kuh-MEN-sing\n- Descent → deh-SENT\n\nPractice:\n\nRapid decompression... commencing emergency descent.\n\nTogether:\n\nMayday Mayday Mayday, ANAC123, rapid decompression, commencing emergency descent.",
+    "relatedConcepts": [
+      "Emergency Descent",
+      "Oxygen Mask Deployment",
+      "Passenger Oxygen On",
+      "Crew Oxygen On",
+      "Cabin Altitude Warning",
+      "Mayday"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 8168 — Emergency Descent"
+      },
+      {
+        "label": "SKYbrary — Rapid Decompression / Cabin Depressurization",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Communications",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Aircraft QRH — Rapid Decompression; H130 AFM — Emergency Procedures as applicable"
+      }
+    ]
+  },
+  {
+    "catalogId": "0251",
+    "id": "0251",
+    "displayTerm": "Engine Stall",
+    "term": "engine stall",
+    "slug": "engine-stall",
+    "category": "Emergency",
+    "meaningEn": "Engine Stall is a breakdown of normal airflow in a turbine engine compressor (compressor stall), which may produce bangs, flame from the intake or exhaust, vibration, and loss of thrust, requiring immediate crew actions per procedure and prompt notification to ATC of the nature of the malfunction and intentions for continued flight or diversion.",
+    "meaningPt": "Estol de motor / Engine Stall (compressor stall).\n\nInterrupção do fluxo normal de ar no compressor de um motor a turbina, que pode produzir estampidos, chama na admissão ou escapamento, vibração e perda de empuxo, exigindo ações imediatas da tripulação conforme procedimento e notificação rápida ao ATC sobre a natureza da pane e as intenções de prosseguir ou desviar.",
+    "whenUsed": "When an engine stall occurs, the crew should:",
+    "example": "Departure: ANAC123, roger Pan Pan engine stall, say intentions and able to maintain altitude.",
+    "sayPhrase": "Pan Pan Pan, Departure, ANAC123, engine stall number two, request level off and return.",
+    "icaoQuestion": "During climb you experience an engine stall. What do you do, and what do you say to ATC?",
+    "icaoSpeakText": "I would maintain control of the aircraft, apply the engine stall procedure — typically reducing thrust and following the checklist — and assess whether the engine recovers. I would advise ATC with Pan Pan if the situation is serious but controllable, or Mayday if thrust loss threatens safe flight, stating engine stall, the effect on performance, and requesting level off, return, or priority landing as required. I would provide souls and fuel when asked. On a helicopter, I would use the same structure for a serious turbine anomaly with bangs, vibration, or power loss.",
+    "missionBrief": "Today's lesson covers Engine Stall — a disruption of smooth airflow through a turbine engine compressor, often felt as bangs, vibration, yaw, and thrust loss, requiring immediate thrust reduction or checklist actions and clear ATC communication. Propeller and compressor-stall vocabulary appears in ICAO exams; for H130 crews, treat this as essential exam English and map it to turbine engine anomalies, unusual noise, vibration, and thrust changes you may actually encounter.\n\nEngine stall is Critical because thrust can decay quickly and asymmetric thrust can challenge control. Your English must state the engine problem, the effect on flight, and your intentions without delay.\n\nFor ICAO Delta / Captain Delta training in Brazil, master ICAO phraseology for engine stall, then transfer the same reporting structure to H130 engine anomalies and single-engine considerations.\n\nUnderstanding engine stall in ICAO-standard English is essential for Part 2 and Part 3 proficiency.",
+    "captainTeaching": "Engine stall is a powerplant event — not a wing stall. Say \"engine stall\" clearly so ATC does not invent the wrong picture.\n\nFirst fly. Then identify. Then declare with the correct urgency. A momentary stall that recovers may be Pan Pan and a precautionary return. Persistent thrust loss or fire risk may be Mayday.\n\nDo not hide behind \"we have a small engine vibration.\" If it was a stall event, say engine stall. If parameters remain abnormal, say so.\n\nIn the H130, your engine talks through N1, T4, torque, and your ears. Unusual bangs and power rolls deserve the same honest English.\n\nBrazilian examiners want control of the aircraft and control of the vocabulary. Give them both.",
+    "operationalContext": "Exam-style scenario: during climb, a loud bang and yaw — engine stall indications on the right engine.\n\nYou control the aircraft, reduce thrust as required, and transmit:\n\nPan Pan Pan, Departure, ANAC123, engine stall number two, request level off and return to land.\n\nIf thrust loss is severe or control is in doubt:\n\nMayday Mayday Mayday, ANAC123, engine stall, significant thrust loss, request immediate vectors to land.\n\nFor H130 reality, replace twin-jet language with your turbine symptoms — bang, vibration, power fluctuation — and keep the urgency logic identical.",
+    "sayItCoach": "Pan Pan Pan, ANAC123, engine stall number two, request level off and return.",
+    "icaoModelAnswer": "I would maintain control of the aircraft, apply the engine stall procedure — typically reducing thrust and following the checklist — and assess whether the engine recovers. I would advise ATC with Pan Pan if the situation is serious but controllable, or Mayday if thrust loss threatens safe flight, stating engine stall, the effect on performance, and requesting level off, return, or priority landing as required. I would provide souls and fuel when asked. On a helicopter, I would use the same structure for a serious turbine anomaly with bangs, vibration, or power loss.",
+    "memoryTrick": "**STALL** — **S**top climbing if thrust is weak, **T**ell ATC engine stall clearly, **A**pply QRH thrust actions, **L**evel or return as needed, **L**and with priority if unresolved.",
+    "operationalMeaning": "When an engine stall occurs, the crew should:\n\nEngine stall reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Departure: ANAC123, roger Pan Pan engine stall, say intentions and able to maintain altitude.",
+      "Departure: ANAC123, level at five thousand approved, turn left heading two seven zero, return approved.",
+      "Approach: ANAC123, priority handling approved, expect runway one seven.",
+      "Approach: ANAC123, say souls on board and fuel remaining.",
+      "Tower: ANAC123, equipment standing by, advise if engine shut down."
+    ],
+    "pilotReadbacks": [
+      "Pan Pan Pan, Departure, ANAC123, engine stall number two, request level off and return.",
+      "Mayday Mayday Mayday, ANAC123, engine stall, thrust loss, request immediate vectors to land.",
+      "ANAC123, leveling five thousand, left heading two seven zero, returning.",
+      "ANAC123, souls four, fuel one hour ten minutes.",
+      "ANAC123, engine stabilized, continuing priority approach runway one seven, request emergency services."
+    ],
+    "brazilianMistakes": "- ❌ Confusing \"engine stall\" with aerodynamic stall in the radio call.  \n  ✔ Say \"engine stall\" or \"compressor stall\"; keep wing stall separate.\n\n- ❌ Continuing climb without telling ATC about thrust loss.  \n  ✔ Request level off or priority early if performance is degraded.\n\n- ❌ Using only \"problem in the engine\" without the standard term.  \n  ✔ Prefer ICAO-recognizable \"engine stall\" plus status.\n\n- ❌ Ignoring the topic because H130 AFM wording differs.  \n  ✔ Learn exam English; transfer symptom-based reporting to the helicopter.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Engine Stall Number Two, Request Level Off and Return\n\n**Pronunciation:** AY-nak WUN TOO THREE, EN-jin STAWL NUM-ber TOO, reh-KWEST LEV-ul OFF and rih-TURN\n\n**Word Stress**\n\n- Engine → EN-jin\n- Stall → STAWL\n- Level → LEV-ul\n- Return → rih-TURN\n\nPractice:\n\nEngine stall number two... request level off and return.\n\nTogether:\n\nPan Pan Pan, ANAC123, engine stall number two, request level off and return.",
+    "relatedConcepts": [
+      "Engine Surge",
+      "Engine Failure",
+      "Engine Fire",
+      "Pan Pan / Mayday",
+      "Priority Landing",
+      "Asymmetric Thrust"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress and Urgency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Compressor Stall / Engine Malfunction",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Communications",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Aircraft QRH — Engine Stall / Surge; H130 AFM — Engine Emergency Procedures"
+      }
+    ]
+  },
+  {
+    "catalogId": "0252",
+    "id": "0252",
+    "displayTerm": "Engine Surge",
+    "term": "engine surge",
+    "slug": "engine-surge",
+    "category": "Emergency",
+    "meaningEn": "Engine Surge is a violent disruption of airflow through a turbine engine compressor, typically causing loud bangs, rapid thrust changes, and abnormal engine indications, requiring immediate crew actions per procedure and prompt advice to ATC regarding the malfunction, aircraft performance, and intentions.",
+    "meaningPt": "Surto de motor / Engine Surge (compressor surge).\n\nInterrupção violenta do fluxo de ar através do compressor de um motor a turbina, tipicamente causando estampidos altos, mudanças rápidas de empuxo e indicações anormais do motor, exigindo ações imediatas da tripulação conforme procedimento e aviso rápido ao ATC sobre a pane, o desempenho da aeronave e as intenções.",
+    "whenUsed": "When an engine surge occurs, the crew should:",
+    "example": "Control: ANAC123, roger Pan Pan engine surge, say if engine stabilized.",
+    "sayPhrase": "Pan Pan Pan, Control, ANAC123, engine surge number one, request level off and return.",
+    "icaoQuestion": "What is an engine surge, and how would you communicate it to ATC?",
+    "icaoSpeakText": "An engine surge is a severe airflow instability in the compressor that can cause bangs and thrust fluctuations. I would control the aircraft, apply the surge procedure, and advise ATC — usually Pan Pan if controllable, Mayday if thrust is unreliable — stating engine surge, whether it has recovered or is continuing, and requesting level off, return, or priority landing as required. I would provide souls and fuel when asked. On a helicopter, I would report the same way for a serious turbine power instability.",
+    "missionBrief": "Today's lesson covers Engine Surge — a severe airflow instability in a turbine engine, often related to compressor surge, producing bangs, thrust fluctuations, and possible flame from the exhaust, requiring immediate thrust management and clear ATC communication. Closely related to engine stall in exam English; for H130 crews, treat surge vocabulary as ICAO-essential and map it to real turbine power fluctuations, unusual noise, and parameter instability.\n\nEngine surge sits in the same family as compressor stall. Controllers need to know you have an engine airflow problem, whether performance is affected, and what you intend to do next.\n\nFor ICAO Delta / Captain Delta training in Brazil, master the distinction and the shared radio structure, then transfer both to H130 engine anomaly reporting.\n\nUnderstanding engine surge in ICAO-standard English is essential for Part 2 and Part 3 proficiency.",
+    "captainTeaching": "Engine surge is the engine coughing so hard the whole airframe hears it.\n\nYour job is not to give ATC a thermodynamics lecture. Your job is status: surge, recovered or continuing, performance okay or not, return or divert.\n\nMomentary surge that recovers can still justify a precautionary return — especially if it happened near limiting conditions. Continuous surge is a threat to thrust. Upgrade urgency when reliability disappears.\n\nIn the H130, power must be honest. If the turbine is surging or rolling, say the malfunction plainly and ask for the airspace and landing priority you need.\n\nHigh priority on the exam. High honesty on the line.",
+    "operationalContext": "Exam-style scenario: in cruise climb, repeated bangs and EPR/N1 fluctuations — engine surge.\n\nYou reduce thrust as required and call:\n\nPan Pan Pan, Control, ANAC123, engine surge number one, request level off and vectors to return.\n\nIf surges continue and thrust is unreliable:\n\nMayday Mayday Mayday, ANAC123, engine surge continuing, request priority landing nearest suitable.\n\nFor H130 reality, describe bangs, torque/N1 instability, and power reliability with the same urgency ladder.",
+    "sayItCoach": "Pan Pan Pan, ANAC123, engine surge number one, request level off and return.",
+    "icaoModelAnswer": "An engine surge is a severe airflow instability in the compressor that can cause bangs and thrust fluctuations. I would control the aircraft, apply the surge procedure, and advise ATC — usually Pan Pan if controllable, Mayday if thrust is unreliable — stating engine surge, whether it has recovered or is continuing, and requesting level off, return, or priority landing as required. I would provide souls and fuel when asked. On a helicopter, I would report the same way for a serious turbine power instability.",
+    "memoryTrick": "**SURGE** — **S**ay engine surge, **U**pdate recovered or continuing, **R**educe thrust per procedure, **G**et level-off or priority, **E**scalate to Mayday if thrust fails.",
+    "operationalMeaning": "When an engine surge occurs, the crew should:\n\nEngine surge reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Control: ANAC123, roger Pan Pan engine surge, say if engine stabilized.",
+      "Control: ANAC123, level at flight level eight zero approved, turn right heading zero niner zero for return.",
+      "Approach: ANAC123, priority approach approved, expect runway one four.",
+      "Approach: ANAC123, say souls on board and fuel remaining.",
+      "Tower: ANAC123, fire services standing by, advise engine status on final."
+    ],
+    "pilotReadbacks": [
+      "Pan Pan Pan, Control, ANAC123, engine surge number one, request level off and return.",
+      "ANAC123, engine surge recovered, continuing return, request priority.",
+      "Mayday Mayday Mayday, ANAC123, engine surge continuing, request immediate landing.",
+      "ANAC123, souls six, fuel fifty-five minutes.",
+      "ANAC123, engine parameters unstable, final runway one four, request emergency services."
+    ],
+    "brazilianMistakes": "- ❌ Saying only \"the engine made a big noise\" without \"engine surge.\"  \n  ✔ Use \"engine surge\" plus recovered/continuing status.\n\n- ❌ Keeping Pan Pan when surges continue and thrust is unsafe.  \n  ✔ Upgrade to Mayday if safe flight is in doubt.\n\n- ❌ Failing to say whether the surge recovered.  \n  ✔ Always give recovered versus continuing — ATC plans from that.\n\n- ❌ Skipping the topic as jet-only knowledge.  \n  ✔ Learn for ICAO; transfer to H130 turbine anomalies.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Engine Surge Number One, Request Level Off and Return\n\n**Pronunciation:** AY-nak WUN TOO THREE, EN-jin SURJ NUM-ber WUN, reh-KWEST LEV-ul OFF and rih-TURN\n\n**Word Stress**\n\n- Engine → EN-jin\n- Surge → SURJ\n- Number → NUM-ber\n- Return → rih-TURN\n\nPractice:\n\nEngine surge number one... request level off and return.\n\nTogether:\n\nPan Pan Pan, ANAC123, engine surge number one, request level off and return.",
+    "relatedConcepts": [
+      "Engine Stall",
+      "Engine Failure",
+      "Engine Fire",
+      "Abnormal Engine Indications",
+      "Pan Pan / Mayday",
+      "Priority Landing"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress and Urgency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Engine Surge / Compressor Stall",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Communications",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Aircraft QRH — Engine Surge / Stall; H130 AFM — Engine Emergency Procedures"
+      }
+    ]
+  },
+  {
+    "catalogId": "0253",
+    "id": "0253",
+    "displayTerm": "Hydraulic Leak",
+    "term": "hydraulic leak",
+    "slug": "hydraulic-leak",
+    "category": "Aircraft Systems",
+    "meaningEn": "Hydraulic Leak is the escape of hydraulic fluid from an aircraft hydraulic system, which may lead to low quantity, low pressure, degraded flight controls, landing gear or brake abnormalities, requiring immediate crew procedures, possible diversion, and clear notification to ATC of the system status and landing intentions.",
+    "meaningPt": "Vazamento hidráulico / Hydraulic Leak.\n\nEscape de fluido hidráulico de um sistema hidráulico da aeronave, que pode levar a quantidade baixa, pressão baixa, comandos de voo degradados, anomalias no trem de pouso ou freios, exigindo procedimentos imediatos da tripulação, possível desvio e notificação clara ao ATC sobre o estado do sistema e as intenções de pouso.",
+    "whenUsed": "When a hydraulic leak is detected, the crew should:",
+    "example": "Approach: ANAC123, roger Pan Pan hydraulic leak, say if flight controls are normal.",
+    "sayPhrase": "Pan Pan Pan, Approach, ANAC123, hydraulic leak, request priority landing, long runway.",
+    "icaoQuestion": "You discover a hydraulic leak in flight. What do you tell ATC, and what landing considerations do you mention?",
+    "icaoSpeakText": "I would apply the hydraulic leak procedure, assess flight controls and other affected systems, and advise ATC with Pan Pan or Mayday depending on controllability. I would state hydraulic leak, whether controls are normal or degraded, and request priority vectors for landing, preferably a long runway, with emergency services standing by. I would provide souls and fuel when asked and update if braking or gear status becomes uncertain. The same structure applies directly to helicopter hydraulic failures.",
+    "missionBrief": "Today's lesson covers Hydraulic Leak — loss of hydraulic fluid from a system that powers flight controls, landing gear, brakes, or other services, requiring checklist actions, possible system isolation, and clear ATC communication about degraded control or landing configuration. Highly relevant to H130 operations: hydraulic anomalies affect flight controls and landing gear logic, and ICAO English must describe the leak, the system impact, and intentions precisely.\n\nA hydraulic leak is Critical because fluid you cannot see leaving the system becomes control authority you may lose later. Report early. Plan the landing early.\n\nFor ICAO Delta / Captain Delta training in Brazil, master standard phraseology for hydraulic leak, then apply it directly to helicopter hydraulic caution/warning scenarios under DECEA/ICAO radiotelephony discipline.\n\nUnderstanding hydraulic leak in ICAO-standard English is essential for Part 2 and Part 3 proficiency.",
+    "captainTeaching": "Hydraulic leak is a countdown you may not hear.\n\nFluid leaves. Pressure follows. Controls or gear may be next. Your English must buy you time and runway while the checklist buys you system management.\n\nSay hydraulic leak — not \"yellow liquid\" and not only the caution light name if ATC needs the plain concept. Add the operational effect: controls normal, controls degraded, brakes uncertain.\n\nIn the H130, hydraulics are not academic. They sit between your hands and the rotor system. Early Pan Pan with a clear landing plan is professionalism, not drama.\n\nCritical category means you do not improvise the key words under stress.",
+    "operationalContext": "Operational scenario: hydraulic quantity decreasing with a leak indication. Flight controls still respond, but you elect to land soon.\n\nYou transmit:\n\nPan Pan Pan, Approach, ANAC123, hydraulic leak, request priority vectors for landing, request long runway.\n\nIf flight control authority becomes degraded:\n\nMayday Mayday Mayday, ANAC123, hydraulic leak, flight controls degraded, request immediate landing.\n\nTower prepares emergency services. You brief a possible partial gear or brake issue and keep ATC updated.\n\nFor H130, the same calls apply when hydraulic warnings threaten control or landing systems.",
+    "sayItCoach": "Pan Pan Pan, ANAC123, hydraulic leak, request priority landing, long runway.",
+    "icaoModelAnswer": "I would apply the hydraulic leak procedure, assess flight controls and other affected systems, and advise ATC with Pan Pan or Mayday depending on controllability. I would state hydraulic leak, whether controls are normal or degraded, and request priority vectors for landing, preferably a long runway, with emergency services standing by. I would provide souls and fuel when asked and update if braking or gear status becomes uncertain. The same structure applies directly to helicopter hydraulic failures.",
+    "memoryTrick": "**LEAK** — **L**ocate affected system, **E**valuate controls and brakes, **A**dvise ATC early, **K**eep long runway and services in the plan.",
+    "operationalMeaning": "When a hydraulic leak is detected, the crew should:\n\nHydraulic leak reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger Pan Pan hydraulic leak, say if flight controls are normal.",
+      "Approach: ANAC123, priority handling approved, expect runway one five, length available three thousand meters.",
+      "Approach: ANAC123, say souls on board and fuel remaining.",
+      "Tower: ANAC123, emergency services standing by, advise braking and steering status on rollout.",
+      "Approach: ANAC123, confirm hydraulic leak, request your intentions if go-around required."
+    ],
+    "pilotReadbacks": [
+      "Pan Pan Pan, Approach, ANAC123, hydraulic leak, request priority landing, long runway.",
+      "Mayday Mayday Mayday, ANAC123, hydraulic leak, flight controls degraded, request immediate landing.",
+      "ANAC123, controls currently normal, continuing priority approach runway one five.",
+      "ANAC123, souls four, fuel one hour five minutes.",
+      "ANAC123, request emergency services, possible reduced braking on rollout."
+    ],
+    "brazilianMistakes": "- ❌ Saying \"oil leaking\" when you mean hydraulic fluid/system leak.  \n  ✔ Use \"hydraulic leak\" in ICAO phraseology.\n\n- ❌ Waiting for total pressure loss before declaring.  \n  ✔ Report the leak when identified; plan the landing early.\n\n- ❌ Not mentioning possible brake or steering limitations.  \n  ✔ Advise ATC if rollout may be abnormal.\n\n- ❌ Using only checklist light names without plain English status.  \n  ✔ Give ATC the concept plus the operational effect.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Hydraulic Leak, Request Priority Landing, Long Runway\n\n**Pronunciation:** AY-nak WUN TOO THREE, hy-DRAW-lik LEEK, reh-KWEST pry-OR-ih-tee LAND-ing, LONG RUN-way\n\n**Word Stress**\n\n- Hydraulic → hy-DRAW-lik (stress on DRAW)\n- Leak → LEEK\n- Priority → pry-OR-ih-tee\n- Runway → RUN-way\n\nPractice:\n\nHydraulic leak... request priority landing... long runway.\n\nTogether:\n\nPan Pan Pan, ANAC123, hydraulic leak, request priority landing, long runway.",
+    "relatedConcepts": [
+      "Hydraulic Pressure Dropping",
+      "Flight Control Malfunction",
+      "Landing Gear Problem",
+      "Brake Failure",
+      "Pan Pan / Mayday",
+      "Priority Landing"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress and Urgency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Hydraulic Failure / Leak",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Communications",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Aircraft QRH — Hydraulic Leak; H130 AFM — Hydraulic System Emergencies"
+      }
+    ]
+  },
+  {
+    "catalogId": "0254",
+    "id": "0254",
+    "displayTerm": "Hydraulic Pressure Dropping",
+    "term": "hydraulic pressure dropping",
+    "slug": "hydraulic-pressure-dropping",
+    "category": "Aircraft Systems",
+    "meaningEn": "Hydraulic Pressure Dropping is the observed decrease in hydraulic system pressure, indicating a developing malfunction such as a leak or pump problem, requiring monitoring, checklist actions, possible precautionary landing, and clear ATC updates on system trend, aircraft controllability, and intentions.",
+    "meaningPt": "Pressão hidráulica caindo / Hydraulic Pressure Dropping.\n\nDiminuição observada da pressão do sistema hidráulico, indicando uma pane em desenvolvimento como vazamento ou problema de bomba, exigindo monitoramento, ações de checklist, possível pouso preventivo e atualizações claras ao ATC sobre a tendência do sistema, a controlabilidade da aeronave e as intenções.",
+    "whenUsed": "When hydraulic pressure is dropping, the crew should:",
+    "example": "Control: ANAC123, roger Pan Pan hydraulic pressure dropping, say intentions.",
+    "sayPhrase": "Pan Pan Pan, Control, ANAC123, hydraulic pressure dropping, request diversion and priority.",
+    "icaoQuestion": "Hydraulic pressure is dropping but flight controls still feel normal. What do you say to ATC, and why might you divert?",
+    "icaoSpeakText": "I would apply the checklist, monitor the pressure trend, and advise ATC with Pan Pan that hydraulic pressure is dropping, that controls are currently normal, and that I request diversion and priority vectors for landing. I would divert because the system may continue to degrade and I want to land while controllability and braking are still predictable. I would provide souls and fuel when asked and upgrade to Mayday if pressure is lost or controls become degraded. This applies directly to helicopter hydraulic warnings as well.",
+    "missionBrief": "Today's lesson covers Hydraulic Pressure Dropping — progressive loss of hydraulic pressure that may follow a leak, pump failure, or system malfunction, warning the crew that powered services may degrade or fail. Directly relevant to H130 operations and ICAO exams: you must report the trend, the effect on controls or gear, and your landing plan before pressure reaches zero.\n\n\"Pressure dropping\" is a status phrase. It tells ATC the situation is evolving — not yet necessarily a total hydraulic failure, but moving that way.\n\nFor ICAO Delta / Captain Delta training in Brazil, master trend reporting in English, then apply it to helicopter hydraulic caution scenarios where early diversion prevents a worse end state.\n\nUnderstanding hydraulic pressure dropping in ICAO-standard English is essential for Part 2 and Part 3 proficiency.",
+    "captainTeaching": "Hydraulic pressure dropping is a gift — a warning before the failure finishes.\n\nUse the gift. Divert. Declare. Do not protect the schedule while the gauge falls.\n\nYour radio should carry the trend: dropping, still dropping, now lost. Controllers sequence differently when they know the clock is running.\n\nIn the H130, hydraulic pressure is not a passenger comfort system. It is how you fly. Early English saves late heroics.\n\nHigh priority on the exam because examiners want to hear trend awareness, not only total-failure scripts.",
+    "operationalContext": "Operational scenario: hydraulic pressure begins decreasing in cruise. Controls still normal. You decide not to wait.\n\nYou transmit:\n\nPan Pan Pan, Control, ANAC123, hydraulic pressure dropping, request diversion and priority vectors for landing.\n\nLater update:\n\nANAC123, hydraulic pressure still dropping, flight controls currently normal, continuing priority approach.\n\nIf pressure collapses and controls degrade, upgrade to Mayday.\n\nFor H130, the same trend-and-divert discipline applies — do not ride a dying hydraulic system to destination convenience.",
+    "sayItCoach": "Pan Pan Pan, ANAC123, hydraulic pressure dropping, request diversion and priority.",
+    "icaoModelAnswer": "I would apply the checklist, monitor the pressure trend, and advise ATC with Pan Pan that hydraulic pressure is dropping, that controls are currently normal, and that I request diversion and priority vectors for landing. I would divert because the system may continue to degrade and I want to land while controllability and braking are still predictable. I would provide souls and fuel when asked and upgrade to Mayday if pressure is lost or controls become degraded. This applies directly to helicopter hydraulic warnings as well.",
+    "memoryTrick": "**DROP** — **D**eclare Pan Pan early, **R**eport the trend, **O**ffer intentions to divert, **P**rioritize landing before zero pressure.",
+    "operationalMeaning": "When hydraulic pressure is dropping, the crew should:\n\nHydraulic pressure dropping reports commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Control: ANAC123, roger Pan Pan hydraulic pressure dropping, say intentions.",
+      "Control: ANAC123, diversion approved, expect Approach on one two four decimal five.",
+      "Approach: ANAC123, priority handling approved, expect runway two seven, emergency services alerted.",
+      "Approach: ANAC123, say souls on board and fuel remaining.",
+      "Tower: ANAC123, report hydraulic status and braking capability on final."
+    ],
+    "pilotReadbacks": [
+      "Pan Pan Pan, Control, ANAC123, hydraulic pressure dropping, request diversion and priority.",
+      "ANAC123, hydraulic pressure still dropping, controls normal, continuing to destination alternate.",
+      "Mayday Mayday Mayday, ANAC123, hydraulic pressure lost, flight controls degraded, request immediate landing.",
+      "ANAC123, souls five, fuel forty minutes.",
+      "ANAC123, on final runway two seven, possible reduced braking, request emergency services."
+    ],
+    "brazilianMistakes": "- ❌ Waiting for \"hydraulic failure\" before saying anything.  \n  ✔ Report \"hydraulic pressure dropping\" as soon as the trend is clear.\n\n- ❌ Saying \"pressure going down\" only, without intentions.  \n  ✔ Always add diversion or priority landing request.\n\n- ❌ Not updating ATC when the trend continues.  \n  ✔ Give short updates: still dropping / now stable / pressure lost.\n\n- ❌ Continuing to destination for convenience with a falling gauge.  \n  ✔ Divert while you still have system margin.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Hydraulic Pressure Dropping, Request Diversion and Priority\n\n**Pronunciation:** AY-nak WUN TOO THREE, hy-DRAW-lik PRESH-ur DROP-ing, reh-KWEST dy-VUR-zhun and pry-OR-ih-tee\n\n**Word Stress**\n\n- Hydraulic → hy-DRAW-lik\n- Pressure → PRESH-ur\n- Dropping → DROP-ing\n- Diversion → dy-VUR-zhun\n\nPractice:\n\nHydraulic pressure dropping... request diversion and priority.\n\nTogether:\n\nPan Pan Pan, ANAC123, hydraulic pressure dropping, request diversion and priority.",
+    "relatedConcepts": [
+      "Hydraulic Leak",
+      "Hydraulic Failure",
+      "Flight Control Malfunction",
+      "Priority Landing",
+      "Diversion",
+      "Pan Pan / Mayday"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Urgency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Hydraulic System Malfunctions",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Communications",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Aircraft QRH — Hydraulic Pressure; H130 AFM — Hydraulic System Emergencies"
+      }
+    ]
+  },
+  {
+    "catalogId": "0255",
+    "id": "0255",
+    "displayTerm": "Total Electrical Failure",
+    "term": "total electrical failure",
+    "slug": "total-electrical-failure",
+    "category": "Aircraft Systems",
+    "meaningEn": "Total Electrical Failure is the complete or near-complete loss of aircraft electrical power generation, leaving the crew dependent on remaining battery or standby systems for essential instruments and communication, requiring emergency procedures, possible squawk and light-signal contingency planning, and clear ATC notification of the failure, remaining capability, and intentions whenever communication is available.",
+    "meaningPt": "Falha elétrica total / Total Electrical Failure.\n\nPerda completa ou quase completa da geração de energia elétrica da aeronave, deixando a tripulação dependente da bateria restante ou de sistemas de reserva para instrumentos e comunicação essenciais, exigindo procedimentos de emergência, possível planejamento de contingência com squawk e sinais luminosos, e notificação clara ao ATC sobre a falha, a capacidade restante e as intenções sempre que a comunicação estiver disponível.",
+    "whenUsed": "When total electrical failure occurs, the crew should:",
+    "example": "Control: ANAC123, roger Mayday total electrical failure, squawk seven seven zero zero, say intentions.",
+    "sayPhrase": "Mayday Mayday Mayday, Control, ANAC123, total electrical failure, on battery, request immediate landing.",
+    "icaoQuestion": "You experience a total electrical failure but still have short-term battery radio capability. What do you say to ATC, and what else should you consider?",
+    "icaoSpeakText": "I would fly the aircraft on standby instruments, apply the electrical failure checklist, and immediately declare Mayday, stating total electrical failure, that I am operating on battery, and that I request immediate priority vectors for landing. I would give position, souls, and fuel if time allows, and advise that communication may become intermittent. I would also consider squawk 7700 and lost-communication procedures, including light signals, if the radio fails before landing. The same priorities apply in helicopter operations.",
+    "missionBrief": "Today's lesson covers Total Electrical Failure — loss of normal electrical power affecting instruments, communication, navigation, and systems, requiring emergency checklists, possible battery or standby instrument use, and carefully managed ATC communication when radios are intermittent or restored. Highly relevant to H130 operations: electrical anomalies quickly degrade avionics and lighting, and ICAO English must describe the failure, remaining capability, and intentions under Critical priority.\n\nTotal electrical failure is one of the most demanding radio scenarios because the radio itself may be part of the problem. When you can transmit, every word must count.\n\nFor ICAO Delta / Captain Delta training in Brazil, master the standard Mayday/Pan Pan structure for electrical failure, including lost communication contingency thinking under DECEA/ICAO procedures.\n\nUnderstanding total electrical failure in ICAO-standard English is essential for Part 2 and Part 3 proficiency.",
+    "captainTeaching": "Total electrical failure steals your office — screens, radios, lights — while the aircraft is still an aircraft.\n\nFly attitude and power. Then spend battery words like money: Mayday, total electrical failure, on battery, request immediate landing. Position and souls if time allows.\n\nDo not narrate every failed bus on the first call. ATC needs the big picture and a landing plan. Details later if the radio lives.\n\nIn the H130, electrical failure is intimate — the cockpit goes quiet and dark fast. Decide early. Transmit early. Land early.\n\nCritical means you rehearse the short call before you need it.",
+    "operationalContext": "Operational scenario: generators fail; you are on battery power with limited time.\n\nWhile the radio still works, you transmit:\n\nMayday Mayday Mayday, Control, ANAC123, total electrical failure, operating on battery, request immediate vectors for priority landing.\n\nATC gives a short clearance to the nearest airport. You acknowledge once, fly standby instruments, and prepare for possible lost communication if the battery dies.\n\nFor H130 operations, the same urgency applies — electrical failure is a land-soon event, not a continue-as-planned event.",
+    "sayItCoach": "Mayday Mayday Mayday, ANAC123, total electrical failure, operating on battery, request immediate landing.",
+    "icaoModelAnswer": "I would fly the aircraft on standby instruments, apply the electrical failure checklist, and immediately declare Mayday, stating total electrical failure, that I am operating on battery, and that I request immediate priority vectors for landing. I would give position, souls, and fuel if time allows, and advise that communication may become intermittent. I would also consider squawk 7700 and lost-communication procedures, including light signals, if the radio fails before landing. The same priorities apply in helicopter operations.",
+    "memoryTrick": "**BATT** — **B**roadcast Mayday while you can, **A**ttitude flying on standby, **T**ell ATC on battery, **T**rack to nearest landing now.",
+    "operationalMeaning": "When total electrical failure occurs, the crew should:\n\nTotal electrical failure reporting commonly includes:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Control: ANAC123, roger Mayday total electrical failure, squawk seven seven zero zero, say intentions.",
+      "Control: ANAC123, turn left heading two five zero, descend four thousand, nearest airport twelve o'clock, one five miles.",
+      "Approach: ANAC123, priority landing approved, runway one zero, emergency services standing by.",
+      "Approach: ANAC123, if radio fails, continue present heading, expect light signals on final.",
+      "Tower: ANAC123, cleared to land runway one zero, confirm battery power remaining if able."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, Control, ANAC123, total electrical failure, on battery, request immediate landing.",
+      "ANAC123, squawk seven seven zero zero, left heading two five zero, descending four thousand.",
+      "ANAC123, runway one zero priority, communication may be intermittent.",
+      "ANAC123, souls four, fuel thirty-five minutes.",
+      "ANAC123, if radio fails will continue for runway one zero, request light signals."
+    ],
+    "brazilianMistakes": "- ❌ Saving the radio call \"for later\" while battery power drains.  \n  ✔ Transmit the Mayday as soon as the aircraft is under control.\n\n- ❌ Saying only \"electrical problem\" without \"total electrical failure.\"  \n  ✔ Use the clear ICAO phrase when that is the condition.\n\n- ❌ Giving a long systems explanation on a dying battery.  \n  ✔ Nature, battery status, immediate landing request — then stop talking and fly.\n\n- ❌ Forgetting lost-comm contingency in the plan.  \n  ✔ Brief light signals / expected routing if radio fails.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Total Electrical Failure, Operating on Battery, Request Immediate Landing\n\n**Pronunciation:** AY-nak WUN TOO THREE, TOH-tul ih-LEK-trih-kul FAYL-yer, OP-uh-ray-ting on BAT-uh-ree, reh-KWEST ih-MEE-dee-it LAND-ing\n\n**Word Stress**\n\n- Total → TOH-tul\n- Electrical → ih-LEK-trih-kul (stress on LEK)\n- Failure → FAYL-yer\n- Battery → BAT-uh-ree\n\nPractice:\n\nTotal electrical failure... operating on battery... request immediate landing.\n\nTogether:\n\nMayday Mayday Mayday, ANAC123, total electrical failure, operating on battery, request immediate landing.",
+    "relatedConcepts": [
+      "Generator Failure",
+      "Bus Failure",
+      "Lost Communication",
+      "Squawk 7700",
+      "Standby Instruments",
+      "Mayday / Pan Pan"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress Procedures / Lost Communication",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Electrical Failure",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency and Lost Comm Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Aircraft QRH — Electrical Emergency; H130 AFM — Electrical System Failures"
+      }
+    ]
+  },
+  {
+    "catalogId": "0256",
+    "id": "0256",
+    "displayTerm": "Battery Power",
+    "term": "battery power",
+    "slug": "battery-power",
+    "category": "Aircraft Systems",
+    "meaningEn": "Battery Power is the condition in which the aircraft is operating on battery electrical supply alone — typically after loss of generator or alternator output — with limited remaining endurance for radios, instruments, and essential avionics until a landing can be completed.",
+    "meaningPt": "Energia da bateria / Operando em bateria / Battery Power.\n\nCondição em que a aeronave opera apenas com o suprimento elétrico da bateria — tipicamente após perda do gerador ou alternador — com autonomia limitada para rádios, instrumentos e aviônicos essenciais até que um pouso possa ser concluído.",
+    "whenUsed": "When operating on battery power, the crew should:",
+    "example": "Center: ANAC123, roger operating on battery power, say intentions and endurance if known.",
+    "sayPhrase": "ANAC123, operating on battery power, requesting priority landing Florianópolis.",
+    "icaoQuestion": "Your generator fails and you are operating on battery power with limited endurance. What do you do and what do you tell ATC?",
+    "icaoSpeakText": "I would maintain control, apply the electrical abnormal checklist, shed non-essential loads, and plan an immediate landing at the nearest suitable airport. I would advise ATC that I am operating on battery power after generator failure, request priority handling, and warn that radio contact may be lost. I would keep transmissions short and land before the battery is exhausted.",
+    "missionBrief": "Today's lesson covers Battery Power — operating the aircraft on battery electrical supply after generator, alternator, or bus failures have left the battery as the remaining source of electrical energy for essential systems and communication.\n\nBattery Power is not the same as battery failure. Battery failure means the battery itself cannot supply power. Battery power means you are still flying with usable battery energy — but that energy is finite, and every radio call, every instrument, and every unnecessary load shortens the time you have left.\n\nFor H130 helicopter ICAO Delta academy operations in Brazil, electrical abnormal procedures often leave the crew managing limited battery endurance while navigating to a suitable landing site. You must aviate, shed non-essential loads per the AFM, communicate early and clearly, then land before the battery is exhausted.\n\nUnderstanding how to report operating on battery power in ICAO-standard English is essential for Part 2 phraseology and Part 3 emergency communication.",
+    "captainTeaching": "Battery power is a countdown, not a status light.\n\nYou still have electricity — but you are spending a finite reserve. Every unnecessary load, every long radio conversation, every delay to decide where to land burns minutes you may need for the approach.\n\nIn the H130 academy, treat generator loss with battery remaining as a time-critical abnormal. Checklist. Shed loads. Tell ATC early. Land at the nearest suitable site — not the most convenient one an hour away.\n\nBrazilian IFR weather can force you toward coastal airports with good approaches. Choose early while the radios still work. If contact may be lost, say so before it happens so ATC can plan light signals or lost-comm procedures.\n\nBattery failure is when the reserve is gone. Battery power is when you still have a chance — if you use it wisely.",
+    "operationalContext": "You are IFR toward Florianópolis in the H130. The generator fails. Checklist complete. You are now on battery power. Voltage is stable for now, but endurance is limited.\n\nYou transmit:\n\nANAC123, operating on battery power, generator failed, request priority landing Florianópolis, may lose radio contact.\n\nRadar: ANAC123, roger battery power, vectors for runway one four, squawk ident if able.\n\nYou keep transmissions short. You land with radios still alive. That is the goal — land on battery power, not after it.",
+    "sayItCoach": "ANAC123, operating on battery power, generator failed, request priority landing.",
+    "icaoModelAnswer": "I would maintain control, apply the electrical abnormal checklist, shed non-essential loads, and plan an immediate landing at the nearest suitable airport. I would advise ATC that I am operating on battery power after generator failure, request priority handling, and warn that radio contact may be lost. I would keep transmissions short and land before the battery is exhausted.",
+    "memoryTrick": "**BATTERY** — **B**rief ATC early, **A**pply load shed, **T**ime the landing now, **T**ransmit short calls, **E**stimate endurance, **R**equest priority, **Y**ou may lose radio — say so.",
+    "operationalMeaning": "When operating on battery power, the crew should:\n\nBattery power scenarios commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Center: ANAC123, roger operating on battery power, say intentions and endurance if known.",
+      "Approach: ANAC123, priority approved, expect straight-in runway one eight.",
+      "Approach: ANAC123, if radio contact lost, continue present heading, expect light signals on final.",
+      "Center: ANAC123, nearest suitable is Navegantes, advise if acceptable.",
+      "Approach: ANAC123, say souls on board and fuel remaining."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, operating on battery power, requesting priority landing Florianópolis.",
+      "ANAC123, priority approved, expecting straight-in one eight.",
+      "ANAC123, if radio lost, continuing present heading, will watch for light signals.",
+      "ANAC123, Navegantes acceptable, requesting vectors.",
+      "ANAC123, souls four, fuel one hour ten minutes."
+    ],
+    "brazilianMistakes": "- ❌ Continuing a long IFR sector on battery power to reach the planned destination.  \n  ✔ Divert to the nearest suitable aerodrome while radios and instruments still work.\n\n- ❌ Making long radio explanations that drain battery and block the frequency.  \n  ✔ Short, essential transmissions: failure, limitation, intention, request.\n\n- ❌ Confusing \"battery power\" with \"battery failure\" in the report.  \n  ✔ Battery power means you still have supply; battery failure means the reserve is gone.\n\n- ❌ Not warning ATC that radio contact may be lost.  \n  ✔ State early: may lose radio contact, so ATC can prepare lost-comm handling.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Operating on Battery Power, Request Priority Landing\n\n**Pronunciation:** AY-nak WUN TOO THREE, OP-uh-ray-ting on BAT-uh-ree POW-er, reh-KWEST pry-OR-ih-tee LAN-ding\n\n**Word Stress**\n\n- Operating → OP-uh-ray-ting (stress on first)\n- Battery → BAT-uh-ree\n- Power → POW-er\n- Priority → pry-OR-ih-tee (stress on OR)\n\nPractice:\n\nOperating on battery power... request priority landing.\n\nTogether:\n\nANAC123, operating on battery power, generator failed, request priority landing.",
+    "relatedConcepts": [
+      "Battery Failure",
+      "Generator Failure",
+      "Electrical Failure",
+      "Priority Landing",
+      "Lost Communication",
+      "Precautionary Landing"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Urgency / Distress Communication",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Electrical System Failures",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — System Malfunctions / Priority Handling",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Annex 6 — Operation of Aircraft"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "H130 AFM — Electrical System, Abnormal Procedures"
+      }
+    ]
+  },
+  {
+    "catalogId": "0257",
+    "id": "0257",
+    "displayTerm": "Partial Panel",
+    "term": "partial panel",
+    "slug": "partial-panel",
+    "category": "Aircraft Systems",
+    "meaningEn": "Partial Panel is a flight condition in which one or more primary flight instruments are inoperative or unreliable, forcing the pilot to maintain aircraft control and navigation using the remaining serviceable instruments and to advise ATC when instrument capability for IFR flight is limited.",
+    "meaningPt": "Painel parcial / Partial Panel / Instrumentos parciais.\n\nCondição de voo em que um ou mais instrumentos primários de voo estão inoperantes ou não confiáveis, obrigando o piloto a manter o controle e a navegação com os instrumentos restantes utilizáveis e a informar o ATC quando a capacidade IFR estiver limitada.",
+    "whenUsed": "When partial panel occurs, the crew should:",
+    "example": "Approach: ANAC123, roger partial panel, say which instruments failed.",
+    "sayPhrase": "ANAC123, partial panel, attitude indicator unreliable, requesting no-gyro vectors.",
+    "icaoQuestion": "Your attitude indicator fails in IMC and you must continue on remaining instruments. What do you do?",
+    "icaoSpeakText": "I would maintain control using the remaining reliable instruments, apply the abnormal procedure, and stop using the failed attitude indication. I would advise ATC of partial panel with attitude indicator unreliable and request no-gyro or simplified vectors and priority approach or diversion as needed. If I could not safely continue IFR, I would state that clearly and request an alternative.",
+    "missionBrief": "Today's lesson covers Partial Panel — instrument flight with one or more primary flight instruments inoperative or unreliable, requiring the pilot to fly using remaining instruments, cross-check carefully, and communicate the limitation clearly to ATC when IFR capability is reduced.\n\nPartial panel is classic ICAO exam English and real IFR survival skill. Attitude, heading, or airspeed indications may be lost or misleading. The crew must identify what failed, fly what remains reliable, and avoid clearances that demand the lost instrument capability.\n\nFor H130 helicopter ICAO Delta academy operations in Brazil, partial-panel scenarios appear in instrument training and in electrical or instrument failures en route. Even with modern glass cockpits, the concept remains: degraded instrument presentation, limited IFR capability, and precise radio reporting of what you can and cannot do.\n\nUnderstanding how to discuss partial panel in ICAO-standard English is essential for Part 2 and Part 3 proficiency.",
+    "captainTeaching": "Partial panel is discipline under missing information.\n\nThe failed instrument is not the emergency by itself. Believing the failed instrument is the emergency. Cover it mentally. Fly the ones that still agree. Cross-check continuously.\n\nOn the ICAO exam, examiners listen for structure: identify the failure, state the limitation, request what ATC can give you — vectors, no-gyro, priority, diversion, or VMC.\n\nIn Brazilian IMC — coastal stratus, Serra weather, night IFR — partial panel is not academic. Keep the helicopter under control first. Then speak. Short. Specific. Honest about what you can still fly.\n\nDo not accept a complex SID, STAR, or circling instruction if your remaining instruments cannot support it. Unable is a professional word.",
+    "operationalContext": "You are IFR toward Navegantes in the H130. The attitude indication becomes unreliable. Standby instruments remain usable. You are in IMC.\n\nYou transmit:\n\nANAC123, partial panel, attitude indicator unreliable, request no-gyro vectors and priority approach Navegantes.\n\nApproach: ANAC123, roger partial panel, turn left, stop turn — for no-gyro vectors, expect ILS runway zero seven.\n\nYou fly the remaining instruments. You keep the radio calm. You land with a known limitation instead of chasing a failed attitude display into a spiral.",
+    "sayItCoach": "ANAC123, partial panel, attitude indicator unreliable, request no-gyro vectors.",
+    "icaoModelAnswer": "I would maintain control using the remaining reliable instruments, apply the abnormal procedure, and stop using the failed attitude indication. I would advise ATC of partial panel with attitude indicator unreliable and request no-gyro or simplified vectors and priority approach or diversion as needed. If I could not safely continue IFR, I would state that clearly and request an alternative.",
+    "memoryTrick": "**PANEL** — **P**ick reliable instruments, **A**dvise ATC early, **N**o-gyro if heading lost, **E**xclude failed indications, **L**and with simplified clearance.",
+    "operationalMeaning": "When partial panel occurs, the crew should:\n\nPartial panel scenarios commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger partial panel, say which instruments failed.",
+      "Approach: ANAC123, no-gyro vectors approved, turn left, stop turn.",
+      "Center: ANAC123, advise if able to continue IFR or require diversion.",
+      "Approach: ANAC123, expect straight-in, simplified approach instructions.",
+      "Approach: ANAC123, say souls on board and fuel remaining."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, partial panel, attitude indicator unreliable, requesting no-gyro vectors.",
+      "ANAC123, no-gyro, turning left... stop turn.",
+      "ANAC123, able continue IFR on remaining instruments, requesting priority approach.",
+      "ANAC123, expecting straight-in, simplified instructions copied.",
+      "ANAC123, souls three, fuel one hour five minutes."
+    ],
+    "brazilianMistakes": "- ❌ Saying only \"instrument problem\" without naming the failed instrument.  \n  ✔ Specify: partial panel, attitude indicator unreliable, or heading indicator failed.\n\n- ❌ Continuing to chase a failed attitude display in IMC.  \n  ✔ Ignore the failed instrument; fly the remaining reliable panel.\n\n- ❌ Accepting complex clearances you cannot fly accurately on partial panel.  \n  ✔ Request simplified vectors, no-gyro, or diversion; say unable if required.\n\n- ❌ Delaying the ATC report until the approach is already unstable.  \n  ✔ Report early so ATC can simplify the clearance and protect you.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Partial Panel, Attitude Indicator Unreliable\n\n**Pronunciation:** AY-nak WUN TOO THREE, PAR-shul PAN-ul, AT-ih-tood IN-dih-kay-ter un-ree-LY-uh-bul\n\n**Word Stress**\n\n- Partial → PAR-shul\n- Panel → PAN-ul\n- Attitude → AT-ih-tood (stress on first)\n- Unreliable → un-ree-LY-uh-bul (stress on LY)\n\nPractice:\n\nPartial panel... attitude indicator unreliable... request no-gyro vectors.\n\nTogether:\n\nANAC123, partial panel, attitude indicator unreliable, request no-gyro vectors.",
+    "relatedConcepts": [
+      "Instrument Failure",
+      "No-Gyro Approach",
+      "IFR Capability",
+      "Attitude Indicator",
+      "Priority Approach",
+      "Diversion"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Vectoring / Approach Instructions",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9835 — Language Proficiency (instrument failure scenarios)"
+      },
+      {
+        "label": "FAA AIM — Partial Panel / No-Gyro Approaches",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "SKYbrary — Flight Instrument Failures",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "H130 AFM — Instruments / Abnormal Procedures"
+      }
+    ]
+  },
+  {
+    "catalogId": "0258",
+    "id": "0258",
+    "displayTerm": "Propeller Failure",
+    "term": "propeller failure",
+    "slug": "propeller-failure",
+    "category": "Aircraft Systems",
+    "meaningEn": "Propeller Failure is a malfunction of a propeller or equivalent propulsive rotating system that results in abnormal thrust, vibration, inability to control blade angle, or loss of effective propulsion, requiring abnormal or emergency procedures and clear ATC communication of the operational effect.",
+    "meaningPt": "Falha de hélice / Propeller Failure.\n\nMalfuncionamento de uma hélice ou sistema rotativo propulsivo equivalente que resulta em empuxo anormal, vibração, incapacidade de controlar o ângulo das pás ou perda de propulsão efetiva, exigindo procedimentos anormais ou de emergência e comunicação clara ao ATC do efeito operacional.",
+    "whenUsed": "When propeller failure — or the rotorcraft equivalent — occurs, the crew should:",
+    "example": "Approach: ANAC123, roger propeller failure, say intentions and which engine.",
+    "sayPhrase": "ANAC123, propeller failure left engine, requesting priority landing Congonhas.",
+    "icaoQuestion": "You experience a propeller failure with severe vibration and reduced thrust. What do you do?",
+    "icaoSpeakText": "I would maintain control, apply the emergency checklist, and reduce the situation to a safe thrust and configuration as published. I would advise ATC of propeller failure, state the operational effect, and request priority landing or declare Mayday if continued flight or control was threatened. In a helicopter, I would describe the actual system affected — for example main rotor or fenestron — using the same clear structure.",
+    "missionBrief": "Today's lesson covers Propeller Failure — abnormal or failed propeller operation on propeller-driven aircraft, and the related ICAO exam English used for thrust or rotor-drive anomalies, including how H130 crews relate the concept to main rotor, fenestron, or propulsive system phraseology across types.\n\nPropeller failure is high-stakes systems language on ICAO exams. Fixed-wing crews may face overspeed, feathering problems, or thrust loss. Helicopter crews must still master the English — and map it honestly to rotorcraft reality: main rotor anomalies, fenestron or anti-torque issues, and any propulsive propeller on other types you may fly later.\n\nFor H130 helicopter ICAO Delta academy operations in Brazil, teach the exam phraseology clearly, then relate it: the H130 is a turbine helicopter with main rotor and fenestron — not a classic fixed-wing propeller — but \"propeller failure\" English appears in tests and multi-type careers. Report the failure, the effect on thrust or control, and the intention to land.\n\nUnderstanding this concept in ICAO-standard English is essential for Part 2 and Part 3.",
+    "captainTeaching": "Propeller failure English is about thrust and control — not about pretending every aircraft has a propeller.\n\nOn the ICAO exam, expect fixed-wing language: overspeed, feather, secure the engine, priority landing. Learn it. Say it cleanly.\n\nIn the H130, your rotating systems are the main rotor and fenestron. If something is wrong there, use the real words from the AFM and the real emergency: control first, land immediately if required, Mayday when safety is threatened.\n\nBrazilian academy pilots often freeze between \"exam English\" and \"my helicopter.\" Do both: master the exam term, then map it to rotorcraft truth without mixing them into nonsense.\n\nFailure. Effect. Intention. Request. That sequence works for a feathered prop and for a rotor anomaly alike.",
+    "operationalContext": "Exam scenario language — multi-engine propeller aircraft: a propeller overspeeds and will not feather normally. You secure per checklist and request priority.\n\nYou transmit:\n\nANAC123, propeller failure left engine, requesting priority landing Congonhas, Mayday if performance critical.\n\nFor H130 academy reality, a severe main rotor vibration or fenestron abnormality gets the same radio discipline:\n\nANAC123, main rotor vibration, requesting immediate landing, Mayday.\n\nDifferent machine. Same communication structure: failure, effect, intention, request.",
+    "sayItCoach": "ANAC123, propeller failure, severe vibration, request priority landing.",
+    "icaoModelAnswer": "I would maintain control, apply the emergency checklist, and reduce the situation to a safe thrust and configuration as published. I would advise ATC of propeller failure, state the operational effect, and request priority landing or declare Mayday if continued flight or control was threatened. In a helicopter, I would describe the actual system affected — for example main rotor or fenestron — using the same clear structure.",
+    "memoryTrick": "**PROP** — **P**ilot flies first, **R**eport system and effect, **O**ffer intention clearly, **P**riority or Mayday as required.",
+    "operationalMeaning": "When propeller failure — or the rotorcraft equivalent — occurs, the crew should:\n\nPropeller failure scenarios commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger propeller failure, say intentions and which engine.",
+      "Tower: ANAC123, runway one seven L cleared to land, firefighters alerted.",
+      "Approach: ANAC123, confirm able to maintain altitude, say if forced landing required.",
+      "Center: ANAC123, priority approved, descend pilot's discretion, report field in sight.",
+      "Approach: ANAC123, say souls on board and fuel remaining."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, propeller failure left engine, requesting priority landing Congonhas.",
+      "ANAC123, cleared to land one seven L, firefighters copied.",
+      "ANAC123, able maintain for now, requesting straight-in, will advise if forced landing.",
+      "ANAC123, priority approved, descending pilot's discretion.",
+      "ANAC123, souls four, fuel forty minutes."
+    ],
+    "brazilianMistakes": "- ❌ Using vague \"engine problem\" when the issue is propeller or rotor related.  \n  ✔ Name the system and effect: propeller failure, unable to feather, severe vibration.\n\n- ❌ Mixing H130 fenestron language into a fixed-wing exam answer incorrectly.  \n  ✔ On exams, use propeller phraseology; in the H130, report the real system accurately.\n\n- ❌ Delaying the Mayday when control or thrust is critically degraded.  \n  ✔ If safety is threatened, declare Mayday and request immediate landing.\n\n- ❌ Long technical explanations on the frequency during the emergency.  \n  ✔ Short: failure, effect, intention, request.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Propeller Failure, Request Priority Landing\n\n**Pronunciation:** AY-nak WUN TOO THREE, PROP-uh-ler FAYL-yer, reh-KWEST pry-OR-ih-tee LAN-ding\n\n**Word Stress**\n\n- Propeller → pruh-PEL-er (stress on PEL) — also heard as PROP-uh-ler in rapid radio speech\n- Failure → FAYL-yer\n- Priority → pry-OR-ih-tee\n- Landing → LAN-ding\n\nPractice:\n\nPropeller failure... request priority landing.\n\nTogether:\n\nANAC123, propeller failure, severe vibration, request priority landing.",
+    "relatedConcepts": [
+      "Engine Failure",
+      "Mayday",
+      "Priority Landing",
+      "Forced Landing",
+      "Severe Vibration",
+      "Asymmetric Thrust"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress / Urgency",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Propeller Failures / Rotor System Anomalies",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Annex 6 — Operation of Aircraft"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "H130 AFM — Emergency Procedures (rotor / fenestron / engine)"
+      }
+    ]
+  },
+  {
+    "catalogId": "0259",
+    "id": "0259",
+    "displayTerm": "Landing Gear Stuck",
+    "term": "landing gear stuck",
+    "slug": "landing-gear-stuck",
+    "category": "Aircraft Systems",
+    "meaningEn": "Landing Gear Stuck is a malfunction in which one or more landing gear legs cannot be moved to the commanded position — up, down, or locked — preventing normal extension or retraction and requiring alternate procedures and ATC coordination for a safe landing.",
+    "meaningPt": "Trem de pouso travado / Landing Gear Stuck.\n\nMalfuncionamento em que uma ou mais pernas do trem de pouso não podem ser movidas para a posição comandada — recolhido, baixado ou travado — impedindo a extensão ou retração normal e exigindo procedimentos alternativos e coordenação com o ATC para um pouso seguro.",
+    "whenUsed": "When landing gear is stuck, the crew should:",
+    "example": "Approach: ANAC123, roger landing gear stuck, say gear position and intentions.",
+    "sayPhrase": "ANAC123, landing gear stuck up, attempting alternate extension, requesting priority.",
+    "icaoQuestion": "Your landing gear will not extend and remains stuck up. What do you do and what do you tell ATC?",
+    "icaoSpeakText": "I would maintain control, apply the gear abnormal checklist, and attempt alternate extension as published. I would advise ATC that the landing gear is stuck up, state whether indications remain unsafe, and request priority landing with firefighters on standby. I would land only according to the procedure and prepare for an abnormal or wheels-up landing if the gear cannot be extended.",
+    "missionBrief": "Today's lesson covers Landing Gear Stuck — a condition in which the landing gear cannot be extended or retracted normally, requiring abnormal or emergency procedures, possible alternate extension, and clear ATC communication for priority handling and emergency services.\n\nLanding gear stuck is critical ICAO exam English. The crew must state whether the gear is stuck up, stuck down, or in an intermediate position, what they are attempting, and what kind of landing they expect. Controllers need that detail to alert RFF and clear the runway.\n\nFor H130 helicopter ICAO Delta academy operations in Brazil, many H130s use skids rather than retractable wheeled gear. Still teach gear phraseology for the ICAO exam and for multi-type careers. When flying a skid-equipped H130, relate the concept honestly: you do not \"stick the gear,\" but you must still master the English and understand airport emergency response language when other traffic has a gear problem.\n\nUnderstanding landing gear stuck phraseology is essential for Part 2 and Part 3 critical performance.",
+    "captainTeaching": "Stuck gear is a configuration emergency with a communication requirement.\n\nFly the airplane. Run the checklist. Then tell ATC three facts: stuck where, what you are doing about it, and what landing you expect.\n\nOn the ICAO exam, examiners want \"landing gear stuck,\" alternate extension language, priority, and firefighters. Give them that structure.\n\nIn the H130 with skids, do not invent a retractable gear emergency you do not have. Learn the English for the test. In real academy flying, use accurate skid and landing-gear-of-other-traffic language when Congonhas or Guarulhos holds everyone for a jet with gear stuck.\n\nCritical English is specific English. Position. Procedure. Intention. Request.",
+    "operationalContext": "Exam / wheeled-gear scenario: on approach to Congonhas, the gear will not extend normally. Alternate extension is in progress. Indication remains unsafe.\n\nYou transmit:\n\nANAC123, landing gear stuck, unsafe indication, requesting priority landing runway one seven L, firefighters standby.\n\nTower: ANAC123, roger gear stuck, runway one seven L, wind calm, firefighters rolling, cleared to land at your discretion.\n\nYou fly a stable approach. You land only when the checklist and indications allow — or you execute the planned abnormal landing with RFF ready.\n\nIn the skid-equipped H130, you may never extend wheels — but you will hear this language when sharing Brazilian airports with jets and turboprops.",
+    "sayItCoach": "ANAC123, landing gear stuck, attempting alternate extension, request priority landing.",
+    "icaoModelAnswer": "I would maintain control, apply the gear abnormal checklist, and attempt alternate extension as published. I would advise ATC that the landing gear is stuck up, state whether indications remain unsafe, and request priority landing with firefighters on standby. I would land only according to the procedure and prepare for an abnormal or wheels-up landing if the gear cannot be extended.",
+    "memoryTrick": "**STUCK** — **S**ay position (up/down/unsafe), **T**ry alternate extension, **U**se priority request, **C**all for firefighters, **K**eep the approach stable.",
+    "operationalMeaning": "When landing gear is stuck, the crew should:\n\nLanding gear stuck scenarios commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger landing gear stuck, say gear position and intentions.",
+      "Tower: ANAC123, firefighters alerted, expect runway one seven L, advise when ready.",
+      "Approach: ANAC123, confirm attempting alternate gear extension.",
+      "Tower: ANAC123, runway cleared, all traffic held, cleared to land.",
+      "Approach: ANAC123, say souls on board and fuel remaining."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, landing gear stuck up, attempting alternate extension, requesting priority.",
+      "ANAC123, firefighters copied, expecting one seven L.",
+      "ANAC123, affirmative, alternate extension in progress.",
+      "ANAC123, runway cleared copied, cleared to land.",
+      "ANAC123, souls five, fuel fifty minutes."
+    ],
+    "brazilianMistakes": "- ❌ Saying only \"gear problem\" without position or intention.  \n  ✔ State: landing gear stuck up / stuck down / unsafe, requesting priority and RFF.\n\n- ❌ Forcing a normal landing without alternate extension attempts.  \n  ✔ Complete the AFM procedure before committing to the landing type.\n\n- ❌ Not requesting firefighters for a possible abnormal landing.  \n  ✔ Request RFF standby early so emergency services are in place.\n\n- ❌ Ignoring H130 skid context and inventing false gear calls in real ops.  \n  ✔ Use accurate aircraft configuration in real flying; use gear English for exams.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Landing Gear Stuck, Request Priority Landing\n\n**Pronunciation:** AY-nak WUN TOO THREE, LAN-ding GEER STUK, reh-KWEST pry-OR-ih-tee LAN-ding\n\n**Word Stress**\n\n- Landing → LAN-ding\n- Gear → GEER\n- Stuck → STUK\n- Priority → pry-OR-ih-tee\n\nPractice:\n\nLanding gear stuck... unsafe indication... request firefighters.\n\nTogether:\n\nANAC123, landing gear stuck, attempting alternate extension, request priority landing.",
+    "relatedConcepts": [
+      "Landing Gear Unsafe Indication",
+      "Gear Down and Locked",
+      "Wheels-Up Landing",
+      "Belly Landing",
+      "Alternate Gear Extension",
+      "Priority Landing"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Emergency / Priority Handling",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Landing Gear Failures",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Landing Gear Malfunctions",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Annex 6 — Operation of Aircraft"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Aircraft AFM — Landing Gear Abnormal / Emergency Procedures"
+      }
+    ]
+  },
+  {
+    "catalogId": "0260",
+    "id": "0260",
+    "displayTerm": "Landing Gear Unsafe Indication",
+    "term": "landing gear unsafe indication",
+    "slug": "landing-gear-unsafe-indication",
+    "category": "Aircraft Systems",
+    "meaningEn": "Landing Gear Unsafe Indication is a cockpit warning or status disagreement indicating that one or more landing gear legs are not confirmed in the safe down-and-locked (or expected) position, requiring abnormal procedures and ATC coordination before a normal landing is assumed.",
+    "meaningPt": "Indicação insegura do trem de pouso / Landing Gear Unsafe Indication.\n\nAviso ou discordância no cockpit indicando que uma ou mais pernas do trem de pouso não estão confirmadas na posição segura baixada e travada (ou na posição esperada), exigindo procedimentos anormais e coordenação com o ATC antes de assumir um pouso normal.",
+    "whenUsed": "When a landing gear unsafe indication appears, the crew should:",
+    "example": "Tower: ANAC123, roger unsafe gear indication, cleared low approach, will advise visual.",
+    "sayPhrase": "ANAC123, landing gear unsafe indication, requesting low approach for visual check.",
+    "icaoQuestion": "You have a landing gear unsafe indication after extension. What do you do?",
+    "icaoSpeakText": "I would apply the gear unsafe checklist, avoid assuming the gear is locked, and advise ATC of the unsafe indication. I would request a low approach for visual inspection if appropriate, then either confirm down and locked or plan an abnormal landing with priority and firefighters. I would not land as a normal landing while the indication remains unresolved.",
+    "missionBrief": "Today's lesson covers Landing Gear Unsafe Indication — a cockpit warning or disagreement showing that the landing gear is not confirmed down and locked (or not in the expected position), requiring verification procedures, possible tower visual check, and clear ATC coordination before landing.\n\nAn unsafe gear indication is not automatically a collapsed gear. It is a disagreement between commanded position and confirmed locked status. The crew must treat it seriously, run the checklist, and use ATC — including a possible low approach for visual inspection — before committing to landing.\n\nFor H130 helicopter ICAO Delta academy operations in Brazil, many H130s use skids and will not present classic gear unsafe lights. The ICAO exam still expects this phraseology for wheeled aircraft. Learn it precisely; relate skid-equipped operations honestly when the concept does not apply to your airframe.\n\nUnderstanding unsafe gear indication English is essential for Part 2 and Part 3.",
+    "captainTeaching": "Unsafe means unconfirmed — not automatically destroyed.\n\nYour job is verification. Checklist. Possible recycle if allowed. Alternate extension if required. Visual check if it adds information. Then a decision: normal landing if confirmed, or abnormal landing with RFF if not.\n\nOn the ICAO exam, \"landing gear unsafe indication\" plus \"request low approach for visual check\" is high-value language. Use it.\n\nIn the H130 with skids, do not force this malfunction into daily flying. Master it for the test and for the day you fly a wheeled type — or share a frequency with one in trouble at Congonhas.\n\nNever argue with an unsafe light by hoping. Confirm or prepare for the abnormal landing.",
+    "operationalContext": "Wheeled-aircraft exam scenario: on approach to Guarulhos, you select gear down. Two greens. One unsafe light remains. Checklist complete. You request a low pass.\n\nYou transmit:\n\nANAC123, landing gear unsafe indication, request low approach for visual gear check.\n\nTower: ANAC123, cleared low approach runway two seven L, report gear appearance will be advised.\n\nAfter the pass, Tower reports the right main appears down. You still treat the indication as unresolved until checklist logic says otherwise — then you land with RFF ready if required.\n\nIn the skid-equipped H130, you listen and learn; you may be the traffic held while a jet resolves an unsafe gear light.",
+    "sayItCoach": "ANAC123, landing gear unsafe indication, request low approach for visual gear check.",
+    "icaoModelAnswer": "I would apply the gear unsafe checklist, avoid assuming the gear is locked, and advise ATC of the unsafe indication. I would request a low approach for visual inspection if appropriate, then either confirm down and locked or plan an abnormal landing with priority and firefighters. I would not land as a normal landing while the indication remains unresolved.",
+    "memoryTrick": "**UNSAFE** — **U**se the checklist, **N**ever assume locked, **S**eek visual check, **A**dvise ATC early, **F**irefighters if unresolved, **E**xecute the decided landing type.",
+    "operationalMeaning": "When a landing gear unsafe indication appears, the crew should:\n\nUnsafe indication scenarios commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Tower: ANAC123, roger unsafe gear indication, cleared low approach, will advise visual.",
+      "Tower: ANAC123, gear appears down, advise intentions.",
+      "Approach: ANAC123, confirm requesting firefighters for full-stop landing.",
+      "Tower: ANAC123, runway cleared, RFF in position, cleared to land.",
+      "Approach: ANAC123, say souls on board and fuel remaining."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, landing gear unsafe indication, requesting low approach for visual check.",
+      "ANAC123, gear appears down copied, requesting full stop with firefighters.",
+      "ANAC123, affirmative, requesting firefighters for full-stop landing.",
+      "ANAC123, runway cleared, RFF copied, cleared to land.",
+      "ANAC123, souls four, fuel one hour."
+    ],
+    "brazilianMistakes": "- ❌ Landing immediately with an unsafe light because \"it usually works.\"  \n  ✔ Complete verification procedures before treating the landing as normal.\n\n- ❌ Not requesting a visual check when it could resolve doubt safely.  \n  ✔ Request low approach for tower visual gear check when useful.\n\n- ❌ Failing to alert firefighters when confirmation is impossible.  \n  ✔ If still unsafe, request RFF and brief an abnormal landing.\n\n- ❌ Using unsafe-gear radio calls in a skid H130 as if wheels existed.  \n  ✔ Keep real operations accurate; keep exam English ready separately.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Landing Gear Unsafe Indication, Request Low Approach\n\n**Pronunciation:** AY-nak WUN TOO THREE, LAN-ding GEER un-SAFE in-dih-KAY-shun, reh-KWEST LOH uh-PROCH\n\n**Word Stress**\n\n- Unsafe → un-SAFE (stress on SAFE)\n- Indication → in-dih-KAY-shun (stress on KAY)\n- Low → LOH\n- Approach → uh-PROCH\n\nPractice:\n\nLanding gear unsafe indication... request low approach for visual check.\n\nTogether:\n\nANAC123, landing gear unsafe indication, request low approach for visual gear check.",
+    "relatedConcepts": [
+      "Gear Down and Locked",
+      "Landing Gear Stuck",
+      "Alternate Gear Extension",
+      "Low Approach",
+      "Wheels-Up Landing",
+      "Priority Landing"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Low Approach / Priority Handling",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Landing Gear Indications",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Gear Unsafe Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Annex 6 — Operation of Aircraft"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Aircraft AFM — Landing Gear Warning / Abnormal Procedures"
+      }
+    ]
+  },
+  {
+    "catalogId": "0261",
+    "id": "0261",
+    "displayTerm": "Main Landing Gear Collapsed",
+    "term": "main landing gear collapsed",
+    "slug": "main-landing-gear-collapsed",
+    "category": "Emergency",
+    "meaningEn": "Main Landing Gear Collapsed is an emergency condition in which one or both main landing gear assemblies fail structurally or fold during ground contact or taxi, causing the aircraft to settle abnormally, often with fire risk, runway blockage, and possible evacuation.",
+    "meaningPt": "Colapso do trem de pouso principal / Main Landing Gear Collapsed.\n\nCondição de emergência em que um ou ambos os conjuntos do trem de pouso principal falham estruturalmente ou se dobram durante o contato com o solo ou o táxi, fazendo a aeronave assentar de forma anormal, frequentemente com risco de fogo, bloqueio da pista e possível evacuação.",
+    "whenUsed": "When main landing gear collapses, the crew should:",
+    "example": "Tower: ANAC123, roger gear collapsed, firefighters rolling, say if fire or evacuation.",
+    "sayPhrase": "ANAC123, Mayday, main landing gear collapsed, evacuating, no fire observed.",
+    "icaoQuestion": "After landing, a main landing gear collapses and you stop on the runway. What do you do?",
+    "icaoSpeakText": "I would stop and secure the aircraft, assess fire and the need to evacuate, and order evacuation if required. I would declare Mayday if needed and advise ATC that the main landing gear has collapsed, state fire status, evacuation status, and runway blockage, then provide souls and fuel when able. Survival and fire prevention come before long explanations.",
+    "missionBrief": "Today's lesson covers Main Landing Gear Collapsed — an emergency in which one or both main landing gear legs collapse or fail structurally during landing, taxi, or ground operations, requiring immediate aircraft control, evacuation decisions, and critical ATC and RFF coordination.\n\nMain landing gear collapsed is a critical emergency. The aircraft may settle onto a wing, nacelle, or fuselage side. Fire risk rises. Evacuation may be required. The radio must deliver essentials: what collapsed, aircraft status, fire or smoke, evacuation, souls, and fuel.\n\nFor H130 helicopter ICAO Delta academy operations in Brazil, many H130s use skids; a classic main-gear collapse is primarily fixed-wing exam and multi-type English. Still learn it — and understand the airport emergency language when a jet collapses a main gear on your shared runway at Congonhas, Guarulhos, or Santos Dumont.\n\nUnderstanding this emergency phraseology is essential for Part 2 and Part 3 under pressure.",
+    "captainTeaching": "Gear collapse is a ground emergency that starts in the last seconds of flight.\n\nIf you are the crew: stop, secure, decide evacuate, then speak essentials. Fire status matters more than perfect grammar — but ICAO Level 4 still wants clear structure under stress.\n\nIf you are other traffic — including H130 academy flights — the phrase \"main landing gear collapsed\" means the runway is an emergency scene. Go around. Divert. Do not request a look.\n\nBrazilian short runways and dense traffic make rapid closure language critical. Congonhas does not have spare concrete. Your clean go-around helps RFF work.\n\nCritical. Short. Ordered. That is the radio standard.",
+    "operationalContext": "Wheeled-aircraft emergency: after touchdown at Congonhas, the right main landing gear collapses. The wing settles. You stop. No fire yet. Evacuation is ordered as a precaution.\n\nYou transmit:\n\nANAC123, Mayday, main landing gear collapsed, aircraft on runway, evacuating, no fire at this time.\n\nTower: ANAC123, firefighters on the way, confirm souls and fuel when able.\n\nYou evacuate. RFF arrives. The runway is closed. Behind you, an H130 on approach goes around and diverts — correct shared-airport discipline.",
+    "sayItCoach": "ANAC123, Mayday, main landing gear collapsed, evacuating, no fire at this time.",
+    "icaoModelAnswer": "I would stop and secure the aircraft, assess fire and the need to evacuate, and order evacuation if required. I would declare Mayday if needed and advise ATC that the main landing gear has collapsed, state fire status, evacuation status, and runway blockage, then provide souls and fuel when able. Survival and fire prevention come before long explanations.",
+    "memoryTrick": "**COLLAPSE** — **C**ontrol and stop, **O**rder evacuate if needed, **L**eave fire status clear, **L**aunch Mayday essentials, **A**dvise runway blocked, **P**rovide souls/fuel, **S**tay brief, **E**xit safely.",
+    "operationalMeaning": "When main landing gear collapses, the crew should:\n\nMain gear collapse scenarios commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Tower: ANAC123, roger gear collapsed, firefighters rolling, say if fire or evacuation.",
+      "Tower: ANAC123, confirm runway blocked, all traffic go around.",
+      "Approach: ANAC456, go around, runway closed, main gear collapse on the field.",
+      "Tower: ANAC123, say souls on board and fuel remaining.",
+      "Tower: ANAC123, remain on frequency if able, assistance on scene."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, Mayday, main landing gear collapsed, evacuating, no fire observed.",
+      "ANAC123, runway blocked, evacuating now.",
+      "ANAC456, going around, runway closed copied.",
+      "ANAC123, souls one hundred twenty, fuel remaining two hours — or as applicable.",
+      "ANAC123, remaining on frequency as able."
+    ],
+    "brazilianMistakes": "- ❌ Giving a long narrative before securing and assessing fire.  \n  ✔ Secure, assess evacuate/fire, then short essential radio calls.\n\n- ❌ Other traffic continuing approach to \"see what happened.\"  \n  ✔ Go around immediately; runway is closed for emergency response.\n\n- ❌ Forgetting to state whether fire is present or evacuation is underway.  \n  ✔ Fire status and evacuation status are critical for RFF.\n\n- ❌ Treating this as irrelevant because the H130 has skids.  \n  ✔ Learn exam English; in real ops, react correctly as shared-airport traffic.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Main Landing Gear Collapsed, Evacuating\n\n**Pronunciation:** AY-nak WUN TOO THREE, MAYN LAN-ding GEER kuh-LAPST, ih-VAK-yoo-ay-ting\n\n**Word Stress**\n\n- Main → MAYN\n- Landing → LAN-ding\n- Collapsed → kuh-LAPST (stress on LAP)\n- Evacuating → ih-VAK-yoo-ay-ting (stress on VAK)\n\nPractice:\n\nMain landing gear collapsed... evacuating... no fire.\n\nTogether:\n\nANAC123, Mayday, main landing gear collapsed, evacuating, no fire at this time.",
+    "relatedConcepts": [
+      "Runway Excursion",
+      "Wheels-Up Landing",
+      "Belly Landing",
+      "Evacuation",
+      "Airport Rescue and Fire Fighting",
+      "Runway Closure"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress / Aerodrome Emergencies",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "ICAO Doc 9137 — Airport Services (RFF)"
+      },
+      {
+        "label": "SKYbrary — Landing Gear Collapse",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Procedures / Evacuation",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Aircraft AFM — Emergency Landing / Evacuation"
+      }
+    ]
+  },
+  {
+    "catalogId": "0262",
+    "id": "0262",
+    "displayTerm": "Landing Gear Retraction Failure",
+    "term": "landing gear retraction failure",
+    "slug": "landing-gear-retraction-failure",
+    "category": "Aircraft Systems",
+    "meaningEn": "Landing Gear Retraction Failure is a malfunction in which the landing gear does not retract normally after takeoff, remaining extended or partially retracted, increasing drag and requiring abnormal procedures and ATC notification of the performance limitation.",
+    "meaningPt": "Falha na retração do trem de pouso / Landing Gear Retraction Failure.\n\nMalfuncionamento em que o trem de pouso não se recolhe normalmente após a decolagem, permanecendo estendido ou parcialmente recolhido, aumentando o arrasto e exigindo procedimentos anormais e notificação ao ATC da limitação de desempenho.",
+    "whenUsed": "When landing gear retraction fails, the crew should:",
+    "example": "Departure: ANAC123, roger landing gear retraction failure, say intentions.",
+    "sayPhrase": "ANAC123, landing gear retraction failure, requesting return to land.",
+    "icaoQuestion": "After takeoff the landing gear will not retract. What do you do?",
+    "icaoSpeakText": "I would maintain a safe climb, apply the retraction-failure checklist, and avoid unauthorized repeated recycling. I would advise ATC of landing gear retraction failure with gear remaining down, state the performance limitation, and request a return to land or an amended clearance if fuel and climb performance no longer support the original plan.",
+    "missionBrief": "Today's lesson covers Landing Gear Retraction Failure — a malfunction in which the landing gear fails to retract after takeoff, leaving the gear down or partially retracted, with performance penalties and the need to advise ATC and decide whether to return or continue.\n\nGear retraction failure is usually less dramatic than gear stuck up on landing — but it is still abnormal. Drag and fuel burn increase. Speed and climb performance may be limited. Some systems may inhibit further retraction attempts. The crew must fly the airplane, run the checklist, and tell ATC the limitation.\n\nFor H130 helicopter ICAO Delta academy operations in Brazil, many H130s use skids and do not retract gear. Teach the ICAO exam English anyway. Relate it: wheeled types climb dirty after retraction failure; skid helicopters always fly \"gear down\" in a sense — but exam phraseology remains \"landing gear retraction failure\" for Part 2 and Part 3.",
+    "captainTeaching": "Retraction failure is a performance problem wearing an abnormal checklist.\n\nYou can often still fly — just not as far, not as high, and not as efficiently. The professional move is early honesty with ATC: gear remains down, requesting return or amended clearance.\n\nOn the ICAO exam, distinguish this from gear stuck up on approach. Retraction failure is after takeoff, gear will not go up. Extension problems are a different lesson.\n\nIn the H130 with skids, you will not practice this malfunction in the aircraft. You will still say the English correctly in the exam room — and you will understand why a turboprop returns to Congonhas dirty.\n\nDo not force repeated gear cycles against the AFM. One procedure path. Then a decision: return or continue with a new fuel plan.",
+    "operationalContext": "Wheeled-aircraft scenario: after takeoff from Curitiba, you select gear up. The gear remains down. Checklist confirms retraction failure. Fuel will not support Florianópolis with the drag penalty.\n\nYou transmit:\n\nANAC123, landing gear retraction failure, gear remains down, requesting return to land Curitiba.\n\nDeparture: ANAC123, roger gear retraction failure, turn left heading three six zero, expect vectors for runway one five.\n\nYou return. You land with gear already down and locked. Simple outcome — because you reported the limitation early.\n\nAn H130 departing the same airport on skids hears the call and understands why the jet is coming back.",
+    "sayItCoach": "ANAC123, landing gear retraction failure, requesting return to land.",
+    "icaoModelAnswer": "I would maintain a safe climb, apply the retraction-failure checklist, and avoid unauthorized repeated recycling. I would advise ATC of landing gear retraction failure with gear remaining down, state the performance limitation, and request a return to land or an amended clearance if fuel and climb performance no longer support the original plan.",
+    "memoryTrick": "**RETRACT** — **R**eport early, **E**valuate climb/fuel, **T**ake the checklist once, **R**eturn if needed, **A**mend clearance, **C**onfirm gear down for landing, **T**ell ATC the limitation.",
+    "operationalMeaning": "When landing gear retraction fails, the crew should:\n\nRetraction failure scenarios commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Departure: ANAC123, roger landing gear retraction failure, say intentions.",
+      "Departure: ANAC123, return approved, expect vectors runway one five.",
+      "Center: ANAC123, advise if able to maintain flight level, gear down.",
+      "Approach: ANAC123, priority return approved, squawk ident.",
+      "Tower: ANAC123, cleared to land, confirm gear down and locked."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, landing gear retraction failure, requesting return to land.",
+      "ANAC123, return approved, expecting vectors one five.",
+      "ANAC123, unable maintain filed level with gear down, requesting lower.",
+      "ANAC123, priority return approved, ident.",
+      "ANAC123, cleared to land, gear down and locked."
+    ],
+    "brazilianMistakes": "- ❌ Silently continuing to destination with gear down and inadequate fuel.  \n  ✔ Recalculate; request return or diversion early.\n\n- ❌ Confusing retraction failure with gear stuck up on landing.  \n  ✔ Retraction failure = after takeoff, gear will not retract.\n\n- ❌ Repeatedly cycling the gear against checklist limits.  \n  ✔ Follow the AFM; then decide return or continue.\n\n- ❌ Ignoring the concept because the H130 uses skids.  \n  ✔ Learn exam English; keep real configuration reports accurate.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Landing Gear Retraction Failure, Request Return\n\n**Pronunciation:** AY-nak WUN TOO THREE, LAN-ding GEER rih-TRAK-shun FAYL-yer, reh-KWEST rih-TURN\n\n**Word Stress**\n\n- Retraction → rih-TRAK-shun (stress on TRAK)\n- Failure → FAYL-yer\n- Request → reh-KWEST\n- Return → rih-TURN\n\nPractice:\n\nLanding gear retraction failure... gear remains down... request return.\n\nTogether:\n\nANAC123, landing gear retraction failure, requesting return to land.",
+    "relatedConcepts": [
+      "Landing Gear Stuck",
+      "Gear Down and Locked",
+      "Performance Limitation",
+      "Precautionary Return",
+      "Fuel Planning",
+      "Abnormal Procedures"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Return / Priority Handling",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Landing Gear Retraction Failures",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — System Malfunctions",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Annex 6 — Operation of Aircraft"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Aircraft AFM — Landing Gear Retraction Abnormal Procedures"
+      }
+    ]
+  },
+  {
+    "catalogId": "0263",
+    "id": "0263",
+    "displayTerm": "Gear Down and Locked",
+    "term": "gear down and locked",
+    "slug": "gear-down-and-locked",
+    "category": "Aircraft Systems",
+    "meaningEn": "Gear Down and Locked is the landing-gear status in which all gear legs are fully extended and locked in the landing position, confirmed by cockpit indications (typically green lights) and required before a normal wheeled landing.",
+    "meaningPt": "Trem baixado e travado / Gear Down and Locked.\n\nStatus do trem de pouso em que todas as pernas estão totalmente estendidas e travadas na posição de pouso, confirmado pelas indicações do cockpit (tipicamente luzes verdes) e exigido antes de um pouso normal com rodas.",
+    "whenUsed": "When confirming gear down and locked, the crew should:",
+    "example": "Tower: ANAC123, confirm gear down.",
+    "sayPhrase": "ANAC123, gear down and locked.",
+    "icaoQuestion": "On short final, tower asks you to confirm gear down. Your indications show three greens. What do you say?",
+    "icaoSpeakText": "I would verify the down-and-locked indications, then report gear down and locked. I would only use that phrase if the indications confirm all gear are locked. If any unsafe indication remained, I would report the unsafe status instead of confirming down and locked.",
+    "missionBrief": "Today's lesson covers Gear Down and Locked — the confirmed safe landing-gear configuration in which all landing gear legs are extended and mechanically locked for landing, and the standard phraseology used to report or confirm that status to ATC.\n\nGear down and locked is confirmation language. It is how crews and controllers share confidence that the aircraft is configured for a normal landing. It appears in readbacks, tower queries, and checklist callouts that become radio reports when ATC asks.\n\nFor H130 helicopter ICAO Delta academy operations in Brazil, many H130s use skids and do not have a retractable gear to lock. Still teach the phrase for ICAO Part 2 exams and for multi-type careers. On skids, your \"configured for landing\" callouts differ — but \"gear down and locked\" remains essential wheeled-aircraft English you must speak correctly.\n\nUnderstanding this confirmation phrase is essential for Part 2 proficiency.",
+    "captainTeaching": "Gear down and locked is a verification sentence, not a habit sound.\n\nLook at the lights. Then speak. The order matters.\n\nOn Part 2 tests, this is basic professionalism. Controllers ask because wheels-up landings still happen from configuration omission worldwide. Your job is a true confirmation.\n\nIn the H130 academy with skids, do not radio \"gear down and locked\" as if you had retractable wheels. Learn the phrase for the exam. In the aircraft, use the configuration language that matches your rotorcraft.\n\nThree greens. Then the words. Never the words first.",
+    "operationalContext": "Wheeled-aircraft training approach to Navegantes. Tower wants confirmation on short final.\n\nTower: ANAC123, confirm gear down.\n\nYou have three greens. Checklist complete.\n\nYou respond:\n\nANAC123, gear down and locked.\n\nTower: ANAC123, cleared to land runway zero seven.\n\nSimple. Correct. Verified.\n\nIn the skid-equipped H130 on the same approach, tower may not ask gear — but on the ICAO exam, you will still produce the phrase cleanly when the scenario is a wheeled aircraft.",
+    "sayItCoach": "ANAC123, gear down and locked.",
+    "icaoModelAnswer": "I would verify the down-and-locked indications, then report gear down and locked. I would only use that phrase if the indications confirm all gear are locked. If any unsafe indication remained, I would report the unsafe status instead of confirming down and locked.",
+    "memoryTrick": "**LOCKED** — **L**ook at the lights, **O**nly then speak, **C**onfirm all greens, **K**eep it honest, **E**xam phrase ready, **D**on't fake the status.",
+    "operationalMeaning": "When confirming gear down and locked, the crew should:\n\nGear down and locked commonly appears when:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Tower: ANAC123, confirm gear down.",
+      "Tower: ANAC123, report gear down and locked.",
+      "Tower: ANAC123, cleared to land, confirm gear down.",
+      "Approach: ANAC123, before transfer to tower, confirm gear extended.",
+      "Tower: ANAC123, gear down and locked copied, cleared to land."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, gear down and locked.",
+      "ANAC123, gear down and locked, cleared to land.",
+      "ANAC123, cleared to land, gear down and locked.",
+      "ANAC123, gear extended, three greens, down and locked.",
+      "ANAC123, gear down and locked, runway zero seven."
+    ],
+    "brazilianMistakes": "- ❌ Saying \"gear down and locked\" without checking indications.  \n  ✔ Verify greens first, then report.\n\n- ❌ Answering only \"roger\" when tower asks to confirm gear.  \n  ✔ Give the full confirmation: gear down and locked.\n\n- ❌ Reporting down and locked with an unsafe light still on.  \n  ✔ Report unsafe indication; do not fake confirmation.\n\n- ❌ Using wheeled gear callouts in a skid H130 as routine radio.  \n  ✔ Match real aircraft configuration; keep exam phraseology for exam scenarios.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Gear Down and Locked\n\n**Pronunciation:** AY-nak WUN TOO THREE, GEER DOWN and LOKT\n\n**Word Stress**\n\n- Gear → GEER\n- Down → DOWN\n- Locked → LOKT (clear final consonant)\n\nPractice:\n\nGear down... and locked.\n\nTogether:\n\nANAC123, gear down and locked.",
+    "relatedConcepts": [
+      "Landing Gear Unsafe Indication",
+      "Landing Gear Stuck",
+      "Landing Checklist",
+      "Cleared to Land",
+      "Wheels-Up Landing",
+      "Configuration"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Aerodrome Control Phraseology",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "FAA AIM — Landing Configuration",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "SKYbrary — Gear Indication / Configuration",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Aircraft AFM — Normal Landing Procedures"
+      },
+      {
+        "label": "ICAO Language Proficiency — Standard Confirmation Phrases"
+      }
+    ]
+  },
+  {
+    "catalogId": "0264",
+    "id": "0264",
+    "displayTerm": "Wheels-Up Landing",
+    "term": "wheels-up landing",
+    "slug": "wheels-up-landing",
+    "category": "Emergency",
+    "meaningEn": "Wheels-Up Landing is a landing performed with the landing gear retracted — either intentionally after gear extension failure or unintentionally due to configuration error — resulting in the aircraft contacting the runway on the fuselage, nacelles, or gear doors, with elevated fire and structural risk.",
+    "meaningPt": "Pouso com trem recolhido / Wheels-up landing / Pouso sobre a barriga (relacionado).\n\nPouso realizado com o trem de pouso recolhido — intencionalmente após falha de extensão ou involuntariamente por erro de configuração — resultando no contato da aeronave com a pista sobre a fuselagem, naceles ou portas do trem, com risco elevado de fogo e dano estrutural.",
+    "whenUsed": "When a wheels-up landing is required or anticipated, the crew should:",
+    "example": "Tower: ANAC123, roger wheels-up landing, firefighters rolling, cleared to land.",
+    "sayPhrase": "ANAC123, Mayday, requesting wheels-up landing, firefighters.",
+    "icaoQuestion": "Alternate gear extension has failed and you must land with the gear up. What do you do?",
+    "icaoSpeakText": "I would declare the emergency, advise ATC that I will make a wheels-up landing, and request firefighters and a suitable runway. I would brief for brace and possible evacuation, configure per the AFM, land as smoothly as possible, then secure the aircraft and evacuate if there is fire or as required by procedure.",
+    "missionBrief": "Today's lesson covers Wheels-Up Landing — an intentional or unintentional landing with the landing gear retracted, typically after gear extension failure, requiring emergency procedures, RFF standby, and precise distress or urgency communication with ATC.\n\nWheels-up landing is critical ICAO emergency English. The crew must declare the intention early, request firefighters, choose a suitable runway, and brief evacuation. Controllers clear traffic, alert RFF, and protect the landing.\n\nFor H130 helicopter ICAO Delta academy operations in Brazil, many H130s use skids — a skid landing is normal, not a wheels-up emergency. Still teach wheels-up phraseology for the ICAO exam and for wheeled types. Relate carefully: do not call a normal skid landing \"wheels-up.\" Use the term for retracted wheeled gear landing on the fuselage or gear doors.\n\nUnderstanding wheels-up landing communication is essential for Part 2 and Part 3 critical performance.",
+    "captainTeaching": "Wheels-up is a planned abnormal landing when the gear will not come down — or a catastrophe when someone forgot the gear.\n\nFor the exam and for real wheeled flying: attempt extension, then decide. Tell ATC early. Firefighters before you flare, not after you slide.\n\nIn the H130 with skids, your normal landing gear is the skids. That is not wheels-up. Keep the English for retracted wheeled gear. Mixing the terms confuses examiners and controllers.\n\nCritical radio: Mayday or urgency as required, wheels-up intention, runway, firefighters, souls, fuel. Then fly the most stable approach of your day.\n\nBrace. Touch. Secure. Evacuate if fire or AFM requires it.",
+    "operationalContext": "Wheeled-aircraft emergency: alternate extension failed. Gear remains up. You will land wheels-up at Florianópolis.\n\nYou transmit:\n\nANAC123, Mayday, landing gear stuck up, requesting wheels-up landing runway one four, firefighters.\n\nTower: ANAC123, roger wheels-up, runway one four, wind calm, firefighters in position, cleared to land.\n\nYou fly a stable approach. You touch, slide, stop. You secure and evacuate as required. The runway closes. An H130 inbound goes around — correct.\n\nDo not call a normal H130 skid touchdown a wheels-up landing. Different machine. Different meaning.",
+    "sayItCoach": "ANAC123, Mayday, requesting wheels-up landing, firefighters.",
+    "icaoModelAnswer": "I would declare the emergency, advise ATC that I will make a wheels-up landing, and request firefighters and a suitable runway. I would brief for brace and possible evacuation, configure per the AFM, land as smoothly as possible, then secure the aircraft and evacuate if there is fire or as required by procedure.",
+    "memoryTrick": "**WHEELS** — **W**arn ATC early, **H**ave firefighters ready, **E**xtension attempts complete, **E**vacuation briefed, **L**and stable, **S**ecure then evacuate if needed.",
+    "operationalMeaning": "When a wheels-up landing is required or anticipated, the crew should:\n\nWheels-up scenarios commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Tower: ANAC123, roger wheels-up landing, firefighters rolling, cleared to land.",
+      "Approach: ANAC123, confirm gear up landing intentional, say souls and fuel.",
+      "Tower: ANAC123, runway cleared, all traffic held, RFF in position.",
+      "Tower: ANAC123, after landing vacate if able, or remain and evacuate.",
+      "Approach: ANAC456, go around, runway closed, wheels-up landing in progress."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, Mayday, requesting wheels-up landing, firefighters.",
+      "ANAC123, affirmative intentional wheels-up, souls four, fuel thirty minutes.",
+      "ANAC123, runway cleared copied, cleared to land wheels-up.",
+      "ANAC123, will evacuate after stop if required.",
+      "ANAC456, going around, runway closed."
+    ],
+    "brazilianMistakes": "- ❌ Landing wheels-up without declaring and without RFF.  \n  ✔ Declare early; request firefighters before the landing.\n\n- ❌ Calling a normal H130 skid landing \"wheels-up.\"  \n  ✔ Wheels-up means retracted wheeled gear; skids are normal for many H130s.\n\n- ❌ Forgetting cabin brace and evacuation briefing.  \n  ✔ Brief before landing; evacuate after stop if required.\n\n- ❌ Continuing a unstable approach because \"it is already an emergency.\"  \n  ✔ Emergencies need the most stable approach you can fly.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Requesting Wheels-Up Landing, Firefighters\n\n**Pronunciation:** AY-nak WUN TOO THREE, rih-KWEST-ing WEELZ-UP LAN-ding, FYR-fy-terz\n\n**Word Stress**\n\n- Wheels-up → WEELZ-UP (both parts clear)\n- Landing → LAN-ding\n- Firefighters → FYR-fy-terz\n\nPractice:\n\nRequesting wheels-up landing... firefighters on the runway.\n\nTogether:\n\nANAC123, Mayday, requesting wheels-up landing, firefighters.",
+    "relatedConcepts": [
+      "Belly Landing",
+      "Landing Gear Stuck",
+      "Landing Gear Unsafe Indication",
+      "Gear Down and Locked",
+      "Evacuation",
+      "Airport Rescue and Fire Fighting"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress / Aerodrome Emergencies",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Gear-Up / Wheels-Up Landings",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Landings",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Doc 9137 — Airport Services (RFF)"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Aircraft AFM — Gear-Up Landing Procedures"
+      }
+    ]
+  },
+  {
+    "catalogId": "0265",
+    "id": "0265",
+    "displayTerm": "Belly Landing",
+    "term": "belly landing",
+    "slug": "belly-landing",
+    "category": "Emergency",
+    "meaningEn": "Belly Landing is an emergency or abnormal landing in which the aircraft contacts the runway or surface primarily on the fuselage underside because the landing gear is retracted, missing, or unable to support the aircraft, typically requiring RFF response and possible evacuation.",
+    "meaningPt": "Pouso de barriga / Belly landing / Pouso sobre a fuselagem.\n\nPouso de emergência ou anormal em que a aeronave contata a pista ou a superfície principalmente pela parte inferior da fuselagem porque o trem de pouso está recolhido, ausente ou incapaz de sustentar a aeronave, tipicamente exigindo resposta de RFF e possível evacuação.",
+    "whenUsed": "When a belly landing is anticipated, the crew should:",
+    "example": "Tower: ANAC123, roger belly landing, firefighters rolling, cleared to land.",
+    "sayPhrase": "ANAC123, Mayday, requesting belly landing, firefighters.",
+    "icaoQuestion": "You cannot extend the landing gear and must land on the fuselage. What do you tell ATC and what do you do after landing?",
+    "icaoSpeakText": "I would declare the emergency, advise that I am unable to extend the landing gear, and request a belly landing or wheels-up landing with firefighters. After landing I would secure the aircraft, check for fire, and evacuate if there is fire or if the procedure requires evacuation, then report status to ATC when able.",
+    "missionBrief": "Today's lesson covers Belly Landing — a landing on the underside of the fuselage, usually with landing gear retracted or unavailable, closely related to wheels-up landing and requiring the same emergency coordination, RFF readiness, and clear ICAO English.\n\nBelly landing is widely used emergency vocabulary on ICAO exams and in media, often overlapping with wheels-up landing. Professionally, it describes fuselage contact with the surface when gear cannot support the aircraft. The radio priorities are identical: declare, request firefighters, land controlled, secure, evacuate if needed.\n\nFor H130 helicopter ICAO Delta academy operations in Brazil, many H130s land on skids — that is not a belly landing. Teach belly-landing English for exams and wheeled types. Note the distinction so academy pilots do not misuse \"belly landing\" for a normal skid arrival or for an autorotative landing on skids.\n\nUnderstanding belly landing phraseology supports Part 2 and Part 3 emergency communication.",
+    "captainTeaching": "Belly landing is fuselage-to-pavement reality when the gear cannot do its job.\n\nUse the word if it is natural for you; wheels-up is equally professional. What matters is gear status, intention, firefighters, and a stable approach.\n\nOn ICAO exams, either term may appear. Answer with clear structure: unable to extend gear, belly or wheels-up landing, request RFF, then post-landing actions.\n\nIn the H130 with skids, a normal landing is on skids. An emergency autorotation may end on rough terrain — still not automatically a \"belly landing\" in wheeled-aircraft sense. Keep exam vocabulary and real rotorcraft language from contaminating each other.\n\nHigh priority emergency. Calm English. Empty runway. RFF ready.",
+    "operationalContext": "Wheeled-aircraft emergency into Guarulhos. Gear will not extend. You will land on the belly.\n\nYou transmit:\n\nANAC123, Mayday, unable to extend landing gear, requesting belly landing runway two seven L, firefighters.\n\nTower: ANAC123, roger belly landing, runway two seven L, firefighters in position, cleared to land.\n\nYou land controlled. You stop. No fire. You advise. Evacuation as required by checklist.\n\nNearby, an H130 holds or diverts. Shared Brazilian airports treat belly landings as full runway emergencies — academy crews must react as other traffic, not as spectators.",
+    "sayItCoach": "ANAC123, Mayday, unable to extend landing gear, requesting belly landing, firefighters.",
+    "icaoModelAnswer": "I would declare the emergency, advise that I am unable to extend the landing gear, and request a belly landing or wheels-up landing with firefighters. After landing I would secure the aircraft, check for fire, and evacuate if there is fire or if the procedure requires evacuation, then report status to ATC when able.",
+    "memoryTrick": "**BELLY** — **B**rief ATC and cabin, **E**xtension attempts done, **L**ong runway if available, **L**ine up RFF, **Y**ou secure and evacuate after stop if needed.",
+    "operationalMeaning": "When a belly landing is anticipated, the crew should:\n\nBelly landing scenarios commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Tower: ANAC123, roger belly landing, firefighters rolling, cleared to land.",
+      "Approach: ANAC123, confirm gear unavailable, say souls and fuel remaining.",
+      "Tower: ANAC123, runway cleared for your belly landing, wind calm.",
+      "Tower: ANAC123, after landing advise fire status and evacuation.",
+      "Approach: ANAC456, go around, runway closed for emergency landing."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, Mayday, requesting belly landing, firefighters.",
+      "ANAC123, affirmative gear unavailable, souls six, fuel twenty-five minutes.",
+      "ANAC123, runway cleared copied, cleared to land belly landing.",
+      "ANAC123, no fire, evacuating — or remaining secured as applicable.",
+      "ANAC456, going around, runway closed."
+    ],
+    "brazilianMistakes": "- ❌ Using \"belly landing\" for a normal H130 skid landing.  \n  ✔ Reserve belly/wheels-up for retracted or unavailable wheeled gear emergencies.\n\n- ❌ Not requesting firefighters for a planned fuselage landing.  \n  ✔ Always request RFF before touchdown.\n\n- ❌ Arguing terminology (belly vs wheels-up) on the frequency.  \n  ✔ Pick one clear phrase, state gear status, and fly the procedure.\n\n- ❌ Other traffic staying on approach to watch.  \n  ✔ Go around and divert; the runway is an emergency scene.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Requesting Belly Landing, Firefighters\n\n**Pronunciation:** AY-nak WUN TOO THREE, rih-KWEST-ing BEL-ee LAN-ding, FYR-fy-terz\n\n**Word Stress**\n\n- Belly → BEL-ee\n- Landing → LAN-ding\n- Firefighters → FYR-fy-terz\n\nPractice:\n\nUnable to extend gear... requesting belly landing... firefighters.\n\nTogether:\n\nANAC123, Mayday, unable to extend landing gear, requesting belly landing, firefighters.",
+    "relatedConcepts": [
+      "Wheels-Up Landing",
+      "Landing Gear Stuck",
+      "Main Landing Gear Collapsed",
+      "Evacuation",
+      "Priority Landing",
+      "Runway Closure"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress / Aerodrome Emergencies",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Belly / Gear-Up Landings",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Landings",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Doc 9137 — Airport Services (RFF)"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "Aircraft AFM — Gear-Up / Belly Landing Procedures"
+      }
+    ]
+  },
+  {
+    "catalogId": "0266",
+    "id": "0266",
+    "displayTerm": "Flaps-Up Landing",
+    "term": "flaps-up landing",
+    "slug": "flaps-up-landing",
+    "category": "Emergency",
+    "meaningEn": "Flaps-Up Landing is an approach and landing conducted with flaps retracted or inoperative, resulting in higher approach and touchdown speeds and increased landing distance, and requiring abnormal procedures plus ATC notification when runway length, priority, or emergency services may be needed.",
+    "meaningPt": "Pouso sem flaps / Flaps-Up Landing.\n\nAproximação e pouso realizados com flaps recolhidos ou inoperantes, resultando em velocidades de aproximação e toque mais altas e maior distância de pouso, e exigindo procedimentos anormais e notificação ao ATC quando o comprimento de pista, prioridade ou serviços de emergência possam ser necessários.",
+    "whenUsed": "When planning a flaps-up landing, the crew should:",
+    "example": "Approach: ANAC123, roger flaps-up landing, expect longest runway available.",
+    "sayPhrase": "ANAC123, flaps-up landing, requesting longest runway and priority.",
+    "icaoQuestion": "Flaps fail to extend on final. You will land flaps up. What do you tell ATC?",
+    "icaoSpeakText": "I would advise ATC of the flap failure and that I am performing a flaps-up landing. I would request the longest suitable runway and priority if landing distance or traffic requires it. I would fly the AFM abnormal approach speed, avoid late runway changes, and provide souls on board and fuel remaining if requested.",
+    "missionBrief": "Today's lesson covers Flaps-Up Landing — a landing performed with flaps retracted or unavailable, requiring higher approach speed, longer landing distance, and clear ATC communication of the abnormal configuration and any assistance needed.\n\nFlaps-up landing is a classic fixed-wing ICAO exam topic. Without flaps, the aircraft approaches faster, floats longer, and needs more runway. The radio call must state the configuration limitation and request priority or the longest suitable runway when required.\n\nFor H130 helicopter training academy operations, the H130 does not use wing flaps like a transport jet. Treat this lesson as exam and multi-type English: you must explain the concept, report the abnormal landing, and request what you need. Where helpful, compare the idea of a higher-energy approach to managing a fast, shallow helicopter approach — without inventing false H130 flap systems.\n\nUnderstanding flaps-up landing phraseology builds Part 2 and Part 3 proficiency for configuration emergencies.",
+    "captainTeaching": "Flaps-up landing is about energy and distance — not about pride in a \"normal\" looking approach.\n\nWithout flaps you are faster and longer. Brief it. Calculate it. Tell ATC early enough that they can give you the right runway.\n\nBrazilian pilots sometimes say \"vou pousar sem flap\" on frequency. Prefer flaps-up landing or flap failure, flaps-up landing — clear ICAO English.\n\nIn the H130 you will not select flap degrees. You will still meet this topic in exams and in airline-type careers. Learn the words. Learn the request: longest runway, priority if needed, souls and fuel when asked.\n\nDo not change runways late after you have planned the landing distance. Configuration emergencies punish last-minute improvisation.",
+    "operationalContext": "You are on a fixed-wing simulator approach to Guarulhos for ICAO training. Flaps will not extend. You commit to a flaps-up landing.\n\nYou transmit:\n\nANAC123, flap failure, flaps-up landing, request longest runway and priority.\n\nApproach: ANAC123, roger flaps-up landing, expect runway two seven Right, priority approved, say souls and fuel when able.\n\nYou continue:\n\nANAC123, runway two seven Right, priority, souls four, fuel one hour twenty minutes.\n\nYou fly the higher speed. You land long enough. You do not surprise ATC with a silent configuration emergency.",
+    "sayItCoach": "ANAC123, flap failure, flaps-up landing, request longest runway and priority.",
+    "icaoModelAnswer": "I would advise ATC of the flap failure and that I am performing a flaps-up landing. I would request the longest suitable runway and priority if landing distance or traffic requires it. I would fly the AFM abnormal approach speed, avoid late runway changes, and provide souls on board and fuel remaining if requested.",
+    "memoryTrick": "**FLAPS** — **F**aster approach speed, **L**onger landing distance, **A**dvise ATC early, **P**riority and longest runway if needed, **S**tay on the AFM profile.",
+    "operationalMeaning": "When planning a flaps-up landing, the crew should:\n\nFlaps-up landing scenarios commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger flaps-up landing, expect longest runway available.",
+      "Approach: ANAC123, priority handling approved, runway two seven Right.",
+      "Tower: ANAC123, wind two seven zero at one two, runway two seven Right, cleared to land.",
+      "Approach: ANAC123, say souls on board and fuel remaining.",
+      "Tower: ANAC123, rescue services standing by, report runway vacated."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, flaps-up landing, requesting longest runway and priority.",
+      "ANAC123, priority, runway two seven Right, flaps-up landing.",
+      "ANAC123, cleared to land runway two seven Right, flaps up.",
+      "ANAC123, souls four, fuel one hour twenty minutes.",
+      "ANAC123, will report vacated, rescue standing by, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Saying only \"problem with flaps\" without stating flaps-up landing.  \n  ✔ State flap failure, flaps-up landing, and the runway or priority request.\n\n- ❌ Accepting a short runway after declaring the abnormal landing.  \n  ✔ Request the longest available runway and recalculate if the offer changes.\n\n- ❌ Delaying the call until short final.  \n  ✔ Report early so ATC can sequence and prepare services.\n\n- ❌ Using Portuguese slang on an ICAO English frequency.  \n  ✔ Use flaps-up landing / flap failure in standard English.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Flap Failure, Flaps-Up Landing, Request Longest Runway\n\n**Pronunciation:** AY-nak WUN TOO THREE, FLAP FAYL-yer, FLAPS UP LAN-ding, reh-KWEST LONG-gest RUN-way\n\n**Word Stress**\n\n- Flap → FLAP\n- Failure → FAYL-yer\n- Flaps-up → FLAPS UP\n- Landing → LAN-ding\n- Longest → LONG-gest\n\nPractice:\n\nFlap failure... flaps-up landing... request longest runway.\n\nTogether:\n\nANAC123, flap failure, flaps-up landing, request longest runway and priority.",
+    "relatedConcepts": [
+      "Flap Failure",
+      "Landing Distance",
+      "Priority Handling",
+      "Precautionary Landing",
+      "Go Around",
+      "Runway Change"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Urgency and Emergency Communications",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Flap Failure / Abnormal Configuration Landing",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Procedures / Pilot Responsibilities",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Annex 6 — Operation of Aircraft"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "AFM — Flaps-Up Landing / Abnormal Procedures (type-specific; not H130 flaps)"
+      }
+    ]
+  },
+  {
+    "catalogId": "0267",
+    "id": "0267",
+    "displayTerm": "Flap Failure",
+    "term": "flap failure",
+    "slug": "flap-failure",
+    "category": "Aircraft Systems",
+    "meaningEn": "Flap Failure is a malfunction in which the flap system does not operate normally — including failure to extend, failure to retract, or asymmetric flap position — requiring abnormal procedures, revised approach and landing performance, and ATC notification when configuration or handling is limited.",
+    "meaningPt": "Falha de flaps / Flap Failure.\n\nMalfuncionamento em que o sistema de flaps não opera normalmente — incluindo falha de extensão, falha de recolhimento ou posição assimétrica — exigindo procedimentos anormais, desempenho revisado de aproximação e pouso, e notificação ao ATC quando a configuração ou o controle estiver limitado.",
+    "whenUsed": "When flaps fail, the crew should:",
+    "example": "Approach: ANAC123, roger flap failure, say intentions.",
+    "sayPhrase": "ANAC123, flap failure, requesting delay vectors to complete checklist.",
+    "icaoQuestion": "Flaps fail to extend on base leg. What do you do and what do you say?",
+    "icaoSpeakText": "I would maintain control, apply the AFM flap failure checklist, and decide whether to continue with a flaps-up or partial-flap landing. I would advise ATC of the flap failure, request delay vectors if I need time for the checklist, then request the longest suitable runway and priority if required for the abnormal landing.",
+    "missionBrief": "Today's lesson covers Flap Failure — a malfunction in which wing flaps fail to extend, retract, or move symmetrically, forcing abnormal approach speeds, possible flaps-up or asymmetric procedures, and clear ATC reporting of the system limitation.\n\nFlap failure is not only a cockpit caption. It changes drag, pitch attitude, approach speed, and landing distance. Asymmetric flaps can also create a roll moment that must be controlled before the radio call becomes the priority.\n\nFor H130 helicopter training academy operations, the H130 does not have conventional wing flaps. Learn this as fixed-wing ICAO English for exams and multi-type careers. You may analogize \"configuration drag change\" to collective and attitude management — without inventing H130 flap hardware.\n\nClear Part 2 and Part 3 language — flap failure, asymmetric flaps, flaps-up landing — keeps ATC from guessing your performance.",
+    "captainTeaching": "Flap failure is a performance problem first and a radio problem second — but both must be clean.\n\nIdentify jammed up, jammed down, or asymmetric. Fly the checklist speeds. Do not invent a hybrid configuration because it \"looks closer to normal.\"\n\nOn frequency, flap failure plus the effect — flaps remain up, asymmetric flaps, requesting delay vectors — beats a vague \"flap problem.\"\n\nIn the H130 you manage lift and drag with collective, cyclic, and airspeed, not flap settings. Still learn the exam English. Controllers and examiners expect the standard terms.\n\nIf asymmetric, control the aircraft before you craft the perfect sentence. Wings level. Then talk.",
+    "operationalContext": "You are in a fixed-wing training scenario inbound to Congonhas. You select flaps for approach. Nothing moves. The indication stays up.\n\nYou level the wings, run the checklist, and call:\n\nANAC123, flap failure, flaps remain up, request vectors to complete checklist, then longest runway for flaps-up landing.\n\nApproach: ANAC123, turn left heading one eight zero, maintain three thousand, advise when ready for approach.\n\nWhen ready:\n\nANAC123, ready for approach, flaps-up landing, request priority runway two seven Left.\n\nYou own the system failure. You own the radio. You do not surprise the tower on short final.",
+    "sayItCoach": "ANAC123, flap failure, flaps remain up, request delay vectors, then longest runway.",
+    "icaoModelAnswer": "I would maintain control, apply the AFM flap failure checklist, and decide whether to continue with a flaps-up or partial-flap landing. I would advise ATC of the flap failure, request delay vectors if I need time for the checklist, then request the longest suitable runway and priority if required for the abnormal landing.",
+    "memoryTrick": "**FLAP** — **F**ind the failure mode, **L**ock the checklist speeds, **A**dvise ATC with effect, **P**lan longest runway / priority.",
+    "operationalMeaning": "When flaps fail, the crew should:\n\nFlap failure scenarios commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger flap failure, say intentions.",
+      "Approach: ANAC123, delay vectors approved, maintain three thousand, advise ready.",
+      "Approach: ANAC123, expect longest runway, priority when ready for approach.",
+      "Tower: ANAC123, runway two seven Left, wind two six zero at one zero, cleared to land.",
+      "Approach: ANAC123, say souls on board and fuel remaining."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, flap failure, requesting delay vectors to complete checklist.",
+      "ANAC123, maintaining three thousand, will advise ready for approach.",
+      "ANAC123, ready for approach, flaps-up landing, request priority.",
+      "ANAC123, cleared to land runway two seven Left, flaps up.",
+      "ANAC123, souls three, fuel one hour ten minutes."
+    ],
+    "brazilianMistakes": "- ❌ Saying \"flap no work\" or mixing Portuguese on the frequency.  \n  ✔ Use flap failure and state the configuration effect clearly.\n\n- ❌ Continuing to short final while still troubleshooting the lever.  \n  ✔ Request delay vectors; complete the checklist before committing.\n\n- ❌ Not stating flaps-up or asymmetric when that is the case.  \n  ✔ Name the failure mode so ATC understands speed and distance.\n\n- ❌ Accepting a speed assignment incompatible with the failed setting.  \n  ✔ Advise unable assigned speed if configuration limits performance.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Flap Failure, Request Delay Vectors\n\n**Pronunciation:** AY-nak WUN TOO THREE, FLAP FAYL-yer, reh-KWEST dee-LAY VEK-terz\n\n**Word Stress**\n\n- Flap → FLAP\n- Failure → FAYL-yer\n- Delay → dee-LAY\n- Vectors → VEK-terz\n\nPractice:\n\nFlap failure... request delay vectors... then flaps-up landing.\n\nTogether:\n\nANAC123, flap failure, flaps remain up, request delay vectors, then longest runway.",
+    "relatedConcepts": [
+      "Flaps-Up Landing",
+      "Asymmetric Flaps",
+      "Landing Distance",
+      "Delay Vectors",
+      "Priority Handling",
+      "Go Around"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Urgency Communications",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Flap System Malfunction",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Abnormal Configuration",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Annex 6 — Operation of Aircraft"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "AFM — Flap Failure Abnormal Procedures (type-specific)"
+      }
+    ]
+  },
+  {
+    "catalogId": "0268",
+    "id": "0268",
+    "displayTerm": "Spoiler Failure",
+    "term": "spoiler failure",
+    "slug": "spoiler-failure",
+    "category": "Aircraft Systems",
+    "meaningEn": "Spoiler Failure is a malfunction in which flight spoilers, ground spoilers, or both do not operate normally, which may reduce roll authority, in-flight drag for descent, or lift dump after landing, and which requires abnormal procedures and ATC notification when performance or handling is limited.",
+    "meaningPt": "Falha de spoilers / Spoiler Failure.\n\nMalfuncionamento em que spoilers de voo, spoilers de solo, ou ambos não operam normalmente, o que pode reduzir autoridade de rolagem, arrasto em voo para descida, ou dump de sustentação após o pouso, e que exige procedimentos anormais e notificação ao ATC quando o desempenho ou o controle estiver limitado.",
+    "whenUsed": "When spoilers fail, the crew should:",
+    "example": "Approach: ANAC123, roger spoiler failure, say descent capability.",
+    "sayPhrase": "ANAC123, spoiler failure, unable expedite descent, request additional track miles.",
+    "icaoQuestion": "Flight spoilers fail and ATC asks you to expedite descent. What do you say?",
+    "icaoSpeakText": "I would advise ATC of the spoiler failure and that I am unable to expedite descent as requested. I would request an earlier descent clearance or additional track miles to lose altitude safely, then continue with the AFM procedure and advise if landing distance may also be affected.",
+    "missionBrief": "Today's lesson covers Spoiler Failure — a malfunction of flight or ground spoilers that reduces roll assist, lift dump, or drag capability, requiring abnormal procedures and ATC communication when descent rate, roll control, or landing performance is affected.\n\nSpoilers on many fixed-wing aircraft help roll control in flight and dump lift after touchdown. Failure can mean a slower roll rate, less ability to steepen descent with drag, or reduced braking effectiveness after landing because weight-on-wheels lift dump is incomplete.\n\nFor H130 helicopter training academy operations, the H130 does not use wing spoilers. Learn the ICAO English for exams and multi-type careers. You may compare \"need more drag to descend\" to a steeper helicopter descent with collective — without inventing spoiler panels on the H130.\n\nPart 2 and Part 3 expect you to say spoiler failure and the operational effect, not a vague \"control problem.\"",
+    "captainTeaching": "Spoilers are drag and lift-dump tools. When they fail, your vertical path and your landing roll change.\n\nDo not accept an expedite you cannot fly. Unable expedite descent, spoiler failure is professional English — not weakness.\n\nAfter landing, if ground spoilers fail, expect to use more runway. Tell ATC before touchdown if you need the longest runway.\n\nIn the H130, descent rate is largely collective and attitude. That analogy helps you understand \"I need more drag\" — it does not mean the helicopter has spoilers. Keep the systems story honest.\n\nExaminers listen for the system name and the effect. Give both.",
+    "operationalContext": "You are in a jet training scenario descending toward Guarulhos. Flight spoilers fail. Approach asks you to expedite through the altitude block.\n\nYou respond:\n\nANAC123, spoiler failure, unable expedite descent, request earlier descent or additional track miles.\n\nApproach: ANAC123, roger spoiler failure, turn left heading two two zero, descend when ready, expect runway two seven Right.\n\nOn short final you add:\n\nANAC123, ground spoilers may be inoperative, request longer runway if available, expect longer landing roll.\n\nYou do not fake a spoiler descent. You negotiate a profile you can fly.",
+    "sayItCoach": "ANAC123, spoiler failure, unable expedite descent, request additional track miles.",
+    "icaoModelAnswer": "I would advise ATC of the spoiler failure and that I am unable to expedite descent as requested. I would request an earlier descent clearance or additional track miles to lose altitude safely, then continue with the AFM procedure and advise if landing distance may also be affected.",
+    "memoryTrick": "**SPOIL** — **S**ay the system name, **P**rofile may be shallower, **O**ffer unable expedite if needed, **I**nform of long roll risk, **L**ongest runway when required.",
+    "operationalMeaning": "When spoilers fail, the crew should:\n\nSpoiler failure scenarios commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger spoiler failure, say descent capability.",
+      "Approach: ANAC123, unable expedite, expect vectors for longer final.",
+      "Approach: ANAC123, expect runway two seven Right, advise landing distance concern.",
+      "Tower: ANAC123, wind two seven zero at eight, runway two seven Right, cleared to land.",
+      "Tower: ANAC123, vacate when able, be advised roll may be long."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, spoiler failure, unable expedite descent, request additional track miles.",
+      "ANAC123, vectors for longer final, spoiler failure, ANAC123.",
+      "ANAC123, runway two seven Right, possible long landing roll.",
+      "ANAC123, cleared to land runway two seven Right.",
+      "ANAC123, will vacate when able, long roll expected."
+    ],
+    "brazilianMistakes": "- ❌ Accepting \"expedite\" when spoilers are failed and descent rate is limited.  \n  ✔ Say unable expedite descent, spoiler failure, and request alternatives.\n\n- ❌ Reporting only \"control problem\" without naming spoilers.  \n  ✔ Use spoiler failure and state flight or ground effect.\n\n- ❌ Not warning ATC of a possible long landing roll.  \n  ✔ Advise longer landing roll / request longest runway when ground spoilers fail.\n\n- ❌ Inventing helicopter spoiler procedures in H130 briefings.  \n  ✔ Teach the exam concept; keep H130 systems factual.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Spoiler Failure, Unable Expedite Descent\n\n**Pronunciation:** AY-nak WUN TOO THREE, SPOY-ler FAYL-yer, un-AY-bul EK-spuh-dite deh-SENT\n\n**Word Stress**\n\n- Spoiler → SPOY-ler\n- Failure → FAYL-yer\n- Unable → un-AY-bul\n- Expedite → EK-spuh-dite\n- Descent → deh-SENT\n\nPractice:\n\nSpoiler failure... unable expedite descent... request additional track miles.\n\nTogether:\n\nANAC123, spoiler failure, unable expedite descent, request additional track miles.",
+    "relatedConcepts": [
+      "Speed Brake Failure",
+      "Expedite Descent",
+      "Landing Distance",
+      "Roll Control",
+      "Flap Failure",
+      "Priority Handling"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Descent and Urgency Phraseology",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Spoiler / Speed Brake Malfunctions",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Pilot / Controller Communication",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Annex 6 — Operation of Aircraft"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "AFM — Spoiler Abnormal Procedures (type-specific)"
+      }
+    ]
+  },
+  {
+    "catalogId": "0269",
+    "id": "0269",
+    "displayTerm": "Speed Brake Failure",
+    "term": "speed brake failure",
+    "slug": "speed-brake-failure",
+    "category": "Aircraft Systems",
+    "meaningEn": "Speed Brake Failure is a malfunction in which the speed brake system cannot be extended or retracted normally, reducing the aircraft's ability to increase drag for descent path control, and requiring abnormal procedures plus ATC notification when descent profile, crossing restrictions, or expedite clearances cannot be met.",
+    "meaningPt": "Falha do speed brake / Speed Brake Failure.\n\nMalfuncionamento em que o sistema de speed brake não pode ser estendido ou recolhido normalmente, reduzindo a capacidade da aeronave de aumentar o arrasto para controle da trajetória de descida, e exigindo procedimentos anormais e notificação ao ATC quando o perfil de descida, restrições de cruzamento ou autorizações de expedite não puderem ser cumpridos.",
+    "whenUsed": "When speed brakes fail, the crew should:",
+    "example": "Radar: ANAC123, roger speed brake failure, say altitude request.",
+    "sayPhrase": "ANAC123, speed brake failure, request earlier descent, unable crossing restriction.",
+    "icaoQuestion": "Speed brakes fail and you cannot make a published crossing altitude. What do you tell ATC?",
+    "icaoSpeakText": "I would advise ATC of the speed brake failure and that I am unable to meet the crossing restriction. I would request an earlier descent, delay vectors, or an amended clearance so I can lose altitude without an unstable dive, then continue the approach only when the profile is under control.",
+    "missionBrief": "Today's lesson covers Speed Brake Failure — loss or malfunction of the speed brake system used to increase drag and steepen descent without increasing airspeed excessively, requiring revised descent planning and clear ATC communication when you cannot meet an expedite or crossing restriction as filed.\n\nSpeed brakes (often related to or combined with spoilers on many types) let crews lose altitude while managing speed. When they fail, you may arrive high, need more track miles, or be unable to accept a late descent clearance.\n\nFor H130 helicopter training academy operations, the H130 does not have jet-style speed brakes. The useful analogy is managing a steeper or shallower descent with collective and airspeed — not a fake speed-brake lever on the helicopter. Master the ICAO English for exams and multi-type flying.\n\nPart 2 and Part 3 reward precise calls: speed brake failure, unable to meet restriction, request delay vectors or earlier descent.",
+    "captainTeaching": "Speed brakes buy descent without a screaming dive. When they fail, distance becomes your friend.\n\nAsk for earlier descent. Ask for vectors. Ask to cancel a restriction you cannot make. Do not wait until the fix to confess.\n\nBrazilian crews sometimes say \"sem speed brake\" casually. Prefer speed brake failure and the operational limit: unable to meet restriction / unable expedite.\n\nIn the H130 you can often steepen with collective. That flexibility is a teaching analogy for \"I need another way to lose altitude\" — not a claim that the helicopter has speed brakes.\n\nHigh and fast is recoverable with plan and radio. High and silent is how unstable approaches are born.",
+    "operationalContext": "You are on a STAR into Curitiba in a fixed-wing training scenario. Speed brakes fail retracted. You still have forty miles and a crossing at six thousand.\n\nYou call:\n\nANAC123, speed brake failure, unable to meet crossing restriction at six thousand, request earlier descent or delay vectors.\n\nRadar: ANAC123, roger speed brake failure, descend now to six thousand, cancel speed restriction, expect vectors for longer final.\n\nYou answer:\n\nANAC123, descending six thousand, cancel speed restriction, expect longer final.\n\nYou protect the restriction by talking early. You do not dive into an unstable mess.",
+    "sayItCoach": "ANAC123, speed brake failure, unable to meet crossing restriction, request delay vectors.",
+    "icaoModelAnswer": "I would advise ATC of the speed brake failure and that I am unable to meet the crossing restriction. I would request an earlier descent, delay vectors, or an amended clearance so I can lose altitude without an unstable dive, then continue the approach only when the profile is under control.",
+    "memoryTrick": "**BRAKE** — **B**rief the failed drag, **R**equest earlier descent, **A**mend restrictions early, **K**eep the approach stable, **E**xpedite only if able.",
+    "operationalMeaning": "When speed brakes fail, the crew should:\n\nSpeed brake failure scenarios commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Radar: ANAC123, roger speed brake failure, say altitude request.",
+      "Radar: ANAC123, descend now flight level six zero, cancel crossing restriction.",
+      "Approach: ANAC123, expect delay vectors to lose altitude, advise when ready.",
+      "Approach: ANAC123, unable expedite, maintain present rate, traffic permitting.",
+      "Approach: ANAC123, turn left heading one five zero for longer final."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, speed brake failure, request earlier descent, unable crossing restriction.",
+      "ANAC123, descending flight level six zero, crossing restriction cancelled.",
+      "ANAC123, delay vectors to lose altitude, will advise ready.",
+      "ANAC123, maintaining present rate, unable expedite, speed brake failure.",
+      "ANAC123, left heading one five zero, longer final, ANAC123."
+    ],
+    "brazilianMistakes": "- ❌ Busting a crossing restriction silently, then explaining after.  \n  ✔ Report unable to meet restriction before the fix.\n\n- ❌ Diving steeply to compensate for missing speed brakes.  \n  ✔ Request track miles; protect a stable approach.\n\n- ❌ Saying only \"performance problem\" without naming speed brakes.  \n  ✔ Use speed brake failure plus the clearance you cannot accept.\n\n- ❌ Claiming H130 speed brake procedures in type training.  \n  ✔ Keep systems factual; teach the ICAO phraseology honestly.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Speed Brake Failure, Unable to Meet Crossing Restriction\n\n**Pronunciation:** AY-nak WUN TOO THREE, SPEED BRAYK FAYL-yer, un-AY-bul tuh MEET KROSS-ing ree-STRIK-shun\n\n**Word Stress**\n\n- Speed → SPEED\n- Brake → BRAYK\n- Failure → FAYL-yer\n- Crossing → KROSS-ing\n- Restriction → ree-STRIK-shun\n\nPractice:\n\nSpeed brake failure... unable to meet crossing restriction... request delay vectors.\n\nTogether:\n\nANAC123, speed brake failure, unable to meet crossing restriction, request delay vectors.",
+    "relatedConcepts": [
+      "Spoiler Failure",
+      "Crossing Restriction",
+      "Expedite Descent",
+      "Top of Descent",
+      "Delay Vectors",
+      "Unstable Approach"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Descent Clearances / Restrictions",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Speed Brake / Spoiler Use in Descent",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Clearance Compliance / Unable",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO PANS-OPS Doc 8168 — Arrival Procedures"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "AFM — Speed Brake Abnormal Procedures (type-specific)"
+      }
+    ]
+  },
+  {
+    "catalogId": "0270",
+    "id": "0270",
+    "displayTerm": "Aileron Failure",
+    "term": "aileron failure",
+    "slug": "aileron-failure",
+    "category": "Aircraft Systems",
+    "meaningEn": "Aileron Failure is a malfunction in which one or both ailerons jam, disconnect, or otherwise fail to provide normal roll control, reducing the pilot's ability to bank the aircraft normally, and requiring abnormal procedures and ATC notification for priority handling and landing assistance as needed.",
+    "meaningPt": "Falha de aileron / Aileron Failure.\n\nMalfuncionamento em que um ou ambos os ailerons travam, desconectam ou de outra forma deixam de fornecer controle normal de rolagem, reduzindo a capacidade do piloto de inclinar a aeronave normalmente, e exigindo procedimentos anormais e notificação ao ATC para prioridade e assistência ao pouso conforme necessário.",
+    "whenUsed": "When ailerons fail, the crew should:",
+    "example": "Approach: ANAC123, roger aileron failure, say intentions.",
+    "sayPhrase": "ANAC123, aileron failure, limited roll control, request priority straight-in.",
+    "icaoQuestion": "Ailerons jam and you have only limited roll control. What do you tell ATC?",
+    "icaoSpeakText": "I would maintain the best wings-level control available, apply the AFM procedure, and advise ATC of aileron failure with limited roll control. I would request priority vectors for a long straight-in approach to the nearest suitable airport, ask for shallow turns only, and provide souls and fuel if requested. I would declare urgency or distress if control became seriously degraded.",
+    "missionBrief": "Today's lesson covers Aileron Failure — loss or restriction of aileron control that reduces or eliminates normal roll authority, requiring abnormal procedures, possible use of spoilers or differential power where available, and urgent ATC communication for priority landing.\n\nAilerons control roll. When they fail or jam, the aircraft may roll slowly, roll only one way, or require large control inputs and alternate roll methods. This is a handling emergency as much as a systems caption.\n\nFor H130 helicopter training academy operations, roll is primarily cyclic lateral input, not ailerons. Use that analogy to understand \"reduced roll control\" — do not invent ailerons on the H130. ICAO exams still test aileron failure English for fixed-wing scenarios.\n\nPart 2 and Part 3 require calm, specific language: aileron failure, limited roll control, request priority landing.",
+    "captainTeaching": "Aileron failure is roll authority. Without it, every turn is a risk calculation.\n\nWings level first. Checklist second. Radio third — but do not delay the urgency call if control is bad.\n\nAsk for shallow turns and a straight-in. Circling with failed ailerons is how a systems problem becomes a loss-of-control story.\n\nIn the H130, lateral cyclic is your roll. If you ever face degraded cyclic authority, the same radio logic applies: limited roll control, priority, straight-in. Do not invent aileron captions on the helicopter — invent clear English for degraded control.\n\nSay aileron failure, not \"steering problem.\" Examiners and controllers need the axis.",
+    "operationalContext": "You are in a fixed-wing simulator east of São Paulo. Roll response becomes sluggish; one aileron indication disagrees. You keep wings mostly level with careful inputs.\n\nYou transmit:\n\nANAC123, aileron failure, limited roll control, request priority vectors for straight-in landing Guarulhos.\n\nApproach: ANAC123, roger aileron failure, turn left heading two five zero, shallow turn, expect runway two seven Left straight-in, priority approved.\n\nYou read back and add:\n\nANAC123, left heading two five zero, shallow turns only, runway two seven Left straight-in, priority.\n\nYou refuse a tight visual circle. You fly the gentle path.",
+    "sayItCoach": "ANAC123, aileron failure, limited roll control, request priority straight-in landing.",
+    "icaoModelAnswer": "I would maintain the best wings-level control available, apply the AFM procedure, and advise ATC of aileron failure with limited roll control. I would request priority vectors for a long straight-in approach to the nearest suitable airport, ask for shallow turns only, and provide souls and fuel if requested. I would declare urgency or distress if control became seriously degraded.",
+    "memoryTrick": "**ROLL** — **R**educe bank demand, **O**wn the radio call early, **L**ong straight-in only, **L**imited turns — shallow.",
+    "operationalMeaning": "When ailerons fail, the crew should:\n\nAileron failure scenarios commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger aileron failure, say intentions.",
+      "Approach: ANAC123, priority approved, expect straight-in runway two seven Left.",
+      "Approach: ANAC123, turn left heading two five zero, shallow turn approved.",
+      "Tower: ANAC123, runway two seven Left, wind two six zero at one two, cleared to land, services standing by.",
+      "Approach: ANAC123, say souls on board and fuel remaining."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, aileron failure, limited roll control, request priority straight-in.",
+      "ANAC123, priority, expect straight-in runway two seven Left.",
+      "ANAC123, left heading two five zero, shallow turns only.",
+      "ANAC123, cleared to land runway two seven Left, services standing by.",
+      "ANAC123, souls four, fuel one hour five minutes."
+    ],
+    "brazilianMistakes": "- ❌ Saying \"problem with controls\" without naming ailerons or roll.  \n  ✔ Use aileron failure, limited roll control.\n\n- ❌ Accepting a circling approach with marginal roll authority.  \n  ✔ Request straight-in only; refuse tight patterns.\n\n- ❌ Making steep banks to \"test\" remaining aileron.  \n  ✔ Fly minimum bank; protect control margins.\n\n- ❌ Delaying the priority call until the aircraft is hard to control.  \n  ✔ Report early and request simplified vectors.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Aileron Failure, Limited Roll Control, Request Priority Straight-In\n\n**Pronunciation:** AY-nak WUN TOO THREE, AY-luh-ron FAYL-yer, LIM-i-ted ROLL kun-TROL, reh-KWEST pry-OR-i-tee STRAYT-in\n\n**Word Stress**\n\n- Aileron → AY-luh-ron\n- Failure → FAYL-yer\n- Limited → LIM-i-ted\n- Roll → ROLL\n- Priority → pry-OR-i-tee\n\nPractice:\n\nAileron failure... limited roll control... request priority straight-in.\n\nTogether:\n\nANAC123, aileron failure, limited roll control, request priority straight-in landing.",
+    "relatedConcepts": [
+      "Elevator Failure",
+      "Rudder Failure",
+      "Spoiler Failure",
+      "Priority Handling",
+      "Straight-In Approach",
+      "Control Jam"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress and Urgency",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Flight Control System Failures",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Annex 6 — Operation of Aircraft"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "AFM — Aileron / Roll Control Abnormal Procedures (type-specific)"
+      }
+    ]
+  },
+  {
+    "catalogId": "0271",
+    "id": "0271",
+    "displayTerm": "Elevator Failure",
+    "term": "elevator failure",
+    "slug": "elevator-failure",
+    "category": "Aircraft Systems",
+    "meaningEn": "Elevator Failure is a malfunction in which the elevator system jams, disconnects, or otherwise fails to provide normal pitch control, severely affecting the ability to control attitude and airspeed, and requiring abnormal procedures and immediate ATC notification for emergency or urgency handling and landing assistance.",
+    "meaningPt": "Falha de profundor / Elevator Failure.\n\nMalfuncionamento em que o sistema de profundor trava, desconecta ou de outra forma deixa de fornecer controle normal de arfagem, afetando gravemente a capacidade de controlar atitude e velocidade, e exigindo procedimentos anormais e notificação imediata ao ATC para tratamento de emergência ou urgência e assistência ao pouso.",
+    "whenUsed": "When elevators fail, the crew should:",
+    "example": "Approach: ANAC123, Mayday acknowledged, say souls and fuel when able.",
+    "sayPhrase": "Mayday Mayday Mayday, ANAC123, elevator failure, limited pitch control, request priority landing.",
+    "icaoQuestion": "Elevator control is largely lost; trim still provides slow pitch change. What do you communicate?",
+    "icaoSpeakText": "I would stabilize the aircraft using the AFM alternate pitch method, then declare the appropriate emergency — Mayday if control is critical, or Pan Pan if still manageable. I would report elevator failure with limited pitch control, request priority vectors for the nearest suitable airport and the longest runway, and ask for a shallow straight-in approach. I would provide souls and fuel when able.",
+    "missionBrief": "Today's lesson covers Elevator Failure — loss or restriction of elevator control that degrades pitch authority, one of the most serious flight-control failures, requiring immediate aircraft control, abnormal procedures, and urgent ATC communication for priority landing.\n\nThe elevator commands pitch. Without reliable pitch control, airspeed, climb, descent, and flare all become hazardous. Crews may use trim, thrust, or alternate pitch devices per AFM — but the radio must convey urgency clearly.\n\nFor H130 helicopter training academy operations, pitch attitude is primarily cyclic fore-aft, not an elevator surface. Use that analogy for \"degraded pitch control\" without inventing elevators on the H130. ICAO exams still expect elevator failure phraseology in fixed-wing scenarios.\n\nPart 2 and Part 3: elevator failure, limited pitch control, Mayday or Pan Pan as the situation demands, priority landing.",
+    "captainTeaching": "Elevator failure is pitch. Pitch is life. Treat it with the seriousness it deserves.\n\nStabilize with the AFM method — often trim and thrust on transport types. Then talk. Mayday if you are fighting the airplane; Pan Pan if you have a workable alternate pitch method but still need priority.\n\nAsk for the longest runway and a shallow final. A normal flare may be impossible. Plan the touchdown energy early.\n\nIn the H130, fore-aft cyclic is your pitch. Degraded cyclic pitch authority would get the same radio honesty: limited pitch control, priority landing. Do not invent elevator hardware on the helicopter for academy briefs.\n\nNever accept a slam-dunk descent that demands pitch you do not have.",
+    "operationalContext": "You are in a jet training scenario at eight thousand feet near Campinas. Elevator response freezes. You stabilize pitch with trim and thrust per procedure.\n\nYou transmit:\n\nMayday Mayday Mayday, ANAC123, elevator failure, limited pitch control, request priority vectors for immediate landing Guarulhos, longest runway.\n\nApproach: ANAC123, Mayday acknowledged, turn right heading one two zero, expect runway two seven Right, emergency services alerted.\n\nYou continue:\n\nANAC123, right heading one two zero, runway two seven Right, souls five, fuel one hour.\n\nYou fly a gentle path. You do not experiment with large pitch inputs on short final.",
+    "sayItCoach": "Mayday Mayday Mayday, ANAC123, elevator failure, limited pitch control, request priority landing.",
+    "icaoModelAnswer": "I would stabilize the aircraft using the AFM alternate pitch method, then declare the appropriate emergency — Mayday if control is critical, or Pan Pan if still manageable. I would report elevator failure with limited pitch control, request priority vectors for the nearest suitable airport and the longest runway, and ask for a shallow straight-in approach. I would provide souls and fuel when able.",
+    "memoryTrick": "**PITCH** — **P**riority now, **I**mmediate stabilize with AFM method, **T**ell Mayday/Pan Pan clearly, **C**hoose longest runway, **H**old a shallow final.",
+    "operationalMeaning": "When elevators fail, the crew should:\n\nElevator failure scenarios commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, Mayday acknowledged, say souls and fuel when able.",
+      "Approach: ANAC123, priority vectors, expect longest runway, shallow approach approved.",
+      "Approach: ANAC123, descend at pilot's discretion, maintain controllable rate.",
+      "Tower: ANAC123, runway two seven Right, cleared to land, all traffic hold, services standing by.",
+      "Approach: ANAC123, confirm elevator failure, limited pitch control."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, ANAC123, elevator failure, limited pitch control, request priority landing.",
+      "ANAC123, souls five, fuel one hour, requesting longest runway.",
+      "ANAC123, descending pilot's discretion, maintaining controllable rate.",
+      "ANAC123, cleared to land runway two seven Right, services standing by.",
+      "ANAC123, elevator failure, limited pitch control, straight-in two seven Right."
+    ],
+    "brazilianMistakes": "- ❌ Under-calling a pitch control failure as a minor \"system problem.\"  \n  ✔ Use elevator failure and the correct Mayday or Pan Pan.\n\n- ❌ Accepting a steep approach that requires large elevator inputs.  \n  ✔ Request shallow approach and longest runway.\n\n- ❌ Changing flaps or gear late without considering pitch moment.  \n  ✔ Follow checklist timing; avoid surprise pitch changes.\n\n- ❌ Mixing Portuguese \"profundor\" only, without English on ICAO frequency.  \n  ✔ Say elevator failure in standard English.",
+    "pronunciationCoaching": "**Target Phrase:** Mayday Mayday Mayday, ANAC123, Elevator Failure, Limited Pitch Control\n\n**Pronunciation:** MAY-day MAY-day MAY-day, AY-nak WUN TOO THREE, EL-uh-vay-ter FAYL-yer, LIM-i-ted PITCH kun-TROL\n\n**Word Stress**\n\n- Elevator → EL-uh-vay-ter\n- Failure → FAYL-yer\n- Limited → LIM-i-ted\n- Pitch → PITCH\n- Control → kun-TROL\n\nPractice:\n\nElevator failure... limited pitch control... request priority landing.\n\nTogether:\n\nMayday Mayday Mayday, ANAC123, elevator failure, limited pitch control, request priority landing.",
+    "relatedConcepts": [
+      "Aileron Failure",
+      "Rudder Failure",
+      "Trim Runaway",
+      "Stabilizer Trim Failure",
+      "Mayday",
+      "Priority Landing"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress Communications",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Elevator / Pitch Control Failures",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Annex 6 — Operation of Aircraft"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "AFM — Elevator / Pitch Control Abnormal Procedures (type-specific)"
+      }
+    ]
+  },
+  {
+    "catalogId": "0272",
+    "id": "0272",
+    "displayTerm": "Rudder Failure",
+    "term": "rudder failure",
+    "slug": "rudder-failure",
+    "category": "Aircraft Systems",
+    "meaningEn": "Rudder Failure is a malfunction in which the rudder jams, disconnects, or otherwise fails to provide normal yaw control, reducing directional control in flight and during landing rollout, and requiring abnormal procedures and ATC notification for priority handling and the most suitable runway and wind conditions.",
+    "meaningPt": "Falha de leme / Rudder Failure.\n\nMalfuncionamento em que o leme trava, desconecta ou de outra forma deixa de fornecer controle normal de guinada, reduzindo o controle direcional em voo e durante a corrida no pouso, e exigindo procedimentos anormais e notificação ao ATC para prioridade e a pista e condições de vento mais adequadas.",
+    "whenUsed": "When the rudder fails, the crew should:",
+    "example": "Approach: ANAC123, roger rudder failure, say runway request.",
+    "sayPhrase": "ANAC123, rudder failure, limited yaw control, request runway one seven priority.",
+    "icaoQuestion": "Rudder is jammed and crosswind on the active runway is strong. What do you request?",
+    "icaoSpeakText": "I would advise ATC of rudder failure with limited yaw control and request priority landing on the runway with the minimum crosswind, or diversion if no suitable runway is available. I would plan a straight-in approach, avoid maneuvers that demand large yaw inputs, and advise after landing if I need a tow or cannot vacate normally.",
+    "missionBrief": "Today's lesson covers Rudder Failure — loss or restriction of rudder control that degrades yaw authority, affecting directional control in flight and on the runway, requiring abnormal procedures and clear urgency communication with ATC.\n\nThe rudder controls yaw. Failure or jam can mean limited ability to coordinate turns, counter engine asymmetry on multi-engine types, or keep the nose straight at touchdown and during rollout. Crosswind landings become especially demanding.\n\nFor H130 helicopter training academy operations, yaw is primarily anti-torque pedals, not a conventional rudder surface. That analogy helps: degraded pedal authority equals degraded yaw control. Do not invent a fixed-wing rudder on the H130 — teach honest systems and strong ICAO English for exams.\n\nPart 2 and Part 3: rudder failure, limited yaw control, request priority and a runway aligned with the wind when possible.",
+    "captainTeaching": "Rudder failure is a yaw and directional-control problem — in the air and on the ground.\n\nPick the runway that reduces crosswind. A perfect ILS into a strong crosswind with no rudder is a poor trade.\n\nOn frequency, rudder failure, limited yaw control, request runway into wind is clearer than \"steering problem.\"\n\nIn the H130, pedals fight torque and control yaw. If pedal authority were degraded, you would use the same honesty: limited yaw control, priority, suitable landing site. Keep the hardware story truthful for the helicopter; keep the English strong for the exam.\n\nAfter landing, say if you need a tow. Do not force a high-speed taxi with no directional control.",
+    "operationalContext": "You are in a fixed-wing training scenario approaching Congonhas. Rudder feel goes dead; yaw response is almost nil. Wind favors runway one seven, but two seven Left has a strong crosswind.\n\nYou call:\n\nANAC123, rudder failure, limited yaw control, request priority landing runway one seven, minimum crosswind.\n\nApproach: ANAC123, roger rudder failure, expect runway one seven, priority approved, emergency services advised.\n\nOn short final:\n\nANAC123, runway one seven, rudder failure, request assistance after landing if unable to vacate.\n\nYou choose the wind. You protect the rollout.",
+    "sayItCoach": "ANAC123, rudder failure, limited yaw control, request priority runway into wind.",
+    "icaoModelAnswer": "I would advise ATC of rudder failure with limited yaw control and request priority landing on the runway with the minimum crosswind, or diversion if no suitable runway is available. I would plan a straight-in approach, avoid maneuvers that demand large yaw inputs, and advise after landing if I need a tow or cannot vacate normally.",
+    "memoryTrick": "**YAW** — **Y**ou pick the wind-aligned runway, **A**dvise limited yaw early, **W**ait for tow if rollout control is poor.",
+    "operationalMeaning": "When the rudder fails, the crew should:\n\nRudder failure scenarios commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger rudder failure, say runway request.",
+      "Approach: ANAC123, priority approved, expect runway one seven, wind one eight zero at one zero.",
+      "Tower: ANAC123, runway one seven, cleared to land, services standing by.",
+      "Tower: ANAC123, after landing, advise able to taxi or request tow.",
+      "Approach: ANAC123, say souls on board and fuel remaining."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, rudder failure, limited yaw control, request runway one seven priority.",
+      "ANAC123, priority, runway one seven, wind copied.",
+      "ANAC123, cleared to land runway one seven, services standing by.",
+      "ANAC123, will advise able to taxi or request tow after landing.",
+      "ANAC123, souls three, fuel fifty minutes."
+    ],
+    "brazilianMistakes": "- ❌ Accepting a strong crosswind runway with failed rudder.  \n  ✔ Request runway into wind or minimum crosswind.\n\n- ❌ Saying only \"leme\" without English on an ICAO test frequency.  \n  ✔ Use rudder failure / limited yaw control.\n\n- ❌ Planning a circling sidestep that needs aggressive yaw.  \n  ✔ Request straight-in to the favorable runway.\n\n- ❌ Forcing taxi after landing with no directional control.  \n  ✔ Stop straight ahead if needed; request tow.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Rudder Failure, Limited Yaw Control, Request Runway Into Wind\n\n**Pronunciation:** AY-nak WUN TOO THREE, RUD-er FAYL-yer, LIM-i-ted YAW kun-TROL, reh-KWEST RUN-way IN-too WIND\n\n**Word Stress**\n\n- Rudder → RUD-er\n- Failure → FAYL-yer\n- Yaw → YAW\n- Control → kun-TROL\n- Runway → RUN-way\n\nPractice:\n\nRudder failure... limited yaw control... request runway into wind.\n\nTogether:\n\nANAC123, rudder failure, limited yaw control, request priority runway into wind.",
+    "relatedConcepts": [
+      "Aileron Failure",
+      "Elevator Failure",
+      "Crosswind Landing",
+      "Priority Handling",
+      "Engine Failure (asymmetry)",
+      "Ground Assistance"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Urgency and Distress",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Rudder / Yaw Control Failures",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Procedures / Runway Selection",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Annex 6 — Operation of Aircraft"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "AFM — Rudder Failure Abnormal Procedures (type-specific)"
+      }
+    ]
+  },
+  {
+    "catalogId": "0273",
+    "id": "0273",
+    "displayTerm": "Trim Runaway",
+    "term": "trim runaway",
+    "slug": "trim-runaway",
+    "category": "Aircraft Systems",
+    "meaningEn": "Trim Runaway is an uncommanded continuous operation of a trim system that moves control surfaces or tabs without pilot input, potentially producing severe out-of-trim forces or unsafe attitudes, and requiring immediate memory actions to stop the trim, abnormal procedures, and ATC notification when the aircraft is under control but limited.",
+    "meaningPt": "Trim runaway / Corrida de trim (trim em runaway).\n\nOperação contínua não comandada de um sistema de trim que move superfícies ou tabs sem comando do piloto, podendo produzir forças severas fora de trim ou atitudes inseguras, e exigindo ações de memória imediatas para parar o trim, procedimentos anormais e notificação ao ATC quando a aeronave estiver sob controle mas limitada.",
+    "whenUsed": "When trim runs away, the crew should:",
+    "example": "Departure: ANAC123, roger trim runaway, say aircraft control status.",
+    "sayPhrase": "ANAC123, trim runaway, trim isolated, controls heavy, request priority return.",
+    "icaoQuestion": "Pitch trim runs away. You stop it with the cutout. Controls are heavy but the aircraft is flyable. What do you say?",
+    "icaoSpeakText": "After stopping the trim with the AFM memory actions, I would advise ATC of a trim runaway, that trim is isolated, and that controls are heavy but the aircraft is under control. I would request priority return or diversion to the nearest suitable airport and the longest runway, and ask for simple vectors and shallow maneuvers.",
+    "missionBrief": "Today's lesson covers Trim Runaway — uncommanded continuous trim movement that can rapidly create heavy control forces or dangerous pitch or roll attitudes, requiring immediate memory actions, system isolation, and urgent ATC communication.\n\nTrim runaway is time-critical. A runaway stabilizer or trim tab can outrun the pilot's ability to hold the aircraft if not stopped quickly. The first priority is stop the trim — cutout switches, breakers, or AFM memory items — then fly, then talk.\n\nFor H130 helicopter training academy operations, trim systems differ from transport-jet stabilizer trim; do not invent a runaway H130 stabilizer. Many helicopters have force trim or beep trim concepts — use analogies carefully. ICAO exams heavily test jet-style trim runaway English.\n\nPart 2 and Part 3: trim runaway, controls heavy, request priority landing after the aircraft is secured.",
+    "captainTeaching": "Trim runaway is a hands-on emergency first. Radio is second.\n\nHold. Cut out. Breathe. Then speak: trim runaway, trim isolated, controls heavy — that sequence tells ATC you are flying a wounded but controlled airplane.\n\nIf you cannot control pitch, it is Mayday. If you have stopped the runaway but forces are high, Pan Pan or priority urgency still fits — do not under-call.\n\nIn the H130, respect whatever force-trim or beep-trim system the AFM describes. Do not import jet stabilizer runaway memory items onto the helicopter without type basis. Do import the communication discipline: secure, then report, then land.\n\nNever \"test\" the electric trim again after a runaway until maintenance says so.",
+    "operationalContext": "You are climbing out of Guarulhos in a jet training scenario. Pitch trim runs nose-down uncommanded. Control forces build fast.\n\nYou hold the column, hit the trim cutouts, and stop the runaway. The aircraft is heavy but controllable.\n\nThen you call:\n\nANAC123, trim runaway, trim isolated, controls heavy, request priority return Guarulhos, longest runway.\n\nDeparture: ANAC123, roger trim runaway, turn left heading one eight zero, descend three thousand, priority approved, expect runway two seven Right.\n\nYou fly with two hands if needed. You do not re-engage electric trim out of curiosity.",
+    "sayItCoach": "ANAC123, trim runaway, trim isolated, controls heavy, request priority return.",
+    "icaoModelAnswer": "After stopping the trim with the AFM memory actions, I would advise ATC of a trim runaway, that trim is isolated, and that controls are heavy but the aircraft is under control. I would request priority return or diversion to the nearest suitable airport and the longest runway, and ask for simple vectors and shallow maneuvers.",
+    "memoryTrick": "**TRIM** — **T**ake the controls, **R**un cutouts now, **I**solate and leave it, **M**essage ATC when stable.",
+    "operationalMeaning": "When trim runs away, the crew should:\n\nTrim runaway scenarios commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Departure: ANAC123, roger trim runaway, say aircraft control status.",
+      "Departure: ANAC123, priority return approved, expect longest runway.",
+      "Approach: ANAC123, shallow turns, maintain present speed if able.",
+      "Tower: ANAC123, runway two seven Right, cleared to land, services standing by.",
+      "Approach: ANAC123, say souls on board and fuel remaining."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, trim runaway, trim isolated, controls heavy, request priority return.",
+      "ANAC123, priority return, left heading one eight zero, descending three thousand.",
+      "ANAC123, shallow turns, maintaining present speed.",
+      "ANAC123, cleared to land runway two seven Right, services standing by.",
+      "ANAC123, souls four, fuel one hour thirty minutes."
+    ],
+    "brazilianMistakes": "- ❌ Making the radio call before stopping the runaway trim.  \n  ✔ Memory items first; communicate when the aircraft is secured.\n\n- ❌ Saying only \"trim problem\" without \"runaway\" or control status.  \n  ✔ Use trim runaway, trim isolated, controls heavy / under control.\n\n- ❌ Re-engaging electric trim to \"see if it works now.\"  \n  ✔ Leave it isolated; land; write it up.\n\n- ❌ Accepting complex SID turns with extreme control forces.  \n  ✔ Request simple vectors and priority return.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Trim Runaway, Trim Isolated, Controls Heavy, Request Priority Return\n\n**Pronunciation:** AY-nak WUN TOO THREE, TRIM RUN-uh-way, TRIM EYE-suh-lay-ted, kun-TROLZ HEV-ee, reh-KWEST pry-OR-i-tee ree-TURN\n\n**Word Stress**\n\n- Trim → TRIM\n- Runaway → RUN-uh-way\n- Isolated → EYE-suh-lay-ted\n- Controls → kun-TROLZ\n- Heavy → HEV-ee\n\nPractice:\n\nTrim runaway... trim isolated... controls heavy... request priority return.\n\nTogether:\n\nANAC123, trim runaway, trim isolated, controls heavy, request priority return.",
+    "relatedConcepts": [
+      "Stabilizer Trim Failure",
+      "Elevator Failure",
+      "Mayday",
+      "Priority Return",
+      "Control Forces",
+      "Memory Items"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress and Urgency",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Trim Runaway / Stabilizer Trim",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Annex 6 — Operation of Aircraft"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "AFM — Trim Runaway Memory Items (type-specific)"
+      }
+    ]
+  },
+  {
+    "catalogId": "0274",
+    "id": "0274",
+    "displayTerm": "Stabilizer Trim Failure",
+    "term": "stabilizer trim failure",
+    "slug": "stabilizer-trim-failure",
+    "category": "Aircraft Systems",
+    "meaningEn": "Stabilizer Trim Failure is a malfunction in which the horizontal stabilizer trim system cannot be operated normally — including jam, motor failure, or loss of electric trim — preventing normal pitch trim, often resulting in persistent control forces, and requiring abnormal procedures and ATC notification for priority landing assistance.",
+    "meaningPt": "Falha do trim do estabilizador / Stabilizer Trim Failure.\n\nMalfuncionamento em que o sistema de trim do estabilizador horizontal não pode ser operado normalmente — incluindo travamento, falha do motor ou perda do trim elétrico — impedindo o trim normal de arfagem, frequentemente resultando em forças persistentes nos comandos, e exigindo procedimentos anormais e notificação ao ATC para assistência prioritária ao pouso.",
+    "whenUsed": "When stabilizer trim fails, the crew should:",
+    "example": "Approach: ANAC123, roger stabilizer trim failure, say intentions.",
+    "sayPhrase": "ANAC123, stabilizer trim failure, request priority long final.",
+    "icaoQuestion": "Stabilizer electric trim fails. You can trim only slowly by hand. What do you tell ATC before approach?",
+    "icaoSpeakText": "I would advise ATC of stabilizer trim failure and that control forces may be heavy on approach. I would request priority handling, an extended or long final, and the longest suitable runway. I would configure early, avoid unnecessary speed changes, and provide souls and fuel if requested.",
+    "missionBrief": "Today's lesson covers Stabilizer Trim Failure — loss of normal horizontal-stabilizer trim capability, leaving the aircraft difficult or impossible to trim for hands-off flight, often with high control forces, requiring abnormal procedures and priority ATC handling.\n\nStabilizer trim sets the pitch trim reference on many transport aircraft. When it fails — jammed, inoperative, or only manual — the crew may face continuous column force, limited speed flexibility, and a carefully planned approach and landing.\n\nFor H130 helicopter training academy operations, there is no transport-style movable horizontal stabilizer trim as on large jets. Do not invent one. Teach the ICAO English for exams and multi-type careers; analogize only to \"unable to relieve control forces\" if discussing helicopter force trim carefully and factually.\n\nPart 2 and Part 3: stabilizer trim failure, controls out of trim / heavy, request priority and a stable long final.",
+    "captainTeaching": "Stabilizer trim failure means you may fly the rest of the flight with your arms in the fight.\n\nConfigure early. Choose one speed. Ask for a long final. Do not let ATC step you down through five speed changes on a short approach.\n\nUse the exact words: stabilizer trim failure. If it was a runaway that you already cut out, say trim runaway, trim isolated — then you may also have stabilizer trim inoperative. Be precise.\n\nIn the H130 academy, do not brief a phantom jet stabilizer. Brief the exam concept. If discussing helicopter trim, stay inside the AFM.\n\nHeavy controls are manageable with planning. Surprise configuration changes are not.",
+    "operationalContext": "You are inbound to Florianópolis in a jet training scenario. Stabilizer electric trim fails. Manual trim is slow; approach forces will be high.\n\nYou call:\n\nANAC123, stabilizer trim failure, controls will be heavy on approach, request priority long final runway one four, longest available.\n\nApproach: ANAC123, roger stabilizer trim failure, priority approved, expect runway one four, extend downwind for long final.\n\nYou configure early, trim as best you can manually, and add:\n\nANAC123, configured, ready for long final, stabilizer trim failure.\n\nYou do not accept a slam-dunk with changing speeds every mile.",
+    "sayItCoach": "ANAC123, stabilizer trim failure, controls heavy, request priority long final.",
+    "icaoModelAnswer": "I would advise ATC of stabilizer trim failure and that control forces may be heavy on approach. I would request priority handling, an extended or long final, and the longest suitable runway. I would configure early, avoid unnecessary speed changes, and provide souls and fuel if requested.",
+    "memoryTrick": "**STAB** — **S**ay stabilizer trim failure, **T**rim manually early, **A**sk for long final, **B**lock late speed changes.",
+    "operationalMeaning": "When stabilizer trim fails, the crew should:\n\nStabilizer trim failure scenarios commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Approach: ANAC123, roger stabilizer trim failure, say intentions.",
+      "Approach: ANAC123, priority approved, expect extended downwind for long final.",
+      "Approach: ANAC123, maintain one eight zero knots if able, advise unable.",
+      "Tower: ANAC123, runway one four, wind one five zero at eight, cleared to land, services standing by.",
+      "Approach: ANAC123, say souls on board and fuel remaining."
+    ],
+    "pilotReadbacks": [
+      "ANAC123, stabilizer trim failure, request priority long final.",
+      "ANAC123, priority, extended downwind, runway one four.",
+      "ANAC123, maintaining one eight zero knots, or unable assigned speed if forces require.",
+      "ANAC123, cleared to land runway one four, services standing by.",
+      "ANAC123, souls four, fuel one hour ten minutes."
+    ],
+    "brazilianMistakes": "- ❌ Calling every trim issue \"trim runaway\" when the system simply failed.  \n  ✔ Use stabilizer trim failure when trim will not operate normally.\n\n- ❌ Accepting a short, stepped approach with multiple speed changes.  \n  ✔ Request long final and stable speed.\n\n- ❌ Changing flaps late and fighting a sudden pitch moment.  \n  ✔ Configure early per checklist while forces are manageable.\n\n- ❌ Vague \"trim problem\" without operational effect.  \n  ✔ State stabilizer trim failure and controls heavy / out of trim.",
+    "pronunciationCoaching": "**Target Phrase:** ANAC123, Stabilizer Trim Failure, Request Priority Long Final\n\n**Pronunciation:** AY-nak WUN TOO THREE, STAY-buh-ly-zer TRIM FAYL-yer, reh-KWEST pry-OR-i-tee LONG FY-nul\n\n**Word Stress**\n\n- Stabilizer → STAY-buh-ly-zer\n- Trim → TRIM\n- Failure → FAYL-yer\n- Priority → pry-OR-i-tee\n- Final → FY-nul\n\nPractice:\n\nStabilizer trim failure... controls heavy... request priority long final.\n\nTogether:\n\nANAC123, stabilizer trim failure, controls heavy, request priority long final.",
+    "relatedConcepts": [
+      "Trim Runaway",
+      "Elevator Failure",
+      "Priority Handling",
+      "Long Final",
+      "Control Forces",
+      "Configuration Management"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Urgency Communications",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Horizontal Stabilizer Trim Malfunctions",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Procedures",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Annex 6 — Operation of Aircraft"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "AFM — Stabilizer Trim Abnormal Procedures (type-specific)"
+      }
+    ]
+  },
+  {
+    "catalogId": "0275",
+    "id": "0275",
+    "displayTerm": "Pressurization Problem",
+    "term": "pressurization problem",
+    "slug": "pressurization-problem",
+    "category": "Emergency",
+    "meaningEn": "Pressurization Problem is any abnormal condition of the aircraft pressurization system in which cabin altitude or differential pressure is not controlled as required — including failure to pressurize, excessive differential, or gradual or rapid depressurization — requiring abnormal or emergency procedures and ATC notification for descent and priority handling.",
+    "meaningPt": "Problema de pressurização / Pressurization Problem.\n\nQualquer condição anormal do sistema de pressurização da aeronave em que a altitude de cabine ou a pressão diferencial não é controlada como necessário — incluindo falha de pressurizar, diferencial excessivo, ou despressurização gradual ou rápida — exigindo procedimentos anormais ou de emergência e notificação ao ATC para descida e prioridade.",
+    "whenUsed": "When a pressurization problem occurs, the crew should:",
+    "example": "Center: ANAC123, Mayday acknowledged, descend at pilot's discretion, report level.",
+    "sayPhrase": "Mayday Mayday Mayday, ANAC123, rapid decompression, emergency descent, request priority.",
+    "icaoQuestion": "Cabin altitude rises rapidly at high level. What do you do and what do you say?",
+    "icaoSpeakText": "I would don oxygen, begin an emergency descent per the AFM, and declare Mayday with rapid decompression or pressurization problem, stating that I am in emergency descent and requesting priority. When able I would report leveling at a safe altitude, souls and fuel, and request diversion to the nearest suitable airport.",
+    "missionBrief": "Today's lesson covers Pressurization Problem — abnormal cabin pressure control including failure to pressurize, overpressurization, or gradual or rapid depressurization, requiring oxygen use when applicable, emergency descent when required, and precise urgency or distress communication with ATC.\n\nPressurization problems are classic ICAO exam topics. Rapid decompression is typically distress — Mayday — with immediate descent. Gradual loss of pressure may be urgency — Pan Pan — still demanding prompt descent and clear reports.\n\nFor H130 helicopter training academy operations, the H130 is normally unpressurized. You will not manage cabin differential like a jet — but you must speak the concept fluently for Part 2 and Part 3. Relate \"get lower now\" to emergency descent discipline without inventing a pressurized H130 cabin.\n\nMaster the English: pressurization problem, rapid decompression, emergency descent, requesting lower altitude.",
+    "captainTeaching": "Pressurization problems are altitude and oxygen problems before they are radio problems.\n\nRapid decompression: oxygen, descend, Mayday. Gradual problem: still get lower, Pan Pan or as required, do not sit at flight level hoping the cabin settles.\n\nBrazilian pilots often say \"perdeu pressurização.\" Prefer rapid decompression, cabin depressurization, or pressurization problem in ICAO English — then the action: emergency descent, requesting lower.\n\nIn the H130 you usually live in an unpressurized cabin. That does not excuse weak exam English. Know the calls. Know Mayday versus Pan Pan. Know that ATC needs your altitude intention immediately.\n\nNever climb further with an unresolved pressurization failure. Lower is life.",
+    "operationalContext": "You are in a pressurized fixed-wing training scenario at flight level two five zero toward Brasília. Cabin altitude climbs rapidly. You don oxygen and begin emergency descent.\n\nYou transmit:\n\nMayday Mayday Mayday, ANAC123, rapid decompression, emergency descent to ten thousand, request priority.\n\nCenter: ANAC123, Mayday acknowledged, descend as required, all traffic advised, say souls and fuel when able.\n\nPassing twelve thousand you update:\n\nANAC123, leveling ten thousand, pressurization problem, request vectors for diversion Curitiba, souls six, fuel two hours.\n\nYou flew the descent. Then you refined the plan. Oxygen first. Radio second — as soon as you can.",
+    "sayItCoach": "Mayday Mayday Mayday, ANAC123, rapid decompression, emergency descent to ten thousand, request priority.",
+    "icaoModelAnswer": "I would don oxygen, begin an emergency descent per the AFM, and declare Mayday with rapid decompression or pressurization problem, stating that I am in emergency descent and requesting priority. When able I would report leveling at a safe altitude, souls and fuel, and request diversion to the nearest suitable airport.",
+    "memoryTrick": "**PRESS** — **P**ut on oxygen, **R**apid descent if required, **E**mergency call (Mayday/Pan Pan), **S**ay pressurization problem clearly, **S**eek lower altitude and diversion.",
+    "operationalMeaning": "When a pressurization problem occurs, the crew should:\n\nPressurization problem scenarios commonly include:",
+    "whyAtcUsesIt": [],
+    "atcPhraseology": [
+      "Center: ANAC123, Mayday acknowledged, descend at pilot's discretion, report level.",
+      "Center: ANAC123, roger pressurization problem, say altitude request.",
+      "Center: ANAC123, cleared present position direct diversion airport, priority handling.",
+      "Approach: ANAC123, expect straight-in, emergency services standing by.",
+      "Center: ANAC123, say souls on board and fuel remaining."
+    ],
+    "pilotReadbacks": [
+      "Mayday Mayday Mayday, ANAC123, rapid decompression, emergency descent, request priority.",
+      "ANAC123, descending ten thousand, pressurization problem.",
+      "ANAC123, leveling ten thousand, request diversion Curitiba.",
+      "ANAC123, straight-in, services standing by, ANAC123.",
+      "ANAC123, souls six, fuel two hours."
+    ],
+    "brazilianMistakes": "- ❌ Calling ATC before donning oxygen in a rapid decompression.  \n  ✔ Oxygen and descent first; communicate as soon as practicable.\n\n- ❌ Using only \"pressurization problem\" for a violent rapid decompression without Mayday.  \n  ✔ Rapid decompression is distress — Mayday.\n\n- ❌ Staying high to \"finish the checklist\" while cabin altitude climbs.  \n  ✔ Descend to a safe cabin/ambient altitude per procedure.\n\n- ❌ Inventing H130 pressurization drills as if the helicopter were a jet.  \n  ✔ Teach exam English; keep type systems factual.",
+    "pronunciationCoaching": "**Target Phrase:** Mayday Mayday Mayday, ANAC123, Rapid Decompression, Emergency Descent\n\n**Pronunciation:** MAY-day MAY-day MAY-day, AY-nak WUN TOO THREE, RAP-id dee-kum-PRESH-un, ee-MER-jen-see deh-SENT\n\n**Word Stress**\n\n- Rapid → RAP-id\n- Decompression → dee-kum-PRESH-un\n- Emergency → ee-MER-jen-see\n- Descent → deh-SENT\n- Pressurization → PRESH-ur-eye-ZAY-shun\n\nPractice:\n\nRapid decompression... emergency descent... request priority.\n\nTogether:\n\nMayday Mayday Mayday, ANAC123, rapid decompression, emergency descent to ten thousand, request priority.",
+    "relatedConcepts": [
+      "Cabin Depressurization",
+      "Emergency Descent",
+      "Mayday",
+      "Pan Pan",
+      "Bleed Air Failure",
+      "Oxygen System"
+    ],
+    "references": [
+      {
+        "label": "ICAO Doc 4444 (PANS-ATM) — Distress and Urgency Procedures",
+        "href": "https://www.icao.int/publications/pages/doc-4444.aspx"
+      },
+      {
+        "label": "SKYbrary — Loss of Cabin Pressurization",
+        "href": "https://skybrary.aero"
+      },
+      {
+        "label": "FAA AIM — Emergency Descent / Depressurization",
+        "href": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/"
+      },
+      {
+        "label": "ICAO Annex 6 — Operation of Aircraft"
+      },
+      {
+        "label": "DECEA ICA 100-12 — Fraseologia Aeronáutica Brasileira"
+      },
+      {
+        "label": "AFM — Pressurization / Emergency Descent (type-specific; H130 normally unpressurized)"
+      }
+    ]
   }
 ];

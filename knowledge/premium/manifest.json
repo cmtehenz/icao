@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "completedCount": 245,
-  "pendingCount": 265,
+  "completedCount": 275,
+  "pendingCount": 235,
   "concepts": [
     {
       "id": "0001",
@@ -1715,6 +1715,216 @@
       "id": "0245",
       "concept": "Lavatory Smoke",
       "slug": "0245-lavatory-smoke",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0246",
+      "concept": "Oxygen Mask Deployment",
+      "slug": "0246-oxygen-mask-deployment",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0247",
+      "concept": "Passenger Oxygen On",
+      "slug": "0247-passenger-oxygen-on",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0248",
+      "concept": "Crew Oxygen On",
+      "slug": "0248-crew-oxygen-on",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0249",
+      "concept": "Emergency Descent",
+      "slug": "0249-emergency-descent",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0250",
+      "concept": "Rapid Decompression",
+      "slug": "0250-rapid-decompression",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0251",
+      "concept": "Engine Stall",
+      "slug": "0251-engine-stall",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0252",
+      "concept": "Engine Surge",
+      "slug": "0252-engine-surge",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0253",
+      "concept": "Hydraulic Leak",
+      "slug": "0253-hydraulic-leak",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0254",
+      "concept": "Hydraulic Pressure Dropping",
+      "slug": "0254-hydraulic-pressure-dropping",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0255",
+      "concept": "Total Electrical Failure",
+      "slug": "0255-total-electrical-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0256",
+      "concept": "Battery Power",
+      "slug": "0256-battery-power",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0257",
+      "concept": "Partial Panel",
+      "slug": "0257-partial-panel",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0258",
+      "concept": "Propeller Failure",
+      "slug": "0258-propeller-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0259",
+      "concept": "Landing Gear Stuck",
+      "slug": "0259-landing-gear-stuck",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0260",
+      "concept": "Landing Gear Unsafe Indication",
+      "slug": "0260-landing-gear-unsafe-indication",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0261",
+      "concept": "Main Landing Gear Collapsed",
+      "slug": "0261-main-landing-gear-collapsed",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0262",
+      "concept": "Landing Gear Retraction Failure",
+      "slug": "0262-landing-gear-retraction-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0263",
+      "concept": "Gear Down and Locked",
+      "slug": "0263-gear-down-and-locked",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0264",
+      "concept": "Wheels-Up Landing",
+      "slug": "0264-wheels-up-landing",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0265",
+      "concept": "Belly Landing",
+      "slug": "0265-belly-landing",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0266",
+      "concept": "Flaps-Up Landing",
+      "slug": "0266-flaps-up-landing",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0267",
+      "concept": "Flap Failure",
+      "slug": "0267-flap-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0268",
+      "concept": "Spoiler Failure",
+      "slug": "0268-spoiler-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0269",
+      "concept": "Speed Brake Failure",
+      "slug": "0269-speed-brake-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0270",
+      "concept": "Aileron Failure",
+      "slug": "0270-aileron-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0271",
+      "concept": "Elevator Failure",
+      "slug": "0271-elevator-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0272",
+      "concept": "Rudder Failure",
+      "slug": "0272-rudder-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0273",
+      "concept": "Trim Runaway",
+      "slug": "0273-trim-runaway",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0274",
+      "concept": "Stabilizer Trim Failure",
+      "slug": "0274-stabilizer-trim-failure",
+      "status": "complete",
+      "completedAt": "2026-07-10"
+    },
+    {
+      "id": "0275",
+      "concept": "Pressurization Problem",
+      "slug": "0275-pressurization-problem",
       "status": "complete",
       "completedAt": "2026-07-10"
     }
