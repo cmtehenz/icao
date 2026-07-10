@@ -19,6 +19,7 @@ The Flight Manual is the **only source of truth**. All official documentation li
 | 6 | [06_KNOWLEDGE_ENGINE.md](./06_KNOWLEDGE_ENGINE.md) | Knowledge hierarchy, Chief Instructor |
 | 7 | [07_UI_UX.md](./07_UI_UX.md) | Flight academy UX, 30-second rule |
 | 8 | [08_ROADMAP.md](./08_ROADMAP.md) | Long-term direction |
+| 9 | [09_ICAO_FLIX.md](./09_ICAO_FLIX.md) | Curated video library, Captain recommendations |
 | — | [CHANGELOG.md](./CHANGELOG.md) | Manual version history |
 | — | [decisions/](./decisions/) | ADRs and RFCs |
 | — | [prompts/](./prompts/) | AI system prompts |

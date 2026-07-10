@@ -13,6 +13,7 @@ import { STUDY_ACTIVITY_RECORDED_EVENT } from "@/lib/studyActivityRecord";
 
 const QUICK_LINKS = [
   { href: "/escutar-prova", label: "Escutar Prova", desc: "Full exam listening", icon: "🎧" },
+  { href: "/icao-flix", label: "ICAOFlix", desc: "Curated video library", icon: "🎬" },
   { href: "/simulado", label: "Simulado", desc: "Mock exam", icon: "🎯" },
   { href: "/conta", label: "Account", desc: "Profile & vault", icon: "👤" },
 ] as const;

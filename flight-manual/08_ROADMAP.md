@@ -31,6 +31,7 @@ Complete daily mission flight for SDEA/ICAO exam preparation:
 - Chief Instructor admin panel for phrases, audio, airport notes
 - Captain RAG from verified content only
 - Real-world asset library (ATC, cockpit video, licensed manuals)
+- **ICAOFlix** — curated YouTube library with Captain difficulty recommendations ([09_ICAO_FLIX.md](09_ICAO_FLIX.md))
 
 ### Era 4 — Platform programs
 

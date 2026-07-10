@@ -37,6 +37,13 @@ export const NAV_ITEMS = [
     description: "Full exam listening — 23C–26C",
   },
   {
+    href: "/icao-flix",
+    label: "ICAOFlix",
+    shortLabel: "Flix",
+    icon: "🎬",
+    description: "Curated aviation video library",
+  },
+  {
     href: "/simulado",
     label: "Simulado ICAO",
     shortLabel: "Simulado",
