@@ -93,7 +93,18 @@ export default function Part1StoryConnectPanel({ card, keywords, onComplete }: P
           >
             {showHint ? "Hide hint" : "Need a hint?"}
           </button>
-          {showHint ? <p className="part1-story-connect-hint">{active.hint}</p> : null}
+          {showHint ? (
+            <div className="part1-story-connect-hints">
+              <p className="part1-story-connect-hints-kicker">
+                Say it your way — pick one pattern (paraphrase is fine):
+              </p>
+              <ul className="part1-story-connect-hint-list">
+                {active.hints.map((line) => (
+                  <li key={line}>{line}</li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
           <button type="button" className="btn purple" onClick={goNext}>
             I spoke this part — next
           </button>

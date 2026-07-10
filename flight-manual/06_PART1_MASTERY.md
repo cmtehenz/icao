@@ -38,11 +38,13 @@ Every Part 1 card in today's flight runs the same six steps:
 | **Brief** | Priming | Read exam question + watch curated FAA/SKYbrary references |
 | **Anchor** | Story pegs | Say the four memory anchors aloud (no script) |
 | **Shadow** | One idea at a time | Speak each of 4 anchors — short starter, paraphrase OK |
-| **Keywords** | Guided retrieval | Connect anchors section by section, then full answer |
+| **Keywords** | Guided retrieval | Connect anchors section by section, then full answer (2–3 example patterns per section — paraphrase any) |
 | **Coach** | Self-explanation | Record full answer; Flight Instructor debrief |
 | **Ready** | Mastery gate | All PEEL blocks + coach ≥ ICAO 4 band |
 
 Captain Delta coaches each step. The student never picks the next step — the pipeline advances when the step objective is met.
+
+**Brief media:** every card (`01`–`12`) has a curated pack in `data/part1/briefResources.ts` — at least one FAA Rotorcraft Collective (or aligned) video plus SKYbrary OGHFA links matched to the question theme. The student watches before building anchors; no script is shown at this step.
 
 ---
 
@@ -77,7 +79,7 @@ Home and Part 1 show **X/12 exam ready**. Browse mode (`/part1?browse=1`) remain
 ## Anti-patterns
 
 - Showing the full model answer before Keywords step (except Foundation assistance level)
-- Showing written model answers while the student is recording in Coach
+- Showing written model answers while the student is recording in Coach (browse/review mode only — daily mission keeps examples visible)
 - Letting the student pick cards during a mission leg
 - Marking Part 1 complete without coach attempt
 - Treating Part 1 as a flashcard deck for the daily flight

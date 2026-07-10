@@ -3,6 +3,7 @@ import { CARDS } from "@/lib/cards";
 import {
   anchorBuildActivityKey,
   getAnchorBuildSteps,
+  getSectionHints,
   getStoryConnectSections,
 } from "@/lib/part1Mastery/anchorBuild";
 
@@ -24,5 +25,17 @@ describe("anchorBuild", () => {
     const sections = getStoryConnectSections(card, card.keywords ?? []);
     expect(sections).toHaveLength(4);
     expect(sections[1]?.connector).toContain("First");
+    expect(sections[1]?.hints.length).toBeGreaterThanOrEqual(2);
+    expect(sections[1]?.keywords).toEqual(["Conditions"]);
+  });
+
+  it("offers multiple paraphrase hints for card #02 Workload", () => {
+    const card02 = CARDS.find((c) => c.num === "02")!;
+    const hints = getSectionHints(card02, 1);
+    expect(hints.length).toBeGreaterThanOrEqual(2);
+    expect(hints.some((h) => /workload/i.test(h))).toBe(true);
+    const sections = getStoryConnectSections(card02, card02.keywords ?? []);
+    expect(sections[1]?.label).toBe("Workload");
+    expect(sections[1]?.keywords).toEqual(["Workload"]);
   });
 });

@@ -5,6 +5,8 @@ export type Difficulty = "Easy" | "Medium" | "Hard";
 export type Level4Step = {
   label: string;
   sentence: string;
+  /** Optional extra paraphrase starters for story-connect hints. */
+  hints?: string[];
 };
 
 export type Card = {

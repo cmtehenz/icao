@@ -13,6 +13,8 @@ import {
   CAPTAIN_DELTA_LESSON_CONTEXT,
   CAPTAIN_DELTA_SECONDARY_ACTION,
 } from "@/lib/captainDelta/lessonContext";
+import type { VisualCoachPlan } from "@/lib/captainDelta/visual/types";
+import { keywordTargetId } from "@/lib/captainDelta/visual/types";
 import {
   buildConnectorStructurePlan,
   buildKeywordModePlan,
@@ -21,9 +23,30 @@ import {
   buildPronunciationFocusPlan,
   buildVisualMissionPlan,
 } from "@/lib/captainDelta/visual/plans";
-import { keywordTargetId } from "@/lib/captainDelta/visual/types";
 
 const PART2_ELEMENTS = ["altitude", "heading", "frequency", "runway", "emergency"];
+
+/** Part 1 daily coach — keep answer examples visible until the student records. */
+function planForPart1CoachPrep(
+  plan: VisualCoachPlan,
+  context: string | undefined,
+  lesson: { mode?: string; hasFeedback?: boolean },
+): VisualCoachPlan {
+  if (context === "part1" && lesson.mode === "coach" && !lesson.hasFeedback) {
+    return { ...plan, focusMode: false, collapseTargets: undefined };
+  }
+  return plan;
+}
+
+function applyVisualPlan(
+  visual: NonNullable<ReturnType<typeof useCaptainDeltaVisual>>,
+  plan: VisualCoachPlan,
+  context: string | undefined,
+  lesson: { mode?: string; hasFeedback?: boolean },
+  speech?: string,
+): void {
+  visual.applyPlan(planForPart1CoachPrep(plan, context, lesson), speech);
+}
 
 /** Phase 2 bridge — listens to Phase 1 state/events without modifying Phase 1 files. */
 export default function CaptainDeltaVisualBridge() {
@@ -59,7 +82,7 @@ export default function CaptainDeltaVisualBridge() {
 
       if (context === "part1" || context === "dashboard") {
         if (msg.kind === "mission" && lesson.keywords?.length) {
-          visual.applyPlan(buildVisualMissionPlan(lesson.keywords), speech);
+          applyVisualPlan(visual, buildVisualMissionPlan(lesson.keywords), context, lesson, speech);
           return;
         }
 
@@ -68,7 +91,7 @@ export default function CaptainDeltaVisualBridge() {
           (msg.primaryAction.id === "explain_it" ||
             msg.secondaryActions.some((a) => a.id === "show_keywords"))
         ) {
-          visual.applyPlan(buildKeywordModePlan(lesson.keywords), speech);
+          applyVisualPlan(visual, buildKeywordModePlan(lesson.keywords), context, lesson, speech);
           return;
         }
 
@@ -76,12 +99,13 @@ export default function CaptainDeltaVisualBridge() {
           msg.secondaryActions.some((a) => a.id === "show_model") ||
           /connector|structure|first of all|additionally/i.test(speech)
         ) {
-          visual.applyPlan(buildConnectorStructurePlan(), speech);
+          applyVisualPlan(visual, buildConnectorStructurePlan(), context, lesson, speech);
           return;
         }
 
         if (lesson.keywords?.length) {
-          visual.applyPlan(
+          applyVisualPlan(
+            visual,
             {
               steps: [],
               speechTerms: lesson.keywords.map((term) => ({
@@ -89,6 +113,8 @@ export default function CaptainDeltaVisualBridge() {
                 targetId: keywordTargetId(term),
               })),
             },
+            context,
+            lesson,
             speech,
           );
         }
@@ -143,10 +169,10 @@ export default function CaptainDeltaVisualBridge() {
       if (!visual || !cd.lesson.keywords?.length) return;
       if (cd.context !== "part1" && cd.context !== "dashboard") return;
       if (actionId === "show_keywords") {
-        visual.applyPlan(buildKeywordModePlan(cd.lesson.keywords));
+        applyVisualPlan(visual, buildKeywordModePlan(cd.lesson.keywords), cd.context, cd.lesson);
       }
       if (actionId === "show_model") {
-        visual.applyPlan(buildConnectorStructurePlan());
+        applyVisualPlan(visual, buildConnectorStructurePlan(), cd.context, cd.lesson);
       }
     };
 

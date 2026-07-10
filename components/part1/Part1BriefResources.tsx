@@ -12,10 +12,7 @@ export default function Part1BriefResources({ cardNum }: Props) {
 
   return (
     <section className="part1-brief-resources" aria-label="Briefing references">
-      <p className="part1-brief-resources-lead">
-        Watch before you build your answer — FAA helicopter briefing practice and CRM (crew resource
-        management). Sources: FAA Rotorcraft Collective, SKYbrary OGHFA.
-      </p>
+      <p className="part1-brief-resources-lead">{pack.lead}</p>
 
       {pack.videos.length > 0 && (
         <ul className="part1-brief-video-list">

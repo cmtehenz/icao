@@ -34,6 +34,10 @@ import FlightInstructorReportPanel from "@/components/FlightInstructor/FlightIns
 import { fetchFlightInstructorReport } from "@/lib/flightInstructor/client";
 import { buildLocalInstructorReport } from "@/lib/flightInstructor/localReport";
 import { recordInstructorSession } from "@/lib/flightInstructor/memory";
+import {
+  loadPart1CoachDebriefCache,
+  savePart1CoachDebriefCache,
+} from "@/lib/part1Mastery/coachDebriefCache";
 import type { FlightInstructorReport } from "@/lib/flightInstructor/types";
 import { emitCaptainDeltaAfterAnswer } from "@/lib/captainDelta/events";
 import { useCaptainDeltaCoachBridge } from "@/hooks/useCaptainDeltaCoachBridge";
@@ -90,6 +94,8 @@ type Props = {
   missionLegMode?: boolean;
   missionContinueHref?: string;
   missionContinueLabel?: string;
+  /** Daily leg marked complete — keep debrief visible, hide record UI. */
+  legComplete?: boolean;
 };
 
 function buildAzureExtras(
@@ -130,6 +136,7 @@ export default function VoiceCoachPanel({
   missionLegMode = false,
   missionContinueHref,
   missionContinueLabel,
+  legComplete = false,
 }: Props) {
   const speech = useSpeechRecognition("en-US");
   const azure = useAzurePronunciation();
@@ -196,6 +203,15 @@ export default function VoiceCoachPanel({
       emitAIPresenceClearHex();
     };
   }, []);
+
+  useEffect(() => {
+    if (!legComplete || !missionLegMode || !cardNum) return;
+    if (feedback || instructorReport) return;
+    const cached = loadPart1CoachDebriefCache(cardNum);
+    if (!cached) return;
+    setFeedback(cached.feedback);
+    setInstructorReport(cached.report);
+  }, [legComplete, missionLegMode, cardNum, feedback, instructorReport]);
 
   useEffect(() => {
     if (!isHexPart1 || !cardNum) {
@@ -374,6 +390,14 @@ export default function VoiceCoachPanel({
             })
           : buildLocalInstructorReport(data, evalQuestion, modelAnswer, keywords);
         setInstructorReport(report);
+        if (missionLegMode && cardNum) {
+          savePart1CoachDebriefCache({
+            cardNum,
+            feedback: data,
+            report,
+            savedAt: new Date().toISOString(),
+          });
+        }
         emitCaptainDeltaAfterAnswer({ report, transcript: data.transcript });
         const sessionLabel = cardNum
           ? `Question ${cardNum}`
@@ -411,7 +435,16 @@ export default function VoiceCoachPanel({
           report,
         });
       } catch {
-        setInstructorReport(buildLocalInstructorReport(data, evalQuestion, modelAnswer, keywords));
+        const report = buildLocalInstructorReport(data, evalQuestion, modelAnswer, keywords);
+        setInstructorReport(report);
+        if (missionLegMode && cardNum) {
+          savePart1CoachDebriefCache({
+            cardNum,
+            feedback: data,
+            report,
+            savedAt: new Date().toISOString(),
+          });
+        }
       } finally {
         setInstructorLoading(false);
       }
@@ -667,26 +700,32 @@ export default function VoiceCoachPanel({
         </p>
       ) : null}
 
-      {evaluateType === "part1" && part1Guide ? (
-        speakingActive ? (
-          <div className="voice-coach-speaking-mode" aria-live="polite">
-            <p className="voice-coach-speaking-kicker">● Speaking — scripts hidden</p>
-            <p className="voice-coach-speaking-hint">
-              Answer from memory. Structure:{" "}
-              {part1Guide.memoryLabels?.join(" → ") ?? keywords.join(" → ")}
+      {evaluateType === "part1" && part1Guide && !legComplete ? (
+        <div ref={guideRef}>
+          {speakingActive && !missionLegMode ? (
+            <div className="voice-coach-speaking-mode" aria-live="polite">
+              <p className="voice-coach-speaking-kicker">● Speaking — scripts hidden</p>
+              <p className="voice-coach-speaking-hint">
+                Answer from memory. Structure:{" "}
+                {part1Guide.memoryLabels?.join(" → ") ?? keywords.join(" → ")}
+              </p>
+            </div>
+          ) : null}
+          <CoachAnswerGuide
+            guide={part1Guide}
+            showKeywords={coachShowKeywords}
+            basicDefaultOpen={coachBasicOpen}
+            disableReadingInterrupt={missionLegMode}
+          />
+          {speakingActive && missionLegMode ? (
+            <p className="voice-coach-recording-note" aria-live="polite">
+              ● Recording — examples stay open. Try from memory; paraphrase is fine.
             </p>
-          </div>
-        ) : (
-          <div ref={guideRef}>
-            <CoachAnswerGuide
-              guide={part1Guide}
-              showKeywords={coachShowKeywords}
-              basicDefaultOpen={coachBasicOpen}
-            />
-          </div>
-        )
+          ) : null}
+        </div>
       ) : null}
 
+      {!legComplete && (
       <div className="voice-coach-actions">
         {azure.configured ? (
           <>
@@ -733,8 +772,9 @@ export default function VoiceCoachPanel({
           </>
         )}
       </div>
+      )}
 
-      {(speech.error || azure.error) && (
+      {(speech.error || azure.error) && !legComplete && (
         <p className="voice-coach-error">{speech.error || azure.error}</p>
       )}
 
@@ -808,6 +848,7 @@ export default function VoiceCoachPanel({
           attemptCompare={attemptCompare}
           followUpBanner={followUpContext?.followUpQuestion ?? null}
           suppressFollowUp={isHexPart1}
+          hideTryAgain={legComplete}
         />
         {missionLegMode && missionContinueHref ? (
           <div className="part1-coach-continue-bar">

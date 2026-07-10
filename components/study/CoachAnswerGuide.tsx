@@ -25,6 +25,7 @@ function AnswerToggle({
   hint,
   text,
   defaultOpen = false,
+  disableReadingInterrupt = false,
   children,
 }: {
   id: string;
@@ -32,12 +33,13 @@ function AnswerToggle({
   hint?: string;
   text: string;
   defaultOpen?: boolean;
+  disableReadingInterrupt?: boolean;
   children?: ReactNode;
 }) {
   const [open, setOpen] = useState(defaultOpen);
 
   useEffect(() => {
-    if (!open) return;
+    if (!open || disableReadingInterrupt) return;
     const timer = window.setTimeout(() => {
       emitVisualPlan(buildReadingInterruptPlan());
       emitCaptainDeltaSuggestion({
@@ -48,7 +50,7 @@ function AnswerToggle({
       });
     }, READING_INTERRUPT_MS);
     return () => window.clearTimeout(timer);
-  }, [open]);
+  }, [open, disableReadingInterrupt]);
 
   return (
     <CaptainDeltaTarget id={id} as="div" className={`coach-answer-toggle ${open ? "open" : ""}`}>
@@ -78,11 +80,14 @@ export default function CoachAnswerGuide({
   guide,
   showKeywords = true,
   basicDefaultOpen = false,
+  disableReadingInterrupt = false,
 }: {
   guide: Part1CoachGuide;
   showKeywords?: boolean;
   /** Foundation only — default closed so students try memory first. */
   basicDefaultOpen?: boolean;
+  /** Daily Part 1 mission — keep examples open; no auto-collapse after 25s. */
+  disableReadingInterrupt?: boolean;
 }) {
   const showElaborate =
     guide.elaborateAnswer &&
@@ -122,6 +127,7 @@ export default function CoachAnswerGuide({
         hint="40–50 s"
         text={guide.basicAnswer}
         defaultOpen={basicDefaultOpen}
+        disableReadingInterrupt={disableReadingInterrupt}
       >
         {guide.steps?.length ? (
           <ol className="coach-answer-steps">
@@ -141,6 +147,7 @@ export default function CoachAnswerGuide({
           label="Resposta elaborada (ICAO 5)"
           hint="50–60 s"
           text={showElaborate}
+          disableReadingInterrupt={disableReadingInterrupt}
         />
       ) : null}
 
@@ -149,6 +156,7 @@ export default function CoachAnswerGuide({
           id="coach-answer-example"
           label="Exemplo — vale pontos extras"
           text={showExample}
+          disableReadingInterrupt={disableReadingInterrupt}
         />
       ) : null}
     </section>

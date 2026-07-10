@@ -84,9 +84,10 @@
     "memory": "Weather → Workload → Decision → Lesson",
     "opener": "One of the most difficult situations I have had in a helicopter flight was related to weather and visibility near the landing site.",
     "ideas": [
-      "1 - SITUATION: First of all, the visibility started to decrease and my workload increased quickly during the final approach.",
-      "2 - ACTIONS: Additionally, I had to stay calm, keep good situational awareness, communicate clearly with ATC and make a conservative decision.",
-      "3 - LESSON: Finally, that experience reinforced the importance of preparation and knowing when to divert."
+      "1 - WEATHER: First of all, the visibility started to decrease near the landing site during the final approach.",
+      "2 - WORKLOAD: Additionally, my workload increased quickly and I had to monitor power, wind and obstacles.",
+      "3 - DECISION: I stayed calm, kept good situational awareness, communicated clearly with ATC and made a conservative decision.",
+      "4 - LESSON: Finally, that experience reinforced the importance of preparation and knowing when to divert."
     ],
     "example": "For example, instead of forcing a landing in deteriorating weather, a pilot should always choose the safest option.",
     "conclusion": "Overall, this experience made me a more disciplined and safety-oriented pilot.",
@@ -139,16 +140,20 @@
     "level4Example": "For example, instead of forcing a landing in deteriorating weather, I chose the safest option.",
     "level4Steps": [
       {
-        "label": "Situation",
-        "sentence": "One difficult situation I had was related to weather and visibility near the landing site."
+        "label": "Weather",
+        "sentence": "The visibility started to decrease near the landing site during the final approach."
       },
       {
-        "label": "Actions",
-        "sentence": "I stayed calm, kept good situational awareness, communicated clearly with ATC and made a conservative decision."
+        "label": "Workload",
+        "sentence": "My workload increased quickly and I had to monitor power, wind and obstacles."
+      },
+      {
+        "label": "Decision",
+        "sentence": "I stayed calm, kept situational awareness, communicated clearly with ATC and made a conservative decision."
       },
       {
         "label": "Lesson",
-        "sentence": "That experience taught me to prepare better and divert when necessary."
+        "sentence": "That experience taught me to prepare better and divert when conditions are unsafe."
       }
     ],
     "studyTips": "Palavras-chave para decorar: Weather → Workload → Decision → Lesson\n\nHistória em 4 partes:\n\n• Weather → O que aconteceu? (visibility, final approach)\n• Workload → Como você se sentiu? (workload increased)\n• Decision → O que você fez? (situational awareness, communicate, conservative decision)\n• Lesson → O que aprendeu? (prepare, divert, safety)\n\nConectores: First of all, / Additionally, / Finally, / For example,\n\nConte como uma história real — não precisa decorar palavra por palavra."

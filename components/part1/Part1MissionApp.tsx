@@ -19,7 +19,6 @@ import { getNextMissionAction } from "@/lib/dailyMission";
 import {
   getOrCreatePart1DailyMission,
   part1CardAllPeelBlocksDoneToday,
-  part1DailyMissionProgress,
   PART1_DAILY_MISSION_EVENT,
   tryMarkPart1ShadowComplete,
 } from "@/lib/part1DailyMission";
@@ -82,11 +81,6 @@ export default function Part1MissionApp() {
     return getOrCreatePart1DailyMission();
   }, [tick]);
 
-  const missionProgress = useMemo(() => {
-    void tick;
-    return part1DailyMissionProgress(mission);
-  }, [mission, tick]);
-
   const requestedCard = searchParams.get("card")?.padStart(2, "0") ?? null;
   const activeCardNum =
     requestedCard && mission.cards.some((c) => c.cardNum === requestedCard)
@@ -120,11 +114,6 @@ export default function Part1MissionApp() {
   const mastery = useMemo(() => {
     void tick;
     return buildPart1MasterySummary();
-  }, [tick]);
-
-  const nextMission = useMemo(() => {
-    void tick;
-    return getNextMissionAction();
   }, [tick]);
 
   const missionContinue = useMemo(() => {
@@ -173,7 +162,6 @@ export default function Part1MissionApp() {
   const keywords = getKeywords(card);
   const cardIndex = mission.cards.findIndex((c) => c.cardNum === card.num) + 1;
   const peelReady = part1CardAllPeelBlocksDoneToday(card.num);
-  const legComplete = missionProgress.complete;
 
   const part1CoachGuide = {
     basicAnswer: sourceCard!.answerLevel4 ?? sourceCard!.answer,
@@ -312,11 +300,21 @@ export default function Part1MissionApp() {
             </div>
           )}
 
-          {stepId === "coach" && (
+          {(stepId === "coach" || stepId === "complete") && (
             <div className="part1-step-panel">
+              {stepId === "complete" ? (
+                <div className="part1-step-complete-banner">
+                  <p className="part1-complete-title">Question #{card.num} — leg complete</p>
+                  <p className="sub">
+                    You built this answer through retrieval, not memorization. Review Captain
+                    Delta&apos;s debrief, then continue the flight.
+                  </p>
+                </div>
+              ) : null}
               <VoiceCoachPanel
                 embedded
                 missionLegMode
+                legComplete={stepId === "complete"}
                 missionContinueHref={missionContinue?.href}
                 missionContinueLabel={missionContinue?.label}
                 question={card.question}
@@ -331,34 +329,12 @@ export default function Part1MissionApp() {
                 coachShowKeywords={part1Assist.coachShowKeywords}
                 coachBasicOpen={part1Assist.coachBasicOpen}
               />
-              <p className="sub">
-                Record your full answer. Use the sentence skeleton above if you need it — paraphrase
-                is fine.
-              </p>
-            </div>
-          )}
-
-          {stepId === "complete" && (
-            <div className="part1-step-panel part1-step-complete">
-              <p className="part1-complete-title">Question #{card.num} — leg complete</p>
-              <p className="sub">
-                You built this answer through retrieval, not memorization. Next question or close
-                today&apos;s Part 1 leg.
-              </p>
-              {cardIndex < mission.cards.length ? (
-                <Link
-                  href={`/part1?card=${mission.cards[cardIndex]!.cardNum}`}
-                  className="btn purple btn-large"
-                >
-                  Next question · #{mission.cards[cardIndex]!.cardNum}
-                </Link>
-              ) : legComplete ? (
-                <Link href={nextMission?.href ?? "/"} className="btn purple btn-large">
-                  {nextMission ? `Ready — ${nextMission.title}` : "Continue flight"}
-                </Link>
-              ) : (
-                <p className="sub">Finish coach on remaining today&apos;s questions.</p>
-              )}
+              {stepId === "coach" ? (
+                <p className="sub">
+                  Record your full answer. Use the sentence skeleton above if you need it —
+                  paraphrase is fine.
+                </p>
+              ) : null}
             </div>
           )}
         </article>

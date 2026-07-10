@@ -140,7 +140,18 @@ export default function Part1AnchorBuildPanel({ card, onProgress }: Props) {
           </button>
         </div>
 
-        {showHint ? <p className="part1-anchor-build-hint">{active.hint}</p> : null}
+        {showHint ? (
+          <div className="part1-story-connect-hints">
+            <p className="part1-story-connect-hints-kicker">
+              Example patterns — use your own words:
+            </p>
+            <ul className="part1-story-connect-hint-list">
+              {active.hints.map((line) => (
+                <li key={line}>{line}</li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
 
         <div className="part1-anchor-build-record">
           {!speech.listening ? (

@@ -24,6 +24,7 @@ type Props = {
   followUpBanner?: string | null;
   /** Part 1 HEX: follow-ups handled by examiner conversation, not Captain. */
   suppressFollowUp?: boolean;
+  hideTryAgain?: boolean;
 };
 
 function naturalnessClass(level: FlightInstructorReport["naturalnessReview"]["level"]): string {
@@ -66,6 +67,7 @@ export default function FlightInstructorReportPanel({
   attemptCompare,
   followUpBanner,
   suppressFollowUp = false,
+  hideTryAgain = false,
 }: Props) {
   const [compareOpen, setCompareOpen] = useState(false);
 
@@ -314,9 +316,11 @@ export default function FlightInstructorReportPanel({
         </div>
       </details>
 
-      <button type="button" className="btn green btn-large fi-try-again" onClick={onTryAgain}>
-        🎤 Record Again
-      </button>
+      {!hideTryAgain ? (
+        <button type="button" className="btn green btn-large fi-try-again" onClick={onTryAgain}>
+          🎤 Record Again
+        </button>
+      ) : null}
     </div>
   );
 }
