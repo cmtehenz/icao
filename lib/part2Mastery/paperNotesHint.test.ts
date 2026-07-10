@@ -46,6 +46,18 @@ describe("paperNotesHintForStep", () => {
     expect(hint.codes).not.toContain("NEG");
   });
 
+  it("shows ATC follow-up on confirm step — not departure clearance", () => {
+    const hint = paperNotesHintForStep(5, PART2_RECOMMENDED_NOTES["23C-s2"]);
+    expect(hint.codes).toEqual(["↓FL050", "HD060", "NEG"]);
+    expect(hint.codes).not.toContain("RWY HDG");
+    expect(hint.codes).not.toContain("FREQ 119.25");
+  });
+
+  it("shows hold/confirm on Oakland confirm step", () => {
+    const hint = paperNotesHintForStep(5, PART2_RECOMMENDED_NOTES["23C-s1"]);
+    expect(hint.codes).toEqual(["HLD", "CFM"]);
+  });
+
   it("uses problem segment order after readback", () => {
     const hint = paperNotesHintForStep(3, PART2_RECOMMENDED_NOTES["23C-s1"]);
     expect(hint.codes).toEqual(["GEAR STK", "HLD", "CFM"]);

@@ -18,6 +18,8 @@ export type NotesScope = {
 export type RecommendedNotes = NotesScope & {
   /** Clearance-only notes for Readback mode comparison */
   readback?: NotesScope;
+  /** ATC reply + AFFIRM/NEGATIVE — excludes readback and initial problem report */
+  confirm?: NotesScope;
 };
 
 export type ExamSituation = {

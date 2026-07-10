@@ -105,8 +105,27 @@ function problemCodesInOrder(notes: RecommendedNotes): string[] {
 }
 
 function confirmCodesInOrder(notes: RecommendedNotes): string[] {
-  const pool = notes.requiredCodes.filter((c) => /AFF|NEG|CFM|HLD/i.test(c));
-  return pickCodesInIdealOrder(notes.idealNotes, pool, notes.optionalCodes ?? []);
+  if (notes.confirm?.idealNotes.length) {
+    return notes.confirm.idealNotes.slice(0, 10);
+  }
+
+  const readbackKeys = new Set(readbackCodesInOrder(notes).map(normalizeKey));
+  const problemKeys = new Set(
+    problemCodesInOrder(notes)
+      .filter(
+        (note) =>
+          isSituationPhaseCode(note) && !/^(NEG|AFF|CFM|HLD)$/i.test(note.trim()),
+      )
+      .map(normalizeKey),
+  );
+
+  return notes.idealNotes.filter((note) => {
+    const key = normalizeKey(note);
+    if ([...readbackKeys].some((rb) => codesMatch(note, rb))) return false;
+    if ([...problemKeys].some((p) => codesMatch(note, p))) return false;
+    const pool = [...notes.requiredCodes, ...(notes.optionalCodes ?? [])];
+    return pool.some((code) => codesMatch(note, code));
+  });
 }
 
 /** After clearance — problem, ATC echo, confirm (excludes readback segment). */
