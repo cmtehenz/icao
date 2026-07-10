@@ -57,11 +57,11 @@ export function pickCodesInIdealOrder(
 }
 
 const CLEARANCE_HINT =
-  /^(SQK|RWY|HDG|HD|↑|↓|FL|FREQ|EXPECT|TAXI|RPT|ILS|RNAV|VIS|DCT|VEC|MAINT|PRC|HOLD)/i;
+  /^(SQK|RWY|HDG|HD|↑|↓|FL|FREQ|EXPECT|TAXI|RPT|ILS|RNAV|VIS|DCT|VEC|MAINT|PRC|HOLD|BACKTRACK|GATE|CROSS|QNH|SPD|ARR|LUAW|CIRCL|APP|MON|PKT)/i;
 
 /** Problem / confirm segment — not initial clearance readback. */
 const SITUATION_PHASE_HINT =
-  /^(FIRE|CAB|RTN|ENG|BIRD|FOD|GEAR|GPS|GPWS|DRONE|DOG|PAX|MED|HYD|COLL|COLLISION|TOW|AFF|NEG|CFM|HLD|VEC|DIV|EM|LF|LAND|HOT|CAB|PRC)\b/i;
+  /^(FIRE|CAB|RTN|ENG|BIRD|FOD|GEAR|GPS|GPWS|DRONE|DOG|PAX|MED|HYD|COLL|COLLISION|TOW|AFF|NEG|CFM|HLD|EM|LF|LAND|HOT|CAB|PRC|PAN|MAYDAY|MISSED)\b/i;
 
 function isClearanceShorthand(note: string): boolean {
   return CLEARANCE_HINT.test(note.trim());
@@ -77,12 +77,11 @@ function readbackCodesInOrder(notes: RecommendedNotes): string[] {
     return notes.readback.idealNotes.slice(0, 10);
   }
 
-  const pool = [...notes.requiredCodes, ...(notes.optionalCodes ?? [])];
   const out: string[] = [];
 
   for (const note of notes.idealNotes) {
     if (isSituationPhaseCode(note)) break;
-    if (isClearanceShorthand(note) && pool.some((code) => codesMatch(note, code))) {
+    if (isClearanceShorthand(note)) {
       out.push(note);
     } else if (out.length > 0) {
       break;
