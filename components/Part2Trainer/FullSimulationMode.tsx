@@ -1,10 +1,12 @@
 "use client";
 
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState, useEffect, type ReactNode } from "react";
 import ExamAudioPlayer from "@/components/ExamAudioPlayer";
 import ExamVersionPicker from "@/components/ExamVersionPicker";
 import Part2SimulationRecord from "@/components/Part2Trainer/Part2SimulationRecord";
 import Part2NotesLayout from "@/components/Part2Trainer/Part2NotesLayout";
+import Part2MissionStepFrame from "@/components/part2/Part2MissionStepFrame";
+import Part2PaperSelfCheck from "@/components/part2/Part2PaperSelfCheck";
 import RecommendedNotesReview from "@/components/Part2Trainer/RecommendedNotesReview";
 import SimulationResultsPanel from "@/components/Part2Trainer/SimulationResultsPanel";
 import { getSituationsByExam } from "@/data/exams/part2Data";
@@ -43,6 +45,10 @@ type Props = {
   progress: Part2ProgressStore;
   onProgressChange: (store: Part2ProgressStore) => void;
   forcedExamVersion?: ExamVersion;
+  /** Today's flight — full exam, paper notes, no on-screen scratchpad. */
+  missionMode?: boolean;
+  missionContinueHref?: string;
+  missionContinueLabel?: string;
 };
 
 function pickRandomVersion(): ExamVersion {
@@ -53,6 +59,9 @@ export default function FullSimulationMode({
   progress,
   onProgressChange,
   forcedExamVersion,
+  missionMode = false,
+  missionContinueHref,
+  missionContinueLabel,
 }: Props) {
   const [examVersion, setExamVersion] = useState<ExamVersion | "all">(forcedExamVersion ?? "all");
   const [activeVersion, setActiveVersion] = useState<ExamVersion | null>(null);
@@ -176,7 +185,7 @@ export default function FullSimulationMode({
       const status = finalResult.rating.overall >= 4 ? ("mastered" as const) : ("difficult" as const);
       onProgressChange(setPart2ItemStatus(progress, simId, status));
     }
-    if (activeVersion) {
+    if (activeVersion && missionMode) {
       markPart2SimulationDailyComplete(activeVersion);
     }
     emitCaptainDeltaDebrief({});
@@ -193,32 +202,222 @@ export default function FullSimulationMode({
     advanceAfterSituation();
   };
 
+  const renderStepBody = () => {
+    if (!scenario || !current) return null;
+
+    const readbackAudio = examAudioUrl(scenario.examVersion, scenario.readback.audioTrack);
+    const followUpAudio = examAudioUrl(scenario.examVersion, scenario.atcFollowUp.audioTrack);
+
+    return (
+      <>
+        {step === 0 && (
+          <>
+            <p className="part2-situation">{scenario.context}</p>
+            <ExamAudioPlayer
+              src={readbackAudio}
+              label={examAudioLabel(scenario.examVersion, scenario.readback.audioTrack)}
+            />
+            {missionMode ? null : (
+              <p className="part2-atc-message">{scenario.readback.atcMessage}</p>
+            )}
+          </>
+        )}
+        {step === 1 && (
+          <>
+            {speakConfig && (
+              <Part2SimulationRecord
+                key={recordingKey!}
+                question={speakConfig.question}
+                modelAnswer={speakConfig.modelAnswer}
+                modelTitle="Readback modelo (ICAO 5)"
+                evaluateType={speakConfig.evaluateType}
+                stepLabel={current.title}
+                completed={currentRecording}
+                onComplete={saveRecording}
+                onRetry={clearRecording}
+              />
+            )}
+          </>
+        )}
+        {step === 2 && <p className="part2-atc-message">{scenario.interaction.prompt}</p>}
+        {step === 3 && (
+          <>
+            {speakConfig && (
+              <Part2SimulationRecord
+                key={recordingKey!}
+                question={speakConfig.question}
+                modelAnswer={speakConfig.modelAnswer}
+                modelTitle="Reporte modelo (ICAO 5)"
+                evaluateType={speakConfig.evaluateType}
+                stepLabel={current.title}
+                completed={currentRecording}
+                onComplete={saveRecording}
+                onRetry={clearRecording}
+              />
+            )}
+          </>
+        )}
+        {step === 4 && (
+          <>
+            <ExamAudioPlayer
+              src={followUpAudio}
+              label={examAudioLabel(scenario.examVersion, scenario.atcFollowUp.audioTrack)}
+            />
+            {missionMode ? null : (
+              <p className="part2-atc-message">{scenario.atcFollowUp.atcMessage}</p>
+            )}
+          </>
+        )}
+        {step === 5 && (
+          <>
+            {speakConfig && (
+              <Part2SimulationRecord
+                key={recordingKey!}
+                question={speakConfig.question}
+                modelAnswer={speakConfig.modelAnswer}
+                modelTitle={`${scenario.atcFollowUp.correctionType} modelo (ICAO 5)`}
+                evaluateType={speakConfig.evaluateType}
+                stepLabel={current.title}
+                completed={currentRecording}
+                onComplete={saveRecording}
+                onRetry={clearRecording}
+              />
+            )}
+          </>
+        )}
+        {step === 6 && <p className="part2-examiner-q">What did the controller say?</p>}
+        {step === 7 && (
+          <>
+            {speakConfig && (
+              <Part2SimulationRecord
+                key={recordingKey!}
+                question={speakConfig.question}
+                modelAnswer={speakConfig.modelAnswer}
+                modelTitle="Reported speech modelo (ICAO 5)"
+                evaluateType={speakConfig.evaluateType}
+                stepLabel={current.title}
+                completed={currentRecording}
+                onComplete={saveRecording}
+                onRetry={clearRecording}
+              />
+            )}
+          </>
+        )}
+        {step === 8 && (
+          <div className="part2-sim-review">
+            <div className="part2-model-answer">
+              <h3>Readback</h3>
+              <p>{scenario.readback.modelReadback}</p>
+            </div>
+            <div className="part2-model-answer">
+              <h3>Reporte</h3>
+              <p>{scenario.interaction.modelReport}</p>
+            </div>
+            <div className="part2-model-answer">
+              <h3>Correção ({scenario.atcFollowUp.correctionType})</h3>
+              <p>{scenario.atcFollowUp.modelCorrection}</p>
+            </div>
+            <div className="part2-model-answer">
+              <h3>Reported speech</h3>
+              <p>{scenario.reportedSpeech.modelAnswer}</p>
+            </div>
+          </div>
+        )}
+      </>
+    );
+  };
+
+  const renderStepToolbar = () => (
+    <div className="study-toolbar">
+      {step < 8 && (
+        <>
+          {!canAdvance && isSimulationSpeakStep(step) && (
+            <p className="part2-sim-advance-hint">Grave e envie sua resposta com Azure para continuar.</p>
+          )}
+          <button
+            type="button"
+            className={missionMode ? "btn purple btn-large" : "btn blue"}
+            onClick={next}
+            disabled={!canAdvance}
+          >
+            {missionMode ? "Continue →" : "Próximo passo →"}
+          </button>
+        </>
+      )}
+      {step === 8 && (
+        <button type="button" className="btn purple btn-large" onClick={finishSituation}>
+          {situationIdx < situations.length - 1
+            ? `Situation ${scenario?.situationNumber} complete — next →`
+            : missionMode
+              ? "Finish today's exam →"
+              : "Finalizar simulação e ver nota ICAO →"}
+        </button>
+      )}
+    </div>
+  );
+
+  const wrapWithNotes = (content: ReactNode) =>
+    missionMode ? (
+      content
+    ) : (
+      <Part2NotesLayout notes={studentNotes} onNotesChange={setStudentNotes}>
+        {content}
+      </Part2NotesLayout>
+    );
+
   if (showResults && aggregated && activeVersion) {
     return (
-      <div className="part2-mode">
+      <div className={missionMode ? "part2-mission-results" : "part2-mode"}>
         <SimulationResultsPanel
           result={aggregated}
           examVersion={activeVersion}
           onRestart={resetSimulation}
+          missionContinueHref={missionMode ? missionContinueHref : undefined}
+          missionContinueLabel={missionMode ? missionContinueLabel : undefined}
         />
       </div>
     );
   }
 
   if (step === -1) {
+    if (missionMode) {
+      return (
+        <article className="part1-mission-card card card-essential">
+          <div className="card-meta part1-mission-meta">
+            {forcedExamVersion && (
+              <span className="exam-version-badge">{EXAM_LABELS[forcedExamVersion]}</span>
+            )}
+            <span className="part1-step-technique">Full exam</span>
+          </div>
+          <h2 className="question">Ready for today&apos;s Part 2?</h2>
+          <p className="part1-step-hint">
+            Five situations with original exam audio. Have paper and pen ready — Captain Delta will
+            suggest codes; you write offline like the real SDEA.
+          </p>
+          <div className="part1-step-panel">
+            <button type="button" className="btn purple btn-large" onClick={startSituation}>
+              Start sound check →
+            </button>
+          </div>
+        </article>
+      );
+    }
+
     return (
       <div className="part2-mode">
-        {!forcedExamVersion && <ExamVersionPicker value={examVersion} onChange={setExamVersion} />}
+        {!forcedExamVersion && (
+          <ExamVersionPicker value={examVersion} onChange={setExamVersion} />
+        )}
         <div className="exam-pick-card">
           <h2>Simulação completa — Part 2</h2>
           <p className="sub">
             {examVersion !== "all"
-              ? `${EXAM_LABELS[examVersion]} — áudio original, 5 situações, avaliação Azure`
+              ? `${EXAM_LABELS[examVersion as ExamVersion]} — áudio original, 5 situações, avaliação Azure`
               : "Sorteia uma prova (23C–26C). Grave cada resposta com Azure; no final você vê o nível ICAO (2–6) e todos os erros."}
           </p>
           <p className="part2-hint">
-            Durante a simulação, use o painel <strong>ICAO Quick Notes</strong> abaixo do cenário para
-            anotar códigos enquanto ouve o ATC.
+            Durante a simulação, use o painel <strong>ICAO Quick Notes</strong> abaixo do cenário
+            para anotar códigos enquanto ouve o ATC.
           </p>
           <button type="button" className="btn green btn-large" onClick={startSituation}>
             Iniciar simulação
@@ -230,37 +429,75 @@ export default function FullSimulationMode({
 
   if (step === -2 && activeVersion) {
     const soundCheckUrl = examAudioUrl(activeVersion, SOUND_CHECK_TRACK);
-    return (
-      <div className="part2-mode">
-        <header className="part2-mode-head">
-          <span className="badge">{EXAM_LABELS[activeVersion]} — Sound check</span>
-        </header>
-        <Part2NotesLayout notes={studentNotes} onNotesChange={setStudentNotes}>
-        <article className="card card-essential part2-card">
+    const soundCard = (
+      <article className={missionMode ? "part1-mission-card card card-essential" : "card card-essential part2-card"}>
+        {missionMode ? (
+          <>
+            <div className="card-meta part1-mission-meta">
+              <span className="exam-version-badge">{EXAM_LABELS[activeVersion]}</span>
+              <span className="part1-step-technique">Sound check</span>
+            </div>
+            <h2 className="question">Track 1 — Sound check</h2>
+            <p className="part1-step-hint">
+              Like the real exam: headset on, confirm volume, paper and pen ready.
+            </p>
+          </>
+        ) : (
           <div className="card-top">
             <h2 className="question">TRACK 1 — Sound check</h2>
             <p className="part2-hint">
               Como na prova real: coloque o headset, ouça o sound check e confirme que o volume está ok.
             </p>
-            <ExamAudioPlayer
-              src={soundCheckUrl}
-              label={examAudioLabel(activeVersion, SOUND_CHECK_TRACK)}
-            />
           </div>
-          <div className="card-body">
-            <div className="study-toolbar">
-              <button type="button" className="btn green btn-large" onClick={() => setStep(0)}>
-                Volume ok — Situação 1 →
-              </button>
-            </div>
+        )}
+        <div className={missionMode ? "part1-step-panel" : "card-body"}>
+          <ExamAudioPlayer
+            src={soundCheckUrl}
+            label={examAudioLabel(activeVersion, SOUND_CHECK_TRACK)}
+          />
+          <div className="study-toolbar">
+            <button
+              type="button"
+              className={missionMode ? "btn purple btn-large" : "btn green btn-large"}
+              onClick={() => setStep(0)}
+            >
+              Volume ok — Situation 1 →
+            </button>
           </div>
-        </article>
-        </Part2NotesLayout>
-      </div>
+        </div>
+      </article>
     );
+
+    return missionMode ? soundCard : <div className="part2-mode">{wrapWithNotes(soundCard)}</div>;
   }
 
   if (!scenario || step < 0 || !current) return null;
+
+  if (missionMode) {
+    return (
+      <>
+        <Part2MissionStepFrame
+          scenario={scenario}
+          situationTotal={situations.length}
+          step={step}
+          stepTitle={current.title}
+          showPaperNotes={step !== 8}
+          toolbar={renderStepToolbar()}
+        >
+          {renderStepBody()}
+        </Part2MissionStepFrame>
+
+        {scenario.recommendedNotes && (
+          <Part2PaperSelfCheck
+            open={showNotesReview}
+            recommendedNotes={scenario.recommendedNotes}
+            situationTitle={scenario.title}
+            onContinue={advanceAfterSituation}
+          />
+        )}
+      </>
+    );
+  }
 
   const readbackAudio = examAudioUrl(scenario.examVersion, scenario.readback.audioTrack);
   const followUpAudio = examAudioUrl(scenario.examVersion, scenario.atcFollowUp.audioTrack);
@@ -286,7 +523,7 @@ export default function FullSimulationMode({
         ))}
       </div>
 
-      <Part2NotesLayout notes={studentNotes} onNotesChange={setStudentNotes}>
+      {wrapWithNotes(
       <article className="card card-essential part2-card part2-sim-main">
         <div className="card-top">
           <h2 className="question">{current.title}</h2>
@@ -413,28 +650,10 @@ export default function FullSimulationMode({
             </div>
           )}
 
-          <div className="study-toolbar">
-            {step < 8 && (
-              <>
-                {!canAdvance && isSimulationSpeakStep(step) && (
-                  <p className="part2-sim-advance-hint">Grave e envie sua resposta com Azure para continuar.</p>
-                )}
-                <button type="button" className="btn blue" onClick={next} disabled={!canAdvance}>
-                  Próximo passo →
-                </button>
-              </>
-            )}
-            {step === 8 && (
-              <button type="button" className="btn green btn-large" onClick={finishSituation}>
-                {situationIdx < situations.length - 1
-                  ? `Situação ${scenario.situationNumber} ok — próxima →`
-                  : "Finalizar simulação e ver nota ICAO →"}
-              </button>
-            )}
-          </div>
+          {renderStepToolbar()}
         </div>
-      </article>
-      </Part2NotesLayout>
+      </article>,
+      )}
 
       {scenario.recommendedNotes && (
         <RecommendedNotesReview

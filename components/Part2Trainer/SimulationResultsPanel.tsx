@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import IcaoLevelPanel from "@/components/IcaoLevelPanel";
 import YouGlishLink from "@/components/YouGlishLink";
 import { ICAO_CRITERION_LABELS, ICAO_LEVEL_LABELS } from "@/lib/evaluate/icaoLevel";
@@ -11,9 +12,17 @@ type Props = {
   result: AggregatedSimulationResult;
   examVersion: string;
   onRestart: () => void;
+  missionContinueHref?: string;
+  missionContinueLabel?: string;
 };
 
-export default function SimulationResultsPanel({ result, examVersion, onRestart }: Props) {
+export default function SimulationResultsPanel({
+  result,
+  examVersion,
+  onRestart,
+  missionContinueHref,
+  missionContinueLabel,
+}: Props) {
   const { rating, mispronunciations, improvements, missingKeywords, stepResults } = result;
   const examLabel = EXAM_LABELS[examVersion as keyof typeof EXAM_LABELS] ?? examVersion;
 
@@ -122,8 +131,13 @@ export default function SimulationResultsPanel({ result, examVersion, onRestart 
       </section>
 
       <div className="study-toolbar">
+        {missionContinueHref && (
+          <Link href={missionContinueHref} className="btn purple btn-large">
+            {missionContinueLabel ?? "Continue today's flight →"}
+          </Link>
+        )}
         <button type="button" className="btn green btn-large" onClick={onRestart}>
-          Nova simulação
+          {missionContinueHref ? "Refazer prova de hoje" : "Nova simulação"}
         </button>
       </div>
     </div>

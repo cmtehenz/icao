@@ -1,5 +1,3 @@
-import { loadReadbackQueue } from "@/lib/part2ReadbackQueue";
-import { loadInteractionQueue } from "@/lib/part2InteractionQueue";
 import { loadVault, VAULT_PASS_SCORE } from "@/lib/pronunciationVault";
 import {
   loadStudyDays,
@@ -29,10 +27,6 @@ export type StudyWeeklyReportData = {
   days: WeeklyDayStat[];
   vaultCritical: number;
   vaultTotal: number;
-  readbackQueueDone: number;
-  readbackQueueTotal: number;
-  interactionQueueDone: number;
-  interactionQueueTotal: number;
 };
 
 function weekDayKeys(): string[] {
@@ -100,8 +94,6 @@ export function buildStudyWeeklyReport(
   );
 
   const vault = loadVault();
-  const readback = loadReadbackQueue();
-  const interaction = loadInteractionQueue();
 
   return {
     weekGood: studyWeekGoodDays(days, mode),
@@ -111,9 +103,5 @@ export function buildStudyWeeklyReport(
     days: dayStats,
     vaultCritical: vault.filter((w) => w.lastAccuracy < VAULT_PASS_SCORE).length,
     vaultTotal: vault.length,
-    readbackQueueDone: readback?.completedIds.length ?? 0,
-    readbackQueueTotal: readback?.scenarioIds.length ?? 0,
-    interactionQueueDone: interaction?.completedIds.length ?? 0,
-    interactionQueueTotal: interaction?.scenarioIds.length ?? 0,
   };
 }

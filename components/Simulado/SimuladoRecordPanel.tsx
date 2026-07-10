@@ -114,12 +114,21 @@ export default function SimuladoRecordPanel({
     }
   };
 
-  if (!azure.configured) {
+  if (azure.envConfigured === null) {
+    return (
+      <div className="sim-record">
+        <p className="sub">Verificando Azure Speech…</p>
+      </div>
+    );
+  }
+
+  if (azure.envMissing || !azure.configured) {
     return (
       <div className="sim-record blocked">
         <p className="voice-coach-error">
-          Azure Speech é obrigatório. Configure <code>AZURE_SPEECH_KEY</code> e{" "}
-          <code>AZURE_SPEECH_REGION</code> no servidor.
+          {azure.envMissing
+            ? "Azure Speech é obrigatório. Configure AZURE_SPEECH_KEY e AZURE_SPEECH_REGION no servidor."
+            : (azure.error ?? "Azure Speech indisponível. Faça login e tente de novo.")}
         </p>
       </div>
     );

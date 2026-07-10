@@ -1754,6 +1754,174 @@ h1 {
   margin: 0;
 }
 
+/* Part 2 mission — aligned with Part 1 mission layout */
+.part2-mission-page {
+  padding-bottom: 5rem;
+}
+
+.part2-pipeline-strip {
+  gap: 0.28rem;
+}
+
+.part2-pipeline-strip .part1-pipeline-chip {
+  font-size: 0.62rem;
+  padding: 0.24rem 0.45rem;
+}
+
+.part2-situation-badge {
+  max-width: min(100%, 14rem);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.part2-paper-notes-inline {
+  margin-top: 0.25rem;
+  padding: 0.85rem 0.95rem;
+  border-radius: 12px;
+  border: 1px dashed color-mix(in srgb, var(--academy-amber) 40%, var(--border));
+  background: color-mix(in srgb, var(--academy-amber) 5%, var(--bg-subtle));
+}
+
+.part2-paper-notes-inline-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.82rem;
+}
+
+.part2-paper-notes-inline-head strong {
+  font-weight: 700;
+}
+
+.part2-paper-notes-codes-inline-list {
+  list-style: decimal;
+  margin: 0;
+  padding-left: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.part2-paper-notes-codes-inline-list li {
+  font-family: ui-monospace, monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.part2-mission-results {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.part2-mission-layout {
+  gap: 1rem;
+}
+
+@media (min-width: 900px) {
+  .part2-mission-layout {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .part2-mission-layout .part2-sim-main {
+    flex: 1;
+  }
+
+  .part2-paper-notes {
+    flex: 0 0 min(280px, 32%);
+    position: sticky;
+    top: 1rem;
+  }
+}
+
+.part2-paper-notes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 1rem 1.05rem;
+  border-radius: 14px;
+  border: 1px dashed color-mix(in srgb, var(--academy-amber) 45%, var(--border));
+  background: color-mix(in srgb, var(--academy-amber) 6%, var(--card));
+}
+
+.part2-paper-notes-head {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+}
+
+.part2-paper-notes-head h3 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.part2-paper-notes-kicker {
+  margin: 0.15rem 0 0;
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+}
+
+.part2-paper-notes-icon {
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.part2-paper-notes-captain {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+.part2-paper-notes-codes {
+  list-style: decimal;
+  margin: 0;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.part2-paper-notes-codes li {
+  font-family: ui-monospace, monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.12rem 0;
+}
+
+.part2-paper-notes-codes-inline {
+  list-style: none;
+  padding-left: 0;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.part2-paper-notes-codes-inline li {
+  padding: 0.22rem 0.5rem;
+  border-radius: 6px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+}
+
+.part2-paper-notes-empty,
+.part2-paper-notes-reminder {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.part2-paper-self-check-required h3 {
+  margin: 0 0 0.35rem;
+  font-size: 0.9rem;
+}
+
 .part1-brief-resources {
   display: flex;
   flex-direction: column;

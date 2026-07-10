@@ -7,14 +7,12 @@ import ExamVersionPicker from "@/components/ExamVersionPicker";
 import Part2NotesLayout from "@/components/Part2Trainer/Part2NotesLayout";
 import Part2NotesReviewButton from "@/components/Part2Trainer/Part2NotesReviewButton";
 import Part2ReportedShadowPanel from "@/components/Part2Trainer/Part2ReportedShadowPanel";
-import PronunciationWarmupBanner from "@/components/study/PronunciationWarmupBanner";
 import VoiceCoachPanel from "@/components/VoiceCoachPanel";
 import VoicePracticePanel from "@/components/study/VoicePracticePanel";
 import StudyCardToolbar from "@/components/study/StudyCardToolbar";
 import ProgressBadge from "@/components/study/ProgressBadge";
 import CardStatusActions from "@/components/study/CardStatusActions";
 import { usePart2StudentNotes } from "@/hooks/usePart2StudentNotes";
-import { usePart2WarmupGate } from "@/hooks/usePart2WarmupGate";
 import { examAudioUrl } from "@/lib/exams/audio";
 import type { ExamVersion } from "@/lib/exams/types";
 import {
@@ -51,7 +49,6 @@ export default function ReportedSpeechMode({
     [scenarioIdFromUrl],
   );
 
-  const { blocked, message } = usePart2WarmupGate();
   const [examVersion, setExamVersion] = useState<ExamVersion | "all">(navFromUrl.examVersion);
   const [index, setIndex] = useState(navFromUrl.index);
   const [showModel, setShowModel] = useState(false);
@@ -141,8 +138,6 @@ export default function ReportedSpeechMode({
             </div>
           )}
 
-          <PronunciationWarmupBanner />
-
           <VoicePracticePanel
             initialOpen={practiceOpen}
             defaultTab={practiceTab}
@@ -155,8 +150,6 @@ export default function ReportedSpeechMode({
                 context={scenario.title}
                 situationId={scenario.id}
                 initialOpen
-                recordingBlocked={blocked}
-                recordingBlockedMessage={message}
               />
             }
             coach={
@@ -166,8 +159,6 @@ export default function ReportedSpeechMode({
                 modelAnswer={scenario.reportedSpeech.modelAnswer}
                 evaluateType="part2-reported"
                 situationId={scenario.id}
-                recordingBlocked={blocked}
-                recordingBlockedMessage={message}
               />
             }
           />

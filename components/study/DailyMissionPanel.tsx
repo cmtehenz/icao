@@ -209,14 +209,14 @@ export default function DailyMissionPanel() {
             Part 2 — {summary.part2.done}/{summary.part2.total}
           </h3>
           <p className="daily-mission-meta">
-            Simulação completa · {part2.examVersion} · 5 situações com coach Azure
+            Prova completa · {part2.examVersion} · 5 situações · papel e caneta
           </p>
           {!summary.part2.complete ? (
             <Link href={part2MissionLink(part2)} className="btn secondary btn-sm">
-              Iniciar simulação →
+              Iniciar prova de hoje →
             </Link>
           ) : (
-            <p className="daily-mission-vocab-progress">✓ Simulação concluída hoje</p>
+            <p className="daily-mission-vocab-progress">✓ Part 2 concluído hoje</p>
           )}
         </article>
 

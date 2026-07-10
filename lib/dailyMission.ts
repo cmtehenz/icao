@@ -1,4 +1,5 @@
 import { todayExamLabel } from "@/lib/dailyExamRotation";
+import { EXAM_LABELS } from "@/lib/exams/types";
 import { isPronunciationWarmupBlocking } from "@/lib/dailyMission/pronunciationWarmup";
 import { flightDebriefLink, flightDebriefProgress, isFlightDebriefComplete } from "@/lib/flightDebrief/flightDebriefProgress";
 import { isFlightDebriefAvailable } from "@/lib/flightDebrief/buildFlightDebrief";
@@ -179,8 +180,8 @@ export function getNextMissionAction(): DailyMissionNextAction | null {
   if (!part2Mission.simulationDone) {
     return {
       href: part2MissionLink(part2Mission),
-      title: `Part 2 · ${part2Mission.examVersion} simulation`,
-      hint: "5 full situations from today's exam",
+      title: `Part 2 · ${EXAM_LABELS[part2Mission.examVersion]}`,
+      hint: "Full exam today — 5 situations, paper notes like the real SDEA",
     };
   }
 

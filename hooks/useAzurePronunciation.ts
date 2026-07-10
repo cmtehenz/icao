@@ -68,6 +68,7 @@ import {
   isAzureEnvMissing,
   resolveAzureConfigFromResponse,
   traceAzureConfig,
+  fetchAzureSpeechConfig,
 } from "@/lib/azure/azureSpeechConfig";
 import type { AzureSpeechTokenResponse } from "@/lib/azure/speechToken";
 import { traceRecordStep } from "@/lib/captainDelta/pronunciationRecordTrace";
@@ -162,6 +163,25 @@ export function useAzurePronunciation() {
   }, []);
 
   ensurePronunciationForceReleaseListener();
+
+  useEffect(() => {
+    let cancelled = false;
+    void fetchAzureSpeechConfig().then((status) => {
+      if (cancelled || !mountedRef.current) return;
+      if (isAzureEnvMissing(status)) {
+        setEnvConfigured(false);
+        setConfigured(false);
+        return;
+      }
+      setEnvConfigured(true);
+      if (status.hasToken) {
+        setConfigured(true);
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     const unregisterMount = registerPronunciationHookMount();

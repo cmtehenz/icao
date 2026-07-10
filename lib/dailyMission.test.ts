@@ -110,7 +110,7 @@ vi.mock("@/lib/part2DailyMission", () => ({
     simulationDone: state.part2Mission.simulationDone,
   }),
   part2DailyMissionProgress: () => state.part2Progress,
-  part2MissionLink: () => "/part2?mode=simulation",
+  part2MissionLink: () => "/part2",
 }));
 
 vi.mock("@/lib/simulateDailyMission", () => ({

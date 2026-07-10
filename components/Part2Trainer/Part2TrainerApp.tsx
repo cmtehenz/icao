@@ -3,15 +3,12 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import FullSimulationMode from "@/components/Part2Trainer/FullSimulationMode";
 import InteractionMode from "@/components/Part2Trainer/InteractionMode";
 import ReadbackMode from "@/components/Part2Trainer/ReadbackMode";
 import ReportedSpeechMode from "@/components/Part2Trainer/ReportedSpeechMode";
 import { ICAO_VOCABULARY, ICAO_CORE_VOCABULARY } from "@/data/icaoVocabulary";
 import { useTheme } from "@/hooks/useTheme";
-import { useSimulationUnlock } from "@/hooks/useSimulationUnlock";
 import { ALL_EXAM_SITUATIONS } from "@/data/exams/part2Data";
-import { EXAM_VERSIONS, type ExamVersion } from "@/lib/exams/types";
 import { loadPart2Progress, part2Stats, type Part2ProgressStore } from "@/lib/part2/progress";
 import type { Part2Mode } from "@/lib/part2/types";
 
@@ -19,7 +16,6 @@ const MODES: { id: Part2Mode; label: string; desc: string }[] = [
   { id: "readback", label: "Readback", desc: "20 clearances reais com áudio" },
   { id: "interaction", label: "Interaction", desc: "Reportar problemas — 20 cenários" },
   { id: "reported", label: "Reported Speech", desc: "What did the controller say?" },
-  { id: "simulation", label: "Simulação", desc: "5 situações × prova completa" },
 ];
 
 export default function Part2TrainerApp() {
@@ -27,12 +23,7 @@ export default function Part2TrainerApp() {
   const scenarioId = searchParams.get("scenario");
   const openShadow = searchParams.get("shadow") === "1";
   const openPractice = searchParams.get("practice") === "1";
-  const examParam = searchParams.get("exam");
-  const forcedExamVersion = EXAM_VERSIONS.includes(examParam as ExamVersion)
-    ? (examParam as ExamVersion)
-    : undefined;
   const { theme, toggle: toggleTheme, hydrated } = useTheme();
-  const { unlocked: simUnlocked, hint: simHint } = useSimulationUnlock();
   const [mode, setMode] = useState<Part2Mode>("readback");
   const [progress, setProgress] = useState<Part2ProgressStore>({
     items: {},
@@ -49,16 +40,8 @@ export default function Part2TrainerApp() {
     const requested = searchParams.get("mode");
     if (requested === "readback" || requested === "interaction" || requested === "reported") {
       setMode(requested);
-    } else if (requested === "simulation" && simUnlocked) {
-      setMode("simulation");
     }
-  }, [searchParams, simUnlocked]);
-
-  useEffect(() => {
-    if (mode === "simulation" && !simUnlocked) {
-      setMode("readback");
-    }
-  }, [mode, simUnlocked]);
+  }, [searchParams]);
 
   const stats = part2Stats(progress, ICAO_VOCABULARY.length);
 
@@ -81,9 +64,9 @@ export default function Part2TrainerApp() {
 
       <section className="hero hero-compact hero-delta">
         <div className="wrap hero-delta-inner">
-          <h1>Part 2 — Interacting as a Pilot</h1>
+          <h1>Part 2 — Open practice</h1>
           <p className="sub hero-sub-compact">
-            Readback, interaction e reported speech das provas 23C–26C.
+            Readback, interaction e reported speech — revisão livre, fora do voo de hoje.
           </p>
           <div className="delta-dashboard delta-dashboard-compact part2-dashboard" aria-label="Progresso Part 2">
             <div className="delta-stat mastered">
@@ -99,33 +82,26 @@ export default function Part2TrainerApp() {
             <Link href="/word-mission" className="hero-inline-link">
               Vocabulário Part 2 ({ICAO_CORE_VOCABULARY.length} core) →
             </Link>
+            {" · "}
+            <Link href="/part2" className="hero-inline-link">
+              ← Prova completa de hoje (missão)
+            </Link>
           </p>
         </div>
       </section>
 
       <div className="wrap part2-mode-nav">
-        {MODES.map((m) => {
-          const locked = m.id === "simulation" && !simUnlocked;
-          return (
-            <button
-              key={m.id}
-              type="button"
-              className={`part2-mode-btn ${mode === m.id ? "active" : ""} ${locked ? "locked" : ""}`}
-              onClick={() => {
-                if (locked) return;
-                setMode(m.id);
-              }}
-              disabled={locked}
-              title={locked ? simHint : undefined}
-            >
-              <strong>
-                {m.label}
-                {locked && " 🔒"}
-              </strong>
-              <span>{locked ? simHint : m.desc}</span>
-            </button>
-          );
-        })}
+        {MODES.map((m) => (
+          <button
+            key={m.id}
+            type="button"
+            className={`part2-mode-btn ${mode === m.id ? "active" : ""}`}
+            onClick={() => setMode(m.id)}
+          >
+            <strong>{m.label}</strong>
+            <span>{m.desc}</span>
+          </button>
+        ))}
       </div>
 
       <main className="main main-essential part2-main">
@@ -155,13 +131,6 @@ export default function Part2TrainerApp() {
               openShadow={openShadow}
               openPractice={openPractice}
               scenarioId={scenarioId}
-            />
-          )}
-          {mode === "simulation" && simUnlocked && (
-            <FullSimulationMode
-              progress={progress}
-              onProgressChange={setProgress}
-              forcedExamVersion={forcedExamVersion}
             />
           )}
         </section>

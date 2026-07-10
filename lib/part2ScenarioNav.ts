@@ -1,6 +1,9 @@
 import { ALL_EXAM_SITUATIONS, getSituationsByExam } from "@/data/exams/part2Data";
-import type { ExamVersion } from "@/lib/exams/types";
-import { findScenarioIndex } from "@/lib/part2ReadbackQueue";
+import type { ExamSituation, ExamVersion } from "@/lib/exams/types";
+
+export function findScenarioIndex(scenarios: ExamSituation[], scenarioId: string): number {
+  return scenarios.findIndex((s) => s.id === scenarioId);
+}
 
 export type Part2ScenarioNav = {
   examVersion: ExamVersion | "all";

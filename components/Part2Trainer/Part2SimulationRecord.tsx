@@ -1,12 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { useAzurePronunciation } from "@/hooks/useAzurePronunciation";
 import { warnCaptain } from "@/lib/captainDelta/devLog";
 import { emitCaptainDeltaSuggestion } from "@/lib/captainDelta/events";
 import { buildPart2StepCoaching } from "@/lib/captainDelta/part2StepCoaching";
 import { fetchEvaluation } from "@/lib/evaluate/clientEvaluate";
-import { saveEvaluationRecord } from "@/lib/evaluate/saveEvaluation";
 import type { EvaluateFeedback, EvaluateType } from "@/lib/evaluate/types";
 
 type Props = {
@@ -36,6 +36,9 @@ export default function Part2SimulationRecord({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showModel, setShowModel] = useState(false);
+
+  const configLoading = azure.envConfigured === null;
+  const canUseAzure = !azure.envMissing && (azure.configured || azure.envConfigured === true);
 
   const finishAzure = async () => {
     setLoading(true);
@@ -67,7 +70,11 @@ export default function Part2SimulationRecord({
   const startRecording = async () => {
     setError(null);
     azure.clear();
-    await azure.start(modelAnswer, evaluateType);
+    try {
+      await azure.start(modelAnswer, evaluateType);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Não foi possível iniciar a gravação Azure.");
+    }
   };
 
   if (completed) {
@@ -102,12 +109,34 @@ export default function Part2SimulationRecord({
     );
   }
 
-  if (!azure.configured) {
+  if (configLoading) {
+    return (
+      <div className="part2-sim-record">
+        <p className="sub">Verificando Azure Speech…</p>
+      </div>
+    );
+  }
+
+  if (azure.envMissing) {
     return (
       <div className="part2-sim-record blocked">
         <p className="voice-coach-error">
           Azure Speech é obrigatório na simulação. Configure <code>AZURE_SPEECH_KEY</code> e{" "}
           <code>AZURE_SPEECH_REGION</code> no <code>.env</code> e reinicie o servidor.
+        </p>
+      </div>
+    );
+  }
+
+  if (!canUseAzure) {
+    return (
+      <div className="part2-sim-record blocked">
+        <p className="voice-coach-error">
+          {azure.error ??
+            "Azure Speech indisponível. Faça login ou verifique a conexão e tente de novo."}
+        </p>
+        <p className="sub">
+          <Link href="/login">Entrar na conta →</Link>
         </p>
       </div>
     );
@@ -129,7 +158,7 @@ export default function Part2SimulationRecord({
         </div>
       )}
       <p className="part2-sim-record-hint">
-        Grave sua resposta com Azure — pronúncia e conteúdo serão avaliados ao final da simulação.
+        Grave sua resposta com Azure — pronúncia e conteúdo serão avaliados nesta situação.
       </p>
       <div className="voice-coach-actions">
         {!azure.assessing ? (

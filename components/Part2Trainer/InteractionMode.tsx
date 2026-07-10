@@ -1,32 +1,24 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import ExamVersionPicker from "@/components/ExamVersionPicker";
-import Part2InteractionQueue from "@/components/Part2Trainer/Part2InteractionQueue";
 import Part2InteractionShadowPanel from "@/components/Part2Trainer/Part2InteractionShadowPanel";
 import Part2NotesLayout from "@/components/Part2Trainer/Part2NotesLayout";
 import Part2NotesReviewButton from "@/components/Part2Trainer/Part2NotesReviewButton";
-import PronunciationWarmupBanner from "@/components/study/PronunciationWarmupBanner";
 import VoiceCoachPanel from "@/components/VoiceCoachPanel";
 import VoicePracticePanel from "@/components/study/VoicePracticePanel";
 import StudyCardToolbar from "@/components/study/StudyCardToolbar";
 import { usePart2StudentNotes } from "@/hooks/usePart2StudentNotes";
-import { usePart2WarmupGate } from "@/hooks/usePart2WarmupGate";
 import ProgressBadge from "@/components/study/ProgressBadge";
 import CardStatusActions from "@/components/study/CardStatusActions";
 import type { ExamVersion } from "@/lib/exams/types";
-import { findScenarioIndex } from "@/lib/part2ReadbackQueue";
 import {
   remapIndexAfterExamChange,
   resolvePart2ScenarioNav,
   scenariosForExamVersion,
 } from "@/lib/part2ScenarioNav";
-import {
-  getOrCreateInteractionQueue,
-  interactionQueueProgress,
-} from "@/lib/part2InteractionQueue";
 import {
   getPart2ItemProgress,
   setPart2ItemStatus,
@@ -56,7 +48,6 @@ export default function InteractionMode({
     [scenarioIdFromUrl],
   );
 
-  const { blocked, message } = usePart2WarmupGate();
   const [examVersion, setExamVersion] = useState<ExamVersion | "all">(navFromUrl.examVersion);
   const [index, setIndex] = useState(navFromUrl.index);
   const [showModel, setShowModel] = useState(false);
@@ -68,18 +59,6 @@ export default function InteractionMode({
   if (!scenario) return null;
   const itemProgress = getPart2ItemProgress(progress, `${scenario.id}-int`);
 
-  const selectScenario = useCallback(
-    (scenarioId: string) => {
-      const nextIndex = findScenarioIndex(scenarios, scenarioId);
-      if (nextIndex >= 0) {
-        setIndex(nextIndex);
-        setShowModel(false);
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
-    },
-    [scenarios],
-  );
-
   const go = (delta: number) => {
     setIndex((i) => (i + delta + scenarios.length) % scenarios.length);
     setShowModel(false);
@@ -90,28 +69,15 @@ export default function InteractionMode({
   };
 
   useEffect(() => {
-    if (scenarioIdFromUrl) {
-      const next = resolvePart2ScenarioNav(scenarioIdFromUrl);
-      setExamVersion(next.examVersion);
-      setIndex(next.index);
-      setShowModel(false);
-      return;
-    }
-    if (!openShadow) return;
-    const queue = getOrCreateInteractionQueue(progress, scenarios);
-    const { currentId } = interactionQueueProgress(queue);
-    if (currentId) selectScenario(currentId);
-  }, [scenarioIdFromUrl, openShadow, progress, scenarios, selectScenario]);
+    if (!scenarioIdFromUrl) return;
+    const next = resolvePart2ScenarioNav(scenarioIdFromUrl);
+    setExamVersion(next.examVersion);
+    setIndex(next.index);
+    setShowModel(false);
+  }, [scenarioIdFromUrl]);
 
   return (
     <div className="part2-mode">
-      <Part2InteractionQueue
-        scenarios={scenarios}
-        progress={progress}
-        currentScenarioId={scenario.id}
-        onSelectScenario={selectScenario}
-      />
-
       <ExamVersionPicker
         value={examVersion}
         onChange={(v) => {
@@ -174,8 +140,6 @@ export default function InteractionMode({
             </>
           )}
 
-          <PronunciationWarmupBanner />
-
           <VoicePracticePanel
             initialOpen={openShadow || openPractice}
             defaultTab="shadow"
@@ -187,8 +151,6 @@ export default function InteractionMode({
                 context={scenario.context}
                 situationId={scenario.id}
                 initialOpen
-                recordingBlocked={blocked}
-                recordingBlockedMessage={message}
               />
             }
             coach={
@@ -198,8 +160,6 @@ export default function InteractionMode({
                 modelAnswer={scenario.interaction.modelReport}
                 evaluateType="part2-interaction"
                 situationId={scenario.id}
-                recordingBlocked={blocked}
-                recordingBlockedMessage={message}
               />
             }
           />

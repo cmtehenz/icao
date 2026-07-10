@@ -6,8 +6,6 @@ import {
   type StudyWeeklyReportData,
 } from "@/lib/studyWeeklyReport";
 import { STUDY_TIME_CHANGE_EVENT } from "@/lib/studyTime";
-import { READBACK_QUEUE_CHANGE_EVENT } from "@/lib/part2ReadbackQueue";
-import { INTERACTION_QUEUE_CHANGE_EVENT } from "@/lib/part2InteractionQueue";
 import { VAULT_CHANGE_EVENT } from "@/lib/pronunciationVault";
 
 export default function StudyWeeklyReport() {
@@ -17,12 +15,7 @@ export default function StudyWeeklyReport() {
 
   useEffect(() => {
     refresh();
-    const events = [
-      STUDY_TIME_CHANGE_EVENT,
-      READBACK_QUEUE_CHANGE_EVENT,
-      INTERACTION_QUEUE_CHANGE_EVENT,
-      VAULT_CHANGE_EVENT,
-    ];
+    const events = [STUDY_TIME_CHANGE_EVENT, VAULT_CHANGE_EVENT];
     for (const ev of events) window.addEventListener(ev, refresh);
     return () => {
       for (const ev of events) window.removeEventListener(ev, refresh);
@@ -81,22 +74,6 @@ export default function StudyWeeklyReport() {
           Banco de pronúncia:{" "}
           <strong>{report.vaultCritical}</strong> críticas de {report.vaultTotal}
         </li>
-        {report.readbackQueueTotal > 0 && (
-          <li>
-            Fila readback:{" "}
-            <strong>
-              {report.readbackQueueDone}/{report.readbackQueueTotal}
-            </strong>
-          </li>
-        )}
-        {report.interactionQueueTotal > 0 && (
-          <li>
-            Fila interaction:{" "}
-            <strong>
-              {report.interactionQueueDone}/{report.interactionQueueTotal}
-            </strong>
-          </li>
-        )}
       </ul>
     </section>
   );

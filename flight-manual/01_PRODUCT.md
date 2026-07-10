@@ -120,7 +120,9 @@ SDEA Part 1 has **12 real exam questions** (3 per prova 23C–26C). The daily fl
 
 ### Part 2 (leg 4)
 
-Readback, interaction, and picture tasks under time pressure. Quick notes in pilot shorthand. Simulates exam Part 2 operational pressure.
+Full **Part 2 exam for today's prova** (5 situations) — readback, interaction, AFFIRM/NEGATIVE, reported speech under time pressure. **Paper and pen** for quick notes (Captain suggests codes; student writes offline, like the real SDEA). Browse mode (`/part2?browse=1`) keeps fragmented practice and digital notes for review.
+
+See **[07_PART2_MISSION.md](./07_PART2_MISSION.md)**.
 
 ### Mission Recall (leg 7)
 

@@ -1,24 +1,20 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import ExamAudioPlayer from "@/components/ExamAudioPlayer";
 import ExamVersionPicker from "@/components/ExamVersionPicker";
-import Part2ReadbackQueue from "@/components/Part2Trainer/Part2ReadbackQueue";
 import Part2ReadbackShadowPanel from "@/components/Part2Trainer/Part2ReadbackShadowPanel";
-import PronunciationWarmupBanner from "@/components/study/PronunciationWarmupBanner";
 import VoiceCoachPanel from "@/components/VoiceCoachPanel";
 import VoicePracticePanel from "@/components/study/VoicePracticePanel";
 import Part2NotesLayout from "@/components/Part2Trainer/Part2NotesLayout";
 import Part2NotesReviewButton from "@/components/Part2Trainer/Part2NotesReviewButton";
 import StudyCardToolbar from "@/components/study/StudyCardToolbar";
 import { usePart2StudentNotes } from "@/hooks/usePart2StudentNotes";
-import { usePart2WarmupGate } from "@/hooks/usePart2WarmupGate";
 import ProgressBadge from "@/components/study/ProgressBadge";
 import CardStatusActions from "@/components/study/CardStatusActions";
 import { examAudioUrl } from "@/lib/exams/audio";
 import type { ExamVersion } from "@/lib/exams/types";
-import { findScenarioIndex, getOrCreateReadbackQueue, readbackQueueProgress } from "@/lib/part2ReadbackQueue";
 import {
   remapIndexAfterExamChange,
   resolvePart2ScenarioNav,
@@ -53,7 +49,6 @@ export default function ReadbackMode({
     [scenarioIdFromUrl],
   );
 
-  const { blocked, message } = usePart2WarmupGate();
   const [examVersion, setExamVersion] = useState<ExamVersion | "all">(navFromUrl.examVersion);
   const [index, setIndex] = useState(navFromUrl.index);
   const [showModel, setShowModel] = useState(false);
@@ -64,18 +59,6 @@ export default function ReadbackMode({
   const { studentNotes, setStudentNotes } = usePart2StudentNotes(scenario?.id ?? "");
   if (!scenario) return null;
   const itemProgress = getPart2ItemProgress(progress, `${scenario.id}-rb`);
-
-  const selectScenario = useCallback(
-    (scenarioId: string) => {
-      const nextIndex = findScenarioIndex(scenarios, scenarioId);
-      if (nextIndex >= 0) {
-        setIndex(nextIndex);
-        setShowModel(false);
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
-    },
-    [scenarios],
-  );
 
   const go = (delta: number) => {
     setIndex((i) => (i + delta + scenarios.length) % scenarios.length);
@@ -89,28 +72,15 @@ export default function ReadbackMode({
   const audioSrc = examAudioUrl(scenario.examVersion, scenario.readback.audioTrack);
 
   useEffect(() => {
-    if (scenarioIdFromUrl) {
-      const next = resolvePart2ScenarioNav(scenarioIdFromUrl);
-      setExamVersion(next.examVersion);
-      setIndex(next.index);
-      setShowModel(false);
-      return;
-    }
-    if (!openShadow) return;
-    const queue = getOrCreateReadbackQueue(progress, scenarios);
-    const { currentId } = readbackQueueProgress(queue);
-    if (currentId) selectScenario(currentId);
-  }, [scenarioIdFromUrl, openShadow, progress, scenarios, selectScenario]);
+    if (!scenarioIdFromUrl) return;
+    const next = resolvePart2ScenarioNav(scenarioIdFromUrl);
+    setExamVersion(next.examVersion);
+    setIndex(next.index);
+    setShowModel(false);
+  }, [scenarioIdFromUrl]);
 
   return (
     <div className="part2-mode">
-      <Part2ReadbackQueue
-        scenarios={scenarios}
-        progress={progress}
-        currentScenarioId={scenario.id}
-        onSelectScenario={selectScenario}
-      />
-
       <ExamVersionPicker
         value={examVersion}
         onChange={(v) => {
@@ -162,8 +132,6 @@ export default function ReadbackMode({
             </div>
           )}
 
-          <PronunciationWarmupBanner />
-
           <VoicePracticePanel
             initialOpen={openShadow || openPractice}
             defaultTab="shadow"
@@ -176,8 +144,6 @@ export default function ReadbackMode({
                 context={scenario.context}
                 situationId={scenario.id}
                 initialOpen
-                recordingBlocked={blocked}
-                recordingBlockedMessage={message}
               />
             }
             coach={
@@ -187,8 +153,6 @@ export default function ReadbackMode({
                 modelAnswer={scenario.readback.modelReadback}
                 evaluateType="part2-readback"
                 situationId={scenario.id}
-                recordingBlocked={blocked}
-                recordingBlockedMessage={message}
               />
             }
           />

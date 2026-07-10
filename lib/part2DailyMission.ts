@@ -74,6 +74,14 @@ export function markPart2SimulationDailyComplete(examVersion: ExamVersion): Part
   return next;
 }
 
+/** Restart today's Part 2 exam leg (5 situations). */
+export function resetPart2DailyMissionProgress(): Part2DailyMissionState {
+  const mission = getOrCreatePart2DailyMission();
+  const next: Part2DailyMissionState = { ...mission, simulationDone: false };
+  savePart2DailyMission(next);
+  return next;
+}
+
 export function part2DailyMissionProgress(mission = getOrCreatePart2DailyMission()): {
   done: number;
   total: number;
@@ -88,10 +96,6 @@ export function part2DailyMissionProgress(mission = getOrCreatePart2DailyMission
   };
 }
 
-export function part2MissionLink(mission = getOrCreatePart2DailyMission()): string {
-  const params = new URLSearchParams({
-    mode: "simulation",
-    exam: mission.examVersion,
-  });
-  return `/part2?${params.toString()}`;
+export function part2MissionLink(_mission = getOrCreatePart2DailyMission()): string {
+  return "/part2";
 }
