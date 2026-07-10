@@ -59,33 +59,42 @@ export function pickCodesInIdealOrder(
 const CLEARANCE_HINT =
   /^(SQK|RWY|HDG|HD|↑|↓|FL|FREQ|EXPECT|TAXI|RPT|ILS|RNAV|VIS|DCT|VEC|MAINT|PRC|HOLD)/i;
 
+/** Problem / confirm segment — not initial clearance readback. */
+const SITUATION_PHASE_HINT =
+  /^(FIRE|CAB|RTN|ENG|BIRD|FOD|GEAR|GPS|GPWS|DRONE|DOG|PAX|MED|HYD|COLL|COLLISION|TOW|AFF|NEG|CFM|HLD|VEC|DIV|EM|LF|LAND|HOT|CAB|PRC)\b/i;
+
 function isClearanceShorthand(note: string): boolean {
   return CLEARANCE_HINT.test(note.trim());
 }
 
+function isSituationPhaseCode(note: string): boolean {
+  return SITUATION_PHASE_HINT.test(note.trim());
+}
+
 /** Clearance-only codes in idealNotes order (when readback.idealNotes is absent). */
 function readbackCodesInOrder(notes: RecommendedNotes): string[] {
-  const scope = notes.readback ?? notes;
-  if (scope.idealNotes.length) return scope.idealNotes.slice(0, 10);
+  if (notes.readback?.idealNotes.length) {
+    return notes.readback.idealNotes.slice(0, 10);
+  }
 
-  const pool = [...scope.requiredCodes, ...(scope.optionalCodes ?? [])];
-  return notes.idealNotes
-    .filter(
-      (note) =>
-        isClearanceShorthand(note) && pool.some((code) => codesMatch(note, code)),
-    )
-    .slice(0, 10);
+  const pool = [...notes.requiredCodes, ...(notes.optionalCodes ?? [])];
+  const out: string[] = [];
+
+  for (const note of notes.idealNotes) {
+    if (isSituationPhaseCode(note)) break;
+    if (isClearanceShorthand(note) && pool.some((code) => codesMatch(note, code))) {
+      out.push(note);
+    } else if (out.length > 0) {
+      break;
+    }
+  }
+
+  return out.slice(0, 10);
 }
 
 /** Situation codes after the readback segment — still in full idealNotes order. */
 function problemCodesInOrder(notes: RecommendedNotes): string[] {
-  const readbackScope = notes.readback ?? notes;
-  const readbackKeys = new Set(
-    (readbackScope.idealNotes.length
-      ? readbackScope.idealNotes
-      : readbackCodesInOrder(notes)
-    ).map(normalizeKey),
-  );
+  const readbackKeys = new Set(readbackCodesInOrder(notes).map(normalizeKey));
 
   return notes.idealNotes.filter((note) => {
     const key = normalizeKey(note);

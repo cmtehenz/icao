@@ -13,9 +13,14 @@ export const PART2_RECOMMENDED_NOTES: Record<string, RecommendedNotes> = {
     },
   },
   "23C-s2": {
-    idealNotes: ["↑3000", "FREQ 119.25", "FIRE", "CAB", "RTN", "↓FL050", "HD060", "NEG"],
+    idealNotes: ["RWY HDG", "↑3000", "FREQ 119.25", "FIRE", "CAB", "RTN", "↓FL050", "HD060", "NEG"],
     requiredCodes: ["FIRE", "CAB", "RTN", "↓FL050", "HD060", "NEG"],
-    optionalCodes: ["FREQ", "↑3000"],
+    optionalCodes: ["FREQ", "↑3000", "RWY HDG"],
+    readback: {
+      idealNotes: ["RWY HDG", "↑3000", "FREQ 119.25"],
+      requiredCodes: ["RWY HDG", "↑3000"],
+      optionalCodes: ["FREQ 119.25", "FREQ"],
+    },
   },
   "23C-s3": {
     idealNotes: ["TAXI R F", "RWY 31R", "CAB", "RTN", "HLD", "SQK 7700", "NEG"],

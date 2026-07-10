@@ -39,6 +39,13 @@ describe("paperNotesHintForStep", () => {
     expect(hint.codes).toEqual(["SQK IDENT", "RWY HDG", "↑5000", "EXPECT ↑6000"]);
   });
 
+  it("shows Manaus readback only on listen — not fire/return codes", () => {
+    const hint = paperNotesHintForStep(0, PART2_RECOMMENDED_NOTES["23C-s2"]);
+    expect(hint.codes).toEqual(["RWY HDG", "↑3000", "FREQ 119.25"]);
+    expect(hint.codes).not.toContain("FIRE");
+    expect(hint.codes).not.toContain("NEG");
+  });
+
   it("uses problem segment order after readback", () => {
     const hint = paperNotesHintForStep(3, PART2_RECOMMENDED_NOTES["23C-s1"]);
     expect(hint.codes).toEqual(["GEAR STK", "HLD", "CFM"]);
