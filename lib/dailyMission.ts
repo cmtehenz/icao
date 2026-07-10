@@ -1,4 +1,5 @@
 import { todayExamLabel } from "@/lib/dailyExamRotation";
+import { isPronunciationWarmupBlocking } from "@/lib/dailyMission/pronunciationWarmup";
 import { flightDebriefLink, flightDebriefProgress, isFlightDebriefComplete } from "@/lib/flightDebrief/flightDebriefProgress";
 import { isFlightDebriefAvailable } from "@/lib/flightDebrief/buildFlightDebrief";
 import {
@@ -63,10 +64,7 @@ export type DailyMissionSummary = {
 };
 
 function pronunciationLegActive(): boolean {
-  const plan = getAdaptiveDailyPlan();
-  if (!plan.pronunciationFirst) return false;
-  const progress = pronunciationDailyMissionProgress(getOrCreatePronunciationDailyMission());
-  return progress.total > 0;
+  return isPronunciationWarmupBlocking();
 }
 
 export function areBaseMissionLegsComplete(): boolean {
@@ -84,7 +82,7 @@ export function getDailyMissionSummary(): DailyMissionSummary {
   const mode = loadStudyPlanMode();
   const plan = getAdaptiveDailyPlan();
   const pronunciation = pronunciationDailyMissionProgress(getOrCreatePronunciationDailyMission());
-  const pronunciationRequired = plan.pronunciationFirst && pronunciation.total > 0;
+  const pronunciationRequired = isPronunciationWarmupBlocking();
   const wordMission = wordDailyMissionProgress(getOrCreateWordDailyMission());
   const part1 = part1DailyMissionProgress(getOrCreatePart1DailyMission());
   const part2 = part2DailyMissionProgress(getOrCreatePart2DailyMission());
@@ -135,15 +133,13 @@ export function getNextMissionAction(): DailyMissionNextAction | null {
 
   const plan = getAdaptiveDailyPlan();
 
-  if (plan.pronunciationFirst) {
+  if (isPronunciationWarmupBlocking()) {
     const pron = pronunciationDailyMissionProgress(getOrCreatePronunciationDailyMission());
-    if (pron.total > 0 && !pron.complete) {
-      return {
-        href: pronunciationMissionLink(pron.currentWord ?? undefined),
-        title: `Pronunciation · ${summary.examLabel}`,
-        hint: `${pron.done}/${pron.total} warm-up words — speak clearly`,
-      };
-    }
+    return {
+      href: pronunciationMissionLink(pron.currentWord ?? undefined),
+      title: `Pronunciation warm-up · ${summary.examLabel}`,
+      hint: `${pron.done}/${pron.total} words — speak clearly before Word Mission`,
+    };
   }
 
   const wordMission = getOrCreateWordDailyMission();

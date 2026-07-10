@@ -4,6 +4,27 @@ Manual version history only. Sprint and audit details belong in Git history.
 
 ---
 
+## 3.6 — July 2026
+
+**Part 1 mission reform — anti-memorization mastery pipeline.**
+
+- Default `/part1` is mission mode: brief → anchors → PEEL shadow → keywords → coach
+- Flight Manual §06 documents study techniques and 12-question bank
+- Browse mode at `/part1?browse=1` for library review only
+
+---
+
+## 3.5 — July 2026
+
+**Part 1 mastery + mission progression fix.**
+
+- Pronunciation warm-up only blocks before Word Mission; after vocab leg → Part 1 (TAKEOFF)
+- Dedicated warm-up mode at `/word-mission?warmup=1`
+- Part 1 mastery tracker: 12 SDEA questions, PEEL shadow + coach → exam ready
+- Flight Manual documents Part 1 teaching method
+
+---
+
 ## 3.4 — July 2026
 
 **Adaptive training redesign (RFC-004) — Phase 4 progressive scaffolding.**

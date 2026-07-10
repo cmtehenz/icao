@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import WordMissionSession from "@/components/WordMission/WordMissionSession";
+import DailyPronunciationWarmup from "@/components/WordMission/DailyPronunciationWarmup";
 import type { IcaoVocabularyItem } from "@/data/icaoVocabulary";
 import { useVocabularyProgress } from "@/hooks/useVocabularyProgress";
 import { getNextMissionAction } from "@/lib/dailyMission";
@@ -52,6 +53,9 @@ export default function WordMissionMode({ initialTermId }: { initialTermId?: str
     window.addEventListener(WORD_DAILY_MISSION_EVENT, syncMissionProgress);
     return () => window.removeEventListener(WORD_DAILY_MISSION_EVENT, syncMissionProgress);
   }, [syncMissionProgress]);
+
+  const isWarmup = searchParams.get("warmup") === "1";
+  const warmupWord = searchParams.get("word")?.trim() || undefined;
 
   const debrief = useMemo(() => buildVocabMissionDebrief(), [missionProgress.done, showDebrief]);
   const nextAfterWordMission = useMemo(
@@ -115,6 +119,7 @@ export default function WordMissionMode({ initialTermId }: { initialTermId?: str
   }, [selectNextMissionTerm, syncDailyCompletedFromVocab]);
 
   useEffect(() => {
+    if (isWarmup) return;
     const requested = searchParams.get("term")?.trim() ?? initialTermId?.trim();
     if (!requested) return;
     const daily = getOrCreateWordDailyMission();
@@ -125,9 +130,10 @@ export default function WordMissionMode({ initialTermId }: { initialTermId?: str
     }
     const item = findWordMissionVocabItem(requested);
     if (item) selectTerm(item);
-  }, [searchParams, initialTermId, selectTerm, syncMissionProgress]);
+  }, [isWarmup, searchParams, initialTermId, selectTerm, syncMissionProgress]);
 
   useEffect(() => {
+    if (isWarmup) return;
     if (missionBootstrapped.current) return;
     if (searchParams.get("term") || initialTermId) return;
     missionBootstrapped.current = true;
@@ -135,7 +141,7 @@ export default function WordMissionMode({ initialTermId }: { initialTermId?: str
     if (daily.completedIds.length < daily.termIds.length) {
       startMission();
     }
-  }, [searchParams, initialTermId, startMission]);
+  }, [isWarmup, searchParams, initialTermId, startMission]);
 
   const todayTermLabels = useMemo(
     () => getWordMissionTodayTermLabels(getOrCreateWordDailyMission()),
@@ -163,7 +169,11 @@ export default function WordMissionMode({ initialTermId }: { initialTermId?: str
 
   return (
     <div className="word-mission-leg vocab-leg">
-      {missionTotal > 0 && !showDebrief && (
+      {isWarmup ? (
+        <DailyPronunciationWarmup initialWord={warmupWord} />
+      ) : null}
+
+      {!isWarmup && missionTotal > 0 && !showDebrief && (
         <>
           <p className="vocab-mission-progress" aria-live="polite">
             Today&apos;s mission · {missionProgress.done}/{missionTotal} terms
@@ -179,7 +189,7 @@ export default function WordMissionMode({ initialTermId }: { initialTermId?: str
         </>
       )}
 
-      {showDebrief && (
+      {!isWarmup && showDebrief && (
         <section className="vocab-debrief-card">
           <h2>Word Mission Debrief</h2>
           <ul className="vocab-debrief-list">
@@ -211,7 +221,7 @@ export default function WordMissionMode({ initialTermId }: { initialTermId?: str
         </section>
       )}
 
-      {!activeItem && !showDebrief && (
+      {!isWarmup && !activeItem && !showDebrief && (
         <section className="vocab-mission-card word-mission-intro-card">
           <p className="vocab-mission-badge">Captain Delta · ENGINE START</p>
           <p className="vocab-mission-quote">&ldquo;{WORD_MISSION_INTRO}&rdquo;</p>
@@ -231,7 +241,7 @@ export default function WordMissionMode({ initialTermId }: { initialTermId?: str
         </section>
       )}
 
-      {activeItem && activeProgress && !showDebrief && (
+      {!isWarmup && activeItem && activeProgress && !showDebrief && (
         <WordMissionSession
           item={activeItem}
           progress={activeProgress}

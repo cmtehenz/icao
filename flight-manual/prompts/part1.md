@@ -1,6 +1,6 @@
 # Part 1 — Evaluation & Coach Prompt
 
-**Flight Manual:** [Chapter 06 — Part 1](../flight-manual/06-part1.md)
+**Flight Manual:** [06 — Part 1 Mastery](../06_PART1_MASTERY.md)
 
 **Runtime:** `app/api/evaluate/route.ts`, `app/api/flight-instructor/route.ts`
 

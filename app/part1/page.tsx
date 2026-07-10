@@ -1,10 +1,10 @@
 import { Suspense } from "react";
-import FlashcardApp from "@/components/FlashcardApp";
+import Part1PageClient from "@/components/part1/Part1PageClient";
 
 export default function Part1Page() {
   return (
-    <Suspense fallback={<div className="wrap"><p>Carregando…</p></div>}>
-      <FlashcardApp />
+    <Suspense fallback={<div className="wrap"><p>Loading Part 1…</p></div>}>
+      <Part1PageClient />
     </Suspense>
   );
 }

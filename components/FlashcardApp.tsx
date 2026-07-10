@@ -46,6 +46,7 @@ import { isSpeaking, speakText, stopSpeaking } from "@/lib/tts";
 import { buildSpokenAnswer } from "@/lib/spokenAnswer";
 import { wordCount } from "@/lib/utils";
 import type { PeelBlockId } from "@/lib/peelBlocks";
+import Part1MasteryBanner from "@/components/part1/Part1MasteryBanner";
 import { useSimulationUnlock } from "@/hooks/useSimulationUnlock";
 import { useTrainingAssistance } from "@/lib/trainingProfile/useTrainingAssistance";
 
@@ -332,6 +333,7 @@ export default function FlashcardApp() {
             12 perguntas reais — treine por versão ou filtre favoritas.
           </p>
           <StudyDashboard progress={progress} total={CARDS.length} variant="compact" />
+          <Part1MasteryBanner />
           <PronunciationVaultAlert />
           <StudyFilterChip
             examVersion={examVersion}

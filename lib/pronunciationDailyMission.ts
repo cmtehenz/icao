@@ -5,7 +5,6 @@ import {
   getAdaptiveDailyPlan,
 } from "@/lib/trainingProfile/adaptivePlan";
 import { getTrainingProfile } from "@/lib/trainingProfile/store";
-import { resolveVocabTermIdForWord, wordMissionLink } from "@/lib/wordMission/wordDailyMission";
 import { syncDailyMissionLog } from "@/lib/dailyMissionLog";
 import { todayKey } from "@/lib/studyTime";
 
@@ -129,10 +128,8 @@ export function pronunciationDailyMissionProgress(
 }
 
 export function pronunciationMissionLink(word?: string): string {
+  const params = new URLSearchParams({ warmup: "1" });
   const target = word?.trim() ?? pronunciationDailyMissionProgress().currentWord ?? "";
-  if (target) {
-    const termId = resolveVocabTermIdForWord(target);
-    if (termId) return wordMissionLink(termId);
-  }
-  return "/word-mission";
+  if (target) params.set("word", target);
+  return `/word-mission?${params.toString()}`;
 }

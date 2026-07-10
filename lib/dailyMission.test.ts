@@ -67,7 +67,7 @@ vi.mock("@/lib/pronunciationDailyMission", () => ({
   }),
   pronunciationDailyMissionProgress: () => state.pronProgress,
   pronunciationMissionLink: (word?: string) =>
-    `/word-mission${word ? `?word=${encodeURIComponent(word)}` : ""}`,
+    `/word-mission?warmup=1${word ? `&word=${encodeURIComponent(word)}` : ""}`,
 }));
 
 vi.mock("@/lib/wordMission/wordDailyMission", () => ({
@@ -276,9 +276,25 @@ describe("getNextMissionAction", () => {
       pronunciationFirst: true,
       wordMissionTermCount: 2,
     };
+    state.vocabProgress = { done: 0, total: 2, complete: false, currentId: "t1", examVersion: "23C" };
+    state.vocabMission = { termIds: ["t1", "t2"], completedIds: [] };
     const next = getNextMissionAction();
-    expect(next!.title).toContain("Pronunciation");
-    expect(next!.hint).toMatch(/warm-up/i);
+    expect(next!.title).toContain("Pronunciation warm-up");
+    expect(next!.href).toContain("warmup=1");
+  });
+
+  it("after word mission complete routes to Part 1 not pronunciation", () => {
+    state.adaptivePlan = {
+      ...state.adaptivePlan,
+      phase: "foundation",
+      pronunciationFirst: true,
+    };
+    state.vocabProgress = { done: 3, total: 3, complete: true, currentId: null, examVersion: "23C" };
+    state.vocabMission = { termIds: ["t1", "t2", "t3"], completedIds: ["t1", "t2", "t3"] };
+    state.pronProgress = { done: 0, total: 5, complete: false, currentWord: "alpha" };
+    const next = getNextMissionAction();
+    expect(next!.title).toContain("Part 1");
+    expect(next!.href).toContain("/part1");
   });
 
   it("returns mission recall after base legs are complete", () => {

@@ -110,9 +110,13 @@ First active block — voice warm-up before the rest of the flight. Five words p
 
 Four premium operational concepts per exam day (~15 minutes), rotated from the full catalog. At least two terms align with that day's exam corpus (Part 1 + Part 2). Up to two slots prioritize marked-difficult or low-score terms; the rest defer to future days. Four levels per term: meaning → operational use → say it → ICAO practice.
 
-### Part 1 (leg 3)
+### Part 1 (leg 3) — 12-question mastery
 
-Professional aviation conversation using PEEL structure (Point, Explain, Example, Link). Shadow model answers, then speak with decreasing assistance. Not memorization — natural operational speech.
+See **[06_PART1_MASTERY.md](./06_PART1_MASTERY.md)** for the full teaching method.
+
+SDEA Part 1 has **12 real exam questions** (3 per prova 23C–26C). The daily flight runs **Part 1 Mission Mode** — a six-step pipeline per question (brief → anchors → shadow → keywords → coach). Browse mode (`/part1?browse=1`) is for open review only, not the daily leg.
+
+**Exam ready** = all PEEL blocks passed + coach at ICAO 4 band. Progress: **X/12 exam ready**.
 
 ### Part 2 (leg 4)
 
