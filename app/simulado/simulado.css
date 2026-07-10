@@ -1,6 +1,32 @@
 .sim-body { padding-bottom: 4rem; }
 
-.sim-stats { margin-top: 1rem; }
+.sim-mission-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.sim-mission-head-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.sim-mission-head-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.sim-mission-head-copy h1 {
+  margin: 0;
+}
+
+.sim-theme-toggle {
+  flex-shrink: 0;
+}
+
+.sim-stats { margin-top: 0.15rem; }
 
 .sim-home { display: flex; flex-direction: column; gap: 1.5rem; }
 .sim-suggested {
@@ -442,7 +468,7 @@
 }
 
 @media print {
-  .sim-header, .sim-hero, .sim-report-actions, .delta-header { display: none !important; }
+  .sim-mission-head, .sim-report-actions, .delta-header { display: none !important; }
   .sim-report { color: #000; }
 }
 

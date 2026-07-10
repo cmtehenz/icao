@@ -70,6 +70,9 @@ export default function MissionCTA() {
         <p className="mission-cta-lead">
           Exam {summary.examLabel} — all legs finished. See you tomorrow, pilot.
         </p>
+        <p className="mission-cta-secondary-hint">
+          Optional training below — listen to a full exam or watch Captain&apos;s picks.
+        </p>
       </section>
     );
   }

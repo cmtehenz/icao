@@ -4,6 +4,7 @@ import AcademyHomeWidgets from "@/components/home/AcademyHomeWidgets";
 import CaptainBriefing from "@/components/home/CaptainBriefing";
 import HomeTrainingInsights from "@/components/home/HomeTrainingInsights";
 import MissionCTA from "@/components/home/MissionCTA";
+import SecondaryTrainingStrip from "@/components/home/SecondaryTrainingStrip";
 
 /** Home composition only — no business logic (ADR-010). Flight progress strip lives in MissionFocusLayout. */
 export default function HomePage() {
@@ -13,6 +14,8 @@ export default function HomePage() {
         <CaptainBriefing />
         <MissionCTA />
       </section>
+
+      <SecondaryTrainingStrip />
 
       <details className="home-flight-records">
         <summary>Records &amp; insights</summary>

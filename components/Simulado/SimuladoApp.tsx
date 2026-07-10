@@ -155,56 +155,56 @@ export default function SimuladoApp() {
   };
 
   return (
-    <>
-      <header className="header delta-header sim-header">
-        <div className="wrap delta-topbar">
-          <div className="delta-brand">
-            <span className="delta-logo">🎯</span>
-            <div>
-              <strong>Simulado ICAO</strong>
-              <span>SDEA mock exam · 23C–26C</span>
-            </div>
+    <div className="sim-mission-page part1-mission-page">
+      <header className="part1-mission-head wrap sim-mission-head">
+        <div className="sim-mission-head-row">
+          <div className="sim-mission-head-copy">
+            <p className="part1-mission-kicker">Captain Delta · CHECK RIDE · Mock Exam</p>
+            <h1>Simulado ICAO</h1>
+            <p className="sub part1-mission-sub">
+              Simulação realista com TTS da examinadora, áudios ATC originais, gravação e correção por
+              IA.
+            </p>
           </div>
           {hydrated && (
-            <button type="button" className="btn icon-btn secondary" onClick={toggleTheme} aria-label="Theme">
+            <button
+              type="button"
+              className="btn icon-btn secondary sim-theme-toggle"
+              onClick={toggleTheme}
+              aria-label="Theme"
+            >
               {theme === "dark" ? "☀️" : "🌙"}
             </button>
           )}
         </div>
+        {view === "home" && (
+          <div
+            className="delta-dashboard delta-dashboard-compact sim-stats"
+            aria-label="Simulation stats"
+          >
+            <div className="delta-stat mastered">
+              <strong>{stats.totalSimulations}</strong>
+              <span>simulados</span>
+            </div>
+            <div className="delta-stat">
+              <strong>{stats.averageScore || "—"}</strong>
+              <span>média</span>
+            </div>
+            <div className="delta-stat">
+              <strong>{stats.bestScore || "—"}</strong>
+              <span>melhor</span>
+            </div>
+            {stats.weakestPart && (
+              <div className="delta-stat difficult">
+                <strong>Part {stats.weakestPart}</strong>
+                <span>mais fraca</span>
+              </div>
+            )}
+          </div>
+        )}
       </header>
 
-      <section className="hero hero-compact hero-delta sim-hero">
-        <div className="wrap hero-delta-inner">
-          <h1>Simulado ICAO</h1>
-          <p className="sub hero-sub-compact">
-            Simulação realista com TTS da examinadora, áudios ATC originais, gravação e correção por IA.
-          </p>
-          {view === "home" && (
-            <div className="delta-dashboard delta-dashboard-compact sim-stats" aria-label="Simulation stats">
-              <div className="delta-stat mastered">
-                <strong>{stats.totalSimulations}</strong>
-                <span>simulados</span>
-              </div>
-              <div className="delta-stat">
-                <strong>{stats.averageScore || "—"}</strong>
-                <span>média</span>
-              </div>
-              <div className="delta-stat">
-                <strong>{stats.bestScore || "—"}</strong>
-                <span>melhor</span>
-              </div>
-              {stats.weakestPart && (
-                <div className="delta-stat difficult">
-                  <strong>Part {stats.weakestPart}</strong>
-                  <span>mais fraca</span>
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-      </section>
-
-      <div className="wrap sim-body">
+      <div className="wrap sim-body part1-mission-body">
         {view === "home" && (
           <div className="sim-home">
             {draft && (
@@ -242,7 +242,7 @@ export default function SimuladoApp() {
                 setView("mode");
               }}
             >
-              👨‍✈️ Captain Delta · Mock Exam
+              Mock Exam with Captain Delta
             </button>
 
             <SimuladoHistoryList
@@ -375,6 +375,6 @@ export default function SimuladoApp() {
           </>
         )}
       </div>
-    </>
+    </div>
   );
 }

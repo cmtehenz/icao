@@ -4,6 +4,16 @@ Manual version history only. Sprint and audit details belong in Git history.
 
 ---
 
+## 3.7 — July 2026
+
+**Home secondary training strip.**
+
+- Escutar Prova and ICAOFlix always visible below daily mission CTA (outline cards, not primary buttons)
+- Records & insights collapsed section is analytics only — quick links removed from widgets
+- §07 documents three-layer home shell; §09 ICAOFlix home entry updated
+
+---
+
 ## 3.6 — July 2026
 
 **Part 1 mission reform — anti-memorization mastery pipeline.**

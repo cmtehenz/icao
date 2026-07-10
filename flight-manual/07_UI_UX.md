@@ -12,14 +12,27 @@ Reference feeling: senior helicopter instructor + modern flight academy + premiu
 
 ### Home shell (Phase 3)
 
-Home primary block is one composition:
+Home is three layers — primary flight, complementary training, optional records:
+
+**Primary block** (always visible):
 
 1. Captain briefing (mark + mission title + exam countdown)
 2. Phase badge + exam chip
 3. Plan strip (leg segments + adaptive hint)
 4. One Ready CTA
 
-No duplicate phase copy. Records stay collapsed under the primary flight block.
+**Secondary strip** (always visible, subordinate weight):
+
+- Escutar Prova — full exam listening, no recording
+- ICAOFlix — curated references, no recording
+
+Outline cards only — never share the navy primary button style with Begin Flight. Copy adapts when today's mission is complete.
+
+**Records** (collapsed by default):
+
+- Difficulty insights, debrief, readiness, stats, logbook
+
+No duplicate phase copy. Never a tab bar or equal-weight module picker on home.
 
 Never feel like: Duolingo, generic AI chatbot, PDF reader, flashcard app.
 

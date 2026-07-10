@@ -24,6 +24,7 @@ describe("HomePage composition (ADR-010)", () => {
   it("composes flight deck without duplicate mission planner", () => {
     expect(homePageSource).toMatch(/CaptainBriefing/);
     expect(homePageSource).toMatch(/MissionCTA/);
+    expect(homePageSource).toMatch(/SecondaryTrainingStrip/);
     expect(homePageSource).toMatch(/home-flight-deck/);
     expect(homePageSource).not.toMatch(/DailyMissionPanel/);
   });

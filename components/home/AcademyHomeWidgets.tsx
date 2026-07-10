@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import Link from "next/link";
 import { listAchievements } from "@/lib/academy/achievements";
 import { buildCareerGoals } from "@/lib/academy/career";
 import { loadLogbookFlights } from "@/lib/academy/logbook";
@@ -10,13 +9,6 @@ import { readAcademyStatistics } from "@/lib/academy/stats";
 import { buildExamReadiness } from "@/lib/captainDelta/memory/readiness";
 import { CAPTAIN_DELTA_MEMORY_EVENT } from "@/lib/captainDelta/memory/store";
 import { STUDY_ACTIVITY_RECORDED_EVENT } from "@/lib/studyActivityRecord";
-
-const QUICK_LINKS = [
-  { href: "/escutar-prova", label: "Escutar Prova", desc: "Full exam listening", icon: "🎧" },
-  { href: "/icao-flix", label: "ICAOFlix", desc: "Curated video library", icon: "🎬" },
-  { href: "/simulado", label: "Simulado", desc: "Mock exam", icon: "🎯" },
-  { href: "/conta", label: "Account", desc: "Profile & vault", icon: "👤" },
-] as const;
 
 function formatFlightDate(iso: string): string {
   return new Date(iso).toLocaleDateString("en-US", {
@@ -59,21 +51,6 @@ export default function AcademyHomeWidgets() {
 
   return (
     <div className="home-academy-widgets" aria-label="Academy progress">
-      <section className="cda-quick-nav" aria-label="Quick links">
-        <h2>Academy links</h2>
-        <div className="cda-quick-grid">
-          {QUICK_LINKS.map((item) => (
-            <Link key={item.href} href={item.href} className="cda-quick-card">
-              <span className="cda-quick-icon" aria-hidden>
-                {item.icon}
-              </span>
-              <strong>{item.label}</strong>
-              <span>{item.desc}</span>
-            </Link>
-          ))}
-        </div>
-      </section>
-
       <section className="cda-progress" aria-label="Readiness">
         <header className="cda-section-head">
           <h2>Exam readiness</h2>

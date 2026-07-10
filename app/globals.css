@@ -10545,6 +10545,76 @@ body.cde-examiner-mode .cd-fab {
   box-shadow: 0 1px 0 color-mix(in srgb, var(--line) 60%, transparent);
 }
 
+.home-training-secondary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 0.15rem 0.1rem 0;
+}
+
+.home-training-secondary-head h2 {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.home-training-secondary-head p {
+  margin: 0.25rem 0 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.home-training-secondary-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.55rem;
+}
+
+@media (min-width: 480px) {
+  .home-training-secondary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.home-training-secondary-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-height: 44px;
+  padding: 0.85rem 0.95rem;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--card) 96%, transparent);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.home-training-secondary-card:hover {
+  border-color: color-mix(in srgb, var(--blue, #3b82f6) 45%, var(--line));
+  background: color-mix(in srgb, var(--card) 92%, var(--blue, #3b82f6) 8%);
+}
+
+.home-training-secondary-icon {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.home-training-secondary-card strong {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.home-training-secondary-card span:last-child {
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
 .home-flight-records {
   margin-top: 0.5rem;
   padding-top: 0.75rem;
@@ -10680,6 +10750,13 @@ body.cde-examiner-mode .cd-fab {
   font-size: 1.05rem;
   font-weight: 600;
   color: var(--good, #22c55e);
+}
+
+.mission-cta-secondary-hint {
+  margin: 0.65rem 0 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.45;
 }
 
 .pronunciation-flight-deck {

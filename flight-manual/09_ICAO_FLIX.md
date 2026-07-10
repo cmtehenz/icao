@@ -12,7 +12,7 @@ It does **not** replace recording legs or become the home CTA.
 
 | Rule | Detail |
 |------|--------|
-| Secondary surface | Same tier as Escutar Prova — sidebar nav + home quick link only |
+| Secondary surface | Sidebar nav + **Secondary Training Strip** on home (outline cards, not primary CTA) |
 | No auto-play | Student presses play; embed loads on demand in modal |
 | No mission gate | Watching is optional; never blocks daily mission progression |
 | Curated only | Tier 2–5 sources (FAA, SKYbrary, EuroSafety Training, approved instructors) — no AI-invented media |
