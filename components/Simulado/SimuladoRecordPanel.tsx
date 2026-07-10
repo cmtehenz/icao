@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useAzurePronunciation } from "@/hooks/useAzurePronunciation";
+import { studentSafeAssessmentMessage } from "@/lib/azure/assessmentFailure";
 import { fetchEvaluation } from "@/lib/evaluate/clientEvaluate";
 import type { EvaluateFeedback, EvaluateType } from "@/lib/evaluate/types";
 
@@ -82,10 +83,15 @@ export default function SimuladoRecordPanel({
     setLoading(true);
     setError(null);
     try {
-      const { assessment, audioBlob } = await azure.stop();
+      const { assessment, audioBlob, failure } = await azure.stop("user_click");
       const text = assessment?.recognizedText?.trim() ?? "";
       if (!text) {
-        setError("Nenhuma fala detectada. Tente novamente.");
+        setError(
+          studentSafeAssessmentMessage(
+            failure,
+            "Fale a resposta completa e tente de novo.",
+          ),
+        );
         startedRef.current = false;
         return;
       }

@@ -939,7 +939,7 @@ export function useAzurePronunciation() {
 
   const start = useCallback(
     async (modelAnswer: string, evaluateType: EvaluateType) => {
-      const unscripted = useUnscriptedPronunciation(evaluateType);
+      const unscripted = useUnscriptedPronunciation(evaluateType, modelAnswer);
       let reference = azureReferenceText(modelAnswer, evaluateType);
       if (!reference.trim() && !unscripted && modelAnswer.trim()) {
         reference = modelAnswer.trim().slice(0, 500);

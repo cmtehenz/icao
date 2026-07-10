@@ -19,7 +19,12 @@ import {
 } from "@/lib/part2/aggregateSimulation";
 import { setPart2ItemStatus, type Part2ProgressStore } from "@/lib/part2/progress";
 import { syncDailyMissionLog } from "@/lib/dailyMissionLog";
-import { markPart2SimulationDailyComplete } from "@/lib/part2DailyMission";
+import { getOrCreatePart2DailyMission, markPart2SimulationDailyComplete } from "@/lib/part2DailyMission";
+import {
+  clearPart2MissionSession,
+  loadPart2MissionSession,
+  savePart2MissionSession,
+} from "@/lib/part2MissionSession";
 import { emitCaptainDeltaDebrief } from "@/lib/captainDelta/events";
 import { recordStudyActivity, SIMULATE_PART2_UNITS } from "@/lib/studyTime";
 import {
@@ -72,6 +77,7 @@ export default function FullSimulationMode({
   const [showResults, setShowResults] = useState(false);
   const [studentNotes, setStudentNotes] = useState("");
   const [showNotesReview, setShowNotesReview] = useState(false);
+  const [sessionReady, setSessionReady] = useState(!missionMode);
 
   const situations = activeVersion ? getSituationsByExam(activeVersion) : [];
   const scenario = situations[situationIdx];
@@ -91,7 +97,70 @@ export default function FullSimulationMode({
     if (forcedExamVersion) setExamVersion(forcedExamVersion);
   }, [forcedExamVersion]);
 
+  useEffect(() => {
+    if (!missionMode || !forcedExamVersion) {
+      setSessionReady(true);
+      return;
+    }
+
+    const mission = getOrCreatePart2DailyMission();
+    const session = loadPart2MissionSession();
+    if (
+      session &&
+      session.examVersion === forcedExamVersion &&
+      !mission.simulationDone &&
+      session.step >= -2
+    ) {
+      setActiveVersion(session.activeVersion);
+      setSituationIdx(session.situationIdx);
+      setStep(session.step);
+      setRecordings(session.recordings);
+      setStepResults(session.stepResults);
+      setShowNotesReview(session.showNotesReview);
+      setShowResults(session.showResults);
+      setExamVersion(session.examVersion);
+    }
+    setSessionReady(true);
+  }, [missionMode, forcedExamVersion]);
+
+  useEffect(() => {
+    if (!missionMode || !forcedExamVersion || !sessionReady) return;
+
+    if (getOrCreatePart2DailyMission().simulationDone) {
+      clearPart2MissionSession();
+      return;
+    }
+
+    if (!activeVersion || step < -2) {
+      clearPart2MissionSession();
+      return;
+    }
+
+    savePart2MissionSession({
+      examVersion: forcedExamVersion,
+      activeVersion,
+      situationIdx,
+      step,
+      recordings,
+      stepResults,
+      showNotesReview,
+      showResults,
+    });
+  }, [
+    missionMode,
+    forcedExamVersion,
+    sessionReady,
+    activeVersion,
+    situationIdx,
+    step,
+    recordings,
+    stepResults,
+    showNotesReview,
+    showResults,
+  ]);
+
   const resetSimulation = () => {
+    if (missionMode) clearPart2MissionSession();
     setActiveVersion(null);
     setSituationIdx(0);
     setStep(-1);
@@ -379,6 +448,10 @@ export default function FullSimulationMode({
     );
   }
 
+  if (missionMode && !sessionReady) {
+    return <p className="sub part2-mission-loading">Retomando sua prova…</p>;
+  }
+
   if (step === -1) {
     if (missionMode) {
       return (
@@ -481,7 +554,7 @@ export default function FullSimulationMode({
           situationTotal={situations.length}
           step={step}
           stepTitle={current.title}
-          showPaperNotes={step !== 8}
+          showPaperNotes={step <= 5 || step === 7}
           toolbar={renderStepToolbar()}
         >
           {renderStepBody()}

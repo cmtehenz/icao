@@ -1,6 +1,7 @@
 import { getTodayExamVersion } from "@/lib/dailyExamRotation";
 import { syncDailyMissionLog } from "@/lib/dailyMissionLog";
 import type { ExamVersion } from "@/lib/exams/types";
+import { clearPart2MissionSession } from "@/lib/part2MissionSession";
 import { todayKey } from "@/lib/studyTime";
 
 /** Kept for fragmented Part 2 practice modes (shadow / coach). */
@@ -76,6 +77,7 @@ export function markPart2SimulationDailyComplete(examVersion: ExamVersion): Part
 
 /** Restart today's Part 2 exam leg (5 situations). */
 export function resetPart2DailyMissionProgress(): Part2DailyMissionState {
+  clearPart2MissionSession();
   const mission = getOrCreatePart2DailyMission();
   const next: Part2DailyMissionState = { ...mission, simulationDone: false };
   savePart2DailyMission(next);

@@ -3,6 +3,7 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import { useAzurePronunciation } from "@/hooks/useAzurePronunciation";
 import { useSpeechRecognition } from "@/hooks/useSpeechRecognition";
+import { studentSafeAssessmentMessage } from "@/lib/azure/assessmentFailure";
 import {
   collectCoachVaultCandidates,
   collectVaultWordCandidates,
@@ -575,13 +576,16 @@ export default function VoiceCoachPanel({
   };
 
   const finishAzure = async () => {
-    const { assessment, audioBlob } = await azure.stop();
+    const { assessment, audioBlob, failure } = await azure.stop("user_click");
     const text = assessment?.recognizedText ?? "";
     if (!text.trim()) {
       setFeedback({
         scores: { overall: 0, structure: 0, content: 0, phraseology: 0, pronunciation: 0 },
         transcript: "",
-        summary: "Nenhuma fala detectada pelo Azure. Fale mais alto e tente de novo.",
+        summary: studentSafeAssessmentMessage(
+          failure,
+          "Fale a resposta completa, mais perto do microfone, e tente de novo.",
+        ),
         strengths: [],
         improvements: [],
         missingKeywords: [],

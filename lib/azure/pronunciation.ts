@@ -1,4 +1,5 @@
 import { shouldSkipPronunciationVaultWord } from "@/lib/aviationSpeechTerms";
+import { isShortPhraseologyAnswer } from "@/lib/evaluate/confirmTranscript";
 import { VAULT_ADD_SCORE } from "@/lib/pronunciationVault";
 import { compareTranscriptToModel } from "@/lib/evaluate/compareAnswer";
 
@@ -18,17 +19,18 @@ export type AzurePronunciationResult = {
 };
 
 export function isScriptedAssessment(type: string): boolean {
-  return (
-    type === "part2-readback" ||
-    type === "part2-reported" ||
-    type === "part2-interaction"
-  );
+  return type === "part2-readback" || type === "vocabulary";
 }
 
 /** Free speech — Azure scores how you speak, not word-for-word script. */
-export function useUnscriptedPronunciation(type: string): boolean {
+export function useUnscriptedPronunciation(type: string, modelAnswer = ""): boolean {
+  if (type === "part2-interaction" && isShortPhraseologyAnswer(modelAnswer)) {
+    return false;
+  }
   return (
     type === "part1" ||
+    type === "part2-interaction" ||
+    type === "part2-reported" ||
     type === "part3-report" ||
     type === "part3-followup" ||
     type === "part4-description" ||
@@ -41,10 +43,10 @@ export function azureReferenceText(modelAnswer: string, type: string): string {
   const trimmed = (modelAnswer ?? "").trim();
   if (!trimmed) return "";
 
-  if (useUnscriptedPronunciation(type)) {
+  if (useUnscriptedPronunciation(type, trimmed)) {
     return "";
   }
-  if (isScriptedAssessment(type)) {
+  if (isScriptedAssessment(type) || isShortPhraseologyAnswer(trimmed)) {
     return trimmed.slice(0, 500);
   }
   if (type === "vocabulary") {

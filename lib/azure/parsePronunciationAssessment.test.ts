@@ -155,6 +155,42 @@ describe("mergeAssessmentSegments", () => {
     expect(merged?.accuracyScore).toBe(90);
     expect(merged?.recognizedText).toBe("runway");
   });
+
+  it("joins multi-segment reported speech instead of keeping only the last chunk", () => {
+    const ref =
+      "The controller said that I had a problem with my gear and that I was requesting to hold to check out my problem, and asked me to confirm.";
+    const segments: AzurePronunciationResult[] = [
+      {
+        accuracyScore: 88,
+        fluencyScore: 85,
+        completenessScore: 40,
+        prosodyScore: 70,
+        recognizedText: "The controller said that I had a problem with my gear.",
+        words: [],
+      },
+      {
+        accuracyScore: 86,
+        fluencyScore: 84,
+        completenessScore: 55,
+        prosodyScore: 72,
+        recognizedText: "I was requesting to hold to check out my problem.",
+        words: [],
+      },
+      {
+        accuracyScore: 92,
+        fluencyScore: 90,
+        completenessScore: 100,
+        prosodyScore: 80,
+        recognizedText: "Me to confirm.",
+        words: [],
+      },
+    ];
+    const merged = mergeAssessmentSegments(segments, ref);
+    expect(merged?.recognizedText).toContain("problem with my gear");
+    expect(merged?.recognizedText).toContain("requesting to hold");
+    expect(merged?.recognizedText).toContain("confirm");
+    expect(merged?.recognizedText).not.toBe("Me to confirm.");
+  });
 });
 
 describe("non-speech trailing segments", () => {

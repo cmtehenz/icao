@@ -44,6 +44,20 @@ describe("paperNotesHintForStep", () => {
     expect(hint.codes).toEqual(["GEAR STK", "HLD", "CFM"]);
   });
 
+  it("shows no codes on examiner question step — paper already filled", () => {
+    const hint = paperNotesHintForStep(6, PART2_RECOMMENDED_NOTES["23C-s1"]);
+    expect(hint.phase).toBe("reported");
+    expect(hint.codes).toEqual([]);
+    expect(hint.captainLine).toMatch(/already wrote notes/i);
+  });
+
+  it("excludes clearance codes on reported speech step", () => {
+    const hint = paperNotesHintForStep(7, PART2_RECOMMENDED_NOTES["23C-s1"]);
+    expect(hint.codes).toEqual(["GEAR STK", "HLD", "CFM"]);
+    expect(hint.codes).not.toContain("SQK IDENT");
+    expect(hint.codes).not.toContain("RWY HDG");
+  });
+
   it("returns generic guidance when notes are missing", () => {
     const hint = paperNotesHintForStep(0);
     expect(hint.codes).toEqual([]);

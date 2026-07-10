@@ -292,11 +292,90 @@ export function pickBestAssessmentSegment(
   })[0];
 }
 
+/** Drop segments fully contained in a longer sibling (Azure partial duplicates). */
+export function dedupeAssessmentSegments(
+  segments: AzurePronunciationResult[],
+): AzurePronunciationResult[] {
+  return segments.filter((seg, i) => {
+    const norm = normalizeRecognizedText(seg.recognizedText);
+    if (!norm) return false;
+    return !segments.some((other, j) => {
+      if (i === j) return false;
+      const otherNorm = normalizeRecognizedText(other.recognizedText);
+      return otherNorm.includes(norm) && other.recognizedText.length > seg.recognizedText.length;
+    });
+  });
+}
+
+function weightedScore(
+  segments: AzurePronunciationResult[],
+  field: "accuracyScore" | "fluencyScore" | "completenessScore" | "prosodyScore",
+): number {
+  const totalLen = segments.reduce((n, s) => n + Math.max(1, s.recognizedText.length), 0);
+  const sum = segments.reduce(
+    (n, s) => n + s[field] * Math.max(1, s.recognizedText.length),
+    0,
+  );
+  return Math.round(sum / totalLen);
+}
+
+/** Join chronological Azure segments into one transcript for long answers. */
+export function joinAssessmentSegments(
+  segments: AzurePronunciationResult[],
+): AzurePronunciationResult {
+  const recognizedText = segments
+    .map((s) => s.recognizedText.trim())
+    .filter(Boolean)
+    .join(" ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  return {
+    recognizedText,
+    words: segments.flatMap((s) => s.words),
+    accuracyScore: weightedScore(segments, "accuracyScore"),
+    fluencyScore: weightedScore(segments, "fluencyScore"),
+    completenessScore: weightedScore(segments, "completenessScore"),
+    prosodyScore: weightedScore(segments, "prosodyScore"),
+  };
+}
+
 export function mergeAssessmentSegments(
   segments: AzurePronunciationResult[],
   referenceText = "",
 ): AzurePronunciationResult | null {
-  return pickBestAssessmentSegment(segments, referenceText);
+  const valid = segments.filter(isValidAssessmentSegment);
+  if (!valid.length) return null;
+
+  const deduped = dedupeAssessmentSegments(valid);
+  if (deduped.length <= 1) {
+    return pickBestAssessmentSegment(deduped, referenceText);
+  }
+
+  const best = pickBestAssessmentSegment(deduped, referenceText);
+  const joined = joinAssessmentSegments(deduped);
+  const ref = normalizeRecognizedText(referenceText);
+
+  if (best && ref && normalizeRecognizedText(best.recognizedText) === ref) {
+    return best;
+  }
+
+  if (
+    best &&
+    deduped.every(
+      (seg) =>
+        seg.recognizedText.length <= 4 ||
+        joined.recognizedText.toLowerCase().includes(seg.recognizedText.toLowerCase()),
+    )
+  ) {
+    return joined;
+  }
+
+  if (best && joined.recognizedText.length <= best.recognizedText.length) {
+    return best;
+  }
+
+  return joined;
 }
 
 export function resolveStopAssessmentFailure(

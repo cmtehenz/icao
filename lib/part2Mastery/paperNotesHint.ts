@@ -100,6 +100,11 @@ function confirmCodesInOrder(notes: RecommendedNotes): string[] {
   return pickCodesInIdealOrder(notes.idealNotes, pool, notes.optionalCodes ?? []);
 }
 
+/** After clearance — problem, ATC echo, confirm (excludes readback segment). */
+function reportedCodesInOrder(notes: RecommendedNotes): string[] {
+  return problemCodesInOrder(notes);
+}
+
 /** Step index matches FullSimulationMode (0–8). */
 export function paperNotesHintForStep(
   step: number,
@@ -141,14 +146,19 @@ export function paperNotesHintForStep(
     };
   }
 
+  if (step === 6) {
+    return {
+      phase: "reported",
+      codes: [],
+      captainLine:
+        "You already wrote notes when the controller spoke. Answer from your paper — no new clearance codes here.",
+    };
+  }
+
   return {
     phase: "reported",
-    codes: pickCodesInIdealOrder(
-      recommendedNotes.idealNotes,
-      recommendedNotes.requiredCodes,
-      recommendedNotes.optionalCodes ?? [],
-    ).slice(0, 10),
+    codes: reportedCodesInOrder(recommendedNotes).slice(0, 10),
     captainLine:
-      "Examiner question next. Your paper notes help you report what the controller said:",
+      "Report what the controller said — use your paper from the ATC reply (problem, hold, confirm), not the departure clearance:",
   };
 }

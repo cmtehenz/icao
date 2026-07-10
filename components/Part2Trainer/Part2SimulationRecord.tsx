@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useAzurePronunciation } from "@/hooks/useAzurePronunciation";
+import { studentSafeAssessmentMessage } from "@/lib/azure/assessmentFailure";
 import { warnCaptain } from "@/lib/captainDelta/devLog";
 import { emitCaptainDeltaSuggestion } from "@/lib/captainDelta/events";
 import { buildPart2StepCoaching } from "@/lib/captainDelta/part2StepCoaching";
@@ -41,13 +42,19 @@ export default function Part2SimulationRecord({
   const canUseAzure = !azure.envMissing && (azure.configured || azure.envConfigured === true);
 
   const finishAzure = async () => {
+    if (!azure.recordingReady) return;
     setLoading(true);
     setError(null);
     try {
-      const { assessment, audioBlob } = await azure.stop();
+      const { assessment, audioBlob, failure } = await azure.stop("user_click");
       const text = assessment?.recognizedText?.trim() ?? "";
       if (!text) {
-        setError("Nenhuma fala detectada. Fale mais alto e tente de novo.");
+        setError(
+          studentSafeAssessmentMessage(
+            failure,
+            "Fale o readback completo, mais perto do microfone, e tente de novo.",
+          ),
+        );
         return;
       }
       const feedback = await fetchEvaluation(text, question, modelAnswer, evaluateType, assessment ?? undefined);
@@ -166,8 +173,17 @@ export default function Part2SimulationRecord({
             ● Gravar resposta
           </button>
         ) : (
-          <button type="button" className="btn orange" onClick={finishAzure} disabled={loading}>
-            {loading ? "Avaliando…" : "⏹ Parar e enviar"}
+          <button
+            type="button"
+            className="btn orange"
+            onClick={finishAzure}
+            disabled={loading || !azure.recordingReady}
+          >
+            {loading
+              ? "Avaliando…"
+              : azure.recordingReady
+                ? "⏹ Parar e enviar"
+                : "Preparando microfone…"}
           </button>
         )}
       </div>

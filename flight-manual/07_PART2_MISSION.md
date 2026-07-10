@@ -29,8 +29,9 @@ Browse mode (`/part2?browse=1`) keeps readback / interaction / reported tabs for
 | Situations | All **5** from that prova |
 | Complete | All 5 situations finished + daily flag `simulationDone` |
 | Route | `/part2` (mission default) |
+| Resume | `part2MissionSession.ts` — saves situation, step, and recordings for today until exam complete or restart |
 
-Captain Delta shows **code hints** (from `part2RecommendedNotes`) — squawk, altitude, GEAR STK, AFF, etc. These are prompts for paper shorthand, not model answers.
+Captain Delta shows **code hints** (from `part2RecommendedNotes`) — step-specific: clearance codes on listen/readback, problem codes on report, confirm codes on ATC/AFFIRM. **Not** the full clearance list on examiner or reported-speech steps — the student uses paper notes already taken.
 
 After each situation, **Paper self-check** shows ideal notes so the student compares what they wrote on paper.
 
@@ -41,8 +42,11 @@ After each situation, **Paper self-check** shows ideal notes so the student comp
 | Owner | Responsibility |
 |-------|----------------|
 | Mission Engine | Today's exam version; leg complete when full exam done |
+| `part2MissionSession.ts` | In-progress mission resume (localStorage, today only) |
 | `FullSimulationMode` (`missionMode`) | Exam flow, audio, Azure recordings |
 | `paperNotesHint.ts` | Code hints per step |
+| Azure merge | Long answers (reported speech, interaction) join all speech segments — not only the last chunk |
+| AFFIRM / NEGATIVE | Scripted Azure reference + STT normalization (`a firm` → AFFIRM, `1-2 dream` → ANAC 123) |
 | Browse trainer | Readback / interaction / reported / simulation unlock |
 
 ---

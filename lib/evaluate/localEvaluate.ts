@@ -4,6 +4,7 @@ import { scorePart1Content, keywordMatches } from "./contentScore";
 import { estimateIcaoLevel } from "./icaoLevel";
 import { peelMissingConnectors, peelStructureFeedbackPt, peelStructureScore } from "./peel";
 import { normalizeAviationTranscript } from "./transcriptNormalize";
+import { normalizeConfirmTranscript, isShortPhraseologyAnswer, scoreConfirmResponse } from "./confirmTranscript";
 import { normalizeReadbackTranscript, scoreReadback } from "./readbackScore";
 import { buildSpokenAnswer } from "@/lib/spokenAnswer";
 
@@ -74,18 +75,24 @@ function clamp(n: number): number {
 export function localEvaluate(req: EvaluateRequest): EvaluateFeedback {
   const { transcript, modelAnswer, type, keywords = [], answerMode = "peel" } = req;
   const rawTranscript = transcript.trim();
+  const shortConfirm =
+    type === "part2-interaction" && isShortPhraseologyAnswer(modelAnswer);
   const trimmed =
     type === "part1"
       ? normalizeAviationTranscript(rawTranscript)
       : type === "part2-readback"
         ? normalizeReadbackTranscript(rawTranscript)
-        : rawTranscript;
+        : shortConfirm
+          ? normalizeConfirmTranscript(rawTranscript)
+          : rawTranscript;
   const transcriptFixed =
     type === "part1"
       ? trimmed !== rawTranscript
       : type === "part2-readback"
         ? trimmed !== normalizeReadbackTranscript(rawTranscript)
-        : false;
+        : shortConfirm
+          ? trimmed !== rawTranscript
+          : false;
 
   if (!trimmed) {
     return {
@@ -103,17 +110,22 @@ export function localEvaluate(req: EvaluateRequest): EvaluateFeedback {
   const referenceAnswer = type === "part1" ? buildSpokenAnswer(modelAnswer) : modelAnswer;
   const readbackResult =
     type === "part2-readback" ? scoreReadback(trimmed, modelAnswer) : null;
+  const confirmResult = shortConfirm ? scoreConfirmResponse(trimmed, modelAnswer) : null;
   const part1Content =
     type === "part1" ? scorePart1Content(trimmed, modelAnswer, keywords) : null;
   const content =
     type === "part2-readback" && readbackResult
       ? readbackResult.score
+      : confirmResult != null
+        ? confirmResult
       : type === "part1" && part1Content
         ? part1Content.score
         : overlapScore(trimmed, referenceAnswer);
   const structure =
     type === "part2-readback" && readbackResult
       ? readbackResult.score
+      : confirmResult != null
+        ? confirmResult
       : type === "part1"
         ? answerMode === "level4" || answerMode === "level5"
           ? level4StructureScore(trimmed)
@@ -122,6 +134,8 @@ export function localEvaluate(req: EvaluateRequest): EvaluateFeedback {
   const phraseology =
     type === "part2-readback" && readbackResult
       ? readbackResult.score
+      : confirmResult != null
+        ? confirmResult
       : type.startsWith("part2") || type.startsWith("part3")
         ? markerScore(trimmed, PART2_MARKERS)
         : structure;
