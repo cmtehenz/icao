@@ -74,7 +74,15 @@ function AnswerToggle({
   );
 }
 
-export default function CoachAnswerGuide({ guide }: { guide: Part1CoachGuide }) {
+export default function CoachAnswerGuide({
+  guide,
+  showKeywords = true,
+  basicDefaultOpen = false,
+}: {
+  guide: Part1CoachGuide;
+  showKeywords?: boolean;
+  basicDefaultOpen?: boolean;
+}) {
   const showElaborate =
     guide.elaborateAnswer &&
     guide.elaborateAnswer.trim() !== guide.basicAnswer.trim()
@@ -93,7 +101,7 @@ export default function CoachAnswerGuide({ guide }: { guide: Part1CoachGuide }) 
         Tente responder sem olhar. Se precisar, abra o exemplo básico ou o mais elaborado.
       </p>
 
-      {guide.memoryLabels?.length ? (
+      {showKeywords && guide.memoryLabels?.length ? (
         <CaptainDeltaTarget id="coach-keywords" as="p" className="coach-answer-guide-keywords" hideWhenCollapsed={false}>
           Keywords:{" "}
           {guide.memoryLabels.map((label, i) => (
@@ -112,6 +120,7 @@ export default function CoachAnswerGuide({ guide }: { guide: Part1CoachGuide }) 
         label="Resposta básica (Fácil)"
         hint="40–50 s"
         text={guide.basicAnswer}
+        defaultOpen={basicDefaultOpen}
       >
         {guide.steps?.length ? (
           <ol className="coach-answer-steps">

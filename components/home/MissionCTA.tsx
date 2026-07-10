@@ -35,6 +35,7 @@ export default function MissionCTA() {
 
   const profile = useMemo(() => getTrainingProfile(), [tick]);
   const checkrideNeeded = useMemo(() => needsCheckride(profile), [profile]);
+  const isRecheckride = checkrideNeeded && profile.checkrideStatus !== "pending";
   const complete = useMemo(() => isDailyMissionComplete(), [tick]);
   const summary = useMemo(() => getDailyMissionSummary(), [tick]);
   const next = useMemo(() => getNextMissionAction(), [tick]);
@@ -42,13 +43,16 @@ export default function MissionCTA() {
   if (checkrideNeeded) {
     return (
       <section className="mission-cta academy-cta" aria-label="Speaking checkride">
-        <p className="mission-cta-kicker">Before today&apos;s flight</p>
+        <p className="mission-cta-kicker">
+          {isRecheckride ? "Progress check" : "Before today&apos;s flight"}
+        </p>
         <p className="mission-cta-lead">
-          A short speaking checkride so Captain Delta can set your training phase. About five
-          minutes.
+          {isRecheckride
+            ? "A short speaking re-checkride so Captain Delta can update your training phase."
+            : "A short speaking checkride so Captain Delta can set your training phase. About five minutes."}
         </p>
         <Link href="/checkride" className="btn academy-primary btn-large mission-cta-btn">
-          Start Checkride
+          {isRecheckride ? "Start Re-checkride" : "Start Checkride"}
         </Link>
         <p className="mission-cta-hint">
           <span className="mission-cta-next">Speak first</span>

@@ -80,6 +80,8 @@ type Props = {
   answerMode?: "level4" | "level5" | "peel";
   /** Part 1: optional basic / ICAO 5 answer examples (show/hide in coach). */
   part1Guide?: Part1CoachGuide;
+  coachShowKeywords?: boolean;
+  coachBasicOpen?: boolean;
   modelAudioUrl?: string;
   recordingBlocked?: boolean;
   recordingBlockedMessage?: string;
@@ -116,6 +118,8 @@ export default function VoiceCoachPanel({
   cardNum,
   modelAudioUrl,
   part1Guide,
+  coachShowKeywords = true,
+  coachBasicOpen = false,
   recordingBlocked = false,
   recordingBlockedMessage,
   embedded = false,
@@ -656,7 +660,11 @@ export default function VoiceCoachPanel({
 
       {evaluateType === "part1" && part1Guide ? (
         <div ref={guideRef}>
-          <CoachAnswerGuide guide={part1Guide} />
+          <CoachAnswerGuide
+            guide={part1Guide}
+            showKeywords={coachShowKeywords}
+            basicDefaultOpen={coachBasicOpen}
+          />
         </div>
       ) : null}
 

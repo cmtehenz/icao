@@ -5,6 +5,7 @@ import {
   type TrainingPhase,
   type WeakArea,
 } from "@/lib/trainingProfile/types";
+import { daysFromNowIso, recheckrideDaysForPhase, RECHECKRIDE_DAYS_AFTER_SKIP } from "@/lib/trainingProfile/recheckride";
 
 const STORAGE_KEY = "icao_student_training_profile_v1";
 export const TRAINING_PROFILE_EVENT = "icao-training-profile";
@@ -56,7 +57,7 @@ export function skipCheckrideToFoundation(): StudentTrainingProfile {
     weakAreas: ["pronunciation", "confidence"],
     focusSounds: [],
     probeResults: [],
-    nextCheckrideAt: null,
+    nextCheckrideAt: daysFromNowIso(RECHECKRIDE_DAYS_AFTER_SKIP),
   };
   saveTrainingProfile(profile);
   return profile;
@@ -87,7 +88,7 @@ export function completeCheckride(
     weakAreas,
     focusSounds,
     probeResults: probes,
-    nextCheckrideAt: daysFromNow(21),
+    nextCheckrideAt: daysFromNowIso(recheckrideDaysForPhase(phase)),
   };
   saveTrainingProfile(profile);
   return profile;
@@ -127,10 +128,4 @@ function deriveWeakAreas(probes: CheckrideProbeResult[], avg: number): WeakArea[
   if (avg < 55) areas.push("confidence");
 
   return areas.length ? [...new Set(areas)] : ["pronunciation"];
-}
-
-function daysFromNow(days: number): string {
-  const d = new Date();
-  d.setDate(d.getDate() + days);
-  return d.toISOString();
 }

@@ -5,6 +5,7 @@ import {
   emitFlightDebriefAvailable,
   emitFlightDebriefComplete,
 } from "@/lib/flightDebrief/events";
+import { maybeScheduleRecheckrideFromPlateau } from "@/lib/trainingProfile/recheckride";
 import { todayKey } from "@/lib/studyTime";
 
 const STORAGE_KEY = "icao_flight_debrief_v1";
@@ -80,6 +81,7 @@ export function markFlightDebriefComplete(): FlightDebriefState {
   };
   saveFlightDebriefState(next);
   emitFlightDebriefComplete();
+  maybeScheduleRecheckrideFromPlateau();
   return next;
 }
 

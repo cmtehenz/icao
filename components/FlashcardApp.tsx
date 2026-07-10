@@ -47,6 +47,7 @@ import { buildSpokenAnswer } from "@/lib/spokenAnswer";
 import { wordCount } from "@/lib/utils";
 import type { PeelBlockId } from "@/lib/peelBlocks";
 import { useSimulationUnlock } from "@/hooks/useSimulationUnlock";
+import { useTrainingAssistance } from "@/lib/trainingProfile/useTrainingAssistance";
 
 type FilteredCard = { card: (typeof CARDS)[number]; idx: number };
 
@@ -72,6 +73,7 @@ export default function FlashcardApp() {
   const [keywordsOnly, setKeywordsOnly] = useState(false);
   const [voicePracticeOpen, setVoicePracticeOpen] = useState(false);
   const [peelBlockId, setPeelBlockId] = useState<PeelBlockId | null>(null);
+  const { level: assistanceLevel, label: assistanceLabel, part1: part1Assist } = useTrainingAssistance();
   const { unlocked: simUnlocked, hint: simHint } = useSimulationUnlock();
 
   const filtered = useMemo((): FilteredCard[] => {
@@ -167,6 +169,16 @@ export default function FlashcardApp() {
   }, [hydrated]);
 
   useEffect(() => {
+    if (!hydrated) return;
+    setShowKeywords(part1Assist.showKeywords);
+    setKeywordsOnly(part1Assist.keywordsOnly);
+    setShowAnswer(part1Assist.showAnswer);
+    if (part1Assist.preferredTab === "shadow" || part1Assist.preferredTab === "coach") {
+      setVoicePracticeOpen(true);
+    }
+  }, [hydrated, assistanceLevel, part1Assist]);
+
+  useEffect(() => {
     if (searchParams.get("view") === "exam" && simUnlocked) setView("exam");
   }, [searchParams, simUnlocked]);
 
@@ -208,18 +220,24 @@ export default function FlashcardApp() {
         navigateFiltered(1);
       } else if (e.key === " ") {
         e.preventDefault();
-        if (keywordsOnly) setShowAnswer((p) => !p);
+        if (part1Assist.hideModelAnswers) {
+          setVoicePracticeOpen(true);
+        } else if (keywordsOnly) setShowAnswer((p) => !p);
         else setKeywordsOnly(true);
       }
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [navigateFiltered, view, keywordsOnly]);
+  }, [navigateFiltered, view, keywordsOnly, part1Assist.hideModelAnswers]);
 
   const practicePhase: PracticePhase =
     !keywordsOnly && !showAnswer ? "full" : keywordsOnly && !showAnswer ? "keywords" : "answer";
 
   const handlePracticePrimary = useCallback(() => {
+    if (part1Assist.hideModelAnswers) {
+      setVoicePracticeOpen(true);
+      return;
+    }
     if (practicePhase === "full") {
       setKeywordsOnly(true);
       setShowAnswer(false);
@@ -229,7 +247,7 @@ export default function FlashcardApp() {
     } else {
       toggleSpeak();
     }
-  }, [practicePhase, progress, card.num, toggleSpeak]);
+  }, [practicePhase, progress, card.num, toggleSpeak, part1Assist.hideModelAnswers]);
 
   const resetPractice = useCallback(() => {
     stopSpeaking();
@@ -363,6 +381,9 @@ export default function FlashcardApp() {
               <span className="card-num">#{card.num}</span>
               <span className="category-badge">{CATEGORIES[card.category]}</span>
               <span className={`diff ${card.difficulty}`}>{card.difficulty}</span>
+              <span className="assistance-badge" data-level={assistanceLevel}>
+                {assistanceLabel}
+              </span>
               <ProgressBadge status={cardProgress.status} compact />
               <CardStatusActions
                 onDifficult={() => markStatus("difficult")}
@@ -422,19 +443,22 @@ export default function FlashcardApp() {
                     ? "coach"
                     : peelBlockId || searchParams.get("shadow") === "1"
                       ? "shadow"
-                      : undefined
+                      : part1Assist.preferredTab
                 }
+                coachOnly={assistanceLevel === "solo"}
                 beforeTabs={
                   <PeelBlockWeakDetail cardNum={card.num} onTrainBlock={trainPeelBlock} />
                 }
                 shadow={
-                  <PeelShadowingPanel
-                    embedded
-                    card={card}
-                    question={card.question}
-                    initialOpen
-                    initialBlockId={peelBlockId}
-                  />
+                  assistanceLevel === "solo" ? undefined : (
+                    <PeelShadowingPanel
+                      embedded
+                      card={card}
+                      question={card.question}
+                      initialOpen
+                      initialBlockId={peelBlockId}
+                    />
+                  )
                 }
                 coach={
                   <VoiceCoachPanel
@@ -452,6 +476,8 @@ export default function FlashcardApp() {
                     }
                     cardNum={card.num}
                     part1Guide={part1CoachGuide}
+                    coachShowKeywords={part1Assist.coachShowKeywords}
+                    coachBasicOpen={part1Assist.coachBasicOpen}
                   />
                 }
               />
@@ -472,7 +498,9 @@ export default function FlashcardApp() {
               onResetPractice={resetPractice}
             />
 
-            <AnswerPanel card={card} show={showAnswer} connectorSet={connectorSet} />
+            {!part1Assist.hideModelAnswers ? (
+              <AnswerPanel card={card} show={showAnswer} connectorSet={connectorSet} />
+            ) : null}
 
             <div className="card-footer-meta">
               <span>{answerWords} words</span>

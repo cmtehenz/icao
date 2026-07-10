@@ -41,6 +41,7 @@ export default function CaptainBriefing() {
   const daysLeft = useMemo(() => daysUntilExam(), [tick]);
   const profile = useMemo(() => getTrainingProfile(), [tick]);
   const awaitingCheckride = needsCheckride(profile);
+  const isRecheckride = awaitingCheckride && profile.checkrideStatus !== "pending";
 
   return (
     <header className="cda-hero home-captain-briefing academy-briefing" aria-label="Captain briefing">
@@ -49,11 +50,12 @@ export default function CaptainBriefing() {
       </div>
       <div className="cda-hero-copy">
         <p className="cda-hero-label">Captain Delta · Flight Briefing</p>
-        <h1>{awaitingCheckride ? "Speaking Checkride" : "Today's Flight Mission"}</h1>
+        <h1>{awaitingCheckride ? (isRecheckride ? "Speaking Re-checkride" : "Speaking Checkride") : "Today's Flight Mission"}</h1>
         {awaitingCheckride ? (
           <p className="cda-hero-welcome">
-            Before we fly, I need to hear you speak — a short checkride so I can set your
-            training phase.
+            {isRecheckride
+              ? "Time to hear you speak again — a short re-checkride so I can adjust your training phase."
+              : "Before we fly, I need to hear you speak — a short checkride so I can set your training phase."}
           </p>
         ) : (
           briefing.text.split("\n").map((line) => (

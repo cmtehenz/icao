@@ -112,7 +112,7 @@ Update `01_PRODUCT.md`, `04_LEARNING_ENGINE.md`, `07_UI_UX.md`, `CHANGELOG.md` w
 - Checkride UI polish
 - Token refresh (colors, type, spacing)
 
-### Phase 4 — Progressive scaffolding
+### Phase 4 — Progressive scaffolding ✅
 
 - Part 1 / Word Mission assistance levels from profile
 - Re-checkride every N days or on readiness plateau

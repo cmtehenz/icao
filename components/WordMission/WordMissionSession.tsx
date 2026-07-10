@@ -28,6 +28,7 @@ import {
 } from "@/lib/wordMission/progress";
 import { WM_LEVEL_NAMES, WM_PASS_SCORE, WORD_MISSION_CAPTAIN_UI, type WordMissionLevel } from "@/lib/wordMission/types";
 import { vaultWordFromVocabTerm } from "@/lib/wordMission/vaultAdapter";
+import { useTrainingAssistance } from "@/lib/trainingProfile/useTrainingAssistance";
 import type { PracticeLevel } from "@/lib/pronunciationVault";
 import type { VocabItemProgress } from "@/utils/spacedRepetition";
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -63,6 +64,8 @@ export default function WordMissionSession({
 }: Props) {
   const vaultWord = useMemo(() => vaultWordFromVocabTerm(item), [item]);
   const lesson = useMemo(() => buildWordMissionLesson(item), [item]);
+  const { label: assistanceLabel, level: assistanceLevel, wordMission: wmAssist } =
+    useTrainingAssistance();
   const termComplete = isVocabMissionTermComplete(progress);
   const [lastScore, setLastScore] = useState<number | null>(null);
 
@@ -240,6 +243,9 @@ export default function WordMissionSession({
             </CaptainDeltaTarget>
             <WordPhoneticHint word={item.term} className="vault-word-phonetic word-mission-phonetic" />
           </h2>
+          <span className="assistance-badge" data-level={assistanceLevel}>
+            {assistanceLabel}
+          </span>
         </div>
 
         <div
@@ -282,7 +288,13 @@ export default function WordMissionSession({
           <>
             <div className="word-mission-record-task" role="status">
               <p className="word-mission-record-task-label">{recordTaskLabel}</p>
-              <p className="word-mission-record-task-phrase">{speakText}</p>
+              {wmAssist.showSpeakText ? (
+                <p className="word-mission-record-task-phrase">{speakText}</p>
+              ) : (
+                <p className="word-mission-record-task-phrase word-mission-record-solo">
+                  Speak from memory — no phrase on screen.
+                </p>
+              )}
               <p className="word-mission-record-task-hint">{actionHint}</p>
             </div>
 
@@ -290,11 +302,13 @@ export default function WordMissionSession({
               <p className="word-mission-record-coach-tip">{step.captainLine}</p>
             )}
 
-            <WordMissionRichPanels
-              stepId={step.id}
-              richContent={lesson.richContent}
-              collapsible
-            />
+            {wmAssist.expandRichPanels ? (
+              <WordMissionRichPanels
+                stepId={step.id}
+                richContent={lesson.richContent}
+                collapsible
+              />
+            ) : null}
           </>
         ) : (
           <>
@@ -313,7 +327,11 @@ export default function WordMissionSession({
               )}
             </div>
 
-            <WordMissionRichPanels stepId={step.id} richContent={lesson.richContent} />
+            <WordMissionRichPanels
+              stepId={step.id}
+              richContent={lesson.richContent}
+              collapsible={!wmAssist.expandRichPanels}
+            />
           </>
         )}
 
@@ -343,10 +361,13 @@ export default function WordMissionSession({
                     Tap <strong>Listen</strong> to hear the model.
                   </li>
                   <li>
-                    Tap <strong>Record</strong> and speak exactly:
+                    Tap <strong>Record</strong> and speak
+                    {wmAssist.showSpeakText ? " exactly:" : " from memory."}
                   </li>
                 </ol>
-                <p className="word-mission-record-instructions-phrase">{speakText}</p>
+                {wmAssist.showSpeakText ? (
+                  <p className="word-mission-record-instructions-phrase">{speakText}</p>
+                ) : null}
               </div>
 
               <div className="word-mission-listen-row">

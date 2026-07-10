@@ -4,6 +4,16 @@ Manual version history only. Sprint and audit details belong in Git history.
 
 ---
 
+## 3.4 — July 2026
+
+**Adaptive training redesign (RFC-004) — Phase 4 progressive scaffolding.**
+
+- Part 1 and Word Mission read assistance level from `StudentTrainingProfile`
+- Scaffolding ladder: full model → blocks → keywords → solo
+- Re-checkride cadence by phase; plateau detection pulls checkride forward after debrief
+
+---
+
 ## 3.3 — July 2026
 
 **Adaptive training redesign (RFC-004) — Phase 3 UX shell.**

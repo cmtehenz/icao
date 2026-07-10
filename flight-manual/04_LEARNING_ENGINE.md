@@ -19,6 +19,19 @@ The Learning Engine defines *what happens inside* each leg.
 
 Mission Engine (`dailyMission.ts`) reads the plan for leg order and completion. Word Mission picker uses phase term counts and Foundation prefers newer/easier terms.
 
+### Progressive scaffolding (Phase 4)
+
+`assistanceFromProfile()` maps phase + weak areas to an assistance ladder:
+
+| Level | Part 1 | Word Mission |
+|-------|--------|--------------|
+| Full model | Shadow + keywords + coach examples open | Speak text + rich panels visible |
+| Sentence blocks | Shadow, coach examples collapsed | Speak text + collapsible panels |
+| Keywords | Keywords only, coach tab | Collapsed panels |
+| Solo | Coach only, no model answer reveal | Speak from memory, no phrase on screen |
+
+Re-checkride: calendar cadence (14–28 days by phase) or earlier when score trends plateau for 14 days (Mission Engine schedules after flight debrief).
+
 ---
 
 ## Universal lesson pipeline

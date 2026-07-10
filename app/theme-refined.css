@@ -1276,6 +1276,35 @@ h1 {
   color: var(--academy-navy);
 }
 
+.assistance-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: var(--bg-subtle);
+  color: var(--academy-slate);
+  border: 1px solid var(--border);
+}
+
+.assistance-badge[data-level="full"] {
+  color: color-mix(in srgb, var(--academy-amber) 80%, var(--academy-ink));
+  border-color: color-mix(in srgb, var(--academy-amber) 35%, var(--border));
+}
+
+.assistance-badge[data-level="solo"] {
+  color: var(--academy-navy);
+  border-color: color-mix(in srgb, var(--academy-navy) 28%, var(--border));
+}
+
+.word-mission-record-solo {
+  font-style: italic;
+  color: var(--muted);
+}
+
 .mission-cta-top {
   display: flex;
   flex-wrap: wrap;
